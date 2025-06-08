@@ -32,6 +32,12 @@ export const websiteConfig: WebsiteConfig = {
       youtube: 'https://mksaas.link/youtube',
     },
   },
+  features: {
+    enableDiscordWidget: false,
+    enableUpgradeCard: true,
+    enableAffonsoAffiliate: false,
+    enablePromotekitAffiliate: false,
+  },
   routes: {
     defaultLoginRedirect: '/dashboard',
   },
