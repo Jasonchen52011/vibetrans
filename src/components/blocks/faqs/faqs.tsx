@@ -19,7 +19,8 @@ type FAQItem = {
 
 export default function FaqSection({ namespace = 'HomePage.faqs' }: { namespace?: string } = {}) {
   const locale = useLocale();
-  const t = useTranslations(namespace);
+  // @ts-ignore - Dynamic namespace support
+  const t = useTranslations(namespace as any);
 
   // Dynamically build FAQ items based on available translations
   const faqItems: FAQItem[] = [];
@@ -38,7 +39,9 @@ export default function FaqSection({ namespace = 'HomePage.faqs' }: { namespace?
   for (let i = 1; i <= 8; i++) {
     const key = `item-${i}`;
     try {
+      // @ts-ignore - Dynamic translation keys
       const question = t(`items.${key}.question`);
+      // @ts-ignore - Dynamic translation keys
       const answer = t(`items.${key}.answer`);
 
       // Only add if translation exists (not showing the key)
@@ -60,8 +63,10 @@ export default function FaqSection({ namespace = 'HomePage.faqs' }: { namespace?
     <section id="faqs" className="px-4 py-16">
       <div className="mx-auto max-w-4xl">
         <HeaderSection
+          // @ts-ignore - Dynamic translation keys
           title={t('title')}
           titleAs="h2"
+          // @ts-ignore - Dynamic translation keys
           subtitle={t('subtitle')}
           subtitleAs="p"
         />
