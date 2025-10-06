@@ -8,11 +8,14 @@ import {
   Cog,
   Headset,
   Heart,
+  Languages,
   Pause,
+  Pencil,
   Play,
   Rocket,
   Shield,
   Users,
+  Volume2,
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
@@ -29,6 +32,9 @@ const iconMap: Record<string, LucideIcon> = {
   FaHeart: Heart,
   FaPlay: Play,
   FaPause: Pause,
+  FaPencilAlt: Pencil,
+  FaLanguage: Languages,
+  FaVolumeUp: Volume2,
 };
 
 interface IconProps {

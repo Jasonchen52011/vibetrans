@@ -236,6 +236,9 @@ importers:
       drizzle-orm:
         specifier: ^0.39.3
         version: 0.39.3(@neondatabase/serverless@0.10.4)(@opentelemetry/api@1.9.0)(@types/pg@8.11.11)(kysely@0.27.5)(pg@8.16.0(pg-native@3.4.5))(postgres@3.4.5)
+      embla-carousel-fade:
+        specifier: ^8.6.0
+        version: 8.6.0(embla-carousel@8.5.2)
       embla-carousel-react:
         specifier: ^8.5.2
         version: 8.5.2(react@19.0.0)
@@ -5801,6 +5804,11 @@ packages:
 
   electron-to-chromium@1.5.113:
     resolution: {integrity: sha512-wjT2O4hX+wdWPJ76gWSkMhcHAV2PTMX+QetUCPYEdCIe+cxmgzzSSiGRCKW8nuh4mwKZlpv0xvoW7OF2X+wmHg==}
+
+  embla-carousel-fade@8.6.0:
+    resolution: {integrity: sha512-qaYsx5mwCz72ZrjlsXgs1nKejSrW+UhkbOMwLgfRT7w2LtdEB03nPRI06GHuHv5ac2USvbEiX2/nAHctcDwvpg==}
+    peerDependencies:
+      embla-carousel: 8.6.0
 
   embla-carousel-react@8.5.2:
     resolution: {integrity: sha512-Tmx+uY3MqseIGdwp0ScyUuxpBgx5jX1f7od4Cm5mDwg/dptEiTKf9xp6tw0lZN2VA9JbnVMl/aikmbc53c6QFA==}
@@ -14568,6 +14576,10 @@ snapshots:
   ee-first@1.1.1: {}
 
   electron-to-chromium@1.5.113: {}
+
+  embla-carousel-fade@8.6.0(embla-carousel@8.5.2):
+    dependencies:
+      embla-carousel: 8.5.2
 
   embla-carousel-react@8.5.2(react@19.0.0):
     dependencies:

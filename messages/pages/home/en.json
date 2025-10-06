@@ -3,7 +3,7 @@
     "title": "VibeTrans",
     "description": "AI-powered translation and localization platform",
     "hero": {
-      "title": "VibeTrans for Seamless Language Conversion With AI",
+      "title": "VibeTrans Translator for Seamless Language Conversion With AI",
       "description": "Explore how VibeTrans translator offers quick, accurate, and context-aware translation tools for a wide variety of languages and dialects. Simplify your communication today.",
       "introduction": "Introducing VibeTrans",
       "primary": "Try VibeTrans Translator Now!",
@@ -276,6 +276,28 @@
         }
       ],
       "ctaButton": "Try VibeTrans Translator Now!"
+    },
+    "howto": {
+      "title": "How to Use VibeTrans",
+      "description": "Using VibeTrans is simple and intuitive. Here's how to get started with its powerful translation tools:",
+      "steps": [
+        {
+          "title": "Select a Tool",
+          "description": "Browse through the list of available translation tools and choose the one you need. From slang translation to ancient language decoding, there's something for everyone."
+        },
+        {
+          "title": "Input Your Text",
+          "description": "Type or paste the text you want to translate into the provided input box. Make sure the text is clear for the best results."
+        },
+        {
+          "title": "Click 'Translate'",
+          "description": "Hit the 'Translate' button to instantly see your translated text. Whether you're converting text or exploring new languages, the process is fast and easy."
+        },
+        {
+          "title": "Adjust Settings",
+          "description": "If needed, tweak the translation settings to suit your needs. You can change languages, use voice input, or modify the output for better accuracy."
+        }
+      ]
     },
     "highlights": {
       "title": "Why Choose VibeTrans?",

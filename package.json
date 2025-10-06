@@ -102,6 +102,7 @@
     "dotenv": "^16.4.7",
     "dotted-map": "^2.2.3",
     "drizzle-orm": "^0.39.3",
+    "embla-carousel-fade": "^8.6.0",
     "embla-carousel-react": "^8.5.2",
     "framer-motion": "^12.4.7",
     "fumadocs-core": "^15.6.7",

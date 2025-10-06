@@ -144,10 +144,10 @@
   },
   "AboutPage": {
     "title": "About",
-    "description": "This is MkSaaS, an AI SaaS template built with modern technologies, helping you build your SaaS faster and better.",
-    "authorName": "MkSaaS",
-    "authorBio": "AI SaaS Boilerplate",
-    "introduction": "👋 Hi there! This is MkSaaS, an AI SaaS template built with modern technologies, helping you build your SaaS faster and better. If you have any questions, welcome to contact me.",
+    "description": "VibeTrans is an AI-powered translation and communication platform that breaks down language barriers.",
+    "authorName": "VibeTrans",
+    "authorBio": "AI Translation Platform",
+    "introduction": "👋 Hi there! VibeTrans is an AI-powered translation platform designed to help you communicate across languages effortlessly. If you have any questions, welcome to contact us.",
     "talkWithMe": "Talk with me",
     "followMe": "Follow me on X"
   },
@@ -292,7 +292,7 @@
     "previousPage": "Previous",
     "nextPage": "Next",
     "chooseLanguage": "Select language",
-    "title": "MkSaaS Docs",
+    "title": "VibeTrans Docs",
     "homepage": "Homepage"
   },
   "PremiumContent": {
@@ -780,10 +780,10 @@
     }
   },
   "HomePage": {
-    "title": "MkSaaS",
-    "description": "Make AI SaaS in days, simply and effortlessly",
+    "title": "VibeTrans",
+    "description": "AI-powered translation for seamless communication",
     "hero": {
-      "title": "VibeTrans for Seamless Language Conversion With AI",
+      "title": "VibeTrans Translator for Seamless Language Conversion With AI",
       "description": "Explore how VibeTrans translator offers quick, accurate, and context-aware translation tools for a wide variety of languages and dialects. Simplify your communication today.",
       "introduction": "Introducing VibeTrans",
       "primary": "Try VibeTrans Translator Now!",
@@ -978,37 +978,37 @@
           "name": "Zeki",
           "role": "Founder of ChatExtend",
           "image": "https://randomuser.me/api/portraits/men/5.jpg",
-          "quote": "MkSaaS is the perfect fusion of simplicity and versatility, enabling us to create UIs that are as stunning as they are user-friendly."
+          "quote": "VibeTrans is the perfect translation tool - fast, accurate, and incredibly easy to use. It has become essential for our international team."
         },
         "item-8": {
           "name": "Joseph Kitheka",
           "role": "Fullstack Developer",
           "image": "https://randomuser.me/api/portraits/men/9.jpg",
-          "quote": "MkSaaS has transformed the way I develop web applications. Their extensive collection of UI components, blocks, and templates has significantly accelerated my workflow."
+          "quote": "VibeTrans has transformed how I work with international clients. The translations are contextually accurate and save me hours every week."
         },
         "item-9": {
           "name": "Khatab Wedaa",
           "role": "MerakiUI Creator",
           "image": "https://randomuser.me/api/portraits/men/10.jpg",
-          "quote": "MkSaaS is an elegant, clean, and responsive tailwind css components it's very helpful to start fast with your project."
+          "quote": "VibeTrans is elegant, clean, and delivers fast translations. It's very helpful for our multilingual documentation."
         },
         "item-10": {
           "name": "Rodrigo Aguilar",
           "role": "TailwindAwesome Creator",
           "image": "https://randomuser.me/api/portraits/men/11.jpg",
-          "quote": "I love MkSaaS ❤️. The component blocks are well-structured, simple to use, and beautifully designed. It makes it really easy to have a good-looking website in no time."
+          "quote": "I love VibeTrans ❤️. The translations are accurate, the interface is simple, and it makes communicating across languages effortless."
         },
         "item-11": {
           "name": "Eric Ampire",
           "role": "@GoogleDevExpert for Android",
           "image": "https://randomuser.me/api/portraits/men/12.jpg",
-          "quote": "MkSaaS templates are the perfect solution for anyone who wants to create a beautiful and functional website without any web design experience."
+          "quote": "VibeTrans is the perfect solution for anyone who needs reliable translations without complicated setup or learning curve."
         },
         "item-12": {
           "name": "Roland Tubonge",
           "role": "Software Engineer",
           "image": "https://randomuser.me/api/portraits/men/13.jpg",
-          "quote": "MkSaaS is so well designed that even with a very poor knowledge of web design you can do miracles. Let yourself be seduced!"
+          "quote": "VibeTrans breaks down language barriers effortlessly. Even with no translation experience, you can get professional results!"
         }
       }
     },
@@ -1086,15 +1086,15 @@
   },
   "AIImagePage": {
     "title": "AI Image",
-    "description": "MkSaaS lets you make AI SaaS in days, simply and effortlessly"
+    "description": "Create stunning images with VibeTrans AI-powered tools"
   },
   "AIChatPage": {
     "title": "AI Chat",
-    "description": "MkSaaS lets you make AI SaaS in days, simply and effortlessly"
+    "description": "Chat and translate in real-time with VibeTrans AI"
   },
   "AIVideoPage": {
     "title": "AI Video",
-    "description": "MkSaaS lets you make AI SaaS in days, simply and effortlessly"
+    "description": "Generate videos with VibeTrans AI technology"
   },
   "demo": {
     "video": {
@@ -1190,6 +1190,6 @@
   },
   "AIAudioPage": {
     "title": "AI Audio",
-    "description": "MkSaaS lets you make AI SaaS in days, simply and effortlessly"
+    "description": "Transform audio with VibeTrans AI-powered voice technology"
   }
 }

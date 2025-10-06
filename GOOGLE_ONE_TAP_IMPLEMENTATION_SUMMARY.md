@@ -78,7 +78,7 @@ curl -X POST http://localhost:3002/api/auth/google-one-tap \
 ## 📂 项目结构
 
 ```
-mksaas-template/
+vibetrans/
 ├── src/
 │   ├── app/
 │   │   ├── api/

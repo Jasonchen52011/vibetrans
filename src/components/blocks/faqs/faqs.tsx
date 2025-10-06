@@ -17,60 +17,44 @@ type FAQItem = {
   answer: string;
 };
 
-export default function FaqSection() {
+export default function FaqSection({ namespace = 'HomePage.faqs' }: { namespace?: string } = {}) {
   const locale = useLocale();
-  const t = useTranslations('HomePage.faqs');
+  const t = useTranslations(namespace);
 
-  const faqItems: FAQItem[] = [
-    {
-      id: 'item-1',
-      icon: 'calendar-clock',
-      question: t('items.item-1.question'),
-      answer: t('items.item-1.answer'),
-    },
-    {
-      id: 'item-2',
-      icon: 'wallet',
-      question: t('items.item-2.question'),
-      answer: t('items.item-2.answer'),
-    },
-    {
-      id: 'item-3',
-      icon: 'refresh-cw',
-      question: t('items.item-3.question'),
-      answer: t('items.item-3.answer'),
-    },
-    {
-      id: 'item-4',
-      icon: 'hand-coins',
-      question: t('items.item-4.question'),
-      answer: t('items.item-4.answer'),
-    },
-    {
-      id: 'item-5',
-      icon: 'languages',
-      question: t('items.item-5.question'),
-      answer: t('items.item-5.answer'),
-    },
-    {
-      id: 'item-6',
-      icon: 'globe',
-      question: t('items.item-6.question'),
-      answer: t('items.item-6.answer'),
-    },
-    {
-      id: 'item-7',
-      icon: 'mail',
-      question: t('items.item-7.question'),
-      answer: t('items.item-7.answer'),
-    },
-    {
-      id: 'item-8',
-      icon: 'shield-check',
-      question: t('items.item-8.question'),
-      answer: t('items.item-8.answer'),
-    },
+  // Dynamically build FAQ items based on available translations
+  const faqItems: FAQItem[] = [];
+  const icons: IconName[] = [
+    'calendar-clock',
+    'wallet',
+    'refresh-cw',
+    'hand-coins',
+    'languages',
+    'globe',
+    'mail',
+    'shield-check',
   ];
+
+  // Try to load up to 8 FAQ items
+  for (let i = 1; i <= 8; i++) {
+    const key = `item-${i}`;
+    try {
+      const question = t(`items.${key}.question`);
+      const answer = t(`items.${key}.answer`);
+
+      // Only add if translation exists (not showing the key)
+      if (question && !question.includes('items.')) {
+        faqItems.push({
+          id: key,
+          icon: icons[i - 1] || 'help-circle',
+          question,
+          answer,
+        });
+      }
+    } catch {
+      // Skip if translation doesn't exist
+      break;
+    }
+  }
 
   return (
     <section id="faqs" className="px-4 py-16">

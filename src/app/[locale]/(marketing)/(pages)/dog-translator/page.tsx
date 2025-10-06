@@ -5,6 +5,7 @@ import FaqSection from '@/components/blocks/faqs/faqs';
 import FeaturesSection from '@/components/blocks/features/features';
 import UserScenarios from '@/components/blocks/funfacts';
 import WhyChoose from '@/components/blocks/highlights';
+import HowTo from '@/components/blocks/how-to';
 import TestimonialsSection from '@/components/blocks/testimonials/testimonials';
 import UniqueSection from '@/components/blocks/unique';
 import WhatIsSection from '@/components/blocks/whatis';
@@ -47,6 +48,27 @@ export default async function DogTranslatorPage(props: DogTranslatorPageProps) {
   const { locale } = params;
   // @ts-ignore - Translation keys are dynamic
   const t = await getTranslations({ locale, namespace: 'DogTranslatorPage' });
+
+  // Structured Data for SEO
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: 'VibeTrans Dog Translator',
+    applicationCategory: 'EntertainmentApplication',
+    description: (t as any)('description'),
+    operatingSystem: 'Web',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+    },
+    featureList: [
+      'AI Emotion Intelligence',
+      'Authentic Sound Library',
+      'Real-time Translation',
+      'Multi-emotion Support',
+    ],
+  };
 
   // Page data for the tool
   const pageData = {
@@ -179,6 +201,39 @@ export default async function DogTranslatorPage(props: DogTranslatorPageProps) {
     },
   };
 
+  // How to section
+  const howtoSection = {
+    name: 'howto',
+    title: (t as any)('howto.title'),
+    description: (t as any)('howto.description'),
+    image: {
+      src: '/images/docs/dog-translator-how-to.webp',
+      alt: 'How to Use Dog Translator',
+    },
+    items: [
+      {
+        title: (t as any)('howto.steps.0.title'),
+        description: (t as any)('howto.steps.0.description'),
+        icon: 'FaPencilAlt',
+      },
+      {
+        title: (t as any)('howto.steps.1.title'),
+        description: (t as any)('howto.steps.1.description'),
+        icon: 'FaBrain',
+      },
+      {
+        title: (t as any)('howto.steps.2.title'),
+        description: (t as any)('howto.steps.2.description'),
+        icon: 'FaLanguage',
+      },
+      {
+        title: (t as any)('howto.steps.3.title'),
+        description: (t as any)('howto.steps.3.description'),
+        icon: 'FaVolumeUp',
+      },
+    ],
+  };
+
   // Unique section
   const uniqueSection = {
     name: 'unique',
@@ -202,11 +257,32 @@ export default async function DogTranslatorPage(props: DogTranslatorPageProps) {
           alt: (t as any)('unique.items.1.title'),
         },
       },
+      {
+        title: (t as any)('unique.items.2.title'),
+        description: (t as any)('unique.items.2.description'),
+        image: {
+          src: '/images/docs/speak-dog-in-any-language.webp',
+          alt: (t as any)('unique.items.2.title'),
+        },
+      },
+      {
+        title: (t as any)('unique.items.3.title'),
+        description: (t as any)('unique.items.3.description'),
+        image: {
+          src: '/images/docs/personalized-settings.webp',
+          alt: (t as any)('unique.items.3.title'),
+        },
+      },
     ],
   };
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: Required for structured data
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       <div className="flex flex-col">
         {/* Hero Section with Tool */}
         <AuroraBackground className="bg-white dark:bg-zinc-900 !pt-12 !h-auto">
@@ -289,6 +365,9 @@ export default async function DogTranslatorPage(props: DogTranslatorPageProps) {
         {/* What Is Section */}
         <WhatIsSection section={whatIsSection} />
 
+        {/* How to Section */}
+        <HowTo section={howtoSection} />
+
         {/* Examples Section */}
         <BeforeAfterSection beforeAfterGallery={examplesData} />
 
@@ -308,7 +387,7 @@ export default async function DogTranslatorPage(props: DogTranslatorPageProps) {
         <WhyChoose section={highlightsSection} />
 
         {/* FAQ Section */}
-        <FaqSection />
+        <FaqSection namespace="DogTranslatorPage.faqs" />
 
         {/* Testimonials Section */}
         <TestimonialsSection />

@@ -3,9 +3,6 @@ import type { WebsiteConfig } from '@/types';
 
 /**
  * website config, without translations
- *
- * docs:
- * https://mksaas.com/docs/config/website
  */
 export const websiteConfig: WebsiteConfig = {
   ui: {
@@ -20,7 +17,7 @@ export const websiteConfig: WebsiteConfig = {
   },
   metadata: {
     images: {
-      ogImage: '/images/docs/vibetranshome.webp',
+      ogImage: '/images/docs/what-is-vibetrans.webp',
       logoLight: '/vibetrans-icon.png',
       logoDark: '/vibetrans-icon.png',
     },

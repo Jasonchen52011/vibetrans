@@ -35,9 +35,6 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
  * it will not be applied until the component is mounted,
  * for better user experience, we recommend to replace the
  * default theme with the custom theme in global.css.
- *
- * docs:
- * https://mksaas.com/docs/themes
  */
 export function ActiveThemeProvider({
   children,

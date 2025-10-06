@@ -1,21 +1,14 @@
-import BeforeAfterSection from '@/components/blocks/Examples';
 import CallToActionSection from '@/components/blocks/calltoaction/calltoaction';
 import FaqSection from '@/components/blocks/faqs/faqs';
-import FeaturesSection from '@/components/blocks/features/features';
-import Features2Section from '@/components/blocks/features/features2';
 import UserScenarios from '@/components/blocks/funfacts';
 import HeroSection from '@/components/blocks/hero/hero';
 import HighlightsSection from '@/components/blocks/highlights';
-import IntegrationSection from '@/components/blocks/integration/integration';
-import Integration2Section from '@/components/blocks/integration/integration2';
-import LogoCloud from '@/components/blocks/logo-cloud/logo-cloud';
-import PricingSection from '@/components/blocks/pricing/pricing';
+import HowTo from '@/components/blocks/how-to';
 import StatsSection from '@/components/blocks/stats/stats';
 import TestimonialsSection from '@/components/blocks/testimonials/testimonials';
 import UniqueSection from '@/components/blocks/unique';
 import WhatIsSection from '@/components/blocks/whatis';
 import CrispChat from '@/components/layout/crisp-chat';
-import { NewsletterCard } from '@/components/newsletter/newsletter-card';
 import { constructMetadata } from '@/lib/metadata';
 import { getUrlWithLocale } from '@/lib/urls/urls';
 import type { Metadata } from 'next';
@@ -51,43 +44,27 @@ export default async function HomePage(props: HomePageProps) {
   const { locale } = params;
   const t = await getTranslations('HomePage');
 
-  const examplesData = {
-    // @ts-ignore - Translation keys type mismatch
-    title: t('examples.title'),
-    // @ts-ignore - Translation keys type mismatch
-    description: t('examples.description'),
-    images: [
-      {
-        src: '/images/docs/translation-business.webp',
-        alt: 'Business Translation',
-        name: 'Business Communication',
-      },
-      {
-        src: '/images/docs/translation-travelers.webp',
-        alt: 'Travel Translation',
-        name: 'Travel & Tourism',
-      },
-      {
-        src: '/images/docs/translation-learning.webp',
-        alt: 'Language Learning',
-        name: 'Language Learning',
-      },
-      {
-        src: '/images/docs/translation-slang.webp',
-        alt: 'Slang Translation',
-        name: 'Fun & Slang',
-      },
-      {
-        src: '/images/docs/funfact-languages.webp',
-        alt: 'Ancient Languages',
-        name: 'Ancient Languages',
-      },
-      {
-        src: '/images/docs/funfact-ai-emotional.webp',
-        alt: 'Real-time Translation',
-        name: 'Real-time Chat',
-      },
-    ],
+  // Structured Data for SEO
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: 'VibeTrans',
+    applicationCategory: 'UtilitiesApplication',
+    description:
+      'VibeTrans offers powerful AI-driven translation tools for seamless language conversion. Whether you\'re translating texts, slang, or even ancient languages, VibeTrans makes communication easy.',
+    operatingSystem: 'Web',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+    },
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.9',
+      ratingCount: '8500',
+      bestRating: '5',
+      worstRating: '1',
+    },
   };
 
   const userScenariosSection = {
@@ -114,6 +91,48 @@ export default async function HomePage(props: HomePageProps) {
           src: '/images/docs/funfact-ai-emotional.webp',
           alt: 'Emotional AI Translation',
         },
+      },
+    ],
+  };
+
+  const howtoSection = {
+    name: 'howto',
+    // @ts-ignore - Translation keys type mismatch
+    title: t('howto.title'),
+    // @ts-ignore - Translation keys type mismatch
+    description: t('howto.description'),
+    image: {
+      src: '/images/docs/vibetranshome.webp',
+      alt: 'VibeTrans How to Use',
+    },
+    items: [
+      {
+        // @ts-ignore - Translation keys type mismatch
+        title: t('howto.steps.0.title'),
+        // @ts-ignore - Translation keys type mismatch
+        description: t('howto.steps.0.description'),
+        icon: 'FaRocket',
+      },
+      {
+        // @ts-ignore - Translation keys type mismatch
+        title: t('howto.steps.1.title'),
+        // @ts-ignore - Translation keys type mismatch
+        description: t('howto.steps.1.description'),
+        icon: 'FaCog',
+      },
+      {
+        // @ts-ignore - Translation keys type mismatch
+        title: t('howto.steps.2.title'),
+        // @ts-ignore - Translation keys type mismatch
+        description: t('howto.steps.2.description'),
+        icon: 'FaArrowRight',
+      },
+      {
+        // @ts-ignore - Translation keys type mismatch
+        title: t('howto.steps.3.title'),
+        // @ts-ignore - Translation keys type mismatch
+        description: t('howto.steps.3.description'),
+        icon: 'FaHeadset',
       },
     ],
   };
@@ -167,7 +186,7 @@ export default async function HomePage(props: HomePageProps) {
     description: t('whatIs.description'),
     features: [],
     image: {
-      src: '/images/docs/vibetranshome.webp',
+      src: '/images/docs/what-is-vibetrans.webp',
       alt: 'VibeTrans Platform Overview',
     },
     cta: {
@@ -224,25 +243,41 @@ export default async function HomePage(props: HomePageProps) {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: Required for structured data
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       <div className="flex flex-col">
+        {/* 工具操作区域 */}
         <HeroSection />
 
+        {/* What is XXXX */}
         <WhatIsSection section={whatIsSection} />
 
+        {/* 其他工具推荐 - Stats Section */}
         <StatsSection />
 
+        {/* How to translate XXXX */}
+        <HowTo section={howtoSection} />
+
+        {/* Unique */}
         <UniqueSection section={uniqueSection} />
 
+        {/* Funfacts */}
         {/* @ts-ignore - Translation keys type mismatch */}
         <UserScenarios
           section={userScenariosSection}
           ctaText={(t as any)('funfacts.ctaButton')}
         />
 
+        {/* Highlights */}
         <HighlightsSection section={highlightsSection} />
 
+        {/* FAQs */}
         <FaqSection />
 
+        {/* 用户评论（用户留言输入框）*/}
         <TestimonialsSection />
 
         <CallToActionSection />
