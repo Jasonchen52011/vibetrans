@@ -12,7 +12,7 @@ export default async function SecurityLayout({
 
   const breadcrumbs = [
     {
-      label: t('title'),
+      label: t('title' as const),
       isCurrentPage: false,
     },
     {

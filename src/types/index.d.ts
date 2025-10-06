@@ -194,6 +194,7 @@ export type MenuItem = {
   href?: string;                      // The url to link to
   external?: boolean;                 // Whether the link is external
   authorizeOnly?: string[];           // The roles that are authorized to see the item
+  isPrimary?: boolean;                // Whether to use primary styling
 };
 
 /**

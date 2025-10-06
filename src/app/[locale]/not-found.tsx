@@ -17,7 +17,7 @@ export default function NotFound() {
     <div className="flex min-h-screen flex-col items-center justify-center gap-8">
       <Logo className="size-12" />
 
-      <h1 className="text-4xl font-bold">{t('title')}</h1>
+      <h1 className="text-4xl font-bold">{t('title' as const)}</h1>
 
       <p className="text-balance text-center text-xl font-medium px-4">
         {t('message')}

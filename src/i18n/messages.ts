@@ -2,20 +2,75 @@ import deepmerge from 'deepmerge';
 import type { Locale, Messages } from 'next-intl';
 import { routing } from './routing';
 
-// assume that the default messages are in the en.json file
-// if you want to use a different default locale, you can change to other {locale}.json file
-// we need to export the default messages so that we can use them in the app/manifest.ts file
-// and the email templates can use the default messages to preview the emails
-export { default as defaultMessages } from '../../messages/en.json';
-
+/**
+ * Import all translation modules for a given locale
+ * New modular translation structure:
+ * - common/: Common translations (Metadata, Common, errors, etc.)
+ * - pages/: Page-specific translations (home, pricing, blog, auth, etc.)
+ * - dashboard/: Dashboard and admin translations
+ * - marketing/: Marketing components (navbar, footer)
+ * - demo/: AI demo pages translations
+ */
 const importLocale = async (locale: Locale): Promise<Messages> => {
-  return (await import(`../../messages/${locale}.json`)).default as Messages;
+  // Import all translation modules
+  const [
+    common,
+    mailCommon,
+    newsletterCommon,
+    premiumCommon,
+    homePages,
+    pricingPages,
+    blogPages,
+    authPages,
+    aboutPages,
+    docsPages,
+    dogTranslatorPages,
+    dashboard,
+    marketing,
+    demo,
+  ] = await Promise.all([
+    import(`../../messages/common/${locale}.json`),
+    import(`../../messages/common/mail-${locale}.json`),
+    import(`../../messages/common/newsletter-${locale}.json`),
+    import(`../../messages/common/premium-${locale}.json`),
+    import(`../../messages/pages/home/${locale}.json`),
+    import(`../../messages/pages/pricing/${locale}.json`),
+    import(`../../messages/pages/blog/${locale}.json`),
+    import(`../../messages/pages/auth/${locale}.json`),
+    import(`../../messages/pages/about/${locale}.json`),
+    import(`../../messages/pages/docs/${locale}.json`),
+    import(`../../messages/pages/dog-translator/${locale}.json`),
+    import(`../../messages/dashboard/${locale}.json`),
+    import(`../../messages/marketing/${locale}.json`),
+    import(`../../messages/demo/${locale}.json`),
+  ]);
+
+  // Merge all modules into a single Messages object
+  return deepmerge.all([
+    common.default,
+    mailCommon.default,
+    newsletterCommon.default,
+    premiumCommon.default,
+    homePages.default,
+    pricingPages.default,
+    blogPages.default,
+    authPages.default,
+    aboutPages.default,
+    docsPages.default,
+    dogTranslatorPages.default,
+    dashboard.default,
+    marketing.default,
+    demo.default,
+  ]) as Messages;
 };
 
-// Instead of using top-level await, create a function to get default messages
+// Export default messages for manifest and email templates
 export const getDefaultMessages = async (): Promise<Messages> => {
   return await importLocale(routing.defaultLocale);
 };
+
+// For backward compatibility
+export const defaultMessages = getDefaultMessages();
 
 /**
  * If you have incomplete messages for a given locale and would like to use messages

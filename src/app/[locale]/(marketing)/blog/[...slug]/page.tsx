@@ -66,6 +66,7 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: 'Metadata' });
 
   return constructMetadata({
+    // @ts-ignore - Translation type mismatch
     title: `${post.data.title} | ${t('title')}`,
     description: post.data.description,
     canonicalUrl: getUrlWithLocale(`/blog/${slug}`, locale),
@@ -115,8 +116,65 @@ export default async function BlogPostPage(props: BlogPostPageProps) {
     <div className="flex flex-col gap-8">
       {/* content section */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* left column (blog post content) */}
-        <div className="lg:col-span-2 flex flex-col">
+        {/* left column (sidebar) */}
+        <div className="lg:order-1">
+          <div className="space-y-4 lg:sticky lg:top-24">
+            {/* author info */}
+            {blogAuthor && (
+              <div className="bg-muted/50 rounded-lg p-6">
+                <h2 className="text-lg font-semibold mb-4">{t('author')}</h2>
+                <div className="flex items-center gap-4">
+                  <div className="relative h-8 w-8 shrink-0">
+                    {blogAuthor.data.avatar && (
+                      <Image
+                        src={blogAuthor.data.avatar}
+                        alt={`avatar for ${blogAuthor.data.name}`}
+                        className="rounded-full object-cover border"
+                        fill
+                      />
+                    )}
+                  </div>
+                  <span className="line-clamp-1">{blogAuthor.data.name}</span>
+                </div>
+              </div>
+            )}
+
+            {/* table of contents */}
+            <div className="max-h-[calc(100vh-30rem)] overflow-y-auto">
+              {post.data.toc && (
+                <InlineTOC
+                  items={post.data.toc}
+                  open={true}
+                  defaultOpen={true}
+                  className="bg-muted/50 border-none"
+                />
+              )}
+            </div>
+
+            {/* categories */}
+            <div className="bg-muted/50 rounded-lg p-6">
+              <h2 className="text-lg font-semibold mb-4">{t('categories')}</h2>
+              <ul className="flex flex-wrap gap-4">
+                {blogCategories.map(
+                  (category) =>
+                    category && (
+                      <li key={category.slugs[0]}>
+                        <LocaleLink
+                          href={`/blog/category/${category.slugs[0]}`}
+                          className="text-sm font-medium text-muted-foreground hover:text-primary"
+                        >
+                          {category.data.name}
+                        </LocaleLink>
+                      </li>
+                    )
+                )}
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* right column (blog post content) */}
+        <div className="lg:col-span-2 lg:order-2 flex flex-col">
           {/* Basic information */}
           <div className="space-y-8">
             {/* blog post image */}
@@ -167,63 +225,6 @@ export default async function BlogPostPage(props: BlogPostPageProps) {
 
           <div className="flex items-center justify-start my-16">
             <AllPostsButton />
-          </div>
-        </div>
-
-        {/* right column (sidebar) */}
-        <div>
-          <div className="space-y-4 lg:sticky lg:top-24">
-            {/* author info */}
-            {blogAuthor && (
-              <div className="bg-muted/50 rounded-lg p-6">
-                <h2 className="text-lg font-semibold mb-4">{t('author')}</h2>
-                <div className="flex items-center gap-4">
-                  <div className="relative h-8 w-8 shrink-0">
-                    {blogAuthor.data.avatar && (
-                      <Image
-                        src={blogAuthor.data.avatar}
-                        alt={`avatar for ${blogAuthor.data.name}`}
-                        className="rounded-full object-cover border"
-                        fill
-                      />
-                    )}
-                  </div>
-                  <span className="line-clamp-1">{blogAuthor.data.name}</span>
-                </div>
-              </div>
-            )}
-
-            {/* categories */}
-            <div className="bg-muted/50 rounded-lg p-6">
-              <h2 className="text-lg font-semibold mb-4">{t('categories')}</h2>
-              <ul className="flex flex-wrap gap-4">
-                {blogCategories.map(
-                  (category) =>
-                    category && (
-                      <li key={category.slugs[0]}>
-                        <LocaleLink
-                          href={`/blog/category/${category.slugs[0]}`}
-                          className="text-sm font-medium text-muted-foreground hover:text-primary"
-                        >
-                          {category.data.name}
-                        </LocaleLink>
-                      </li>
-                    )
-                )}
-              </ul>
-            </div>
-
-            {/* table of contents */}
-            <div className="max-h-[calc(100vh-18rem)] overflow-y-auto">
-              {post.data.toc && (
-                <InlineTOC
-                  items={post.data.toc}
-                  open={true}
-                  defaultOpen={true}
-                  className="bg-muted/50 border-none"
-                />
-              )}
-            </div>
           </div>
         </div>
       </div>

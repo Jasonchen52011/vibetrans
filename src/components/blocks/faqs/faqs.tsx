@@ -48,9 +48,27 @@ export default function FaqSection() {
     },
     {
       id: 'item-5',
-      icon: 'mail',
+      icon: 'languages',
       question: t('items.item-5.question'),
       answer: t('items.item-5.answer'),
+    },
+    {
+      id: 'item-6',
+      icon: 'globe',
+      question: t('items.item-6.question'),
+      answer: t('items.item-6.answer'),
+    },
+    {
+      id: 'item-7',
+      icon: 'mail',
+      question: t('items.item-7.question'),
+      answer: t('items.item-7.answer'),
+    },
+    {
+      id: 'item-8',
+      icon: 'shield-check',
+      question: t('items.item-8.question'),
+      answer: t('items.item-8.answer'),
     },
   ];
 
@@ -80,7 +98,7 @@ export default function FaqSection() {
                   {item.question}
                 </AccordionTrigger>
                 <AccordionContent>
-                  <p className="text-base text-muted-foreground">
+                  <p className="text-base text-muted-foreground whitespace-pre-line">
                     {item.answer}
                   </p>
                 </AccordionContent>

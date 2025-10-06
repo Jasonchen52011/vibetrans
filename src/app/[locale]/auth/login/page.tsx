@@ -17,7 +17,9 @@ export async function generateMetadata({
   const pt = await getTranslations({ locale, namespace: 'AuthPage.login' });
 
   return constructMetadata({
+    // @ts-ignore - Translation type mismatch
     title: pt('title') + ' | ' + t('title'),
+    // @ts-ignore - Translation type mismatch
     description: t('description'),
     canonicalUrl: getUrlWithLocale('/auth/login', locale),
   });

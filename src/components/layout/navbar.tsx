@@ -61,16 +61,16 @@ export function Navbar({ scroll }: NavBarProps) {
         'sticky inset-x-0 top-0 z-40 py-4 transition-all duration-300',
         scroll
           ? scrolled
-            ? 'bg-muted/50 backdrop-blur-md border-b supports-backdrop-filter:bg-muted/50'
+            ? 'bg-white/30 dark:bg-black/30 backdrop-blur-md border-b border-white/20'
             : 'bg-transparent'
-          : 'border-b bg-muted/50'
+          : 'bg-transparent'
       )}
     >
       <Container className="px-4">
         {/* desktop navbar */}
-        <nav className="hidden lg:flex">
+        <nav className="hidden lg:flex lg:items-center lg:w-full">
           {/* logo and name */}
-          <div className="flex items-center">
+          <div className="flex items-center mr-8">
             <LocaleLink href="/" className="flex items-center space-x-2">
               <Logo />
               <span className="text-xl font-semibold">
@@ -80,7 +80,7 @@ export function Navbar({ scroll }: NavBarProps) {
           </div>
 
           {/* menu links */}
-          <div className="flex-1 flex items-center justify-center space-x-2">
+          <div className="flex items-center space-x-2 flex-1">
             <NavigationMenu className="relative">
               <NavigationMenuList className="flex items-center">
                 {menuLinks?.map((item, index) =>
@@ -101,7 +101,14 @@ export function Navbar({ scroll }: NavBarProps) {
                         {item.title}
                       </NavigationMenuTrigger>
                       <NavigationMenuContent>
-                        <ul className="grid w-[400px] gap-4 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                        <ul
+                          className={cn(
+                            'grid gap-4 p-4',
+                            item.items && item.items.length === 1
+                              ? 'w-[280px]'
+                              : 'w-[400px] md:w-[500px] md:grid-cols-2 lg:w-[600px]'
+                          )}
+                        >
                           {item.items?.map((subItem, subIndex) => {
                             const isSubItemActive =
                               subItem.href &&
@@ -216,7 +223,7 @@ export function Navbar({ scroll }: NavBarProps) {
           </div>
 
           {/* navbar right show sign in or user */}
-          <div className="flex items-center gap-x-4">
+          <div className="flex items-center gap-x-4 ml-auto">
             {!mounted || isPending ? (
               <Skeleton className="size-8 border rounded-full" />
             ) : currentUser ? (
@@ -225,7 +232,7 @@ export function Navbar({ scroll }: NavBarProps) {
                 <UserButton user={currentUser} />
               </>
             ) : (
-              <div className="flex items-center gap-x-4">
+              <div className="flex items-center gap-x-4 hidden">
                 <LoginWrapper mode="modal" asChild>
                   <Button
                     variant="outline"
@@ -251,7 +258,7 @@ export function Navbar({ scroll }: NavBarProps) {
             )}
 
             <ModeSwitcher />
-            <LocaleSwitcher />
+            {/* <LocaleSwitcher /> */}
           </div>
         </nav>
 

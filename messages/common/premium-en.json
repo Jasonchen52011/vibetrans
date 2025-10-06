@@ -1,0 +1,13 @@
+{
+  "title": "Unlock Premium Content",
+  "description": "Subscribe to our Pro plan to access all premium content and exclusive content.",
+  "upgradeCta": "Upgrade Now",
+  "benefit1": "All premium content",
+  "benefit2": "Exclusive content",
+  "benefit3": "Cancel anytime",
+  "signIn": "Sign In",
+  "loginRequired": "Sign in to continue reading",
+  "loginDescription": "This is premium content. Sign in to your account to access the full content.",
+  "checkingAccess": "Checking access...",
+  "loadingContent": "Loading full content..."
+}

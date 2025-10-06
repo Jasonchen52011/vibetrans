@@ -147,7 +147,7 @@ export function PricingCard({
 
         {/* show price and price label */}
         <div className="flex items-baseline gap-2">
-          <span className="my-4 block text-4xl font-semibold">
+          <span className="my-4 block text-5xl font-semibold">
             {formattedPrice}
           </span>
           {priceLabel && <span className="text-2xl">{priceLabel}</span>}

@@ -326,12 +326,19 @@ function MainMobileMenu({ userLoggedIn, onLinkClicked }: MainMobileMenuProps) {
                     target={item.external ? '_blank' : undefined}
                     rel={item.external ? 'noopener noreferrer' : undefined}
                     className={cn(
-                      buttonVariants({ variant: 'ghost' }),
+                      buttonVariants({
+                        variant: item.isPrimary ? 'default' : 'ghost',
+                      }),
                       'w-full !pl-2 justify-start cursor-pointer group',
-                      'bg-transparent text-muted-foreground',
-                      'hover:bg-transparent hover:text-foreground',
-                      'focus:bg-transparent focus:text-foreground',
-                      isActive && 'font-semibold bg-transparent text-foreground'
+                      item.isPrimary
+                        ? 'bg-primary text-primary-foreground hover:bg-primary/90'
+                        : cn(
+                            'bg-transparent text-muted-foreground',
+                            'hover:bg-transparent hover:text-foreground',
+                            'focus:bg-transparent focus:text-foreground',
+                            isActive &&
+                              'font-semibold bg-transparent text-foreground'
+                          )
                     )}
                     onClick={onLinkClicked}
                   >
@@ -347,7 +354,7 @@ function MainMobileMenu({ userLoggedIn, onLinkClicked }: MainMobileMenuProps) {
 
         {/* bottom buttons */}
         <div className="flex w-full items-center justify-between gap-4 border-t border-border/50 p-4">
-          <LocaleSelector />
+          {/* <LocaleSelector /> */}
           <ModeSwitcherHorizontal />
         </div>
       </div>

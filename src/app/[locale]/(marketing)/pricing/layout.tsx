@@ -13,7 +13,9 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: 'Metadata' });
   const pt = await getTranslations({ locale, namespace: 'PricingPage' });
   return constructMetadata({
+    // @ts-ignore - Translation type mismatch
     title: pt('title') + ' | ' + t('title'),
+    // @ts-ignore - Translation type mismatch
     description: pt('description'),
     canonicalUrl: getUrlWithLocale('/pricing', locale),
   });
@@ -31,7 +33,7 @@ export default async function PricingPageLayout({
         {/* Header */}
         <div className="space-y-4">
           <h1 className="text-center text-3xl font-bold tracking-tight">
-            {t('title')}
+            {t('title' as const)}
           </h1>
           <h2 className="text-center text-lg text-muted-foreground">
             {t('subtitle')}

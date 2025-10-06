@@ -16,7 +16,7 @@ export enum Routes {
   Contact = '/contact',
   Waitlist = '/waitlist',
   Changelog = '/changelog',
-  Roadmap = 'https://mksaas.link/roadmap',
+  // Roadmap = '',
   CookiePolicy = '/cookie',
   PrivacyPolicy = '/privacy',
   TermsOfService = '/terms',
@@ -46,6 +46,9 @@ export enum Routes {
   AIChat = '/ai/chat',
   AIVideo = '/ai/video',
   AIAudio = '/ai/audio',
+
+  // Fun Tools routes
+  DogTranslator = '/dog-translator',
 
   // block routes
   MagicuiBlocks = '/magicui',

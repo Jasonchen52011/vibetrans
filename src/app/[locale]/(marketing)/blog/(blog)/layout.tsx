@@ -30,7 +30,7 @@ export default async function BlogListLayout({
         {/* Header */}
         <div className="space-y-4">
           <h1 className="text-center text-3xl font-bold tracking-tight">
-            {t('title')}
+            {t('title' as const)}
           </h1>
           <h2 className="text-center text-lg text-muted-foreground">
             {t('subtitle')}

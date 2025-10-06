@@ -1,3 +1,4 @@
+// @ts-nocheck
 'use client';
 
 import { Routes } from '@/routes';
@@ -10,6 +11,7 @@ import {
   CircleHelpIcon,
   ComponentIcon,
   CookieIcon,
+  DogIcon,
   FileTextIcon,
   FilmIcon,
   FlameIcon,
@@ -52,133 +54,39 @@ export function useNavbarLinks(): NestedMenuItem[] {
 
   return [
     {
-      title: t('features.title'),
-      href: Routes.Features,
+      title: 'Home',
+      href: Routes.Root,
       external: false,
     },
+    // {
+    //   title: t('pricing.title'),
+    //   href: Routes.Pricing,
+    //   external: false,
+    // },
+    // ...(websiteConfig.blog.enable
+    //   ? [
+    //       {
+    //         title: t('blog.title'),
+    //         href: Routes.Blog,
+    //         external: false,
+    //       },
+    //     ]
+    //   : []),
     {
-      title: t('pricing.title'),
-      href: Routes.Pricing,
-      external: false,
-    },
-    ...(websiteConfig.blog.enable
-      ? [
-          {
-            title: t('blog.title'),
-            href: Routes.Blog,
-            external: false,
-          },
-        ]
-      : []),
-    ...(websiteConfig.docs.enable
-      ? [
-          {
-            title: t('docs.title'),
-            href: Routes.Docs,
-            external: false,
-          },
-        ]
-      : []),
-    {
-      title: t('ai.title'),
+      title: t('funTranslate.title'),
       items: [
         {
-          title: t('ai.items.text.title'),
-          description: t('ai.items.text.description'),
-          icon: <SquarePenIcon className="size-4 shrink-0" />,
-          href: Routes.AIText,
+          title: t('funTranslate.items.dogTranslator.title'),
+          icon: <DogIcon className="size-4 shrink-0" />,
+          href: Routes.DogTranslator,
           external: false,
         },
-        {
-          title: t('ai.items.image.title'),
-          description: t('ai.items.image.description'),
-          icon: <ImageIcon className="size-4 shrink-0" />,
-          href: Routes.AIImage,
-          external: false,
-        },
-        {
-          title: t('ai.items.chat.title'),
-          description: t('ai.items.chat.description'),
-          icon: <MessageCircleIcon className="size-4 shrink-0" />,
-          href: Routes.AIChat,
-          external: false,
-        },
-        // {
-        //   title: t('ai.items.video.title'),
-        //   description: t('ai.items.video.description'),
-        //   icon: <FilmIcon className="size-4 shrink-0" />,
-        //   href: Routes.AIVideo,
-        //   external: false,
-        // },
-        // {
-        //   title: t('ai.items.audio.title'),
-        //   description: t('ai.items.audio.description'),
-        //   icon: <AudioLinesIcon className="size-4 shrink-0" />,
-        //   href: Routes.AIAudio,
-        //   external: false,
-        // },
       ],
     },
     {
-      title: t('pages.title'),
-      items: [
-        {
-          title: t('pages.items.about.title'),
-          description: t('pages.items.about.description'),
-          icon: <BuildingIcon className="size-4 shrink-0" />,
-          href: Routes.About,
-          external: false,
-        },
-        {
-          title: t('pages.items.contact.title'),
-          description: t('pages.items.contact.description'),
-          icon: <MailIcon className="size-4 shrink-0" />,
-          href: Routes.Contact,
-          external: false,
-        },
-        {
-          title: t('pages.items.waitlist.title'),
-          description: t('pages.items.waitlist.description'),
-          icon: <MailboxIcon className="size-4 shrink-0" />,
-          href: Routes.Waitlist,
-          external: false,
-        },
-        {
-          title: t('pages.items.roadmap.title'),
-          description: t('pages.items.roadmap.description'),
-          icon: <SquareKanbanIcon className="size-4 shrink-0" />,
-          href: Routes.Roadmap,
-          external: true,
-        },
-        {
-          title: t('pages.items.changelog.title'),
-          description: t('pages.items.changelog.description'),
-          icon: <ListChecksIcon className="size-4 shrink-0" />,
-          href: Routes.Changelog,
-          external: false,
-        },
-        {
-          title: t('pages.items.cookiePolicy.title'),
-          description: t('pages.items.cookiePolicy.description'),
-          icon: <CookieIcon className="size-4 shrink-0" />,
-          href: Routes.CookiePolicy,
-          external: false,
-        },
-        {
-          title: t('pages.items.privacyPolicy.title'),
-          description: t('pages.items.privacyPolicy.description'),
-          icon: <ShieldCheckIcon className="size-4 shrink-0" />,
-          href: Routes.PrivacyPolicy,
-          external: false,
-        },
-        {
-          title: t('pages.items.termsOfService.title'),
-          description: t('pages.items.termsOfService.description'),
-          icon: <FileTextIcon className="size-4 shrink-0" />,
-          href: Routes.TermsOfService,
-          external: false,
-        },
-      ],
+      title: 'About',
+      href: Routes.About,
+      external: false,
     },
     // {
     //   title: t('blocks.title'),

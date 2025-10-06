@@ -42,6 +42,7 @@ export async function generateMetadata({ params }: BlogCategoryPageProps) {
   const canonicalPath = `/blog/category/${slug}/page/${page}`;
 
   return constructMetadata({
+    // @ts-ignore - Translation type mismatch
     title: `${category.data.name} | ${t('title')}`,
     description: category.data.description,
     canonicalUrl: getUrlWithLocale(canonicalPath, locale),

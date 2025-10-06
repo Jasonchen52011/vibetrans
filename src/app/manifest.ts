@@ -1,4 +1,4 @@
-import { defaultMessages } from '@/i18n/messages';
+import { getDefaultMessages } from '@/i18n/messages';
 import type { MetadataRoute } from 'next';
 
 /**
@@ -12,7 +12,7 @@ import type { MetadataRoute } from 'next';
  * user's mobile device or desktop. See https://web.dev/add-manifest/
  *
  * Since the manifest file needs to be placed in the root of the app folder (outside the [locale] dynamic segment),
- * you need to provide a locale explicitly since next-intl can’t infer it from the pathname.
+ * you need to provide a locale explicitly since next-intl can't infer it from the pathname.
  *
  * Solution: use the default messages (get from the default locale)
  *
@@ -20,11 +20,12 @@ import type { MetadataRoute } from 'next';
  *
  * @returns {MetadataRoute.Manifest} The manifest configuration object
  */
-export default function manifest(): MetadataRoute.Manifest {
+export default async function manifest(): Promise<MetadataRoute.Manifest> {
+  const defaultMessages = await getDefaultMessages();
   return {
-    name: defaultMessages.Metadata.name,
-    short_name: defaultMessages.Metadata.name,
-    description: defaultMessages.Metadata.description,
+    name: (defaultMessages as any).Metadata.name,
+    short_name: (defaultMessages as any).Metadata.name,
+    description: (defaultMessages as any).Metadata.description,
     start_url: '/',
     display: 'standalone',
     background_color: '#ffffff',

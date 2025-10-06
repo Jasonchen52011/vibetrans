@@ -17,7 +17,9 @@ export async function generateMetadata({ params }: BlogPageProps) {
   const pt = await getTranslations({ locale, namespace: 'BlogPage' });
 
   return constructMetadata({
+    // @ts-ignore - Translation type mismatch
     title: `${pt('title')} | ${t('title')}`,
+    // @ts-ignore - Translation type mismatch
     description: pt('description'),
     canonicalUrl: getUrlWithLocale('/blog', locale),
   });

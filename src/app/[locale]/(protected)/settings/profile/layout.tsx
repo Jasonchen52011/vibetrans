@@ -10,7 +10,7 @@ export default async function ProfileLayout({ children }: ProfileLayoutProps) {
 
   const breadcrumbs = [
     {
-      label: t('title'),
+      label: t('title' as const),
       isCurrentPage: false,
     },
     {

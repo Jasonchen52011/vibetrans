@@ -4,7 +4,6 @@ import {
   addRegisterGiftCredits,
 } from '@/credits/credits';
 import { getDb } from '@/db/index';
-import { defaultMessages } from '@/i18n/messages';
 import { LOCALE_COOKIE_NAME, routing } from '@/i18n/routing';
 import { sendEmail } from '@/mail';
 import { subscribe } from '@/newsletter';
@@ -25,7 +24,7 @@ import { getBaseUrl, getUrlWithLocaleInCallbackUrl } from './urls/urls';
  */
 export const auth = betterAuth({
   baseURL: getBaseUrl(),
-  appName: defaultMessages.Metadata.name,
+  appName: 'VibeTrans',
   database: drizzleAdapter(await getDb(), {
     provider: 'pg', // or "mysql", "sqlite"
   }),

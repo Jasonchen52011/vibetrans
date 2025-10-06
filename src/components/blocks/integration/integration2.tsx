@@ -56,7 +56,7 @@ export default function Integration2Section() {
               </div>
             </div>
             <div className="mx-auto mt-6 max-w-lg space-y-6 text-center sm:mt-0 sm:text-left">
-              <h2 className="text-balance text-3xl font-semibold md:text-4xl">
+              <h2 className="max-w-5xl mx-auto text-center tracking-tight font-medium text-black dark:text-white text-3xl md:text-5xl md:leading-tight">
                 {t('title')}
               </h2>
               <p className="text-muted-foreground">{t('description')}</p>

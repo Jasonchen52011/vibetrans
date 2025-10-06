@@ -12,7 +12,7 @@ export default async function NotificationsLayout({
 
   const breadcrumbs = [
     {
-      label: t('title'),
+      label: t('title' as const),
       isCurrentPage: false,
     },
     {

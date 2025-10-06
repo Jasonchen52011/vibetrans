@@ -21,7 +21,7 @@ export default async function UsersLayout({ children }: UsersLayoutProps) {
 
   const breadcrumbs = [
     {
-      label: t('title'),
+      label: t('title' as const),
       isCurrentPage: false,
     },
     {

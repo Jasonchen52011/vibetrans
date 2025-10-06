@@ -6,7 +6,35 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/api/*', '/_next/*', '/settings/*', '/dashboard/*'],
+      disallow: [
+        // API and system routes
+        '/api/*',
+        '/_next/*',
+
+        // Protected routes
+        '/settings/*',
+        '/dashboard/*',
+        '/admin/*',
+
+        // Auth pages (keep functional but hide from search)
+        '/auth/*',
+
+        // Content pages (hide from search)
+        '/blog/*',
+        '/docs/*',
+
+        // Feature pages (hide from search)
+        '/pricing',
+        '/video',
+        '/chat',
+        '/image',
+
+        // Legal pages (hide from search)
+        '/cookie',
+
+        // Chinese locale (hide all Chinese pages)
+        '/zh/*',
+      ],
     },
     sitemap: `${getBaseUrl()}/sitemap.xml`,
   };

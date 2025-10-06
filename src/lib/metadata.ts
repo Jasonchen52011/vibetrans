@@ -1,7 +1,11 @@
 import { websiteConfig } from '@/config/website';
-import { defaultMessages } from '@/i18n/messages';
 import type { Metadata } from 'next';
 import { getBaseUrl, getImageUrl } from './urls/urls';
+
+// Default metadata values
+const DEFAULT_TITLE = 'VibeTrans';
+const DEFAULT_DESCRIPTION = 'AI-powered media translation platform';
+const DEFAULT_SITE_NAME = 'VibeTrans';
 
 /**
  * Construct the metadata object for the current page (in docs/guides)
@@ -19,8 +23,8 @@ export function constructMetadata({
   image?: string;
   noIndex?: boolean;
 } = {}): Metadata {
-  title = title || defaultMessages.Metadata.title;
-  description = description || defaultMessages.Metadata.description;
+  title = title || DEFAULT_TITLE;
+  description = description || DEFAULT_DESCRIPTION;
   image = image || websiteConfig.metadata.images?.ogImage;
   const ogImageUrl = getImageUrl(image || '');
   return {
@@ -37,7 +41,7 @@ export function constructMetadata({
       url: canonicalUrl,
       title,
       description,
-      siteName: defaultMessages.Metadata.name,
+      siteName: DEFAULT_SITE_NAME,
       images: [ogImageUrl.toString()],
     },
     twitter: {

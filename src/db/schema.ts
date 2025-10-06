@@ -123,3 +123,25 @@ export const creditTransaction = pgTable("credit_transaction", {
 	creditTransactionUserIdIdx: index("credit_transaction_user_id_idx").on(table.userId),
 	creditTransactionTypeIdx: index("credit_transaction_type_idx").on(table.type),
 }));
+
+export const generationHistory = pgTable("generation_history", {
+	id: text("id").primaryKey(),
+	userId: text("user_id").notNull().references(() => user.id, { onDelete: 'cascade' }),
+	type: text("type").notNull(), // 'image' | 'video'
+	prompt: text("prompt").notNull(),
+	imageUrl: text("image_url"), // optional input image for image-to-video
+	resultUrl: text("result_url"), // final generated video/image URL
+	status: text("status").notNull().default('pending'), // 'pending' | 'processing' | 'completed' | 'failed'
+	taskId: text("task_id"), // third-party API task ID for polling
+	creditsUsed: integer("credits_used").notNull(),
+	metadata: text("metadata"), // JSON string for additional data (resolution, duration, etc.)
+	error: text("error"), // error message if failed
+	createdAt: timestamp("created_at").notNull().defaultNow(),
+	updatedAt: timestamp("updated_at").notNull().defaultNow(),
+}, (table) => ({
+	generationHistoryUserIdIdx: index("generation_history_user_id_idx").on(table.userId),
+	generationHistoryTypeIdx: index("generation_history_type_idx").on(table.type),
+	generationHistoryStatusIdx: index("generation_history_status_idx").on(table.status),
+	generationHistoryTaskIdIdx: index("generation_history_task_id_idx").on(table.taskId),
+	generationHistoryCreatedAtIdx: index("generation_history_created_at_idx").on(table.createdAt),
+}));

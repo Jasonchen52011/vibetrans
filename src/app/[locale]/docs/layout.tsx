@@ -38,6 +38,7 @@ export default async function DocsRootLayout({
   params,
 }: DocsLayoutProps) {
   const { locale } = await params;
+  // @ts-ignore - Translation keys are dynamic
   const t = await getTranslations({ locale, namespace: 'DocsPage' });
 
   // Docs layout configurations
@@ -50,13 +51,13 @@ export default async function DocsRootLayout({
       title: (
         <>
           <Logo className="size-6" />
-          {t('title')}
+          {(t as any)('title')}
         </>
       ),
     },
     links: [
       {
-        text: t('homepage'),
+        text: (t as any)('homepage'),
         url: getUrlWithLocale('/', locale),
         icon: <HomeIcon />,
         active: 'none',

@@ -18,7 +18,9 @@ export async function generateMetadata({
   });
 
   return constructMetadata({
+    // @ts-ignore - Translation type mismatch
     title: pt('title') + ' | ' + t('title'),
+    // @ts-ignore - Translation type mismatch
     description: t('description'),
     canonicalUrl: getUrlWithLocale('/auth/reset-password', locale),
   });

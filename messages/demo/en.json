@@ -1,0 +1,92 @@
+{
+  "video": {
+    "title": "AI Video Generation",
+    "subtitle": "Create stunning videos with Google Veo 3",
+    "credits": "Credits",
+    "backToDashboard": "Back to Dashboard",
+    "configuration": "Configuration",
+    "generationMode": "Generation Mode",
+    "modes": {
+      "text": "Text to Video",
+      "image": "Image to Video"
+    },
+    "text": {
+      "label": "Video Description",
+      "placeholder": "Describe the video you want to create...",
+      "quickSuggestions": "Quick suggestions:"
+    },
+    "image": {
+      "label": "Upload Image",
+      "clickToUpload": "Click to upload",
+      "fileTypes": "JPG, PNG (max 10MB)",
+      "motionLabel": "Motion Prompt (Optional)",
+      "motionPlaceholder": "Describe the motion..."
+    },
+    "advanced": {
+      "title": "Advanced Settings",
+      "resolution": "Resolution",
+      "resolutions": {
+        "720p": "720p (HD)",
+        "1080p": "1080p (FHD)"
+      }
+    },
+    "generate": {
+      "button": "Generate Video ({cost} Credits)",
+      "generating": "Generating...",
+      "uploading": "Uploading...",
+      "insufficientCredits": "Insufficient credits. You need {amount} more credits."
+    },
+    "gallery": {
+      "title": "Video Gallery",
+      "pauseAutoPlay": "Pause Auto-play",
+      "autoPlay": "Auto-play",
+      "noVideos": "Generate your first video to get started",
+      "badges": {
+        "example": "Example",
+        "processing": "Processing",
+        "completed": "Completed"
+      },
+      "status": {
+        "generating": "Generating video...",
+        "wait": "This may take 1-5 minutes",
+        "failed": "Generation failed"
+      }
+    }
+  },
+  "image": {
+    "title": "AI Image Generation",
+    "credits": "Credits",
+    "reference": {
+      "label": "Reference Image",
+      "clickToUpload": "Click to upload or drag & drop",
+      "fileTypes": "JPG, PNG, WEBP (max 10MB)"
+    },
+    "prompt": {
+      "label": "Edit Prompt",
+      "placeholder": "Describe how you want to modify the image...",
+      "quickSuggestions": "Quick suggestions:"
+    },
+    "advanced": {
+      "title": "Advanced Settings",
+      "size": "Image Size",
+      "watermark": "Add Watermark"
+    },
+    "generate": {
+      "button": "Generate Image ({cost} Credits)",
+      "generating": "Generating...",
+      "uploading": "Uploading...",
+      "insufficientCredits": "Insufficient credits. You need {amount} more credits."
+    },
+    "gallery": {
+      "title": "Image Gallery",
+      "noImages": "Upload a reference image and generate your first image",
+      "badges": {
+        "example": "Example"
+      },
+      "status": {
+        "generating": "Generating image...",
+        "failed": "Generation failed"
+      }
+    }
+  }
+}

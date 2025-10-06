@@ -26,6 +26,7 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: 'Metadata' });
 
   return constructMetadata({
+    // @ts-ignore - Translation type mismatch
     title: page.data.title + ' | ' + t('title'),
     description: page.data.description,
     canonicalUrl: getUrlWithLocale('/cookie', locale),

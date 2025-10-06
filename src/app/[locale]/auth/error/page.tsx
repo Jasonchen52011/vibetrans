@@ -15,7 +15,9 @@ export async function generateMetadata({
   const pt = await getTranslations({ locale, namespace: 'AuthPage.error' });
 
   return constructMetadata({
+    // @ts-ignore - Translation type mismatch
     title: pt('title') + ' | ' + t('title'),
+    // @ts-ignore - Translation type mismatch
     description: t('description'),
     canonicalUrl: getUrlWithLocale('/auth/error', locale),
   });

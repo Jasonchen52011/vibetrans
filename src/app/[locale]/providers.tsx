@@ -2,6 +2,7 @@
 
 import { PostHogProvider } from '@/analytics/posthog-analytics';
 import { ActiveThemeProvider } from '@/components/layout/active-theme-provider';
+import { GoogleOAuthProvider } from '@/components/providers/google-oauth-provider';
 import { QueryProvider } from '@/components/providers/query-provider';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { websiteConfig } from '@/config/website';
@@ -22,6 +23,7 @@ interface ProvidersProps {
  * This component is used to wrap the app in the providers.
  *
  * - PostHogProvider: Provides the PostHog analytics to the app.
+ * - GoogleOAuthProvider: Provides Google OAuth context for One Tap login.
  * - QueryProvider: Provides the query client to the app.
  * - ThemeProvider: Provides the theme to the app.
  * - ActiveThemeProvider: Provides the active theme to the app.
@@ -55,23 +57,25 @@ export function Providers({ children, locale }: ProvidersProps) {
 
   return (
     <PostHogProvider>
-      <QueryProvider>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme={defaultMode}
-          enableSystem={true}
-          disableTransitionOnChange
-        >
-          <ActiveThemeProvider>
-            <RootProvider
-              theme={theme}
-              i18n={{ locale, locales, translations }}
-            >
-              <TooltipProvider>{children}</TooltipProvider>
-            </RootProvider>
-          </ActiveThemeProvider>
-        </ThemeProvider>
-      </QueryProvider>
+      <GoogleOAuthProvider>
+        <QueryProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme={defaultMode}
+            enableSystem={true}
+            disableTransitionOnChange
+          >
+            <ActiveThemeProvider>
+              <RootProvider
+                theme={theme}
+                i18n={{ locale, locales, translations }}
+              >
+                <TooltipProvider>{children}</TooltipProvider>
+              </RootProvider>
+            </ActiveThemeProvider>
+          </ThemeProvider>
+        </QueryProvider>
+      </GoogleOAuthProvider>
     </PostHogProvider>
   );
 }
