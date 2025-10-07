@@ -5,7 +5,8 @@ import { type NextRequest, NextResponse } from 'next/server';
 
 // Note: This route uses Node.js runtime because s3mini library
 // uses node:crypto which is not available in Edge Runtime
-export const runtime = "edge";
+// TODO: Replace s3mini with Edge-compatible S3 client like @aws-sdk/client-s3
+export const runtime = "nodejs";
 
 
 export async function POST(request: NextRequest) {
