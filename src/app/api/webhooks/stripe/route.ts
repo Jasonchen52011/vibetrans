@@ -2,7 +2,7 @@ import { handleWebhookEvent } from '@/payment';
 import { type NextRequest, NextResponse } from 'next/server';
 
 // Note: This route uses Node.js runtime because it uses Stripe SDK and database
-// export const runtime = "edge";
+export const runtime = "edge";
 
 
 /**

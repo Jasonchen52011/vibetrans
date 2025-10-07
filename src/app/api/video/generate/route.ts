@@ -191,4 +191,4 @@ import { eq } from 'drizzle-orm';
 
 // Note: This route uses Node.js runtime because it imports @/lib/auth
 // which uses better-auth with compatibility issues in Edge Runtime
-// export const runtime = "edge";
+export const runtime = "edge";
