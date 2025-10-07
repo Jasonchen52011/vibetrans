@@ -1,5 +1,5 @@
 import { createSafeActionClient } from 'next-safe-action';
-import type { User } from './auth-types';
+import type { User } from '@supabase/supabase-js';
 import { isDemoWebsite } from './demo';
 import { getSession } from './server';
 
@@ -43,7 +43,7 @@ export const userActionClient = actionClient.use(async ({ next }) => {
 export const adminActionClient = userActionClient.use(async ({ next, ctx }) => {
   const user = (ctx as { user: User }).user;
   const isDemo = isDemoWebsite();
-  const isAdmin = user.role === 'admin';
+  const isAdmin = user.user_metadata?.role === 'admin';
 
   // If this is a demo website and user is not an admin, allow the request
   if (!isAdmin && !isDemo) {

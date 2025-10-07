@@ -32,7 +32,7 @@ export function CreditPackages() {
   // Get current user and payment info
   const currentUser = useCurrentUser();
   const { data: paymentData, isLoading: isLoadingPayment } = useCurrentPlan(
-    currentUser?.id
+    currentUser?.user?.id
   );
   const currentPlan = paymentData?.currentPlan;
 
@@ -115,7 +115,7 @@ export function CreditPackages() {
 
                 {/* purchase button using checkout */}
                 <CreditCheckoutButton
-                  userId={currentUser?.id ?? ''}
+                  userId={currentUser?.user?.id ?? ''}
                   packageId={creditPackage.id}
                   priceId={creditPackage.price.priceId}
                   className="w-full cursor-pointer mt-2"

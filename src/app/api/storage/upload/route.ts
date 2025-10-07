@@ -3,6 +3,11 @@ import { uploadFile } from '@/storage';
 import { StorageError } from '@/storage/types';
 import { type NextRequest, NextResponse } from 'next/server';
 
+// Note: This route uses Node.js runtime because s3mini library
+// uses node:crypto which is not available in Edge Runtime
+// export const runtime = "edge";
+
+
 export async function POST(request: NextRequest) {
   try {
     const formData = await request.formData();

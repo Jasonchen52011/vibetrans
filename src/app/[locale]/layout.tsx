@@ -19,6 +19,11 @@ import { Providers } from './providers';
 
 import '@/styles/globals.css';
 
+// Note: Edge Runtime is disabled for the root layout because better-auth
+// uses topLevelAwait which causes compatibility issues with Edge Runtime.
+// Individual API routes that don't use auth can still declare edge runtime.
+// export const runtime = 'edge';
+
 interface LocaleLayoutProps {
   children: ReactNode;
   params: Promise<{ locale: Locale }>;

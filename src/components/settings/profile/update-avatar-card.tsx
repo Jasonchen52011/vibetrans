@@ -45,8 +45,9 @@ export function UpdateAvatarCard({ className }: UpdateAvatarCardProps) {
   const [tempAvatarUrl, setTempAvatarUrl] = useState('');
 
   useEffect(() => {
-    if (session?.user?.image) {
-      setAvatarUrl(session.user.image);
+    const avatarFromMetadata = session?.user?.user_metadata?.avatar_url || session?.user?.user_metadata?.picture;
+    if (avatarFromMetadata) {
+      setAvatarUrl(avatarFromMetadata);
     }
   }, [session]);
 
@@ -115,8 +116,9 @@ export function UpdateAvatarCard({ className }: UpdateAvatarCardProps) {
             console.error('update avatar error:', ctx.error);
             setError(`${ctx.error.status}: ${ctx.error.message}`);
             // Restore the previous avatar on error
-            if (session?.user?.image) {
-              setAvatarUrl(session.user.image);
+            const previousAvatar = session?.user?.user_metadata?.avatar_url || session?.user?.user_metadata?.picture;
+            if (previousAvatar) {
+              setAvatarUrl(previousAvatar);
             }
             toast.error(t('avatar.fail'));
           },
@@ -128,8 +130,9 @@ export function UpdateAvatarCard({ className }: UpdateAvatarCardProps) {
         error instanceof Error ? error.message : t('avatar.fail');
       setError(errorMessage);
       // Restore the previous avatar if there was an error
-      if (session?.user?.image) {
-        setAvatarUrl(session.user.image);
+      const previousAvatar = session?.user?.user_metadata?.avatar_url || session?.user?.user_metadata?.picture;
+      if (previousAvatar) {
+        setAvatarUrl(previousAvatar);
       }
       toast.error(errorMessage);
     } finally {
@@ -159,7 +162,7 @@ export function UpdateAvatarCard({ className }: UpdateAvatarCardProps) {
         <div className="flex flex-col items-center sm:flex-row gap-4 sm:gap-8">
           {/* avatar */}
           <Avatar className="h-16 w-16 border">
-            <AvatarImage src={avatarUrl ?? ''} alt={user.name} />
+            <AvatarImage src={avatarUrl ?? ''} alt={user.user_metadata?.name || user.email || ''} />
             <AvatarFallback>
               <User2Icon className="h-8 w-8 text-muted-foreground" />
             </AvatarFallback>

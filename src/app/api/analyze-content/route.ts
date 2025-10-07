@@ -25,6 +25,8 @@ import { generateObject } from 'ai';
 import { type NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 
+export const runtime = "edge";
+
 // Constants from configuration
 const TIMEOUT_MILLIS = webContentAnalyzerConfig.timeoutMillis;
 const MAX_CONTENT_LENGTH = webContentAnalyzerConfig.maxContentLength;

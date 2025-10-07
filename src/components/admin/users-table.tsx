@@ -26,7 +26,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import type { User } from '@/lib/auth-types';
+import type { DatabaseUser } from '@/lib/supabase/types';
 import { formatDate } from '@/lib/formatter';
 import { getStripeDashboardCustomerUrl } from '@/lib/urls/urls';
 import { IconCaretDownFilled, IconCaretUpFilled } from '@tabler/icons-react';
@@ -165,7 +165,7 @@ function TableRowSkeleton({ columns }: { columns: number }) {
 }
 
 interface UsersTableProps {
-  data: User[];
+  data: DatabaseUser[];
   total: number;
   pageIndex: number;
   pageSize: number;
@@ -212,7 +212,7 @@ export function UsersTable({
   } as const;
 
   // Table columns definition
-  const columns: ColumnDef<User>[] = [
+  const columns: ColumnDef<DatabaseUser>[] = [
     {
       accessorKey: 'name',
       header: ({ column }) => (

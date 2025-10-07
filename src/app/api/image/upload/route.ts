@@ -1,22 +1,26 @@
-import { auth } from '@/lib/auth';
+import { createClient } from '@/lib/supabase/server';
+import { getUser } from '@/lib/server';
 import { type NextRequest, NextResponse } from 'next/server';
 
+// Note: This route uses Node.js runtime because it imports @/lib/auth
+// which uses better-auth with compatibility issues in Edge Runtime
+// export const runtime = "edge";
+
+
 export async function POST(req: NextRequest) {
-  try {
-    // Authenticate user
-    const session = await auth.api.getSession({
-      headers: req.headers,
-    });
+	try {
+		// Check if we're in development mode
+		const isDevelopment = process.env.NODE_ENV === 'development';
 
-    // In development, allow without auth
-    const isDevelopment = process.env.NODE_ENV === 'development';
-    const userId = isDevelopment
-      ? session?.user?.id || 'dev-user'
-      : session?.user?.id;
+		// Authenticate user
+		const user = await getUser();
 
-    if (!isDevelopment && !session?.user?.id) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    }
+		// In development, allow without auth
+		const userId: string = isDevelopment ? user?.id || 'dev-user' : user?.id || '';
+
+		if (!isDevelopment && !user?.id) {
+			return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+		}
 
     // Parse form data
     const formData = await req.formData();

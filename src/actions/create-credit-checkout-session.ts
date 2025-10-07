@@ -2,7 +2,7 @@
 
 import { websiteConfig } from '@/config/website';
 import { getCreditPackageById } from '@/credits/server';
-import type { User } from '@/lib/auth-types';
+import type { User } from '@/lib/supabase/types';
 import { userActionClient } from '@/lib/safe-action';
 import { getUrlWithLocale } from '@/lib/urls/urls';
 import { createCreditCheckout } from '@/payment';
@@ -50,7 +50,7 @@ export const createCreditCheckoutSession = userActionClient
         packageId,
         credits: creditPackage.amount.toString(),
         userId: currentUser.id,
-        userName: currentUser.name,
+        userName: currentUser.name || currentUser.email || "",
       };
 
       // https://datafa.st/docs/stripe-checkout-api
@@ -73,7 +73,7 @@ export const createCreditCheckoutSession = userActionClient
       const params: CreateCreditCheckoutParams = {
         packageId,
         priceId,
-        customerEmail: currentUser.email,
+        customerEmail: currentUser.email || "",
         metadata: customMetadata,
         successUrl,
         cancelUrl,

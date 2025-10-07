@@ -1,7 +1,13 @@
+import { createClient } from '@/lib/supabase/server';
 import { distributeCreditsToAllUsers } from '@/credits/distribute';
 import { NextResponse } from 'next/server';
 
+// Note: This route uses Node.js runtime because it imports @/lib/auth
+// which uses better-auth with compatibility issues in Edge Runtime
+// export const runtime = "edge";
+
 // Basic authentication middleware
+
 function validateBasicAuth(request: Request): boolean {
   const authHeader = request.headers.get('authorization');
 

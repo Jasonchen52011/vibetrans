@@ -1,5 +1,7 @@
-import { randomUUID } from 'crypto';
 import { websiteConfig } from '@/config/website';
+
+// Use Web Crypto API for Edge Runtime compatibility
+const randomUUID = () => crypto.randomUUID();
 import { getDb } from '@/db';
 import { creditTransaction, userCredit } from '@/db/schema';
 import { findPlanByPlanId, findPlanByPriceId } from '@/lib/price-plan';

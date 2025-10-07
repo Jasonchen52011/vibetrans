@@ -181,7 +181,7 @@ export function PricingCard({
         ) : isPaidPlan ? (
           mounted && currentUser ? (
             <CheckoutButton
-              userId={currentUser.id}
+              userId={currentUser.user?.id ?? ''}
               planId={plan.id}
               priceId={price.priceId}
               metadata={metadata}

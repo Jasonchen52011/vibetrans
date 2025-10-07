@@ -67,6 +67,14 @@
         "item-6": {
           "question": "Is my data safe with Dog Translator?",
           "answer": "Absolutely! VibeTrans values your privacy and ensures your data is encrypted. Your recordings are securely stored and only used for the purpose of translation—your privacy is our priority."
+        },
+        "item-7": {
+          "question": "Does Dog Translator work offline?",
+          "answer": "Currently, VibeTrans Dog Translator requires an internet connection to analyze and translate sounds using our AI engine. We're working on an offline mode for future updates!"
+        },
+        "item-8": {
+          "question": "Can I save my translated dog sounds?",
+          "answer": "Yes! You can record and save the translated dog sounds for future playback. This feature helps you build a library of sounds for different emotions and situations with your furry friend."
         }
       }
     },

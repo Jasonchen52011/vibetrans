@@ -1,4 +1,5 @@
-import { randomUUID } from 'crypto';
+// Use Web Crypto API for Edge Runtime compatibility
+const randomUUID = () => crypto.randomUUID();
 import { websiteConfig } from '@/config/website';
 import {
   addCredits,

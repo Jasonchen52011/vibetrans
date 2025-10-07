@@ -5,10 +5,13 @@ import { fireworks } from '@ai-sdk/fireworks';
 import { openai } from '@ai-sdk/openai';
 import { replicate } from '@ai-sdk/replicate';
 import {
+
   type ImageModel,
   experimental_generateImage as generateImage,
 } from 'ai';
 import { type NextRequest, NextResponse } from 'next/server';
+
+export const runtime = "edge";
 
 /**
  * Intended to be slightly less than the maximum execution time allowed by the

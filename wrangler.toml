@@ -1,0 +1,11 @@
+name = "vibetrans"
+compatibility_date = "2025-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+# 生产环境
+[env.production]
+name = "vibetrans-prod"
+
+# 预览环境
+[env.preview]
+name = "vibetrans-preview"

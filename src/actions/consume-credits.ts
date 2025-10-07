@@ -1,7 +1,7 @@
 'use server';
 
 import { consumeCredits } from '@/credits/credits';
-import type { User } from '@/lib/auth-types';
+import type { User } from '@/lib/supabase/types';
 import { userActionClient } from '@/lib/safe-action';
 import { z } from 'zod';
 

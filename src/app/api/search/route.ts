@@ -3,6 +3,9 @@ import { source } from '@/lib/source';
 import { createTokenizer } from '@orama/tokenizers/mandarin';
 import { createI18nSearchAPI } from 'fumadocs-core/search/server';
 
+export const runtime = "edge";
+
+
 /**
  * Fumadocs i18n search configuration
  *

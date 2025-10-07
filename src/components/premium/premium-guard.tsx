@@ -34,7 +34,7 @@ export function PremiumGuard({
   const pathname = useLocalePathname();
   const currentUser = useCurrentUser();
   const { data: paymentData, isLoading: isLoadingPayment } = useCurrentPlan(
-    currentUser?.id
+    currentUser?.user?.id
   );
 
   // For non-premium articles, show content immediately with no extra processing

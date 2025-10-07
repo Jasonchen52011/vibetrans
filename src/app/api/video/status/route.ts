@@ -1,9 +1,15 @@
+import { createClient } from '@/lib/supabase/server';
 import { getDb } from '@/db';
 import { generationHistory } from '@/db/schema';
-import { auth } from '@/lib/auth';
+import { getUser } from '@/lib/server';
 import { checkVideoStatus } from '@/lib/veo';
 import { and, eq } from 'drizzle-orm';
 import { type NextRequest, NextResponse } from 'next/server';
+
+// Note: This route uses Node.js runtime because it imports @/lib/auth
+// which uses better-auth with compatibility issues in Edge Runtime
+// export const runtime = "edge";
+
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
@@ -14,15 +20,12 @@ export async function GET(req: NextRequest) {
     const isDevelopment = process.env.NODE_ENV === 'development';
 
     // Authenticate user (skip in development)
-    const session = await auth.api.getSession({
-      headers: req.headers,
-    });
+    const user = await getUser();
 
-    const userId: string = isDevelopment
-      ? session?.user?.id || 'dev-user'
-      : session?.user?.id || '';
+		// In development, allow without auth
+		const userId: string = isDevelopment ? user?.id || 'dev-user' : user?.id || '';
 
-    if (!isDevelopment && !session?.user?.id) {
+		if (!isDevelopment && !user?.id) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 

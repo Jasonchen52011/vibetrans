@@ -2,7 +2,7 @@
 
 import { getDb } from '@/db';
 import { creditTransaction } from '@/db/schema';
-import type { User } from '@/lib/auth-types';
+import type { User } from '@/lib/supabase/types';
 import { CREDITS_EXPIRATION_DAYS } from '@/lib/constants';
 import { userActionClient } from '@/lib/safe-action';
 import { addDays } from 'date-fns';

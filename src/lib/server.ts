@@ -1,18 +1,26 @@
 import 'server-only';
 
-import { headers } from 'next/headers';
+import { createClient } from '@/lib/supabase/server';
 import { cache } from 'react';
-import { auth } from './auth';
 
 /**
  * Get the current session
- *
- * NOTICE: do not call it from middleware
  */
 export const getSession = cache(async () => {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
+	const supabase = await createClient();
+	const {
+		data: { session },
+	} = await supabase.auth.getSession();
+	return session;
+});
 
-  return session;
+/**
+ * Get the current user
+ */
+export const getUser = cache(async () => {
+	const supabase = await createClient();
+	const {
+		data: { user },
+	} = await supabase.auth.getUser();
+	return user;
 });

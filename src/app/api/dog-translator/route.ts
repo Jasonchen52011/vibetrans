@@ -1,6 +1,9 @@
 // Simplified API route for dog translator (without external dependencies)
 import { type NextRequest, NextResponse } from 'next/server';
 
+export const runtime = "edge";
+
+
 type Emotion = 'happy' | 'sad' | 'angry' | 'normal';
 
 // Simple emotion detection based on keywords

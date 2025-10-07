@@ -1,9 +1,11 @@
+import { createClient } from '@/lib/supabase/server';
 import { consumeCredits, hasEnoughCredits } from '@/credits/credits';
 import { getDb } from '@/db';
 import { generationHistory } from '@/db/schema';
-import { auth } from '@/lib/auth';
+import { getUser } from '@/lib/server';
 import { DEFAULT_VIDEO_COST, generateVideo } from '@/lib/veo';
 import { type NextRequest, NextResponse } from 'next/server';
+
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
@@ -14,16 +16,12 @@ export async function POST(req: NextRequest) {
     const isDevelopment = process.env.NODE_ENV === 'development';
 
     // Authenticate user (skip in development)
-    const session = await auth.api.getSession({
-      headers: req.headers,
-    });
+    const user = await getUser();
 
-    // In development, allow without auth
-    const userId: string = isDevelopment
-      ? session?.user?.id || 'dev-user'
-      : session?.user?.id || '';
+		// In development, allow without auth
+		const userId: string = isDevelopment ? user?.id || 'dev-user' : user?.id || '';
 
-    if (!isDevelopment && !session?.user?.id) {
+		if (!isDevelopment && !user?.id) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
@@ -190,3 +188,7 @@ export async function POST(req: NextRequest) {
 
 // Import eq for database queries
 import { eq } from 'drizzle-orm';
+
+// Note: This route uses Node.js runtime because it imports @/lib/auth
+// which uses better-auth with compatibility issues in Edge Runtime
+// export const runtime = "edge";

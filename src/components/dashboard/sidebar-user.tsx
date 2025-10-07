@@ -23,7 +23,7 @@ import { useLocalePathname, useLocaleRouter } from '@/i18n/navigation';
 import { LOCALES, routing } from '@/i18n/routing';
 import { authClient } from '@/lib/auth-client';
 import { useLocaleStore } from '@/stores/locale-store';
-import type { User } from 'better-auth';
+import type { User } from '@supabase/supabase-js';
 import {
   ChevronsUpDown,
   Languages,
@@ -75,19 +75,14 @@ export function SidebarUser({ user, className }: SidebarUserProps) {
   const showLocaleSwitch = LOCALES.length > 1;
 
   const handleSignOut = async () => {
-    await authClient.signOut({
-      fetchOptions: {
-        onSuccess: () => {
-          console.log('sign out success');
-          // TanStack Query automatically handles cache invalidation on sign out
-          router.replace('/');
-        },
-        onError: (error) => {
-          console.error('sign out error:', error);
-          toast.error(t('Common.logoutFailed'));
-        },
-      },
-    });
+    try {
+      await authClient.signOut();
+      console.log('sign out success');
+      router.replace('/');
+    } catch (error) {
+      console.error('sign out error:', error);
+      toast.error(t('Common.logoutFailed'));
+    }
   };
 
   return (
@@ -101,13 +96,13 @@ export function SidebarUser({ user, className }: SidebarUserProps) {
               data-[state=open]:text-sidebar-accent-foreground"
             >
               <UserAvatar
-                name={user.name}
-                image={user.image}
+                name={user.user_metadata?.name || user.email || ""}
+                image={user.user_metadata?.avatar_url || user.user_metadata?.picture || undefined}
                 className="size-8 border"
               />
 
               <div className="grid flex-1 text-left text-sm leading-tight">
-                <span className="truncate font-semibold">{user.name}</span>
+                <span className="truncate font-semibold">{user.user_metadata?.name || user.email || ""}</span>
                 <span className="truncate text-xs">{user.email}</span>
               </div>
               <ChevronsUpDown className="ml-auto size-4" />
@@ -122,12 +117,12 @@ export function SidebarUser({ user, className }: SidebarUserProps) {
             <DropdownMenuLabel className="p-0 font-normal">
               <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                 <UserAvatar
-                  name={user.name}
-                  image={user.image}
+                  name={user.user_metadata?.name || user.email || ""}
+                  image={user.user_metadata?.avatar_url || user.user_metadata?.picture || undefined}
                   className="size-8 border"
                 />
                 <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-semibold">{user.name}</span>
+                  <span className="truncate font-semibold">{user.user_metadata?.name || user.email || ""}</span>
                   <span className="truncate text-xs">{user.email}</span>
                 </div>
               </div>

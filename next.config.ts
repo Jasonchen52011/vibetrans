@@ -2,15 +2,24 @@ import { createMDX } from 'fumadocs-mdx/next';
 import type { NextConfig } from 'next';
 import createNextIntlPlugin from 'next-intl/plugin';
 
+// Setup Cloudflare dev platform for local development
+const { setupDevPlatform } = require('@cloudflare/next-on-pages/next-dev');
+if (process.env.NODE_ENV === 'development') {
+  setupDevPlatform().catch(console.error);
+}
+
 /**
  * https://nextjs.org/docs/app/api-reference/config/next-config-js
  */
 const nextConfig: NextConfig = {
-  // Docker standalone output
-  ...(process.env.DOCKER_BUILD === 'true' && { output: 'standalone' }),
+  // Output for Cloudflare Pages compatibility
+  output: 'standalone',
 
   /* config options here */
   devIndicators: false,
+
+  // Exclude Node.js-only packages from Edge Runtime bundles
+  serverExternalPackages: ['fumadocs-mdx'],
 
   // https://nextjs.org/docs/architecture/nextjs-compiler#remove-console
   // Remove all console.* calls in production only
@@ -18,15 +27,37 @@ const nextConfig: NextConfig = {
     // removeConsole: process.env.NODE_ENV === 'production',
   },
 
-  // https://github.com/vercel/next.js/discussions/50177#discussioncomment-6006702
-  // fix build error: Module build failed: UnhandledSchemeError:
-  // Reading from "cloudflare:sockets" is not handled by plugins (Unhandled scheme).
-  webpack: (config, { webpack }) => {
+  // Webpack configuration for Cloudflare Pages Edge Runtime compatibility
+  webpack: (config, { webpack, isServer }) => {
+    // Ignore native modules
     config.plugins.push(
       new webpack.IgnorePlugin({
         resourceRegExp: /^pg-native$|^cloudflare:sockets$/,
       })
     );
+
+    // Add browserify polyfills for Edge Runtime
+    if (isServer) {
+      config.resolve.alias['https'] = 'https-browserify';
+      config.resolve.alias['http'] = 'http-browserify';
+      config.resolve.alias['crypto'] = 'crypto-browserify';
+    }
+
+    // Disable Node.js modules not available in Edge Runtime
+    config.resolve.fallback = {
+      ...config.resolve.fallback,
+      fs: false,
+      net: false,
+      tls: false,
+      stream: false,
+      child_process: false,
+      os: false,
+      path: false,
+      perf_hooks: false,
+      'node:crypto': false,
+      querystring: false,
+    };
+
     return config;
   },
 
@@ -86,9 +117,3 @@ const withNextIntl = createNextIntlPlugin();
 const withMDX = createMDX();
 
 export default withMDX(withNextIntl(nextConfig));
-
-// https://opennext.js.org/cloudflare/get-started#12-develop-locally
-import { initOpenNextCloudflareForDev } from '@opennextjs/cloudflare';
-
-// during local development, to access in any of your server code, local versions of Cloudflare bindings
-initOpenNextCloudflareForDev();

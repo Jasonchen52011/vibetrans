@@ -2,7 +2,6 @@
 
 import { validateCaptchaAction } from '@/actions/validate-captcha';
 import { AuthCard } from '@/components/auth/auth-card';
-import { GoogleOneTap } from '@/components/auth/google-one-tap';
 import { FormError } from '@/components/shared/form-error';
 import { FormSuccess } from '@/components/shared/form-success';
 import { Button } from '@/components/ui/button';
@@ -17,7 +16,8 @@ import {
 import { Input } from '@/components/ui/input';
 import { websiteConfig } from '@/config/website';
 import { LocaleLink } from '@/i18n/navigation';
-import { authClient } from '@/lib/auth-client';
+import { createClient } from '@/lib/supabase/client';
+import { useRouter } from 'next/navigation';
 import { getUrlWithLocale } from '@/lib/urls/urls';
 import { cn } from '@/lib/utils';
 import { DEFAULT_LOGIN_REDIRECT, Routes } from '@/routes';
@@ -37,27 +37,30 @@ export interface LoginFormProps {
 }
 
 export const LoginForm = ({
-  className,
-  callbackUrl: propCallbackUrl,
+	className,
+	callbackUrl: propCallbackUrl,
 }: LoginFormProps) => {
-  const t = useTranslations('AuthPage.login');
-  const searchParams = useSearchParams();
-  const urlError = searchParams.get('error');
-  const paramCallbackUrl = searchParams.get('callbackUrl');
-  // Use prop callback URL or param callback URL if provided, otherwise use the default login redirect
-  const locale = useLocale();
-  const defaultCallbackUrl = getUrlWithLocale(DEFAULT_LOGIN_REDIRECT, locale);
-  // console.log('login form, propCallbackUrl', propCallbackUrl);
-  // console.log('login form, paramCallbackUrl', paramCallbackUrl);
-  // console.log('login form, defaultCallbackUrl', defaultCallbackUrl);
-  const callbackUrl = propCallbackUrl || paramCallbackUrl || defaultCallbackUrl;
-  console.log('login form, callbackUrl', callbackUrl);
+	const t = useTranslations('AuthPage.login');
+	const searchParams = useSearchParams();
+	const router = useRouter();
+	const urlError = searchParams.get('error');
+	const paramCallbackUrl = searchParams.get('callbackUrl');
+	// Use prop callback URL or param callback URL if provided, otherwise use the default login redirect
+	const locale = useLocale();
+	const defaultCallbackUrl = getUrlWithLocale(DEFAULT_LOGIN_REDIRECT, locale);
+	// console.log('login form, propCallbackUrl', propCallbackUrl);
+	// console.log('login form, paramCallbackUrl', paramCallbackUrl);
+	// console.log('login form, defaultCallbackUrl', defaultCallbackUrl);
+	const callbackUrl =
+		propCallbackUrl || paramCallbackUrl || defaultCallbackUrl;
+	console.log('login form, callbackUrl', callbackUrl);
 
-  const [error, setError] = useState<string | undefined>('');
-  const [success, setSuccess] = useState<string | undefined>('');
-  const [isPending, setIsPending] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
-  const captchaRef = useRef<any>(null);
+	const [error, setError] = useState<string | undefined>('');
+	const [success, setSuccess] = useState<string | undefined>('');
+	const [isPending, setIsPending] = useState(false);
+	const [showPassword, setShowPassword] = useState(false);
+	const captchaRef = useRef<any>(null);
+	const supabase = createClient();
 
   // Check if credential login is enabled
   const credentialLoginEnabled = websiteConfig.auth.enableCredentialLogin;
@@ -103,74 +106,64 @@ export const LoginForm = ({
     }
   };
 
-  const onSubmit = async (values: z.infer<typeof LoginSchema>) => {
-    // Validate captcha token if turnstile is enabled and site key is available
-    if (captchaConfigured && values.captchaToken) {
-      setIsPending(true);
-      setError('');
-      setSuccess('');
+	const onSubmit = async (values: z.infer<typeof LoginSchema>) => {
+		// Validate captcha token if turnstile is enabled and site key is available
+		if (captchaConfigured && values.captchaToken) {
+			setIsPending(true);
+			setError('');
+			setSuccess('');
 
-      const captchaResult = await validateCaptchaAction({
-        captchaToken: values.captchaToken,
-      });
+			const captchaResult = await validateCaptchaAction({
+				captchaToken: values.captchaToken,
+			});
 
-      if (!captchaResult?.data?.success || !captchaResult?.data?.valid) {
-        console.error('login, captcha invalid:', values.captchaToken);
-        const errorMessage = captchaResult?.data?.error || t('captchaInvalid');
-        setError(errorMessage);
-        setIsPending(false);
-        resetCaptcha(); // Reset captcha on validation failure
-        return;
-      }
-    }
+			if (!captchaResult?.data?.success || !captchaResult?.data?.valid) {
+				console.error('login, captcha invalid:', values.captchaToken);
+				const errorMessage = captchaResult?.data?.error || t('captchaInvalid');
+				setError(errorMessage);
+				setIsPending(false);
+				resetCaptcha(); // Reset captcha on validation failure
+				return;
+			}
+		}
 
-    // 1. if callbackUrl is provided, user will be redirected to the callbackURL after login successfully.
-    // if user email is not verified, a new verification email will be sent to the user with the callbackURL.
-    // 2. if callbackUrl is not provided, we should redirect manually in the onSuccess callback.
-    await authClient.signIn.email(
-      {
-        email: values.email,
-        password: values.password,
-        callbackURL: callbackUrl,
-      },
-      {
-        onRequest: (ctx) => {
-          // console.log("login, request:", ctx.url);
-          setIsPending(true);
-          setError('');
-          setSuccess('');
-        },
-        onResponse: (ctx) => {
-          // console.log("login, response:", ctx.response);
-          setIsPending(false);
-        },
-        onSuccess: (ctx) => {
-          // console.log("login, success:", ctx.data);
-          // setSuccess("Login successful");
-          // router.push(callbackUrl || "/dashboard");
-        },
-        onError: (ctx) => {
-          // console.error('login, error:', ctx.error);
-          setError(`${ctx.error.status}: ${ctx.error.message}`);
-          // Reset captcha on login error
-          if (captchaConfigured) {
-            resetCaptcha();
-          }
-        },
-      }
-    );
-  };
+		setIsPending(true);
+		setError('');
+		setSuccess('');
+
+		try {
+			const { error: signInError } = await supabase.auth.signInWithPassword({
+				email: values.email,
+				password: values.password,
+			});
+
+			if (signInError) {
+				setError(signInError.message);
+				if (captchaConfigured) {
+					resetCaptcha();
+				}
+				return;
+			}
+
+			// Login successful, redirect to callback URL
+			router.push(callbackUrl);
+			router.refresh();
+		} catch (err) {
+			setError('An error occurred during login');
+			if (captchaConfigured) {
+				resetCaptcha();
+			}
+		} finally {
+			setIsPending(false);
+		}
+	};
 
   const togglePasswordVisibility = () => {
     setShowPassword((prev) => !prev);
   };
 
-  return (
-    <>
-      {/* Google One Tap - invisible component that shows Google's prompt */}
-      <GoogleOneTap callbackUrl={callbackUrl} />
-
-      <AuthCard
+	return (
+		<AuthCard
         headerLabel={t('welcomeBack')}
         bottomButtonLabel={t('signUpHint')}
         bottomButtonHref={`${Routes.Register}`}
@@ -283,7 +276,6 @@ export const LoginForm = ({
             showDivider={credentialLoginEnabled}
           />
         </div>
-      </AuthCard>
-    </>
-  );
+		</AuthCard>
+	);
 };
