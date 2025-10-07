@@ -1,14 +1,10 @@
-import { createClient } from '@/lib/supabase/server';
-import { getDb } from '@/db';
-import { generationHistory } from '@/db/schema';
+import { getSupabaseDb } from '@/lib/supabase/database';
 import { getUser } from '@/lib/server';
 import { checkVideoStatus } from '@/lib/veo';
-import { and, eq } from 'drizzle-orm';
 import { type NextRequest, NextResponse } from 'next/server';
 
-// Note: This route uses Node.js runtime because it imports @/lib/auth
-// which uses better-auth with compatibility issues in Edge Runtime
-export const runtime = "nodejs";
+// Uses Edge runtime for Cloudflare Pages compatibility
+export const runtime = 'edge';
 
 
 export const dynamic = 'force-dynamic';
@@ -75,24 +71,20 @@ export async function GET(req: NextRequest) {
     }
 
     // Production: Verify the history entry belongs to the user
-    const db = await getDb();
-    const history = await db
-      .select()
-      .from(generationHistory)
-      .where(
-        and(
-          eq(generationHistory.id, historyId),
-          eq(generationHistory.userId, userId),
-          eq(generationHistory.type, 'video')
-        )
-      )
-      .limit(1);
+    const supabase = await getSupabaseDb();
+    const { data: history, error: queryError } = await supabase
+      .from('generationHistory')
+      .select('*')
+      .eq('id', historyId)
+      .eq('userId', userId)
+      .eq('type', 'video')
+      .single();
 
-    if (!history || history.length === 0) {
+    if (queryError || !history) {
       return NextResponse.json({ error: 'Not found' }, { status: 404 });
     }
 
-    const record = history[0];
+    const record = history;
 
     // If already completed or failed, return cached status
     if (record.status === 'completed' || record.status === 'failed') {
@@ -120,14 +112,13 @@ export async function GET(req: NextRequest) {
           videoUrl = `/api/video/proxy?uri=${encodeURIComponent(videoUrl)}`;
         }
 
-        await db
-          .update(generationHistory)
-          .set({
+        await supabase
+          .from('generationHistory')
+          .update({
             status: 'completed',
             resultUrl: videoUrl,
-            updatedAt: new Date(),
           })
-          .where(eq(generationHistory.id, historyId));
+          .eq('id', historyId);
 
         return NextResponse.json({
           id: historyId,
@@ -136,14 +127,13 @@ export async function GET(req: NextRequest) {
           videoUrl,
         });
       } else if (statusResult.status === 'failed') {
-        await db
-          .update(generationHistory)
-          .set({
+        await supabase
+          .from('generationHistory')
+          .update({
             status: 'failed',
             error: statusResult.error || 'Video generation failed',
-            updatedAt: new Date(),
           })
-          .where(eq(generationHistory.id, historyId));
+          .eq('id', historyId);
 
         return NextResponse.json({
           id: historyId,

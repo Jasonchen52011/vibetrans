@@ -56,6 +56,7 @@ const nextConfig: NextConfig = {
       perf_hooks: false,
       'node:crypto': false,
       querystring: false,
+      vm: false,
     };
 
     return config;

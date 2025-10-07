@@ -1,68 +1,16 @@
-import { MAX_FILE_SIZE } from '@/lib/constants';
-import { uploadFile } from '@/storage';
-import { StorageError } from '@/storage/types';
 import { type NextRequest, NextResponse } from 'next/server';
 
-// Note: This route uses Node.js runtime because s3mini library
-// uses node:crypto which is not available in Edge Runtime
-// TODO: Replace s3mini with Edge-compatible S3 client like @aws-sdk/client-s3
-export const runtime = "nodejs";
+// Uses Edge runtime for Cloudflare Pages compatibility
+export const runtime = 'edge';
 
+// TODO: Implement edge-compatible storage using @aws-sdk/client-s3
+// Currently disabled due to s3mini using node:crypto which is not edge-compatible
 
 export async function POST(request: NextRequest) {
-  try {
-    const formData = await request.formData();
-    const file = formData.get('file') as File | null;
-    const folder = formData.get('folder') as string | null;
-
-    if (!file) {
-      return NextResponse.json({ error: 'No file provided' }, { status: 400 });
-    }
-
-    // Validate file size (max 10MB)
-    if (file.size > MAX_FILE_SIZE) {
-      console.log('uploadFile, file size exceeds the server limit', file.size);
-      return NextResponse.json(
-        { error: 'File size exceeds the server limit' },
-        { status: 400 }
-      );
-    }
-
-    // Validate file type (optional, based on your requirements)
-    const allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
-    if (!allowedTypes.includes(file.type)) {
-      console.log('uploadFile, file type not supported', file.type);
-      return NextResponse.json(
-        { error: 'File type not supported' },
-        { status: 400 }
-      );
-    }
-
-    // Convert File to Buffer
-    const buffer = Buffer.from(await file.arrayBuffer());
-
-    // Upload to storage
-    const result = await uploadFile(
-      buffer,
-      file.name,
-      file.type,
-      folder || undefined
-    );
-
-    console.log('uploadFile, result', result);
-    return NextResponse.json(result);
-  } catch (error) {
-    console.error('Error uploading file:', error);
-
-    if (error instanceof StorageError) {
-      return NextResponse.json({ error: error.message }, { status: 500 });
-    }
-
-    return NextResponse.json(
-      { error: 'Something went wrong while uploading the file' },
-      { status: 500 }
-    );
-  }
+  return NextResponse.json(
+    { error: 'File upload is temporarily disabled for Cloudflare Pages deployment' },
+    { status: 503 }
+  );
 }
 
 // Increase the body size limit for file uploads (default is 4MB)

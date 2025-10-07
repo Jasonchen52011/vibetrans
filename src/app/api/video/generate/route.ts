@@ -1,7 +1,5 @@
-import { createClient } from '@/lib/supabase/server';
-import { consumeCredits, hasEnoughCredits } from '@/credits/credits';
-import { getDb } from '@/db';
-import { generationHistory } from '@/db/schema';
+import { getSupabaseDb } from '@/lib/supabase/database';
+import { consumeCredits, hasEnoughCredits, getUserCredits } from '@/credits/credits-edge';
 import { getUser } from '@/lib/server';
 import { DEFAULT_VIDEO_COST, generateVideo } from '@/lib/veo';
 import { type NextRequest, NextResponse } from 'next/server';
@@ -76,23 +74,31 @@ export async function POST(req: NextRequest) {
 
     // Create generation history entry and consume credits (skip in development)
     if (!isDevelopment) {
-      const db = await getDb();
-      await db.insert(generationHistory).values({
-        id: historyId,
-        userId,
-        type: 'video',
-        prompt: prompt || 'Image to video generation',
-        imageUrl,
-        status: 'pending',
-        creditsUsed: creditsNeeded,
-        metadata: JSON.stringify({
-          resolution,
-          aspectRatio,
-          model,
-        }),
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      });
+      const supabase = await getSupabaseDb();
+      const { error: insertError } = await supabase
+        .from('generationHistory')
+        .insert({
+          id: historyId,
+          userId,
+          type: 'video',
+          prompt: prompt || 'Image to video generation',
+          imageUrl,
+          status: 'pending',
+          creditsUsed: creditsNeeded,
+          metadata: JSON.stringify({
+            resolution,
+            aspectRatio,
+            model,
+          }),
+        });
+
+      if (insertError) {
+        console.error('Failed to create generation history:', insertError);
+        return NextResponse.json(
+          { error: 'Failed to create generation history' },
+          { status: 500 }
+        );
+      }
 
       // Consume credits
       try {
@@ -103,14 +109,13 @@ export async function POST(req: NextRequest) {
         });
       } catch (error) {
         // If credit deduction fails, mark generation as failed
-        await db
-          .update(generationHistory)
-          .set({
+        await supabase
+          .from('generationHistory')
+          .update({
             status: 'failed',
             error: 'Failed to deduct credits',
-            updatedAt: new Date(),
           })
-          .where(eq(generationHistory.id, historyId));
+          .eq('id', historyId);
 
         return NextResponse.json(
           {
@@ -134,21 +139,19 @@ export async function POST(req: NextRequest) {
 
       // Update history with task ID (skip in development)
       if (!isDevelopment) {
-        const db = await getDb();
-        await db
-          .update(generationHistory)
-          .set({
+        const supabase = await getSupabaseDb();
+        await supabase
+          .from('generationHistory')
+          .update({
             status: 'processing',
             taskId: result.taskId,
-            updatedAt: new Date(),
           })
-          .where(eq(generationHistory.id, historyId));
+          .eq('id', historyId);
       }
 
       // Get updated credits balance (return 999999 in development)
       let remainingCredits = 999999;
       if (!isDevelopment) {
-        const { getUserCredits } = await import('@/credits/credits');
         remainingCredits = await getUserCredits(userId);
       }
 
@@ -162,15 +165,14 @@ export async function POST(req: NextRequest) {
     } catch (genError: any) {
       // If generation fails, mark as failed (skip in development)
       if (!isDevelopment) {
-        const db = await getDb();
-        await db
-          .update(generationHistory)
-          .set({
+        const supabase = await getSupabaseDb();
+        await supabase
+          .from('generationHistory')
+          .update({
             status: 'failed',
             error: genError.message || 'Video generation failed',
-            updatedAt: new Date(),
           })
-          .where(eq(generationHistory.id, historyId));
+          .eq('id', historyId);
       }
 
       throw genError;
@@ -186,9 +188,5 @@ export async function POST(req: NextRequest) {
   }
 }
 
-// Import eq for database queries
-import { eq } from 'drizzle-orm';
-
-// Note: This route uses Node.js runtime because it imports @/lib/auth
-// which uses better-auth with compatibility issues in Edge Runtime
-export const runtime = "nodejs";
+// Uses Edge runtime for Cloudflare Pages compatibility
+export const runtime = 'edge';

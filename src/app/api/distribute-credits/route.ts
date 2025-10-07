@@ -1,66 +1,17 @@
-import { createClient } from '@/lib/supabase/server';
-import { distributeCreditsToAllUsers } from '@/credits/distribute';
 import { NextResponse } from 'next/server';
 
-// Note: This route uses Node.js runtime because it imports @/lib/auth
-// which uses better-auth with compatibility issues in Edge Runtime
-export const runtime = "nodejs";
+// Uses Edge runtime for Cloudflare Pages compatibility
+export const runtime = 'edge';
 
-// Basic authentication middleware
-
-function validateBasicAuth(request: Request): boolean {
-  const authHeader = request.headers.get('authorization');
-
-  if (!authHeader || !authHeader.startsWith('Basic ')) {
-    return false;
-  }
-
-  // Extract credentials from Authorization header
-  const base64Credentials = authHeader.split(' ')[1];
-  const credentials = Buffer.from(base64Credentials, 'base64').toString(
-    'utf-8'
-  );
-  const [username, password] = credentials.split(':');
-
-  // Validate against environment variables
-  const expectedUsername = process.env.CRON_JOBS_USERNAME;
-  const expectedPassword = process.env.CRON_JOBS_PASSWORD;
-
-  if (!expectedUsername || !expectedPassword) {
-    console.error(
-      'Basic auth credentials not configured in environment variables'
-    );
-    return false;
-  }
-
-  return username === expectedUsername && password === expectedPassword;
-}
+// TODO: Implement edge-compatible credit distribution
+// Currently disabled due to database incompatibility with Edge Runtime
 
 /**
- * distribute credits to all users daily
+ * distribute credits to all users daily (currently disabled for Cloudflare Pages)
  */
 export async function GET(request: Request) {
-  // Validate basic authentication
-  if (!validateBasicAuth(request)) {
-    console.error('distribute credits unauthorized');
-    return new NextResponse('Unauthorized', {
-      status: 401,
-      headers: {
-        'WWW-Authenticate': 'Basic realm="Secure Area"',
-      },
-    });
-  }
-
-  console.log('route: distribute credits start');
-  const { usersCount, processedCount, errorCount } =
-    await distributeCreditsToAllUsers();
-  console.log(
-    `route: distribute credits end, users: ${usersCount}, processed: ${processedCount}, errors: ${errorCount}`
+  return NextResponse.json(
+    { error: 'Credit distribution is temporarily disabled for Cloudflare Pages deployment' },
+    { status: 503 }
   );
-  return NextResponse.json({
-    message: `distribute credits success, users: ${usersCount}, processed: ${processedCount}, errors: ${errorCount}`,
-    usersCount,
-    processedCount,
-    errorCount,
-  });
 }
