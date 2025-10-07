@@ -1,3 +1,6 @@
+// Uses Node.js runtime because checkPremiumAccess requires database access
+export const runtime = 'nodejs';
+
 import AllPostsButton from '@/components/blog/all-posts-button';
 import BlogGrid from '@/components/blog/blog-grid';
 import { getMDXComponents } from '@/components/docs/mdx-components';

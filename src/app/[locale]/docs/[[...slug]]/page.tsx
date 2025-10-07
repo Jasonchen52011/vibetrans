@@ -1,3 +1,6 @@
+// Uses Node.js runtime because checkPremiumAccess requires database access
+export const runtime = 'nodejs';
+
 import * as Preview from '@/components/docs';
 import { getMDXComponents } from '@/components/docs/mdx-components';
 import { PremiumBadge } from '@/components/premium/premium-badge';
