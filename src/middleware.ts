@@ -1,123 +1,15 @@
 import createMiddleware from 'next-intl/middleware';
-import { type NextRequest, NextResponse } from 'next/server';
-import {
-	DEFAULT_LOCALE,
-	LOCALES,
-	LOCALE_COOKIE_NAME,
-	routing,
-} from './i18n/routing';
-import {
-	DEFAULT_LOGIN_REDIRECT,
-	protectedRoutes,
-	routesNotAllowedByLoggedInUsers,
-} from './routes';
-import { updateSession } from './lib/supabase/middleware';
-
-const intlMiddleware = createMiddleware(routing);
+import { routing } from './i18n/routing';
 
 /**
- * 1. Next.js middleware
- * https://nextjs.org/docs/app/building-your-application/routing/middleware
- *
- * 2. Supabase Auth middleware
- * https://supabase.com/docs/guides/auth/server-side/nextjs
+ * Simplified Next.js middleware - only internationalization
+ * All authentication and protected routes removed
  */
-export default async function middleware(req: NextRequest) {
-	const { nextUrl } = req;
-	console.log('>> middleware start, pathname', nextUrl.pathname);
-
-	// Handle internal docs link redirection for internationalization
-	// Check if this is a docs page without locale prefix
-	if (nextUrl.pathname.startsWith('/docs/') || nextUrl.pathname === '/docs') {
-		// Get the user's preferred locale from cookie
-		const localeCookie = req.cookies.get(LOCALE_COOKIE_NAME);
-		const preferredLocale = localeCookie?.value;
-
-		// If user has a non-default locale preference, redirect to localized version
-		if (
-			preferredLocale &&
-			preferredLocale !== DEFAULT_LOCALE &&
-			LOCALES.includes(preferredLocale)
-		) {
-			const localizedPath = `/${preferredLocale}${nextUrl.pathname}${nextUrl.search}${nextUrl.hash}`;
-			console.log(
-				'<< middleware end, redirecting docs link to preferred locale:',
-				localizedPath,
-			);
-			return NextResponse.redirect(new URL(localizedPath, nextUrl));
-		}
-	}
-
-	// Update session and get user
-	const { user, supabaseResponse } = await updateSession(req);
-	const isLoggedIn = !!user;
-	// console.log('middleware, isLoggedIn', isLoggedIn);
-
-  // Get the pathname of the request (e.g. /zh/dashboard to /dashboard)
-  const pathnameWithoutLocale = getPathnameWithoutLocale(
-    nextUrl.pathname,
-    LOCALES
-  );
-
-  // If the route can not be accessed by logged in users, redirect if the user is logged in
-  if (isLoggedIn) {
-    const isNotAllowedRoute = routesNotAllowedByLoggedInUsers.some((route) =>
-      new RegExp(`^${route}$`).test(pathnameWithoutLocale)
-    );
-    if (isNotAllowedRoute) {
-      console.log(
-        '<< middleware end, not allowed route, already logged in, redirecting to dashboard'
-      );
-      return NextResponse.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl));
-    }
-  }
-
-  const isProtectedRoute = protectedRoutes.some((route) =>
-    new RegExp(`^${route}$`).test(pathnameWithoutLocale)
-  );
-  // console.log('middleware, isProtectedRoute', isProtectedRoute);
-
-  // If the route is a protected route, redirect to login if user is not logged in
-  if (!isLoggedIn && isProtectedRoute) {
-    let callbackUrl = nextUrl.pathname;
-    if (nextUrl.search) {
-      callbackUrl += nextUrl.search;
-    }
-    const encodedCallbackUrl = encodeURIComponent(callbackUrl);
-    console.log(
-      '<< middleware end, not logged in, redirecting to login, callbackUrl',
-      callbackUrl
-    );
-    return NextResponse.redirect(
-      new URL(`/auth/login?callbackUrl=${encodedCallbackUrl}`, nextUrl)
-    );
-  }
-
-	// Apply intlMiddleware for all routes
-	console.log('<< middleware end, applying intlMiddleware');
-
-	// Return the supabaseResponse to ensure cookies are set correctly
-	const intlResponse = intlMiddleware(req);
-
-	// Merge cookies from supabaseResponse into intlResponse
-	supabaseResponse.cookies.getAll().forEach((cookie) => {
-		intlResponse.cookies.set(cookie.name, cookie.value);
-	});
-
-	return intlResponse;
-}
-
-/**
- * Get the pathname of the request (e.g. /zh/dashboard to /dashboard)
- */
-function getPathnameWithoutLocale(pathname: string, locales: string[]): string {
-  const localePattern = new RegExp(`^/(${locales.join('|')})/`);
-  return pathname.replace(localePattern, '/');
-}
+export default createMiddleware(routing);
 
 /**
  * Next.js internationalized routing
- * specify the routes the middleware applies to
+ * Specify the routes the middleware applies to
  *
  * https://next-intl.dev/docs/routing#base-path
  */

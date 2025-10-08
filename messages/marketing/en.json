@@ -19,6 +19,14 @@
           "dogTranslator": {
             "title": "Dog Translator",
             "description": "Translate your words into dog language with AI"
+          },
+          "genZTranslator": {
+            "title": "Gen Z Translator",
+            "description": "Translate between standard English and Gen Z slang"
+          },
+          "dumbItDown": {
+            "title": "Dumb It Down AI",
+            "description": "Simplify complex texts into easy-to-understand language"
           }
         }
       },

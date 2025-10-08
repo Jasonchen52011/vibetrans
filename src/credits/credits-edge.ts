@@ -63,7 +63,9 @@ export async function consumeCredits(params: {
     const currentCredits = await getUserCredits(userId);
 
     if (currentCredits < amount) {
-      throw new Error(`Insufficient credits. Required: ${amount}, Available: ${currentCredits}`);
+      throw new Error(
+        `Insufficient credits. Required: ${amount}, Available: ${currentCredits}`
+      );
     }
 
     // Update user credits
@@ -78,14 +80,12 @@ export async function consumeCredits(params: {
     }
 
     // Create transaction record
-    const { error: txError } = await supabase
-      .from('creditTransaction')
-      .insert({
-        userId,
-        amount: -amount,
-        type: CREDIT_TRANSACTION_TYPE.USAGE,
-        description,
-      });
+    const { error: txError } = await supabase.from('creditTransaction').insert({
+      userId,
+      amount: -amount,
+      type: CREDIT_TRANSACTION_TYPE.USAGE,
+      description,
+    });
 
     if (txError) {
       console.error('Failed to create transaction record:', txError);

@@ -9,12 +9,12 @@ const __dirname = dirname(__filename);
 const images = [
   {
     input: 'public/Speak Dog in Any Language.jpeg',
-    output: 'public/images/docs/speak-dog-in-any-language.webp'
+    output: 'public/images/docs/speak-dog-in-any-language.webp',
   },
   {
     input: 'public/Personalized Settings.jpeg',
-    output: 'public/images/docs/personalized-settings.webp'
-  }
+    output: 'public/images/docs/personalized-settings.webp',
+  },
 ];
 
 async function convertImage(inputPath, outputPath, targetSize = 90 * 1024) {
@@ -41,7 +41,9 @@ async function convertImage(inputPath, outputPath, targetSize = 90 * 1024) {
       fileSize = statSync(join(__dirname, outputPath)).size;
       const fileSizeKB = (fileSize / 1024).toFixed(2);
 
-      console.log(`  ${width ? `Width ${width}, ` : ''}Quality ${quality}: ${fileSizeKB} KB`);
+      console.log(
+        `  ${width ? `Width ${width}, ` : ''}Quality ${quality}: ${fileSizeKB} KB`
+      );
 
       if (fileSize > targetSize) {
         if (quality > 50) {
@@ -62,7 +64,9 @@ async function convertImage(inputPath, outputPath, targetSize = 90 * 1024) {
 
     const finalSizeKB = (fileSize / 1024).toFixed(2);
     console.log(`  ✅ Output: ${outputPath}`);
-    console.log(`  Final size: ${finalSizeKB} KB | Dimensions: ${output.width}x${output.height}`);
+    console.log(
+      `  Final size: ${finalSizeKB} KB | Dimensions: ${output.width}x${output.height}`
+    );
 
     return true;
   } catch (error) {

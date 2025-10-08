@@ -33,15 +33,15 @@ export const websiteConfig: WebsiteConfig = {
   },
   features: {
     enableUpgradeCard: true,
-    enableUpdateAvatar: true,
+    enableUpdateAvatar: false,  // 禁用头像上传功能
     enableAffonsoAffiliate: false,
     enablePromotekitAffiliate: false,
     enableDatafastRevenueTrack: false,
-    enableCrispChat: false,
-    enableTurnstileCaptcha: false,
+    enableCrispChat: process.env.NEXT_PUBLIC_DEMO_WEBSITE === 'true',
+    enableTurnstileCaptcha: process.env.NEXT_PUBLIC_DEMO_WEBSITE === 'true',
   },
   routes: {
-    defaultLoginRedirect: '/settings/profile',
+    defaultLoginRedirect: '/dashboard',
   },
   analytics: {
     enableVercelAnalytics: false,
@@ -59,28 +59,32 @@ export const websiteConfig: WebsiteConfig = {
         flag: '🇺🇸',
         name: 'English',
       },
+      zh: {
+        flag: '🇨🇳',
+        name: '中文',
+      },
     },
   },
   blog: {
-    enable: false,
+    enable: true,
     paginationSize: 6,
     relatedPostsSize: 3,
   },
   docs: {
-    enable: false,
+    enable: true,
   },
   mail: {
     provider: 'resend',
-    fromEmail: 'VibeTrans <hello@videtrans.com>',
-    supportEmail: 'VibeTrans <hello@videtrans.com>',
+    fromEmail: 'VibeTrans <hello@vibetrans.com>',
+    supportEmail: 'VibeTrans <hello@vibetrans.com>',
   },
   newsletter: {
-    enable: false,
+    enable: true,
     provider: 'resend',
-    autoSubscribeAfterSignUp: false,
+    autoSubscribeAfterSignUp: true,
   },
   storage: {
-    enable: true,
+    enable: false,  // 禁用存储功能
     provider: 's3',
   },
   payment: {

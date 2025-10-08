@@ -36,7 +36,10 @@ export type Database = {
           createdAt: Date;
           updatedAt: Date;
         };
-        Insert: Omit<Database['public']['Tables']['payment']['Row'], 'id' | 'createdAt' | 'updatedAt'>;
+        Insert: Omit<
+          Database['public']['Tables']['payment']['Row'],
+          'id' | 'createdAt' | 'updatedAt'
+        >;
         Update: Partial<Database['public']['Tables']['payment']['Insert']>;
       };
       creditTransaction: {
@@ -48,8 +51,13 @@ export type Database = {
           description: string;
           createdAt: Date;
         };
-        Insert: Omit<Database['public']['Tables']['creditTransaction']['Row'], 'id' | 'createdAt'>;
-        Update: Partial<Database['public']['Tables']['creditTransaction']['Insert']>;
+        Insert: Omit<
+          Database['public']['Tables']['creditTransaction']['Row'],
+          'id' | 'createdAt'
+        >;
+        Update: Partial<
+          Database['public']['Tables']['creditTransaction']['Insert']
+        >;
       };
       generationHistory: {
         Row: {
@@ -67,8 +75,13 @@ export type Database = {
           createdAt: Date;
           updatedAt: Date;
         };
-        Insert: Omit<Database['public']['Tables']['generationHistory']['Row'], 'id' | 'createdAt' | 'updatedAt'>;
-        Update: Partial<Database['public']['Tables']['generationHistory']['Insert']>;
+        Insert: Omit<
+          Database['public']['Tables']['generationHistory']['Row'],
+          'id' | 'createdAt' | 'updatedAt'
+        >;
+        Update: Partial<
+          Database['public']['Tables']['generationHistory']['Insert']
+        >;
       };
     };
   };

@@ -1,3 +1,4 @@
+import { createMDX } from 'fumadocs-mdx/next';
 import type { NextConfig } from 'next';
 import createNextIntlPlugin from 'next-intl/plugin';
 
@@ -17,10 +18,13 @@ const nextConfig: NextConfig = {
   /* config options here */
   devIndicators: false,
 
+  // Exclude Node.js-only packages from Edge Runtime bundles
+  serverExternalPackages: ['fumadocs-mdx'],
+
   // https://nextjs.org/docs/architecture/nextjs-compiler#remove-console
   // Remove all console.* calls in production only
   compiler: {
-    removeConsole: process.env.NODE_ENV === 'production',
+    // removeConsole: process.env.NODE_ENV === 'production',
   },
 
   // Webpack configuration for Cloudflare Pages Edge Runtime compatibility
@@ -107,4 +111,10 @@ const nextConfig: NextConfig = {
  */
 const withNextIntl = createNextIntlPlugin();
 
-export default withNextIntl(nextConfig);
+/**
+ * https://fumadocs.dev/docs/ui/manual-installation
+ * https://fumadocs.dev/docs/mdx/plugin
+ */
+const withMDX = createMDX();
+
+export default withMDX(withNextIntl(nextConfig));

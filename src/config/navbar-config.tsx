@@ -27,6 +27,7 @@ import {
   RocketIcon,
   ShieldCheckIcon,
   SnowflakeIcon,
+  SparklesIcon,
   SplitSquareVerticalIcon,
   SquareCodeIcon,
   SquareKanbanIcon,
@@ -54,6 +55,43 @@ export function useNavbarLinks(): NestedMenuItem[] {
       title: 'Home',
       href: Routes.Root,
       external: false,
+    },
+    // {
+    //   title: t('pricing.title'),
+    //   href: Routes.Pricing,
+    //   external: false,
+    // },
+    // ...(websiteConfig.blog.enable
+    //   ? [
+    //       {
+    //         title: t('blog.title'),
+    //         href: Routes.Blog,
+    //         external: false,
+    //       },
+    //     ]
+    //   : []),
+    {
+      title: t('funTranslate.title'),
+      items: [
+        {
+          title: t('funTranslate.items.dogTranslator.title'),
+          icon: <DogIcon className="size-4 shrink-0" />,
+          href: Routes.DogTranslator,
+          external: false,
+        },
+        {
+          title: t('funTranslate.items.genZTranslator.title'),
+          icon: <SparklesIcon className="size-4 shrink-0" />,
+          href: Routes.GenZTranslator,
+          external: false,
+        },
+        {
+          title: t('funTranslate.items.dumbItDown.title'),
+          icon: <WandSparklesIcon className="size-4 shrink-0" />,
+          href: Routes.DumbItDownAI,
+          external: false,
+        },
+      ],
     },
     {
       title: 'About',

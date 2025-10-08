@@ -1,13 +1,21 @@
+import CallToActionSection from '@/components/blocks/calltoaction/calltoaction';
+import FaqSection from '@/components/blocks/faqs/faqs';
+import UserScenarios from '@/components/blocks/funfacts';
 import HeroSection from '@/components/blocks/hero/hero';
-import LogoCloud from '@/components/blocks/logo-cloud/logo-cloud';
-import PricingSection from '@/components/blocks/pricing/pricing';
-import ExploreTools from '@/components/blocks/exploretools';
+import HighlightsSection from '@/components/blocks/highlights';
+import HowTo from '@/components/blocks/how-to';
+import StatsSection from '@/components/blocks/stats/stats';
+import TestimonialsSection from '@/components/blocks/testimonials/testimonials';
+import UniqueSection from '@/components/blocks/unique';
+import WhatIsSection from '@/components/blocks/whatis';
 import CrispChat from '@/components/layout/crisp-chat';
 import { constructMetadata } from '@/lib/metadata';
 import { getUrlWithLocale } from '@/lib/urls/urls';
 import type { Metadata } from 'next';
 import type { Locale } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
+
+export const runtime = 'edge';
 
 /**
  * https://next-intl.dev/docs/environments/actions-metadata-route-handlers#metadata-api
@@ -26,6 +34,7 @@ export async function generateMetadata({
     // @ts-ignore - Translation keys type mismatch
     description: t('description' as const),
     canonicalUrl: getUrlWithLocale('', locale),
+    image: '/images/docs/translation-slang.webp',
   });
 }
 
@@ -45,7 +54,7 @@ export default async function HomePage(props: HomePageProps) {
     name: 'VibeTrans',
     applicationCategory: 'UtilitiesApplication',
     description:
-      'VibeTrans offers powerful AI-driven translation tools for seamless language conversion. Whether you\'re translating texts, slang, or even ancient languages, VibeTrans makes communication easy.',
+      "VibeTrans offers powerful AI-driven translation tools for seamless language conversion. Whether you're translating texts, slang, or even ancient languages, VibeTrans makes communication easy.",
     operatingSystem: 'Web',
     offers: {
       '@type': 'Offer',
@@ -243,17 +252,38 @@ export default async function HomePage(props: HomePageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
       <div className="flex flex-col">
-        {/* Hero Section */}
+        {/* 工具操作区域 */}
         <HeroSection />
 
-        {/* Logo Cloud */}
-        <LogoCloud />
+        {/* What is XXXX */}
+        <WhatIsSection section={whatIsSection} />
 
-        {/* Explore Tools */}
-        <ExploreTools />
+        {/* 其他工具推荐 - Stats Section */}
+        <StatsSection />
 
-        {/* Pricing */}
-        <PricingSection />
+        {/* How to translate XXXX */}
+        <HowTo section={howtoSection} />
+
+        {/* Unique */}
+        <UniqueSection section={uniqueSection} />
+
+        {/* Funfacts */}
+        {/* @ts-ignore - Translation keys type mismatch */}
+        <UserScenarios
+          section={userScenariosSection}
+          ctaText={(t as any)('funfacts.ctaButton')}
+        />
+
+        {/* Highlights */}
+        <HighlightsSection section={highlightsSection} />
+
+        {/* FAQs */}
+        <FaqSection />
+
+        {/* 用户评论（用户留言输入框）*/}
+        <TestimonialsSection />
+
+        <CallToActionSection />
 
         <CrispChat />
       </div>

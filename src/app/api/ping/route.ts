@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 
-export const runtime = "edge";
-
+export const runtime = 'edge';
 
 /**
  * It is used to check if the server is running.

@@ -2,9 +2,9 @@
 
 import { getDb } from '@/db';
 import { creditTransaction } from '@/db/schema';
-import type { User } from '@/lib/supabase/types';
 import { CREDITS_EXPIRATION_DAYS } from '@/lib/constants';
 import { userActionClient } from '@/lib/safe-action';
+import type { User } from '@/lib/supabase/types';
 import { addDays } from 'date-fns';
 import { and, eq, gt, gte, isNotNull, lte, sum } from 'drizzle-orm';
 

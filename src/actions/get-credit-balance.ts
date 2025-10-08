@@ -1,8 +1,8 @@
 'use server';
 
 import { getUserCredits } from '@/credits/credits';
-import type { User } from '@/lib/supabase/types';
 import { userActionClient } from '@/lib/safe-action';
+import type { User } from '@/lib/supabase/types';
 
 /**
  * Get current user's credits

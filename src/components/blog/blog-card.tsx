@@ -26,7 +26,7 @@ export default function BlogCard({ locale, post }: BlogCardProps) {
         <div className="group overflow-hidden relative aspect-16/9 w-full">
           <div className="relative w-full h-full">
             <BlogImage
-              src={image || '/placeholder.png'}
+              src={image}
               alt={title || 'image for blog post'}
               title={title || 'image for blog post'}
             />

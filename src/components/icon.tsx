@@ -5,7 +5,11 @@ import {
   ArrowUp,
   Brain,
   ChartLine,
+  CheckCircle,
   Cog,
+  FileText,
+  FileUp,
+  Globe,
   Headset,
   Heart,
   Languages,
@@ -35,6 +39,10 @@ const iconMap: Record<string, LucideIcon> = {
   FaPencilAlt: Pencil,
   FaLanguage: Languages,
   FaVolumeUp: Volume2,
+  FaFileUpload: FileUp,
+  FaCheckCircle: CheckCircle,
+  FaGlobe: Globe,
+  FaFileAlt: FileText,
 };
 
 interface IconProps {

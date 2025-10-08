@@ -35,6 +35,6 @@ export default function ForgotPassword({
 ForgotPassword.PreviewProps = {
   locale: routing.defaultLocale,
   messages: defaultMessages,
-  url: 'https://videtrans.com',
+  url: 'https://vibetrans.com',
   name: 'username',
 };

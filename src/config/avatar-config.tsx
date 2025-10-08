@@ -4,6 +4,7 @@ import { Routes } from '@/routes';
 import type { MenuItem } from '@/types';
 import {
   CreditCardIcon,
+  LayoutDashboardIcon,
   Settings2Icon,
 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
@@ -19,6 +20,11 @@ export function useAvatarLinks(): MenuItem[] {
   const t = useTranslations('Marketing.avatar');
 
   return [
+    {
+      title: t('dashboard'),
+      href: Routes.Dashboard,
+      icon: <LayoutDashboardIcon className="size-4 shrink-0" />,
+    },
     {
       title: t('billing'),
       href: Routes.SettingsBilling,

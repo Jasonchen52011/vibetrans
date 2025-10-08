@@ -45,10 +45,10 @@ export function Footer({ className }: React.HTMLAttributes<HTMLElement>) {
                 {section.title === 'CONTACT' ? (
                   <div className="mt-4 space-y-4">
                     <a
-                      href="mailto:hello@aitools.com"
+                      href="mailto:hello@vibetrans.com"
                       className="text-sm text-gray-300 hover:text-gray-50 block"
                     >
-                      hello@aitools.com
+                      hello@vibetrans.com
                     </a>
                     <div>
                       <span className="text-sm font-semibold uppercase text-gray-50 block mb-4">

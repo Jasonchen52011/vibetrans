@@ -29,6 +29,8 @@ export enum Routes {
   ResetPassword = '/auth/reset-password',
 
   // dashboard routes
+  Dashboard = '/dashboard',
+  AdminUsers = '/admin/users',
   SettingsProfile = '/settings/profile',
   SettingsBilling = '/settings/billing',
   SettingsCredits = '/settings/credits',
@@ -37,6 +39,18 @@ export enum Routes {
 
   // payment processing
   Payment = '/payment',
+
+  // AI routes
+  AIText = '/ai/text',
+  AIImage = '/ai/image',
+  AIChat = '/ai/chat',
+  AIVideo = '/ai/video',
+  AIAudio = '/ai/audio',
+
+  // Fun Tools routes
+  DogTranslator = '/dog-translator',
+  GenZTranslator = '/gen-z-translator',
+  DumbItDownAI = '/dumb-it-down-ai',
 
   // block routes
   MagicuiBlocks = '/magicui',
@@ -68,6 +82,8 @@ export const routesNotAllowedByLoggedInUsers = [Routes.Login, Routes.Register];
  * The routes that are protected and require authentication
  */
 export const protectedRoutes = [
+  Routes.Dashboard,
+  Routes.AdminUsers,
   Routes.SettingsProfile,
   Routes.SettingsBilling,
   Routes.SettingsCredits,
@@ -80,4 +96,4 @@ export const protectedRoutes = [
  * The default redirect path after logging in
  */
 export const DEFAULT_LOGIN_REDIRECT =
-  websiteConfig.routes.defaultLoginRedirect ?? Routes.SettingsProfile;
+  websiteConfig.routes.defaultLoginRedirect ?? Routes.Dashboard;

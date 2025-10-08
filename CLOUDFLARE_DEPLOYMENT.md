@@ -1,181 +1,318 @@
 # Cloudflare Pages 部署指南
 
-## ✅ 项目状态
+本指南将帮助您将 VibeTrans 项目部署到 Cloudflare Pages。
 
-- ✅ **开发环境验证**: `pnpm dev` 正常启动 (2.1s)
-- ✅ **生产构建验证**: `pnpm build` 成功通过
-- ✅ **Edge Runtime**: 所有8个API路由已配置为edge runtime
-- ✅ **Bundle大小**: 符合Cloudflare Pages 25MB限制
-  - Server chunks: 11MB
-  - Static assets: 9.1MB
-  - 最大edge chunk: 3.1MB
+## 前置要求
 
-## 🚀 快速部署步骤
+1. **Cloudflare 账号**
+   - 注册地址: https://dash.cloudflare.com/sign-up
+   - 需要验证邮箱
 
-### 方式一：通过Cloudflare Dashboard (推荐)
+2. **Supabase 项目**
+   - 创建地址: https://supabase.com/dashboard
+   - 获取项目的 URL 和 anon key
 
-1. **连接GitHub仓库**
-   - 登录 [Cloudflare Dashboard](https://dash.cloudflare.com/)
-   - Workers & Pages → Create application → Pages → Connect to Git
-   - 选择你的仓库
+3. **GitHub 仓库**
+   - ✅ 已完成：代码已推送到 `cloudflare` 分支
 
-2. **配置构建设置**
-   ```
-   Framework preset: Next.js
-   Build command: pnpm build
-   Build output directory: .next
-   Root directory: (留空或项目根目录)
-   ```
+## 部署步骤
 
-3. **设置环境变量** (见下方完整列表)
+### 方法一：通过 Cloudflare Dashboard（推荐）
 
-4. **部署**
-   - 点击 "Save and Deploy"
-   - 等待构建完成（约3-5分钟）
+#### 1. 创建 Cloudflare Pages 项目
 
-### 方式二：通过Wrangler CLI
+1. 访问 https://dash.cloudflare.com/
+2. 选择 **Workers & Pages** > **Create application**
+3. 选择 **Pages** 标签
+4. 点击 **Connect to Git**
+
+#### 2. 连接 GitHub 仓库
+
+1. 选择你的 GitHub 账号
+2. 选择 **vibetrans** 仓库
+3. 点击 **Begin setup**
+
+#### 3. 配置构建设置
+
+填写以下配置：
+
+```
+项目名称: vibetrans（或自定义）
+生产分支: cloudflare
+构建命令: pnpm build:cf
+构建输出目录: .vercel/output/static
+根目录: /（保持默认）
+```
+
+**重要：** 如果找不到 `.vercel/output/static` 目录，先使用：
+- 构建输出目录: `.next`
+- 然后在第一次部署后根据实际生成的目录调整
+
+#### 4. 配置环境变量
+
+点击 **Environment variables (advanced)**，添加以下变量：
+
+**必需的 Supabase 变量：**
+
+| 变量名 | 值 | 说明 |
+|--------|-----|------|
+| `NEXT_PUBLIC_SUPABASE_URL` | `https://your-project.supabase.co` | Supabase 项目 URL |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | `eyJ...` | Supabase anon/public key |
+
+**可选的数据库变量（如果使用 Supabase PostgreSQL）：**
+
+| 变量名 | 值 | 说明 |
+|--------|-----|------|
+| `DATABASE_URL` | `postgresql://...` | Supabase 数据库连接字符串 |
+
+**其他必需变量：**
+
+| 变量名 | 值 | 说明 |
+|--------|-----|------|
+| `NEXT_PUBLIC_APP_URL` | `https://your-domain.pages.dev` | 应用域名 |
+| `NEXTAUTH_SECRET` | 生成随机字符串 | 认证密钥 |
+
+**支付集成（如使用 Stripe）：**
+
+| 变量名 | 值 |
+|--------|-----|
+| `STRIPE_SECRET_KEY` | `sk_...` |
+| `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` | `pk_...` |
+| `STRIPE_WEBHOOK_SECRET` | `whsec_...` |
+
+#### 5. 部署
+
+1. 点击 **Save and Deploy**
+2. 等待构建完成（约 3-5 分钟）
+3. 构建成功后会显示部署 URL
+
+### 方法二：通过命令行部署
+
+#### 1. 安装 Wrangler CLI
 
 ```bash
-# 1. 安装依赖
-pnpm install
-
-# 2. 登录Cloudflare
-npx wrangler login
-
-# 3. 构建并部署
-pnpm run deploy:cf
+npm install -g wrangler
+# 或使用 pnpm
+pnpm add -g wrangler
 ```
 
-## 📋 必需的环境变量
+#### 2. 登录 Cloudflare
 
-### 核心配置
 ```bash
-# 应用基础URL（替换为你的域名）
-NEXT_PUBLIC_BASE_URL=https://your-domain.pages.dev
-
-# 数据库 (Supabase或其他PostgreSQL)
-DATABASE_URL=postgresql://user:password@host:5432/database
-
-# Better Auth
-BETTER_AUTH_SECRET=your-random-secret-key-here  # 使用 openssl rand -base64 32 生成
+wrangler login
 ```
 
-### 认证服务商 (可选)
+这会打开浏览器进行授权。
 
-**GitHub OAuth**
+#### 3. 创建 .env.local 文件
+
+在项目根目录创建 `.env.local`（如果还没有）：
+
+```env
+# Supabase
+NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+
+# App
+NEXT_PUBLIC_APP_URL=https://vibetrans.pages.dev
+
+# Database (可选)
+DATABASE_URL=postgresql://...
+
+# Auth
+NEXTAUTH_SECRET=your-random-secret
+
+# Stripe (可选)
+STRIPE_SECRET_KEY=sk_...
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_...
+STRIPE_WEBHOOK_SECRET=whsec_...
+```
+
+#### 4. 构建并部署
+
 ```bash
-GITHUB_CLIENT_ID=your_github_client_id
-GITHUB_CLIENT_SECRET=your_github_client_secret
+# 构建项目
+pnpm build:cf
+
+# 部署到 Cloudflare Pages
+wrangler pages deploy
 ```
 
-**Google OAuth**
+首次部署时会提示创建项目，按提示操作即可。
+
+## 获取 Supabase 凭证
+
+### 1. 访问 Supabase Dashboard
+
+https://supabase.com/dashboard/project/YOUR_PROJECT_ID/settings/api
+
+### 2. 复制以下信息
+
+- **Project URL**: 在 "Configuration" > "URL" 下
+- **Anon/Public Key**: 在 "Project API keys" > "anon public" 下
+
+### 3. 数据库连接字符串（可选）
+
+在 "Database" > "Connection string" > "URI" 下获取。
+
+## 生成必需的密钥
+
+### NEXTAUTH_SECRET
+
+在终端运行：
+
 ```bash
-GOOGLE_CLIENT_ID=your_google_client_id
-GOOGLE_CLIENT_SECRET=your_google_client_secret
-NEXT_PUBLIC_GOOGLE_CLIENT_ID=your_google_client_id  # One Tap登录需要
+openssl rand -base64 32
 ```
 
-### 支付 (Stripe)
+## 验证部署
+
+### 1. 访问部署的网站
+
+Cloudflare 会提供一个 URL，如：
+- `https://vibetrans.pages.dev`
+- 或自定义域名
+
+### 2. 测试功能
+
+- ✅ 页面加载正常
+- ✅ 登录/注册功能
+- ✅ 数据库连接
+- ✅ 支付功能（如启用）
+
+## 自定义域名（可选）
+
+### 1. 在 Cloudflare Pages 项目中
+
+1. 进入项目设置
+2. 选择 **Custom domains**
+3. 点击 **Set up a custom domain**
+4. 输入你的域名
+5. 按提示配置 DNS 记录
+
+### 2. DNS 配置
+
+如果域名在 Cloudflare：
+- 系统会自动添加 CNAME 记录
+
+如果域名在其他提供商：
+- 添加 CNAME 记录指向 `vibetrans.pages.dev`
+
+## 常见问题
+
+### 1. 构建失败：找不到 pnpm
+
+**解决方案：**
+在 Cloudflare Pages 设置中添加环境变量：
+```
+NPM_FLAGS=--package-manager=pnpm
+```
+
+### 2. 运行时错误：Supabase 未定义
+
+**解决方案：**
+确保环境变量正确设置：
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+
+### 3. 数据库连接失败
+
+**解决方案：**
+- 检查 `DATABASE_URL` 是否正确
+- 确保 Supabase 数据库已启动
+- 检查防火墙设置
+
+### 4. 边缘运行时错误
+
+**解决方案：**
+某些 Node.js API 在边缘运行时不可用。检查代码是否使用了不兼容的 API。
+
+## 持续部署
+
+### 自动部署
+
+Cloudflare Pages 已配置自动部署：
+- 推送到 `cloudflare` 分支 → 自动部署到生产环境
+- 推送到其他分支 → 自动创建预览部署
+
+### 手动部署
+
 ```bash
-STRIPE_SECRET_KEY=sk_live_xxx
-STRIPE_WEBHOOK_SECRET=whsec_xxx
+# 更新代码
+git add .
+git commit -m "your message"
+git push origin cloudflare
 
-# Stripe价格ID
-NEXT_PUBLIC_STRIPE_PRICE_PRO_MONTHLY=price_xxx
-NEXT_PUBLIC_STRIPE_PRICE_PRO_YEARLY=price_xxx
-NEXT_PUBLIC_STRIPE_PRICE_LIFETIME=price_xxx
-NEXT_PUBLIC_STRIPE_PRICE_CREDITS_BASIC=price_xxx
-NEXT_PUBLIC_STRIPE_PRICE_CREDITS_STANDARD=price_xxx
-NEXT_PUBLIC_STRIPE_PRICE_CREDITS_PREMIUM=price_xxx
-NEXT_PUBLIC_STRIPE_PRICE_CREDITS_ENTERPRISE=price_xxx
+# 或使用命令行部署
+pnpm build:cf
+wrangler pages deploy
 ```
 
-### AI服务 (视频生成)
+## 监控和日志
+
+### 1. 查看部署日志
+
+Cloudflare Dashboard > Workers & Pages > 你的项目 > Deployments
+
+### 2. 实时日志
+
 ```bash
-# Google Gemini API (用于Veo 3视频生成)
-GOOGLE_GENERATIVE_AI_API_KEY=your_google_api_key
+wrangler pages deployment tail
 ```
 
-### 存储 (Cloudflare R2或S3兼容服务)
-```bash
-STORAGE_REGION=auto
-STORAGE_BUCKET_NAME=your-bucket-name
-STORAGE_ACCESS_KEY_ID=your-access-key
-STORAGE_SECRET_ACCESS_KEY=your-secret-key
-STORAGE_ENDPOINT=https://xxx.r2.cloudflarestorage.com
-STORAGE_PUBLIC_URL=https://your-cdn-domain.com
-```
+### 3. 分析和监控
 
-### 邮件服务 (Resend)
-```bash
-RESEND_API_KEY=re_xxx
-RESEND_AUDIENCE_ID=aud_xxx
-```
+Cloudflare Dashboard 提供：
+- 请求统计
+- 错误率
+- 响应时间
+- 带宽使用
 
-## 🔧 Cloudflare特定配置
+## 生产环境优化
 
-### wrangler.toml
-```toml
-name = "vibetrans"
-compatibility_date = "2025-01-01"
-compatibility_flags = ["nodejs_compat"]
+### 1. 启用 Cloudflare CDN
 
-[env.production]
-name = "vibetrans-prod"
+Cloudflare Pages 自动启用全球 CDN，无需额外配置。
 
-[env.preview]
-name = "vibetrans-preview"
-```
+### 2. 配置缓存规则
 
-## 📦 保留的功能
+在 Cloudflare Dashboard 中设置页面规则以优化缓存。
 
-### ✅ 已保留
-- Video生成 (`/video`) - Google Veo 3 API
-- 用户认证 (邮箱/密码、Google、GitHub)
-- 支付系统 (订阅 + 积分)
-- 设置页面 (个人资料、订阅、积分、安全、通知)
-- 博客和文档
+### 3. 启用 Brotli 压缩
 
-### ❌ 已删除
-- Image生成 (Volcano Engine)
-- Dog Translator
-- Dashboard页面
-- Admin用户管理后台
+Cloudflare 自动启用，可在 Speed > Optimization 中调整。
 
-## 🎯 API路由清单
+### 4. 配置安全规则
 
-所有API路由均已配置为Edge Runtime：
+Workers & Pages > 项目设置 > Security
 
-1. `/api/video/generate` - Video生成
-2. `/api/video/status` - Video状态查询
-3. `/api/video/proxy` - Video代理下载
-4. `/api/auth/callback` - 认证回调
-5. `/api/storage/upload` - 文件上传
-6. `/api/webhooks/stripe` - Stripe webhook
-7. `/api/distribute-credits` - 积分分发
-8. `/api/ping` - 健康检查
+## 成本估算
 
-## 🆘 常见问题
+Cloudflare Pages 免费套餐：
+- ✅ 无限网站
+- ✅ 无限请求
+- ✅ 无限带宽
+- ✅ 500 次构建/月
+- ✅ 20,000 个文件
+- ✅ 25 MB 单文件限制
 
-### 1. 构建失败：Module not found
-**解决**: 检查 `package.json` 中的依赖是否完整，运行 `pnpm install`
+对于大多数项目完全够用！
 
-### 2. Edge Runtime错误
-**解决**: 确保所有API路由都添加了 `export const runtime = 'edge'`
+## 回滚部署
 
-### 3. 环境变量未生效
-**解决**:
-- 在Cloudflare Dashboard重新部署
-- 确保变量名完全匹配（大小写敏感）
+如果新部署有问题：
 
-### 4. Database连接失败
-**解决**:
-- 检查 `DATABASE_URL` 格式
-- 确保数据库允许外部连接
-- Supabase用户需使用连接池URL
+1. 访问 Cloudflare Dashboard
+2. 进入 Deployments
+3. 找到之前的成功部署
+4. 点击 **Rollback to this deployment**
 
-## 📚 相关文档
+## 支持
 
-- [Cloudflare Pages文档](https://developers.cloudflare.com/pages/)
-- [Next.js on Cloudflare](https://developers.cloudflare.com/pages/framework-guides/nextjs/)
-- [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/)
+- Cloudflare 文档: https://developers.cloudflare.com/pages/
+- Supabase 文档: https://supabase.com/docs
+- 项目 Issues: https://github.com/your-username/vibetrans/issues
+
+---
+
+**准备好了吗？** 开始部署到 Cloudflare Pages！🚀

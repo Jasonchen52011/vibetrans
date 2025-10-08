@@ -47,8 +47,12 @@ export function UserButtonMobile({ user }: UserButtonProps) {
     <Drawer open={open} onClose={closeDrawer}>
       <DrawerTrigger onClick={() => setOpen(true)}>
         <UserAvatar
-          name={user.user_metadata?.name || user.email || ""}
-          image={user.user_metadata?.avatar_url || user.user_metadata?.picture || undefined}
+          name={user.user_metadata?.name || user.email || ''}
+          image={
+            user.user_metadata?.avatar_url ||
+            user.user_metadata?.picture ||
+            undefined
+          }
           className="size-8 border cursor-pointer"
         />
       </DrawerTrigger>
@@ -63,12 +67,18 @@ export function UserButtonMobile({ user }: UserButtonProps) {
           </DrawerHeader>
           <div className="flex items-center justify-start gap-4 p-2">
             <UserAvatar
-              name={user.user_metadata?.name || user.email || ""}
-              image={user.user_metadata?.avatar_url || user.user_metadata?.picture || undefined}
+              name={user.user_metadata?.name || user.email || ''}
+              image={
+                user.user_metadata?.avatar_url ||
+                user.user_metadata?.picture ||
+                undefined
+              }
               className="size-8 border cursor-pointer"
             />
             <div className="flex flex-col">
-              <p className="font-medium">{user.user_metadata?.name || user.email || ""}</p>
+              <p className="font-medium">
+                {user.user_metadata?.name || user.email || ''}
+              </p>
               <p className="w-[200px] truncate text-muted-foreground">
                 {user.email}
               </p>

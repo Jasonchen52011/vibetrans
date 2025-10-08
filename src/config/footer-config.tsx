@@ -24,6 +24,21 @@ export function useFooterLinks(): NestedMenuItem[] {
           href: Routes.Root,
           external: false,
         },
+        {
+          title: 'Dog Translator',
+          href: Routes.DogTranslator,
+          external: false,
+        },
+        {
+          title: 'Gen Z Translator',
+          href: Routes.GenZTranslator,
+          external: false,
+        },
+        {
+          title: 'Dumb It Down AI',
+          href: Routes.DumbItDownAI,
+          external: false,
+        },
         // {
         //   title: t('product.items.pricing'),
         //   href: Routes.Pricing,

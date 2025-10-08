@@ -69,7 +69,6 @@ export const ResetPasswordForm = () => {
     await authClient.resetPassword(
       {
         password: values.password,
-        
       },
       {
         onRequest: (ctx) => {

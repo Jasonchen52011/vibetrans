@@ -2,8 +2,8 @@
 
 import { getDb } from '@/db';
 import { user } from '@/db/schema';
-import type { User } from '@/lib/supabase/types';
 import { userActionClient } from '@/lib/safe-action';
+import type { User } from '@/lib/supabase/types';
 import { getUrlWithLocale } from '@/lib/urls/urls';
 import { createCustomerPortal } from '@/payment';
 import type { CreatePortalParams } from '@/payment/types';

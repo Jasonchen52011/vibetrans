@@ -9,28 +9,29 @@ const __dirname = dirname(__filename);
 const images = [
   {
     input: 'public/images/docs/What is VibeTrans?.jpeg',
-    output: 'public/images/docs/what-is-vibetrans.webp'
+    output: 'public/images/docs/what-is-vibetrans.webp',
   },
   {
     input: 'public/images/docs/What is Dog Translator?.jpeg',
-    output: 'public/images/docs/what-is-dog-translator.webp'
+    output: 'public/images/docs/what-is-dog-translator.webp',
   },
   {
     input: 'public/images/docs/AI Emotion Intelligence.jpeg',
-    output: 'public/images/docs/ai-emotion-intelligence.webp'
+    output: 'public/images/docs/ai-emotion-intelligence.webp',
   },
   {
-    input: 'public/images/docs/Authentic Sound Library in the Dog Translator.jpeg',
-    output: 'public/images/docs/authentic-sound-library.webp'
+    input:
+      'public/images/docs/Authentic Sound Library in the Dog Translator.jpeg',
+    output: 'public/images/docs/authentic-sound-library.webp',
   },
   {
     input: 'public/images/docs/Family Entertainment.jpeg',
-    output: 'public/images/docs/family-entertainment.webp'
+    output: 'public/images/docs/family-entertainment.webp',
   },
   {
     input: 'public/images/docs/Pet Training Made Fun.jpeg',
-    output: 'public/images/docs/pet-training-made-fun.webp'
-  }
+    output: 'public/images/docs/pet-training-made-fun.webp',
+  },
 ];
 
 async function convertImage(inputPath, outputPath, targetSize = 90 * 1024) {
@@ -57,7 +58,9 @@ async function convertImage(inputPath, outputPath, targetSize = 90 * 1024) {
       fileSize = statSync(join(__dirname, outputPath)).size;
       const fileSizeKB = (fileSize / 1024).toFixed(2);
 
-      console.log(`  ${width ? `Width ${width}, ` : ''}Quality ${quality}: ${fileSizeKB} KB`);
+      console.log(
+        `  ${width ? `Width ${width}, ` : ''}Quality ${quality}: ${fileSizeKB} KB`
+      );
 
       if (fileSize > targetSize) {
         if (quality > 50) {
@@ -78,7 +81,9 @@ async function convertImage(inputPath, outputPath, targetSize = 90 * 1024) {
 
     const finalSizeKB = (fileSize / 1024).toFixed(2);
     console.log(`  ✅ Output: ${outputPath}`);
-    console.log(`  Final size: ${finalSizeKB} KB | Dimensions: ${output.width}x${output.height}`);
+    console.log(
+      `  Final size: ${finalSizeKB} KB | Dimensions: ${output.width}x${output.height}`
+    );
 
     return true;
   } catch (error) {
