@@ -45,6 +45,7 @@ export default async function LocaleLayout({
   return (
     <html suppressHydrationWarning lang={locale}>
       <head>
+        <meta name="msvalidate.01" content="518A1A066EA7B7ED31AA7B89CDC8BC86" />
         <AffonsoScript />
         <PromotekitScript />
       </head>
