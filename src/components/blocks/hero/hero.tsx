@@ -4,7 +4,6 @@ import UserAvatars from '@/components/blocks/user-avatars';
 import { AuroraBackground } from '@/components/ui/aurora-background';
 import { Button } from '@/components/ui/button';
 import { LocaleLink } from '@/i18n/navigation';
-import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 
 export default function HeroSection() {
@@ -19,16 +18,7 @@ export default function HeroSection() {
 
   return (
     <AuroraBackground className="bg-white dark:bg-zinc-900">
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{
-          delay: 0.3,
-          duration: 0.8,
-          ease: 'easeInOut',
-        }}
-        className="relative flex flex-col gap-4 items-center justify-center px-4"
-      >
+      <div className="relative flex flex-col gap-4 items-center justify-center px-4">
         {/* title */}
         <h1 className="text-2xl md:text-4xl lg:text-7xl font-semibold max-w-6xl mx-auto text-center relative z-10 text-slate-950 dark:text-white">
           {t('title')}
@@ -52,7 +42,7 @@ export default function HeroSection() {
 
         {/* user avatars */}
         <UserAvatars />
-      </motion.div>
+      </div>
     </AuroraBackground>
   );
 }

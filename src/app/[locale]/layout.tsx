@@ -12,16 +12,15 @@ import { routing } from '@/i18n/routing';
 import { cn } from '@/lib/utils';
 import { type Locale, NextIntlClientProvider, hasLocale } from 'next-intl';
 import { notFound } from 'next/navigation';
-import { NuqsAdapter } from 'nuqs/adapters/next/app';
 import type { ReactNode } from 'react';
 import { Toaster } from 'sonner';
 import { Providers } from './providers';
 
 import '@/styles/globals.css';
 
-// Edge Runtime is now enabled after migrating from Better Auth to Supabase Auth
-// Supabase Auth is compatible with Edge Runtime
-export const runtime = 'edge';
+// Commented out global Edge Runtime due to compatibility issues with some pages
+// Individual API routes still use Edge Runtime where needed
+// export const runtime = 'edge';
 
 interface LocaleLayoutProps {
   children: ReactNode;
@@ -62,17 +61,15 @@ export default async function LocaleLayout({
           fontBricolageGrotesque.variable
         )}
       >
-        <NuqsAdapter>
-          <NextIntlClientProvider>
-            <Providers locale={locale}>
-              {children}
+        <NextIntlClientProvider>
+          <Providers locale={locale}>
+            {children}
 
-              <Toaster richColors position="top-right" offset={64} />
-              <TailwindIndicator />
-              <Analytics />
-            </Providers>
-          </NextIntlClientProvider>
-        </NuqsAdapter>
+            <Toaster richColors position="top-right" offset={64} />
+            <TailwindIndicator />
+            <Analytics />
+          </Providers>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

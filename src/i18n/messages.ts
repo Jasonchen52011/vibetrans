@@ -16,51 +16,33 @@ const importLocale = async (locale: Locale): Promise<Messages> => {
   const [
     common,
     mailCommon,
-    newsletterCommon,
     premiumCommon,
     homePages,
     pricingPages,
-    blogPages,
     authPages,
     aboutPages,
-    docsPages,
-    dogTranslatorPages,
-    dashboard,
     marketing,
-    demo,
   ] = await Promise.all([
     import(`../../messages/common/${locale}.json`),
     import(`../../messages/common/mail-${locale}.json`),
-    import(`../../messages/common/newsletter-${locale}.json`),
     import(`../../messages/common/premium-${locale}.json`),
     import(`../../messages/pages/home/${locale}.json`),
     import(`../../messages/pages/pricing/${locale}.json`),
-    import(`../../messages/pages/blog/${locale}.json`),
     import(`../../messages/pages/auth/${locale}.json`),
     import(`../../messages/pages/about/${locale}.json`),
-    import(`../../messages/pages/docs/${locale}.json`),
-    import(`../../messages/pages/dog-translator/${locale}.json`),
-    import(`../../messages/dashboard/${locale}.json`),
     import(`../../messages/marketing/${locale}.json`),
-    import(`../../messages/demo/${locale}.json`),
   ]);
 
   // Merge all modules into a single Messages object
   return deepmerge.all([
     common.default,
     mailCommon.default,
-    newsletterCommon.default,
     premiumCommon.default,
     homePages.default,
     pricingPages.default,
-    blogPages.default,
     authPages.default,
     aboutPages.default,
-    docsPages.default,
-    dogTranslatorPages.default,
-    dashboard.default,
     marketing.default,
-    demo.default,
   ]) as Messages;
 };
 

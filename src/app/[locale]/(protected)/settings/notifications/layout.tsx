@@ -1,4 +1,4 @@
-import { DashboardHeader } from '@/components/dashboard/dashboard-header';
+
 import { getTranslations } from 'next-intl/server';
 
 interface NotificationsLayoutProps {
@@ -10,20 +10,9 @@ export default async function NotificationsLayout({
 }: NotificationsLayoutProps) {
   const t = await getTranslations('Dashboard.settings');
 
-  const breadcrumbs = [
-    {
-      label: t('title' as const),
-      isCurrentPage: false,
-    },
-    {
-      label: t('notification.title'),
-      isCurrentPage: true,
-    },
-  ];
 
   return (
     <>
-      <DashboardHeader breadcrumbs={breadcrumbs} />
 
       <div className="flex flex-1 flex-col">
         <div className="@container/main flex flex-1 flex-col gap-2">

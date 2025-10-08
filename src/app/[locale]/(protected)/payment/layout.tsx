@@ -1,4 +1,4 @@
-import { DashboardHeader } from '@/components/dashboard/dashboard-header';
+
 import { getTranslations } from 'next-intl/server';
 
 interface PaymentLayoutProps {
@@ -8,16 +8,9 @@ interface PaymentLayoutProps {
 export default async function PaymentLayout({ children }: PaymentLayoutProps) {
   const t = await getTranslations('Dashboard.settings.payment');
 
-  const breadcrumbs = [
-    {
-      label: t('processing.title'),
-      isCurrentPage: true,
-    },
-  ];
 
   return (
     <>
-      <DashboardHeader breadcrumbs={breadcrumbs} />
 
       <div className="flex flex-1 flex-col">
         <div className="@container/main flex flex-1 flex-col gap-2">

@@ -55,31 +55,6 @@ export function useNavbarLinks(): NestedMenuItem[] {
       href: Routes.Root,
       external: false,
     },
-    // {
-    //   title: t('pricing.title'),
-    //   href: Routes.Pricing,
-    //   external: false,
-    // },
-    // ...(websiteConfig.blog.enable
-    //   ? [
-    //       {
-    //         title: t('blog.title'),
-    //         href: Routes.Blog,
-    //         external: false,
-    //       },
-    //     ]
-    //   : []),
-    {
-      title: t('funTranslate.title'),
-      items: [
-        {
-          title: t('funTranslate.items.dogTranslator.title'),
-          icon: <DogIcon className="size-4 shrink-0" />,
-          href: Routes.DogTranslator,
-          external: false,
-        },
-      ],
-    },
     {
       title: 'About',
       href: Routes.About,

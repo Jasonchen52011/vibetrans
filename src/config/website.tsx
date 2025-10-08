@@ -37,11 +37,11 @@ export const websiteConfig: WebsiteConfig = {
     enableAffonsoAffiliate: false,
     enablePromotekitAffiliate: false,
     enableDatafastRevenueTrack: false,
-    enableCrispChat: process.env.NEXT_PUBLIC_DEMO_WEBSITE === 'true',
-    enableTurnstileCaptcha: process.env.NEXT_PUBLIC_DEMO_WEBSITE === 'true',
+    enableCrispChat: false,
+    enableTurnstileCaptcha: false,
   },
   routes: {
-    defaultLoginRedirect: '/dashboard',
+    defaultLoginRedirect: '/settings/profile',
   },
   analytics: {
     enableVercelAnalytics: false,
@@ -59,19 +59,15 @@ export const websiteConfig: WebsiteConfig = {
         flag: '🇺🇸',
         name: 'English',
       },
-      zh: {
-        flag: '🇨🇳',
-        name: '中文',
-      },
     },
   },
   blog: {
-    enable: true,
+    enable: false,
     paginationSize: 6,
     relatedPostsSize: 3,
   },
   docs: {
-    enable: true,
+    enable: false,
   },
   mail: {
     provider: 'resend',
@@ -79,9 +75,9 @@ export const websiteConfig: WebsiteConfig = {
     supportEmail: 'VibeTrans <hello@videtrans.com>',
   },
   newsletter: {
-    enable: true,
+    enable: false,
     provider: 'resend',
-    autoSubscribeAfterSignUp: true,
+    autoSubscribeAfterSignUp: false,
   },
   storage: {
     enable: true,

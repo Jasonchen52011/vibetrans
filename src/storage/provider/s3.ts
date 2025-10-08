@@ -1,6 +1,6 @@
 // Use Web Crypto API for Edge Runtime compatibility
 const randomUUID = () => crypto.randomUUID();
-import { s3mini } from 's3mini';
+import { S3mini } from 's3mini';
 import { storageConfig } from '../config/storage-config';
 import {
   ConfigurationError,
@@ -22,7 +22,7 @@ import {
  */
 export class S3Provider implements StorageProvider {
   private config: StorageConfig;
-  private s3Client: s3mini | null = null;
+  private s3Client: S3mini | null = null;
 
   constructor(config: StorageConfig = storageConfig) {
     this.config = config;
@@ -38,7 +38,7 @@ export class S3Provider implements StorageProvider {
   /**
    * Get the S3 client instance
    */
-  private getS3Client(): s3mini {
+  private getS3Client(): S3mini {
     if (this.s3Client) {
       return this.s3Client;
     }
@@ -66,7 +66,7 @@ export class S3Provider implements StorageProvider {
     // The bucket name needs to be included in the endpoint URL for s3mini
     const endpointWithBucket = `${endpoint.replace(/\/$/, '')}/${bucketName}`;
 
-    this.s3Client = new s3mini({
+    this.s3Client = new S3mini({
       accessKeyId,
       secretAccessKey,
       endpoint: endpointWithBucket,

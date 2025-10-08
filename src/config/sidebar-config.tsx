@@ -1,6 +1,5 @@
 'use client';
 
-import { isDemoWebsite } from '@/lib/demo';
 import { Routes } from '@/routes';
 import type { NestedMenuItem } from '@/types';
 import {
@@ -8,11 +7,8 @@ import {
   CircleUserRoundIcon,
   CoinsIcon,
   CreditCardIcon,
-  LayoutDashboardIcon,
   LockKeyholeIcon,
   Settings2Icon,
-  SettingsIcon,
-  UsersRoundIcon,
 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { websiteConfig } from './website';
@@ -27,29 +23,7 @@ import { websiteConfig } from './website';
 export function useSidebarLinks(): NestedMenuItem[] {
   const t = useTranslations('Dashboard');
 
-  // if is demo website, allow user to access admin and user pages, but data is fake
-  const isDemo = isDemoWebsite();
-
   return [
-    {
-      title: t('dashboard.title'),
-      icon: <LayoutDashboardIcon className="size-4 shrink-0" />,
-      href: Routes.Dashboard,
-      external: false,
-    },
-    {
-      title: t('admin.title'),
-      icon: <SettingsIcon className="size-4 shrink-0" />,
-      authorizeOnly: isDemo ? ['admin', 'user'] : ['admin'],
-      items: [
-        {
-          title: t('admin.users.title'),
-          icon: <UsersRoundIcon className="size-4 shrink-0" />,
-          href: Routes.AdminUsers,
-          external: false,
-        },
-      ],
-    },
     {
       title: t('settings.title'),
       icon: <Settings2Icon className="size-4 shrink-0" />,

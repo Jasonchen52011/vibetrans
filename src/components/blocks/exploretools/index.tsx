@@ -56,10 +56,6 @@ export default function ExploreOurAiTools({
       link: '/dog-weight-calculator',
       image: '/images/page/dog-weight-hero.webp',
     },
-    'Dog Translator Online': {
-      link: '/dog-translator',
-      image: '/images/page/dogtranslation.webp',
-    },
     'Dog Bite Settlement Calculator': {
       link: '/dog-bite-settlement-calculator',
       image: '/images/page/dog-bite-settlement-calculator.webp',

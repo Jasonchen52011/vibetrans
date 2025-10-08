@@ -139,7 +139,7 @@ export default function ChatBot() {
 
         <PromptInput onSubmit={handleSubmit} className="mt-4">
           <PromptInputTextarea
-            onChange={(e) => setInput(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setInput(e.target.value)}
             value={input}
           />
           <PromptInputToolbar>

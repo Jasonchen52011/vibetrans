@@ -1,13 +1,7 @@
-import CallToActionSection from '@/components/blocks/calltoaction/calltoaction';
-import FaqSection from '@/components/blocks/faqs/faqs';
-import UserScenarios from '@/components/blocks/funfacts';
 import HeroSection from '@/components/blocks/hero/hero';
-import HighlightsSection from '@/components/blocks/highlights';
-import HowTo from '@/components/blocks/how-to';
-import StatsSection from '@/components/blocks/stats/stats';
-import TestimonialsSection from '@/components/blocks/testimonials/testimonials';
-import UniqueSection from '@/components/blocks/unique';
-import WhatIsSection from '@/components/blocks/whatis';
+import LogoCloud from '@/components/blocks/logo-cloud/logo-cloud';
+import PricingSection from '@/components/blocks/pricing/pricing';
+import ExploreTools from '@/components/blocks/exploretools';
 import CrispChat from '@/components/layout/crisp-chat';
 import { constructMetadata } from '@/lib/metadata';
 import { getUrlWithLocale } from '@/lib/urls/urls';
@@ -249,38 +243,17 @@ export default async function HomePage(props: HomePageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
       <div className="flex flex-col">
-        {/* 工具操作区域 */}
+        {/* Hero Section */}
         <HeroSection />
 
-        {/* What is XXXX */}
-        <WhatIsSection section={whatIsSection} />
+        {/* Logo Cloud */}
+        <LogoCloud />
 
-        {/* 其他工具推荐 - Stats Section */}
-        <StatsSection />
+        {/* Explore Tools */}
+        <ExploreTools />
 
-        {/* How to translate XXXX */}
-        <HowTo section={howtoSection} />
-
-        {/* Unique */}
-        <UniqueSection section={uniqueSection} />
-
-        {/* Funfacts */}
-        {/* @ts-ignore - Translation keys type mismatch */}
-        <UserScenarios
-          section={userScenariosSection}
-          ctaText={(t as any)('funfacts.ctaButton')}
-        />
-
-        {/* Highlights */}
-        <HighlightsSection section={highlightsSection} />
-
-        {/* FAQs */}
-        <FaqSection />
-
-        {/* 用户评论（用户留言输入框）*/}
-        <TestimonialsSection />
-
-        <CallToActionSection />
+        {/* Pricing */}
+        <PricingSection />
 
         <CrispChat />
       </div>

@@ -3,7 +3,7 @@ import type { MetadataRoute } from 'next';
 /**
  * static routes for sitemap, you may change the routes for your own
  */
-const staticRoutes = ['/', '/about', '/dog-translator', '/privacy', '/terms'];
+const staticRoutes = ['/', '/about', '/privacy', '/terms'];
 
 /**
  * Generate a sitemap for the website
