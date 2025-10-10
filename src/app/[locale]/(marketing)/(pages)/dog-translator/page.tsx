@@ -302,35 +302,35 @@ export default async function DogTranslatorPage(props: DogTranslatorPageProps) {
               <div className="flex -space-x-3">
                 <div className="relative h-12 w-12 rounded-full border-2 border-white dark:border-zinc-800 overflow-hidden">
                   <img
-                    src="/images/avatars/female3.webp"
+                    src="/images/avatars/male1.webp"
                     alt="User 1"
                     className="h-full w-full object-cover"
                   />
                 </div>
                 <div className="relative h-12 w-12 rounded-full border-2 border-white dark:border-zinc-800 overflow-hidden">
                   <img
-                    src="/images/avatars/male3.webp"
+                    src="/images/avatars/female2.webp"
                     alt="User 2"
                     className="h-full w-full object-cover"
                   />
                 </div>
                 <div className="relative h-12 w-12 rounded-full border-2 border-white dark:border-zinc-800 overflow-hidden">
                   <img
-                    src="/images/avatars/female4.webp"
+                    src="/images/avatars/male3.webp"
                     alt="User 3"
                     className="h-full w-full object-cover"
                   />
                 </div>
                 <div className="relative h-12 w-12 rounded-full border-2 border-white dark:border-zinc-800 overflow-hidden">
                   <img
-                    src="/images/avatars/male4.webp"
+                    src="/images/avatars/female4.webp"
                     alt="User 4"
                     className="h-full w-full object-cover"
                   />
                 </div>
                 <div className="relative h-12 w-12 rounded-full border-2 border-white dark:border-zinc-800 overflow-hidden">
                   <img
-                    src="/images/avatars/female2.webp"
+                    src="/images/avatars/male2.webp"
                     alt="User 5"
                     className="h-full w-full object-cover"
                   />
@@ -352,7 +352,7 @@ export default async function DogTranslatorPage(props: DogTranslatorPageProps) {
                   ))}
                 </div>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
-                  from 8,500+ happy users
+                  from 9,200+ happy users
                 </p>
               </div>
             </div>

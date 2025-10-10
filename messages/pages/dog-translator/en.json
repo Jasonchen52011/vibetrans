@@ -41,7 +41,7 @@
       }
     },
     "faqs": {
-      "title": "FAQ",
+      "title": "Frequently Asked Questions",
       "subtitle": "Have other questions? Feel free to contact us via email.",
       "items": {
         "item-1": {
@@ -85,32 +85,62 @@
         "item-1": {
           "name": "Emily Carter",
           "role": "Dog Trainer",
-          "quote": "I was skeptical at first, but Dog Translator truly amazed me. It was incredibly helpful during training sessions, as it helped me understand how my dog was reacting to my commands. Now, I feel like I can communicate with him on a whole new level!"
+          "content": "I was skeptical at first, but Dog Translator truly amazed me. It was incredibly helpful during training sessions, as it helped me understand how my dog was reacting to my commands. Now, I feel like I can communicate with him on a whole new level!"
         },
         "item-2": {
           "name": "Jason Mitchell",
           "role": "Veterinarian",
-          "quote": "As a vet, I see dogs in all sorts of emotional states. This tool is a game changer—it helps me explain to dog owners how their pets are feeling. I love how it interprets the emotional tones of barks, making it easier to assess a dog's behavior!"
+          "content": "As a vet, I see dogs in all sorts of emotional states. This tool is a game changer—it helps me explain to dog owners how their pets are feeling. I love how it interprets the emotional tones of barks, making it easier to assess a dog's behavior!"
         },
         "item-3": {
           "name": "Amanda Wells",
           "role": "Stay-at-home mom",
-          "quote": "Using Dog Translator has been a fun way to interact with our family dog. I was amazed when it translated her happy bark after we played fetch into a clear message. It's an easy tool to use and has made my connection with her even stronger!"
+          "content": "Using Dog Translator has been a fun way to interact with our family dog. I was amazed when it translated her happy bark after we played fetch into a clear message. It's an easy tool to use and has made my connection with her even stronger!"
         },
         "item-4": {
           "name": "David Ross",
           "role": "Software Developer",
-          "quote": "I'm all about tech, and this AI-powered dog translator impressed me. It accurately captures my dog's emotions, whether she's happy or anxious. I now know when she's really excited about going for a walk!"
+          "content": "I'm all about tech, and this AI-powered dog translator impressed me. It accurately captures my dog's emotions, whether she's happy or anxious. I now know when she's really excited about going for a walk!"
         },
         "item-5": {
           "name": "Sarah Reed",
           "role": "Professional Dog Walker",
-          "quote": "I use Dog Translator with the dogs I walk to understand their moods better. It's so helpful when dealing with anxious or nervous dogs, as it gives me insight into how they're feeling during our walks."
+          "content": "I use Dog Translator with the dogs I walk to understand their moods better. It's so helpful when dealing with anxious or nervous dogs, as it gives me insight into how they're feeling during our walks."
         },
         "item-6": {
           "name": "Mark Johnson",
           "role": "Pet Owner",
-          "quote": "At first, I thought this was just a fun tool, but it's become essential in understanding my dog's reactions. The emotional translations are spot on, and I love how easy it is to use. It's like having a new way to communicate with my best friend."
+          "content": "At first, I thought this was just a fun tool, but it's become essential in understanding my dog's reactions. The emotional translations are spot on, and I love how easy it is to use. It's like having a new way to communicate with my best friend."
+        },
+        "item-7": {
+          "name": "Lisa Thompson",
+          "role": "Animal Behaviorist",
+          "content": "As an animal behaviorist, I use Dog Translator to better understand canine communication patterns. It's a valuable tool that helps me interpret emotional states and provide better guidance to pet owners."
+        },
+        "item-8": {
+          "name": "Robert Chen",
+          "role": "Dog Owner",
+          "content": "My rescue dog was anxious and hard to read. Dog Translator helped me understand her stress signals and respond appropriately. Our bond has grown so much stronger thanks to this tool!"
+        },
+        "item-9": {
+          "name": "Michelle Garcia",
+          "role": "Pet Sitter",
+          "content": "Working with multiple dogs daily, Dog Translator helps me quickly assess each dog's mood and needs. It's become an essential part of my professional toolkit!"
+        },
+        "item-10": {
+          "name": "Tom Bradley",
+          "role": "Veterinary Technician",
+          "content": "Dog Translator makes my job easier by helping me understand how dogs are feeling during examinations. It reduces stress for both the animals and their owners. Highly recommend!"
+        },
+        "item-11": {
+          "name": "Jennifer Lopez",
+          "role": "Puppy Trainer",
+          "content": "Training puppies requires understanding their emotional state. Dog Translator gives me instant feedback on how they're responding to training. It's revolutionized my approach!"
+        },
+        "item-12": {
+          "name": "Kevin White",
+          "role": "Dog Enthusiast",
+          "content": "I love trying new pet tech, and Dog Translator exceeded my expectations. It's fun, accurate, and has deepened my relationship with my two golden retrievers. Best tool ever!"
         }
       }
     },

@@ -26,9 +26,13 @@ export default function WhatIsSection({ section }: { section: WhatIsSection }) {
     <section className="py-4 bg-white">
       <div className="w-full max-w-6xl mx-auto px-2 sm:px-4 lg:px-6">
         <div className="max-w-full mx-auto">
-          <div className={`grid grid-cols-1 ${section.image ? 'lg:grid-cols-2' : ''} gap-6 items-center justify-items-center`}>
+          <div
+            className={`grid grid-cols-1 ${section.image ? 'lg:grid-cols-2' : ''} gap-6 items-center justify-items-center`}
+          >
             {/* Text content - Left side */}
-            <div className={`space-y-6 ${section.image ? 'order-2 lg:order-1' : ''} text-center lg:text-left relative z-10 w-full`}>
+            <div
+              className={`space-y-6 ${section.image ? 'order-2 lg:order-1' : ''} text-center lg:text-left relative z-10 w-full`}
+            >
               <h2 className="text-center lg:text-left tracking-tight font-medium text-black dark:text-white text-3xl md:text-5xl md:leading-tight mb-6 select-text">
                 {section.title}
               </h2>

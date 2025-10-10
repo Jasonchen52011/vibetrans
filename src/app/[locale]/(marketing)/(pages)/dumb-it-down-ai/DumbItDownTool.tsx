@@ -1,5 +1,6 @@
 'use client';
 
+import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
 import mammoth from 'mammoth';
 import { useState } from 'react';
 
@@ -73,7 +74,9 @@ export default function DumbItDownTool({
         }
         throw new Error('Failed to extract text from Word document');
       } catch (error) {
-        throw new Error('Failed to read .docx file. Please ensure it is a valid Word document.');
+        throw new Error(
+          'Failed to read .docx file. Please ensure it is a valid Word document.'
+        );
       }
     }
 
@@ -260,9 +263,10 @@ export default function DumbItDownTool({
               <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">
                 {pageData.tool.outputLabel}
               </h2>
-              {/* Copy and Download buttons */}
+              {/* TTS, Copy and Download buttons */}
               {simplifiedText && (
                 <div className="flex gap-2">
+                  <TextToSpeechButton text={simplifiedText} locale={locale} />
                   <button
                     onClick={handleCopy}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"

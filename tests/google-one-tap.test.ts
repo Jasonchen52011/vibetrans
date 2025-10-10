@@ -28,7 +28,7 @@ describe('Google One Tap Integration', () => {
 
       expect(response.status).toBe(400);
       const data = await response.json();
-      expect(data.error).toBe('Missing credential');
+      expect((data as any).error).toBe('Missing credential');
     });
 
     it('should reject invalid JWT tokens', async () => {
@@ -44,7 +44,7 @@ describe('Google One Tap Integration', () => {
 
       expect(response.status).toBe(500);
       const data = await response.json();
-      expect(data.error).toBeDefined();
+      expect((data as any).error).toBeDefined();
     });
 
     // Note: This test requires a valid Google JWT token
@@ -62,11 +62,11 @@ describe('Google One Tap Integration', () => {
 
       expect(response.status).toBe(200);
       const data = await response.json();
-      expect(data.success).toBe(true);
-      expect(data.user).toBeDefined();
-      expect(data.user.email).toBeDefined();
-      expect(data.session).toBeDefined();
-      expect(data.session.token).toBeDefined();
+      expect((data as any).success).toBe(true);
+      expect((data as any).user).toBeDefined();
+      expect((data as any).user.email).toBeDefined();
+      expect((data as any).session).toBeDefined();
+      expect((data as any).session.token).toBeDefined();
     });
   });
 

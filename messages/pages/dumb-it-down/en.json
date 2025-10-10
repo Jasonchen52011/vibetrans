@@ -115,32 +115,62 @@
         "item-1": {
           "name": "Jake Anderson",
           "role": "Student",
-          "quote": "I needed to simplify some academic papers for my class. Dumb It Down AI helped me get clear, readable results. It's fast and reliable!"
+          "content": "I needed to simplify some academic papers for my class. Dumb It Down AI helped me get clear, readable results. It's fast and reliable!"
         },
         "item-2": {
           "name": "Sarah Collins",
           "role": "Lawyer",
-          "quote": "Legal documents can be so complicated! I used Dumb It Down AI to simplify contracts, and it made everything much easier to understand. Great tool!"
+          "content": "Legal documents can be so complicated! I used Dumb It Down AI to simplify contracts, and it made everything much easier to understand. Great tool!"
         },
         "item-3": {
           "name": "Emily Roberts",
           "role": "Medical Professional",
-          "quote": "Medical jargon can be hard to explain to patients. Dumb It Down AI made it so much easier to simplify complex terms for better patient communication. Highly recommend!"
+          "content": "Medical jargon can be hard to explain to patients. Dumb It Down AI made it so much easier to simplify complex terms for better patient communication. Highly recommend!"
         },
         "item-4": {
           "name": "John Marshall",
           "role": "Developer",
-          "quote": "I used this tool to simplify technical documentation for my team. It saved time and made understanding complex API references a lot easier."
+          "content": "I used this tool to simplify technical documentation for my team. It saved time and made understanding complex API references a lot easier."
         },
         "item-5": {
           "name": "Karen Smith",
           "role": "Teacher",
-          "quote": "Teaching students complicated subjects can be tough. This tool has made simplifying reading materials a breeze! Now, my students can easily grasp concepts."
+          "content": "Teaching students complicated subjects can be tough. This tool has made simplifying reading materials a breeze! Now, my students can easily grasp concepts."
         },
         "item-6": {
           "name": "Michael Johnson",
           "role": "Project Manager",
-          "quote": "Dumb It Down AI helped me simplify reports and make them easier for the team to understand. It's a must-have tool for anyone in management."
+          "content": "Dumb It Down AI helped me simplify reports and make them easier for the team to understand. It's a must-have tool for anyone in management."
+        },
+        "item-7": {
+          "name": "Lisa Chen",
+          "role": "Research Scientist",
+          "content": "Research papers can be incredibly dense. This tool helps me simplify complex findings for presentations and non-specialist audiences. Excellent!"
+        },
+        "item-8": {
+          "name": "David Martinez",
+          "role": "Technical Writer",
+          "content": "As a technical writer, I need to make complex concepts accessible. Dumb It Down AI is perfect for creating user-friendly documentation from technical specs."
+        },
+        "item-9": {
+          "name": "Jennifer Williams",
+          "role": "Business Analyst",
+          "content": "Financial reports and business documents can be full of jargon. This tool helps me communicate insights clearly to all stakeholders. Highly effective!"
+        },
+        "item-10": {
+          "name": "Robert Taylor",
+          "role": "Graduate Student",
+          "content": "Working on my thesis means reading tons of complex papers. This tool helps me break down dense academic writing into digestible summaries. A lifesaver!"
+        },
+        "item-11": {
+          "name": "Amanda Lee",
+          "role": "HR Manager",
+          "content": "Policy documents and compliance materials can be overwhelming. Dumb It Down AI makes them accessible for all employees. Great for internal communications!"
+        },
+        "item-12": {
+          "name": "Thomas Brown",
+          "role": "Consultant",
+          "content": "I work with clients from various backgrounds. This tool helps me translate technical recommendations into language everyone understands. Invaluable for client presentations!"
         }
       }
     },

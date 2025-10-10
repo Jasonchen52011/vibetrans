@@ -1,0 +1,13 @@
+{
+  "title": "新闻通讯",
+  "subtitle": "加入社区",
+  "description": "订阅我们的新闻通讯，获取最新消息和更新",
+  "form": {
+    "email": "邮箱",
+    "subscribe": "订阅",
+    "subscribing": "订阅中...",
+    "success": "订阅成功",
+    "fail": "订阅失败",
+    "emailValidation": "请输入有效的邮箱地址"
+  }
+}

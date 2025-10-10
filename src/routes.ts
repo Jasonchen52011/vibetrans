@@ -50,7 +50,15 @@ export enum Routes {
   // Fun Tools routes
   DogTranslator = '/dog-translator',
   GenZTranslator = '/gen-z-translator',
+  GenAlphaTranslator = '/gen-alpha-translator',
   DumbItDownAI = '/dumb-it-down-ai',
+  BadTranslator = '/bad-translator',
+  GibberishTranslator = '/gibberish-translator',
+  AncientGreekTranslator = '/ancient-greek-translator',
+  AlBhedTranslator = '/al-bhed-translator',
+  AlienTextGenerator = '/alien-text-generator',
+  EsperantoTranslator = '/esperanto-translator',
+  CuneiformTranslator = '/cuneiform-translator',
 
   // block routes
   MagicuiBlocks = '/magicui',

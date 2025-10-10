@@ -1,8 +1,8 @@
 #!/usr/bin/env node
-import sharp from 'sharp';
-import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
 import { existsSync } from 'fs';
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
+import sharp from 'sharp';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -17,7 +17,7 @@ const imagesToConvert = [
   'Real-time Slang Updates.jpeg',
   'The Need for Gen Z Slang Translation.jpeg',
   'Why Content Creators Love VibeTrans.jpeg',
-  'gen-z-translator-how.png'
+  'gen-z-translator-how.png',
 ];
 
 // Target size: ~90KB
@@ -49,7 +49,7 @@ async function convertImage(filename) {
     await sharp(inputPath)
       .resize(targetWidth, null, {
         fit: 'inside',
-        withoutEnlargement: true
+        withoutEnlargement: true,
       })
       .webp({ quality: targetQuality, effort: 6 })
       .toFile(outputPath);
@@ -67,7 +67,7 @@ async function convertImage(filename) {
       await sharp(inputPath)
         .resize(targetWidth, null, {
           fit: 'inside',
-          withoutEnlargement: true
+          withoutEnlargement: true,
         })
         .webp({ quality: 65, effort: 6 })
         .toFile(outputPath);

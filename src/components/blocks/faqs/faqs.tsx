@@ -35,42 +35,48 @@ export default function FaqSection({
     'globe',
     'mail',
     'shield-check',
+    'help-circle',
+    'info',
+    'message-circle',
+    'book-open',
   ];
 
-  // Try to load up to 8 FAQ items
   for (let i = 1; i <= 8; i++) {
     const key = `item-${i}`;
+
     try {
-      // @ts-ignore - Dynamic translation keys
-      const question = t(`items.${key}.question`);
+      // @ts-ignore - Dynamic translation keys with fallback
+      const question = t(`items.${key}.question`, { default: null });
+
+      if (!question || question.includes(`items.${key}.question`)) {
+        break;
+      }
+
       // @ts-ignore - Dynamic translation keys
       const answer = t(`items.${key}.answer`);
 
-      // Only add if translation exists (not showing the key)
-      if (question && !question.includes('items.')) {
-        faqItems.push({
-          id: key,
-          icon: icons[i - 1] || 'help-circle',
-          question,
-          answer,
-        });
-      }
+      faqItems.push({
+        id: key,
+        icon: icons[i - 1] || 'help-circle',
+        question,
+        answer,
+      });
     } catch {
-      // Skip if translation doesn't exist
       break;
     }
   }
 
+  // Note: MISSING_MESSAGE errors in development console are expected behavior
+  // when the loop checks for items beyond what's available in translations.
+  // This is harmless and allows flexible content without manual item counts.
+
   return (
-    <section id="faqs" className="px-4 py-16">
+    <section id="faqs" className="px-4 py-12">
       <div className="mx-auto max-w-4xl">
         <HeaderSection
           // @ts-ignore - Dynamic translation keys
-          title={t('title')}
-          titleAs="h2"
-          // @ts-ignore - Dynamic translation keys
-          subtitle={t('subtitle')}
-          subtitleAs="p"
+          subtitle={t('title')}
+          subtitleAs="h2"
         />
 
         <div className="mx-auto max-w-4xl mt-12">

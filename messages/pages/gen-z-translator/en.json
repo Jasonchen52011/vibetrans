@@ -115,37 +115,67 @@
         "item-1": {
           "name": "Emily Johnson",
           "role": "Social Media Manager",
-          "quote": "VibeTrans is a game-changer for my social media posts. I use it to connect with younger audiences and create content that resonates with Gen Z. It's easy to use and really fun!"
+          "content": "VibeTrans is a game-changer for my social media posts. I use it to connect with younger audiences and create content that resonates with Gen Z. It's easy to use and really fun!"
         },
         "item-2": {
           "name": "David Roberts",
           "role": "Teacher",
-          "quote": "As a high school teacher, I use VibeTrans to help me understand my students' language. It's very helpful for connecting with Gen Z and fostering better communication in class."
+          "content": "As a high school teacher, I use VibeTrans to help me understand my students' language. It's very helpful for connecting with Gen Z and fostering better communication in class."
         },
         "item-3": {
           "name": "Sarah Mitchell",
           "role": "Marketing Specialist",
-          "quote": "VibeTrans has been invaluable for our marketing campaigns. It's a simple tool that helps us tailor content specifically to Gen Z. I love how it gives me quick translations and updates regularly!"
+          "content": "VibeTrans has been invaluable for our marketing campaigns. It's a simple tool that helps us tailor content specifically to Gen Z. I love how it gives me quick translations and updates regularly!"
         },
         "item-4": {
           "name": "Michael Anderson",
           "role": "Parent",
-          "quote": "I use VibeTrans to understand my kids' texts! It's hilarious but also practical. I love knowing what they're really saying without asking them directly."
+          "content": "I use VibeTrans to understand my kids' texts! It's hilarious but also practical. I love knowing what they're really saying without asking them directly."
         },
         "item-5": {
           "name": "Jessica Taylor",
           "role": "Content Creator",
-          "quote": "VibeTrans makes it easy to stay on top of trends. As a content creator, using Gen Z slang helps me connect with my audience. This tool is a must-have!"
+          "content": "VibeTrans makes it easy to stay on top of trends. As a content creator, using Gen Z slang helps me connect with my audience. This tool is a must-have!"
         },
         "item-6": {
           "name": "John Peterson",
           "role": "Business Owner",
-          "quote": "I wanted to create more engaging marketing content for a younger audience. VibeTrans helped me transform traditional text into trendy Gen Z language. It's an amazing tool!"
+          "content": "I wanted to create more engaging marketing content for a younger audience. VibeTrans helped me transform traditional text into trendy Gen Z language. It's an amazing tool!"
+        },
+        "item-7": {
+          "name": "Rachel Williams",
+          "role": "Influencer",
+          "content": "Staying relevant on social media means speaking the language of my audience. VibeTrans helps me stay current with Gen Z slang. It's authentic and always on point!"
+        },
+        "item-8": {
+          "name": "Kevin Martinez",
+          "role": "Brand Manager",
+          "content": "Our brand targets Gen Z consumers, and VibeTrans has been crucial for our messaging. It helps us sound natural and relatable without trying too hard. Perfect tool!"
+        },
+        "item-9": {
+          "name": "Amanda Chen",
+          "role": "YouTuber",
+          "content": "Creating content for Gen Z viewers means understanding their language. VibeTrans is my secret weapon for keeping my videos fresh and relatable. Love it!"
+        },
+        "item-10": {
+          "name": "James Lee",
+          "role": "Copywriter",
+          "content": "Writing for Gen Z audiences requires authenticity. VibeTrans helps me craft messages that resonate without sounding forced. It's a professional's dream tool!"
+        },
+        "item-11": {
+          "name": "Sophie Brown",
+          "role": "Community Manager",
+          "content": "Managing online communities means speaking their language. VibeTrans helps me engage with Gen Z members naturally and build stronger connections. Highly recommended!"
+        },
+        "item-12": {
+          "name": "Daniel Garcia",
+          "role": "Podcast Host",
+          "content": "My podcast targets younger listeners, and VibeTrans keeps my content relevant. It's like having a Gen Z translator in my pocket. Absolutely essential!"
         }
       }
     },
     "faqs": {
-      "title": "FAQ",
+      "title": "Frequently Asked Questions",
       "subtitle": "Frequently Asked Questions",
       "items": {
         "item-1": {

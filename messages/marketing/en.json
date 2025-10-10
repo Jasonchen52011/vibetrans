@@ -24,9 +24,41 @@
             "title": "Gen Z Translator",
             "description": "Translate between standard English and Gen Z slang"
           },
+          "genAlphaTranslator": {
+            "title": "Gen Alpha Translator",
+            "description": "Translate between standard English and Gen Alpha slang"
+          },
           "dumbItDown": {
             "title": "Dumb It Down AI",
             "description": "Simplify complex texts into easy-to-understand language"
+          },
+          "badTranslator": {
+            "title": "Bad Translator",
+            "description": "Turn normal text into hilarious mistranslations"
+          },
+          "ancientGreekTranslator": {
+            "title": "Ancient Greek Translator",
+            "description": "Translate between English and Ancient Greek"
+          },
+          "alBhedTranslator": {
+            "title": "Al Bhed Translator",
+            "description": "Translate between English and Al Bhed from Final Fantasy X"
+          },
+          "gibberishTranslator": {
+            "title": "Gibberish Translator",
+            "description": "Convert any text into playful gibberish language"
+          },
+          "alienTextGenerator": {
+            "title": "Alien Text Generator",
+            "description": "Transform your text into various alien language styles"
+          },
+          "esperantoTranslator": {
+            "title": "Esperanto Translator",
+            "description": "Translate between English and Esperanto language"
+          },
+          "cuneiformTranslator": {
+            "title": "Cuneiform Translator",
+            "description": "Translate ancient cuneiform scripts"
           }
         }
       },

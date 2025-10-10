@@ -132,16 +132,16 @@ export default async function GenZTranslatorPage(
         description: (t as any)('funfacts.items.0.description'),
         image: {
           src: '/images/docs/private-slang-dictionaries.webp',
-          alt: 'Private Slang Dictionaries'
-        }
+          alt: 'Private Slang Dictionaries',
+        },
       },
       {
         title: (t as any)('funfacts.items.1.title'),
         description: (t as any)('funfacts.items.1.description'),
         image: {
           src: '/images/docs/fax,-no-printer.webp',
-          alt: 'Fax, No Printer - Gen Z Slang'
-        }
+          alt: 'Fax, No Printer - Gen Z Slang',
+        },
       },
     ],
   };
@@ -182,7 +182,7 @@ export default async function GenZTranslatorPage(
     features: [],
     image: {
       src: '/images/docs/what-is-gen-z-translator.webp',
-      alt: 'What is Gen Z Translator - Understanding Gen Z Language'
+      alt: 'What is Gen Z Translator - Understanding Gen Z Language',
     },
     cta: {
       text: (t as any)('ctaButton'),
@@ -196,7 +196,7 @@ export default async function GenZTranslatorPage(
     description: (t as any)('howto.description'),
     image: {
       src: '/images/docs/gen-z-translator-how.webp',
-      alt: 'How to use Gen Z Translator step by step guide'
+      alt: 'How to use Gen Z Translator step by step guide',
     },
     items: [
       {
@@ -232,32 +232,32 @@ export default async function GenZTranslatorPage(
         description: (t as any)('userInterest.items.0.description'),
         image: {
           src: '/images/docs/the-need-for-gen-z-slang-translation.webp',
-          alt: 'The Need for Gen Z Slang Translation'
-        }
+          alt: 'The Need for Gen Z Slang Translation',
+        },
       },
       {
         title: (t as any)('userInterest.items.1.title'),
         description: (t as any)('userInterest.items.1.description'),
         image: {
           src: '/images/docs/multilingual-gen-z-translator.webp',
-          alt: 'Multilingual Gen Z Translator'
-        }
+          alt: 'Multilingual Gen Z Translator',
+        },
       },
       {
         title: (t as any)('userInterest.items.2.title'),
         description: (t as any)('userInterest.items.2.description'),
         image: {
           src: '/images/docs/real-time-slang-updates.webp',
-          alt: 'Real-time Slang Updates'
-        }
+          alt: 'Real-time Slang Updates',
+        },
       },
       {
         title: (t as any)('userInterest.items.3.title'),
         description: (t as any)('userInterest.items.3.description'),
         image: {
           src: '/images/docs/why-content-creators-love-vibetrans.webp',
-          alt: 'Why Content Creators Love VibeTrans'
-        }
+          alt: 'Why Content Creators Love VibeTrans',
+        },
       },
     ],
   };
@@ -286,35 +286,35 @@ export default async function GenZTranslatorPage(
               <div className="flex -space-x-3">
                 <div className="relative h-12 w-12 rounded-full border-2 border-white dark:border-zinc-800 overflow-hidden">
                   <img
-                    src="/images/avatars/male1.webp"
+                    src="/images/avatars/female1.webp"
                     alt="User 1"
                     className="h-full w-full object-cover"
                   />
                 </div>
                 <div className="relative h-12 w-12 rounded-full border-2 border-white dark:border-zinc-800 overflow-hidden">
                   <img
-                    src="/images/avatars/female1.webp"
+                    src="/images/avatars/male2.webp"
                     alt="User 2"
                     className="h-full w-full object-cover"
                   />
                 </div>
                 <div className="relative h-12 w-12 rounded-full border-2 border-white dark:border-zinc-800 overflow-hidden">
                   <img
-                    src="/images/avatars/male2.webp"
+                    src="/images/avatars/female3.webp"
                     alt="User 3"
                     className="h-full w-full object-cover"
                   />
                 </div>
                 <div className="relative h-12 w-12 rounded-full border-2 border-white dark:border-zinc-800 overflow-hidden">
                   <img
-                    src="/images/avatars/female3.webp"
+                    src="/images/avatars/male4.webp"
                     alt="User 4"
                     className="h-full w-full object-cover"
                   />
                 </div>
                 <div className="relative h-12 w-12 rounded-full border-2 border-white dark:border-zinc-800 overflow-hidden">
                   <img
-                    src="/images/avatars/male4.webp"
+                    src="/images/avatars/female2.webp"
                     alt="User 5"
                     className="h-full w-full object-cover"
                   />
@@ -336,7 +336,7 @@ export default async function GenZTranslatorPage(
                   ))}
                 </div>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
-                  from 12,000+ happy users
+                  from 14,600+ happy users
                 </p>
               </div>
             </div>

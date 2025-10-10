@@ -11,7 +11,7 @@ export default function HighlightsSection({
   }
 
   return (
-    <section id={section.name} className="py-10 mt-10 mb-16 bg-white">
+    <section id={section.name} className="py-10 mt-10 mb-8 bg-white">
       <div className="w-full max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
         <div className="text-center mb-16">
           <h2 className="max-w-5xl mx-auto text-center tracking-tight font-medium text-black dark:text-white text-3xl md:text-5xl md:leading-tight mb-2 sm:mb-6">

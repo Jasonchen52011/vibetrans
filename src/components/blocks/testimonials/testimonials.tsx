@@ -28,38 +28,45 @@ export default function TestimonialsSection({
   const testimonials: Testimonial[] = [];
   for (let i = 1; i <= 12; i++) {
     const itemKey = `item-${i}`;
-    const nameKey = `items.${itemKey}.name` as any;
-    const roleKey = `items.${itemKey}.role` as any;
-    const quoteKey = `items.${itemKey}.quote` as any;
 
-    // Check if all translation keys exist first
-    // @ts-ignore - Dynamic key checking
-    if (!t.has(nameKey) || !t.has(roleKey) || !t.has(quoteKey)) {
+    try {
+      // First check if the key exists by trying to get name with a default value
+      // @ts-ignore - Dynamic translation keys
+      const nameCheck = t(`items.${itemKey}.name`, { default: '' });
+
+      // If the translation doesn't exist, next-intl returns empty string
+      if (
+        !nameCheck ||
+        nameCheck === '' ||
+        nameCheck.includes(`items.${itemKey}`)
+      ) {
+        break;
+      }
+
+      // Now safely get all values
+      // @ts-ignore - Dynamic translation keys
+      const name = nameCheck;
+      // @ts-ignore - Dynamic translation keys
+      const role = t(`items.${itemKey}.role`);
+      // @ts-ignore - Dynamic translation keys
+      const quote = t(`items.${itemKey}.content`);
+
+      testimonials.push({
+        name,
+        role,
+        quote,
+        src: `https://i.pravatar.cc/150?img=${i}`,
+        rating: i % 2 === 0 ? 4.8 : 5.0,
+      });
+    } catch (error) {
+      // If translation doesn't exist, stop looking for more
       break;
     }
-
-    // @ts-ignore - Dynamic translation keys
-    const name = t(nameKey);
-    // @ts-ignore - Dynamic translation keys
-    const role = t(roleKey);
-    // @ts-ignore - Dynamic translation keys
-    const quote = t(quoteKey);
-
-    testimonials.push({
-      name,
-      role,
-      quote,
-      src: `https://i.pravatar.cc/150?img=${i}`,
-      rating: i % 2 === 0 ? 4.8 : 5.0,
-    });
   }
 
-  // Ensure we have at least 6 testimonials for proper display
-  if (testimonials.length < 6) {
-    console.warn(
-      `Testimonials section has less than 6 items (${testimonials.length}). Some display issues may occur.`
-    );
-  }
+  // Note: MISSING_MESSAGE errors in development console are expected behavior
+  // when the loop checks for items beyond what's available in translations.
+  // This is harmless and allows flexible content without manual item counts.
 
   // Dynamically split testimonials into 3 columns
   const itemsPerColumn = Math.ceil(testimonials.length / 3);
@@ -68,7 +75,7 @@ export default function TestimonialsSection({
   const column3 = testimonials.slice(itemsPerColumn * 2);
 
   return (
-    <section id="testimonials" className="relative z-20 py-10 md:py-40">
+    <section id="testimonials" className="relative z-20 py-10 md:py-20">
       <div className="mx-auto max-w-7xl px-4">
         {/* @ts-ignore - Dynamic namespace support */}
         <HeaderSection subtitle={t('subtitle')} subtitleAs="h2" />
@@ -155,11 +162,6 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
             {rating.toFixed(1)}
           </span>
         </div>
-
-        {/* 标题带双引号 */}
-        <h3 className="text-xl font-semibold text-foreground mb-3">
-          &quot;{testimonial.name}&quot;
-        </h3>
 
         {/* 评论内容 */}
         <p className="text-base text-muted-foreground mb-4">

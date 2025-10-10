@@ -1,8 +1,8 @@
 #!/usr/bin/env node
-import sharp from 'sharp';
-import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
 import { existsSync, readFileSync } from 'fs';
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
+import sharp from 'sharp';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -29,7 +29,7 @@ async function convert() {
     await sharp(inputPath)
       .resize(targetWidth, null, {
         fit: 'inside',
-        withoutEnlargement: true
+        withoutEnlargement: true,
       })
       .webp({ quality: 75, effort: 6 })
       .toFile(outputPath);
@@ -45,7 +45,7 @@ async function convert() {
       await sharp(inputPath)
         .resize(targetWidth, null, {
           fit: 'inside',
-          withoutEnlargement: true
+          withoutEnlargement: true,
         })
         .webp({ quality: 65, effort: 6 })
         .toFile(outputPath);

@@ -8,7 +8,6 @@ import StatsSection from '@/components/blocks/stats/stats';
 import TestimonialsSection from '@/components/blocks/testimonials/testimonials';
 import UniqueSection from '@/components/blocks/unique';
 import WhatIsSection from '@/components/blocks/whatis';
-import CrispChat from '@/components/layout/crisp-chat';
 import { constructMetadata } from '@/lib/metadata';
 import { getUrlWithLocale } from '@/lib/urls/urls';
 import type { Metadata } from 'next';
@@ -284,8 +283,6 @@ export default async function HomePage(props: HomePageProps) {
         <TestimonialsSection />
 
         <CallToActionSection />
-
-        <CrispChat />
       </div>
     </>
   );

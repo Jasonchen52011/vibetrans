@@ -1,5 +1,6 @@
 'use client';
 
+import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
 import mammoth from 'mammoth';
 import { useState } from 'react';
 
@@ -74,7 +75,9 @@ export default function GenZTranslatorTool({
         }
         throw new Error('Failed to extract text from Word document');
       } catch (error) {
-        throw new Error('Failed to read .docx file. Please ensure it is a valid Word document.');
+        throw new Error(
+          'Failed to read .docx file. Please ensure it is a valid Word document.'
+        );
       }
     }
 
@@ -176,19 +179,7 @@ export default function GenZTranslatorTool({
   return (
     <div className="container max-w-5xl mx-auto px-4 mb-10">
       <main className="w-full bg-white dark:bg-zinc-800 shadow-xl border border-gray-100 dark:border-zinc-700 rounded-lg p-4 md:p-8">
-        {/* Mode Toggle */}
-        <div className="flex justify-center mb-6">
-          <button
-            onClick={toggleMode}
-            className="px-6 py-2 bg-primary hover:bg-primary-light text-white font-semibold rounded-lg shadow-md transition-colors"
-          >
-            {mode === 'toGenZ'
-              ? '🔄 Switch to Gen Z → Standard'
-              : '🔄 Switch to Standard → Gen Z'}
-          </button>
-        </div>
-
-        <div className="flex flex-col md:flex-row gap-4 md:gap-8">
+        <div className="flex flex-col md:flex-row gap-2 md:gap-3">
           {/* Input Area */}
           <div className="flex-1">
             <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-3">
@@ -284,6 +275,34 @@ export default function GenZTranslatorTool({
             </div>
           </div>
 
+          {/* Swap Button - in the middle */}
+          <div className="flex md:flex-col items-center justify-center md:justify-start md:pt-32">
+            <button
+              onClick={toggleMode}
+              className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors rotate-0 md:rotate-0"
+              title={
+                mode === 'toGenZ'
+                  ? 'Switch to Gen Z → Standard'
+                  : 'Switch to Standard → Gen Z'
+              }
+              aria-label="Toggle translation mode"
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"
+                />
+              </svg>
+            </button>
+          </div>
+
           {/* Output Area */}
           <div className="flex-1">
             <div className="flex items-center justify-between mb-3">
@@ -292,9 +311,10 @@ export default function GenZTranslatorTool({
                   ? pageData.tool.genZLabel
                   : pageData.tool.outputLabel}
               </h2>
-              {/* Copy and Download buttons */}
+              {/* TTS and action buttons */}
               {translatedText && (
                 <div className="flex gap-2">
+                  <TextToSpeechButton text={translatedText} locale={locale} />
                   <button
                     onClick={handleCopy}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"

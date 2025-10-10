@@ -55,9 +55,10 @@ async function hmacSha256Hex(
 
 export interface VolcanoImageOptions {
   prompt: string;
-  imageUrl: string; // Base64 data URL or pure base64
+  imageUrl?: string; // Optional for text-to-image mode
   size?: 'adaptive' | '1K' | '2K' | '4K';
   watermark?: boolean;
+  mode?: 'text' | 'image'; // Generation mode
 }
 
 export interface VolcanoImageResponse {
@@ -153,48 +154,81 @@ async function getVolcAuthHeader(
 export async function generateImage(
   options: VolcanoImageOptions
 ): Promise<VolcanoImageResponse> {
-  const reqKey = process.env.VOLC_I2I_REQ_KEY || 'jimeng_i2i_v30';
+  const mode = options.mode || 'image';
+
+  // For text-to-image, use a different model (e.g., jimeng_v30 or similar)
+  // For image-to-image, use jimeng_i2i_v30
+  const reqKey =
+    mode === 'text'
+      ? process.env.VOLC_T2I_REQ_KEY || 'general_v20'
+      : process.env.VOLC_I2I_REQ_KEY || 'jimeng_i2i_v30';
+
   const apiUrl =
     process.env.VOLC_I2I_API_URL || 'https://visual.volcengineapi.com';
 
   console.log('🎨 Volcano Engine image generation request:', {
     reqKey,
+    mode,
     prompt: options.prompt,
     hasImageUrl: !!options.imageUrl,
   });
 
-  // Extract pure base64 data (remove data URL prefix if present)
-  let base64Data: string;
-  if (options.imageUrl.startsWith('data:')) {
-    const parts = options.imageUrl.split(',');
-    if (parts.length === 2) {
-      base64Data = parts[1]; // Pure base64 without prefix
-    } else {
-      throw new Error('Invalid data URL format');
-    }
-  } else {
-    base64Data = options.imageUrl;
+  // For image-to-image mode, imageUrl is required
+  if (mode === 'image' && !options.imageUrl) {
+    throw new Error('Image URL is required for image-to-image mode');
   }
 
-  console.log('📦 Base64 data prepared:', {
-    originalLength: options.imageUrl.length,
-    processedLength: base64Data.length,
-    isValidBase64: /^[A-Za-z0-9+/]*={0,2}$/.test(base64Data.substring(0, 100)),
-  });
+  let requestBody: any;
 
-  // Build request body (use snake_case as per Jimeng API spec)
-  const requestBody = {
-    req_key: reqKey,
-    prompt: options.prompt,
-    binary_data_base64: [base64Data], // Pure base64, snake_case format
-    seed: -1,
-    scale: 0.9,
-    width: 1328,
-    height: 1328,
-    logo_info: {
-      add_logo: options.watermark !== undefined ? options.watermark : false,
-    },
-  };
+  if (mode === 'text') {
+    // Text-to-Image mode
+    requestBody = {
+      req_key: reqKey,
+      prompt: options.prompt,
+      seed: -1,
+      width: 1328,
+      height: 1328,
+      logo_info: {
+        add_logo: options.watermark !== undefined ? options.watermark : false,
+      },
+    };
+  } else {
+    // Image-to-Image mode
+    // Extract pure base64 data (remove data URL prefix if present)
+    let base64Data: string;
+    if (options.imageUrl!.startsWith('data:')) {
+      const parts = options.imageUrl!.split(',');
+      if (parts.length === 2) {
+        base64Data = parts[1]; // Pure base64 without prefix
+      } else {
+        throw new Error('Invalid data URL format');
+      }
+    } else {
+      base64Data = options.imageUrl!;
+    }
+
+    console.log('📦 Base64 data prepared:', {
+      originalLength: options.imageUrl!.length,
+      processedLength: base64Data.length,
+      isValidBase64: /^[A-Za-z0-9+/]*={0,2}$/.test(
+        base64Data.substring(0, 100)
+      ),
+    });
+
+    // Build request body for i2i (use snake_case as per Jimeng API spec)
+    requestBody = {
+      req_key: reqKey,
+      prompt: options.prompt,
+      binary_data_base64: [base64Data], // Pure base64, snake_case format
+      seed: -1,
+      scale: 0.9,
+      width: 1328,
+      height: 1328,
+      logo_info: {
+        add_logo: options.watermark !== undefined ? options.watermark : false,
+      },
+    };
+  }
 
   const path = '/?Action=CVSync2AsyncSubmitTask&Version=2022-08-31';
   const authHeaders = await getVolcAuthHeader('POST', path, requestBody);

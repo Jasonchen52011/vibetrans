@@ -35,8 +35,48 @@ export function useFooterLinks(): NestedMenuItem[] {
           external: false,
         },
         {
+          title: 'Gen Alpha Translator',
+          href: Routes.GenAlphaTranslator,
+          external: false,
+        },
+        {
           title: 'Dumb It Down AI',
           href: Routes.DumbItDownAI,
+          external: false,
+        },
+        {
+          title: 'Bad Translator',
+          href: Routes.BadTranslator,
+          external: false,
+        },
+        {
+          title: 'Ancient Greek Translator',
+          href: Routes.AncientGreekTranslator,
+          external: false,
+        },
+        {
+          title: 'Al Bhed Translator',
+          href: Routes.AlBhedTranslator,
+          external: false,
+        },
+        {
+          title: 'Gibberish Translator',
+          href: Routes.GibberishTranslator,
+          external: false,
+        },
+        {
+          title: 'Alien Text Generator',
+          href: Routes.AlienTextGenerator,
+          external: false,
+        },
+        {
+          title: 'Esperanto Translator',
+          href: Routes.EsperantoTranslator,
+          external: false,
+        },
+        {
+          title: 'Cuneiform Translator',
+          href: Routes.CuneiformTranslator,
           external: false,
         },
         // {

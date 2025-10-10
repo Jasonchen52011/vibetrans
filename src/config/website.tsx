@@ -33,7 +33,7 @@ export const websiteConfig: WebsiteConfig = {
   },
   features: {
     enableUpgradeCard: true,
-    enableUpdateAvatar: false,  // 禁用头像上传功能
+    enableUpdateAvatar: false, // 禁用头像上传功能
     enableAffonsoAffiliate: false,
     enablePromotekitAffiliate: false,
     enableDatafastRevenueTrack: false,
@@ -84,7 +84,7 @@ export const websiteConfig: WebsiteConfig = {
     autoSubscribeAfterSignUp: true,
   },
   storage: {
-    enable: false,  // 禁用存储功能
+    enable: false, // 禁用存储功能
     provider: 's3',
   },
   payment: {

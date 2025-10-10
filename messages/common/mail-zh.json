@@ -1,0 +1,28 @@
+{
+  "common": {
+    "team": "{name} 团队",
+    "copyright": "©️ {year} 版权所有。"
+  },
+  "verifyEmail": {
+    "title": "您好，{name}。",
+    "body": "请点击下方链接验证您的邮箱地址。",
+    "confirmEmail": "确认邮箱",
+    "subject": "验证您的邮箱"
+  },
+  "forgotPassword": {
+    "title": "您好，{name}。",
+    "body": "请点击下方链接重置您的密码。",
+    "resetPassword": "重置密码",
+    "subject": "重置您的密码"
+  },
+  "subscribeNewsletter": {
+    "body": "感谢您订阅新闻通讯。我们会向您发送最新消息和更新。",
+    "subject": "感谢订阅"
+  },
+  "contactMessage": {
+    "name": "姓名：{name}",
+    "email": "邮箱：{email}",
+    "message": "消息：{message}",
+    "subject": "来自网站的联系消息"
+  }
+}

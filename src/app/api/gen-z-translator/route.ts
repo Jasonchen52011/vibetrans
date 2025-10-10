@@ -1,148 +1,72 @@
+import { google } from '@ai-sdk/google';
+import { generateText } from 'ai';
 import { type NextRequest, NextResponse } from 'next/server';
 
 export const runtime = 'edge';
 
-// Gen Z Slang Translation Dictionary
-const genZSlangMap: Record<string, string> = {
-  // Common phrases
-  'for real': 'no cap',
-  'no lie': 'no cap',
-  'really good': 'bussin',
-  excellent: 'bussin',
-  amazing: 'fire',
-  awesome: 'fire',
-  cool: 'drip',
-  stylish: 'drip',
-  mediocre: 'mid',
-  average: 'mid',
-  boring: 'mid',
-  understood: 'bet',
-  okay: 'bet',
-  agree: 'bet',
-  suspicious: 'sus',
-  questionable: 'sus',
-  impressive: 'slaps',
-  'great music': 'slaps',
-  very: 'hella',
-  extremely: 'hella',
-  'dying of laughter': 'dead',
-  hilarious: 'dead',
-  embarrassing: 'cringe',
-  awkward: 'cringe',
-  jealous: 'salty',
-  bitter: 'salty',
-  bragging: 'flexing',
-  'showing off': 'flexing',
-  gossip: 'tea',
-  drama: 'tea',
-  'i understand': 'say less',
-  'got it': 'say less',
-  relax: 'chill',
-  'calm down': 'chill',
-  'romantic partner': 'bae',
-  boyfriend: 'bae',
-  girlfriend: 'bae',
-  'cool person': 'vibes',
-  'good energy': 'vibes',
-  'throw away': 'yeet',
-  discard: 'yeet',
-  'biggest fan': 'stan',
-  'obsessed with': 'stan',
-  ignore: 'ghost',
-  disappear: 'ghost',
-  'very happy': 'living my best life',
-  thriving: 'living my best life',
-  'old-fashioned': 'boomer',
-  outdated: 'boomer',
-  fashionable: 'on fleek',
-  perfect: 'on fleek',
-  'i am serious': 'fax no printer',
-  truth: 'fax no printer',
-  absolutely: 'periodt',
-  'end of discussion': 'periodt',
-  'impressive skill': 'hits different',
-  'unique quality': 'hits different',
-  'leave quickly': 'dip',
-  exit: 'dip',
-  'main account': 'main',
-  'official account': 'main',
-  excited: 'hyped',
-  enthusiastic: 'hyped',
-  'feeling good': 'vibing',
-  relaxing: 'vibing',
-  'absolutely not': 'nah fam',
-  'no way': 'nah fam',
-};
+const TO_GENZ_PROMPT = `You are "Gen Z Translator", a tool for translating standard English into authentic Gen Z slang.
 
-// Reverse mapping for Gen Z to Standard English
-const reverseSlangMap: Record<string, string> = {
-  'no cap': 'for real',
-  bussin: 'really good',
-  fire: 'amazing',
-  drip: 'stylish',
-  mid: 'mediocre',
-  bet: 'understood',
-  sus: 'suspicious',
-  slaps: 'impressive',
-  hella: 'very',
-  dead: 'hilarious',
-  cringe: 'embarrassing',
-  salty: 'jealous',
-  flexing: 'showing off',
-  tea: 'gossip',
-  'say less': 'i understand',
-  chill: 'relax',
-  bae: 'romantic partner',
-  vibes: 'good energy',
-  yeet: 'throw away',
-  stan: 'biggest fan',
-  ghost: 'ignore',
-  'living my best life': 'very happy',
-  boomer: 'old-fashioned',
-  'on fleek': 'perfect',
-  'fax no printer': 'i am serious',
-  periodt: 'absolutely',
-  'hits different': 'unique quality',
-  dip: 'leave quickly',
-  main: 'main account',
-  hyped: 'excited',
-  vibing: 'feeling good',
-  'nah fam': 'absolutely not',
-};
+TASK:
+- Translate the INPUT text into Gen Z slang while keeping the meaning intact
+- Use popular Gen Z terms like: no cap, bussin, fire, drip, mid, bet, sus, slaps, hella, dead, cringe, salty, flexing, tea, say less, bae, vibes, yeet, stan, ghost, periodt, etc.
+- Keep the tone casual and Gen Z-authentic
+- Preserve the structure and formatting of the original text
+- Make it sound natural, like a real Gen Z person is speaking
 
-function translateToGenZ(text: string): string {
-  let translated = text.toLowerCase();
+RULES:
+- Do NOT add extra explanations or commentary
+- Do NOT change the core meaning or facts
+- Keep the same paragraph structure and formatting
+- Make translations feel natural and contextual
+- Use slang appropriately based on context
 
-  // Sort phrases by length (longest first) to avoid partial matches
-  const sortedPhrases = Object.keys(genZSlangMap).sort(
-    (a, b) => b.length - a.length
-  );
+OUTPUT:
+- Return ONLY the translated text in Gen Z slang, nothing else`;
 
-  for (const phrase of sortedPhrases) {
-    const slang = genZSlangMap[phrase];
-    // Use word boundaries to avoid partial word replacements
-    const regex = new RegExp(`\\b${phrase}\\b`, 'gi');
-    translated = translated.replace(regex, slang);
+const TO_STANDARD_PROMPT = `You are "Gen Z Translator", a tool for translating Gen Z slang into standard English.
+
+TASK:
+- Translate Gen Z slang in the INPUT text into clear, standard English
+- Replace slang terms like: no cap → for real, bussin → really good, fire → amazing, drip → stylish, mid → mediocre, etc.
+- Keep the tone neutral and professional
+- Preserve the structure and formatting of the original text
+
+RULES:
+- Do NOT add extra explanations or commentary
+- Do NOT change the core meaning or facts
+- Keep the same paragraph structure and formatting
+- Translate all Gen Z slang to standard equivalents
+
+OUTPUT:
+- Return ONLY the translated text in standard English, nothing else`;
+
+async function translateWithAI(
+  text: string,
+  mode: 'toGenZ' | 'toStandard'
+): Promise<string> {
+  try {
+    const prompt = mode === 'toGenZ' ? TO_GENZ_PROMPT : TO_STANDARD_PROMPT;
+
+    const { text: translatedText } = await generateText({
+      model: google('gemini-2.0-flash-exp'),
+      messages: [
+        {
+          role: 'system',
+          content: prompt,
+        },
+        {
+          role: 'user',
+          content: text,
+        },
+      ],
+      temperature: 0.7, // Higher temperature for more creative slang translations
+    });
+
+    return translatedText;
+  } catch (error) {
+    console.error('Error translating text:', error);
+    throw new Error('Failed to translate text');
   }
-
-  return translated;
-}
-
-function translateToStandard(text: string): string {
-  let translated = text.toLowerCase();
-
-  // Sort phrases by length (longest first)
-  const sortedPhrases = Object.keys(reverseSlangMap).sort(
-    (a, b) => b.length - a.length
-  );
-
-  for (const phrase of sortedPhrases) {
-    const standard = reverseSlangMap[phrase];
-    const regex = new RegExp(`\\b${phrase}\\b`, 'gi');
-    translated = translated.replace(regex, standard);
-  }
-
-  return translated;
 }
 
 export async function POST(request: NextRequest) {
@@ -167,9 +91,15 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Perform translation based on mode
-    const translatedText =
-      mode === 'toGenZ' ? translateToGenZ(text) : translateToStandard(text);
+    if (text.length > 5000) {
+      return NextResponse.json(
+        { error: 'Text is too long. Maximum 5000 characters allowed.' },
+        { status: 400 }
+      );
+    }
+
+    // Perform translation using AI
+    const translatedText = await translateWithAI(text, mode);
 
     return NextResponse.json({
       original: text,
@@ -181,7 +111,7 @@ export async function POST(request: NextRequest) {
     console.error('Error processing Gen Z translation:', error);
     return NextResponse.json(
       {
-        error: 'Failed to process translation',
+        error: error.message || 'Failed to process translation',
       },
       { status: 500 }
     );
@@ -192,9 +122,10 @@ export async function GET() {
   return NextResponse.json(
     {
       message: 'Gen Z Translator API - Use POST method to translate text',
-      version: '1.0',
+      version: '2.0',
       supported_modes: ['toGenZ', 'toStandard'],
-      slang_count: Object.keys(genZSlangMap).length,
+      maxLength: 5000,
+      powered_by: 'Google Gemini 2.0 Flash',
     },
     { status: 200 }
   );

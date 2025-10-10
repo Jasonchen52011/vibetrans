@@ -43,9 +43,7 @@ interface DumbItDownPageProps {
   params: Promise<{ locale: Locale }>;
 }
 
-export default async function DumbItDownPage(
-  props: DumbItDownPageProps
-) {
+export default async function DumbItDownPage(props: DumbItDownPageProps) {
   const params = await props.params;
   const { locale } = params;
   // @ts-ignore - Translation keys are dynamic
@@ -130,16 +128,16 @@ export default async function DumbItDownPage(
         description: (t as any)('funfacts.items.0.description'),
         image: {
           src: '/images/docs/simplify-legal-documents.webp',
-          alt: 'Simplify Legal Documents'
-        }
+          alt: 'Simplify Legal Documents',
+        },
       },
       {
         title: (t as any)('funfacts.items.1.title'),
         description: (t as any)('funfacts.items.1.description'),
         image: {
           src: '/images/docs/medical-jargon-simplified.webp',
-          alt: 'Medical Jargon Simplified'
-        }
+          alt: 'Medical Jargon Simplified',
+        },
       },
     ],
   };
@@ -180,7 +178,7 @@ export default async function DumbItDownPage(
     features: [],
     image: {
       src: '/images/docs/what-is-dumb-it-down.webp',
-      alt: 'What is Dumb It Down AI - Simplifying Complex Text'
+      alt: 'What is Dumb It Down AI - Simplifying Complex Text',
     },
     cta: {
       text: (t as any)('ctaButton'),
@@ -194,7 +192,7 @@ export default async function DumbItDownPage(
     description: (t as any)('howto.description'),
     image: {
       src: '/images/docs/dumb-it-down-how.webp',
-      alt: 'How to use Dumb It Down AI step by step guide'
+      alt: 'How to use Dumb It Down AI step by step guide',
     },
     items: [
       {
@@ -230,32 +228,32 @@ export default async function DumbItDownPage(
         description: (t as any)('userInterest.items.0.description'),
         image: {
           src: '/images/docs/academic-simplification.webp',
-          alt: 'Academic Text Simplification'
-        }
+          alt: 'Academic Text Simplification',
+        },
       },
       {
         title: (t as any)('userInterest.items.1.title'),
         description: (t as any)('userInterest.items.1.description'),
         image: {
           src: '/images/docs/business-communication-simplified.webp',
-          alt: 'Business Communication Simplified'
-        }
+          alt: 'Business Communication Simplified',
+        },
       },
       {
         title: (t as any)('userInterest.items.2.title'),
         description: (t as any)('userInterest.items.2.description'),
         image: {
           src: '/images/docs/multilingual-simplification.webp',
-          alt: 'Multilingual Text Simplification'
-        }
+          alt: 'Multilingual Text Simplification',
+        },
       },
       {
         title: (t as any)('userInterest.items.3.title'),
         description: (t as any)('userInterest.items.3.description'),
         image: {
           src: '/images/docs/accessibility-for-all.webp',
-          alt: 'Text Accessibility for Everyone'
-        }
+          alt: 'Text Accessibility for Everyone',
+        },
       },
     ],
   };
@@ -284,35 +282,35 @@ export default async function DumbItDownPage(
               <div className="flex -space-x-3">
                 <div className="relative h-12 w-12 rounded-full border-2 border-white dark:border-zinc-800 overflow-hidden">
                   <img
-                    src="/images/avatars/male1.webp"
+                    src="/images/avatars/female2.webp"
                     alt="User 1"
                     className="h-full w-full object-cover"
                   />
                 </div>
                 <div className="relative h-12 w-12 rounded-full border-2 border-white dark:border-zinc-800 overflow-hidden">
                   <img
-                    src="/images/avatars/female1.webp"
+                    src="/images/avatars/male3.webp"
                     alt="User 2"
                     className="h-full w-full object-cover"
                   />
                 </div>
                 <div className="relative h-12 w-12 rounded-full border-2 border-white dark:border-zinc-800 overflow-hidden">
                   <img
-                    src="/images/avatars/male2.webp"
+                    src="/images/avatars/female1.webp"
                     alt="User 3"
                     className="h-full w-full object-cover"
                   />
                 </div>
                 <div className="relative h-12 w-12 rounded-full border-2 border-white dark:border-zinc-800 overflow-hidden">
                   <img
-                    src="/images/avatars/female3.webp"
+                    src="/images/avatars/male4.webp"
                     alt="User 4"
                     className="h-full w-full object-cover"
                   />
                 </div>
                 <div className="relative h-12 w-12 rounded-full border-2 border-white dark:border-zinc-800 overflow-hidden">
                   <img
-                    src="/images/avatars/male4.webp"
+                    src="/images/avatars/female3.webp"
                     alt="User 5"
                     className="h-full w-full object-cover"
                   />
@@ -334,7 +332,7 @@ export default async function DumbItDownPage(
                   ))}
                 </div>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
-                  from 12,000+ happy users
+                  from 10,500+ happy users
                 </p>
               </div>
             </div>

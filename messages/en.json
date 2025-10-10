@@ -356,8 +356,17 @@
           "genZTranslator": {
             "title": "Gen Z Translator"
           },
+          "genAlphaTranslator": {
+            "title": "Gen Alpha Translator"
+          },
           "dumbItDown": {
             "title": "Dumb It Down AI"
+          },
+          "badTranslator": {
+            "title": "Bad Translator"
+          },
+          "ancientGreekTranslator": {
+            "title": "Ancient Greek Translator"
           }
         }
       },
@@ -905,7 +914,7 @@
       "description": "Choose the plan that works best for you"
     },
     "faqs": {
-      "title": "FAQ",
+      "title": "Frequently Asked Questions",
       "subtitle": "Frequently Asked Questions",
       "items": {
         "item-1": {
@@ -951,78 +960,78 @@
           "role": "Marketing Manager",
           "image": "https://randomuser.me/api/portraits/men/1.jpg",
           "title": "Perfect for Business",
-          "quote": "I recently used VibeTrans to translate a customer service script for my international clients. It was incredibly accurate and helped us communicate smoothly. Plus, it's super fast—just what I need for daily business!"
+          "content": "I recently used VibeTrans to translate a customer service script for my international clients. It was incredibly accurate and helped us communicate smoothly. Plus, it's super fast—just what I need for daily business!"
         },
         "item-2": {
           "name": "Emily Brown",
           "role": "Travel Blogger",
           "image": "https://randomuser.me/api/portraits/women/6.jpg",
           "title": "Made My Travels Easier",
-          "quote": "I travel a lot and language barriers can be tough. VibeTrans made my trips easier. I could quickly translate restaurant menus and ask for directions in different countries—made my travels so much smoother!"
+          "content": "I travel a lot and language barriers can be tough. VibeTrans made my trips easier. I could quickly translate restaurant menus and ask for directions in different countries—made my travels so much smoother!"
         },
         "item-3": {
           "name": "Sarah Williams",
           "role": "Language Student",
           "image": "https://randomuser.me/api/portraits/women/7.jpg",
           "title": "Great Learning Tool",
-          "quote": "As a language learner, I use VibeTrans to practice new words and phrases. It's not just a translator, but a learning tool. I get context for each word, which really helps me understand the language better."
+          "content": "As a language learner, I use VibeTrans to practice new words and phrases. It's not just a translator, but a learning tool. I get context for each word, which really helps me understand the language better."
         },
         "item-4": {
           "name": "Tim Johnson",
           "role": "Small Business Owner",
           "image": "https://randomuser.me/api/portraits/men/8.jpg",
           "title": "Saves Time",
-          "quote": "We're expanding into Spanish-speaking markets, and VibeTrans has been a lifesaver for translating marketing material and customer emails. It saves us time and helps ensure accurate translations."
+          "content": "We're expanding into Spanish-speaking markets, and VibeTrans has been a lifesaver for translating marketing material and customer emails. It saves us time and helps ensure accurate translations."
         },
         "item-5": {
           "name": "Olivia Martinez",
           "role": "Educator",
           "image": "https://randomuser.me/api/portraits/women/4.jpg",
           "title": "Perfect for Teaching",
-          "quote": "I use VibeTrans to help my students with language practice. It's a great tool to show how translations can change depending on context, and it's perfect for learning new vocabulary. It's an all-around great tool!"
+          "content": "I use VibeTrans to help my students with language practice. It's a great tool to show how translations can change depending on context, and it's perfect for learning new vocabulary. It's an all-around great tool!"
         },
         "item-6": {
           "name": "Daniel Lee",
           "role": "Web Developer",
           "image": "https://randomuser.me/api/portraits/men/2.jpg",
           "title": "Simple & Accurate",
-          "quote": "I was building a multilingual website and needed quick translations for various pages. VibeTrans did the job flawlessly. It was simple to use and gave me accurate results every time!"
+          "content": "I was building a multilingual website and needed quick translations for various pages. VibeTrans did the job flawlessly. It was simple to use and gave me accurate results every time!"
         },
         "item-7": {
           "name": "Zeki",
           "role": "Founder of ChatExtend",
           "image": "https://randomuser.me/api/portraits/men/5.jpg",
-          "quote": "VibeTrans is the perfect translation tool - fast, accurate, and incredibly easy to use. It has become essential for our international team."
+          "content": "VibeTrans is the perfect translation tool - fast, accurate, and incredibly easy to use. It has become essential for our international team."
         },
         "item-8": {
           "name": "Joseph Kitheka",
           "role": "Fullstack Developer",
           "image": "https://randomuser.me/api/portraits/men/9.jpg",
-          "quote": "VibeTrans has transformed how I work with international clients. The translations are contextually accurate and save me hours every week."
+          "content": "VibeTrans has transformed how I work with international clients. The translations are contextually accurate and save me hours every week."
         },
         "item-9": {
           "name": "Khatab Wedaa",
           "role": "MerakiUI Creator",
           "image": "https://randomuser.me/api/portraits/men/10.jpg",
-          "quote": "VibeTrans is elegant, clean, and delivers fast translations. It's very helpful for our multilingual documentation."
+          "content": "VibeTrans is elegant, clean, and delivers fast translations. It's very helpful for our multilingual documentation."
         },
         "item-10": {
           "name": "Rodrigo Aguilar",
           "role": "TailwindAwesome Creator",
           "image": "https://randomuser.me/api/portraits/men/11.jpg",
-          "quote": "I love VibeTrans ❤️. The translations are accurate, the interface is simple, and it makes communicating across languages effortless."
+          "content": "I love VibeTrans ❤️. The translations are accurate, the interface is simple, and it makes communicating across languages effortless."
         },
         "item-11": {
           "name": "Eric Ampire",
           "role": "@GoogleDevExpert for Android",
           "image": "https://randomuser.me/api/portraits/men/12.jpg",
-          "quote": "VibeTrans is the perfect solution for anyone who needs reliable translations without complicated setup or learning curve."
+          "content": "VibeTrans is the perfect solution for anyone who needs reliable translations without complicated setup or learning curve."
         },
         "item-12": {
           "name": "Roland Tubonge",
           "role": "Software Engineer",
           "image": "https://randomuser.me/api/portraits/men/13.jpg",
-          "quote": "VibeTrans breaks down language barriers effortlessly. Even with no translation experience, you can get professional results!"
+          "content": "VibeTrans breaks down language barriers effortlessly. Even with no translation experience, you can get professional results!"
         }
       }
     },
@@ -1205,5 +1214,196 @@
   "AIAudioPage": {
     "title": "AI Audio",
     "description": "Transform audio with VibeTrans AI-powered voice technology"
+  },
+  "BadTranslatorPage": {
+    "title": "Bad Translator: Enjoy Fun and Quirky Mistranslations",
+    "description": "Get ready for laughs with Bad Translator! Create bizarre, humorous translations in multiple languages for fun, social media, and marketing purposes.",
+    "hero": {
+      "title": "Bad Translator: Transform Text into Fun and Absurd Results",
+      "description": "Bad Translator lets you create hilarious translations with just a few clicks. Use it for fun, memes, or creative projects with VibeTrans."
+    },
+    "tool": {
+      "inputLabel": "Original Text",
+      "outputLabel": "Bad Translation",
+      "inputPlaceholder": "Enter your text here...",
+      "outputPlaceholder": "Your hilariously mistranslated text will appear here...",
+      "translateButton": "Translate Badly",
+      "uploadButton": "Upload File",
+      "uploadHint": "Support .txt and .docx",
+      "downloadButton": "Download",
+      "resetButton": "Reset",
+      "loading": "Translating...",
+      "error": "Translation failed. Please try again.",
+      "noInput": "Please enter some text to translate",
+      "iterationsLabel": "Translation Rounds",
+      "styleLabel": "Translation Style",
+      "styles": {
+        "humor": "Humor (5-7 rounds)",
+        "absurd": "Absurd (10-15 rounds)",
+        "funny": "Funny (8-12 rounds)",
+        "chaos": "Chaos (15-20 rounds)"
+      }
+    },
+    "whatIs": {
+      "title": "What is Bad Translator?",
+      "description": "Bad Translator is a fun online tool that transforms your text into hilarious, absurd translations. Simply choose your language pair and start translating. Perfect for humor, social media, and creative content with VibeTrans."
+    },
+    "examples": {
+      "title": "Funny Translation Examples",
+      "description": "Check out these hilarious examples of how Bad Translator turns ordinary sentences into laugh-worthy translations. Try it out and see what absurd results you can get!"
+    },
+    "howto": {
+      "title": "How to Use Bad Translator",
+      "description": "Follow these simple steps to turn your text into funny translations with Bad Translator from VibeTrans.",
+      "steps": [
+        {
+          "title": "Enter Your Text",
+          "description": "Paste or type the text you want to translate into the text box."
+        },
+        {
+          "title": "Select Language Pair",
+          "description": "Choose the languages you want to translate from and to."
+        },
+        {
+          "title": "Set Translation Count",
+          "description": "Choose how many translations you'd like to generate (5, 10, or more)."
+        },
+        {
+          "title": "Enjoy the Results",
+          "description": "Click \"Translate\" and enjoy the absurd, funny outcome."
+        }
+      ]
+    },
+    "highlights": {
+      "title": "Why Choose Bad Translator?",
+      "description": "",
+      "items": [
+        {
+          "title": "Easy & Free to Use",
+          "description": "Bad Translator is a free tool that's simple to use. Just input text and enjoy the results with VibeTrans."
+        },
+        {
+          "title": "Accurate in its Own Way",
+          "description": "While the translations are purposely funny, they're consistently unpredictable. Get the humor you need with each translation."
+        },
+        {
+          "title": "Secure and Private",
+          "description": "Your translations are private. We value your data security at VibeTrans—no worries about your text being stored."
+        },
+        {
+          "title": "Unlimited Fun",
+          "description": "There's no limit to the number of funny translations you can create. Keep experimenting with different languages and styles for endless amusement."
+        }
+      ]
+    },
+    "funFacts": {
+      "title": "Fun Translation Facts",
+      "items": [
+        {
+          "fact": "Did you know? In 2015, Google Translate mistakenly translated 'Russian Federation' to 'Mordor.' Now that's a translation fail worthy of a meme! I love how these mistakes create such a unique sense of humor."
+        },
+        {
+          "fact": "Ever heard the phrase 'beat around the bush'? It got hilariously translated to '击败灌木丛' (defeating the bush). Classic mistranslation moment. I think it's amazing how these errors make language so much fun!"
+        }
+      ]
+    },
+    "userInterests": {
+      "title": "Discover More",
+      "sections": [
+        {
+          "title": "How Accurate is Bad Translator?",
+          "content": "While the translations are intentionally humorous and sometimes absurd, you can expect some fun 'mistakes'! This tool isn't about accuracy—it's all about having a laugh! I personally find these translations a great way to spark creativity for memes or social posts."
+        },
+        {
+          "title": "Perfect for Social Media Content",
+          "content": "Bad Translator can be a goldmine for funny posts. Use it to generate quirky translations and share them on social media for instant reactions. I think it's a fantastic tool to create attention-grabbing, shareable content!"
+        },
+        {
+          "title": "Great for Advertisers",
+          "content": "If you're in advertising, you can use Bad Translator to create playful, out-of-the-box content that will entertain your audience. It's an ideal tool for brainstorming catchy slogans or taglines. I always have a blast testing different combinations!"
+        },
+        {
+          "title": "For Meme Creators and Influencers",
+          "content": "Bad Translator can help meme creators generate funny phrases that go viral. The bizarre translations are perfect for creating trending content. As a meme lover, I can't get enough of how easy it is to turn any sentence into something absurd!"
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "User Reviews",
+      "subtitle": "",
+      "items": [
+        {
+          "name": "John Miller",
+          "role": "Social Media Manager",
+          "content": "Bad Translator is perfect for creating funny posts. I used it for a campaign, and the results were hilarious! My followers loved the quirky translations. I'll definitely use it again for my future content.",
+          "rating": 5
+        },
+        {
+          "name": "Sarah Lee",
+          "role": "Content Writer",
+          "content": "I tried Bad Translator to create funny quotes for my blog. The results were so offbeat and amusing! It was a great way to engage my readers. Highly recommend it for anyone needing creative content!",
+          "rating": 5
+        },
+        {
+          "name": "Mark Smith",
+          "role": "Marketing Specialist",
+          "content": "I've used Bad Translator for a few ad ideas, and it never fails to make me laugh! The absurd translations sparked some great brainstorming sessions for our team. It's a fun tool for marketing professionals like me.",
+          "rating": 5
+        },
+        {
+          "name": "Rachel Davis",
+          "role": "Meme Creator",
+          "content": "Bad Translator is my go-to for meme content. The weird translations are perfect for making content that stands out. It's easy to use and delivers a laugh every time!",
+          "rating": 5
+        },
+        {
+          "name": "Jake Thompson",
+          "role": "Influencer",
+          "content": "I love how Bad Translator helps me create funny phrases for my Instagram. It's a blast to share these bizarre translations with my followers. Totally recommend it for anyone looking to add some humor to their social feed!",
+          "rating": 5
+        },
+        {
+          "name": "Emily Roberts",
+          "role": "Copywriter",
+          "content": "I've used Bad Translator to test out creative copy ideas. The results are absurd, and they've given me some awesome inspiration for my writing projects. Definitely a fun tool for any content creator!",
+          "rating": 5
+        }
+      ]
+    },
+    "faqs": {
+      "title": "Frequently Asked Questions",
+      "items": [
+        {
+          "question": "Is Bad Translator free to use?",
+          "answer": "Yes, Bad Translator is completely free! You can use it to create funny, absurd translations without any cost. Enjoy all the features without worrying about hidden fees."
+        },
+        {
+          "question": "How does Bad Translator work?",
+          "answer": "Bad Translator works by taking your text, translating it through multiple languages, and producing funny, sometimes absurd, translations. Simply input your text and choose your language pair to get started."
+        },
+        {
+          "question": "Is my data safe with Bad Translator?",
+          "answer": "Yes, your data is secure. We don't store any of your inputted text, and your translations are private. VibeTrans ensures your privacy while using Bad Translator."
+        },
+        {
+          "question": "How many languages does Bad Translator support?",
+          "answer": "Bad Translator supports a variety of languages, and you can experiment with different language combinations. The more languages you try, the more hilarious results you get!"
+        },
+        {
+          "question": "Can I use Bad Translator for business purposes?",
+          "answer": "Absolutely! Bad Translator can be used to generate fun content for marketing campaigns, social media posts, or even creative brainstorming sessions. It's perfect for adding humor to your business content."
+        },
+        {
+          "question": "Can I download my translations?",
+          "answer": "Yes, you can easily download the translations as a text file. Perfect for saving and sharing with friends, colleagues, or posting on social media!"
+        }
+      ]
+    },
+    "cta": {
+      "title": "Start Creating Hilarious Translations with Bad Translator",
+      "description": "Have fun and create absurd translations now with Bad Translator. It's quick, easy, and completely free with VibeTrans!",
+      "button": "Start Bad Translating"
+    },
+    "ctaButton": "Try Bad Translator"
   }
 }
