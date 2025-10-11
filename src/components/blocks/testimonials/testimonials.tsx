@@ -9,6 +9,7 @@ import { TestimonialColumnContainer } from './testimonial-column-container';
 type Testimonial = {
   name: string;
   role: string;
+  heading?: string;
   quote: string;
   src: string;
   rating?: number;
@@ -26,42 +27,77 @@ export default function TestimonialsSection({
 
   // Dynamically build testimonials array based on available items
   const testimonials: Testimonial[] = [];
-  for (let i = 1; i <= 12; i++) {
-    const itemKey = `item-${i}`;
 
-    try {
-      // First check if the key exists by trying to get name with a default value
-      // @ts-ignore - Dynamic translation keys
-      const nameCheck = t(`items.${itemKey}.name`, { default: '' });
+  // Only attempt to load testimonials if the namespace has items
+  let hasItems = false;
+  try {
+    // @ts-ignore
+    const testCheck = t.raw('items');
+    hasItems = testCheck && typeof testCheck === 'object';
+  } catch {
+    hasItems = false;
+  }
 
-      // If the translation doesn't exist, next-intl returns empty string
-      if (
-        !nameCheck ||
-        nameCheck === '' ||
-        nameCheck.includes(`items.${itemKey}`)
-      ) {
+  if (hasItems) {
+    for (let i = 1; i <= 6; i++) {
+      const itemKey = `item-${i}`;
+
+      try {
+        // First check if the key exists by trying to get name with a default value
+        // @ts-ignore - Dynamic translation keys
+        const nameCheck = t(`items.${itemKey}.name`, { default: '' });
+
+        // If the translation doesn't exist, next-intl returns empty string
+        if (
+          !nameCheck ||
+          nameCheck === '' ||
+          nameCheck.includes(`items.${itemKey}`)
+        ) {
+          break;
+        }
+
+        // Now safely get all values
+        // @ts-ignore - Dynamic translation keys
+        const name = nameCheck;
+        // @ts-ignore - Dynamic translation keys
+        const role = t(`items.${itemKey}.role`);
+        // @ts-ignore - Dynamic translation keys
+        const heading = t(`items.${itemKey}.heading`, { default: '' });
+        // @ts-ignore - Dynamic translation keys
+        const quote = t(`items.${itemKey}.content`);
+
+        // Use local avatar images to avoid duplicates
+        const avatarPool = [
+          '/images/avatars/male1.webp',
+          '/images/avatars/female1.webp',
+          '/images/avatars/male2.webp',
+          '/images/avatars/female2.webp',
+          '/images/avatars/male3.webp',
+          '/images/avatars/female3.webp',
+          '/images/avatars/male4.webp',
+          '/images/avatars/female4.webp',
+          '/images/avatars/male5.webp',
+        ];
+        const avatarIndex = (i - 1) % avatarPool.length;
+
+        testimonials.push({
+          name,
+          role,
+          heading: heading || undefined,
+          quote,
+          src: avatarPool[avatarIndex],
+          rating: i % 2 === 0 ? 4.8 : 5.0,
+        });
+      } catch (error) {
+        // If translation doesn't exist, stop looking for more
         break;
       }
-
-      // Now safely get all values
-      // @ts-ignore - Dynamic translation keys
-      const name = nameCheck;
-      // @ts-ignore - Dynamic translation keys
-      const role = t(`items.${itemKey}.role`);
-      // @ts-ignore - Dynamic translation keys
-      const quote = t(`items.${itemKey}.content`);
-
-      testimonials.push({
-        name,
-        role,
-        quote,
-        src: `https://i.pravatar.cc/150?img=${i}`,
-        rating: i % 2 === 0 ? 4.8 : 5.0,
-      });
-    } catch (error) {
-      // If translation doesn't exist, stop looking for more
-      break;
     }
+  }
+
+  // If no testimonials found, don't render the section
+  if (testimonials.length === 0) {
+    return null;
   }
 
   // Note: MISSING_MESSAGE errors in development console are expected behavior
@@ -162,6 +198,13 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
             {rating.toFixed(1)}
           </span>
         </div>
+
+        {/* 小标题（如果有） */}
+        {testimonial.heading && (
+          <h3 className="text-lg font-semibold text-foreground mb-3 before:content-['\201C'] after:content-['\201D']">
+            {testimonial.heading}
+          </h3>
+        )}
 
         {/* 评论内容 */}
         <p className="text-base text-muted-foreground mb-4">

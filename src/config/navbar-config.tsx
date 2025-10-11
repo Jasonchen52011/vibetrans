@@ -104,6 +104,12 @@ export function useNavbarLinks(): NestedMenuItem[] {
           external: false,
         },
         {
+          title: t('funTranslate.items.babyTranslator.title'),
+          icon: <AudioLinesIcon className="size-4 shrink-0" />,
+          href: Routes.BabyTranslator,
+          external: false,
+        },
+        {
           title: t('funTranslate.items.ancientGreekTranslator.title'),
           icon: <SquarePenIcon className="size-4 shrink-0" />,
           href: Routes.AncientGreekTranslator,
@@ -137,6 +143,18 @@ export function useNavbarLinks(): NestedMenuItem[] {
           title: t('funTranslate.items.cuneiformTranslator.title'),
           icon: <SquarePenIcon className="size-4 shrink-0" />,
           href: Routes.CuneiformTranslator,
+          external: false,
+        },
+        {
+          title: t('funTranslate.items.verboseGenerator.title'),
+          icon: <WandSparklesIcon className="size-4 shrink-0" />,
+          href: Routes.VerboseGenerator,
+          external: false,
+        },
+        {
+          title: t('funTranslate.items.ivrTranslator.title'),
+          icon: <AudioLinesIcon className="size-4 shrink-0" />,
+          href: Routes.IvrTranslator,
           external: false,
         },
       ],

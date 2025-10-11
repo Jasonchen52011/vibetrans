@@ -36,6 +36,10 @@
             "title": "Bad Translator",
             "description": "Turn normal text into hilarious mistranslations"
           },
+          "babyTranslator": {
+            "title": "Baby Translator",
+            "description": "Translate baby cries into clear meanings with AI"
+          },
           "ancientGreekTranslator": {
             "title": "Ancient Greek Translator",
             "description": "Translate between English and Ancient Greek"
@@ -59,6 +63,14 @@
           "cuneiformTranslator": {
             "title": "Cuneiform Translator",
             "description": "Translate ancient cuneiform scripts"
+          },
+          "verboseGenerator": {
+            "title": "Verbose Generator",
+            "description": "Expand short text into detailed, elaborate prose"
+          },
+          "ivrTranslator": {
+            "title": "IVR Translator",
+            "description": "Convert IVR inputs into text with multi-language support"
           }
         }
       },

@@ -1,0 +1,242 @@
+{
+  "IvrTranslatorPage": {
+    "title": "IVR Translator - Seamless Voice-to-Text & Multi-Language Conversion Tool",
+    "description": "Easily convert IVR input into text with our IVR Translator. Supports multiple languages and real-time voice translation for seamless communication.",
+    "hero": {
+      "title": "IVR Translator: Real-Time Voice & Multi-Language Conversion Tool",
+      "description": "Transform IVR inputs into accurate text instantly with VibeTrans. Enjoy multi-language support and efficient voice-to-text translation.",
+      "primaryButton": "Try Now",
+      "secondaryButton": "Learn More"
+    },
+    "tool": {
+      "inputLabel": "Your Input",
+      "outputLabel": "Translated Text",
+      "inputPlaceholder": "Enter your text or upload an audio file...",
+      "outputPlaceholder": "Translation results will appear here",
+      "translateButton": "Translate",
+      "uploadButton": "Upload Audio",
+      "uploadHint": "Supports .txt, .docx, audio files",
+      "recordButton": "Voice Input",
+      "loading": "Processing...",
+      "error": "An error occurred, please try again",
+      "noInput": "Please provide input"
+    },
+    "whatIs": {
+      "title": "What is IVR Translator",
+      "description": "IVR Translator is a powerful tool that converts IVR system inputs into text. It supports multiple languages and offers real-time voice translation for seamless communication. Ideal for global businesses, IVR Translator helps improve accessibility and efficiency in automated systems."
+    },
+    "examples": {
+      "title": "Example Use Cases for IVR Translator",
+      "description": "IVR Translator can be used in healthcare, customer service, and many other industries. For instance, a call center can easily handle customer requests in multiple languages with real-time voice translation, improving service quality and customer satisfaction.",
+      "items": [
+        {
+          "alt": "Call center agent hears 'Necesito ayuda con mi factura' in Spanish → IVR Translator converts to 'I need help with my bill' in English text → Agent reads and responds appropriately",
+          "name": "Healthcare: Patient appointment scheduling"
+        },
+        {
+          "alt": "Customer calls and says 'Je veux annuler ma commande' in French → System transcribes to 'I want to cancel my order' in English → Customer service processes cancellation request",
+          "name": "E-commerce: Order management"
+        },
+        {
+          "alt": "Banking customer speaks '我想查询账户余额' in Mandarin → IVR converts to 'I want to check account balance' in English text → System retrieves and reads balance information",
+          "name": "Banking: Account balance inquiry"
+        },
+        {
+          "alt": "Tech support receives 'Mein Computer funktioniert nicht' in German → Translated to 'My computer is not working' in English text → Technician understands issue and provides troubleshooting",
+          "name": "Tech Support: Troubleshooting assistance"
+        },
+        {
+          "alt": "Travel agent hears 'أريد حجز رحلة إلى باريس' in Arabic → System converts to 'I want to book a flight to Paris' in English → Agent proceeds with booking process",
+          "name": "Travel: Flight booking requests"
+        },
+        {
+          "alt": "Government hotline receives 'Como renovo minha carteira de motorista' in Portuguese → Translates to 'How do I renew my driver license' in English text → Staff provides renewal instructions",
+          "name": "Government: License renewal inquiries"
+        }
+      ]
+    },
+    "howto": {
+      "title": "How to Use IVR Translator",
+      "description": "Follow these simple steps to use IVR Translator for seamless voice-to-text conversion:",
+      "steps": [
+        {
+          "title": "Upload Your Audio File",
+          "description": "Upload your IVR audio file to the VibeTrans platform. Ensure it's in a supported format for easy processing.",
+          "wordCount": 22
+        },
+        {
+          "title": "Choose Language Settings",
+          "description": "Select the languages you need. Our tool supports multiple languages for diverse customer needs.",
+          "wordCount": 17
+        },
+        {
+          "title": "Start Conversion",
+          "description": "Click on the 'Start Conversion' button to begin translating voice inputs into text instantly.",
+          "wordCount": 16
+        },
+        {
+          "title": "Download Results",
+          "description": "After the conversion, download the text output and integrate it into your IVR system for immediate use.",
+          "wordCount": 19
+        }
+      ]
+    },
+    "funFacts": {
+      "title": "Fun Facts",
+      "items": [
+        {
+          "title": "IVR Evolution",
+          "description": "Did you know that IVR systems originally only used touch-tone inputs? Now, with VibeTrans IVR Translator, you can have real-time voice-to-text conversion in multiple languages! It's amazing how far we've come."
+        },
+        {
+          "title": "Voice Technology Heritage",
+          "description": "Siri's voice comes from GM Voices, and it's all made possible by advancements in IVR technology. VibeTrans takes it a step further by adding multi-language support, making communication smoother worldwide."
+        }
+      ]
+    },
+    "userInterest": {
+      "title": "Explore More",
+      "items": [
+        {
+          "title": "Global Communication",
+          "description": "With IVR Translator, companies can expand their reach globally. By supporting multiple languages, businesses can communicate with customers from different regions without any hassle."
+        },
+        {
+          "title": "Efficiency Gains",
+          "description": "Speed up customer service operations. Real-time voice translation and accurate text conversion ensure faster response times and improved customer satisfaction."
+        },
+        {
+          "title": "Increased Accessibility",
+          "description": "IVR Translator makes it easy for companies to cater to non-English-speaking customers. It's an essential tool for inclusivity and better user experience."
+        },
+        {
+          "title": "Seamless Integration",
+          "description": "VibeTrans' IVR Translator can be easily integrated with your existing systems, making it the perfect solution for businesses looking to enhance their IVR capabilities."
+        }
+      ]
+    },
+    "highlights": {
+      "title": "Highlight Features of IVR Translator",
+      "description": "Discover what makes our tool unique",
+      "items": [
+        {
+          "title": "Multi-Language Support",
+          "description": "Supports a wide range of languages, allowing businesses to communicate with customers from across the world."
+        },
+        {
+          "title": "Real-Time Voice Translation",
+          "description": "Converts voice inputs into text instantly, streamlining communication and improving service delivery."
+        },
+        {
+          "title": "Accurate Data Conversion",
+          "description": "Ensures reliable and precise conversion of IVR inputs into text, minimizing errors."
+        },
+        {
+          "title": "Secure Data Privacy",
+          "description": "All data processed through VibeTrans is protected with top-tier security measures, ensuring complete privacy."
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "What Our Users Are Saying",
+      "subtitle": "Real feedback from real users",
+      "items": {
+        "item-1": {
+          "name": "John Matthews",
+          "role": "Customer Service Rep",
+          "heading": "Fantastic Tool",
+          "content": "I've been using IVR Translator for a month now. It's been fantastic! Handling customer calls in Spanish and French has never been easier. It really saves time and enhances our service."
+        },
+        "item-2": {
+          "name": "Emily Carter",
+          "role": "IT Manager",
+          "heading": "Game-Changer",
+          "content": "IVR Translator has simplified the integration of multiple languages into our IVR system. The real-time translation feature is a game-changer, making our customer service more efficient."
+        },
+        "item-3": {
+          "name": "Michael Ross",
+          "role": "Call Center Manager",
+          "heading": "Seamless International Calls",
+          "content": "Since we started using VibeTrans, handling international calls has become seamless. The tool is quick and accurate. I've noticed a huge improvement in call handling time."
+        },
+        "item-4": {
+          "name": "Sophia Walker",
+          "role": "Healthcare Provider",
+          "heading": "Accessibility Lifesaver",
+          "content": "I use IVR Translator to manage patient calls in various languages. It's a lifesaver for accessibility and ensures no one is left behind, regardless of language."
+        },
+        "item-5": {
+          "name": "David Green",
+          "role": "Business Owner",
+          "heading": "No Language Barriers",
+          "content": "We have clients from all over the world, and IVR Translator helps us communicate without language barriers. I highly recommend it for global businesses."
+        },
+        "item-6": {
+          "name": "Lily Jones",
+          "role": "Customer Experience Officer",
+          "heading": "Enhanced Performance",
+          "content": "IVR Translator has significantly improved our customer service operations. The tool's real-time translation feature has really enhanced our team's performance."
+        }
+      }
+    },
+    "faqs": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Have other questions? Feel free to contact us via email.",
+      "items": {
+        "item-1": {
+          "question": "Is IVR Translator free to use?",
+          "answer": "IVR Translator offers both free and paid plans, allowing you to choose a plan that best suits your needs. The free version offers limited features, while the premium plan provides full access to advanced functionalities."
+        },
+        "item-2": {
+          "question": "How do I upload my IVR audio file for conversion?",
+          "answer": "To upload your audio file, simply log into VibeTrans, navigate to the 'Upload' section, and select your file. Once uploaded, you can start the conversion process."
+        },
+        "item-3": {
+          "question": "How accurate is the translation in IVR Translator?",
+          "answer": "IVR Translator uses advanced AI to ensure high accuracy in voice-to-text conversion. However, accuracy may vary depending on audio quality and the language used."
+        },
+        "item-4": {
+          "question": "What languages are supported by IVR Translator?",
+          "answer": "IVR Translator supports multiple languages, including English, Spanish, French, and more. Check the supported languages list for a full overview."
+        },
+        "item-5": {
+          "question": "How is my data protected when using IVR Translator?",
+          "answer": "VibeTrans ensures that your data is encrypted and protected at all times. We adhere to strict privacy policies to guarantee your information remains safe."
+        },
+        "item-6": {
+          "question": "Can IVR Translator be integrated into my existing system?",
+          "answer": "Yes, IVR Translator can be easily integrated with your current IVR system. Contact VibeTrans support for detailed integration instructions."
+        }
+      }
+    },
+    "features": {
+      "title": "Core Features",
+      "subtitle": "An intelligent tool crafted for users.",
+      "items": {
+        "item-1": {
+          "title": "Multi-Language Support",
+          "description": "Supports a wide range of languages, allowing businesses to communicate with customers from across the world."
+        },
+        "item-2": {
+          "title": "Real-Time Voice Translation",
+          "description": "Converts voice inputs into text instantly, streamlining communication and improving service delivery."
+        },
+        "item-3": {
+          "title": "Accurate Data Conversion",
+          "description": "Ensures reliable and precise conversion of IVR inputs into text, minimizing errors."
+        },
+        "item-4": {
+          "title": "Secure Data Privacy",
+          "description": "All data processed through VibeTrans is protected with top-tier security measures, ensuring complete privacy."
+        }
+      }
+    },
+    "ctaButton": "Try IVR Translator Now",
+    "cta": {
+      "title": "Try IVR Translator Now",
+      "description": "Get started with IVR Translator today! Convert IVR inputs into text and support multiple languages with ease. Experience seamless voice-to-text conversion with VibeTrans.",
+      "primaryButton": "Try IVR Translator Now",
+      "secondaryButton": "Back to Top"
+    }
+  }
+}

@@ -53,12 +53,15 @@ export enum Routes {
   GenAlphaTranslator = '/gen-alpha-translator',
   DumbItDownAI = '/dumb-it-down-ai',
   BadTranslator = '/bad-translator',
+  BabyTranslator = '/baby-translator',
   GibberishTranslator = '/gibberish-translator',
   AncientGreekTranslator = '/ancient-greek-translator',
   AlBhedTranslator = '/al-bhed-translator',
   AlienTextGenerator = '/alien-text-generator',
   EsperantoTranslator = '/esperanto-translator',
   CuneiformTranslator = '/cuneiform-translator',
+  VerboseGenerator = '/verbose-generator',
+  IvrTranslator = '/ivr-translator',
 
   // block routes
   MagicuiBlocks = '/magicui',
