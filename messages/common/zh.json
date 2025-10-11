@@ -54,5 +54,47 @@
     "title": "糟糕！出错了！",
     "tryAgain": "重试",
     "backToHome": "返回首页"
+  },
+  "exploreAiTools": {
+    "title": "探索其他AI工具",
+    "description": "查看这些相关的翻译和AI工具，提升您的体验",
+    "tools": {
+      "Gen Z Translator": {
+        "title": "Gen Z翻译器",
+        "description": "轻松将标准文本转换为Gen Z俚语，反之亦然"
+      },
+      "Dog Translator": {
+        "title": "狗狗翻译器",
+        "description": "将狗叫声和行为翻译成人类语言"
+      },
+      "Bad Translator": {
+        "title": "搞笑翻译器",
+        "description": "通过多种语言翻译创造爆笑的误译"
+      },
+      "Ancient Greek Translator": {
+        "title": "古希腊语翻译器",
+        "description": "精准将古希腊文本翻译成现代语言"
+      },
+      "Gibberish Translator": {
+        "title": "胡言乱语翻译器",
+        "description": "将正常文本变成有趣的胡言乱语，或将胡言乱语解码"
+      },
+      "Esperanto Translator": {
+        "title": "世界语翻译器",
+        "description": "支持语音的世界语与多种语言之间的翻译"
+      },
+      "Gen Alpha Translator": {
+        "title": "Gen Alpha翻译器",
+        "description": "理解并翻译最新一代的独特俚语"
+      },
+      "Cuneiform Translator": {
+        "title": "楔形文字翻译器",
+        "description": "将古代楔形文字解码为现代文本"
+      },
+      "Al Bhed Translator": {
+        "title": "艾尔贝德语翻译器",
+        "description": "为最终幻想粉丝和玩家翻译艾尔贝德语"
+      }
+    }
   }
 }

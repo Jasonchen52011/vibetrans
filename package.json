@@ -22,7 +22,9 @@
     "list-users": "tsx scripts/list-users.ts",
     "content": "fumadocs-mdx",
     "email": "email dev --dir src/mail/templates --port 3333",
-    "knip": "knip"
+    "knip": "knip",
+    "tool:create": "node scripts/create-translator-tool.js",
+    "tool:auto": "node scripts/auto-tool-generator.js"
   },
   "dependencies": {
     "@ai-sdk/deepseek": "^1.0.0",

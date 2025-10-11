@@ -1,0 +1,34 @@
+🔑 Environment variables loaded: true
+🔑 GOOGLE_GENERATIVE_AI_API_KEY exists: true
+🔑 GEMINI_API_KEY exists: false
+🚀 Starting Article Illustrator workflow for Al Bhed Translator Fun Facts...
+
+
+======================================================================
+🎨 Article Illustrator - Complete Workflow
+======================================================================
+
+📚 Tool: Al Bhed Translator
+🎯 Target: 7 illustrations (1 What is + 2 Fun Facts + 4 User Interests)
+
+
+----------------------------------------------------------------------
+📝 STEP 1: Analyzing sections with Gemini...
+----------------------------------------------------------------------
+
+🎨 Generating prompt for What Is section...
+❌ Error generating prompts with Gemini: TypeError: Cannot read properties of undefined (reading 'title')
+    at analyzeArticleSections (/Users/jason-chen/Downloads/project/vibetrans/src/lib/article-illustrator/gemini-analyzer.ts:130:23)
+    at generateArticleIllustrations (/Users/jason-chen/Downloads/project/vibetrans/src/lib/article-illustrator/workflow.ts:58:27)
+    at main (/Users/jason-chen/Downloads/project/vibetrans/scripts/generate-al-bhed-illustrations.ts:38:26)
+    at path (/Users/jason-chen/Downloads/project/vibetrans/scripts/generate-al-bhed-illustrations.ts:53:1)
+    at Object.<anonymous> (/Users/jason-chen/Downloads/project/vibetrans/scripts/generate-al-bhed-illustrations.ts:53:6)
+    at Module._compile (node:internal/modules/cjs/loader:1760:14)
+    at Object.transformer (/Users/jason-chen/Downloads/project/vibetrans/node_modules/.pnpm/tsx@4.19.3/node_modules/tsx/dist/register-DCnOAxY2.cjs:2:1186)
+    at Module.load (node:internal/modules/cjs/loader:1480:32)
+    at Module._load (node:internal/modules/cjs/loader:1299:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+
+❌ WORKFLOW FAILED: Cannot read properties of undefined (reading 'title')
+
+❌ Illustration generation failed!

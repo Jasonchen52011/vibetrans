@@ -1,6 +1,7 @@
 // @ts-nocheck - Translation keys type mismatch
 import BeforeAfterSection from '@/components/blocks/Examples';
 import CallToActionSection from '@/components/blocks/calltoaction/calltoaction';
+import ExploreOurAiTools from '@/components/blocks/exploretools';
 import FaqSection from '@/components/blocks/faqs/faqs';
 import UserScenarios from '@/components/blocks/funfacts';
 import WhyChoose from '@/components/blocks/highlights';
@@ -214,7 +215,7 @@ export default async function BadTranslatorPage(props: BadTranslatorPageProps) {
         title: (t as any)('funFacts.items.0.title'),
         description: (t as any)('funFacts.items.0.fact'),
         image: {
-          src: '/images/docs/ai-learning-system.webp',
+          src: '/images/docs/fun-and-meme-creation.webp',
           alt: (t as any)('funFacts.items.0.title'),
         },
       },
@@ -222,7 +223,7 @@ export default async function BadTranslatorPage(props: BadTranslatorPageProps) {
         title: (t as any)('funFacts.items.1.title'),
         description: (t as any)('funFacts.items.1.fact'),
         image: {
-          src: '/images/docs/mobile-app-interaction.webp',
+          src: '/images/docs/funfact-languages.webp',
           alt: (t as any)('funFacts.items.1.title'),
         },
       },
@@ -238,7 +239,7 @@ export default async function BadTranslatorPage(props: BadTranslatorPageProps) {
         title: (t as any)('userInterests.sections.0.title'),
         description: (t as any)('userInterests.sections.0.content'),
         image: {
-          src: '/images/docs/social-media-content-creation.webp',
+          src: '/images/docs/fun-and-meme-creation.webp',
           alt: (t as any)('userInterests.sections.0.title'),
         },
       },
@@ -246,7 +247,7 @@ export default async function BadTranslatorPage(props: BadTranslatorPageProps) {
         title: (t as any)('userInterests.sections.1.title'),
         description: (t as any)('userInterests.sections.1.content'),
         image: {
-          src: '/images/docs/social-media-selfie.webp',
+          src: '/images/docs/alien-text-social-media.webp',
           alt: (t as any)('userInterests.sections.1.title'),
         },
       },
@@ -254,7 +255,7 @@ export default async function BadTranslatorPage(props: BadTranslatorPageProps) {
         title: (t as any)('userInterests.sections.2.title'),
         description: (t as any)('userInterests.sections.2.content'),
         image: {
-          src: '/images/docs/creative-tablet-fun.webp',
+          src: '/images/docs/alien-text-creative-projects.webp',
           alt: (t as any)('userInterests.sections.2.title'),
         },
       },
@@ -378,6 +379,18 @@ export default async function BadTranslatorPage(props: BadTranslatorPageProps) {
 
         {/* Highlights/Why Choose */}
         <WhyChoose section={highlightsSection} />
+
+        {/* Explore Other Tools */}
+        <ExploreOurAiTools
+          toolKeys={[
+            'Gen Z Translator',
+            'Dog Translator',
+            'Bad Translator',
+            'Ancient Greek Translator',
+            'Gibberish Translator',
+            'Esperanto Translator',
+          ]}
+        />
 
         {/* Testimonials Section */}
         <TestimonialsSection namespace="BadTranslatorPage.testimonials" />

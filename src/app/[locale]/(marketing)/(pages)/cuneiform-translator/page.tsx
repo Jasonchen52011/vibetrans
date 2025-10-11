@@ -1,6 +1,7 @@
 // @ts-nocheck - Translation keys type mismatch
 import BeforeAfterSection from '@/components/blocks/Examples';
 import CallToActionSection from '@/components/blocks/calltoaction/calltoaction';
+import ExploreOurAiTools from '@/components/blocks/exploretools';
 import FaqSection from '@/components/blocks/faqs/faqs';
 import UserScenarios from '@/components/blocks/funfacts';
 import WhyChoose from '@/components/blocks/highlights';
@@ -385,6 +386,18 @@ export default async function CuneiformTranslatorPage(
 
         {/* Highlights/Why Choose */}
         <WhyChoose section={highlightsSection} />
+
+        {/* Explore Other Tools */}
+        <ExploreOurAiTools
+          toolKeys={[
+            'Gen Z Translator',
+            'Dog Translator',
+            'Bad Translator',
+            'Ancient Greek Translator',
+            'Gibberish Translator',
+            'Esperanto Translator',
+          ]}
+        />
 
         {/* Testimonials Section */}
         <TestimonialsSection namespace="CuneiformTranslatorPage.testimonials" />

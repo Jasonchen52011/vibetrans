@@ -138,43 +138,51 @@ export async function analyzeArticleSections(
     });
 
     // 2. Fun Facts sections (2 张)
-    console.log('\n🎨 Generating prompts for Fun Facts sections...');
-    for (let i = 0; i < sections.funFacts.length; i++) {
-      const funFact = sections.funFacts[i];
-      const funFactPrompt = await generateSinglePrompt(
-        'funFacts',
-        funFact.title,
-        funFact.content
-      );
-      prompts.push({
-        section: 'funFacts',
-        index: i,
-        title: funFact.title,
-        prompt: funFactPrompt,
-        suggestedFilename: extractFilename(funFactPrompt, funFact.title),
-      });
+    if (sections.funFacts && sections.funFacts.length > 0) {
+      console.log('\n🎨 Generating prompts for Fun Facts sections...');
+      for (let i = 0; i < sections.funFacts.length; i++) {
+        const funFact = sections.funFacts[i];
+        const funFactPrompt = await generateSinglePrompt(
+          'funFacts',
+          funFact.title,
+          funFact.content
+        );
+        prompts.push({
+          section: 'funFacts',
+          index: i,
+          title: funFact.title,
+          prompt: funFactPrompt,
+          suggestedFilename: extractFilename(funFactPrompt, funFact.title),
+        });
+      }
     }
 
     // 3. User Interests sections (4 张)
-    console.log('\n🎨 Generating prompts for User Interests sections...');
-    for (let i = 0; i < sections.userInterests.length; i++) {
-      const interest = sections.userInterests[i];
-      const interestPrompt = await generateSinglePrompt(
-        'userInterests',
-        interest.title,
-        interest.content
-      );
-      prompts.push({
-        section: 'userInterests',
-        index: i,
-        title: interest.title,
-        prompt: interestPrompt,
-        suggestedFilename: extractFilename(interestPrompt, interest.title),
-      });
+    if (sections.userInterests && sections.userInterests.length > 0) {
+      console.log('\n🎨 Generating prompts for User Interests sections...');
+      for (let i = 0; i < sections.userInterests.length; i++) {
+        const interest = sections.userInterests[i];
+        const interestPrompt = await generateSinglePrompt(
+          'userInterests',
+          interest.title,
+          interest.content
+        );
+        prompts.push({
+          section: 'userInterests',
+          index: i,
+          title: interest.title,
+          prompt: interestPrompt,
+          suggestedFilename: extractFilename(interestPrompt, interest.title),
+        });
+      }
     }
 
+    const funFactsCount = sections.funFacts?.length || 0;
+    const userInterestsCount = sections.userInterests?.length || 0;
+    const totalCount = 1 + funFactsCount + userInterestsCount;
+
     console.log(
-      `\n✅ Successfully generated ${prompts.length} prompts (1 What Is + 2 Fun Facts + 4 User Interests)`
+      `\n✅ Successfully generated ${prompts.length} prompts (1 What Is${funFactsCount > 0 ? ` + ${funFactsCount} Fun Facts` : ''}${userInterestsCount > 0 ? ` + ${userInterestsCount} User Interests` : ''})`
     );
     return prompts;
   } catch (error) {

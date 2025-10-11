@@ -54,5 +54,47 @@
     "title": "Oops! Something went wrong!",
     "tryAgain": "Try again",
     "backToHome": "Back to home"
+  },
+  "exploreAiTools": {
+    "title": "Explore Other AI Tools",
+    "description": "Check out these related translation and AI tools to enhance your experience",
+    "tools": {
+      "Gen Z Translator": {
+        "title": "Gen Z Translator",
+        "description": "Convert standard text to Gen Z slang and vice versa with ease"
+      },
+      "Dog Translator": {
+        "title": "Dog Translator",
+        "description": "Translate dog barks and behaviors into human language"
+      },
+      "Bad Translator": {
+        "title": "Bad Translator",
+        "description": "Create hilarious mistranslations by translating through multiple languages"
+      },
+      "Ancient Greek Translator": {
+        "title": "Ancient Greek Translator",
+        "description": "Translate ancient Greek texts to modern languages accurately"
+      },
+      "Gibberish Translator": {
+        "title": "Gibberish Translator",
+        "description": "Turn normal text into fun gibberish or decode gibberish back"
+      },
+      "Esperanto Translator": {
+        "title": "Esperanto Translator",
+        "description": "Translate between Esperanto and multiple languages with voice support"
+      },
+      "Gen Alpha Translator": {
+        "title": "Gen Alpha Translator",
+        "description": "Understand and translate the newest generation's unique slang"
+      },
+      "Cuneiform Translator": {
+        "title": "Cuneiform Translator",
+        "description": "Decode ancient cuneiform script into modern text"
+      },
+      "Al Bhed Translator": {
+        "title": "Al Bhed Translator",
+        "description": "Translate Final Fantasy's Al Bhed language for fans and gamers"
+      }
+    }
   }
 }

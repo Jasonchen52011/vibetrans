@@ -24,6 +24,44 @@ export default function ExploreOurAiTools({
   const locale = useLocale();
   // 在组件内部维护所有工具的完整数据（仅保留图片和链接，标题和描述从翻译中获取）
   const allToolsData: Record<string, { image: string; link: string }> = {
+    // Translator Tools
+    'Gen Z Translator': {
+      link: '/gen-z-translator',
+      image: '/images/docs/what-is-gen-z-translator.webp',
+    },
+    'Dog Translator': {
+      link: '/dog-translator',
+      image: '/images/docs/what-is-dog-translator.webp',
+    },
+    'Bad Translator': {
+      link: '/bad-translator',
+      image: '/images/docs/translation-slang.webp',
+    },
+    'Ancient Greek Translator': {
+      link: '/ancient-greek-translator',
+      image: '/images/docs/what-is-ancient-greek-translator.webp',
+    },
+    'Gibberish Translator': {
+      link: '/gibberish-translator',
+      image: '/images/docs/gibberish-education-purpose.webp',
+    },
+    'Esperanto Translator': {
+      link: '/esperanto-translator',
+      image: '/images/docs/esperanto-voice-features.webp',
+    },
+    'Gen Alpha Translator': {
+      link: '/gen-alpha-translator',
+      image: '/images/docs/translation-slang.webp',
+    },
+    'Cuneiform Translator': {
+      link: '/cuneiform-translator',
+      image: '/images/docs/cuneiform-translator-how.webp',
+    },
+    'Al Bhed Translator': {
+      link: '/al-bhed-translator',
+      image: '/images/docs/al-bhed-translator-what-is.webp',
+    },
+    // Dog Tools
     'Dog Name Generator': {
       link: '/dog-name-generator',
       image: '/images/page/dognamegenerator.webp',
