@@ -24,7 +24,8 @@
     "email": "email dev --dir src/mail/templates --port 3333",
     "knip": "knip",
     "tool:create": "node scripts/create-translator-tool.js",
-    "tool:auto": "node scripts/auto-tool-generator.js"
+    "tool:auto": "node scripts/auto-tool-generator.js",
+    "tool:test": "node scripts/test-auto-tool-generator.js"
   },
   "dependencies": {
     "@ai-sdk/deepseek": "^1.0.0",
@@ -41,6 +42,7 @@
     "@dnd-kit/modifiers": "^9.0.0",
     "@dnd-kit/sortable": "^10.0.0",
     "@dnd-kit/utilities": "^3.2.2",
+    "@google-cloud/text-to-speech": "^6.3.1",
     "@google/generative-ai": "^0.24.1",
     "@hookform/resolvers": "^5.2.1",
     "@marsidev/react-turnstile": "^1.1.0",
@@ -148,6 +150,7 @@
     "swiper": "^11.2.5",
     "tailwind-merge": "^3.0.2",
     "tailwindcss-animate": "^1.0.7",
+    "tone": "^15.1.22",
     "tw-animate-css": "^1.2.4",
     "use-intl": "^3.26.5",
     "use-media": "^1.5.0",

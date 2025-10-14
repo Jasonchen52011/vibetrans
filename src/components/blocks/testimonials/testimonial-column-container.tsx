@@ -14,7 +14,11 @@ export function TestimonialColumnContainer({
 }) {
   const columnRef = useRef<React.ElementRef<'div'>>(null);
   const [columnHeight, setColumnHeight] = useState(0);
-  const duration = `${columnHeight * shift}ms`;
+  // 确保最小持续时间为 20 秒，最大为 60 秒
+  const minDuration = 20000; // 20 秒
+  const maxDuration = 60000; // 60 秒
+  const calculatedDuration = columnHeight * shift;
+  const duration = `${Math.min(Math.max(calculatedDuration, minDuration), maxDuration)}ms`;
 
   useEffect(() => {
     if (!columnRef.current) {

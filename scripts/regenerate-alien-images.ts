@@ -2,8 +2,8 @@
  * Regenerate 3 unsatisfactory images for Alien Text Generator
  */
 
-import { generateImageWithKie } from '../src/lib/kie-text-to-image';
 import { convertURLToWebP } from '../src/lib/article-illustrator/webp-converter';
+import { generateImageWithKie } from '../src/lib/kie-text-to-image';
 
 interface ImageTask {
   title: string;

@@ -11,18 +11,60 @@ const path = require('path');
 // 获取命令行参数
 const args = process.argv.slice(2);
 if (args.length < 2) {
-	console.error('❌ 用法: node scripts/create-translator-tool.js <tool-slug> <Tool Name>');
-	console.error('📌 示例: node scripts/create-translator-tool.js emoji-translator "Emoji Translator"');
-	process.exit(1);
+  console.error(
+    '❌ 用法: node scripts/create-translator-tool.js <tool-slug> <Tool Name>'
+  );
+  console.error(
+    '📌 示例: node scripts/create-translator-tool.js emoji-translator "Emoji Translator"'
+  );
+  process.exit(1);
 }
 
 const [toolSlug, toolName] = args;
 
 // 生成各种命名变体
 const toolNamePascal = toolName.replace(/\s+/g, ''); // "EmojiTranslator"
-const toolNameCamel = toolNamePascal.charAt(0).toLowerCase() + toolNamePascal.slice(1); // "emojiTranslator"
+const toolNameCamel =
+  toolNamePascal.charAt(0).toLowerCase() + toolNamePascal.slice(1); // "emojiTranslator"
 const toolNamespace = `${toolNamePascal}Page`; // "EmojiTranslatorPage"
 const componentName = `${toolNamePascal}Tool`; // "EmojiTranslatorTool"
+
+// 生成随机头像组合（基于 tool slug 的哈希，确保每个工具的头像组合固定但不重复）
+function generateRandomAvatarLogic(slug) {
+  const avatarPools = [
+    ['male1', 'female2', 'male3', 'female4', 'male5'],  // Pool 1 - original (10,000)
+    ['female2', 'male4', 'female3', 'male2', 'female4'], // Pool 2 - albanian (15,000)
+    ['male2', 'female1', 'male4', 'female2', 'male3'],   // Pool 3 (12,000)
+    ['female3', 'male1', 'female4', 'male2', 'female1'], // Pool 4 (20,000)
+    ['male3', 'female4', 'male1', 'female3', 'male4'],   // Pool 5 (18,000)
+    ['female1', 'male2', 'female2', 'male5', 'female3'], // Pool 6 (25,000)
+  ];
+
+  // 简单的哈希函数，基于 slug 生成索引
+  let hash = 0;
+  for (let i = 0; i < slug.length; i++) {
+    hash = ((hash << 5) - hash) + slug.charCodeAt(i);
+    hash = hash & hash; // Convert to 32bit integer
+  }
+  const poolIndex = Math.abs(hash) % avatarPools.length;
+
+  return JSON.stringify(avatarPools[poolIndex]);
+}
+
+// 生成随机用户数量（基于 tool slug 的哈希，确保每个工具的数字固定但不重复）
+function generateRandomUserCount(slug) {
+  const counts = ['10,000', '15,000', '12,000', '20,000', '18,000', '25,000'];
+
+  // 简单的哈希函数，基于 slug 生成索引
+  let hash = 0;
+  for (let i = 0; i < slug.length; i++) {
+    hash = ((hash << 5) - hash) + slug.charCodeAt(i);
+    hash = hash & hash; // Convert to 32bit integer
+  }
+  const countIndex = Math.abs(hash) % counts.length;
+
+  return counts[countIndex];
+}
 
 console.log('🚀 开始生成翻译工具页面...');
 console.log(`📦 工具名称: ${toolName}`);
@@ -32,10 +74,13 @@ console.log(`📁 命名空间: ${toolNamespace}`);
 // ============================================
 // 1. 创建页面目录
 // ============================================
-const pageDir = path.join(__dirname, `../src/app/[locale]/(marketing)/(pages)/${toolSlug}`);
+const pageDir = path.join(
+  __dirname,
+  `../src/app/[locale]/(marketing)/(pages)/${toolSlug}`
+);
 if (fs.existsSync(pageDir)) {
-	console.error(`❌ 错误: 目录已存在 ${pageDir}`);
-	process.exit(1);
+  console.error(`❌ 错误: 目录已存在 ${pageDir}`);
+  process.exit(1);
 }
 fs.mkdirSync(pageDir, { recursive: true });
 console.log('✅ 创建页面目录');
@@ -130,12 +175,30 @@ export default async function ${toolNamePascal}Page(props: ${toolNamePascal}Page
     title: (t as any)('examples.title'),
     description: (t as any)('examples.description'),
     images: [
-      { alt: 'Example 1', name: 'Example 1' },
-      { alt: 'Example 2', name: 'Example 2' },
-      { alt: 'Example 3', name: 'Example 3' },
-      { alt: 'Example 4', name: 'Example 4' },
-      { alt: 'Example 5', name: 'Example 5' },
-      { alt: 'Example 6', name: 'Example 6' },
+      {
+        alt: (t as any)('examples.items.0.alt'),
+        name: (t as any)('examples.items.0.name'),
+      },
+      {
+        alt: (t as any)('examples.items.1.alt'),
+        name: (t as any)('examples.items.1.name'),
+      },
+      {
+        alt: (t as any)('examples.items.2.alt'),
+        name: (t as any)('examples.items.2.name'),
+      },
+      {
+        alt: (t as any)('examples.items.3.alt'),
+        name: (t as any)('examples.items.3.name'),
+      },
+      {
+        alt: (t as any)('examples.items.4.alt'),
+        name: (t as any)('examples.items.4.name'),
+      },
+      {
+        alt: (t as any)('examples.items.5.alt'),
+        name: (t as any)('examples.items.5.name'),
+      },
     ],
   };
 
@@ -237,6 +300,46 @@ export default async function ${toolNamePascal}Page(props: ${toolNamePascal}Page
     ],
   };
 
+  // User Interest section (4 content blocks)
+  const userInterestSection = {
+    name: 'userInterest',
+    title: (t as any)('userInterest.title'),
+    items: [
+      {
+        title: (t as any)('userInterest.items.0.title'),
+        description: (t as any)('userInterest.items.0.description'),
+        image: {
+          src: '/images/docs/${toolSlug}-interest-1.webp',
+          alt: (t as any)('userInterest.items.0.title'),
+        },
+      },
+      {
+        title: (t as any)('userInterest.items.1.title'),
+        description: (t as any)('userInterest.items.1.description'),
+        image: {
+          src: '/images/docs/${toolSlug}-interest-2.webp',
+          alt: (t as any)('userInterest.items.1.title'),
+        },
+      },
+      {
+        title: (t as any)('userInterest.items.2.title'),
+        description: (t as any)('userInterest.items.2.description'),
+        image: {
+          src: '/images/docs/${toolSlug}-interest-3.webp',
+          alt: (t as any)('userInterest.items.2.title'),
+        },
+      },
+      {
+        title: (t as any)('userInterest.items.3.title'),
+        description: (t as any)('userInterest.items.3.description'),
+        image: {
+          src: '/images/docs/${toolSlug}-interest-4.webp',
+          alt: (t as any)('userInterest.items.3.title'),
+        },
+      },
+    ],
+  };
+
   return (
     <>
       <script
@@ -257,11 +360,14 @@ export default async function ${toolNamePascal}Page(props: ${toolNamePascal}Page
             {/* User Avatars and Rating */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <div className="flex -space-x-3">
-                {[1, 2, 3, 4, 5].map((i) => (
-                  <div key={i} className="relative h-12 w-12 rounded-full border-2 border-white dark:border-zinc-800 overflow-hidden">
+                {${generateRandomAvatarLogic(toolSlug)}.map((avatar, i) => (
+                  <div
+                    key={i}
+                    className="relative h-12 w-12 rounded-full border-2 border-white dark:border-zinc-800 overflow-hidden"
+                  >
                     <img
-                      src={\`/images/avatars/\${i % 2 === 0 ? 'female' : 'male'}\${i}.webp\`}
-                      alt={\`User \${i}\`}
+                      src={\`/images/avatars/\${avatar}.webp\`}
+                      alt={\`User \${i + 1}\`}
                       className="h-full w-full object-cover"
                     />
                   </div>
@@ -270,12 +376,19 @@ export default async function ${toolNamePascal}Page(props: ${toolNamePascal}Page
               <div className="flex flex-col items-center sm:items-start gap-1">
                 <div className="flex items-center gap-0.5">
                   {[...Array(5)].map((_, i) => (
-                    <svg key={i} className="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <svg
+                      key={i}
+                      className="w-6 h-6 text-yellow-400"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                     </svg>
                   ))}
                 </div>
-                <p className="text-sm text-gray-600 dark:text-gray-400">from 10,000+ happy users</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  from ${generateRandomUserCount(toolSlug)}+ happy users
+                </p>
               </div>
             </div>
           </div>
@@ -294,6 +407,9 @@ export default async function ${toolNamePascal}Page(props: ${toolNamePascal}Page
 
         {/* How to Section */}
         <HowTo section={howtoSection} />
+
+        {/* User Interest Blocks */}
+        <UserScenarios section={userInterestSection} ctaText={(t as any)('ctaButton')} />
 
         {/* Fun Facts */}
         <UserScenarios section={funFactsSection} ctaText={(t as any)('ctaButton')} />
@@ -583,91 +699,138 @@ export default function ${componentName}({ pageData, locale = 'en' }: ${componen
 }
 `;
 
-fs.writeFileSync(path.join(pageDir, `${componentName}.tsx`), toolComponentTemplate);
+fs.writeFileSync(
+  path.join(pageDir, `${componentName}.tsx`),
+  toolComponentTemplate
+);
 console.log(`✅ 生成 ${componentName}.tsx`);
 
 // ============================================
 // 4. 生成翻译模板 (英文)
 // ============================================
 const translationTemplate = {
-	title: toolName,
-	description: `Translate text to ${toolName} instantly with our free online tool. Fast, accurate, and easy to use.`,
-	hero: {
-		title: toolName,
-		description: `Transform your text with our ${toolName} tool. Fast, accurate, and free to use.`,
-	},
-	ctaButton: `Try ${toolName} Now`,
-	tool: {
-		inputLabel: 'Input Text',
-		outputLabel: 'Translated Text',
-		inputPlaceholder: 'Enter your text here...',
-		outputPlaceholder: 'Translation will appear here...',
-		translateButton: 'Translate',
-		uploadButton: 'Upload File',
-		uploadHint: 'Supports .txt and .docx files',
-		loading: 'Translating...',
-		error: 'Translation failed. Please try again.',
-		noInput: 'Please enter some text to translate.',
-	},
-	whatIs: {
-		title: `What is ${toolName}?`,
-		description: `${toolName} is a powerful tool that helps you translate text quickly and accurately.`,
-	},
-	examples: {
-		title: 'Translation Examples',
-		description: 'See how our translator works with real examples',
-	},
-	howto: {
-		title: `How to Use ${toolName}`,
-		description: 'Follow these simple steps to translate your text',
-		steps: [
-			{ title: 'Upload or Type', description: 'Enter your text or upload a file' },
-			{ title: 'Click Translate', description: 'Press the translate button' },
-			{ title: 'Get Results', description: 'View your translated text instantly' },
-			{ title: 'Copy or Download', description: 'Save your results for later use' },
-		],
-	},
-	highlights: {
-		title: 'Why Choose Our Translator?',
-		description: 'The best features for your translation needs',
-		items: [
-			{ title: 'Fast', description: 'Get instant results in seconds' },
-			{ title: 'Accurate', description: 'High-quality translations every time' },
-			{ title: 'Secure', description: 'Your data is always protected' },
-			{ title: 'Free', description: 'No registration or payment required' },
-		],
-	},
-	funFacts: {
-		title: 'Interesting Facts',
-		items: [
-			{ title: 'Fact 1', description: 'Learn something interesting about this tool' },
-			{ title: 'Fact 2', description: 'Discover more amazing features' },
-		],
-	},
-	testimonials: {
-		title: 'What Our Users Say',
-		items: [
-			{ name: 'User 1', role: 'Professional', text: 'This tool is amazing!' },
-			{ name: 'User 2', role: 'Student', text: 'So easy to use!' },
-		],
-	},
-	faqs: {
-		title: 'Frequently Asked Questions',
-		items: [
-			{ question: 'Is this tool free?', answer: 'Yes, completely free to use.' },
-			{ question: 'How accurate is it?', answer: 'Very accurate with high-quality results.' },
-		],
-	},
-	cta: {
-		title: `Ready to Try ${toolName}?`,
-		description: 'Start translating your text now - it only takes seconds!',
-		button: 'Get Started Free',
-	},
+  title: toolName,
+  description: `Translate text to ${toolName} instantly with our free online tool. Fast, accurate, and easy to use.`,
+  hero: {
+    title: toolName,
+    description: `Transform your text with our ${toolName} tool. Fast, accurate, and free to use.`,
+  },
+  ctaButton: `Try ${toolName} Now`,
+  tool: {
+    inputLabel: 'Input Text',
+    outputLabel: 'Translated Text',
+    inputPlaceholder: 'Enter your text here...',
+    outputPlaceholder: 'Translation will appear here...',
+    translateButton: 'Translate',
+    uploadButton: 'Upload File',
+    uploadHint: 'Supports .txt and .docx files',
+    loading: 'Translating...',
+    error: 'Translation failed. Please try again.',
+    noInput: 'Please enter some text to translate.',
+  },
+  whatIs: {
+    title: `What is ${toolName}?`,
+    description: `${toolName} is a powerful tool that helps you translate text quickly and accurately.`,
+  },
+  examples: {
+    title: 'Translation Examples',
+    description: 'See how our translator works with real examples',
+  },
+  howto: {
+    title: `How to Use ${toolName}`,
+    description: 'Follow these simple steps to translate your text',
+    steps: [
+      {
+        title: 'Upload or Type',
+        description: 'Enter your text or upload a file',
+      },
+      { title: 'Click Translate', description: 'Press the translate button' },
+      {
+        title: 'Get Results',
+        description: 'View your translated text instantly',
+      },
+      {
+        title: 'Copy or Download',
+        description: 'Save your results for later use',
+      },
+    ],
+  },
+  highlights: {
+    title: 'Why Choose Our Translator?',
+    description: 'The best features for your translation needs',
+    items: [
+      { title: 'Fast', description: 'Get instant results in seconds' },
+      {
+        title: 'Accurate',
+        description: 'High-quality translations every time',
+      },
+      { title: 'Secure', description: 'Your data is always protected' },
+      { title: 'Free', description: 'No registration or payment required' },
+    ],
+  },
+  funFacts: {
+    title: 'Interesting Facts',
+    items: [
+      {
+        title: 'Fact 1',
+        description: 'Learn something interesting about this tool',
+      },
+      { title: 'Fact 2', description: 'Discover more amazing features' },
+    ],
+  },
+  userInterest: {
+    title: 'More About This Tool',
+    items: [
+      {
+        title: 'Topic 1',
+        description: 'Detailed explanation about a key feature or use case',
+      },
+      {
+        title: 'Topic 2',
+        description: 'Detailed explanation about another important aspect',
+      },
+      {
+        title: 'Topic 3',
+        description: 'Detailed explanation about a third interesting point',
+      },
+      {
+        title: 'Topic 4',
+        description: 'Detailed explanation about a fourth valuable insight',
+      },
+    ],
+  },
+  testimonials: {
+    title: 'What Our Users Say',
+    items: [
+      { name: 'User 1', role: 'Professional', text: 'This tool is amazing!' },
+      { name: 'User 2', role: 'Student', text: 'So easy to use!' },
+    ],
+  },
+  faqs: {
+    title: 'Frequently Asked Questions',
+    items: [
+      {
+        question: 'Is this tool free?',
+        answer: 'Yes, completely free to use.',
+      },
+      {
+        question: 'How accurate is it?',
+        answer: 'Very accurate with high-quality results.',
+      },
+    ],
+  },
+  cta: {
+    title: `Ready to Try ${toolName}?`,
+    description: 'Start translating your text now - it only takes seconds!',
+    button: 'Get Started Free',
+  },
 };
 
 console.log('\n📄 生成翻译文件模板:');
 console.log('-------------------------------------------');
-console.log(`请将以下内容添加到 messages/en.json 的 "${toolNamespace}" 字段中:`);
+console.log(
+  `请将以下内容保存到 messages/pages/${toolSlug}/en.json:`
+);
 console.log('-------------------------------------------');
 console.log(JSON.stringify({ [toolNamespace]: translationTemplate }, null, 2));
 console.log('-------------------------------------------\n');
@@ -677,9 +840,9 @@ console.log('-------------------------------------------\n');
 // ============================================
 const apiDir = path.join(__dirname, `../src/app/api/${toolSlug}`);
 if (!fs.existsSync(apiDir)) {
-	fs.mkdirSync(apiDir, { recursive: true });
+  fs.mkdirSync(apiDir, { recursive: true });
 
-	const apiTemplate = `import { NextResponse } from 'next/server';
+  const apiTemplate = `import { NextResponse } from 'next/server';
 
 export const runtime = 'edge';
 
@@ -706,8 +869,8 @@ export async function POST(request: Request) {
 }
 `;
 
-	fs.writeFileSync(path.join(apiDir, 'route.ts'), apiTemplate);
-	console.log('✅ 生成 API 路由 (需要实现翻译逻辑)');
+  fs.writeFileSync(path.join(apiDir, 'route.ts'), apiTemplate);
+  console.log('✅ 生成 API 路由 (需要实现翻译逻辑)');
 }
 
 // ============================================
@@ -715,16 +878,27 @@ export async function POST(request: Request) {
 // ============================================
 console.log('\n🎉 工具页面生成完成!');
 console.log('\n📋 接下来需要做的事情:');
-console.log(`1. ✅ 页面已创建: src/app/[locale]/(marketing)/(pages)/${toolSlug}/`);
+console.log(
+  `1. ✅ 页面已创建: src/app/[locale]/(marketing)/(pages)/${toolSlug}/`
+);
 console.log(`2. ✅ 工具组件已创建: ${componentName}.tsx`);
 console.log(`3. ✅ API 路由已创建: src/app/api/${toolSlug}/route.ts`);
 console.log('\n⚠️  需要手动完成:');
-console.log('4. 📝 将上面的翻译模板添加到 messages/en.json 和 messages/zh.json');
-console.log(`5. 🖼️  准备图片资源 (放在 public/images/docs/ 目录):`);
+console.log(
+  `4. 📝 将上面的翻译模板保存到 messages/pages/${toolSlug}/en.json 和 messages/pages/${toolSlug}/zh.json`
+);
+console.log(`5. 📝 更新 src/i18n/messages.ts 添加该页面的翻译导入`);
+console.log(`6. 🖼️  准备图片资源 (放在 public/images/docs/ 目录):`);
 console.log(`   - what-is-${toolSlug}.webp`);
 console.log(`   - ${toolSlug}-how-to.webp`);
 console.log(`   - ${toolSlug}-fact-1.webp`);
 console.log(`   - ${toolSlug}-fact-2.webp`);
-console.log(`6. 🔧 实现 API 路由中的翻译逻辑 (src/app/api/${toolSlug}/route.ts)`);
-console.log(`7. 🚀 运行 pnpm dev 测试页面: http://localhost:3000/${toolSlug}`);
+console.log(`   - ${toolSlug}-interest-1.webp`);
+console.log(`   - ${toolSlug}-interest-2.webp`);
+console.log(`   - ${toolSlug}-interest-3.webp`);
+console.log(`   - ${toolSlug}-interest-4.webp`);
+console.log(
+  `7. 🔧 实现 API 路由中的翻译逻辑 (src/app/api/${toolSlug}/route.ts)`
+);
+console.log(`8. 🚀 运行 pnpm dev 测试页面: http://localhost:3000/${toolSlug}`);
 console.log('\n💡 提示: 可以参考现有的翻译工具进行调整优化');

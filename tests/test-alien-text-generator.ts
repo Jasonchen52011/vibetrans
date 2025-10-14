@@ -2,8 +2,8 @@
  * Generate Images for Alien Text Generator Page
  */
 
-import { generateArticleIllustrations } from '../src/lib/article-illustrator/workflow';
 import type { ArticleSections } from '../src/lib/article-illustrator/types';
+import { generateArticleIllustrations } from '../src/lib/article-illustrator/workflow';
 
 const alienTextGeneratorSections: ArticleSections = {
   toolName: 'alien-text-generator',

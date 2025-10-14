@@ -103,13 +103,16 @@ export default function BeforeAfterSection({
               ) : (
                 <div
                   onClick={scrollToTop}
-                  className="cursor-pointer p-8 flex items-center justify-center"
+                  className="cursor-pointer p-6 flex flex-col gap-3"
                 >
                   {item.name && (
-                    <p className="text-lg font-semibold text-gray-800 text-center">
+                    <p className="text-lg font-semibold text-gray-800 text-center border-b pb-3">
                       {item.name}
                     </p>
                   )}
+                  <div className="text-sm text-gray-600 whitespace-pre-line leading-relaxed text-center">
+                    {item.alt}
+                  </div>
                 </div>
               )}
             </div>

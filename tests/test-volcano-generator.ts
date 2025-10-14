@@ -2,9 +2,9 @@
  * Test Volcano Engine Image Generation
  */
 
-import { testGenerateImage } from '../src/lib/article-illustrator/image-generator';
-import fs from 'fs/promises';
 import path from 'path';
+import fs from 'fs/promises';
+import { testGenerateImage } from '../src/lib/article-illustrator/image-generator';
 
 async function testVolcanoGeneration() {
   console.log('🧪 Testing Volcano Engine Image Generation\n');

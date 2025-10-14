@@ -392,13 +392,13 @@ export default async function DogTranslatorPage(props: DogTranslatorPageProps) {
         {/* Explore Other Tools */}
         <ExploreOurAiTools
           toolKeys={[
-            'Gen Z Translator',
-            'Dog Translator',
-            'Bad Translator',
-            'Ancient Greek Translator',
-            'Gibberish Translator',
-            'Esperanto Translator',
-          ]}
+        'Baby Translator',
+        'Bad Translator',
+        'Gen Z Translator',
+        'Gibberish Translator',
+        'Alien Text Generator',
+        'Pig Latin Translator'
+      ]}
         />
 
         {/* FAQ Section */}

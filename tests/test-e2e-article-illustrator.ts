@@ -10,8 +10,8 @@
 
 import type { ArticleSections } from '../src/lib/article-illustrator/types';
 import {
-  generateArticleIllustrations,
   cleanupTestImages,
+  generateArticleIllustrations,
 } from '../src/lib/article-illustrator/workflow';
 
 // Test data: Esperanto Translator sections

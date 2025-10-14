@@ -16,10 +16,12 @@ let genAI: GoogleGenerativeAI | null = null;
 function getGenAI(): GoogleGenerativeAI {
   if (!genAI) {
     const apiKey =
-      process.env.GEMINI_API_KEY || process.env.GOOGLE_GENERATIVE_AI_API_KEY;
+      process.env.GEMINI_API_KEY ||
+      process.env.GOOGLE_GENERATIVE_AI_API_KEY ||
+      process.env.NEXT_PUBLIC_GOOGLE_GENERATIVE_AI_API_KEY; // 添加 NEXT_PUBLIC 支持
     if (!apiKey) {
       throw new Error(
-        'Missing Gemini API key. Please set GEMINI_API_KEY or GOOGLE_GENERATIVE_AI_API_KEY environment variable.'
+        'Missing Gemini API key. Please set GEMINI_API_KEY, GOOGLE_GENERATIVE_AI_API_KEY, or NEXT_PUBLIC_GOOGLE_GENERATIVE_AI_API_KEY environment variable.'
       );
     }
     genAI = new GoogleGenerativeAI(apiKey);
@@ -43,52 +45,59 @@ Section Type: ${sectionType}
 Section Title: ${title}
 Section Content: ${content}
 
-STRICT REQUIREMENTS:
-1. Style: Geometric Flat Style (几何扁平风), cartoon illustration, modern and clean
-2. Color Palette: Sky blue (#87CEEB) as PRIMARY color, with soft pastel accents (light yellow, pink, mint green)
-3. Composition: 4:3 aspect ratio, horizontal layout, centered composition
-4. Elements: Absolutely NO text, NO logos, NO words, NO letters of any kind
-5. Keywords: Must naturally incorporate the section title keywords: "${title}"
-6. Mood: Cheerful, welcoming, soft, minimalist, friendly
-7. Shapes: Use simple geometric shapes (circles, rectangles, triangles), clean lines
-8. Background: Sky blue gradient or solid, with optional soft clouds or abstract shapes
+STYLE REQUIREMENTS:
+1. Visual Language: Pure symbolic illustration - communicate through icons, shapes, colors, and characters only
+2. Aesthetic: Minimalist geometric flat design (几何扁平风) - clean, modern, ultra-simple
+3. Color Palette: Sky blue (#87CEEB) dominant, with soft pastels (light yellow, pink, mint green)
+4. Composition: 4:3 horizontal, centered, spacious negative space
+5. Elements: Visual metaphors only - use objects, icons, character gestures, color coding, arrows, abstract shapes
+6. Theme: "${title}" - express this concept purely through imagery and symbols
+7. Mood: Cheerful, friendly, welcoming, soft, approachable
+8. Simplicity: Maximum visual clarity - every element must be instantly recognizable
 
-Output ONLY the image generation prompt in English (one paragraph, 50-80 words), no explanations, no metadata.
+Output format:
+First line: FILENAME: [2-3 word filename describing the VISUAL elements, e.g., "phone-conversation" or "travel-icons"]
+Second line onward: [Image generation prompt in one paragraph, 40-60 words, focus on WHAT TO SHOW, not what to avoid]
 
-Example format:
-"Geometric flat illustration showing [concept from title], sky blue background with soft gradient, simplified [key elements] in pastel colors, clean minimalist design with circular and rectangular shapes, 4:3 aspect ratio, cheerful and welcoming atmosphere, modern flat style, no text or logos"
+Example:
+FILENAME: music-wave-flow
+Minimalist geometric flat illustration, sky blue gradient background, simple sound wave shapes flowing horizontally, small cartoon character with headphones, pastel yellow and pink accent circles, clean modern design, 4:3 aspect ratio, ultra-simple symbolic style
 
-Now generate the prompt:`;
+Now generate:`;
 }
 
 /**
- * Extract a suggested filename from the prompt
+ * Extract a suggested filename from Gemini response
  */
-function extractFilename(prompt: string, title: string): string {
-  // 从标题提取关键词
-  const titleWords = title
-    .toLowerCase()
-    .replace(/[^a-z0-9\s]/g, '')
-    .split(/\s+/)
-    .filter((w) => w.length > 2 && !['the', 'and', 'for', 'with'].includes(w));
+function extractFilename(geminiResponse: string): string {
+  // Look for FILENAME: prefix in response
+  const filenameMatch = geminiResponse.match(/^FILENAME:\s*([a-z0-9-]+)/im);
 
-  // 取前 2-3 个关键词
-  const keywords = titleWords.slice(0, 3);
-
-  if (keywords.length === 0) {
-    // fallback: 从 prompt 提取
-    const match = prompt.match(/showing\s+([a-z\s]+?),/i);
-    if (match) {
-      return match[1]
-        .trim()
-        .toLowerCase()
-        .replace(/\s+/g, '-')
-        .substring(0, 30);
-    }
-    return 'illustration';
+  if (filenameMatch) {
+    const filename = filenameMatch[1].trim().toLowerCase();
+    // Ensure max 3 words (2 hyphens)
+    const words = filename.split('-').slice(0, 3);
+    return words.join('-');
   }
 
-  return keywords.join('-');
+  // Fallback: generate from first few words
+  const words = geminiResponse
+    .toLowerCase()
+    .match(/\b[a-z]{3,}\b/g);
+
+  if (words && words.length > 0) {
+    return words.slice(0, 3).join('-');
+  }
+
+  return 'illustration';
+}
+
+/**
+ * Extract prompt from Gemini response (remove FILENAME line)
+ */
+function extractPrompt(geminiResponse: string): string {
+  // Remove FILENAME: line if present
+  return geminiResponse.replace(/^FILENAME:.*\n?/im, '').trim();
 }
 
 /**
@@ -98,20 +107,36 @@ async function generateSinglePrompt(
   sectionType: SectionType,
   title: string,
   content: string
-): Promise<string> {
+): Promise<{ prompt: string; filename: string }> {
   const model = getGenAI().getGenerativeModel({
-    model: 'gemini-2.5-flash',
+    model: 'gemini-2.0-flash',
   });
 
   const promptTemplate = generatePromptTemplate(sectionType, title, content);
 
   const result = await model.generateContent(promptTemplate);
   const response = result.response;
-  const generatedPrompt = response.text().trim();
+  const geminiResponse = response.text().trim();
 
-  console.log(`[Gemini] Generated prompt for "${title}":`, generatedPrompt);
+  const filename = extractFilename(geminiResponse);
+  let prompt = extractPrompt(geminiResponse);
 
-  return generatedPrompt;
+  // 🔧 简化prompt - 移除可能触发文字的具体词汇
+  const textTriggerWords = ['text', 'letter', 'word', 'sign', 'label', 'book', 'document', 'paper', 'menu'];
+  textTriggerWords.forEach(word => {
+    const regex = new RegExp(`\\b${word}s?\\b`, 'gi');
+    prompt = prompt.replace(regex, 'symbol');
+  });
+
+  // 🔧 添加极简风格强化（正向描述）
+  prompt = `${prompt}, pure visual communication, minimalist symbolic design`;
+
+  console.log(`[Gemini] Generated for "${title}":`, {
+    filename,
+    prompt: prompt.substring(0, 100) + '...',
+  });
+
+  return { prompt, filename };
 }
 
 /**
@@ -125,7 +150,7 @@ export async function analyzeArticleSections(
   try {
     // 1. What is section (1 张)
     console.log('\n🎨 Generating prompt for What Is section...');
-    const whatIsPrompt = await generateSinglePrompt(
+    const whatIsResult = await generateSinglePrompt(
       'whatIs',
       sections.whatIs.title,
       sections.whatIs.content
@@ -133,8 +158,8 @@ export async function analyzeArticleSections(
     prompts.push({
       section: 'whatIs',
       title: sections.whatIs.title,
-      prompt: whatIsPrompt,
-      suggestedFilename: extractFilename(whatIsPrompt, sections.whatIs.title),
+      prompt: whatIsResult.prompt,
+      suggestedFilename: whatIsResult.filename,
     });
 
     // 2. Fun Facts sections (2 张)
@@ -142,7 +167,7 @@ export async function analyzeArticleSections(
       console.log('\n🎨 Generating prompts for Fun Facts sections...');
       for (let i = 0; i < sections.funFacts.length; i++) {
         const funFact = sections.funFacts[i];
-        const funFactPrompt = await generateSinglePrompt(
+        const result = await generateSinglePrompt(
           'funFacts',
           funFact.title,
           funFact.content
@@ -151,8 +176,8 @@ export async function analyzeArticleSections(
           section: 'funFacts',
           index: i,
           title: funFact.title,
-          prompt: funFactPrompt,
-          suggestedFilename: extractFilename(funFactPrompt, funFact.title),
+          prompt: result.prompt,
+          suggestedFilename: result.filename,
         });
       }
     }
@@ -162,7 +187,7 @@ export async function analyzeArticleSections(
       console.log('\n🎨 Generating prompts for User Interests sections...');
       for (let i = 0; i < sections.userInterests.length; i++) {
         const interest = sections.userInterests[i];
-        const interestPrompt = await generateSinglePrompt(
+        const result = await generateSinglePrompt(
           'userInterests',
           interest.title,
           interest.content
@@ -171,15 +196,14 @@ export async function analyzeArticleSections(
           section: 'userInterests',
           index: i,
           title: interest.title,
-          prompt: interestPrompt,
-          suggestedFilename: extractFilename(interestPrompt, interest.title),
+          prompt: result.prompt,
+          suggestedFilename: result.filename,
         });
       }
     }
 
     const funFactsCount = sections.funFacts?.length || 0;
     const userInterestsCount = sections.userInterests?.length || 0;
-    const totalCount = 1 + funFactsCount + userInterestsCount;
 
     console.log(
       `\n✅ Successfully generated ${prompts.length} prompts (1 What Is${funFactsCount > 0 ? ` + ${funFactsCount} Fun Facts` : ''}${userInterestsCount > 0 ? ` + ${userInterestsCount} User Interests` : ''})`
@@ -197,6 +221,6 @@ export async function analyzeArticleSections(
 export async function testGeneratePrompt(
   title: string,
   content: string
-): Promise<string> {
+): Promise<{ prompt: string; filename: string }> {
   return generateSinglePrompt('whatIs', title, content);
 }

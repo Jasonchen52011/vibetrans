@@ -1,0 +1,35 @@
+```json
+{
+  "funFacts": [
+    {
+      "title": "Early Days of Pig Latin",
+      "content": "Did you know Pig Latin, or 'Hog Latin,' first popped up in an 1895 newspaper? I find it hilarious that what started as a quirky term became a playful secret code kids adore today. VibeTrans makes it even more fun to explore!"
+    },
+    {
+      "title": "Secret Codes and Pig Latin",
+      "content": "In the T9 texting era, teens cleverly used Pig Latin to dodge parental oversight. Imagine sending a secret message like 'ixnay on the olitics-pay.' I think that's pretty ingenious! VibeTrans helps keep this playful tradition alive with ease."
+    }
+  ],
+  "unique": {
+    "title": "Discover More with VibeTrans",
+    "items": [
+      {
+        "title": "Master Pig Latin Quickly",
+        "content": "Ever wanted to speak Pig Latin fluently? With VibeTrans, you can practice daily to master this quirky language. I believe it's a fun way to sharpen your English pronunciation skills. Plus, playing with words like 'apple' becoming 'appleyay' is just a blast!"
+      },
+      {
+        "title": "Translate Large Documents",
+        "content": "Got a big document to convert? VibeTrans has you covered. You can upload whole files, like novels or scripts, and translate them instantly. I think this feature is a game-changer, especially for teachers or language enthusiasts dealing with large texts."
+      },
+      {
+        "title": "Handling Names and Punctuation",
+        "content": "Ever wondered how to translate 'Michael Jordan' or handle punctuation in Pig Latin? VibeTrans smartly retains names and punctuation. I love how it keeps 'Hello, world!' intact. It's nifty for keeping your sentences clear while having fun with the language."
+      },
+      {
+        "title": "Audio Learning with Pig Latin",
+        "content": "Want to hear Pig Latin read aloud? VibeTrans offers a text-to-speech feature that helps you grasp the pronunciation. I think it's fantastic for auditory learners. Hearing phrases like 'ellohay' spoken out loud can make learning more engaging and effective."
+      }
+    ]
+  }
+}
+```

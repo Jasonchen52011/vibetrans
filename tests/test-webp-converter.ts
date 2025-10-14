@@ -2,8 +2,8 @@
  * Test WebP Converter
  */
 
-import { testConvertFile } from '../src/lib/article-illustrator/webp-converter';
 import path from 'path';
+import { testConvertFile } from '../src/lib/article-illustrator/webp-converter';
 
 async function testWebPConversion() {
   console.log('🧪 Testing WebP Conversion\n');

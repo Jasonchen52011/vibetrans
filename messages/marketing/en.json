@@ -68,6 +68,10 @@
             "title": "Verbose Generator",
             "description": "Expand short text into detailed, elaborate prose"
           },
+          "pigLatinTranslator": {
+            "title": "Pig Latin Translator",
+            "description": "Translate between English and Pig Latin playfully"
+          },
           "ivrTranslator": {
             "title": "IVR Translator",
             "description": "Convert IVR inputs into text with multi-language support"
@@ -96,6 +100,55 @@
           "audio": {
             "title": "AI Audio",
             "description": "Show how to use AI to generate wonderful audio"
+          }
+        }
+      },
+      "languageTranslator": {
+        "title": "Language Translator",
+        "items": {
+          "ancientGreekTranslator": {
+            "title": "Ancient Greek Translator",
+            "description": "Translate between English and Ancient Greek"
+          },
+          "alBhedTranslator": {
+            "title": "Al Bhed Translator",
+            "description": "Translate between English and Al Bhed from Final Fantasy X"
+          },
+          "esperantoTranslator": {
+            "title": "Esperanto Translator",
+            "description": "Translate between English and Esperanto language"
+          },
+          "cuneiformTranslator": {
+            "title": "Cuneiform Translator",
+            "description": "Translate ancient cuneiform scripts"
+          },
+          "ivrTranslator": {
+            "title": "IVR Translator",
+            "description": "Convert IVR inputs into text with multi-language support"
+          },
+          "albanianToEnglish": {
+            "title": "Albanian To English",
+            "description": "Translate between Albanian and English language"
+          },
+          "creoleToEnglishTranslator": {
+            "title": "Creole To English Translator",
+            "description": "Translate between Creole and English language"
+          },
+          "cantoneseTranslator": {
+            "title": "Cantonese Translator",
+            "description": "Translate between Cantonese and English language"
+          },
+          "chineseToEnglishTranslator": {
+            "title": "Chinese To English Translator",
+            "description": "Translate chinese to english translator"
+          },
+          "middleEnglishTranslator": {
+            "title": "Middle English Translator",
+            "description": "Translate middle english translator"
+          },
+          "minionTranslator": {
+            "title": "Minion Translator",
+            "description": "Translate minion translator"
           }
         }
       },
@@ -198,6 +251,12 @@
     },
     "footer": {
       "tagline": "VibeTrans provides advanced AI-powered tools for seamless language conversion. Translate texts, slang, and even ancient languages effortlessly with VibeTrans.",
+      "funTranslate": {
+        "title": "Fun Translate"
+      },
+      "languageTranslator": {
+        "title": "Language Translator"
+      },
       "product": {
         "title": "Product",
         "items": {

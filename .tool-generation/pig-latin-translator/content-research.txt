@@ -1,0 +1,77 @@
+一、Google 搜索“pig latin translator”排在前 15 位的网站未覆盖、但用户尤其关心的额外话题  
+1. 反向翻译（Pig Latin ➜ 英语）精度：目前多为英 ➜ Pig Latin，少有高精度反向译。  
+2. Pig Latin 规则差异解释：常见的三种主要规则（辅音前移、添加后缀-ay/-yay/-way 等）的对比与示例。  
+3. 专有名词与人名处理：如何把“Michael Jordan”或 URL、电子邮件等专有字符串正确转换。  
+4. 标点符号与大小写保留：用户希望“Hello, world!”仍保持逗号、感叹号及首字母大写。  
+5. 批量/长文本支持与字符上限：一次可粘贴多少字？是否支持小说、脚本等大段文本？  
+6. 语音朗读与发音教学：把译文读出来，帮助快速掌握 Pig Latin 发音节奏。  
+7. API / Embed：开发者如何把翻译器嵌入自家网站或 Discord / Slack Bot？  
+8. 隐私与本地运行：翻译是否在浏览器本地完成？是否收集用户输入？  
+9. 离线/移动端应用：Android、iOS 或 PWA 版的需求。  
+10. 教学资源：适合课堂/夏令营的语言游戏课件、练习与示例。  
+11. Pig Latin 起源与历史：19 世纪舞台剧、20 世纪儿童游戏的渊源。  
+12. 与其他“秘密语言”比较：Ubbi Dubbi、Gibberish、Backslang 等。  
+13. 破解与安全性：用 Pig Latin 做“加密”安全吗？可以轻松被机器破译吗？  
+14. 文化流行样本：影视台词（《辛普森》《Austin Powers》）和流行歌曲中的 Pig Latin。  
+15. 无障碍/辅助功能：屏幕阅读器支持、色弱配色、高对比度模式等。
+
+二、Quora 与 Reddit 上高频、高投票的话题  
+1. “Why is it called Pig Latin if it’s not related to Latin?”（名字由来和误解）  
+2. “Best way to learn to speak Pig Latin quickly.”（快速掌握技巧）  
+3. “How do you translate proper nouns or brand names into Pig Latin?”  
+4. “Fun language games similar to Pig Latin.”（Ubbi Dubbi、Double Dutch、Leet）  
+5. “Origins and history of Pig Latin—was it ever used for secrecy?”  
+6. “Can AI or Google Translate understand Pig Latin?”  
+7. “Fastest algorithm to convert English to Pig Latin in code.”（编程实现）  
+8. “Famous movies/TV quotes in Pig Latin (e.g., ‘ixnay on the adsquay’).”  
+9. “Is Pig Latin considered a conlang or just a coded English?”  
+10. “How do you handle hyphenated words and punctuation?”  
+11. “What is the cultural significance of Pig Latin among kids in the US?”  
+12. “Examples where Pig Latin translation breaks down.”（元音开头、多音节词等）  
+13. “Can Pig Latin help with phonological awareness for ESL learners?”  
+14. “Longest English words that sound funny in Pig Latin.”  
+15. “Why do some variants add ‘ay’, others ‘yay/way/quay’?”（方言差异）
+
+三、在 Quora、Reddit、Google 上出现的 Pig Latin Fun Facts  
+1. Pig Latin 的最早书面记录可追溯到 1891 年《St. James Gazette》的一篇剧评。  
+2. 1920 年代美式 Vaudeville 喜剧把它叫做“Dog Latin”或“Hog Latin”。  
+3. “ixnay on the olitics-pay” 早在 1930 年代的漫画就出现，后被《辛普森一家》发扬光大。  
+4. 在移动电话 T9 时代，美国青少年曾用 Pig Latin 作短信暗号，避开家长。  
+5. 苹果 Mac OS X 早期的“系统语音”里隐藏了 Pig Latin 朗读彩蛋。  
+6. 2006 年英国《今日心理学》提到，学龄儿童用 Pig Latin 可提高语音处理能力。  
+7. 程序员界的愚人节传统：Apache Pig 的官方文档暗示 Pig Latin 源于该项目。  
+8. NBA 球星沙奎尔·奥尼尔曾在采访中用 Pig Latin 说自己的绰号：“Aquille-shay.”  
+9. 《哈利·波特》西班牙语版粉丝里流行把咒语翻成 Pig Latin 再译回英语当玩梗。  
+10. 美剧《Brooklyn Nine-Nine》剧本手册中对角色 Rosa 规定“绝不说 Pig Latin”，成了编剧内部笑点。
+
+四、排名前 15 页面中出现频率最高的英文词汇/短语（去掉介词、冠词等）  
+1. pig  
+2. latin  
+3. translator  
+4. translate  
+5. english  
+6. online  
+7. text  
+8. converter  
+9. tool  
+10. generator  
+11. words  
+12. sentences  
+13. phrase  
+14. input  
+15. output  
+16. convert  
+17. copy  
+18. paste  
+19. language  
+20. free  
+21. fun  
+22. rules  
+23. simple  
+24. instant  
+25. result  
+26. characters  
+27. punctuation  
+28. reverse  
+29. encode  
+30. share

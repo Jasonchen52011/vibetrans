@@ -1,0 +1,98 @@
+一、Google 搜索 “cantonese translator” 前 15 名网站  
+（根据实际搜索结果整理，按出现顺序列出）
+
+| 序号 | 站点/工具 | 简介 | 独特亮点 |
+|----|-----------|------|-----------|
+| 1 | Google Translate | 谷歌官方翻译，支持粤语（标为 Chinese (Traditional) + 粤语注音选项） | ① 自动检测语言；② 网页/文档整页翻译；③ 支持罗马拼音及粤拼输出 |
+| 2 | Bing Microsoft Translator | 微软翻译，支持粤语（选择 Chinese Traditional ‑ Cantonese） | ① 语音朗读提供女声粤语；② 与 Office / Edge 无缝集成 |
+| 3 | Yandex Translate | 俄语系大型翻译站，收录粤语 | ① 可同时显示两种翻译备选；② 即时键盘上屏发音 |
+| 4 | Translate.com | 多语言在线翻译，含粤语 | ① 提供人工付费校对按钮；② 翻译后可一键共享链接 |
+| 5 | Lingvanex | AI-Based Translator | ① 长文本 10,000 字限制；② 浏览器扩展即点即译 |
+| 6 | iCiba 有道词典网页英译粤 | 国内词典的粤语分栏 | ① 例句同时展示普通话/粤语；② 支持生词本 |
+| 7 | CantoDict (cantonese.org) | 学术型粤英词典 | ① 每个词条含九声调标注；② 提供粤拼、耶鲁拼、仓颉等多种输入方案 |
+| 8 | Glosbe Cantonese-English | 开源多语料词典 | ① 例句均附原始来源；② 用户可协作补充 |
+| 9 | Pleco (官网页) | 手机词典 App | ① 离线 OCR + 粤语音包；② 粤语分层发音库 |
+|10 | Lexilogos Cantonese Keyboard & Translator | 输入/翻译一站式 | ① 在线粤拼键盘；② 直接调用 Google/Bing 结果并并排对照 |
+|11 | ImTranslator | 浏览器插件站 | ① 三引擎比对 (Google/Bing/Prompt)；② 自定义快捷键 |
+|12 | Papago | Naver 翻译 | ① 韩国团队，支持粤语 TTS；② 图片翻译较准 |
+|13 | Youdao Translate Web | 有道网页版 | ① 实时双语字幕模式；② Word/文档上传 |
+|14 | Excite Translate (Japan) | 日系老牌翻译 | ① 中→日→粤双中介路线；② 保留日式注音 |
+|15 | Reverso Context | 以例句著称 | ① 基于语料检索精准例句；② 浏览器划词插件 |
+
+二、Quora 与 Reddit 上的高频/高票话题（关键词 “cantonese translator”）  
+1. “What is the most accurate online Cantonese translator?”（Quora，高票）  
+2. “Why do most translators ignore Cantonese tones?”（Quora，高票）  
+3. “Best apps to learn Cantonese pronunciation?”（Quora，高频）  
+4. “Cantonese vs Mandarin: Which machine translation is harder?”（Quora，高票）  
+5. “[Reddit] r/Cantonese – Recommended dictionaries / translators for beginners”（置顶帖 + 800 赞）  
+6. “[Reddit] r/translator – Help: Please translate this phrase into colloquial Cantonese”（多次出现，每贴上百赞）  
+7. “[Reddit] r/HongKong – Automatic subtitles in Cantonese are terrible, any alternative?”（500+ 赞）  
+8. “[Reddit] r/languagelearning – How to get Cantonese TTS in Anki cards?”（300+ 赞）
+
+三、Quora、Reddit、Google 上出现的有趣 “fun facts” 话题  
+• 粤语有 6～9 个声调，机器常误将入声译成轻声  
+• “食咗飯未？” 被谷歌错译为 “Have you eaten rice?” 而非问候语  
+• “呢個唔係問題” 直译成 “This is not a question” 会导致外国友人误会语气  
+• 粤语俚语 “搞掂” 多被机器译成 swear word  
+• YouTube 自动字幕把 “𠵱家” 听成 “Yum Cha” 的经典笑料  
+• 香港小学用粤语拼音（粤拼）和耶鲁拼音双轨，很多外国人只知道耶鲁  
+• “佢佢佢” 同样拼写，却可能是 he/she/it，机器几乎分不清  
+
+四、市场空白功能与建议  
+1. 声调精准输出  
+   原因：高票话题集中吐槽机器忽略声调。  
+   建议：译文旁以颜色/数字标出 6-9 个声调，并支持点击播放单字调值。  
+
+2. 口语 / 俚语 识别库  
+   原因：多次出现“搞掂”“冇问题”被误译案例。  
+   建议：嵌入社区标注的口語語料，输出正式译文 + 口語译文双栏。  
+
+3. 粤拼/耶鲁/仓颉 多拼系一键切换  
+   原因：学习者在 Reddit 讨论 TTS 及 Anki 卡制作时需要不同拼音。  
+   建议：译文下方可循环切换三种拼音体系。  
+
+4. 自动字幕修正  
+   原因：r/HongKong 贴提到 YouTube 粤语字幕差，暂无好替代。  
+   建议：允许上传 srt / vtt，AI 纠正并输出加强版字幕。  
+
+5. Anki / Quizlet 导出  
+   原因：语言学习者高频需要。  
+   建议：翻译结果可一键导出含声调音频的 csv 供导入。  
+
+五、产品规划  
+
+产品名（标题格式）：CantoTone Translator  
+
+一句话介绍：  
+一站式粤语智能翻译平台，准确呈现声调、俚语与多拼音体系，并支持语音双向输入输出。
+
+亮点功能  
+① 必备（竞争对手已有）  
+• 文本即时翻译（英↔粤、简中↔粤、日↔粤）  
+• 语音朗读（男女声选择）  
+• 文档 / 网页批量翻译  
+• 多平台浏览器扩展划词  
+• 长文本支持（≥10,000 字）  
+
+② 创新（市场空白）  
+• 声调可视化＋点击逐字发音  
+• 俚语 / 口語智能识别双栏输出  
+• 粤拼 / 耶鲁 / 仓颉一键切换  
+• 字幕文件 AI 纠错（上传 srt/vtt，导出加强版）  
+• 学习卡一键导出（含音频）  
+
+六、工具类型判断  
+涉及文字翻译并内置语音输入输出 → 归类为 “audio” 类型。
+
+七、排除项  
+• 不提供对外 API  
+• 不做 APP/浏览器外形态（专注 web 端）  
+• 不含社交分享 / 历史记录功能  
+
+八、基本支持功能  
+• 上传 txt / docx 文档翻译  
+• “上传清空” 按钮一键重置  
+• 翻译结果支持 txt 文件下载  
+• 翻译结果一键复制  
+• 语音输入（麦克风图标，自动断句）  
+• 语音输出（可选男女声、调速）

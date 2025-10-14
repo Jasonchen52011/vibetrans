@@ -2,12 +2,12 @@
  * Article Illustrator - Complete Workflow Integration
  */
 
-import type { ArticleSections } from './types';
+import path from 'path';
+import fs from 'fs/promises';
 import { analyzeArticleSections } from './gemini-analyzer';
 import { generateIllustration } from './image-generator';
+import type { ArticleSections } from './types';
 import { convertDataURLToWebP, convertURLToWebP } from './webp-converter';
-import fs from 'fs/promises';
-import path from 'path';
 
 export interface IllustrationWorkflowResult {
   success: boolean;
@@ -22,14 +22,24 @@ export interface IllustrationWorkflowResult {
     status: 'success' | 'failed';
     error?: string;
   }>;
+  howToScreenshot?: {
+    filename: string;
+    size: number;
+    status: 'success' | 'failed';
+    error?: string;
+  };
   totalTimeMs: number;
 }
 
 /**
- * Complete workflow: Analyze → Generate → Convert to WebP
+ * Complete workflow: Analyze → Generate → Convert to WebP → Screenshot How-To
  */
 export async function generateArticleIllustrations(
-  sections: ArticleSections
+  sections: ArticleSections,
+  options?: {
+    captureHowTo?: boolean;
+    baseUrl?: string;
+  }
 ): Promise<IllustrationWorkflowResult> {
   const startTime = Date.now();
   const results: IllustrationWorkflowResult = {
@@ -41,12 +51,15 @@ export async function generateArticleIllustrations(
     totalTimeMs: 0,
   };
 
+  const captureHowTo = options?.captureHowTo ?? true; // 默认开启
+  const baseUrl = options?.baseUrl ?? 'http://localhost:3001';
+
   console.log('\n' + '='.repeat(70));
   console.log('🎨 Article Illustrator - Complete Workflow');
   console.log('='.repeat(70));
   console.log(`\n📚 Tool: ${sections.toolName}`);
   console.log(
-    `🎯 Target: 7 illustrations (1 What is + 2 Fun Facts + 4 User Interests)\n`
+    `🎯 Target: 7 illustrations (1 What is + 2 Fun Facts + 4 User Interests)${captureHowTo ? ' + 1 How-To screenshot' : ''}\n`
   );
 
   try {
@@ -122,6 +135,39 @@ export async function generateArticleIllustrations(
       }
     }
 
+    // Step 3: Capture How-To screenshot (optional)
+    if (captureHowTo) {
+      console.log('\n' + '-'.repeat(70));
+      console.log('📸 STEP 3: Capturing How-To screenshot...');
+      console.log('-'.repeat(70));
+
+      try {
+        const { captureHowToScreenshot } = await import('./screenshot-helper');
+        const screenshotResult = await captureHowToScreenshot({
+          pageSlug: sections.toolName,
+          baseUrl,
+        });
+
+        results.howToScreenshot = {
+          filename: screenshotResult.filename,
+          size: screenshotResult.size,
+          status: 'success',
+        };
+
+        console.log(
+          `✅ How-To screenshot captured: ${screenshotResult.filename} (${screenshotResult.size}KB)`
+        );
+      } catch (error: any) {
+        results.howToScreenshot = {
+          filename: `${sections.toolName}-how-to.webp`,
+          size: 0,
+          status: 'failed',
+          error: error.message,
+        };
+        console.error(`❌ How-To screenshot failed: ${error.message}`);
+      }
+    }
+
     // Final summary
     results.totalTimeMs = Date.now() - startTime;
     results.success = results.successfulImages > 0;
@@ -133,6 +179,12 @@ export async function generateArticleIllustrations(
       `✅ Successful: ${results.successfulImages}/${results.totalImages}`
     );
     console.log(`❌ Failed: ${results.failedImages}/${results.totalImages}`);
+
+    if (captureHowTo && results.howToScreenshot) {
+      const screenshotStatus = results.howToScreenshot.status === 'success' ? '✅' : '❌';
+      console.log(`${screenshotStatus} How-To Screenshot: ${results.howToScreenshot.status}`);
+    }
+
     console.log(`⏱️  Total Time: ${(results.totalTimeMs / 1000).toFixed(2)}s`);
     console.log('\n📁 Generated Files:');
     results.images
@@ -143,6 +195,12 @@ export async function generateArticleIllustrations(
         );
       });
 
+    if (results.howToScreenshot?.status === 'success') {
+      console.log(
+        `   ${results.images.filter((img) => img.status === 'success').length + 1}. ${results.howToScreenshot.filename} (${results.howToScreenshot.size}KB) - How-To Screenshot`
+      );
+    }
+
     if (results.failedImages > 0) {
       console.log('\n⚠️  Failed Images:');
       results.images
@@ -150,6 +208,10 @@ export async function generateArticleIllustrations(
         .forEach((img, idx) => {
           console.log(`   ${idx + 1}. ${img.title}: ${img.error}`);
         });
+    }
+
+    if (results.howToScreenshot?.status === 'failed') {
+      console.log(`\n⚠️  How-To Screenshot Failed: ${results.howToScreenshot.error}`);
     }
 
     console.log('\n' + '='.repeat(70));

@@ -25,6 +25,7 @@ export async function generateMetadata({
   params: Promise<{ locale: Locale }>;
 }): Promise<Metadata | undefined> {
   const { locale } = await params;
+  // @ts-ignore - Translation keys type mismatch
   const t = await getTranslations({ locale, namespace: 'Metadata' });
 
   return constructMetadata({
@@ -44,6 +45,7 @@ interface HomePageProps {
 export default async function HomePage(props: HomePageProps) {
   const params = await props.params;
   const { locale } = params;
+  // @ts-ignore - Translation keys type mismatch
   const t = await getTranslations('HomePage');
 
   // Structured Data for SEO

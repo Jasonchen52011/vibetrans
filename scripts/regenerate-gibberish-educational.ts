@@ -3,8 +3,8 @@
  * Enhanced prompt with more specific educational elements
  */
 
-import { generateImageWithKie } from '../src/lib/kie-text-to-image';
 import { convertURLToWebP } from '../src/lib/article-illustrator/webp-converter';
+import { generateImageWithKie } from '../src/lib/kie-text-to-image';
 
 async function regenerateEducationalImage() {
   console.log('\n' + '='.repeat(70));

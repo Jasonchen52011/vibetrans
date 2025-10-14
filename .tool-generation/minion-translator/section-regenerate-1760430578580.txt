@@ -1,0 +1,8 @@
+```json
+{
+  "whatIs": {
+    "title": "What is minion translator",
+    "content": "Minion translator is a cool tool that changes regular text or speech into the fun and quirky language of Minions. With Minion Translator Pro by VibeTrans, you can easily convert English to 'Minionese' and vice versa. It's perfect for creating party content or spicing up classroom activities. Whether you're a parent, teacher, or content creator, this translator makes it simple to add a playful twist to your projects. You can even download the results as a text file or listen to them with adjustable speed. It's all about having fun with language!"
+  }
+}
+```

@@ -1,0 +1,82 @@
+一、Google「cantonese translator」前 15 个结果未充分覆盖、但搜索者高度关心的话题  
+1. 粤语与普通话自动识别与切换（避免把粤语误判成普通话）  
+2. 粤语罗马字系统对比（Jyutping vs Yale vs 粤拼）及一键转换  
+3. 逐字声调标注与可视化（6–9 个声调的准确显示与练习）  
+4. 口语、俚语、潮语、粗口的专门翻译与敏感词过滤  
+5. 香港粤语、广州粤语、海外粤语的词汇差异与地区化设置  
+6. 粤语生僻字（例如𠱸、啱、嘅）与 Unicode 扩展字支持  
+7. 图片 / PDF / 手写 / OCR 粤语识别与即时翻译  
+8. 语音同声传译、会议字幕、视频实时字幕（如 Zoom/YouTube）  
+9. 离线包与弱网场景支持（旅行、地铁环境）  
+10. 隐私与数据安全（香港/中国大陆/海外服务器位置）  
+11. 对开发者的 API / SDK / 插件调用说明  
+12. 与 WhatsApp、WeChat、Telegram、Slack 等聊天软件的快捷插件  
+13. 粤语→英语→其他小语种（西班牙语、法语等）的多语级联翻译  
+14. 翻译质量评分、参考来源与多引擎比对（Google/Bing/自研等）  
+15. 配套学习资源：分级阅读、例句库、配音练习  
+16. 文化背景解释（粵語歇後語、粤语影视经典台词）  
+17. 电子词典模式：部首 / 笔画 / 反查功能  
+18. 翻译历史、批量导出、团队协作  
+19. 翻译中的性别与敬语区分（多谢 / 唔该 / 谢谢）  
+20. 付费专业译员/母语润色对接服务
+
+二、Quora 与 Reddit 上高频/高票话题  
+1. “Why doesn’t Google Translate support Cantonese natively?”  
+2. “What is the best Cantonese translation app when travelling in Hong Kong?”  
+3. “How many tones are there in Cantonese and why does that make machine translation hard?”  
+4. “Is Jyutping better than Yale for learning Cantonese pronunciation?”  
+5. “Accurate translation for 粤语 slang like ‘撚’ or ‘扑街’?”  
+6. “Real-time speech translator for Cantonese meetings ‑ any good?”  
+7. “How to translate Cantonese-specific characters that aren’t on my keyboard?”  
+8. “Why does Cantonese mix so much English (code-switching) and how to reflect that in translation?”  
+9. “Cantonese subtitles for Netflix/YouTube – how to auto-generate?”  
+10. “Machine translation vs human translator for legal/medical documents in Cantonese”  
+11. “Resources to learn Cantonese if you already speak Mandarin”  
+12. “Does DeepL plan to add Cantonese?”  
+13. “Differences between Hong Kong Cantonese and Guangzhou Cantonese vocabulary”  
+14. “What Cantonese phrases can’t be accurately translated into English?”  
+15. “Offline translator for use in Mainland China that still has Cantonese”
+
+三、与「cantonese translator」相关的趣味 Facts  
+1. 粤语严格来说有 6-9 个声调，机器若只识别 4 个声调会造成大量歧义。  
+2. 粤语保留了许多中古汉语发音，使得某些唐诗用粤语读更押韵。  
+3. 粤语常把英文直接音译：的士 (taxi)、巴士 (bus)、朱古力 (chocolate)。  
+4. 字符“𠱸”(biang) 在粤语网络语境中常被戏称为“最复杂的汉字”，不少翻译工具无法显示。  
+5. Google Translate 实际已能识别部分粤语，但官方语言列表里仍标注为“Chinese (Traditional)”。  
+6. 在香港地铁广播里，机器合成的粤语通常缺乏变调，引发本地人吐槽。  
+7. 臭豆腐在粤语里直译为“臭豆腐”，但香港街头更多说“臭豆腐仔”，机器常漏掉“仔”的亲切语气。  
+8. “唔該”既可表示“请”也可表示“谢谢”，多数英文译文只能用 please 或 thanks，语境决定含义。  
+9. “Cantonese opera” (粤剧) 的唱词，AI 翻译时必须保持平仄，否则会破坏旋律。  
+10. Reddit 上曾票选“最难翻的粤语词”冠军是“冇计” (无计可施/没有办法)，原因是随意性和口气难以对应英文。
+
+四、SERP 前 15 页面高频英文关键词（去除介词、冠词等）  
+1. Cantonese  
+2. translator  
+3. translation  
+4. Chinese  
+5. English  
+6. Mandarin  
+7. online  
+8. free  
+9. Jyutping  
+10. dictionary  
+11. phrases  
+12. voice  
+13. text  
+14. audio  
+15. speech  
+16. tool  
+17. romanization  
+18. pronunciation  
+19. tones  
+20. language  
+21. convert  
+22. characters  
+23. input  
+24. Hong  
+25. Kong  
+26. learn  
+27. app  
+28. unicode  
+29. phrasebook  
+30. vocabulary

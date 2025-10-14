@@ -1,8 +1,8 @@
 'use client';
 
+import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
 import mammoth from 'mammoth';
 import { useState } from 'react';
-import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
 
 interface BadTranslatorToolProps {
   pageData: any;

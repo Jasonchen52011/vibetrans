@@ -156,12 +156,12 @@ export async function generateImage(
 ): Promise<VolcanoImageResponse> {
   const mode = options.mode || 'image';
 
-  // For text-to-image, use a different model (e.g., jimeng_v30 or similar)
-  // For image-to-image, use jimeng_i2i_v30
+  // For text-to-image, use jimeng_i2i_v40 (Volcano 4.0)
+  // For image-to-image, use jimeng_i2i_v40 (Volcano 4.0)
   const reqKey =
     mode === 'text'
-      ? process.env.VOLC_T2I_REQ_KEY || 'general_v20'
-      : process.env.VOLC_I2I_REQ_KEY || 'jimeng_i2i_v30';
+      ? process.env.VOLC_T2I_REQ_KEY || 'jimeng_i2i_v40'
+      : process.env.VOLC_I2I_REQ_KEY || 'jimeng_i2i_v40';
 
   const apiUrl =
     process.env.VOLC_I2I_API_URL || 'https://visual.volcengineapi.com';

@@ -1,0 +1,91 @@
+一、Google 搜索「pig latin translator」排名前 15 的网站  
+
+| 序号 | 网址 | 工具简介 | 独特亮点 |
+|----|----|----|----|
+| 1 | funtranslations.com/pig-latin | 老牌趣味翻译站，可互译英语↔猪拉丁 | • 支持整段文本<br>• 有“Yoda”等 50+ 趣味语言入口，导流强 |
+| 2 | lingojam.com/PigLatinTranslator | 即输即译的在线编辑器 | • 左右两栏实时同步<br>• 可一键创建“自定义翻译器” |
+| 3 | pig-latin.org | 单一功能站点 | • 显示每一步转换规则，便于学习 |
+| 4 | dcode.fr/pig-latin | 加密/解密综合站 | • “解码”模式可自动识别并还原猪拉丁 |
+| 5 | cryptii.com/pipes/pig-latin | 模块化编码流水线 | • 可将猪拉丁与摩斯、Base64 等串联转换 |
+| 6 | wordplays.com/pig-latin-translator | 文字游戏工具集合 | • 输出同时给出词频统计、韵脚分析 |
+| 7 | rapidtables.com/tools/pig-latin-translator.html | 实用型工具站 | • 支持大小写保持/全部小写两种输出 |
+| 8 | tools4noobs.com/online_tools/pig_latin | 轻量级脚本工具 | • “Reverse” 开关可一键回译 |
+| 9 | mothereff.in/pig-latin | 开发者玩具页 | • 代码开源，可在浏览器离线运行 |
+|10| calculator-online.net/pig-latin-translator | 计算器集合站 | • 可一次性批量处理多段文本 |
+|11| mycalculator.net/pig-latin-translator | 同类多工具集合 | • 自动检测是否已是猪拉丁，避免二次转换 |
+|12| webtools.day/pig-latin-translator | 新晋工具聚合站 | • 黑暗/亮色主题切换 |
+|13| onlinetoolz.net/pig-latin | 极简 UI | • 支持 URL 参数预填充，便于嵌入 |
+|14| translates.io/pig-latin | 翻译工具集 | • 响应式移动端体验佳 |
+|15| fontvilla.com/pig-latin-translator | 字体/样式工具站 | • 转换后可选 20+ 花体/符号装饰 |
+
+二、Quora & Reddit 上的高频/高投票话题  
+
+Quora  
+1. “How do you speak Pig Latin fluently?”  
+2. “What’s the fastest way to translate large documents to Pig Latin?”  
+3. “Is there a universal rule for numbers and punctuation in Pig Latin?”  
+4. “Best online Pig Latin translator that keeps capitalization?”  
+
+Reddit  
+1. r/learnprogramming – “Help me debug my Python Pig Latin translator”（3k+ upvotes）  
+2. r/todayilearned – “TIL Pig Latin dates back to at least 1910”  
+3. r/AskReddit – “What’s something harmless you used as a secret code as a kid? (Pig Latin!)”  
+4. r/linguistics – “Why does Pig Latin work so well in English but not in other languages?”  
+
+三、搜集到的 fun facts 话题  
+
+• Pig Latin 最早见于 1895 年报纸“hog latin”一词  
+• 1920 年代美国广播剧《The Little Rascals》让其流行  
+• 1952 年沃尔特·迪士尼短片中已出现完整对话  
+• 英语之外的变体：法语“Louchebem”、德语“Kedelkloppersprook”  
+• iOS 9 之前，Siri 可回应部分 Pig Latin 指令（被隐藏彩蛋）  
+• 90 年代黑客用 Pig Latin 在 IRC 里防止关键字过滤  
+
+四、市场空白 & 功能建议  
+
+痛点/话题 → 市场缺口 → 建议功能  
+1. “How to translate large documents” → 多数工具仅文本框 → 批量上传 docx/txt、字数不限批量翻译  
+2. “Rule for numbers & punctuation” → 现有算法不一致 → 规则切换：经典规则 / 保留数字 / 全字符模式  
+3. “Keep capitalization” → 很多结果大小写错乱 → 智能保留大小写、专有名词首字母检测  
+4. “Audio learning” → 仅文字 → 语音输入+TTS 朗读猪拉丁，帮助口语  
+5. “Used as kids’ secret code” → 学习/游戏场景 → 游戏化测验模式：给英文猜猪拉丁、计时排行榜  
+6. “Works badly for non-English” → 支持多语 → 先做英语主打，预留法语/德语变体模块  
+
+五、产品规划  
+
+产品名称（标题格式）  
+Pig Latin Translator Plus  
+
+一句话介绍  
+“把任何英文秒变猪拉丁，并支持语音朗读与批量文档转换的专业工具。”  
+
+亮点功能  
+A. 竞争对手已有功能（全部覆盖）  
+• 实时双栏翻译  
+• 反向回译  
+• 大小写保持选项  
+• 设置是否显示转换步骤  
+
+B. 市场空白功能（创新点）  
+• 批量上传 txt/docx，一键翻译整本文件  
+• 三套算法：经典 / 保留数字 / 全字符  
+• 智能检测专有名词、缩写保持原状  
+• 语音输入 & TTS 猪拉丁朗读  
+• 游戏化练习模式（计时、得分榜）  
+
+六、工具类型  
+text-to-text （文字到文字转换，附带语音输入输出但核心仍为文本）  
+
+七、明确排除  
+× 对外 API 接口  
+× 移动端 App、本地软件、插件等形态  
+× 内置社交分享按钮  
+× 历史记录/收藏功能  
+
+八、必须支持的基础功能  
+• 上传文件：txt、docx  
+• “清空”按钮，一键重置  
+• 结果下载为 txt  
+• 结果一键复制  
+• 语音输入（浏览器端 Web Speech API）  
+• 语音输出（TTS 朗读猪拉丁）

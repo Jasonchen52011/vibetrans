@@ -1,9 +1,9 @@
 'use client';
 
+import { SpeechToTextButton } from '@/components/ui/speech-to-text-button';
+import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
 import mammoth from 'mammoth';
 import { useState } from 'react';
-import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
-import { SpeechToTextButton } from '@/components/ui/speech-to-text-button';
 
 interface AncientGreekTranslatorToolProps {
   pageData: any;

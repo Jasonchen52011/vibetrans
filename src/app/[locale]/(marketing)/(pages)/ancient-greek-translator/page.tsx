@@ -385,13 +385,13 @@ export default async function AncientGreekTranslatorPage(
         {/* Explore Other Tools */}
         <ExploreOurAiTools
           toolKeys={[
-            'Gen Z Translator',
-            'Dog Translator',
-            'Bad Translator',
-            'Ancient Greek Translator',
-            'Gibberish Translator',
-            'Esperanto Translator',
-          ]}
+        'Cuneiform Translator',
+        'Middle English Translator',
+        'Esperanto Translator',
+        'Chinese to English Translator',
+        'Al Bhed Translator',
+        'Cantonese Translator'
+      ]}
         />
 
         {/* Testimonials Section */}

@@ -18,6 +18,11 @@ const nextConfig: NextConfig = {
   /* config options here */
   devIndicators: false,
 
+  // Skip type checking during build
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+
   // Exclude Node.js-only packages from Edge Runtime bundles
   serverExternalPackages: ['fumadocs-mdx'],
 

@@ -1,12 +1,12 @@
-import { google } from '@ai-sdk/google';
-import { generateText } from 'ai';
-import { type NextRequest, NextResponse } from 'next/server';
 import {
   type CuneiformScript,
   cleanText,
   getScriptDescription,
   validateCuneiformInput,
 } from '@/lib/cuneiform';
+import { google } from '@ai-sdk/google';
+import { generateText } from 'ai';
+import { type NextRequest, NextResponse } from 'next/server';
 
 export const runtime = 'edge';
 

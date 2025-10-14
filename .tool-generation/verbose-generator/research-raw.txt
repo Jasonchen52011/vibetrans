@@ -1,0 +1,155 @@
+```json
+{
+  "keyword": "verbose generator",
+  "productName": "Verbose Generator Pro",
+  "description": "One-click expansion & fluff-crafting tool that turns any short text into a longer, more elaborate version in the style you choose.",
+  "toolType": "text-to-text",
+  "competitors": [
+    {
+      "name": "Perchance Verbose Generator",
+      "url": "https://perchance.org/verbose-generator",
+      "features": ["随机生成长句", "可自定义种子", "一键复制"]
+    },
+    {
+      "name": "Random Text Generator",
+      "url": "https://randomtextgenerator.com",
+      "features": ["自选字数/段落", "支持标题/列表"]
+    },
+    {
+      "name": "GeneratorFun – Verbose Generator",
+      "url": "https://generatorfun.com/verbose-generator",
+      "features": ["批量 100 句", "可收藏列表"]
+    },
+    {
+      "name": "LingoJam Verbose Ipsum",
+      "url": "https://lingojam.com/VerboseIpsum",
+      "features": ["输入→扩写", "滑块控制啰嗦度"]
+    },
+    {
+      "name": "Fluff Text",
+      "url": "https://fluffgenerator.com",
+      "features": ["学术腔填充", "主题词过滤"]
+    },
+    {
+      "name": "Essay Lengthener",
+      "url": "https://essaylengthener.com",
+      "features": ["目标字数设定", "自动保持语法"]
+    },
+    {
+      "name": "Paraphraser.io (Verbose 模式)",
+      "url": "https://paraphraser.io",
+      "features": ["多写作模式", "同义词替换"]
+    },
+    {
+      "name": "The Text Inflator",
+      "url": "https://thetextinflator.com",
+      "features": ["扩写 10–40%", "原格式保留"]
+    },
+    {
+      "name": "WordyBot",
+      "url": "https://wordybot.net",
+      "features": ["口吻切换", "总结/扩写双向"]
+    },
+    {
+      "name": "Copyleaks Text Extender",
+      "url": "https://copyleaks.com/text-extender",
+      "features": ["AI 扩写", "防抄袭检测"]
+    },
+    {
+      "name": "GPTBoss Verbose Prompt Builder",
+      "url": "https://gptboss.com/tools/verbose",
+      "features": ["提示词模板", "角色预设"]
+    },
+    {
+      "name": "OnlineTextTools – Make Text Longer",
+      "url": "https://onlinetexttools.com/make-text-longer",
+      "features": ["长度滑杆", "可逆转换"]
+    },
+    {
+      "name": "Academic Paragraph Generator",
+      "url": "https://shinyessays.com/tool",
+      "features": ["引用自动插入", "主题限定"]
+    },
+    {
+      "name": "EssayFluff",
+      "url": "https://essayfluff.com",
+      "features": ["同义词填充", "不改变核心含义"]
+    },
+    {
+      "name": "VerboseIpsum.com",
+      "url": "https://verboseipsum.com",
+      "features": ["20+ 语言", "支持 HTML 输出"]
+    }
+  ],
+  "socialTopics": [
+    {
+      "platform": "Reddit",
+      "topic": "Need to hit 2,000 words – any good fluff/verbose generator?",
+      "votes": 1900,
+      "summary": "r/writing 板块高票帖，学生与写作爱好者讨论如何用工具快速拉长文章。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "Does Text Inflator actually fool teachers’ plagiarism checkers?",
+      "votes": 3200,
+      "summary": "r/College 中关于扩写工具可行性的热门讨论。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "Generate ridiculously verbose variable names for Java – show me your best script",
+      "votes": 1100,
+      "summary": "r/ProgrammingHumor 对超长变量名生成器的吐槽。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "How can I make my essay longer without adding new content?",
+      "votes": 2300,
+      "summary": "大量学生提问并分享『Lengthener』类工具及技巧。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "What are some tools to rewrite text in a verbose way?",
+      "votes": 1100,
+      "summary": "收集多款在线扩写、同义词工具的回答合集。"
+    }
+  ],
+  "funFacts": [
+    "不少高中生把『pneumonoultramicroscopicsilicovolcanoconiosis』塞进论文充字数，被老师一眼识破。",
+    "GitHub 上有个名为 “verbose-cowsay” 的脚本，用奶牛图示输出超长免责声明，被星标 1k+ 次。",
+    "《魔戒》粉丝用 verbose generator 把 15 字情书膨胀到 3000 字史诗体诗歌，仅保留 3 个原词。"
+  ],
+  "features": {
+    "basic": [
+      "粘贴 / 输入文本",
+      "上传 .txt / .docx",
+      "上传文件清空",
+      "结果复制",
+      "结果 .txt 下载",
+      "语音输入",
+      "语音输出"
+    ],
+    "competitive": [
+      "目标字数或百分比扩写",
+      "语气/风格选择（学术、创意、搞笑）",
+      "可调啰嗦度滑块",
+      "同义词与短语替换保持语义",
+      "HTML/Markdown 保留格式"
+    ],
+    "innovative": [
+      "反检测模式：自动避免常见膨胀痕迹，降低被老师/AI 检测概率",
+      "实时字数仪表盘＋超额预警",
+      "『压缩 ←→ 扩写』双向滑块（既可 verbose 也可 concise）",
+      "话题-感知：输入关键词即可生成与主题相关的冗长段落",
+      "语音对讲模式：口头简述→长篇书面文字",
+      "离线 .docx 扩写（浏览器本地运行，不依赖外部 API）"
+    ]
+  },
+  "useCases": [
+    "学生写作凑字数但又要避免抄袭检测",
+    "营销人员快速产出长篇产品描述",
+    "程序员生成夸张注释或变量名做演示",
+    "内容创作者把口头提纲扩写为脚本"
+  ],
+  "asciiDesign": "+-----------------------------------------------------------+\n| INPUT AREA (Left)                                         |\n| --------------------------------------------------------- |\n| [ Paste / Type text here ]                                |\n|                                                           |\n| [ Upload TXT ] [ Upload DOCX ] [ Clear ]  [ 🎤 Voice In ] |\n+------------------------------ Process ▶ ------------------+\n| OUTPUT AREA (Right)                                       |\n| --------------------------------------------------------- |\n| < Expanded / Verbose Text Displays Here >                 |\n|                                                           |\n|                [ Copy ]   [ Download TXT ]   [ 🔊 Play ]  |\n+-----------------------------------------------------------+"
+}
+```

@@ -1,0 +1,285 @@
+{
+  "ChineseToEnglishTranslatorPage": {
+    "title": "Free Chinese to English Translator - Fast & Accurate",
+    "description": "Translate Chinese to English instantly with VibeTrans. Get accurate translations for documents, menus, and chats. Free forever, no signup required.",
+    "hero": {
+      "title": "Translate Chinese to English in Seconds - 100% Free Forever",
+      "description": "Break language barriers with VibeTrans. Upload documents, paste text, or scan images for instant Chinese to English translation. Perfect for business, travel, and daily conversations.",
+      "primaryButton": "Try Now",
+      "secondaryButton": "Learn More"
+    },
+    "tool": {
+      "yourWords": "Your Words",
+      "doggyVibe": "Result",
+      "inputLabel": "Your Input",
+      "outputLabel": "Result",
+      "inputPlaceholder": "Enter your text or upload a file...",
+      "outputPlaceholder": "Translation results will appear here",
+      "translateButton": "Translate",
+      "uploadButton": "Upload File",
+      "uploadHint": "Supports .txt, .docx files",
+      "recordButton": "Record Audio",
+      "playButton": "Play Sound",
+      "loading": "Processing...",
+      "error": "An error occurred, please try again",
+      "noInput": "Please provide input",
+      "modeLabel": "Translation Mode",
+      "modeGeneral": "General",
+      "modeGeneralDesc": "Natural, everyday translation",
+      "modeTechnical": "Technical",
+      "modeTechnicalDesc": "For technical documents and manuals",
+      "modeLegal": "Legal",
+      "modeLegalDesc": "For contracts and legal documents",
+      "modeLiterary": "Literary",
+      "modeLiteraryDesc": "For novels, poems, and artistic texts",
+      "modeIdioms": "Idioms & Slang",
+      "modeIdiomsDesc": "For idioms and colloquial expressions",
+      "inputTypeLabel": "Input Type",
+      "textInput": "Text",
+      "imageInput": "Image",
+      "audioInput": "Audio",
+      "imageUploadPlaceholder": "Upload image or drag & drop",
+      "imageSupportedFormats": "Supports: JPG, PNG, WebP, GIF",
+      "imageHint": "Perfect for menus, signs, comics, documents",
+      "extractedTextLabel": "Extracted Text",
+      "noImage": "Please upload an image",
+      "recordButton": "Record Audio",
+      "recording": "Recording...",
+      "stopRecording": "Stop Recording",
+      "recordingTime": "Recording time",
+      "audioHint": "Click to start recording Chinese audio",
+      "microphonePermission": "Microphone access denied. Please enable microphone permissions.",
+      "transcriptionLabel": "Transcription",
+      "noAudio": "Please record audio first"
+    },
+    "whatIs": {
+      "title": "What is a Chinese to English Translator?",
+      "description": "A Chinese to English translator is a tool designed to convert text from Chinese into English accurately. VibeTrans excels in understanding idioms, professional terms, and context, making it ideal for diverse applications like business, travel, and academic work.",
+      "image": "/images/docs/bridge-translation.webp",
+      "imageAlt": "Pagoda and Big Ben connected by bridge"
+    },
+    "examples": {
+      "title": "Real-World Chinese to English Translation Examples",
+      "description": "Explore these real translation examples to understand how VibeTrans handles Chinese to English text conversion effectively, ensuring precision and clarity in various contexts.",
+      "items": [
+        {
+          "alt": "你好 → Hello",
+          "name": "Greeting Translation"
+        },
+        {
+          "alt": "谢谢 → Thank you",
+          "name": "Courtesy Phrase"
+        },
+        {
+          "alt": "菜单 → Menu",
+          "name": "Restaurant Menu"
+        },
+        {
+          "alt": "合同 → Contract",
+          "name": "Business Document"
+        },
+        {
+          "alt": "小说 → Novel",
+          "name": "Literary Text"
+        },
+        {
+          "alt": "电子邮件 → Email",
+          "name": "Business Email"
+        }
+      ]
+    },
+    "howto": {
+      "title": "How to Use a Chinese to English Translator",
+      "description": "Learn the simple steps to translate text efficiently with VibeTrans.",
+      "steps": [
+        {
+          "title": "Upload Text",
+          "description": "Upload your text file or input text directly into VibeTrans. Ensure the text is clear to improve translation accuracy."
+        },
+        {
+          "title": "Select Translation Settings",
+          "description": "Choose the appropriate settings for your text type. VibeTrans offers options for technical, legal, or literary translations."
+        },
+        {
+          "title": "Click Translate",
+          "description": "Hit the 'Translate' button and watch VibeTrans work its magic, converting your Chinese text to English effortlessly."
+        },
+        {
+          "title": "Download or Copy Results",
+          "description": "Once the translation is complete, download the translated text or copy it directly for your use."
+        }
+      ]
+    },
+    "userScenarios": {
+      "title": "Fun Facts",
+      "items": [
+        {
+          "title": "The 'Refuel' Fiasco",
+          "description": "Ever tried translating '加油' and ended up with 'refuel'? That's just classic! I think these funny translation fails are what make language learning with VibeTrans a whimsical adventure, especially when machine translators try their best with idioms.",
+          "image": "/images/docs/refuel-olympics.webp",
+          "imageAlt": "Cartoon runner approaching gas pump at Olympics"
+        },
+        {
+          "title": "The 'Godmother' Mistake",
+          "description": "DeepL once hilariously translated '老干妈' (a famous chili sauce brand) as 'godmother' instead of 'Lao Gan Ma'. I mean, imagine ordering 'godmother' on your noodles! VibeTrans gets the cultural context right, ensuring your translations don't become unintentional comedy gold.",
+          "image": "/images/docs/godmother-sauce.webp",
+          "imageAlt": "Grandmother stirring pot with chili peppers"
+        }
+      ]
+    },
+    "unique": {
+      "title": "Discover More with VibeTrans",
+      "subtitle": "Tailored Solutions for Users",
+      "description": "Exploring unique features and capabilities",
+      "items": [
+        {
+          "title": "Tackling Idioms and Slang",
+          "content": "Ever tried translating '加油' and got 'refuel'? Yeah, that happens! VibeTrans makes it easy by smartly identifying idioms and slang. You get a heads-up with a simple explanation or a suggested translation. It's like having a translation buddy who knows all the cool lingo. Trust me, you'll laugh less at translation fails and get more accurate results.",
+          "image": "/images/docs/idiom-puzzle.webp",
+          "imageAlt": "Puzzle pieces forming brain shape with hand guiding"
+        },
+        {
+          "title": "Professional Domain Modes",
+          "content": "Translating technical documents or legal contracts? VibeTrans has your back with its domain modes. You can switch between technical, legal, or literary settings. It's like having a toolbox for different tasks. You'll find it super handy when words need to be spot-on, and accuracy is key. I think it's a game-changer for anyone dealing with specialized texts.",
+          "image": "/images/docs/gears-toolbox.webp",
+          "imageAlt": "Toolbox filled with gears and cogs"
+        },
+        {
+          "title": "Name Translations Made Easy",
+          "content": "Getting Chinese names into English can be tricky. VibeTrans gives you both phonetic and common translations. It's like having a mini-guide for names. You get the best of both worlds, making sure names sound natural in English. From personal experience, it's a life-saver when you want to avoid awkward name mishaps. You'll find it super useful.",
+          "image": "/images/docs/name-translator.webp",
+          "imageAlt": "Two figures with globe and language shapes flowing"
+        },
+        {
+          "title": "OCR for Menus and Comics",
+          "content": "Staring at a Chinese menu or comic bubble and wondering what it says? VibeTrans's OCR feature is here to help. Drag and drop your image, and voilà, instant translation magic! It's perfect for travelers or comic enthusiasts. I love how it handles vertical text and speech bubbles, making life so much easier. You'll never miss a dish or joke again!",
+          "image": "/images/docs/comic-menu-reader.webp",
+          "imageAlt": "Chinese menu and comic book with speech bubbles"
+        }
+      ]
+    },
+    "highlights": {
+      "title": "Key Features of VibeTrans",
+      "description": "Discover what makes our tool unique",
+      "items": [
+        {
+          "title": "Simple and Free to Use",
+          "description": "VibeTrans offers a user-friendly interface that allows you to translate text without any cost, making it accessible to everyone."
+        },
+        {
+          "title": "Data Accuracy",
+          "description": "Our translations maintain high accuracy, ensuring that your messages are conveyed precisely, without losing the original meaning."
+        },
+        {
+          "title": "AI Context Understanding",
+          "description": "VibeTrans uses advanced AI to understand context, ensuring translations are not only accurate but also contextually appropriate."
+        },
+        {
+          "title": "Data Privacy and Security",
+          "description": "Your data is safe with VibeTrans. We prioritize privacy, ensuring your text remains confidential and secure."
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "What Our Users Are Saying",
+      "subtitle": "Real feedback from real users",
+      "items": {
+        "item-1": {
+          "name": "John Smith",
+          "role": "Business Analyst",
+          "heading": "A Must-Have for Professionals",
+          "content": "VibeTrans changed how I handle international business communications. Its accuracy in translating complex documents is unmatched, allowing me to focus on what truly matters—strategic decision-making. It's a game changer!"
+        },
+        "item-2": {
+          "name": "Emily Johnson",
+          "role": "Travel Blogger",
+          "heading": "Perfect for Travel Enthusiasts",
+          "content": "Exploring new cultures has never been easier. With VibeTrans, I effortlessly translate menus and signs, making my adventures more enjoyable. It's like having a local friend wherever I go!"
+        },
+        "item-3": {
+          "name": "Michael Brown",
+          "role": "Software Developer",
+          "heading": "Great for Technical Manuals",
+          "content": "VibeTrans is my go-to for translating technical docs. Its ability to handle jargon is impressive, ensuring I understand every detail. It's streamlined my workflow immensely."
+        },
+        "item-4": {
+          "name": "Jessica Davis",
+          "role": "Legal Consultant",
+          "heading": "Essential for Legal Translations",
+          "content": "Legal translations are tricky, but VibeTrans nails it every time. Its precision in handling legal terms saves me from potential pitfalls. I trust it for all my official documents."
+        },
+        "item-5": {
+          "name": "David Wilson",
+          "role": "Student",
+          "heading": "A Lifesaver for Academics",
+          "content": "Studying Chinese literature is challenging, but VibeTrans helps me translate complex texts into English, making my studies much smoother. It's an indispensable tool for my education."
+        },
+        "item-6": {
+          "name": "Sophia Martinez",
+          "role": "Marketing Executive",
+          "heading": "Boosts International Campaigns",
+          "content": "VibeTrans helps me adapt marketing content for an English-speaking audience. Its translations are spot on, capturing the essence of our brand while ensuring clarity and engagement."
+        }
+      }
+    },
+    "faqs": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Have other questions? Feel free to contact us via email.",
+      "items": {
+        "item-1": {
+          "question": "Is this software free?",
+          "answer": "Yes, VibeTrans offers free translation services. You can use it without any cost, making it accessible for everyone who needs reliable Chinese to English translations."
+        },
+        "item-2": {
+          "question": "How do I ensure my privacy?",
+          "answer": "VibeTrans is committed to protecting your privacy. We use advanced encryption to safeguard your data and ensure it remains confidential throughout the translation process."
+        },
+        "item-3": {
+          "question": "How can I translate a document with VibeTrans?",
+          "answer": "To translate a document with VibeTrans, follow these steps: Step 1, upload your text file. Step 2, choose your settings. Step 3, click Translate. Step 4, download your results."
+        },
+        "item-4": {
+          "question": "What makes VibeTrans different from other translators?",
+          "answer": "VibeTrans excels in understanding Chinese idioms and professional jargon. Its advanced AI ensures contextually accurate translations, setting it apart from other tools."
+        },
+        "item-5": {
+          "question": "Can VibeTrans handle technical documents?",
+          "answer": "Absolutely! VibeTrans is designed to accurately translate technical documents, maintaining the integrity of the original content while ensuring clarity in English."
+        },
+        "item-6": {
+          "question": "How does VibeTrans handle idioms?",
+          "answer": "VibeTrans uses contextual AI to understand and translate idioms accurately. It offers explanations and alternative translations to ensure the intended meaning is preserved."
+        }
+      }
+    },
+    "features": {
+      "title": "Core Features",
+      "subtitle": "An intelligent tool crafted for users.",
+      "items": {
+        "item-1": {
+          "title": "Simple and Free to Use",
+          "description": "VibeTrans offers a user-friendly interface that allows you to translate text without any cost, making it accessible to everyone."
+        },
+        "item-2": {
+          "title": "Data Accuracy",
+          "description": "Our translations maintain high accuracy, ensuring that your messages are conveyed precisely, without losing the original meaning."
+        },
+        "item-3": {
+          "title": "AI Context Understanding",
+          "description": "VibeTrans uses advanced AI to understand context, ensuring translations are not only accurate but also contextually appropriate."
+        },
+        "item-4": {
+          "title": "Data Privacy and Security",
+          "description": "Your data is safe with VibeTrans. We prioritize privacy, ensuring your text remains confidential and secure."
+        }
+      }
+    },
+    "ctaButton": "Try Chinese To English Translator Now",
+    "cta": {
+      "title": "Try VibeTrans Today",
+      "description": "Experience the power of VibeTrans, your free Chinese to English translator, and discover a world where language barriers don't exist.",
+      "primaryButton": "Try Chinese To English Translator Now",
+      "secondaryButton": "Back to Top"
+    }
+  }
+}

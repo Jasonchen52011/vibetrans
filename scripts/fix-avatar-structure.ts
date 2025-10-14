@@ -68,10 +68,7 @@ const pageConfigs: PageConfig[] = [
 const BASE_PATH =
   '/Users/jason-chen/Downloads/project/vibetrans/src/app/[locale]/(marketing)/(pages)';
 
-function generateAvatarHTML(
-  avatars: string[],
-  useSpaces: boolean = false
-): string {
+function generateAvatarHTML(avatars: string[], useSpaces = false): string {
   const indent = useSpaces ? '  ' : '\t';
   const indent2 = useSpaces ? '    ' : '\t\t';
   const indent3 = useSpaces ? '      ' : '\t\t\t';

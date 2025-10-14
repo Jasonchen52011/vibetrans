@@ -382,13 +382,13 @@ export default async function AlBhedTranslatorPage(
         {/* Explore Other Tools */}
         <ExploreOurAiTools
           toolKeys={[
-            'Gen Z Translator',
-            'Dog Translator',
-            'Bad Translator',
-            'Ancient Greek Translator',
-            'Gibberish Translator',
-            'Esperanto Translator',
-          ]}
+        'Pig Latin Translator',
+        'Gibberish Translator',
+        'Alien Text Generator',
+        'Gen Z Translator',
+        'Bad Translator',
+        'Ancient Greek Translator'
+      ]}
         />
 
         {/* Testimonials Section */}

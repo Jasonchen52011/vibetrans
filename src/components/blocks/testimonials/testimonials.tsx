@@ -63,6 +63,9 @@ export default function TestimonialsSection({
         const role = t(`items.${itemKey}.role`);
         // @ts-ignore - Dynamic translation keys
         const heading = t(`items.${itemKey}.heading`, { default: '' });
+        // Filter out translation keys that weren't found
+        const headingValue =
+          heading && !heading.includes(`items.${itemKey}`) ? heading : '';
         // @ts-ignore - Dynamic translation keys
         const quote = t(`items.${itemKey}.content`);
 
@@ -83,7 +86,7 @@ export default function TestimonialsSection({
         testimonials.push({
           name,
           role,
-          heading: heading || undefined,
+          heading: headingValue || undefined,
           quote,
           src: avatarPool[avatarIndex],
           rating: i % 2 === 0 ? 4.8 : 5.0,

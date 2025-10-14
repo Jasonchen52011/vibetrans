@@ -1,0 +1,247 @@
+{
+  "Marketing": {
+    "navbar": {
+      "features": {
+        "title": "功能"
+      },
+      "pricing": {
+        "title": "价格"
+      },
+      "blog": {
+        "title": "博客"
+      },
+      "docs": {
+        "title": "文档"
+      },
+      "funTranslate": {
+        "title": "趣味翻译",
+        "items": {
+          "dogTranslator": {
+            "title": "狗狗翻译器",
+            "description": "使用AI将您的话翻译成狗语"
+          },
+          "genZTranslator": {
+            "title": "Gen Z翻译器",
+            "description": "在标准英语和Gen Z俚语之间翻译"
+          },
+          "genAlphaTranslator": {
+            "title": "Gen Alpha翻译器",
+            "description": "在标准英语和Gen Alpha俚语之间翻译"
+          },
+          "dumbItDown": {
+            "title": "简化AI",
+            "description": "将复杂文本简化为易于理解的语言"
+          },
+          "badTranslator": {
+            "title": "搞笑翻译器",
+            "description": "将正常文本变成搞笑的误译"
+          },
+          "babyTranslator": {
+            "title": "婴儿翻译器",
+            "description": "使用AI将婴儿哭声翻译成清晰的含义"
+          },
+          "gibberishTranslator": {
+            "title": "胡言乱语翻译器",
+            "description": "将任何文本转换为有趣的胡言乱语"
+          },
+          "alienTextGenerator": {
+            "title": "外星文字生成器",
+            "description": "将您的文本转换为各种外星语言风格"
+          },
+          "verboseGenerator": {
+            "title": "冗长生成器",
+            "description": "将简短文本扩展为详细、精致的散文"
+          }
+        }
+      },
+      "languageTranslator": {
+        "title": "语言翻译",
+        "items": {
+          "ancientGreekTranslator": {
+            "title": "古希腊语翻译器",
+            "description": "在英语和古希腊语之间翻译"
+          },
+          "alBhedTranslator": {
+            "title": "艾尔贝德语翻译器",
+            "description": "翻译《最终幻想X》中的艾尔贝德语"
+          },
+          "esperantoTranslator": {
+            "title": "世界语翻译器",
+            "description": "在英语和世界语之间翻译"
+          },
+          "cuneiformTranslator": {
+            "title": "楔形文字翻译器",
+            "description": "翻译古代楔形文字"
+          },
+          "ivrTranslator": {
+            "title": "IVR翻译器",
+            "description": "将IVR输入转换为支持多语言的文本"
+          }
+        }
+      },
+      "ai": {
+        "title": "AI工具",
+        "items": {
+          "text": {
+            "title": "AI文本",
+            "description": "展示如何使用AI编写精彩文本"
+          },
+          "image": {
+            "title": "AI图像",
+            "description": "展示如何使用AI生成精美图像"
+          },
+          "chat": {
+            "title": "AI聊天",
+            "description": "展示如何使用AI与客户聊天"
+          },
+          "video": {
+            "title": "AI视频",
+            "description": "展示如何使用AI生成精彩视频"
+          },
+          "audio": {
+            "title": "AI音频",
+            "description": "展示如何使用AI生成美妙音频"
+          }
+        }
+      },
+      "pages": {
+        "title": "页面",
+        "items": {
+          "about": {
+            "title": "关于",
+            "description": "了解更多关于我们的公司、使命和价值观"
+          },
+          "contact": {
+            "title": "联系",
+            "description": "联系我们的团队获取支持或咨询"
+          },
+          "waitlist": {
+            "title": "等候名单",
+            "description": "加入我们的等候名单获取最新消息和更新"
+          },
+          "changelog": {
+            "title": "更新日志",
+            "description": "查看我们产品的最新更新"
+          },
+          "roadmap": {
+            "title": "路线图",
+            "description": "探索我们的未来计划和即将推出的功能"
+          },
+          "cookiePolicy": {
+            "title": "Cookie政策",
+            "description": "了解我们如何在网站上使用Cookie"
+          },
+          "privacyPolicy": {
+            "title": "隐私政策",
+            "description": "了解我们如何保护和处理您的数据"
+          },
+          "termsOfService": {
+            "title": "服务条款",
+            "description": "您与我们公司之间的法律协议"
+          }
+        }
+      },
+      "blocks": {
+        "title": "区块",
+        "items": {
+          "magicui": {
+            "title": "MagicUI区块"
+          },
+          "hero-section": {
+            "title": "英雄区块"
+          },
+          "logo-cloud": {
+            "title": "Logo云区块"
+          },
+          "integrations": {
+            "title": "集成区块"
+          },
+          "features": {
+            "title": "功能区块"
+          },
+          "content": {
+            "title": "内容区块"
+          },
+          "stats": {
+            "title": "统计区块"
+          },
+          "team": {
+            "title": "团队区块"
+          },
+          "testimonials": {
+            "title": "推荐区块"
+          },
+          "callToAction": {
+            "title": "行动号召区块"
+          },
+          "footer": {
+            "title": "页脚区块"
+          },
+          "pricing": {
+            "title": "价格区块"
+          },
+          "comparator": {
+            "title": "比较区块"
+          },
+          "faq": {
+            "title": "常见问题区块"
+          },
+          "login": {
+            "title": "登录区块"
+          },
+          "signup": {
+            "title": "注册区块"
+          },
+          "forgot-password": {
+            "title": "忘记密码区块"
+          },
+          "contact": {
+            "title": "联系区块"
+          }
+        }
+      }
+    },
+    "footer": {
+      "tagline": "VibeTrans提供先进的AI驱动工具，实现无缝语言转换。使用VibeTrans轻松翻译文本、俚语，甚至古代语言。",
+      "funTranslate": {
+        "title": "趣味翻译"
+      },
+      "languageTranslator": {
+        "title": "语言翻译"
+      },
+      "product": {
+        "title": "产品",
+        "items": {
+          "features": "功能",
+          "pricing": "价格",
+          "faq": "常见问题"
+        }
+      },
+      "resources": {
+        "title": "资源",
+        "items": {
+          "blog": "博客",
+          "docs": "文档",
+          "changelog": "更新日志",
+          "roadmap": "路线图"
+        }
+      },
+      "company": {
+        "title": "公司",
+        "items": {
+          "about": "关于",
+          "contact": "联系",
+          "waitlist": "等候名单"
+        }
+      },
+      "legal": {
+        "title": "法律",
+        "items": {
+          "cookiePolicy": "Cookie政策",
+          "privacyPolicy": "隐私政策",
+          "termsOfService": "服务条款"
+        }
+      }
+    }
+  }
+}

@@ -22,7 +22,7 @@ async function testGeminiPromptGeneration() {
 
     console.log('\n⏳ Calling Gemini API...\n');
 
-    const generatedPrompt = await testGeneratePrompt(
+    const result = await testGeneratePrompt(
       testCase.title,
       testCase.content
     );
@@ -30,18 +30,19 @@ async function testGeminiPromptGeneration() {
     console.log('\n' + '='.repeat(60));
     console.log('✅ Test PASSED - Gemini Generated Prompt:');
     console.log('='.repeat(60));
-    console.log(generatedPrompt);
+    console.log('📁 Suggested Filename:', result.filename);
+    console.log('📝 Prompt:', result.prompt);
     console.log('='.repeat(60));
 
     // 验证
     const requirements = {
-      'Contains "geometric flat"': generatedPrompt
+      'Contains "geometric flat"': result.prompt
         .toLowerCase()
         .includes('geometric flat'),
-      'Contains "sky blue"': generatedPrompt.toLowerCase().includes('sky blue'),
-      'Contains "4:3"': generatedPrompt.includes('4:3'),
-      'No text mentioned': !generatedPrompt.toLowerCase().includes('with text'),
-      'Length 50-150 words': generatedPrompt.split(/\s+/).length >= 50,
+      'Contains "sky blue"': result.prompt.toLowerCase().includes('sky blue'),
+      'Contains "4:3"': result.prompt.includes('4:3'),
+      'No text mentioned': !result.prompt.toLowerCase().includes('with text'),
+      'Length 50-150 words': result.prompt.split(/\s+/).length >= 50,
     };
 
     console.log('\n📊 Validation:');

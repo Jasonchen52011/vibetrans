@@ -145,31 +145,37 @@
         "item-1": {
           "name": "John Harris",
           "role": "Linguist",
+          "heading": "Accuracy That Exceeds Academic Standards",
           "content": "As a linguist, accuracy is crucial, and VibeTrans exceeded my expectations. The tool provides context-aware translations that are perfect for my academic research on Ancient Greek philosophy."
         },
         "item-2": {
           "name": "Mary Clark",
           "role": "Student of Classics",
+          "heading": "Understanding Homer Through Cultural Context",
           "content": "VibeTrans has helped me understand Homeric Greek better. The cultural insights it provides made translating the Iliad much more interesting!"
         },
         "item-3": {
           "name": "Thomas Richards",
           "role": "History Professor",
+          "heading": "Perfect Teaching Tool for Greek Grammar",
           "content": "I use VibeTrans in my Ancient Greek language classes. It's an excellent tool for both translation and teaching grammar. My students love it!"
         },
         "item-4": {
           "name": "Linda Brown",
           "role": "Archaeologist",
+          "heading": "Archaeological Research Made More Accessible",
           "content": "I needed translations for some ancient texts I found during my research. VibeTrans delivered accurate results that enhanced my understanding of the artifacts."
         },
         "item-5": {
           "name": "William Smith",
           "role": "Translator",
+          "heading": "Handles Complex Attic Greek Effortlessly",
           "content": "I was amazed by how VibeTrans handled the complexity of Attic Greek. It's become an essential tool in my translation work!"
         },
         "item-6": {
           "name": "Jessica White",
           "role": "Language Enthusiast",
+          "heading": "Detailed Analysis Accelerates Greek Learning",
           "content": "I've been learning Ancient Greek for a while, and VibeTrans makes it so much easier. The detailed grammar analysis is super helpful!"
         }
       }

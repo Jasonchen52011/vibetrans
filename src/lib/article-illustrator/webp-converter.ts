@@ -2,9 +2,9 @@
  * WebP Converter - Convert and optimize images to WebP format
  */
 
-import sharp from 'sharp';
-import fs from 'fs/promises';
 import path from 'path';
+import fs from 'fs/promises';
+import sharp from 'sharp';
 
 export interface WebPConversionOptions {
   filename: string; // 不含扩展名

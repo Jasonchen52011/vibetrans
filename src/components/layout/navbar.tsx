@@ -52,7 +52,7 @@ export function Navbar({ scroll }: NavBarProps) {
         'sticky inset-x-0 top-0 z-40 py-4 transition-all duration-300',
         scroll
           ? scrolled
-            ? 'bg-white/30 dark:bg-black/30 backdrop-blur-md border-b border-white/20'
+            ? 'bg-white/80 dark:bg-black/80 backdrop-blur-lg border-b border-gray-200/50 dark:border-gray-700/50 shadow-sm'
             : 'bg-transparent'
           : 'bg-transparent'
       )}

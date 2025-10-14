@@ -17,13 +17,8 @@ export function useFooterLinks(): NestedMenuItem[] {
 
   return [
     {
-      title: t('product.title'),
+      title: t('funTranslate.title'),
       items: [
-        {
-          title: 'Home',
-          href: Routes.Root,
-          external: false,
-        },
         {
           title: 'Dog Translator',
           href: Routes.DogTranslator,
@@ -50,13 +45,8 @@ export function useFooterLinks(): NestedMenuItem[] {
           external: false,
         },
         {
-          title: 'Ancient Greek Translator',
-          href: Routes.AncientGreekTranslator,
-          external: false,
-        },
-        {
-          title: 'Al Bhed Translator',
-          href: Routes.AlBhedTranslator,
+          title: 'Baby Translator',
+          href: Routes.BabyTranslator,
           external: false,
         },
         {
@@ -70,6 +60,31 @@ export function useFooterLinks(): NestedMenuItem[] {
           external: false,
         },
         {
+          title: 'Verbose Generator',
+          href: Routes.VerboseGenerator,
+          external: false,
+        },
+        {
+          title: 'Pig Latin Translator',
+          href: Routes.PigLatinTranslator,
+          external: false,
+        },
+      ],
+    },
+    {
+      title: t('languageTranslator.title'),
+      items: [
+        {
+          title: 'Ancient Greek Translator',
+          href: Routes.AncientGreekTranslator,
+          external: false,
+        },
+        {
+          title: 'Al Bhed Translator',
+          href: Routes.AlBhedTranslator,
+          external: false,
+        },
+        {
           title: 'Esperanto Translator',
           href: Routes.EsperantoTranslator,
           external: false,
@@ -79,16 +94,41 @@ export function useFooterLinks(): NestedMenuItem[] {
           href: Routes.CuneiformTranslator,
           external: false,
         },
-        // {
-        //   title: t('product.items.pricing'),
-        //   href: Routes.Pricing,
-        //   external: false,
-        // },
-        // {
-        //   title: t('product.items.faq'),
-        //   href: Routes.FAQ,
-        //   external: false,
-        // },
+        {
+          title: 'IVR Translator',
+          href: Routes.IvrTranslator,
+          external: false,
+        },
+        {
+          title: 'Albanian To English',
+          href: Routes.AlbanianToEnglish,
+          external: false,
+        },
+        {
+          title: 'Creole To English Translator',
+          href: Routes.CreoleToEnglishTranslator,
+          external: false,
+        },
+        {
+          title: 'Cantonese Translator',
+          href: Routes.CantoneseTranslator,
+          external: false,
+        },
+        {
+          title: 'Chinese To English Translator',
+          href: Routes.ChineseToEnglishTranslator,
+          external: false,
+        },
+        {
+          title: 'Middle English Translator',
+          href: Routes.MiddleEnglishTranslator,
+          external: false,
+        },
+        {
+          title: 'Minion Translator',
+          href: Routes.MinionTranslator,
+          external: false,
+        },
       ],
     },
     {

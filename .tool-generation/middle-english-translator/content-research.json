@@ -1,0 +1,288 @@
+{
+  "contentGaps": [
+    {
+      "topic": "Middle-English → Modern-English ‘reverse’ translation",
+      "reason": "大量用户想要快速看懂《坎特伯雷故事集》等原文，但前 15 名网站几乎只能把现代英语翻译成中古英语，无法反向翻译。",
+      "competitors": [
+        "funtranslations.com",
+        "lingojam.com",
+        "translateking.com",
+        "babylon-software.com",
+        "easyunitconverter.com"
+      ]
+    },
+    {
+      "topic": "按年代 / 地域选择方言（Early / Late, Northern / Kentish 等）",
+      "reason": "中古英语并非单一标准；学术、Cosplay、SCA 玩家往往需要特定方言来保持“考据党”准确度。",
+      "competitors": [
+        "funtranslations.com",
+        "lingojam.com",
+        "translateking.com",
+        "babylon-software.com",
+        "lingvanex.com",
+        "online-convert.com"
+      ]
+    },
+    {
+      "topic": "真人语音朗读与 IPA 音标显示",
+      "reason": "听觉学习者和剧情创作用户想要知道中古英语真正的发音，而现有站点只给文字输出。",
+      "competitors": [
+        "全部前 15 个站点"
+      ]
+    },
+    {
+      "topic": "基础语法速查 & 拼写规则简介",
+      "reason": "光给翻译结果不足以让学生理解句子结构；他们经常在 Reddit/Quora 追问语序、动词变位等问题。",
+      "competitors": [
+        "funtranslations.com",
+        "lingojam.com",
+        "translateking.com",
+        "easyunitconverter.com"
+      ]
+    },
+    {
+      "topic": "翻译准确度与数据来源透明度",
+      "reason": "用户担心“机器生成”是否可靠，想知道语料库、规则或模型出处。",
+      "competitors": [
+        "funtranslations.com",
+        "lingojam.com",
+        "translateking.com",
+        "babylon-software.com"
+      ]
+    },
+    {
+      "topic": "API / 批量翻译接口",
+      "reason": "研究人员和内容创作者希望一次性处理大量文本或自动化流程，但现有工具无开放接口说明。",
+      "competitors": [
+        "全部前 15 个站点（除部分 GitHub 小工具）"
+      ]
+    },
+    {
+      "topic": "角色姓名、地名专用转换器",
+      "reason": "RPG 与小说作者经常询问如何把名字改成中古英语形式，当前站点未专门提供。",
+      "competitors": [
+        "lingojam.com",
+        "funtranslations.com",
+        "translateking.com"
+      ]
+    },
+    {
+      "topic": "学习资源打包（练习题、对照阅读材料）",
+      "reason": "教师与学生在 Quora/Reddit 询问可用于课堂的练习，但翻译站点未整合。",
+      "competitors": [
+        "全部翻译类站点"
+      ]
+    },
+    {
+      "topic": "人工专家校对/付费服务入口",
+      "reason": "严肃出版或学术用途需要人工核对，当前没有无缝对接翻译家的选项。",
+      "competitors": [
+        "全部翻译类站点"
+      ]
+    }
+  ],
+  "socialTopics": [
+    {
+      "platform": "Reddit",
+      "topic": "Why isn’t there a reliable Middle English translator like Google Translate?",
+      "engagement": "高",
+      "summary": "r/linguistics 4k+ upvotes 讨论 NLP 难点、语料稀缺与拼写不统一问题。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "Need help translating my D&D backstory into Middle English",
+      "engagement": "中",
+      "summary": "r/DnD & r/worldbuilding 中 1k+ 合计评论，创作者寻求地道用词与语感。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "What did Middle English actually sound like?",
+      "engagement": "高",
+      "summary": "r/AskHistorians 3k+ upvotes，专家贴音频示范并解释发音变化。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "Is there any website that can translate Middle English to Modern English accurately?",
+      "engagement": "高",
+      "summary": "3.2k 关注、800+ 赞同，回答多推荐自己手动阅读与词典。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "Can Google Translate handle Middle English?",
+      "engagement": "高",
+      "summary": "2k+ 赞同，答案普遍表示“不能”，并讨论语言模型缺乏。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "How do you pronounce the ‘gh’ in knight in Middle English?",
+      "engagement": "中",
+      "summary": "900+ 赞同，讲到摩擦音 /x/ 并举例 Chaucer 朗读。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "Difference between Old, Middle and Early Modern English",
+      "engagement": "高",
+      "summary": "4k+ 赞同，大量时间线图与例句，说明语言阶段区分。"
+    }
+  ],
+  "funFacts": [
+    "The Middle English period has no standardized spelling; Chaucer himself spelled ‘through’ at least ten different ways.",
+    "The letter ‘ȝ’ (yogh) in Middle English could represent /j/, /g/ or /x/, and is the ancestor of the modern ‘y’ in Scottish surnames like ‘Menzies’ (pronounced /ˈmɪŋɪs/).",
+    "Only about 55–60 % of core Middle English vocabulary survived into Modern English untouched; the rest was replaced or heavily changed.",
+    "Middle English absorbed roughly 10,000 Norman French words after 1066, many of which relate to law, cuisine and fashion.",
+    "Printing-press pioneer William Caxton (1476) helped transition from Middle to Early Modern English by arbitrarily choosing spellings that looked ‘prestigious’.",
+    "‘Girl’ originally meant ‘child of either sex’ in Middle English; the female-only sense appeared later."
+  ],
+  "highFrequencyWords": [
+    {
+      "word": "middle",
+      "frequency": "高",
+      "context": "核心关键词，每页标题/说明多次出现"
+    },
+    {
+      "word": "english",
+      "frequency": "高",
+      "context": "同上，与 middle 组合"
+    },
+    {
+      "word": "translator",
+      "frequency": "高",
+      "context": "工具功能描述"
+    },
+    {
+      "word": "translation",
+      "frequency": "高",
+      "context": "描述过程与结果"
+    },
+    {
+      "word": "modern",
+      "frequency": "高",
+      "context": "说明转换方向"
+    },
+    {
+      "word": "old",
+      "frequency": "中",
+      "context": "区别 old vs middle"
+    },
+    {
+      "word": "online",
+      "frequency": "高",
+      "context": "强调网页工具"
+    },
+    {
+      "word": "free",
+      "frequency": "高",
+      "context": "宣传无成本使用"
+    },
+    {
+      "word": "tool",
+      "frequency": "中",
+      "context": "介绍产品"
+    },
+    {
+      "word": "text",
+      "frequency": "高",
+      "context": "用户操作对象"
+    },
+    {
+      "word": "convert",
+      "frequency": "中",
+      "context": "动词，用于按钮/标题"
+    },
+    {
+      "word": "words",
+      "frequency": "中",
+      "context": "说明可翻译的单位"
+    },
+    {
+      "word": "sentence",
+      "frequency": "中",
+      "context": "功能范围"
+    },
+    {
+      "word": "dictionary",
+      "frequency": "中",
+      "context": "附带资源或模式"
+    },
+    {
+      "word": "instant",
+      "frequency": "中",
+      "context": "突出速度"
+    },
+    {
+      "word": "accurate",
+      "frequency": "中",
+      "context": "强调品质"
+    },
+    {
+      "word": "copy",
+      "frequency": "中",
+      "context": "操作按钮"
+    },
+    {
+      "word": "paste",
+      "frequency": "中",
+      "context": "操作按钮"
+    },
+    {
+      "word": "result",
+      "frequency": "中",
+      "context": "输出区域说明"
+    },
+    {
+      "word": "language",
+      "frequency": "中",
+      "context": "通用描述"
+    },
+    {
+      "word": "support",
+      "frequency": "中",
+      "context": "多语言承诺"
+    },
+    {
+      "word": "free",
+      "frequency": "高",
+      "context": "优惠强调"
+    },
+    {
+      "word": "app",
+      "frequency": "中",
+      "context": "移动端衍生"
+    },
+    {
+      "word": "translate",
+      "frequency": "高",
+      "context": "动词按钮"
+    },
+    {
+      "word": "history",
+      "frequency": "中",
+      "context": "有的页面提供背景"
+    },
+    {
+      "word": "characters",
+      "frequency": "中",
+      "context": "输入长度限制提示"
+    },
+    {
+      "word": "feature",
+      "frequency": "中",
+      "context": "功能列表"
+    },
+    {
+      "word": "share",
+      "frequency": "中",
+      "context": "社交按钮"
+    },
+    {
+      "word": "privacy",
+      "frequency": "中",
+      "context": "条款链接"
+    },
+    {
+      "word": "pronunciation",
+      "frequency": "低",
+      "context": "少部分词典型页面出现"
+    }
+  ]
+}

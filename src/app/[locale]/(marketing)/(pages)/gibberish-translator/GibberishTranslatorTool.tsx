@@ -2,7 +2,7 @@
 
 import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
 import {
-  GibberishStyle,
+  type GibberishStyle,
   gibberishToText,
   textToGibberish,
 } from '@/lib/gibberish';

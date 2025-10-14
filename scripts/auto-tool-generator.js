@@ -8,9 +8,10 @@
  * - Phase 2: 产品规划生成
  * - Phase 3: 代码生成（Claude Agent）
  * - Phase 4: GPT-4o SEO内容生成
- * - Phase 5: 图片生成（Article Illustrator）
- * - Phase 6: SEO配置（sitemap, navbar, footer）
- * - Phase 7: 质量检查和构建验证
+ * - Phase 5: 生成翻译文件
+ * - Phase 6: 图片生成（Article Illustrator）
+ * - Phase 7: SEO配置（sitemap, navbar, footer）
+ * - Phase 8: 质量检查和构建验证
  *
  * 使用方法：
  * node scripts/auto-tool-generator.js "alien text generator"
@@ -53,6 +54,13 @@ const CONFIG = {
   srcDir: path.join(ROOT_DIR, 'src'),
   publicDir: path.join(ROOT_DIR, 'public'),
   messagesDir: path.join(ROOT_DIR, 'messages'),
+
+  // 🎯 新增验证配置
+  enableWordCountValidation: process.env.ENABLE_WORD_COUNT_VALIDATION !== 'false', // 默认开启
+  enablePageErrorCheck: process.env.ENABLE_PAGE_ERROR_CHECK !== 'false', // 默认开启
+  devServerPort: process.env.DEV_SERVER_PORT || 3000,
+  maxWordCountRetries: 2, // 字数验证最多重试次数
+  pageCheckTimeout: 30000, // 页面检查超时时间（毫秒）
 };
 
 // 颜色输出
@@ -103,17 +111,24 @@ async function callOpenAI(model, messages, temperature = 0.7) {
 
   logInfo(`调用 ${model} API...`);
 
+  // o3 和 o3-mini 模型不支持自定义 temperature，必须使用默认值 1
+  const requestBody = {
+    model,
+    messages,
+  };
+
+  // 只有非 o3 系列模型才添加 temperature 参数
+  if (!model.startsWith('o3')) {
+    requestBody.temperature = temperature;
+  }
+
   const response = await fetch('https://api.openai.com/v1/chat/completions', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${apiKey}`,
     },
-    body: JSON.stringify({
-      model,
-      messages,
-      temperature,
-    }),
+    body: JSON.stringify(requestBody),
   });
 
   if (!response.ok) {
@@ -199,13 +214,31 @@ async function phase1_research(keyword) {
   const jsonMatch = response.match(/```json\n([\s\S]*?)\n```/);
   if (!jsonMatch) {
     logWarning('未能从响应中提取 JSON，保存原始响应');
+    // 保存原始响应以便调试
+    const debugPath = path.join(CONFIG.outputDir, keyword.replace(/\s+/g, '-'), 'research-raw.txt');
+    await fs.mkdir(path.dirname(debugPath), { recursive: true });
+    await fs.writeFile(debugPath, response);
+    logInfo(`原始响应已保存到: ${debugPath}`);
     return {
       keyword,
       rawResponse: response,
     };
   }
 
-  const researchData = JSON.parse(jsonMatch[1]);
+  let researchData;
+  try {
+    // 清理 JSON 字符串中的控制字符
+    const cleanedJson = jsonMatch[1].replace(/[\x00-\x1F\x7F-\x9F]/g, '');
+    researchData = JSON.parse(cleanedJson);
+  } catch (parseError) {
+    logError(`JSON 解析失败: ${parseError.message}`);
+    // 保存出错的 JSON 以便调试
+    const debugPath = path.join(CONFIG.outputDir, keyword.replace(/\s+/g, '-'), 'research-error.json');
+    await fs.mkdir(path.dirname(debugPath), { recursive: true });
+    await fs.writeFile(debugPath, jsonMatch[1]);
+    logInfo(`出错的 JSON 已保存到: ${debugPath}`);
+    throw parseError;
+  }
 
   // 保存调研结果
   const outputPath = path.join(CONFIG.outputDir, keyword.replace(/\s+/g, '-'), 'research.json');
@@ -276,7 +309,19 @@ async function phase2_contentResearch(keyword) {
     return { rawResponse: response };
   }
 
-  const contentResearchData = JSON.parse(jsonMatch[1]);
+  let contentResearchData;
+  try {
+    // 清理 JSON 字符串中的控制字符
+    const cleanedJson = jsonMatch[1].replace(/[\x00-\x1F\x7F-\x9F]/g, '');
+    contentResearchData = JSON.parse(cleanedJson);
+  } catch (parseError) {
+    logError(`内容调研 JSON 解析失败: ${parseError.message}`);
+    const debugPath = path.join(CONFIG.outputDir, keyword.replace(/\s+/g, '-'), 'content-research-error.json');
+    await fs.mkdir(path.dirname(debugPath), { recursive: true });
+    await fs.writeFile(debugPath, jsonMatch[1]);
+    logInfo(`出错的 JSON 已保存到: ${debugPath}`);
+    throw parseError;
+  }
 
   // 保存内容调研结果
   const outputPath = path.join(CONFIG.outputDir, keyword.replace(/\s+/g, '-'), 'content-research.json');
@@ -343,6 +388,7 @@ async function phase4_generateContent(keyword, researchData, contentResearchData
 1. 写 1 个 SEO 友好的 Title 和 Meta Description
    * 要清晰传达工具核心价值
    * 包含主关键词
+   * **重要：SEO Description 必须完整包含主关键词「${keyword}」，不能拆分或缩写**
    * Title 长度 ≤ 60 字符；Description 在 120–160 字符之间
    * 完成后计算这个section每个版本写了多少字符。
 
@@ -352,16 +398,17 @@ async function phase4_generateContent(keyword, researchData, contentResearchData
    * 不出现品牌名
    * 完成后计算这个section每个版本写了多少单词。
 
-3. 写 H1 下的描述（20–30 单词）
+3. 写 H1 下的描述（30–40 单词）
    * 简要说明工具功能和使用价值
    * 使用对话式语气，突出用户利益
+   * **重要：Hero Description 必须完整包含主关键词「${keyword}」，不能拆分或缩写**
    * 展示品牌词：VibeTrans
    * 完成后计算这个section每个版本写了多少单词。
 
 4. 写 "What is XXXX" 板块
    * 标题为：What is XXXX
    * 正文以 "XXXX is …" 开头，正面回答问题
-   * 扩展解释功能和应用场景，长度约 60 单词
+   * 扩展解释功能和应用场景，长度约 70 单词
    * 展示品牌词：VibeTrans
    * 完成后计算这个section写了多少单词。
 
@@ -387,7 +434,7 @@ async function phase4_generateContent(keyword, researchData, contentResearchData
 
 8. 根据上面调研，增加 4 个用户可能感兴趣的内容板块
    * 4个小板块的大板块标题
-   * 每个包含标题 + 正文（约 50 单词）
+   * 每个包含标题 + 正文（约 60 单词）
    * 写作中增加个人情感或主观评论（如"我喜欢或我认为"）
    * 写作中包含随意性或独特性（如俚语、轶事）
    * 展示品牌词：VibeTrans
@@ -398,7 +445,7 @@ async function phase4_generateContent(keyword, researchData, contentResearchData
    * 板块的标题
    * 4个产品特点的文案，5选4（简单免费使用、数据准确性、数据隐私安全、AI的对上下文的理解、更多解释）
    * 为每个特点写一个简短的标题
-   * 写40单词左右的说明
+   * 写50单词左右的说明
    * 展示品牌词：VibeTrans
 
 10. 请帮我写6个用户评价，每个评价需要有:
@@ -548,10 +595,517 @@ ${contentResearchSummary}
 }
 
 /**
+ * 验证字数是否符合要求
+ * @returns {Array} 需要重新生成的 section 列表
+ */
+function validateWordCounts(contentData) {
+  logInfo('开始验证字数...');
+
+  const validationRules = {
+    h1: {
+      path: 'h1.wordCount',
+      min: 5,
+      max: 7,
+      name: 'H1标题'
+    },
+    heroDescription: {
+      path: 'heroDescription.wordCount',
+      min: 25,
+      max: 45,
+      name: 'Hero描述'
+    },
+    whatIs: {
+      path: 'whatIs.wordCount',
+      min: 65,
+      max: 75,
+      name: 'What Is板块'
+    },
+    example: {
+      path: 'example.wordCount',
+      min: 35,
+      max: 55,
+      name: 'Example板块'
+    },
+  };
+
+  const invalidSections = [];
+
+  // 验证简单字段
+  for (const [key, rule] of Object.entries(validationRules)) {
+    const value = getNestedValue(contentData, rule.path);
+    if (value !== undefined && (value < rule.min || value > rule.max)) {
+      invalidSections.push({
+        section: key,
+        name: rule.name,
+        actual: value,
+        expected: `${rule.min}-${rule.max}`,
+      });
+    }
+  }
+
+  // 验证 howTo.steps
+  if (contentData.howTo?.steps) {
+    contentData.howTo.steps.forEach((step, index) => {
+      if (step.wordCount < 35 || step.wordCount > 45) {
+        invalidSections.push({
+          section: 'howTo',
+          name: `How To步骤 ${index + 1}`,
+          actual: step.wordCount,
+          expected: '35-45',
+          stepIndex: index,
+        });
+      }
+    });
+  }
+
+  // 验证 funFacts
+  if (contentData.funFacts) {
+    contentData.funFacts.forEach((fact, index) => {
+      if (fact.wordCount < 25 || fact.wordCount > 35) {
+        invalidSections.push({
+          section: 'funFacts',
+          name: `Fun Fact ${index + 1}`,
+          actual: fact.wordCount,
+          expected: '25-35',
+          factIndex: index,
+        });
+      }
+    });
+  }
+
+  // 验证 interestingSections
+  if (contentData.interestingSections?.sections) {
+    contentData.interestingSections.sections.forEach((section, index) => {
+      if (section.wordCount < 55 || section.wordCount > 65) {
+        invalidSections.push({
+          section: 'interestingSections',
+          name: `趣味板块 ${index + 1}`,
+          actual: section.wordCount,
+          expected: '55-65',
+          sectionIndex: index,
+        });
+      }
+    });
+  }
+
+  // 验证 highlights.features
+  if (contentData.highlights?.features) {
+    contentData.highlights.features.forEach((feature, index) => {
+      if (feature.wordCount < 45 || feature.wordCount > 55) {
+        invalidSections.push({
+          section: 'highlights',
+          name: `亮点功能 ${index + 1}`,
+          actual: feature.wordCount,
+          expected: '45-55',
+          featureIndex: index,
+        });
+      }
+    });
+  }
+
+  // 验证 testimonials
+  if (contentData.testimonials) {
+    contentData.testimonials.forEach((testimonial, index) => {
+      if (testimonial.wordCount < 45 || testimonial.wordCount > 65) {
+        invalidSections.push({
+          section: 'testimonials',
+          name: `用户评价 ${index + 1}`,
+          actual: testimonial.wordCount,
+          expected: '45-65',
+          testimonialIndex: index,
+        });
+      }
+    });
+  }
+
+  // 验证 faqs
+  if (contentData.faqs) {
+    contentData.faqs.forEach((faq, index) => {
+      if (faq.wordCount < 30 || faq.wordCount > 80) {
+        invalidSections.push({
+          section: 'faqs',
+          name: `FAQ ${index + 1}`,
+          actual: faq.wordCount,
+          expected: '30-80',
+          faqIndex: index,
+        });
+      }
+    });
+  }
+
+  return invalidSections;
+}
+
+/**
+ * 获取嵌套对象的值
+ */
+function getNestedValue(obj, path) {
+  return path.split('.').reduce((current, key) => current?.[key], obj);
+}
+
+/**
+ * 重新生成单个 section
+ */
+async function regenerateSection(keyword, sectionInfo, contentData, researchData, contentResearchData) {
+  logInfo(`重新生成: ${sectionInfo.name} (当前字数: ${sectionInfo.actual}, 期望: ${sectionInfo.expected})`);
+
+  const { section } = sectionInfo;
+  let prompt = '';
+
+  // 根据不同 section 构建不同的 prompt
+  switch (section) {
+    case 'h1':
+      prompt = `请为「${keyword}」重新写一个 SEO 友好的 H1 标题。
+要求：
+- 5-7 个单词
+- 直接点明工具名称和主要用途
+- 自然包含目标关键词
+- 不出现品牌名
+
+请以 JSON 格式输出：
+\`\`\`json
+{
+  "title": "H1标题",
+  "wordCount": 5
+}
+\`\`\``;
+      break;
+
+    case 'heroDescription':
+      prompt = `请为「${keyword}」重新写 H1 下的描述。
+要求：
+- 30-40 个单词（严格控制在 25-45 之间）
+- 简要说明工具功能和使用价值
+- 使用对话式语气，突出用户利益
+- 展示品牌词：VibeTrans
+
+请以 JSON 格式输出：
+\`\`\`json
+{
+  "content": "描述内容",
+  "wordCount": 35
+}
+\`\`\``;
+      break;
+
+    case 'whatIs':
+      prompt = `请为「${keyword}」重新写 "What is XXXX" 板块。
+要求：
+- 约 70 单词（严格控制在 65-75 之间）
+- 以 "XXXX is …" 开头，正面回答问题
+- 扩展解释功能和应用场景
+- 展示品牌词：VibeTrans
+
+请以 JSON 格式输出：
+\`\`\`json
+{
+  "title": "What is XXX",
+  "content": "内容",
+  "wordCount": 70
+}
+\`\`\``;
+      break;
+
+    case 'example':
+      prompt = `请为「${keyword}」重新写 Example 板块的 title 和 description。
+要求：
+- 40-50 个单词（严格控制在 35-55 之间）
+
+请以 JSON 格式输出：
+\`\`\`json
+{
+  "title": "标题",
+  "description": "描述",
+  "wordCount": 45
+}
+\`\`\``;
+      break;
+
+    case 'howTo':
+      if (sectionInfo.stepIndex !== undefined) {
+        const step = contentData.howTo.steps[sectionInfo.stepIndex];
+        prompt = `请为「${keyword}」重新写 How To 步骤「${step.name}」的描述。
+要求：
+- 约 40 词左右（严格控制在 35-45 之间）
+- 强调操作细节
+- 语言简单易懂
+
+请以 JSON 格式输出：
+\`\`\`json
+{
+  "name": "${step.name}",
+  "description": "步骤描述",
+  "wordCount": 40
+}
+\`\`\``;
+      }
+      break;
+
+    case 'funFacts':
+      if (sectionInfo.factIndex !== undefined) {
+        prompt = `请为「${keyword}」重新写一个 Fun Fact。
+要求：
+- 约 30 单词（严格控制在 25-35 之间）
+- 内容有趣、易懂
+- 和工具或相关主题紧密相关
+- 写作中增加个人情感或主观评论
+- 展示品牌词：VibeTrans
+
+调研信息：
+${contentResearchData.funFacts?.join('\n') || ''}
+
+请以 JSON 格式输出：
+\`\`\`json
+{
+  "content": "趣味事实",
+  "wordCount": 30
+}
+\`\`\``;
+      }
+      break;
+
+    case 'interestingSections':
+      if (sectionInfo.sectionIndex !== undefined) {
+        const originalSection = contentData.interestingSections.sections[sectionInfo.sectionIndex];
+        prompt = `请为「${keyword}」重新写趣味板块「${originalSection.title}」。
+要求：
+- 约 60 单词（严格控制在 55-65 之间）
+- 写作中增加个人情感或主观评论
+- 写作中包含随意性或独特性（如俚语、轶事）
+- 展示品牌词：VibeTrans
+- 文案要切入用户关注点
+
+请以 JSON 格式输出：
+\`\`\`json
+{
+  "title": "${originalSection.title}",
+  "content": "内容",
+  "wordCount": 60
+}
+\`\`\``;
+      }
+      break;
+
+    case 'highlights':
+      if (sectionInfo.featureIndex !== undefined) {
+        const feature = contentData.highlights.features[sectionInfo.featureIndex];
+        prompt = `请为「${keyword}」重新写亮点功能「${feature.title}」的描述。
+要求：
+- 约 50 单词（严格控制在 45-55 之间）
+- 展示品牌词：VibeTrans
+
+请以 JSON 格式输出：
+\`\`\`json
+{
+  "title": "${feature.title}",
+  "description": "描述",
+  "wordCount": 50
+}
+\`\`\``;
+      }
+      break;
+
+    case 'testimonials':
+      if (sectionInfo.testimonialIndex !== undefined) {
+        prompt = `请为「${keyword}」重新写一个用户评价。
+要求：
+- 50-60 个单词（严格控制在 45-65 之间）
+- 2-3 句话
+- 像真人、有具体的产品使用细节
+- 引入真实用户使用场景故事
+- 包含前后的情感叙述
+
+请以 JSON 格式输出：
+\`\`\`json
+{
+  "name": "美国人姓名",
+  "role": "职业角色",
+  "content": "评价内容",
+  "wordCount": 55
+}
+\`\`\``;
+      }
+      break;
+
+    case 'faqs':
+      if (sectionInfo.faqIndex !== undefined) {
+        const faq = contentData.faqs[sectionInfo.faqIndex];
+        prompt = `请为「${keyword}」重新写 FAQ「${faq.question}」的答案。
+要求：
+- 30-80 词
+- 语言直接、正面、清晰
+- What is 问题必须以 "XXXX is …" 开头
+- How to 问题必须用 step-by-step 形式回答
+
+请以 JSON 格式输出：
+\`\`\`json
+{
+  "question": "${faq.question}",
+  "answer": "答案",
+  "wordCount": 50
+}
+\`\`\``;
+      }
+      break;
+
+    default:
+      logWarning(`未知的 section 类型: ${section}`);
+      return null;
+  }
+
+  try {
+    const response = await callOpenAI(
+      CONFIG.contentModel,
+      [{ role: 'user', content: prompt }],
+      0.7
+    );
+
+    // 提取 JSON
+    const jsonMatch = response.match(/```json\n([\s\S]*?)\n```/);
+    if (!jsonMatch) {
+      logWarning(`未能从重新生成的 ${section} 响应中提取 JSON`);
+      return null;
+    }
+
+    const regeneratedData = JSON.parse(jsonMatch[1]);
+    return { section: sectionInfo, data: regeneratedData };
+  } catch (error) {
+    logError(`重新生成 ${section} 失败: ${error.message}`);
+    return null;
+  }
+}
+
+/**
+ * 更新 contentData 中的特定 section
+ */
+function updateContentData(contentData, sectionInfo, newData) {
+  const { section } = sectionInfo;
+
+  switch (section) {
+    case 'h1':
+      contentData.h1 = newData;
+      break;
+    case 'heroDescription':
+      contentData.heroDescription = newData;
+      break;
+    case 'whatIs':
+      contentData.whatIs = newData;
+      break;
+    case 'example':
+      contentData.example = newData;
+      break;
+    case 'howTo':
+      if (sectionInfo.stepIndex !== undefined) {
+        contentData.howTo.steps[sectionInfo.stepIndex] = newData;
+      }
+      break;
+    case 'funFacts':
+      if (sectionInfo.factIndex !== undefined) {
+        contentData.funFacts[sectionInfo.factIndex] = newData;
+      }
+      break;
+    case 'interestingSections':
+      if (sectionInfo.sectionIndex !== undefined) {
+        contentData.interestingSections.sections[sectionInfo.sectionIndex] = newData;
+      }
+      break;
+    case 'highlights':
+      if (sectionInfo.featureIndex !== undefined) {
+        contentData.highlights.features[sectionInfo.featureIndex] = newData;
+      }
+      break;
+    case 'testimonials':
+      if (sectionInfo.testimonialIndex !== undefined) {
+        contentData.testimonials[sectionInfo.testimonialIndex] = newData;
+      }
+      break;
+    case 'faqs':
+      if (sectionInfo.faqIndex !== undefined) {
+        contentData.faqs[sectionInfo.faqIndex] = newData;
+      }
+      break;
+  }
+}
+
+/**
+ * Phase 4.5: 字数验证和重新生成
+ */
+async function phase4_5_validateAndRegenerate(keyword, contentData, researchData, contentResearchData) {
+  if (!CONFIG.enableWordCountValidation) {
+    logInfo('字数验证已禁用，跳过 Phase 4.5');
+    return contentData;
+  }
+
+  logPhase('4.5', '字数验证和重新生成');
+
+  let retryCount = 0;
+  let currentContentData = JSON.parse(JSON.stringify(contentData)); // 深拷贝
+
+  while (retryCount <= CONFIG.maxWordCountRetries) {
+    const invalidSections = validateWordCounts(currentContentData);
+
+    if (invalidSections.length === 0) {
+      logSuccess('所有 section 字数验证通过！');
+      break;
+    }
+
+    if (retryCount === CONFIG.maxWordCountRetries) {
+      logWarning(`已达到最大重试次数 (${CONFIG.maxWordCountRetries})，以下 section 仍不符合要求：`);
+      invalidSections.forEach((s) => {
+        logWarning(`  - ${s.name}: 实际 ${s.actual} 单词，期望 ${s.expected}`);
+      });
+      logWarning('将继续使用当前内容，但建议手动检查');
+      break;
+    }
+
+    logWarning(`发现 ${invalidSections.length} 个 section 字数不符合要求，开始重新生成...`);
+    retryCount++;
+
+    // 重新生成所有不符合要求的 section
+    for (const sectionInfo of invalidSections) {
+      const result = await regenerateSection(
+        keyword,
+        sectionInfo,
+        currentContentData,
+        researchData,
+        contentResearchData
+      );
+
+      if (result) {
+        updateContentData(currentContentData, result.section, result.data);
+        logSuccess(`✓ ${sectionInfo.name} 已重新生成`);
+      } else {
+        logWarning(`✗ ${sectionInfo.name} 重新生成失败，保留原内容`);
+      }
+    }
+
+    // 保存更新后的内容
+    const outputPath = path.join(
+      CONFIG.outputDir,
+      keyword.replace(/\s+/g, '-'),
+      `content-retry-${retryCount}.json`
+    );
+    await fs.writeFile(outputPath, JSON.stringify(currentContentData, null, 2));
+    logInfo(`重试 ${retryCount} 的内容已保存到: ${outputPath}`);
+  }
+
+  // 保存最终内容
+  const finalOutputPath = path.join(
+    CONFIG.outputDir,
+    keyword.replace(/\s+/g, '-'),
+    'content-final.json'
+  );
+  await fs.writeFile(finalOutputPath, JSON.stringify(currentContentData, null, 2));
+  logSuccess(`最终内容已保存到: ${finalOutputPath}`);
+
+  return currentContentData;
+}
+
+/**
  * Phase 5: 生成翻译文件
  */
 async function phase5_generateTranslations(keyword, contentData) {
-  logPhase(5, '生成翻译文件（en.json 和 zh.json）');
+  logPhase(5, '生成翻译文件（messages/pages/{slug}/en.json）');
 
   const slug = keyword.toLowerCase().replace(/\s+/g, '-');
   const pageName = slug
@@ -564,92 +1118,517 @@ async function phase5_generateTranslations(keyword, contentData) {
     [`${pageName}Page`]: {
       title: contentData.seo.title,
       description: contentData.seo.metaDescription,
-      h1: contentData.h1.title,
-      heroDescription: contentData.heroDescription.content,
+      hero: {
+        title: contentData.h1.title,
+        description: contentData.heroDescription.content,
+      },
+      tool: {
+        inputLabel: 'Input Text',
+        outputLabel: 'Translated Text',
+        inputPlaceholder: 'Enter your text here...',
+        outputPlaceholder: 'Translation will appear here...',
+        translateButton: 'Translate',
+        uploadButton: 'Upload File',
+        uploadHint: 'Supports .txt and .docx files',
+        loading: 'Translating...',
+        error: 'Translation failed. Please try again.',
+        noInput: 'Please enter some text to translate.',
+      },
       whatIs: {
         title: contentData.whatIs.title,
-        content: contentData.whatIs.content,
+        description: contentData.whatIs.content,
       },
-      example: {
+      examples: {
         title: contentData.example.title,
         description: contentData.example.description,
+        items: [
+          { alt: 'Example 1 placeholder', name: 'Example 1' },
+          { alt: 'Example 2 placeholder', name: 'Example 2' },
+          { alt: 'Example 3 placeholder', name: 'Example 3' },
+          { alt: 'Example 4 placeholder', name: 'Example 4' },
+          { alt: 'Example 5 placeholder', name: 'Example 5' },
+          { alt: 'Example 6 placeholder', name: 'Example 6' },
+        ],
       },
-      howTo: {
+      howto: {
         title: contentData.howTo.title,
         description: contentData.howTo.description,
         steps: contentData.howTo.steps,
       },
-      funFacts: contentData.funFacts,
-      interestingSections: contentData.interestingSections,
+      funFacts: {
+        title: 'Interesting Facts',
+        items: contentData.funFacts,
+      },
+      userInterest: {
+        title: contentData.interestingSections.title,
+        items: contentData.interestingSections.sections,
+      },
       highlights: contentData.highlights,
-      testimonials: contentData.testimonials,
-      faqs: contentData.faqs,
-      cta: contentData.cta,
+      testimonials: {
+        title: 'What Users Say',
+        subtitle: 'Real feedback from real users',
+        items: contentData.testimonials.reduce((acc, item, index) => {
+          acc[`item-${index + 1}`] = {
+            name: item.name,
+            role: item.role,
+            heading: `Review from ${item.name}`,
+            content: item.content,
+          };
+          return acc;
+        }, {}),
+      },
+      faqs: {
+        title: 'Frequently Asked Questions',
+        subtitle: 'Have other questions? Feel free to contact us via email.',
+        items: contentData.faqs.reduce((acc, item, index) => {
+          acc[`item-${index + 1}`] = {
+            question: item.question,
+            answer: item.answer,
+          };
+          return acc;
+        }, {}),
+      },
+      ctaButton: `Try ${pageName} Now`,
+      cta: {
+        title: contentData.cta.title,
+        description: contentData.cta.description,
+        primaryButton: contentData.cta.button || `Try ${pageName} Now`,
+        secondaryButton: 'Back to Top',
+      },
     },
   };
 
-  // 读取现有的英文翻译文件
-  const enPath = path.join(CONFIG.messagesDir, 'en.json');
-  let existingEn = {};
-  try {
-    const content = await fs.readFile(enPath, 'utf-8');
-    existingEn = JSON.parse(content);
-  } catch (error) {
-    logWarning('未找到现有的 en.json 文件，将创建新文件');
-  }
+  // 创建页面专属翻译目录
+  const pageTranslationDir = path.join(CONFIG.messagesDir, 'pages', slug);
+  await fs.mkdir(pageTranslationDir, { recursive: true });
 
-  // 合并翻译
-  const mergedEn = { ...existingEn, ...enTranslation };
-  await fs.writeFile(enPath, JSON.stringify(mergedEn, null, 2));
-  logSuccess(`英文翻译已更新: ${enPath}`);
+  // 写入英文翻译文件
+  const enPath = path.join(pageTranslationDir, 'en.json');
+  await fs.writeFile(enPath, JSON.stringify(enTranslation, null, 2));
+  logSuccess(`英文翻译已生成: ${enPath}`);
 
   // 生成中文翻译提示（需要手动翻译）
-  logWarning('⚠️  请手动翻译 messages/zh.json 文件');
-  logInfo(`添加以下键到 zh.json: ${pageName}Page`);
+  logWarning('⚠️  请手动翻译中文版本');
+  logInfo(`创建文件: ${path.join(pageTranslationDir, 'zh.json')}`);
+  logInfo(`使用与 en.json 相同的结构，将内容翻译为中文`);
 
-  return { pageName, enTranslation };
+  return { pageName, enTranslation, slug };
 }
 
 /**
- * Phase 6: 图片生成占位（需要手动操作或集成 Article Illustrator）
+ * 更新 en.json 中的图片引用（使用动态文件名映射）
  */
-async function phase6_generateImages(keyword) {
-  logPhase(6, '图片生成（占位）');
+async function updateEnJsonWithImages(slug, imageMapping) {
+  const enPath = path.join(ROOT_DIR, 'messages', 'pages', slug, 'en.json');
+
+  try {
+    // 读取现有的 en.json
+    const content = await fs.readFile(enPath, 'utf-8');
+    const jsonData = JSON.parse(content);
+
+    // 获取页面命名空间
+    const pageName = slug
+      .split('-')
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join('') + 'Page';
+
+    if (!jsonData[pageName]) {
+      logError(`未找到 ${pageName} 命名空间`);
+      return { success: false };
+    }
+
+    let updated = 0;
+
+    // 1. 更新 whatIs 图片
+    if (imageMapping.whatIs) {
+      if (!jsonData[pageName].whatIs) {
+        jsonData[pageName].whatIs = {};
+      }
+      jsonData[pageName].whatIs.image = `/images/docs/${imageMapping.whatIs}`;
+      jsonData[pageName].whatIs.imageAlt = `What is ${slug} - Visual explanation`;
+      updated++;
+      logSuccess(`✓ 更新 whatIs 图片: ${imageMapping.whatIs}`);
+    }
+
+    // 2. 更新 funFacts 图片
+    if (jsonData[pageName].funFacts && jsonData[pageName].funFacts.items) {
+      imageMapping.funFacts.forEach((imagePath, index) => {
+        if (imagePath && jsonData[pageName].funFacts.items[index]) {
+          jsonData[pageName].funFacts.items[index].image = imagePath;
+          jsonData[pageName].funFacts.items[index].imageAlt =
+            jsonData[pageName].funFacts.items[index].title || `Fun fact ${index + 1}`;
+          updated++;
+          logSuccess(`✓ 更新 funFacts[${index}] 图片: ${imagePath}`);
+        }
+      });
+    }
+
+    // 3. 更新 userInterest 图片
+    if (jsonData[pageName].userInterest && jsonData[pageName].userInterest.items) {
+      imageMapping.userInterests.forEach((imagePath, index) => {
+        if (imagePath && jsonData[pageName].userInterest.items[index]) {
+          jsonData[pageName].userInterest.items[index].image = imagePath;
+          jsonData[pageName].userInterest.items[index].imageAlt =
+            jsonData[pageName].userInterest.items[index].title || `User interest ${index + 1}`;
+          updated++;
+          logSuccess(`✓ 更新 userInterest[${index}] 图片: ${imagePath}`);
+        }
+      });
+    }
+
+    // 保存更新后的 en.json
+    await fs.writeFile(enPath, JSON.stringify(jsonData, null, 2));
+
+    return { success: true, updated };
+  } catch (error) {
+    logError(`更新 en.json 失败: ${error.message}`);
+    throw error;
+  }
+}
+
+/**
+ * Phase 6: 图片生成（Gemini + Volcano 4.0 + 自动引用）
+ */
+async function phase6_generateImages(keyword, contentData) {
+  logPhase(6, '图片生成（Gemini + Volcano 4.0 + 自动引用）');
 
   const slug = keyword.toLowerCase().replace(/\s+/g, '-');
 
-  logWarning('⚠️  图片生成需要手动执行 Article Illustrator 流程');
-  logInfo(`需要生成的图片：`);
-  logInfo(`  - what-is-${slug}.webp`);
-  logInfo(`  - ${slug}-how-to.webp`);
-  logInfo(`  - ${slug}-fact-1.webp`);
-  logInfo(`  - ${slug}-fact-2.webp`);
-  logInfo(`保存路径: public/images/docs/`);
-  logInfo(`默认使用 Deem4.0，失败则使用 NanoBanana`);
-
-  return {
-    images: [
-      `what-is-${slug}.webp`,
-      `${slug}-how-to.webp`,
-      `${slug}-fact-1.webp`,
-      `${slug}-fact-2.webp`,
-    ],
+  // 1. 构建 ArticleSections 数据结构（参考 generate-pig-latin-images-ai.ts）
+  const sections = {
+    toolName: slug,
+    whatIs: {
+      title: contentData.whatIs.title,
+      content: contentData.whatIs.content,
+    },
+    funFacts: contentData.funFacts.map((fact) => ({
+      title: fact.title || 'Fun Fact',
+      content: fact.content,
+    })),
+    userInterests: contentData.interestingSections.sections.map((section) => ({
+      title: section.title,
+      content: section.content,
+    })),
   };
+
+  logInfo('调用 Article Illustrator 工作流...');
+  logInfo('  1. Gemini 分析内容 → 生成 prompts');
+  logInfo('  2. Volcano 4.0 生成图片');
+  logInfo('  3. 保存到 public/images/docs/');
+  logInfo('  4. 自动更新 en.json 引用\n');
+
+  try {
+    // 2. 动态生成并执行图片生成脚本（返回结果JSON）
+    const scriptPath = path.join(
+      ROOT_DIR,
+      'scripts',
+      `generate-${slug}-images-auto.ts`
+    );
+    const resultPath = path.join(
+      ROOT_DIR,
+      '.tool-generation',
+      slug,
+      'image-generation-result.json'
+    );
+
+    const scriptContent = `#!/usr/bin/env node
+import { generateArticleIllustrations } from '../src/lib/article-illustrator/workflow';
+import type { ArticleSections } from '../src/lib/article-illustrator/types';
+import fs from 'fs/promises';
+import path from 'path';
+
+const sections: ArticleSections = ${JSON.stringify(sections, null, 2)};
+
+async function main() {
+  const result = await generateArticleIllustrations(sections, {
+    captureHowTo: false,
+  });
+
+  // 保存结果到文件供后续步骤使用
+  const resultPath = path.join(process.cwd(), '.tool-generation', '${slug}', 'image-generation-result.json');
+  await fs.writeFile(resultPath, JSON.stringify(result, null, 2));
+
+  if (result.success) {
+    console.log('✅ 图片生成成功');
+    process.exit(0);
+  } else {
+    console.error('❌ 图片生成失败');
+    process.exit(1);
+  }
+}
+
+main();`;
+
+    await fs.writeFile(scriptPath, scriptContent);
+    logSuccess(`图片生成脚本已创建: ${scriptPath}`);
+
+    // 3. 执行图片生成
+    logInfo('开始生成图片（预计 15-25 分钟）...\n');
+    execSync(`pnpm tsx ${scriptPath}`, {
+      stdio: 'inherit',
+      cwd: ROOT_DIR,
+    });
+
+    logSuccess('图片生成完成！\n');
+
+    // 4. 读取图片生成结果
+    const resultContent = await fs.readFile(resultPath, 'utf-8');
+    const imageResult = JSON.parse(resultContent);
+
+    // 5. 自动更新 en.json 引用（传递文件名映射）
+    logInfo('自动更新图片引用到 en.json...');
+
+    // 构建文件名映射
+    const imageMapping = {
+      whatIs: imageResult.images.find(img => img.section === 'whatIs')?.filename || null,
+      funFacts: imageResult.images
+        .filter(img => img.section.startsWith('funFacts'))
+        .map(img => `/images/docs/${img.filename}`),
+      userInterests: imageResult.images
+        .filter(img => img.section.startsWith('userInterests'))
+        .map(img => `/images/docs/${img.filename}`),
+    };
+
+    // 直接在这里更新 en.json，不调用外部脚本
+    await updateEnJsonWithImages(slug, imageMapping);
+
+    logSuccess('图片引用已自动更新！');
+
+    return {
+      success: true,
+      images: imageResult.images.map(img => img.filename),
+      mapping: imageMapping,
+    };
+  } catch (error) {
+    logError(`图片生成失败: ${error.message}`);
+    logWarning('跳过图片生成，继续后续流程');
+    return {
+      success: false,
+      error: error.message,
+    };
+  }
 }
 
 /**
- * Phase 7: SEO 配置（sitemap, navbar, footer）
+ * Phase 7: SEO 配置（sitemap, navbar, footer, i18n）
  */
-async function phase7_configureSEO(keyword, codeData) {
-  logPhase(7, 'SEO 配置');
+async function phase7_configureSEO(keyword, translationData) {
+  logPhase(7, 'SEO 配置（sitemap, navbar, footer, i18n）');
 
-  const { slug, title } = codeData;
+  const { slug, pageName } = translationData;
+  const title = keyword
+    .split(' ')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
 
-  logWarning('⚠️  SEO 配置需要手动添加：');
+  // 转换为驼峰命名和枚举命名
+  const camelCaseName = slug
+    .split('-')
+    .map((word, index) =>
+      index === 0 ? word : word.charAt(0).toUpperCase() + word.slice(1)
+    )
+    .join('');
+
+  const routeEnumName = slug
+    .split('-')
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join('');
+
+  // 1. 更新 marketing/en.json
+  logInfo('更新 messages/marketing/en.json...');
+  const marketingEnPath = path.join(
+    CONFIG.messagesDir,
+    'marketing',
+    'en.json'
+  );
+  const marketingEnContent = await fs.readFile(marketingEnPath, 'utf-8');
+  const marketingEn = JSON.parse(marketingEnContent);
+
+  // 检查是否已存在
+  if (
+    !marketingEn.Marketing?.navbar?.languageTranslator?.items?.[camelCaseName]
+  ) {
+    // 添加到 languageTranslator.items
+    if (!marketingEn.Marketing.navbar.languageTranslator.items) {
+      marketingEn.Marketing.navbar.languageTranslator.items = {};
+    }
+
+    marketingEn.Marketing.navbar.languageTranslator.items[camelCaseName] = {
+      title: title,
+      description: `Translate ${title.toLowerCase()}`,
+    };
+
+    await fs.writeFile(
+      marketingEnPath,
+      JSON.stringify(marketingEn, null, 2)
+    );
+    logSuccess('✓ marketing/en.json 已更新');
+  } else {
+    logInfo('marketing/en.json 已包含此工具');
+  }
+
+  // 2. 更新 navbar-config.tsx
+  logInfo('更新 navbar-config.tsx...');
+  const navbarPath = path.join(CONFIG.srcDir, 'config', 'navbar-config.tsx');
+  let navbarContent = await fs.readFile(navbarPath, 'utf-8');
+
+  // 检查是否已存在
+  if (!navbarContent.includes(`Routes.${routeEnumName}`)) {
+    // 在 languageTranslator 分类的最后一项后添加
+    const navbarEntry = `        {
+          title: t('languageTranslator.items.${camelCaseName}.title'),
+          icon: <SparklesIcon className="size-4 shrink-0" />,
+          href: Routes.${routeEnumName},
+          external: false,
+        },`;
+
+    // 找到 languageTranslator.items 数组的结束位置
+    const languageTranslatorMatch = navbarContent.match(
+      /title: t\('languageTranslator\.title'\),[\s\S]*?items: \[([\s\S]*?)\n      \],/
+    );
+
+    if (languageTranslatorMatch) {
+      const itemsContent = languageTranslatorMatch[1];
+      const updatedItemsContent = itemsContent + '\n' + navbarEntry;
+      navbarContent = navbarContent.replace(
+        languageTranslatorMatch[0],
+        languageTranslatorMatch[0].replace(itemsContent, updatedItemsContent)
+      );
+
+      await fs.writeFile(navbarPath, navbarContent);
+      logSuccess('✓ navbar-config.tsx 已更新');
+    } else {
+      logWarning('未找到 languageTranslator 分类');
+    }
+  } else {
+    logInfo('navbar-config.tsx 已包含此工具');
+  }
+
+  // 3. 更新 footer-config.tsx
+  logInfo('更新 footer-config.tsx...');
+  const footerPath = path.join(CONFIG.srcDir, 'config', 'footer-config.tsx');
+  let footerContent = await fs.readFile(footerPath, 'utf-8');
+
+  if (!footerContent.includes(`Routes.${routeEnumName}`)) {
+    const footerEntry = `        {
+          title: '${title}',
+          href: Routes.${routeEnumName},
+          external: false,
+        },`;
+
+    // 找到 languageTranslator.items 数组的结束位置
+    const languageTranslatorMatch = footerContent.match(
+      /title: t\('languageTranslator\.title'\),[\s\S]*?items: \[([\s\S]*?)\n      \],/
+    );
+
+    if (languageTranslatorMatch) {
+      const itemsContent = languageTranslatorMatch[1];
+      const updatedItemsContent = itemsContent + '\n' + footerEntry;
+      footerContent = footerContent.replace(
+        languageTranslatorMatch[0],
+        languageTranslatorMatch[0].replace(itemsContent, updatedItemsContent)
+      );
+
+      await fs.writeFile(footerPath, footerContent);
+      logSuccess('✓ footer-config.tsx 已更新');
+    } else {
+      logWarning('未找到 languageTranslator 分类');
+    }
+  } else {
+    logInfo('footer-config.tsx 已包含此工具');
+  }
+
+  // 4. 更新 src/i18n/messages.ts
+  logInfo('更新 src/i18n/messages.ts...');
+  const messagesPath = path.join(CONFIG.srcDir, 'i18n', 'messages.ts');
+  let messagesContent = await fs.readFile(messagesPath, 'utf-8');
+
+  // 转换为驼峰命名（首字母小写）
+  const camelCaseVarName = slug
+    .split('-')
+    .map((word, index) =>
+      index === 0 ? word : word.charAt(0).toUpperCase() + word.slice(1)
+    )
+    .join('') + 'Pages';
+
+  // 检查是否已存在
+  if (!messagesContent.includes(`${camelCaseVarName} =`)) {
+    // 1. 添加导入语句（在最后一个页面导入后）
+    const lastPageImportMatch = messagesContent.match(
+      /import\(`\.\.\/\.\.\/messages\/pages\/[^\/]+\/\$\{locale\}\.json`\),\n/g
+    );
+
+    if (lastPageImportMatch) {
+      const lastImport = lastPageImportMatch[lastPageImportMatch.length - 1];
+      const importStatement = `    import(\`../../messages/pages/${slug}/\${locale}.json\`),\n`;
+
+      // 在最后一个页面导入后添加
+      messagesContent = messagesContent.replace(
+        lastImport,
+        lastImport + importStatement
+      );
+    }
+
+    // 2. 添加变量声明（在导入列表中）
+    const importListMatch = messagesContent.match(
+      /const \[\n([\s\S]*?)\n  \] = await Promise\.all\(\[/
+    );
+
+    if (importListMatch) {
+      const variablesList = importListMatch[1];
+      const newVariable = `    ${camelCaseVarName},`;
+
+      // 在最后一个页面变量后添加
+      const lastPageVarMatch = variablesList.match(/\w+Pages,\n/g);
+      if (lastPageVarMatch) {
+        const lastVar = lastPageVarMatch[lastPageVarMatch.length - 1];
+        const updatedVariablesList = variablesList.replace(
+          lastVar,
+          lastVar + newVariable + '\n'
+        );
+
+        messagesContent = messagesContent.replace(
+          importListMatch[0],
+          `const [\n${updatedVariablesList}\n  ] = await Promise.all([`
+        );
+      }
+    }
+
+    // 3. 添加到 deepmerge 列表中
+    const deepmergeMatch = messagesContent.match(
+      /return deepmerge\.all\(\[\n([\s\S]*?)\n  \]\) as Messages;/
+    );
+
+    if (deepmergeMatch) {
+      const mergeList = deepmergeMatch[1];
+      const newMergeEntry = `    ${camelCaseVarName}.default,`;
+
+      // 在最后一个页面条目后添加
+      const lastPageMergeMatch = mergeList.match(/\w+Pages\.default,\n/g);
+      if (lastPageMergeMatch) {
+        const lastMerge = lastPageMergeMatch[lastPageMergeMatch.length - 1];
+        const updatedMergeList = mergeList.replace(
+          lastMerge,
+          lastMerge + newMergeEntry + '\n'
+        );
+
+        messagesContent = messagesContent.replace(
+          deepmergeMatch[0],
+          `return deepmerge.all([\n${updatedMergeList}\n  ]) as Messages;`
+        );
+      }
+    }
+
+    await fs.writeFile(messagesPath, messagesContent);
+    logSuccess('✓ src/i18n/messages.ts 已更新');
+  } else {
+    logInfo('src/i18n/messages.ts 已包含此工具');
+  }
+
+  logWarning('\n⚠️  其他 SEO 配置需要手动添加：');
   logInfo(`  1. 更新 sitemap.xml，添加路径: /${slug}`);
-  logInfo(`  2. 在 navbar 和 footer 的 "Fun Translator" 分类中添加: ${title}`);
-  logInfo(`  3. 更新 explore other tools 配置`);
-  logInfo(`  4. 生成 SEO 图片（og:image）`);
+  logInfo(`  2. 更新 explore other tools 配置`);
+  logInfo(`  3. 生成 SEO 图片（og:image）`);
 
   return { slug, title };
 }
@@ -666,7 +1645,7 @@ async function phase8_qualityCheck(keyword) {
   logInfo('检查生成的文件...');
   const pagePath = path.join(CONFIG.srcDir, 'app', '[locale]', '(marketing)', '(pages)', slug, 'page.tsx');
   const apiPath = path.join(CONFIG.srcDir, 'app', 'api', slug, 'route.ts');
-  const enPath = path.join(CONFIG.messagesDir, 'en.json');
+  const enPath = path.join(CONFIG.messagesDir, 'pages', slug, 'en.json');
 
   const checks = [
     { path: pagePath, name: '页面文件' },
@@ -701,6 +1680,181 @@ async function phase8_qualityCheck(keyword) {
 }
 
 /**
+ * 检查端口是否被占用
+ */
+async function isPortInUse(port) {
+  try {
+    const { stdout } = await execAsync(
+      process.platform === 'win32'
+        ? `netstat -ano | findstr :${port}`
+        : `lsof -i :${port}`
+    );
+    return stdout.trim().length > 0;
+  } catch (error) {
+    return false;
+  }
+}
+
+/**
+ * 等待服务器启动
+ */
+async function waitForServer(port, timeout = 30000) {
+  const startTime = Date.now();
+
+  while (Date.now() - startTime < timeout) {
+    try {
+      const response = await fetch(`http://localhost:${port}`, {
+        method: 'HEAD',
+      });
+      if (response.ok || response.status === 404) {
+        return true;
+      }
+    } catch (error) {
+      // 服务器还未启动，继续等待
+    }
+
+    // 等待 1 秒后重试
+    await new Promise(resolve => setTimeout(resolve, 1000));
+  }
+
+  return false;
+}
+
+/**
+ * Phase 8.5: 页面错误自动检查
+ */
+async function phase8_5_checkPageErrors(keyword) {
+  if (!CONFIG.enablePageErrorCheck) {
+    logInfo('页面错误检查已禁用，跳过 Phase 8.5');
+    return { success: true, skipped: true };
+  }
+
+  logPhase('8.5', '页面错误自动检查');
+
+  const slug = keyword.toLowerCase().replace(/\s+/g, '-');
+  const port = CONFIG.devServerPort;
+  const pageUrl = `http://localhost:${port}/${slug}`;
+
+  // 1. 检查开发服务器是否已运行
+  logInfo(`检查端口 ${port} 是否有服务运行...`);
+  const serverRunning = await isPortInUse(port);
+
+  let devServerProcess = null;
+
+  if (!serverRunning) {
+    logInfo('开发服务器未运行，正在启动...');
+
+    try {
+      // 启动开发服务器（后台运行）
+      const { spawn } = await import('node:child_process');
+      devServerProcess = spawn('pnpm', ['dev'], {
+        cwd: ROOT_DIR,
+        stdio: 'pipe',
+        detached: false,
+      });
+
+      // 监听输出以便调试
+      devServerProcess.stdout.on('data', (data) => {
+        const output = data.toString();
+        if (output.includes('Ready') || output.includes('started')) {
+          logInfo('开发服务器已启动');
+        }
+      });
+
+      devServerProcess.stderr.on('data', (data) => {
+        const error = data.toString();
+        if (!error.includes('Warning')) {
+          logWarning(`Dev Server: ${error}`);
+        }
+      });
+
+      // 等待服务器启动
+      logInfo(`等待服务器启动（最多 ${CONFIG.pageCheckTimeout / 1000} 秒）...`);
+      const serverReady = await waitForServer(port, CONFIG.pageCheckTimeout);
+
+      if (!serverReady) {
+        logError('开发服务器启动超时');
+        if (devServerProcess) {
+          devServerProcess.kill();
+        }
+        return { success: false, error: '服务器启动超时' };
+      }
+
+      logSuccess('开发服务器已就绪');
+    } catch (error) {
+      logError(`启动开发服务器失败: ${error.message}`);
+      return { success: false, error: error.message };
+    }
+  } else {
+    logInfo('开发服务器已在运行');
+  }
+
+  // 2. 检查页面是否可以访问
+  logInfo(`正在访问页面: ${pageUrl}`);
+
+  try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 10000);
+
+    const response = await fetch(pageUrl, {
+      method: 'GET',
+      signal: controller.signal,
+    });
+
+    clearTimeout(timeoutId);
+
+    logInfo(`HTTP 状态码: ${response.status}`);
+
+    if (response.status === 200) {
+      logSuccess('✓ 页面加载成功！');
+
+      // 获取页面内容进行简单检查
+      const html = await response.text();
+
+      // 检查是否有明显的错误标记
+      const hasError = html.includes('Application error') ||
+                       html.includes('Unhandled Runtime Error') ||
+                       html.includes('500') ||
+                       html.includes('Error:');
+
+      if (hasError) {
+        logWarning('⚠️  页面中检测到可能的错误标记');
+        logWarning('建议手动访问页面检查：' + pageUrl);
+        return { success: true, warning: '页面可能包含错误' };
+      }
+
+      logSuccess('✓ 页面内容看起来正常');
+      logInfo(`\n访问页面: ${pageUrl}`);
+
+      return { success: true };
+    } else if (response.status === 404) {
+      logError('✗ 页面未找到 (404)');
+      logWarning('请检查路由配置是否正确');
+      return { success: false, error: '页面未找到' };
+    } else {
+      logError(`✗ 页面返回错误状态码: ${response.status}`);
+      return { success: false, error: `HTTP ${response.status}` };
+    }
+  } catch (error) {
+    if (error.name === 'AbortError') {
+      logError('✗ 页面加载超时');
+    } else {
+      logError(`✗ 页面访问失败: ${error.message}`);
+    }
+    return { success: false, error: error.message };
+  } finally {
+    // 如果我们启动了服务器，询问是否关闭
+    if (devServerProcess && !serverRunning) {
+      logInfo('\n开发服务器由脚本启动');
+      logWarning('请手动停止开发服务器（Ctrl+C）或保持运行以便测试');
+
+      // 不自动关闭服务器，让用户决定
+      // devServerProcess.kill();
+    }
+  }
+}
+
+/**
  * 主函数
  */
 async function main() {
@@ -729,28 +1883,48 @@ async function main() {
     const codeData = await phase3_generateCode(keyword, researchData);
 
     // Phase 4: 内容生成
-    const contentData = await phase4_generateContent(keyword, researchData, contentResearchData);
+    let contentData = await phase4_generateContent(keyword, researchData, contentResearchData);
+
+    // Phase 4.5: 字数验证和重新生成
+    contentData = await phase4_5_validateAndRegenerate(keyword, contentData, researchData, contentResearchData);
 
     // Phase 5: 生成翻译文件
     const translationData = await phase5_generateTranslations(keyword, contentData);
 
-    // Phase 6: 图片生成（占位）
-    const imageData = await phase6_generateImages(keyword);
+    // Phase 6: 图片生成（使用 contentData）
+    const imageData = await phase6_generateImages(keyword, contentData);
 
     // Phase 7: SEO 配置（占位）
-    const seoData = await phase7_configureSEO(keyword, codeData);
+    const seoData = await phase7_configureSEO(keyword, translationData);
 
     // Phase 8: 质量检查
     // await phase8_qualityCheck(keyword);
+
+    // Phase 8.5: 页面错误自动检查
+    const pageCheckResult = await phase8_5_checkPageErrors(keyword);
 
     // 完成
     log('\n' + '='.repeat(60), 'green');
     log('🎉 工具生成完成！', 'green');
     log('='.repeat(60), 'green');
 
+    if (!pageCheckResult.success) {
+      logWarning('\n⚠️  页面检查发现问题：');
+      logWarning(`   ${pageCheckResult.error || pageCheckResult.warning}`);
+      logWarning('   建议手动检查页面后再继续');
+    } else if (!pageCheckResult.skipped) {
+      logSuccess('\n✓ 页面检查通过');
+    }
+
     logInfo('\n后续步骤：');
     logInfo('1. 手动翻译 messages/zh.json');
-    logInfo('2. 运行 Article Illustrator 生成图片');
+
+    if (imageData.success) {
+      logInfo('2. ✓ 图片已自动生成并更新引用');
+    } else {
+      logWarning('2. ⚠️  图片生成失败，需要手动生成图片');
+    }
+
     logInfo('3. 更新 sitemap, navbar, footer');
     logInfo('4. 运行 pnpm build 验证构建');
     logInfo('5. 提交代码并上线');

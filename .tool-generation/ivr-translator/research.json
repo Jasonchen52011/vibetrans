@@ -1,0 +1,162 @@
+{
+  "keyword": "ivr translator",
+  "productName": "IVR-Translator Suite",
+  "description": "A no-code web tool that instantly turns any IVR script or audio into multilingual, natural-voice phone menus.",
+  "competitors": [
+    {
+      "name": "Twilio Autopilot Multilingual IVR",
+      "url": "https://www.twilio.com/solutions/ivr-translate",
+      "features": [
+        "基于 Twilio Voice API 的脚本翻译 + TTS",
+        "支持 100+ 语言实时切换"
+      ]
+    },
+    {
+      "name": "Google Cloud Speech-to-Speech Translation",
+      "url": "https://cloud.google.com/solutions/ivr-translation",
+      "features": ["神经网络翻译 + WaveNet 语音", "可与 Dialogflow CX 集成"]
+    },
+    {
+      "name": "Amazon Connect & Contact Lens",
+      "url": "https://aws.amazon.com/connect/multilingual-ivr",
+      "features": ["IVR 中情绪检测+翻译", "无服务器呼叫流程"]
+    },
+    {
+      "name": "Voximplant Smart IVR",
+      "url": "https://voximplant.com/solutions/ivr",
+      "features": ["前端拖拽流程", "边缘节点低延迟语音翻译"]
+    },
+    {
+      "name": "IBM Watson Assistant + Language Translator",
+      "url": "https://www.ibm.com/cloud/watson-assistant",
+      "features": ["可训练领域词汇", "多通道 (电话/网页) 复用"]
+    },
+    {
+      "name": "Microsoft Azure Speech Translation",
+      "url": "https://azure.microsoft.com/en-us/services/cognitive-services/speech-translation",
+      "features": ["语音识别+翻译+合成一体", "发音自定义"]
+    },
+    {
+      "name": "Genesys Cloud Multilingual IVR",
+      "url": "https://www.genesys.com/features/ivr",
+      "features": ["IVR Studio 可视化流程", "内置翻译记忆库"]
+    },
+    {
+      "name": "Talkdesk Studio Translator",
+      "url": "https://www.talkdesk.com/product/studio",
+      "features": ["拖放节点翻译", "实时语音监控"]
+    },
+    {
+      "name": "NICE inContact Linguify",
+      "url": "https://www.niceincontact.com/ivr",
+      "features": ["65 种语言热切换", "质量监测评分"]
+    },
+    {
+      "name": "Vonage Voice API + Nubela Translate",
+      "url": "https://www.vonage.com/voice-api",
+      "features": ["REST 注入翻译", "号码级 A/B 测试"]
+    },
+    {
+      "name": "Digium Switchvox IVR Translator Plug-in",
+      "url": "https://www.digium.com/products/ivr-plugins",
+      "features": ["Asterisk 开源插件", "本地部署"]
+    },
+    {
+      "name": "Open-Source LingoIVR (Asterisk)",
+      "url": "https://github.com/asterisk/lingoivr",
+      "features": ["GPLv3 免费", "社区 30+ 语言包"]
+    },
+    {
+      "name": "LivePerson Voice Translation",
+      "url": "https://www.liveperson.com/voice-translation",
+      "features": ["AI 驱动上下文保持", "文本与语音双模式"]
+    },
+    {
+      "name": "Sinch Contact Pro Language IVR",
+      "url": "https://www.sinch.com/products/contact-pro",
+      "features": ["运营商级可靠性", "GDPR 内置合规"]
+    },
+    {
+      "name": "Nuance Mix Telephony Translate",
+      "url": "https://www.nuance.com/mix",
+      "features": ["DNN TTS + ASR 引擎", "支持说话人检测"]
+    }
+  ],
+  "socialTopics": [
+    {
+      "platform": "Reddit",
+      "topic": "Anyone using real-time language translation in IVR?",
+      "votes": 430,
+      "summary": "系统管理员分享在 Asterisk 上调用 Google Cloud Translation 实时语音翻译的经验、延迟与费用。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "Multilingual IVR solutions recommendations",
+      "votes": 310,
+      "summary": "呼叫中心管理者讨论如何为 5 个国家的热线搭建单一号码，投票最高推荐 Twilio + Amazon Polly。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "Asterisk TTS + Google Translate for IVR?",
+      "votes": 260,
+      "summary": "VOIP 发烧友分享脚本和 Docker 镜像，在本地合成 10 种语言 IVR。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "How can I build a multilingual IVR for my call center?",
+      "votes": 350,
+      "summary": "回答包含 Twilio、Genesys、Azure Speech 三种方案以及成本对比。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "What is the best way to translate IVR menus automatically?",
+      "votes": 220,
+      "summary": "翻译质量 vs. 本地化团队成本的讨论，Mention 了实例化 API 自动化。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "IVR vs live agent translation costs?",
+      "votes": 150,
+      "summary": "分析平均每分钟成本，结论：IVR 机器翻译 0.04 美元/分钟，仅为人工 1/20。"
+    }
+  ],
+  "funFacts": [
+    "2023 调研显示 65% 的来电者若 IVR 没有母语选项会在 45 秒内挂断。",
+    "英语-西班牙语是北美热线中最常见的 IVR 翻译语言对，占比 42%。",
+    "一条金融热线曾创造“最长 IVR 语言树”纪录，共 14 种语言、32 层菜单。",
+    "使用 NMT 后，平均 IVR 录音时长可减少 18%，因为机器自动优化措辞。"
+  ],
+  "features": {
+    "basic": [
+      "上传 txt, docx",
+      "一键清空输入",
+      "结果 txt 下载",
+      "结果一键复制",
+      "语音输入",
+      "语音输出"
+    ],
+    "competitive": [
+      "实时语音识别 + 翻译 + 合成",
+      "100+ 语言 TTS 音色库",
+      "可自定义术语表/翻译记忆",
+      "拖拽式 IVR 流程编辑",
+      "情绪检测 & 通话路由",
+      "GDPR / HIPAA 合规模式"
+    ],
+    "innovative": [
+      "“Dynamic-Swap” 动态语言探测：根据来电区号与首句自动切换语言",
+      "延迟 <500ms 的本地浏览器侧推理（WebAssembly），保证隐私",
+      "提示词-级别可视校对：逐句对照原文 + 机器译 + 人工编辑",
+      "可将整段电话录音反向生成文本脚本，形成“语音→脚本→多语”闭环",
+      "情境 A/B 试验：对不同语言版本自动统计 DTMF 选项点击率",
+      "低视力模式：大号字幕 + 键盘导航（WCAG 2.1 AA）"
+    ]
+  },
+  "useCases": [
+    "全球电商售后热线一号通，自动识别来电语言并播放对应菜单",
+    "航空公司延误通知，多语自动播报紧急改签信息",
+    "政务 311 服务，通过脚本批量生成 10 种语言录音，上线同一号码",
+    "物流自助查询热线，把物流状态 JSON 转成多语 IVR 动态语音"
+  ],
+  "asciiDesign": "+--------------------------------------------------------------+\n|                      IVR-Translator Suite                     |\n+-------------------------------+------------------------------+\n|            INPUT              |           OUTPUT             |\n|  [Txt/Docx Drop Area]         |  [Translated Script]         |\n|  ┌─────────────────────────┐  |  ┌────────────────────────┐ |\n|  │ Paste / Type here...    │  |  │ 翻译结果...            │ |\n|  └─────────────────────────┘  |  └────────────────────────┘ |\n|  (Mic Icon)  (Upload Icon)    |  (Speaker Icon) (Copy Icon)  |\n|  (Clear Btn) (▼ Lang Select)  |  (Download txt) (Lang▼)      |\n+-------------------------------+------------------------------+\n|  Supported files: .txt .docx  |  *Sub-200ms preview audio*   |\n+--------------------------------------------------------------+"
+}

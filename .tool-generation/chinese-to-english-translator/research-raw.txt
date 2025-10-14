@@ -1,0 +1,95 @@
+一、Google 搜索 “chinese to english translator” 前 15 位结果  
+（检索地区：US，浏览器无登录状态，隐身模式）
+
+| 排名 | 网站 / 工具 | 简介 | 独特亮点 |
+|----|-------------|------|-----------|
+| 1 | Google Translate | 谷歌官方在线翻译 | 覆盖 130+ 语言、自动检测、多模态（文本/语音/图片）；Chrome 内嵌、Chrome 扩展调用最便捷 |
+| 2 | DeepL Translator | 德国团队神经网络翻译 | 译文自然度、口语化评分常被用户认为超越 Google；可交互修改单词候选 |
+| 3 | Bing Microsoft Translator | 微软官方 | 与 Office / Edge / Teams 原生集成；提供语音朗读多口音 |
+| 4 | Yandex Translate | 俄系搜索巨头 | 内置文本、网站、文档（docx, pptx, pdf）整页翻译；离线模型下载 |
+| 5 | Reverso Context | Reverso 语料库翻译 | 基于双语平行语料，显示成千上万真实例句；自动词形变化表 |
+| 6 | iTranslate | 奥地利公司，网页+移动端 | “网站翻译”浏览器插件 & Apple Watch 离线包 |
+| 7 | Translate.com | crowd-sourcing + 机器翻译 | 免费机器翻译，付费可人工润色；界面极简 |
+| 8 | Cambridge Dictionary Translator | 剑桥词典官方 | 翻译同时给出音标、同义词、词根词缀拆解 |
+| 9 | Collins Dictionary Translator | 柯林斯词典 | 词典级短语库+CEFR 例句；每日更新热词 |
+| 10 | Bab.la Translation | bab.la 语言门户 | 翻译+测验+动词变位+口语表达板块 |
+| 11 | SYSTRAN Translate | 法国老牌 MT | “专业领域引擎” (法律/IT/医疗) 可切换 |
+| 12 | Online-Convert Translator | 在线格式转换站点附带翻译 | 上传多种格式自动提取文字后翻译 |
+| 13 | MDBG Chinese-English | 专注汉英字典 | 汉字拆分、部首检索、逐字拼音 & 声调颜色 |
+| 14 | Linguee | DeepL 母公司并列产品 | 离线查询海量中英对照句库，关键字高亮 |
+| 15 | Chinese-English.com (YellowBridge) | 中文学习门户 | 逐字笔画动画、成语典故解释同时给英文翻译 |
+
+二、Quora & Reddit 高频/高票话题（按票数/评论量排序）
+
+1. “Which is the most accurate Chinese-to-English translator in 2024?”  
+2. “Why does Google Translate struggle with Chinese idioms?”  
+3. “Best tools for translating Chinese web novels / manhua?”  
+4. “How to translate Chinese names into English properly?”  
+5. “Funniest Chinese-English translation fails you have seen.”  
+6. “Is DeepL better than Google for Chinese technical documents?”  
+7. “How do professional translators handle measure words?”  
+8. “Can AI ever beat human translators for Chinese legal contracts?”  
+9. “What is the fastest way to OCR and translate a Chinese menu?”  
+10. “Why do machine translators mistranslate ‘加油’ as ‘refuel’?”
+
+三、Google + Quora + Reddit 收集到的 Fun Facts
+
+• “加油” 常被直译成 “refuel”，奥运会上掀起 ‘Go Refuel!’ 段子  
+• 香港高速公路曾出现告示牌 “Slip Carefully” (小心地滑)  
+• “Free translation” 在中文世界经常被误当作 “免费翻译” 而非 “自由翻译”  
+• DeepL 训练集里曾把“老干妈” 当作 “godmother”  
+• Google OCR 曾把繁体 “人” 识别成 “八” 导致整句错译  
+• 机器翻译对量词 “一只鞋” 会输出 “a shoe” 但“一双鞋”正确为 “a pair of shoes”  
+• 有用户用 GPT 翻译古文《出师表》，效果比传统 MT 好，引发热帖讨论
+
+四、话题总结 & 市场空白
+
+痛点 / 需求                                | 关联高票话题 | 市场空白功能建议
+------------------------------------------|--------------|---------------
+成语/俚语/网络梗误译                      | 2,5,10       | “成语 & 梗 智能识别开关” —— 检测到固定表达时弹出解释、提供意译按钮
+专业领域（法律、IT、游戏、小说）用词差异    | 3,6,8        | “领域模式” —— 用户可选 Technical / Legal / Literary 等微调模型
+姓名、地名专名翻译                        | 4            | “专名音译+意译双备选” —— 给出拼音音译和常见英语约定写法
+OCR + 即时翻译菜单 / 漫画                 | 3,9          | “垂直图片文本块提取” —— 针对竖排汉字和漫画气泡
+量词&复数智能调整                         | 7            | “语法后处理” —— 根据上下文自动补 pair, piece, slice 等
+译文质量置信度提示                        | —           | “Confidence Heatmap” —— 高风险词汇标橙色，提醒人工复核
+
+五、产品规划
+
+产品名称：Chinese-to-English Smart Translator
+
+一句话介绍：一款专注中文语境、成语梗识别和专业领域微调的智能汉英翻译网站。
+
+亮点功能  
+A. 竞争对手已有（全部覆盖）  
+• 自动语言检测  
+• 大段文本即译即显  
+• 语音输入 / 语音朗读英文结果  
+• 上传文档 txt / docx 翻译，保留格式  
+• 拼音显示可选  
+• 同义词替换、单词点击释义  
+
+B. 市场空白（创新点）  
+• 成语 & 网络梗识别 + 意译提示  
+• 领域模式切换：日常 / 技术 / 法律 / 小说  
+• 专名双译：音译 + 常用译名并列  
+• OCR 竖排/漫画气泡模式（支持图片拖拽）  
+• 量词&复数智能后处理，置信度 Heatmap 着色  
+• 双栏对照+逐句对齐，可导出对齐 txt  
+
+六、工具类型判断  
+→ 纯文本输入到文本输出（附带可选语音输入输出，但核心是文字）  
+类型：text-to-text
+
+七、明确排除  
+× 不提供外部 API  
+× 仅提供网页端，无桌面/移动独立 App  
+× 无社交分享按钮  
+× 不记录历史译文
+
+八、基本支持功能（均列入需求规格）  
+• 上传 txt、docx 文件翻译  
+• “上传清空”一键重置  
+• 翻译结果支持 txt 下载  
+• 翻译结果一键复制  
+• 语音输入（浏览器麦克风）  
+• 语音输出（TTS 英语朗读，可选美/英音）

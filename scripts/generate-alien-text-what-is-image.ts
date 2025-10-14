@@ -3,9 +3,9 @@
  * Using Seedream 4.0 with Geometric Flat Style
  */
 
-import { generateImageWithSeedream } from '../src/lib/kie-text-to-image';
 import fs from 'fs';
 import path from 'path';
+import { generateImageWithSeedream } from '../src/lib/kie-text-to-image';
 
 async function generateWhatIsImage() {
   console.log('🎨 Generating "What is Alien Text Generator?" image...\n');
@@ -31,14 +31,22 @@ async function generateWhatIsImage() {
       fs.mkdirSync(outputDir, { recursive: true });
     }
 
-    const urlFile = path.join(outputDir, 'what-is-alien-text-generator-url.txt');
-    fs.writeFileSync(urlFile, `${result.url}\n\nPrompt:\n${prompt}\n\nGenerated: ${new Date().toISOString()}`);
+    const urlFile = path.join(
+      outputDir,
+      'what-is-alien-text-generator-url.txt'
+    );
+    fs.writeFileSync(
+      urlFile,
+      `${result.url}\n\nPrompt:\n${prompt}\n\nGenerated: ${new Date().toISOString()}`
+    );
 
     console.log('\n📄 URL saved to:', urlFile);
     console.log('\n💡 Next steps:');
     console.log('   1. Download the image from the URL above');
     console.log('   2. Convert to WebP format');
-    console.log('   3. Save as: public/images/docs/what-is-alien-text-generator.webp');
+    console.log(
+      '   3. Save as: public/images/docs/what-is-alien-text-generator.webp'
+    );
 
     return result;
   } catch (error: any) {

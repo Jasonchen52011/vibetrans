@@ -390,13 +390,13 @@ export default async function CuneiformTranslatorPage(
         {/* Explore Other Tools */}
         <ExploreOurAiTools
           toolKeys={[
-            'Gen Z Translator',
-            'Dog Translator',
-            'Bad Translator',
-            'Ancient Greek Translator',
-            'Gibberish Translator',
-            'Esperanto Translator',
-          ]}
+        'Ancient Greek Translator',
+        'Middle English Translator',
+        'Esperanto Translator',
+        'Chinese to English Translator',
+        'Al Bhed Translator',
+        'Gibberish Translator'
+      ]}
         />
 
         {/* Testimonials Section */}

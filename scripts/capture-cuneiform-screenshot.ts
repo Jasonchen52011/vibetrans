@@ -1,7 +1,7 @@
 import path from 'path';
+import fs from 'fs/promises';
 import { chromium } from 'playwright';
 import sharp from 'sharp';
-import fs from 'fs/promises';
 
 const targetSize = 90 * 1024; // 90KB
 const tolerance = 5 * 1024; // ±5KB

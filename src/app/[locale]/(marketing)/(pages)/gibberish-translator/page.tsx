@@ -380,13 +380,13 @@ export default async function GibberishTranslatorPage(
         {/* Explore Other Tools */}
         <ExploreOurAiTools
           toolKeys={[
-            'Gen Z Translator',
-            'Dog Translator',
-            'Bad Translator',
-            'Ancient Greek Translator',
-            'Gibberish Translator',
-            'Esperanto Translator',
-          ]}
+        'Pig Latin Translator',
+        'Al Bhed Translator',
+        'Bad Translator',
+        'Alien Text Generator',
+        'Gen Z Translator',
+        'Baby Translator'
+      ]}
         />
 
         {/* Testimonials Section */}

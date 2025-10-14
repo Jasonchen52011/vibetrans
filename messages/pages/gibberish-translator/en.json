@@ -170,36 +170,42 @@
         "item-1": {
           "name": "Sarah Johnson",
           "role": "High School Teacher",
+          "heading": "Classroom Icebreaker Students Actually Love",
           "content": "I love using this tool in my classroom to teach students about language and creativity. It's also a fun way to break the ice at the beginning of class. My students can't get enough of it!",
           "rating": 5
         },
         "item-2": {
           "name": "Tom Mitchell",
           "role": "Game Developer",
+          "heading": "Quirky NPC Dialogue That Players Adore",
           "content": "VibeTrans' Gibberish Translator has been a lifesaver for creating quirky NPC dialogue in my games. It adds a layer of humor that players absolutely love. Highly recommend it to any dev looking to add personality to their characters!",
           "rating": 5
         },
         "item-3": {
           "name": "Jessica Lee",
           "role": "Content Creator",
+          "heading": "Fresh Content Tool for Engaging Challenges",
           "content": "As a YouTuber, I'm always looking for ways to keep my content fresh and engaging. The Gibberish Translator has become one of my go-to tools for funny skits and challenges. My audience finds it hilarious every time!",
           "rating": 5
         },
         "item-4": {
           "name": "James Carter",
           "role": "Parent",
+          "heading": "Secret Messages That Entertain and Educate",
           "content": "My kids are obsessed with this translator! They use it to create secret messages and have fun with language. It's both entertaining and educational—what more could a parent ask for?",
           "rating": 5
         },
         "item-5": {
           "name": "Linda Garcia",
           "role": "Marketing Specialist",
+          "heading": "Social Media Posts That Grab Attention",
           "content": "I've used VibeTrans for quirky social media posts, and it always grabs attention. The gibberish adds a playful element that helps posts stand out. It's simple, effective, and fun to use!",
           "rating": 5
         },
         "item-6": {
           "name": "David Brown",
           "role": "Writer",
+          "heading": "Creative Inspiration for Character Development",
           "content": "As someone who loves experimenting with language, the Gibberish Translator is a fantastic creative tool. I use it to come up with fun character names and dialogue for my stories. It's inspiring!",
           "rating": 5
         }
