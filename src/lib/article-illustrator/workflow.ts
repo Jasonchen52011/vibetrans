@@ -71,13 +71,17 @@ export async function generateArticleIllustrations(
     const prompts = await analyzeArticleSections(sections);
     console.log(`✅ Generated ${prompts.length} prompts`);
 
-    // Step 2: Generate images with Volcano Engine
+    // Step 2: Generate images with Volcano Engine (Parallel)
     console.log('\n' + '-'.repeat(70));
-    console.log('🎨 STEP 2: Generating images with Volcano Engine...');
+    console.log('🎨 STEP 2: Generating images with Volcano Engine (Parallel)...');
     console.log('-'.repeat(70));
 
-    for (let i = 0; i < prompts.length; i++) {
-      const promptData = prompts[i];
+    // 进度追踪
+    let completedCount = 0;
+    const totalCount = prompts.length;
+
+    // 并行生成所有图片
+    const imagePromises = prompts.map(async (promptData, i) => {
       const sectionLabel =
         promptData.index !== undefined
           ? `${promptData.section} #${promptData.index + 1}`
@@ -105,33 +109,46 @@ export async function generateArticleIllustrations(
             }));
 
         if (webpResult.success) {
-          results.successfulImages++;
-          results.images.push({
+          completedCount++;
+          console.log(
+            `✅ [${i + 1}/${prompts.length}] Success: ${webpResult.filename} (${webpResult.size}KB) [Progress: ${completedCount}/${totalCount}]`
+          );
+          return {
             section: sectionLabel,
             title: promptData.title,
             filename: webpResult.filename,
             size: webpResult.size,
-            status: 'success',
-          });
-          console.log(
-            `✅ [${i + 1}/${prompts.length}] Success: ${webpResult.filename} (${webpResult.size}KB)`
-          );
+            status: 'success' as const,
+          };
         } else {
           throw new Error(webpResult.error || 'WebP conversion failed');
         }
       } catch (error: any) {
-        results.failedImages++;
-        results.images.push({
+        completedCount++;
+        console.error(
+          `❌ [${i + 1}/${prompts.length}] Failed: ${error.message} [Progress: ${completedCount}/${totalCount}]`
+        );
+        return {
           section: sectionLabel,
           title: promptData.title,
           filename: `${promptData.suggestedFilename}.webp`,
           size: 0,
-          status: 'failed',
+          status: 'failed' as const,
           error: error.message,
-        });
-        console.error(
-          `❌ [${i + 1}/${prompts.length}] Failed: ${error.message}`
-        );
+        };
+      }
+    });
+
+    // 等待所有图片生成完成
+    const imageResults = await Promise.all(imagePromises);
+
+    // 统计结果
+    for (const result of imageResults) {
+      results.images.push(result);
+      if (result.status === 'success') {
+        results.successfulImages++;
+      } else {
+        results.failedImages++;
       }
     }
 
