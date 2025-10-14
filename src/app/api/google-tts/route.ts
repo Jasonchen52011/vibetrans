@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import type { TextToSpeechClient } from '@google-cloud/text-to-speech';
 
-export const runtime = 'nodejs';
+export const runtime = 'edge';
 
 // 小黄人语音配置
 const MINION_VOICES = {

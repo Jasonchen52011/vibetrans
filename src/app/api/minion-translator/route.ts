@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 
-// 使用 Node.js runtime 以获得更好的兼容性
-export const runtime = 'nodejs';
+export const runtime = 'edge';
 
 // Minionese 词典（基于 Despicable Me 电影）
 const MINION_DICTIONARY: Record<string, string> = {
