@@ -1,8 +1,7 @@
 'use client';
 
-import { SpeechToTextButton } from '@/components/ui/speech-to-text-button';
 import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
-import mammoth from 'mammoth';
+import * as mammoth from 'mammoth';
 import { useState } from 'react';
 
 interface AncientGreekTranslatorToolProps {
@@ -15,12 +14,13 @@ export default function AncientGreekTranslatorTool({
   locale = 'en',
 }: AncientGreekTranslatorToolProps) {
   const [inputText, setInputText] = useState<string>('');
-  const [translatedText, setTranslatedText] = useState<string>('');
+  const [outputText, setOutputText] = useState<string>('');
   const [pronunciation, setPronunciation] = useState<string>('');
   const [culturalContext, setCulturalContext] = useState<string>('');
+  const [selectedDialect, setSelectedDialect] = useState<string>('attic');
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-  const [mode, setMode] = useState<'toGreek' | 'toEnglish'>('toGreek');
+  const [mode, setMode] = useState<'toGreek' | 'toEnglish'>('toEnglish');
   const [fileName, setFileName] = useState<string | null>(null);
 
   // Handle file upload
@@ -46,49 +46,30 @@ export default function AncientGreekTranslatorTool({
   const readFileContent = async (file: File): Promise<string> => {
     const fileExtension = file.name.split('.').pop()?.toLowerCase();
 
-    // Handle .txt files
     if (fileExtension === 'txt') {
       return new Promise((resolve, reject) => {
         const reader = new FileReader();
-
         reader.onload = (e) => {
           const content = e.target?.result as string;
-          if (content) {
-            resolve(content);
-          } else {
-            reject(new Error('File is empty'));
-          }
+          if (content) resolve(content);
+          else reject(new Error('File is empty'));
         };
-
-        reader.onerror = () => {
-          reject(new Error('Failed to read file'));
-        };
-
+        reader.onerror = () => reject(new Error('Failed to read file'));
         reader.readAsText(file);
       });
     }
 
-    // Handle .docx files with mammoth
     if (fileExtension === 'docx') {
       try {
         const arrayBuffer = await file.arrayBuffer();
         const result = await mammoth.extractRawText({ arrayBuffer });
-        if (result.value) {
-          return result.value;
-        }
+        if (result.value) return result.value;
         throw new Error('Failed to extract text from Word document');
       } catch (error) {
         throw new Error(
           'Failed to read .docx file. Please ensure it is a valid Word document.'
         );
       }
-    }
-
-    // Unsupported file type
-    if (fileExtension === 'doc') {
-      throw new Error(
-        'Old .doc format is not supported. Please save as .docx (File → Save As → Word Document (.docx)) or copy-paste the text directly.'
-      );
     }
 
     throw new Error(
@@ -100,7 +81,7 @@ export default function AncientGreekTranslatorTool({
   const handleTranslate = async () => {
     if (!inputText.trim()) {
       setError(pageData.tool.noInput);
-      setTranslatedText('');
+      setOutputText('');
       setPronunciation('');
       setCulturalContext('');
       return;
@@ -108,42 +89,45 @@ export default function AncientGreekTranslatorTool({
 
     setIsLoading(true);
     setError(null);
-    setTranslatedText('');
+    setOutputText('');
     setPronunciation('');
     setCulturalContext('');
 
     try {
       const response = await fetch('/api/ancient-greek-translator', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ text: inputText, mode }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          text: inputText,
+          mode: mode,
+          dialect: selectedDialect,
+        }),
       });
 
       const data = (await response.json()) as {
+        error?: string;
         translated?: string;
         pronunciation?: string;
         culturalContext?: string;
-        error?: string;
+        mode?: 'toGreek' | 'toEnglish';
+        detection?: any;
       };
 
       if (!response.ok) {
         throw new Error(data.error || pageData.tool.error);
       }
 
-      setTranslatedText(data.translated || '');
+      // Update mode if API auto-detected and changed it
+      if (data.mode && data.mode !== mode) {
+        setMode(data.mode);
+      }
 
-      // Set pronunciation and cultural context only if they exist
-      if (data.pronunciation) {
-        setPronunciation(data.pronunciation);
-      }
-      if (data.culturalContext) {
-        setCulturalContext(data.culturalContext);
-      }
+      setOutputText(data.translated || '');
+      setPronunciation(data.pronunciation || '');
+      setCulturalContext(data.culturalContext || '');
     } catch (err: any) {
       setError(err.message || 'Translation failed');
-      setTranslatedText('');
+      setOutputText('');
       setPronunciation('');
       setCulturalContext('');
     } finally {
@@ -151,65 +135,79 @@ export default function AncientGreekTranslatorTool({
     }
   };
 
-  // Toggle translation mode (Swap)
-  const toggleMode = () => {
-    // Swap input and output
-    const temp = inputText;
-    setInputText(translatedText);
-    setTranslatedText(temp);
-    setMode((prev) => (prev === 'toGreek' ? 'toEnglish' : 'toGreek'));
-    setFileName(null);
-    setError(null);
-    setPronunciation('');
-    setCulturalContext('');
-  };
-
-  // Reset all content
+  // Reset
   const handleReset = () => {
     setInputText('');
-    setTranslatedText('');
+    setOutputText('');
     setPronunciation('');
     setCulturalContext('');
     setFileName(null);
     setError(null);
+    setMode('toEnglish');
+    setSelectedDialect('attic');
   };
 
-  // Copy result to clipboard
+  // Copy
   const handleCopy = async () => {
-    if (!translatedText) return;
+    if (!outputText) return;
     try {
-      await navigator.clipboard.writeText(translatedText);
-      // Optional: Show success feedback
+      await navigator.clipboard.writeText(outputText);
     } catch (err) {
       console.error('Failed to copy:', err);
     }
   };
 
-  // Download result as text file
+  // Download
   const handleDownload = () => {
-    if (!translatedText) return;
-    const blob = new Blob([translatedText], { type: 'text/plain' });
+    if (!outputText) return;
+    let content = outputText;
+
+    if (pronunciation) {
+      content +=
+        '\n\n' + pageData.tool.pronunciationLabel + ':\n' + pronunciation;
+    }
+
+    if (culturalContext) {
+      content +=
+        '\n\n' + pageData.tool.culturalContextLabel + ':\n' + culturalContext;
+    }
+
+    const blob = new Blob([content], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `ancient-greek-translation-${mode}-${Date.now()}.txt`;
+    a.download = `ancient-greek-translation-${Date.now()}.txt`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
   };
 
-  // Handle voice input transcript
-  const handleVoiceInput = (transcript: string) => {
-    setInputText((prev) => prev + (prev ? ' ' : '') + transcript);
-  };
-
   return (
     <div className="container max-w-5xl mx-auto px-4 mb-10">
       <main className="w-full bg-white dark:bg-zinc-800 shadow-xl border border-gray-100 dark:border-zinc-700 rounded-lg p-4 md:p-8">
+        {/* Dialect Selection */}
+        <div className="mb-6">
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            {pageData.tool.dialectLabel}
+          </label>
+          <select
+            value={selectedDialect}
+            onChange={(e) => setSelectedDialect(e.target.value)}
+            className="w-full md:w-auto px-4 py-2 border border-gray-300 dark:border-zinc-600 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-zinc-700 text-gray-900 dark:text-gray-100"
+          >
+            {Object.entries(pageData.tool.dialects).map(([key, value]) => (
+              <option key={key} value={key}>
+                {value}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {/* Input and Output Areas */}
         <div className="flex flex-col md:flex-row gap-2 md:gap-3">
           {/* Input Area */}
-          <div className="flex-1">
+          <div className="flex-1 relative">
             <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-3">
               {mode === 'toGreek'
                 ? pageData.tool.inputLabel
@@ -227,8 +225,8 @@ export default function AncientGreekTranslatorTool({
               aria-label="Input text"
             />
 
-            {/* File Upload and Voice Input */}
-            <div className="mt-4 flex items-center gap-3">
+            {/* File Upload */}
+            <div className="mt-4 flex items-center gap-3 flex-wrap">
               <label
                 htmlFor="file-upload"
                 className="inline-flex items-center px-4 py-2 bg-gray-200 dark:bg-zinc-600 hover:bg-gray-300 dark:hover:bg-zinc-500 text-gray-800 dark:text-gray-100 font-medium rounded-lg cursor-pointer transition-colors"
@@ -248,13 +246,6 @@ export default function AncientGreekTranslatorTool({
                 </svg>
                 {pageData.tool.uploadButton}
               </label>
-
-              {/* Voice Input Button */}
-              <SpeechToTextButton
-                onTranscript={handleVoiceInput}
-                locale={locale}
-              />
-
               <p className="text-xs text-gray-500 dark:text-gray-400">
                 {pageData.tool.uploadHint}
               </p>
@@ -266,61 +257,63 @@ export default function AncientGreekTranslatorTool({
                 className="hidden"
               />
             </div>
-            <div>
-              {fileName && (
-                <div className="mt-3 flex items-center gap-2 p-2 bg-gray-100 dark:bg-zinc-700 rounded-md border border-gray-200 dark:border-zinc-600">
+
+            {/* File Name Display */}
+            {fileName && (
+              <div className="mt-3 flex items-center gap-2 p-2 bg-gray-100 dark:bg-zinc-700 rounded-md border border-gray-200 dark:border-zinc-600">
+                <svg
+                  className="w-5 h-5 text-gray-600 dark:text-gray-300"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+                <span className="text-sm text-gray-700 dark:text-gray-200 font-medium">
+                  {fileName}
+                </span>
+                <button
+                  onClick={() => {
+                    setFileName(null);
+                    setInputText('');
+                  }}
+                  className="ml-auto text-gray-500 hover:text-red-500 dark:text-gray-400 dark:hover:text-red-400"
+                  aria-label="Remove file"
+                >
                   <svg
-                    className="w-5 h-5 text-gray-600 dark:text-gray-300"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
                   >
                     <path
-                      fillRule="evenodd"
-                      d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z"
-                      clipRule="evenodd"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
                     />
                   </svg>
-                  <span className="text-sm text-gray-700 dark:text-gray-200 font-medium">
-                    {fileName}
-                  </span>
-                  <button
-                    onClick={() => {
-                      setFileName(null);
-                      setInputText('');
-                    }}
-                    className="ml-auto text-gray-500 hover:text-red-500 dark:text-gray-400 dark:hover:text-red-400"
-                    aria-label="Remove file"
-                  >
-                    <svg
-                      className="w-4 h-4"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M6 18L18 6M6 6l12 12"
-                      />
-                    </svg>
-                  </button>
-                </div>
-              )}
-            </div>
+                </button>
+              </div>
+            )}
           </div>
 
-          {/* Swap Button - in the middle */}
+          {/* Direction Swap Button */}
           <div className="flex md:flex-col items-center justify-center md:justify-start md:pt-32">
             <button
-              onClick={toggleMode}
-              className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors rotate-0 md:rotate-0"
+              onClick={() =>
+                setMode(mode === 'toGreek' ? 'toEnglish' : 'toGreek')
+              }
+              className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
               title={
                 mode === 'toGreek'
-                  ? 'Switch to Greek → English'
-                  : 'Switch to English → Greek'
+                  ? 'Switch to Ancient Greek → English'
+                  : 'Switch to English → Ancient Greek'
               }
-              aria-label="Toggle translation mode"
+              aria-label="Toggle translation direction"
             >
               <svg
                 className="w-6 h-6"
@@ -346,15 +339,13 @@ export default function AncientGreekTranslatorTool({
                   ? pageData.tool.greekLabel
                   : pageData.tool.outputLabel}
               </h2>
-              {/* Copy and Download buttons */}
-              {translatedText && (
+              {outputText && (
                 <div className="flex gap-2">
-                  <TextToSpeechButton text={translatedText} locale={locale} />
+                  <TextToSpeechButton text={outputText} locale={locale} />
                   <button
                     onClick={handleCopy}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
                     title="Copy"
-                    aria-label="Copy result"
                   >
                     <svg
                       className="w-5 h-5"
@@ -374,7 +365,6 @@ export default function AncientGreekTranslatorTool({
                     onClick={handleDownload}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
                     title="Download"
-                    aria-label="Download result"
                   >
                     <svg
                       className="w-5 h-5"
@@ -398,36 +388,31 @@ export default function AncientGreekTranslatorTool({
               aria-live="polite"
             >
               {isLoading ? (
-                <p>{pageData.tool.loading}</p>
+                <div className="flex flex-col items-center gap-3">
+                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+                  <p>{pageData.tool.loading}</p>
+                </div>
               ) : error ? (
                 <p className="text-red-600 dark:text-red-400">{error}</p>
-              ) : translatedText ? (
+              ) : outputText ? (
                 <div className="w-full">
-                  <p className="text-lg whitespace-pre-wrap mb-3">
-                    {translatedText}
-                  </p>
-
-                  {/* Pronunciation - only show if available */}
+                  <p className="text-lg whitespace-pre-wrap">{outputText}</p>
                   {pronunciation && (
-                    <div className="mt-4 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-md border border-blue-200 dark:border-blue-800">
-                      <p className="text-sm font-semibold text-blue-900 dark:text-blue-100 mb-1">
-                        {pageData.tool.pronunciationLabel || 'Pronunciation'}:
-                      </p>
-                      <p className="text-sm text-blue-800 dark:text-blue-200">
+                    <div className="mt-4 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-md">
+                      <h4 className="font-semibold text-blue-900 dark:text-blue-100 mb-1">
+                        {pageData.tool.pronunciationLabel}:
+                      </h4>
+                      <p className="text-blue-800 dark:text-blue-200 text-sm">
                         {pronunciation}
                       </p>
                     </div>
                   )}
-
-                  {/* Cultural Context - only show if available */}
                   {culturalContext && (
-                    <div className="mt-3 p-3 bg-purple-50 dark:bg-purple-900/20 rounded-md border border-purple-200 dark:border-purple-800">
-                      <p className="text-sm font-semibold text-purple-900 dark:text-purple-100 mb-1">
-                        {pageData.tool.culturalContextLabel ||
-                          'Cultural Context'}
-                        :
-                      </p>
-                      <p className="text-sm text-purple-800 dark:text-purple-200">
+                    <div className="mt-3 p-3 bg-green-50 dark:bg-green-900/20 rounded-md">
+                      <h4 className="font-semibold text-green-900 dark:text-green-100 mb-1">
+                        {pageData.tool.culturalContextLabel}:
+                      </h4>
+                      <p className="text-green-800 dark:text-green-200 text-sm">
                         {culturalContext}
                       </p>
                     </div>
@@ -442,36 +427,19 @@ export default function AncientGreekTranslatorTool({
           </div>
         </div>
 
-        {/* Translate Button */}
+        {/* Action Buttons */}
         <div className="mt-6 flex justify-center gap-4">
           <button
             onClick={handleTranslate}
             disabled={isLoading}
-            className="px-8 py-3 bg-primary hover:bg-primary-light text-white font-semibold rounded-lg shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="px-8 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isLoading ? pageData.tool.loading : pageData.tool.translateButton}
-            <i
-              className={`${isLoading ? 'fas fa-spinner animate-spin' : 'fas fa-language'} ms-2`}
-            ></i>
           </button>
           <button
             onClick={handleReset}
             className="px-6 py-3 bg-gray-200 dark:bg-zinc-600 hover:bg-gray-300 dark:hover:bg-zinc-500 text-gray-800 dark:text-gray-100 font-semibold rounded-lg shadow-md transition-colors"
-            title="Reset"
           >
-            <svg
-              className="w-5 h-5 inline-block mr-2"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-              />
-            </svg>
             Reset
           </button>
         </div>

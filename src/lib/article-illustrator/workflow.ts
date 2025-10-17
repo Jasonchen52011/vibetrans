@@ -73,7 +73,9 @@ export async function generateArticleIllustrations(
 
     // Step 2: Generate images with Volcano Engine (Parallel)
     console.log('\n' + '-'.repeat(70));
-    console.log('🎨 STEP 2: Generating images with Volcano Engine (Parallel)...');
+    console.log(
+      '🎨 STEP 2: Generating images with Volcano Engine (Parallel)...'
+    );
     console.log('-'.repeat(70));
 
     // 进度追踪
@@ -198,8 +200,11 @@ export async function generateArticleIllustrations(
     console.log(`❌ Failed: ${results.failedImages}/${results.totalImages}`);
 
     if (captureHowTo && results.howToScreenshot) {
-      const screenshotStatus = results.howToScreenshot.status === 'success' ? '✅' : '❌';
-      console.log(`${screenshotStatus} How-To Screenshot: ${results.howToScreenshot.status}`);
+      const screenshotStatus =
+        results.howToScreenshot.status === 'success' ? '✅' : '❌';
+      console.log(
+        `${screenshotStatus} How-To Screenshot: ${results.howToScreenshot.status}`
+      );
     }
 
     console.log(`⏱️  Total Time: ${(results.totalTimeMs / 1000).toFixed(2)}s`);
@@ -228,7 +233,9 @@ export async function generateArticleIllustrations(
     }
 
     if (results.howToScreenshot?.status === 'failed') {
-      console.log(`\n⚠️  How-To Screenshot Failed: ${results.howToScreenshot.error}`);
+      console.log(
+        `\n⚠️  How-To Screenshot Failed: ${results.howToScreenshot.error}`
+      );
     }
 
     console.log('\n' + '='.repeat(70));

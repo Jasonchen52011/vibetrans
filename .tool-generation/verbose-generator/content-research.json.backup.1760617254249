@@ -1,0 +1,240 @@
+{
+  "contentGaps": [
+    {
+      "topic": "Adjustable verbosity level (slider from ‘concise’ to ‘very wordy’)",
+      "reason": "搜索该关键词的用户往往想精准控制文字膨胀的幅度，而现有页面多只提供单一输出。",
+      "competitors": [
+        "randomwordgenerator.com",
+        "randommer.io",
+        "toolsaday.com"
+      ]
+    },
+    {
+      "topic": "多种写作风格 / 语气（学术、营销、幽默等）",
+      "reason": "用户在不同场景需要不同语气，但多数竞品仅输出一种“冗长”文本。",
+      "competitors": [
+        "randomwordgenerator.com",
+        "wordhippo.com",
+        "simplish.org"
+      ]
+    },
+    {
+      "topic": "AI-detector bypass / 人工痕迹增强选项",
+      "reason": "学生和内容创作者担心被 GPT 检测工具识别，迫切想要‘人类化’冗长文本。",
+      "competitors": ["quillbot.com", "copy.ai", "randommer.io"]
+    },
+    {
+      "topic": "多语言支持与跨语言扩写",
+      "reason": "非英语用户也想把简短句子扩写为目标语言的长文本，现有工具大多仅限英语。",
+      "competitors": [
+        "randomwordgenerator.com",
+        "toolsaday.com",
+        "randommer.io"
+      ]
+    },
+    {
+      "topic": "SEO 关键词智能融入 & 语义相关长尾提议",
+      "reason": "内容营销人员希望在扩写时顺便提升 SEO 友好度。",
+      "competitors": ["copy.ai", "quillbot.com", "wordhippo.com"]
+    },
+    {
+      "topic": "批量 / API 集成（一次上传 CSV 或调用端点批量扩写）",
+      "reason": "开发者及运营团队需要规模化生成冗长描述，而不是一个一个复制粘贴。",
+      "competitors": ["randommer.io", "simplish.org", "toolsaday.com"]
+    },
+    {
+      "topic": "隐私 & 本地运行选项",
+      "reason": "部分企业或学术机构担心敏感文本上传第三方服务器。",
+      "competitors": ["randomwordgenerator.com", "copy.ai", "quillbot.com"]
+    },
+    {
+      "topic": "示例库 + 最佳实践 (Do / Don’t)",
+      "reason": "初次使用者不确定‘好’的 verbose 输出长什么样，需要示例对照。",
+      "competitors": ["全部前 15 个结果几乎都缺少专门教程区"]
+    }
+  ],
+  "socialTopics": [
+    {
+      "platform": "Reddit",
+      "topic": "“Is there a tool that turns bullet points into full verbose paragraphs?”",
+      "engagement": "高",
+      "summary": "r/AskReddit 与 r/college 贴子中大量学生寻找快速扩写作业的方法并互相分享小众网站。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "“How to make GPT output look less AI and more human-verbose?”",
+      "engagement": "高",
+      "summary": "在 r/ChatGPT、r/ArtificialIntelligence 获数千 upvotes，讨论加 filler words、错拼写、口语化以骗过 AI 检测。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "“What is the best verbose generator for essay writing?”",
+      "engagement": "中",
+      "summary": "留学生和 GRE 考生提问，回答集中推荐 Quillbot、RandomWordGenerator 但吐槽缺乏学术格式化。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "“Why is my code verbose and how can generators help?”",
+      "engagement": "中",
+      "summary": "开发者混淆概念，把 code verbosity 与文本扩写混为一谈，呼吁明确区分。"
+    }
+  ],
+  "funFacts": [
+    "某 Reddit 用户写了 1 行输入、让 GPT-3 生成了 4,000 字的‘冗长’段落，打印后整整 9 页 A4，被戏称为“world’s most over-explained sentence”。",
+    "最长获得 upvote 的‘verbose’改写示例把 “I’m hungry” 变成 188 个词，包含 12 个同位语和 5 个括号 – 用时 0.7 秒自动生成。",
+    "Quora 上最受欢迎的回答之一指出：维多利亚时代法律文件平均句长 72 词，是当今网络‘verbose generator’默认输出的两倍。",
+    "有开发者把 verbose generator 联动 Minecraft，聊天输入一句话 NPC 自动输出 1,000 字演讲，被网友称为“村民 TED Talk”。"
+  ],
+  "highFrequencyWords": [
+    {
+      "word": "verbose",
+      "frequency": "高",
+      "context": "工具标题、功能描述"
+    },
+    {
+      "word": "generator",
+      "frequency": "高",
+      "context": "工具标题、SEO 关键词"
+    },
+    {
+      "word": "text",
+      "frequency": "高",
+      "context": "输入/输出说明"
+    },
+    {
+      "word": "sentence",
+      "frequency": "高",
+      "context": "描述扩写对象"
+    },
+    {
+      "word": "paragraph",
+      "frequency": "高",
+      "context": "扩写后格式"
+    },
+    {
+      "word": "expand",
+      "frequency": "高",
+      "context": "动词，解释功能"
+    },
+    {
+      "word": "wordy",
+      "frequency": "高",
+      "context": "同义词，说明风格"
+    },
+    {
+      "word": "online",
+      "frequency": "高",
+      "context": "工具类型"
+    },
+    {
+      "word": "free",
+      "frequency": "高",
+      "context": "吸引点击"
+    },
+    {
+      "word": "tool",
+      "frequency": "高",
+      "context": "泛指产品"
+    },
+    {
+      "word": "generate",
+      "frequency": "高",
+      "context": "动词"
+    },
+    {
+      "word": "content",
+      "frequency": "高",
+      "context": "输出内容总称"
+    },
+    {
+      "word": "random",
+      "frequency": "中",
+      "context": "部分站点提供随机模式"
+    },
+    {
+      "word": "long",
+      "frequency": "中",
+      "context": "形容输出长度"
+    },
+    {
+      "word": "input",
+      "frequency": "中",
+      "context": "用户需要提供的文本"
+    },
+    {
+      "word": "output",
+      "frequency": "中",
+      "context": "生成结果"
+    },
+    {
+      "word": "essay",
+      "frequency": "中",
+      "context": "常见使用场景"
+    },
+    {
+      "word": "AI",
+      "frequency": "中",
+      "context": "技术卖点"
+    },
+    {
+      "word": "writing",
+      "frequency": "中",
+      "context": "通用场景"
+    },
+    {
+      "word": "copy",
+      "frequency": "中",
+      "context": "营销文本"
+    },
+    {
+      "word": "expanders",
+      "frequency": "中",
+      "context": "同类工具分类"
+    },
+    {
+      "word": "lengthen",
+      "frequency": "中",
+      "context": "动词，拉长句子"
+    },
+    {
+      "word": "sentence-expander",
+      "frequency": "中",
+      "context": "关键词短语"
+    },
+    {
+      "word": "paragraphs",
+      "frequency": "中",
+      "context": "复数形式，用于示例"
+    },
+    {
+      "word": "writing-assistant",
+      "frequency": "中",
+      "context": "定位"
+    },
+    {
+      "word": "SEO",
+      "frequency": "中",
+      "context": "推广词"
+    },
+    {
+      "word": "academic",
+      "frequency": "中",
+      "context": "风格/用途"
+    },
+    {
+      "word": "synonyms",
+      "frequency": "中",
+      "context": "功能：替换同义词"
+    },
+    {
+      "word": "rewrite",
+      "frequency": "中",
+      "context": "与扩写同时出现"
+    },
+    {
+      "word": "generator-online",
+      "frequency": "中",
+      "context": "长尾关键词"
+    }
+  ]
+}

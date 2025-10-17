@@ -10,7 +10,7 @@
       "badge": "Free Translation Tool",
       "title": "Al Bhed Translator: Effortlessly Translate English to Al Bhed",
       "subtitle": "Instantly translate between English and Al Bhed from Final Fantasy X",
-      "description": "Easily translate between English and Al Bhed using Vibetrans' real-time translation tool. Fast, accurate, and user-friendly."
+      "description": "Easily translate between English and Al Bhed using Vibetrans' real-time translation tool. Perfect for Final Fantasy X fans, cosplayers, and language enthusiasts who want to decode the secret cipher language."
     },
     "tool": {
       "inputLabel": "English",
@@ -27,9 +27,10 @@
       "noInput": "Please enter some text"
     },
     "whatIs": {
-      "badge": "About Al Bhed",
-      "title": "What is Al Bhed Translator?",
-      "description": "Al Bhed Translator is a tool designed to translate text between Al Bhed and English. Ideal for fans of Final Fantasy X, it offers real-time translations, speech input and output, and offline support. With Vibetrans, you can easily decode Al Bhed phrases and learn the language while enjoying the game."
+      "title": "What is al bhed translator",
+      "description": "An al bhed translator is a tool that converts text between English and Al Bhed, a fictional language from the game Final Fantasy X. With VibeTrans, you can easily decode game dialogues or encode your own messages for fun. It's perfect for fans, cosplayers, and content creators seeking to add a unique twist to their projects.",
+      "image": "/images/docs/what-is-al-bhed-translator.webp",
+      "imageAlt": "What is Al Bhed Translator - Visual explanation"
     },
     "examples": {
       "title": "Example Translations with Al Bhed Translator",
@@ -61,12 +62,16 @@
       "title": "Fun Facts About Al Bhed",
       "items": [
         {
-          "title": "Al Bhed is a Cipher Language",
-          "description": "Did you know? Al Bhed is essentially a cipher – each letter of the English alphabet gets swapped with a different one. It's simple but fun to decode! I love how this makes learning the language like cracking a secret code!"
+          "title": "Al Bhed's Secret Cipher",
+          "description": "Did you know Al Bhed is a 26-letter substitution cipher? Each English letter swaps with another, creating a playful code. This simple trick makes learning feel like cracking a secret code! VibeTrans decodes this charming cipher perfectly.",
+          "image": "/images/docs/al-bhed-translator-fun-fact.webp",
+          "imageAlt": "Al Bhed's Secret Cipher - Visual explanation"
         },
         {
-          "title": "Real-Time Pronunciation",
-          "description": "Al Bhed's pronunciation isn't covered much, but with Vibetrans, you can hear the translations in real-time. It's like bringing the language to life! I think it's a great way to immerse yourself even more in Final Fantasy X!"
+          "title": "Hidden Primers in FFX",
+          "description": "In Final Fantasy X, collecting all 26 Al Bhed Primers unlocks English translations. It's like finding secret treasure! Many players miss these gems. VibeTrans makes discovery and translation much easier—like having a cheat sheet ready!",
+          "image": "/images/docs/learn-al-bhed.webp",
+          "imageAlt": "Hidden Primers in Final Fantasy X - Visual guide"
         }
       ]
     },
@@ -76,84 +81,92 @@
       "description": "From real-time translation to offline support",
       "items": [
         {
-          "title": "Learn Al Bhed Fast",
-          "description": "With Vibetrans, you can start learning Al Bhed in minutes. Whether you're a beginner or a Final Fantasy pro, this tool simplifies the process. I think it's the quickest way to get the hang of this unique language!"
+          "title": "Effortless Text Translation",
+          "description": "With VibeTrans, translating text between Al Bhed and English is a breeze. Whether you're decoding game scripts or encoding secret messages for a D&D session, this tool offers quick and accurate translations. It's especially useful for fans of Final Fantasy X seeking a deeper connection with the game's unique language.",
+          "image": "/images/docs/learn-al-bhed-fast.webp",
+          "imageAlt": "Effortless Al Bhed Text Translation - Visual demonstration"
         },
         {
-          "title": "Real-Time Translation with Speech",
-          "description": "Need to hear how it sounds? Vibetrans offers real-time speech output, making it easier to perfect your pronunciation. I love how it reads the translation aloud—feels like I'm right in Spira!"
+          "title": "Batch File Conversion",
+          "description": "Need to translate multiple files at once? VibeTrans supports batch file conversion, allowing you to upload .txt or .docx documents for swift translation. This feature is ideal for content creators and developers who require efficient processing of large volumes of text in a short time.",
+          "image": "/images/docs/al-bhed-translator-how-to.webp",
+          "imageAlt": "Batch File Conversion for Al Bhed - Workflow illustration"
         },
         {
-          "title": "Translate Anytime, Anywhere",
-          "description": "Whether you're online or offline, Vibetrans ensures you can always access your translations. I appreciate how this tool lets me translate while traveling or without an internet connection!"
+          "title": "Audio Playback and Pronunciation",
+          "description": "Curious about how Al Bhed words sound? VibeTrans provides audio playback of translations, perfect for cosplayers and voice actors. Hear the pronunciation of your translated text and bring authenticity to your performances. It's a must-have tool for anyone exploring this fascinating language.",
+          "image": "/images/docs/al-bhed-tutor.webp",
+          "imageAlt": "Audio Playback and Al Bhed Pronunciation - Sound visualization"
         },
         {
-          "title": "Customize Your Al Bhed Learning Experience",
-          "description": "Vibetrans lets you adjust settings to fit your learning style. Want a more in-depth translation? You got it! I think this makes learning Al Bhed more fun and personalized."
+          "title": "Customizable Experience",
+          "description": "VibeTrans allows you to customize your translation experience. Adjust the substitution table to suit your needs, and enjoy features like real-time translation and offline PWA mode. These options provide flexibility and convenience, making VibeTrans a versatile tool for both casual and professional use.",
+          "image": "/images/docs/al-bhed-translator-what-is.webp",
+          "imageAlt": "Customizable Al Bhed Translation Experience - Settings interface"
         }
       ]
     },
     "highlights": {
-      "title": "Key Features of Al Bhed Translator",
-      "description": "Everything you need for perfect Al Bhed translation",
+      "title": "Al Bhed Converter Pro Highlights",
+      "description": "Discover what makes our tool unique",
       "items": [
         {
-          "title": "Fast and Accurate Translations",
-          "description": "Translate English to Al Bhed and vice versa in real-time with ease. Vibetrans ensures accuracy with each translation."
+          "title": "Simple and Free to Use",
+          "description": "Enjoy seamless translation experiences without any costs. Al Bhed Converter Pro offers a user-friendly interface and easy navigation, making it accessible to everyone who loves Final Fantasy X."
         },
         {
-          "title": "Speech Input and Output",
-          "description": "Input your text via voice, and hear your translations spoken aloud for a truly immersive experience."
+          "title": "Accurate Data Translation",
+          "description": "Our tool ensures over 90% accuracy in language detection and translation. It automatically switches translation directions, offering precise results for your Al Bhed to English or vice versa needs."
         },
         {
-          "title": "Offline Mode",
-          "description": "Translate anywhere, anytime, even without an internet connection, thanks to Vibetrans' offline support."
+          "title": "AI Understanding of Context",
+          "description": "Harness the power of AI to grasp the context better. Al Bhed Converter Pro uses advanced AI to provide translations that understand the subtleties and nuances of both Al Bhed and English languages."
         },
         {
-          "title": "User-Friendly Interface",
-          "description": "Enjoy a smooth, intuitive experience with Vibetrans' easy-to-use interface, perfect for beginners and pros alike."
+          "title": "Data Privacy and Safety",
+          "description": "We prioritize your privacy. Al Bhed Converter Pro does not store user data, ensuring that your translations and personal information remain secure and confidential at all times."
         }
       ]
     },
     "testimonials": {
-      "title": "User Reviews",
-      "subtitle": "What Al Bhed Fans Are Saying",
+      "title": "What Our Users Are Saying",
+      "subtitle": "Real feedback from real users",
       "items": {
         "item-1": {
-          "name": "Sarah Johnson",
+          "name": "Emily Johnson",
           "role": "Game Developer",
-          "heading": "Authentic Al Bhed for Game Design",
-          "content": "I use Al Bhed Translator to add authenticity to my game designs. The translations are spot-on and easy to understand. It's a great tool for fans and developers alike!"
+          "heading": "A Must-Have for Developers",
+          "content": "Al Bhed Converter Pro has been an incredible tool in my development process. It allows me to quickly translate large batches of game text, preserving the original formatting. The accuracy and ease of use have significantly streamlined my workflow. It's a game-changer for anyone in the development field."
         },
         "item-2": {
-          "name": "Jack Roberts",
-          "role": "Final Fantasy Enthusiast",
-          "heading": "Learning Al Bhed Made Easy",
-          "content": "Vibetrans has made learning Al Bhed so much easier! I can now translate phrases and practice my pronunciation. It's like having a real language coach in my pocket!"
+          "name": "Michael Smith",
+          "role": "Dungeon Master",
+          "heading": "Perfect for RPG Sessions",
+          "content": "Using Al Bhed in my D&D sessions has never been easier. This tool simplifies the translation process, allowing me to create secret languages effortlessly. My players love the added mystery and immersion, and managing batch translations has been a breeze with this tool."
         },
         "item-3": {
-          "name": "Emily Taylor",
-          "role": "Linguist",
-          "heading": "Accurate Translations Professional Linguists Trust",
-          "content": "As someone who loves languages, I appreciate how Vibetrans provides accurate translations and pronunciation. It's the best Al Bhed tool I've come across!"
+          "name": "Sarah Lee",
+          "role": "YouTube Content Creator",
+          "heading": "Enhances Video Production",
+          "content": "Creating content with Al Bhed translations has added a unique touch to my videos. The batch subtitle translation feature is a lifesaver, allowing me to produce bilingual content efficiently. It's user-friendly and has significantly improved my production process."
         },
         "item-4": {
-          "name": "Michael Davis",
-          "role": "Gamer",
-          "heading": "Enhanced My Final Fantasy X Experience",
-          "content": "I used Vibetrans to help decode Al Bhed phrases while playing Final Fantasy X. It was a huge help during the game and made the experience even more immersive!"
+          "name": "David Brown",
+          "role": "Cosplayer",
+          "heading": "Essential for Cosplay Accuracy",
+          "content": "Al Bhed Converter Pro is indispensable for accurately portraying characters from Final Fantasy X. The translation accuracy ensures my scripts are spot-on, and the audio playback feature helps me perfect pronunciations. It's an essential tool for any serious cosplayer."
         },
         "item-5": {
-          "name": "Laura White",
-          "role": "Student",
-          "heading": "Fun Real-Time Learning and Pronunciation",
-          "content": "Learning Al Bhed has been so much fun with Vibetrans. The real-time translation feature makes it easy to understand the language, and I can even practice pronunciation!"
+          "name": "Jessica Taylor",
+          "role": "Language Enthusiast",
+          "heading": "Fun and Educational",
+          "content": "Learning Al Bhed has been a fun journey with this translator. The interactive features and accurate translations make it an enjoyable experience. It's not just a tool for fans but also a fantastic way to explore language structures."
         },
         "item-6": {
-          "name": "Daniel Green",
-          "role": "Fantasy Novel Author",
-          "heading": "Simple Reliable Translation for Creative Writing",
-          "content": "I've always wanted to use Al Bhed in my writing. Vibetrans makes translating the language simple, and I can always trust the results."
+          "name": "Chris Wilson",
+          "role": "Final Fantasy Fan",
+          "heading": "Brings the Game to Life",
+          "content": "Al Bhed Converter Pro has brought a new dimension to my Final Fantasy experience. Translating in-game texts effortlessly has deepened my understanding of the storyline. It's a must-have tool for any fan wanting to fully immerse themselves in the game."
         }
       }
     },
@@ -194,6 +207,28 @@
       "primaryButton": "Try Al Bhed Translator Now",
       "secondaryButton": "Back to Top"
     },
-    "ctaButton": "Try Al Bhed Translator Now"
+    "ctaButton": "Try Al Bhed Translator Now",
+    "features": {
+      "title": "Core Features",
+      "subtitle": "An intelligent tool crafted for users.",
+      "items": {
+        "item-1": {
+          "title": "Simple and Free to Use",
+          "description": "Enjoy seamless translation experiences without any costs. Al Bhed Converter Pro offers a user-friendly interface and easy navigation, making it accessible to everyone who loves Final Fantasy X."
+        },
+        "item-2": {
+          "title": "Accurate Data Translation",
+          "description": "Our tool ensures over 90% accuracy in language detection and translation. It automatically switches translation directions, offering precise results for your Al Bhed to English or vice versa needs."
+        },
+        "item-3": {
+          "title": "AI Understanding of Context",
+          "description": "Harness the power of AI to grasp the context better. Al Bhed Converter Pro uses advanced AI to provide translations that understand the subtleties and nuances of both Al Bhed and English languages."
+        },
+        "item-4": {
+          "title": "Data Privacy and Safety",
+          "description": "We prioritize your privacy. Al Bhed Converter Pro does not store user data, ensuring that your translations and personal information remain secure and confidential at all times."
+        }
+      }
+    }
   }
 }

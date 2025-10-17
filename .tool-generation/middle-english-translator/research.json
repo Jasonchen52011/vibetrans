@@ -22,10 +22,7 @@
     {
       "name": "Lexilogos – Middle English Dictionary & Tools",
       "url": "https://www.lexilogos.com/english/middle_english_dictionary.htm",
-      "features": [
-        "聚合十几种中英/英中世纪词典",
-        "提供扫描 PDF 链接与辞源说明"
-      ]
+      "features": ["聚合十几种中英/英中世纪词典", "提供扫描 PDF 链接与辞源说明"]
     },
     {
       "name": "Middle English Dictionary (MED) Online",
@@ -38,50 +35,32 @@
     {
       "name": "Glosbe – EN ⇄ ENM",
       "url": "https://glosbe.com/en/enm",
-      "features": [
-        "社区翻译记忆库，可评分纠错",
-        "句对显示及发音播放"
-      ]
+      "features": ["社区翻译记忆库，可评分纠错", "句对显示及发音播放"]
     },
     {
       "name": "Babylon Translator (Middle English add-on)",
       "url": "https://www.babylon-software.com",
-      "features": [
-        "桌面端离线字典包",
-        "可选浮窗取词"
-      ]
+      "features": ["桌面端离线字典包", "可选浮窗取词"]
     },
     {
       "name": "TranslateKing – English to Middle English",
       "url": "https://translateking.com/translate/english-to-middle-english",
-      "features": [
-        "免费不限字符",
-        "支持网页自动检测语言"
-      ]
+      "features": ["免费不限字符", "支持网页自动检测语言"]
     },
     {
       "name": "Shmoop Shakespeare & Middle English Converter",
       "url": "https://www.shmoop.com",
-      "features": [
-        "对照阅读《坎特伯雷故事集》",
-        "教师课堂资源包"
-      ]
+      "features": ["对照阅读《坎特伯雷故事集》", "教师课堂资源包"]
     },
     {
       "name": "Linguee (Historical Beta)",
       "url": "https://www.linguee.com/historical",
-      "features": [
-        "平行语料快速检索",
-        "Chrome 插件即时结果"
-      ]
+      "features": ["平行语料快速检索", "Chrome 插件即时结果"]
     },
     {
       "name": "WordHippo – Middle English Word Finder",
       "url": "https://www.wordhippo.com",
-      "features": [
-        "同/反义词及韵脚查询",
-        "跨时代拼写对照"
-      ]
+      "features": ["同/反义词及韵脚查询", "跨时代拼写对照"]
     }
   ],
   "socialTopics": [

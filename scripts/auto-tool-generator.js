@@ -21,12 +21,16 @@
  */
 
 import { exec, execSync } from 'node:child_process';
-import { promisify } from 'node:util';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { promisify } from 'node:util';
+import { config } from 'dotenv';
 
 const execAsync = promisify(exec);
+
+// 加载 .env.local 文件
+config({ path: '.env.local' });
 
 // 获取当前文件目录
 const __filename = fileURLToPath(import.meta.url);
@@ -56,7 +60,8 @@ const CONFIG = {
   messagesDir: path.join(ROOT_DIR, 'messages'),
 
   // 🎯 新增验证配置
-  enableWordCountValidation: process.env.ENABLE_WORD_COUNT_VALIDATION !== 'false', // 默认开启
+  enableWordCountValidation:
+    process.env.ENABLE_WORD_COUNT_VALIDATION !== 'false', // 默认开启
   enablePageErrorCheck: process.env.ENABLE_PAGE_ERROR_CHECK !== 'false', // 默认开启
   devServerPort: process.env.DEV_SERVER_PORT || 3000,
   maxWordCountRetries: 2, // 字数验证最多重试次数
@@ -101,6 +106,41 @@ function logWarning(message) {
 }
 
 /**
+ * 验证内容中是否包含个人化表达
+ */
+function validatePersonalExpressions(content, sectionName = '') {
+  const personalPatterns = [
+    /\bI think\b/gi,
+    /\bI love\b/gi,
+    /\bI believe\b/gi,
+    /\bI feel\b/gi,
+    /\bPersonally\b/gi,
+    /\bIn my opinion\b/gi,
+    /\bI find\b/gi,
+    /\bI prefer\b/gi,
+    /\bI like\b/gi,
+    /\bI enjoy\b/gi,
+    /\bMy favorite\b/gi,
+    /\bFrom my perspective\b/gi,
+  ];
+
+  const issues = [];
+  personalPatterns.forEach((pattern) => {
+    const matches = content.match(pattern);
+    if (matches) {
+      issues.push({
+        section: sectionName,
+        pattern: pattern.source,
+        count: matches.length,
+        matches: matches.slice(0, 3),
+      });
+    }
+  });
+
+  return issues;
+}
+
+/**
  * 调用 OpenAI API
  */
 async function callOpenAI(model, messages, temperature = 0.7) {
@@ -126,7 +166,7 @@ async function callOpenAI(model, messages, temperature = 0.7) {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${apiKey}`,
+      Authorization: `Bearer ${apiKey}`,
     },
     body: JSON.stringify(requestBody),
   });
@@ -210,38 +250,73 @@ async function phase1_research(keyword) {
     0.8
   );
 
-  // 提取 JSON
+  // 提取 JSON（支持两种格式：代码块包裹或直接 JSON）
   const jsonMatch = response.match(/```json\n([\s\S]*?)\n```/);
+  let jsonString;
+
   if (!jsonMatch) {
-    logWarning('未能从响应中提取 JSON，保存原始响应');
-    // 保存原始响应以便调试
-    const debugPath = path.join(CONFIG.outputDir, keyword.replace(/\s+/g, '-'), 'research-raw.txt');
-    await fs.mkdir(path.dirname(debugPath), { recursive: true });
-    await fs.writeFile(debugPath, response);
-    logInfo(`原始响应已保存到: ${debugPath}`);
-    return {
-      keyword,
-      rawResponse: response,
-    };
+    // 尝试直接解析整个响应为 JSON
+    const trimmedResponse = response.trim();
+    if (trimmedResponse.startsWith('{') && trimmedResponse.endsWith('}')) {
+      logInfo('检测到直接 JSON 格式（无代码块包裹）');
+      jsonString = trimmedResponse;
+    } else {
+      logWarning('未能从响应中提取 JSON，保存原始响应');
+      // 保存原始响应以便调试
+      const debugPath = path.join(
+        CONFIG.outputDir,
+        keyword.replace(/\s+/g, '-'),
+        'research-raw.txt'
+      );
+      await fs.mkdir(path.dirname(debugPath), { recursive: true });
+      await fs.writeFile(debugPath, response);
+      logInfo(`原始响应已保存到: ${debugPath}`);
+      return {
+        keyword,
+        rawResponse: response,
+      };
+    }
+  } else {
+    jsonString = jsonMatch[1];
   }
 
   let researchData;
   try {
-    // 清理 JSON 字符串中的控制字符
-    const cleanedJson = jsonMatch[1].replace(/[\x00-\x1F\x7F-\x9F]/g, '');
+    // 清理 JSON 字符串：
+    // 1. 移除控制字符（但保留换行符 \n）
+    // 2. 修复 asciiDesign 字段中的多行文本
+    const cleanedJson = jsonString
+      .replace(/[\u0000-\u0009\u000B-\u001F\u007F-\u009F]/g, '') // 保留 \n (\x0A)
+      .replace(/"asciiDesign":\s*"([^"]*(?:\n[^"]*)*)"/, (match, content) => {
+        // 转义 asciiDesign 中的换行符和特殊字符
+        const escaped = content
+          .replace(/\\/g, '\\\\')
+          .replace(/\n/g, '\\n')
+          .replace(/"/g, '\\"');
+        return `"asciiDesign": "${escaped}"`;
+      });
+
     researchData = JSON.parse(cleanedJson);
   } catch (parseError) {
     logError(`JSON 解析失败: ${parseError.message}`);
     // 保存出错的 JSON 以便调试
-    const debugPath = path.join(CONFIG.outputDir, keyword.replace(/\s+/g, '-'), 'research-error.json');
+    const debugPath = path.join(
+      CONFIG.outputDir,
+      keyword.replace(/\s+/g, '-'),
+      'research-error.json'
+    );
     await fs.mkdir(path.dirname(debugPath), { recursive: true });
-    await fs.writeFile(debugPath, jsonMatch[1]);
+    await fs.writeFile(debugPath, jsonString);
     logInfo(`出错的 JSON 已保存到: ${debugPath}`);
     throw parseError;
   }
 
   // 保存调研结果
-  const outputPath = path.join(CONFIG.outputDir, keyword.replace(/\s+/g, '-'), 'research.json');
+  const outputPath = path.join(
+    CONFIG.outputDir,
+    keyword.replace(/\s+/g, '-'),
+    'research.json'
+  );
   await fs.mkdir(path.dirname(outputPath), { recursive: true });
   await fs.writeFile(outputPath, JSON.stringify(researchData, null, 2));
 
@@ -312,11 +387,18 @@ async function phase2_contentResearch(keyword) {
   let contentResearchData;
   try {
     // 清理 JSON 字符串中的控制字符
-    const cleanedJson = jsonMatch[1].replace(/[\x00-\x1F\x7F-\x9F]/g, '');
+    const cleanedJson = jsonMatch[1].replace(
+      /[\u0000-\u001F\u007F-\u009F]/g,
+      ''
+    );
     contentResearchData = JSON.parse(cleanedJson);
   } catch (parseError) {
     logError(`内容调研 JSON 解析失败: ${parseError.message}`);
-    const debugPath = path.join(CONFIG.outputDir, keyword.replace(/\s+/g, '-'), 'content-research-error.json');
+    const debugPath = path.join(
+      CONFIG.outputDir,
+      keyword.replace(/\s+/g, '-'),
+      'content-research-error.json'
+    );
     await fs.mkdir(path.dirname(debugPath), { recursive: true });
     await fs.writeFile(debugPath, jsonMatch[1]);
     logInfo(`出错的 JSON 已保存到: ${debugPath}`);
@@ -324,7 +406,11 @@ async function phase2_contentResearch(keyword) {
   }
 
   // 保存内容调研结果
-  const outputPath = path.join(CONFIG.outputDir, keyword.replace(/\s+/g, '-'), 'content-research.json');
+  const outputPath = path.join(
+    CONFIG.outputDir,
+    keyword.replace(/\s+/g, '-'),
+    'content-research.json'
+  );
   await fs.writeFile(outputPath, JSON.stringify(contentResearchData, null, 2));
 
   logSuccess(`内容调研完成，结果保存到: ${outputPath}`);
@@ -341,7 +427,7 @@ async function phase3_generateCode(keyword, researchData) {
   const slug = keyword.toLowerCase().replace(/\s+/g, '-');
   const title = keyword
     .split(' ')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ');
 
   logInfo(`生成工具: ${slug} (${title})`);
@@ -364,8 +450,24 @@ async function phase3_generateCode(keyword, researchData) {
 /**
  * Phase 4: 内容生成（使用可配置的内容模型）
  */
-async function phase4_generateContent(keyword, researchData, contentResearchData) {
+async function phase4_generateContent(
+  keyword,
+  researchData,
+  contentResearchData
+) {
   logPhase(4, `内容生成 (${CONFIG.contentModel})`);
+
+  // 🤖 智能翻译工具默认要求（适用于所有语言翻译工具）
+  const intelligentTranslationRequirements = `
+🤖 智能翻译工具核心要求（所有翻译工具必须包含）：
+- 智能语言检测：90%+准确率，实时检测输入语言类型
+- 自动方向切换：根据检测结果自动调整翻译方向（无需手动选择）
+- 多模态支持：文本、图像OCR、音频转写+翻译
+- 专业翻译模式：技术、法律、文学、习语、通用5种模式
+- 标准化API：统一的JSON响应格式和错误处理
+- Edge Runtime：高性能边缘计算优化
+- 置信度反馈：提供检测置信度和语言信息
+`;
 
   const productPlan = `
 产品名称：${researchData.productName || keyword}
@@ -377,42 +479,40 @@ async function phase4_generateContent(keyword, researchData, contentResearchData
 
   const contentResearchSummary = `
 内容调研结果：
-- 内容空白：${contentResearchData.contentGaps?.map(g => g.topic).join('、') || ''}
-- 社交热门话题：${contentResearchData.socialTopics?.map(t => t.topic).join('、') || ''}
+- 内容空白：${contentResearchData.contentGaps?.map((g) => g.topic).join('、') || ''}
+- 社交热门话题：${contentResearchData.socialTopics?.map((t) => t.topic).join('、') || ''}
 - 趣味事实：${contentResearchData.funFacts?.join('、') || ''}
-- 高频词汇：${contentResearchData.highFrequencyWords?.map(w => w.word).join(', ') || ''}
+- 高频词汇：${contentResearchData.highFrequencyWords?.map((w) => w.word).join(', ') || ''}
 `;
 
   const prompt = `你现在是一个英文 SEO 文案写手，参考这个调研。帮我为「${keyword}」写英文落地页文案，不要给我emoji或者icon，要求如下：
+
+${intelligentTranslationRequirements}
 
 1. 写 1 个 SEO 友好的 Title 和 Meta Description
    * 要清晰传达工具核心价值
    * 包含主关键词
    * **重要：SEO Description 必须完整包含主关键词「${keyword}」，不能拆分或缩写**
    * Title 长度 ≤ 60 字符；Description 在 120–160 字符之间
-   * 完成后计算这个section每个版本写了多少字符。
 
 2. 写 1 个 SEO 友好的 H1 标题
    * 直接点明工具名称和主要用途
    * 自然包含目标关键词
    * 不出现品牌名
-   * 完成后计算这个section每个版本写了多少单词。
 
-3. 写 H1 下的描述（30–40 单词）
+3. 写 H1 下的描述（20–30 单词）
    * 简要说明工具功能和使用价值
    * 使用对话式语气，突出用户利益
    * **重要：Hero Description 必须完整包含主关键词「${keyword}」，不能拆分或缩写**
-   * 展示品牌词：VibeTrans
-   * 完成后计算这个section每个版本写了多少单词。
 
 4. 写 "What is XXXX" 板块
    * 标题为：What is XXXX
    * 正文以 "XXXX is …" 开头，正面回答问题
-   * 扩展解释功能和应用场景，长度约 70 单词
-   * 展示品牌词：VibeTrans
-   * 完成后计算这个section写了多少单词。
+   * 扩展解释功能和应用场景，长度约 60 单词
 
-5. 请帮我写Example板块的 title 和 description，40-50个单词左右
+5. 请帮我写Example板块的 title 和 description，40-50个单词左右，让工具能达到的效果更清晰，更有说服力。
+   * 参考图片：example.png
+   * 如果遇到符号翻译要有案例展示和推导过程，如果遇到语言翻译则是展示翻译案例，场景解释。
 
 6. 写 "How to XXXX" 板块
    * 标题：How to XXXX
@@ -421,34 +521,28 @@ async function phase4_generateContent(keyword, researchData, contentResearchData
      - 名称以动词开头（如 Upload a File）
      - 详细描述 40 词左右，强调操作细节
    * 语言保持简单易懂
-   * 展示品牌词：VibeTrans
-   * 完成后计算这个section写了多少单词。
 
 7. 根据上面调研，写 2 个 Fun Facts
    * 每个 30 单词左右
    * 内容有趣、易懂，和工具或相关主题紧密相关
-   * 写作中增加个人情感或主观评论（如"我喜欢或我认为"）
-   * 写作中包含随意性或独特性（如俚语、轶事）
-   * 展示品牌词：VibeTrans
-   * 完成后计算这个section写了多少单词。
+   * 保持客观中性的写作风格，避免使用个人化表达（如"I think", "I love", "I believe"等）
+   * 增加链接到对应信息源，增加可读性
 
 8. 根据上面调研，增加 4 个用户可能感兴趣的内容板块
    * 4个小板块的大板块标题
-   * 每个包含标题 + 正文（约 60 单词）
-   * 写作中增加个人情感或主观评论（如"我喜欢或我认为"）
-   * 写作中包含随意性或独特性（如俚语、轶事）
-   * 展示品牌词：VibeTrans
+   * 每个包含标题 + 正文（约 50 单词）
    * 文案要切入用户关注点：功能、痛点、应用场景或优势
-   * 完成后计算这个section写了多少单词。
+   * 是否需要制作并插入相关对照表section，例如：symbols.png
 
-9. 请帮我写Highlight板块的文案，包含:
+
+9. 根据上面调研，请帮我写Highlight板块的文案，包含:
    * 板块的标题
    * 4个产品特点的文案，5选4（简单免费使用、数据准确性、数据隐私安全、AI的对上下文的理解、更多解释）
    * 为每个特点写一个简短的标题
-   * 写50单词左右的说明
-   * 展示品牌词：VibeTrans
+   * 写40单词左右的说明
+   * 保持客观中性的写作风格，避免使用个人化表达（如"I think", "I love", "I believe"等）
 
-10. 请帮我写6个用户评价，每个评价需要有:
+10. 根据上面调研，请帮我写6个用户评价，每个评价需要有:
     * 用户姓名：听起来像美国人的姓名
     * 角色：和使用产品的人群匹配的职业角色
     * 评价内容：2-3句话。要求：50-60个单词之间，像真人、有具体的产品使用细节！引入真实用户使用场景故事，包含前后的情感叙述。
@@ -460,29 +554,30 @@ async function phase4_generateContent(keyword, researchData, contentResearchData
       3. 不出现 What is [关键词] 问题
       4. How to 问题必须用 step-by-step 形式回答
       5. 语言直接、正面、清晰
-      6. 完成后计算这个section写了多少单词
-      7. 默认有的问题：这个软件免费吗？我们的隐私如何？
+      7. 默认有的问题：这个xxx（软件名称）免费吗？我们的隐私如何？
+      8. 调研报告展示的用户关心和高频提到的问题，都写成faq。
 
 12. 请帮我写页面底部的CTA，包含标题和一句话描述，要求标题和内容都包含关键词和品牌词
+
+最后整体的要求：
+1. 必要名词增加链接到 Wikipedia, YouTube 等权威网站
+2. 是否需要加入额外的相关板块，来对工具做补充说明
+3. 是否有必要插入 YouTube 链接来解释工具/某些概念
+
 
 请记住背景信息：
 
 ${productPlan}
-
 ${contentResearchSummary}
 
 写作风格要求：
 1. 使用通俗易懂的英文词汇，7 年级以下学生也能理解
-2. 采用对话式、口语化语气，比如，使用 "You" 和 "VibeTrans"
+2. 采用对话式、口语化语气，比如，使用 "You" 和 "VibeTrans"(这是网站的品牌名)
 3. 文案简洁直接，句子短，避免长难句
 4. 每个板块尽可能多给细节，避免空洞描述
 5. 标题清晰、吸引人，能快速传达核心价值
 6. 每个板块内容避免重复，保持独特信息点
 7. 文案中自然融入上面调研得到的高频关键词，但始终优先考虑可读性
-8. 写作中增加个人情感或主观评论（如"我喜欢，我认为"）
-9. 写作中包含随意性或独特性（如俚语、轶事）
-10. 写作中包含更多个人经验或权威建议
-11. 完成后告诉我你的在这个section写了多少单词
 
 请以 JSON 格式输出，格式如下：
 \`\`\`json
@@ -586,8 +681,72 @@ ${contentResearchSummary}
 
   const contentData = JSON.parse(jsonMatch[1]);
 
+  // 验证个人化表达
+  const personalExpressionIssues = [];
+
+  // 验证各个section
+  if (contentData.funFacts) {
+    contentData.funFacts.forEach((fact, index) => {
+      const issues = validatePersonalExpressions(
+        fact.content,
+        `funFacts[${index}]`
+      );
+      personalExpressionIssues.push(...issues);
+    });
+  }
+
+  if (contentData.interestingSections?.sections) {
+    contentData.interestingSections.sections.forEach((section, index) => {
+      const issues = validatePersonalExpressions(
+        section.content,
+        `interestingSections[${index}]`
+      );
+      personalExpressionIssues.push(...issues);
+    });
+  }
+
+  if (contentData.highlights?.features) {
+    contentData.highlights.features.forEach((feature, index) => {
+      const issues = validatePersonalExpressions(
+        feature.description,
+        `highlights[${index}]`
+      );
+      personalExpressionIssues.push(...issues);
+    });
+  }
+
+  if (contentData.testimonials) {
+    contentData.testimonials.forEach((testimonial, index) => {
+      const issues = validatePersonalExpressions(
+        testimonial.content,
+        `testimonials[${index}]`
+      );
+      personalExpressionIssues.push(...issues);
+    });
+  }
+
+  // 如果发现个人化表达，记录警告
+  if (personalExpressionIssues.length > 0) {
+    logWarning(
+      `⚠️  内容生成中发现 ${personalExpressionIssues.length} 处个人化表达：`
+    );
+    personalExpressionIssues.forEach((issue) => {
+      logWarning(
+        `   - ${issue.section}: "${issue.pattern}" (${issue.count} 处)`
+      );
+      logWarning(`     示例: ${issue.matches.join(', ')}`);
+    });
+    logWarning('这些个人化表达将在后续处理中被移除或需要手动修复');
+  } else {
+    logSuccess('✅ 内容生成验证通过，未发现个人化表达');
+  }
+
   // 保存内容数据
-  const outputPath = path.join(CONFIG.outputDir, keyword.replace(/\s+/g, '-'), 'content.json');
+  const outputPath = path.join(
+    CONFIG.outputDir,
+    keyword.replace(/\s+/g, '-'),
+    'content.json'
+  );
   await fs.writeFile(outputPath, JSON.stringify(contentData, null, 2));
 
   logSuccess(`内容生成完成，结果保存到: ${outputPath}`);
@@ -606,25 +765,25 @@ function validateWordCounts(contentData) {
       path: 'h1.wordCount',
       min: 5,
       max: 7,
-      name: 'H1标题'
+      name: 'H1标题',
     },
     heroDescription: {
       path: 'heroDescription.wordCount',
-      min: 25,
-      max: 45,
-      name: 'Hero描述'
+      min: 20,
+      max: 30,
+      name: 'Hero描述',
     },
     whatIs: {
       path: 'whatIs.wordCount',
-      min: 65,
-      max: 75,
-      name: 'What Is板块'
+      min: 55,
+      max: 65,
+      name: 'What Is板块',
     },
     example: {
       path: 'example.wordCount',
       min: 35,
       max: 55,
-      name: 'Example板块'
+      name: 'Example板块',
     },
   };
 
@@ -676,12 +835,12 @@ function validateWordCounts(contentData) {
   // 验证 interestingSections
   if (contentData.interestingSections?.sections) {
     contentData.interestingSections.sections.forEach((section, index) => {
-      if (section.wordCount < 55 || section.wordCount > 65) {
+      if (section.wordCount < 45 || section.wordCount > 55) {
         invalidSections.push({
           section: 'interestingSections',
           name: `趣味板块 ${index + 1}`,
           actual: section.wordCount,
-          expected: '55-65',
+          expected: '45-55',
           sectionIndex: index,
         });
       }
@@ -691,12 +850,12 @@ function validateWordCounts(contentData) {
   // 验证 highlights.features
   if (contentData.highlights?.features) {
     contentData.highlights.features.forEach((feature, index) => {
-      if (feature.wordCount < 45 || feature.wordCount > 55) {
+      if (feature.wordCount < 35 || feature.wordCount > 45) {
         invalidSections.push({
           section: 'highlights',
           name: `亮点功能 ${index + 1}`,
           actual: feature.wordCount,
-          expected: '45-55',
+          expected: '35-45',
           featureIndex: index,
         });
       }
@@ -746,8 +905,16 @@ function getNestedValue(obj, path) {
 /**
  * 重新生成单个 section
  */
-async function regenerateSection(keyword, sectionInfo, contentData, researchData, contentResearchData) {
-  logInfo(`重新生成: ${sectionInfo.name} (当前字数: ${sectionInfo.actual}, 期望: ${sectionInfo.expected})`);
+async function regenerateSection(
+  keyword,
+  sectionInfo,
+  contentData,
+  researchData,
+  contentResearchData
+) {
+  logInfo(
+    `重新生成: ${sectionInfo.name} (当前字数: ${sectionInfo.actual}, 期望: ${sectionInfo.expected})`
+  );
 
   const { section } = sectionInfo;
   let prompt = '';
@@ -848,7 +1015,7 @@ async function regenerateSection(keyword, sectionInfo, contentData, researchData
 - 约 30 单词（严格控制在 25-35 之间）
 - 内容有趣、易懂
 - 和工具或相关主题紧密相关
-- 写作中增加个人情感或主观评论
+- 保持客观中性的写作风格，避免使用个人化表达（如"I think", "I love", "I believe"等）
 - 展示品牌词：VibeTrans
 
 调研信息：
@@ -866,11 +1033,12 @@ ${contentResearchData.funFacts?.join('\n') || ''}
 
     case 'interestingSections':
       if (sectionInfo.sectionIndex !== undefined) {
-        const originalSection = contentData.interestingSections.sections[sectionInfo.sectionIndex];
+        const originalSection =
+          contentData.interestingSections.sections[sectionInfo.sectionIndex];
         prompt = `请为「${keyword}」重新写趣味板块「${originalSection.title}」。
 要求：
-- 约 60 单词（严格控制在 55-65 之间）
-- 写作中增加个人情感或主观评论
+- 约 50 单词（严格控制在 45-55 之间）
+- 保持客观中性的写作风格，避免使用个人化表达（如"I think", "I love", "I believe"等）
 - 写作中包含随意性或独特性（如俚语、轶事）
 - 展示品牌词：VibeTrans
 - 文案要切入用户关注点
@@ -880,7 +1048,7 @@ ${contentResearchData.funFacts?.join('\n') || ''}
 {
   "title": "${originalSection.title}",
   "content": "内容",
-  "wordCount": 60
+  "wordCount": 50
 }
 \`\`\``;
       }
@@ -888,10 +1056,11 @@ ${contentResearchData.funFacts?.join('\n') || ''}
 
     case 'highlights':
       if (sectionInfo.featureIndex !== undefined) {
-        const feature = contentData.highlights.features[sectionInfo.featureIndex];
+        const feature =
+          contentData.highlights.features[sectionInfo.featureIndex];
         prompt = `请为「${keyword}」重新写亮点功能「${feature.title}」的描述。
 要求：
-- 约 50 单词（严格控制在 45-55 之间）
+- 约 40 单词（严格控制在 35-45 之间）
 - 展示品牌词：VibeTrans
 
 请以 JSON 格式输出：
@@ -899,7 +1068,7 @@ ${contentResearchData.funFacts?.join('\n') || ''}
 {
   "title": "${feature.title}",
   "description": "描述",
-  "wordCount": 50
+  "wordCount": 40
 }
 \`\`\``;
       }
@@ -1006,7 +1175,8 @@ function updateContentData(contentData, sectionInfo, newData) {
       break;
     case 'interestingSections':
       if (sectionInfo.sectionIndex !== undefined) {
-        contentData.interestingSections.sections[sectionInfo.sectionIndex] = newData;
+        contentData.interestingSections.sections[sectionInfo.sectionIndex] =
+          newData;
       }
       break;
     case 'highlights':
@@ -1030,7 +1200,12 @@ function updateContentData(contentData, sectionInfo, newData) {
 /**
  * Phase 4.5: 字数验证和重新生成
  */
-async function phase4_5_validateAndRegenerate(keyword, contentData, researchData, contentResearchData) {
+async function phase4_5_validateAndRegenerate(
+  keyword,
+  contentData,
+  researchData,
+  contentResearchData
+) {
   if (!CONFIG.enableWordCountValidation) {
     logInfo('字数验证已禁用，跳过 Phase 4.5');
     return contentData;
@@ -1039,7 +1214,7 @@ async function phase4_5_validateAndRegenerate(keyword, contentData, researchData
   logPhase('4.5', '字数验证和重新生成');
 
   let retryCount = 0;
-  let currentContentData = JSON.parse(JSON.stringify(contentData)); // 深拷贝
+  const currentContentData = JSON.parse(JSON.stringify(contentData)); // 深拷贝
 
   while (retryCount <= CONFIG.maxWordCountRetries) {
     const invalidSections = validateWordCounts(currentContentData);
@@ -1050,7 +1225,9 @@ async function phase4_5_validateAndRegenerate(keyword, contentData, researchData
     }
 
     if (retryCount === CONFIG.maxWordCountRetries) {
-      logWarning(`已达到最大重试次数 (${CONFIG.maxWordCountRetries})，以下 section 仍不符合要求：`);
+      logWarning(
+        `已达到最大重试次数 (${CONFIG.maxWordCountRetries})，以下 section 仍不符合要求：`
+      );
       invalidSections.forEach((s) => {
         logWarning(`  - ${s.name}: 实际 ${s.actual} 单词，期望 ${s.expected}`);
       });
@@ -1058,7 +1235,9 @@ async function phase4_5_validateAndRegenerate(keyword, contentData, researchData
       break;
     }
 
-    logWarning(`发现 ${invalidSections.length} 个 section 字数不符合要求，开始重新生成...`);
+    logWarning(
+      `发现 ${invalidSections.length} 个 section 字数不符合要求，开始重新生成...`
+    );
     retryCount++;
 
     // 重新生成所有不符合要求的 section
@@ -1095,7 +1274,10 @@ async function phase4_5_validateAndRegenerate(keyword, contentData, researchData
     keyword.replace(/\s+/g, '-'),
     'content-final.json'
   );
-  await fs.writeFile(finalOutputPath, JSON.stringify(currentContentData, null, 2));
+  await fs.writeFile(
+    finalOutputPath,
+    JSON.stringify(currentContentData, null, 2)
+  );
   logSuccess(`最终内容已保存到: ${finalOutputPath}`);
 
   return currentContentData;
@@ -1110,7 +1292,7 @@ async function phase5_generateTranslations(keyword, contentData) {
   const slug = keyword.toLowerCase().replace(/\s+/g, '-');
   const pageName = slug
     .split('-')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join('');
 
   // 生成英文翻译
@@ -1137,6 +1319,8 @@ async function phase5_generateTranslations(keyword, contentData) {
       whatIs: {
         title: contentData.whatIs.title,
         description: contentData.whatIs.content,
+        image: '',
+        imageAlt: '',
       },
       examples: {
         title: contentData.example.title,
@@ -1157,11 +1341,21 @@ async function phase5_generateTranslations(keyword, contentData) {
       },
       funFacts: {
         title: 'Interesting Facts',
-        items: contentData.funFacts,
+        items: contentData.funFacts.map((fact) => ({
+          title: fact.title || 'Fun Fact',
+          description: fact.content,
+          image: '',
+          imageAlt: '',
+        })),
       },
       userInterest: {
         title: contentData.interestingSections.title,
-        items: contentData.interestingSections.sections,
+        items: contentData.interestingSections.sections.map((section) => ({
+          title: section.title,
+          description: section.content,
+          image: '',
+          imageAlt: '',
+        })),
       },
       highlights: contentData.highlights,
       testimonials: {
@@ -1210,7 +1404,7 @@ async function phase5_generateTranslations(keyword, contentData) {
   // 生成中文翻译提示（需要手动翻译）
   logWarning('⚠️  请手动翻译中文版本');
   logInfo(`创建文件: ${path.join(pageTranslationDir, 'zh.json')}`);
-  logInfo(`使用与 en.json 相同的结构，将内容翻译为中文`);
+  logInfo('使用与 en.json 相同的结构，将内容翻译为中文');
 
   return { pageName, enTranslation, slug };
 }
@@ -1227,10 +1421,11 @@ async function updateEnJsonWithImages(slug, imageMapping) {
     const jsonData = JSON.parse(content);
 
     // 获取页面命名空间
-    const pageName = slug
-      .split('-')
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-      .join('') + 'Page';
+    const pageName =
+      slug
+        .split('-')
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join('') + 'Page';
 
     if (!jsonData[pageName]) {
       logError(`未找到 ${pageName} 命名空间`);
@@ -1245,18 +1440,20 @@ async function updateEnJsonWithImages(slug, imageMapping) {
         jsonData[pageName].whatIs = {};
       }
       jsonData[pageName].whatIs.image = `/images/docs/${imageMapping.whatIs}`;
-      jsonData[pageName].whatIs.imageAlt = `What is ${slug} - Visual explanation`;
+      jsonData[pageName].whatIs.imageAlt =
+        `What is ${slug} - Visual explanation`;
       updated++;
       logSuccess(`✓ 更新 whatIs 图片: ${imageMapping.whatIs}`);
     }
 
     // 2. 更新 funFacts 图片
-    if (jsonData[pageName].funFacts && jsonData[pageName].funFacts.items) {
+    if (jsonData[pageName].funFacts?.items) {
       imageMapping.funFacts.forEach((imagePath, index) => {
-        if (imagePath && jsonData[pageName].funFacts.items[index]) {
+        if (imagePath && jsonData[pageName].funFacts?.items?.[index]) {
           jsonData[pageName].funFacts.items[index].image = imagePath;
           jsonData[pageName].funFacts.items[index].imageAlt =
-            jsonData[pageName].funFacts.items[index].title || `Fun fact ${index + 1}`;
+            jsonData[pageName].funFacts.items[index].title ||
+            `Fun fact ${index + 1}`;
           updated++;
           logSuccess(`✓ 更新 funFacts[${index}] 图片: ${imagePath}`);
         }
@@ -1264,12 +1461,13 @@ async function updateEnJsonWithImages(slug, imageMapping) {
     }
 
     // 3. 更新 userInterest 图片
-    if (jsonData[pageName].userInterest && jsonData[pageName].userInterest.items) {
+    if (jsonData[pageName].userInterest?.items) {
       imageMapping.userInterests.forEach((imagePath, index) => {
-        if (imagePath && jsonData[pageName].userInterest.items[index]) {
+        if (imagePath && jsonData[pageName].userInterest?.items?.[index]) {
           jsonData[pageName].userInterest.items[index].image = imagePath;
           jsonData[pageName].userInterest.items[index].imageAlt =
-            jsonData[pageName].userInterest.items[index].title || `User interest ${index + 1}`;
+            jsonData[pageName].userInterest.items[index].title ||
+            `User interest ${index + 1}`;
           updated++;
           logSuccess(`✓ 更新 userInterest[${index}] 图片: ${imagePath}`);
         }
@@ -1283,6 +1481,414 @@ async function updateEnJsonWithImages(slug, imageMapping) {
   } catch (error) {
     logError(`更新 en.json 失败: ${error.message}`);
     throw error;
+  }
+}
+
+/**
+ * 更新 page.tsx 文件，确保使用 JSON 中的图片路径而不是硬编码
+ */
+async function updatePageTsxImageReferences(slug) {
+  const pagePath = path.join(
+    ROOT_DIR,
+    'src',
+    'app',
+    '[locale]',
+    '(marketing)',
+    '(pages)',
+    slug,
+    'page.tsx'
+  );
+
+  try {
+    // 读取 page.tsx
+    let pageContent = await fs.readFile(pagePath, 'utf-8');
+    let hasChanges = false;
+
+    // 1. 更新 whatIs section 的图片引用
+    const whatIsPattern =
+      /const whatIsSection = \{[\s\S]*?image: \{[\s\S]*?src: ['"]([^'"]+)['"],[\s\S]*?\},[\s\S]*?\};/;
+    if (whatIsPattern.test(pageContent)) {
+      pageContent = pageContent.replace(
+        /image: \{[\s\S]*?src: ['"]\/images\/docs\/[^'"]+['"],[\s\S]*?alt: ['"][^'"]+['"]/,
+        `image: {
+      src: (t as any)('whatIs.image') || '/images/docs/placeholder.webp',
+      alt: (t as any)('whatIs.imageAlt') || 'What is ${slug}'`
+      );
+      hasChanges = true;
+      logInfo('✓ 更新 whatIs section 图片引用');
+    }
+
+    // 2. 更新 funFacts section 的图片引用
+    const funFactsPattern =
+      /const funFactsSection = \{[\s\S]*?items: \[[\s\S]*?\],[\s\S]*?\};/;
+    if (funFactsPattern.test(pageContent)) {
+      // 替换 funFacts items 中的硬编码图片路径
+      pageContent = pageContent.replace(
+        /const funFactsSection = \{[\s\S]*?items: \[([\s\S]*?)\],[\s\S]*?\};/,
+        (match, itemsContent) => {
+          const updatedItems = itemsContent.replace(
+            /\{\s*title: \(t as any\)\('funFacts\.items\.(\d+)\.title'\),[\s\S]*?description: \(t as any\)\('funFacts\.items\.\1\.description'\),[\s\S]*?image: \{[\s\S]*?src: ['"]\/images\/docs\/[^'"]+['"],[\s\S]*?alt: [^}]+\},[\s\S]*?\}/g,
+            (itemMatch, index) => {
+              return `{
+        title: (t as any)('funFacts.items.${index}.title'),
+        description: (t as any)('funFacts.items.${index}.description'),
+        image: {
+          src: (t as any)('funFacts.items.${index}.image') || '/images/docs/placeholder.webp',
+          alt: (t as any)('funFacts.items.${index}.imageAlt') || (t as any)('funFacts.items.${index}.title'),
+        },
+      }`;
+            }
+          );
+          return match.replace(itemsContent, updatedItems);
+        }
+      );
+      hasChanges = true;
+      logInfo('✓ 更新 funFacts section 图片引用');
+    }
+
+    // 3. 更新 userInterest section 的图片引用
+    const userInterestPattern =
+      /const userInterestSection = \{[\s\S]*?items: \[[\s\S]*?\],[\s\S]*?\};/;
+    if (userInterestPattern.test(pageContent)) {
+      pageContent = pageContent.replace(
+        /const userInterestSection = \{[\s\S]*?items: \[([\s\S]*?)\],[\s\S]*?\};/,
+        (match, itemsContent) => {
+          const updatedItems = itemsContent.replace(
+            /\{\s*title: \(t as any\)\('userInterest\.items\.(\d+)\.title'\),[\s\S]*?description: \(t as any\)\('userInterest\.items\.\1\.description'\),[\s\S]*?image: \{[\s\S]*?src: ['"]\/images\/docs\/[^'"]+['"],[\s\S]*?alt: [^}]+\},[\s\S]*?\}/g,
+            (itemMatch, index) => {
+              return `{
+        title: (t as any)('userInterest.items.${index}.title'),
+        description: (t as any)('userInterest.items.${index}.description'),
+        image: {
+          src: (t as any)('userInterest.items.${index}.image') || '/images/docs/placeholder.webp',
+          alt: (t as any)('userInterest.items.${index}.imageAlt') || (t as any)('userInterest.items.${index}.title'),
+        },
+      }`;
+            }
+          );
+          return match.replace(itemsContent, updatedItems);
+        }
+      );
+      hasChanges = true;
+      logInfo('✓ 更新 userInterest section 图片引用');
+    }
+
+    if (hasChanges) {
+      await fs.writeFile(pagePath, pageContent);
+      logSuccess('page.tsx 已更新，图片引用已改为从 JSON 读取');
+      return { success: true };
+    }
+    logInfo('page.tsx 未检测到需要更新的硬编码图片路径');
+    return { success: true, noChanges: true };
+  } catch (error) {
+    logError(`更新 page.tsx 失败: ${error.message}`);
+    return { success: false, error: error.message };
+  }
+}
+
+/**
+ * Phase 5.5: JSON文件与代码匹配检测
+ */
+async function phase5_5_validateJsonCodeMatch(keyword, translationData) {
+  logPhase('5.5', 'JSON文件与代码匹配检测');
+
+  const { slug, pageName } = translationData;
+  const issues = [];
+
+  // 1. 检查JSON文件是否存在
+  logInfo('检查JSON文件存在性...');
+  const enJsonPath = path.join(CONFIG.messagesDir, 'pages', slug, 'en.json');
+  const pageTsxPath = path.join(
+    CONFIG.srcDir,
+    'app',
+    '[locale]',
+    '(marketing)',
+    '(pages)',
+    slug,
+    'page.tsx'
+  );
+  const toolTsxPath = path.join(
+    CONFIG.srcDir,
+    'app',
+    '[locale]',
+    '(marketing)',
+    '(pages)',
+    slug,
+    `${pageName}Tool.tsx`
+  );
+
+  try {
+    await fs.access(enJsonPath);
+    logSuccess('✓ en.json 文件存在');
+  } catch (error) {
+    issues.push({ type: 'file_missing', file: 'en.json', path: enJsonPath });
+    logError('✗ en.json 文件不存在');
+  }
+
+  try {
+    await fs.access(pageTsxPath);
+    logSuccess('✓ page.tsx 文件存在');
+  } catch (error) {
+    issues.push({ type: 'file_missing', file: 'page.tsx', path: pageTsxPath });
+    logError('✗ page.tsx 文件不存在');
+  }
+
+  try {
+    await fs.access(toolTsxPath);
+    logSuccess('✓ Tool组件文件存在');
+  } catch (error) {
+    issues.push({
+      type: 'file_missing',
+      file: `${pageName}Tool.tsx`,
+      path: toolTsxPath,
+    });
+    logError('✗ Tool组件文件不存在');
+  }
+
+  if (issues.length > 0) {
+    logError('关键文件缺失，无法继续匹配检测');
+    return { success: false, issues };
+  }
+
+  // 2. 读取并解析JSON文件
+  logInfo('读取JSON文件内容...');
+  let enJsonContent;
+  try {
+    const content = await fs.readFile(enJsonPath, 'utf-8');
+    enJsonContent = JSON.parse(content);
+  } catch (error) {
+    issues.push({
+      type: 'json_parse_error',
+      file: 'en.json',
+      error: error.message,
+    });
+    logError(`✗ JSON解析失败: ${error.message}`);
+    return { success: false, issues };
+  }
+
+  // 3. 检查JSON结构完整性
+  logInfo('检查JSON结构完整性...');
+  const requiredFields = [
+    'hero.title',
+    'hero.description',
+    'whatIs.title',
+    'whatIs.description',
+    'examples.title',
+    'examples.description',
+    'howto.title',
+    'howto.description',
+    'funFacts.title',
+    'highlights.title',
+    'testimonials.title',
+    'faqs.title',
+    'cta.title',
+  ];
+
+  for (const field of requiredFields) {
+    const value = getNestedValue(enJsonContent, `${pageName}.${field}`);
+    if (!value || (typeof value === 'string' && value.trim() === '')) {
+      issues.push({ type: 'missing_field', field: `${pageName}.${field}` });
+      logWarning(`⚠️  缺少字段或字段为空: ${field}`);
+    }
+  }
+
+  // 4. 检查page.tsx中的翻译键引用
+  logInfo('检查page.tsx中的翻译键引用...');
+  let pageTsxContent;
+  try {
+    pageTsxContent = await fs.readFile(pageTsxPath, 'utf-8');
+  } catch (error) {
+    issues.push({
+      type: 'file_read_error',
+      file: 'page.tsx',
+      error: error.message,
+    });
+    logError(`✗ 无法读取page.tsx: ${error.message}`);
+    return { success: false, issues };
+  }
+
+  // 检查关键翻译键是否在代码中被引用
+  const criticalKeys = [
+    'hero.title',
+    'hero.description',
+    'whatIs.title',
+    'whatIs.description',
+    'examples.title',
+    'howto.title',
+    'funFacts.title',
+    'highlights.title',
+    'testimonials.title',
+    'faqs.title',
+    'cta.title',
+  ];
+
+  for (const key of criticalKeys) {
+    const fullKey = `${pageName}.${key}`;
+    const tKeyPattern = new RegExp(
+      `t\\(['"\`]${key.replace('.', '\\.')}['"\`]\\)`,
+      'g'
+    );
+
+    if (!tKeyPattern.test(pageTsxContent)) {
+      // 检查是否使用了不同的引用方式
+      const alternativePattern = new RegExp(
+        `t\\(['"\`](\\w+\\.)?${key.split('.').pop()}['"\`]\\)`,
+        'g'
+      );
+      if (!alternativePattern.test(pageTsxContent)) {
+        issues.push({ type: 'unused_translation_key', key: fullKey });
+        logWarning(`⚠️  翻译键可能未被引用: ${key}`);
+      }
+    }
+  }
+
+  // 5. 检查Tool组件中的翻译键引用
+  logInfo('检查Tool组件中的翻译键引用...');
+  let toolTsxContent;
+  try {
+    toolTsxContent = await fs.readFile(toolTsxPath, 'utf-8');
+  } catch (error) {
+    issues.push({
+      type: 'file_read_error',
+      file: `${pageName}Tool.tsx`,
+      error: error.message,
+    });
+    logError(`✗ 无法读取Tool组件: ${error.message}`);
+    return { success: false, issues };
+  }
+
+  // 检查Tool组件中的工具相关翻译键
+  const toolKeys = [
+    'tool.inputLabel',
+    'tool.outputLabel',
+    'tool.inputPlaceholder',
+    'tool.outputPlaceholder',
+    'tool.translateButton',
+    'tool.uploadButton',
+    'tool.loading',
+    'tool.error',
+  ];
+
+  for (const key of toolKeys) {
+    const fullKey = `${pageName}.${key}`;
+    const tKeyPattern = new RegExp(
+      `t\\(['"\`]${key.replace('.', '\\.')}['"\`]\\)`,
+      'g'
+    );
+
+    if (!tKeyPattern.test(toolTsxContent)) {
+      issues.push({ type: 'unused_tool_translation_key', key: fullKey });
+      logWarning(`⚠️  工具翻译键可能未被引用: ${key}`);
+    }
+  }
+
+  // 6. 检查数组类型字段的长度匹配
+  logInfo('检查数组类型字段...');
+  const arrayFields = [
+    'examples.items',
+    'funFacts.items',
+    'userInterest.items',
+    'testimonials.items',
+    'faqs.items',
+  ];
+
+  for (const field of arrayFields) {
+    const value = getNestedValue(enJsonContent, `${pageName}.${field}`);
+    if (value && Array.isArray(value)) {
+      if (value.length === 0) {
+        issues.push({ type: 'empty_array', field: `${pageName}.${field}` });
+        logWarning(`⚠️  数组字段为空: ${field}`);
+      }
+    } else {
+      issues.push({
+        type: 'missing_array_field',
+        field: `${pageName}.${field}`,
+      });
+      logWarning(`⚠️  缺少数组字段: ${field}`);
+    }
+  }
+
+  // 7. 生成检测报告
+  logInfo('\n📊 JSON匹配检测报告:');
+
+  if (issues.length === 0) {
+    logSuccess('✅ 所有检测项目都通过！');
+    logSuccess('✓ JSON文件结构完整');
+    logSuccess('✓ 翻译键在代码中被正确引用');
+    logSuccess('✓ 数组字段包含必要内容');
+
+    return {
+      success: true,
+      issues: [],
+      summary: {
+        totalChecks:
+          requiredFields.length +
+          criticalKeys.length +
+          toolKeys.length +
+          arrayFields.length,
+        passedChecks:
+          requiredFields.length +
+          criticalKeys.length +
+          toolKeys.length +
+          arrayFields.length,
+        failedChecks: 0,
+      },
+    };
+  } else {
+    logWarning(`⚠️  发现 ${issues.length} 个潜在问题:`);
+
+    const issuesByType = {};
+    issues.forEach((issue) => {
+      if (!issuesByType[issue.type]) {
+        issuesByType[issue.type] = [];
+      }
+      issuesByType[issue.type].push(issue);
+    });
+
+    Object.entries(issuesByType).forEach(([type, items]) => {
+      logWarning(`\n  ${type.toUpperCase()} (${items.length}个):`);
+      items.forEach((item) => {
+        if (item.field) {
+          logWarning(`    - ${item.field}`);
+        } else if (item.key) {
+          logWarning(`    - ${item.key}`);
+        } else if (item.file) {
+          logWarning(`    - ${item.file}: ${item.path || item.error || ''}`);
+        }
+      });
+    });
+
+    logInfo('\n💡 建议:');
+    if (issues.some((i) => i.type.includes('unused'))) {
+      logInfo('  - 检查页面代码是否正确引用了JSON中的翻译字段');
+      logInfo('  - 确认翻译键名称与代码中的引用完全匹配');
+    }
+    if (issues.some((i) => i.type.includes('missing'))) {
+      logInfo('  - 补充JSON文件中缺失的字段');
+      logInfo('  - 确保所有必需的翻译内容都已生成');
+    }
+    if (issues.some((i) => i.type.includes('empty'))) {
+      logInfo('  - 为数组字段添加必要的内容项');
+    }
+
+    return {
+      success: false,
+      issues,
+      summary: {
+        totalChecks:
+          requiredFields.length +
+          criticalKeys.length +
+          toolKeys.length +
+          arrayFields.length,
+        passedChecks:
+          requiredFields.length +
+          criticalKeys.length +
+          toolKeys.length +
+          arrayFields.length -
+          issues.length,
+        failedChecks: issues.length,
+      },
+    };
   }
 }
 
@@ -1380,13 +1986,15 @@ main();`;
 
     // 构建文件名映射
     const imageMapping = {
-      whatIs: imageResult.images.find(img => img.section === 'whatIs')?.filename || null,
+      whatIs:
+        imageResult.images.find((img) => img.section === 'whatIs')?.filename ||
+        null,
       funFacts: imageResult.images
-        .filter(img => img.section.startsWith('funFacts'))
-        .map(img => `/images/docs/${img.filename}`),
+        .filter((img) => img.section.startsWith('funFacts'))
+        .map((img) => `/images/docs/${img.filename}`),
       userInterests: imageResult.images
-        .filter(img => img.section.startsWith('userInterests'))
-        .map(img => `/images/docs/${img.filename}`),
+        .filter((img) => img.section.startsWith('userInterests'))
+        .map((img) => `/images/docs/${img.filename}`),
     };
 
     // 直接在这里更新 en.json，不调用外部脚本
@@ -1394,9 +2002,17 @@ main();`;
 
     logSuccess('图片引用已自动更新！');
 
+    // 6. 更新 page.tsx 文件，确保使用 JSON 中的图片路径
+    logInfo('更新 page.tsx 文件，确保图片从 JSON 读取...');
+    const pageUpdateResult = await updatePageTsxImageReferences(slug);
+
+    if (pageUpdateResult.success && !pageUpdateResult.noChanges) {
+      logSuccess('page.tsx 已更新为从 JSON 读取图片路径');
+    }
+
     return {
       success: true,
-      images: imageResult.images.map(img => img.filename),
+      images: imageResult.images.map((img) => img.filename),
       mapping: imageMapping,
     };
   } catch (error) {
@@ -1418,7 +2034,7 @@ async function phase7_configureSEO(keyword, translationData) {
   const { slug, pageName } = translationData;
   const title = keyword
     .split(' ')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ');
 
   // 转换为驼峰命名和枚举命名
@@ -1436,11 +2052,7 @@ async function phase7_configureSEO(keyword, translationData) {
 
   // 1. 更新 marketing/en.json
   logInfo('更新 messages/marketing/en.json...');
-  const marketingEnPath = path.join(
-    CONFIG.messagesDir,
-    'marketing',
-    'en.json'
-  );
+  const marketingEnPath = path.join(CONFIG.messagesDir, 'marketing', 'en.json');
   const marketingEnContent = await fs.readFile(marketingEnPath, 'utf-8');
   const marketingEn = JSON.parse(marketingEnContent);
 
@@ -1458,10 +2070,7 @@ async function phase7_configureSEO(keyword, translationData) {
       description: `Translate ${title.toLowerCase()}`,
     };
 
-    await fs.writeFile(
-      marketingEnPath,
-      JSON.stringify(marketingEn, null, 2)
-    );
+    await fs.writeFile(marketingEnPath, JSON.stringify(marketingEn, null, 2));
     logSuccess('✓ marketing/en.json 已更新');
   } else {
     logInfo('marketing/en.json 已包含此工具');
@@ -1484,7 +2093,7 @@ async function phase7_configureSEO(keyword, translationData) {
 
     // 找到 languageTranslator.items 数组的结束位置
     const languageTranslatorMatch = navbarContent.match(
-      /title: t\('languageTranslator\.title'\),[\s\S]*?items: \[([\s\S]*?)\n      \],/
+      /title: t\('languageTranslator\.title'\),[\s\S]*?items: \[([\s\S]*?)\n {6}\],/
     );
 
     if (languageTranslatorMatch) {
@@ -1518,7 +2127,7 @@ async function phase7_configureSEO(keyword, translationData) {
 
     // 找到 languageTranslator.items 数组的结束位置
     const languageTranslatorMatch = footerContent.match(
-      /title: t\('languageTranslator\.title'\),[\s\S]*?items: \[([\s\S]*?)\n      \],/
+      /title: t\('languageTranslator\.title'\),[\s\S]*?items: \[([\s\S]*?)\n {6}\],/
     );
 
     if (languageTranslatorMatch) {
@@ -1544,12 +2153,13 @@ async function phase7_configureSEO(keyword, translationData) {
   let messagesContent = await fs.readFile(messagesPath, 'utf-8');
 
   // 转换为驼峰命名（首字母小写）
-  const camelCaseVarName = slug
-    .split('-')
-    .map((word, index) =>
-      index === 0 ? word : word.charAt(0).toUpperCase() + word.slice(1)
-    )
-    .join('') + 'Pages';
+  const camelCaseVarName =
+    slug
+      .split('-')
+      .map((word, index) =>
+        index === 0 ? word : word.charAt(0).toUpperCase() + word.slice(1)
+      )
+      .join('') + 'Pages';
 
   // 检查是否已存在
   if (!messagesContent.includes(`${camelCaseVarName} =`)) {
@@ -1571,32 +2181,30 @@ async function phase7_configureSEO(keyword, translationData) {
 
     // 2. 添加变量声明（在导入列表中）
     const importListMatch = messagesContent.match(
-      /const \[\n([\s\S]*?)\n  \] = await Promise\.all\(\[/
+      /const (\w+) = await import\(`\.\.\/\.\.\/messages\/pages\/[^\/]+\/\$\{locale\}\.json`\);/
     );
 
     if (importListMatch) {
-      const variablesList = importListMatch[1];
-      const newVariable = `    ${camelCaseVarName},`;
+      // 在最后一个页面导入后添加
+      const lastImportMatch = messagesContent.match(
+        /const (\w+) = await import\(`\.\.\/\.\.\/messages\/pages\/[^\/]+\/\$\{locale\}\.json`\);\n/g
+      );
 
-      // 在最后一个页面变量后添加
-      const lastPageVarMatch = variablesList.match(/\w+Pages,\n/g);
-      if (lastPageVarMatch) {
-        const lastVar = lastPageVarMatch[lastPageVarMatch.length - 1];
-        const updatedVariablesList = variablesList.replace(
-          lastVar,
-          lastVar + newVariable + '\n'
-        );
+      if (lastImportMatch) {
+        const lastImport = lastImportMatch[lastImportMatch.length - 1];
+        const importStatement = `  const ${camelCaseVarName} = await import(\`../../messages/pages/${slug}/\${locale}.json\`);\n`;
 
+        // 在最后一个页面导入后添加
         messagesContent = messagesContent.replace(
-          importListMatch[0],
-          `const [\n${updatedVariablesList}\n  ] = await Promise.all([`
+          lastImport,
+          lastImport + importStatement
         );
       }
     }
 
     // 3. 添加到 deepmerge 列表中
     const deepmergeMatch = messagesContent.match(
-      /return deepmerge\.all\(\[\n([\s\S]*?)\n  \]\) as Messages;/
+      /return deepmerge\.all\(\[\n([\s\S]*?)\n {2}\]\) as Messages;/
     );
 
     if (deepmergeMatch) {
@@ -1627,8 +2235,8 @@ async function phase7_configureSEO(keyword, translationData) {
 
   logWarning('\n⚠️  其他 SEO 配置需要手动添加：');
   logInfo(`  1. 更新 sitemap.xml，添加路径: /${slug}`);
-  logInfo(`  2. 更新 explore other tools 配置`);
-  logInfo(`  3. 生成 SEO 图片（og:image）`);
+  logInfo('  2. 更新 explore other tools 配置');
+  logInfo('  3. 生成 SEO 图片（og:image）');
 
   return { slug, title };
 }
@@ -1643,7 +2251,15 @@ async function phase8_qualityCheck(keyword) {
 
   // 检查文件是否存在
   logInfo('检查生成的文件...');
-  const pagePath = path.join(CONFIG.srcDir, 'app', '[locale]', '(marketing)', '(pages)', slug, 'page.tsx');
+  const pagePath = path.join(
+    CONFIG.srcDir,
+    'app',
+    '[locale]',
+    '(marketing)',
+    '(pages)',
+    slug,
+    'page.tsx'
+  );
   const apiPath = path.join(CONFIG.srcDir, 'app', 'api', slug, 'route.ts');
   const enPath = path.join(CONFIG.messagesDir, 'pages', slug, 'en.json');
 
@@ -1714,7 +2330,7 @@ async function waitForServer(port, timeout = 30000) {
     }
 
     // 等待 1 秒后重试
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
   }
 
   return false;
@@ -1812,10 +2428,11 @@ async function phase8_5_checkPageErrors(keyword) {
       const html = await response.text();
 
       // 检查是否有明显的错误标记
-      const hasError = html.includes('Application error') ||
-                       html.includes('Unhandled Runtime Error') ||
-                       html.includes('500') ||
-                       html.includes('Error:');
+      const hasError =
+        html.includes('Application error') ||
+        html.includes('Unhandled Runtime Error') ||
+        html.includes('500') ||
+        html.includes('Error:');
 
       if (hasError) {
         logWarning('⚠️  页面中检测到可能的错误标记');
@@ -1862,7 +2479,9 @@ async function main() {
 
   if (!keyword) {
     logError('请提供关键词参数');
-    logInfo('使用方法: node scripts/auto-tool-generator.js "alien text generator"');
+    logInfo(
+      '使用方法: node scripts/auto-tool-generator.js "alien text generator"'
+    );
     process.exit(1);
   }
 
@@ -1883,13 +2502,40 @@ async function main() {
     const codeData = await phase3_generateCode(keyword, researchData);
 
     // Phase 4: 内容生成
-    let contentData = await phase4_generateContent(keyword, researchData, contentResearchData);
+    let contentData = await phase4_generateContent(
+      keyword,
+      researchData,
+      contentResearchData
+    );
 
     // Phase 4.5: 字数验证和重新生成
-    contentData = await phase4_5_validateAndRegenerate(keyword, contentData, researchData, contentResearchData);
+    contentData = await phase4_5_validateAndRegenerate(
+      keyword,
+      contentData,
+      researchData,
+      contentResearchData
+    );
 
     // Phase 5: 生成翻译文件
-    const translationData = await phase5_generateTranslations(keyword, contentData);
+    const translationData = await phase5_generateTranslations(
+      keyword,
+      contentData
+    );
+
+    // Phase 5.5: JSON文件与代码匹配检测
+    const jsonMatchResult = await phase5_5_validateJsonCodeMatch(
+      keyword,
+      translationData
+    );
+
+    if (!jsonMatchResult.success) {
+      logWarning('\n⚠️  JSON匹配检测发现问题，但继续后续流程');
+      logWarning(
+        `检测到 ${jsonMatchResult.summary.failedChecks} 个问题，请后续检查修复`
+      );
+    } else {
+      logSuccess('\n✅ JSON文件与代码匹配检测通过');
+    }
 
     // Phase 6: 图片生成（使用 contentData）
     const imageData = await phase6_generateImages(keyword, contentData);
@@ -1919,16 +2565,24 @@ async function main() {
     logInfo('\n后续步骤：');
     logInfo('1. 手动翻译 messages/zh.json');
 
-    if (imageData.success) {
-      logInfo('2. ✓ 图片已自动生成并更新引用');
+    if (!jsonMatchResult.success) {
+      logWarning(
+        `2. ⚠️  JSON匹配检测发现 ${jsonMatchResult.summary.failedChecks} 个问题，需要修复`
+      );
+      logWarning('   检查日志了解具体问题和修复建议');
     } else {
-      logWarning('2. ⚠️  图片生成失败，需要手动生成图片');
+      logSuccess('2. ✓ JSON文件与代码匹配检测通过');
     }
 
-    logInfo('3. 更新 sitemap, navbar, footer');
-    logInfo('4. 运行 pnpm build 验证构建');
-    logInfo('5. 提交代码并上线');
+    if (imageData.success) {
+      logInfo('3. ✓ 图片已自动生成并更新引用');
+    } else {
+      logWarning('3. ⚠️  图片生成失败，需要手动生成图片');
+    }
 
+    logInfo('4. 更新 sitemap, navbar, footer');
+    logInfo('5. 运行 pnpm build 验证构建');
+    logInfo('6. 提交代码并上线');
   } catch (error) {
     logError(`\n生成失败: ${error.message}`);
     console.error(error);

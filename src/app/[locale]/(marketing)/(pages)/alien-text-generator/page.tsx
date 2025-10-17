@@ -392,13 +392,13 @@ export default async function AlienTextGeneratorPage(
         {/* Explore Other Tools */}
         <ExploreOurAiTools
           toolKeys={[
-        'Gibberish Translator',
-        'Bad Translator',
-        'Al Bhed Translator',
-        'Pig Latin Translator',
-        'Verbose Generator',
-        'Gen Z Translator'
-      ]}
+            'Gibberish Translator',
+            'Bad Translator',
+            'Al Bhed Translator',
+            'Ancient Greek Translator',
+            'Gen Alpha Translator',
+            'Gen Z Translator',
+          ]}
         />
 
         {/* Testimonials Section */}

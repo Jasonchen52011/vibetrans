@@ -4,8 +4,8 @@
  * Regenerate specific Cantonese translator sections using complete Gemini workflow
  */
 
-import { generateArticleIllustrations } from '../src/lib/article-illustrator/workflow';
 import type { ArticleSections } from '../src/lib/article-illustrator/types';
+import { generateArticleIllustrations } from '../src/lib/article-illustrator/workflow';
 
 const sections: ArticleSections = {
   toolName: 'cantonese-translator',
@@ -17,11 +17,13 @@ const sections: ArticleSections = {
   funFacts: [
     {
       title: 'Cantonese Tones',
-      content: 'Cantonese has 6-9 tones depending on the classification system used, making it one of the most tonal Chinese dialects.',
+      content:
+        'Cantonese has 6-9 tones depending on the classification system used, making it one of the most tonal Chinese dialects.',
     },
     {
       title: 'Hong Kong Slang',
-      content: 'Cantonese in Hong Kong incorporates many English loanwords and has unique slang that differs from Guangzhou Cantonese.',
+      content:
+        'Cantonese in Hong Kong incorporates many English loanwords and has unique slang that differs from Guangzhou Cantonese.',
     },
   ],
   userInterests: [

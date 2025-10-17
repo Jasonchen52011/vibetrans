@@ -1,0 +1,153 @@
+{
+  "keyword": "bad translator",
+  "productName": "Bad-Translator Lab",
+  "description": "A web-based playground that deliberately loops text through multiple languages to create hilarious mistranslations – then lets you download, copy or listen to the chaos.",
+  "competitors": [
+    {
+      "name": "Bad Translator!",
+      "url": "https://badtranslator.herokuapp.com",
+      "features": [
+        "一次最多转换56次",
+        "显示每一步的机器翻译结果"
+      ]
+    },
+    {
+      "name": "LingoJam – Bad Translator",
+      "url": "https://lingojam.com/BadTranslator",
+      "features": [
+        "自定义循环次数",
+        "立即复制按钮"
+      ]
+    },
+    {
+      "name": "Translation Party",
+      "url": "https://translationparty.com",
+      "features": [
+        "日英往返直至稳定",
+        "实时动画效果"
+      ]
+    },
+    {
+      "name": "Bad Translator Chrome Extension",
+      "url": "https://chrome.google.com/webstore/detail/bad-translator/...",
+      "features": [
+        "浏览器内即时乱译",
+        "右键菜单快速调用"
+      ]
+    },
+    {
+      "name": "Bad Translator – Language Game (itch.io)",
+      "url": "https://itch.io/…/bad-translator",
+      "features": [
+        "将翻译做成小游戏",
+        "计分与关卡机制"
+      ]
+    },
+    {
+      "name": "r/badtranslator (Subreddit)",
+      "url": "https://www.reddit.com/r/badtranslator/",
+      "features": [
+        "用户投稿翻车案例",
+        "投票决定最佳笑点"
+      ]
+    },
+    {
+      "name": "BadTranslator Bot (Twitter)",
+      "url": "https://twitter.com/BadTranslatorBot",
+      "features": [
+        "自动推送每日乱译",
+        "跟帖互动"
+      ]
+    },
+    {
+      "name": "Wrong Translator (Android)",
+      "url": "https://play.google.com/store/apps/details?id=com.wrongtranslator",
+      "features": [
+        "移动端多语循环",
+        "emoji混入功能"
+      ]
+    },
+    {
+      "name": "Karaoke Bad Translator (YouTube Tool)",
+      "url": "https://karaokebadtranslator.com",
+      "features": [
+        "歌词逐行乱译",
+        "自动生成字幕文件"
+      ]
+    },
+    {
+      "name": "Bad Translator Meme Generator",
+      "url": "https://memegenerator.net/badtranslator",
+      "features": [
+        "模版生成搞笑图片",
+        "字体/颜色自定义"
+      ]
+    }
+  ],
+  "socialTopics": [
+    {
+      "platform": "Reddit",
+      "topic": "What happens if you pass ‘Let It Go’ through 50 languages and back?",
+      "votes": 12600,
+      "summary": "用户将迪士尼歌词反复机翻并上传视频，引发大量围观和模仿。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "Weekly ‘Sentence of the Week’ on r/badtranslator",
+      "votes": 8700,
+      "summary": "版主每周给一句话，大家晒最离谱译文并投票选出冠军。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "What are the funniest mistranslations you have ever seen?",
+      "votes": 4100,
+      "summary": "从路牌到产品说明书，回答者列出经典案例并分析背后原因。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "Why do machine translators fail so badly with idioms?",
+      "votes": 2900,
+      "summary": "技术/语言学爱好者讨论多语义、语境缺失导致的幽默错误。"
+    }
+  ],
+  "funFacts": [
+    "2018 年有人在 Google Translate 中连续输入 “dog” 并将语言设为毛利语，结果机器吐出世界末日预言。",
+    "英语单词 ‘preservative’ 在法语中是避孕套，导致不少食品包装出现“本产品不含安全套”的翻译事故。",
+    "《冰雪奇缘》主题曲经 35 种语言往返后，原句 “Let it go” 变成了 “Give your cow freedom”。",
+    "某研究发现：循环 25 次后，平均句义偏离度可达到 73%，但专有名词仅 18% 会失真。"
+  ],
+  "features": {
+    "basic": [
+      "TXT/DOCX 文件上传",
+      "上传清空",
+      "结果 TXT 下载",
+      "结果一键复制",
+      "语音输入",
+      "语音输出"
+    ],
+    "competitive": [
+      "自定义循环次数",
+      "随机或自选语言路径",
+      "逐步结果可展开/折叠",
+      "双栏原文-译文对照",
+      "稳定检测：译文不再变化时自动停止",
+      "差异高亮（颜色标注改动词汇）"
+    ],
+    "innovative": [
+      "语义漂移评分仪（显示失真百分比）",
+      "动态时间线滑块（拖动查看每一步的文本/音频）",
+      "批量文件模式（一次处理多个文件并打包下载）",
+      "搞笑 TTS：为每一步配不同口音朗读",
+      "文本长度适配器（自动分段避免字符限制）",
+      "隐私沙箱：浏览器本地缓存，不留服务器记录"
+    ]
+  },
+  "useCases": [
+    "内容创作者制作 meme、歌词恶搞或视频脚本",
+    "语言教学课堂演示机器翻译局限",
+    "聚会小游戏/破冰环节",
+    "编剧或作家寻找灵感与错位幽默",
+    "软件本地化团队做错误示范教材"
+  ],
+  "asciiDesign": "+----------------------------------------------------+----------------------------------------------------+\\n|                    INPUT AREA                      |                    OUTPUT AREA                     |\\n|  ┌──────────────────────────────────────────────┐   |  ┌──────────────────────────────────────────────┐   |\\n|  |  Paste / type text here…                     |   |  |  Corrupted translation appears here…         |   |\\n|  |                                              |   |  |                                              |   |\\n|  |                                              |   |  |                                              |   |\\n|  └──────────────────────────────────────────────┘   |  └──────────────────────────────────────────────┘   |\\n|  [🎙 Voice In]  [⬆ Upload TXT/DOCX]  [🧹 Clear]   |   |  [📋 Copy]  [⬇ Download TXT]  [🔊 Voice Out]       |\\n+----------------------------------------------------+----------------------------------------------------+\\n                 ↑                                                        ↓\\n             language loop                                           distorted text\\n                 │                                                        │\\n                 └──────────────   internal multi-lingual hops   ─────────┘"
+}

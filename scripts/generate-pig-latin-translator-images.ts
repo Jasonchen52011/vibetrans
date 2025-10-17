@@ -13,10 +13,10 @@
  * Note: how-to image is generated via screenshot script
  */
 
-import { generateIllustration } from '../src/lib/article-illustrator/image-generator';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import sharp from 'sharp';
+import { generateIllustration } from '../src/lib/article-illustrator/image-generator';
 
 const OUTPUT_DIR = path.join(process.cwd(), 'public', 'images', 'docs');
 
@@ -34,7 +34,7 @@ const imageTasks = [
     description:
       "Fun Fact 1: Pig Latin's Rich History - Dating back to the 1890s, still popular today",
     prompt:
-      'A historical timeline illustration showing Pig Latin\'s journey from 1890s to present. Include vintage elements: old children\'s books from 1890s, Victorian kids playing word games, transitioning through decades with retro toys and games, ending with modern kids using tablets. Time machine concept with sepia tones transitioning to modern colors. Nostalgic yet contemporary. 4:3 aspect ratio.',
+      "A historical timeline illustration showing Pig Latin's journey from 1890s to present. Include vintage elements: old children's books from 1890s, Victorian kids playing word games, transitioning through decades with retro toys and games, ending with modern kids using tablets. Time machine concept with sepia tones transitioning to modern colors. Nostalgic yet contemporary. 4:3 aspect ratio.",
   },
   {
     filename: 'pig-latin-translator-fact-2.webp',

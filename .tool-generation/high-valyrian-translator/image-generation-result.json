@@ -1,0 +1,58 @@
+{
+  "success": true,
+  "totalImages": 7,
+  "successfulImages": 7,
+  "failedImages": 0,
+  "images": [
+    {
+      "section": "whatIs",
+      "title": "What is High Valyrian Translator",
+      "filename": "valyrian-translation-tool.webp",
+      "size": 45,
+      "status": "success"
+    },
+    {
+      "section": "funFacts #1",
+      "title": "Ancient Language Structure",
+      "filename": "valyrian-grammar-fun.webp",
+      "size": 63,
+      "status": "success"
+    },
+    {
+      "section": "funFacts #2",
+      "title": "Magical Linguistic Heritage",
+      "filename": "dragon-language-magic.webp",
+      "size": 42,
+      "status": "success"
+    },
+    {
+      "section": "userInterests #1",
+      "title": "Unmatched Translation Accuracy",
+      "filename": "sword-speech-bubbles.webp",
+      "size": 60,
+      "status": "success"
+    },
+    {
+      "section": "userInterests #2",
+      "title": "Romantic Ceremonial Language",
+      "filename": "valyrian-vows.webp",
+      "size": 46,
+      "status": "success"
+    },
+    {
+      "section": "userInterests #3",
+      "title": "Dialect Mastery",
+      "filename": "valyrian-linguistics-journey.webp",
+      "size": 87,
+      "status": "success"
+    },
+    {
+      "section": "userInterests #4",
+      "title": "Modern Slang Translation",
+      "filename": "slang-translation.webp",
+      "size": 33,
+      "status": "success"
+    }
+  ],
+  "totalTimeMs": 88125
+}

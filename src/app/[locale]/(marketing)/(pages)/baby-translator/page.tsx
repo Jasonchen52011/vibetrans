@@ -302,13 +302,13 @@ export default async function BabyTranslatorPage(
         {/* Explore Other Tools */}
         <ExploreOurAiTools
           toolKeys={[
-        'Dog Translator',
-        'Bad Translator',
-        'Gen Alpha Translator',
-        'Gibberish Translator',
-        'Pig Latin Translator',
-        'Gen Z Translator'
-      ]}
+            'Dog Translator',
+            'Bad Translator',
+            'Gen Alpha Translator',
+            'Gibberish Translator',
+            'Ancient Greek Translator',
+            'Gen Z Translator',
+          ]}
         />
 
         {/* Testimonials */}

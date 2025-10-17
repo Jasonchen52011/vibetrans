@@ -73,11 +73,20 @@ async function generateAudioWithGoogleTTS(text: string, outputPath: string) {
 }
 
 async function main() {
-  console.log('================================================================================');
+  console.log(
+    '================================================================================'
+  );
   console.log('🎤 Minion Audio Sample Generator');
-  console.log('================================================================================\n');
+  console.log(
+    '================================================================================\n'
+  );
 
-  const outputDir = path.join(process.cwd(), 'public', 'audio', 'minion-samples');
+  const outputDir = path.join(
+    process.cwd(),
+    'public',
+    'audio',
+    'minion-samples'
+  );
 
   // 创建输出目录
   if (!fs.existsSync(outputDir)) {
@@ -95,7 +104,10 @@ async function main() {
     console.log(`   Description: ${sample.description}`);
 
     const outputPath = path.join(outputDir, `${sample.id}.mp3`);
-    const success = await generateAudioWithGoogleTTS(sample.minionese, outputPath);
+    const success = await generateAudioWithGoogleTTS(
+      sample.minionese,
+      outputPath
+    );
 
     if (success) {
       successCount++;
@@ -106,20 +118,26 @@ async function main() {
     console.log('');
 
     // 添加延迟，避免 API 限流
-    await new Promise(resolve => setTimeout(resolve, 500));
+    await new Promise((resolve) => setTimeout(resolve, 500));
   }
 
-  console.log('================================================================================');
+  console.log(
+    '================================================================================'
+  );
   console.log('✅ GENERATION COMPLETE');
-  console.log('================================================================================');
+  console.log(
+    '================================================================================'
+  );
   console.log(`✅ Success: ${successCount} files`);
   console.log(`❌ Failed: ${failCount} files`);
   console.log(`📁 Output directory: ${outputDir}`);
-  console.log('================================================================================\n');
+  console.log(
+    '================================================================================\n'
+  );
 
   // 生成示例列表 JSON
   const samplesJson = {
-    samples: MINION_SAMPLES.map(sample => ({
+    samples: MINION_SAMPLES.map((sample) => ({
       ...sample,
       audioUrl: `/audio/minion-samples/${sample.id}.mp3`,
     })),

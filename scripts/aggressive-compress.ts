@@ -2,13 +2,13 @@
  * 进一步压缩剩余的2张图片
  */
 
-import sharp from 'sharp';
-import path from 'node:path';
 import fs from 'node:fs/promises';
+import path from 'node:path';
+import sharp from 'sharp';
 
 const images = [
   'english-cantonese-loanwords.webp',
-  'hongkong-street-slang-culture.webp'
+  'hongkong-street-slang-culture.webp',
 ];
 
 async function aggressiveCompress(imagePath: string): Promise<void> {
@@ -38,7 +38,9 @@ async function aggressiveCompress(imagePath: string): Promise<void> {
     const stats = await fs.stat(tempPath);
     const sizeKB = Math.round(stats.size / 1024);
 
-    console.log(`   尝试 ${attempt}: width=${width}px, quality=${quality}, size=${sizeKB}KB`);
+    console.log(
+      `   尝试 ${attempt}: width=${width}px, quality=${quality}, size=${sizeKB}KB`
+    );
 
     if (sizeKB <= 90) {
       await fs.rename(tempPath, imagePath);
@@ -94,7 +96,7 @@ async function main() {
     'cantonese-tones-musical-system.webp',
     'english-cantonese-loanwords.webp',
     'hongkong-street-slang-culture.webp',
-    'app-integration-whatsapp-wechat.webp'
+    'app-integration-whatsapp-wechat.webp',
   ];
 
   for (const imageName of allImages) {

@@ -110,14 +110,18 @@ function extractProductPlan(researchData) {
   if (!researchData) return '';
 
   // 查找"五、产品规划"或类似的标题
-  const productPlanMatch = researchData.match(/五、产品规划[\s\S]*?(?=(?:六、|七、|八、|$))/);
+  const productPlanMatch = researchData.match(
+    /五、产品规划[\s\S]*?(?=(?:六、|七、|八、|$))/
+  );
 
   if (productPlanMatch) {
     return productPlanMatch[0].trim();
   }
 
   // 如果找不到，尝试查找其他可能的标记
-  const altMatch = researchData.match(/产品规划[\s\S]*?(?=(?:六、|七、|八、|工具类型判断|排除项|$))/);
+  const altMatch = researchData.match(
+    /产品规划[\s\S]*?(?=(?:六、|七、|八、|工具类型判断|排除项|$))/
+  );
 
   if (altMatch) {
     return altMatch[0].trim();
@@ -134,8 +138,16 @@ async function loadResearchData(slug) {
   // 先尝试读取 .txt 文件（旧格式），如果不存在则读取 .json 文件（新格式）
   const researchTxtPath = path.join(CONFIG.outputDir, slug, 'research-raw.txt');
   const researchJsonPath = path.join(CONFIG.outputDir, slug, 'research.json');
-  const contentResearchTxtPath = path.join(CONFIG.outputDir, slug, 'content-research.txt');
-  const contentResearchJsonPath = path.join(CONFIG.outputDir, slug, 'content-research.json');
+  const contentResearchTxtPath = path.join(
+    CONFIG.outputDir,
+    slug,
+    'content-research.txt'
+  );
+  const contentResearchJsonPath = path.join(
+    CONFIG.outputDir,
+    slug,
+    'content-research.json'
+  );
 
   let researchData = null;
   let contentResearchData = null;
@@ -153,7 +165,9 @@ async function loadResearchData(slug) {
       researchData = JSON.stringify(parsed, null, 2);
       logSuccess(`读取产品调研数据 (JSON): ${researchJsonPath}`);
     } catch (jsonError) {
-      logWarning(`未找到产品调研数据: ${researchTxtPath} 或 ${researchJsonPath}`);
+      logWarning(
+        `未找到产品调研数据: ${researchTxtPath} 或 ${researchJsonPath}`
+      );
     }
   }
 
@@ -170,7 +184,9 @@ async function loadResearchData(slug) {
       contentResearchData = JSON.stringify(parsed, null, 2);
       logSuccess(`读取内容调研数据 (JSON): ${contentResearchJsonPath}`);
     } catch (jsonError) {
-      logWarning(`未找到内容调研数据: ${contentResearchTxtPath} 或 ${contentResearchJsonPath}`);
+      logWarning(
+        `未找到内容调研数据: ${contentResearchTxtPath} 或 ${contentResearchJsonPath}`
+      );
     }
   }
 
@@ -196,6 +212,19 @@ async function loadExistingContent(slug) {
  */
 function buildSectionRequirements(sections, keyword) {
   const slug = keyword.toLowerCase().replace(/\s+/g, '-');
+
+  // 🤖 智能翻译工具默认要求（适用于所有语言翻译工具）
+  const intelligentTranslationRequirements = `
+🤖 智能翻译工具核心要求（所有翻译工具必须包含）：
+- 智能语言检测：90%+准确率，实时检测输入语言类型
+- 自动方向切换：根据检测结果自动调整翻译方向（无需手动选择）
+- 多模态支持：文本、图像OCR、音频转写+翻译
+- 专业翻译模式：技术、法律、文学、习语、通用5种模式
+- 标准化API：统一的JSON响应格式和错误处理
+- Edge Runtime：高性能边缘计算优化
+- 置信度反馈：提供检测置信度和语言信息
+`;
+
   let requirements = '';
 
   if (sections.includes('seo')) {
@@ -207,8 +236,6 @@ function buildSectionRequirements(sections, keyword) {
    * **Title 必须包含 "Free" 关键词**
    * **Meta Description 必须包含 "free" 关键词，强调免费使用**
    * Title 长度 ≤ 60 字符；Description 在 120–160 字符之间
-   * 注意：Title 中不要包含品牌名 VibeTrans（系统会自动添加）
-   * 完成后计算这个section每个版本写了多少字符。
 `;
   }
 
@@ -218,18 +245,15 @@ function buildSectionRequirements(sections, keyword) {
    * 直接点明工具名称和主要用途
    * 自然包含目标关键词
    * 不出现品牌名
-   * 完成后计算这个section每个版本写了多少单词。
 `;
   }
 
   if (sections.includes('heroDescription')) {
     requirements += `
-3. 写 H1 下的描述（30–40 单词）
+3. 写 H1 下的描述（20–30 单词）
    * 简要说明工具功能和使用价值
    * 使用对话式语气，突出用户利益
    * **重要：Hero Description 必须完整包含主关键词「${keyword}」，不能拆分或缩写**
-   * 展示品牌词：VibeTrans
-   * 完成后计算这个section每个版本写了多少单词。
 `;
   }
 
@@ -238,9 +262,7 @@ function buildSectionRequirements(sections, keyword) {
 4. 写 "What is ${keyword}" 板块
    * 标题为：What is ${keyword}
    * 正文以 "${keyword} is …" 开头，正面回答问题
-   * 扩展解释功能和应用场景，长度约 70 单词
-   * 展示品牌词：VibeTrans
-   * 完成后计算这个section写了多少单词。
+   * 扩展解释功能和应用场景，长度约 60 单词
 `;
   }
 
@@ -263,8 +285,6 @@ function buildSectionRequirements(sections, keyword) {
      - 名称以动词开头（如 Upload a File）
      - 详细描述 40 词左右，强调操作细节
    * 语言保持简单易懂
-   * 展示品牌词：VibeTrans
-   * 完成后计算这个section写了多少单词。
 `;
   }
 
@@ -276,9 +296,6 @@ function buildSectionRequirements(sections, keyword) {
    * **重要：使用 description 字段存储内容，不要使用 content 字段**
    * **重要：不要在正文内容中包含"(40 words)"这样的字数标注，这些标注不算在字数内**
    * 内容有趣、易懂，和工具或相关主题紧密相关
-   * 写作中增加个人情感或主观评论（如"我喜欢或我认为"）
-   * 写作中包含随意性或独特性（如俚语、轶事）
-   * 展示品牌词：VibeTrans
    * 基于上面的调研数据，融入用户关心的话题和高频关键词
    * 必须确保每个正文内容本身就有40个完整的词（不包括任何标注）
 `;
@@ -288,15 +305,11 @@ function buildSectionRequirements(sections, keyword) {
     requirements += `
 8. 写 4 个用户可能感兴趣的内容板块 (User Interest / Unique Section)
    * 4个小板块的大板块标题: "Discover More with VibeTrans"
-   * 每个包含标题 + 正文（严格要求 68-72 词，最好是正好 70 词）
-   * **重要：不要在正文内容中包含"(70 words)"这样的字数标注，这些标注不算在字数内**
-   * 写作中增加个人情感或主观评论（如"我喜欢或我认为"）
-   * 写作中包含随意性或独特性（如俚语、轶事）
-   * 展示品牌词：VibeTrans
+   * 每个包含标题 + 正文（严格要求 48-52 词，最好是正好 50 词）
+   * **重要：不要在正文内容中包含"(50 words)"这样的字数标注，这些标注不算在字数内**
    * 文案要切入用户关注点：功能、痛点、应用场景或优势
    * 基于上面的调研数据，解决用户真正关心的问题
    * 自然融入调研中发现的高频关键词
-   * 必须确保每个正文内容本身就有70个完整的词（不包括任何标注）
 `;
   }
 
@@ -306,8 +319,8 @@ function buildSectionRequirements(sections, keyword) {
    * 板块的标题
    * 4个产品特点的文案，5选4（简单免费使用、数据准确性、数据隐私安全、AI的对上下文的理解、更多解释）
    * 为每个特点写一个简短的标题
-   * 写40单词左右的说明
-   * 展示品牌词：VibeTrans
+   * 写30-40单词左右的说明
+   * 我们不存储用户数据
 `;
   }
 
@@ -333,7 +346,7 @@ function buildSectionRequirements(sections, keyword) {
       5. 例如："To translate a document with VibeTrans, follow these steps: Step 1, upload your text file. Step 2, choose your settings. Step 3, click Translate. Step 4, download your results."
       6. 语言直接、正面、清晰
       7. 完成后计算这个section写了多少单词
-      8. 默认有的问题：这个软件免费吗？我们的隐私如何？
+      8. 默认有的问题：这个xxx（软件名称）免费吗？我们的隐私如何？
 `;
   }
 
@@ -522,6 +535,114 @@ function buildJSONFormat(sections, keyword) {
 }
 
 /**
+ * 验证个人化表达
+ */
+function validatePersonalExpressions(data, sections) {
+  const personalExpressionIssues = [];
+  const personalPatterns = [
+    /\bI think\b/gi,
+    /\bI love\b/gi,
+    /\bI believe\b/gi,
+    /\bI feel\b/gi,
+    /\bPersonally\b/gi,
+    /\bIn my opinion\b/gi,
+    /\bI find\b/gi,
+    /\bI prefer\b/gi,
+    /\bI like\b/gi,
+    /\bI enjoy\b/gi,
+    /\bMy favorite\b/gi,
+    /\bFrom my perspective\b/gi,
+  ];
+
+  function checkPersonalExpressions(
+    content,
+    sectionName,
+    fieldName = 'content'
+  ) {
+    if (!content) return;
+
+    personalPatterns.forEach((pattern) => {
+      const matches = content.match(pattern);
+      if (matches) {
+        personalExpressionIssues.push(
+          `${sectionName}.${fieldName}: 发现 ${matches.length} 处个人化表达 "${pattern.source}"`
+        );
+      }
+    });
+  }
+
+  // 检查各个section的内容
+  if (sections.includes('heroDescription') && data.heroDescription) {
+    checkPersonalExpressions(data.heroDescription.content, 'Hero Description');
+  }
+
+  if (sections.includes('whatIs') && data.whatIs) {
+    checkPersonalExpressions(data.whatIs.content, 'What Is');
+  }
+
+  if (sections.includes('funFacts') && data.funFacts) {
+    data.funFacts.forEach((fact, index) => {
+      checkPersonalExpressions(
+        fact.description,
+        `Fun Facts ${index + 1}`,
+        'description'
+      );
+    });
+  }
+
+  if (
+    (sections.includes('unique') || sections.includes('interestingSections')) &&
+    data.unique
+  ) {
+    data.unique.items.forEach((item, index) => {
+      checkPersonalExpressions(
+        item.content,
+        `User Interest ${index + 1}`,
+        'content'
+      );
+    });
+  }
+
+  if (sections.includes('howTo') && data.howTo) {
+    data.howTo.steps.forEach((step, index) => {
+      checkPersonalExpressions(
+        step.description,
+        `How-to Step ${index + 1}`,
+        'description'
+      );
+    });
+  }
+
+  if (sections.includes('highlights') && data.highlights) {
+    data.highlights.features.forEach((feature, index) => {
+      checkPersonalExpressions(
+        feature.description,
+        `Highlight ${index + 1}`,
+        'description'
+      );
+    });
+  }
+
+  if (sections.includes('testimonials') && data.testimonials) {
+    data.testimonials.forEach((testimonial, index) => {
+      checkPersonalExpressions(
+        testimonial.content,
+        `Testimonial ${index + 1}`,
+        'content'
+      );
+    });
+  }
+
+  if (sections.includes('faqs') && data.faqs) {
+    data.faqs.forEach((faq, index) => {
+      checkPersonalExpressions(faq.answer, `FAQ ${index + 1}`, 'answer');
+    });
+  }
+
+  return personalExpressionIssues;
+}
+
+/**
  * 验证字数
  */
 function validateWordCounts(data, sections) {
@@ -529,15 +650,15 @@ function validateWordCounts(data, sections) {
 
   if (sections.includes('heroDescription') && data.heroDescription) {
     const words = data.heroDescription.content.split(/\s+/).length;
-    if (words < 30 || words > 40) {
-      issues.push(`Hero Description: ${words} 词 (要求: 30-40 词)`);
+    if (words < 20 || words > 30) {
+      issues.push(`Hero Description: ${words} 词 (要求: 20-30 词)`);
     }
   }
 
   if (sections.includes('whatIs') && data.whatIs) {
     const words = data.whatIs.content.split(/\s+/).length;
-    if (words < 68 || words > 72) {
-      issues.push(`What Is: ${words} 词 (要求: 70 词)`);
+    if (words < 58 || words > 62) {
+      issues.push(`What Is: ${words} 词 (要求: 60 词)`);
     }
   }
 
@@ -546,17 +667,24 @@ function validateWordCounts(data, sections) {
       const words = fact.description.split(/\s+/).length;
       // 允许 ±5 词的误差范围
       if (words < 33 || words > 47) {
-        issues.push(`Fun Fact ${index + 1}: ${words} 词 (要求: 38-42 词，±5可接受)`);
+        issues.push(
+          `Fun Fact ${index + 1}: ${words} 词 (要求: 38-42 词，±5可接受)`
+        );
       }
     });
   }
 
-  if ((sections.includes('unique') || sections.includes('interestingSections')) && data.unique) {
+  if (
+    (sections.includes('unique') || sections.includes('interestingSections')) &&
+    data.unique
+  ) {
     data.unique.items.forEach((item, index) => {
       const words = item.content.split(/\s+/).length;
       // 允许 ±5 词的误差范围
-      if (words < 63 || words > 77) {
-        issues.push(`User Interest ${index + 1}: ${words} 词 (要求: 68-72 词，±5可接受)`);
+      if (words < 43 || words > 57) {
+        issues.push(
+          `User Interest ${index + 1}: ${words} 词 (要求: 48-52 词，±5可接受)`
+        );
       }
     });
   }
@@ -573,8 +701,8 @@ function validateWordCounts(data, sections) {
   if (sections.includes('highlights') && data.highlights) {
     data.highlights.features.forEach((feature, index) => {
       const words = feature.description.split(/\s+/).length;
-      if (words < 38 || words > 42) {
-        issues.push(`Highlight ${index + 1}: ${words} 词 (要求: 40 词)`);
+      if (words < 28 || words > 42) {
+        issues.push(`Highlight ${index + 1}: ${words} 词 (要求: 30-40 词)`);
       }
     });
   }
@@ -617,10 +745,11 @@ async function updateEnJson(slug, generatedData, sections) {
   }
 
   // 获取页面命名空间
-  const pageName = slug
-    .split('-')
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join('') + 'Page';
+  const pageName =
+    slug
+      .split('-')
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join('') + 'Page';
 
   if (!existingContent[pageName]) {
     logError(`en.json 中未找到 ${pageName} 命名空间`);
@@ -640,7 +769,8 @@ async function updateEnJson(slug, generatedData, sections) {
   }
 
   if (sections.includes('heroDescription') && generatedData.heroDescription) {
-    existingContent[pageName].hero.description = generatedData.heroDescription.content;
+    existingContent[pageName].hero.description =
+      generatedData.heroDescription.content;
     logSuccess('✓ 已更新 Hero Description (hero.description)');
   }
 
@@ -674,7 +804,7 @@ async function updateEnJson(slug, generatedData, sections) {
           const existingItem = existingFunFacts?.items?.[index];
           return {
             title: fact.title,
-            description: fact.description,  // ← 使用 description
+            description: fact.description, // ← 使用 description
             // 保留现有的图片字段
             ...(existingItem?.image && { image: existingItem.image }),
             ...(existingItem?.imageAlt && { imageAlt: existingItem.imageAlt }),
@@ -693,7 +823,7 @@ async function updateEnJson(slug, generatedData, sections) {
           const existingItem = existingUserScenarios?.items?.[index];
           return {
             title: fact.title,
-            description: fact.description,  // ← 使用 description
+            description: fact.description, // ← 使用 description
             // 保留现有的图片字段
             ...(existingItem?.image && { image: existingItem.image }),
             ...(existingItem?.imageAlt && { imageAlt: existingItem.imageAlt }),
@@ -704,21 +834,27 @@ async function updateEnJson(slug, generatedData, sections) {
     }
   }
 
-  if ((sections.includes('unique') || sections.includes('interestingSections')) && generatedData.unique) {
+  if (
+    (sections.includes('unique') || sections.includes('interestingSections')) &&
+    generatedData.unique
+  ) {
     // 同时更新 unique 和 userInterest 两个字段（不同页面可能使用不同的字段名）
 
     // 1. 更新 userInterest 字段（主字段，页面代码读取）
     if (existingContent[pageName].userInterest) {
       const existingUserInterest = existingContent[pageName].userInterest;
       existingContent[pageName].userInterest = {
-        title: existingUserInterest.title || 'Discover More with VibeTrans',  // 保留原 title
-        subtitle: existingUserInterest.subtitle || 'Tailored Solutions for Users',
-        description: existingUserInterest.description || 'Exploring unique features and capabilities',
+        title: existingUserInterest.title || 'Discover More with VibeTrans', // 保留原 title
+        subtitle:
+          existingUserInterest.subtitle || 'Tailored Solutions for Users',
+        description:
+          existingUserInterest.description ||
+          'Exploring unique features and capabilities',
         items: generatedData.unique.items.map((item, index) => {
           const existingItem = existingUserInterest?.items?.[index];
           return {
             title: item.title,
-            description: item.content,  // ← unique 的 content 映射到 userInterest 的 description
+            description: item.content, // ← unique 的 content 映射到 userInterest 的 description
             // 保留现有的图片字段
             ...(existingItem?.image && { image: existingItem.image }),
             ...(existingItem?.imageAlt && { imageAlt: existingItem.imageAlt }),
@@ -732,14 +868,16 @@ async function updateEnJson(slug, generatedData, sections) {
     if (existingContent[pageName].unique) {
       const existingUnique = existingContent[pageName].unique;
       existingContent[pageName].unique = {
-        title: existingUnique.title || 'Discover More with VibeTrans',  // 保留原 title
+        title: existingUnique.title || 'Discover More with VibeTrans', // 保留原 title
         subtitle: existingUnique.subtitle || 'Tailored Solutions for Users',
-        description: existingUnique.description || 'Exploring unique features and capabilities',
+        description:
+          existingUnique.description ||
+          'Exploring unique features and capabilities',
         items: generatedData.unique.items.map((item, index) => {
           const existingItem = existingUnique?.items?.[index];
           return {
             title: item.title,
-            content: item.content,  // ← unique 字段保持使用 content
+            content: item.content, // ← unique 字段保持使用 content
             // 保留现有的图片字段
             ...(existingItem?.image && { image: existingItem.image }),
             ...(existingItem?.imageAlt && { imageAlt: existingItem.imageAlt }),
@@ -813,7 +951,8 @@ async function updateEnJson(slug, generatedData, sections) {
       title: generatedData.cta.title,
       description: generatedData.cta.description,
       primaryButton: existingContent[pageName].cta?.primaryButton || 'Try Now',
-      secondaryButton: existingContent[pageName].cta?.secondaryButton || 'Back to Top',
+      secondaryButton:
+        existingContent[pageName].cta?.secondaryButton || 'Back to Top',
     };
     logSuccess('✓ 已更新 CTA');
   }
@@ -855,7 +994,9 @@ async function regenerateSections(keyword, sections) {
 
   // 处理别名
   if (sectionsToGenerate.includes('interestingSections')) {
-    sectionsToGenerate = sectionsToGenerate.map(s => s === 'interestingSections' ? 'unique' : s);
+    sectionsToGenerate = sectionsToGenerate.map((s) =>
+      s === 'interestingSections' ? 'unique' : s
+    );
   }
 
   log('\n🔄 VibeTrans Section 内容重新生成器', 'bright');
@@ -894,12 +1035,29 @@ ${productPlanOnly}
 ${contentResearchData}
 `;
 
-  const sectionsRequirement = buildSectionRequirements(sectionsToGenerate, keyword);
+  const sectionsRequirement = buildSectionRequirements(
+    sectionsToGenerate,
+    keyword
+  );
   const jsonFormat = buildJSONFormat(sectionsToGenerate, keyword);
+
+  // 🤖 智能翻译工具默认要求（适用于所有语言翻译工具）
+  const intelligentTranslationRequirements = `
+🤖 智能翻译工具核心要求（所有翻译工具必须包含）：
+- 智能语言检测：90%+准确率，实时检测输入语言类型
+- 自动方向切换：根据检测结果自动调整翻译方向（无需手动选择）
+- 多模态支持：文本、图像OCR、音频转写+翻译
+- 专业翻译模式：技术、法律、文学、习语、通用5种模式
+- 标准化API：统一的JSON响应格式和错误处理
+- Edge Runtime：高性能边缘计算优化
+- 置信度反馈：提供检测置信度和语言信息
+`;
 
   const prompt = `你现在是一个英文 SEO 文案写手，参考以下调研数据。帮我为「${keyword}」重新生成指定section的内容，要求如下：
 
 ${sectionsRequirement}
+
+${intelligentTranslationRequirements}
 
 请记住背景信息：
 
@@ -914,13 +1072,12 @@ ${contentResearchSummary}
 4. 每个板块尽可能多给细节，避免空洞描述
 5. 每个板块内容避免重复，保持独特信息点
 6. 文案中自然融入上面调研得到的高频关键词，但始终优先考虑可读性
-7. 写作中增加个人情感或主观评论（如"我喜欢，我认为"）
-8. 写作中包含随意性或独特性（如俚语、轶事）
-9. 写作中包含更多个人经验或权威建议
 10. 不要使用emoji或icon
 11. **严格遵守字数要求，不要在内容中加入"(30 words)"或"(50 words)"这样的标注**
 12. 最后检查：去掉所有标注后，每个content字段的实际单词数必须符合要求
-13. **特别注意：unique section的每个item需要写足60词左右，可以通过增加更多细节、例子、个人体验来达到字数**
+13. **特别注意：unique section的每个item需要写足60词左右，可以通过增加更多细节、例子、实用信息来达到字数**
+14. **严禁使用个人化表达：避免使用 "I think", "I love", "I believe", "I feel", "Personally", "In my opinion" 等个人主观表达**
+15. **保持客观中立：内容应基于事实、功能和用户价值，而非个人感受或观点**
 
 **重要：请严格按照下面的JSON格式输出，字段名必须完全一致！**
 
@@ -958,19 +1115,39 @@ ${jsonFormat}`;
     throw error;
   }
 
-  // 3. 验证字数
+  // 3. 验证字数和个人化表达
   log('\n' + '='.repeat(60), 'cyan');
-  log('✔️  Step 3: 验证字数', 'bright');
+  log('✔️  Step 3: 验证字数和个人化表达', 'bright');
   log('='.repeat(60), 'cyan');
 
-  const issues = validateWordCounts(contentData, sectionsToGenerate);
+  const wordCountIssues = validateWordCounts(contentData, sectionsToGenerate);
+  const personalExpressionIssues = validatePersonalExpressions(
+    contentData,
+    sectionsToGenerate
+  );
 
-  if (issues.length > 0) {
-    logWarning(`发现 ${issues.length} 个字数问题:`);
-    issues.forEach((issue) => logWarning(`  - ${issue}`));
-    logWarning('\n建议: 手动调整或重新运行脚本');
+  // 显示字数验证结果
+  if (wordCountIssues.length > 0) {
+    logWarning(`发现 ${wordCountIssues.length} 个字数问题:`);
+    wordCountIssues.forEach((issue) => logWarning(`  - ${issue}`));
   } else {
     logSuccess('✅ 所有字数都符合要求！');
+  }
+
+  // 显示个人化表达验证结果
+  if (personalExpressionIssues.length > 0) {
+    logError(`❌ 发现 ${personalExpressionIssues.length} 处个人化表达:`);
+    personalExpressionIssues.forEach((issue) => logError(`  - ${issue}`));
+    logError('\n⚠️  严重问题：内容包含个人化表达，需要重新生成！');
+    logInfo('建议：重新运行脚本或手动修改内容');
+  } else {
+    logSuccess('✅ 内容通过个人化表达检查！');
+  }
+
+  // 如果发现个人化表达，阻止继续执行
+  if (personalExpressionIssues.length > 0) {
+    logError('\n❌ 内容质量检查失败，停止更新！');
+    process.exit(1);
   }
 
   // 4. 自动更新 en.json
@@ -1015,8 +1192,12 @@ async function main() {
 
   if (!keyword || !sectionsArg) {
     logError('请提供关键词和sections参数');
-    logInfo('使用方法: node scripts/regenerate-section-content.js "pig latin translator" "unique,funFacts"');
-    logInfo('或使用: node scripts/regenerate-section-content.js "pig latin translator" "all"');
+    logInfo(
+      '使用方法: node scripts/regenerate-section-content.js "pig latin translator" "unique,funFacts"'
+    );
+    logInfo(
+      '或使用: node scripts/regenerate-section-content.js "pig latin translator" "all"'
+    );
     logInfo('');
     logInfo('可用的sections:');
     logInfo('  - seo (SEO标题和描述)');
@@ -1035,7 +1216,7 @@ async function main() {
     process.exit(1);
   }
 
-  const sections = sectionsArg.split(',').map(s => s.trim());
+  const sections = sectionsArg.split(',').map((s) => s.trim());
 
   try {
     await regenerateSections(keyword, sections);

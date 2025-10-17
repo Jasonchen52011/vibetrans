@@ -1,0 +1,221 @@
+{
+  "AramaicTranslatorPage": {
+    "title": "Aramaic Translator: Fast, Accurate, and Easy",
+    "description": "Explore the Aramaic translator for quick and accurate translations across multiple dialects. Perfect for text, voice, and more.",
+    "hero": {
+      "title": "Aramaic Translator for Text and Voice",
+      "description": "Want to decode ancient Aramaic? VibeTrans makes it effortless! Whether for academic research or cultural exploration, our tool helps you translate quickly, enhancing your knowledge depth and cultural understanding."
+    },
+    "tool": {
+      "inputLabel": "Input Text",
+      "outputLabel": "Translated Text",
+      "inputPlaceholder": "Enter your text here...",
+      "outputPlaceholder": "Translation will appear here...",
+      "translateButton": "Translate",
+      "uploadButton": "Upload File",
+      "uploadHint": "Supports .txt and .docx files",
+      "loading": "Translating...",
+      "error": "Translation failed. Please try again.",
+      "noInput": "Please enter some text to translate."
+    },
+    "whatIs": {
+      "title": "What is Aramaic Translator",
+      "description": "Aramaic Translator is a sophisticated tool designed to translate Aramaic texts seamlessly into modern languages. By utilizing advanced algorithms and linguistic expertise, it ensures high accuracy and context comprehension. Ideal for scholars, historians, and enthusiasts, Aramaic Translator simplifies the translation process, preserving cultural heritage. With VibeTrans technology, users gain access to intuitive features that enhance productivity and understanding, making it an essential resource for bridging ancient and contemporary worlds.",
+      "image": "/images/docs/aramaic-translation-bridge.webp",
+      "imageAlt": "What is aramaic-translator - Visual explanation"
+    },
+    "examples": {
+      "title": "Translation Examples",
+      "description": "Discover how Aramaic-Translator-Pro can handle everything from ancient texts to modern-day conversations. See examples of Biblical translations or Neo-Aramaic dialogues effortlessly converted.",
+      "items": [
+        {
+          "alt": "ܐܒܪܐܡ ܠܟ → Abraam Lakh",
+          "name": "Biblical Name"
+        },
+        {
+          "alt": "ܫܠܡܐ ܥܠܝܟ → Shlama Aloykh",
+          "name": "Peace Greeting"
+        },
+        {
+          "alt": "ܐܠܗܐ ܐܒܐ → Ala Aba",
+          "name": "Father God"
+        },
+        {
+          "alt": "ܡܫܝܚܐ ܕܐܠܗܐ → Meshikha d'Alaha",
+          "name": "Messiah of God"
+        },
+        {
+          "alt": "ܒܪܝܟ ܐܠܗܐ → Brikh Alaha",
+          "name": "Bless God"
+        },
+        {
+          "alt": "ܐܬܐ ܒܕܝܟ → Atha Bdakh",
+          "name": "Come in Peace"
+        }
+      ]
+    },
+    "howto": {
+      "title": "How to Use Aramaic-Translator-Pro",
+      "description": "Get started with easy steps.",
+      "image": "/images/docs/aramaic-translator-how-to.webp",
+      "imageAlt": "How to use Aramaic Translator step by step guide",
+      "steps": [
+        {
+          "title": "Upload Your Text",
+          "description": "Click the 'Upload' button to select and add text files for translation. Ensure the file format is supported, such as TXT or DOCX. After uploading, the filename will display on the interface. Confirm everything is correct, then click confirm to continue the translation process."
+        },
+        {
+          "title": "Select Dialect",
+          "description": "Before translation, please select the desired Aramaic dialect from the dropdown menu. Carefully review the options to ensure you choose the correct dialect that matches your target text, ensuring translation accuracy. Click confirm to proceed to the next step."
+        },
+        {
+          "title": "Review Translations",
+          "description": "Carefully review the translated content to ensure accuracy. Compare the original text with the translation, paying attention to grammar, vocabulary, and sentence structure. Use online tools or dictionaries to verify difficult words. Read multiple times to ensure the translation is clear, fluent, and contextually appropriate."
+        },
+        {
+          "title": "Download Results",
+          "description": "Click the download button in the top right corner of the page and select your desired file format, such as PDF or TXT. After confirming your selection, the system will begin downloading. Once complete, the file will automatically save to your default download folder, ensuring file integrity and accessibility."
+        }
+      ]
+    },
+    "funFacts": {
+      "title": "Interesting Facts",
+      "items": [
+        {
+          "title": "Aramaic's Hollywood Connection",
+          "description": "Did you know some lines in the movie 'The Passion of the Christ' are in Aramaic? This sparked a renewed interest in learning the ancient language, and fans were eager to understand these authentic biblical phrases.",
+          "image": "/images/docs/aramaic-history-fun.webp",
+          "imageAlt": "Fun fact 1"
+        },
+        {
+          "title": "Aramaic's Longevity",
+          "description": "Aramaic is over 3,000 years old and is still spoken in parts of the world today. It’s amazing how a language can survive through centuries, maintaining its roots while evolving with modern dialects like Neo-Aramaic.",
+          "image": "/images/docs/aramaic-history-chat.webp",
+          "imageAlt": "Fun fact 2"
+        }
+      ]
+    },
+    "userInterest": {
+      "title": "Explore More with VibeTrans",
+      "items": [
+        {
+          "title": "Dialect-Specific Translations",
+          "description": "Ever wondered how Aramaic from different regions sounds? With VibeTrans, it's like tuning into a cultural radio! Picture this: an ancient party where dialects chat like old pals. Some say it's like hearing music where you least expect it. Dive in, and you'll be the cool cat with Aramaic dialects in your back pocket!",
+          "image": "/images/docs/dialect-party.webp",
+          "imageAlt": "Dialect-Specific Translations"
+        },
+        {
+          "title": "Tattoo Translation Pitfalls",
+          "description": "Thinking of getting an Aramaic tattoo? Be careful not to end up with \"curry chicken\" instead of \"courage\"! At VibeTrans, we've seen too many translation disasters. Trust professionals to avoid embarrassment—after all, tattoos aren't just casual doodles. Make your tattoo a conversation starter at the bar, not a joke!",
+          "image": "/images/docs/tattoo-fail.webp",
+          "imageAlt": "Tattoo Translation Pitfalls"
+        },
+        {
+          "title": "Certified Human Translators",
+          "description": "At VibeTrans, our certified human translators are like rock stars of language! They not only translate Aramaic like native speakers but also infuse your text with vitality and personality. Unlike the rigid machine translation, these translators make every word and phrase dance with rhythm. Want a translation experience that stands out? Our translation team is definitely your best partner!",
+          "image": "/images/docs/language-rockstars.webp",
+          "imageAlt": "Certified Human Translators"
+        },
+        {
+          "title": "Interactive Transliteration",
+          "description": "Ever thought translation could be as fun as playing piano? VibeTrans' 'Interactive Transliteration' is just such a magical tool! It brings ancient Aramaic to life instantly, breaking your traditional impressions of language. Join us and experience language magic—don't let translation be a boring task anymore, embark on a fantastic journey of words!",
+          "image": "/images/docs/language-piano.webp",
+          "imageAlt": "Interactive Transliteration"
+        }
+      ]
+    },
+    "highlights": {
+      "title": "Why Choose Aramaic-Translator-Pro",
+      "items": [
+        {
+          "title": "Simple and Free to Use",
+          "description": "VibeTrans provides a worry-free translation experience. With just a few simple steps, you can get precise Aramaic translations. No complex settings or hidden fees—VibeTrans enables every user to easily access the language support they need."
+        },
+        {
+          "title": "Data Accuracy",
+          "description": "VibeTrans ensures excellent data accuracy through advanced machine learning algorithms and expert verification for seamless Aramaic translation. Our platform combines real-time updates with precise language processing."
+        },
+        {
+          "title": "AI Context Understanding",
+          "description": "VibeTrans' AI context understanding feature accurately captures text background and subtle nuances, ensuring translations precisely match the original meaning. Whether for daily conversations or complex literature."
+        },
+        {
+          "title": "Data Privacy and Security",
+          "description": "VibeTrans is committed to ensuring user data privacy and security. We use advanced encryption technology to protect information confidentiality and strictly comply with data protection regulations."
+        }
+      ],
+      "description": "Discover the powerful features that make our Aramaic translator the best choice for scholars, students, and language enthusiasts"
+    },
+    "testimonials": {
+      "title": "What Our Users Are Saying",
+      "subtitle": "Real feedback from real users",
+      "items": {
+        "item-1": {
+          "name": "Emily Johnson",
+          "role": "Language Enthusiast",
+          "heading": "Perfect for Language Learners",
+          "content": "I discovered Aramaic-Translator-Pro while trying to learn Aramaic for a personal project. The interactive transliteration feature is a lifesaver, helping me understand complex scripts. Now, I can confidently read and even write in various Aramaic scripts. It's a game changer!"
+        },
+        "item-2": {
+          "name": "Michael Thompson",
+          "role": "Theology Student",
+          "heading": "A Must for Biblical Studies",
+          "content": "As a theology student, Aramaic-Translator-Pro has been invaluable for my scripture studies. The tool's accurate translation and pronunciation guides make it easy to delve into ancient texts. My professors were impressed with how well I understood the material."
+        },
+        "item-3": {
+          "name": "Sarah Williams",
+          "role": "Tattoo Artist",
+          "heading": "Reliable for Tattoo Scripts",
+          "content": "I often get requests for Aramaic tattoos, and Aramaic-Translator-Pro ensures I get it right every time. The verification feature is a relief, preventing embarrassing mistakes. My clients trust me more, knowing their tattoos are accurate and meaningful."
+        },
+        "item-4": {
+          "name": "Daniel Lewis",
+          "role": "Software Developer",
+          "heading": "Great for Development Projects",
+          "content": "I used Aramaic-Translator-Pro's API for a project on ancient languages. Its ability to handle bulk document translations is impressive. The seamless integration saved me a lot of time, allowing my team to focus on other development aspects. Highly recommended!"
+        },
+        "item-5": {
+          "name": "Olivia Martinez",
+          "role": "Academic Researcher",
+          "heading": "Essential for Research",
+          "content": "Aramaic-Translator-Pro has been my go-to tool for linguistic research. Its comprehensive dialect support and script conversion features are unmatched. The OCR function even handles ancient manuscripts, a crucial feature for my historical studies."
+        },
+        "item-6": {
+          "name": "James Brown",
+          "role": "History Teacher",
+          "heading": "Enhances Classroom Learning",
+          "content": "I introduced Aramaic-Translator-Pro to my students during our unit on ancient languages. It made the lessons engaging, allowing students to hear authentic pronunciations and see text translations instantly. The interactive features sparked their curiosity and enthusiasm."
+        }
+      }
+    },
+    "faqs": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Have other questions? Feel free to contact us via email.",
+      "items": {
+        "item-1": {
+          "question": "Is the software free?",
+          "answer": "The Aramaic translator is available in both free and premium versions. The free version offers basic translation capabilities, while the premium version provides advanced features and support. You can start with the free version to explore its basic functionalities."
+        },
+        "item-2": {
+          "question": "How do I translate a document?",
+          "answer": "To translate a document, first upload your file to our platform. Next, select the target language, in this case, Aramaic. Then, click 'Translate' to initiate the process. Finally, download your translated document once the translation is complete."
+        },
+        "item-3": {
+          "question": "How is my privacy protected?",
+          "answer": "Your privacy is our priority. We use advanced encryption to safeguard your data. Access is restricted to authorized personnel only. Regular audits and updates are conducted to ensure security. We never share your information with third parties without your consent."
+        },
+        "item-4": {
+          "question": "Can I translate audio files?",
+          "answer": "Yes, you can translate audio files using our Aramaic translator. Simply upload your audio file to our platform. Our system will process the audio and provide you with a text translation. Ensure your audio is clear for the best results."
+        }
+      }
+    },
+    "ctaButton": "Try AramaicTranslator Now",
+    "cta": {
+      "title": "Start Your Translation with VibeTrans",
+      "description": "Experience the power of Aramaic translation today with VibeTrans. Get started now!",
+      "primaryButton": "Try AramaicTranslator Now",
+      "secondaryButton": "Back to Top"
+    }
+  }
+}

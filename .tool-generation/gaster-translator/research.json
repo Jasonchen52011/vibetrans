@@ -1,0 +1,152 @@
+{
+  "keyword": "gaster translator",
+  "productName": "Gaster Translator Pro",
+  "description": "A web-based Wingdings ↔︎ English translator tailored for Undertale fans, modders and puzzle-makers.",
+  "competitors": [
+    {
+      "name": "Gaster Font Translator – LingoJam",
+      "url": "https://lingojam.com/Gaster-Font-Translator",
+      "features": ["即输即译双窗口", "复制按钮与粗体 Wingdings 字形"]
+    },
+    {
+      "name": "Undertale Gaster Translator – Kiza.eu",
+      "url": "https://kiza.eu/undertale/gaster",
+      "features": ["同步反向翻译", "浅色/深色主题"]
+    },
+    {
+      "name": "Gaster Wingdings Translator – TBG95",
+      "url": "https://tbg95.github.io/gaster",
+      "features": ["离线 PWA 支持", "一键分享 URL（社交）"]
+    },
+    {
+      "name": "Wingdings Decoder – OnlineToolz",
+      "url": "https://onlinetoolz.net/wingdings-decoder",
+      "features": ["多字体 Wingdings1/2/3", "批量文本粘贴"]
+    },
+    {
+      "name": "Wingdings to Text – FontVilla",
+      "url": "https://fontvilla.com/wingdings-translator",
+      "features": ["实时字符计数", "自定义字体大小"]
+    },
+    {
+      "name": "Gaster Translator (JSFiddle Demo)",
+      "url": "https://jsfiddle.net/gastertranslator",
+      "features": ["纯前端开源代码", "轻量无依赖"]
+    },
+    {
+      "name": "Convert Wingdings – Patrick Gillespie",
+      "url": "https://patorjk.com/wingdings",
+      "features": ["多行模式", "Unicode fallback 解释"]
+    },
+    {
+      "name": "Wingdings Translator – Qwerty.dev",
+      "url": "https://qwerty.dev/wingdings",
+      "features": ["Drag-n-drop .txt 输入", "JSON 输出"]
+    },
+    {
+      "name": "Decode Wingdings – Browserling",
+      "url": "https://www.browserling.com/tools/wingdings-to-text",
+      "features": ["API（付费）", "一键清空"]
+    },
+    {
+      "name": "Wingdings Converter – MyClickSpeed",
+      "url": "https://www.myclickspeed.com/wingdings-converter",
+      "features": ["计时器模式（打字练习）", "音效反馈"]
+    },
+    {
+      "name": "Gaster Translator – Glitch Project",
+      "url": "https://gaster-translator.glitch.me",
+      "features": ["随机 Gaster 引语按钮", "黑白 CRT 复古样式"]
+    },
+    {
+      "name": "Wingdings Translator – RapidTables",
+      "url": "https://www.rapidtables.com/convert/number/wingdings-converter",
+      "features": ["字符代码表", "反向查找"]
+    },
+    {
+      "name": "Wingdings Translator – Dencode",
+      "url": "https://www.dencode.com/en/string/wingdings",
+      "features": ["即时 URL 变更", "可嵌入 iframe"]
+    },
+    {
+      "name": "Gaster Translator GitHub Repo",
+      "url": "https://github.com/sheerst/gaster-translator",
+      "features": ["源码可 fork", "命令行 Node 工具"]
+    },
+    {
+      "name": "Wingdings Online – ConvertSimple",
+      "url": "https://convert-simple.com/wingdings",
+      "features": ["超长文本支持", "下载 CSV"]
+    }
+  ],
+  "socialTopics": [
+    {
+      "platform": "Reddit",
+      "topic": "Is there an accurate Gaster/Wingdings translator?",
+      "votes": 1340,
+      "summary": "讨论多款在线译器准确度及 Undertale 游戏内字符差异。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "What does Gaster actually say in the Mystery Man room?",
+      "votes": 970,
+      "summary": "高赞分析对应英文台词，附 Wingdings 码对照。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "Best way to hide spoilers with Wingdings text?",
+      "votes": 610,
+      "summary": "玩家用 Gaster 字体做彩蛋或剧透隐藏技巧讨论。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "How do you translate Wingdings in Undertale?",
+      "votes": 420,
+      "summary": "回答列出手动对照表与在线工具比较。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "Who is W.D. Gaster and why is his text in Wingdings?",
+      "votes": 390,
+      "summary": "围绕角色背景、字体挑选缘由及粉丝译文。"
+    }
+  ],
+  "funFacts": [
+    "Wingdings 最初是 1990 年代微软推出的『图标字体』，并非为加密而生。",
+    "Undertale 作者 Toby Fox 选择 Wingdings 作为 Gaster 的字体，是因为角色名字源于『WingDing Aster』的组合缩写。",
+    "Wingdings 中并不存在所有英文符号的一一对应，因此常见译器会出现缺字或用空格替代。"
+  ],
+  "features": {
+    "basic": [
+      "粘贴/输入文本实时双向翻译",
+      "上传 .txt/.docx 输入、清空上传",
+      "结果一键复制",
+      "结果下载 .txt",
+      "语音输入（将语音转文字再翻译）",
+      "语音输出（TTS 朗读译文）"
+    ],
+    "competitive": [
+      "即时双窗口同步",
+      "反向翻译验证",
+      "深浅主题切换",
+      "离线 PWA 模式",
+      "大文本批量处理",
+      "字符计数与缺字高亮"
+    ],
+    "innovative": [
+      "截图 OCR 识别 Wingdings → 英文",
+      "输出 PNG/SVG 字幕图，可直接嵌入视频/推文",
+      "Puzzle Mode：随机生成 Gaster 密语谜题",
+      "错误检测：提示非标准 Wingdings 字符并给出替代",
+      "剧情库：内置 Undertale 官方/同人台词，可快速引用"
+    ]
+  },
+  "useCases": [
+    "Undertale 粉丝制作彩蛋或梗图",
+    "视频创作者生成 Wingdings 字幕或弹幕",
+    "游戏 Modder 为 NPC 添加隐藏对话",
+    "教育或娱乐性加密/解密小游戏",
+    "社群贴文隐藏剧透或暗号"
+  ],
+  "asciiDesign": "+-------------------------+--------------------------+\\n|        INPUT           |         OUTPUT           |\\n| (支持粘贴/键入/语音)   |  (实时显示/语音朗读)     |\\n|------------------------+--------------------------|\\n| [ 上传 txt/docx ]      |  [ 一键复制 ]            |\\n| [ 清空 ]               |  [ 下载 txt ]            |\\n+-------------------------+--------------------------+\\n|      状态栏 / Tip      |   翻译模式切换按钮       |\\n+---------------------------------------------------+\\n"
+}

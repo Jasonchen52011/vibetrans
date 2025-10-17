@@ -2,9 +2,9 @@
  * 使用 Sharp 强制压缩图片到指定大小
  */
 
-import sharp from 'sharp';
-import path from 'node:path';
 import fs from 'node:fs/promises';
+import path from 'node:path';
+import sharp from 'sharp';
 
 const TARGET_SIZE_KB = 85; // 目标 85KB，留点余量
 
@@ -13,17 +13,22 @@ const images = [
   'cantonese-tones-musical-system.webp',
   'english-cantonese-loanwords.webp',
   'hongkong-street-slang-culture.webp',
-  'app-integration-whatsapp-wechat.webp'
+  'app-integration-whatsapp-wechat.webp',
 ];
 
-async function compressImage(imagePath: string, targetSizeKB: number): Promise<void> {
+async function compressImage(
+  imagePath: string,
+  targetSizeKB: number
+): Promise<void> {
   const imageName = path.basename(imagePath);
 
   // 读取原始文件大小
   const beforeStats = await fs.stat(imagePath);
   const beforeSizeKB = Math.round(beforeStats.size / 1024);
 
-  console.log(`📸 压缩: ${imageName} (${beforeSizeKB}KB → 目标${targetSizeKB}KB)`);
+  console.log(
+    `📸 压缩: ${imageName} (${beforeSizeKB}KB → 目标${targetSizeKB}KB)`
+  );
 
   let quality = 75; // 起始质量
   let attempt = 0;
@@ -34,9 +39,7 @@ async function compressImage(imagePath: string, targetSizeKB: number): Promise<v
 
     // 压缩图片
     const tempPath = imagePath + '.temp';
-    await sharp(imagePath)
-      .webp({ quality, effort: 6 })
-      .toFile(tempPath);
+    await sharp(imagePath).webp({ quality, effort: 6 }).toFile(tempPath);
 
     // 检查文件大小
     const stats = await fs.stat(tempPath);

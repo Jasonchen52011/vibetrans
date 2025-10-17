@@ -1,0 +1,14 @@
+```json
+{
+  "funFacts": [
+    {
+      "title": "Al Bhed Language Origins",
+      "description": "Al Bhed is not a real language but a monoalphabetic cipher. It simply replaces English letters with Al Bhed counterparts, making it easy to decode and perfect for adding mystery to your Final Fantasy experience."
+    },
+    {
+      "title": "In-Game Al Bhed Primer Hunt",
+      "description": "In Final Fantasy X, collecting all 26 Al Bhed Primers unlocks English translations for dialogue. Miss Primer 19 in Bevelle Temple? You can only retrieve it later by flying back, adding a fun challenge for completionists."
+    }
+  ]
+}
+```

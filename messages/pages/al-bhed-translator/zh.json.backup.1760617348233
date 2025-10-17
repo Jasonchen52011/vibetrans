@@ -1,0 +1,223 @@
+{
+  "AlBhedTranslatorPage": {
+    "title": "Al Bhed 翻译器 – 英文与最终幻想 X 的 Al Bhed 语言互译工具",
+    "description": "免费的 Al Bhed 翻译器，支持英文与 Al Bhed 语言互译。为最终幻想 X 粉丝和密码爱好者提供文件上传功能。",
+    "hero": {
+      "title": "Al Bhed 翻译器 – 英文与 Al Bhed 语言即时互译",
+      "description": "探索最终幻想 X 中神秘的 Al Bhed 语言。使用我们的免费翻译工具，即时将英文翻译为 Al Bhed。"
+    },
+    "tool": {
+      "inputLabel": "英文",
+      "alBhedLabel": "Al Bhed",
+      "outputLabel": "英文",
+      "inputPlaceholder": "在此输入或粘贴您的英文文本...",
+      "alBhedPlaceholder": "在此输入 Al Bhed 文本...",
+      "outputPlaceholder": "翻译结果将显示在这里",
+      "translateButton": "翻译",
+      "uploadButton": "上传文件",
+      "uploadHint": "支持格式：.txt, .docx",
+      "loading": "翻译中...",
+      "error": "翻译失败，请重试",
+      "noInput": "请输入一些文本"
+    },
+    "whatIs": {
+      "title": "什么是 Al Bhed 翻译器？",
+      "description": "Al Bhed 翻译器是一款专业工具，用于翻译英文与最终幻想 X 中的虚构语言 Al Bhed。它使用简单的替换密码系统，帮助粉丝解码 Al Bhed 信息并创建自己的秘密通信。"
+    },
+    "examples": {
+      "title": "Al Bhed 翻译示例",
+      "description": "看看英文单词如何转换成神秘的 Al Bhed 语言。非常适合最终幻想粉丝和密码爱好者！"
+    },
+    "howto": {
+      "title": "如何使用 Al Bhed 翻译器",
+      "description": "按照以下简单步骤在英文和 Al Bhed 语言之间进行翻译。",
+      "steps": [
+        {
+          "title": "上传文件",
+          "description": "将您的 txt 或 Word 文件拖放到工具中。翻译器将即时处理您的文本。"
+        },
+        {
+          "title": "输入文本",
+          "description": "在输入框中输入或粘贴您的文本。支持英文和 Al Bhed 文本。"
+        },
+        {
+          "title": "选择翻译方向",
+          "description": "一键切换英文到 Al Bhed 或 Al Bhed 到英文的翻译方向。"
+        },
+        {
+          "title": "点击翻译按钮",
+          "description": "点击翻译按钮，使用 Al Bhed 密码即时转换您的文本。"
+        }
+      ]
+    },
+    "funfacts": {
+      "title": "关于 Al Bhed 的趣事",
+      "items": [
+        {
+          "title": "最终幻想 X 的语言",
+          "description": "Al Bhed 是最终幻想 X 中 Al Bhed 民族使用的语言。它为游戏的叙事和世界观增添了神秘感和深度。"
+        },
+        {
+          "title": "简单替换密码",
+          "description": "Al Bhed 使用直接的字母替换系统，每个英文字母映射到特定的 Al Bhed 字符，使其成为编码秘密消息的完美密码。"
+        }
+      ]
+    },
+    "userInterest": {
+      "title": "谁在使用 Al Bhed 翻译器？",
+      "subtitle": "非常适合游戏玩家和密码爱好者",
+      "description": "从最终幻想爱好者到密码学习者",
+      "items": [
+        {
+          "title": "最终幻想粉丝",
+          "description": "解码游戏中的 Al Bhed 信息，深入了解最终幻想 X 的丰富传说。通过掌握 Al Bhed 语言，在更深层次上体验游戏。"
+        },
+        {
+          "title": "学习 Al Bhed 语言",
+          "description": "研究 Al Bhed 密码系统，了解替换密码的工作原理。这是理解基础密码学概念的绝佳教育工具。"
+        },
+        {
+          "title": "创建秘密消息",
+          "description": "使用 Al Bhed 向朋友发送编码消息。非常适合创建谜题、游戏或为您的通信增添神秘感。"
+        },
+        {
+          "title": "Cosplay 和角色扮演",
+          "description": "使用真实的 Al Bhed 对话增强您的最终幻想 Cosplay 或角色扮演。在展会和活动中像真正的 Al Bhed 角色一样说话。"
+        }
+      ]
+    },
+    "highlights": {
+      "title": "为什么使用我们的 Al Bhed 翻译器？",
+      "description": "快速、准确且完全免费的 Al Bhed 翻译",
+      "items": [
+        {
+          "title": "即时翻译",
+          "description": "使用最终幻想 X 的真实密码系统即时获得 Al Bhed 翻译。无需等待，无延迟。"
+        },
+        {
+          "title": "100% 准确",
+          "description": "使用最终幻想 X 的官方 Al Bhed 替换密码，每次都能实现完美的翻译准确性。"
+        },
+        {
+          "title": "免费且无需注册",
+          "description": "完全免费使用，无需注册。无障碍即刻开始翻译。"
+        },
+        {
+          "title": "文件支持",
+          "description": "上传 .txt 和 .docx 文件进行批量翻译。非常适合翻译较长的文档或游戏对话。"
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "用户评价",
+      "subtitle": "Al Bhed 粉丝的真实反馈",
+      "items": {
+        "item-1": {
+          "name": "Alex Thompson",
+          "role": "最终幻想粉丝",
+          "content": "这个 Al Bhed 翻译器太棒了！我终于可以理解 FFX 中所有的 Al Bhed 对话，而不用收集所有的入门书。粉丝必备工具！"
+        },
+        "item-2": {
+          "name": "Sarah Martinez",
+          "role": "Cosplayer",
+          "content": "我用这个工具来准备 Rikku 的 Cosplay！能够将短语翻译成 Al Bhed 让我的角色扮演更加真实。太喜欢了！"
+        },
+        "item-3": {
+          "name": "Mike Chen",
+          "role": "游戏爱好者",
+          "content": "非常适合了解游戏背景！这个翻译器帮我解码了最终幻想 X 中所有的 Al Bhed 标志和信息。强烈推荐！"
+        },
+        "item-4": {
+          "name": "Emma Wilson",
+          "role": "RPG 玩家",
+          "content": "超级好用且准确。我一直用它为我的龙与地下城战役创建 Al Bhed 消息。玩家们都很喜欢这种神秘感！"
+        },
+        "item-5": {
+          "name": "David Park",
+          "role": "内容创作者",
+          "content": "非常适合我的最终幻想内容！我用这个翻译器制作缩略图和视频描述。它增添了真实的 FFX 气息。"
+        },
+        "item-6": {
+          "name": "Lisa Rodriguez",
+          "role": "游戏玩家",
+          "content": "这个工具是救星！再也不用费力手动解码 Al Bhed 了。快速、准确且免费。还能要求什么呢？"
+        },
+        "item-7": {
+          "name": "Ryan Foster",
+          "role": "主播",
+          "content": "我在 FFX 直播时使用这个工具为观众翻译 Al Bhed。大家都很喜欢，让直播更有互动性！"
+        },
+        "item-8": {
+          "name": "Maria Santos",
+          "role": "最终幻想收藏家",
+          "content": "作为收藏家，我很欣赏这个工具的细节。这个翻译器使用的正是游戏中的确切密码。绝对完美！"
+        },
+        "item-9": {
+          "name": "Tom Anderson",
+          "role": "密码爱好者",
+          "content": "替换密码的绝佳入门！我用这个工具教我的学生基础密码学。简单但有效。"
+        },
+        "item-10": {
+          "name": "Jessica Lee",
+          "role": "展会组织者",
+          "content": "我们在最终幻想主题活动中使用这个工具。参与者喜欢创建 Al Bhed 谜题和消息。很棒的工具！"
+        },
+        "item-11": {
+          "name": "Chris Miller",
+          "role": "速通玩家",
+          "content": "即使作为一个跳过对话的速通玩家，这个工具也帮我理解了故事。快速翻译让学习背景变得简单。"
+        },
+        "item-12": {
+          "name": "Amanda Taylor",
+          "role": "艺术家",
+          "content": "我创作最终幻想同人画，这个工具帮我在作品中添加真实的 Al Bhed 文本。准确度令人印象深刻！"
+        }
+      }
+    },
+    "faqs": {
+      "title": "常见问题",
+      "subtitle": "关于 Al Bhed 翻译的常见问题",
+      "items": {
+        "item-1": {
+          "question": "这个翻译器免费吗？",
+          "answer": "是的！我们的 Al Bhed 翻译器完全免费使用，无隐藏费用或注册要求。"
+        },
+        "item-2": {
+          "question": "Al Bhed 翻译有多准确？",
+          "answer": "100% 准确！我们使用最终幻想 X 的官方 Al Bhed 替换密码，确保每次翻译都完美无误。"
+        },
+        "item-3": {
+          "question": "可以翻译文件吗？",
+          "answer": "可以！上传 .txt 或 .docx 文件，我们会即时翻译整个内容。非常适合较长的文本或游戏对话。"
+        },
+        "item-4": {
+          "question": "什么是 Al Bhed 语言？",
+          "answer": "Al Bhed 是最终幻想 X 中的虚构语言，由 Al Bhed 民族使用。它使用简单的字母替换密码系统。"
+        },
+        "item-5": {
+          "question": "Al Bhed 密码如何工作？",
+          "answer": "Al Bhed 使用替换密码，每个英文字母都被替换为不同的字母。例如，A 变成 Y，B 变成 P，依此类推。"
+        },
+        "item-6": {
+          "question": "我可以用这个工具来 Cosplay 吗？",
+          "answer": "当然可以！许多 Cosplayer 使用我们的翻译器为他们的 Rikku 或其他 Al Bhed 角色创建真实的对话。"
+        },
+        "item-7": {
+          "question": "有字符限制吗？",
+          "answer": "您一次最多可以翻译 10,000 个字符，对于包括游戏对话和消息在内的大多数用例来说已经足够了。"
+        },
+        "item-8": {
+          "question": "它会保留格式吗？",
+          "answer": "会的！翻译器会保留空格、标点符号和换行符，只翻译字母字符。"
+        }
+      }
+    },
+    "cta": {
+      "title": "立即开始翻译 Al Bhed",
+      "description": "准备好解开最终幻想 X 的神秘面纱了吗？立即尝试我们的 Al Bhed 翻译器，解锁这门迷人语言的秘密！",
+      "primaryButton": "立即试用 Al Bhed 翻译器",
+      "secondaryButton": "返回顶部"
+    },
+    "ctaButton": "立即试用 Al Bhed 翻译器"
+  }
+}

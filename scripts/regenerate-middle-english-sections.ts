@@ -10,8 +10,8 @@
  * ✅ Auto-updates page.tsx
  */
 
-import { runEnhancedWorkflow } from '../src/lib/article-illustrator/enhanced-workflow';
 import path from 'path';
+import { runEnhancedWorkflow } from '../src/lib/article-illustrator/enhanced-workflow';
 
 const config = {
   toolName: 'middle-english-translator',

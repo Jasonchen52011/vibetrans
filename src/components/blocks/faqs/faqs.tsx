@@ -143,7 +143,9 @@ export default function FaqSection({
                               <ol className="space-y-2 list-none">
                                 {steps.map((step, idx) => (
                                   <li key={idx} className="flex gap-2">
-                                    <span className="font-medium whitespace-nowrap">{step.label}:</span>
+                                    <span className="font-medium whitespace-nowrap">
+                                      {step.label}:
+                                    </span>
                                     <span>{step.content}</span>
                                   </li>
                                 ))}
@@ -154,7 +156,9 @@ export default function FaqSection({
                       }
 
                       // Regular answer without steps
-                      return <p className="whitespace-pre-line">{item.answer}</p>;
+                      return (
+                        <p className="whitespace-pre-line">{item.answer}</p>
+                      );
                     })()}
                   </div>
                 </AccordionContent>

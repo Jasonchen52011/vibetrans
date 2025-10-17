@@ -30,7 +30,7 @@
       "description": "Explore practical translation examples with detailed explanations. See how VibeTrans accurately translates Creole phrases while preserving meaning and cultural context.",
       "items": [
         {
-          "alt": "Haitian Creole: 'Mwen renmen manje bannann fri ak pwa kole'\n\nEnglish: 'I love eating fried plantains with red beans and rice'\n\nExplanation: This translation captures Haitian cuisine terminology. 'Mwen' (I) uses Creole's simplified pronoun system. 'Renmen' (love) comes from French 'aimer'. 'Bannann fri' directly translates plantain + fried, showing Creole's straightforward compound structure. 'Pwa kole' (literally 'beans stuck') is the cultural term for the national dish of rice and beans cooked together.",
+          "alt": "Haitian Creole: 'Mwen renmen manje bannann fri ak pwa kole'\n\nEnglish: 'Users love eating fried plantains with red beans and rice'\n\nExplanation: This translation captures Haitian cuisine terminology. 'Mwen' (I) uses Creole's simplified pronoun system. 'Renmen' (love) comes from French 'aimer'. 'Bannann fri' directly translates plantain + fried, showing Creole's straightforward compound structure. 'Pwa kole' (literally 'beans stuck') is the cultural term for the national dish of rice and beans cooked together.",
           "name": "Haitian Creole Food"
         },
         {

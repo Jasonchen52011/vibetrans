@@ -46,25 +46,29 @@ function translateToPigLatin(text: string): string {
   // Split text into words while preserving punctuation
   const words = text.match(/\b[\w']+\b|[^\w\s]/g) || [];
 
-  return words.map(token => {
-    // If token is punctuation or whitespace, return as is
-    if (!/\w/.test(token)) {
-      return token;
-    }
+  return words
+    .map((token) => {
+      // If token is punctuation or whitespace, return as is
+      if (!/\w/.test(token)) {
+        return token;
+      }
 
-    // Check if the word starts with uppercase
-    const isCapitalized = /^[A-Z]/.test(token);
+      // Check if the word starts with uppercase
+      const isCapitalized = /^[A-Z]/.test(token);
 
-    // Convert to Pig Latin
-    let pigLatinWord = convertToPigLatin(token);
+      // Convert to Pig Latin
+      let pigLatinWord = convertToPigLatin(token);
 
-    // Restore capitalization
-    if (isCapitalized && pigLatinWord.length > 0) {
-      pigLatinWord = pigLatinWord.charAt(0).toUpperCase() + pigLatinWord.slice(1).toLowerCase();
-    }
+      // Restore capitalization
+      if (isCapitalized && pigLatinWord.length > 0) {
+        pigLatinWord =
+          pigLatinWord.charAt(0).toUpperCase() +
+          pigLatinWord.slice(1).toLowerCase();
+      }
 
-    return pigLatinWord;
-  }).join('');
+      return pigLatinWord;
+    })
+    .join('');
 }
 
 export async function POST(request: Request) {

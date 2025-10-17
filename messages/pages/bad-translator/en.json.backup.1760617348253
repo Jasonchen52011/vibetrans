@@ -1,0 +1,204 @@
+{
+  "BadTranslatorPage": {
+    "title": "Bad Translator: Enjoy Fun and Quirky Mistranslations",
+    "description": "Get ready for laughs with Bad Translator! Create bizarre, humorous translations in multiple languages for fun, social media, and marketing purposes.",
+    "hero": {
+      "title": "Bad Translator: Transform Text into Fun and Absurd Results",
+      "description": "Bad Translator lets you create hilarious translations with just a few clicks. Use it for fun, memes, or creative projects with VibeTrans."
+    },
+    "tool": {
+      "inputLabel": "Original Text",
+      "outputLabel": "Bad Translation",
+      "inputPlaceholder": "Enter your text here...",
+      "outputPlaceholder": "Your hilariously mistranslated text will appear here...",
+      "translateButton": "Translate Badly",
+      "uploadButton": "Upload File",
+      "uploadHint": "Support .txt and .docx",
+      "downloadButton": "Download",
+      "resetButton": "Reset",
+      "loading": "Translating...",
+      "error": "Translation failed. Please try again.",
+      "noInput": "Please enter some text to translate",
+      "iterationsLabel": "Translation Rounds",
+      "styleLabel": "Translation Style",
+      "styles": {
+        "humor": "Humor (5-7 rounds)",
+        "absurd": "Absurd (10-15 rounds)",
+        "funny": "Funny (8-12 rounds)",
+        "chaos": "Chaos (15-20 rounds)"
+      }
+    },
+    "whatIs": {
+      "title": "What is Bad Translator?",
+      "description": "Bad Translator is a fun online tool that transforms your text into hilarious, absurd translations. Simply choose your language pair and start translating. Perfect for humor, social media, and creative content with VibeTrans."
+    },
+    "examples": {
+      "title": "Funny Translation Examples",
+      "description": "Check out these hilarious examples of how Bad Translator turns ordinary sentences into laugh-worthy translations. Try it out and see what absurd results you can get!"
+    },
+    "howto": {
+      "title": "How to Use Bad Translator",
+      "description": "Follow these simple steps to turn your text into funny translations with Bad Translator from VibeTrans.",
+      "steps": [
+        {
+          "title": "Enter Your Text",
+          "description": "Paste or type the text you want to translate into the text box."
+        },
+        {
+          "title": "Select Language Pair",
+          "description": "Choose the languages you want to translate from and to."
+        },
+        {
+          "title": "Set Translation Count",
+          "description": "Choose how many translations you'd like to generate (5, 10, or more)."
+        },
+        {
+          "title": "Enjoy the Results",
+          "description": "Click \"Translate\" and enjoy the absurd, funny outcome."
+        }
+      ]
+    },
+    "highlights": {
+      "title": "Key Highlights of Bad Translator",
+      "description": "",
+      "items": [
+        {
+          "title": "Easy & Free to Use",
+          "description": "Bad Translator is a free tool that's simple to use. Just input text and enjoy the results with VibeTrans."
+        },
+        {
+          "title": "Accurate in its Own Way",
+          "description": "While the translations are purposely funny, they're consistently unpredictable. Get the humor you need with each translation."
+        },
+        {
+          "title": "Secure and Private",
+          "description": "Your translations are private. We value your data security at VibeTrans—no worries about your text being stored."
+        },
+        {
+          "title": "Unlimited Fun",
+          "description": "There's no limit to the number of funny translations you can create. Keep experimenting with different languages and styles for endless amusement."
+        }
+      ]
+    },
+    "funFacts": {
+      "title": "Fun Translation Facts",
+      "items": [
+        {
+          "title": "Mistranslation Marvels",
+          "description": "Did you know? Translating Disney's 'Let It Go' through 35 languages results in 'Give your cow freedom.' Machine translation loops can turn simple text into hilarious chaos!"
+        },
+        {
+          "title": "Translation Twists",
+          "description": "Here's a funny twist: English word 'preservative' translates as 'condom' in French. This leads to amusing packaging mishaps stating, 'This product contains no condoms.'"
+        }
+      ]
+    },
+    "userInterests": {
+      "title": "Discover More",
+      "sections": [
+        {
+          "title": "How Accurate is Bad Translator?",
+          "content": "While the translations are intentionally humorous and sometimes absurd, you can expect some fun 'mistakes'! This tool isn't about accuracy—it's all about having a laugh! These translations serve as a great way to spark creativity for memes or social posts."
+        },
+        {
+          "title": "Perfect for Social Media Content",
+          "content": "Bad Translator can be a goldmine for funny posts. Use it to generate quirky translations and share them on social media for instant reactions. This tool creates attention-grabbing, shareable content that drives engagement!"
+        },
+        {
+          "title": "Great for Advertisers",
+          "content": "If you're in advertising, you can use Bad Translator to create playful, out-of-the-box content that will entertain your audience. It's an ideal tool for brainstorming catchy slogans or taglines. Testing different combinations always yields entertaining results!"
+        },
+        {
+          "title": "For Meme Creators and Influencers",
+          "content": "Bad Translator can help meme creators generate funny phrases that go viral. The bizarre translations are perfect for creating trending content. The ease of turning any sentence into something absurd makes this tool indispensable for content creators."
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "What Our Users Are Saying",
+      "subtitle": "Real feedback from real users",
+      "items": {
+        "item-1": {
+          "name": "John Anderson",
+          "role": "High School Teacher",
+          "heading": "A Classroom Favorite",
+          "content": "Bad-Translator Lab has become a classroom favorite! My students love seeing how a simple text can morph into something so funny. It’s a great tool to demonstrate the limits of machine translation. Their laughter is the best indicator of engagement."
+        },
+        "item-2": {
+          "name": "Lisa Brown",
+          "role": "Content Creator",
+          "heading": "Inspiration for Creative Content",
+          "content": "Using Bad-Translator Lab for meme creation is pure gold! I toss in a simple sentence, loop it through languages, and watch the hilarious results unfold. It’s a fantastic way to spark creativity and engage my audience with unexpected twists."
+        },
+        "item-3": {
+          "name": "Michael Johnson",
+          "role": "Linguistics Student",
+          "heading": "A Linguistic Playground",
+          "content": "For a linguistics student like me, Bad-Translator Lab is a playground. I experiment with idioms, watching as they hilariously transform. It's insightful to see where machine translations falter, and it’s great for sparking discussions in class."
+        },
+        "item-4": {
+          "name": "Emily Davis",
+          "role": "Software Developer",
+          "heading": "Fun with Code and Translation",
+          "content": "I use Bad-Translator Lab to test language processing in my apps. By inputting text and observing the funny outcomes, I gain insights into language handling. It’s both entertaining and educational, offering unexpected twists that help refine my code."
+        },
+        "item-5": {
+          "name": "David Smith",
+          "role": "Freelance Writer",
+          "heading": "A Source of Writing Inspiration",
+          "content": "Bad-Translator Lab is my secret weapon for writer's block. I input text, run it through countless loops, and the resulting chaos often inspires new story ideas. The unpredictable translations provide fresh perspectives and plenty of humor to lighten my day."
+        },
+        "item-6": {
+          "name": "Sarah Wilson",
+          "role": "Marketing Specialist",
+          "heading": "Unique Marketing Tool",
+          "content": "In marketing, creativity is key. Bad-Translator Lab turns mundane phrases into hilarious translations, sparking new campaign ideas. It’s an unconventional tool, but it's helped me think outside the box and find humor in the unexpected twists of language."
+        }
+      }
+    },
+    "faqs": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "",
+      "items": {
+        "item-1": {
+          "question": "Is Bad Translator free to use?",
+          "answer": "Yes, Bad Translator is completely free! You can use it to create funny, absurd translations without any cost. Enjoy all the features without worrying about hidden fees."
+        },
+        "item-2": {
+          "question": "How does Bad Translator work?",
+          "answer": "Bad Translator works by taking your text, translating it through multiple languages, and producing funny, sometimes absurd, translations. Simply input your text and choose your language pair to get started."
+        },
+        "item-3": {
+          "question": "Is my data safe with Bad Translator?",
+          "answer": "Yes, your data is secure. We don't store any of your inputted text, and your translations are private. VibeTrans ensures your privacy while using Bad Translator."
+        },
+        "item-4": {
+          "question": "How many languages does Bad Translator support?",
+          "answer": "Bad Translator supports a variety of languages, and you can experiment with different language combinations. The more languages you try, the more hilarious results you get!"
+        },
+        "item-5": {
+          "question": "Can I use Bad Translator for business purposes?",
+          "answer": "Absolutely! Bad Translator can be used to generate fun content for marketing campaigns, social media posts, or even creative brainstorming sessions. It's perfect for adding humor to your business content."
+        },
+        "item-6": {
+          "question": "Can I download my translations?",
+          "answer": "Yes, you can easily download the translations as a text file. Perfect for saving and sharing with friends, colleagues, or posting on social media!"
+        },
+        "item-7": {
+          "question": "How many translation rounds should I use?",
+          "answer": "The number of rounds affects how absurd your translation gets. For mild humor, try 5-7 rounds. For maximum chaos, go for 15-20 rounds! Experiment to find your perfect level of weirdness."
+        },
+        "item-8": {
+          "question": "Can I save my favorite translations?",
+          "answer": "Yes! You can download any translation as a text file, copy it to your clipboard, or share it directly on social media. All your hilarious results are just a click away!"
+        }
+      }
+    },
+    "cta": {
+      "title": "Start Creating Hilarious Translations with Bad Translator",
+      "description": "Have fun and create absurd translations now with Bad Translator. It's quick, easy, and completely free with VibeTrans!",
+      "primaryButton": "Start Bad Translating"
+    },
+    "ctaButton": "Try Bad Translator Now"
+  }
+}

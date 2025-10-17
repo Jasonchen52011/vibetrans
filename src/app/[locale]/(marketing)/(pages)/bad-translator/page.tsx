@@ -383,13 +383,13 @@ export default async function BadTranslatorPage(props: BadTranslatorPageProps) {
         {/* Explore Other Tools */}
         <ExploreOurAiTools
           toolKeys={[
-        'Dog Translator',
-        'Baby Translator',
-        'Gen Z Translator',
-        'Gibberish Translator',
-        'Alien Text Generator',
-        'Verbose Generator'
-      ]}
+            'Gibberish Translator',
+            'Bad Translator',
+            'Dog Translator',
+            'Gen Z Translator',
+            'Gen Alpha Translator',
+            'Ancient Greek Translator',
+          ]}
         />
 
         {/* Testimonials Section */}

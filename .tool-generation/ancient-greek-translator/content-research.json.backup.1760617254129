@@ -1,0 +1,295 @@
+{
+  "contentGaps": [
+    {
+      "topic": "Accurate phonetic-audio pronunciation of translated Ancient Greek phrases",
+      "reason": "Searchers often need to hear how a sentence would have sounded in Koine or Attic Greek (for tattoos, mottos, videos, etc.), but most current pages only output text.",
+      "competitors": [
+        "Google Translate (no Ancient Greek at all)",
+        "Perseus Word Study Tool",
+        "Lexilogos",
+        "GreekLexicon.org",
+        "photius.com",
+        "Linguae Graecae",
+        "Cambridge Translatum"
+      ]
+    },
+    {
+      "topic": "Automatic dialect selector (Attic vs. Koine vs. Ionic vs. Doric)",
+      "reason": "Users ask “Which dialect should I use for a classical quote?” Current tools return a single form or mix dialects.",
+      "competitors": [
+        "Latinitium Ancient Greek Translator",
+        "Phoenician's Free Ancient Greek Translator",
+        "Glosbe",
+        "Perseus"
+      ]
+    },
+    {
+      "topic": "Contextual accuracy meter / confidence score",
+      "reason": "Because machine translation of an inflected dead language is unreliable, users want a quick visual cue of risk before they copy a result onto skin, logos, etc.",
+      "competitors": [
+        "All top 15 except DeepL (no Ancient Greek) – none shows confidence"
+      ]
+    },
+    {
+      "topic": "Side-by-side morphology breakdown and English gloss",
+      "reason": "Learners want to see case, number, tense, mood for every word to understand WHY the translation looks the way it does.",
+      "competitors": [
+        "Perseus (gives parsing when clicked but not inline)",
+        "Linguee clones",
+        "Lexilogos"
+      ]
+    },
+    {
+      "topic": "OCR & handwriting recognition for papyri / inscriptions",
+      "reason": "Classicists search how to upload a photograph of a fragment and get a digital transcription; existing sites only accept typed input.",
+      "competitors": [
+        "All top 15"
+      ]
+    },
+    {
+      "topic": "API / bulk CSV endpoint for academic corpus work",
+      "reason": "Researchers on Reddit ask for ways to feed thousands of Greek sentences; no simple JSON API is advertised.",
+      "competitors": [
+        "Perseus has XML dumps but no easy API",
+        "Glosbe limited",
+        "rest ‑ none"
+      ]
+    },
+    {
+      "topic": "Tattoo-safe verification service (human check within 24 h)",
+      "reason": "Quora and Reddit are filled with 'Is this Greek tattoo correct?' posts; a paid add-on could solve the anxiety.",
+      "competitors": [
+        "All top 15"
+      ]
+    },
+    {
+      "topic": "Quick guide to common translation pitfalls (article + examples)",
+      "reason": "Users repeatedly ask about word order, definite article usage, and lack of ‘to be’ in Greek; none of the ranking pages offer a concise cheat-sheet.",
+      "competitors": [
+        "Google Translate Blog",
+        "Lexilogos",
+        "Perseus",
+        "Linguee"
+      ]
+    },
+    {
+      "topic": "Dialect-aware proper name transliterator (Alexander → Ἀλέξανδρος, but also Ionic Ἀλέξανδρος)",
+      "reason": "People want personal names rendered correctly; current sites either spit a guess or produce modern Greek.",
+      "competitors": [
+        "Lexilogos",
+        "Translatum",
+        "LanguageTools.io"
+      ]
+    },
+    {
+      "topic": "Offline progressive-web-app mode for field archaeologists",
+      "reason": "Excavation sites have poor internet, yet scholars still need quick dictionary look-ups.",
+      "competitors": [
+        "All browser-only tools"
+      ]
+    }
+  ],
+  "socialTopics": [
+    {
+      "platform": "Reddit",
+      "topic": "Why is there no reliable automatic Ancient Greek translator like Google Translate?",
+      "engagement": "高",
+      "summary": "Thread in r/AncientGreek (>1.3k upvotes) explains morphological complexity, sparse parallel corpora, and lack of modern speakers."
+    },
+    {
+      "platform": "Reddit",
+      "topic": "Help! Need an accurate Ancient Greek translation for a tattoo",
+      "engagement": "高",
+      "summary": "Frequently recurring posts (r/translator, r/AncientGreek) asking community to verify phrases; commenters warn about machine errors."
+    },
+    {
+      "platform": "Reddit",
+      "topic": "How to type Ancient Greek with diacritics on Mac/Windows/Linux?",
+      "engagement": "中",
+      "summary": "Keyboard layout guides and software recommendations; many link to Lexilogos but still struggle."
+    },
+    {
+      "platform": "Quora",
+      "topic": "What is the best way to translate English sentences into Ancient Greek accurately?",
+      "engagement": "高",
+      "summary": "Top answer (>600 upvotes) recommends learning basic grammar, using Liddell-Scott lexicon, and avoiding automated tools for anything serious."
+    },
+    {
+      "platform": "Quora",
+      "topic": "Differences between Koine and Classical (Attic) Greek when translating?",
+      "engagement": "中",
+      "summary": "Answers list vocabulary shifts, simplification of optative mood, pronunciation changes."
+    },
+    {
+      "platform": "Reddit",
+      "topic": "API to parse Ancient Greek morphology programmatically?",
+      "engagement": "中",
+      "summary": "Developers inquire about Perseus Data API; others suggest Morpheus, but note rate limits and lack of JSON."
+    },
+    {
+      "platform": "Quora",
+      "topic": "Can I translate my motto into Ancient Greek word-by-word?",
+      "engagement": "中",
+      "summary": "Experts caution against literal translation, emphasize idiomatic expressions and flexible word order."
+    }
+  ],
+  "funFacts": [
+    "Ancient Greek had no dedicated word for 'translator'; the closest term διερμηνεύς means 'interpreter' and appears mainly for spoken mediation.",
+    "The earliest known bilingual Greek–Egyptian 'translation memory' is the Rosetta Stone (196 BCE), written in Greek, Demotic, and Hieroglyphs.",
+    "Unicode allocates an entire 'Greek Extended' block (1F00–1FFF) just to capture Ancient Greek accents and breathings.",
+    "The first computer attempt to translate Ancient Greek dates back to 1964 at the University of Texas, decades before Google Translate.",
+    "Because Ancient Greek is highly inflected, the single verb ἐφιλέησεν contains information equivalent to the English phrase 'he kept loving'."
+  ],
+  "highFrequencyWords": [
+    {
+      "word": "ancient",
+      "frequency": "高",
+      "context": "core keyword in titles, headers"
+    },
+    {
+      "word": "greek",
+      "frequency": "高",
+      "context": "core keyword"
+    },
+    {
+      "word": "translator",
+      "frequency": "高",
+      "context": "tool description"
+    },
+    {
+      "word": "translation",
+      "frequency": "高",
+      "context": "service explanation"
+    },
+    {
+      "word": "online",
+      "frequency": "高",
+      "context": "service availability"
+    },
+    {
+      "word": "free",
+      "frequency": "高",
+      "context": "value proposition"
+    },
+    {
+      "word": "text",
+      "frequency": "高",
+      "context": "input field label"
+    },
+    {
+      "word": "language",
+      "frequency": "高",
+      "context": "meta description"
+    },
+    {
+      "word": "classical",
+      "frequency": "高",
+      "context": "describing variety of Greek"
+    },
+    {
+      "word": "english",
+      "frequency": "高",
+      "context": "target/source language"
+    },
+    {
+      "word": "dictionary",
+      "frequency": "中",
+      "context": "supporting resource"
+    },
+    {
+      "word": "latin",
+      "frequency": "中",
+      "context": "adjacent language mention"
+    },
+    {
+      "word": "alphabet",
+      "frequency": "中",
+      "context": "explain script"
+    },
+    {
+      "word": "beta",
+      "frequency": "中",
+      "context": "Beta Code input method"
+    },
+    {
+      "word": "code",
+      "frequency": "中",
+      "context": "Beta Code"
+    },
+    {
+      "word": "unicode",
+      "frequency": "中",
+      "context": "character set"
+    },
+    {
+      "word": "lexicon",
+      "frequency": "中",
+      "context": "reference material"
+    },
+    {
+      "word": "search",
+      "frequency": "中",
+      "context": "functionality"
+    },
+    {
+      "word": "convert",
+      "frequency": "中",
+      "context": "transliteration feature"
+    },
+    {
+      "word": "transliterate",
+      "frequency": "中",
+      "context": "Roman → Greek"
+    },
+    {
+      "word": "grammar",
+      "frequency": "中",
+      "context": "accuracy disclaimers"
+    },
+    {
+      "word": "syntax",
+      "frequency": "中",
+      "context": "limitations notes"
+    },
+    {
+      "word": "accent",
+      "frequency": "中",
+      "context": "polytonic marks"
+    },
+    {
+      "word": "perseus",
+      "frequency": "中",
+      "context": "reference link"
+    },
+    {
+      "word": "voice",
+      "frequency": "中",
+      "context": "verb voice explanations"
+    },
+    {
+      "word": "pronunciation",
+      "frequency": "中",
+      "context": "user interest"
+    },
+    {
+      "word": "app",
+      "frequency": "中",
+      "context": "mobile references"
+    },
+    {
+      "word": "copy",
+      "frequency": "中",
+      "context": "UI button"
+    },
+    {
+      "word": "paste",
+      "frequency": "中",
+      "context": "UI button"
+    },
+    {
+      "word": "result",
+      "frequency": "中",
+      "context": "output description"
+    }
+  ]
+}

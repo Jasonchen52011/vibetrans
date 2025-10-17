@@ -2,9 +2,14 @@
 
 import { SpeechToTextButton } from '@/components/ui/speech-to-text-button';
 import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
-import { autoTranslate, detectLanguage } from '@/lib/al-bhed';
+import {
+  autoTranslate,
+  detectLanguage,
+  smartAutoTranslate,
+} from '@/lib/al-bhed';
+import { detectLanguage as smartDetectLanguage } from '@/lib/language-detection';
 import mammoth from 'mammoth';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 interface AlBhedTranslatorToolProps {
   pageData: any;
@@ -20,6 +25,19 @@ export default function AlBhedTranslatorTool({
   const [error, setError] = useState<string | null>(null);
   const [mode, setMode] = useState<'toAlBhed' | 'toEnglish'>('toAlBhed');
   const [fileName, setFileName] = useState<string | null>(null);
+  const [isQuery, setIsQuery] = useState<boolean>(false);
+  const [showExplanation, setShowExplanation] = useState<boolean>(false);
+
+  // 智能语言检测相关状态
+  const [isDetecting, setIsDetecting] = useState<boolean>(false);
+  const [detectedLanguage, setDetectedLanguage] = useState<string>('');
+  const [detectionConfidence, setDetectionConfidence] = useState<number>(0);
+  const [autoMode, setAutoMode] = useState<boolean>(true);
+  const [inputLabel, setInputLabel] = useState<string>('');
+  const [outputLabel, setOutputLabel] = useState<string>('');
+  const [inputPlaceholder, setInputPlaceholder] = useState<string>('');
+  const [outputPlaceholder, setOutputPlaceholder] = useState<string>('');
+  const detectionTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // Handle file upload
   const handleFileUpload = async (
@@ -106,18 +124,24 @@ export default function AlBhedTranslatorTool({
     if (!text.trim()) {
       setError(pageData.tool.noInput);
       setTranslatedText('');
+      setIsQuery(false);
+      setShowExplanation(false);
       return;
     }
 
     setError(null);
 
     try {
-      // Use native Al Bhed translation (no API call needed)
-      const translated = autoTranslate(text);
-      setTranslatedText(translated);
+      // Use smart auto-translate that handles both translation and language queries
+      const result = smartAutoTranslate(text);
+      setTranslatedText(result.result);
+      setIsQuery(result.isQuery);
+      setShowExplanation(result.isQuery);
     } catch (err: any) {
       setError(err.message || 'Translation failed');
       setTranslatedText('');
+      setIsQuery(false);
+      setShowExplanation(false);
     }
   };
 
@@ -138,6 +162,8 @@ export default function AlBhedTranslatorTool({
     setTranslatedText('');
     setFileName(null);
     setError(null);
+    setIsQuery(false);
+    setShowExplanation(false);
   };
 
   // Copy result to clipboard
@@ -313,14 +339,18 @@ export default function AlBhedTranslatorTool({
           <div className="flex-1">
             <div className="flex items-center justify-between mb-3">
               <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">
-                {mode === 'toAlBhed'
-                  ? pageData.tool.alBhedLabel
-                  : pageData.tool.outputLabel}
+                {isQuery
+                  ? 'Al Bhed Language Info'
+                  : mode === 'toAlBhed'
+                    ? pageData.tool.alBhedLabel
+                    : pageData.tool.outputLabel}
               </h2>
               {/* TTS and action buttons */}
               {translatedText && (
                 <div className="flex gap-2">
-                  <TextToSpeechButton text={translatedText} locale={locale} />
+                  {!isQuery && (
+                    <TextToSpeechButton text={translatedText} locale={locale} />
+                  )}
                   <button
                     onClick={handleCopy}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
@@ -341,37 +371,59 @@ export default function AlBhedTranslatorTool({
                       />
                     </svg>
                   </button>
-                  <button
-                    onClick={handleDownload}
-                    className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
-                    title="Download"
-                    aria-label="Download result"
-                  >
-                    <svg
-                      className="w-5 h-5"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
+                  {!isQuery && (
+                    <button
+                      onClick={handleDownload}
+                      className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
+                      title="Download"
+                      aria-label="Download result"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-                      />
-                    </svg>
-                  </button>
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                        />
+                      </svg>
+                    </button>
+                  )}
                 </div>
               )}
             </div>
             <div
-              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md bg-gray-50 dark:bg-zinc-700 flex items-center justify-center text-gray-700 dark:text-gray-200 overflow-y-auto"
+              className={`w-full ${isQuery ? 'h-auto min-h-48' : 'h-48 md:h-64'} p-3 border border-gray-300 dark:border-zinc-600 rounded-md bg-gray-50 dark:bg-zinc-700 text-gray-700 dark:text-gray-200 overflow-y-auto`}
               aria-live="polite"
             >
               {error ? (
                 <p className="text-red-600 dark:text-red-400">{error}</p>
               ) : translatedText ? (
-                <p className="text-lg whitespace-pre-wrap">{translatedText}</p>
+                <div>
+                  {isQuery ? (
+                    <div className="prose prose-sm max-w-none dark:prose-invert">
+                      <div className="whitespace-pre-wrap text-sm leading-relaxed">
+                        {translatedText}
+                      </div>
+                      {showExplanation && (
+                        <div className="mt-4 p-3 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-md">
+                          <p className="text-xs text-blue-700 dark:text-blue-300">
+                            💡 <strong>提示：</strong>输入任何文本进行Al
+                            Bhed翻译，或询问关于Al Bhed语言的问题。
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <p className="text-lg whitespace-pre-wrap">
+                      {translatedText}
+                    </p>
+                  )}
+                </div>
               ) : (
                 <p className="text-gray-500 dark:text-gray-400">
                   {pageData.tool.outputPlaceholder}

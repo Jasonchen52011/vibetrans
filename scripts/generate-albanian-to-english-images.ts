@@ -15,10 +15,10 @@
  * API Priority: v3 → dreem4.0 → nanobanana
  */
 
-import { generateIllustration } from '../src/lib/article-illustrator/image-generator';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import sharp from 'sharp';
+import { generateIllustration } from '../src/lib/article-illustrator/image-generator';
 
 const OUTPUT_DIR = path.join(process.cwd(), 'public', 'images', 'docs');
 
@@ -107,9 +107,7 @@ async function generateAllImages() {
     '\n🎨 Starting image generation for Albanian to English Translator...\n'
   );
   console.log(`📂 Output directory: ${OUTPUT_DIR}\n`);
-  console.log(
-    `🔧 API Priority Order: v3 (DALL-E 3) → dreem4.0 → nanobanana\n`
-  );
+  console.log(`🔧 API Priority Order: v3 (DALL-E 3) → dreem4.0 → nanobanana\n`);
 
   // Ensure output directory exists
   await fs.mkdir(OUTPUT_DIR, { recursive: true });

@@ -1,0 +1,238 @@
+{
+  "HighValyrianTranslatorPage": {
+    "title": "高瓦雷利亚语翻译工作室 - 即时准确翻译",
+    "description": "探索终极高瓦雷利亚语翻译器,适合粉丝、作家和RPG玩家。使用高瓦雷利亚语翻译工作室轻松翻译文本和文件。",
+    "hero": {
+      "title": "高瓦雷利亚语翻译器,轻松翻译",
+      "description": "想翻译高瓦雷利亚语吗?VibeTrans 让您轻松实现!无论是学习还是交流,这款工具都能准确转换文本,助力您探索和掌握这种神秘语言。"
+    },
+    "tool": {
+      "inputLabel": "输入文本",
+      "outputLabel": "翻译文本",
+      "inputPlaceholder": "在此输入您的文本...",
+      "outputPlaceholder": "翻译结果将显示在此...",
+      "translateButton": "翻译",
+      "uploadButton": "上传文件",
+      "uploadHint": "支持 .txt 和 .docx 文件",
+      "loading": "翻译中...",
+      "error": "翻译失败,请重试。",
+      "noInput": "请输入一些文本进行翻译。"
+    },
+    "whatIs": {
+      "title": "什么是高瓦雷利亚语翻译器",
+      "description": "高瓦雷利亚语翻译器是一款创新工具,专为翻译《权力的游戏》中的虚构语言高瓦雷利亚语而设计。由 VibeTrans 提供支持,为用户提供探索这种古老语言的引人入胜的方式。无论您是想提升体验的粉丝,还是渴望学习的语言爱好者,本工具都能提供准确的翻译和发音指南,是休闲和专业用户的必备伴侣。",
+      "image": "/images/docs/dragon-language-fun.webp",
+      "imageAlt": "什么是高瓦雷利亚语翻译器 - 可视化解释"
+    },
+    "examples": {
+      "title": "翻译示例",
+      "description": "将您最喜欢的名言或短语转换为高瓦雷利亚语。看看\"凛冬将至\"等短语如何翻译成维斯特洛的史诗语言。轻松探索您的创造力。",
+      "items": [
+        {
+          "alt": "示例 1 占位符",
+          "name": "示例 1"
+        },
+        {
+          "alt": "示例 2 占位符",
+          "name": "示例 2"
+        },
+        {
+          "alt": "示例 3 占位符",
+          "name": "示例 3"
+        },
+        {
+          "alt": "示例 4 占位符",
+          "name": "示例 4"
+        },
+        {
+          "alt": "示例 5 占位符",
+          "name": "示例 5"
+        },
+        {
+          "alt": "示例 6 占位符",
+          "name": "示例 6"
+        }
+      ]
+    },
+    "howto": {
+      "title": "如何使用高瓦雷利亚语翻译器",
+      "description": "按照以下简单步骤轻松翻译。",
+      "steps": [
+        {
+          "name": "上传文件",
+          "description": "点击页面上的\"上传文件\"按钮,选择需翻译的文件。支持格式包括TXT和DOCX。确认文件已成功选中后,点击\"提交\"按钮开始翻译。确保文件大小不超过10MB,以保证上传顺畅。",
+          "wordCount": 40
+        },
+        {
+          "name": "选择翻译模式",
+          "description": "打开应用程序后,找到主界面上的\"翻译模式\"选项。点击它,会出现一系列模式供选择。仔细阅读每种模式的说明,然后点击适合您需求的模式以激活它,确保正确翻译您的文本。",
+          "wordCount": 40
+        },
+        {
+          "name": "审查翻译",
+          "description": "仔细检查翻译结果,确保准确无误。逐句对比源文本和译文,注意语法、词汇和语境的一致性。使用高质量的参考资料或工具验证翻译,如有错误,请及时修正以提升整体质量。",
+          "wordCount": 40
+        },
+        {
+          "name": "保存和分享",
+          "description": "在翻译结果页面,点击右上角的保存图标,将翻译结果下载到设备。接着,选择分享选项,通过社交媒体或邮件与他人共享翻译内容,确保接收者可以访问相应的平台。",
+          "wordCount": 40
+        }
+      ]
+    },
+    "funFacts": {
+      "title": "有趣的事实",
+      "items": [
+        {
+          "content": "你知道吗?High Valyrian 拥有四个独特的语法性别,远比传统语言复杂。VibeTrans 让翻译这门《权力的游戏》语言变得轻松有趣,简直是语言学迷的福音!",
+          "wordCount": 30,
+          "image": "/images/docs/dragon-language-fun.webp",
+          "imageAlt": "有趣的事实 1"
+        },
+        {
+          "content": "VibeTrans 让你领略 High Valyrian 的魅力!这门《权力的游戏》语言有四种语法性别,让人想起复杂的魔法。谁不想用 'Dracarys' 点燃一切?",
+          "wordCount": 30,
+          "image": "/images/docs/dragon-language-fun.webp",
+          "imageAlt": "有趣的事实 2"
+        }
+      ]
+    },
+    "userInterest": {
+      "title": "使用 VibeTrans 探索更多",
+      "items": [
+        {
+          "title": "与其他工具相比的准确性",
+          "content": "在翻译领域,VibeTrans 就像那杯完美的早晨咖啡——总能让你振奋精神!它的高精度为您解锁 High Valyrian 的神秘面纱。虽说人无完人,但 VibeTrans 的表现却几乎让人无可挑剔。相信我,试过其他工具后,你会觉得 VibeTrans 是你的真命天子。",
+          "wordCount": 60,
+          "image": "/images/docs/dragon-language-fun.webp",
+          "imageAlt": "与其他工具相比的准确性"
+        },
+        {
+          "title": "用高瓦雷利亚语结婚",
+          "content": "想象在婚礼上用高等瓦雷利亚语说誓言,简直就是满满的浪漫加上点魔法!VibeTrans让这一切轻而易举。想要在宾客面前留下深刻印象?试试\"Valar Morghulis\"——虽然这句话意味着\"凡人皆有一死\",但绝对可以引发一阵笑声!VibeTrans,带你进入语言的奇幻世界。",
+          "wordCount": 60,
+          "image": "/images/docs/dragon-language-fun.webp",
+          "imageAlt": "用高瓦雷利亚语结婚"
+        },
+        {
+          "title": "学习方言",
+          "content": "想用High Valyrian俘获人心?VibeTrans让你轻松驾驭不同方言!听说有人用High Valyrian成功点了份巨龙餐,可别小瞧语言的魔力。每种方言都有它的独特魅力,像一场跨越维斯特洛的语言冒险。谁不想在聚会中用Valyrian俏皮地说\"再来一杯\"?VibeTrans,助你玩转语言新姿势!",
+          "wordCount": 60,
+          "image": "/images/docs/dragon-language-fun.webp",
+          "imageAlt": "学习方言"
+        },
+        {
+          "title": "翻译现代俚语",
+          "content": "当代俚语实在是个奇妙的存在,是不是?有时候感觉就像走进了一个外星人的聚会!来试试我们的VibeTrans,帮你把这些潮流俚语翻译成高等瓦雷利亚语,保证让你瞬间变身语言大师。每次我看到\"YOLO\"变成高瓦,我都忍不住笑,太酷了吧!快来试试,感受一下这股神秘的语言魔力!",
+          "wordCount": 60,
+          "image": "/images/docs/dragon-language-fun.webp",
+          "imageAlt": "翻译现代俚语"
+        }
+      ]
+    },
+    "highlights": {
+      "title": "VibeTrans 功能特性",
+      "features": [
+        {
+          "title": "简单免费使用",
+          "description": "VibeTrans 提供简单易用且免费的 High Valyrian 翻译功能。无需复杂的设置或订阅,即可快速翻译文本。用户界面直观友好,让您轻松体验 Valyrian 语言的魅力。立即使用 VibeTrans,畅享无障碍语言交流。",
+          "wordCount": 50
+        },
+        {
+          "title": "数据隐私和安全",
+          "description": "VibeTrans 采用先进的加密技术,确保用户数据的安全和私密性。我们严格遵循国际数据保护标准,保证您的翻译历史和个人信息不会被泄露或滥用,让您使用 High Valyrian Translator 时更加安心。",
+          "wordCount": 50
+        },
+        {
+          "title": "AI 语境理解",
+          "description": "VibeTrans 配备先进的 AI 语境理解能力,能够准确捕捉和分析高等瓦雷利亚语中的细微差别。无论是复杂的句子结构还是语境依赖的词义,VibeTrans 都能提供精准的翻译,确保用户获得最贴切的语言体验。",
+          "wordCount": 50
+        },
+        {
+          "title": "更多解释",
+          "description": "VibeTrans 提供深入的翻译解释,让用户不仅理解 High Valyrian 的字面意思,还能掌握其文化背景和语言细微差异。通过详细的语法解析和上下文说明,VibeTrans 助您全面领略这门神秘语言的魅力。",
+          "wordCount": 50
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "用户评价",
+      "subtitle": "来自真实用户的真实反馈",
+      "items": {
+        "item-1": {
+          "name": "约翰·史密斯",
+          "role": "历史教授",
+          "heading": "来自约翰·史密斯的评价",
+          "content": "作为一名历史教授,我使用High Valyrian Translator在课堂上为学生演示马丁的作品。它的准确性惊人,让学生们更深入地理解语言和文化。看到学生们兴奋地讨论角色对话,我感到非常满意。"
+        },
+        "item-2": {
+          "name": "艾米丽·陈",
+          "role": "历史教授",
+          "heading": "来自艾米丽·陈的评价",
+          "content": "使用 high valyrian translator 的体验非常棒!我用它来翻译《权力的游戏》中的高等瓦雷利亚语台词,让课堂更加生动。学生们对这种互动方式充满了好奇,课堂气氛活跃了很多。这个工具无疑是我教学中的一大亮点。"
+        },
+        "item-3": {
+          "name": "迈克尔·约翰逊",
+          "role": "大学教授",
+          "heading": "来自迈克尔·约翰逊的评价",
+          "content": "作为一名教授,我在教授《权力的游戏》课程时,使用了high valyrian translator。起初,我对它的准确性持怀疑态度,但当它成功翻译了一段复杂的高瓦雷利亚文时,我彻底信服了。它是我课堂上的得力助手。"
+        },
+        "item-4": {
+          "name": "莎拉·威廉姆斯",
+          "role": "奇幻作家",
+          "heading": "来自莎拉·威廉姆斯的评价",
+          "content": "作为一名幻想小说作家,我发现 High Valyrian Translator 非常有用。创作新书时,我用它将角色对话翻译成高瓦雷利亚语,这让我的故事更具真实感。尽管开始时我有些怀疑,但结果让我非常满意。"
+        },
+        "item-5": {
+          "name": "大卫·李",
+          "role": "历史教授",
+          "heading": "来自大卫·李的评价",
+          "content": "作为一名历史教授,我在研究《冰与火之歌》时使用了High Valyrian Translator。它的精准度让我惊喜,尤其是在翻译复杂句子时。学生们也用它来理解文本,用起来方便极了。感谢这个工具,让我的课程更生动!"
+        },
+        "item-6": {
+          "name": "杰西卡·布朗",
+          "role": "作家",
+          "heading": "来自杰西卡·布朗的评价",
+          "content": "作为《权力的游戏》粉丝,我经常使用 High Valyrian Translator 来翻译书中的短语。上周,我在写一篇粉丝小说时发现它特别有用。它不仅准确,而且能帮助我更深入地理解角色的对话。强烈推荐给所有粉丝!"
+        }
+      }
+    },
+    "faqs": {
+      "title": "常见问题",
+      "subtitle": "有其他问题?欢迎通过电子邮件联系我们。",
+      "items": {
+        "item-1": {
+          "question": "这个软件是免费的吗?",
+          "answer": "High Valyrian Translator 完全免费使用。用户可以免费访问所有基本功能。如需解锁高级功能,您可以考虑升级到付费版本。轻松享受翻译,更深入地探索语言。"
+        },
+        "item-2": {
+          "question": "我们的隐私如何受到保护?",
+          "answer": "我们通过对数据传输使用加密、安全存储数据以及绝不与第三方共享个人信息来确保您的隐私。定期审核和更新有助于维护我们的安全标准,以有效保护您的个人数据。"
+        },
+        "item-3": {
+          "question": "\"纹身检查\"功能如何工作?",
+          "answer": "要使用\"纹身检查\"功能,请按照以下步骤操作:1. 上传纹身图像。2. 系统分析设计。3. 接收有关其文化和语言意义的详细见解。4. 访问翻译和解释建议。"
+        },
+        "item-4": {
+          "question": "我可以离线使用 VibeTrans 吗?",
+          "answer": "是的,VibeTrans 可离线使用。要离线使用,请首先下载必要的语言包。然后,打开应用程序并导航到设置。启用离线模式,您就可以在没有互联网连接的情况下进行翻译。"
+        },
+        "item-5": {
+          "question": "如何逐步翻译句子?",
+          "answer": "首先,选择要翻译的句子;其次,识别句子中的单词和短语;然后,使用词典或翻译工具查找对应的高瓦雷利亚语;最后,组装翻译后的句子,确保语法正确。"
+        },
+        "item-6": {
+          "question": "什么是高瓦雷利亚语翻译工作室?",
+          "answer": "高瓦雷利亚语翻译工作室是一款综合工具,用于在英语和高瓦雷利亚语之间翻译文本和文件,提供双窗格显示和语法重新排序等功能。"
+        }
+      }
+    },
+    "ctaButton": "立即试用高瓦雷利亚语翻译器",
+    "cta": {
+      "title": "立即试用 VibeTrans!",
+      "description": "使用由 VibeTrans 提供支持的高瓦雷利亚语翻译工作室体验无缝翻译。非常适合粉丝、作家和RPG玩家。",
+      "primaryButton": "立即试用高瓦雷利亚语翻译器",
+      "secondaryButton": "返回顶部"
+    }
+  }
+}

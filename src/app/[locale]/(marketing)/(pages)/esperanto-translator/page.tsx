@@ -382,13 +382,13 @@ export default async function EsperantoTranslatorPage(
         {/* Explore Other Tools */}
         <ExploreOurAiTools
           toolKeys={[
-        'Chinese to English Translator',
-        'Cantonese Translator',
-        'Albanian to English',
-        'Ancient Greek Translator',
-        'Creole to English Translator',
-        'Middle English Translator'
-      ]}
+            'Cuneiform Translator',
+            'Gen Alpha Translator',
+            'Gen Z Translator',
+            'Ancient Greek Translator',
+            'Al Bhed Translator',
+            'Dog Translator',
+          ]}
         />
 
         {/* Testimonials Section */}

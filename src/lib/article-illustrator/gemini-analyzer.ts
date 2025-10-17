@@ -81,9 +81,7 @@ function extractFilename(geminiResponse: string): string {
   }
 
   // Fallback: generate from first few words
-  const words = geminiResponse
-    .toLowerCase()
-    .match(/\b[a-z]{3,}\b/g);
+  const words = geminiResponse.toLowerCase().match(/\b[a-z]{3,}\b/g);
 
   if (words && words.length > 0) {
     return words.slice(0, 3).join('-');
@@ -122,8 +120,18 @@ async function generateSinglePrompt(
   let prompt = extractPrompt(geminiResponse);
 
   // 🔧 简化prompt - 移除可能触发文字的具体词汇
-  const textTriggerWords = ['text', 'letter', 'word', 'sign', 'label', 'book', 'document', 'paper', 'menu'];
-  textTriggerWords.forEach(word => {
+  const textTriggerWords = [
+    'text',
+    'letter',
+    'word',
+    'sign',
+    'label',
+    'book',
+    'document',
+    'paper',
+    'menu',
+  ];
+  textTriggerWords.forEach((word) => {
     const regex = new RegExp(`\\b${word}s?\\b`, 'gi');
     prompt = prompt.replace(regex, 'symbol');
   });

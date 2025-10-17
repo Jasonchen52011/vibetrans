@@ -270,18 +270,20 @@ export default async function CantoneseTranslatorPage(
             {/* User Avatars and Rating */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <div className="flex -space-x-3">
-                {['female2', 'male4', 'female3', 'male2', 'female4'].map((avatar, i) => (
-                  <div
-                    key={i}
-                    className="relative h-12 w-12 rounded-full border-2 border-white dark:border-zinc-800 overflow-hidden"
-                  >
-                    <img
-                      src={`/images/avatars/${avatar}.webp`}
-                      alt={`User ${i + 1}`}
-                      className="h-full w-full object-cover"
-                    />
-                  </div>
-                ))}
+                {['female2', 'male4', 'female3', 'male2', 'female4'].map(
+                  (avatar, i) => (
+                    <div
+                      key={i}
+                      className="relative h-12 w-12 rounded-full border-2 border-white dark:border-zinc-800 overflow-hidden"
+                    >
+                      <img
+                        src={`/images/avatars/${avatar}.webp`}
+                        alt={`User ${i + 1}`}
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
+                  )
+                )}
               </div>
               <div className="flex flex-col items-center sm:items-start gap-1">
                 <div className="flex items-center gap-0.5">
@@ -336,13 +338,13 @@ export default async function CantoneseTranslatorPage(
         {/* Explore Other Tools */}
         <ExploreOurAiTools
           toolKeys={[
-        'Chinese to English Translator',
-        'Albanian to English',
-        'Creole to English Translator',
-        'IVR Translator',
-        'Gen Z Translator',
-        'Esperanto Translator'
-      ]}
+            'Cuneiform Translator',
+            'Gen Z Translator',
+            'Al Bhed Translator',
+            'Dog Translator',
+            'Esperanto Translator',
+            'Ancient Greek Translator',
+          ]}
         />
 
         {/* Testimonials */}

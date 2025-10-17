@@ -1,0 +1,288 @@
+{
+  "contentGaps": [
+    {
+      "topic": "Dialect-specific translation (Biblical, Syriac, Chaldean, Neo-Aramaic)",
+      "reason": "搜索者常想知道自己手上的词句属于哪种方言以及工具是否能准确对应翻译",
+      "competitors": [
+        "Lexilogos",
+        "AramaicNT.org",
+        "TranslatorsCafe",
+        "AramaicDictionary.com"
+      ]
+    },
+    {
+      "topic": "Aramaic pronunciation & audio playback",
+      "reason": "用户不仅想看文字，还想听如何发音，特别是宗教祷词或纹身用语",
+      "competitors": [
+        "Lexilogos",
+        "Easy Aramaic Online Translator",
+        "Glosbe"
+      ]
+    },
+    {
+      "topic": "Tattoo translation pitfalls & verification service",
+      "reason": "“纹身翻译出错”在 Reddit/Quora 中频繁出现，用户担心永久性错误",
+      "competitors": [
+        "AramaicND",
+        "Online-Aramaic.com",
+        "Bing Translator"
+      ]
+    },
+    {
+      "topic": "Certified human translators for legal / ecclesiastical documents",
+      "reason": "圣经学术或教会证书文件要求公证级别翻译",
+      "competitors": [
+        "Lexilogos",
+        "Glosbe",
+        "Syriac-Online"
+      ]
+    },
+    {
+      "topic": "Interactive transliteration (Imperial → Estrangelo → Latin script)",
+      "reason": "多数在线工具只做粗略字母替换，缺少可选脚本/字体输出",
+      "competitors": [
+        "AramaicTranslator.org",
+        "AramaicNT.org"
+      ]
+    },
+    {
+      "topic": "Aramaic font & Unicode support guidance",
+      "reason": "用户常因系统不显示方块/楔形字符而困惑",
+      "competitors": [
+        "Lexilogos",
+        "Google Books embeds",
+        "syriacdictionary.net"
+      ]
+    },
+    {
+      "topic": "Bible verse look-up with parallel Aramaic-English display",
+      "reason": "宗教研究者想快速对照阅读",
+      "competitors": [
+        "Glosbe",
+        "TranslatorsCafe",
+        "Syriac-Online"
+      ]
+    },
+    {
+      "topic": "API or bulk document translation workflow",
+      "reason": "研究机构/开发者希望自动化处理大批量文本",
+      "competitors": [
+        "AramaicTranslator.org",
+        "Online-Aramaic.com"
+      ]
+    },
+    {
+      "topic": "Privacy & data retention policy for sacred / personal texts",
+      "reason": "宗教性或私人祷词文本敏感，用户担心上传后被公开",
+      "competitors": [
+        "Most top 15 results except terms-heavy commercial agencies"
+      ]
+    },
+    {
+      "topic": "Learning path: from basic alphabet to intermediate reading",
+      "reason": "许多搜索者其实想学语言而不只是瞬时翻译",
+      "competitors": [
+        "Lexilogos",
+        "AramaicNT.org",
+        "Syriac-Online"
+      ]
+    }
+  ],
+  "socialTopics": [
+    {
+      "platform": "Reddit",
+      "topic": "“Can someone double-check this Aramaic tattoo before I ink it?”",
+      "engagement": "高",
+      "summary": "r/translator 与 r/ancientlanguages 里经常出现，投票与评论量都高，担忧错误含义或拼写"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "“Why doesn’t Google Translate support Aramaic yet?”",
+      "engagement": "中",
+      "summary": "讨论机器学习语料稀缺，以及方言过多导致难以标准化"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "“How to type Estrangelo Syriac on Windows/Mac?”",
+      "engagement": "中",
+      "summary": "用户分享键盘布局、Unicode 码位和字体下载链接"
+    },
+    {
+      "platform": "Quora",
+      "topic": "“What language did Jesus actually speak?”",
+      "engagement": "高",
+      "summary": "大量 upvotes，回答解释加利利口音阿拉姆语、希伯来语与希腊语的使用场景"
+    },
+    {
+      "platform": "Quora",
+      "topic": "“How do you say ‘love’ or ‘peace’ in Aramaic?”",
+      "engagement": "高",
+      "summary": "常见短句翻译需求，用于饰品或纹身；回答者常附上脚本与音标"
+    },
+    {
+      "platform": "Quora",
+      "topic": "“Is there any reliable online Aramaic translator?”",
+      "engagement": "中",
+      "summary": "多数回答认为目前必须依靠人工专家，自动工具精度低"
+    }
+  ],
+  "funFacts": [
+    "Aramaic has been in continuous use for over 3,000 years—few languages can claim such longevity.",
+    "‘Abba’, ‘Talitha kum’, and ‘Eli, Eli lama sabachthani’ in the New Testament are preserved Aramaic phrases.",
+    "Modern Neo-Aramaic is still spoken in villages of northern Iraq, Syria, Iran, and by diaspora communities in Chicago and Stockholm.",
+    "The Aramaic alphabet eventually evolved into both the Hebrew ‘square’ script and the Nabataean script, ancestor of Arabic letters.",
+    "A few scenes in Mel Gibson’s film ‘The Passion of the Christ’ revived popular interest in learning Aramaic."
+  ],
+  "highFrequencyWords": [
+    {
+      "word": "Aramaic",
+      "frequency": "高",
+      "context": "language mention"
+    },
+    {
+      "word": "translation",
+      "frequency": "高",
+      "context": "service description"
+    },
+    {
+      "word": "English",
+      "frequency": "高",
+      "context": "target language"
+    },
+    {
+      "word": "translator",
+      "frequency": "高",
+      "context": "tool/role"
+    },
+    {
+      "word": "online",
+      "frequency": "高",
+      "context": "web tool qualifier"
+    },
+    {
+      "word": "Bible",
+      "frequency": "中",
+      "context": "religious content"
+    },
+    {
+      "word": "Syriac",
+      "frequency": "中",
+      "context": "dialect/script"
+    },
+    {
+      "word": "ancient",
+      "frequency": "中",
+      "context": "historical qualifier"
+    },
+    {
+      "word": "Neo-Aramaic",
+      "frequency": "中",
+      "context": "modern dialect"
+    },
+    {
+      "word": "text",
+      "frequency": "中",
+      "context": "input description"
+    },
+    {
+      "word": "dictionary",
+      "frequency": "中",
+      "context": "word lookup"
+    },
+    {
+      "word": "script",
+      "frequency": "中",
+      "context": "writing system"
+    },
+    {
+      "word": "alphabet",
+      "frequency": "中",
+      "context": "fonts/typing"
+    },
+    {
+      "word": "tool",
+      "frequency": "中",
+      "context": "software reference"
+    },
+    {
+      "word": "free",
+      "frequency": "中",
+      "context": "pricing"
+    },
+    {
+      "word": "phrase",
+      "frequency": "中",
+      "context": "small translation unit"
+    },
+    {
+      "word": "Imperial",
+      "frequency": "低",
+      "context": "Imperial Aramaic"
+    },
+    {
+      "word": "Chaldean",
+      "frequency": "低",
+      "context": "dialect"
+    },
+    {
+      "word": "transliteration",
+      "frequency": "低",
+      "context": "script conversion"
+    },
+    {
+      "word": "Peshitta",
+      "frequency": "低",
+      "context": "Syriac Bible"
+    },
+    {
+      "word": "unicode",
+      "frequency": "低",
+      "context": "tech support"
+    },
+    {
+      "word": "fonts",
+      "frequency": "低",
+      "context": "display issues"
+    },
+    {
+      "word": "Jesus",
+      "frequency": "低",
+      "context": "historical interest"
+    },
+    {
+      "word": "audio",
+      "frequency": "低",
+      "context": "pronunciation"
+    },
+    {
+      "word": "pronunciation",
+      "frequency": "低",
+      "context": "learning aid"
+    },
+    {
+      "word": "convert",
+      "frequency": "低",
+      "context": "action verb"
+    },
+    {
+      "word": "Hebrew",
+      "frequency": "低",
+      "context": "related language"
+    },
+    {
+      "word": "Greek",
+      "frequency": "低",
+      "context": "comparison"
+    },
+    {
+      "word": "interface",
+      "frequency": "低",
+      "context": "UX copy"
+    },
+    {
+      "word": "download",
+      "frequency": "低",
+      "context": "resource offering"
+    }
+  ]
+}

@@ -97,6 +97,14 @@ export default async function AncientGreekTranslatorPage(
       noInput: (t as any)('tool.noInput'),
       pronunciationLabel: (t as any)('tool.pronunciationLabel'),
       culturalContextLabel: (t as any)('tool.culturalContextLabel'),
+      dialectLabel: (t as any)('tool.dialectLabel'),
+      dialects: {
+        attic: (t as any)('tool.dialects.attic'),
+        ionic: (t as any)('tool.dialects.ionic'),
+        doric: (t as any)('tool.dialects.doric'),
+        aeolic: (t as any)('tool.dialects.aeolic'),
+        koine: (t as any)('tool.dialects.koine'),
+      },
     },
   };
 
@@ -385,13 +393,13 @@ export default async function AncientGreekTranslatorPage(
         {/* Explore Other Tools */}
         <ExploreOurAiTools
           toolKeys={[
-        'Cuneiform Translator',
-        'Middle English Translator',
-        'Esperanto Translator',
-        'Chinese to English Translator',
-        'Al Bhed Translator',
-        'Cantonese Translator'
-      ]}
+            'Ancient Greek Translator',
+            'Cuneiform Translator',
+            'Al Bhed Translator',
+            'Esperanto Translator',
+            'Gen Alpha Translator',
+            'Gen Z Translator',
+          ]}
         />
 
         {/* Testimonials Section */}

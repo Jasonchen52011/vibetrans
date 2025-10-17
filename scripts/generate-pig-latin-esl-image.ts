@@ -5,8 +5,8 @@
  * 基于 "Perfect for ESL Learners and Teachers" section
  */
 
-import dotenv from 'dotenv';
 import path from 'path';
+import dotenv from 'dotenv';
 
 // 加载 .env.local 文件
 dotenv.config({ path: path.resolve(process.cwd(), '.env.local') });

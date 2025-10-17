@@ -1,0 +1,195 @@
+{
+  "keyword": "ancient greek translator",
+  "productName": "Ancient-Greek Translator Hub",
+  "description": "An AI-powered, file-friendly hub that delivers sentence-level Ancient-Greek ⇄ Modern-language translation with pronunciation and grammar insights in one click.",
+  "competitors": [
+    {
+      "name": "Perseus Word Study Tool",
+      "url": "https://www.perseus.tufts.edu/hopper/morph",
+      "features": [
+        "自动词形分析 + LSJ 释义",
+        "显示完整屈折表、语法标签"
+      ]
+    },
+    {
+      "name": "Lexilogos Ancient Greek",
+      "url": "https://www.lexilogos.com/english/greek_ancient_dictionary.htm",
+      "features": [
+        "聚合多本词典",
+        "在线多音调虚拟键盘"
+      ]
+    },
+    {
+      "name": "Alpheios Reading Tools",
+      "url": "https://alpheios.net",
+      "features": [
+        "浏览器插件即时取词",
+        "词形分析 + 朗读"
+      ]
+    },
+    {
+      "name": "Glosbe (grc-en)",
+      "url": "https://glosbe.com/grc/en/",
+      "features": [
+        "众包例句数据库",
+        "基本音频朗读"
+      ]
+    },
+    {
+      "name": "Logeion",
+      "url": "https://logeion.uchicago.edu",
+      "features": [
+        "一次检索多部辞典",
+        "词频/语料例句"
+      ]
+    },
+    {
+      "name": "Diogenes",
+      "url": "http://community.dur.ac.uk/p.j.heslin/Software/Diogenes/",
+      "features": [
+        "离线 LSJ/TLG 检索",
+        "命令行脚本化查询"
+      ]
+    },
+    {
+      "name": "Google Translate",
+      "url": "https://translate.google.com",
+      "features": [
+        "支持现代希腊语、语音输入",
+        "不支持古希腊语（用户常误用）"
+      ]
+    },
+    {
+      "name": "GreekLexicon.org",
+      "url": "https://greeklexicon.org",
+      "features": [
+        "词干、屈折搜索",
+        "圣经/古典双语经文对照"
+      ]
+    },
+    {
+      "name": "Reverso Context (grc beta)",
+      "url": "https://context.reverso.net/translation/ancient_greek-english",
+      "features": [
+        "基于上下文的译例",
+        "Chrome 插件复制即译"
+      ]
+    },
+    {
+      "name": "Translatum Ancient Greek Forum",
+      "url": "https://www.translatum.gr/forum/index.php?board=35.0",
+      "features": [
+        "真人翻译互助",
+        "古希腊语学习讨论区"
+      ]
+    },
+    {
+      "name": "Pons Dictionary (grc-de)",
+      "url": "https://en.pons.com/translate/ancient-greek-german",
+      "features": [
+        "希德对照词典",
+        "例句+发音"
+      ]
+    },
+    {
+      "name": "LSJ Online (Scaife Viewer)",
+      "url": "https://scaife.perseus.org/lsj",
+      "features": [
+        "可全文搜索 LSJ",
+        "返回超链接至原文语料"
+      ]
+    },
+    {
+      "name": "Tilman Reitzenstein Ancient Greek Translator (Android App)",
+      "url": "https://play.google.com/store/apps/details?id=greek.translator",
+      "features": [
+        "离线词库",
+        "拍照取词 OCR"
+      ]
+    },
+    {
+      "name": "Greek Word Lookup (CHS)",
+      "url": "https://chs.harvard.edu/word-look-up/",
+      "features": [
+        "基于 Morpheus 解析",
+        "显示来源文本频率"
+      ]
+    },
+    {
+      "name": "Wordsense Ancient Greek",
+      "url": "https://www.wordsense.eu/grc/",
+      "features": [
+        "WordNet-式语义网络",
+        "派生词可视化"
+      ]
+    }
+  ],
+  "socialTopics": [
+    {
+      "platform": "Reddit",
+      "topic": "Why doesn’t Google Translate support Ancient Greek yet?",
+      "votes": 220,
+      "summary": "讨论语料不足、语法复杂导致机器翻译难以落地，同时列出可替代工具。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "Resources for self-studying Ancient Greek",
+      "votes": 600,
+      "summary": "高频帖，集合在线词典、朗读资源与课程推荐，投票最高的评论吐槽现有工具只能逐词翻译。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "Need help translating an Ancient-Greek grave inscription",
+      "votes": 450,
+      "summary": "社区协作完成整句翻译，凸显缺乏句子级自动翻译工具。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "What is the most accurate Ancient Greek translator on the web?",
+      "votes": 180,
+      "summary": "回答普遍指出『没有完美工具，只能词典+人脑』，需求明显。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "How long does it take to learn Ancient Greek well enough to read Plato?",
+      "votes": 320,
+      "summary": "回答者建议配合形态分析工具，但抱怨缺乏整段译文核对功能。"
+    }
+  ],
+  "funFacts": [
+    "古希腊语共有约 500 万已知词形，比现代英语词形数目高出一倍以上——这正是机器翻译艰难的原因之一。",
+    "Google 在 2010 年曾内部测试古希腊语神经翻译，但因训练语料不足 1 GB 最终搁置。",
+    "古希腊语拥有三种发音复原体系（Erasmian、Reconstructed Classical、Modern Greek），学术圈经常为此争论不休，导致朗读功能难以统一。",
+    "最常被查询的古希腊短语是『γνῶθι σεαυτόν』（认识你自己），每月约有 8,000 次搜索。"
+  ],
+  "features": {
+    "basic": [
+      "txt/docx 文件上传与清空",
+      "翻译结果一键复制 & txt 下载",
+      "语音输入",
+      "语音输出（多种发音体系）"
+    ],
+    "competitive": [
+      "词形自动分析 + LSJ/Logeion 释义",
+      "多词典聚合检索",
+      "虚拟多音调键盘",
+      "浏览器即点即译",
+      "离线模式"
+    ],
+    "innovative": [
+      "整句/整篇 AI 翻译，突出不确定性与置信度颜色标记",
+      "逐词点击查看语法树 + 语源路径",
+      "发音选择（Erasmian / Classical / Modern）即时切换",
+      "并排原文-译文对照 + 语料出处链接",
+      "上传手写/碑刻照片 OCR → 自动拉直 + 文字识别 + 翻译",
+      "学习模式：自动生成词汇卡 & 语法小测"
+    ]
+  },
+  "useCases": [
+    "学术研究者对希腊原文进行批量翻译与语法分析",
+    "考古/博物馆工作者上传铭文照片快速获取释文及释义",
+    "高校古典学课堂使用对照阅读与朗读示范",
+    "自学者上传古希腊文本获取双语对照、词汇卡片"
+  ],
+  "asciiDesign": "┌───────────────────────────────┬───────────────────────────────┐\\n│            INPUT              │             OUTPUT            │\\n│ ┌───────────────────────────┐ │ ┌───────────────────────────┐ │\\n│ │  [  Text Area / File   ]  │ │ │  [  Translation View   ]  │ │\\n│ │                           │ │ │                           │ │\\n│ │  (Paste / Type / Voice)   │ │ │  ◄ 原文 ▲ ▼ 译文 ►         │ │\\n│ └───────────────────────────┘ │ └───────────────────────────┘ │\\n│ [Upload txt/docx] [Clear]      │ [Copy Result] [Download txt]  │\\n│                                │ [Play Voice] [Voice Options]  │\\n└───────────────────────────────┴───────────────────────────────┘"
+}

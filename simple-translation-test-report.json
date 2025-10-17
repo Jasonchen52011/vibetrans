@@ -1,0 +1,110 @@
+{
+  "timestamp": "2025-10-16T16:09:07.081Z",
+  "overallRating": 100,
+  "totalScore": 54,
+  "totalMaxScore": 54,
+  "tools": [
+    {
+      "name": "samoan-to-english-translator",
+      "component": {
+        "exists": true,
+        "path": "/Users/jason-chen/Downloads/project/vibetrans/src/app/[locale]/(marketing)/(pages)/samoan-to-english-translator/SamoanToenglishTranslatorTool.tsx",
+        "hasDirectionState": true,
+        "hasClickHandlers": true,
+        "hasTitleSwitching": true,
+        "hasPlaceholderUpdate": true,
+        "hasMultipleTitles": true,
+        "hasSwapButton": true,
+        "hasClearUI": true,
+        "issues": []
+      },
+      "api": true,
+      "page": true
+    },
+    {
+      "name": "aramaic-translator",
+      "component": {
+        "exists": true,
+        "path": "/Users/jason-chen/Downloads/project/vibetrans/src/app/[locale]/(marketing)/(pages)/aramaic-translator/AramaicTranslatorTool.tsx",
+        "hasDirectionState": true,
+        "hasClickHandlers": true,
+        "hasTitleSwitching": true,
+        "hasPlaceholderUpdate": true,
+        "hasMultipleTitles": true,
+        "hasSwapButton": true,
+        "hasClearUI": true,
+        "issues": []
+      },
+      "api": true,
+      "page": true
+    },
+    {
+      "name": "baybayin-translator",
+      "component": {
+        "exists": true,
+        "path": "/Users/jason-chen/Downloads/project/vibetrans/src/app/[locale]/(marketing)/(pages)/baybayin-translator/BaybayinTranslatorTool.tsx",
+        "hasDirectionState": true,
+        "hasClickHandlers": true,
+        "hasTitleSwitching": true,
+        "hasPlaceholderUpdate": true,
+        "hasMultipleTitles": true,
+        "hasSwapButton": true,
+        "hasClearUI": true,
+        "issues": []
+      },
+      "api": true,
+      "page": true
+    },
+    {
+      "name": "cuneiform-translator",
+      "component": {
+        "exists": true,
+        "path": "/Users/jason-chen/Downloads/project/vibetrans/src/app/[locale]/(marketing)/(pages)/cuneiform-translator/CuneiformTranslatorTool.tsx",
+        "hasDirectionState": true,
+        "hasClickHandlers": true,
+        "hasTitleSwitching": true,
+        "hasPlaceholderUpdate": true,
+        "hasMultipleTitles": true,
+        "hasSwapButton": true,
+        "hasClearUI": true,
+        "issues": []
+      },
+      "api": true,
+      "page": true
+    },
+    {
+      "name": "gaster-translator",
+      "component": {
+        "exists": true,
+        "path": "/Users/jason-chen/Downloads/project/vibetrans/src/app/[locale]/(marketing)/(pages)/gaster-translator/GasterTranslatorTool.tsx",
+        "hasDirectionState": true,
+        "hasClickHandlers": true,
+        "hasTitleSwitching": true,
+        "hasPlaceholderUpdate": true,
+        "hasMultipleTitles": true,
+        "hasSwapButton": true,
+        "hasClearUI": true,
+        "issues": []
+      },
+      "api": true,
+      "page": true
+    },
+    {
+      "name": "high-valyrian-translator",
+      "component": {
+        "exists": true,
+        "path": "/Users/jason-chen/Downloads/project/vibetrans/src/app/[locale]/(marketing)/(pages)/high-valyrian-translator/HighValyrianTranslatorTool.tsx",
+        "hasDirectionState": true,
+        "hasClickHandlers": true,
+        "hasTitleSwitching": true,
+        "hasPlaceholderUpdate": true,
+        "hasMultipleTitles": true,
+        "hasSwapButton": true,
+        "hasClearUI": true,
+        "issues": []
+      },
+      "api": true,
+      "page": true
+    }
+  ]
+}

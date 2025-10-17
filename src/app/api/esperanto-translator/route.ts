@@ -1,3 +1,4 @@
+import { detectLanguage } from '@/lib/language-detection';
 import { google } from '@ai-sdk/google';
 import { generateText } from 'ai';
 import { type NextRequest, NextResponse } from 'next/server';
@@ -75,8 +76,9 @@ export async function POST(request: NextRequest) {
     const body = (await request.json()) as {
       text?: string;
       mode?: 'toEsperanto' | 'toEnglish';
+      autoDetect?: boolean;
     };
-    const { text, mode = 'toEsperanto' } = body;
+    const { text, mode = 'toEsperanto', autoDetect = true } = body;
 
     if (!text || typeof text !== 'string') {
       return NextResponse.json(
@@ -99,14 +101,47 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // 智能语言检测
+    let actualMode = mode;
+    let detectionResult = null;
+
+    if (autoDetect) {
+      try {
+        detectionResult = detectLanguage(text, 'esperanto');
+
+        // 如果检测到英语且当前模式是toEnglish，自动切换
+        if (
+          detectionResult.detectedLanguage === 'english' &&
+          detectionResult.confidence > 0.4 &&
+          mode === 'toEnglish'
+        ) {
+          actualMode = 'toEsperanto';
+        }
+        // 如果检测到世界语且当前模式是toEsperanto，自动切换
+        else if (
+          detectionResult.detectedLanguage === 'esperanto' &&
+          detectionResult.confidence > 0.4 &&
+          mode === 'toEsperanto'
+        ) {
+          actualMode = 'toEnglish';
+        }
+      } catch (error) {
+        console.error('Language detection failed:', error);
+        // 继续使用用户指定的模式
+      }
+    }
+
     // Perform translation using AI
-    const translatedText = await translateWithAI(text, mode);
+    const translatedText = await translateWithAI(text, actualMode);
 
     return NextResponse.json({
       original: text,
       translated: translatedText,
-      mode: mode,
+      mode: actualMode,
+      originalMode: mode,
       success: true,
+      autoDetect,
+      detection: detectionResult,
     });
   } catch (error: any) {
     console.error('Error processing Esperanto translation:', error);

@@ -109,68 +109,44 @@
       ]
     },
     "testimonials": {
-      "title": "User Reviews",
-      "subtitle": "What Our Users Are Saying",
+      "title": "What Our Users Are Saying",
+      "subtitle": "Real feedback from real users",
       "items": {
         "item-1": {
-          "name": "Johnathan Green",
-          "role": "Language Enthusiast",
-          "content": "I've tried several translation tools, but VibeTrans stands out. It's so easy to use, and the translations are spot-on. I was able to translate some complex Esperanto literature with ease!"
+          "name": "John Thompson",
+          "role": "Language Teacher",
+          "heading": "A Classroom Essential",
+          "content": "Esperanto-Translator Hub has transformed my language classes. My students are thrilled with how easily they can translate texts instantly. We used it for a project on Esperanto poetry, and the accuracy was impressive. The voice-ready feature makes listening practice a breeze. It's truly indispensable."
         },
         "item-2": {
-          "name": "Emily Walker",
-          "role": "Teacher",
-          "content": "As a teacher of languages, I recommend VibeTrans to my students. It's fast, accurate, and the voice translation feature is so handy. My students love how quickly they can learn Esperanto!"
+          "name": "Lisa Roberts",
+          "role": "Travel Blogger",
+          "heading": "Travel Companion",
+          "content": "While exploring remote areas, I rely on Esperanto-Translator Hub for offline translations. Its ability to handle complex sentences without internet is a lifesaver. It even helped translate local signs accurately, enhancing my travel experience. Users love how it supports my adventures seamlessly."
         },
         "item-3": {
-          "name": "Mark Johnson",
-          "role": "Translator",
-          "content": "I've been using VibeTrans for my translation work, and I must say, it's a game-changer. The document translation is precise, and the AI context understanding makes a real difference."
+          "name": "Michael Adams",
+          "role": "Sci-Fi Writer",
+          "heading": "Must-Have for Writers",
+          "content": "Using Esperanto-Translator Hub has been a game-changer for my writing. Translating my scripts into Esperanto helps bridge cultural gaps and reach a global audience. The tool’s precise grammar correction is crucial for my detailed narratives. It’s like having a linguistic assistant right at my fingertips!"
         },
         "item-4": {
-          "name": "Sarah Thomas",
-          "role": "Student",
-          "content": "VibeTrans has helped me learn Esperanto. The voice input feature is incredible, and I can practice my speaking and understanding easily. It's also great for homework translation!"
+          "name": "Samantha Lee",
+          "role": "Volunteer Coordinator",
+          "heading": "Perfect for Nonprofits",
+          "content": "Esperanto-Translator Hub is essential for our international volunteer communications. It ensures our messages are clear and consistent across different languages. The ability to translate entire documents in one click saves time and effort. Our team loves its user-friendly interface and reliable translations. It’s a vital tool."
         },
         "item-5": {
-          "name": "Jason White",
-          "role": "Entrepreneur",
-          "content": "As a business owner dealing with international clients, VibeTrans is invaluable. It's easy to use and helps me communicate in multiple languages, including Esperanto. Highly recommend!"
+          "name": "Nathan Green",
+          "role": "Anime Subtitler",
+          "heading": "Anime Lover's Dream",
+          "content": "For subtitling projects, Esperanto-Translator Hub is outstanding. It manages batch translations for anime scripts swiftly and accurately. The interactive sentence proofreading feature lets me perfect every line. It's amazing how much easier my work has become with this tool. I can’t imagine subtitling without it!"
         },
         "item-6": {
-          "name": "Olivia Baker",
-          "role": "Traveler",
-          "content": "I travel a lot and VibeTrans makes it easy to communicate in Esperanto, especially when dealing with locals. The translation is fast, accurate, and reliable. It's a must-have app!"
-        },
-        "item-7": {
-          "name": "David Martinez",
-          "role": "Content Creator",
-          "content": "Creating content in multiple languages is essential for my work. VibeTrans helps me translate Esperanto content quickly and accurately. It's an indispensable tool for my workflow!"
-        },
-        "item-8": {
-          "name": "Rachel Chen",
-          "role": "Researcher",
-          "content": "As a researcher studying constructed languages, VibeTrans provides accurate Esperanto translations that maintain grammatical integrity. It's perfect for academic work!"
-        },
-        "item-9": {
-          "name": "Michael Brown",
-          "role": "Language Coach",
-          "content": "I use VibeTrans to help my students practice Esperanto. The instant feedback and voice features make it an excellent teaching aid. Highly recommended for educators!"
-        },
-        "item-10": {
-          "name": "Lisa Anderson",
-          "role": "Blogger",
-          "content": "Writing about language learning, I've tested many translation tools. VibeTrans's Esperanto translator is among the best – accurate, fast, and user-friendly!"
-        },
-        "item-11": {
-          "name": "Tom Wilson",
-          "role": "International Business Consultant",
-          "content": "VibeTrans helps me prepare documents in Esperanto for international conferences. The document upload feature saves me hours of manual translation work!"
-        },
-        "item-12": {
-          "name": "Anna Lee",
-          "role": "Esperanto Enthusiast",
-          "content": "As a long-time Esperanto speaker, I appreciate VibeTrans's attention to grammar and context. It's the most reliable online Esperanto translator I've found!"
+          "name": "Emily Davis",
+          "role": "Tattoo Artist",
+          "heading": "Creative Tattoo Translations",
+          "content": "Esperanto-Translator Hub is a favorite for tattoo translations. Clients love its precision for short phrases. I used it to verify a complex design, ensuring accuracy. The translation confidence heatmap shows me exactly where to focus. It’s an artist’s best friend for language accuracy."
         }
       }
     },

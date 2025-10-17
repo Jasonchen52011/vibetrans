@@ -371,13 +371,13 @@ export default async function VerboseGeneratorPage(
         {/* Explore Other Tools */}
         <ExploreOurAiTools
           toolKeys={[
-        'Dumb It Down AI',
-        'Bad Translator',
-        'Alien Text Generator',
-        'Gen Z Translator',
-        'Chinese to English Translator',
-        'Gibberish Translator'
-      ]}
+            'Ancient Greek Translator',
+            'Bad Translator',
+            'Dog Translator',
+            'Gen Z Translator',
+            'Cuneiform Translator',
+            'Gibberish Translator',
+          ]}
         />
 
         {/* Testimonials */}

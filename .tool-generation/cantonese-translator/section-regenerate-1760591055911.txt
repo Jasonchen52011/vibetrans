@@ -1,0 +1,25 @@
+```json
+{
+  "highlights": {
+    "title": "Discover the Magic of CantoTone Translator",
+    "features": [
+      {
+        "title": "Effortless and Free to Use",
+        "description": "CantoTone Translator by VibeTrans is your go-to tool for easy and free Cantonese translation. It's user-friendly and requires no payment. Imagine planning a trip to Hong Kong and needing quick translations—this tool has you covered without any hassle."
+      },
+      {
+        "title": "Accurate Data Translation",
+        "description": "Accuracy is key when translating Cantonese tones and slang. VibeTrans ensures that even the trickiest phrases, like '撚' or '扑街', are translated correctly. I love how it handles the complexities of Cantonese, making communication smoother."
+      },
+      {
+        "title": "Privacy and Data Security",
+        "description": "Concerned about privacy? VibeTrans prioritizes your data security. With server locations in Hong Kong, Mainland China, and overseas, you can trust that your translations are safe and secure. It's like having a private translator in your pocket!"
+      },
+      {
+        "title": "Contextual Understanding with AI",
+        "description": "VibeTrans uses AI to understand context, making translations more than just word-for-word. It gets the nuances of Cantonese, like distinguishing '唔該' as either 'please' or 'thanks'. This feature is a game-changer for accurate communication."
+      }
+    ]
+  }
+}
+```

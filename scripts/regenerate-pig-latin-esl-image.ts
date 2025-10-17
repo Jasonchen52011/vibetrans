@@ -4,8 +4,8 @@
  * 使用 Volcano 4.0 重新生成 Pig Latin ESL Learners 图片
  */
 
-import dotenv from 'dotenv';
 import path from 'path';
+import dotenv from 'dotenv';
 
 // 加载 .env.local 文件
 dotenv.config({ path: path.resolve(process.cwd(), '.env.local') });

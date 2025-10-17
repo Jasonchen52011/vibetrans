@@ -4,16 +4,17 @@
  * Regenerate Seamless Integration with Apps image
  */
 
-import { generateIllustration } from '../src/lib/article-illustrator/image-generator';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import sharp from 'sharp';
+import { generateIllustration } from '../src/lib/article-illustrator/image-generator';
 
 const OUTPUT_DIR = path.join(process.cwd(), 'public', 'images', 'docs');
 
 const task = {
   filename: 'cantonese-translator-interest-3.webp',
-  description: 'Seamless Integration with Apps - VibeTrans working in WhatsApp and WeChat',
+  description:
+    'Seamless Integration with Apps - VibeTrans working in WhatsApp and WeChat',
   prompt:
     'A modern communication illustration showing app integration. Visualize smartphone screen with split messaging interface: WhatsApp (green theme) and WeChat (teal theme) both showing VibeTrans seamlessly translating conversations in real-time. Include visual elements: message bubbles with Cantonese text automatically translated to English inline, VibeTrans floating translation widget, instant translation toggle button, keyboard with translation shortcut, multiple chat windows open simultaneously, group chat with multilingual participants, translation speed indicator showing "instant", app integration icons, smooth conversation flow arrows. Color scheme: WhatsApp green, WeChat teal, integration harmony blues, real-time communication purples, user-friendly interface whites and grays. 4:3 aspect ratio.',
 };

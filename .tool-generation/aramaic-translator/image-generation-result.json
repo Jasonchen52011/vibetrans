@@ -1,0 +1,64 @@
+{
+  "success": true,
+  "totalImages": 7,
+  "successfulImages": 1,
+  "failedImages": 6,
+  "images": [
+    {
+      "section": "whatIs",
+      "title": "What is XXXX",
+      "filename": "aramaic-translation-bridge.webp",
+      "size": 0,
+      "status": "failed",
+      "error": "All image generation models failed. Last error: Failed to create Ideogram task: undefined"
+    },
+    {
+      "section": "funFacts #1",
+      "title": "Fun Fact",
+      "filename": "aramaic-timeline.webp",
+      "size": 0,
+      "status": "failed",
+      "error": "All image generation models failed. Last error: Failed to create Ideogram task: undefined"
+    },
+    {
+      "section": "funFacts #2",
+      "title": "Fun Fact",
+      "filename": "language-history-chat.webp",
+      "size": 0,
+      "status": "failed",
+      "error": "All image generation models failed. Last error: Failed to create Ideogram task: undefined"
+    },
+    {
+      "section": "userInterests #1",
+      "title": "Dialect-Specific Translations",
+      "filename": "dialect-party.webp",
+      "size": 0,
+      "status": "failed",
+      "error": "All image generation models failed. Last error: Failed to create Ideogram task: undefined"
+    },
+    {
+      "section": "userInterests #2",
+      "title": "Tattoo Translation Pitfalls",
+      "filename": "tattoo-fail-laugh.webp",
+      "size": 0,
+      "status": "failed",
+      "error": "All image generation models failed. Last error: Failed to create Ideogram task: undefined"
+    },
+    {
+      "section": "userInterests #3",
+      "title": "Certified Human Translators",
+      "filename": "translator-rockstars.webp",
+      "size": 0,
+      "status": "failed",
+      "error": "All image generation models failed. Last error: Failed to create Ideogram task: undefined"
+    },
+    {
+      "section": "userInterests #4",
+      "title": "Interactive Transliteration",
+      "filename": "language-piano.webp",
+      "size": 61,
+      "status": "success"
+    }
+  ],
+  "totalTimeMs": 23442
+}

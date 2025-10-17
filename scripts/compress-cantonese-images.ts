@@ -2,16 +2,16 @@
  * 压缩已生成的 Cantonese 图片到 90KB 以内
  */
 
-import { convertToWebP } from '../src/lib/article-illustrator/webp-converter';
-import path from 'node:path';
 import fs from 'node:fs/promises';
+import path from 'node:path';
+import { convertToWebP } from '../src/lib/article-illustrator/webp-converter';
 
 const images = [
   'cantonese-translation-technology-ai.webp',
   'cantonese-tones-musical-system.webp',
   'english-cantonese-loanwords.webp',
   'hongkong-street-slang-culture.webp',
-  'app-integration-whatsapp-wechat.webp'
+  'app-integration-whatsapp-wechat.webp',
 ];
 
 async function main() {
@@ -44,7 +44,7 @@ async function main() {
       await convertToWebP(imageBuffer, {
         filename: imageName.replace('.webp', ''),
         targetSize: 90,
-        tolerance: 5
+        tolerance: 5,
       });
 
       // 检查压缩后大小
@@ -52,7 +52,6 @@ async function main() {
       const afterSizeKB = Math.round(afterStats.size / 1024);
 
       console.log(`   ✅ 压缩完成: ${beforeSizeKB}KB → ${afterSizeKB}KB\n`);
-
     } catch (error: any) {
       console.error(`   ❌ 处理失败: ${error.message}\n`);
     }

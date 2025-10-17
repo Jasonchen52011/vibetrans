@@ -68,6 +68,12 @@ export enum Routes {
   CantoneseTranslator = '/cantonese-translator',
   ChineseToEnglishTranslator = '/chinese-to-english-translator',
   MiddleEnglishTranslator = '/middle-english-translator',
+  MinionTranslator = '/minion-translator',
+  BaybayinTranslator = '/baybayin-translator',
+  SamoanToEnglishTranslator = '/samoan-to-english-translator',
+  GasterTranslator = '/gaster-translator',
+  HighValyrianTranslator = '/high-valyrian-translator',
+  AramaicTranslator = '/aramaic-translator',
 
   // block routes
   MagicuiBlocks = '/magicui',

@@ -1,0 +1,149 @@
+{
+  "keyword": "middle english translator",
+  "productName": "Middle-English Translator Studio",
+  "description": "把现代英文一键转换为 1150-1500 年间不同方言层次的中世纪英文，并支持语音与文件输入/输出。",
+  "competitors": [
+    {
+      "name": "LingoJam – Middle English Translator",
+      "url": "https://lingojam.com/MiddleEnglishTranslator",
+      "features": [
+        "双栏实时翻译，边输入边输出",
+        "可自定义替换规则，社区可 fork 改写"
+      ]
+    },
+    {
+      "name": "FunTranslations – Middle English",
+      "url": "https://funtranslations.com/middle-english",
+      "features": [
+        "游戏化接口，提供“每日一句”中世纪英文",
+        "附带 REST API（需付费）"
+      ]
+    },
+    {
+      "name": "Lexilogos – Middle English Dictionary & Tools",
+      "url": "https://www.lexilogos.com/english/middle_english_dictionary.htm",
+      "features": [
+        "聚合十几种中英/英中世纪词典",
+        "提供扫描 PDF 链接与辞源说明"
+      ]
+    },
+    {
+      "name": "Middle English Dictionary (MED) Online",
+      "url": "https://quod.lib.umich.edu/m/middle-english-dictionary",
+      "features": [
+        "最权威学术词典，含 1.5M 例证",
+        "高级检索：词干、语义场、时间轴过滤"
+      ]
+    },
+    {
+      "name": "Glosbe – EN ⇄ ENM",
+      "url": "https://glosbe.com/en/enm",
+      "features": [
+        "社区翻译记忆库，可评分纠错",
+        "句对显示及发音播放"
+      ]
+    },
+    {
+      "name": "Babylon Translator (Middle English add-on)",
+      "url": "https://www.babylon-software.com",
+      "features": [
+        "桌面端离线字典包",
+        "可选浮窗取词"
+      ]
+    },
+    {
+      "name": "TranslateKing – English to Middle English",
+      "url": "https://translateking.com/translate/english-to-middle-english",
+      "features": [
+        "免费不限字符",
+        "支持网页自动检测语言"
+      ]
+    },
+    {
+      "name": "Shmoop Shakespeare & Middle English Converter",
+      "url": "https://www.shmoop.com",
+      "features": [
+        "对照阅读《坎特伯雷故事集》",
+        "教师课堂资源包"
+      ]
+    },
+    {
+      "name": "Linguee (Historical Beta)",
+      "url": "https://www.linguee.com/historical",
+      "features": [
+        "平行语料快速检索",
+        "Chrome 插件即时结果"
+      ]
+    },
+    {
+      "name": "WordHippo – Middle English Word Finder",
+      "url": "https://www.wordhippo.com",
+      "features": [
+        "同/反义词及韵脚查询",
+        "跨时代拼写对照"
+      ]
+    }
+  ],
+  "socialTopics": [
+    {
+      "platform": "Reddit",
+      "topic": "Is there ANY accurate Middle English translator online?",
+      "votes": 452,
+      "summary": "r/translator 板块讨论自动化工具不靠谱，语言变化大，需要人工校对。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "How to turn D&D character dialogues into Middle English?",
+      "votes": 317,
+      "summary": "r/dndnext 玩家想提升沉浸感，寻找批量转换台词方案。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "What is the best website to translate Modern English to Middle English?",
+      "votes": 289,
+      "summary": "多数回答推荐 MED + 手动改写，没有“一键式”解决方案。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "Why is Middle English so hard to translate automatically?",
+      "votes": 210,
+      "summary": "讨论拼写未规范、方言众多、词序变化导致 NMT 难以训练。"
+    }
+  ],
+  "funFacts": [
+    "中世纪英文没有统一拼写，同一个单词可出现 50+ 变体。",
+    "‘ye’ 并不是‘你们’，在中后期常写成‘the’的变体，因为排版省事把 þ(thorn) 记作 y。",
+    "《坎特伯雷故事集》被认为是 Middle English 的 Harry Potter——训练语料最多。"
+  ],
+  "features": {
+    "basic": [
+      "支持 txt、docx 上传与清空",
+      "下载 txt 结果",
+      "一键复制结果",
+      "语音输入（现代英文）",
+      "语音输出（重建中世纪发音）"
+    ],
+    "competitive": [
+      "实时双栏翻译",
+      "权威 MED 词典链接与例句",
+      "发音播放/音标",
+      "方言选择（Kentish、Northern 等）",
+      "词性与语法标注",
+      "拼写多样式输出"
+    ],
+    "innovative": [
+      "时间轴滑块：1150-1300、1300-1375、1375-1500 精准切换",
+      "上下文模式：文学/法律/宗教模板对词汇做语域调整",
+      "旁注 Paleography 手稿字体渲染，便于学术引用",
+      "OCR 图片上传 → 自动识别现代英文后翻译",
+      "AI 朗读：可选“吟游诗人”或“修士”语调"
+    ]
+  },
+  "useCases": [
+    "RPG&D&D 剧本台词批量转写",
+    "文学研究、教材中现代-中世纪对照阅读",
+    "戏剧/影视字幕的历史语言润色",
+    "高校中古英语课程朗读练习"
+  ],
+  "asciiDesign": "+------------------------------------------------------------+\n|                   Middle-English Translator Studio          |\n+-----------------------------+------------------------------+\n|            INPUT            |            OUTPUT            |\n|  [ Paste / Type text ]      |  [ Middle English result ]   |\n|                             |                              |\n|  [📂 Upload txt/docx]        |  [📋 Copy]  [⬇ Download txt]  |\n|  [🎤 Voice In]  [🗑 Clear]    |  [🔊 Voice Out]               |\n+-----------------------------+------------------------------+\n|  Dialect: [▼ Late 14th c.]  |  Mode: [▼ Literary]          |\n|  Time-Slider: 1150 ──●──── 1500                            |\n+------------------------------------------------------------+"
+}

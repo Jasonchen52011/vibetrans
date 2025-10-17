@@ -2,7 +2,14 @@
 
 import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
 import mammoth from 'mammoth';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+
+// 语言检测结果接口
+interface LanguageDetectionResult {
+  detectedLanguage: string;
+  confidence: number;
+  suggestedDirection: 'to-english' | 'from-english';
+}
 
 interface CreoleToEnglishTranslatorToolProps {
   pageData: any;
@@ -18,7 +25,68 @@ export default function CreoleToEnglishTranslatorTool({
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [fileName, setFileName] = useState<string | null>(null);
-  const [direction, setDirection] = useState<'creole-to-en' | 'en-to-creole'>('creole-to-en');
+
+  // 智能翻译状态
+  const [direction, setDirection] = useState<'creole-to-en' | 'en-to-creole'>(
+    'creole-to-en'
+  );
+  const [detectedLanguage, setDetectedLanguage] = useState<string>('unknown');
+  const [detectedDirection, setDetectedDirection] = useState<
+    'creole-to-en' | 'en-to-creole'
+  >('creole-to-en');
+  const [languageWarning, setLanguageWarning] = useState<string>('');
+
+  // 实时语言检测
+  useEffect(() => {
+    if (!inputText.trim()) {
+      setDetectedLanguage('unknown');
+      setDetectedDirection('creole-to-en');
+      setLanguageWarning('');
+      return;
+    }
+
+    // 防抖处理，避免频繁检测
+    const timeoutId = setTimeout(async () => {
+      try {
+        // 调用语言检测API
+        const response = await fetch('/api/creole-to-english-translator', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text: inputText, detectOnly: true }),
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          setDetectedLanguage(data.detectedInputLanguage);
+          setDetectedDirection(data.detectedDirection);
+
+          // 自动切换翻译方向
+          if (
+            data.detectedDirection &&
+            (data.detectedInputLanguage === 'english' ||
+              data.detectedInputLanguage === 'creole')
+          ) {
+            setDirection(data.detectedDirection);
+          }
+
+          // 如果检测到其他语言，显示警告
+          if (
+            data.detectedInputLanguage === 'unknown' &&
+            data.confidence < 0.3
+          ) {
+            setLanguageWarning('Please input Creole or English');
+          } else {
+            setLanguageWarning('');
+          }
+        }
+      } catch (err) {
+        // 如果检测失败，保持当前状态
+        console.warn('Language detection failed:', err);
+      }
+    }, 800); // 800ms 防抖
+
+    return () => clearTimeout(timeoutId);
+  }, [inputText]);
 
   // Handle file upload
   const handleFileUpload = async (
@@ -74,10 +142,17 @@ export default function CreoleToEnglishTranslatorTool({
     );
   };
 
-  // Handle translation
+  // Handle translation with smart detection
   const handleTranslate = async () => {
     if (!inputText.trim()) {
       setError(pageData.tool.noInput);
+      setOutputText('');
+      return;
+    }
+
+    // 如果有语言警告，不进行翻译
+    if (languageWarning) {
+      setError(languageWarning);
       setOutputText('');
       return;
     }
@@ -92,20 +167,38 @@ export default function CreoleToEnglishTranslatorTool({
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           text: inputText,
-          direction: direction,
         }),
       });
 
       const data = (await response.json()) as {
         error?: string;
         translated?: string;
+        suggestion?: string;
+        needsUserConfirmation?: boolean;
+        detectedInputLanguage?: string;
+        detectedDirection?: string;
+        languageInfo?: any;
       };
 
       if (!response.ok) {
+        if (data.needsUserConfirmation && data.suggestion) {
+          // 如果是语言检测问题，显示具体建议
+          throw new Error(data.error);
+        }
         throw new Error(data.error || pageData.tool.error);
       }
 
       setOutputText(data.translated || '');
+
+      // 更新检测到的语言信息
+      if (data.detectedInputLanguage) {
+        setDetectedLanguage(data.detectedInputLanguage);
+      }
+      if (data.detectedDirection) {
+        setDetectedDirection(
+          data.detectedDirection as 'creole-to-en' | 'en-to-creole'
+        );
+      }
     } catch (err: any) {
       setError(err.message || 'Translation failed');
       setOutputText('');
@@ -120,6 +213,10 @@ export default function CreoleToEnglishTranslatorTool({
     setOutputText('');
     setFileName(null);
     setError(null);
+    setDirection('creole-to-en');
+    setDetectedLanguage('unknown');
+    setDetectedDirection('creole-to-en');
+    setLanguageWarning('');
   };
 
   // Copy
@@ -164,7 +261,11 @@ export default function CreoleToEnglishTranslatorTool({
                   ? pageData.tool.inputPlaceholder
                   : 'Enter English text or upload a file...'
               }
-              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent resize-none text-gray-700 dark:text-gray-200 dark:bg-zinc-700"
+              className={`w-full h-48 md:h-64 p-3 border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent resize-none text-gray-700 dark:text-gray-200 dark:bg-zinc-700 ${
+                languageWarning
+                  ? 'border-amber-300 dark:border-amber-600 focus:ring-amber-500'
+                  : 'border-gray-300 dark:border-zinc-600'
+              }`}
               aria-label="Input text"
             />
 
@@ -248,7 +349,9 @@ export default function CreoleToEnglishTranslatorTool({
           <div className="flex md:flex-col items-center justify-center md:justify-start md:pt-32">
             <button
               onClick={() =>
-                setDirection(direction === 'creole-to-en' ? 'en-to-creole' : 'creole-to-en')
+                setDirection(
+                  direction === 'creole-to-en' ? 'en-to-creole' : 'creole-to-en'
+                )
               }
               className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors rotate-0 md:rotate-0"
               title={
@@ -278,7 +381,9 @@ export default function CreoleToEnglishTranslatorTool({
           <div className="flex-1">
             <div className="flex items-center justify-between mb-3">
               <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">
-                {direction === 'creole-to-en' ? 'English Translation' : 'Creole Translation'}
+                {direction === 'creole-to-en'
+                  ? 'English Translation'
+                  : 'Creole Translation'}
               </h2>
               {outputText && (
                 <div className="flex gap-2">

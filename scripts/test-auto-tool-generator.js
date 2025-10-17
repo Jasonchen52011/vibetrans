@@ -463,7 +463,7 @@ async function testUIUniqueness(toolName) {
 
   // 1. 检查头像唯一性
   log(`\n🖼️  检查头像组合唯一性...`, 'cyan');
-  let avatarConflicts = [];
+  const avatarConflicts = [];
   for (const otherTool of otherTools) {
     const otherPagePath = path.join(pagesDir, otherTool, 'page.tsx');
     try {
@@ -497,7 +497,7 @@ async function testUIUniqueness(toolName) {
 
   // 2. 检查用户数量唯一性
   log(`\n🔢 检查用户数量唯一性...`, 'cyan');
-  let countConflicts = [];
+  const countConflicts = [];
   for (const otherTool of otherTools) {
     const otherPagePath = path.join(pagesDir, otherTool, 'page.tsx');
     try {

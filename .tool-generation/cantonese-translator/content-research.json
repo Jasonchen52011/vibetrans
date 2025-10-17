@@ -1,0 +1,298 @@
+{
+  "contentGaps": [
+    {
+      "topic": "Cantonese vs. Mandarin – why machine translation often fails",
+      "reason": "大部分用户误以为“粤语=中文”，不知道机器翻译将粤语当普通话处理而导致错误，希望提前获知局限及解决方案",
+      "competitors": [
+        "Google Translate",
+        "Bing Translator",
+        "Yandex Translate",
+        "Lingvanex"
+      ]
+    },
+    {
+      "topic": "Jyutping / Yale 拼音一键显示 & 语调标注",
+      "reason": "搜索者往往需要同时看到罗马化和声调来练习发音，现有工具仅给汉字或给不完整拼音",
+      "competitors": ["Google Translate", "DeepL", "Bing Translator", "Papago"]
+    },
+    {
+      "topic": "口语俚语、网络流行语、粗口的准确翻译",
+      "reason": "粤语有大量日常口头表达，机器翻译经常失真；用户尤其在字幕、聊天记录中关心",
+      "competitors": [
+        "CantoneseTools",
+        "ChineseConverter",
+        "CantoDict",
+        "Google Translate"
+      ]
+    },
+    {
+      "topic": "语音识别 ➜ 粤语文本 ➜ 英/中翻译的完整工作流",
+      "reason": "手机拍视频或录音后想直接得到翻译字幕，希望一步完成，当前网站侧重文字输入",
+      "competitors": [
+        "Google Translate (缺少字幕流程)",
+        "Bing Translator",
+        "CantoneseTools"
+      ]
+    },
+    {
+      "topic": "专有粤语字（例如『𠵱』『啱』）的输入与显示兼容性",
+      "reason": "很多字符在常见字体/系统里不显示或无法复制粘贴，用户想知道解决方案",
+      "competitors": ["Yandex Translate", "Lingvanex", "DeepL", "Papago"]
+    },
+    {
+      "topic": "离线/弱网场景下的粤语翻译方案",
+      "reason": "香港/广东旅客在境外漫游或地铁无网时仍需翻译，寻找可离线使用的工具",
+      "competitors": [
+        "Google Translate",
+        "CantoneseTools (仅网页)",
+        "ChineseConverter"
+      ]
+    },
+    {
+      "topic": "翻译质量基准：常用句 50 例横评 (Google/Bing/xxx)",
+      "reason": "用户想知道哪个工具最准确，却缺乏可量化对比",
+      "competitors": ["所有排名页面都未做系统评测"]
+    },
+    {
+      "topic": "粤语字幕文件 (.srt/.ass) 自动生成与批量转换",
+      "reason": "视频创作者/字幕组高频需求，目前需用多工具手工串联",
+      "competitors": ["Google Translate", "CantoneseTools", "ChineseConverter"]
+    },
+    {
+      "topic": "文化差异 & 礼貌等级翻译 (formal / informal)",
+      "reason": "商务邮件或长辈交流时需用更礼貌或书面化的粤语表达",
+      "competitors": ["Most top-15 translator pages"]
+    },
+    {
+      "topic": "繁简体 + 粤拼同步输出",
+      "reason": "港澳用户常用繁体，广东用户多用简体，学习者想一次看到两种写法",
+      "competitors": ["Google Translate", "Bing Translator", "DeepL"]
+    }
+  ],
+  "socialTopics": [
+    {
+      "platform": "Reddit",
+      "topic": "\"Why is Google Translate so bad at Cantonese?\" (r/Cantonese, r/translator)",
+      "engagement": "高",
+      "summary": "几百条评论集中讨论缺乏粤语训练语料、机器默认普通话模型，以及用户推荐替代方案如 Pleco＋Cantonese.org"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "Best way to add Cantonese subtitles to YouTube videos",
+      "engagement": "高",
+      "summary": "内容创作者寻求自动化字幕工具与时间轴校正方法，Upvotes>500"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "Apps for scanning Hong Kong menus and translating on the fly",
+      "engagement": "中",
+      "summary": "旅游场景问题，用户推荐 Google Lens + 手动校正，抱怨粤字无法识别"
+    },
+    {
+      "platform": "Quora",
+      "topic": "What’s the most accurate Cantonese-English translator app?",
+      "engagement": "高",
+      "summary": "回答比较 Google, Microsoft, CantoDict, Pleco，Pleco 得票最高但缺在线翻译"
+    },
+    {
+      "platform": "Quora",
+      "topic": "How many tones are there in Cantonese and how does that affect translation?",
+      "engagement": "中",
+      "summary": "解释 6/9 音调理论，对机器拼写输出影响；语言学家回答被大量 Upvote"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "Cantonese swear words – what do they literally translate to?",
+      "engagement": "中",
+      "summary": "文化/俚语兴趣贴，被标注 NSFW，但投票高"
+    },
+    {
+      "platform": "Quora",
+      "topic": "Is Mandarin good enough to understand written Cantonese?",
+      "engagement": "高",
+      "summary": "数百赞讨论书面粤语 vs. 口头粤语差异及翻译难点"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "Any OCR that can recognize unique Cantonese characters like 𠵱?",
+      "engagement": "中",
+      "summary": "开发者贴，收集可行 OCR 库与字体支持方案"
+    },
+    {
+      "platform": "Quora",
+      "topic": "How to convert Jyutping to Chinese characters programmatically?",
+      "engagement": "中",
+      "summary": "工程师/学习者场景，讨论开源词库与算法"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "Funny Cantonese expressions that make no sense in English",
+      "engagement": "中",
+      "summary": "语言爱好者分享『食咗饭未』等习语及翻译翻车案例"
+    }
+  ],
+  "funFacts": [
+    "Depending on how scholars count entering tones, Cantonese is often said to have either 6 or 9 tones—more than twice as many as Mandarin.",
+    "Thousands of genuine Cantonese characters (粵字) like 𠵱, 冇, 哋 never appear in Mandarin newspapers and were only added to Unicode in 2017 (Extension F).",
+    "The Guinness World Record for ‘longest Cantonese sentence ever broadcast’ belongs to Hong Kong horse-racing commentators who routinely speak over 300 words per minute.",
+    "Because Cantonese maintains final consonants lost in Mandarin, machine translators trained on Mandarin struggle with rhyme-based Cantonese wordplay such as 搭枱『daap3 toi2』.",
+    "Bruce Lee’s stage name \"李小龍\" literally translates to ‘Little Dragon Lee,’ but his Cantonese nickname ‘細龍仔’ is untranslatable word-for-word into English."
+  ],
+  "highFrequencyWords": [
+    {
+      "word": "translate",
+      "frequency": "高",
+      "context": "按钮/标题"
+    },
+    {
+      "word": "Cantonese",
+      "frequency": "高",
+      "context": "主关键词"
+    },
+    {
+      "word": "English",
+      "frequency": "高",
+      "context": "语种切换"
+    },
+    {
+      "word": "Chinese",
+      "frequency": "高",
+      "context": "语种说明"
+    },
+    {
+      "word": "text",
+      "frequency": "高",
+      "context": "输入提示"
+    },
+    {
+      "word": "voice",
+      "frequency": "中",
+      "context": "语音翻译功能"
+    },
+    {
+      "word": "language",
+      "frequency": "高",
+      "context": "通用描述"
+    },
+    {
+      "word": "free",
+      "frequency": "高",
+      "context": "卖点"
+    },
+    {
+      "word": "online",
+      "frequency": "高",
+      "context": "卖点"
+    },
+    {
+      "word": "tool",
+      "frequency": "中",
+      "context": "功能描述"
+    },
+    {
+      "word": "dictionary",
+      "frequency": "中",
+      "context": "词典功能"
+    },
+    {
+      "word": "romanization",
+      "frequency": "中",
+      "context": "拼音输出"
+    },
+    {
+      "word": "Jyutping",
+      "frequency": "中",
+      "context": "拼音系统"
+    },
+    {
+      "word": "characters",
+      "frequency": "中",
+      "context": "汉字输入/输出"
+    },
+    {
+      "word": "pronunciation",
+      "frequency": "中",
+      "context": "发音音频"
+    },
+    {
+      "word": "audio",
+      "frequency": "中",
+      "context": "播放按钮"
+    },
+    {
+      "word": "copy",
+      "frequency": "中",
+      "context": "操作按钮"
+    },
+    {
+      "word": "paste",
+      "frequency": "中",
+      "context": "操作按钮"
+    },
+    {
+      "word": "convert",
+      "frequency": "中",
+      "context": "转换功能"
+    },
+    {
+      "word": "sentence",
+      "frequency": "中",
+      "context": "翻译粒度"
+    },
+    {
+      "word": "meaning",
+      "frequency": "中",
+      "context": "释义"
+    },
+    {
+      "word": "app",
+      "frequency": "中",
+      "context": "移动端"
+    },
+    {
+      "word": "speech",
+      "frequency": "中",
+      "context": "语音识别"
+    },
+    {
+      "word": "handwriting",
+      "frequency": "低",
+      "context": "手写输入"
+    },
+    {
+      "word": "simplified",
+      "frequency": "中",
+      "context": "简体输出选项"
+    },
+    {
+      "word": "traditional",
+      "frequency": "中",
+      "context": "繁体输出选项"
+    },
+    {
+      "word": "phrases",
+      "frequency": "低",
+      "context": "常用短语"
+    },
+    {
+      "word": "learn",
+      "frequency": "低",
+      "context": "学习者场景"
+    },
+    {
+      "word": "accurate",
+      "frequency": "低",
+      "context": "质量宣称"
+    },
+    {
+      "word": "input",
+      "frequency": "中",
+      "context": "文本输入"
+    },
+    {
+      "word": "output",
+      "frequency": "中",
+      "context": "翻译结果"
+    }
+  ]
+}

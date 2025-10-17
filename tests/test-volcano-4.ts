@@ -31,7 +31,9 @@ async function testVolcano40() {
     console.log('✅ SUCCESS!');
     console.log(`   Model used: ${result.modelUsed}`);
     console.log(`   Image URL: ${result.url.substring(0, 80)}...`);
-    console.log(`   Revised prompt: ${result.revisedPrompt?.substring(0, 80)}...`);
+    console.log(
+      `   Revised prompt: ${result.revisedPrompt?.substring(0, 80)}...`
+    );
     console.log('');
 
     // Test automatic priority (should use Volcano by default)

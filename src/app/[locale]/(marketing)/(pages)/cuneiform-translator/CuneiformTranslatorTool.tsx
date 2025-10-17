@@ -3,7 +3,27 @@
 import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
 import type { CuneiformScript } from '@/lib/cuneiform';
 import mammoth from 'mammoth';
-import { useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
+
+// 简单的debounce函数实现
+function useDebounce<T extends (...args: any[]) => void>(
+  callback: T,
+  delay: number
+): T {
+  const timeoutRef = useRef<NodeJS.Timeout>();
+
+  const debouncedCallback = useCallback(
+    (...args: Parameters<T>) => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+      timeoutRef.current = setTimeout(() => callback(...args), delay);
+    },
+    [callback, delay]
+  ) as T;
+
+  return debouncedCallback;
+}
 
 interface CuneiformTranslatorToolProps {
   pageData: any;
@@ -19,9 +39,7 @@ export default function CuneiformTranslatorTool({
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [script, setScript] = useState<CuneiformScript>('sumerian');
-  const [direction, setDirection] = useState<'toCuneiform' | 'toEnglish'>(
-    'toCuneiform'
-  );
+  const [direction, setDirection] = useState<'toCuneiform' | 'toEnglish'>('toCuneiform');
   const [fileName, setFileName] = useState<string | null>(null);
 
   // Handle file upload
@@ -115,12 +133,18 @@ export default function CuneiformTranslatorTool({
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ text: inputText, script, direction }),
+        body: JSON.stringify({
+          text: inputText,
+          script,
+          direction,
+        }),
       });
 
       const data = (await response.json()) as {
         translated?: string;
         error?: string;
+        languageInfo?: any;
+        direction?: string;
       };
 
       if (!response.ok) {
@@ -136,8 +160,8 @@ export default function CuneiformTranslatorTool({
     }
   };
 
-  // Toggle translation direction (Swap)
-  const toggleDirection = () => {
+  // Toggle translation direction when clicking titles
+  const handleTitleClick = () => {
     // Swap input and output
     const temp = inputText;
     setInputText(translatedText);
@@ -155,6 +179,7 @@ export default function CuneiformTranslatorTool({
     setTranslatedText('');
     setFileName(null);
     setError(null);
+    setDirection('toCuneiform');
   };
 
   // Copy result to clipboard
@@ -182,47 +207,66 @@ export default function CuneiformTranslatorTool({
     URL.revokeObjectURL(url);
   };
 
+  // 获取动态标签
+  const getInputLabel = () => {
+    if (direction === 'toCuneiform') {
+      return 'English Text';
+    }
+    return 'Cuneiform Text';
+  };
+
+  const getOutputLabel = () => {
+    if (direction === 'toCuneiform') {
+      return 'Cuneiform Translation';
+    }
+    return 'English Translation';
+  };
+
+  const getInputPlaceholder = () => {
+    if (direction === 'toCuneiform') {
+      return 'Enter English text to convert to cuneiform...';
+    }
+    return 'Enter cuneiform text to translate to English...';
+  };
+
   return (
     <div className="container max-w-5xl mx-auto px-4 mb-10">
       <main className="w-full bg-white dark:bg-zinc-800 shadow-xl border border-gray-100 dark:border-zinc-700 rounded-lg p-4 md:p-8">
-        {/* Script Selector */}
-        <div className="mb-6 flex flex-col sm:flex-row items-start sm:items-center gap-3">
-          <label
-            htmlFor="script-select"
-            className="text-sm font-medium text-gray-700 dark:text-gray-300"
-          >
-            {pageData.tool.scriptLabel}
+        {/* Script Selection */}
+        <div className="mb-6 flex items-center gap-4">
+          <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
+            Script:
           </label>
           <select
-            id="script-select"
             value={script}
             onChange={(e) => setScript(e.target.value as CuneiformScript)}
-            className="px-4 py-2 border border-gray-300 dark:border-zinc-600 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-zinc-700 text-gray-700 dark:text-gray-200"
+            className="px-3 py-1 border border-gray-300 dark:border-zinc-600 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-zinc-700 text-gray-700 dark:text-gray-200 text-sm"
           >
-            <option value="sumerian">{pageData.tool.scripts.sumerian}</option>
-            <option value="akkadian">{pageData.tool.scripts.akkadian}</option>
-            <option value="babylonian">
-              {pageData.tool.scripts.babylonian}
-            </option>
+            <option value="sumerian">Sumerian</option>
+            <option value="akkadian">Akkadian</option>
+            <option value="hittite">Hittite</option>
+            <option value="elamite">Elamite</option>
+            <option value="old-persian">Old Persian</option>
+            <option value="ugaritic">Ugaritic</option>
           </select>
         </div>
 
+  
+        {/* Input and Output Areas */}
         <div className="flex flex-col md:flex-row gap-2 md:gap-3">
           {/* Input Area */}
-          <div className="flex-1">
-            <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-3">
-              {direction === 'toCuneiform'
-                ? pageData.tool.inputLabel
-                : pageData.tool.cuneiformLabel}
+          <div className="flex-1 relative">
+            <h2
+              className="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-3 cursor-pointer hover:text-primary transition-colors"
+              onClick={handleTitleClick}
+              title={direction === 'toCuneiform' ? 'Switch to Cuneiform → English' : 'Switch to English → Cuneiform'}
+            >
+              {getInputLabel()}
             </h2>
             <textarea
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
-              placeholder={
-                direction === 'toCuneiform'
-                  ? pageData.tool.inputPlaceholder
-                  : pageData.tool.cuneiformPlaceholder
-              }
+              placeholder={getInputPlaceholder()}
               className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent resize-none text-gray-700 dark:text-gray-200 dark:bg-zinc-700"
               aria-label="Input text"
             />
@@ -246,10 +290,10 @@ export default function CuneiformTranslatorTool({
                     d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
                   />
                 </svg>
-                {pageData.tool.uploadButton}
+                {pageData.tool.uploadButton || 'Upload File'}
               </label>
               <p className="text-xs text-gray-500 dark:text-gray-400">
-                {pageData.tool.uploadHint}
+                {pageData.tool.uploadHint || 'Supports .txt and .docx files'}
               </p>
               <input
                 id="file-upload"
@@ -259,87 +303,61 @@ export default function CuneiformTranslatorTool({
                 className="hidden"
               />
             </div>
-            <div>
-              {fileName && (
-                <div className="mt-3 flex items-center gap-2 p-2 bg-gray-100 dark:bg-zinc-700 rounded-md border border-gray-200 dark:border-zinc-600">
+
+            {/* File Name Display */}
+            {fileName && (
+              <div className="mt-3 flex items-center gap-2 p-2 bg-gray-100 dark:bg-zinc-700 rounded-md border border-gray-200 dark:border-zinc-600">
+                <svg
+                  className="w-5 h-5 text-gray-600 dark:text-gray-300"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+                <span className="text-sm text-gray-700 dark:text-gray-200 font-medium">
+                  {fileName}
+                </span>
+                <button
+                  onClick={() => {
+                    setFileName(null);
+                    setInputText('');
+                  }}
+                  className="ml-auto text-gray-500 hover:text-red-500 dark:text-gray-400 dark:hover:text-red-400"
+                  aria-label="Remove file"
+                >
                   <svg
-                    className="w-5 h-5 text-gray-600 dark:text-gray-300"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
                   >
                     <path
-                      fillRule="evenodd"
-                      d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z"
-                      clipRule="evenodd"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
                     />
                   </svg>
-                  <span className="text-sm text-gray-700 dark:text-gray-200 font-medium">
-                    {fileName}
-                  </span>
-                  <button
-                    onClick={() => {
-                      setFileName(null);
-                      setInputText('');
-                    }}
-                    className="ml-auto text-gray-500 hover:text-red-500 dark:text-gray-400 dark:hover:text-red-400"
-                    aria-label="Remove file"
-                  >
-                    <svg
-                      className="w-4 h-4"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M6 18L18 6M6 6l12 12"
-                      />
-                    </svg>
-                  </button>
-                </div>
-              )}
-            </div>
+                </button>
+              </div>
+            )}
           </div>
 
-          {/* Swap Button - in the middle */}
-          <div className="flex md:flex-col items-center justify-center md:justify-start md:pt-32">
-            <button
-              onClick={toggleDirection}
-              className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors rotate-0 md:rotate-0"
-              title={
-                direction === 'toCuneiform'
-                  ? 'Switch to Cuneiform → English'
-                  : 'Switch to English → Cuneiform'
-              }
-              aria-label="Toggle translation direction"
-            >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"
-                />
-              </svg>
-            </button>
-          </div>
-
+          
           {/* Output Area */}
           <div className="flex-1">
             <div className="flex items-center justify-between mb-3">
-              <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">
-                {direction === 'toCuneiform'
-                  ? pageData.tool.cuneiformLabel
-                  : pageData.tool.outputLabel}
+              <h2
+                className="text-2xl font-semibold text-gray-800 dark:text-gray-100 cursor-pointer hover:text-primary transition-colors"
+                onClick={handleTitleClick}
+                title={direction === 'toCuneiform' ? 'Switch to Cuneiform → English' : 'Switch to English → Cuneiform'}
+              >
+                {getOutputLabel()}
               </h2>
-              {/* TTS and action buttons */}
               {translatedText && (
                 <div className="flex gap-2">
                   <TextToSpeechButton text={translatedText} locale={locale} />
@@ -347,7 +365,6 @@ export default function CuneiformTranslatorTool({
                     onClick={handleCopy}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
                     title="Copy"
-                    aria-label="Copy result"
                   >
                     <svg
                       className="w-5 h-5"
@@ -367,7 +384,6 @@ export default function CuneiformTranslatorTool({
                     onClick={handleDownload}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
                     title="Download"
-                    aria-label="Download result"
                   >
                     <svg
                       className="w-5 h-5"
@@ -391,50 +407,41 @@ export default function CuneiformTranslatorTool({
               aria-live="polite"
             >
               {isLoading ? (
-                <p>{pageData.tool.loading}</p>
+                <div className="flex flex-col items-center gap-3">
+                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+                  <p>{pageData.tool.loading || 'Translating...'}</p>
+                </div>
               ) : error ? (
                 <p className="text-red-600 dark:text-red-400">{error}</p>
               ) : translatedText ? (
-                <p className="text-lg whitespace-pre-wrap">{translatedText}</p>
+                <p className="text-lg whitespace-pre-wrap font-mono">
+                  {translatedText}
+                </p>
               ) : (
                 <p className="text-gray-500 dark:text-gray-400">
-                  {pageData.tool.outputPlaceholder}
+                  {pageData.tool.outputPlaceholder ||
+                    'Translation will appear here'}
                 </p>
               )}
             </div>
           </div>
         </div>
 
-        {/* Translate Button */}
+        {/* Action Buttons */}
         <div className="mt-6 flex justify-center gap-4">
           <button
             onClick={handleTranslate}
             disabled={isLoading}
-            className="px-8 py-3 bg-primary hover:bg-primary-light text-white font-semibold rounded-lg shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="px-8 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {isLoading ? pageData.tool.loading : pageData.tool.translateButton}
-            <i
-              className={`${isLoading ? 'fas fa-spinner animate-spin' : 'fas fa-language'} ms-2`}
-            ></i>
+            {isLoading
+              ? pageData.tool.loading || 'Translating...'
+              : pageData.tool.translateButton || 'Translate'}
           </button>
           <button
             onClick={handleReset}
             className="px-6 py-3 bg-gray-200 dark:bg-zinc-600 hover:bg-gray-300 dark:hover:bg-zinc-500 text-gray-800 dark:text-gray-100 font-semibold rounded-lg shadow-md transition-colors"
-            title="Reset"
           >
-            <svg
-              className="w-5 h-5 inline-block mr-2"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-              />
-            </svg>
             Reset
           </button>
         </div>

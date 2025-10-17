@@ -61,8 +61,8 @@
     "common": {
       "termsOfService": "Terms of Service",
       "privacyPolicy": "Privacy Policy",
-      "byClickingContinue": "By clicking continue, you agree to our ",
-      "and": " and "
+      "byClickingContinue": "By clicking continue, you agree to our",
+      "and": "and"
     }
   }
 }

@@ -61,6 +61,14 @@ export default function ExploreOurAiTools({
       link: '/al-bhed-translator',
       image: '/images/docs/al-bhed-translator-what-is.webp',
     },
+    'Baby Translator': {
+      link: '/baby-translator',
+      image: '/images/docs/what-is-baby-translator.webp',
+    },
+    'Alien Text Generator': {
+      link: '/alien-text-generator',
+      image: '/images/docs/what-is-alien-text-generator.webp',
+    },
     // Dog Tools
     'Dog Name Generator': {
       link: '/dog-name-generator',

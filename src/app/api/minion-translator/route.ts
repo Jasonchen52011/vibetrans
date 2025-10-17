@@ -192,7 +192,10 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error('[Minion API] Error:', error);
     return NextResponse.json(
-      { error: 'Translation failed', details: error instanceof Error ? error.message : 'Unknown error' },
+      {
+        error: 'Translation failed',
+        details: error instanceof Error ? error.message : 'Unknown error',
+      },
       { status: 500 }
     );
   }

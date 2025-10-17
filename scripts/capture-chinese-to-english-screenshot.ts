@@ -5,7 +5,9 @@
 import { captureHowToScreenshot } from '../src/lib/article-illustrator/screenshot-helper';
 
 async function main() {
-  console.log('\n🚀 Starting Chinese to English How-To Screenshot Capture...\n');
+  console.log(
+    '\n🚀 Starting Chinese to English How-To Screenshot Capture...\n'
+  );
 
   try {
     const result = await captureHowToScreenshot({

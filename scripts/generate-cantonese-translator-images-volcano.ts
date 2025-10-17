@@ -14,11 +14,11 @@
  * API: Volcano 4.0 ONLY (no fallback)
  */
 
-import { config } from 'dotenv';
-import { generateImage as generateVolcanoImage } from '../src/lib/volcano-image';
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import { config } from 'dotenv';
 import sharp from 'sharp';
+import { generateImage as generateVolcanoImage } from '../src/lib/volcano-image';
 
 // Load environment variables
 config({ path: '.env.local' });

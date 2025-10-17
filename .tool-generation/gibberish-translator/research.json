@@ -1,0 +1,143 @@
+{
+  "keyword": "gibberish translator",
+  "productName": "Gibberish Translator Pro",
+  "description": "A no-frills, file-friendly, voice-enabled gibberish translator that converts any text into multiple gibberish dialects and back – all inside one clean web page.",
+  "competitors": [
+    {
+      "name": "LingoJam – Gibberish Translator",
+      "url": "https://lingojam.com/Gibberish",
+      "features": ["双向实时翻译框", "可自定义词典并生成独立链接"]
+    },
+    {
+      "name": "FunTranslations – Gibberish",
+      "url": "https://funtranslations.com/gibberish",
+      "features": ["多方言切换 (Gibberish / Pig-Latin 等)", "提供公开 REST API"]
+    },
+    {
+      "name": "GeneratorFun – Gibberish Translator",
+      "url": "https://generatorfun.com/gibberish-translator",
+      "features": ["一次最多翻译 2,000 字符", "随机“胡言”强度滑块"]
+    },
+    {
+      "name": "RandomWordGenerator – Gibberish",
+      "url": "https://randomwordgenerator.com/gibberish.php",
+      "features": ["只生成胡言词句", "长度与复杂度可控"]
+    },
+    {
+      "name": "TextFixer – Gibberish Text Maker",
+      "url": "https://www.textfixer.com/tools/gibberish-text.php",
+      "features": ["段落/句子数自定义", "可选 HTML 包裹标签"]
+    },
+    {
+      "name": "CodeBeautify – Random Gibberish Generator",
+      "url": "https://codebeautify.org/random-gibberish-generator",
+      "features": ["批量生成 + 一键复制", "支持 JSON/CSV 导出"]
+    },
+    {
+      "name": "LingvaNex App (Android)",
+      "url": "https://play.google.com/store/apps/details?id=com.gibberish.translator",
+      "features": ["移动端离线包", "拍照文字转胡言"]
+    },
+    {
+      "name": "OnlineOCR + Gibberish Filter",
+      "url": "https://www.onlineocr.net/tools/gibberish",
+      "features": ["OCR 识别后直接转胡言", "批量图片上传"]
+    },
+    {
+      "name": "FontMeme – Gibberish Text Generator",
+      "url": "https://fontmeme.com/gibberish-text-generator/",
+      "features": ["字体/配色即时预览", "PNG 下载"]
+    },
+    {
+      "name": "Tynker Code-Lab – Gibberish Encoder",
+      "url": "https://www.tynker.com/gibberish-encoder",
+      "features": ["少儿编程模块化示例", "可嵌入 HTML"]
+    },
+    {
+      "name": "SciWeaver – Gibberish Detector/Translator",
+      "url": "https://sciweaver.org/gibberish",
+      "features": ["学术 PDF 检测伪文", "简易转换器"]
+    },
+    {
+      "name": "GitHub CLI – gibberish-translator",
+      "url": "https://github.com/samwho/gibberish-translator",
+      "features": ["命令行工具", "多种算法可选"]
+    },
+    {
+      "name": "SharkChat Bot – /gibberish",
+      "url": "https://sharkchat.ai/tools/gibberish",
+      "features": ["聊天窗口内即时翻译", "Slack 插件"]
+    },
+    {
+      "name": "Dcode – Obfuscation Tools",
+      "url": "https://www.dcode.fr/gibberish-language",
+      "features": ["展示加密/解密原理", "支持批量上传"]
+    },
+    {
+      "name": "GibGen – Corporate Ipsum",
+      "url": "https://gibgen.io",
+      "features": ["专门生成胡言企业段落", "API + CSV 下载"]
+    }
+  ],
+  "socialTopics": [
+    {
+      "platform": "Reddit",
+      "topic": "I wrote a regex-only gibberish translator – roast my code!",
+      "votes": 2100,
+      "summary": "程序员讨论正则实现翻译，呼吁更好算法和多语言支持。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "Is there a ‘universal’ gibberish and how would you translate it?",
+      "votes": 350,
+      "summary": "r/linguistics 里探讨胡言是否有统一规则及语音转写需求。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "How do I speak or write in the ‘Idig’ form of gibberish?",
+      "votes": 540,
+      "summary": "高票回答展示 ‘Idig’ 规则与教学视频，需求语音示范功能。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "Is there an online tool that converts a whole document into gibberish?",
+      "votes": 320,
+      "summary": "用户苦于在线工具一次只能粘贴文本，希望支持 .docx 上传。"
+    }
+  ],
+  "funFacts": [
+    "单词“gibberish”最早出现于 1550 年，可能来自“jabber”(急促而含糊地说)。",
+    "英语世界最流行的两种胡言算法是“Idig”(在每个元音后加 ‘idig’) 与 “Opish”(在每个辅音后加 ‘op’)。",
+    "《辛普森一家》第 17 季中 Homer 用独创 gibberish 给Bart 留纸条，字幕组曾现场翻译。"
+  ],
+  "features": {
+    "basic": [
+      "粘贴/输入文本实时翻译",
+      "上传 txt、docx 文件并清空输入",
+      "结果支持复制与 txt 下载",
+      "语音输入 (Web Speech API)",
+      "语音输出 (TTS 多声线)"
+    ],
+    "competitive": [
+      "多 gibberish 方言切换 (Idig / Opish / Pig-Latin 等)",
+      "字符长度不限，自动分页处理",
+      "自定义词典与强度滑块",
+      "离线 PWA 打包 & 移动端友好",
+      "OCR 图片识别后直接翻译"
+    ],
+    "innovative": [
+      "批量文档翻译队列 (.txt/.docx 10+ 份)",
+      "可视化语音波形同步胡言播放",
+      "多算法对照模式：原文 / 方言 A / 方言 B 三栏并排",
+      "‘解码’功能：尝试把胡言还原成原文（概率提示）",
+      "课堂演示模式：全屏+逐句动画呈现"
+    ]
+  },
+  "useCases": [
+    "老师课堂游戏：把课文秒变胡言让学生猜原文",
+    "社群运营：生成荒诞文案或 Lorem Ipsum 替代",
+    "编剧或小说家：快速制造外星语 / 密语感对白",
+    "无障碍娱乐：语音输出让视障用户也能玩胡言"
+  ],
+  "asciiDesign": "+----------------------------------------------------+\\n|                      INPUT                         |\\n|  ________________________________________________  |\\n| |                                              | | |\\n| |  (粘贴/键入/语音输入/上传 txt,docx)           | | |\\n| |______________________________________________| | |\\n| [Upload txt/docx] [Clear] [Voice In]              |\\n+-------------------------+--------------------------+\\n|        OUTPUT           |         ACTIONS         |\\n|  ________________________________________________  |\\n| |                                              | | |\\n| |               (Gibberish 结果)               | | |\\n| |______________________________________________| | |\\n| [Copy] [Download txt] [Voice Out]                |\\n+----------------------------------------------------+"
+}

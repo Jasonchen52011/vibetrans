@@ -24,7 +24,7 @@
     "email": "email dev --dir src/mail/templates --port 3333",
     "knip": "knip",
     "tool:create": "node scripts/create-translator-tool.js",
-    "tool:auto": "node scripts/auto-tool-generator.js",
+    "tool:auto": "node -r dotenv/config scripts/auto-tool-generator.js",
     "tool:test": "node scripts/test-auto-tool-generator.js"
   },
   "dependencies": {

@@ -13,8 +13,8 @@
  * 7. pig-latin-translator-interest-4.webp (Audio Learning with Pig Latin)
  */
 
-import { generateArticleIllustrations } from '../src/lib/article-illustrator/workflow';
 import type { ArticleSections } from '../src/lib/article-illustrator/types';
+import { generateArticleIllustrations } from '../src/lib/article-illustrator/workflow';
 
 // Define the article sections with titles and content
 const pigLatinSections: ArticleSections = {
@@ -69,7 +69,9 @@ async function main() {
   console.log('   3. Sharp converts to optimized WebP format');
   console.log('   4. Saves to public/images/docs/\n');
   console.log('⏱️  Estimated time: 15-25 minutes\n');
-  console.log('📝 Note: Excluding "Perfect for ESL Learners and Teachers" section\n');
+  console.log(
+    '📝 Note: Excluding "Perfect for ESL Learners and Teachers" section\n'
+  );
 
   try {
     const result = await generateArticleIllustrations(pigLatinSections, {
@@ -78,8 +80,12 @@ async function main() {
 
     if (result.success) {
       console.log('\n✅ Generation completed successfully!');
-      console.log(`📊 Results: ${result.successfulImages}/${result.totalImages} images generated`);
-      console.log(`⏱️  Total time: ${(result.totalTimeMs / 1000 / 60).toFixed(2)} minutes`);
+      console.log(
+        `📊 Results: ${result.successfulImages}/${result.totalImages} images generated`
+      );
+      console.log(
+        `⏱️  Total time: ${(result.totalTimeMs / 1000 / 60).toFixed(2)} minutes`
+      );
 
       if (result.failedImages > 0) {
         console.log(`\n⚠️  Warning: ${result.failedImages} images failed`);

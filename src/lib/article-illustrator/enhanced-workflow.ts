@@ -12,10 +12,13 @@
  * No manual intervention needed!
  */
 
-import { generateArticleIllustrations } from '../src/lib/article-illustrator/workflow';
-import type { ArticleSections, SectionType } from '../src/lib/article-illustrator/types';
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import type {
+  ArticleSections,
+  SectionType,
+} from '../src/lib/article-illustrator/types';
+import { generateArticleIllustrations } from '../src/lib/article-illustrator/workflow';
 
 interface WorkflowConfig {
   toolName: string;
@@ -68,7 +71,9 @@ async function updatePageReferences(
         pattern,
         `$1'/images/docs/${data.filename}'`
       );
-      console.log(`✅ Updated User Interest ${data.index + 1}: ${data.filename}`);
+      console.log(
+        `✅ Updated User Interest ${data.index + 1}: ${data.filename}`
+      );
     }
   }
 
@@ -94,17 +99,23 @@ async function runEnhancedWorkflow(config: WorkflowConfig): Promise<void> {
     }
 
     // Step 4: Build image mapping
-    const imageMapping = new Map<SectionType, { index?: number; filename: string }>();
+    const imageMapping = new Map<
+      SectionType,
+      { index?: number; filename: string }
+    >();
 
     for (const img of result.images) {
       if (img.status === 'success') {
         const sectionParts = img.section.split(' #');
         const sectionType = sectionParts[0] as SectionType;
-        const index = sectionParts.length > 1 ? parseInt(sectionParts[1]) - 1 : undefined;
+        const index =
+          sectionParts.length > 1
+            ? Number.parseInt(sectionParts[1]) - 1
+            : undefined;
 
         imageMapping.set(sectionType, {
           index,
-          filename: img.filename
+          filename: img.filename,
         });
       }
     }
@@ -119,7 +130,6 @@ async function runEnhancedWorkflow(config: WorkflowConfig): Promise<void> {
     console.log(`✨ Updated page references automatically`);
     console.log(`✨ All images < 90KB`);
     console.log('='.repeat(80) + '\n');
-
   } catch (error: any) {
     console.error('\n❌ Workflow failed:', error.message);
     process.exit(1);
@@ -131,6 +141,8 @@ export { runEnhancedWorkflow, type WorkflowConfig };
 
 // CLI execution
 if (require.main === module) {
-  console.log('ℹ️  Use specific tool scripts (e.g., regenerate-middle-english-sections.ts)');
+  console.log(
+    'ℹ️  Use specific tool scripts (e.g., regenerate-middle-english-sections.ts)'
+  );
   process.exit(0);
 }

@@ -1,3 +1,4 @@
+import { detectLanguage } from '@/lib/language-detection';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { NextResponse } from 'next/server';
 
@@ -156,9 +157,10 @@ async function translateText(
   const modeConfig = TRANSLATION_MODES[mode];
 
   // 根据方向选择正确的 prompt
-  const systemPrompt = direction === 'zh-to-en'
-    ? modeConfig.zhToEnPrompt
-    : modeConfig.enToZhPrompt;
+  const systemPrompt =
+    direction === 'zh-to-en'
+      ? modeConfig.zhToEnPrompt
+      : modeConfig.enToZhPrompt;
 
   const fullPrompt = `${systemPrompt}\n\n"${text}"`;
 
@@ -184,9 +186,10 @@ async function translateImage(
   const modeConfig = TRANSLATION_MODES[mode];
 
   // 根据方向选择正确的 prompt
-  const systemPrompt = direction === 'zh-to-en'
-    ? modeConfig.zhToEnPrompt
-    : modeConfig.enToZhPrompt;
+  const systemPrompt =
+    direction === 'zh-to-en'
+      ? modeConfig.zhToEnPrompt
+      : modeConfig.enToZhPrompt;
 
   // 根据方向构建多模态提示
   const sourceLanguage = direction === 'zh-to-en' ? 'Chinese' : 'English';
@@ -223,8 +226,12 @@ Please provide your response in this format:
   const fullText = response.text();
 
   // 解析响应
-  const extractedMatch = fullText.match(/\[EXTRACTED TEXT\]\n([\s\S]*?)\n\[TRANSLATION\]/);
-  const translationMatch = fullText.match(/\[TRANSLATION\]\n([\s\S]*?)(?:\n\[CONTEXT\]|$)/);
+  const extractedMatch = fullText.match(
+    /\[EXTRACTED TEXT\]\n([\s\S]*?)\n\[TRANSLATION\]/
+  );
+  const translationMatch = fullText.match(
+    /\[TRANSLATION\]\n([\s\S]*?)(?:\n\[CONTEXT\]|$)/
+  );
 
   const extractedText = extractedMatch ? extractedMatch[1].trim() : '';
   const translation = translationMatch ? translationMatch[1].trim() : fullText;
@@ -253,9 +260,10 @@ async function translateAudio(
   const modeConfig = TRANSLATION_MODES[mode];
 
   // 根据方向选择正确的 prompt
-  const systemPrompt = direction === 'zh-to-en'
-    ? modeConfig.zhToEnPrompt
-    : modeConfig.enToZhPrompt;
+  const systemPrompt =
+    direction === 'zh-to-en'
+      ? modeConfig.zhToEnPrompt
+      : modeConfig.enToZhPrompt;
 
   // 根据方向构建音频处理提示
   const sourceLanguage = direction === 'zh-to-en' ? 'Chinese' : 'English';
@@ -290,7 +298,9 @@ Please provide your response in this format:
   const fullText = response.text();
 
   // 解析响应
-  const transcriptionMatch = fullText.match(/\[TRANSCRIPTION\]\n([\s\S]*?)\n\[TRANSLATION\]/);
+  const transcriptionMatch = fullText.match(
+    /\[TRANSCRIPTION\]\n([\s\S]*?)\n\[TRANSLATION\]/
+  );
   const translationMatch = fullText.match(/\[TRANSLATION\]\n([\s\S]*?)$/);
 
   const transcription = transcriptionMatch ? transcriptionMatch[1].trim() : '';
@@ -304,7 +314,7 @@ Please provide your response in this format:
 
 export async function POST(request: Request) {
   try {
-    const body = await request.json() as {
+    const body = (await request.json()) as {
       text?: string;
       imageData?: string;
       imageMimeType?: string;
@@ -313,6 +323,7 @@ export async function POST(request: Request) {
       mode?: TranslationMode;
       direction?: 'zh-to-en' | 'en-to-zh';
       inputType: 'text' | 'image' | 'audio';
+      detectOnly?: boolean; // 仅检测语言，不翻译
     };
 
     const {
@@ -322,8 +333,9 @@ export async function POST(request: Request) {
       audioData,
       audioMimeType,
       mode = 'general',
-      direction = 'zh-to-en',
+      direction,
       inputType,
+      detectOnly = false,
     } = body;
 
     // 验证 API 密钥
@@ -357,15 +369,93 @@ export async function POST(request: Request) {
             { status: 400 }
           );
         }
-        const translation = await translateText(text, mode, direction);
+
+        // 智能检测输入语言（用于信息反馈）
+        const detection = detectLanguage(text, 'chinese');
+        const { detectedLanguage, suggestedDirection, confidence } = detection;
+
+        // 确定翻译方向：优先使用自动检测，用户可以手动覆盖
+        let finalDirection: 'zh-to-en' | 'en-to-zh';
+
+        if (direction) {
+          // 用户手动指定了方向
+          finalDirection = direction;
+        } else {
+          // 根据检测结果自动确定方向
+          if (detectedLanguage === 'english') {
+            finalDirection = 'en-to-zh'; // 检测到英文，翻译成中文
+          } else if (detectedLanguage === 'chinese') {
+            finalDirection = 'zh-to-en'; // 检测到中文，翻译成英文
+          } else {
+            // 检测不确定时，使用建议的方向
+            finalDirection =
+              suggestedDirection === 'to-english' ? 'zh-to-en' : 'en-to-zh';
+          }
+        }
+
+        // 如果只是检测语言，返回检测结果
+        if (detectOnly) {
+          return NextResponse.json({
+            detectedInputLanguage: detectedLanguage,
+            detectedDirection: finalDirection,
+            confidence,
+            autoDetected: true, // 对于detectOnly请求，总是标记为自动检测
+            languageInfo: {
+              detected: true,
+              detectedLanguage:
+                detectedLanguage === 'english'
+                  ? 'English'
+                  : detectedLanguage === 'chinese'
+                    ? 'Chinese'
+                    : 'Unknown',
+              direction:
+                finalDirection === 'zh-to-en'
+                  ? 'Chinese → English'
+                  : 'English → Chinese',
+              confidence: Math.round(confidence * 100),
+              explanation:
+                detectedLanguage === 'english'
+                  ? 'Detected English input, will translate to Chinese'
+                  : detectedLanguage === 'chinese'
+                    ? 'Detected Chinese input, will translate to English'
+                    : 'Language detection uncertain, please input Chinese or English',
+            },
+          });
+        }
+
+        const translation = await translateText(text, mode, finalDirection);
         result = {
           translated: translation,
           original: text,
           mode: mode,
           modeName: TRANSLATION_MODES[mode].name,
-          direction: direction,
+          direction: finalDirection,
+          detectedInputLanguage: detectedLanguage,
+          confidence,
+          autoDetected: !direction,
           inputType: 'text',
           message: 'Translation successful',
+          languageInfo: {
+            detected: true,
+            detectedLanguage:
+              detectedLanguage === 'english'
+                ? 'English'
+                : detectedLanguage === 'chinese'
+                  ? 'Chinese'
+                  : 'Unknown',
+            direction:
+              finalDirection === 'zh-to-en'
+                ? 'Chinese → English'
+                : 'English → Chinese',
+            confidence: Math.round(confidence * 100),
+            explanation: direction
+              ? `Manual translation: ${finalDirection === 'zh-to-en' ? 'Chinese → English' : 'English → Chinese'}`
+              : detectedLanguage === 'english'
+                ? 'Auto-detected English input, translated to Chinese'
+                : detectedLanguage === 'chinese'
+                  ? 'Auto-detected Chinese input, translated to English'
+                  : 'Translation completed',
+          },
         };
         break;
 
@@ -378,11 +468,18 @@ export async function POST(request: Request) {
         }
         if (!SUPPORTED_IMAGE_TYPES.includes(imageMimeType)) {
           return NextResponse.json(
-            { error: `Unsupported image type. Supported types: ${SUPPORTED_IMAGE_TYPES.join(', ')}` },
+            {
+              error: `Unsupported image type. Supported types: ${SUPPORTED_IMAGE_TYPES.join(', ')}`,
+            },
             { status: 400 }
           );
         }
-        const imageResult = await translateImage(imageData, imageMimeType, mode, direction);
+        const imageResult = await translateImage(
+          imageData,
+          imageMimeType,
+          mode,
+          direction
+        );
         result = {
           translated: imageResult.translation,
           extractedText: imageResult.extractedText,
@@ -401,7 +498,12 @@ export async function POST(request: Request) {
             { status: 400 }
           );
         }
-        const audioResult = await translateAudio(audioData, audioMimeType, mode, direction);
+        const audioResult = await translateAudio(
+          audioData,
+          audioMimeType,
+          mode,
+          direction
+        );
         result = {
           translated: audioResult.translation,
           transcription: audioResult.transcription,

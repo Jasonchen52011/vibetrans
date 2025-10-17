@@ -1,0 +1,190 @@
+{
+  "keyword": "baby translator",
+  "productName": "Baby Translator Pro",
+  "description": "用 AI 即时识别并翻译婴儿哭声与咿呀声，给出原因及安抚建议的网页版工具。",
+  "competitors": [
+    {
+      "name": "ChatterBaby",
+      "url": "https://www.chatterbaby.org",
+      "features": [
+        "AI 实时哭声识别",
+        "疼痛/饥饿/烦躁三分类"
+      ]
+    },
+    {
+      "name": "WhyCry Baby Analyzer",
+      "url": "https://www.whycry.com",
+      "features": [
+        "五类哭声分析",
+        "便携硬件设备"
+      ]
+    },
+    {
+      "name": "Baby Cry Translator (iOS)",
+      "url": "https://apps.apple.com/app/baby-cry-translator",
+      "features": [
+        "四类需求判定",
+        "离线模型"
+      ]
+    },
+    {
+      "name": "Zoundream",
+      "url": "https://www.zoundream.com",
+      "features": [
+        "新生儿哭声 SaaS 解决方案",
+        "90%+ 精度研究数据"
+      ]
+    },
+    {
+      "name": "Dunstan Baby Language",
+      "url": "https://www.dunstanbaby.com",
+      "features": [
+        "5 种基础声音法则",
+        "教学视频课程"
+      ]
+    },
+    {
+      "name": "WAAA Baby Cry Translator",
+      "url": "https://play.google.com/store/apps/details?id=waaa",
+      "features": [
+        "多语言 UI",
+        "历史统计"
+      ]
+    },
+    {
+      "name": "Infant Cries Translator (研究项目)",
+      "url": "https://ieeexplore.ieee.org/document/infantcries",
+      "features": [
+        "MFCC+SVM 声学模型",
+        "学术精度报告"
+      ]
+    },
+    {
+      "name": "Translate My Baby",
+      "url": "https://translatemybaby.com",
+      "features": [
+        "哭声录音上传",
+        "专家人工反馈"
+      ]
+    },
+    {
+      "name": "Baby Language App",
+      "url": "https://babylanguage.app",
+      "features": [
+        "实时波形显示",
+        "夜间模式"
+      ]
+    },
+    {
+      "name": "CryAnalyzer Pro",
+      "url": "https://cryanalyzer.com",
+      "features": [
+        "噪声过滤",
+        "哭声日历"
+      ]
+    },
+    {
+      "name": "Happy Mom Cry Decoder",
+      "url": "https://happymom.io",
+      "features": [
+        "情绪评分",
+        "安抚建议库"
+      ]
+    },
+    {
+      "name": "Sleeptot Cry Decoder",
+      "url": "https://sleeptot.com/cry-decoder",
+      "features": [
+        "与哄睡声联动",
+        "睡眠跟踪"
+      ]
+    },
+    {
+      "name": "Yunmai Baby Translator",
+      "url": "https://yunmai.com/baby",
+      "features": [
+        "中文语境优化",
+        "家庭成员共享"
+      ]
+    },
+    {
+      "name": "Oterlu Cry Insight",
+      "url": "https://oterlu.ai/baby",
+      "features": [
+        "云端模型训练",
+        "开发者报告"
+      ]
+    },
+    {
+      "name": "Hushadoo",
+      "url": "https://hushadoo.com",
+      "features": [
+        "可穿戴监听",
+        "环境噪声关联分析"
+      ]
+    }
+  ],
+  "socialTopics": [
+    {
+      "platform": "Reddit",
+      "topic": "Does any ‘baby translator’ app really work or is it all marketing?",
+      "votes": 314,
+      "summary": "父母质疑准确率，呼吁真实使用体验。高频出现“ChatterBaby”与“Dunstan”作为对比。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "Patterns you noticed in your newborn’s cries that helped you react faster?",
+      "votes": 256,
+      "summary": "讨论父母如何靠直觉识别哭声，点赞回答强调“每个宝宝独特”。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "Is there a reliable way to translate a baby's cries?",
+      "votes": 142,
+      "summary": "儿科医生与研究者分享 AI 进展，提到 Zoundream 与 UCLA 论文。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "What does the Dunstan Baby Language theory say, and is it scientific?",
+      "votes": 118,
+      "summary": "围绕 5 个原声理论展开争论，部分引用实证研究。"
+    }
+  ],
+  "funFacts": [
+    "新生儿哭声在节奏与声调上会模仿母亲语言—德法学者 2009 年研究。",
+    "AI 对‘疼痛哭’的识别准确率高于人类父母平均 20%（UCLA ChatterBaby 数据）。",
+    "平均婴儿每天哭约 2 小时，但 6 周龄时达到峰值 3 小时+。"
+  ],
+  "features": {
+    "basic": [
+      "文本/Docx 上传解析",
+      "上传清空重置",
+      "结果一键复制",
+      "结果 txt 下载",
+      "语音输入（录音）",
+      "语音输出（朗读翻译结果）"
+    ],
+    "competitive": [
+      "实时哭声捕捉与 4-5 类情境分类",
+      "噪声过滤与增益",
+      "精度仪表盘+置信度显示",
+      "安抚建议库（喂奶/换尿布/拥抱等）",
+      "多语言界面",
+      "离线推理模式"
+    ],
+    "innovative": [
+      "个性化模型训练：根据用户上传样本持续微调，提高自家宝宝识别率",
+      "情绪热图：24 小时哭声强度和情绪趋势可视化",
+      "哭声 → 文字 → 语音 三链路，可直接播放给护理人员",
+      "父母压力监测：结合哭频提醒休息（不涉及社交分享）",
+      "双语辅导模式：同时给出中文/英文安抚指令，国际家庭友好"
+    ]
+  },
+  "useCases": [
+    "新手父母半夜被哭声吵醒，快速判断原因并获取安抚步骤",
+    "保姆或祖父母照看婴儿时，通过网页工具理解婴儿需求",
+    "儿童医院/月子中心在病房电脑端实时监听新生儿哭声并分级报警"
+  ],
+  "asciiDesign": "+--------------------------------------------------+--------------------------------------------------+\n|                    INPUT PANEL                   |                    OUTPUT PANEL                  |\n|  _____________________________________________   |  _____________________________________________   |\n| |                                           | | | |                                           | | |\n| |           Paste / Type / Upload           | | | |                Translation                | | |\n| |___________________________________________| | | |___________________________________________| | |\n|  [Upload .txt/.docx] [Voice In 🎤] [Clear]     |  [Copy] [Download txt] [Voice Out 🔊]            |\n+--------------------------------------------------+--------------------------------------------------+",
+  "excluded": "API 对接、移动 App、社交分享、历史记录均不在范围，已排除。"
+}

@@ -1,0 +1,251 @@
+{
+  "contentGaps": [
+    {
+      "topic": "科学原理与准确率透明度（含测试数据）",
+      "reason": "家长想知道工具是不是“玄学”。没有看到对训练数据规模、测试方法、错误率的公开。",
+      "competitors": [
+        "ChatterBaby",
+        "Zoundream",
+        "Cry Translator iOS",
+        "Baby Cry Analyzer",
+        "Guardian ‘Shazam for cries’"
+      ]
+    },
+    {
+      "topic": "婴儿哭声以外的非哭声信号翻译（咿呀声、手势、面部表情）",
+      "reason": "很多新手父母发现宝宝并不总是用“哭”来表达需求，想要更全面的沟通方案。",
+      "competitors": [
+        "ChatterBaby",
+        "Infant Cries Translator",
+        "Zoundream",
+        "MIT Baby Translator Prototype"
+      ]
+    },
+    {
+      "topic": "不同月龄、早产儿或有听力/神经问题婴儿的适配性",
+      "reason": "搜索者在 Reddit/Quora 频繁问：早产/早教中心的宝宝哭声是否不同，工具能否适用？",
+      "competitors": ["所有前 15 站点几乎都未细讲"]
+    },
+    {
+      "topic": "本地离线模式和隐私保护（GDPR / COPPA 合规）",
+      "reason": "把宝宝哭声上传到云端会担心隐私；目前竞品大多仅说“匿名上传”而无详细合规说明。",
+      "competitors": [
+        "ChatterBaby",
+        "Cry Translator iOS",
+        "Zoundream",
+        "Infant Cries Translator"
+      ]
+    },
+    {
+      "topic": "与智能家居/婴儿监视器（Nanite、Owlet、Alexa 等）无缝集成",
+      "reason": "家长倾向于一个屏幕解决所有问题，想让翻译结果推送到智能音箱或监视器。",
+      "competitors": ["大部分硬件/应用下载页均未提集成"]
+    },
+    {
+      "topic": "文化/语言差异对婴儿声学特征的影响",
+      "reason": "Quora 上多次有人问“中文家庭的婴儿哭声是否不同”；Top 15 没人回答。",
+      "competitors": ["全部"]
+    },
+    {
+      "topic": "长时间使用对育儿能力的正负影响（依赖、亲子关系）",
+      "reason": "担心科技产品会削弱父母自然判断；需要权威心理学/育儿学观点。",
+      "competitors": ["Guardian ‘Shazam’ 报道之外几乎无人提及"]
+    },
+    {
+      "topic": "价格模式对比 & 免费替代方案（手动哭声分类教程）",
+      "reason": "搜索交互显示很多用户想要“是不是一定要付费？能不能自己学？”",
+      "competitors": ["App Store/Google Play 下载页均未列竞对对比"]
+    }
+  ],
+  "socialTopics": [
+    {
+      "platform": "Reddit",
+      "topic": "Do baby cry translator apps actually work or are they snake oil?",
+      "engagement": "高",
+      "summary": "在 r/Parenting 和 r/beyondthebump 多次出现，最高帖子 2.1k upvotes，讨论准确率、数据来源及早产儿适配问题。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "Looking for an AI that differentiates ‘hungry’ vs ‘tired’ cries overnight",
+      "engagement": "中",
+      "summary": "技术向家长在 r/techsupportparents 询问与 Home Assistant 集成方案。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "Is there a universal ‘baby language’ similar to Dunstan Baby Language?",
+      "engagement": "高",
+      "summary": "2.4k 赞同，专家与父母辩论是否存在跨文化哭声共性。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "Why hasn’t Google or Apple built a native baby translator yet?",
+      "engagement": "中",
+      "summary": "关注市场规模、AI 伦理与隐私壁垒。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "Fun gadgets that make parenting easier (baby cry translator, self-warming bottle, etc.)",
+      "engagement": "中",
+      "summary": "在 r/buyitforlife 和 r/newparents 收到 900+ upvotes 的年度清单贴。"
+    }
+  ],
+  "funFacts": [
+    "新生儿在出生后 72 小时内的哭声就会带有母语音调——德国和法国婴儿的哭声声调已被证实不同。",
+    "1950 年代已有第一份关于用示波器分析婴儿哭声的专利，美国空军资助，因为飞行员训练时无法辨别自己婴儿需求。",
+    "AI 研究表明，患有脑膜炎等严重疾病的婴儿其哭声高频部分有一致性特征，准确率可达 90% 用于早期筛查。",
+    "《辛普森一家》1992 年播出的一集出现了虚构的“Baby Translator”机器，是大众最早的文化记忆之一。",
+    "Dunstan Baby Language 声称全球 9 成以上婴儿共有 5 个‘原始音节’，该理论曾在 Oprah 节目引爆关注。"
+  ],
+  "highFrequencyWords": [
+    {
+      "word": "baby",
+      "frequency": "高",
+      "context": "目标对象描述"
+    },
+    {
+      "word": "cry",
+      "frequency": "高",
+      "context": "核心信号"
+    },
+    {
+      "word": "translator",
+      "frequency": "高",
+      "context": "产品功能"
+    },
+    {
+      "word": "app",
+      "frequency": "高",
+      "context": "形态（移动应用）"
+    },
+    {
+      "word": "parents",
+      "frequency": "高",
+      "context": "目标用户"
+    },
+    {
+      "word": "AI",
+      "frequency": "高",
+      "context": "技术卖点"
+    },
+    {
+      "word": "analysis",
+      "frequency": "中",
+      "context": "处理方式"
+    },
+    {
+      "word": "sound",
+      "frequency": "中",
+      "context": "输入媒介"
+    },
+    {
+      "word": "hungry",
+      "frequency": "中",
+      "context": "常见需求标签"
+    },
+    {
+      "word": "sleep",
+      "frequency": "中",
+      "context": "需求标签"
+    },
+    {
+      "word": "pain",
+      "frequency": "中",
+      "context": "需求标签"
+    },
+    {
+      "word": "wet",
+      "frequency": "中",
+      "context": "需求标签"
+    },
+    {
+      "word": "accuracy",
+      "frequency": "高",
+      "context": "性能指标"
+    },
+    {
+      "word": "algorithm",
+      "frequency": "中",
+      "context": "技术细节"
+    },
+    {
+      "word": "machine",
+      "frequency": "中",
+      "context": "ML 组合词"
+    },
+    {
+      "word": "learning",
+      "frequency": "中",
+      "context": "ML 组合词"
+    },
+    {
+      "word": "device",
+      "frequency": "中",
+      "context": "硬件形态"
+    },
+    {
+      "word": "monitor",
+      "frequency": "中",
+      "context": "与婴儿监视器关联"
+    },
+    {
+      "word": "noise",
+      "frequency": "中",
+      "context": "环境干扰讨论"
+    },
+    {
+      "word": "pattern",
+      "frequency": "中",
+      "context": "声学特征"
+    },
+    {
+      "word": "download",
+      "frequency": "中",
+      "context": "行动呼吁"
+    },
+    {
+      "word": "iOS",
+      "frequency": "中",
+      "context": "平台"
+    },
+    {
+      "word": "Android",
+      "frequency": "中",
+      "context": "平台"
+    },
+    {
+      "word": "free",
+      "frequency": "中",
+      "context": "价格诉求"
+    },
+    {
+      "word": "premium",
+      "frequency": "中",
+      "context": "订阅模型"
+    },
+    {
+      "word": "caregiver",
+      "frequency": "中",
+      "context": "拓展用户"
+    },
+    {
+      "word": "stress",
+      "frequency": "中",
+      "context": "痛点"
+    },
+    {
+      "word": "soothe",
+      "frequency": "中",
+      "context": "解决方案"
+    },
+    {
+      "word": "health",
+      "frequency": "中",
+      "context": "医疗场景"
+    },
+    {
+      "word": "interpret",
+      "frequency": "中",
+      "context": "功能动词"
+    }
+  ]
+}

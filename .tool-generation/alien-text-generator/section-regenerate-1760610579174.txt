@@ -1,0 +1,14 @@
+```json
+{
+  "funFacts": [
+    {
+      "title": "Alien Text in Space Missions",
+      "description": "Did you know NASA uses alien-like fonts on spacecraft plaques? This unique style helps future archaeologists distinguish between human and machine inscriptions, adding an otherworldly touch to space exploration documentation!"
+    },
+    {
+      "title": "Hidden Spoilers in Alien Text",
+      "description": "Using alien text to hide spoilers became a trend among Star Wars fans. However, not all devices display these Unicode characters correctly. This sparked a call for better encoding support and accessibility features."
+    }
+  ]
+}
+```

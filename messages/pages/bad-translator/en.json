@@ -84,12 +84,12 @@
       "title": "Fun Translation Facts",
       "items": [
         {
-          "title": "Google's Epic Mistranslation",
-          "fact": "Did you know? In 2015, Google Translate mistakenly translated 'Russian Federation' to 'Mordor.' Now that's a translation fail worthy of a meme! I love how these mistakes create such a unique sense of humor."
+          "title": "Mistranslation Marvels",
+          "description": "Did you know? Translating Disney's 'Let It Go' through 35 languages results in 'Give your cow freedom.' Machine translation loops can turn simple text into hilarious chaos!"
         },
         {
-          "title": "Beat Around the Bush Fail",
-          "fact": "Ever heard the phrase 'beat around the bush'? It got hilariously mistranslated in Chinese to mean 'defeating the bush'. Classic mistranslation moment. I think it's amazing how these errors make language so much fun!"
+          "title": "Translation Twists",
+          "description": "Here's a funny twist: English word 'preservative' translates as 'condom' in French. This leads to amusing packaging mishaps stating, 'This product contains no condoms.'"
         }
       ]
     },
@@ -98,97 +98,61 @@
       "sections": [
         {
           "title": "How Accurate is Bad Translator?",
-          "content": "While the translations are intentionally humorous and sometimes absurd, you can expect some fun 'mistakes'! This tool isn't about accuracy—it's all about having a laugh! I personally find these translations a great way to spark creativity for memes or social posts."
+          "content": "While the translations are intentionally humorous and sometimes absurd, you can expect some fun 'mistakes'! This tool isn't about accuracy—it's all about having a laugh! These translations serve as a great way to spark creativity for memes or social posts."
         },
         {
           "title": "Perfect for Social Media Content",
-          "content": "Bad Translator can be a goldmine for funny posts. Use it to generate quirky translations and share them on social media for instant reactions. I think it's a fantastic tool to create attention-grabbing, shareable content!"
+          "content": "Bad Translator can be a goldmine for funny posts. Use it to generate quirky translations and share them on social media for instant reactions. This tool creates attention-grabbing, shareable content that drives engagement!"
         },
         {
           "title": "Great for Advertisers",
-          "content": "If you're in advertising, you can use Bad Translator to create playful, out-of-the-box content that will entertain your audience. It's an ideal tool for brainstorming catchy slogans or taglines. I always have a blast testing different combinations!"
+          "content": "If you're in advertising, you can use Bad Translator to create playful, out-of-the-box content that will entertain your audience. It's an ideal tool for brainstorming catchy slogans or taglines. Testing different combinations always yields entertaining results!"
         },
         {
           "title": "For Meme Creators and Influencers",
-          "content": "Bad Translator can help meme creators generate funny phrases that go viral. The bizarre translations are perfect for creating trending content. As a meme lover, I can't get enough of how easy it is to turn any sentence into something absurd!"
+          "content": "Bad Translator can help meme creators generate funny phrases that go viral. The bizarre translations are perfect for creating trending content. The ease of turning any sentence into something absurd makes this tool indispensable for content creators."
         }
       ]
     },
     "testimonials": {
-      "title": "User Reviews",
-      "subtitle": "",
+      "title": "What Our Users Are Saying",
+      "subtitle": "Real feedback from real users",
       "items": {
         "item-1": {
-          "name": "John Miller",
-          "role": "Social Media Manager",
-          "content": "Bad Translator is perfect for creating funny posts. I used it for a campaign, and the results were hilarious! My followers loved the quirky translations. I'll definitely use it again for my future content.",
-          "rating": 5
+          "name": "John Anderson",
+          "role": "High School Teacher",
+          "heading": "A Classroom Favorite",
+          "content": "Bad-Translator Lab has become a classroom favorite! My students love seeing how a simple text can morph into something so funny. It’s a great tool to demonstrate the limits of machine translation. Their laughter is the best indicator of engagement."
         },
         "item-2": {
-          "name": "Sarah Lee",
-          "role": "Content Writer",
-          "content": "I tried Bad Translator to create funny quotes for my blog. The results were so offbeat and amusing! It was a great way to engage my readers. Highly recommend it for anyone needing creative content!",
-          "rating": 5
+          "name": "Lisa Brown",
+          "role": "Content Creator",
+          "heading": "Inspiration for Creative Content",
+          "content": "Using Bad-Translator Lab for meme creation is pure gold! I toss in a simple sentence, loop it through languages, and watch the hilarious results unfold. It’s a fantastic way to spark creativity and engage my audience with unexpected twists."
         },
         "item-3": {
-          "name": "Mark Smith",
-          "role": "Marketing Specialist",
-          "content": "I've used Bad Translator for a few ad ideas, and it never fails to make me laugh! The absurd translations sparked some great brainstorming sessions for our team. It's a fun tool for marketing professionals like me.",
-          "rating": 5
+          "name": "Michael Johnson",
+          "role": "Linguistics Student",
+          "heading": "A Linguistic Playground",
+          "content": "For a linguistics student like me, Bad-Translator Lab is a playground. I experiment with idioms, watching as they hilariously transform. It's insightful to see where machine translations falter, and it’s great for sparking discussions in class."
         },
         "item-4": {
-          "name": "Rachel Davis",
-          "role": "Meme Creator",
-          "content": "Bad Translator is my go-to for meme content. The weird translations are perfect for making content that stands out. It's easy to use and delivers a laugh every time!",
-          "rating": 5
+          "name": "Emily Davis",
+          "role": "Software Developer",
+          "heading": "Fun with Code and Translation",
+          "content": "I use Bad-Translator Lab to test language processing in my apps. By inputting text and observing the funny outcomes, I gain insights into language handling. It’s both entertaining and educational, offering unexpected twists that help refine my code."
         },
         "item-5": {
-          "name": "Jake Thompson",
-          "role": "Influencer",
-          "content": "I love how Bad Translator helps me create funny phrases for my Instagram. It's a blast to share these bizarre translations with my followers. Totally recommend it for anyone looking to add some humor to their social feed!",
-          "rating": 5
+          "name": "David Smith",
+          "role": "Freelance Writer",
+          "heading": "A Source of Writing Inspiration",
+          "content": "Bad-Translator Lab is my secret weapon for writer's block. I input text, run it through countless loops, and the resulting chaos often inspires new story ideas. The unpredictable translations provide fresh perspectives and plenty of humor to lighten my day."
         },
         "item-6": {
-          "name": "Emily Roberts",
-          "role": "Copywriter",
-          "content": "I've used Bad Translator to test out creative copy ideas. The results are absurd, and they've given me some awesome inspiration for my writing projects. Definitely a fun tool for any content creator!",
-          "rating": 5
-        },
-        "item-7": {
-          "name": "David Chen",
-          "role": "YouTuber",
-          "content": "Bad Translator adds so much comedy to my videos! I use it to create funny subtitles and captions that my audience absolutely loves. It's become an essential part of my content creation toolkit.",
-          "rating": 5
-        },
-        "item-8": {
-          "name": "Lisa Martinez",
-          "role": "Teacher",
-          "content": "I use Bad Translator in my language classes to show students how translation can go hilariously wrong. It's a great teaching tool that makes learning fun and memorable!",
-          "rating": 5
-        },
-        "item-9": {
-          "name": "Tom Wilson",
-          "role": "Comedian",
-          "content": "As a comedian, I'm always looking for fresh material. Bad Translator gives me endless inspiration for jokes and sketches. The bizarre translations are comedy gold!",
-          "rating": 5
-        },
-        "item-10": {
-          "name": "Jennifer Brown",
-          "role": "Graphic Designer",
-          "content": "Bad Translator helps me create funny poster designs and meme graphics. The absurd phrases make my designs stand out and get shared widely. Love this tool!",
-          "rating": 5
-        },
-        "item-11": {
-          "name": "Alex Johnson",
-          "role": "Podcast Host",
-          "content": "I feature Bad Translator results on my comedy podcast, and listeners can't get enough! It's a hilarious segment that keeps people coming back for more.",
-          "rating": 5
-        },
-        "item-12": {
-          "name": "Michelle Taylor",
-          "role": "Brand Strategist",
-          "content": "Bad Translator is surprisingly useful for brainstorming creative brand messaging. The unexpected translations often spark genuinely innovative ideas for campaigns!",
-          "rating": 5
+          "name": "Sarah Wilson",
+          "role": "Marketing Specialist",
+          "heading": "Unique Marketing Tool",
+          "content": "In marketing, creativity is key. Bad-Translator Lab turns mundane phrases into hilarious translations, sparking new campaign ideas. It’s an unconventional tool, but it's helped me think outside the box and find humor in the unexpected twists of language."
         }
       }
     },
@@ -225,7 +189,7 @@
           "answer": "The number of rounds affects how absurd your translation gets. For mild humor, try 5-7 rounds. For maximum chaos, go for 15-20 rounds! Experiment to find your perfect level of weirdness."
         },
         "item-8": {
-          "question": "Can I save my favorite translations?",
+          "question": "Can I save preferred translations?",
           "answer": "Yes! You can download any translation as a text file, copy it to your clipboard, or share it directly on social media. All your hilarious results are just a click away!"
         }
       }

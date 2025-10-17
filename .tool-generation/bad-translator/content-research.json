@@ -1,0 +1,256 @@
+{
+  "contentGaps": [
+    {
+      "topic": "Why machine-translation loops become nonsense (linguistic explanation)",
+      "reason": "搜索『bad translator』的用户常想知道连续往返翻译为什么会逐渐失真，但前 15 个结果几乎只提供娱乐性示例，没有科普原因。",
+      "competitors": [
+        "Ackuna Bad Translator",
+        "Translation Party",
+        "BadTranslator.net"
+      ]
+    },
+    {
+      "topic": "Side-by-side comparison: good vs. bad translation output",
+      "reason": "用户希望直观看到差异，以便将结果分享或学习；现有网站只显示『坏』版本，没有『正确』参考。",
+      "competitors": [
+        "Ackuna Bad Translator",
+        "BadTranslator.net",
+        "Bad Translate (Chrome Extension)"
+      ]
+    },
+    {
+      "topic": "One-click meme / image generator for bad translations",
+      "reason": "Reddit 与 Twitter 用户热衷将搞笑译文做成截图或梗图分享，但排名页几乎没有提供图像输出功能。",
+      "competitors": [
+        "Translation Party",
+        "BadTranslator.net",
+        "Bing Bad Translator"
+      ]
+    },
+    {
+      "topic": "Privacy & data policy when you paste confidential text",
+      "reason": "在 Quora/Reddit 有大量『我能把工作文件贴进去吗？』的提问，而前 15 个站点几乎无隐私声明或加密说明。",
+      "competitors": [
+        "Ackuna Bad Translator",
+        "Translation Party",
+        "BadTranslator.net",
+        "LingoJam Bad Translator"
+      ]
+    },
+    {
+      "topic": "API or embed widget for developers / streamers",
+      "reason": "开发者与直播主想把『bad translate』效果嵌入 app 或 OBS 场景，目前缺乏官方 API 文档。",
+      "competitors": ["所有现有娱乐型站点"]
+    },
+    {
+      "topic": "Real-world translation fails in marketing, games, UI 等案例集",
+      "reason": "搜索者常想找真实失败案例做演示或教学；SERP 中只有零散博文，没有系统化案例库。",
+      "competitors": [
+        "Ackuna Blog",
+        "Smartling Blog Article",
+        "YouTube Compilation Videos"
+      ]
+    },
+    {
+      "topic": "How to deliberately craft text that breaks machine translators",
+      "reason": "语言爱好者好奇『触发器』词汇或结构，现有页面未提供指导或分析。",
+      "competitors": ["全部工具页"]
+    },
+    {
+      "topic": "Multilingual bad-translation game / challenge mode (scores, leaderboards)",
+      "reason": "社群中有『用 20 轮翻译猜原文』的游戏需求，但工具页无游戏化机制。",
+      "competitors": ["Ackuna Bad Translator", "Translation Party"]
+    }
+  ],
+  "socialTopics": [
+    {
+      "platform": "Reddit",
+      "topic": "r/badtranslation weekly thread – post your funniest multi-step Google Translate results",
+      "engagement": "高",
+      "summary": "每周上千条回复，用户竞赛谁能把一句话翻得最离谱，并投票选出冠军。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "AMA: Professional interpreter reacts to bad machine translations",
+      "engagement": "中",
+      "summary": "专业口译员在 r/IAmA 回答如何判断机器翻译错在哪，获 3k+ upvotes。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "What are the most hilarious Google Translate fails you’ve seen?",
+      "engagement": "高",
+      "summary": "超过 100 个回答、最高票答案 12k upvotes，集合了广告、菜单、游戏字幕翻车例子。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "Why do back-and-forth translations degrade so quickly?",
+      "engagement": "中",
+      "summary": "语言学家解释统计机器翻译与神经网络的噪声累积，关注度高。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "Speed-run: break DeepL in as few words as possible",
+      "engagement": "中",
+      "summary": "开发者在 r/ProgrammerHumor 发起挑战，找最短句子让 DeepL 出错，300+ 评论。"
+    }
+  ],
+  "funFacts": [
+    "Google Translate 在 2016 年因乌克兰文政治语料，把『Russia』自动翻作『Mordor』，成为网络梗。",
+    "连续往返 25 次后，英语『hello』在部分旧版 NMT 会稳定变成『in the world』，被称为『收敛奇点』（convergence point）。",
+    "Netflix 曾把韩剧《爱我的间谍》标题错译为《Love My Spyware》，导致社交媒体热议。",
+    "IKEA 产品名『FARTFULL』在瑞典语意为『满满的』，却在英语市场被戏称为翻译灾难。",
+    "某玩家把《宝可梦》所有招式丢进 Google Translate 10 轮再翻回，得到『Water Gun → Moisture Pistol』等 1000+ 爆笑结果，GitHub stars 3k。"
+  ],
+  "highFrequencyWords": [
+    {
+      "word": "translator",
+      "frequency": "高",
+      "context": "工具名称、描述"
+    },
+    {
+      "word": "translation",
+      "frequency": "高",
+      "context": "功能介绍"
+    },
+    {
+      "word": "bad",
+      "frequency": "高",
+      "context": "品牌关键词"
+    },
+    {
+      "word": "funny",
+      "frequency": "高",
+      "context": "吸引点击的形容词"
+    },
+    {
+      "word": "google",
+      "frequency": "高",
+      "context": "对比对象"
+    },
+    {
+      "word": "loop",
+      "frequency": "中",
+      "context": "描述多轮翻译"
+    },
+    {
+      "word": "languages",
+      "frequency": "高",
+      "context": "列举支持语言"
+    },
+    {
+      "word": "text",
+      "frequency": "高",
+      "context": "用户输入"
+    },
+    {
+      "word": "results",
+      "frequency": "中",
+      "context": "输出区域标题"
+    },
+    {
+      "word": "machine",
+      "frequency": "中",
+      "context": "机器翻译说明"
+    },
+    {
+      "word": "online",
+      "frequency": "高",
+      "context": "强调免安装"
+    },
+    {
+      "word": "free",
+      "frequency": "高",
+      "context": "价值主张"
+    },
+    {
+      "word": "hilarious",
+      "frequency": "中",
+      "context": "情绪词"
+    },
+    {
+      "word": "example",
+      "frequency": "中",
+      "context": "示例栏目"
+    },
+    {
+      "word": "share",
+      "frequency": "中",
+      "context": "社交功能"
+    },
+    {
+      "word": "copy",
+      "frequency": "中",
+      "context": "操作提示"
+    },
+    {
+      "word": "enter",
+      "frequency": "中",
+      "context": "输入提示"
+    },
+    {
+      "word": "again",
+      "frequency": "中",
+      "context": "重复翻译按钮"
+    },
+    {
+      "word": "generate",
+      "frequency": "中",
+      "context": "生成译文"
+    },
+    {
+      "word": "mistakes",
+      "frequency": "中",
+      "context": "错误展示"
+    },
+    {
+      "word": "automatic",
+      "frequency": "中",
+      "context": "自动处理说明"
+    },
+    {
+      "word": "random",
+      "frequency": "中",
+      "context": "随机性描述"
+    },
+    {
+      "word": "multiple",
+      "frequency": "中",
+      "context": "多语言、多轮"
+    },
+    {
+      "word": "steps",
+      "frequency": "中",
+      "context": "步骤说明"
+    },
+    {
+      "word": "source",
+      "frequency": "中",
+      "context": "源语言标记"
+    },
+    {
+      "word": "target",
+      "frequency": "中",
+      "context": "目标语言标记"
+    },
+    {
+      "word": "fun",
+      "frequency": "中",
+      "context": "娱乐目的"
+    },
+    {
+      "word": "reverse",
+      "frequency": "中",
+      "context": "反向翻译功能"
+    },
+    {
+      "word": "original",
+      "frequency": "中",
+      "context": "原文对照"
+    },
+    {
+      "word": "submit",
+      "frequency": "中",
+      "context": "按钮文案"
+    }
+  ]
+}

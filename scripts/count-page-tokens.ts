@@ -1,5 +1,5 @@
-import { readFile } from 'fs/promises';
 import path from 'path';
+import { readFile } from 'fs/promises';
 
 // 简单的 token 估算函数（使用 GPT 的估算规则：1 token ≈ 4 个字符）
 function estimateTokens(text: string): number {
@@ -155,7 +155,9 @@ async function countPageTokens(toolSlug: string) {
 
     let totalTokens = 0;
     Object.entries(sections).forEach(([section, data]) => {
-      console.log(`${section.padEnd(30)} ${data.tokens.toLocaleString()} tokens`);
+      console.log(
+        `${section.padEnd(30)} ${data.tokens.toLocaleString()} tokens`
+      );
       totalTokens += data.tokens;
     });
 
@@ -168,7 +170,9 @@ async function countPageTokens(toolSlug: string) {
     console.log(`文件大小: ${enContent.length.toLocaleString()} 字符`);
     console.log(`纯文本内容: ${fullText.length.toLocaleString()} 字符`);
     console.log(`文本片段数: ${allTexts.length} 个`);
-    console.log(`预估 Token 数: ${estimateTokens(fullText).toLocaleString()} tokens`);
+    console.log(
+      `预估 Token 数: ${estimateTokens(fullText).toLocaleString()} tokens`
+    );
 
     // 成本估算
     const inputCost = (totalTokens / 1000000) * 2.5; // GPT-4o input cost
@@ -178,10 +182,11 @@ async function countPageTokens(toolSlug: string) {
     console.log('-'.repeat(60));
     console.log(`输入成本 ($2.50/1M tokens): $${inputCost.toFixed(4)}`);
     console.log(`输出成本 ($10.00/1M tokens): $${outputCost.toFixed(4)}`);
-    console.log(`总计 (假设输入+输出): $${(inputCost + outputCost).toFixed(4)}`);
+    console.log(
+      `总计 (假设输入+输出): $${(inputCost + outputCost).toFixed(4)}`
+    );
 
     console.log('\n' + '='.repeat(60));
-
   } catch (error) {
     console.error('❌ 错误:', error);
     throw error;

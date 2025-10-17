@@ -1,0 +1,33 @@
+{
+  "funFacts": [
+    {
+      "title": "翻译中的幽默误译",
+      "content": "Ever tried translating '加油' and ended up with 'refuel'? That's just classic! I think these funny translation fails are what make language learning with VibeTrans a whimsical adventure, especially when machine translators try their best with idioms."
+    },
+    {
+      "title": "神奇的OCR翻译",
+      "content": "Did you know Google's OCR once turned the traditional Chinese character for 'person' into 'eight'? It's these quirks that make translation tools like VibeTrans fascinating, blending tech with human-like understanding to avoid such blunders."
+    }
+  ],
+  "unique": {
+    "title": "Discover More with VibeTrans",
+    "items": [
+      {
+        "title": "成语与网络梗的智识",
+        "content": "Ever been puzzled by a weird translation of Chinese idioms or internet slang? VibeTrans has your back! With its smart idiom and meme recognition feature, it deciphers these tricky phrases correctly. Say goodbye to awkward translations and hello to accurate context that makes sense!"
+      },
+      {
+        "title": "专业领域翻译的利器",
+        "content": "Got a technical document that needs translating? VibeTrans is expert-friendly! Whether it's legal terms or IT jargon, the tool's domain-specific modes make translations smooth and precise. I love how it caters to different professional fields while maintaining clarity and accuracy."
+      },
+      {
+        "title": "快速OCR菜单翻译",
+        "content": "Hungry and staring at a Chinese menu with no clue? VibeTrans' OCR feature can instantly capture and translate images, even those tricky vertical texts or comic bubbles. It’s like a superhero for your taste buds when you're exploring unknown culinary territories!"
+      },
+      {
+        "title": "智能量词与复数调整",
+        "content": "Ever wondered why 'a shoe' isn't 'a pair'? VibeTrans solves this with its smart grammar post-processing. It cleverly adjusts measure words and plurals based on context. I think this feature makes translations more natural and relatable, ensuring your message is spot-on!"
+      }
+    ]
+  }
+}

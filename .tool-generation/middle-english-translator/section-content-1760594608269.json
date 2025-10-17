@@ -1,0 +1,50 @@
+{
+  "funFacts": [
+    {
+      "title": "Chaucer's Spelling Adventures",
+      "description": "Middle English had no standard spelling. Chaucer, the famous poet, spelled the word 'through' in at least ten different ways. This made reading quite the adventure, with each text offering a unique spelling twist!"
+    },
+    {
+      "title": "The Curious Case of 'ȝ'",
+      "description": "The Middle English letter 'ȝ' (yogh) could sound like /j/, /g/, or /x/. It's the ancestor of the modern 'y' in Scottish names like 'Menzies.' Imagine pronouncing it as /ˈmɪŋɪs/—quite the quirky transformation!"
+    }
+  ],
+  "testimonials": [
+    {
+      "name": "John Anderson",
+      "role": "High School Teacher",
+      "heading": "Boosted My Classroom Engagement",
+      "content": "Using Middle-English Translator Studio in my English class was a game-changer. Students loved converting modern texts into Middle English, and it made lessons interactive. The dialect options added depth to our Chaucer discussions, sparking curiosity and engagement. Now, my classroom buzzes with excitement every time we fire up the tool!"
+    },
+    {
+      "name": "Emily Carter",
+      "role": "RPG Game Designer",
+      "heading": "Perfect for Immersive Storylines",
+      "content": "I use Middle-English Translator Studio to enhance my RPG narratives. The tool's ability to convert dialogue into Middle English adds authenticity. Players often comment on the historical vibe it brings to our sessions. It's become an essential part of my storytelling toolkit, making every adventure feel more real and captivating!"
+    },
+    {
+      "name": "Michael Thompson",
+      "role": "Historical Researcher",
+      "heading": "A Must-Have for Researchers",
+      "content": "Middle-English Translator Studio is invaluable for my research. Its precise translation and historical context features help unravel texts from the past. The time-slider is particularly useful for understanding linguistic evolution. With this tool, diving into historical documents is not just easier but also more insightful and enjoyable."
+    },
+    {
+      "name": "Sarah Johnson",
+      "role": "College Student",
+      "heading": "Great Study Companion",
+      "content": "As a student, Middle-English Translator Studio is my go-to for deciphering medieval texts. The voice output helps me grasp pronunciation nuances. I appreciate how it demystifies Middle English, turning complex texts into understandable content. It's like having a personal tutor guiding me through history's linguistic maze!"
+    },
+    {
+      "name": "David Lee",
+      "role": "Drama Director",
+      "heading": "Elevated Our Theatrical Productions",
+      "content": "Incorporating Middle-English Translator Studio into our plays transformed our performances. The tool's accurate translations and pronunciation guides enhance authenticity. Actors now deliver lines with confidence, and audiences appreciate the historical accuracy. It's an indispensable asset for any drama director aiming for a true-to-period production!"
+    },
+    {
+      "name": "Jessica Brown",
+      "role": "Freelance Writer",
+      "heading": "Inspiration for Creative Writing",
+      "content": "Middle-English Translator Studio is my creative muse. Its ability to convert modern English to Middle English inspires unique storylines. I love exploring different dialects and seeing how they shape narratives. The tool turns writing into an exciting adventure, opening up new worlds and perspectives in my storytelling!"
+    }
+  ]
+}

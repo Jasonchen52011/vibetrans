@@ -1,7 +1,7 @@
-import { generateIllustration } from '../src/lib/article-illustrator/image-generator';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import sharp from 'sharp';
+import { generateIllustration } from '../src/lib/article-illustrator/image-generator';
 
 interface ImageTask {
   section: string;

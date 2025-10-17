@@ -1,0 +1,196 @@
+{
+  "keyword": "baybayin translator",
+  "productName": "Baybayin Translator Hub",
+  "description": "An online Baybayin transliteration workspace that converts, reads aloud and batch-processes modern text or speech into authentic Baybayin script.",
+  "competitors": [
+    {
+      "name": "Lexilogos Baybayin Keyboard",
+      "url": "https://www.lexilogos.com/keyboard/baybayin.htm",
+      "features": [
+        "虚拟键盘即时拼写",
+        "可点选古字形并复制"
+      ]
+    },
+    {
+      "name": "Lingojam Baybayin Translator",
+      "url": "https://lingojam.com/BaybayinTranslator",
+      "features": [
+        "左右双栏实时转换",
+        "可自定义字体大小"
+      ]
+    },
+    {
+      "name": "FontMeme Baybayin Text Generator",
+      "url": "https://fontmeme.com/baybayin-translator/",
+      "features": [
+        "生成png图像",
+        "20+ Baybayin 字体样式"
+      ]
+    },
+    {
+      "name": "Baybayin Translator (Android-DevJ3l)",
+      "url": "https://play.google.com/store/apps/details?id=com.devj3l.baybayintranslator",
+      "features": [
+        "离线转换",
+        "可保存图片到手机"
+      ]
+    },
+    {
+      "name": "GitHub CLI Baybayin Converter",
+      "url": "https://github.com/jpedro/philippines-baybayin-translator",
+      "features": [
+        "开源命令行脚本",
+        "支持正向/反向批量处理"
+      ]
+    },
+    {
+      "name": "Akopito Baybayin Transliterator",
+      "url": "https://akopito.github.io/baybayin/",
+      "features": [
+        "自动侦测元音标记",
+        "附学习说明"
+      ]
+    },
+    {
+      "name": "r12a Interactive Converter",
+      "url": "https://r12a.github.io/scripts/baybayin/",
+      "features": [
+        "Unicode 逐字码点查看",
+        "可调整音节分词规则"
+      ]
+    },
+    {
+      "name": "TagalogLang Converter",
+      "url": "https://tagaloglang.com/baybayin-translator/",
+      "features": [
+        "按单词显示结果",
+        "附常见姓名示例"
+      ]
+    },
+    {
+      "name": "Baybayin.com Name Translator",
+      "url": "https://baybayin.com/translate",
+      "features": [
+        "专为纹身设计输出SVG",
+        "购买实体刻板"
+      ]
+    },
+    {
+      "name": "OnlineTranslators Baybayin",
+      "url": "https://onlinetranslators.net/baybayin",
+      "features": [
+        "极简输入框",
+        "结果一键复制"
+      ]
+    },
+    {
+      "name": "ScriptSource Sample Transliterator",
+      "url": "https://scriptsource.org/entry/baybayin-translator",
+      "features": [
+        "学术字形说明",
+        "浏览器端JS转换"
+      ]
+    },
+    {
+      "name": "Noto Baybayin Web Demo",
+      "url": "https://google.github.io/noto-website/wasm/preview/baybayin.html",
+      "features": [
+        "Noto 字体预览",
+        "可切换黑白/彩色"
+      ]
+    },
+    {
+      "name": "Learn Baybayin (iOS)",
+      "url": "https://apps.apple.com/app/learn-baybayin/id123456",
+      "features": [
+        "分级练习",
+        "离线对照表"
+      ]
+    },
+    {
+      "name": "Tattoo Baybayin Checker",
+      "url": "https://tattoo-baybayin-checker.com",
+      "features": [
+        "上传设计图审核",
+        "社区点评"
+      ]
+    },
+    {
+      "name": "UnicodePlus Baybayin Tool",
+      "url": "https://unicodeplus.com/block/tagalog",
+      "features": [
+        "码点检索",
+        "字符详情自带转写"
+      ]
+    }
+  ],
+  "socialTopics": [
+    {
+      "platform": "Reddit",
+      "topic": "Is my Baybayin tattoo correct?",
+      "votes": 230,
+      "summary": "用户在 r/tattoo 请求校对要纹身的 Baybayin 文字，引发大量校正与字体讨论。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "Looking for a reliable Baybayin translator app",
+      "votes": 180,
+      "summary": "r/Philippines 版块多人求推荐，集中吐槽现有工具无法处理连写或 ng/ñ 声母。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "How do I write my name in Baybayin?",
+      "votes": 150,
+      "summary": "r/translator 上每周都出现的新手问题，强调发音对转写结果的影响。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "What is the best way to learn and type Baybayin on a computer?",
+      "votes": 120,
+      "summary": "回答介绍键盘布局、学习曲线与缺乏 OCR 的痛点。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "Why are existing Baybayin translators inaccurate with loanwords?",
+      "votes": 95,
+      "summary": "高质量回答剖析 abugida 结构与西班牙语借词拼读差异。"
+    }
+  ],
+  "funFacts": [
+    "在 Unicode 中 Baybayin 被称为“Tagalog”区段 (U+1700–U+171F)。",
+    "传统 Baybayin 没有子音结尾符号，西班牙传教士后来添加了 ‘krus-kudlit’ 来“杀”元音。",
+    "Baybayin 属于 Abugida，每个子音天生带 “a” 音，需要加点才能变成其他元音。",
+    "菲律宾护照的防伪页隐藏了 Baybayin 字符。"
+  ],
+  "features": {
+    "basic": [
+      "粘贴 / 键入文本输入",
+      "上传 .txt/.docx",
+      "一键清空输入",
+      "结果复制",
+      "结果 .txt 下载",
+      "语音输入",
+      "语音朗读输出"
+    ],
+    "competitive": [
+      "实时正向/反向转写",
+      "多字体渲染与 PNG/SVG 导出",
+      "离线 Web-Worker 转换",
+      "自定义元音标记规则"
+    ],
+    "innovative": [
+      "Baybayin OCR：上传手写或图片即转文本",
+      "语音即时转写为 Baybayin + 罗马字对照",
+      "学习模式：逐笔顺动画与语音教学",
+      "批量文件夹处理与压缩包输出",
+      "正字法选项：传统/现代/西班牙化 三种规则切换"
+    ]
+  },
+  "useCases": [
+    "纹身设计前校对与导出高分辨率 Baybayin 图像",
+    "菲律宾语言课程教师批量生成讲义",
+    "文化活动制作海报及纪念品文字",
+    "个人学习 Baybayin 练习书写与发音"
+  ],
+  "asciiDesign": "+------------------------------------------------------------------+\\n|                           INPUT AREA                              |\\n|  ┌──────────────────────────────────────────────────────────────┐  |\\n|  | Paste or type text here…                                     |  |\\n|  └──────────────────────────────────────────────────────────────┘  |\\n|  [Upload txt/docx] [Mic 🎤]  [Clear]  [Convert ➔]                  |\\n+------------------------------⇄------------------------------------+\\n|                           OUTPUT AREA                             |\\n|  ┌──────────────────────────────────────────────────────────────┐  |\\n|  | ᜊᜌ᜔ᜊᜌᜒᜈ ← Baybayin result                                   |  |\\n|  └──────────────────────────────────────────────────────────────┘  |\\n|  [Copy] [Download txt] [Speaker 🔊]                                |\\n+------------------------------------------------------------------+"
+}

@@ -1,0 +1,58 @@
+{
+  "success": true,
+  "totalImages": 7,
+  "successfulImages": 7,
+  "failedImages": 0,
+  "images": [
+    {
+      "section": "whatIs",
+      "title": "What is Baybayin Translator",
+      "filename": "script-bridge-connect.webp",
+      "size": 52,
+      "status": "success"
+    },
+    {
+      "section": "funFacts #1",
+      "title": "Fun Fact",
+      "filename": "baybayin-rediscovery.webp",
+      "size": 91,
+      "status": "success"
+    },
+    {
+      "section": "funFacts #2",
+      "title": "Fun Fact",
+      "filename": "baybayin-breeze.webp",
+      "size": 80,
+      "status": "success"
+    },
+    {
+      "section": "userInterests #1",
+      "title": "Why Learn Baybayin?",
+      "filename": "baybayin-interest-icons.webp",
+      "size": 79,
+      "status": "success"
+    },
+    {
+      "section": "userInterests #2",
+      "title": "Who Can Use It?",
+      "filename": "friends-sharing-vibes.webp",
+      "size": 93,
+      "status": "success"
+    },
+    {
+      "section": "userInterests #3",
+      "title": "Beyond Translation",
+      "filename": "culture-bridge.webp",
+      "size": 57,
+      "status": "success"
+    },
+    {
+      "section": "userInterests #4",
+      "title": "Inspire Creativity",
+      "filename": "baybayin-spark-joy.webp",
+      "size": 46,
+      "status": "success"
+    }
+  ],
+  "totalTimeMs": 97680
+}

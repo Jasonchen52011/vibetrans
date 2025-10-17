@@ -85,12 +85,12 @@
       "title": "Fun Facts",
       "items": [
         {
-          "title": "IVR Evolution",
-          "description": "Did you know that IVR systems originally only used touch-tone inputs? Now, with VibeTrans IVR Translator, you can have real-time voice-to-text conversion in multiple languages! It's amazing how far we've come."
+          "title": "The Number Mix-Up",
+          "description": "In some Arabic dialects, the pronunciation of the number '2' sounds similar to English '8'. This often confuses automated voice translators, causing them to misinterpret customers' extension numbers during calls. It's a fascinating quirk in cross-language communication!"
         },
         {
-          "title": "Voice Technology Heritage",
-          "description": "Siri's voice comes from GM Voices, and it's all made possible by advancements in IVR technology. VibeTrans takes it a step further by adding multi-language support, making communication smoother worldwide."
+          "title": "French Length Challenge",
+          "description": "Did you know French IVR prompts are, on average, 27% longer than English ones? This means menus often need redesigning after translation. It's not just about language; it's about fitting the message into the same time frame!"
         }
       ]
     },
@@ -142,40 +142,40 @@
       "subtitle": "Real feedback from real users",
       "items": {
         "item-1": {
-          "name": "John Matthews",
-          "role": "Customer Service Rep",
-          "heading": "Fantastic Tool",
-          "content": "I've been using IVR Translator for a month now. It's been fantastic! Handling customer calls in Spanish and French has never been easier. It really saves time and enhances our service."
+          "name": "John Smith",
+          "role": "Customer Service Manager",
+          "heading": "Boosted Our Call Efficiency",
+          "content": "Using IVR Translator Hub was a game changer for our call center. Our multilingual prompts now reach customers in real-time, improving efficiency significantly. Before, we struggled with language barriers, causing delays. Now, calls are smoother, and our team is happier. It's like having a multilingual team without hiring new staff!"
         },
         "item-2": {
-          "name": "Emily Carter",
-          "role": "IT Manager",
-          "heading": "Game-Changer",
-          "content": "IVR Translator has simplified the integration of multiple languages into our IVR system. The real-time translation feature is a game-changer, making our customer service more efficient."
+          "name": "Emily Johnson",
+          "role": "Tech Support Specialist",
+          "heading": "Simplicity at Its Best",
+          "content": "The drag-and-drop IVR process design is a lifesaver! As someone not tech-savvy, I feared complex setups. But with the IVR Translator Hub, I quickly designed workflows. Previously, such tasks seemed daunting. Now, it's straightforward and efficient. I truly appreciate how it empowers non-techies like me!"
         },
         "item-3": {
-          "name": "Michael Ross",
-          "role": "Call Center Manager",
-          "heading": "Seamless International Calls",
-          "content": "Since we started using VibeTrans, handling international calls has become seamless. The tool is quick and accurate. I've noticed a huge improvement in call handling time."
+          "name": "David Brown",
+          "role": "Operations Director",
+          "heading": "Seamless Integration",
+          "content": "Integrating IVR Translator Hub with our existing call system was smooth sailing. We use Genesys, and the SSML export feature made the transition effortless. Before, integrations were nightmares. This time, it was hassle-free! Our multilingual IVR setup is now more reliable and effective. It's a relief to find such compatibility!"
         },
         "item-4": {
-          "name": "Sophia Walker",
-          "role": "Healthcare Provider",
-          "heading": "Accessibility Lifesaver",
-          "content": "I use IVR Translator to manage patient calls in various languages. It's a lifesaver for accessibility and ensures no one is left behind, regardless of language."
+          "name": "Jessica Williams",
+          "role": "Marketing Specialist",
+          "heading": "Enhanced Customer Satisfaction",
+          "content": "Our customer satisfaction scores improved after implementing IVR Translator Hub. The Emotion-Aware TTS feature was key. It helped us maintain a friendly tone across languages. Before, our tone was inconsistent, causing confusion. Now, our brand voice is more cohesive, making customers feel understood and valued. It's a fantastic tool!"
         },
         "item-5": {
-          "name": "David Green",
-          "role": "Business Owner",
-          "heading": "No Language Barriers",
-          "content": "We have clients from all over the world, and IVR Translator helps us communicate without language barriers. I highly recommend it for global businesses."
+          "name": "Michael Davis",
+          "role": "Compliance Officer",
+          "heading": "Compliance Made Easy",
+          "content": "The Compliance Glossary Lock stands out as the top feature. It ensures our translated prompts adhere to legal standards. Previously, managing compliance was tedious and error-prone. Now, it's automatic and reliable. This peace of mind is invaluable for our business. It's hard to imagine going back to the old ways!"
         },
         "item-6": {
-          "name": "Lily Jones",
-          "role": "Customer Experience Officer",
-          "heading": "Enhanced Performance",
-          "content": "IVR Translator has significantly improved our customer service operations. The tool's real-time translation feature has really enhanced our team's performance."
+          "name": "Sarah Miller",
+          "role": "Call Center Supervisor",
+          "heading": "Real-Time Translation Magic",
+          "content": "IVR Translator Hub's real-time translation is magic! Our team struggled with language delays, frustrating both agents and customers. Now, communication is instant, and issues resolve faster. The tool's speed and accuracy are remarkable. It's like we've unlocked a new level of service. Truly impressive and effective!"
         }
       }
     },

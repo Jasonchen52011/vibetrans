@@ -17,9 +17,9 @@
  */
 
 import path from 'path';
+import { unlink } from 'fs/promises';
 import { chromium } from 'playwright';
 import sharp from 'sharp';
-import { unlink } from 'fs/promises';
 
 interface ScreenshotConfig {
   pageSlug: string;
@@ -41,7 +41,7 @@ async function captureHowToScreenshot(config: ScreenshotConfig) {
     cropRight = 150,
     cropBottom = 100,
     targetSizeKB = 90,
-    baseUrl = 'http://localhost:3001',
+    baseUrl = process.env.BASE_URL || 'http://localhost:3001',
   } = config;
 
   const url = `${baseUrl}/${pageSlug}`;
@@ -62,7 +62,9 @@ async function captureHowToScreenshot(config: ScreenshotConfig) {
   console.log(`\n📄 Page: ${pageSlug}`);
   console.log(`🔗 URL: ${url}`);
   console.log(`📐 Viewport: ${viewportWidth}x${viewportHeight}`);
-  console.log(`✂️  Crop: Left ${cropLeft}px, Right ${cropRight}px, Bottom ${cropBottom}px`);
+  console.log(
+    `✂️  Crop: Left ${cropLeft}px, Right ${cropRight}px, Bottom ${cropBottom}px`
+  );
   console.log(`📦 Target Size: < ${targetSizeKB}KB\n`);
 
   const browser = await chromium.launch();
@@ -118,16 +120,24 @@ async function captureHowToScreenshot(config: ScreenshotConfig) {
       const stats = await fs.stat(finalWebpPath);
       const fileSizeKB = stats.size / 1024;
 
-      console.log(`   Attempt ${attempt}/${maxAttempts}: Quality ${quality}% → ${fileSizeKB.toFixed(2)}KB`);
+      console.log(
+        `   Attempt ${attempt}/${maxAttempts}: Quality ${quality}% → ${fileSizeKB.toFixed(2)}KB`
+      );
 
       if (fileSizeKB <= targetSizeKB) {
-        console.log(`✅ Size target achieved: ${fileSizeKB.toFixed(2)}KB < ${targetSizeKB}KB\n`);
+        console.log(
+          `✅ Size target achieved: ${fileSizeKB.toFixed(2)}KB < ${targetSizeKB}KB\n`
+        );
         break;
       }
 
       if (attempt === maxAttempts) {
-        console.log(`⚠️  Warning: Could not reach ${targetSizeKB}KB target after ${maxAttempts} attempts`);
-        console.log(`   Final size: ${fileSizeKB.toFixed(2)}KB (quality ${quality}%)\n`);
+        console.log(
+          `⚠️  Warning: Could not reach ${targetSizeKB}KB target after ${maxAttempts} attempts`
+        );
+        console.log(
+          `   Final size: ${fileSizeKB.toFixed(2)}KB (quality ${quality}%)\n`
+        );
         break;
       }
 
@@ -173,9 +183,15 @@ async function main() {
     console.log('Usage:');
     console.log('  pnpm tsx scripts/capture-howto-screenshot.ts <page-slug>\n');
     console.log('Examples:');
-    console.log('  pnpm tsx scripts/capture-howto-screenshot.ts albanian-to-english');
-    console.log('  pnpm tsx scripts/capture-howto-screenshot.ts baby-translator');
-    console.log('  pnpm tsx scripts/capture-howto-screenshot.ts verbose-generator\n');
+    console.log(
+      '  pnpm tsx scripts/capture-howto-screenshot.ts albanian-to-english'
+    );
+    console.log(
+      '  pnpm tsx scripts/capture-howto-screenshot.ts baby-translator'
+    );
+    console.log(
+      '  pnpm tsx scripts/capture-howto-screenshot.ts verbose-generator\n'
+    );
     process.exit(1);
   }
 

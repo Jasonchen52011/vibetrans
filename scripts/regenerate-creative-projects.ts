@@ -3,10 +3,10 @@
  * With smart prompt comparison before generation
  */
 
+import { GoogleGenerativeAI } from '@google/generative-ai';
+import { testGeneratePrompt } from '../src/lib/article-illustrator/gemini-analyzer';
 import { convertURLToWebP } from '../src/lib/article-illustrator/webp-converter';
 import { generateImageWithKie } from '../src/lib/kie-text-to-image';
-import { testGeneratePrompt } from '../src/lib/article-illustrator/gemini-analyzer';
-import { GoogleGenerativeAI } from '@google/generative-ai';
 
 // 现有的 prompt（从原始生成脚本获取）
 const EXISTING_PROMPT = `Geometric Flat Style cartoon illustration for "Alien Text for Creative Projects". Sky blue (#87CEEB) primary with soft gradient. Center features an artist's workspace with an open laptop (rectangular frame in silver) showing a sci-fi project with alien text overlays. A cartoon creator (circular head, rectangular body wearing creative beret) types enthusiastically. Around the workspace: storyboard panels with alien text labels, character design sketches with futuristic name tags, UI mockups with alien interface text. Floating creative tools: pencil (cylinder shape), paintbrush (geometric bristles), digital pen (sleek rectangle). Alien text examples float in bubbles: story titles in zalgo style, character names in circle text, UI elements in square text. Background shows: planet shapes representing different creative genres, constellation lines connecting ideas, geometric stars for inspiration. Color palette: sky blue dominant, deep purple (#6A0DAD), emerald green (#50C878), coral pink (#FF6B6B), lemon yellow (#FFF44F). Creative, inspiring, project-focused atmosphere. 4:3 aspect ratio, 800x600px.`;
@@ -72,15 +72,14 @@ Now evaluate:`;
     const response = result.response.text().trim();
 
     const decisionMatch = response.match(/DECISION:\s*(USE_EXISTING|USE_NEW)/i);
-    const reasonMatch = response.match(/REASON:\s*([\s\S]+?)(?=\nRECOMMENDATION:)/i);
-    const recommendationMatch = response.match(
-      /RECOMMENDATION:\s*([\s\S]+)$/i
+    const reasonMatch = response.match(
+      /REASON:\s*([\s\S]+?)(?=\nRECOMMENDATION:)/i
     );
+    const recommendationMatch = response.match(/RECOMMENDATION:\s*([\s\S]+)$/i);
 
     const decision = decisionMatch?.[1].toUpperCase();
     const reason = reasonMatch?.[1].trim() || 'No reason provided';
-    const recommendation =
-      recommendationMatch?.[1].trim() || newPrompt;
+    const recommendation = recommendationMatch?.[1].trim() || newPrompt;
 
     return {
       shouldUseExisting: decision === 'USE_EXISTING',
@@ -127,7 +126,9 @@ async function regenerateCreativeProjectsImage() {
     console.log('📋 Step 3: Comparing prompts with Gemini...');
     const comparison = await comparePrompts(EXISTING_PROMPT, newPrompt);
 
-    console.log(`\n🎯 Decision: ${comparison.shouldUseExisting ? 'USE EXISTING' : 'USE NEW'}`);
+    console.log(
+      `\n🎯 Decision: ${comparison.shouldUseExisting ? 'USE EXISTING' : 'USE NEW'}`
+    );
     console.log(`💡 Reason: ${comparison.reason}\n`);
 
     finalPrompt = comparison.recommendation;

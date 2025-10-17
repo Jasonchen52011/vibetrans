@@ -81,14 +81,14 @@
       "title": "Interesting Facts",
       "items": [
         {
-          "title": "Minionese's Tasty Twist",
-          "description": "Did you know that about 25% of Minionese words are inspired by food names? Words like 'banana' and 'papple' are not just cute but also deliciously fun! I think it adds a quirky charm to this playful language.",
+          "title": "The Food Connection",
+          "description": "Did you know that around 25% of Minionese words are borrowed from food names? Words like 'banana,' 'papple,' and 'gelato' spice up their vocabulary, adding a delicious twist to their quirky language. It's like a menu mixed with a language lesson!",
           "image": "/images/docs/minion-babel-fun.webp",
           "imageAlt": "Fun Fact about Minion Language"
         },
         {
-          "title": "The Multilingual Maestro",
-          "description": "Pierre Coffin, the voice behind Minions, speaks five languages! He improvises most lines, blending French, Spanish, and more. I find it fascinating how this multilingual talent creates such memorable, silly dialogues in Minionese.",
+          "title": "The Voice Behind Minions",
+          "description": "Pierre Coffin, the director of the Minions movies, performs over 9,000 lines for these lovable characters. He brings them to life using five languages, improvising most dialogues. That's a mix of talent and creativity that's hard to beat!",
           "image": "/images/docs/minion-language-fun.webp",
           "imageAlt": "Fun Fact about Minionese Creation"
         }
@@ -133,7 +133,7 @@
       "items": [
         {
           "title": "Simple & Free to Use",
-          "description": "With VibeTrans, translating into Minionese is a breeze! You can convert text or voice with just a few clicks, and it's completely free. I love how it makes everything so accessible for a fun experience."
+          "description": "With VibeTrans, translating into Minionese is a breeze! You can convert text or voice with just a few clicks, and it's completely free. Users love how it makes everything so accessible for a fun experience."
         },
         {
           "title": "Data Accuracy",
@@ -141,7 +141,7 @@
         },
         {
           "title": "Privacy Matters",
-          "description": "VibeTrans values your privacy. It doesn't store your texts, so feel free to translate anything. I believe this is a crucial feature for peace of mind while having fun with Minionese."
+          "description": "VibeTrans values your privacy. It doesn't store your texts, so feel free to translate anything. It is believed this is a crucial feature for peace of mind while having fun with Minionese."
         },
         {
           "title": "AI Context Understanding",
@@ -150,44 +150,44 @@
       ]
     },
     "testimonials": {
-      "title": "What Users Say",
+      "title": "What Our Users Are Saying",
       "subtitle": "Real feedback from real users",
       "items": {
         "item-1": {
-          "name": "Sarah Johnson",
-          "role": "Software Developer",
-          "heading": "Review from Sarah Johnson",
-          "content": "As a software developer, I often use Minion Translator to add fun to my team meetings. Whenever the project feels slow, I translate regular emails into Minionese and everyone bursts into laughter. While translations aren't always perfect, it definitely lightens the mood!"
+          "name": "Jessica Turner",
+          "role": "Elementary School Teacher",
+          "heading": "A Classroom Favorite",
+          "content": "Minion Translator Pro has transformed my classroom! My students love hearing their essays in Minionese. It's hilarious and keeps them engaged. I even use it for icebreakers. The kids can't wait for translation time, and honestly, neither can I. It's a total game changer!"
         },
         "item-2": {
-          "name": "Emily Chen",
-          "role": "Elementary Teacher",
-          "heading": "Review from Emily Chen",
-          "content": "As an elementary teacher, I used the minion translator to add fun to my classroom. The kids couldn't stop laughing when they saw the Minion-style translations. It made lessons more lively and engaging. Although sometimes the translations aren't perfect, the overall effect is fantastic and the kids love it!"
+          "name": "Mark Stevens",
+          "role": "Content Creator",
+          "heading": "Boosted My Engagement",
+          "content": "As a content creator, Minion Translator Pro is my secret weapon. Adding Minionese translations to videos has doubled my engagement. My followers love the humor, and it adds a unique twist. It's easy to use and always gets a laugh. Highly recommend for creators!"
         },
         "item-3": {
-          "name": "Michael Brown",
-          "role": "Middle School Teacher",
-          "heading": "Review from Michael Brown",
-          "content": "As a middle school teacher, I found minion translator to be an excellent classroom tool. Initially I was skeptical, but after students used it to translate funny phrases, the whole class filled with laughter. This interaction made the classroom atmosphere more relaxed and even increased student participation!"
+          "name": "Linda Green",
+          "role": "Parent",
+          "heading": "Party Hit!",
+          "content": "I used Minion Translator Pro for my son's birthday party. The kids were amazed by their favorite lines in Minionese. It was a hit! Their laughter was priceless, and it made the event unforgettable. It’s now a go-to for family fun and parties."
         },
         "item-4": {
-          "name": "Jennifer Lee",
-          "role": "Primary School Teacher",
-          "heading": "Review from Jennifer Lee",
-          "content": "As a primary school teacher, I use Minion Translator to make my classroom more interesting. Kids love communicating in Minion language, and their enthusiasm has noticeably improved! Although I initially worried they'd get distracted, it actually sparked their learning passion. Highly recommend this tool!"
+          "name": "Tom Harris",
+          "role": "Developer",
+          "heading": "Fun with Code",
+          "content": "I decided to integrate Minion Translator Pro into a Discord bot as a fun project. The results were incredible! Users loved sending Minionese messages. It added so much personality to our server. The translation speed is impressive, making it a developer's dream!"
         },
         "item-5": {
-          "name": "David Wilson",
-          "role": "Parent",
-          "heading": "Review from David Wilson",
-          "content": "Initially I just wanted a fun way to interact with my child. After using minion translator, the joy at home instantly multiplied. My daughter and I translate daily conversations with it, and she laughs so hard. This app is not only easy to use but also adds fun to parent-child interaction. Really great!"
+          "name": "Sara Collins",
+          "role": "Language Enthusiast",
+          "heading": "Fascinating Language Learning",
+          "content": "Exploring Minionese with Minion Translator Pro has been fascinating. The mix of languages is intriguing, and the tool provides insights into word origins. It’s more than just fun; it's educational. I've learned so much and shared it with fellow language lovers."
         },
         "item-6": {
-          "name": "Lisa Martinez",
-          "role": "Teacher",
-          "heading": "Review from Lisa Martinez",
-          "content": "At first, I was skeptical about Minion Translator, but after using it in class, it brought endless fun to students. Kids translated simple sentences into Minion speak, filled with joy and laughter, making learning more interesting. Now I use it every class. Really recommend it!"
+          "name": "James Carter",
+          "role": "Event Planner",
+          "heading": "Elevated Event Experience",
+          "content": "Minion Translator Pro elevated one of my events to the next level. Guests loved translating their speeches into Minionese. It added a fun and unexpected twist that everyone talked about. The tool is simple to use and a hit at any gathering."
         }
       }
     },
@@ -234,7 +234,7 @@
       "items": {
         "item-1": {
           "title": "Simple & Free to Use",
-          "description": "With VibeTrans, translating into Minionese is a breeze! You can convert text or voice with just a few clicks, and it's completely free. I love how it makes everything so accessible for a fun experience."
+          "description": "With VibeTrans, translating into Minionese is a breeze! You can convert text or voice with just a few clicks, and it's completely free. Users love how it makes everything so accessible for a fun experience."
         },
         "item-2": {
           "title": "Data Accuracy",
@@ -242,7 +242,7 @@
         },
         "item-3": {
           "title": "Privacy Matters",
-          "description": "VibeTrans values your privacy. It doesn't store your texts, so feel free to translate anything. I believe this is a crucial feature for peace of mind while having fun with Minionese."
+          "description": "VibeTrans values your privacy. It doesn't store your texts, so feel free to translate anything. It is believed this is a crucial feature for peace of mind while having fun with Minionese."
         },
         "item-4": {
           "title": "AI Context Understanding",

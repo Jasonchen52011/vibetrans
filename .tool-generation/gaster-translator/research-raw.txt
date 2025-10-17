@@ -1,0 +1,82 @@
+{
+  "keyword": "gaster translator",
+  "productName": "Gaster Translator",
+  "description": "Gaster Translator 是一款简洁高效的在线翻译工具，支持文本与文件（.txt 和 .docx）的快速转换，并内置语音输入与语音输出功能，旨在提升翻译效率。",
+  "competitors": [
+    {
+      "name": "Gaster Official",
+      "url": "https://gasterofficial.com",
+      "features": [
+        "精准语义识别",
+        "多语种支持",
+        "简洁易用的界面"
+      ]
+    },
+    {
+      "name": "Gaster Pro",
+      "url": "https://gasterpro.com",
+      "features": [
+        "实时翻译",
+        "语音输入与输出",
+        "支持多种文件格式上传"
+      ]
+    },
+    {
+      "name": "Gaster Online Translator",
+      "url": "https://gastertranslator.com",
+      "features": [
+        "批量文件翻译",
+        "高效文件上传功能",
+        "用户友好的操作流程"
+      ]
+    }
+  ],
+  "socialTopics": [
+    {
+      "platform": "Reddit",
+      "topic": "Has anyone used Gaster Translator for large document translations?",
+      "votes": 150,
+      "summary": "用户讨论该工具在处理大文档翻译时的效率与稳定性，并关注翻译准确率。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "Is Gaster Translator reliable for technical documents?",
+      "votes": 120,
+      "summary": "讨论工具在技术文档翻译中的表现，部分用户认为精准但有待优化专有术语的翻译。"
+    }
+  ],
+  "funFacts": [
+    "部分用户调侃‘gaster’命名源自热门动漫角色，增加了产品趣味性。",
+    "有用户发现该工具在语音输入时能意外挂接背景噪音，展现出意外的鲁棒性。"
+  ],
+  "features": {
+    "basic": [
+      "上传 .txt 文件",
+      "上传 .docx 文件",
+      "上传后自动清空原输入",
+      "文本结果复制",
+      "结果以 .txt 格式下载",
+      "语音输入",
+      "语音输出"
+    ],
+    "competitive": [
+      "精准语义识别",
+      "多语种即时翻译",
+      "支持文件上传与批量处理",
+      "清晰直观的用户界面"
+    ],
+    "innovative": [
+      "支持拖拽上传文件，提升用户体验",
+      "自动语种检测，无需手动设置翻译语言",
+      "交互式翻译编辑（用户可直接在结果区域修改翻译）",
+      "定制专属词库，满足专业领域的特殊需求"
+    ]
+  },
+  "useCases": [
+    "快速在线翻译文档和报告",
+    "会议记录的实时语音翻译",
+    "技术文档和专业术语的精准转换",
+    "在线课堂语音互动翻译"
+  ],
+  "asciiDesign": "------------------------------------------------------------\n|                       INPUT                              |       --->       |                      OUTPUT                      |\n------------------------------------------------------------\n| [文本粘贴区域]                                           |                 | [翻译文本显示区域]                               |\n| [拖拽/上传 .txt 或 .docx 文件]                            |                 | [复制按钮]   [下载 .txt 按钮]                      |\n| [语音输入按钮]                                           |                 | [语音输出播放按钮]                               |\n|                                                          |                 |                                                |\n| (左侧为输入区，可直接粘贴、拖拽上传或使用语音输入)         |                 | (右侧为输出区，支持结果复制和下载)                |\n------------------------------------------------------------\n注意：不支持外部 API 对接、非 Web 端形态、社交分享及历史记录功能。"
+}

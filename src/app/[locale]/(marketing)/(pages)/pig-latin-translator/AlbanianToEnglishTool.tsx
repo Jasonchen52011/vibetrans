@@ -18,7 +18,9 @@ export default function AlbanianToEnglishTool({
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [fileName, setFileName] = useState<string | null>(null);
-  const [direction, setDirection] = useState<'al-to-en' | 'en-to-al'>('al-to-en');
+  const [direction, setDirection] = useState<'al-to-en' | 'en-to-al'>(
+    'al-to-en'
+  );
 
   // Handle file upload
   const handleFileUpload = async (
@@ -278,7 +280,9 @@ export default function AlbanianToEnglishTool({
           <div className="flex-1">
             <div className="flex items-center justify-between mb-3">
               <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">
-                {direction === 'al-to-en' ? 'English Translation' : 'Albanian Translation'}
+                {direction === 'al-to-en'
+                  ? 'English Translation'
+                  : 'Albanian Translation'}
               </h2>
               {outputText && (
                 <div className="flex gap-2">

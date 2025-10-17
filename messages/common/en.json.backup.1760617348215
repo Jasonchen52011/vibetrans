@@ -1,0 +1,100 @@
+{
+  "Metadata": {
+    "name": "VibeTrans",
+    "title": "Advanced AI Translation Tools for Fast & Accurate Language Conversion",
+    "description": "VibeTrans offers powerful AI-driven translation tools for seamless language conversion. Whether you're translating texts, slang, or even ancient languages, VibeTrans makes communication easy."
+  },
+  "Common": {
+    "premium": "Premium",
+    "login": "Log in",
+    "logout": "Log out",
+    "signUp": "Sign up",
+    "language": "Switch language",
+    "mode": {
+      "label": "Toggle mode",
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System"
+    },
+    "theme": {
+      "label": "Toggle theme",
+      "default": "Default",
+      "blue": "Blue",
+      "green": "Green",
+      "amber": "Amber",
+      "neutral": "Neutral"
+    },
+    "copy": "Copy",
+    "saving": "Saving...",
+    "save": "Save",
+    "loading": "Loading...",
+    "cancel": "Cancel",
+    "logoutFailed": "Failed to log out",
+    "table": {
+      "totalRecords": "Total {count} records",
+      "noResults": "No results",
+      "loading": "Loading...",
+      "columns": "Columns",
+      "rowsPerPage": "Rows per page",
+      "page": "Page",
+      "firstPage": "First Page",
+      "lastPage": "Last Page",
+      "nextPage": "Next Page",
+      "previousPage": "Previous Page",
+      "ascending": "Asc",
+      "descending": "Desc"
+    }
+  },
+  "NotFoundPage": {
+    "title": "404",
+    "message": "Sorry, the page you are looking for does not exist.",
+    "backToHome": "Back to home"
+  },
+  "ErrorPage": {
+    "title": "Oops! Something went wrong!",
+    "tryAgain": "Try again",
+    "backToHome": "Back to home"
+  },
+  "exploreAiTools": {
+    "title": "Explore Other AI Tools",
+    "description": "Check out these related translation and AI tools to enhance your experience",
+    "tools": {
+      "Gen Z Translator": {
+        "title": "Gen Z Translator",
+        "description": "Convert standard text to Gen Z slang and vice versa with ease"
+      },
+      "Dog Translator": {
+        "title": "Dog Translator",
+        "description": "Translate dog barks and behaviors into human language"
+      },
+      "Bad Translator": {
+        "title": "Bad Translator",
+        "description": "Create hilarious mistranslations by translating through multiple languages"
+      },
+      "Ancient Greek Translator": {
+        "title": "Ancient Greek Translator",
+        "description": "Translate ancient Greek texts to modern languages accurately"
+      },
+      "Gibberish Translator": {
+        "title": "Gibberish Translator",
+        "description": "Turn normal text into fun gibberish or decode gibberish back"
+      },
+      "Esperanto Translator": {
+        "title": "Esperanto Translator",
+        "description": "Translate between Esperanto and multiple languages with voice support"
+      },
+      "Gen Alpha Translator": {
+        "title": "Gen Alpha Translator",
+        "description": "Understand and translate the newest generation's unique slang"
+      },
+      "Cuneiform Translator": {
+        "title": "Cuneiform Translator",
+        "description": "Decode ancient cuneiform script into modern text"
+      },
+      "Al Bhed Translator": {
+        "title": "Al Bhed Translator",
+        "description": "Translate Final Fantasy's Al Bhed language for fans and gamers"
+      }
+    }
+  }
+}

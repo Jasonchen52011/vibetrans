@@ -1,0 +1,282 @@
+{
+  "contentGaps": [
+    {
+      "topic": "Audio Pronunciation & Text-to-Speech for Minionese",
+      "reason": "搜索者不仅想看到文字，还想知道 Minion 语到底怎么发音，从而模仿影片中的声音。",
+      "competitors": [
+        "funtranslations.com",
+        "lingojam.com",
+        "generatorfun.com",
+        "coolgenerator.com",
+        "randomtools.io"
+      ]
+    },
+    {
+      "topic": "Minionese Grammar & Word-Formation Guide",
+      "reason": "很多用户质疑翻译结果是否真的遵循 Minion 语言规律，希望了解其“语法”或常见词缀。",
+      "competitors": [
+        "funtranslations.com",
+        "lingojam.com",
+        "generatorfun.com",
+        "minionspeak.com",
+        "alexbeals.com"
+      ]
+    },
+    {
+      "topic": "Official Origins & Creator Insights (Illumination / Pierre Coffin Quotes)",
+      "reason": "影迷想知道 Minionese 是谁设计的、如何诞生，目前页面多是工具缺乏官方背景故事。",
+      "competitors": [
+        "funtranslations.com",
+        "lingojam.com",
+        "coolgenerator.com",
+        "randomtools.io"
+      ]
+    },
+    {
+      "topic": "Developer API / Bulk Translation Endpoint",
+      "reason": "有用户想把 Minion 翻译功能嵌入 Discord 机器人、游戏或网站，现有站点通常只提供前端表单。",
+      "competitors": [
+        "funtranslations.com",
+        "generatorfun.com",
+        "coolgenerator.com",
+        "randomtools.io"
+      ]
+    },
+    {
+      "topic": "Mobile-Friendly App & Offline Mode",
+      "reason": "想在手机或无网环境下逗朋友/孩子，需要 PWA 或离线包支持。",
+      "competitors": [
+        "lingojam.com",
+        "funtranslations.com",
+        "generatorfun.com",
+        "randomtools.io"
+      ]
+    },
+    {
+      "topic": "Voice Input → Minion Output (Speech-to-Speech)",
+      "reason": "和 Siri / Google Assistant 一样，直接说一句英语立即听到 Minion 语，更有趣、更沉浸。",
+      "competitors": [
+        "funtranslations.com",
+        "lingojam.com",
+        "coolgenerator.com"
+      ]
+    },
+    {
+      "topic": "Educational / Kids-Friendly Activity Kits",
+      "reason": "父母和老师想把 Minion 语言当作课堂小游戏或派对活动，需要可打印词卡、游戏规则。",
+      "competitors": [
+        "funtranslations.com",
+        "generatorfun.com",
+        "coolgenerator.com"
+      ]
+    },
+    {
+      "topic": "Security & Privacy Disclosure (Do you store my text?)",
+      "reason": "部分用户输入私密信息做玩笑，想确认后台是否保存数据，现大多数页面无隐私说明。",
+      "competitors": [
+        "lingojam.com",
+        "generatorfun.com",
+        "randomtools.io",
+        "coolgenerator.com"
+      ]
+    }
+  ],
+  "socialTopics": [
+    {
+      "platform": "Reddit",
+      "topic": "Is Minionese a real language or just random words?",
+      "engagement": "高",
+      "summary": "在 r/movies、r/linguistics 中高赞讨论，用户探讨其是否有系统语法、是否能成为一种『构造语言』。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "Looking for an API or scriptable Minion translator for Discord bot",
+      "engagement": "中",
+      "summary": "在 r/discordapp 和 r/botdevelopment 中频繁出现，开发者想要 JSON/REST 接口接入机器人。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "Best way to prank friends with a voice changer to Minion speech",
+      "engagement": "中",
+      "summary": "r/pranks、r/voicechanger 里热议如何把实时语音转换成 Minion 声音，需 TTS 及语音滤镜。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "Who actually voices the Minions and how are their lines written?",
+      "engagement": "高",
+      "summary": "众多关注者询问 Pierre Coffin 的配音流程及台词创作方式，点赞破 1k。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "What are some common Minion words and their meanings?",
+      "engagement": "高",
+      "summary": "用户索要词汇表，包含 banana、bello、poopaye 等，回答者整理了约 100 个高频词。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "How do you say 'I love you' in Minion language?",
+      "engagement": "中",
+      "summary": "情侣和粉丝常问，用于卡片或信息，回答者给出『Me want banana with you』等趣味版本。"
+    }
+  ],
+  "funFacts": [
+    "所有小黄人角色 9000+ 句台词几乎都由导演 Pierre Coffin 一人配音完成。",
+    "Minionese 并非完全自洽语法，而是把英语、西班牙语、法语、印尼语、日语甚至韩语单词混合。",
+    "Illumination 在 2015 年与 Google 合作过一次愚人节『Google Minion Translate』彩蛋。",
+    "“banana” 和 “potato” 是小黄人最爱的食物，也成为 Minionese 中最高频的象声词。",
+    "有粉丝统计电影中出现的 Minion 词汇大约 120 个，远少于《星际迷航》的克林贡语。",
+    "‘Poopaye!’ 在电影里既可以当 Hello 也可以当 Goodbye，用法类似夏威夷语 Aloha。"
+  ],
+  "highFrequencyWords": [
+    {
+      "word": "minion",
+      "frequency": "高",
+      "context": "页面标题、描述、按钮文案"
+    },
+    {
+      "word": "translator",
+      "frequency": "高",
+      "context": "工具功能核心词"
+    },
+    {
+      "word": "language",
+      "frequency": "高",
+      "context": "介绍 Minionese 语言"
+    },
+    {
+      "word": "translate",
+      "frequency": "高",
+      "context": "动词，CTA 按钮"
+    },
+    {
+      "word": "english",
+      "frequency": "高",
+      "context": "原文语言说明"
+    },
+    {
+      "word": "text",
+      "frequency": "高",
+      "context": "输入框提示"
+    },
+    {
+      "word": "online",
+      "frequency": "高",
+      "context": "工具属性表述"
+    },
+    {
+      "word": "free",
+      "frequency": "高",
+      "context": "免费使用声明"
+    },
+    {
+      "word": "tool",
+      "frequency": "中",
+      "context": "泛指功能"
+    },
+    {
+      "word": "generator",
+      "frequency": "中",
+      "context": "部分站点将其称为生成器"
+    },
+    {
+      "word": "fun",
+      "frequency": "中",
+      "context": "强调娱乐性"
+    },
+    {
+      "word": "copy",
+      "frequency": "中",
+      "context": "复制结果按钮"
+    },
+    {
+      "word": "share",
+      "frequency": "中",
+      "context": "社交分享功能"
+    },
+    {
+      "word": "convert",
+      "frequency": "中",
+      "context": "转换说明"
+    },
+    {
+      "word": "result",
+      "frequency": "中",
+      "context": "翻译输出"
+    },
+    {
+      "word": "output",
+      "frequency": "中",
+      "context": "翻译输出"
+    },
+    {
+      "word": "type",
+      "frequency": "中",
+      "context": "输入提示"
+    },
+    {
+      "word": "generate",
+      "frequency": "中",
+      "context": "生成文本"
+    },
+    {
+      "word": "unicode",
+      "frequency": "中",
+      "context": "编码兼容说明 (部分站点)"
+    },
+    {
+      "word": "characters",
+      "frequency": "中",
+      "context": "字符限制提示"
+    },
+    {
+      "word": "speech",
+      "frequency": "中",
+      "context": "少数站点提供 TTS"
+    },
+    {
+      "word": "pronunciation",
+      "frequency": "中",
+      "context": "词典或说明文"
+    },
+    {
+      "word": "copyable",
+      "frequency": "中",
+      "context": "可复制性"
+    },
+    {
+      "word": "simple",
+      "frequency": "中",
+      "context": "易用性描述"
+    },
+    {
+      "word": "entertainment",
+      "frequency": "中",
+      "context": "用途描述"
+    },
+    {
+      "word": "website",
+      "frequency": "中",
+      "context": "自称或引用"
+    },
+    {
+      "word": "click",
+      "frequency": "中",
+      "context": "操作说明"
+    },
+    {
+      "word": "button",
+      "frequency": "中",
+      "context": "操作说明"
+    },
+    {
+      "word": "instant",
+      "frequency": "中",
+      "context": "即时翻译卖点"
+    },
+    {
+      "word": "phrases",
+      "frequency": "中",
+      "context": "示例短语展示"
+    }
+  ]
+}

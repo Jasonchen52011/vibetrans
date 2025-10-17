@@ -2,8 +2,9 @@
 
 import { SpeechToTextButton } from '@/components/ui/speech-to-text-button';
 import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
+import { detectLanguage } from '@/lib/language-detection';
 import mammoth from 'mammoth';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 interface EsperantoTranslatorToolProps {
   pageData: any;
@@ -20,6 +21,54 @@ export default function EsperantoTranslatorTool({
   const [error, setError] = useState<string | null>(null);
   const [mode, setMode] = useState<'toEsperanto' | 'toEnglish'>('toEsperanto');
   const [fileName, setFileName] = useState<string | null>(null);
+  const outputRef = useRef<HTMLDivElement>(null);
+  const [inputLabel, setInputLabel] = useState<string>('');
+  const [outputLabel, setOutputLabel] = useState<string>('');
+  const [inputPlaceholder, setInputPlaceholder] = useState<string>('');
+  const [outputPlaceholder, setOutputPlaceholder] = useState<string>('');
+
+  // 初始化UI标签
+  useEffect(() => {
+    updateLabelsForMode(mode);
+  }, [mode, pageData]);
+
+  // 更新UI标签
+  const updateLabelsForMode = (currentMode: 'toEsperanto' | 'toEnglish') => {
+    if (currentMode === 'toEsperanto') {
+      setInputLabel(pageData.tool.inputLabel || 'English Text');
+      setOutputLabel(pageData.tool.esperantoLabel || 'Esperanto Translation');
+      setInputPlaceholder(
+        pageData.tool.inputPlaceholder || 'Enter English text...'
+      );
+      setOutputPlaceholder(
+        pageData.tool.outputPlaceholder ||
+          'Esperanto translation will appear here...'
+      );
+    } else {
+      setInputLabel(pageData.tool.esperantoLabel || 'Esperanto Text');
+      setOutputLabel(pageData.tool.inputLabel || 'English Translation');
+      setInputPlaceholder(
+        pageData.tool.esperantoPlaceholder || 'Enigu Esperanto-tekston...'
+      );
+      setOutputPlaceholder(
+        pageData.tool.outputPlaceholder ||
+          'English translation will appear here...'
+      );
+    }
+  };
+
+  // Auto-scroll to bottom when translated text changes
+  useEffect(() => {
+    if (translatedText && outputRef.current) {
+      const timeout = setTimeout(() => {
+        outputRef.current?.scrollTo({
+          top: outputRef.current.scrollHeight,
+          behavior: 'smooth',
+        });
+      }, 100);
+      return () => clearTimeout(timeout);
+    }
+  }, [translatedText]);
 
   // Handle file upload
   const handleFileUpload = async (
@@ -112,12 +161,19 @@ export default function EsperantoTranslatorTool({
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ text: inputText, mode }),
+        body: JSON.stringify({ text: inputText, mode, autoDetect: true }),
       });
 
       const data = (await response.json()) as {
         translated?: string;
         error?: string;
+        mode?: 'toEsperanto' | 'toEnglish';
+        originalMode?: 'toEsperanto' | 'toEnglish';
+        detection?: {
+          detectedLanguage: string;
+          confidence: number;
+          suggestedDirection: string;
+        };
       };
 
       if (!response.ok) {
@@ -125,6 +181,12 @@ export default function EsperantoTranslatorTool({
       }
 
       setTranslatedText(data.translated || '');
+
+      // 如果API端自动切换了模式，同步前端状态
+      if (data.mode && data.mode !== mode) {
+        setMode(data.mode);
+        updateLabelsForMode(data.mode);
+      }
     } catch (err: any) {
       setError(err.message || 'Translation failed');
       setTranslatedText('');
@@ -188,31 +250,20 @@ export default function EsperantoTranslatorTool({
         <div className="flex flex-col md:flex-row gap-2 md:gap-3">
           {/* Input Area */}
           <div className="flex-1">
-            <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center mb-3">
               <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">
-                {mode === 'toEsperanto'
-                  ? pageData.tool.inputLabel
-                  : pageData.tool.esperantoLabel}
+                {inputLabel}
               </h2>
-              {/* Speech-to-text button for input */}
-              <SpeechToTextButton
-                onTranscript={handleSpeechTranscript}
-                locale={locale}
-              />
             </div>
             <textarea
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
-              placeholder={
-                mode === 'toEsperanto'
-                  ? pageData.tool.inputPlaceholder
-                  : pageData.tool.esperantoPlaceholder
-              }
+              placeholder={inputPlaceholder}
               className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent resize-none text-gray-700 dark:text-gray-200 dark:bg-zinc-700"
               aria-label="Input text"
             />
 
-            {/* File Upload */}
+            {/* File Upload and Speech-to-text buttons */}
             <div className="mt-4 flex items-center gap-3">
               <label
                 htmlFor="file-upload"
@@ -231,11 +282,11 @@ export default function EsperantoTranslatorTool({
                     d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
                   />
                 </svg>
-                {pageData.tool.uploadButton}
               </label>
-              <p className="text-xs text-gray-500 dark:text-gray-400">
-                {pageData.tool.uploadHint}
-              </p>
+              <SpeechToTextButton
+                onTranscript={handleSpeechTranscript}
+                locale={locale}
+              />
               <input
                 id="file-upload"
                 type="file"
@@ -292,7 +343,7 @@ export default function EsperantoTranslatorTool({
           <div className="flex md:flex-col items-center justify-center md:justify-start md:pt-32">
             <button
               onClick={toggleMode}
-              className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors rotate-0 md:rotate-0"
+              className="p-2 text-gray-400 hover:text-gray-600 dark:text-gray-600 dark:hover:text-gray-400 transition-colors rotate-0 md:rotate-0"
               title={
                 mode === 'toEsperanto'
                   ? 'Switch to Esperanto → English'
@@ -320,9 +371,7 @@ export default function EsperantoTranslatorTool({
           <div className="flex-1">
             <div className="flex items-center justify-between mb-3">
               <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">
-                {mode === 'toEsperanto'
-                  ? pageData.tool.esperantoLabel
-                  : pageData.tool.outputLabel}
+                {outputLabel}
               </h2>
               {/* TTS and action buttons */}
               {translatedText && (
@@ -372,17 +421,26 @@ export default function EsperantoTranslatorTool({
               )}
             </div>
             <div
-              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md bg-gray-50 dark:bg-zinc-700 flex items-center justify-center text-gray-700 dark:text-gray-200 overflow-y-auto"
+              ref={outputRef}
+              className="w-full h-48 md:h-64 min-h-48 p-3 border border-gray-300 dark:border-zinc-600 rounded-md bg-gray-50 dark:bg-zinc-700 flex items-start justify-start text-gray-700 dark:text-gray-200 overflow-y-auto"
+              style={{
+                maxHeight: '400px',
+                scrollBehavior: 'smooth',
+              }}
               aria-live="polite"
             >
               {isLoading ? (
-                <p>{pageData.tool.loading}</p>
+                <p className="text-center w-full">{pageData.tool.loading}</p>
               ) : error ? (
-                <p className="text-red-600 dark:text-red-400">{error}</p>
+                <p className="text-red-600 dark:text-red-400 text-center w-full">
+                  {error}
+                </p>
               ) : translatedText ? (
-                <p className="text-lg whitespace-pre-wrap">{translatedText}</p>
+                <p className="text-lg whitespace-pre-wrap w-full">
+                  {translatedText}
+                </p>
               ) : (
-                <p className="text-gray-500 dark:text-gray-400">
+                <p className="text-gray-500 dark:text-gray-400 text-center w-full">
                   {pageData.tool.outputPlaceholder}
                 </p>
               )}

@@ -1,0 +1,52 @@
+```json
+{
+  "funFacts": [
+    {
+      "title": "Melon Eaters Unite!",
+      "description": "Once, a famous translator hilariously converted the Chinese phrase '吃瓜群众' to 'the people who eat melons.' This quirky translation entertained many, highlighting the challenges of translating Chinese internet slang accurately into English."
+    },
+    {
+      "title": "Horse of a Different Color",
+      "description": "The phrase '马上就来' when repeatedly translated back and forth between Chinese and English ended up with the amusing result 'be right horse.' It showcases how context can completely alter machine translation outcomes."
+    }
+  ],
+  "testimonials": [
+    {
+      "name": "Emily Johnson",
+      "role": "University Student",
+      "heading": "Boosted My Language Skills",
+      "content": "Using the Chinese-to-English Smart Translator has significantly improved my translation assignments. Its ability to recognize idioms and offer context-appropriate translations is impressive. I love the dual translation feature for names; it's a game changer for my language studies and exams."
+    },
+    {
+      "name": "Michael Smith",
+      "role": "Freelance Writer",
+      "heading": "Perfect for Creative Writing",
+      "content": "As a writer, translating character dialogues accurately is crucial. This translator's ability to switch between everyday and novel modes has been invaluable. It captures the nuances of my characters’ voices, making my translated stories more engaging and authentic."
+    },
+    {
+      "name": "Jessica Brown",
+      "role": "Legal Consultant",
+      "heading": "Essential for Legal Documents",
+      "content": "The domain mode switching is a lifesaver for my legal translation needs. It ensures precision which is vital for contracts. The confidence heatmap feature highlights uncertainties, allowing me to double-check critical sections efficiently and avoid potential legal misinterpretations."
+    },
+    {
+      "name": "David Wilson",
+      "role": "Tech Entrepreneur",
+      "heading": "Innovative and Reliable Tool",
+      "content": "For my startup's global expansion, accurate translations are key. This tool's ability to handle technical jargon seamlessly is impressive. The option to export aligned texts helps in verifying translations, ensuring our product descriptions maintain their intended meaning across languages."
+    },
+    {
+      "name": "Sophia Martinez",
+      "role": "Travel Blogger",
+      "heading": "Travel Essential",
+      "content": "On my travels, the offline feature is a lifesaver. Translating menus and signs without internet ensures I enjoy authentic experiences. The OCR mode for images is super handy, especially when navigating through bustling markets with unique local dialects."
+    },
+    {
+      "name": "Chris Thompson",
+      "role": "Game Developer",
+      "heading": "A Must for Game Localization",
+      "content": "Translating game dialogues accurately is crucial for player immersion. The translator’s ability to switch to novel mode captures the essence of storylines. The export feature for aligned texts is an added bonus, ensuring our games resonate well with international audiences."
+    }
+  ]
+}
+```

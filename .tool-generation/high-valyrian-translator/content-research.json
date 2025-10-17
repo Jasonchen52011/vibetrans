@@ -1,0 +1,261 @@
+{
+  "contentGaps": [
+    {
+      "topic": "Audio pronunciation for every translated sentence/word",
+      "reason": "多数用户不仅想看文字，还想学会正确发音以便在 Cosplay、播客或视频中使用。",
+      "competitors": [
+        "Lingojam High-Valyrian Translator",
+        "FunTranslations Valyrian",
+        "ValyrianTranslator.com"
+      ]
+    },
+    {
+      "topic": "逐字语法拆解（词性、格、时态标注）",
+      "reason": "学习者关心为什么翻译成这样，希望顺便掌握 High Valyrian 语法规则。",
+      "competitors": ["Lingojam", "FunTranslations", "Translate.com"]
+    },
+    {
+      "topic": "选择方言（Classical、Astapori、Meereenese）翻译",
+      "reason": "剧迷知道剧中存在不同方言，想确保用词符合场景。",
+      "competitors": ["Duolingo Course Page", "Got.Fandom.com", "Lingojam"]
+    },
+    {
+      "topic": "官方语料对照与准确度评分",
+      "reason": "担心网络译文“自创”过多，想对照 David J. Peterson 的原始词表。",
+      "competitors": ["FunTranslations", "Lingojam", "Dothraki.org"]
+    },
+    {
+      "topic": "开发者 API / 批量翻译接口",
+      "reason": "游戏模组、Discord 机器人、RPG 服务端等想自动化调用翻译。",
+      "competitors": ["全部 15 个结果几乎都缺少"]
+    },
+    {
+      "topic": "手机离线 App 与原生键盘插件",
+      "reason": "Cosplay 现场或无网络环境下仍希望快速查词、输入。",
+      "competitors": ["Lingojam", "FunTranslations", "Duolingo Web"]
+    },
+    {
+      "topic": "一键把整段字幕/脚本批量转成 High Valyrian",
+      "reason": "UP 主、配音演员需要长篇翻译，逐句粘贴效率低。",
+      "competitors": ["全部在线小工具"]
+    },
+    {
+      "topic": "专属姓名 / 地名 Valyrian 化生成器",
+      "reason": "婚礼誓词或 RPG 角色命名高频需求。",
+      "competitors": ["大部分站点"]
+    },
+    {
+      "topic": "影视原句索引（在原著/剧集中出现过的 High Valyrian 台词检索）",
+      "reason": "粉丝想引用“官方”台词，避免用错场合。",
+      "competitors": ["Got.Fandom.com（只列表，无法检索）", "其他翻译器"]
+    },
+    {
+      "topic": "语音输入->High Valyrian 输出",
+      "reason": "直播、播客、Twitch 实时互动的需求增长。",
+      "competitors": ["所有现有翻译器"]
+    }
+  ],
+  "socialTopics": [
+    {
+      "platform": "Reddit",
+      "topic": "How accurate are online High Valyrian translators compared to Duolingo/course material?",
+      "engagement": "高",
+      "summary": "在 r/HighValyrian 与 r/gameofthrones 里，多次有人贴出对比截图，讨论哪个网站错误较少，帖子投票 1k+。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "Anyone getting married and writing vows in High Valyrian?",
+      "engagement": "中",
+      "summary": "新人分享译文、请社区帮忙润色，评论区会纠正格变化。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "Request: Astapori vs. Classical – which dialect should I learn?",
+      "engagement": "中",
+      "summary": "剧粉讨论两种方言的出现频次与发音差异，附 Peterson 的推文引用。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "What are the easiest phrases to learn in High Valyrian?",
+      "engagement": "高",
+      "summary": "热门回答列出 ‘Valar Morghulis’, ‘Dracarys’ 等基础短句并解释文化含义，赞同 2k+。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "How many fluent High Valyrian speakers exist?",
+      "engagement": "中",
+      "summary": "回答引用官方统计，真实流利者不足 1000，Duolingo 活跃学员约 40 万。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "Is Duolingo's High Valyrian course canon?",
+      "engagement": "高",
+      "summary": "热议 Duolingo 词表与剧集差异，Peterson 亲自回复过一次，获得大量转发。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "Translating modern slang or memes into High Valyrian – possible?",
+      "engagement": "中",
+      "summary": "用户尝试把 “It’s Wednesday, my dudes” 等梗翻译，社区互相补词根。"
+    }
+  ],
+  "funFacts": [
+    "High Valyrian 由语言学家 David J. Peterson 为《权力的游戏》创作，已有约 2,000 个词根，但可派生出数万词形。",
+    "High Valyrian 有四个语法性别（Lunar, Solar, Terrestrial, Aquatic），而非传统的阴阳中性。",
+    "‘Dracarys’ 并非单独一个咒语，而是高指令式动词，直译为 “Dragon-fire!”",
+    "Duolingo 是首个支持 High Valyrian 的主流语言学习平台，上线 48 小时内注册学习者突破 100,000。",
+    "High Valyrian 名句 ‘Valar Morghulis’ (凡人皆有一死) 与回应 ‘Valar Dohaeris’ (凡人皆需侍奉) 源自古瓦雷利亚文化敬拜‘死神’的礼仪。"
+  ],
+  "highFrequencyWords": [
+    {
+      "word": "translator",
+      "frequency": "高",
+      "context": "标题、功能描述"
+    },
+    {
+      "word": "valyrian",
+      "frequency": "高",
+      "context": "语言名称"
+    },
+    {
+      "word": "high",
+      "frequency": "高",
+      "context": "搭配 High Valyrian"
+    },
+    {
+      "word": "translate",
+      "frequency": "高",
+      "context": "按钮、动词"
+    },
+    {
+      "word": "language",
+      "frequency": "高",
+      "context": "介绍段落"
+    },
+    {
+      "word": "english",
+      "frequency": "高",
+      "context": "翻译方向"
+    },
+    {
+      "word": "online",
+      "frequency": "高",
+      "context": "工具类型"
+    },
+    {
+      "word": "free",
+      "frequency": "高",
+      "context": "优势声明"
+    },
+    {
+      "word": "text",
+      "frequency": "高",
+      "context": "输入输出"
+    },
+    {
+      "word": "tool",
+      "frequency": "高",
+      "context": "产品定位"
+    },
+    {
+      "word": "words",
+      "frequency": "中",
+      "context": "功能说明"
+    },
+    {
+      "word": "phrases",
+      "frequency": "中",
+      "context": "用例"
+    },
+    {
+      "word": "sentences",
+      "frequency": "中",
+      "context": "用例"
+    },
+    {
+      "word": "dictionary",
+      "frequency": "中",
+      "context": "附加资源"
+    },
+    {
+      "word": "duolingo",
+      "frequency": "中",
+      "context": "参考来源"
+    },
+    {
+      "word": "dothraki",
+      "frequency": "中",
+      "context": "相关语言"
+    },
+    {
+      "word": "game",
+      "frequency": "中",
+      "context": "Game of Thrones"
+    },
+    {
+      "word": "thrones",
+      "frequency": "中",
+      "context": "Game of Thrones"
+    },
+    {
+      "word": "generator",
+      "frequency": "中",
+      "context": "名称生成器类标签"
+    },
+    {
+      "word": "convert",
+      "frequency": "中",
+      "context": "动词"
+    },
+    {
+      "word": "fun",
+      "frequency": "中",
+      "context": "娱乐用途"
+    },
+    {
+      "word": "fan",
+      "frequency": "中",
+      "context": "目标人群"
+    },
+    {
+      "word": "simple",
+      "frequency": "中",
+      "context": "易用性卖点"
+    },
+    {
+      "word": "easy",
+      "frequency": "中",
+      "context": "易用性卖点"
+    },
+    {
+      "word": "instantly",
+      "frequency": "中",
+      "context": "速度卖点"
+    },
+    {
+      "word": "copy",
+      "frequency": "中",
+      "context": "辅助按钮"
+    },
+    {
+      "word": "paste",
+      "frequency": "中",
+      "context": "辅助按钮"
+    },
+    {
+      "word": "accuracy",
+      "frequency": "中",
+      "context": "质量承诺"
+    },
+    {
+      "word": "pronunciation",
+      "frequency": "中",
+      "context": "附加功能"
+    },
+    {
+      "word": "learning",
+      "frequency": "中",
+      "context": "学习路径"
+    }
+  ]
+}

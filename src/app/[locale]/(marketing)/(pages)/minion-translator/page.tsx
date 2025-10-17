@@ -25,7 +25,10 @@ export async function generateMetadata({
 }): Promise<Metadata | undefined> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'Metadata' });
-  const gt = await getTranslations({ locale, namespace: 'MinionTranslatorPage' });
+  const gt = await getTranslations({
+    locale,
+    namespace: 'MinionTranslatorPage',
+  });
 
   return constructMetadata({
     title: `${gt('title')} | ${(t as any)('name')}`,
@@ -39,10 +42,15 @@ interface MinionTranslatorPageProps {
   params: Promise<{ locale: Locale }>;
 }
 
-export default async function MinionTranslatorPage(props: MinionTranslatorPageProps) {
+export default async function MinionTranslatorPage(
+  props: MinionTranslatorPageProps
+) {
   const params = await props.params;
   const { locale } = params;
-  const t = await getTranslations({ locale, namespace: 'MinionTranslatorPage' });
+  const t = await getTranslations({
+    locale,
+    namespace: 'MinionTranslatorPage',
+  });
 
   // Structured Data for SEO
   const structuredData = {
@@ -265,18 +273,20 @@ export default async function MinionTranslatorPage(props: MinionTranslatorPagePr
             {/* User Avatars and Rating */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <div className="flex -space-x-3">
-                {["female3","male1","female4","male2","female1"].map((avatar, i) => (
-                  <div
-                    key={i}
-                    className="relative h-12 w-12 rounded-full border-2 border-white dark:border-zinc-800 overflow-hidden"
-                  >
-                    <img
-                      src={`/images/avatars/${avatar}.webp`}
-                      alt={`User ${i + 1}`}
-                      className="h-full w-full object-cover"
-                    />
-                  </div>
-                ))}
+                {['female3', 'male1', 'female4', 'male2', 'female1'].map(
+                  (avatar, i) => (
+                    <div
+                      key={i}
+                      className="relative h-12 w-12 rounded-full border-2 border-white dark:border-zinc-800 overflow-hidden"
+                    >
+                      <img
+                        src={`/images/avatars/${avatar}.webp`}
+                        alt={`User ${i + 1}`}
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
+                  )
+                )}
               </div>
               <div className="flex flex-col items-center sm:items-start gap-1">
                 <div className="flex items-center gap-0.5">
@@ -314,10 +324,16 @@ export default async function MinionTranslatorPage(props: MinionTranslatorPagePr
         <HowTo section={howtoSection} />
 
         {/* User Interest Blocks */}
-        <UserScenarios section={userInterestSection} ctaText={(t as any)('ctaButton')} />
+        <UserScenarios
+          section={userInterestSection}
+          ctaText={(t as any)('ctaButton')}
+        />
 
         {/* Fun Facts */}
-        <UserScenarios section={funFactsSection} ctaText={(t as any)('ctaButton')} />
+        <UserScenarios
+          section={funFactsSection}
+          ctaText={(t as any)('ctaButton')}
+        />
 
         {/* Highlights */}
         <WhyChoose section={highlightsSection} />

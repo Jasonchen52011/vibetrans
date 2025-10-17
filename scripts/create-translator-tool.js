@@ -32,18 +32,18 @@ const componentName = `${toolNamePascal}Tool`; // "EmojiTranslatorTool"
 // 生成随机头像组合（基于 tool slug 的哈希，确保每个工具的头像组合固定但不重复）
 function generateRandomAvatarLogic(slug) {
   const avatarPools = [
-    ['male1', 'female2', 'male3', 'female4', 'male5'],  // Pool 1 - original (10,000)
+    ['male1', 'female2', 'male3', 'female4', 'male5'], // Pool 1 - original (10,000)
     ['female2', 'male4', 'female3', 'male2', 'female4'], // Pool 2 - albanian (15,000)
-    ['male2', 'female1', 'male4', 'female2', 'male3'],   // Pool 3 (12,000)
+    ['male2', 'female1', 'male4', 'female2', 'male3'], // Pool 3 (12,000)
     ['female3', 'male1', 'female4', 'male2', 'female1'], // Pool 4 (20,000)
-    ['male3', 'female4', 'male1', 'female3', 'male4'],   // Pool 5 (18,000)
+    ['male3', 'female4', 'male1', 'female3', 'male4'], // Pool 5 (18,000)
     ['female1', 'male2', 'female2', 'male5', 'female3'], // Pool 6 (25,000)
   ];
 
   // 简单的哈希函数，基于 slug 生成索引
   let hash = 0;
   for (let i = 0; i < slug.length; i++) {
-    hash = ((hash << 5) - hash) + slug.charCodeAt(i);
+    hash = (hash << 5) - hash + slug.charCodeAt(i);
     hash = hash & hash; // Convert to 32bit integer
   }
   const poolIndex = Math.abs(hash) % avatarPools.length;
@@ -58,7 +58,7 @@ function generateRandomUserCount(slug) {
   // 简单的哈希函数，基于 slug 生成索引
   let hash = 0;
   for (let i = 0; i < slug.length; i++) {
-    hash = ((hash << 5) - hash) + slug.charCodeAt(i);
+    hash = (hash << 5) - hash + slug.charCodeAt(i);
     hash = hash & hash; // Convert to 32bit integer
   }
   const countIndex = Math.abs(hash) % counts.length;
@@ -828,9 +828,7 @@ const translationTemplate = {
 
 console.log('\n📄 生成翻译文件模板:');
 console.log('-------------------------------------------');
-console.log(
-  `请将以下内容保存到 messages/pages/${toolSlug}/en.json:`
-);
+console.log(`请将以下内容保存到 messages/pages/${toolSlug}/en.json:`);
 console.log('-------------------------------------------');
 console.log(JSON.stringify({ [toolNamespace]: translationTemplate }, null, 2));
 console.log('-------------------------------------------\n');

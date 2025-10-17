@@ -1,0 +1,71 @@
+{
+  "funFacts": [
+    {
+      "title": "Middle English Spelling Chaos",
+      "description": "In the Middle English era, spelling was a free-for-all. The same word could have over 50 different variations. This lack of standardization makes translating Middle English a real challenge for modern tools."
+    },
+    {
+      "title": "Girls and Boys in Middle English",
+      "description": "Did you know the word ‘girl’ in Middle English didn’t mean what it does today? Back then, it referred to a child of any gender. The current female-only meaning developed much later in the English language."
+    }
+  ],
+  "highlights": {
+    "title": "Features of Middle-English Translator Studio",
+    "features": [
+      {
+        "title": "Simple and Free to Use",
+        "description": "Our tool offers an easy-to-use interface that is completely free. You can convert modern English to Middle English with just a click, without any cost or subscription needed."
+      },
+      {
+        "title": "Data Accuracy You Can Trust",
+        "description": "We ensure high-quality translations by utilizing authoritative sources like the MED dictionary. Our translations are reliable, allowing users to trust the results for academic and creative purposes."
+      },
+      {
+        "title": "Privacy and Data Security",
+        "description": "Your data privacy is our priority. We never store or share your data. All translations are processed securely, ensuring that your information remains confidential and protected at all times."
+      },
+      {
+        "title": "AI Contextual Understanding",
+        "description": "Our AI comprehends context to provide translations that are more than word-for-word. It adjusts translations based on literary, technical, and other contexts, making your Middle English accurate and meaningful."
+      }
+    ]
+  },
+  "testimonials": [
+    {
+      "name": "John Smith",
+      "role": "High School Teacher",
+      "heading": "A Classroom Essential",
+      "content": "Using Middle-English Translator Studio has transformed my teaching. My students can instantly translate Shakespearean texts, making lessons more engaging. It's remarkable how the tool captures historical nuances, aiding in both understanding and appreciation. This has made my literature classes more dynamic and interactive."
+    },
+    {
+      "name": "Emily Johnson",
+      "role": "RPG Game Designer",
+      "heading": "Immersive RPG Dialogue",
+      "content": "Middle-English Translator Studio is a game-changer for my RPG scripts. It translates modern dialogue into authentic Middle English, enhancing player immersion. My team loves how accessible and efficient it is, making script adjustments on the fly. Our players have noticed the enriched storytelling, adding depth and authenticity to the gaming experience."
+    },
+    {
+      "name": "Michael Brown",
+      "role": "History Student",
+      "heading": "Perfect for Study and Research",
+      "content": "This translator is indispensable for my medieval studies. It provides accurate translations of Middle English texts, crucial for my research papers. I appreciate its precise dialect options, which help me understand regional variations. The tool's reliability and ease of use enhance my studies, allowing me to focus on analysis rather than translation challenges."
+    },
+    {
+      "name": "Sarah Davis",
+      "role": "Creative Writer",
+      "heading": "Inspiration for Historical Fiction",
+      "content": "Middle-English Translator Studio has inspired my historical fiction writing. It helps me craft authentic dialogue, capturing the era's voice seamlessly. The detailed dictionary and pronunciation guides are invaluable resources, making my characters' interactions more realistic. This tool has elevated my storytelling, providing the historical accuracy my readers crave."
+    },
+    {
+      "name": "David Wilson",
+      "role": "Linguistics Researcher",
+      "heading": "A Researcher's Best Friend",
+      "content": "For my linguistic research, this translator is a treasure trove. It handles complex Middle English texts with finesse, offering insights into historical language usage. The option to switch between dialects aids in comparative studies, making it a vital tool for my work. It's a must-have for anyone serious about language research."
+    },
+    {
+      "name": "Jessica Lee",
+      "role": "Cosplay Enthusiast",
+      "heading": "Enhancing Authenticity",
+      "content": "As a cosplay enthusiast, Middle-English Translator Studio is my go-to for authentic dialogue. It brings my characters to life, transforming modern phrases into period-appropriate language. The tool's precision and range of dialect options make it an essential part of my creative process, ensuring each portrayal is historically accurate and immersive."
+    }
+  ]
+}

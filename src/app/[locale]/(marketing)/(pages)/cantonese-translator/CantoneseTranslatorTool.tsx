@@ -18,9 +18,17 @@ export default function CantoneseTranslatorTool({
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [fileName, setFileName] = useState<string | null>(null);
-  const [direction, setDirection] = useState<'yue-to-en' | 'en-to-yue'>('yue-to-en');
+
+  // 智能翻译状态
+  const [direction, setDirection] = useState<'yue-to-en' | 'en-to-yue'>(
+    'yue-to-en'
+  );
+
+  // 语音录制状态
   const [isRecording, setIsRecording] = useState<boolean>(false);
-  const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder | null>(null);
+  const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder | null>(
+    null
+  );
 
   // Handle file upload
   const handleFileUpload = async (
@@ -76,7 +84,7 @@ export default function CantoneseTranslatorTool({
     );
   };
 
-  // Handle translation
+  // Handle translation with smart detection
   const handleTranslate = async () => {
     if (!inputText.trim()) {
       setError(pageData.tool.noInput);
@@ -101,9 +109,18 @@ export default function CantoneseTranslatorTool({
       const data = (await response.json()) as {
         error?: string;
         translated?: string;
+        suggestion?: string;
+        needsUserConfirmation?: boolean;
+        detectedInputLanguage?: string;
+        detectedDirection?: string;
+        languageInfo?: any;
       };
 
       if (!response.ok) {
+        if (data.needsUserConfirmation && data.suggestion) {
+          // 如果是语言检测问题，显示具体建议
+          throw new Error(data.error);
+        }
         throw new Error(data.error || pageData.tool.error);
       }
 
@@ -116,12 +133,25 @@ export default function CantoneseTranslatorTool({
     }
   };
 
+  // 切换翻译方向并交换文本
+  const handleDirectionToggle = () => {
+    const newDirection = direction === 'yue-to-en' ? 'en-to-yue' : 'yue-to-en';
+    setDirection(newDirection);
+
+    // 如果有翻译结果，交换输入输出文本
+    if (outputText.trim()) {
+      setInputText(outputText);
+      setOutputText(inputText);
+    }
+  };
+
   // Reset
   const handleReset = () => {
     setInputText('');
     setOutputText('');
     setFileName(null);
     setError(null);
+    setDirection('yue-to-en');
   };
 
   // Copy
@@ -160,7 +190,9 @@ export default function CantoneseTranslatorTool({
         (window as any).webkitSpeechRecognition;
 
       if (!SpeechRecognition) {
-        throw new Error('Speech recognition not supported in this browser. Please use Chrome or Edge.');
+        throw new Error(
+          'Speech recognition not supported in this browser. Please use Chrome or Edge.'
+        );
       }
 
       const recognition = new SpeechRecognition();
@@ -185,7 +217,9 @@ export default function CantoneseTranslatorTool({
         if (event.error === 'no-speech') {
           setError('No speech detected. Please try again.');
         } else if (event.error === 'not-allowed') {
-          setError('Microphone access denied. Please enable microphone permissions.');
+          setError(
+            'Microphone access denied. Please enable microphone permissions.'
+          );
         } else {
           setError('Speech recognition failed: ' + event.error);
         }
@@ -348,9 +382,7 @@ export default function CantoneseTranslatorTool({
           {/* Direction Swap Button - Centered between inputs */}
           <div className="flex md:flex-col items-center justify-center md:justify-start md:pt-32">
             <button
-              onClick={() =>
-                setDirection(direction === 'yue-to-en' ? 'en-to-yue' : 'yue-to-en')
-              }
+              onClick={handleDirectionToggle}
               className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors rotate-0 md:rotate-0"
               title={
                 direction === 'yue-to-en'
@@ -379,7 +411,9 @@ export default function CantoneseTranslatorTool({
           <div className="flex-1">
             <div className="flex items-center justify-between mb-3">
               <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">
-                {direction === 'yue-to-en' ? 'English Translation' : 'Cantonese Translation'}
+                {direction === 'yue-to-en'
+                  ? 'English Translation'
+                  : 'Cantonese Translation'}
               </h2>
               {outputText && (
                 <div className="flex gap-2">

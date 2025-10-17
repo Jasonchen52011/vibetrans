@@ -126,16 +126,44 @@ function generateSimplifiedFilename(prompt: string): string {
 
   // Extract meaningful words (remove common articles, prepositions)
   const stopWords = new Set([
-    'a', 'an', 'the', 'and', 'or', 'but', 'in', 'on', 'at', 'to', 'for',
-    'of', 'with', 'by', 'from', 'about', 'as', 'into', 'through', 'during',
-    'including', 'visualize', 'illustration', 'showing', 'include', 'visual',
-    'elements', 'color', 'scheme', 'aspect', 'ratio', 'design'
+    'a',
+    'an',
+    'the',
+    'and',
+    'or',
+    'but',
+    'in',
+    'on',
+    'at',
+    'to',
+    'for',
+    'of',
+    'with',
+    'by',
+    'from',
+    'about',
+    'as',
+    'into',
+    'through',
+    'during',
+    'including',
+    'visualize',
+    'illustration',
+    'showing',
+    'include',
+    'visual',
+    'elements',
+    'color',
+    'scheme',
+    'aspect',
+    'ratio',
+    'design',
   ]);
 
   const words = mainConcept
     .replace(/[^\w\s]/g, ' ') // Remove punctuation
     .split(/\s+/)
-    .filter(word => word.length > 2 && !stopWords.has(word))
+    .filter((word) => word.length > 2 && !stopWords.has(word))
     .slice(0, 5); // Max 5 words
 
   return words.join('-') + '.webp';

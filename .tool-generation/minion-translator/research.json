@@ -6,82 +6,52 @@
     {
       "name": "Lingojam – Minion Translator",
       "url": "https://lingojam.com/MinionTranslator",
-      "features": [
-        "即时英文→Minionese 转换",
-        "可生成分享链接"
-      ]
+      "features": ["即时英文→Minionese 转换", "可生成分享链接"]
     },
     {
       "name": "Funtranslations – Minion Translator",
       "url": "https://funtranslations.com/minion",
-      "features": [
-        "API 调用(付费)",
-        "每日 500 字免费额度"
-      ]
+      "features": ["API 调用(付费)", "每日 500 字免费额度"]
     },
     {
       "name": "GeneratorFun – Minion Translator",
       "url": "https://generatorfun.com/minion-translator",
-      "features": [
-        "批量句子转换",
-        "单击复制"
-      ]
+      "features": ["批量句子转换", "单击复制"]
     },
     {
       "name": "Textise dot Today – Minion Language Generator",
       "url": "https://textise dot today/minion",
-      "features": [
-        "简易 UI",
-        "支持 Emoji"
-      ]
+      "features": ["简易 UI", "支持 Emoji"]
     },
     {
       "name": "VoxLens – Speak Like a Minion",
       "url": "https://voxlens.com/tools/minion",
-      "features": [
-        "文本朗读（英文）",
-        "可调语速"
-      ]
+      "features": ["文本朗读（英文）", "可调语速"]
     },
     {
       "name": "GitHub – cli-minion-translator",
       "url": "https://github.com/xyz/cli-minion-translator",
-      "features": [
-        "命令行脚本",
-        "离线词典"
-      ]
+      "features": ["命令行脚本", "离线词典"]
     },
     {
       "name": "Browser-AddOn – Minionizer",
       "url": "https://addons.mozilla.org/minionizer",
-      "features": [
-        "网页整体翻译成 Minionese",
-        "一键还原"
-      ]
+      "features": ["网页整体翻译成 Minionese", "一键还原"]
     },
     {
       "name": "Fiverr Gigs – Human Minion Translation",
       "url": "https://fiverr.com/gig/minion-translation",
-      "features": [
-        "人工润色",
-        "配套语音"
-      ]
+      "features": ["人工润色", "配套语音"]
     },
     {
       "name": "PlayPhrase – Minion Quotes",
       "url": "https://playphrase.me/minion",
-      "features": [
-        "提供电影原声片段",
-        "可按词搜索"
-      ]
+      "features": ["提供电影原声片段", "可按词搜索"]
     },
     {
       "name": "AppBrain – Minion Translator Lite",
       "url": "https://appbrain.com/app/minion-translator-lite",
-      "features": [
-        "安卓 App",
-        "离线包(小)"
-      ]
+      "features": ["安卓 App", "离线包(小)"]
     }
   ],
   "socialTopics": [

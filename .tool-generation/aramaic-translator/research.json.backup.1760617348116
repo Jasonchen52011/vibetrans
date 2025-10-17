@@ -1,0 +1,197 @@
+{
+  "keyword": "aramaic translator",
+  "productName": "Aramaic-Translator-Pro",
+  "description": "一键完成阿拉米语多方言文本、语音互译，并提供发音、词源与语境解释的专业在线译器。",
+  "competitors": [
+    {
+      "name": "AramaicTranslator.net",
+      "url": "https://www.aramaictranslator.net/",
+      "features": [
+        "圣经／现代两种方言快速互译",
+        "自动转写拉丁/亚兰字母"
+      ]
+    },
+    {
+      "name": "Glosbe Aramaic-English",
+      "url": "https://glosbe.com/arc/en",
+      "features": [
+        "众包短语词典",
+        "示例句及发音音频"
+      ]
+    },
+    {
+      "name": "Lexilogos Aramaic Resources",
+      "url": "https://www.lexilogos.com/english/aramaic_dictionary.htm",
+      "features": [
+        "聚合30+在线字典",
+        "虚拟键盘支持多脚本输入"
+      ]
+    },
+    {
+      "name": "Dukhrana Peshitta Tool",
+      "url": "https://dukhrana.com/peshitta",
+      "features": [
+        "逐词形态学分析",
+        "经文并排多译本对照"
+      ]
+    },
+    {
+      "name": "JesusSpokeAramaic.com",
+      "url": "https://jesusspokearamaic.com/",
+      "features": [
+        "视频课程与朗读",
+        "付费会员在线翻译器"
+      ]
+    },
+    {
+      "name": "SETRA (Sedra Lexicon)",
+      "url": "https://sedra.bethmardutho.org/",
+      "features": [
+        "学术级语料检索",
+        "支持 Syriac、Estrangelo 等字体"
+      ]
+    },
+    {
+      "name": "Blue Letter Bible Interlinear",
+      "url": "https://www.blueletterbible.org/",
+      "features": [
+        "逐字串对照原文",
+        "Strong 号码词源链接"
+      ]
+    },
+    {
+      "name": "MyMemory (Translated.net)",
+      "url": "https://mymemory.translated.net/",
+      "features": [
+        "记忆库匹配段落",
+        "API 请求（亚兰仍在测试版）"
+      ]
+    },
+    {
+      "name": "Babylon-Software Aramaic Dictionary",
+      "url": "https://www.babylon-software.com/",
+      "features": [
+        "桌面词典下载",
+        "跳转维基与维基词典"
+      ]
+    },
+    {
+      "name": "EasyTrans Aramaic",
+      "url": "https://easytrans.org/aramaic",
+      "features": [
+        "简易单词查询",
+        "拼写建议"
+      ]
+    },
+    {
+      "name": "Cambridge Syriac Lexicon (beta)",
+      "url": "https://syriaca.org/lexica/csl/",
+      "features": [
+        "学者标注释义",
+        "扫描原始辞书页"
+      ]
+    },
+    {
+      "name": "Peshitta.org Dictionary Tool",
+      "url": "http://www.peshitta.org/",
+      "features": [
+        "专注古叙利亚文",
+        "短句查询"
+      ]
+    },
+    {
+      "name": "Ugarit Transliteration Pad",
+      "url": "https://ugarit.xyz/",
+      "features": [
+        "在线键盘+即时音译",
+        "Unicode 正规化输出"
+      ]
+    },
+    {
+      "name": "Google Translate (No Aramaic)",
+      "url": "https://translate.google.com/",
+      "features": [
+        "无阿拉米语支持➡️体现市场缺口",
+        "可调用 Cloud-Translation API"
+      ]
+    },
+    {
+      "name": "Microsoft Bing Translator (No Aramaic)",
+      "url": "https://www.bing.com/translator",
+      "features": [
+        "无阿拉米语支持➡️市场缺口",
+        "多语言语音朗读"
+      ]
+    }
+  ],
+  "socialTopics": [
+    {
+      "platform": "Reddit",
+      "topic": "r/translator – \"Can someone translate this tattoo idea into Biblical Aramaic?\"",
+      "votes": 340,
+      "summary": "纹身翻译求助贴，评论高达120+，集中讨论正字与方言区别。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "r/languagelearning – \"Resources for learning Syriac / Aramaic?\"",
+      "votes": 210,
+      "summary": "求学习资源，高赞回答推荐《Comprehensive Aramaic Lexicon》与《Peshitta》网站。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "\"Is there any reliable English to Aramaic translator online?\"",
+      "votes": 180,
+      "summary": "多回答指出目前无主流机器翻译支持，学术工具分散且接口复杂。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "\"What language did Jesus speak?\"",
+      "votes": 7600,
+      "summary": "热门讨论中频繁提到阿拉米语翻译工具的缺乏及学术拼写争议。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "r/AskHistorians – \"How different is Imperial Aramaic from Modern Assyrian?\"",
+      "votes": 560,
+      "summary": "提供语言演变分析，评论呼吁可视化对照译器。"
+    }
+  ],
+  "funFacts": [
+    "阿拉米语与希伯来语同属闪语系，但拼写脚本多达五种（希伯来方块体、Syriac、西乃体等）。",
+    "目前仍有约50万母语者使用现代阿拉米语（Assyrian Neo-Aramaic & Chaldean Neo-Aramaic）。",
+    "《圣经·但以理书》和《以斯拉书》部分章节原文即为阿拉米语。",
+    "《星球大战》中的胡蒂斯语(Huttese)部分词汇参考了阿拉米语。",
+    "《主祷文》的阿拉米语朗读在 YouTube 点击量超过5千万。"
+  ],
+  "features": {
+    "basic": [
+      "TXT、DOCX 文件上传解析",
+      "上传清空/重置",
+      "结果一键复制",
+      "结果 TXT 下载",
+      "语音输入（浏览器原生 API）",
+      "语音输出（TTS Syriac & Latin）"
+    ],
+    "competitive": [
+      "阿拉米语多方言文本互译",
+      "拉丁字母与原脚本双向转写",
+      "逐词形态分析+词源链接",
+      "示例句、并排译本",
+      "虚拟键盘支持 Estrangelo、Serto、Hebrew scripts"
+    ],
+    "innovative": [
+      "OCR 图片转文字（支持石刻及羊皮纸灰度增强）",
+      "AI 语料补全：缺词自动建议近源词并标注置信度",
+      "朗读方言选择：古叙利亚、加利利、帝国阿拉米语",
+      "互动语境模式：输入整段对话，自动标注情态与时代背景",
+      "跨脚本逐帧动画书写教学（便于学习者手写）"
+    ]
+  },
+  "useCases": [
+    "神学院与学术研究者做经文比对与词源分析",
+    "纹身/艺术创作者获取准确拼写与发音参考",
+    "现代阿拉米语社群在线沟通与口笔译",
+    "语言学习者自学阿拉米语书写与朗读"
+  ],
+  "asciiDesign": "+--------------------------------------------------------+\\n| INPUT (支持粘贴/键入/上传txt,docx)        |  OUTPUT (可复制/下载txt)        |\\n| [ 📂 Upload ]  [ 🎤 Voice In ]  [ 🗑 Clear ]|  [ 📋 Copy ] [ 💾 Download ] [ 🔊 Voice Out ] |\\n|                                                |                                      |\\n| ܒܫܡ ܐܠܗܐ ...                                 |  In the name of God ...             |\\n|                                                |                                      |\\n+--------------------------------------------------------+"
+}

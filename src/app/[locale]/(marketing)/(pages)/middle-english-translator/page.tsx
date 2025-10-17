@@ -25,7 +25,10 @@ export async function generateMetadata({
 }): Promise<Metadata | undefined> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'Metadata' });
-  const gt = await getTranslations({ locale, namespace: 'MiddleEnglishTranslatorPage' });
+  const gt = await getTranslations({
+    locale,
+    namespace: 'MiddleEnglishTranslatorPage',
+  });
 
   return constructMetadata({
     title: `${gt('title')} | ${(t as any)('name')}`,
@@ -39,10 +42,15 @@ interface MiddleEnglishTranslatorPageProps {
   params: Promise<{ locale: Locale }>;
 }
 
-export default async function MiddleEnglishTranslatorPage(props: MiddleEnglishTranslatorPageProps) {
+export default async function MiddleEnglishTranslatorPage(
+  props: MiddleEnglishTranslatorPageProps
+) {
   const params = await props.params;
   const { locale } = params;
-  const t = await getTranslations({ locale, namespace: 'MiddleEnglishTranslatorPage' });
+  const t = await getTranslations({
+    locale,
+    namespace: 'MiddleEnglishTranslatorPage',
+  });
 
   // Structured Data for SEO
   const structuredData = {
@@ -270,18 +278,20 @@ export default async function MiddleEnglishTranslatorPage(props: MiddleEnglishTr
             {/* User Avatars and Rating */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <div className="flex -space-x-3">
-                {['female2', 'male4', 'female3', 'male2', 'female4'].map((avatar, i) => (
-                  <div
-                    key={i}
-                    className="relative h-12 w-12 rounded-full border-2 border-white dark:border-zinc-800 overflow-hidden"
-                  >
-                    <img
-                      src={`/images/avatars/${avatar}.webp`}
-                      alt={`User ${i + 1}`}
-                      className="h-full w-full object-cover"
-                    />
-                  </div>
-                ))}
+                {['female2', 'male4', 'female3', 'male2', 'female4'].map(
+                  (avatar, i) => (
+                    <div
+                      key={i}
+                      className="relative h-12 w-12 rounded-full border-2 border-white dark:border-zinc-800 overflow-hidden"
+                    >
+                      <img
+                        src={`/images/avatars/${avatar}.webp`}
+                        alt={`User ${i + 1}`}
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
+                  )
+                )}
               </div>
               <div className="flex flex-col items-center sm:items-start gap-1">
                 <div className="flex items-center gap-0.5">
@@ -319,10 +329,16 @@ export default async function MiddleEnglishTranslatorPage(props: MiddleEnglishTr
         <HowTo section={howtoSection} />
 
         {/* User Interest Blocks */}
-        <UserScenarios section={userInterestSection} ctaText={(t as any)('ctaButton')} />
+        <UserScenarios
+          section={userInterestSection}
+          ctaText={(t as any)('ctaButton')}
+        />
 
         {/* Fun Facts */}
-        <UserScenarios section={funFactsSection} ctaText={(t as any)('ctaButton')} />
+        <UserScenarios
+          section={funFactsSection}
+          ctaText={(t as any)('ctaButton')}
+        />
 
         {/* Highlights */}
         <WhyChoose section={highlightsSection} />
@@ -330,13 +346,13 @@ export default async function MiddleEnglishTranslatorPage(props: MiddleEnglishTr
         {/* Explore Other Tools */}
         <ExploreOurAiTools
           toolKeys={[
-        'Ancient Greek Translator',
-        'Cuneiform Translator',
-        'Esperanto Translator',
-        'Gen Alpha Translator',
-        'Chinese to English Translator',
-        'Bad Translator'
-      ]}
+            'Ancient Greek Translator',
+            'Cuneiform Translator',
+            'Esperanto Translator',
+            'Gen Alpha Translator',
+            'Bad Translator',
+            'Gen Z Translator',
+          ]}
         />
 
         {/* Testimonials */}

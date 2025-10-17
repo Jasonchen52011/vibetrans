@@ -1,0 +1,57 @@
+智能翻译工具测试报告
+测试时间: Thu Oct 16 13:53:33 CST 2025
+========================================
+========================================
+测试详情:
+   Creole-English - 英语检测: ✅ PASS
+   Creole-English - creole 检测: ✅ PASS
+   Creole-English - 翻译功能: ✅ PASS
+   Chinese-English - 英语检测: ❌ FAIL
+   Chinese-English - chinese 检测: ❌ FAIL
+   Chinese-English - 翻译功能: ❌ FAIL
+   Albanian-English - 英语检测: ✅ PASS
+   Albanian-English - albanian 检测: ✅ PASS
+   Albanian-English - 翻译功能: ✅ PASS
+   Samoan-English - 英语检测: ✅ PASS
+   Samoan-English - samoan 检测: ✅ PASS
+   Samoan-English - 翻译功能: ✅ PASS
+   Cantonese-English - 英语检测: ✅ PASS
+   Cantonese-English - cantonese 检测: ✅ PASS
+   Cantonese-English - 翻译功能: ✅ PASS
+   Aramaic-English - 英语检测: ❌ FAIL
+   Aramaic-English - aramaic 检测: ❌ FAIL
+   Aramaic-English - 翻译功能: ✅ PASS
+   Baybayin-English - 英语检测: ❌ FAIL
+   Baybayin-English - baybayin 检测: ❌ FAIL
+   Baybayin-English - 翻译功能: ✅ PASS
+   Cuneiform-English - 英语检测: ❌ FAIL
+   Cuneiform-English - cuneiform 检测: ❌ FAIL
+   Cuneiform-English - 翻译功能: ✅ PASS
+   Gaster-English - 英语检测: ❌ FAIL
+   Gaster-English - gaster 检测: ❌ FAIL
+   Gaster-English - 翻译功能: ❌ FAIL
+   High Valyrian-English - 英语检测: ❌ FAIL
+   High Valyrian-English - valyrian 检测: ❌ FAIL
+   High Valyrian-English - 翻译功能: ❌ FAIL
+   Ancient Greek-English - 英语检测: ❌ FAIL
+   Ancient Greek-English - greek 检测: ❌ FAIL
+   Ancient Greek-English - 翻译功能: ✅ PASS
+   Middle English-English - 英语检测: ❌ FAIL
+   Middle English-English - middle-english 检测: ❌ FAIL
+   Middle English-English - 翻译功能: ❌ FAIL
+   Esperanto-English - 英语检测: ❌ FAIL
+   Esperanto-English - esperanto 检测: ❌ FAIL
+   Esperanto-English - 翻译功能: ✅ PASS
+   Al Bhed-English - 英语检测: ❌ FAIL
+   Al Bhed-English - al-bhed 检测: ❌ FAIL
+   Al Bhed-English - 翻译功能: ✅ PASS
+   Pig Latin-English - 英语检测: ❌ FAIL
+   Pig Latin-English - pig-latin 检测: ❌ FAIL
+   Pig Latin-English - 翻译功能: ✅ PASS
+========================================
+测试总结:
+总测试数: 15
+通过: 19
+失败: 26
+成功率: 126%
+========================================

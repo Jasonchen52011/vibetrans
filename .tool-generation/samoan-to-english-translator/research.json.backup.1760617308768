@@ -1,0 +1,178 @@
+{
+  "keyword": "samoan to english translator",
+  "productName": "Samoan-to-English Translator Plus",
+  "description": "The one-stop online tool that turns Samoan text or files into clear, culturally-correct English with a single click.",
+  "competitors": [
+    {
+      "name": "Google Translate",
+      "url": "https://translate.google.com/",
+      "features": [
+        "AI 神经网络翻译、支持文档上传、语音朗读、移动端同步"
+      ]
+    },
+    {
+      "name": "Microsoft Bing Translator",
+      "url": "https://www.bing.com/translator",
+      "features": [
+        "多语实时对话模式、自动检测语言"
+      ]
+    },
+    {
+      "name": "TranslateKing",
+      "url": "https://translateking.com/samoan-to-english-translator",
+      "features": [
+        "双栏对照显示、字数统计"
+      ]
+    },
+    {
+      "name": "ImTranslator",
+      "url": "https://imtranslator.net/translation/samoan/to-english/translation/",
+      "features": [
+        "三引擎对比（Google / Microsoft / Babylon）、语速可调朗读"
+      ]
+    },
+    {
+      "name": "LingvaNex",
+      "url": "https://lingvanex.com/english-to-samoan",
+      "features": [
+        "离线浏览器插件、发音下载"
+      ]
+    },
+    {
+      "name": "Lexilogos Samoan",
+      "url": "https://www.lexilogos.com/english/samoan_dictionary.htm",
+      "features": [
+        "多辞典并列检索、键盘布局提示"
+      ]
+    },
+    {
+      "name": "Samoan-Dictionary.com",
+      "url": "https://samoan-dictionary.com/",
+      "features": [
+        "语义解释、例句、词根拆解"
+      ]
+    },
+    {
+      "name": "MyMemory",
+      "url": "https://mymemory.translated.net/en/Samoan/English/",
+      "features": [
+        "基于人类翻译记忆库、可信度分数"
+      ]
+    },
+    {
+      "name": "Glosbe",
+      "url": "https://glosbe.com/sm/en/",
+      "features": [
+        "社区示例句、短语自动补全"
+      ]
+    },
+    {
+      "name": "ProZ Terminology",
+      "url": "https://www.proz.com/kudoz/samoan-to-english",
+      "features": [
+        "译者问答社区、术语众包"
+      ]
+    },
+    {
+      "name": "Polyglot Club",
+      "url": "https://polyglotclub.com/translate/samoan-english",
+      "features": [
+        "母语者互助、语音留言求译"
+      ]
+    },
+    {
+      "name": "Translate.com",
+      "url": "https://www.translate.com/samoan-english",
+      "features": [
+        "机器+人工付费混合、字符计费"
+      ]
+    },
+    {
+      "name": "OnlineTranslator (PROMT)",
+      "url": "https://www.onlinetranslator.com/translation/samoan-english",
+      "features": [
+        "短语本地缓存、拼写校正"
+      ]
+    },
+    {
+      "name": "EasyTranslate",
+      "url": "https://easytranslate.com/en/translate/samoan-english",
+      "features": [
+        "企业级人工翻译下单、一键报价"
+      ]
+    },
+    {
+      "name": "Reverso Context*",
+      "url": "https://context.reverso.net/translation/samoan-english",
+      "features": [
+        "上下文对比句库、双语字幕下载 (*只支持部分语料)"
+      ]
+    }
+  ],
+  "socialTopics": [
+    {
+      "platform": "Reddit",
+      "topic": "r/translator – “Please help translate this Samoan tattoo for my dad”",
+      "votes": 812,
+      "summary": "纹身前求母语者确认含义，担心语境和拼写错误"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "r/Polyglot – “Why is Samoan ʻokina so important?”",
+      "votes": 540,
+      "summary": "讨论省略塞音符号会完全改变单词意义"
+    },
+    {
+      "platform": "Quora",
+      "topic": "“How do you say ‘I love you’ in Samoan and when is it appropriate?”",
+      "votes": 370,
+      "summary": "回答区解释不同亲疏关系用语、文化礼仪"
+    },
+    {
+      "platform": "Quora",
+      "topic": "“Best resources to learn Samoan quickly?”",
+      "votes": 290,
+      "summary": "高频提到缺少优质在线翻译＋例句音频"
+    }
+  ],
+  "funFacts": [
+    "Samoan 只有 14 个字母，其中 ‘ 命名为 ʻokina，表示喉塞音。",
+    "萨摩亚语中“palagi”原意指吹来的雾气，延伸为“外国人/白人”。",
+    "重音通常落在倒数第二个音节，同一句话重音不同意思就不同。"
+  ],
+  "features": {
+    "basic": [
+      "文本翻译",
+      "上传 txt/docx",
+      "清空输入",
+      "结果复制",
+      "结果 txt 下载",
+      "语音输入",
+      "语音输出"
+    ],
+    "competitive": [
+      "AI 神经网络翻译",
+      "自动语言检测",
+      "发音朗读与语速调节",
+      "多引擎对比模式",
+      "词典/同义词建议",
+      "字符/字数统计"
+    ],
+    "innovative": [
+      "文化语境提示与礼仪警告（如称谓、禁忌）",
+      "‘okina 与重音智能校正可视化",
+      "成语/谚语数据库+解释",
+      "翻译可信度热度图（颜色标记不确定词）",
+      "男/女/本地方言多声线朗读",
+      "小组件：一键把萨摩亚语歌词转带注音英文对照"
+    ]
+  },
+  "useCases": [
+    "纹身或商品标语前校对萨摩亚语含义",
+    "在萨摩亚旅游时快速读懂路标与菜单",
+    "学术研究引用萨摩亚语资料时获得精准译文",
+    "传教士/文化机构制作双语宣传册",
+    "萨摩亚裔移民与家人沟通/翻译官方文件"
+  ],
+  "asciiDesign": "+------------------------------+-------------------------------+\\n|            INPUT             |             OUTPUT            |\\n|  ┌────────────────────────┐  |  ┌────────────────────────┐   |\\n|  │  Paste / Type text      │  |  │  Translated text       │   |\\n|  │                        │  |  │                        │   |\\n|  └────────────────────────┘  |  └────────────────────────┘   |\\n|  [ Upload txt/docx ] [Clear] |  [Copy] [Download txt]         |\\n|  (🎤 Voice In)               |  (🔊 Voice Out)                 |\\n+------------------------------+-------------------------------+"
+}

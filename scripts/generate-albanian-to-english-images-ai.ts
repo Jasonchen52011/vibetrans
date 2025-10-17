@@ -18,8 +18,8 @@
  * 7. albanian-to-english-interest-4.webp
  */
 
-import { generateArticleIllustrations } from '../src/lib/article-illustrator/workflow';
 import type { ArticleSections } from '../src/lib/article-illustrator/types';
+import { generateArticleIllustrations } from '../src/lib/article-illustrator/workflow';
 
 // Define the article sections with titles and content
 const albanianToEnglishSections: ArticleSections = {
@@ -78,28 +78,46 @@ async function main() {
   console.log('⚠️  Important: Make sure dev server is running (pnpm dev)\n');
 
   try {
-    const result = await generateArticleIllustrations(albanianToEnglishSections, {
-      captureHowTo: true, // 自动截图 How-To
-      baseUrl: 'http://localhost:3001',
-    });
+    const result = await generateArticleIllustrations(
+      albanianToEnglishSections,
+      {
+        captureHowTo: true, // 自动截图 How-To
+        baseUrl: 'http://localhost:3001',
+      }
+    );
 
     if (result.success) {
       console.log('\n✅ Generation completed successfully!');
 
-      const totalGenerated = result.successfulImages + (result.howToScreenshot?.status === 'success' ? 1 : 0);
-      const totalExpected = result.totalImages + (result.howToScreenshot ? 1 : 0);
+      const totalGenerated =
+        result.successfulImages +
+        (result.howToScreenshot?.status === 'success' ? 1 : 0);
+      const totalExpected =
+        result.totalImages + (result.howToScreenshot ? 1 : 0);
 
-      console.log(`📊 Results: ${totalGenerated}/${totalExpected} images generated`);
-      console.log(`   - Content images: ${result.successfulImages}/${result.totalImages}`);
+      console.log(
+        `📊 Results: ${totalGenerated}/${totalExpected} images generated`
+      );
+      console.log(
+        `   - Content images: ${result.successfulImages}/${result.totalImages}`
+      );
 
       if (result.howToScreenshot) {
-        const status = result.howToScreenshot.status === 'success' ? '✅' : '❌';
-        console.log(`   - How-To screenshot: ${status} ${result.howToScreenshot.status}`);
+        const status =
+          result.howToScreenshot.status === 'success' ? '✅' : '❌';
+        console.log(
+          `   - How-To screenshot: ${status} ${result.howToScreenshot.status}`
+        );
       }
 
-      console.log(`⏱️  Total time: ${(result.totalTimeMs / 1000 / 60).toFixed(2)} minutes`);
+      console.log(
+        `⏱️  Total time: ${(result.totalTimeMs / 1000 / 60).toFixed(2)} minutes`
+      );
 
-      if (result.failedImages > 0 || result.howToScreenshot?.status === 'failed') {
+      if (
+        result.failedImages > 0 ||
+        result.howToScreenshot?.status === 'failed'
+      ) {
         console.log(`\n⚠️  Warning: Some images failed to generate`);
         process.exit(1);
       }

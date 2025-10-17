@@ -86,14 +86,14 @@
       "title": "Fun Facts",
       "items": [
         {
-          "title": "Early Days of Pig Latin",
-          "description": "Did you know Pig Latin, or 'Hog Latin,' first popped up in an 1895 newspaper? I find it hilarious that what started as a quirky term became a playful secret code kids adore today. VibeTrans makes it even more fun to explore!",
+          "title": "Pig Latin's Vaudeville Days",
+          "description": "Did you know Pig Latin was called 'Dog Latin' or 'Hog Latin' during the 1920s Vaudeville era? This playful twist on English was a popular comedic tool, adding a fun layer of humor to performances of the time.",
           "image": "/images/docs/kids-letter-blocks.webp",
           "imageAlt": "Happy kids playing with giant letter blocks"
         },
         {
-          "title": "Secret Codes and Pig Latin",
-          "description": "In the T9 texting era, teens cleverly used Pig Latin to dodge parental oversight. Imagine sending a secret message like 'ixnay on the olitics-pay.' I think that's pretty ingenious! VibeTrans helps keep this playful tradition alive with ease.",
+          "title": "A Hidden Mac OS X Easter Egg",
+          "description": "Apple's early Mac OS X had a quirky surprise—Pig Latin text-to-speech! Hidden within the system, it delighted users who stumbled upon it, showcasing Apple's flair for playful and unexpected features in its operating systems.",
           "image": "/images/docs/phone-chat.webp",
           "imageAlt": "Abstract figures chatting via phone"
         }
@@ -105,34 +105,28 @@
       "description": "Exploring unique features and capabilities",
       "items": [
         {
-          "title": "Perfect for ESL Learners and Teachers",
-          "content": "I think Pig Latin is brilliant for ESL students learning English pronunciation patterns effectively. VibeTrans makes it easy to practice sound manipulation and syllable awareness skills daily. When students play with words like hello becoming ellohay, they understand consonant clusters better through practice. It is fun phonics that really works.",
+          "title": "Reverse Translation Precision",
+          "content": "Struggling with high-precision reverse translation? VibeTrans excels where others fall short, accurately converting Pig Latin back to English. It’s perfect for decoding playful messages with ease, ensuring you always understand the original intent without losing any nuance.",
           "image": "/images/docs/pig-latin-esl-learners.webp",
           "imageAlt": "ESL students learning English pronunciation with Pig Latin"
         },
         {
-          "title": "Master Pig Latin Quickly",
-          "content": "Ever wanted to speak Pig Latin fluently? With VibeTrans, you can practice daily to master this quirky language. I believe it's a fun way to sharpen your English pronunciation skills. Plus, playing with words like 'apple' becoming 'appleyay' is just a blast!",
+          "title": "Handling Proper Nouns",
+          "content": "Ever wondered how to translate 'Michael Jordan' into Pig Latin? VibeTrans tackles this with finesse. Its smart detection preserves proper nouns and abbreviations, ensuring names and unique strings remain intact and understandable, making your translations both accurate and meaningful.",
           "image": "/images/docs/happy-pig-letters.webp",
           "imageAlt": "Cheerful pig juggling colorful alphabet letters"
         },
         {
-          "title": "Translate Large Documents",
-          "content": "Got a big document to convert? VibeTrans has you covered. You can upload whole files, like novels or scripts, and translate them instantly. I think this feature is a game-changer, especially for teachers or language enthusiasts dealing with large texts.",
+          "title": "Bulk Document Conversion",
+          "content": "Need to translate lengthy texts quickly? With VibeTrans, batch upload txt or docx files and translate entire documents in one go. It's designed for efficiency, handling novels, scripts, and more, so you spend less time converting and more time enjoying the results.",
           "image": "/images/docs/docs-transform.webp",
           "imageAlt": "Document stacks transforming with circular flow"
         },
         {
-          "title": "Handling Names and Punctuation",
-          "content": "Ever wondered how to translate 'Michael Jordan' or handle punctuation in Pig Latin? VibeTrans smartly retains names and punctuation. I love how it keeps 'Hello, world!' intact. It's nifty for keeping your sentences clear while having fun with the language.",
+          "title": "Voice and Pronunciation Aid",
+          "content": "Want to master Pig Latin pronunciation? VibeTrans offers voice input and TTS reading, helping you learn the rhythm and flow. It's a fantastic tool for ESL learners and those eager to speak Pig Latin fluently, making language learning enjoyable and effective.",
           "image": "/images/docs/speech-bubbles.webp",
           "imageAlt": "Colorful speech bubbles floating in conversation"
-        },
-        {
-          "title": "Audio Learning with Pig Latin",
-          "content": "Want to hear Pig Latin read aloud? VibeTrans offers a text-to-speech feature that helps you grasp the pronunciation. I think it's fantastic for auditory learners. Hearing phrases like 'ellohay' spoken out loud can make learning more engaging and effective.",
-          "image": "/images/docs/pig-headphones.webp",
-          "imageAlt": "Pig wearing headphones with sound waves"
         }
       ]
     },
@@ -164,39 +158,39 @@
       "items": {
         "item-1": {
           "name": "John Smith",
-          "role": "English Teacher",
-          "heading": "A Blast for My Classroom",
-          "content": "Using VibeTrans in my classroom has been a blast! My students enjoy converting English to Pig Latin. I love how it keeps their attention and makes learning fun."
+          "role": "High School Teacher",
+          "heading": "Perfect for Classroom Fun",
+          "content": "Using Pig Latin Translator Plus has transformed my language lessons. The kids love the playful twist on language, and it’s become a popular game in class. The batch translation feature is a lifesaver for preparing multiple examples quickly. Total game-changer for engaging students!"
         },
         "item-2": {
-          "name": "Sarah Johnson",
-          "role": "Writer",
-          "heading": "Playful Touch to My Stories",
-          "content": "VibeTrans is my go-to for adding a playful touch to my stories. It's super easy to use, and I appreciate the accurate translations it provides."
+          "name": "Emily Johnson",
+          "role": "Software Developer",
+          "heading": "Amazing API Integration",
+          "content": "The standard API of Pig Latin Translator Plus is incredibly easy to embed into our projects. We integrated it seamlessly into our website. The JSON response format ensures smooth data handling. It’s now a popular feature among our users, who enjoy instant translations."
         },
         "item-3": {
-          "name": "Emily Davis",
-          "role": "Student",
-          "heading": "Fun Way to Practice English",
-          "content": "I use VibeTrans to practice Pig Latin. It's a fun way to improve my English skills. I recommend it to anyone learning a new language."
+          "name": "Michael Brown",
+          "role": "Freelance Writer",
+          "heading": "Efficient and Fun Tool",
+          "content": "As a writer, Pig Latin Translator Plus adds a fun twist to my creative projects. The real-time translation and voice input make it easy to explore new ideas. The tool is both efficient and enjoyable, sparking creativity in unexpected ways. Highly recommend it!"
         },
         "item-4": {
-          "name": "Michael Brown",
-          "role": "Software Developer",
-          "heading": "Straightforward and Reliable",
-          "content": "VibeTrans is fantastic for quick translations. As a developer, I appreciate the straightforward interface and reliable results."
+          "name": "Sarah Davis",
+          "role": "College Student",
+          "heading": "Great for Language Practice",
+          "content": "I use Pig Latin Translator Plus for practice in my linguistics course. The voice and TTS features help me understand pronunciation and rhythm. It’s become a valuable resource for improving my phonological awareness, making learning more interactive and enjoyable."
         },
         "item-5": {
-          "name": "Jessica Williams",
-          "role": "Linguist",
-          "heading": "Fascinating Research Tool",
-          "content": "I love using VibeTrans for research. It's a fascinating tool that illustrates language transformation beautifully."
+          "name": "James Wilson",
+          "role": "Marketing Manager",
+          "heading": "Boosts Creative Campaigns",
+          "content": "Incorporating Pig Latin Translator Plus into our marketing campaigns has added a unique touch. The tool's ability to handle proper nouns keeps brand names intact, ensuring clarity while adding a playful element. It’s been a hit with our audience, driving engagement."
         },
         "item-6": {
-          "name": "David Martinez",
-          "role": "Content Creator",
-          "heading": "Unique Twist to My Posts",
-          "content": "VibeTrans helps me create engaging content. My followers love the Pig Latin phrases, and it adds a unique twist to my posts."
+          "name": "Linda Martinez",
+          "role": "Graphic Designer",
+          "heading": "Versatile and User-Friendly",
+          "content": "Pig Latin Translator Plus’s multi-modal support is a designer’s dream. Whether working with text, images, or audio, it covers all bases. The reverse translation accuracy ensures nothing gets lost between drafts. It’s versatile and incredibly user-friendly, enhancing my workflow."
         }
       }
     },

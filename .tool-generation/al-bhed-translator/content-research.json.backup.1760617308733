@@ -1,0 +1,263 @@
+{
+  "contentGaps": [
+    {
+      "topic": "Al Bhed Pronunciation & Audio Playback",
+      "reason": "搜索者不仅想看文字加密，还想知道台词在游戏里的实际发音，用于 Cosplay、配音或社交媒体视频。",
+      "competitors": [
+        "funtranslations.com",
+        "lingojam.com",
+        "jeff-fletcher.com",
+        "finalfantasy.fandom.com",
+        "anytools.pro"
+      ]
+    },
+    {
+      "topic": "Al Bhed 字体/符号下载与书写教程",
+      "reason": "很多用户想把 Al Bhed 用于海报、纹身或游戏模组，需要对应的 TrueType/OTF 字体和手写示例。",
+      "competitors": [
+        "lingojam.com",
+        "funtranslations.com",
+        "jeff-fletcher.com",
+        "ideone.com snippets"
+      ]
+    },
+    {
+      "topic": "游戏内 26 本 Al Bhed Primer 全位置攻略",
+      "reason": "搜『translator』的同好常常正在玩 FFX，需要快速找到 Primer 以解锁完整对话并提高翻译准确度。",
+      "competitors": [
+        "funtranslations.com",
+        "lingojam.com",
+        "jeff-fletcher.com",
+        "any standalone translator pages"
+      ]
+    },
+    {
+      "topic": "API / 批量翻译接口（JSON, REST）",
+      "reason": "开发者或 Discord 机器人作者想批量转换文本或做自动回复，目前主流站点仅支持手动输入框。",
+      "competitors": [
+        "funtranslations.com",
+        "lingojam.com",
+        "jeff-fletcher.com"
+      ]
+    },
+    {
+      "topic": "Al Bhed 与英语对照常用短语 & Slang 列表",
+      "reason": "用户想快速学习常用寒暄语（例：‘Hud fyc y fim?’=‘How are you?’）在论坛或推特上秀语言而不是逐字翻译。",
+      "competitors": [
+        "finalfantasy.fandom.com",
+        "lingojam.com",
+        "funtranslations.com"
+      ]
+    },
+    {
+      "topic": "日文版与英文版 FFX 中 Al Bhed 字母差异",
+      "reason": "双语玩家经常讨论两个版本的替换表不同（例：英文版 A→Y，但日文版用罗马字母音），却找不到可视化对比表。",
+      "competitors": [
+        "funtranslations.com",
+        "lingojam.com",
+        "jeff-fletcher.com",
+        "finalfantasy.fandom.com"
+      ]
+    },
+    {
+      "topic": "隐私 & 本地运算（浏览器端纯 JS）说明",
+      "reason": "部分用户担心输入的个人文本被服务器记录，想确认是否离线运行或有删除日志策略。",
+      "competitors": [
+        "funtranslations.com",
+        "lingojam.com",
+        "jeff-fletcher.com"
+      ]
+    }
+  ],
+  "socialTopics": [
+    {
+      "platform": "Reddit",
+      "topic": "Where to find all Al Bhed Primers in FFX/FFX HD Remaster?",
+      "engagement": "高",
+      "summary": "r/finalfantasy 与 r/finalfantasyx 帖子累计 3k+ upvotes，玩家分享地图截图与错过 Primer 的补救方法。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "Is Al Bhed a real language or just a cipher?",
+      "engagement": "高",
+      "summary": "讨论贴中用户解释它是 1-对-1 替换，但也有人尝试给它补完语法，评论区展开“如果真有语法应该怎样构建”的辩论。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "Best online Al Bhed translator for Discord bots",
+      "engagement": "中",
+      "summary": "技术向帖子收集 API 或开源 JS 实现，Fun Translations 被吐槽限额，GitHub gist 获 500+ 星。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "How do I pronounce Al Bhed words like ‘Yht hud?’",
+      "engagement": "中",
+      "summary": "回答者用 IPA 解释辅音变化并附上 YouTube 演示，获得 150+ upvotes。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "What is the fastest way to decode Al Bhed subtitles while playing FFX?",
+      "engagement": "中",
+      "summary": "高票回答建议边看字幕边对照替换表，并提供 printable cheat-sheet PDF。"
+    }
+  ],
+  "funFacts": [
+    "Al Bhed 其实是一张 26 字母简单替换表，因此技术上属于 Monoalphabetic Cipher 而非真正语言。",
+    "在英文版 FFX 中收集全部 26 本 Primer 后，后续对话会直接显示英文原文；而在日文版则解锁罗马音。",
+    "游戏中的飞机飞船『Fahrenheit』在 Al Bhed 中写作『Huyedunyt』。",
+    "如果玩家错过第 19 号 Primer（位于 Bevelle Temple），只能在后期搭飞空艇返回通过潜水才能补齐。",
+    "早期粉丝给 Al Bhed 编写了完整的数字系统和标点扩展，使之在 Unicode 私有区有对应编码。"
+  ],
+  "highFrequencyWords": [
+    {
+      "word": "translator",
+      "frequency": "高",
+      "context": "工具标题/按钮文本"
+    },
+    {
+      "word": "al",
+      "frequency": "高",
+      "context": "关键词本身"
+    },
+    {
+      "word": "bhed",
+      "frequency": "高",
+      "context": "关键词本身"
+    },
+    {
+      "word": "translation",
+      "frequency": "高",
+      "context": "描述功能"
+    },
+    {
+      "word": "english",
+      "frequency": "高",
+      "context": "输入输出语言说明"
+    },
+    {
+      "word": "text",
+      "frequency": "高",
+      "context": "输入框占位符"
+    },
+    {
+      "word": "language",
+      "frequency": "高",
+      "context": "介绍 Al Bhed"
+    },
+    {
+      "word": "final",
+      "frequency": "高",
+      "context": "提到 Final Fantasy"
+    },
+    {
+      "word": "fantasy",
+      "frequency": "高",
+      "context": "同上"
+    },
+    {
+      "word": "cipher",
+      "frequency": "中",
+      "context": "解释运作原理"
+    },
+    {
+      "word": "convert",
+      "frequency": "中",
+      "context": "按钮或描述"
+    },
+    {
+      "word": "decode",
+      "frequency": "中",
+      "context": "Al Bhed→English"
+    },
+    {
+      "word": "encode",
+      "frequency": "中",
+      "context": "English→Al Bhed"
+    },
+    {
+      "word": "online",
+      "frequency": "中",
+      "context": "强调无需下载"
+    },
+    {
+      "word": "free",
+      "frequency": "中",
+      "context": "强调免费"
+    },
+    {
+      "word": "tool",
+      "frequency": "中",
+      "context": "整体定位"
+    },
+    {
+      "word": "alphabet",
+      "frequency": "中",
+      "context": "26 字母对照表"
+    },
+    {
+      "word": "primer",
+      "frequency": "中",
+      "context": "游戏内收集品"
+    },
+    {
+      "word": "copy",
+      "frequency": "中",
+      "context": "按钮：Copy Result"
+    },
+    {
+      "word": "paste",
+      "frequency": "中",
+      "context": "提示粘贴文本"
+    },
+    {
+      "word": "output",
+      "frequency": "中",
+      "context": "翻译结果区"
+    },
+    {
+      "word": "input",
+      "frequency": "中",
+      "context": "文本框"
+    },
+    {
+      "word": "generator",
+      "frequency": "中",
+      "context": "SEO 相关词"
+    },
+    {
+      "word": "letters",
+      "frequency": "中",
+      "context": "替换表说明"
+    },
+    {
+      "word": "script",
+      "frequency": "低",
+      "context": "提到字体或 JS"
+    },
+    {
+      "word": "yuna",
+      "frequency": "低",
+      "context": "范例台词"
+    },
+    {
+      "word": "rikku",
+      "frequency": "低",
+      "context": "范例台词/介绍角色"
+    },
+    {
+      "word": "game",
+      "frequency": "低",
+      "context": "背景叙述"
+    },
+    {
+      "word": "convertor",
+      "frequency": "低",
+      "context": "变体拼写"
+    },
+    {
+      "word": "tutorial",
+      "frequency": "低",
+      "context": "教学文章或链接"
+    }
+  ]
+}

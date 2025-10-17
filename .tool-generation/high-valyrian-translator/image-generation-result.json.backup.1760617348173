@@ -1,0 +1,64 @@
+{
+  "success": true,
+  "totalImages": 7,
+  "successfulImages": 1,
+  "failedImages": 6,
+  "images": [
+    {
+      "section": "whatIs",
+      "title": "What is XXXX",
+      "filename": "valyrian-translation-tool.webp",
+      "size": 0,
+      "status": "failed",
+      "error": "All image generation models failed. Last error: Failed to create Ideogram task: undefined"
+    },
+    {
+      "section": "funFacts #1",
+      "title": "Fun Fact",
+      "filename": "valyrian-translation-fun.webp",
+      "size": 0,
+      "status": "failed",
+      "error": "All image generation models failed. Last error: Failed to create Ideogram task: undefined"
+    },
+    {
+      "section": "funFacts #2",
+      "title": "Fun Fact",
+      "filename": "dragon-language-fun.webp",
+      "size": 54,
+      "status": "success"
+    },
+    {
+      "section": "userInterests #1",
+      "title": "Accuracy Compared to Others",
+      "filename": "translation-accuracy.webp",
+      "size": 0,
+      "status": "failed",
+      "error": "All image generation models failed. Last error: Failed to create Ideogram task: undefined"
+    },
+    {
+      "section": "userInterests #2",
+      "title": "Marrying with High Valyrian",
+      "filename": "valyrian-wedding-vows.webp",
+      "size": 0,
+      "status": "failed",
+      "error": "All image generation models failed. Last error: Failed to create Ideogram task: undefined"
+    },
+    {
+      "section": "userInterests #3",
+      "title": "Learning Dialects",
+      "filename": "valyrian-dragon-chat.webp",
+      "size": 0,
+      "status": "failed",
+      "error": "All image generation models failed. Last error: Failed to create Ideogram task: undefined"
+    },
+    {
+      "section": "userInterests #4",
+      "title": "Translate Modern Slang",
+      "filename": "slang-translation-fun.webp",
+      "size": 0,
+      "status": "failed",
+      "error": "All image generation models failed. Last error: Failed to create Ideogram task: undefined"
+    }
+  ],
+  "totalTimeMs": 22267
+}

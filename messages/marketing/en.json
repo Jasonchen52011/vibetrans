@@ -140,15 +140,35 @@
           },
           "chineseToEnglishTranslator": {
             "title": "Chinese To English Translator",
-            "description": "Translate chinese to english translator"
+            "description": "Translate between Chinese and English with AI"
           },
           "middleEnglishTranslator": {
             "title": "Middle English Translator",
-            "description": "Translate middle english translator"
+            "description": "Translate between Middle English and modern English"
           },
           "minionTranslator": {
             "title": "Minion Translator",
-            "description": "Translate minion translator"
+            "description": "Translate text to Minion language and back"
+          },
+          "baybayinTranslator": {
+            "title": "Baybayin Translator",
+            "description": "Translate between Baybayin script and modern languages"
+          },
+          "samoanToEnglishTranslator": {
+            "title": "Samoan To English Translator",
+            "description": "Translate between Samoan and English language"
+          },
+          "gasterTranslator": {
+            "title": "Gaster Translator",
+            "description": "Decode and encode Gaster's mysterious symbols"
+          },
+          "highValyrianTranslator": {
+            "title": "High Valyrian Translator",
+            "description": "Translate between High Valyrian and English"
+          },
+          "aramaicTranslator": {
+            "title": "Aramaic Translator",
+            "description": "Translate ancient Aramaic script to modern languages"
           }
         }
       },

@@ -65,7 +65,7 @@
       "items": [
         {
           "title": "Did you know Ancient Greek influenced many modern languages?",
-          "description": "Some English words like 'democracy' and 'philosophy' come directly from Greek! I think it's amazing how a language so old still impacts us today."
+          "description": "Some English words like 'democracy' and 'philosophy' come directly from Greek! It's amazing how a language so old still impacts us today."
         },
         {
           "title": "The Ancient Greek language has several dialects",
@@ -139,44 +139,44 @@
       ]
     },
     "testimonials": {
-      "title": "User Reviews",
-      "subtitle": "What scholars and students are saying",
+      "title": "What Our Users Are Saying",
+      "subtitle": "Real feedback from real users",
       "items": {
         "item-1": {
-          "name": "John Harris",
-          "role": "Linguist",
-          "heading": "Accuracy That Exceeds Academic Standards",
-          "content": "As a linguist, accuracy is crucial, and VibeTrans exceeded my expectations. The tool provides context-aware translations that are perfect for my academic research on Ancient Greek philosophy."
+          "name": "Emily Johnson",
+          "role": "Classics Professor",
+          "heading": "Perfect for Classroom Teaching",
+          "content": "Using the Ancient-Greek Translator Hub in my classroom has been a game-changer. Students love the instant sentence-level translations and pronunciation options. Previously, we struggled with piecemeal tools, but now, everything's streamlined. It feels like having a full-time assistant, making lessons more engaging and interactive."
         },
         "item-2": {
-          "name": "Mary Clark",
-          "role": "Student of Classics",
-          "heading": "Understanding Homer Through Cultural Context",
-          "content": "VibeTrans has helped me understand Homeric Greek better. The cultural insights it provides made translating the Iliad much more interesting!"
+          "name": "Michael Stevens",
+          "role": "Archaeologist",
+          "heading": "A Must for Field Work",
+          "content": "On excavation sites, reliable internet is rare. The Translator Hub's offline mode is invaluable. Uploading inscription photos for OCR and translation simplifies my work. Before, I relied on cumbersome dictionaries. Now, it's quick and efficient, saving hours of field time. It's like having a personal translator in my pocket."
         },
         "item-3": {
-          "name": "Thomas Richards",
-          "role": "History Professor",
-          "heading": "Perfect Teaching Tool for Greek Grammar",
-          "content": "I use VibeTrans in my Ancient Greek language classes. It's an excellent tool for both translation and teaching grammar. My students love it!"
+          "name": "Laura Peterson",
+          "role": "Self-Learner",
+          "heading": "Empowers Independent Study",
+          "content": "The Translator Hub has transformed my self-study routine. I appreciate the side-by-side morphology breakdowns and vocabulary cards. Before, I felt overwhelmed by complex grammar. Now, I'm confident in my translations and can focus on understanding texts deeply. It's like having a personal tutor available 24/7, boosting my learning curve immensely."
         },
         "item-4": {
-          "name": "Linda Brown",
-          "role": "Archaeologist",
-          "heading": "Archaeological Research Made More Accessible",
-          "content": "I needed translations for some ancient texts I found during my research. VibeTrans delivered accurate results that enhanced my understanding of the artifacts."
+          "name": "John Carter",
+          "role": "Tattoo Artist",
+          "heading": "Ensures Accurate Tattoo Translations",
+          "content": "For clients wanting Ancient Greek tattoos, accuracy is paramount. I use the Translator Hub for grammar insights and pronunciation. It helps avoid embarrassing mistakes. Before, I worried about errors, but now, I can assure clients of authenticity and correctness. It's like having a safeguard for artistic integrity and client trust."
         },
         "item-5": {
-          "name": "William Smith",
-          "role": "Translator",
-          "heading": "Handles Complex Attic Greek Effortlessly",
-          "content": "I was amazed by how VibeTrans handled the complexity of Attic Greek. It's become an essential tool in my translation work!"
+          "name": "Rachel Green",
+          "role": "Museum Curator",
+          "heading": "Streamlines Exhibit Preparations",
+          "content": "Curating exhibits often involves translating inscriptions. The Translator Hub's ability to handle entire documents is a lifesaver. Previously, I spent hours on manual translations. Now, it's quick and accurate, allowing me to focus on other exhibit details. It's like having an extra hand in the curation process, enhancing efficiency."
         },
         "item-6": {
-          "name": "Jessica White",
-          "role": "Language Enthusiast",
-          "heading": "Detailed Analysis Accelerates Greek Learning",
-          "content": "I've been learning Ancient Greek for a while, and VibeTrans makes it so much easier. The detailed grammar analysis is super helpful!"
+          "name": "David Miller",
+          "role": "Graduate Student",
+          "heading": "Essential for Research Papers",
+          "content": "Writing research papers in classical studies, I rely on the Translator Hub for accurate translations. The confidence score feature is a key tool. Before, I struggled with translation accuracy and context. Now, I can confidently cite translations, knowing they're reliable. It's like having a second pair of eyes on my work."
         }
       }
     },

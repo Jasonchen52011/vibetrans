@@ -1,0 +1,219 @@
+{
+  "AramaicTranslatorPage": {
+    "title": "Aramaic Translator: Fast, Accurate, and Easy",
+    "description": "Explore the Aramaic translator for quick and accurate translations across multiple dialects. Perfect for text, voice, and more.",
+    "hero": {
+      "title": "Aramaic Translator for Text and Voice",
+      "description": "想要解读古老的亚拉姆语？VibeTrans 让你轻松实现！无论是学术研究还是文化探索，我们的工具都能帮助你快速翻译，提升你的知识深度与文化理解。"
+    },
+    "tool": {
+      "inputLabel": "Input Text",
+      "outputLabel": "Translated Text",
+      "inputPlaceholder": "Enter your text here...",
+      "outputPlaceholder": "Translation will appear here...",
+      "translateButton": "Translate",
+      "uploadButton": "Upload File",
+      "uploadHint": "Supports .txt and .docx files",
+      "loading": "Translating...",
+      "error": "Translation failed. Please try again.",
+      "noInput": "Please enter some text to translate."
+    },
+    "whatIs": {
+      "title": "What is XXXX",
+      "description": "XXXX is a sophisticated tool designed to translate Aramaic texts seamlessly into modern languages. By utilizing advanced algorithms and linguistic expertise, it ensures high accuracy and context comprehension. Ideal for scholars, historians, and enthusiasts, XXXX simplifies the translation process, preserving cultural heritage. With VibeTrans technology, users gain access to intuitive features that enhance productivity and understanding, making it an essential resource for bridging ancient and contemporary worlds.",
+      "image": "/images/docs/aramaic-translation-bridge.webp",
+      "imageAlt": "What is aramaic-translator - Visual explanation"
+    },
+    "examples": {
+      "title": "Translation Examples",
+      "description": "Discover how Aramaic-Translator-Pro can handle everything from ancient texts to modern-day conversations. See examples of Biblical translations or Neo-Aramaic dialogues effortlessly converted.",
+      "items": [
+        {
+          "alt": "Example 1 placeholder",
+          "name": "Example 1"
+        },
+        {
+          "alt": "Example 2 placeholder",
+          "name": "Example 2"
+        },
+        {
+          "alt": "Example 3 placeholder",
+          "name": "Example 3"
+        },
+        {
+          "alt": "Example 4 placeholder",
+          "name": "Example 4"
+        },
+        {
+          "alt": "Example 5 placeholder",
+          "name": "Example 5"
+        },
+        {
+          "alt": "Example 6 placeholder",
+          "name": "Example 6"
+        }
+      ]
+    },
+    "howto": {
+      "title": "How to Use Aramaic-Translator-Pro",
+      "description": "Get started with easy steps.",
+      "steps": [
+        {
+          "title": "Upload Your Text",
+          "description": "点击“上传”按钮，选择并添加要翻译的文本文件。确保文件格式为支持的类型，如TXT或DOCX。上传后，文件名将显示在界面上，确认无误后，点击确认以继续翻译过程。"
+        },
+        {
+          "title": "Select Dialect",
+          "description": "在翻译前，请在下拉菜单中选择所需的阿拉姆语方言。仔细查看选项，确保选择符合目标文本的正确方言，以确保翻译的准确性。点击确定后，继续下一步。"
+        },
+        {
+          "title": "Review Translations",
+          "description": "仔细检查翻译内容，确保准确无误。对照原文和译文，关注语法、词汇和句子结构。使用在线工具或词典验证疑难词汇。请多次阅读，以确保翻译清晰、流畅，并符合上下文。"
+        },
+        {
+          "title": "Download Results",
+          "description": "点击页面右上角的下载按钮，选择文件格式，如PDF或TXT。确认选择后，系统将开始下载。下载完成后，文件会自动保存到您的默认下载文件夹中，确保文件完整性并可随时访问。"
+        }
+      ]
+    },
+    "funFacts": {
+      "title": "Interesting Facts",
+      "items": [
+        {
+          "title": "",
+          "description": "Aramaic has been around for over 3,000 years! I think that's super cool because it connects us to ancient times. VibeTrans makes it easy to explore this rich history.",
+          "image": "/images/docs/aramaic-history-fun.webp",
+          "imageAlt": "Fun fact 1"
+        },
+        {
+          "title": "",
+          "description": "Aramaic has been used for over 3,000 years and influenced scripts like Hebrew and Arabic. VibeTrans makes translating this ancient language a breeze—it's like chatting with history!",
+          "image": "/images/docs/aramaic-history-chat.webp",
+          "imageAlt": "Fun fact 2"
+        }
+      ]
+    },
+    "userInterest": {
+      "title": "Explore More with VibeTrans",
+      "items": [
+        {
+          "title": "Dialect-Specific Translations",
+          "description": "Ever wondered how Aramaic from different regions sounds? With VibeTrans, it's like tuning into a cultural radio! Picture this: an ancient party where dialects chat like old pals. Some say it's like hearing music where you least expect it. Dive in, and you'll be the cool cat with Aramaic dialects in your back pocket!",
+          "image": "/images/docs/dialect-party.webp",
+          "imageAlt": "Dialect-Specific Translations"
+        },
+        {
+          "title": "Tattoo Translation Pitfalls",
+          "description": "想在皮肤上留个亚拉姆语纹身？小心别把\"勇气\"纹成\"咖喱鸡\"！在VibeTrans，我们见过太多这样的翻车故事。信任专业，避免尴尬，毕竟纹身可不是随便涂鸦。让你的纹身在酒吧里成为话题，而不是笑话！",
+          "image": "/images/docs/tattoo-fail.webp",
+          "imageAlt": "Tattoo Translation Pitfalls"
+        },
+        {
+          "title": "Certified Human Translators",
+          "description": "在VibeTrans，我们的认证人类翻译员就像语言的摇滚明星！他们不仅能把亚拉姆语翻得像本地人，还能让你的文本充满活力和个性。没有机器翻译的呆板，这些翻译员让每个词句都跳动着节奏。想要与众不同的翻译体验？我们的翻译团队绝对是你的好伙伴！",
+          "image": "/images/docs/language-rockstars.webp",
+          "imageAlt": "Certified Human Translators"
+        },
+        {
+          "title": "Interactive Transliteration",
+          "description": "你有没有想过，原来翻译也能像弹钢琴一样有趣？VibeTrans 的「Interactive Transliteration」就是这样一个神奇的工具！它能让古老的亚拉姆语瞬间变得栩栩如生，打破你对语言的传统印象。加入我们，体验一把语言魔术，别再让翻译成为枯燥的任务，来场文字的奇幻之旅吧！",
+          "image": "/images/docs/language-piano.webp",
+          "imageAlt": "Interactive Transliteration"
+        }
+      ]
+    },
+    "highlights": {
+      "title": "Why Choose Aramaic-Translator-Pro",
+      "items": [
+        {
+          "title": "Simple and Free to Use",
+          "description": "VibeTrans 提供了一种无忧无虑的翻译体验。只需简单几步，即可获取精准的亚拉姆语翻译。无需复杂设置或隐藏费用，VibeTrans 让每一位用户都能轻松获取所需的语言支持，确保您在学习和交流中无往不利。"
+        },
+        {
+          "title": "Data Accuracy",
+          "description": "VibeTrans 确保卓越的数据准确性，通过先进的机器学习算法和专家验证实现无缝阿拉姆语翻译。我们的平台结合实时更新和精确的语言处理，确保每次翻译都精准可靠，为用户提供最值得信赖的翻译体验。"
+        },
+        {
+          "title": "AI Context Understanding",
+          "description": "VibeTrans 的 AI 语境理解功能精准捕捉文本背景和细微差异，确保翻译准确贴合原意。无论是日常对话还是复杂文献，VibeTrans 都能提供符合语境的阿拉米语翻译体验，让用户尽享沟通无障碍。"
+        },
+        {
+          "title": "Data Privacy and Security",
+          "description": "VibeTrans 致力于确保用户数据的隐私和安全。我们采用先进的加密技术，保障信息的保密性，并严格遵循数据保护法规。用户的翻译数据在处理后立即删除，确保最高级别的隐私和安全。"
+        }
+      ],
+      "description": "Discover the powerful features that make our Aramaic translator the best choice for scholars, students, and language enthusiasts"
+    },
+    "testimonials": {
+      "title": "What Users Say",
+      "subtitle": "Real feedback from real users",
+      "items": {
+        "item-1": {
+          "name": "John Smith",
+          "role": "历史学教授",
+          "heading": "Review from John Smith",
+          "content": "作为一名历史学教授，我经常需要翻译亚拉姆语文献。使用 Aramaic Translator 后，我能快速准确地理解古代文本，尤其是在准备课程时。这个工具节省了我大量时间，让我更专注于教学，让我感到非常满意。"
+        },
+        "item-2": {
+          "name": "John Smith",
+          "role": "历史研究员",
+          "heading": "Review from John Smith",
+          "content": "起初，我对Aramaic Translator的准确性持怀疑态度，但在翻译古代手稿时，它的表现令我惊喜。它不仅能处理复杂的句子，还提供了详细的词汇背景信息，帮助我更好地理解文本。现在，它已成为我研究工作中不可或缺的工具。"
+        },
+        "item-3": {
+          "name": "John Smith",
+          "role": "历史学教授",
+          "heading": "Review from John Smith",
+          "content": "我最近使用了 Aramaic Translator，帮助我翻译了一些古老的手稿。起初我有些怀疑它的准确性，但在翻译了一段关于古代贸易的文本后，我惊喜地发现它非常精确。这款工具大大加快了我的研究进度。"
+        },
+        "item-4": {
+          "name": "John Smith",
+          "role": "历史学家",
+          "heading": "Review from John Smith",
+          "content": "使用 Aramaic Translator 的过程中，我惊喜地发现它能够流畅地翻译古老的亚拉姆文手稿。在一次研究中，我需要快速获取一段文献的内容，使用该工具后，我节省了大量时间。它极大地提升了我的工作效率。"
+        },
+        "item-5": {
+          "name": "John Stevens",
+          "role": "历史学家",
+          "heading": "Review from John Stevens",
+          "content": "在研究古代手稿时，aramaic translator 成为了我的得力助手。它能够准确翻译复杂的阿拉米语文本，让我深入理解古文明。起初我对其准确性持怀疑态度，但经过几次使用后，我完全信赖它，极大地提高了我的工作效率。"
+        },
+        "item-6": {
+          "name": "Sarah Johnson",
+          "role": "考古学家",
+          "heading": "Review from Sarah Johnson",
+          "content": "作为一名考古学家，我经常需要解读古代亚拉姆语铭文。使用 Aramaic Translator 后，我的工作效率提升了数倍。这个工具不仅翻译准确，还能提供词源学背景，帮助我更深入地理解古代文化。强烈推荐给所有从事古代语言研究的同行！"
+        }
+      }
+    },
+    "faqs": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Have other questions? Feel free to contact us via email.",
+      "items": {
+        "item-1": {
+          "question": "Is the software free?",
+          "answer": "The Aramaic translator is available in both free and premium versions. The free version offers basic translation capabilities, while the premium version provides advanced features and support. You can start with the free version to explore its basic functionalities."
+        },
+        "item-2": {
+          "question": "How do I translate a document?",
+          "answer": "To translate a document, first upload your file to our platform. Next, select the target language, in this case, Aramaic. Then, click 'Translate' to initiate the process. Finally, download your translated document once the translation is complete."
+        },
+        "item-3": {
+          "question": "How is my privacy protected?",
+          "answer": "Your privacy is our priority. We use advanced encryption to safeguard your data. Access is restricted to authorized personnel only. Regular audits and updates are conducted to ensure security. We never share your information with third parties without your consent."
+        },
+        "item-4": {
+          "question": "Can I translate audio files?",
+          "answer": "Yes, you can translate audio files using our Aramaic translator. Simply upload your audio file to our platform. Our system will process the audio and provide you with a text translation. Ensure your audio is clear for the best results."
+        }
+      }
+    },
+    "ctaButton": "Try AramaicTranslator Now",
+    "cta": {
+      "title": "Start Your Translation with VibeTrans",
+      "description": "Experience the power of Aramaic translation today with VibeTrans. Get started now!",
+      "primaryButton": "Try AramaicTranslator Now",
+      "secondaryButton": "Back to Top"
+    }
+  }
+}

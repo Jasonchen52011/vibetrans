@@ -18,7 +18,11 @@ export default function AlbanianToEnglishTool({
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [fileName, setFileName] = useState<string | null>(null);
-  const [direction, setDirection] = useState<'al-to-en' | 'en-to-al'>('al-to-en');
+
+  // 智能翻译状态
+  const [direction, setDirection] = useState<'al-to-en' | 'en-to-al'>(
+    'al-to-en'
+  );
 
   // Handle file upload
   const handleFileUpload = async (
@@ -74,7 +78,7 @@ export default function AlbanianToEnglishTool({
     );
   };
 
-  // Handle translation
+  // Handle translation with smart detection
   const handleTranslate = async () => {
     if (!inputText.trim()) {
       setError(pageData.tool.noInput);
@@ -92,16 +96,24 @@ export default function AlbanianToEnglishTool({
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           text: inputText,
-          direction: direction,
         }),
       });
 
       const data = (await response.json()) as {
         error?: string;
         translated?: string;
+        suggestion?: string;
+        needsUserConfirmation?: boolean;
+        detectedInputLanguage?: string;
+        detectedDirection?: string;
+        languageInfo?: any;
       };
 
       if (!response.ok) {
+        if (data.needsUserConfirmation && data.suggestion) {
+          // 如果是语言检测问题，显示具体建议
+          throw new Error(data.error);
+        }
         throw new Error(data.error || pageData.tool.error);
       }
 
@@ -120,6 +132,7 @@ export default function AlbanianToEnglishTool({
     setOutputText('');
     setFileName(null);
     setError(null);
+    setDirection('al-to-en');
   };
 
   // Copy
@@ -278,7 +291,9 @@ export default function AlbanianToEnglishTool({
           <div className="flex-1">
             <div className="flex items-center justify-between mb-3">
               <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">
-                {direction === 'al-to-en' ? 'English Translation' : 'Albanian Translation'}
+                {direction === 'al-to-en'
+                  ? 'English Translation'
+                  : 'Albanian Translation'}
               </h2>
               {outputText && (
                 <div className="flex gap-2">

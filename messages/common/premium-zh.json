@@ -1,0 +1,13 @@
+{
+  "title": "解锁高级内容",
+  "description": "订阅我们的专业计划以访问所有高级内容和独家内容。",
+  "upgradeCta": "立即升级",
+  "benefit1": "所有高级内容",
+  "benefit2": "独家内容",
+  "benefit3": "随时取消",
+  "signIn": "登录",
+  "loginRequired": "登录以继续阅读",
+  "loginDescription": "这是高级内容。登录您的账户以访问完整内容。",
+  "checkingAccess": "检查访问权限...",
+  "loadingContent": "加载完整内容..."
+}

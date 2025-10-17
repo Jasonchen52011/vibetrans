@@ -4,9 +4,9 @@
  * Compress newly generated images to under 95KB
  */
 
-import sharp from 'sharp';
 import fs from 'node:fs';
 import path from 'node:path';
+import sharp from 'sharp';
 
 const DOCS_DIR = path.join(process.cwd(), 'public', 'images', 'docs');
 const TARGET_SIZE = 95 * 1024; // 95KB in bytes
@@ -37,9 +37,7 @@ async function compressImage(filename: string): Promise<void> {
   while (newSize > TARGET_SIZE && quality > 40) {
     console.log(`🔄 Trying quality: ${quality}`);
 
-    await sharp(imagePath)
-      .webp({ quality, effort: 6 })
-      .toFile(tmpPath);
+    await sharp(imagePath).webp({ quality, effort: 6 }).toFile(tmpPath);
 
     newSize = fs.statSync(tmpPath).size;
 
@@ -52,8 +50,12 @@ async function compressImage(filename: string): Promise<void> {
   fs.renameSync(tmpPath, imagePath);
 
   const savedKB = (originalSize - newSize) / 1024;
-  console.log(`✅ Compressed size: ${(newSize / 1024).toFixed(2)} KB (quality: ${quality})`);
-  console.log(`📉 Saved: ${savedKB.toFixed(2)} KB (${((savedKB / (originalSize / 1024)) * 100).toFixed(1)}%)`);
+  console.log(
+    `✅ Compressed size: ${(newSize / 1024).toFixed(2)} KB (quality: ${quality})`
+  );
+  console.log(
+    `📉 Saved: ${savedKB.toFixed(2)} KB (${((savedKB / (originalSize / 1024)) * 100).toFixed(1)}%)`
+  );
 }
 
 async function compressAllImages() {

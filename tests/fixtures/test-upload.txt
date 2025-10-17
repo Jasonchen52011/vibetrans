@@ -1,0 +1,9 @@
+Hello world, this is a test file for upload functionality.
+
+This file contains:
+- English text
+- Numbers: 123, 456
+- Special chars: @#$%^&*()
+- Unicode: 你好世界 🌍
+
+Purpose: Testing file upload and text extraction capabilities in translation tools.

@@ -376,13 +376,13 @@ export default async function GenZTranslatorPage(
         {/* Explore Other Tools */}
         <ExploreOurAiTools
           toolKeys={[
-        'Gen Alpha Translator',
-        'Dog Translator',
-        'Bad Translator',
-        'Baby Translator',
-        'Pig Latin Translator',
-        'Gibberish Translator'
-      ]}
+            'Gen Z Translator',
+            'Gen Alpha Translator',
+            'Gibberish Translator',
+            'Dog Translator',
+            'Bad Translator',
+            'Ancient Greek Translator',
+          ]}
         />
 
         {/* Testimonials Section */}

@@ -84,14 +84,16 @@ async function scanImages(slug) {
       // Fun Facts 图片 (fact-1, fact-2)
       const factMatch = file.match(new RegExp(`${slug}-fact-(\\d+)\\.webp`));
       if (factMatch) {
-        const index = parseInt(factMatch[1]) - 1;
+        const index = Number.parseInt(factMatch[1]) - 1;
         images.funFacts[index] = `/images/docs/${file}`;
       }
 
       // User Interest 图片 (interest-1, interest-2, interest-3, interest-4)
-      const interestMatch = file.match(new RegExp(`${slug}-interest-(\\d+)\\.webp`));
+      const interestMatch = file.match(
+        new RegExp(`${slug}-interest-(\\d+)\\.webp`)
+      );
       if (interestMatch) {
-        const index = parseInt(interestMatch[1]) - 1;
+        const index = Number.parseInt(interestMatch[1]) - 1;
         images.userInterests[index] = `/images/docs/${file}`;
       }
     }
@@ -115,10 +117,11 @@ async function updateEnJson(slug, images) {
     const jsonData = JSON.parse(content);
 
     // 获取页面命名空间
-    const pageName = slug
-      .split('-')
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-      .join('') + 'Page';
+    const pageName =
+      slug
+        .split('-')
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join('') + 'Page';
 
     if (!jsonData[pageName]) {
       logError(`未找到 ${pageName} 命名空间`);
@@ -133,7 +136,8 @@ async function updateEnJson(slug, images) {
         jsonData[pageName].whatIs = {};
       }
       jsonData[pageName].whatIs.image = images.whatIs;
-      jsonData[pageName].whatIs.imageAlt = `What is ${slug} - Visual explanation`;
+      jsonData[pageName].whatIs.imageAlt =
+        `What is ${slug} - Visual explanation`;
       updated++;
       logSuccess(`✓ 更新 whatIs 图片: ${images.whatIs}`);
     }
@@ -144,7 +148,8 @@ async function updateEnJson(slug, images) {
         jsonData[pageName].howto = {};
       }
       jsonData[pageName].howto.image = images.howTo;
-      jsonData[pageName].howto.imageAlt = `How to use ${slug} - Step by step guide`;
+      jsonData[pageName].howto.imageAlt =
+        `How to use ${slug} - Step by step guide`;
       updated++;
       logSuccess(`✓ 更新 howto 图片: ${images.howTo}`);
     }
@@ -155,7 +160,8 @@ async function updateEnJson(slug, images) {
         if (imagePath && jsonData[pageName].funFacts.items[index]) {
           jsonData[pageName].funFacts.items[index].image = imagePath;
           jsonData[pageName].funFacts.items[index].imageAlt =
-            jsonData[pageName].funFacts.items[index].title || `Fun fact ${index + 1}`;
+            jsonData[pageName].funFacts.items[index].title ||
+            `Fun fact ${index + 1}`;
           updated++;
           logSuccess(`✓ 更新 funFacts[${index}] 图片: ${imagePath}`);
         }
@@ -163,12 +169,16 @@ async function updateEnJson(slug, images) {
     }
 
     // 4. 更新 userInterest 图片
-    if (jsonData[pageName].userInterest && jsonData[pageName].userInterest.items) {
+    if (
+      jsonData[pageName].userInterest &&
+      jsonData[pageName].userInterest.items
+    ) {
       images.userInterests.forEach((imagePath, index) => {
         if (imagePath && jsonData[pageName].userInterest.items[index]) {
           jsonData[pageName].userInterest.items[index].image = imagePath;
           jsonData[pageName].userInterest.items[index].imageAlt =
-            jsonData[pageName].userInterest.items[index].title || `User interest ${index + 1}`;
+            jsonData[pageName].userInterest.items[index].title ||
+            `User interest ${index + 1}`;
           updated++;
           logSuccess(`✓ 更新 userInterest[${index}] 图片: ${imagePath}`);
         }
@@ -176,12 +186,16 @@ async function updateEnJson(slug, images) {
     }
 
     // 5. 同时更新 userScenarios（如果存在，用于兼容旧页面）
-    if (jsonData[pageName].userScenarios && jsonData[pageName].userScenarios.items) {
+    if (
+      jsonData[pageName].userScenarios &&
+      jsonData[pageName].userScenarios.items
+    ) {
       images.funFacts.forEach((imagePath, index) => {
         if (imagePath && jsonData[pageName].userScenarios.items[index]) {
           jsonData[pageName].userScenarios.items[index].image = imagePath;
           jsonData[pageName].userScenarios.items[index].imageAlt =
-            jsonData[pageName].userScenarios.items[index].title || `User scenario ${index + 1}`;
+            jsonData[pageName].userScenarios.items[index].title ||
+            `User scenario ${index + 1}`;
           updated++;
           logSuccess(`✓ 更新 userScenarios[${index}] 图片: ${imagePath}`);
         }
@@ -206,7 +220,9 @@ async function main() {
 
   if (!slug) {
     logError('请提供 slug 参数');
-    logInfo('使用方法: node scripts/auto-update-image-refs.js "albanian-to-english"');
+    logInfo(
+      '使用方法: node scripts/auto-update-image-refs.js "albanian-to-english"'
+    );
     process.exit(1);
   }
 

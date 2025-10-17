@@ -336,13 +336,13 @@ export default async function IvrTranslatorPage(props: IvrTranslatorPageProps) {
         {/* Explore Other Tools */}
         <ExploreOurAiTools
           toolKeys={[
-        'Chinese to English Translator',
-        'Cantonese Translator',
-        'Albanian to English',
-        'Creole to English Translator',
-        'Dumb It Down AI',
-        'Esperanto Translator'
-      ]}
+            'Cuneiform Translator',
+            'Gen Alpha Translator',
+            'Gen Z Translator',
+            'Al Bhed Translator',
+            'Ancient Greek Translator',
+            'Esperanto Translator',
+          ]}
         />
 
         {/* Testimonials */}

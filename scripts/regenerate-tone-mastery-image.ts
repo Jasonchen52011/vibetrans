@@ -4,10 +4,10 @@
  * Regenerate Mastering Cantonese Tones image
  */
 
-import { generateIllustration } from '../src/lib/article-illustrator/image-generator';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import sharp from 'sharp';
+import { generateIllustration } from '../src/lib/article-illustrator/image-generator';
 
 const OUTPUT_DIR = path.join(process.cwd(), 'public', 'images', 'docs');
 

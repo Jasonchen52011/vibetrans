@@ -13,10 +13,10 @@
  * Note: how-to image is generated via screenshot script
  */
 
-import { generateIllustration } from '../src/lib/article-illustrator/image-generator';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import sharp from 'sharp';
+import { generateIllustration } from '../src/lib/article-illustrator/image-generator';
 
 const OUTPUT_DIR = path.join(process.cwd(), 'public', 'images', 'docs');
 
@@ -94,7 +94,9 @@ async function downloadAndConvertImage(
 }
 
 async function generateAllImages() {
-  console.log('\n🎨 Starting image generation for creole-to-english-translator...\n');
+  console.log(
+    '\n🎨 Starting image generation for creole-to-english-translator...\n'
+  );
   console.log(`📂 Output directory: ${OUTPUT_DIR}\n`);
 
   // Ensure output directory exists

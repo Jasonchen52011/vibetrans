@@ -1,8 +1,8 @@
-import path from 'path';
-import { chromium } from 'playwright';
 import { exec } from 'child_process';
+import path from 'path';
 import { promisify } from 'util';
 import { unlink } from 'fs/promises';
+import { chromium } from 'playwright';
 
 const execAsync = promisify(exec);
 

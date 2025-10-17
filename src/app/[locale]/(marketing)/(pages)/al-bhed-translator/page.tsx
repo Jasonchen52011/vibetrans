@@ -146,8 +146,8 @@ export default async function AlBhedTranslatorPage(
         title: (t as any)('funfacts.items.1.title'),
         description: (t as any)('funfacts.items.1.description'),
         image: {
-          src: '/images/docs/translate-anytime-anywhere.webp',
-          alt: 'Translate Anytime, Anywhere',
+          src: '/images/docs/albed-primer-secret.webp',
+          alt: 'Hidden Primers in FFX',
         },
       },
     ],
@@ -382,13 +382,13 @@ export default async function AlBhedTranslatorPage(
         {/* Explore Other Tools */}
         <ExploreOurAiTools
           toolKeys={[
-        'Pig Latin Translator',
-        'Gibberish Translator',
-        'Alien Text Generator',
-        'Gen Z Translator',
-        'Bad Translator',
-        'Ancient Greek Translator'
-      ]}
+            'Gibberish Translator',
+            'Gen Z Translator',
+            'Bad Translator',
+            'Ancient Greek Translator',
+            'Esperanto Translator',
+            'Gen Alpha Translator',
+          ]}
         />
 
         {/* Testimonials Section */}

@@ -1,3 +1,4 @@
+import { detectLanguage } from '@/lib/language-detection';
 import { google } from '@ai-sdk/google';
 import { generateText } from 'ai';
 import { type NextRequest, NextResponse } from 'next/server';
@@ -232,8 +233,9 @@ export async function POST(request: NextRequest) {
     const body = (await request.json()) as {
       text?: string;
       mode?: 'toGreek' | 'toEnglish';
+      autoDetect?: boolean;
     };
-    const { text, mode = 'toGreek' } = body;
+    const { text, mode = 'toGreek', autoDetect = true } = body;
 
     if (!text || typeof text !== 'string') {
       return NextResponse.json(
@@ -256,10 +258,40 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // 智能语言检测
+    let actualMode = mode;
+    let detectionResult = null;
+
+    if (autoDetect) {
+      try {
+        detectionResult = detectLanguage(text, 'greek');
+
+        // 如果检测到英语且当前模式是toEnglish，自动切换
+        if (
+          detectionResult.detectedLanguage === 'english' &&
+          detectionResult.confidence > 0.6 &&
+          mode === 'toEnglish'
+        ) {
+          actualMode = 'toGreek';
+        }
+        // 如果检测到古希腊语且当前模式是toGreek，自动切换
+        else if (
+          detectionResult.detectedLanguage === 'greek' &&
+          detectionResult.confidence > 0.6 &&
+          mode === 'toGreek'
+        ) {
+          actualMode = 'toEnglish';
+        }
+      } catch (error) {
+        console.error('Language detection failed:', error);
+        // 继续使用用户指定的模式
+      }
+    }
+
     // Check if input is a single word (for dictionary lookup)
     const trimmedText = text.trim();
     const isSingleWord =
-      mode === 'toGreek' &&
+      actualMode === 'toGreek' &&
       !trimmedText.includes(' ') &&
       trimmedText.length > 0;
 
@@ -273,22 +305,28 @@ export async function POST(request: NextRequest) {
           translated: dictionaryEntry.greek,
           pronunciation: dictionaryEntry.pronunciation,
           culturalContext: dictionaryEntry.culturalContext,
-          mode: mode,
+          mode: actualMode,
+          originalMode: mode,
           success: true,
           isDictionaryLookup: true,
+          autoDetect,
+          detection: detectionResult,
         });
       }
     }
 
     // Perform translation using AI for sentences or words not in dictionary
-    const translatedText = await translateWithAI(text, mode);
+    const translatedText = await translateWithAI(text, actualMode);
 
     return NextResponse.json({
       original: text,
       translated: translatedText,
-      mode: mode,
+      mode: actualMode,
+      originalMode: mode,
       success: true,
       isDictionaryLookup: false,
+      autoDetect,
+      detection: detectionResult,
     });
   } catch (error: any) {
     console.error('Error processing Ancient Greek translation:', error);

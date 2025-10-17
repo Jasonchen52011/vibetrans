@@ -273,18 +273,20 @@ export default async function CreoleToEnglishPage(
             {/* User Avatars and Rating */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <div className="flex -space-x-3">
-                {['female2', 'male4', 'female3', 'male2', 'female4'].map((avatar, i) => (
-                  <div
-                    key={i}
-                    className="relative h-12 w-12 rounded-full border-2 border-white dark:border-zinc-800 overflow-hidden"
-                  >
-                    <img
-                      src={`/images/avatars/${avatar}.webp`}
-                      alt={`User ${i + 1}`}
-                      className="h-full w-full object-cover"
-                    />
-                  </div>
-                ))}
+                {['female2', 'male4', 'female3', 'male2', 'female4'].map(
+                  (avatar, i) => (
+                    <div
+                      key={i}
+                      className="relative h-12 w-12 rounded-full border-2 border-white dark:border-zinc-800 overflow-hidden"
+                    >
+                      <img
+                        src={`/images/avatars/${avatar}.webp`}
+                        alt={`User ${i + 1}`}
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
+                  )
+                )}
               </div>
               <div className="flex flex-col items-center sm:items-start gap-1">
                 <div className="flex items-center gap-0.5">
@@ -339,13 +341,13 @@ export default async function CreoleToEnglishPage(
         {/* Explore Other Tools */}
         <ExploreOurAiTools
           toolKeys={[
-        'Albanian to English',
-        'Chinese to English Translator',
-        'Cantonese Translator',
-        'Esperanto Translator',
-        'IVR Translator',
-        'Gen Z Translator'
-      ]}
+            'Gen Z Translator',
+            'Cuneiform Translator',
+            'Gen Alpha Translator',
+            'Esperanto Translator',
+            'Dog Translator',
+            'Bad Translator',
+          ]}
         />
 
         {/* Testimonials */}

@@ -119,7 +119,7 @@
         {
           "icon": "gamepad",
           "title": "Language Games and Secret Codes",
-          "description": "Whether you're a kid wanting to create a secret language with friends or an adult looking for fun communication tricks, VibeTrans' Gibberish Translator is a perfect tool. It's playful, easy to use, and endlessly entertaining. I love it because it brings out the kid in everyone!"
+          "description": "Whether you're a kid wanting to create a secret language with friends or an adult looking for fun communication tricks, VibeTrans' Gibberish Translator is a perfect tool. It's playful, easy to use, and endlessly entertaining. Users love it because it brings out the kid in everyone!"
         },
         {
           "icon": "graduation-cap",
@@ -159,55 +159,49 @@
         {
           "icon": "volume-2",
           "title": "Voice Input & Output",
-          "description": "Speak your text and hear it back in gibberish! VibeTrans supports speech input and text-to-speech output, making the experience even more interactive. I think this feature is fantastic for accessibility and adds a new dimension to the fun!"
+          "description": "Speak your text and hear it back in gibberish! VibeTrans supports speech input and text-to-speech output, making the experience even more interactive. It is clear this feature is fantastic for accessibility and adds a new dimension to the fun!"
         }
       ]
     },
     "testimonials": {
-      "title": "What Our Users Say",
-      "subtitle": "What Our Users Say",
+      "title": "What Our Users Are Saying",
+      "subtitle": "Real feedback from real users",
       "items": {
         "item-1": {
-          "name": "Sarah Johnson",
-          "role": "High School Teacher",
-          "heading": "Classroom Icebreaker Students Actually Love",
-          "content": "I love using this tool in my classroom to teach students about language and creativity. It's also a fun way to break the ice at the beginning of class. My students can't get enough of it!",
-          "rating": 5
+          "name": "Jessica Harper",
+          "role": "Elementary School Teacher",
+          "heading": "A Classroom Hit!",
+          "content": "Gibberish Translator Pro has turned my language classes into a fun adventure! My students love guessing the original sentences, and it boosts their listening skills too. I use the voice input feature, which makes the whole experience interactive and engaging. It's a must-have for any creative classroom!"
         },
         "item-2": {
-          "name": "Tom Mitchell",
-          "role": "Game Developer",
-          "heading": "Quirky NPC Dialogue That Players Adore",
-          "content": "VibeTrans' Gibberish Translator has been a lifesaver for creating quirky NPC dialogue in my games. It adds a layer of humor that players absolutely love. Highly recommend it to any dev looking to add personality to their characters!",
-          "rating": 5
+          "name": "Michael Stevens",
+          "role": "Screenwriter",
+          "heading": "Perfect for Alien Dialogue",
+          "content": "As a screenwriter, Gibberish Translator Pro is my secret tool for creating alien languages. It allows me to generate unique dialogue quickly, adding a layer of authenticity to my scripts. The ability to switch between different gibberish dialects is particularly useful for creating diverse alien cultures."
         },
         "item-3": {
-          "name": "Jessica Lee",
-          "role": "Content Creator",
-          "heading": "Fresh Content Tool for Engaging Challenges",
-          "content": "As a YouTuber, I'm always looking for ways to keep my content fresh and engaging. The Gibberish Translator has become one of my go-to tools for funny skits and challenges. My audience finds it hilarious every time!",
-          "rating": 5
+          "name": "Sarah Collins",
+          "role": "Social Media Manager",
+          "heading": "Boosts Engagement",
+          "content": "I use Gibberish Translator Pro to craft quirky posts that grab attention. The random dialect feature keeps my content fresh, and the voice output option is great for creating audio snippets. It’s an essential tool for any social media manager looking to stand out."
         },
         "item-4": {
-          "name": "James Carter",
-          "role": "Parent",
-          "heading": "Secret Messages That Entertain and Educate",
-          "content": "My kids are obsessed with this translator! They use it to create secret messages and have fun with language. It's both entertaining and educational—what more could a parent ask for?",
-          "rating": 5
+          "name": "David Thompson",
+          "role": "Software Developer",
+          "heading": "A Fun Coding Challenge",
+          "content": "Gibberish Translator Pro inspired me to code my own translator. I learned so much about algorithms and language processing. The tool’s multi-dialect support and voice features were particularly intriguing, providing a great basis for experimentation and learning."
         },
         "item-5": {
-          "name": "Linda Garcia",
-          "role": "Marketing Specialist",
-          "heading": "Social Media Posts That Grab Attention",
-          "content": "I've used VibeTrans for quirky social media posts, and it always grabs attention. The gibberish adds a playful element that helps posts stand out. It's simple, effective, and fun to use!",
-          "rating": 5
+          "name": "Emily Johnson",
+          "role": "Game Developer",
+          "heading": "Adds Depth to Games",
+          "content": "I use Gibberish Translator Pro to create secret languages for my games. It enhances the immersive experience for players, letting them decode messages and solve puzzles. The bulk conversion feature is a lifesaver when dealing with large text files."
         },
         "item-6": {
-          "name": "David Brown",
-          "role": "Writer",
-          "heading": "Creative Inspiration for Character Development",
-          "content": "As someone who loves experimenting with language, the Gibberish Translator is a fantastic creative tool. I use it to come up with fun character names and dialogue for my stories. It's inspiring!",
-          "rating": 5
+          "name": "Robert Lewis",
+          "role": "Freelance Writer",
+          "heading": "Creative Writing Tool",
+          "content": "Gibberish Translator Pro is a fantastic tool for overcoming writer’s block. By translating sections of my work into gibberish, I can see my writing from a new perspective. The tool’s customization options, like adjusting strength, offer endless possibilities for creative expression."
         }
       }
     },

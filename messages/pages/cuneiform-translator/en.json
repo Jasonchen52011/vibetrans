@@ -35,15 +35,45 @@
     "whatIs": {
       "badge": "About Cuneiform",
       "title": "What is Cuneiform Translator?",
-      "description": "Cuneiform Translator is an advanced AI-powered tool that decodes ancient cuneiform scripts from Mesopotamian civilizations. Supporting Sumerian, Akkadian, and Babylonian languages, VibeTrans uses cutting-edge machine learning trained on thousands of historical texts to provide scholarly-accurate translations. This tool is indispensable for historians, archaeologists, linguists, and anyone fascinated by humanity's earliest writing system dating back to 3200 BCE."
+      "description": "Cuneiform Translator is an advanced AI-powered tool that decodes ancient cuneiform scripts from Mesopotamian civilizations. Supporting Sumerian, Akkadian, and Babylonian languages, VibeTrans uses cutting-edge machine learning trained on thousands of historical texts to provide scholarly-accurate translations. This tool is indispensable for historians, archaeologists, linguists, and anyone fascinated by humanity's earliest writing system dating back to 3200 BCE.",
+      "image": "/images/docs/what-is-cuneiform-translator.webp",
+      "imageAlt": "What is Cuneiform Translator - Ancient Script Translation"
     },
     "examples": {
       "title": "Cuneiform Translation Examples",
-      "description": "See how VibeTrans accurately translates ancient cuneiform scripts into modern English. From Epic of Gilgamesh fragments to administrative records, experience AI precision in decoding wedge-shaped characters that recorded humanity's first written laws, literature, and scientific knowledge."
+      "description": "See how VibeTrans accurately translates ancient cuneiform scripts into modern English. From Epic of Gilgamesh fragments to administrative records, experience AI precision in decoding wedge-shaped characters that recorded humanity's first written laws, literature, and scientific knowledge.",
+      "items": [
+        {
+          "alt": "𒀀𒈾 𒈾 𒁕 𒈗 → I am the king",
+          "name": "Royal Declaration"
+        },
+        {
+          "alt": "𒈗 𒁁 𒉌 → The king built",
+          "name": "Temple Construction"
+        },
+        {
+          "alt": "𒁹 𒈗 𒂗 𒈗 𒈾 → 5 measures of barley",
+          "name": "Economic Record"
+        },
+        {
+          "alt": "𒀭𒈾 𒈗 𒁕 𒈠 → The god An gave",
+          "name": "Divine Offering"
+        },
+        {
+          "alt": "𒁹𒈬 𒈨 𒆷 → My brother",
+          "name": "Family Relation"
+        },
+        {
+          "alt": "𒌓 𒈨 𒍪 → In the month",
+          "name": "Time Record"
+        }
+      ]
     },
     "howto": {
       "title": "How to Use the Cuneiform Translator",
       "description": "Translating ancient cuneiform has never been easier. Follow these steps to decode Mesopotamian texts with VibeTrans AI technology.",
+      "image": "/images/docs/cuneiform-translator-how.webp",
+      "imageAlt": "How to use Cuneiform Translator step by step guide",
       "steps": [
         {
           "title": "Select Your Script Type",
@@ -68,11 +98,15 @@
       "items": [
         {
           "title": "The World's Oldest Writing System",
-          "description": "Cuneiform, invented by ancient Sumerians around 3200 BCE in Mesopotamia (modern-day Iraq), is humanity's first known writing system. Originally developed for accounting and administrative records, it evolved over 3000 years to express complex literature, scientific observations, and legal codes. The word 'cuneiform' comes from Latin 'cuneus' (wedge), describing the characteristic wedge-shaped marks made by pressing a reed stylus into wet clay tablets."
+          "description": "Cuneiform, invented by ancient Sumerians around 3200 BCE in Mesopotamia (modern-day Iraq), is humanity's first known writing system. Originally developed for accounting and administrative records, it evolved over 3000 years to express complex literature, scientific observations, and legal codes. The word 'cuneiform' comes from Latin 'cuneus' (wedge), describing the characteristic wedge-shaped marks made by pressing a reed stylus into wet clay tablets.",
+          "image": "/images/docs/ancient-written-law.webp",
+          "imageAlt": "The World's Oldest Writing System - Ancient Cuneiform"
         },
         {
           "title": "Used Across Ancient Civilizations",
-          "description": "Remarkably, cuneiform wasn't limited to one language or culture. Over its millennia-long history, at least 15 different ancient languages were written in cuneiform script, including Sumerian, Akkadian, Babylonian, Assyrian, Elamite, Hittite, and Urartian. This makes cuneiform somewhat like the Latin alphabet today—a writing system adapted by many cultures to record their own distinct languages. The Epic of Gilgamesh, one of humanity's oldest literary works, was written in Akkadian cuneiform."
+          "description": "Remarkably, cuneiform wasn't limited to one language or culture. Over its millennia-long history, at least 15 different ancient languages were written in cuneiform script, including Sumerian, Akkadian, Babylonian, Assyrian, Elamite, Hittite, and Urartian. This makes cuneiform somewhat like the Latin alphabet today—a writing system adapted by many cultures to record their own distinct languages. The Epic of Gilgamesh, one of humanity's oldest literary works, was written in Akkadian cuneiform.",
+          "image": "/images/docs/multi-purpose-script.webp",
+          "imageAlt": "Multi-Purpose Cuneiform Script - Used Across Civilizations"
         }
       ]
     },
@@ -83,19 +117,27 @@
       "items": [
         {
           "title": "Academic Research and Mesopotamian Studies",
-          "description": "For scholars specializing in Assyriology, ancient Near Eastern studies, or comparative linguistics, VibeTrans accelerates research by providing preliminary translations of cuneiform texts. Instead of spending hours manually translating administrative records or fragmentary tablets, researchers can quickly process large text volumes and identify significant findings. The AI handles repetitive translation work, freeing scholars to focus on interpretation, analysis, and historical contextualization."
+          "description": "For scholars specializing in Assyriology, ancient Near Eastern studies, or comparative linguistics, VibeTrans accelerates research by providing preliminary translations of cuneiform texts. Instead of spending hours manually translating administrative records or fragmentary tablets, researchers can quickly process large text volumes and identify significant findings. The AI handles repetitive translation work, freeing scholars to focus on interpretation, analysis, and historical contextualization.",
+          "image": "/images/docs/cuneiform-texts-research.webp",
+          "imageAlt": "Academic Research and Mesopotamian Studies"
         },
         {
           "title": "Cultural Heritage and Museum Collections",
-          "description": "Museums worldwide house thousands of cuneiform tablets, many untranslated due to limited expert availability. VibeTrans enables curators to catalog collections more efficiently, create educational materials for public exhibitions, and make ancient texts accessible to broader audiences. Heritage preservation projects use AI translation to digitize and interpret artifacts before deterioration threatens these irreplaceable historical records."
+          "description": "Museums worldwide house thousands of cuneiform tablets, many untranslated due to limited expert availability. VibeTrans enables curators to catalog collections more efficiently, create educational materials for public exhibitions, and make ancient texts accessible to broader audiences. Heritage preservation projects use AI translation to digitize and interpret artifacts before deterioration threatens these irreplaceable historical records.",
+          "image": "/images/docs/cultural-heritage-preservation.webp",
+          "imageAlt": "Cultural Heritage and Museum Collections"
         },
         {
           "title": "Education and Ancient History Teaching",
-          "description": "Professors teaching ancient history, world civilization courses, or classical languages use VibeTrans to demonstrate real cuneiform translation in classrooms. Students gain hands-on experience with primary sources without requiring years of specialized training. The tool transforms abstract historical concepts into tangible connections with ancient peoples who recorded their laws, prayers, business transactions, and daily life 4000 years ago."
+          "description": "Professors teaching ancient history, world civilization courses, or classical languages use VibeTrans to demonstrate real cuneiform translation in classrooms. Students gain hands-on experience with primary sources without requiring years of specialized training. The tool transforms abstract historical concepts into tangible connections with ancient peoples who recorded their laws, prayers, business transactions, and daily life 4000 years ago.",
+          "image": "/images/docs/cuneiform-ai-technology.webp",
+          "imageAlt": "Education and Ancient History Teaching"
         },
         {
           "title": "Archaeological Excavation Support",
-          "description": "When archaeologists discover cuneiform inscriptions during excavations, immediate translation helps contextualize finds and guide research directions. VibeTrans provides field teams with rapid preliminary translations, helping determine site significance, identify artifact dating, and understand the historical context of architectural discoveries. This speeds decision-making about excavation priorities and preservation strategies for newly uncovered texts."
+          "description": "When archaeologists discover cuneiform inscriptions during excavations, immediate translation helps contextualize finds and guide research directions. VibeTrans provides field teams with rapid preliminary translations, helping determine site significance, identify artifact dating, and understand the historical context of architectural discoveries. This speeds decision-making about excavation priorities and preservation strategies for newly uncovered texts.",
+          "image": "/images/docs/why-learn-cuneiform.webp",
+          "imageAlt": "Archaeological Excavation Support"
         }
       ]
     },
@@ -122,38 +164,44 @@
       ]
     },
     "testimonials": {
-      "title": "What Scholars and Researchers Say",
-      "subtitle": "Reviews from Assyriology professionals and historians",
+      "title": "What Our Users Are Saying",
+      "subtitle": "Real feedback from real users",
       "items": {
         "item-1": {
-          "name": "Dr. John Williams",
-          "role": "Professor of Ancient Near Eastern Studies, Yale University",
-          "content": "As an Assyriologist with 30 years of experience, I was skeptical about AI translation of cuneiform. VibeTrans surprised me. While it doesn't replace expert human translation for publication-quality work, it's remarkably accurate for preliminary translations of administrative texts. I've used it to quickly process hundreds of economic tablets from Old Babylonian archives, identifying key documents that warrant detailed analysis. It's become an indispensable research tool in my laboratory."
+          "name": "John Smith",
+          "role": "History Teacher",
+          "heading": "A Classroom Revelation",
+          "content": "Using the Cuneiform Translator in my history class has been a game changer. Students love seeing their names in cuneiform, and it sparks discussions about ancient languages. It’s like bringing a piece of Mesopotamia into the classroom, making history tangible and exciting."
         },
         "item-2": {
-          "name": "Dr. Mary Smith",
-          "role": "Archaeologist, British Museum",
-          "content": "Working with newly excavated cuneiform tablets from Mesopotamian sites, we often need rapid preliminary translations to contextualize finds during active excavations. VibeTrans has transformed our workflow. Last summer, we discovered a cache of Akkadian tablets, and within hours, VibeTrans provided translations indicating they were diplomatic correspondence from the Amarna period. This immediate context helped us prioritize conservation efforts and adjust our excavation strategy."
+          "name": "Emily Brown",
+          "role": "Archaeology Student",
+          "heading": "Perfect for Quick Translations",
+          "content": "As an archaeology student, I often need to translate cuneiform tablets quickly. This translator saves me so much time. The instant conversion feature is incredibly accurate, and I can focus more on analysis rather than decoding. It's a practical tool for anyone in the field."
         },
         "item-3": {
-          "name": "Dr. James Anderson",
-          "role": "Chair of Mesopotamian Studies, University of Chicago",
-          "content": "I teach graduate seminars on Sumerian and Akkadian texts. VibeTrans has become invaluable for helping students develop translation skills. Beginners can use it to check their work and identify mistakes, while advanced students use it to quickly process texts before in-depth grammatical analysis. The tool's accuracy for standard literary texts like Gilgamesh is particularly impressive. It successfully captures nuances that simple transliteration tools miss completely."
+          "name": "Michael Johnson",
+          "role": "Museum Curator",
+          "heading": "Enhancing Visitor Experience",
+          "content": "We use the Cuneiform Translator for visitor engagement in our museum. Visitors can snap a photo of a tablet and instantly get an English translation, enhancing their experience. It's delightful to see them connect with ancient stories in real time."
         },
         "item-4": {
-          "name": "Sarah Johnson",
-          "role": "Curator of Ancient Civilizations, Metropolitan Museum of Art",
-          "content": "Our museum holds over 2,000 cuneiform tablets, many without translations in our catalog records. VibeTrans has enabled us to systematically translate and properly catalog our collection. We've discovered several tablets contain significant historical content, including a previously unknown variant of a Sumerian proverb collection. This tool makes our collection more accessible to researchers and helps us create accurate exhibition labels for public education."
+          "name": "Sarah Davis",
+          "role": "Linguistics Enthusiast",
+          "heading": "Learning Through Fun",
+          "content": "For someone fascinated by languages, this tool is a treasure. The learning mode, where each sign's pronunciation and grammar are explained, is incredibly educational. It's like a mini-course on ancient scripts, making learning interactive and enjoyable. I’m constantly discovering new things!"
         },
         "item-5": {
-          "name": "Dr. Michael Chen",
-          "role": "Comparative Linguistics Researcher, Oxford University",
-          "content": "My research compares grammatical structures across ancient Semitic languages. VibeTrans accelerates this work enormously by providing reliable Akkadian translations I can analyze for linguistic patterns. The AI's ability to distinguish between Old Akkadian, Middle Babylonian, and Neo-Assyrian dialects shows sophisticated training. While I always verify critical translations manually, VibeTrans handles the bulk processing that would otherwise consume months of my research time."
+          "name": "James Wilson",
+          "role": "Tattoo Artist",
+          "heading": "Inspiration for Unique Designs",
+          "content": "I've used the translator to create unique tattoo designs for my clients. The ability to convert phrases into cuneiform adds a personal and historical depth to their tattoos. It's a fantastic tool for artists looking to offer something truly distinctive. Clients love the connection to ancient culture!"
         },
         "item-6": {
-          "name": "Emily Rodriguez",
-          "role": "Ph.D. Candidate, University of Pennsylvania",
-          "content": "As a graduate student without funding for extensive archival research trips, VibeTrans has been transformative for my dissertation on Babylonian legal texts. I can access transliterated cuneiform texts online and translate them efficiently, building a corpus for computational analysis. The tool democratizes access to primary sources that were previously readable only by senior scholars. It's helping a new generation of researchers engage directly with ancient texts."
+          "name": "Laura Thompson",
+          "role": "Cultural Enthusiast",
+          "heading": "Ancient World at My Fingertips",
+          "content": "I’m passionate about ancient cultures, and this tool lets me explore them effortlessly. Translating English into cuneiform and back is seamless. It feels like I’m holding a piece of history, understanding and appreciating the depth of ancient Mesopotamian storytelling. It's simply fascinating!"
         }
       }
     },

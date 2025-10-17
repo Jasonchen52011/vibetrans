@@ -4,9 +4,9 @@
  */
 
 import path from 'path';
+import { unlink } from 'fs/promises';
 import { chromium } from 'playwright';
 import sharp from 'sharp';
-import { unlink } from 'fs/promises';
 
 interface ScreenshotConfig {
   pageSlug: string;
@@ -52,7 +52,9 @@ export async function captureHowToScreenshot(
   );
 
   console.log(`\n📸 Capturing How-To screenshot from: ${url}`);
-  console.log(`✂️  Crop settings: Left ${cropLeft}px, Right ${cropRight}px, Bottom ${cropBottom}px`);
+  console.log(
+    `✂️  Crop settings: Left ${cropLeft}px, Right ${cropRight}px, Bottom ${cropBottom}px`
+  );
 
   const browser = await chromium.launch();
   const context = await browser.newContext({
@@ -87,21 +89,22 @@ export async function captureHowToScreenshot(
     const maxAttempts = 5;
 
     while (attempt <= maxAttempts) {
-      const cropConfig = (cropLeft > 0 || cropRight > 0 || cropBottom > 0) ? {
-        left: Math.min(cropLeft, actualWidth - 100),
-        top: 0,
-        width: finalWidth,
-        height: finalHeight,
-      } : undefined;
+      const cropConfig =
+        cropLeft > 0 || cropRight > 0 || cropBottom > 0
+          ? {
+              left: Math.min(cropLeft, actualWidth - 100),
+              top: 0,
+              width: finalWidth,
+              height: finalHeight,
+            }
+          : undefined;
 
       let pipeline = sharp(tempPngPath);
       if (cropConfig) {
         pipeline = pipeline.extract(cropConfig);
       }
 
-      await pipeline
-        .webp({ quality, effort: 6 })
-        .toFile(finalWebpPath);
+      await pipeline.webp({ quality, effort: 6 }).toFile(finalWebpPath);
 
       const fs = await import('fs/promises');
       const stats = await fs.stat(finalWebpPath);

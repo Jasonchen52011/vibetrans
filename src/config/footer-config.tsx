@@ -129,6 +129,31 @@ export function useFooterLinks(): NestedMenuItem[] {
           href: Routes.MinionTranslator,
           external: false,
         },
+        {
+          title: 'Baybayin Translator',
+          href: Routes.BaybayinTranslator,
+          external: false,
+        },
+        {
+          title: 'Samoan To English Translator',
+          href: Routes.SamoanToEnglishTranslator,
+          external: false,
+        },
+        {
+          title: 'Gaster Translator',
+          href: Routes.GasterTranslator,
+          external: false,
+        },
+        {
+          title: 'High Valyrian Translator',
+          href: Routes.HighValyrianTranslator,
+          external: false,
+        },
+        {
+          title: 'Aramaic Translator',
+          href: Routes.AramaicTranslator,
+          external: false,
+        },
       ],
     },
     {

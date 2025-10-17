@@ -1,0 +1,64 @@
+{
+  "success": true,
+  "totalImages": 7,
+  "successfulImages": 1,
+  "failedImages": 6,
+  "images": [
+    {
+      "section": "whatIs",
+      "title": "What is cantonese translator",
+      "filename": "cantonese-translation-tool.webp",
+      "size": 0,
+      "status": "failed",
+      "error": "All image generation models failed. Last error: Failed to create Ideogram task: undefined"
+    },
+    {
+      "section": "funFacts #1",
+      "title": "The Tone Challenge",
+      "filename": "tone-translation-puzzle.webp",
+      "size": 0,
+      "status": "failed",
+      "error": "All image generation models failed. Last error: Failed to create Ideogram task: undefined"
+    },
+    {
+      "section": "funFacts #2",
+      "title": "Cantonese and English Mix",
+      "filename": "language-cocktail.webp",
+      "size": 0,
+      "status": "failed",
+      "error": "All image generation models failed. Last error: Failed to create Ideogram task: undefined"
+    },
+    {
+      "section": "userInterests #1",
+      "title": "Tone Visualization",
+      "filename": "tone-harmony-visual.webp",
+      "size": 0,
+      "status": "failed",
+      "error": "All image generation models failed. Last error: Failed to create Ideogram task: undefined"
+    },
+    {
+      "section": "userInterests #2",
+      "title": "Slang and Colloquial Translations",
+      "filename": "slang-translation-guide.webp",
+      "size": 0,
+      "status": "failed",
+      "error": "All image generation models failed. Last error: Failed to create Ideogram task: undefined"
+    },
+    {
+      "section": "userInterests #3",
+      "title": "Offline Translation",
+      "filename": "offline-travel-translate.webp",
+      "size": 70,
+      "status": "success"
+    },
+    {
+      "section": "userInterests #4",
+      "title": "Cantonese Romanization Systems",
+      "filename": "romanization-switch.webp",
+      "size": 0,
+      "status": "failed",
+      "error": "All image generation models failed. Last error: Failed to create Ideogram task: undefined"
+    }
+  ],
+  "totalTimeMs": 17719
+}

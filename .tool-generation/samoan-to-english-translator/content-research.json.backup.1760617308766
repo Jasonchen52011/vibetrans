@@ -1,0 +1,300 @@
+{
+  "contentGaps": [
+    {
+      "topic": "Accurate pronunciation with macrons (ā, ē, ī, ō, ū) and the glottal stop (‘)",
+      "reason": "Machine translators rarely teach correct pronunciation; users need to speak/recognise real-life Samoan.",
+      "competitors": [
+        "Google Translate",
+        "Bing Microsoft Translator",
+        "Yandex Translate",
+        "iLoveTranslation",
+        "LingvaNex",
+        "Glosbe",
+        "TranslateKing"
+      ]
+    },
+    {
+      "topic": "Colloquial & slang expressions (e.g. ‘chur’, ‘uso’) and culturally-specific idioms",
+      "reason": "Visitors often want to chat with Samoan friends or read social media posts that use slang, which literal engines mistranslate.",
+      "competitors": [
+        "Google Translate",
+        "Reverso",
+        "TranslateKing",
+        "EasyTrans",
+        "MyMemory",
+        "LingvaNex"
+      ]
+    },
+    {
+      "topic": "Formal vs. informal speech levels in Samoan (gagana māmā vs gagana faʻaaloalo)",
+      "reason": "Using the wrong speech level can be disrespectful in Samoan culture; learners look for guidance.",
+      "competitors": [
+        "All top 15 except SamoanDictionary.com (partially)"
+      ]
+    },
+    {
+      "topic": "Dialect & regional variation (Samoa vs. American Samoa vs. Tokelau-influenced)",
+      "reason": "Travelers, heritage speakers, and researchers ask whether a translation fits their region.",
+      "competitors": [
+        "Google Translate",
+        "Bing",
+        "iLoveTranslation",
+        "Glosbe",
+        "LingvaNex"
+      ]
+    },
+    {
+      "topic": "Contextual examples & sentence bank searchable by domain (travel, church, legal)",
+      "reason": "Users want to verify real-world usage, not just single-line output.",
+      "competitors": [
+        "Google Translate",
+        "Yandex",
+        "Reverso",
+        "TranslateKing",
+        "iLoveTranslation"
+      ]
+    },
+    {
+      "topic": "Audio voice input & hands-free translation (mobile-friendly)",
+      "reason": "Samoan speakers on the move prefer speaking into phones instead of typing diacritics.",
+      "competitors": [
+        "Most web-only tools except Google Translate mobile app"
+      ]
+    },
+    {
+      "topic": "Bulk document/PDF translation with preserved formatting",
+      "reason": "Small businesses, churches, and NGOs need to translate flyers, forms, and sermons.",
+      "competitors": [
+        "Nearly all except LingvaNex (paid)"
+      ]
+    },
+    {
+      "topic": "Privacy & data-retention policy for sensitive genealogical or legal text",
+      "reason": "Many Samoans translate personal family records; they worry about data leaks.",
+      "competitors": [
+        "All free web translators except Google Cloud (buried in T&C)"
+      ]
+    },
+    {
+      "topic": "Human-verified translation marketplace or pro review button",
+      "reason": "Missionaries, tattoo artists, and academics need certified accuracy that machines can’t promise.",
+      "competitors": [
+        "Every automated tool in top 15"
+      ]
+    },
+    {
+      "topic": "API/Developer access for embedding Samoan ↔ English into apps",
+      "reason": "Start-ups serving the Pacific look for plug-in translation endpoints.",
+      "competitors": [
+        "TranslateKing",
+        "EasyTrans",
+        "iLoveTranslation",
+        "Glosbe"
+      ]
+    }
+  ],
+  "socialTopics": [
+    {
+      "platform": "Reddit",
+      "topic": "r/translator requests: ‘Please translate my Samoan tattoo phrase before I ink it’",
+      "engagement": "高",
+      "summary": "Posts routinely reach 100–300 upvotes and dozens of comments correcting literal vs cultural meaning."
+    },
+    {
+      "platform": "Reddit",
+      "topic": "Meaning of the chant ‘Toa Samoa’ during Rugby League World Cup",
+      "engagement": "中",
+      "summary": "Explainers on pride, warrior spirit, and literal translation ‘Samoan Warrior’ trigger lively sports and cultural discussions."
+    },
+    {
+      "platform": "Reddit",
+      "topic": "How to pronounce ‘fa’amālō’ and when to use it",
+      "engagement": "中",
+      "summary": "Heritage learners ask for IPA + audio; native speakers correct stress patterns."
+    },
+    {
+      "platform": "Quora",
+      "topic": "What is the best app for Samoan to English translation offline?",
+      "engagement": "高",
+      "summary": "Long answer threads compare Google, LingvaNex, and community dictionaries, often emphasising lack of offline support."
+    },
+    {
+      "platform": "Quora",
+      "topic": "Why does Samoan use the letter ‘S’ so much and almost no ‘H’?",
+      "engagement": "中",
+      "summary": "Linguistic curiosity about phoneme inventory leads to discussions of Polynesian sound shifts."
+    },
+    {
+      "platform": "Quora",
+      "topic": "How do you say ‘I love you’ in Samoan and does gender change the phrase?",
+      "engagement": "高",
+      "summary": "Simple phrase gets >50k views; users debate ‘ou te alofa ia te oe’ vs. shorter forms."
+    },
+    {
+      "platform": "Reddit",
+      "topic": "Translating Bible verses for church program",
+      "engagement": "中",
+      "summary": "Requests to maintain sacred tone spark debates on machine accuracy vs. human reverence."
+    }
+  ],
+  "funFacts": [
+    "Samoan has only 14 consonants and 5 vowels, making its alphabet one of the smallest in daily use.",
+    "Word order is typically Verb–Subject–Object, unlike English’s Subject–Verb–Object.",
+    "Macrons (fa’amamafa) completely change meaning: ‘tama’ = boy, ‘tamā’ = father.",
+    "The glottal stop is written with an apostrophe and is considered a full consonant.",
+    "Samoan was one of the first Pacific languages printed (1830s) due to missionary presses.",
+    "English loanwords are often Samoanised, e.g. ‘aisa’ (ice), ‘falani’ (France/bread)."
+  ],
+  "highFrequencyWords": [
+    {
+      "word": "translate",
+      "frequency": "高",
+      "context": "CTA buttons & headings"
+    },
+    {
+      "word": "translation",
+      "frequency": "高",
+      "context": "feature descriptions"
+    },
+    {
+      "word": "Samoan",
+      "frequency": "高",
+      "context": "language pair label"
+    },
+    {
+      "word": "English",
+      "frequency": "高",
+      "context": "language pair label"
+    },
+    {
+      "word": "online",
+      "frequency": "高",
+      "context": "service qualifier"
+    },
+    {
+      "word": "free",
+      "frequency": "高",
+      "context": "value proposition"
+    },
+    {
+      "word": "text",
+      "frequency": "高",
+      "context": "input description"
+    },
+    {
+      "word": "tool",
+      "frequency": "高",
+      "context": "generic noun"
+    },
+    {
+      "word": "instant",
+      "frequency": "中",
+      "context": "speed benefit"
+    },
+    {
+      "word": "accurate",
+      "frequency": "中",
+      "context": "quality claim"
+    },
+    {
+      "word": "sentences",
+      "frequency": "中",
+      "context": "scope of translation"
+    },
+    {
+      "word": "phrases",
+      "frequency": "中",
+      "context": "scope of translation"
+    },
+    {
+      "word": "dictionary",
+      "frequency": "中",
+      "context": "alternative naming"
+    },
+    {
+      "word": "voice",
+      "frequency": "中",
+      "context": "input option"
+    },
+    {
+      "word": "audio",
+      "frequency": "中",
+      "context": "pronunciation feature"
+    },
+    {
+      "word": "copy",
+      "frequency": "中",
+      "context": "post-translation action"
+    },
+    {
+      "word": "paste",
+      "frequency": "中",
+      "context": "post-translation action"
+    },
+    {
+      "word": "share",
+      "frequency": "中",
+      "context": "social feature"
+    },
+    {
+      "word": "pronunciation",
+      "frequency": "中",
+      "context": "feature bullet"
+    },
+    {
+      "word": "app",
+      "frequency": "中",
+      "context": "mobile reference"
+    },
+    {
+      "word": "software",
+      "frequency": "中",
+      "context": "downloadable option"
+    },
+    {
+      "word": "service",
+      "frequency": "中",
+      "context": "value statement"
+    },
+    {
+      "word": "support",
+      "frequency": "中",
+      "context": "compatibility claim"
+    },
+    {
+      "word": "typing",
+      "frequency": "中",
+      "context": "input method"
+    },
+    {
+      "word": "language",
+      "frequency": "高",
+      "context": "category"
+    },
+    {
+      "word": "converter",
+      "frequency": "中",
+      "context": "alternate term"
+    },
+    {
+      "word": "website",
+      "frequency": "中",
+      "context": "channel mention"
+    },
+    {
+      "word": "document",
+      "frequency": "中",
+      "context": "file translation"
+    },
+    {
+      "word": "API",
+      "frequency": "中",
+      "context": "developer offering"
+    },
+    {
+      "word": "fast",
+      "frequency": "中",
+      "context": "speed adjective"
+    }
+  ]
+}

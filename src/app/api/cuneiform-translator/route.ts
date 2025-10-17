@@ -18,21 +18,26 @@ SCRIPT CONTEXT:
 ${getScriptDescription(script)}
 
 TASK:
-- Translate the INPUT text into ${script.charAt(0).toUpperCase() + script.slice(1)} cuneiform representation
-- Use Unicode cuneiform characters (U+12000–U+123FF, U+12400–U+1247F) where appropriate
-- Provide accurate scholarly transliteration if full Unicode representation is not possible
-- Be historically accurate in your translation
-- Maintain the scholarly conventions of cuneiform transliteration
+- Translate the INPUT English text into ${script.charAt(0).toUpperCase() + script.slice(1)} cuneiform
+- Use actual Unicode cuneiform characters (U+12000–U+123FF, U+12400–U+1247F)
+- Each English word should be represented by appropriate cuneiform signs/logograms
+- Focus on conveying meaning through cuneiform symbols, not just transliteration
 
 RULES:
+- Do NOT add any English letters or modern alphabets in the output
 - Do NOT add extra explanations or commentary
-- Do NOT change the core meaning or context of the original text
-- Keep the same paragraph structure and formatting
-- Use appropriate cuneiform conventions for ${script}
-- Be academically rigorous and historically accurate
+- Do NOT use any language other than cuneiform characters
+- Keep the same word order and meaning as the original text
+- Use authentic cuneiform signs that would be understood in ancient ${script}
+
+EXAMPLES:
+- "king" → 𒈗
+- "temple" → 𒂍
+- "I am" → 𒀀𒈾
+- "god" → 𒀭
 
 OUTPUT:
-- Return ONLY the cuneiform text or transliteration, nothing else`;
+- Return ONLY cuneiform Unicode characters, nothing else`;
 
 const TO_ENGLISH_PROMPT = (
   script: CuneiformScript

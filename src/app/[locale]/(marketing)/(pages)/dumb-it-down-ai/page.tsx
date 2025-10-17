@@ -372,13 +372,13 @@ export default async function DumbItDownPage(props: DumbItDownPageProps) {
         {/* Explore Other Tools */}
         <ExploreOurAiTools
           toolKeys={[
-        'Verbose Generator',
-        'Chinese to English Translator',
-        'Bad Translator',
-        'IVR Translator',
-        'Esperanto Translator',
-        'Gen Z Translator'
-      ]}
+            'Gen Alpha Translator',
+            'Cuneiform Translator',
+            'Bad Translator',
+            'Dog Translator',
+            'Esperanto Translator',
+            'Gen Z Translator',
+          ]}
         />
 
         {/* Testimonials Section */}

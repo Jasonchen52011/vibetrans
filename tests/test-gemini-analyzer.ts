@@ -22,10 +22,7 @@ async function testGeminiPromptGeneration() {
 
     console.log('\n⏳ Calling Gemini API...\n');
 
-    const result = await testGeneratePrompt(
-      testCase.title,
-      testCase.content
-    );
+    const result = await testGeneratePrompt(testCase.title, testCase.content);
 
     console.log('\n' + '='.repeat(60));
     console.log('✅ Test PASSED - Gemini Generated Prompt:');

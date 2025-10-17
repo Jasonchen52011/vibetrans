@@ -9,7 +9,7 @@ const toolRecommendations: Record<string, string[]> = {
     'Esperanto Translator',
     'Chinese to English Translator',
     'Al Bhed Translator',
-    'Cantonese Translator'
+    'Cantonese Translator',
   ],
   'cuneiform-translator': [
     'Ancient Greek Translator',
@@ -17,7 +17,7 @@ const toolRecommendations: Record<string, string[]> = {
     'Esperanto Translator',
     'Chinese to English Translator',
     'Al Bhed Translator',
-    'Gibberish Translator'
+    'Gibberish Translator',
   ],
   'middle-english-translator': [
     'Ancient Greek Translator',
@@ -25,7 +25,7 @@ const toolRecommendations: Record<string, string[]> = {
     'Esperanto Translator',
     'Gen Alpha Translator',
     'Chinese to English Translator',
-    'Bad Translator'
+    'Bad Translator',
   ],
   'albanian-to-english': [
     'Creole to English Translator',
@@ -33,7 +33,7 @@ const toolRecommendations: Record<string, string[]> = {
     'Cantonese Translator',
     'Esperanto Translator',
     'IVR Translator',
-    'Bad Translator'
+    'Bad Translator',
   ],
   'chinese-to-english-translator': [
     'Cantonese Translator',
@@ -41,7 +41,7 @@ const toolRecommendations: Record<string, string[]> = {
     'Creole to English Translator',
     'IVR Translator',
     'Esperanto Translator',
-    'Bad Translator'
+    'Bad Translator',
   ],
   'cantonese-translator': [
     'Chinese to English Translator',
@@ -49,7 +49,7 @@ const toolRecommendations: Record<string, string[]> = {
     'Creole to English Translator',
     'IVR Translator',
     'Gen Z Translator',
-    'Esperanto Translator'
+    'Esperanto Translator',
   ],
   'creole-to-english-translator': [
     'Albanian to English',
@@ -57,7 +57,7 @@ const toolRecommendations: Record<string, string[]> = {
     'Cantonese Translator',
     'Esperanto Translator',
     'IVR Translator',
-    'Gen Z Translator'
+    'Gen Z Translator',
   ],
   'gen-z-translator': [
     'Gen Alpha Translator',
@@ -65,7 +65,7 @@ const toolRecommendations: Record<string, string[]> = {
     'Bad Translator',
     'Baby Translator',
     'Pig Latin Translator',
-    'Gibberish Translator'
+    'Gibberish Translator',
   ],
   'gen-alpha-translator': [
     'Gen Z Translator',
@@ -73,7 +73,7 @@ const toolRecommendations: Record<string, string[]> = {
     'Bad Translator',
     'Baby Translator',
     'Pig Latin Translator',
-    'Alien Text Generator'
+    'Alien Text Generator',
   ],
   'dog-translator': [
     'Baby Translator',
@@ -81,7 +81,7 @@ const toolRecommendations: Record<string, string[]> = {
     'Gen Z Translator',
     'Gibberish Translator',
     'Alien Text Generator',
-    'Pig Latin Translator'
+    'Pig Latin Translator',
   ],
   'bad-translator': [
     'Dog Translator',
@@ -89,7 +89,7 @@ const toolRecommendations: Record<string, string[]> = {
     'Gen Z Translator',
     'Gibberish Translator',
     'Alien Text Generator',
-    'Verbose Generator'
+    'Verbose Generator',
   ],
   'baby-translator': [
     'Dog Translator',
@@ -97,7 +97,7 @@ const toolRecommendations: Record<string, string[]> = {
     'Gen Alpha Translator',
     'Gibberish Translator',
     'Pig Latin Translator',
-    'Gen Z Translator'
+    'Gen Z Translator',
   ],
   'al-bhed-translator': [
     'Pig Latin Translator',
@@ -105,7 +105,7 @@ const toolRecommendations: Record<string, string[]> = {
     'Alien Text Generator',
     'Gen Z Translator',
     'Bad Translator',
-    'Ancient Greek Translator'
+    'Ancient Greek Translator',
   ],
   'pig-latin-translator': [
     'Al Bhed Translator',
@@ -113,7 +113,7 @@ const toolRecommendations: Record<string, string[]> = {
     'Gen Alpha Translator',
     'Baby Translator',
     'Alien Text Generator',
-    'Gen Z Translator'
+    'Gen Z Translator',
   ],
   'gibberish-translator': [
     'Pig Latin Translator',
@@ -121,7 +121,7 @@ const toolRecommendations: Record<string, string[]> = {
     'Bad Translator',
     'Alien Text Generator',
     'Gen Z Translator',
-    'Baby Translator'
+    'Baby Translator',
   ],
   'esperanto-translator': [
     'Chinese to English Translator',
@@ -129,7 +129,7 @@ const toolRecommendations: Record<string, string[]> = {
     'Albanian to English',
     'Ancient Greek Translator',
     'Creole to English Translator',
-    'Middle English Translator'
+    'Middle English Translator',
   ],
   'alien-text-generator': [
     'Gibberish Translator',
@@ -137,7 +137,7 @@ const toolRecommendations: Record<string, string[]> = {
     'Al Bhed Translator',
     'Pig Latin Translator',
     'Verbose Generator',
-    'Gen Z Translator'
+    'Gen Z Translator',
   ],
   'verbose-generator': [
     'Dumb It Down AI',
@@ -145,7 +145,7 @@ const toolRecommendations: Record<string, string[]> = {
     'Alien Text Generator',
     'Gen Z Translator',
     'Chinese to English Translator',
-    'Gibberish Translator'
+    'Gibberish Translator',
   ],
   'dumb-it-down-ai': [
     'Verbose Generator',
@@ -153,7 +153,7 @@ const toolRecommendations: Record<string, string[]> = {
     'Bad Translator',
     'IVR Translator',
     'Esperanto Translator',
-    'Gen Z Translator'
+    'Gen Z Translator',
   ],
   'ivr-translator': [
     'Chinese to English Translator',
@@ -161,8 +161,8 @@ const toolRecommendations: Record<string, string[]> = {
     'Albanian to English',
     'Creole to English Translator',
     'Dumb It Down AI',
-    'Esperanto Translator'
-  ]
+    'Esperanto Translator',
+  ],
 };
 
 function updatePageFile(filePath: string, toolKey: string) {
@@ -177,7 +177,8 @@ function updatePageFile(filePath: string, toolKey: string) {
   const fileContent = fs.readFileSync(filePath, 'utf-8');
 
   // 查找 ExploreOurAiTools 组件和它的 toolKeys 属性
-  const exploreToolsRegex = /<ExploreOurAiTools[\s\S]*?toolKeys=\{(\[[\s\S]*?\])\}[\s\S]*?\/>/;
+  const exploreToolsRegex =
+    /<ExploreOurAiTools[\s\S]*?toolKeys=\{(\[[\s\S]*?\])\}[\s\S]*?\/>/;
   const match = fileContent.match(exploreToolsRegex);
 
   if (!match) {
@@ -191,12 +192,9 @@ function updatePageFile(filePath: string, toolKey: string) {
   const newToolKeysArray = `[\n        '${newToolKeys.join("',\n        '")}'\n      ]`;
 
   // 替换整个 ExploreOurAiTools 组件，保持格式一致
-  const updatedContent = fileContent.replace(
-    exploreToolsRegex,
-    (fullMatch) => {
-      return fullMatch.replace(oldToolKeysArray, newToolKeysArray);
-    }
-  );
+  const updatedContent = fileContent.replace(exploreToolsRegex, (fullMatch) => {
+    return fullMatch.replace(oldToolKeysArray, newToolKeysArray);
+  });
 
   if (fileContent === updatedContent) {
     console.log(`  ℹ️  内容无变化，跳过写入`);
@@ -210,14 +208,15 @@ function updatePageFile(filePath: string, toolKey: string) {
 }
 
 async function main() {
-  const basePath = '/Users/jason-chen/Downloads/project/vibetrans/src/app/[locale]/(marketing)/(pages)';
+  const basePath =
+    '/Users/jason-chen/Downloads/project/vibetrans/src/app/[locale]/(marketing)/(pages)';
 
   let successCount = 0;
   let skipCount = 0;
   let errorCount = 0;
 
   console.log('开始批量更新工具页面的 ExploreOurAiTools 配置...\n');
-  console.log('=' .repeat(60));
+  console.log('='.repeat(60));
 
   for (const toolKey of Object.keys(toolRecommendations)) {
     const filePath = path.join(basePath, toolKey, 'page.tsx');

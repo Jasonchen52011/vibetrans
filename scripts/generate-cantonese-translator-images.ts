@@ -14,10 +14,10 @@
  * API Priority: Volcano 4.0 → SeaDream 4.0 → Nano Banana → Ideogram v3
  */
 
-import { generateIllustration } from '../src/lib/article-illustrator/image-generator';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import sharp from 'sharp';
+import { generateIllustration } from '../src/lib/article-illustrator/image-generator';
 
 const OUTPUT_DIR = path.join(process.cwd(), 'public', 'images', 'docs');
 
@@ -95,9 +95,7 @@ async function downloadAndConvertImage(
 }
 
 async function generateAllImages() {
-  console.log(
-    '\n🎨 Starting image generation for Cantonese Translator...\n'
-  );
+  console.log('\n🎨 Starting image generation for Cantonese Translator...\n');
   console.log(`📂 Output directory: ${OUTPUT_DIR}\n`);
   console.log(
     `🔧 API Priority Order: Volcano 4.0 → SeaDream 4.0 → Nano Banana → Ideogram v3\n`
