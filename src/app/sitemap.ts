@@ -27,6 +27,12 @@ const staticRoutes = [
   '/cantonese-translator',
   '/chinese-to-english-translator',
   '/middle-english-translator',
+  '/minion-translator',
+  '/baybayin-translator',
+  '/samoan-to-english-translator',
+  '/gaster-translator',
+  '/high-valyrian-translator',
+  '/aramaic-translator',
   '/privacy',
   '/terms',
 ];
