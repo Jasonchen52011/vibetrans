@@ -312,6 +312,16 @@ Please provide your response in this format:
   };
 }
 
+// Handle GET method for health checks
+export async function GET() {
+  return NextResponse.json({
+    status: 'healthy',
+    message: 'Chinese to English Translator API is running',
+    timestamp: new Date().toISOString(),
+    methods: ['GET', 'POST', 'OPTIONS'],
+  });
+}
+
 export async function POST(request: Request) {
   try {
     const body = (await request.json()) as {

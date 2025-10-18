@@ -4,10 +4,42 @@ import { NextResponse } from 'next/server';
 
 export const runtime = 'edge';
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || '');
+const genAI = new GoogleGenerativeAI(process.env.GOOGLE_GENERATIVE_AI_API_KEY || '');
+
+// Handle GET method for health checks
+export async function GET() {
+  return NextResponse.json({
+    status: 'healthy',
+    message: 'Cantonese Translator API is running',
+    timestamp: new Date().toISOString(),
+    methods: ['GET', 'POST', 'OPTIONS'],
+  });
+}
+
+// Handle OPTIONS method for CORS preflight requests
+export async function OPTIONS() {
+  return new NextResponse(null, {
+    status: 200,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    },
+  });
+}
 
 export async function POST(request: Request) {
   try {
+    // 验证API密钥配置
+    const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
+    if (!apiKey) {
+      console.error('Missing GOOGLE_GENERATIVE_AI_API_KEY environment variable');
+      return NextResponse.json(
+        { error: 'API configuration error - missing API key' },
+        { status: 500 }
+      );
+    }
+
     const body = (await request.json()) as {
       text: string;
       direction?: 'yue-to-en' | 'en-to-yue';

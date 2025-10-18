@@ -25,7 +25,11 @@
     "knip": "knip",
     "tool:create": "node scripts/create-translator-tool.js",
     "tool:auto": "node -r dotenv/config scripts/auto-tool-generator.js",
-    "tool:test": "node scripts/test-auto-tool-generator.js"
+    "tool:test": "node scripts/test-auto-tool-generator.js",
+    "api:test": "tsx scripts/test-all-apis.ts",
+    "api:test:quick": "tsx scripts/quick-api-test.ts",
+    "api:monitor": "tsx scripts/api-monitor.ts",
+    "api:monitor:report": "tsx scripts/api-monitor.ts --report"
   },
   "dependencies": {
     "@ai-sdk/deepseek": "^1.0.0",
@@ -45,6 +49,7 @@
     "@google-cloud/text-to-speech": "^6.3.1",
     "@google/generative-ai": "^0.24.1",
     "@hookform/resolvers": "^5.2.1",
+    "@letuscode/spec-kit": "^0.1.3",
     "@marsidev/react-turnstile": "^1.1.0",
     "@mendable/firecrawl-js": "^1.29.1",
     "@next/third-parties": "^15.3.0",
