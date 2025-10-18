@@ -44,27 +44,27 @@
       "description": "See how VibeTrans accurately translates ancient cuneiform scripts into modern English. From Epic of Gilgamesh fragments to administrative records, experience AI precision in decoding wedge-shaped characters that recorded humanity's first written laws, literature, and scientific knowledge.",
       "items": [
         {
-          "alt": "𒀀𒈾 𒈾 𒁕 𒈗 → I am the king",
+          "alt": "𒀀𒈾 𒈾 𒁕 𒈗 → I am the king, ruler of all lands and protector of my people, chosen by the gods to bring justice and prosperity to our great nation.",
           "name": "Royal Declaration"
         },
         {
-          "alt": "𒈗 𒁁 𒉌 → The king built",
+          "alt": "𒈗 𒁁 𒉌 → The king built this magnificent temple to honor the mighty gods, using skilled workers and precious materials from distant lands.",
           "name": "Temple Construction"
         },
         {
-          "alt": "𒁹 𒈗 𒂗 𒈗 𒈾 → 5 measures of barley",
+          "alt": "𒁹 𒈗 𒂗 𒈗 𒈾 → 5 measures of barley were collected as taxes from the farmers to feed the temple workers and store for winter.",
           "name": "Economic Record"
         },
         {
-          "alt": "𒀭𒈾 𒈗 𒁕 𒈠 → The god An gave",
+          "alt": "𒀭𒈾 𒈗 𒁕 𒈠 → The god An gave his blessing to our people, promising abundant harvests and protection from our enemies.",
           "name": "Divine Offering"
         },
         {
-          "alt": "𒁹𒈬 𒈨 𒆷 → My brother",
+          "alt": "𒁹𒈬 𒈨 𒆷 → My brother, the brave warrior who fought alongside me in many battles and helped defend our homeland.",
           "name": "Family Relation"
         },
         {
-          "alt": "𒌓 𒈨 𒍪 → In the month",
+          "alt": "𒌓 𒈨 𒍪 → In the month of harvest, when the golden grain ripens in the fields and the people celebrate with festivals.",
           "name": "Time Record"
         }
       ]

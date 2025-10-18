@@ -16,12 +16,11 @@ let genAI: GoogleGenerativeAI | null = null;
 function getGenAI(): GoogleGenerativeAI {
   if (!genAI) {
     const apiKey =
-      process.env.GEMINI_API_KEY ||
       process.env.GOOGLE_GENERATIVE_AI_API_KEY ||
-      process.env.NEXT_PUBLIC_GOOGLE_GENERATIVE_AI_API_KEY; // 添加 NEXT_PUBLIC 支持
+      process.env.NEXT_PUBLIC_GOOGLE_GENERATIVE_AI_API_KEY;
     if (!apiKey) {
       throw new Error(
-        'Missing Gemini API key. Please set GEMINI_API_KEY, GOOGLE_GENERATIVE_AI_API_KEY, or NEXT_PUBLIC_GOOGLE_GENERATIVE_AI_API_KEY environment variable.'
+        'Missing Gemini API key. Please set GOOGLE_GENERATIVE_AI_API_KEY or NEXT_PUBLIC_GOOGLE_GENERATIVE_AI_API_KEY environment variable.'
       );
     }
     genAI = new GoogleGenerativeAI(apiKey);

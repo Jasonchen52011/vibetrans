@@ -293,13 +293,13 @@ albanian-to-english-how-to.webp
 **解决方案**：
 ```bash
 # 检查环境变量
-echo $GEMINI_API_KEY
+echo $GOOGLE_GENERATIVE_AI_API_KEY
 
 # 设置 API Key（~/.zshrc 或 ~/.bashrc）
-export GEMINI_API_KEY="your-api-key"
+export GOOGLE_GENERATIVE_AI_API_KEY="your-api-key"
 
 # 或在 .env.local 中设置
-GEMINI_API_KEY=your-api-key
+GOOGLE_GENERATIVE_AI_API_KEY=your-api-key
 ```
 
 ---

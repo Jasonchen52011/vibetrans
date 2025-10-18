@@ -1,0 +1,46 @@
+{
+  "timestamp": "2025-10-18T05:53:21.891Z",
+  "baseUrl": "http://localhost:3000",
+  "results": [
+    {
+      "api": "Baybayin Translator",
+      "status": "online",
+      "responseTime": 126
+    },
+    {
+      "api": "Dog Translator",
+      "status": "online",
+      "responseTime": 62
+    },
+    {
+      "api": "Gen Z Translator",
+      "status": "online",
+      "responseTime": 106
+    },
+    {
+      "api": "Bad Translator",
+      "status": "online",
+      "responseTime": 65
+    },
+    {
+      "api": "Chinese to English",
+      "status": "online",
+      "responseTime": 95
+    },
+    {
+      "api": "Cantonese Translator",
+      "status": "online",
+      "responseTime": 88
+    },
+    {
+      "api": "Ancient Greek",
+      "status": "online",
+      "responseTime": 170
+    },
+    {
+      "api": "Al-Bhed Translator",
+      "status": "online",
+      "responseTime": 64
+    }
+  ]
+}

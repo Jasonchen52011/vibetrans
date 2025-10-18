@@ -27,7 +27,6 @@ async function comparePrompts(
   recommendation: string;
 }> {
   const apiKey =
-    process.env.GEMINI_API_KEY ||
     process.env.GOOGLE_GENERATIVE_AI_API_KEY ||
     process.env.NEXT_PUBLIC_GOOGLE_GENERATIVE_AI_API_KEY;
 

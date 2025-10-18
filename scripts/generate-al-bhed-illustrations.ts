@@ -14,7 +14,6 @@ console.log(
   '🔑 GOOGLE_GENERATIVE_AI_API_KEY exists:',
   !!process.env.GOOGLE_GENERATIVE_AI_API_KEY
 );
-console.log('🔑 GEMINI_API_KEY exists:', !!process.env.GEMINI_API_KEY);
 
 import type { ArticleSections } from '../src/lib/article-illustrator/types';
 import { generateArticleIllustrations } from '../src/lib/article-illustrator/workflow';

@@ -335,10 +335,10 @@ public/images/docs/
 **解决**：
 ```bash
 # 检查环境变量
-echo $GEMINI_API_KEY
+echo $GOOGLE_GENERATIVE_AI_API_KEY
 
 # 设置 API Key
-export GEMINI_API_KEY="your-api-key"
+export GOOGLE_GENERATIVE_AI_API_KEY="your-api-key"
 ```
 
 ### 问题 2：火山 4.0 生图失败

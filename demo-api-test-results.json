@@ -1,0 +1,143 @@
+{
+  "timestamp": "2025-10-18T05:44:15.413Z",
+  "demo": true,
+  "summary": {
+    "total": 10,
+    "successful": 8,
+    "warnings": 2,
+    "errors": 0,
+    "avgResponseTime": 1600
+  },
+  "results": [
+    {
+      "toolName": "Baybayin Translator",
+      "apiPath": "/api/baybayin-translator",
+      "status": "success",
+      "responseTime": 306,
+      "tests": {
+        "connectivity": true,
+        "getInfo": true,
+        "postFunction": true,
+        "errorHandling": false
+      },
+      "notes": "Simulated: Normal operation"
+    },
+    {
+      "toolName": "Dog Translator",
+      "apiPath": "/api/dog-translator",
+      "status": "success",
+      "responseTime": 1198,
+      "tests": {
+        "connectivity": true,
+        "getInfo": false,
+        "postFunction": true,
+        "errorHandling": true
+      },
+      "notes": "Simulated: Normal operation"
+    },
+    {
+      "toolName": "Gen Z Translator",
+      "apiPath": "/api/gen-z-translator",
+      "status": "success",
+      "responseTime": 518,
+      "tests": {
+        "connectivity": true,
+        "getInfo": true,
+        "postFunction": true,
+        "errorHandling": true
+      },
+      "notes": "Simulated: Normal operation"
+    },
+    {
+      "toolName": "Bad Translator",
+      "apiPath": "/api/bad-translator",
+      "status": "success",
+      "responseTime": 579,
+      "tests": {
+        "connectivity": true,
+        "getInfo": false,
+        "postFunction": true,
+        "errorHandling": true
+      },
+      "notes": "Simulated: Normal operation"
+    },
+    {
+      "toolName": "Chinese To English Translator",
+      "apiPath": "/api/chinese-to-english-translator",
+      "status": "warning",
+      "responseTime": 4805,
+      "tests": {
+        "connectivity": true,
+        "getInfo": true,
+        "postFunction": false,
+        "errorHandling": true
+      },
+      "notes": "Simulated: Slow response time"
+    },
+    {
+      "toolName": "Cantonese Translator",
+      "apiPath": "/api/cantonese-translator",
+      "status": "success",
+      "responseTime": 1707,
+      "tests": {
+        "connectivity": true,
+        "getInfo": true,
+        "postFunction": true,
+        "errorHandling": false
+      },
+      "notes": "Simulated: Normal operation"
+    },
+    {
+      "toolName": "Ancient Greek Translator",
+      "apiPath": "/api/ancient-greek-translator",
+      "status": "success",
+      "responseTime": 511,
+      "tests": {
+        "connectivity": true,
+        "getInfo": true,
+        "postFunction": true,
+        "errorHandling": true
+      },
+      "notes": "Simulated: Normal operation"
+    },
+    {
+      "toolName": "Al Bhed Translator",
+      "apiPath": "/api/al-bhed-translator",
+      "status": "warning",
+      "responseTime": 4014,
+      "tests": {
+        "connectivity": true,
+        "getInfo": true,
+        "postFunction": false,
+        "errorHandling": true
+      },
+      "notes": "Simulated: Slow response time"
+    },
+    {
+      "toolName": "Esperanto Translator",
+      "apiPath": "/api/esperanto-translator",
+      "status": "success",
+      "responseTime": 465,
+      "tests": {
+        "connectivity": true,
+        "getInfo": true,
+        "postFunction": true,
+        "errorHandling": true
+      },
+      "notes": "Simulated: Normal operation"
+    },
+    {
+      "toolName": "High Valyrian Translator",
+      "apiPath": "/api/high-valyrian-translator",
+      "status": "success",
+      "responseTime": 1892,
+      "tests": {
+        "connectivity": true,
+        "getInfo": true,
+        "postFunction": true,
+        "errorHandling": true
+      },
+      "notes": "Simulated: Normal operation"
+    }
+  ]
+}

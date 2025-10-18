@@ -111,28 +111,28 @@ export default async function CuneiformTranslatorPage(
     description: (t as any)('examples.description'),
     images: [
       {
-        alt: 'Sumerian Cuneiform Translation Example',
-        name: 'Sumerian Script',
+        alt: (t as any)('examples.items.0.alt'),
+        name: (t as any)('examples.items.0.name'),
       },
       {
-        alt: 'Akkadian Cuneiform Translation Example',
-        name: 'Akkadian Script',
+        alt: (t as any)('examples.items.1.alt'),
+        name: (t as any)('examples.items.1.name'),
       },
       {
-        alt: 'Babylonian Cuneiform Translation Example',
-        name: 'Babylonian Script',
+        alt: (t as any)('examples.items.2.alt'),
+        name: (t as any)('examples.items.2.name'),
       },
       {
-        alt: 'Ancient Mesopotamian Text Translation',
-        name: 'Mesopotamian Text',
+        alt: (t as any)('examples.items.3.alt'),
+        name: (t as any)('examples.items.3.name'),
       },
       {
-        alt: 'Cuneiform Unicode Characters',
-        name: 'Unicode Cuneiform',
+        alt: (t as any)('examples.items.4.alt'),
+        name: (t as any)('examples.items.4.name'),
       },
       {
-        alt: 'Historical Cuneiform Document Translation',
-        name: 'Historical Text',
+        alt: (t as any)('examples.items.5.alt'),
+        name: (t as any)('examples.items.5.name'),
       },
     ],
   };
