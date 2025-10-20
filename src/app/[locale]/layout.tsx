@@ -4,6 +4,7 @@ import {
   fontNotoSans,
   fontNotoSansMono,
   fontNotoSerif,
+  fontSatoshi,
 } from '@/assets/fonts';
 import AffonsoScript from '@/components/affiliate/affonso';
 import PromotekitScript from '@/components/affiliate/promotekit';
@@ -53,7 +54,7 @@ export default async function LocaleLayout({
         suppressHydrationWarning
         className={cn(
           'size-full antialiased',
-          fontNotoSans.className,
+          fontSatoshi.className,
           fontNotoSerif.variable,
           fontNotoSansMono.variable,
           fontBricolageGrotesque.variable

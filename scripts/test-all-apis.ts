@@ -13,9 +13,9 @@
  * 6. 生成详细报告
  */
 
-import { performance } from 'perf_hooks';
 import fs from 'fs';
 import path from 'path';
+import { performance } from 'perf_hooks';
 
 // API测试结果接口
 interface TestResult {
@@ -51,32 +51,128 @@ interface TestConfig {
 
 // 工具API配置
 const TOOLS_APIS = [
-  { name: 'Baybayin Translator', page: '/baybayin-translator', api: '/api/baybayin-translator' },
-  { name: 'Bad Translator', page: '/bad-translator', api: '/api/bad-translator' },
-  { name: 'Dog Translator', page: '/dog-translator', api: '/api/dog-translator' },
-  { name: 'Gen Z Translator', page: '/gen-z-translator', api: '/api/gen-z-translator' },
-  { name: 'Gen Alpha Translator', page: '/gen-alpha-translator', api: '/api/gen-alpha-translator' },
-  { name: 'Dumb It Down AI', page: '/dumb-it-down-ai', api: '/api/dumb-it-down-ai' },
-  { name: 'Baby Translator', page: '/baby-translator', api: '/api/baby-translator' },
+  {
+    name: 'Baybayin Translator',
+    page: '/baybayin-translator',
+    api: '/api/baybayin-translator',
+  },
+  {
+    name: 'Bad Translator',
+    page: '/bad-translator',
+    api: '/api/bad-translator',
+  },
+  {
+    name: 'Dog Translator',
+    page: '/dog-translator',
+    api: '/api/dog-translator',
+  },
+  {
+    name: 'Gen Z Translator',
+    page: '/gen-z-translator',
+    api: '/api/gen-z-translator',
+  },
+  {
+    name: 'Gen Alpha Translator',
+    page: '/gen-alpha-translator',
+    api: '/api/gen-alpha-translator',
+  },
+  {
+    name: 'Dumb It Down AI',
+    page: '/dumb-it-down-ai',
+    api: '/api/dumb-it-down-ai',
+  },
+  {
+    name: 'Baby Translator',
+    page: '/baby-translator',
+    api: '/api/baby-translator',
+  },
   { name: 'Gibberish Translator', page: '/gibberish-translator', api: null }, // 无API
-  { name: 'Ancient Greek Translator', page: '/ancient-greek-translator', api: '/api/ancient-greek-translator' },
-  { name: 'Al-Bhed Translator', page: '/al-bhed-translator', api: '/api/al-bhed-translator' },
+  {
+    name: 'Ancient Greek Translator',
+    page: '/ancient-greek-translator',
+    api: '/api/ancient-greek-translator',
+  },
+  {
+    name: 'Al-Bhed Translator',
+    page: '/al-bhed-translator',
+    api: '/api/al-bhed-translator',
+  },
   { name: 'Alien Text Generator', page: '/alien-text-generator', api: null }, // 无API
-  { name: 'Esperanto Translator', page: '/esperanto-translator', api: '/api/esperanto-translator' },
-  { name: 'Cuneiform Translator', page: '/cuneiform-translator', api: '/api/cuneiform-translator' },
-  { name: 'Verbose Generator', page: '/verbose-generator', api: '/api/verbose-generator' },
-  { name: 'IVR Translator', page: '/ivr-translator', api: '/api/ivr-translator' },
-  { name: 'Albanian to English', page: '/albanian-to-english', api: '/api/albanian-to-english' },
-  { name: 'Creole to English Translator', page: '/creole-to-english-translator', api: '/api/creole-to-english-translator' },
-  { name: 'Pig Latin Translator', page: '/pig-latin-translator', api: '/api/pig-latin-translator' },
-  { name: 'Cantonese Translator', page: '/cantonese-translator', api: '/api/cantonese-translator' },
-  { name: 'Chinese to English Translator', page: '/chinese-to-english-translator', api: '/api/chinese-to-english-translator' },
-  { name: 'Middle English Translator', page: '/middle-english-translator', api: '/api/middle-english-translator' },
-  { name: 'Minion Translator', page: '/minion-translator', api: '/api/minion-translator' },
-  { name: 'Samoan to English Translator', page: '/samoan-to-english-translator', api: '/api/samoan-to-english-translator' },
-  { name: 'Gaster Translator', page: '/gaster-translator', api: '/api/gaster-translator' },
-  { name: 'High Valyrian Translator', page: '/high-valyrian-translator', api: '/api/high-valyrian-translator' },
-  { name: 'Aramaic Translator', page: '/aramaic-translator', api: '/api/aramaic-translator' },
+  {
+    name: 'Esperanto Translator',
+    page: '/esperanto-translator',
+    api: '/api/esperanto-translator',
+  },
+  {
+    name: 'Cuneiform Translator',
+    page: '/cuneiform-translator',
+    api: '/api/cuneiform-translator',
+  },
+  {
+    name: 'Verbose Generator',
+    page: '/verbose-generator',
+    api: '/api/verbose-generator',
+  },
+  {
+    name: 'IVR Translator',
+    page: '/ivr-translator',
+    api: '/api/ivr-translator',
+  },
+  {
+    name: 'Albanian to English',
+    page: '/albanian-to-english',
+    api: '/api/albanian-to-english',
+  },
+  {
+    name: 'Creole to English Translator',
+    page: '/creole-to-english-translator',
+    api: '/api/creole-to-english-translator',
+  },
+  {
+    name: 'Pig Latin Translator',
+    page: '/pig-latin-translator',
+    api: '/api/pig-latin-translator',
+  },
+  {
+    name: 'Cantonese Translator',
+    page: '/cantonese-translator',
+    api: '/api/cantonese-translator',
+  },
+  {
+    name: 'Chinese to English Translator',
+    page: '/chinese-to-english-translator',
+    api: '/api/chinese-to-english-translator',
+  },
+  {
+    name: 'Middle English Translator',
+    page: '/middle-english-translator',
+    api: '/api/middle-english-translator',
+  },
+  {
+    name: 'Minion Translator',
+    page: '/minion-translator',
+    api: '/api/minion-translator',
+  },
+  {
+    name: 'Samoan to English Translator',
+    page: '/samoan-to-english-translator',
+    api: '/api/samoan-to-english-translator',
+  },
+  {
+    name: 'Gaster Translator',
+    page: '/gaster-translator',
+    api: '/api/gaster-translator',
+  },
+  {
+    name: 'High Valyrian Translator',
+    page: '/high-valyrian-translator',
+    api: '/api/high-valyrian-translator',
+  },
+  {
+    name: 'Aramaic Translator',
+    page: '/aramaic-translator',
+    api: '/api/aramaic-translator',
+  },
 ];
 
 // 默认测试配置
@@ -94,7 +190,7 @@ const DEFAULT_CONFIG: TestConfig = {
 async function makeRequest(
   url: string,
   options: RequestInit = {},
-  timeout: number = 30000
+  timeout = 30000
 ): Promise<{ response: Response; data: any; responseTime: number }> {
   const startTime = performance.now();
 
@@ -127,7 +223,10 @@ async function makeRequest(
 /**
  * 测试API连接性
  */
-async function testConnectivity(apiPath: string, config: TestConfig): Promise<{ success: boolean; responseTime: number; error?: string }> {
+async function testConnectivity(
+  apiPath: string,
+  config: TestConfig
+): Promise<{ success: boolean; responseTime: number; error?: string }> {
   try {
     const { response, responseTime } = await makeRequest(
       `${config.baseUrl}${apiPath}`,
@@ -138,13 +237,15 @@ async function testConnectivity(apiPath: string, config: TestConfig): Promise<{ 
     return {
       success: response.ok,
       responseTime,
-      error: response.ok ? undefined : `HTTP ${response.status}: ${response.statusText}`
+      error: response.ok
+        ? undefined
+        : `HTTP ${response.status}: ${response.statusText}`,
     };
   } catch (error: any) {
     return {
       success: false,
       responseTime: config.timeout,
-      error: error.name === 'AbortError' ? 'Request timeout' : error.message
+      error: error.name === 'AbortError' ? 'Request timeout' : error.message,
     };
   }
 }
@@ -152,7 +253,10 @@ async function testConnectivity(apiPath: string, config: TestConfig): Promise<{ 
 /**
  * 测试GET请求（API信息）
  */
-async function testGetInfo(apiPath: string, config: TestConfig): Promise<{ success: boolean; responseTime: number; error?: string }> {
+async function testGetInfo(
+  apiPath: string,
+  config: TestConfig
+): Promise<{ success: boolean; responseTime: number; error?: string }> {
   try {
     const { response, data, responseTime } = await makeRequest(
       `${config.baseUrl}${apiPath}`,
@@ -160,21 +264,24 @@ async function testGetInfo(apiPath: string, config: TestConfig): Promise<{ succe
       config.timeout
     );
 
-    const success = response.ok && (
+    const success =
+      response.ok &&
       typeof data === 'object' &&
-      (data.message || data.version || data.supported_directions || data.powered_by)
-    );
+      (data.message ||
+        data.version ||
+        data.supported_directions ||
+        data.powered_by);
 
     return {
       success,
       responseTime,
-      error: !success ? 'Invalid API info response format' : undefined
+      error: !success ? 'Invalid API info response format' : undefined,
     };
   } catch (error: any) {
     return {
       success: false,
       responseTime: config.timeout,
-      error: error.message
+      error: error.message,
     };
   }
 }
@@ -182,7 +289,10 @@ async function testGetInfo(apiPath: string, config: TestConfig): Promise<{ succe
 /**
  * 测试POST请求（主要功能）
  */
-async function testPostFunction(apiPath: string, config: TestConfig): Promise<{ success: boolean; responseTime: number; error?: string }> {
+async function testPostFunction(
+  apiPath: string,
+  config: TestConfig
+): Promise<{ success: boolean; responseTime: number; error?: string }> {
   // 根据不同的API准备测试数据
   const testData = getTestData(apiPath);
 
@@ -199,20 +309,21 @@ async function testPostFunction(apiPath: string, config: TestConfig): Promise<{ 
       config.timeout
     );
 
-    const success = response.ok &&
+    const success =
+      response.ok &&
       typeof data === 'object' &&
       (data.success || data.translated || data.result || data.output);
 
     return {
       success,
       responseTime,
-      error: !success ? `POST request failed: ${response.status}` : undefined
+      error: !success ? `POST request failed: ${response.status}` : undefined,
     };
   } catch (error: any) {
     return {
       success: false,
       responseTime: config.timeout,
-      error: error.message
+      error: error.message,
     };
   }
 }
@@ -220,7 +331,10 @@ async function testPostFunction(apiPath: string, config: TestConfig): Promise<{ 
 /**
  * 测试错误处理
  */
-async function testErrorHandling(apiPath: string, config: TestConfig): Promise<{ success: boolean; responseTime: number; error?: string }> {
+async function testErrorHandling(
+  apiPath: string,
+  config: TestConfig
+): Promise<{ success: boolean; responseTime: number; error?: string }> {
   try {
     const { response, data, responseTime } = await makeRequest(
       `${config.baseUrl}${apiPath}`,
@@ -234,20 +348,22 @@ async function testErrorHandling(apiPath: string, config: TestConfig): Promise<{
       config.timeout
     );
 
-    const success = response.status >= 400 && response.status < 500 &&
+    const success =
+      response.status >= 400 &&
+      response.status < 500 &&
       typeof data === 'object' &&
       data.error;
 
     return {
       success,
       responseTime,
-      error: !success ? 'Error handling not working properly' : undefined
+      error: !success ? 'Error handling not working properly' : undefined,
     };
   } catch (error: any) {
     return {
       success: false,
       responseTime: config.timeout,
-      error: error.message
+      error: error.message,
     };
   }
 }
@@ -263,7 +379,12 @@ function getTestData(apiPath: string): any {
   } else if (apiPath.includes('gen-z')) {
     return { text: 'This is a test message', targetGeneration: 'gen_z' };
   } else if (apiPath.includes('bad')) {
-    return { text: 'Hello world', numTranslations: 5, sourceLanguage: 'en', targetLanguage: 'zh' };
+    return {
+      text: 'Hello world',
+      numTranslations: 5,
+      sourceLanguage: 'en',
+      targetLanguage: 'zh',
+    };
   } else if (apiPath.includes('verbose')) {
     return { text: 'Simple text', verbosityLevel: 'high' };
   } else if (apiPath.includes('ancient-greek')) {
@@ -299,7 +420,9 @@ function getTestData(apiPath: string): any {
   } else if (apiPath.includes('gen-alpha')) {
     return { text: 'This is a test message' };
   } else if (apiPath.includes('dumb-it-down')) {
-    return { text: 'The photosynthesis process enables plants to convert light energy into chemical energy.' };
+    return {
+      text: 'The photosynthesis process enables plants to convert light energy into chemical energy.',
+    };
   } else if (apiPath.includes('ivr')) {
     return { text: 'Hello world' };
   } else if (apiPath.includes('baby')) {
@@ -312,7 +435,10 @@ function getTestData(apiPath: string): any {
 /**
  * 测试单个工具API
  */
-async function testToolApi(tool: typeof TOOLS_APIS[0], config: TestConfig): Promise<TestResult> {
+async function testToolApi(
+  tool: (typeof TOOLS_APIS)[0],
+  config: TestConfig
+): Promise<TestResult> {
   const result: TestResult = {
     toolName: tool.name,
     pagePath: tool.page,
@@ -383,7 +509,9 @@ async function testToolApi(tool: typeof TOOLS_APIS[0], config: TestConfig): Prom
   }
 
   // 确定最终状态
-  const failedTests = Object.values(result.tests).filter(success => !success).length;
+  const failedTests = Object.values(result.tests).filter(
+    (success) => !success
+  ).length;
   if (failedTests >= 3) {
     result.status = 'failed';
   } else if (failedTests > 0) {
@@ -393,15 +521,19 @@ async function testToolApi(tool: typeof TOOLS_APIS[0], config: TestConfig): Prom
   // 性能警告
   if (config.enablePerformanceMonitoring) {
     Object.entries(result.responseTime).forEach(([test, time]) => {
-      if (time > 10000) { // 10秒
+      if (time > 10000) {
+        // 10秒
         result.warnings.push(`Slow response time for ${test}: ${time}ms`);
       }
     });
   }
 
   // 输出测试结果
-  const statusEmoji = result.status === 'success' ? '✅' : result.status === 'error' ? '⚠️' : '❌';
-  console.log(`   ${statusEmoji} ${result.tests.connectivity ? '✓' : '✗'} Connectivity | ${result.tests.getInfo ? '✓' : '✗'} GET | ${result.tests.postFunction ? '✓' : '✗'} POST | ${result.tests.errorHandling ? '✓' : '✗'} Error Handling`);
+  const statusEmoji =
+    result.status === 'success' ? '✅' : result.status === 'error' ? '⚠️' : '❌';
+  console.log(
+    `   ${statusEmoji} ${result.tests.connectivity ? '✓' : '✗'} Connectivity | ${result.tests.getInfo ? '✓' : '✗'} GET | ${result.tests.postFunction ? '✓' : '✗'} POST | ${result.tests.errorHandling ? '✓' : '✗'} Error Handling`
+  );
 
   return result;
 }
@@ -412,14 +544,26 @@ async function testToolApi(tool: typeof TOOLS_APIS[0], config: TestConfig): Prom
 function generateJsonReport(results: TestResult[], config: TestConfig): any {
   const summary = {
     totalTools: results.length,
-    successful: results.filter(r => r.status === 'success').length,
-    failed: results.filter(r => r.status === 'failed').length,
-    errors: results.filter(r => r.status === 'error').length,
+    successful: results.filter((r) => r.status === 'success').length,
+    failed: results.filter((r) => r.status === 'failed').length,
+    errors: results.filter((r) => r.status === 'error').length,
     averageResponseTime: {
-      connectivity: Math.round(results.reduce((sum, r) => sum + r.responseTime.connectivity, 0) / results.length),
-      getInfo: Math.round(results.reduce((sum, r) => sum + r.responseTime.getInfo, 0) / results.filter(r => r.responseTime.getInfo > 0).length),
-      postFunction: Math.round(results.reduce((sum, r) => sum + r.responseTime.postFunction, 0) / results.filter(r => r.responseTime.postFunction > 0).length),
-      errorHandling: Math.round(results.reduce((sum, r) => sum + r.responseTime.errorHandling, 0) / results.filter(r => r.responseTime.errorHandling > 0).length),
+      connectivity: Math.round(
+        results.reduce((sum, r) => sum + r.responseTime.connectivity, 0) /
+          results.length
+      ),
+      getInfo: Math.round(
+        results.reduce((sum, r) => sum + r.responseTime.getInfo, 0) /
+          results.filter((r) => r.responseTime.getInfo > 0).length
+      ),
+      postFunction: Math.round(
+        results.reduce((sum, r) => sum + r.responseTime.postFunction, 0) /
+          results.filter((r) => r.responseTime.postFunction > 0).length
+      ),
+      errorHandling: Math.round(
+        results.reduce((sum, r) => sum + r.responseTime.errorHandling, 0) /
+          results.filter((r) => r.responseTime.errorHandling > 0).length
+      ),
     },
     testDate: new Date().toISOString(),
     config: config,
@@ -434,12 +578,15 @@ function generateJsonReport(results: TestResult[], config: TestConfig): any {
 /**
  * 生成Markdown格式报告
  */
-function generateMarkdownReport(results: TestResult[], config: TestConfig): string {
+function generateMarkdownReport(
+  results: TestResult[],
+  config: TestConfig
+): string {
   const summary = {
     total: results.length,
-    successful: results.filter(r => r.status === 'success').length,
-    failed: results.filter(r => r.status === 'failed').length,
-    errors: results.filter(r => r.status === 'error').length,
+    successful: results.filter((r) => r.status === 'success').length,
+    failed: results.filter((r) => r.status === 'failed').length,
+    errors: results.filter((r) => r.status === 'error').length,
   };
 
   let markdown = `# API Test Report\n\n`;
@@ -459,33 +606,43 @@ function generateMarkdownReport(results: TestResult[], config: TestConfig): stri
   markdown += `| Tool | Page | Status | Connectivity | GET | POST | Error Handling | Avg Response Time |\n`;
   markdown += `|------|------|--------|--------------|-----|------|----------------|------------------|\n`;
 
-  results.forEach(result => {
-    const statusEmoji = result.status === 'success' ? '✅' : result.status === 'error' ? '⚠️' : '❌';
-    const avgResponseTime = Math.round([
-      result.responseTime.connectivity,
-      result.responseTime.getInfo,
-      result.responseTime.postFunction,
-      result.responseTime.errorHandling
-    ].filter(t => t > 0).reduce((a, b) => a + b, 0) / Object.values(result.responseTime).filter(t => t > 0).length);
+  results.forEach((result) => {
+    const statusEmoji =
+      result.status === 'success'
+        ? '✅'
+        : result.status === 'error'
+          ? '⚠️'
+          : '❌';
+    const avgResponseTime = Math.round(
+      [
+        result.responseTime.connectivity,
+        result.responseTime.getInfo,
+        result.responseTime.postFunction,
+        result.responseTime.errorHandling,
+      ]
+        .filter((t) => t > 0)
+        .reduce((a, b) => a + b, 0) /
+        Object.values(result.responseTime).filter((t) => t > 0).length
+    );
 
     markdown += `| ${result.toolName} | [${result.pagePath}](${config.baseUrl}${result.pagePath}) | ${statusEmoji} ${result.status} | ${result.tests.connectivity ? '✅' : '❌'} | ${result.tests.getInfo ? '✅' : '❌'} | ${result.tests.postFunction ? '✅' : '❌'} | ${result.tests.errorHandling ? '✅' : '❌'} | ${avgResponseTime}ms |\n`;
   });
 
   // Failed tools details
-  const failedResults = results.filter(r => r.status !== 'success');
+  const failedResults = results.filter((r) => r.status !== 'success');
   if (failedResults.length > 0) {
     markdown += `\n## 🚨 Issues Found\n\n`;
-    failedResults.forEach(result => {
+    failedResults.forEach((result) => {
       markdown += `### ${result.toolName}\n`;
       if (result.errors.length > 0) {
         markdown += `**Errors:**\n`;
-        result.errors.forEach(error => {
+        result.errors.forEach((error) => {
           markdown += `- ${error}\n`;
         });
       }
       if (result.warnings.length > 0) {
         markdown += `**Warnings:**\n`;
-        result.warnings.forEach(warning => {
+        result.warnings.forEach((warning) => {
           markdown += `- ${warning}\n`;
         });
       }
@@ -499,11 +656,18 @@ function generateMarkdownReport(results: TestResult[], config: TestConfig): stri
 /**
  * 保存报告到文件
  */
-function saveReport(reportData: any, markdown: string, config: TestConfig): void {
+function saveReport(
+  reportData: any,
+  markdown: string,
+  config: TestConfig
+): void {
   const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
 
   if (config.outputFormat === 'json' || config.outputFormat === 'both') {
-    const jsonPath = path.join(process.cwd(), `api-test-report-${timestamp}.json`);
+    const jsonPath = path.join(
+      process.cwd(),
+      `api-test-report-${timestamp}.json`
+    );
     fs.writeFileSync(jsonPath, JSON.stringify(reportData, null, 2));
     console.log(`\n📄 JSON report saved: ${jsonPath}`);
   }
@@ -567,10 +731,18 @@ async function main() {
   // 输出摘要
   console.log(`\n📊 Test Summary:`);
   console.log(`   Total Tools: ${results.length}`);
-  console.log(`   ✅ Successful: ${results.filter(r => r.status === 'success').length}`);
-  console.log(`   ⚠️ Partial: ${results.filter(r => r.status === 'error').length}`);
-  console.log(`   ❌ Failed: ${results.filter(r => r.status === 'failed').length}`);
-  console.log(`   Success Rate: ${Math.round((results.filter(r => r.status === 'success').length / results.length) * 100)}%`);
+  console.log(
+    `   ✅ Successful: ${results.filter((r) => r.status === 'success').length}`
+  );
+  console.log(
+    `   ⚠️ Partial: ${results.filter((r) => r.status === 'error').length}`
+  );
+  console.log(
+    `   ❌ Failed: ${results.filter((r) => r.status === 'failed').length}`
+  );
+  console.log(
+    `   Success Rate: ${Math.round((results.filter((r) => r.status === 'success').length / results.length) * 100)}%`
+  );
 
   // 保存报告
   saveReport(reportData, markdown, config);
@@ -580,7 +752,7 @@ async function main() {
 
 // 运行主函数
 if (require.main === module) {
-  main().catch(error => {
+  main().catch((error) => {
     console.error('Test execution failed:', error);
     process.exit(1);
   });

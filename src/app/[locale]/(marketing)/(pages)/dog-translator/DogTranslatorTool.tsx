@@ -1,6 +1,7 @@
 // app/dog-translator/tool-page.tsx
 'use client'; // Client component declaration
 
+import { ArrowRightIcon } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 
 // Define emotion types and sound mapping
@@ -375,12 +376,12 @@ export default function DogTranslatorTool({
   }, []);
 
   return (
-    <div className="container max-w-5xl mx-auto px-4 mb-10">
+    <div className="container max-w-7xl mx-auto px-4 mb-10">
       <main className="w-full bg-white shadow-xl border border-gray-100 rounded-lg p-4 md:p-8">
         <div className="flex flex-col md:flex-row gap-4 md:gap-8">
           {/* 左边：用户输入区域 */}
           <div className="flex-1">
-            <h2 className="text-2xl font-semibold text-gary-800 mb-3">
+            <h2 className="text-2xl font-semibold text-gray-800 mb-3">
               {pageData.tool.yourWords}
               <i className="text-primary-yellow fas fa-user ms-2"></i>
             </h2>
@@ -389,62 +390,72 @@ export default function DogTranslatorTool({
               onChange={(e) => setInputText(e.target.value)}
               placeholder={pageData.tool.inputPlaceholder}
               className="w-full h-48 md:h-64 p-3 border border-primary-light rounded-md focus:ring-2 focus:ring-primary-light focus:border-transparent resize-none text-gray-700"
-              aria-label="Your words to translate"
+              aria-label={pageData.tool.inputLabel || "Your words to translate"}
             />
           </div>
 
           {/* 右边：狗狗语言结果框 */}
           <div className="flex-1">
-            <h2 className="text-2xl font-semibold text-gary-800 mb-3">
+            <h2 className="text-2xl font-semibold text-gray-800 mb-3">
               {pageData.tool.doggyVibe}
               <i className="text-primary-yellow fas fa-dog ms-2"></i>
             </h2>
             <div
-              className="w-full h-48 md:h-64 p-3 border border-gray-300 rounded-md bg-white-50 flex flex-col items-center justify-center text-center text-gray-700 overflow-y-auto"
+              className="w-full h-48 md:h-64 p-3 border border-primary-light rounded-md bg-gray-50 overflow-y-auto"
               aria-live="polite"
             >
               {isLoading ? (
-                <p>{pageData.tool.loading}</p>
-              ) : error ? (
-                <p className="text-red-600">{pageData.tool.error}</p>
-              ) : dogResponseMessage ? (
-                <>
-                  <p className="text-lg">{dogResponseMessage}</p>
-                </>
+                <div className="w-full h-full flex items-center justify-center text-gray-700">
+                  <p>{pageData.tool.loading}</p>
+                </div>
               ) : (
-                <p className="text-gray-500">{pageData.tool.noInput}</p>
-              )}
+                <div className="flex flex-col items-start justify-start text-gray-700">
+                  {error ? (
+                    <p className="text-red-600">{pageData.tool.error}</p>
+                  ) : dogResponseMessage ? (
+                    <>
+                      <p className="text-lg">{dogResponseMessage}</p>
+                    </>
+                  ) : (
+                    <p className="text-gray-500">{pageData.tool.noInput}</p>
+                  )}
 
-              {detectedEmotion && !isLoading && !error && (
-                <div className="mt-6 text-center">
-                  <button
-                    onClick={handlePlaySound}
-                    disabled={isPlaying || isLoadingAudio}
-                    className="px-6 py-2 bg-gray-800 hover:bg-primary-light text-white font-semibold rounded-lg shadow-md transition-colors disabled:opacity-50"
-                    aria-label="Play generated dog sound"
-                  >
-                    {isLoadingAudio
-                      ? locale === 'ja'
-                        ? '読み込み中... 🎵'
-                        : 'Loading... 🎵'
-                      : isPlaying
-                        ? locale === 'ja'
-                          ? '再生中... 🔊'
-                          : 'Playing... 🔊'
-                        : `${pageData.tool.playButton} 🔊`}
-                  </button>
-                  {(isLoadingAudio || audioError) && (
-                    <div className="mt-2 text-sm text-gray-600">
-                      {isLoadingAudio ? (
-                        locale === 'ja' ? (
-                          '犬の音声を準備中...'
-                        ) : (
-                          'Preparing dog sounds...'
-                        )
-                      ) : audioError ? (
-                        <span className="text-orange-600">{audioError}</span>
-                      ) : (
-                        ''
+                  {detectedEmotion && !error && (
+                    <div className="mt-6 text-left">
+                      <button
+                        onClick={handlePlaySound}
+                        disabled={isPlaying || isLoadingAudio}
+                        className="px-6 py-2 bg-gray-800 hover:bg-primary-light text-white font-semibold rounded-lg shadow-md transition-colors disabled:opacity-50"
+                        aria-label={pageData.tool.playSoundTooltip || "Play sound"}
+                      >
+                        {isLoadingAudio
+                          ? locale === 'ja'
+                            ? '読み込み中... 🎵'
+                            : 'Loading... 🎵'
+                          : isPlaying
+                            ? locale === 'ja'
+                              ? '再生中... 🔊'
+                              : 'Playing... 🔊'
+                            : `${pageData.tool.playButton} 🔊`}
+
+                        <ArrowRightIcon className="ml-2 h-4 w-4" />
+                      </button>
+                      {(isLoadingAudio || audioError) && (
+                        <div className="mt-2 text-sm text-gray-600">
+                          {isLoadingAudio ? (
+                            locale === 'ja' ? (
+                              '犬の音声を準備中...'
+                            ) : (
+                              'Preparing dog sounds...'
+                            )
+                          ) : audioError ? (
+                            <span className="text-orange-600">
+                              {audioError}
+                            </span>
+                          ) : (
+                            ''
+                          )}
+                        </div>
                       )}
                     </div>
                   )}

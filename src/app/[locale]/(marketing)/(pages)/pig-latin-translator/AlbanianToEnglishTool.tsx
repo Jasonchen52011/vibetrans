@@ -1,6 +1,7 @@
 'use client';
 
 import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
+import { ArrowRightIcon } from 'lucide-react';
 import mammoth from 'mammoth';
 import { useState } from 'react';
 
@@ -149,7 +150,7 @@ export default function AlbanianToEnglishTool({
   };
 
   return (
-    <div className="container max-w-5xl mx-auto px-4 mb-10">
+    <div className="container max-w-7xl mx-auto px-4 mb-10">
       <main className="w-full bg-white dark:bg-zinc-800 shadow-xl border border-gray-100 dark:border-zinc-700 rounded-lg p-4 md:p-8">
         {/* Input and Output Areas */}
         <div className="flex flex-col md:flex-row gap-2 md:gap-3">
@@ -329,13 +330,23 @@ export default function AlbanianToEnglishTool({
               )}
             </div>
             <div
-              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md bg-gray-50 dark:bg-zinc-700 flex items-center justify-center text-gray-700 dark:text-gray-200 overflow-y-auto"
+              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md bg-gray-50 dark:bg-zinc-700 flex items-start justify-start text-gray-700 dark:text-gray-200 overflow-y-auto"
               aria-live="polite"
             >
               {isLoading ? (
-                <div className="flex flex-col items-center gap-3">
-                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
-                  <p>{pageData.tool.loading}</p>
+                <div className="flex items-center gap-3">
+                  <div className="flex space-x-1">
+                    <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                    <div
+                      className="w-2 h-2 bg-primary rounded-full animate-pulse"
+                      style={{ animationDelay: '0.2s' }}
+                    ></div>
+                    <div
+                      className="w-2 h-2 bg-primary rounded-full animate-pulse"
+                      style={{ animationDelay: '0.4s' }}
+                    ></div>
+                  </div>
+                  <span>{pageData.tool.loading}</span>
                 </div>
               ) : error ? (
                 <p className="text-red-600 dark:text-red-400">{error}</p>
@@ -357,9 +368,10 @@ export default function AlbanianToEnglishTool({
           <button
             onClick={handleTranslate}
             disabled={isLoading}
-            className="px-8 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="inline-flex items-center px-8 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isLoading ? pageData.tool.loading : pageData.tool.translateButton}
+            <ArrowRightIcon className="ml-2 h-4 w-4" />
           </button>
           <button
             onClick={handleReset}

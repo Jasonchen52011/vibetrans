@@ -83,7 +83,6 @@ export default function Pricing() {
                     'Access to Community Forum',
                     'Single User Access',
                     'Access to Basic Templates',
-                    'Mobile App Access',
                     '1 Custom Report Per Month',
                     'Monthly Product Updates',
                     'Standard Security Features',

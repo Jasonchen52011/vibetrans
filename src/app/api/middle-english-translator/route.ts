@@ -4,7 +4,9 @@ import { NextResponse } from 'next/server';
 
 export const runtime = 'edge';
 
-const genAI = new GoogleGenerativeAI(process.env.GOOGLE_GENERATIVE_AI_API_KEY || '');
+const genAI = new GoogleGenerativeAI(
+  process.env.GOOGLE_GENERATIVE_AI_API_KEY || ''
+);
 
 // Handle GET method for health checks
 export async function GET() {
@@ -33,7 +35,9 @@ export async function POST(request: Request) {
     // 验证API密钥配置
     const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
     if (!apiKey) {
-      console.error('Missing GOOGLE_GENERATIVE_AI_API_KEY environment variable');
+      console.error(
+        'Missing GOOGLE_GENERATIVE_AI_API_KEY environment variable'
+      );
       return NextResponse.json(
         { error: 'API configuration error - missing API key' },
         { status: 500 }

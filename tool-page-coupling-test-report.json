@@ -1,0 +1,101 @@
+{
+  "total": 8,
+  "passed": 0,
+  "failed": 8,
+  "errors": [],
+  "warnings": [
+    "⚠️  组件中未找到pageData.funFacts引用",
+    "⚠️  组件中未找到pageData.highlights引用",
+    "⚠️  组件中未找到pageData.funFacts引用",
+    "⚠️  组件中未找到pageData.highlights引用",
+    "⚠️  组件中未找到pageData.funFacts引用",
+    "⚠️  组件中未找到pageData.highlights引用",
+    "⚠️  组件中未找到pageData.funFacts引用",
+    "⚠️  组件中未找到pageData.highlights引用",
+    "⚠️  tool缺少uploadButton字段",
+    "⚠️  组件中未找到pageData.funFacts引用",
+    "⚠️  组件中未找到pageData.highlights引用",
+    "⚠️  组件中未找到pageData.funFacts引用",
+    "⚠️  组件中未找到pageData.highlights引用",
+    "⚠️  组件中未找到pageData.funFacts引用",
+    "⚠️  组件中未找到pageData.highlights引用",
+    "⚠️  组件中未找到pageData.funFacts引用",
+    "⚠️  组件中未找到pageData.highlights引用"
+  ],
+  "details": [
+    {
+      "name": "al-bhed-translator",
+      "jsonIssues": [],
+      "componentIssues": [
+        "⚠️  组件中未找到pageData.funFacts引用",
+        "⚠️  组件中未找到pageData.highlights引用"
+      ],
+      "typeIssues": []
+    },
+    {
+      "name": "high-valyrian-translator",
+      "jsonIssues": [],
+      "componentIssues": [
+        "⚠️  组件中未找到pageData.funFacts引用",
+        "⚠️  组件中未找到pageData.highlights引用"
+      ],
+      "typeIssues": []
+    },
+    {
+      "name": "cuneiform-translator",
+      "jsonIssues": [],
+      "componentIssues": [
+        "⚠️  组件中未找到pageData.funFacts引用",
+        "⚠️  组件中未找到pageData.highlights引用"
+      ],
+      "typeIssues": []
+    },
+    {
+      "name": "gaster-translator",
+      "jsonIssues": [],
+      "componentIssues": [
+        "⚠️  组件中未找到pageData.funFacts引用",
+        "⚠️  组件中未找到pageData.highlights引用"
+      ],
+      "typeIssues": []
+    },
+    {
+      "name": "dog-translator",
+      "jsonIssues": [
+        "⚠️  tool缺少uploadButton字段"
+      ],
+      "componentIssues": [
+        "⚠️  组件中未找到pageData.funFacts引用",
+        "⚠️  组件中未找到pageData.highlights引用"
+      ],
+      "typeIssues": []
+    },
+    {
+      "name": "baby-translator",
+      "jsonIssues": [],
+      "componentIssues": [
+        "⚠️  组件中未找到pageData.funFacts引用",
+        "⚠️  组件中未找到pageData.highlights引用"
+      ],
+      "typeIssues": []
+    },
+    {
+      "name": "aramaic-translator",
+      "jsonIssues": [],
+      "componentIssues": [
+        "⚠️  组件中未找到pageData.funFacts引用",
+        "⚠️  组件中未找到pageData.highlights引用"
+      ],
+      "typeIssues": []
+    },
+    {
+      "name": "baybayin-translator",
+      "jsonIssues": [],
+      "componentIssues": [
+        "⚠️  组件中未找到pageData.funFacts引用",
+        "⚠️  组件中未找到pageData.highlights引用"
+      ],
+      "typeIssues": []
+    }
+  ]
+}

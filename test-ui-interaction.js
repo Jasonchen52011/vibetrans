@@ -2,7 +2,10 @@
 
 const puppeteer = require('puppeteer');
 
-async function testPageInteraction(toolName, baseUrl = 'http://localhost:3003') {
+async function testPageInteraction(
+  toolName,
+  baseUrl = 'http://localhost:3003'
+) {
   console.log(`\n🧪 测试页面交互: ${toolName}`);
   console.log('='.repeat(60));
 
@@ -21,10 +24,13 @@ async function testPageInteraction(toolName, baseUrl = 'http://localhost:3003') 
     // 1. 检查初始状态
     console.log('\n🔍 检查初始状态:');
 
-    const inputTitle = await page.$eval('h2', el => el.textContent);
+    const inputTitle = await page.$eval('h2', (el) => el.textContent);
     console.log(`  输入框标题: "${inputTitle}"`);
 
-    const inputPlaceholder = await page.$eval('textarea', el => el.placeholder);
+    const inputPlaceholder = await page.$eval(
+      'textarea',
+      (el) => el.placeholder
+    );
     console.log(`  输入框占位符: "${inputPlaceholder.substring(0, 50)}..."`);
 
     // 2. 测试点击输出框标题切换
@@ -32,7 +38,7 @@ async function testPageInteraction(toolName, baseUrl = 'http://localhost:3003') 
 
     // 获取输出框标题
     const outputTitles = await page.$$('h2');
-    const outputTitle = await outputTitles[1].evaluate(el => el.textContent);
+    const outputTitle = await outputTitles[1].evaluate((el) => el.textContent);
     console.log(`  输出框标题: "${outputTitle}"`);
 
     // 点击输出框标题
@@ -40,16 +46,24 @@ async function testPageInteraction(toolName, baseUrl = 'http://localhost:3003') 
     await page.waitForTimeout(1000);
 
     // 检查切换后的状态
-    const newInputTitle = await page.$eval('h2', el => el.textContent);
-    const newInputPlaceholder = await page.$eval('textarea', el => el.placeholder);
-    const newOutputTitle = await outputTitles[1].evaluate(el => el.textContent);
+    const newInputTitle = await page.$eval('h2', (el) => el.textContent);
+    const newInputPlaceholder = await page.$eval(
+      'textarea',
+      (el) => el.placeholder
+    );
+    const newOutputTitle = await outputTitles[1].evaluate(
+      (el) => el.textContent
+    );
 
     console.log(`  切换后输入框标题: "${newInputTitle}"`);
-    console.log(`  切换后输入框占位符: "${newInputPlaceholder.substring(0, 50)}..."`);
+    console.log(
+      `  切换后输入框占位符: "${newInputPlaceholder.substring(0, 50)}..."`
+    );
     console.log(`  切换后输出框标题: "${newOutputTitle}"`);
 
     // 验证是否成功切换
-    const titleChanged = inputTitle !== newInputTitle || outputTitle !== newOutputTitle;
+    const titleChanged =
+      inputTitle !== newInputTitle || outputTitle !== newOutputTitle;
     const placeholderChanged = inputPlaceholder !== newInputPlaceholder;
 
     console.log(`  ✅ 标题切换: ${titleChanged ? '成功' : '失败'}`);
@@ -62,7 +76,7 @@ async function testPageInteraction(toolName, baseUrl = 'http://localhost:3003') 
     await page.type('textarea', testText, { delay: 100 });
     await page.waitForTimeout(1000);
 
-    const inputValue = await page.$eval('textarea', el => el.value);
+    const inputValue = await page.$eval('textarea', (el) => el.value);
     console.log(`  输入文本: "${inputValue}"`);
 
     // 4. 测试切换按钮
@@ -74,7 +88,10 @@ async function testPageInteraction(toolName, baseUrl = 'http://localhost:3003') 
       await swapButton.click();
       await page.waitForTimeout(1000);
 
-      const afterSwapInputTitle = await page.$eval('h2', el => el.textContent);
+      const afterSwapInputTitle = await page.$eval(
+        'h2',
+        (el) => el.textContent
+      );
       console.log(`  点击切换按钮后标题: "${afterSwapInputTitle}"`);
       console.log('  ✅ 切换按钮功能: 正常');
     } else {
@@ -85,12 +102,15 @@ async function testPageInteraction(toolName, baseUrl = 'http://localhost:3003') 
     console.log('\n👁️  检查UI设计:');
 
     const pageText = await page.evaluate(() => document.body.textContent);
-    const hasExtraHints = pageText.includes('Click to switch') ||
-                         pageText.includes('Toggle direction') ||
-                         pageText.includes('切换方向') ||
-                         pageText.includes('点击切换');
+    const hasExtraHints =
+      pageText.includes('Click to switch') ||
+      pageText.includes('Toggle direction') ||
+      pageText.includes('切换方向') ||
+      pageText.includes('点击切换');
 
-    console.log(`  干净UI设计: ${hasExtraHints ? '❌ 有多余提示' : '✅ 无多余提示'}`);
+    console.log(
+      `  干净UI设计: ${hasExtraHints ? '❌ 有多余提示' : '✅ 无多余提示'}`
+    );
 
     await browser.close();
 
@@ -100,9 +120,8 @@ async function testPageInteraction(toolName, baseUrl = 'http://localhost:3003') 
       placeholderUpdate: placeholderChanged,
       inputWorks: inputValue === testText,
       hasSwapButton: !!swapButton,
-      cleanUI: !hasExtraHints
+      cleanUI: !hasExtraHints,
     };
-
   } catch (error) {
     console.error(`❌ 测试失败: ${error.message}`);
     if (browser) await browser.close();

@@ -4,7 +4,7 @@
     "description": "Gaster Translator helps you decode Wingdings to English and vice-versa. Perfect for Undertale fans, modders, and puzzle-makers looking to translate Gaster text.",
     "hero": {
       "title": "Gaster Translator for Seamless Text Conversion",
-      "description": "Gaster Translator lets you convert Wingdings to English effortlessly. Perfect for Undertale fans, VibeTrans makes translating Gaster text a breeze."
+      "description": "Gaster Translator is the best tool for converting Wingdings to English effortlessly. Perfect for Undertale fans, VibeTrans makes translating Gaster text a breeze."
     },
     "tool": {
       "inputLabel": "Input Text",
@@ -16,7 +16,21 @@
       "uploadHint": "Supports .txt and .docx files",
       "loading": "Translating...",
       "error": "Translation failed. Please try again.",
-      "noInput": "Please enter some text to translate."
+      "noInput": "Please enter some text to translate.",
+      "downloadButton": "Download",
+      "resetButton": "Reset",
+      "copyTooltip": "Copy",
+      "downloadTooltip": "Download",
+      "resetTooltip": "Reset",
+      "gasterLabel": "Gaster",
+      "gasterPlaceholder": "Type Gaster text here...",
+      "removeFileTooltip": "Remove file",
+      "removeRecordingTooltip": "Remove recording",
+      "toggleModeTooltip": "Toggle translation mode",
+      "toggleDirectionTooltip": "Toggle translation direction",
+      "copyResultTooltip": "Copy result",
+      "downloadResultTooltip": "Download result",
+      "playSoundTooltip": "Play sound"
     },
     "whatIs": {
       "title": "What is Gaster Translator",
@@ -55,7 +69,7 @@
       ]
     },
     "howto": {
-      "title": "How to Use Gaster Translator",
+      "title": "How to Translate English to Gaster",
       "description": "Follow these steps to convert your text easily.",
       "image": "/images/docs/gaster-translator-how-to.webp",
       "imageAlt": "How to use Gaster Translator",
@@ -77,25 +91,8 @@
         },
         {
           "name": "Copy or Download",
-          "description": "Once the translation is complete, you can copy the Gaster text to your clipboard or download it as a text file. The converted symbols are ready to use in your projects, games, or creative works that need that special mysterious touch.",
+          "description": "Once the translation is complete, you can copy the Gaster text to your clipboard or save it from your browser as a text file. The converted symbols are ready to use in your projects, games, or creative works that need that special mysterious touch.",
           "wordCount": 40
-        }
-      ]
-    },
-    "funFacts": {
-      "title": "Interesting Facts",
-      "items": [
-        {
-          "content": "Dr. W. D. Gaster's name comes from Wingdings and Aster fonts. Interestingly, early browsers displayed Gaster text as empty boxes - a vintage tech quirk that adds to the mysterious aura surrounding this character!",
-          "wordCount": 30,
-          "image": "/images/docs/gaster-fonts-fact.webp",
-          "imageAlt": "Fun fact 1"
-        },
-        {
-          "content": "Gaster's dialogue in Undertale always appears in uppercase Wingdings symbols. This creative choice by Toby Fox adds an extra layer of mystery that fans have been decoding for years using translation tools just like this one!",
-          "wordCount": 30,
-          "image": "/images/docs/gaster-wingdings-fun.webp",
-          "imageAlt": "Fun fact 2"
         }
       ]
     },
@@ -133,7 +130,7 @@
       ]
     },
     "highlights": {
-      "title": "Key Features of Gaster Translator",
+      "title": "Gaster Translation Engine for Undertale Players",
       "description": "Discover what makes our Gaster Translator exceptional",
       "features": [
         {
@@ -166,37 +163,22 @@
           "name": "Sarah Johnson",
           "role": "Undertale Fan",
           "heading": "Perfect for Undertale Mysteries",
-          "content": "As a huge Undertale fan, I've always been fascinated by Gaster's mysterious messages. This translator helps me decode all the Wingdings text in the game and community theories. It's amazing how quickly it converts symbols to readable text. I've spent hours exploring fan theories with this tool!"
+          "content": "As a huge Undertale fan, I've always been fascinated by Gaster's mysterious messages. This translator helps me decode all the Wingdings text in the game and community theories. It's amazing how quickly it converts symbols to readable text. I've spent hours exploring fan theories with this tool!",
+          "rating": "5.0"
         },
         "item-2": {
           "name": "Mike Chen",
           "role": "Game Developer",
           "heading": "Essential Tool for Game Development",
-          "content": "I'm developing an indie game with cryptic messages, and Gaster Translator has been invaluable. It helps me create and decode Wingdings-style puzzles for players. The accuracy is impressive, and it saves me so much time. My players love the mysterious touch it adds to the game!"
+          "content": "I'm developing an indie game with cryptic messages, and Gaster Translator has been invaluable. It helps me create and decode Wingdings-style puzzles for players. The accuracy is impressive, and it saves me so much time. My players love the mysterious touch it adds to the game!",
+          "rating": "4.9"
         },
         "item-3": {
           "name": "Emily Davis",
           "role": "Content Creator",
           "heading": "Great for Mystery Content",
-          "content": "I create YouTube videos about game theories and ARGs (Alternate Reality Games). Gaster Translator helps me analyze cryptic messages from games and online communities. My audience loves when I decode mysterious Wingdings text live on stream. It's become an essential part of my content creation toolkit!"
-        },
-        "item-4": {
-          "name": "Alex Rivera",
-          "role": "Graphic Designer",
-          "heading": "Creative Typography Inspiration",
-          "content": "I use Gaster Translator for creative typography projects. It's fascinating to see how text transforms into symbols and back. I've used it for poster designs and mystery-themed invitations. The conversion accuracy helps me experiment with different fonts and symbolic languages in my design work."
-        },
-        "item-5": {
-          "name": "Jordan Kim",
-          "role": "ESL Teacher",
-          "heading": "Engaging Learning Tool",
-          "content": "I teach English to creative writing students, and this tool makes learning about symbols and language fun. Students enjoy decoding messages and creating their own cryptic texts. It's an engaging way to teach about communication, codes, and how different languages represent ideas. Highly recommended for educators!"
-        },
-        "item-6": {
-          "name": "Taylor Wong",
-          "role": "Puzzle Enthusiast",
-          "heading": "Perfect for Puzzle Solving",
-          "content": "I love solving puzzles and mysteries, and Gaster Translator helps me tackle cryptogram challenges. Whether it's decoding messages from escape rooms or analyzing ARG clues, this tool is my go-to. The speed and accuracy help me focus on solving rather than manually decoding symbols."
+          "content": "I create YouTube videos about game theories and ARGs (Alternate Reality Games). Gaster Translator helps me analyze cryptic messages from games and online communities. My audience loves when I decode mysterious Wingdings text live on stream. It's become an essential part of my content creation toolkit!",
+          "rating": "4.7"
         }
       }
     },
@@ -214,7 +196,7 @@
         },
         "item-3": {
           "question": "How to use Gaster Translator?",
-          "answer": "1. Enter your English text in the input field. 2. Click the 'Translate' button to convert to Gaster symbols. 3. Copy or download your translated text. The tool instantly converts English text into Wingdings-style symbols perfect for Undertale fans and creative projects."
+          "answer": "1. Enter your English text in the input field. 2. Click the 'Translate' button to convert to Gaster symbols. 3. Copy or save your translated text from your browser. The tool instantly converts English text into Wingdings-style symbols perfect for Undertale fans and creative projects."
         },
         "item-4": {
           "question": "Can I use Gaster Translator for commercial projects?",
@@ -223,6 +205,14 @@
         "item-5": {
           "question": "What symbols does Gaster Translator use?",
           "answer": "Gaster Translator uses a combination of Wingdings symbols and special characters inspired by Undertale's mysterious language. The symbols include various geometric shapes, arrows, and special characters that create the distinctive Gaster aesthetic popularized by the game."
+        },
+        "item-6": {
+          "question": "Can I use VibeTrans for professional documents?",
+          "answer": "Absolutely! VibeTrans is designed to handle professional documents including business emails, legal texts, academic papers, and more. Our advanced AI maintains formal tone and technical accuracy."
+        },
+        "item-7": {
+          "question": "What is the best gaster translator for accurate translations?",
+          "answer": "VibeTrans Gaster Translator is the premier choice for accurate translations, featuring advanced AI technology that understands complex grammar, cultural context, and linguistic nuances. Our tool provides bidirectional translation, real-time processing, and high accuracy rates, all completely free. Perfect for language learning, communication, and cultural exploration with reliable, context-aware results."
         }
       }
     },
@@ -232,6 +222,23 @@
       "description": "Experience seamless Wingdings to English conversion with VibeTrans's Gaster Translator today!",
       "primaryButton": "Try GasterTranslator Now",
       "secondaryButton": "Back to Top"
+    },
+    "funFacts": {
+      "title": "Undertale Fan's Guide to Mastering Gaster",
+      "items": [
+        {
+          "content": "Dr. W. D. Gaster's name comes from Wingdings and Aster fonts. Interestingly, early browsers displayed Gaster text as empty boxes - a vintage tech quirk that adds to the mysterious aura surrounding this character!",
+          "wordCount": 30,
+          "image": "/images/docs/gaster-fonts-fact.webp",
+          "imageAlt": "Fun fact 1"
+        },
+        {
+          "content": "Gaster's dialogue in Undertale always appears in uppercase Wingdings symbols. This creative choice by Toby Fox adds an extra layer of mystery that fans have been decoding for years using translation tools just like this one!",
+          "wordCount": 30,
+          "image": "/images/docs/gaster-wingdings-fun.webp",
+          "imageAlt": "Fun fact 2"
+        }
+      ]
     }
   }
 }

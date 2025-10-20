@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { createClient } from '@/lib/supabase/client';
 import { Routes } from '@/routes';
+import { ArrowRightIcon } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
@@ -72,7 +73,14 @@ export function RegisterForm() {
         />
         {error && <p className="text-sm text-red-500">{error}</p>}
         <Button type="submit" disabled={loading} className="w-full">
-          {loading ? 'Creating account...' : 'Sign Up'}
+          {loading ? (
+            'Creating account...'
+          ) : (
+            <>
+              Sign Up
+              <ArrowRightIcon className="ml-2 h-4 w-4" />
+            </>
+          )}
         </Button>
       </form>
     </AuthCard>

@@ -4,15 +4,15 @@
     "description": "Transform Creole to English with ease using VibeTrans. Enjoy accurate, fast translations that enhance communication.",
     "hero": {
       "title": "Creole to English Translator for Seamless Communication",
-      "description": "Unlock the power of VibeTrans to translate Creole to English effortlessly. Experience clarity, accuracy, and cultural authenticity in every translation, connecting communities worldwide.",
+      "description": "Unlock the best Creole to English translation power with VibeTrans. Experience clarity, accuracy, and cultural authenticity in every translation, connecting communities worldwide.",
       "primaryButton": "Try Now",
       "secondaryButton": "Learn More"
     },
     "tool": {
       "yourWords": "Your Words",
       "doggyVibe": "Result",
-      "inputLabel": "Your Input",
-      "outputLabel": "Result",
+      "inputLabel": "Creole",
+      "outputLabel": "English",
       "inputPlaceholder": "Enter your text or upload a file...",
       "outputPlaceholder": "Translation results will appear here",
       "translateButton": "Translate",
@@ -22,7 +22,23 @@
       "playButton": "Play Sound",
       "loading": "Processing...",
       "error": "An error occurred, please try again",
-      "noInput": "Please provide input"
+      "noInput": "Please provide input",
+      "downloadButton": "Download",
+      "resetButton": "Reset",
+      "copyTooltip": "Copy",
+      "downloadTooltip": "Download",
+      "resetTooltip": "Reset",
+      "creoleLabel": "Creole",
+      "creolePlaceholder": "Type Creole text here...",
+      "removeFileTooltip": "Remove file",
+      "removeRecordingTooltip": "Remove recording",
+      "toggleModeTooltip": "Toggle translation mode",
+      "toggleDirectionTooltip": "Toggle translation direction",
+      "copyResultTooltip": "Copy result",
+      "downloadResultTooltip": "Download result",
+      "playSoundTooltip": "Play sound",
+      "englishLabel": "English",
+      "englishPlaceholder": "Type English text here..."
     },
     "whatIs": {
       "title": "What is Creole to English Translator",
@@ -59,7 +75,7 @@
       ]
     },
     "howto": {
-      "title": "How to Use Creole to English Translator",
+      "title": "How to Translate Creole to English",
       "description": "Follow these simple steps to translate text from Creole to English using VibeTrans.",
       "steps": [
         {
@@ -76,21 +92,8 @@
         }
       ]
     },
-    "funFacts": {
-      "title": "Fun Facts",
-      "items": [
-        {
-          "title": "Creole's French Roots",
-          "description": "Did you know? Over 90% of Haitian Creole words come from French, yet a native French speaker might only understand about a quarter of them due to unique pronunciation and grammar patterns."
-        },
-        {
-          "title": "Creole's Unique Grammar",
-          "description": "Unlike many languages, Creole doesn't use verb conjugations. Instead, it relies on time particles like 'te', 'ap', and 'pral' to express tense, making grammar beautifully simple and consistent."
-        }
-      ]
-    },
     "userInterest": {
-      "title": "Topics of Interest",
+      "title": "Linguistic Features & Cultural Learning",
       "items": [
         {
           "title": "Dialects and Variations",
@@ -101,17 +104,17 @@
           "description": "Creole idioms can be tricky! With VibeTrans, you can decode phrases like 'm ap boule' and enjoy seamless communication without misunderstandings. Our system recognizes cultural expressions, proverbs, and colloquialisms, providing accurate English equivalents that capture the true meaning. No more awkward literal translations or confusion during conversations."
         },
         {
-          "title": "Offline Translation",
-          "description": "Need translations in remote areas? VibeTrans offers offline capabilities for uninterrupted service, even without internet access. Perfect for travelers, field workers, or anyone in low-connectivity regions. Download language packs beforehand and enjoy full translation features anywhere. Stay connected to Creole communities regardless of your location or network availability."
-        },
-        {
           "title": "Learning Mode",
           "description": "Turn translations into a learning experience. VibeTrans highlights key vocabulary and provides interactive flashcards to boost your skills. Track your progress, practice pronunciation, and build confidence in real conversations. Whether you're a beginner or advancing your fluency, our learning mode transforms every translation into an educational opportunity for growth."
+        },
+        {
+          "title": "Cultural Context Integration",
+          "description": "Beyond literal translation, VibeTrans provides crucial cultural context that helps you understand the nuances behind Creole expressions. Learn about cultural traditions, social etiquette, and historical references embedded in the language. This deeper understanding fosters more meaningful connections and prevents potential misunderstandings in cross-cultural communications."
         }
       ]
     },
     "highlights": {
-      "title": "Key Features of Our Translator",
+      "title": "Academic Grade Creole Translation: Essential Research Tool",
       "description": "Discover what makes our tool unique",
       "items": [
         {
@@ -140,37 +143,43 @@
           "name": "John Smith",
           "role": "Healthcare Worker",
           "heading": "Building Patient Trust Through Accurate Medical Translation",
-          "content": "VibeTrans has been a lifesaver in my work. I often need to communicate with Creole-speaking patients, and this tool provides accurate translations every time. It's easy to use and helps me build trust with my patients."
+          "content": "VibeTrans has been a lifesaver in my work. I often need to communicate with Creole-speaking patients, and this tool provides accurate translations every time. It's easy to use and helps me build trust with my patients.",
+          "rating": "5.0"
         },
         "item-2": {
           "name": "Emily Johnson",
           "role": "Travel Blogger",
-          "heading": "Enhancing Travel Experience with Offline Translation Feature",
-          "content": "While exploring Haiti, I used VibeTrans to translate signs and casual chats. It made my trip smoother and more enjoyable. The translations were spot-on, and I appreciated the offline feature when I had no internet."
+          "heading": "Enhancing Travel Experience with Real-Time Translation",
+          "content": "While exploring Haiti, I used VibeTrans to translate signs and casual chats. It made my trip smoother and more enjoyable. The translations were spot-on, and I appreciated the instant translation feature that helped me communicate effectively.",
+          "rating": "5.0"
         },
         "item-3": {
           "name": "Michael Brown",
           "role": "NGO Volunteer",
           "heading": "Streamlining Humanitarian Relief with Batch Document Processing",
-          "content": "During a humanitarian mission, VibeTrans was crucial for translating documents quickly. The batch processing feature saved us a lot of time, ensuring we could focus on our relief efforts instead of language barriers."
+          "content": "During a humanitarian mission, VibeTrans was crucial for translating documents quickly. The batch processing feature saved us a lot of time, ensuring we could focus on our relief efforts instead of language barriers.",
+          "rating": "5.0"
         },
         "item-4": {
           "name": "Sophia Davis",
           "role": "Student",
           "heading": "Interactive Learning Tool for Creole Language Students",
-          "content": "As a language student, VibeTrans has been an invaluable tool. It helps me understand Creole texts and learn new vocabulary. The learning mode is particularly engaging, making my study sessions more interactive."
+          "content": "As a language student, VibeTrans has been an invaluable tool. It helps me understand Creole texts and learn new vocabulary. The learning mode is particularly engaging, making my study sessions more interactive.",
+          "rating": "5.0"
         },
         "item-5": {
           "name": "James Wilson",
           "role": "Business Professional",
           "heading": "Maintaining Professional Tone in Business Document Translation",
-          "content": "I frequently deal with Creole documents in my line of work. VibeTrans provides quick and accurate translations that maintain the professional tone I need. It's a reliable tool that I recommend to colleagues."
+          "content": "I frequently deal with Creole documents in my line of work. VibeTrans provides quick and accurate translations that maintain the professional tone I need. It's a reliable tool that I recommend to colleagues.",
+          "rating": "5.0"
         },
         "item-6": {
           "name": "Olivia Harris",
           "role": "Teacher",
           "heading": "Bridging Communication Gap in Multilingual Classroom Education",
-          "content": "Teaching Creole-speaking students can be challenging, but VibeTrans helps bridge the gap. The translations are clear, and the tool is easy enough for my students to use independently. A fantastic educational resource!"
+          "content": "Teaching Creole-speaking students can be challenging, but VibeTrans helps bridge the gap. The translations are clear, and the tool is easy enough for my students to use independently. A fantastic educational resource!",
+          "rating": "5.0"
         }
       }
     },
@@ -191,16 +200,28 @@
           "answer": "VibeTrans prioritizes your privacy. We do not store or share any uploaded data, ensuring full compliance with privacy regulations like GDPR and CCPA."
         },
         "item-4": {
-          "question": "Can I use VibeTrans offline?",
-          "answer": "Yes, VibeTrans offers offline capabilities, allowing you to translate documents without an internet connection, perfect for remote or emergency situations."
+          "question": "How accurate is VibeTrans?",
+          "answer": "VibeTrans delivers high accuracy in translations by understanding context and nuances, making it reliable for both casual and professional use."
         },
         "item-5": {
-          "question": "What makes VibeTrans different from other translators?",
-          "answer": "VibeTrans stands out with its focus on Creole languages, offering dialect options and cultural notes, ensuring translations that respect context and nuance."
+          "question": "How often is the translation database updated?",
+          "answer": "We update our translation database regularly to keep up with evolving language patterns and cultural nuances. This ensures your Creole translations stay relevant and accurate!"
         },
         "item-6": {
-          "question": "How accurate are the translations?",
-          "answer": "VibeTrans uses advanced AI to ensure high accuracy. Our translations maintain context and meaning, suitable for both casual and professional use."
+          "question": "How secure is my data?",
+          "answer": "Your data is completely secure with VibeTrans. We prioritize privacy and ensure all information is handled safely and confidentially."
+        },
+        "item-7": {
+          "question": "Can I use VibeTrans for other language pairs?",
+          "answer": "Yes, VibeTrans supports multiple language pairs beyond Creole to English. You can translate between English and several other languages like Spanish, French, and more!"
+        },
+        "item-8": {
+          "question": "Is there a limit to how much text I can translate?",
+          "answer": "For free users, there's a reasonable limit per translation. Premium users enjoy higher limits and can process larger files for bulk translations."
+        },
+        "item-9": {
+          "question": "What is the best creole to english translator for accurate translations?",
+          "answer": "VibeTrans Creole to English Translator is the premier choice for accurate translations, featuring advanced AI technology that understands various Creole dialects, cultural context, and linguistic nuances. Our tool provides real-time translation, batch processing, and high accuracy rates, all completely free. Perfect for communication, business, and cultural exploration with reliable, context-aware results."
         }
       }
     },
@@ -232,6 +253,19 @@
       "description": "Experience seamless translations with VibeTrans. Start using our Creole to English translator today and break down language barriers effortlessly.",
       "primaryButton": "Try Creole To English Translator Now",
       "secondaryButton": "Back to Top"
+    },
+    "funfacts": {
+      "title": "Creole: Your Key to Unlocking Creole Cultures",
+      "items": [
+        {
+          "title": "Creole's French Roots",
+          "description": "Did you know? Over 90% of Haitian Creole words come from French, yet a native French speaker might only understand about a quarter of them due to unique pronunciation and grammar patterns."
+        },
+        {
+          "title": "Creole's Unique Grammar",
+          "description": "Unlike many languages, Creole doesn't use verb conjugations. Instead, it relies on time particles like 'te', 'ap', and 'pral' to express tense, making grammar beautifully simple and consistent."
+        }
+      ]
     }
   }
 }

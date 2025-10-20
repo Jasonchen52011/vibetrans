@@ -8,7 +8,7 @@ const BASE_URL = 'http://localhost:3001';
 // 所有翻译器页面路由
 const translatorRoutes = [
   '/dog-translator',
-  '/gen-z-translator', 
+  '/gen-z-translator',
   '/gen-alpha-translator',
   '/bad-translator',
   '/baby-translator',
@@ -29,7 +29,7 @@ const translatorRoutes = [
   '/samoan-to-english-translator',
   '/gaster-translator',
   '/high-valyrian-translator',
-  '/aramaic-translator'
+  '/aramaic-translator',
 ];
 
 function makeRequest(path) {
@@ -41,8 +41,8 @@ function makeRequest(path) {
       path: url.pathname,
       method: 'GET',
       headers: {
-        'User-Agent': 'Test-Script/1.0'
-      }
+        'User-Agent': 'Test-Script/1.0',
+      },
     };
 
     const req = http.request(options, (res) => {
@@ -54,7 +54,7 @@ function makeRequest(path) {
         resolve({
           statusCode: res.statusCode,
           headers: res.headers,
-          body: data
+          body: data,
         });
       });
     });
@@ -71,14 +71,14 @@ async function testTranslatorPages() {
   console.log('🚀 测试所有翻译器页面...\n');
   console.log(`📍 服务器地址: ${BASE_URL}\n`);
 
-  let workingPages = [];
-  let failedPages = [];
+  const workingPages = [];
+  const failedPages = [];
 
   console.log('📄 测试页面状态:');
   for (const route of translatorRoutes) {
     try {
       const response = await makeRequest(route);
-      
+
       if (response.statusCode === 200) {
         console.log(`  ✅ ${route} - 工作正常 (200)`);
         workingPages.push(route);
@@ -101,7 +101,7 @@ async function testTranslatorPages() {
 
   if (failedPages.length > 0) {
     console.log('\n🔍 需要修复的页面:');
-    failedPages.forEach(page => {
+    failedPages.forEach((page) => {
       console.log(`  - ${page}`);
     });
   }

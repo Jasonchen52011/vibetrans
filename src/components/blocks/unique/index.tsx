@@ -76,7 +76,7 @@ export default function UniqueSection({
                     <div className="flex flex-col items-center lg:items-start pt-4">
                       <Button onClick={scrollToTop} size="lg" variant="default">
                         {ctaText}
-                        <Icon name="FaArrowUp" />
+                        <Icon name="FaArrowRight" />
                       </Button>
                     </div>
                   </div>

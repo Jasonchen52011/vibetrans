@@ -1,6 +1,7 @@
 'use client';
 
 import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
+import { ArrowRightIcon } from 'lucide-react';
 import mammoth from 'mammoth';
 import { useState } from 'react';
 
@@ -179,7 +180,7 @@ export default function VerboseGeneratorTool({
   };
 
   return (
-    <div className="container max-w-5xl mx-auto px-4 mb-10">
+    <div className="container max-w-7xl mx-auto px-4 mb-10">
       <main className="w-full bg-white dark:bg-zinc-800 shadow-xl border border-gray-100 dark:border-zinc-700 rounded-lg p-4 md:p-8">
         {/* Style Selector */}
         <div className="mb-6">
@@ -241,7 +242,7 @@ export default function VerboseGeneratorTool({
               onChange={(e) => setInputText(e.target.value)}
               placeholder={pageData.tool.inputPlaceholder}
               className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent resize-none text-gray-700 dark:text-gray-200 dark:bg-zinc-700"
-              aria-label="Input text"
+              aria-label={pageData.tool.inputLabel || "Input text"}
             />
 
             {/* File Upload */}
@@ -300,7 +301,7 @@ export default function VerboseGeneratorTool({
                     setInputText('');
                   }}
                   className="ml-auto text-gray-500 hover:text-red-500 dark:text-gray-400 dark:hover:text-red-400"
-                  aria-label="Remove file"
+                  aria-label={pageData.tool.removeFileTooltip || "Remove file"}
                 >
                   <svg
                     className="w-4 h-4"
@@ -332,7 +333,7 @@ export default function VerboseGeneratorTool({
                   <button
                     onClick={handleCopy}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
-                    title="Copy"
+                    title={pageData.tool.copyTooltip || "Copy"}
                   >
                     <svg
                       className="w-5 h-5"
@@ -351,7 +352,7 @@ export default function VerboseGeneratorTool({
                   <button
                     onClick={handleDownload}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
-                    title="Download"
+                    title={pageData.tool.downloadTooltip || "Download"}
                   >
                     <svg
                       className="w-5 h-5"
@@ -371,22 +372,38 @@ export default function VerboseGeneratorTool({
               )}
             </div>
             <div
-              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md bg-gray-50 dark:bg-zinc-700 flex items-center justify-center text-gray-700 dark:text-gray-200 overflow-y-auto"
+              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md bg-gray-50 dark:bg-zinc-700 overflow-y-auto"
               aria-live="polite"
             >
               {isLoading ? (
-                <div className="flex flex-col items-center gap-3">
-                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
-                  <p>{pageData.tool.loading}</p>
+                <div className="w-full h-full flex items-center justify-center text-gray-700 dark:text-gray-200">
+                  <div className="flex items-center gap-3">
+                    <div className="flex space-x-1">
+                      <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                      <div
+                        className="w-2 h-2 bg-primary rounded-full animate-pulse"
+                        style={{ animationDelay: '0.2s' }}
+                      ></div>
+                      <div
+                        className="w-2 h-2 bg-primary rounded-full animate-pulse"
+                        style={{ animationDelay: '0.4s' }}
+                      ></div>
+                    </div>
+                    <span>{pageData.tool.loading}</span>
+                  </div>
                 </div>
-              ) : error ? (
-                <p className="text-red-600 dark:text-red-400">{error}</p>
-              ) : outputText ? (
-                <p className="text-lg whitespace-pre-wrap">{outputText}</p>
               ) : (
-                <p className="text-gray-500 dark:text-gray-400">
-                  {pageData.tool.outputPlaceholder}
-                </p>
+                <div className="flex flex-col items-start justify-start text-gray-700 dark:text-gray-200">
+                  {error ? (
+                    <p className="text-red-600 dark:text-red-400">{error}</p>
+                  ) : outputText ? (
+                    <p className="text-lg whitespace-pre-wrap">{outputText}</p>
+                  ) : (
+                    <p className="text-gray-500 dark:text-gray-400">
+                      {pageData.tool.outputPlaceholder}
+                    </p>
+                  )}
+                </div>
               )}
             </div>
           </div>
@@ -397,9 +414,10 @@ export default function VerboseGeneratorTool({
           <button
             onClick={handleTranslate}
             disabled={isLoading}
-            className="px-8 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="inline-flex items-center px-8 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isLoading ? pageData.tool.loading : pageData.tool.translateButton}
+            <ArrowRightIcon className="ml-2 h-4 w-4" />
           </button>
           <button
             onClick={handleReset}

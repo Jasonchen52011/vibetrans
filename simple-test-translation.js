@@ -10,7 +10,7 @@ const tools = [
   'baybayin-translator',
   'cuneiform-translator',
   'gaster-translator',
-  'high-valyrian-translator'
+  'high-valyrian-translator',
 ];
 
 // 测试单个工具的组件代码
@@ -27,14 +27,17 @@ function analyzeComponent(toolName) {
     'CuneiformTranslatorTool.tsx',
     'GasterTranslatorTool.tsx',
     'HighValyrianTranslatorTool.tsx',
-    'SamoanToEnglishTranslatorTool.tsx'
+    'SamoanToEnglishTranslatorTool.tsx',
   ];
 
   let componentPath = null;
   let componentFound = false;
 
   for (const componentName of possibleComponentNames) {
-    const fullPath = path.join(process.cwd(), `src/app/[locale]/(marketing)/(pages)/${toolName}/${componentName}`);
+    const fullPath = path.join(
+      process.cwd(),
+      `src/app/[locale]/(marketing)/(pages)/${toolName}/${componentName}`
+    );
     if (fs.existsSync(fullPath)) {
       componentPath = fullPath;
       componentFound = true;
@@ -54,24 +57,40 @@ function analyzeComponent(toolName) {
   const analysis = {
     exists: true,
     path: componentPath,
-    hasDirectionState: content.includes('direction') && content.includes('useState'),
-    hasClickHandlers: content.includes('onClick') && content.includes('setDirection'),
-    hasTitleSwitching: content.includes('direction ===') && content.includes('?'),
-    hasPlaceholderUpdate: content.includes('placeholder') && content.includes('direction'),
-    hasMultipleTitles: content.includes('Samoan Text') || content.includes('English Text') ||
-                      content.includes('Aramaic Text') || content.includes('Baybayin Text') ||
-                      content.includes('Cuneiform Text') || content.includes('Gaster Text') ||
-                      content.includes('Valyrian Text') || content.includes('High Valyrian'),
-    hasSwapButton: content.includes('swap') || content.includes('toggle') || content.includes('Switch'),
-    hasClearUI: !content.includes('Click to switch') && !content.includes('Toggle direction'), // 检查是否有多余的切换提示文字
-    issues: []
+    hasDirectionState:
+      content.includes('direction') && content.includes('useState'),
+    hasClickHandlers:
+      content.includes('onClick') && content.includes('setDirection'),
+    hasTitleSwitching:
+      content.includes('direction ===') && content.includes('?'),
+    hasPlaceholderUpdate:
+      content.includes('placeholder') && content.includes('direction'),
+    hasMultipleTitles:
+      content.includes('Samoan Text') ||
+      content.includes('English Text') ||
+      content.includes('Aramaic Text') ||
+      content.includes('Baybayin Text') ||
+      content.includes('Cuneiform Text') ||
+      content.includes('Gaster Text') ||
+      content.includes('Valyrian Text') ||
+      content.includes('High Valyrian'),
+    hasSwapButton:
+      content.includes('swap') ||
+      content.includes('toggle') ||
+      content.includes('Switch'),
+    hasClearUI:
+      !content.includes('Click to switch') &&
+      !content.includes('Toggle direction'), // 检查是否有多余的切换提示文字
+    issues: [],
   };
 
   console.log(`🔍 组件功能分析:`);
   console.log(`  双向状态管理: ${analysis.hasDirectionState ? '✅' : '❌'}`);
   console.log(`  点击切换处理: ${analysis.hasClickHandlers ? '✅' : '❌'}`);
   console.log(`  标题切换逻辑: ${analysis.hasTitleSwitching ? '✅' : '❌'}`);
-  console.log(`  占位符动态更新: ${analysis.hasPlaceholderUpdate ? '✅' : '❌'}`);
+  console.log(
+    `  占位符动态更新: ${analysis.hasPlaceholderUpdate ? '✅' : '❌'}`
+  );
   console.log(`  多语言标题: ${analysis.hasMultipleTitles ? '✅' : '❌'}`);
   console.log(`  切换按钮: ${analysis.hasSwapButton ? '✅' : '❌'}`);
   console.log(`  干净UI设计: ${analysis.hasClearUI ? '✅' : '❌'}`);
@@ -79,14 +98,15 @@ function analyzeComponent(toolName) {
   if (!analysis.hasDirectionState) analysis.issues.push('缺少双向状态管理');
   if (!analysis.hasClickHandlers) analysis.issues.push('缺少点击切换处理');
   if (!analysis.hasTitleSwitching) analysis.issues.push('缺少标题切换逻辑');
-  if (!analysis.hasPlaceholderUpdate) analysis.issues.push('缺少占位符动态更新');
+  if (!analysis.hasPlaceholderUpdate)
+    analysis.issues.push('缺少占位符动态更新');
   if (!analysis.hasMultipleTitles) analysis.issues.push('缺少多语言标题');
   if (!analysis.hasSwapButton) analysis.issues.push('缺少切换按钮');
   if (!analysis.hasClearUI) analysis.issues.push('UI中有多余的切换提示文字');
 
   if (analysis.issues.length > 0) {
     console.log(`⚠️  发现问题:`);
-    analysis.issues.forEach(issue => console.log(`    - ${issue}`));
+    analysis.issues.forEach((issue) => console.log(`    - ${issue}`));
   } else {
     console.log(`✅ 所有功能检查通过`);
   }
@@ -104,7 +124,10 @@ function checkAPI(toolName) {
 
 // 检查页面文件
 function checkPage(toolName) {
-  const pagePath = path.join(process.cwd(), `src/app/[locale]/(marketing)/(pages)/${toolName}/page.tsx`);
+  const pagePath = path.join(
+    process.cwd(),
+    `src/app/[locale]/(marketing)/(pages)/${toolName}/page.tsx`
+  );
   const exists = fs.existsSync(pagePath);
   console.log(`  页面文件: ${exists ? '✅' : '❌'} (${toolName}/page.tsx)`);
   return exists;
@@ -121,7 +144,7 @@ function runTests() {
       name: tool,
       component: analyzeComponent(tool),
       api: checkAPI(tool),
-      page: checkPage(tool)
+      page: checkPage(tool),
     };
 
     results.push(result);
@@ -134,12 +157,12 @@ function runTests() {
   let totalScore = 0;
   let totalMaxScore = 0;
 
-  results.forEach(result => {
+  results.forEach((result) => {
     console.log(`\n${result.name}:`);
 
     if (result.component.exists) {
       let score = 0;
-      let maxScore = 9;
+      const maxScore = 9;
 
       if (result.component.hasDirectionState) score += 1;
       if (result.component.hasClickHandlers) score += 1;
@@ -167,7 +190,9 @@ function runTests() {
   });
 
   const overallRating = Math.round((totalScore / totalMaxScore) * 100);
-  console.log(`\n🎯 总体评分: ${totalScore}/${totalMaxScore} (${overallRating}%)\n`);
+  console.log(
+    `\n🎯 总体评分: ${totalScore}/${totalMaxScore} (${overallRating}%)\n`
+  );
 
   // 保存报告
   const reportData = {
@@ -175,10 +200,13 @@ function runTests() {
     overallRating: overallRating,
     totalScore: totalScore,
     totalMaxScore: totalMaxScore,
-    tools: results
+    tools: results,
   };
 
-  fs.writeFileSync('simple-translation-test-report.json', JSON.stringify(reportData, null, 2));
+  fs.writeFileSync(
+    'simple-translation-test-report.json',
+    JSON.stringify(reportData, null, 2)
+  );
   console.log('📄 详细报告已保存到: simple-translation-test-report.json');
 
   return reportData;

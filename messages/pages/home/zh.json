@@ -2,6 +2,13 @@
   "HomePage": {
     "title": "VibeTrans",
     "description": "AI驱动的翻译和本地化平台",
+    "hero": {
+      "title": "VibeTrans 翻译器 - 使用AI实现无缝语言转换",
+      "description": "Get the best results with our home translator powered by VibeTrans. 探索VibeTrans翻译器如何提供最佳的快速、准确和上下文感知翻译工具，支持各种语言和方言。立即简化您的沟通。",
+      "introduction": "介绍VibeTrans",
+      "primary": "立即试用VibeTrans翻译器！",
+      "secondary": "查看演示"
+    },
     "howto": {
       "title": "如何使用 VibeTrans",
       "description": "使用 VibeTrans 简单直观。以下是开始使用其强大翻译工具的方法：",
@@ -23,6 +30,12 @@
           "description": "如需要，可以调整翻译设置以满足您的需求。您可以更改语言、使用语音输入或修改输出以获得更好的准确性。"
         }
       ]
+    },
+    "calltoaction": {
+      "title": "准备好打破语言障碍了吗？",
+      "description": "立即开始使用VibeTrans进行翻译。为100多种语言提供快速、准确和上下文感知的翻译。基本功能无需注册！",
+      "primaryButton": "立即试用VibeTrans翻译器！",
+      "secondaryButton": "查看演示"
     }
   }
 }

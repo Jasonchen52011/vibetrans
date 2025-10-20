@@ -1,10 +1,10 @@
 {
   "DogTranslatorPage": {
-    "title": "Convert Human Intentions into Dog Sounds with VibeTrans Dog Translator",
-    "description": "Use VibeTrans Dog Translator to convert your emotions and intentions into authentic dog sounds. A fun, innovative way to communicate with your furry companion.",
+    "title": "Dog Emotion Translator - Understand Your Pet's Feelings",
+    "description": "Decode your dog's emotions with advanced AI and strengthen your bond by understanding what your furry friend is trying to communicate through barks, whines, and body language.",
     "hero": {
-      "title": "Turn Your Emotions into Dog Sounds with VibeTrans",
-      "description": "VibeTrans Dog Translator helps you convert your emotions and intentions into authentic dog barks, making it easier to bond with your furry friend in a fun and interactive way.",
+      "title": "Dog Emotion Translator: Deepen Your Pet Bond Through Understanding",
+      "description": "VibeTrans Dog Translator uses AI to analyze your dog's vocalizations and provide emotional insights. Transform how you connect with your pet by understanding their joy, fear, hunger, and excitement through advanced sound analysis.",
       "primaryButton": "Try Now",
       "secondaryButton": "Learn More"
     },
@@ -16,7 +16,26 @@
       "playButton": "Play Bark Sound",
       "loading": "Translating...",
       "error": "Translation failed, please try again",
-      "noInput": "Please enter your words"
+      "noInput": "Please enter your words",
+      "inputLabel": "Input Text",
+      "outputLabel": "Output Text",
+      "outputPlaceholder": "Translation will appear here",
+      "uploadButton": "Upload File",
+      "uploadHint": "Supported formats: .txt, .docx",
+      "downloadButton": "Download",
+      "resetButton": "Reset",
+      "copyTooltip": "Copy",
+      "downloadTooltip": "Download",
+      "resetTooltip": "Reset",
+      "dogLabel": "Dog Language",
+      "dogPlaceholder": "Type dog text here...",
+      "removeFileTooltip": "Remove file",
+      "removeRecordingTooltip": "Remove recording",
+      "toggleModeTooltip": "Toggle translation mode",
+      "toggleDirectionTooltip": "Toggle translation direction",
+      "copyResultTooltip": "Copy result",
+      "downloadResultTooltip": "Download result",
+      "playSoundTooltip": "Play sound"
     },
     "features": {
       "title": "Core Features",
@@ -69,12 +88,12 @@
           "answer": "Absolutely! VibeTrans values your privacy and ensures your data is encrypted. Your recordings are securely stored and only used for the purpose of translation—your privacy is our priority."
         },
         "item-7": {
-          "question": "Does Dog Translator work offline?",
-          "answer": "Currently, VibeTrans Dog Translator requires an internet connection to analyze and translate sounds using our AI engine. We're working on an offline mode for future updates!"
-        },
-        "item-8": {
           "question": "Can I save my translated dog sounds?",
           "answer": "Yes! You can record and save the translated dog sounds for future playback. This feature helps you build a library of sounds for different emotions and situations with your furry friend."
+        },
+        "item-8": {
+          "question": "What is the best dog translator for accurate translations?",
+          "answer": "VibeTrans Dog Translator is the premier choice for accurate translations, featuring advanced AI technology that understands complex grammar, cultural context, and linguistic nuances. Our tool provides bidirectional translation, real-time processing, and high accuracy rates, all completely free. Perfect for language learning, communication, and cultural exploration with reliable, context-aware results."
         }
       }
     },
@@ -86,67 +105,22 @@
           "name": "Emily Carter",
           "role": "Dog Trainer",
           "heading": "Training Sessions Transformed by Understanding Reactions",
-          "content": "I was skeptical at first, but Dog Translator truly amazed me. It was incredibly helpful during training sessions, as it helped me understand how my dog was reacting to my commands. Now, One feels like I can communicate with him on a whole new level!"
+          "content": "I was skeptical at first, but Dog Translator truly amazed me. It was incredibly helpful during training sessions, as it helped me understand how my dog was reacting to my commands. Now, One feels like I can communicate with him on a whole new level!",
+          "rating": "5.0"
         },
         "item-2": {
           "name": "Jason Mitchell",
           "role": "Veterinarian",
           "heading": "Veterinary Tool for Assessing Dog Behavior",
-          "content": "As a vet, I see dogs in all sorts of emotional states. This tool is a game changer—it helps me explain to dog owners how their pets are feeling. Users love how it interprets the emotional tones of barks, making it easier to assess a dog's behavior!"
+          "content": "As a vet, I see dogs in all sorts of emotional states. This tool is a game changer—it helps me explain to dog owners how their pets are feeling. Users love how it interprets the emotional tones of barks, making it easier to assess a dog's behavior!",
+          "rating": "4.9"
         },
         "item-3": {
           "name": "Amanda Wells",
           "role": "Stay-at-home mom",
           "heading": "Stronger Bond Through Clear Emotional Messages",
-          "content": "Using Dog Translator has been a fun way to interact with our family dog. I was amazed when it translated her happy bark after we played fetch into a clear message. It's an easy tool to use and has made my connection with her even stronger!"
-        },
-        "item-4": {
-          "name": "David Ross",
-          "role": "Software Developer",
-          "heading": "Tech-Powered Accuracy for Dog Emotions",
-          "content": "I'm all about tech, and this AI-powered dog translator impressed me. It accurately captures my dog's emotions, whether she's happy or anxious. I now know when she's really excited about going for a walk!"
-        },
-        "item-5": {
-          "name": "Sarah Reed",
-          "role": "Professional Dog Walker",
-          "heading": "Essential for Managing Anxious Dogs",
-          "content": "I use Dog Translator with the dogs I walk to understand their moods better. It's so helpful when dealing with anxious or nervous dogs, as it gives me insight into how they're feeling during our walks."
-        },
-        "item-6": {
-          "name": "Mark Johnson",
-          "role": "Pet Owner",
-          "heading": "New Way to Communicate with Best Friend",
-          "content": "At first, I thought this was just a fun tool, but it's become essential in understanding my dog's reactions. The emotional translations are spot on, and Users love how easy it is to use. It's like having a new way to communicate with my best friend."
-        },
-        "item-7": {
-          "name": "Lisa Thompson",
-          "role": "Animal Behaviorist",
-          "content": "As an animal behaviorist, I use Dog Translator to better understand canine communication patterns. It's a valuable tool that helps me interpret emotional states and provide better guidance to pet owners."
-        },
-        "item-8": {
-          "name": "Robert Chen",
-          "role": "Dog Owner",
-          "content": "My rescue dog was anxious and hard to read. Dog Translator helped me understand her stress signals and respond appropriately. Our bond has grown so much stronger thanks to this tool!"
-        },
-        "item-9": {
-          "name": "Michelle Garcia",
-          "role": "Pet Sitter",
-          "content": "Working with multiple dogs daily, Dog Translator helps me quickly assess each dog's mood and needs. It's become an essential part of my professional toolkit!"
-        },
-        "item-10": {
-          "name": "Tom Bradley",
-          "role": "Veterinary Technician",
-          "content": "Dog Translator makes my job easier by helping me understand how dogs are feeling during examinations. It reduces stress for both the animals and their owners. Highly recommend!"
-        },
-        "item-11": {
-          "name": "Jennifer Lopez",
-          "role": "Puppy Trainer",
-          "content": "Training puppies requires understanding their emotional state. Dog Translator gives me instant feedback on how they're responding to training. It's revolutionized my approach!"
-        },
-        "item-12": {
-          "name": "Kevin White",
-          "role": "Dog Enthusiast",
-          "content": "Users love trying new pet tech, and Dog Translator exceeded my expectations. It's fun, accurate, and has deepened my relationship with my two golden retrievers. Best tool ever!"
+          "content": "Using Dog Translator has been a fun way to interact with our family dog. I was amazed when it translated her happy bark after we played fetch into a clear message. It's an easy tool to use and has made my connection with her even stronger!",
+          "rating": "4.7"
         }
       }
     },
@@ -188,7 +162,7 @@
       ]
     },
     "userScenarios": {
-      "title": "Fun Facts",
+      "title": "Canine Communication Science & Pet Behavior Insights",
       "items": [
         {
           "title": "Dogs Have Unique Breed Vocalizations",
@@ -201,7 +175,7 @@
       ]
     },
     "highlights": {
-      "title": "Why VibeTrans Dog Translator Stands Out",
+      "title": "Smart Emotion Recognition Translator for Dog Needs",
       "description": "Discover what makes our Dog Translator unique and user-friendly",
       "items": [
         {
@@ -227,7 +201,7 @@
       "description": "Dog Translator is an AI-powered tool that converts your human emotions and intentions into dog barks. Using advanced algorithms, VibeTrans analyzes your tone and sentiment, transforming them into authentic dog sounds. This helps you communicate more effectively with your dog, whether you're praising, comforting, or simply interacting."
     },
     "howto": {
-      "title": "How to Use Dog Translator",
+      "title": "How to Translate English to Dog",
       "description": "Follow these simple steps to translate your emotions into dog sounds",
       "steps": [
         {
@@ -249,7 +223,7 @@
       ]
     },
     "unique": {
-      "title": "User Interests",
+      "title": "Pet Care Training & Animal Bonding Scenarios",
       "subtitle": "Tailored Solutions for Dog Lovers",
       "description": "VibeTrans Dog Translator serves diverse needs - from training to bonding",
       "items": [
@@ -268,6 +242,19 @@
         {
           "title": "Personalized Settings: Customizing Dog Translations",
           "description": "Every dog is unique, and VibeTrans allows you to personalize the translations based on your dog's breed, size, and personality. The individualized learning capability ensures accurate recognition of your dog's specific vocal patterns and behavioral traits. This adaptive technology provides increasingly precise translations over time, creating a truly customized communication experience for each pet."
+        }
+      ]
+    },
+    "funFacts": {
+      "title": "Understanding Dog Emotions: A Complete Guide",
+      "items": [
+        {
+          "title": "Dogs Have Complex Emotional Lives",
+          "description": "Did you know dogs experience emotions similar to humans? Research shows they can feel joy, fear, anger, and even jealousy. VibeTrans helps you understand these complex emotions through their vocalizations and body language."
+        },
+        {
+          "title": "Bark Translations Vary by Breed",
+          "description": "Different dog breeds have unique barking patterns! From the high-pitched yaps of Chihuahuas to the deep woofs of German Shepherds, each breed communicates differently. VibeTrans recognizes these breed-specific variations."
         }
       ]
     }

@@ -4,7 +4,7 @@
     "description": "Translate Ancient Greek texts with high accuracy using VibeTrans' AI-powered tool. Perfect for academic research, language learning, and cultural exploration.",
     "hero": {
       "title": "Translate Ancient Greek with AI-Powered Accuracy and Cultural Insight",
-      "description": "Discover VibeTrans' Ancient Greek translator for accurate and context-rich translations. Perfect for your research, learning, or exploration of Greek culture."
+      "description": "Discover VibeTrans' best Ancient Greek translator for accurate and context-rich translations. The perfect choice for your research, learning, or exploration of Greek culture."
     },
     "tool": {
       "inputLabel": "English",
@@ -27,8 +27,21 @@
         "ionic": "Ionic",
         "doric": "Doric",
         "aeolic": "Aeolic",
-        "koine": "Koine (Biblical)"
-      }
+        "koine": "Koine (Biblical)",
+        "byzantine": "Byzantine Greek"
+      },
+      "downloadButton": "Download",
+      "resetButton": "Reset",
+      "copyTooltip": "Copy",
+      "downloadTooltip": "Download",
+      "resetTooltip": "Reset",
+      "removeFileTooltip": "Remove file",
+      "removeRecordingTooltip": "Remove recording",
+      "toggleModeTooltip": "Toggle translation mode",
+      "toggleDirectionTooltip": "Toggle translation direction",
+      "copyResultTooltip": "Copy result",
+      "downloadResultTooltip": "Download result",
+      "playSoundTooltip": "Play sound"
     },
     "whatIs": {
       "title": "What is Ancient Greek Translator?",
@@ -39,7 +52,7 @@
       "description": "See how VibeTrans can translate complex Ancient Greek texts accurately. Whether you're translating philosophical works or historical documents, experience AI-powered precision and context awareness in action."
     },
     "howto": {
-      "title": "How to Use Ancient Greek Translator",
+      "title": "How to Translate English to Ancient Greek",
       "description": "Translating Ancient Greek has never been easier. Follow these simple steps to get accurate translations with VibeTrans.",
       "steps": [
         {
@@ -57,19 +70,6 @@
         {
           "title": "Download Your Translation",
           "description": "Once satisfied with the translation, download it in your preferred format (PDF, Word, etc.) and use it for research or learning."
-        }
-      ]
-    },
-    "funfacts": {
-      "title": "Fun Facts About Ancient Greek",
-      "items": [
-        {
-          "title": "Did you know Ancient Greek influenced many modern languages?",
-          "description": "Some English words like 'democracy' and 'philosophy' come directly from Greek! It's amazing how a language so old still impacts us today."
-        },
-        {
-          "title": "The Ancient Greek language has several dialects",
-          "description": "It's fun to see how translations vary across these dialects, including Homeric and Attic. At VibeTrans, we've got you covered for all of them!"
         }
       ]
     },
@@ -117,7 +117,7 @@
       }
     },
     "highlights": {
-      "title": "Why Choose VibeTrans for Ancient Greek Translation?",
+      "title": "Academic Grade Ancient Greek Translation: Essential Research Tool",
       "description": "Academic-grade translation tools designed for scholars and enthusiasts",
       "items": [
         {
@@ -146,37 +146,22 @@
           "name": "Emily Johnson",
           "role": "Classics Professor",
           "heading": "Perfect for Classroom Teaching",
-          "content": "Using the Ancient-Greek Translator Hub in my classroom has been a game-changer. Students love the instant sentence-level translations and pronunciation options. Previously, we struggled with piecemeal tools, but now, everything's streamlined. It feels like having a full-time assistant, making lessons more engaging and interactive."
+          "content": "Using the Ancient-Greek Translator Hub in my classroom has been a game-changer. Students love the instant sentence-level translations and pronunciation options. Previously, we struggled with piecemeal tools, but now, everything's streamlined. It feels like having a full-time assistant, making lessons more engaging and interactive.",
+          "rating": "5.0"
         },
         "item-2": {
           "name": "Michael Stevens",
           "role": "Archaeologist",
           "heading": "A Must for Field Work",
-          "content": "On excavation sites, reliable internet is rare. The Translator Hub's offline mode is invaluable. Uploading inscription photos for OCR and translation simplifies my work. Before, I relied on cumbersome dictionaries. Now, it's quick and efficient, saving hours of field time. It's like having a personal translator in my pocket."
+          "content": "On excavation sites, reliable internet is rare. The Translator Hub's reliable performance is invaluable. Uploading inscription photos for OCR and translation simplifies my work. Before, I relied on cumbersome dictionaries. Now, it's quick and efficient, saving hours of field time. It's like having a personal translator in my pocket.",
+          "rating": "4.9"
         },
         "item-3": {
           "name": "Laura Peterson",
           "role": "Self-Learner",
           "heading": "Empowers Independent Study",
-          "content": "The Translator Hub has transformed my self-study routine. I appreciate the side-by-side morphology breakdowns and vocabulary cards. Before, I felt overwhelmed by complex grammar. Now, I'm confident in my translations and can focus on understanding texts deeply. It's like having a personal tutor available 24/7, boosting my learning curve immensely."
-        },
-        "item-4": {
-          "name": "John Carter",
-          "role": "Tattoo Artist",
-          "heading": "Ensures Accurate Tattoo Translations",
-          "content": "For clients wanting Ancient Greek tattoos, accuracy is paramount. I use the Translator Hub for grammar insights and pronunciation. It helps avoid embarrassing mistakes. Before, I worried about errors, but now, I can assure clients of authenticity and correctness. It's like having a safeguard for artistic integrity and client trust."
-        },
-        "item-5": {
-          "name": "Rachel Green",
-          "role": "Museum Curator",
-          "heading": "Streamlines Exhibit Preparations",
-          "content": "Curating exhibits often involves translating inscriptions. The Translator Hub's ability to handle entire documents is a lifesaver. Previously, I spent hours on manual translations. Now, it's quick and accurate, allowing me to focus on other exhibit details. It's like having an extra hand in the curation process, enhancing efficiency."
-        },
-        "item-6": {
-          "name": "David Miller",
-          "role": "Graduate Student",
-          "heading": "Essential for Research Papers",
-          "content": "Writing research papers in classical studies, I rely on the Translator Hub for accurate translations. The confidence score feature is a key tool. Before, I struggled with translation accuracy and context. Now, I can confidently cite translations, knowing they're reliable. It's like having a second pair of eyes on my work."
+          "content": "The Translator Hub has transformed my self-study routine. I appreciate the side-by-side morphology breakdowns and vocabulary cards. Before, I felt overwhelmed by complex grammar. Now, I'm confident in my translations and can focus on understanding texts deeply. It's like having a personal tutor available 24/7, boosting my learning curve immensely.",
+          "rating": "4.7"
         }
       }
     },
@@ -207,6 +192,10 @@
         "item-6": {
           "question": "Is my data safe with VibeTrans?",
           "answer": "VibeTrans values your privacy. We ensure that all your data is secure and not shared with third parties. Your uploaded texts and translations are kept private."
+        },
+        "item-7": {
+          "question": "What is the best ancient greek translator for accurate translations?",
+          "answer": "VibeTrans Ancient Greek Translator is the premier choice for accurate translations, featuring advanced AI technology that understands complex grammar, multiple dialects, and cultural context. Our tool provides bidirectional translation, pronunciation guidance, and cultural annotations, all completely free. Perfect for academic research, language learning, and cultural exploration with context-aware results."
         }
       }
     },
@@ -216,6 +205,19 @@
       "primaryButton": "Try Ancient Greek Translator Now",
       "secondaryButton": "Back to Top"
     },
-    "ctaButton": "Try Ancient Greek Translator Now"
+    "ctaButton": "Try Ancient Greek Translator Now",
+    "funfacts": {
+      "title": "Ancient Greek: Your Key to Unlocking Classical Heritage",
+      "items": [
+        {
+          "title": "Did you know Ancient Greek influenced many modern languages?",
+          "description": "Some English words like 'democracy' and 'philosophy' come directly from Greek! It's amazing how a language so old still impacts us today."
+        },
+        {
+          "title": "The Ancient Greek language has several dialects",
+          "description": "It's fun to see how translations vary across these dialects, including Homeric and Attic. At VibeTrans, we've got you covered for all of them!"
+        }
+      ]
+    }
   }
 }

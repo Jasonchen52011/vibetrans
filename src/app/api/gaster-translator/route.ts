@@ -84,7 +84,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Only support English to Gaster translation
-    const finalDirection: 'toGaster' = 'toGaster';
+    const finalDirection = 'toGaster' as const;
 
     // 清理文本
     const cleanedText = text.trim();
@@ -112,7 +112,8 @@ export async function POST(request: NextRequest) {
 export async function GET() {
   return NextResponse.json(
     {
-      message: 'Gaster Translator API - Use POST method to translate English text to Gaster',
+      message:
+        'Gaster Translator API - Use POST method to translate English text to Gaster',
       version: '1.0',
       supported_directions: ['toGaster'], // Only support English to Gaster
       maxLength: 5000,

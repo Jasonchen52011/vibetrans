@@ -4,7 +4,7 @@
     "description": "AI-powered translation and localization platform",
     "hero": {
       "title": "VibeTrans Translator for Seamless Language Conversion With AI",
-      "description": "Explore how VibeTrans translator offers quick, accurate, and context-aware translation tools for a wide variety of languages and dialects. Simplify your communication today.",
+      "description": "Explore how VibeTrans translator offers the best quick, accurate, and context-aware translation tools for a wide variety of languages and dialects. Simplify your communication today.",
       "introduction": "Introducing VibeTrans",
       "primary": "Try VibeTrans Translator Now!",
       "secondary": "See Demo"
@@ -157,42 +157,48 @@
           "role": "Marketing Manager",
           "image": "https://randomuser.me/api/portraits/men/1.jpg",
           "heading": "Perfect for Business",
-          "content": "I recently used VibeTrans to translate a customer service script for my international clients. It was incredibly accurate and helped us communicate smoothly. Plus, it's super fast—just what I need for daily business!"
+          "content": "I recently used VibeTrans to translate a customer service script for my international clients. It was incredibly accurate and helped us communicate smoothly. Plus, it's super fast—just what I need for daily business!",
+          "rating": 5.0
         },
         "item-2": {
           "name": "Emily Brown",
           "role": "Travel Blogger",
           "image": "https://randomuser.me/api/portraits/women/6.jpg",
           "heading": "Made My Travels Easier",
-          "content": "I travel a lot and language barriers can be tough. VibeTrans made my trips easier. I could quickly translate restaurant menus and ask for directions in different countries—made my travels so much smoother!"
+          "content": "I travel a lot and language barriers can be tough. VibeTrans made my trips easier. I could quickly translate restaurant menus and ask for directions in different countries—made my travels so much smoother!",
+          "rating": 4.8
         },
         "item-3": {
           "name": "Sarah Williams",
           "role": "Language Student",
           "image": "https://randomuser.me/api/portraits/women/7.jpg",
           "heading": "Great Learning Tool",
-          "content": "As a language learner, I use VibeTrans to practice new words and phrases. It's not just a translator, but a learning tool. I get context for each word, which really helps me understand the language better."
+          "content": "As a language learner, I use VibeTrans to practice new words and phrases. It's not just a translator, but a learning tool. I get context for each word, which really helps me understand the language better.",
+          "rating": 4.6
         },
         "item-4": {
           "name": "Tim Johnson",
           "role": "Small Business Owner",
           "image": "https://randomuser.me/api/portraits/men/8.jpg",
           "heading": "Saves Time",
-          "content": "We're expanding into Spanish-speaking markets, and VibeTrans has been a lifesaver for translating marketing material and customer emails. It saves us time and helps ensure accurate translations."
+          "content": "We're expanding into Spanish-speaking markets, and VibeTrans has been a lifesaver for translating marketing material and customer emails. It saves us time and helps ensure accurate translations.",
+          "rating": 4.9
         },
         "item-5": {
           "name": "Olivia Martinez",
           "role": "Educator",
           "image": "https://randomuser.me/api/portraits/women/4.jpg",
           "heading": "Perfect for Teaching",
-          "content": "I use VibeTrans to help my students with language practice. It's a great tool to show how translations can change depending on context, and it's perfect for learning new vocabulary. It's an all-around great tool!"
+          "content": "I use VibeTrans to help my students with language practice. It's a great tool to show how translations can change depending on context, and it's perfect for learning new vocabulary. It's an all-around great tool!",
+          "rating": 4.7
         },
         "item-6": {
           "name": "Daniel Lee",
           "role": "Web Developer",
           "image": "https://randomuser.me/api/portraits/men/2.jpg",
           "heading": "Simple & Accurate",
-          "content": "I was building a multilingual website and needed quick translations for various pages. VibeTrans did the job flawlessly. It was simple to use and gave me accurate results every time!"
+          "content": "I was building a multilingual website and needed quick translations for various pages. VibeTrans did the job flawlessly. It was simple to use and gave me accurate results every time!",
+          "rating": 5.0
         },
         "item-7": {
           "name": "Zeki",

@@ -4,7 +4,7 @@
     "description": "Easily translate traditional text to Gen Z slang and vice versa. Multilingual support and file upload for a seamless translation experience with VibeTrans.",
     "hero": {
       "title": "Gen Z Translator – Understand & Translate Gen Z Slang and Text",
-      "description": "VibeTrans makes it easy to understand and translate Gen Z slang. Whether you're a content creator or just curious, we've got you covered with multilingual support."
+      "description": "VibeTrans provides the best Gen Z slang translation with multilingual support. Whether you're a content creator or just curious, we've got you covered with accurate, up-to-date translations."
     },
     "tool": {
       "inputLabel": "Standard English",
@@ -18,7 +18,19 @@
       "uploadHint": "Supported formats: .txt, .docx",
       "loading": "Translating...",
       "error": "Translation failed, please try again",
-      "noInput": "Please enter some text"
+      "noInput": "Please enter some text",
+      "downloadButton": "Download",
+      "resetButton": "Reset",
+      "copyTooltip": "Copy",
+      "downloadTooltip": "Download",
+      "resetTooltip": "Reset",
+      "removeFileTooltip": "Remove file",
+      "removeRecordingTooltip": "Remove recording",
+      "toggleModeTooltip": "Toggle translation mode",
+      "toggleDirectionTooltip": "Toggle translation direction",
+      "copyResultTooltip": "Copy result",
+      "downloadResultTooltip": "Download result",
+      "playSoundTooltip": "Play sound"
     },
     "whatIs": {
       "title": "What is Gen Z Translator?",
@@ -29,7 +41,7 @@
       "description": "Need to convert a professional email to Gen Z slang? Or decode that tricky meme? VibeTrans can help with both! Just enter your text and see the magic happen."
     },
     "howto": {
-      "title": "How to Use Gen Z Translator",
+      "title": "How to Translate English to Gen Z",
       "description": "Follow these simple steps to convert any text to Gen Z slang and more with VibeTrans.",
       "steps": [
         {
@@ -50,21 +62,8 @@
         }
       ]
     },
-    "funfacts": {
-      "title": "Fun Facts",
-      "items": [
-        {
-          "title": "Private Slang Dictionaries",
-          "description": "Did you know? Gen Z often creates private slang dictionaries with friends to keep their conversations unique and personal. With VibeTrans, you can decode this secret language easily!"
-        },
-        {
-          "title": "Fax, No Printer",
-          "description": "Here's a fun one: 'Fax, No Printer' is a popular Gen Z slang phrase meaning 'I'm serious.' Who would've thought a fax machine could be so hip, right? VibeTrans can help you understand it!"
-        }
-      ]
-    },
     "userInterest": {
-      "title": "User Interests",
+      "title": "Social Media & Youth Culture Applications",
       "subtitle": "Tailored Solutions for Everyone",
       "description": "VibeTrans serves diverse needs - from content creators to parents",
       "items": [
@@ -87,7 +86,7 @@
       ]
     },
     "highlights": {
-      "title": "Why Choose VibeTrans?",
+      "title": "Gen Z Translation Engine for Gen Z Players",
       "description": "Simple, accurate, and secure translation tools for everyone",
       "items": [
         {
@@ -116,73 +115,22 @@
           "name": "Emily Johnson",
           "role": "Social Media Manager",
           "heading": "Perfect for Social Media",
-          "content": "VibeTrans is a game-changer for my social media posts. I use it to connect with younger audiences and create content that resonates with Gen Z. It's easy to use and really fun!"
+          "content": "VibeTrans is a game-changer for my social media posts. I use it to connect with younger audiences and create content that resonates with Gen Z. It's easy to use and really fun!",
+          "rating": "5.0"
         },
         "item-2": {
           "name": "David Roberts",
           "role": "Teacher",
           "heading": "Bridges Communication Gaps",
-          "content": "As a high school teacher, I use VibeTrans to help me understand my students' language. It's very helpful for connecting with Gen Z and fostering better communication in class."
+          "content": "As a high school teacher, I use VibeTrans to help me understand my students' language. It's very helpful for connecting with Gen Z and fostering better communication in class.",
+          "rating": "4.9"
         },
         "item-3": {
           "name": "Sarah Mitchell",
           "role": "Marketing Specialist",
           "heading": "Marketing Game Changer",
-          "content": "VibeTrans has been invaluable for our marketing campaigns. It's a simple tool that helps us tailor content specifically to Gen Z. Users love how it gives me quick translations and updates regularly!"
-        },
-        "item-4": {
-          "name": "Michael Anderson",
-          "role": "Parent",
-          "heading": "Understand My Kids Better",
-          "content": "I use VibeTrans to understand my kids' texts! It's hilarious but also practical. Users love knowing what they're really saying without asking them directly."
-        },
-        "item-5": {
-          "name": "Jessica Taylor",
-          "role": "Content Creator",
-          "heading": "Essential for Creators",
-          "content": "VibeTrans makes it easy to stay on top of trends. As a content creator, using Gen Z slang helps me connect with my audience. This tool is a must-have!"
-        },
-        "item-6": {
-          "name": "John Peterson",
-          "role": "Business Owner",
-          "heading": "Amazing Business Tool",
-          "content": "I wanted to create more engaging marketing content for a younger audience. VibeTrans helped me transform traditional text into trendy Gen Z language. It's an amazing tool!"
-        },
-        "item-7": {
-          "name": "Rachel Williams",
-          "role": "Influencer",
-          "heading": "Stay Authentic and Relevant",
-          "content": "Staying relevant on social media means speaking the language of my audience. VibeTrans helps me stay current with Gen Z slang. It's authentic and always on point!"
-        },
-        "item-8": {
-          "name": "Kevin Martinez",
-          "role": "Brand Manager",
-          "heading": "Natural Brand Voice",
-          "content": "Our brand targets Gen Z consumers, and VibeTrans has been crucial for our messaging. It helps us sound natural and relatable without trying too hard. Perfect tool!"
-        },
-        "item-9": {
-          "name": "Amanda Chen",
-          "role": "YouTuber",
-          "heading": "Secret Weapon for Content",
-          "content": "Creating content for Gen Z viewers means understanding their language. VibeTrans is my secret weapon for keeping my videos fresh and relatable. Love it!"
-        },
-        "item-10": {
-          "name": "James Lee",
-          "role": "Copywriter",
-          "heading": "Professional's Dream Tool",
-          "content": "Writing for Gen Z audiences requires authenticity. VibeTrans helps me craft messages that resonate without sounding forced. It's a professional's dream tool!"
-        },
-        "item-11": {
-          "name": "Sophie Brown",
-          "role": "Community Manager",
-          "heading": "Build Stronger Connections",
-          "content": "Managing online communities means speaking their language. VibeTrans helps me engage with Gen Z members naturally and build stronger connections. Highly recommended!"
-        },
-        "item-12": {
-          "name": "Daniel Garcia",
-          "role": "Podcast Host",
-          "heading": "Pocket Translator",
-          "content": "My podcast targets younger listeners, and VibeTrans keeps my content relevant. It's like having a Gen Z translator in my pocket. Absolutely essential!"
+          "content": "VibeTrans has been invaluable for our marketing campaigns. It's a simple tool that helps us tailor content specifically to Gen Z. Users love how it gives me quick translations and updates regularly!",
+          "rating": "4.7"
         }
       }
     },
@@ -221,6 +169,10 @@
         "item-8": {
           "question": "Can I save my translation history?",
           "answer": "Yes! Once you create an account, VibeTrans automatically saves your translation history so you can access and reference previous translations anytime."
+        },
+        "item-9": {
+          "question": "What is the best gen z translator for accurate translations?",
+          "answer": "VibeTrans Gen Z Translator is the premier choice for accurate translations, featuring advanced AI technology that understands complex grammar, cultural context, and linguistic nuances. Our tool provides bidirectional translation, real-time processing, and high accuracy rates, all completely free. Perfect for language learning, communication, and cultural exploration with reliable, context-aware results."
         }
       }
     },
@@ -339,6 +291,19 @@
           "standard": "Absolutely / End of discussion",
           "genZ": "Periodt",
           "meaning": "Emphasizes finality, like putting a period at the end"
+        }
+      ]
+    },
+    "funfacts": {
+      "title": "Gen Z Fan's Guide to Mastering Gen Z Culture",
+      "items": [
+        {
+          "title": "Private Slang Dictionaries",
+          "description": "Did you know? Gen Z often creates private slang dictionaries with friends to keep their conversations unique and personal. With VibeTrans, you can decode this secret language easily!"
+        },
+        {
+          "title": "Fax, No Printer",
+          "description": "Here's a fun one: 'Fax, No Printer' is a popular Gen Z slang phrase meaning 'I'm serious.' Who would've thought a fax machine could be so hip, right? VibeTrans can help you understand it!"
         }
       ]
     }

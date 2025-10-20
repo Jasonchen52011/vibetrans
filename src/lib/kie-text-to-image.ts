@@ -294,12 +294,12 @@ export async function createSeedreamTask(
 }
 
 /**
- * Poll task for Seedream 4.0 with 30-second timeout
- * Faster timeout to quickly fallback to Google Nano Banana
+ * Poll task for Seedream 4.0 with 3-minute timeout
+ * Extended timeout for Volcano 4.0 higher quality generation
  */
 export async function pollSeedreamResult(
   taskId: string,
-  maxAttempts = 15, // 15 attempts * 2 seconds = 30 seconds
+  maxAttempts = 90, // 90 attempts * 2 seconds = 3 minutes
   intervalMs = 2000
 ): Promise<KieTaskResult> {
   console.log(`⏳ Polling task ${taskId}...`);
@@ -349,7 +349,7 @@ export async function generateImageWithSeedream(
   const taskId = createResponse.data.taskId;
   console.log(`✅ [Seedream 4.0] Task created: ${taskId}`);
 
-  // Step 2: Poll for result with 30-second timeout
+  // Step 2: Poll for result with 3-minute timeout
   const result = await pollSeedreamResult(taskId);
 
   // Step 3: Handle result

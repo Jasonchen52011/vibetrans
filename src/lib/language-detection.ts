@@ -131,7 +131,9 @@ export function detectLanguage(
   // 针对阿拉姆语特殊处理方向映射
   const suggestedDirection =
     targetLanguage === 'aramaic'
-      ? (detectedLanguage === 'english' ? 'toAramaic' : 'toEnglish')
+      ? detectedLanguage === 'english'
+        ? 'toAramaic'
+        : 'toEnglish'
       : detectedLanguage === 'english'
         ? 'from-english'
         : detectedLanguage === targetLanguage

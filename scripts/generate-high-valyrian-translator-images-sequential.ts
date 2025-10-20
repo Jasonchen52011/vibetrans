@@ -15,7 +15,7 @@ const sections: ArticleSections = {
     {
       title: 'Ancient Language Structure',
       content:
-        'High Valyrian boasts a complex grammatical system with four distinct grammatical genders, far more intricate than most modern languages. VibeTrans makes mastering this ancient tongue from Game of Thrones both accessible and enjoyable - a true linguistic enthusiast\'s dream come true!',
+        "High Valyrian boasts a complex grammatical system with four distinct grammatical genders, far more intricate than most modern languages. VibeTrans makes mastering this ancient tongue from Game of Thrones both accessible and enjoyable - a true linguistic enthusiast's dream come true!",
     },
     {
       title: 'Magical Linguistic Heritage',
@@ -62,16 +62,27 @@ async function updatePageImageReferences() {
 
   // 图片映射关系 - 页面文件
   const pageImageMappings = {
-    "'/images/docs/valyrian-translation.webp'": "'/images/docs/valyrian-translation-tool.webp'",
-    "'/images/docs/what-is-high-valyrian-translator.webp'": "'/images/docs/valyrian-translation-tool.webp'",
+    "'/images/docs/valyrian-translation.webp'":
+      "'/images/docs/valyrian-translation-tool.webp'",
+    "'/images/docs/what-is-high-valyrian-translator.webp'":
+      "'/images/docs/valyrian-translation-tool.webp'",
   };
 
   // 应用页面图片替换
   for (const [oldImage, newImage] of Object.entries(pageImageMappings)) {
-    const oldCount = (pageContent.match(new RegExp(oldImage.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g')) || []).length;
+    const oldCount = (
+      pageContent.match(
+        new RegExp(oldImage.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g')
+      ) || []
+    ).length;
     if (oldCount > 0) {
-      pageContent = pageContent.replace(new RegExp(oldImage.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'), newImage);
-      console.log(`✅ Page: Updated ${oldCount} references: ${oldImage} → ${newImage}`);
+      pageContent = pageContent.replace(
+        new RegExp(oldImage.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'),
+        newImage
+      );
+      console.log(
+        `✅ Page: Updated ${oldCount} references: ${oldImage} → ${newImage}`
+      );
     }
   }
 
@@ -87,7 +98,7 @@ async function updateTranslationFiles() {
 
   const translationFiles = [
     'messages/pages/high-valyrian-translator/en.json',
-    'messages/pages/high-valyrian-translator/zh.json'
+    'messages/pages/high-valyrian-translator/zh.json',
   ];
 
   for (const filePath of translationFiles) {
@@ -97,61 +108,89 @@ async function updateTranslationFiles() {
     // 翻译文件中的特定映射关系
     const translationMappings = [
       {
-        pattern: /"image": "\/images\/docs\/dragon-language-fun\.webp",\s*"imageAlt": "What is high-valyrian-translator/g,
-        replacement: '"image": "/images/docs/valyrian-translation-tool.webp",\n      "imageAlt": "What is high-valyrian-translator'
+        pattern:
+          /"image": "\/images\/docs\/dragon-language-fun\.webp",\s*"imageAlt": "What is high-valyrian-translator/g,
+        replacement:
+          '"image": "/images/docs/valyrian-translation-tool.webp",\n      "imageAlt": "What is high-valyrian-translator',
       },
       {
-        pattern: /"image": "\/images\/docs\/dragon-language-fun\.webp",\s*"imageAlt": "什么是高瓦雷利亚语翻译器/g,
-        replacement: '"image": "/images/docs/valyrian-translation-tool.webp",\n      "imageAlt": "什么是高瓦雷利亚语翻译器'
+        pattern:
+          /"image": "\/images\/docs\/dragon-language-fun\.webp",\s*"imageAlt": "什么是高瓦雷利亚语翻译器/g,
+        replacement:
+          '"image": "/images/docs/valyrian-translation-tool.webp",\n      "imageAlt": "什么是高瓦雷利亚语翻译器',
       },
       {
-        pattern: /"image": "\/images\/docs\/dragon-language-fun\.webp",\s*"[^"]*grammatical[^"]*"/g,
-        replacement: '"image": "/images/docs/valyrian-grammar-fun.webp",\n          "alt": "High Valyrian grammatical complexity"'
+        pattern:
+          /"image": "\/images\/docs\/dragon-language-fun\.webp",\s*"[^"]*grammatical[^"]*"/g,
+        replacement:
+          '"image": "/images/docs/valyrian-grammar-fun.webp",\n          "alt": "High Valyrian grammatical complexity"',
       },
       {
-        pattern: /"image": "\/images\/docs\/dragon-language-fun\.webp",\s*"[^"]*dragon[^"]*"/g,
-        replacement: '"image": "/images/docs/dragon-language-magic.webp",\n          "alt": "High Valyrian dragon commands"'
+        pattern:
+          /"image": "\/images\/docs\/dragon-language-fun\.webp",\s*"[^"]*dragon[^"]*"/g,
+        replacement:
+          '"image": "/images/docs/dragon-language-magic.webp",\n          "alt": "High Valyrian dragon commands"',
       },
       {
-        pattern: /"image": "\/images\/docs\/dragon-language-fun\.webp",\s*"[^"]*Accuracy[^"]*"/g,
-        replacement: '"image": "/images/docs/sword-speech-bubbles.webp",\n          "alt": "Accuracy Compared to Others"'
+        pattern:
+          /"image": "\/images\/docs\/dragon-language-fun\.webp",\s*"[^"]*Accuracy[^"]*"/g,
+        replacement:
+          '"image": "/images/docs/sword-speech-bubbles.webp",\n          "alt": "Accuracy Compared to Others"',
       },
       {
-        pattern: /"image": "\/images\/docs\/dragon-language-fun\.webp",\s*"[^"]*Marrying[^"]*"/g,
-        replacement: '"image": "/images/docs/valyrian-vows.webp",\n          "alt": "Marrying with High Valyrian"'
+        pattern:
+          /"image": "\/images\/docs\/dragon-language-fun\.webp",\s*"[^"]*Marrying[^"]*"/g,
+        replacement:
+          '"image": "/images/docs/valyrian-vows.webp",\n          "alt": "Marrying with High Valyrian"',
       },
       {
-        pattern: /"image": "\/images\/docs\/dragon-language-fun\.webp",\s*"[^"]*Learning[^"]*"/g,
-        replacement: '"image": "/images/docs/valyrian-linguistics-journey.webp",\n          "alt": "Learning Dialects"'
+        pattern:
+          /"image": "\/images\/docs\/dragon-language-fun\.webp",\s*"[^"]*Learning[^"]*"/g,
+        replacement:
+          '"image": "/images/docs/valyrian-linguistics-journey.webp",\n          "alt": "Learning Dialects"',
       },
       {
-        pattern: /"image": "\/images\/docs\/dragon-language-fun\.webp",\s*"[^"]*Slang[^"]*"/g,
-        replacement: '"image": "/images/docs/slang-translation.webp",\n          "alt": "Translate Modern Slang"'
+        pattern:
+          /"image": "\/images\/docs\/dragon-language-fun\.webp",\s*"[^"]*Slang[^"]*"/g,
+        replacement:
+          '"image": "/images/docs/slang-translation.webp",\n          "alt": "Translate Modern Slang"',
       },
       {
-        pattern: /"image": "\/images\/docs\/dragon-language-fun\.webp",\s*"imageAlt": "有趣的事实 1"/g,
-        replacement: '"image": "/images/docs/valyrian-grammar-fun.webp",\n          "imageAlt": "有趣的事实 1"'
+        pattern:
+          /"image": "\/images\/docs\/dragon-language-fun\.webp",\s*"imageAlt": "有趣的事实 1"/g,
+        replacement:
+          '"image": "/images/docs/valyrian-grammar-fun.webp",\n          "imageAlt": "有趣的事实 1"',
       },
       {
-        pattern: /"image": "\/images\/docs\/dragon-language-fun\.webp",\s*"imageAlt": "有趣的事实 2"/g,
-        replacement: '"image": "/images/docs/dragon-language-magic.webp",\n          "imageAlt": "有趣的事实 2"'
+        pattern:
+          /"image": "\/images\/docs\/dragon-language-fun\.webp",\s*"imageAlt": "有趣的事实 2"/g,
+        replacement:
+          '"image": "/images/docs/dragon-language-magic.webp",\n          "imageAlt": "有趣的事实 2"',
       },
       {
-        pattern: /"image": "\/images\/docs\/dragon-language-fun\.webp",\s*"imageAlt": "与其他工具相比的准确性"/g,
-        replacement: '"image": "/images/docs/sword-speech-bubbles.webp",\n          "imageAlt": "与其他工具相比的准确性"'
+        pattern:
+          /"image": "\/images\/docs\/dragon-language-fun\.webp",\s*"imageAlt": "与其他工具相比的准确性"/g,
+        replacement:
+          '"image": "/images/docs/sword-speech-bubbles.webp",\n          "imageAlt": "与其他工具相比的准确性"',
       },
       {
-        pattern: /"image": "\/images\/docs\/dragon-language-fun\.webp",\s*"imageAlt": "用高瓦雷利亚语结婚"/g,
-        replacement: '"image": "/images/docs/valyrian-vows.webp",\n          "imageAlt": "用高瓦雷利亚语结婚"'
+        pattern:
+          /"image": "\/images\/docs\/dragon-language-fun\.webp",\s*"imageAlt": "用高瓦雷利亚语结婚"/g,
+        replacement:
+          '"image": "/images/docs/valyrian-vows.webp",\n          "imageAlt": "用高瓦雷利亚语结婚"',
       },
       {
-        pattern: /"image": "\/images\/docs\/dragon-language-fun\.webp",\s*"imageAlt": "学习方言"/g,
-        replacement: '"image": "/images/docs/valyrian-linguistics-journey.webp",\n          "imageAlt": "学习方言"'
+        pattern:
+          /"image": "\/images\/docs\/dragon-language-fun\.webp",\s*"imageAlt": "学习方言"/g,
+        replacement:
+          '"image": "/images/docs/valyrian-linguistics-journey.webp",\n          "imageAlt": "学习方言"',
       },
       {
-        pattern: /"image": "\/images\/docs\/dragon-language-fun\.webp",\s*"imageAlt": "翻译现代俚语"/g,
-        replacement: '"image": "/images/docs/slang-translation.webp",\n          "imageAlt": "翻译现代俚语"'
-      }
+        pattern:
+          /"image": "\/images\/docs\/dragon-language-fun\.webp",\s*"imageAlt": "翻译现代俚语"/g,
+        replacement:
+          '"image": "/images/docs/slang-translation.webp",\n          "imageAlt": "翻译现代俚语"',
+      },
     ];
 
     let updateCount = 0;

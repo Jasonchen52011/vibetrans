@@ -6,7 +6,7 @@ import FaqSection from '@/components/blocks/faqs/faqs';
 import UserScenarios from '@/components/blocks/funfacts';
 import WhyChoose from '@/components/blocks/highlights';
 import HowTo from '@/components/blocks/how-to';
-import TestimonialsSection from '@/components/blocks/testimonials/testimonials';
+import TestimonialsThreeColumnSection from '@/components/blocks/testimonials/testimonials-three-column';
 import WhatIsSection from '@/components/blocks/whatis';
 import { AuroraBackground } from '@/components/ui/aurora-background';
 import { constructMetadata } from '@/lib/metadata';
@@ -85,6 +85,12 @@ export default async function CantoneseTranslatorPage(
       loading: (t as any)('tool.loading'),
       error: (t as any)('tool.error'),
       noInput: (t as any)('tool.noInput'),
+      cantoneseLabel: (t as any)('tool.cantoneseLabel'),
+      englishLabel: 'English',
+      removeFileTooltip: (t as any)('tool.removeFileTooltip'),
+      toggleDirectionTooltip: (t as any)('tool.toggleDirectionTooltip'),
+      copyTooltip: (t as any)('tool.copyTooltip'),
+      downloadTooltip: (t as any)('tool.downloadTooltip'),
     },
   };
 
@@ -259,7 +265,7 @@ export default async function CantoneseTranslatorPage(
       <div className="flex flex-col">
         {/* Hero Section */}
         <AuroraBackground className="bg-white dark:bg-zinc-900 !pt-12 !h-auto">
-          <div className="container max-w-5xl mx-auto px-4 text-center relative z-10 pb-8">
+          <div className="container max-w-7xl mx-auto px-4 text-center relative z-10 pb-8">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               {(t as any)('hero.title')}
             </h1>
@@ -348,7 +354,7 @@ export default async function CantoneseTranslatorPage(
         />
 
         {/* Testimonials */}
-        <TestimonialsSection namespace="CantoneseTranslatorPage.testimonials" />
+        <TestimonialsThreeColumnSection namespace="CantoneseTranslatorPage.testimonials" />
 
         {/* FAQ */}
         <FaqSection namespace="CantoneseTranslatorPage.faqs" />

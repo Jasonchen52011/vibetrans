@@ -4,7 +4,7 @@
     "description": "Transform English into Pig Latin instantly with our free online translator. Get quick and accurate Pig Latin translations at no cost. Try VibeTrans today!",
     "hero": {
       "title": "Pig Latin Translator for Quick Text Conversion",
-      "description": "Say hello to VibeTrans! This nifty tool transforms your English into Pig Latin effortlessly, adding a fun twist to your language game. Try it now!",
+      "description": "Say hello to VibeTrans! The best Pig Latin translator that transforms your English into Pig Latin effortlessly, adding a fun twist to your language game. Try it now!",
       "primaryButton": "Try Now",
       "secondaryButton": "Learn More"
     },
@@ -22,7 +22,21 @@
       "playButton": "Play Sound",
       "loading": "Processing...",
       "error": "An error occurred, please try again",
-      "noInput": "Please provide input"
+      "noInput": "Please provide input",
+      "downloadButton": "Download",
+      "resetButton": "Reset",
+      "copyTooltip": "Copy",
+      "downloadTooltip": "Download",
+      "resetTooltip": "Reset",
+      "pigLatinLabel": "Pig Latin",
+      "pigLatinPlaceholder": "Type Pig Latin text here...",
+      "removeFileTooltip": "Remove file",
+      "removeRecordingTooltip": "Remove recording",
+      "toggleModeTooltip": "Toggle translation mode",
+      "toggleDirectionTooltip": "Toggle translation direction",
+      "copyResultTooltip": "Copy result",
+      "downloadResultTooltip": "Download result",
+      "playSoundTooltip": "Play sound"
     },
     "whatIs": {
       "title": "What is Pig Latin Translator",
@@ -61,7 +75,7 @@
       ]
     },
     "howto": {
-      "title": "How to Use the Pig Latin Translator",
+      "title": "How to Translate English to Pig Latin",
       "description": "Learn how to convert text to Pig Latin with VibeTrans.",
       "steps": [
         {
@@ -78,12 +92,12 @@
         },
         {
           "title": "Copy or Download",
-          "description": "Easily copy the translated text or download it as a TXT file. VibeTrans makes sharing your creations quick and easy."
+          "description": "Easily copy the translated text or save it from your browser as a TXT file. VibeTrans makes sharing your creations quick and easy."
         }
       ]
     },
     "userScenarios": {
-      "title": "Fun Facts",
+      "title": "Word Play Linguistics & Language Games",
       "items": [
         {
           "title": "Pig Latin's Vaudeville Days",
@@ -100,7 +114,7 @@
       ]
     },
     "unique": {
-      "title": "Discover More with VibeTrans",
+      "title": "Educational Fun & Creative Language Applications",
       "subtitle": "Tailored Solutions for Users",
       "description": "Exploring unique features and capabilities",
       "items": [
@@ -131,7 +145,7 @@
       ]
     },
     "highlights": {
-      "title": "Why Choose VibeTrans Pig Latin Translator?",
+      "title": "Professional Pig Latin Translator Engine for Quality Results",
       "description": "Discover what makes our tool unique",
       "items": [
         {
@@ -160,37 +174,22 @@
           "name": "John Smith",
           "role": "High School Teacher",
           "heading": "Perfect for Classroom Fun",
-          "content": "Using Pig Latin Translator Plus has transformed my language lessons. The kids love the playful twist on language, and it’s become a popular game in class. The batch translation feature is a lifesaver for preparing multiple examples quickly. Total game-changer for engaging students!"
+          "content": "Using Pig Latin Translator Plus has transformed my language lessons. The kids love the playful twist on language, and it's become a popular game in class. The batch translation feature is a lifesaver for preparing multiple examples quickly. Total game-changer for engaging students!",
+          "rating": "5.0"
         },
         "item-2": {
           "name": "Emily Johnson",
           "role": "Software Developer",
           "heading": "Amazing API Integration",
-          "content": "The standard API of Pig Latin Translator Plus is incredibly easy to embed into our projects. We integrated it seamlessly into our website. The JSON response format ensures smooth data handling. It’s now a popular feature among our users, who enjoy instant translations."
+          "content": "The standard API of Pig Latin Translator Plus is incredibly easy to embed into our projects. We integrated it seamlessly into our website. The JSON response format ensures smooth data handling. It's now a popular feature among our users, who enjoy instant translations.",
+          "rating": "4.9"
         },
         "item-3": {
           "name": "Michael Brown",
           "role": "Freelance Writer",
           "heading": "Efficient and Fun Tool",
-          "content": "As a writer, Pig Latin Translator Plus adds a fun twist to my creative projects. The real-time translation and voice input make it easy to explore new ideas. The tool is both efficient and enjoyable, sparking creativity in unexpected ways. Highly recommend it!"
-        },
-        "item-4": {
-          "name": "Sarah Davis",
-          "role": "College Student",
-          "heading": "Great for Language Practice",
-          "content": "I use Pig Latin Translator Plus for practice in my linguistics course. The voice and TTS features help me understand pronunciation and rhythm. It’s become a valuable resource for improving my phonological awareness, making learning more interactive and enjoyable."
-        },
-        "item-5": {
-          "name": "James Wilson",
-          "role": "Marketing Manager",
-          "heading": "Boosts Creative Campaigns",
-          "content": "Incorporating Pig Latin Translator Plus into our marketing campaigns has added a unique touch. The tool's ability to handle proper nouns keeps brand names intact, ensuring clarity while adding a playful element. It’s been a hit with our audience, driving engagement."
-        },
-        "item-6": {
-          "name": "Linda Martinez",
-          "role": "Graphic Designer",
-          "heading": "Versatile and User-Friendly",
-          "content": "Pig Latin Translator Plus’s multi-modal support is a designer’s dream. Whether working with text, images, or audio, it covers all bases. The reverse translation accuracy ensures nothing gets lost between drafts. It’s versatile and incredibly user-friendly, enhancing my workflow."
+          "content": "As a writer, Pig Latin Translator Plus adds a fun twist to my creative projects. The real-time translation and voice input make it easy to explore new ideas. The tool is both efficient and enjoyable, sparking creativity in unexpected ways. Highly recommend it!",
+          "rating": "4.7"
         }
       }
     },
@@ -204,7 +203,7 @@
         },
         "item-2": {
           "question": "How can I translate a document with VibeTrans?",
-          "answer": "To translate a document with VibeTrans, follow these steps: Step 1, upload your text file, like a txt or docx. Step 2, choose your translation settings, like maintaining capitalization or displaying conversion steps. Step 3, click 'Translate' to see your text in Pig Latin. Step 4, download or copy your results for easy sharing. It's that simple!"
+          "answer": "To translate a document with VibeTrans, follow these steps: Step 1, upload your text file, like a txt or docx. Step 2, choose your translation settings, like maintaining capitalization or displaying conversion steps. Step 3, click 'Translate' to see your text in Pig Latin. Step 4, save from browser or copy your results for easy sharing. It's that simple!"
         },
         "item-3": {
           "question": "Can VibeTrans help with learning Pig Latin?",
@@ -221,6 +220,10 @@
         "item-6": {
           "question": "Why is Pig Latin translator a fun tool?",
           "answer": "Pig Latin translator is fun because it turns ordinary English into a playful secret code. With VibeTrans, you can easily convert text, making it great for games, learning, or just a laugh. Share your Pig Latin creations with friends or use it as a quirky way to communicate. It’s simple, entertaining, and brings a smile to language learning!"
+        },
+        "item-7": {
+          "question": "What is the best pig latin translator for accurate translations?",
+          "answer": "VibeTrans Pig Latin Translator is the premier choice for accurate translations, featuring advanced AI technology that understands complex grammar, cultural context, and linguistic nuances. Our tool provides bidirectional translation, real-time processing, and high accuracy rates, all completely free. Perfect for language learning, communication, and cultural exploration with reliable, context-aware results."
         }
       }
     },
@@ -252,6 +255,19 @@
       "description": "Experience the fun of Pig Latin translation with VibeTrans. Translate text instantly and effortlessly!",
       "primaryButton": "Try Pig Latin Translator Now",
       "secondaryButton": "Back to Top"
+    },
+    "funfacts": {
+      "title": "Discover Pig Latin Translator: Your Complete Guide",
+      "items": [
+        {
+          "title": "Pig Latin's Secret Language Origins",
+          "description": "Did you know Pig Latin was originally used as a secret language? Children in 19th-century America created it to communicate without adults understanding. Now VibeTrans makes this playful language accessible to everyone!"
+        },
+        {
+          "title": "Rules That Make It Work",
+          "description": "Pig Latin follows simple rules: words starting with consonants move the consonant to the end and add 'ay'; words starting with vowels just add 'way' or 'yay'. VibeTrans handles all these rules automatically for perfect translations!"
+        }
+      ]
     }
   }
 }

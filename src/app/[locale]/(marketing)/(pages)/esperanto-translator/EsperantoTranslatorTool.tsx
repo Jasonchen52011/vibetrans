@@ -3,6 +3,7 @@
 import { SpeechToTextButton } from '@/components/ui/speech-to-text-button';
 import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
 import { detectLanguage } from '@/lib/language-detection';
+import { ArrowRightIcon } from 'lucide-react';
 import mammoth from 'mammoth';
 import { useEffect, useRef, useState } from 'react';
 
@@ -245,7 +246,7 @@ export default function EsperantoTranslatorTool({
   };
 
   return (
-    <div className="container max-w-5xl mx-auto px-4 mb-10">
+    <div className="container max-w-7xl mx-auto px-4 mb-10">
       <main className="w-full bg-white dark:bg-zinc-800 shadow-xl border border-gray-100 dark:border-zinc-700 rounded-lg p-4 md:p-8">
         <div className="flex flex-col md:flex-row gap-2 md:gap-3">
           {/* Input Area */}
@@ -260,7 +261,7 @@ export default function EsperantoTranslatorTool({
               onChange={(e) => setInputText(e.target.value)}
               placeholder={inputPlaceholder}
               className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent resize-none text-gray-700 dark:text-gray-200 dark:bg-zinc-700"
-              aria-label="Input text"
+              aria-label={pageData.tool.inputLabel || "Input text"}
             />
 
             {/* File Upload and Speech-to-text buttons */}
@@ -318,7 +319,7 @@ export default function EsperantoTranslatorTool({
                       setInputText('');
                     }}
                     className="ml-auto text-gray-500 hover:text-red-500 dark:text-gray-400 dark:hover:text-red-400"
-                    aria-label="Remove file"
+                    aria-label={pageData.tool.removeFileTooltip || "Remove file"}
                   >
                     <svg
                       className="w-4 h-4"
@@ -349,7 +350,7 @@ export default function EsperantoTranslatorTool({
                   ? 'Switch to Esperanto → English'
                   : 'Switch to English → Esperanto'
               }
-              aria-label="Toggle translation mode"
+              aria-label={pageData.tool.toggleModeTooltip || "Toggle translation mode"}
             >
               <svg
                 className="w-6 h-6"
@@ -380,8 +381,8 @@ export default function EsperantoTranslatorTool({
                   <button
                     onClick={handleCopy}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
-                    title="Copy"
-                    aria-label="Copy result"
+                    title={pageData.tool.copyTooltip || "Copy"}
+                    aria-label={pageData.tool.copyResultTooltip || "Copy result"}
                   >
                     <svg
                       className="w-5 h-5"
@@ -400,8 +401,8 @@ export default function EsperantoTranslatorTool({
                   <button
                     onClick={handleDownload}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
-                    title="Download"
-                    aria-label="Download result"
+                    title={pageData.tool.downloadTooltip || "Download"}
+                    aria-label={pageData.tool.downloadResultTooltip || "Download result"}
                   >
                     <svg
                       className="w-5 h-5"
@@ -463,7 +464,7 @@ export default function EsperantoTranslatorTool({
           <button
             onClick={handleReset}
             className="px-6 py-3 bg-gray-200 dark:bg-zinc-600 hover:bg-gray-300 dark:hover:bg-zinc-500 text-gray-800 dark:text-gray-100 font-semibold rounded-lg shadow-md transition-colors"
-            title="Reset"
+            title={pageData.tool.resetTooltip || "Reset"}
           >
             <svg
               className="w-5 h-5 inline-block mr-2"

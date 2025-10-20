@@ -7,7 +7,7 @@ import FeaturesSection from '@/components/blocks/features/features';
 import UserScenarios from '@/components/blocks/funfacts';
 import WhyChoose from '@/components/blocks/highlights';
 import HowTo from '@/components/blocks/how-to';
-import TestimonialsSection from '@/components/blocks/testimonials/testimonials';
+import TestimonialsThreeColumnSection from '@/components/blocks/testimonials/testimonials-three-column';
 import UniqueSection from '@/components/blocks/unique';
 import WhatIsSection from '@/components/blocks/whatis';
 import { AuroraBackground } from '@/components/ui/aurora-background';
@@ -289,7 +289,7 @@ export default async function DogTranslatorPage(props: DogTranslatorPageProps) {
       <div className="flex flex-col">
         {/* Hero Section with Tool */}
         <AuroraBackground className="bg-white dark:bg-zinc-900 !pt-12 !h-auto">
-          <div className="container max-w-5xl mx-auto px-4 text-center relative z-10 pb-8">
+          <div className="container max-w-7xl mx-auto px-4 text-center relative z-10 pb-8">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               {(t as any)('hero.title')}
             </h1>
@@ -405,7 +405,7 @@ export default async function DogTranslatorPage(props: DogTranslatorPageProps) {
         <FaqSection namespace="DogTranslatorPage.faqs" />
 
         {/* Testimonials Section */}
-        <TestimonialsSection namespace="DogTranslatorPage.testimonials" />
+        <TestimonialsThreeColumnSection namespace="DogTranslatorPage.testimonials" />
 
         {/* Call to Action */}
         <CallToActionSection namespace="DogTranslatorPage.cta" />

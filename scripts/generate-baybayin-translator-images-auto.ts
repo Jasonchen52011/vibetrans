@@ -32,17 +32,17 @@ const sections: ArticleSections = {
     {
       title: 'Who Can Use It?',
       content:
-        'Want to show off something fresh to your social circle? VibeTrans is your perfect choice! Whether you\'re a culture enthusiast, language learner, or someone who wants to impress friends with unique conversations, everyone can find joy here. Express yourself with Baybayin script and become the superstar of your social circle!',
+        "Want to show off something fresh to your social circle? VibeTrans is your perfect choice! Whether you're a culture enthusiast, language learner, or someone who wants to impress friends with unique conversations, everyone can find joy here. Express yourself with Baybayin script and become the superstar of your social circle!",
     },
     {
       title: 'Beyond Translation',
       content:
-        'VibeTrans is more than just a translation tool; it\'s a cultural bridge! Imagine the unique magic when your English name is written in Baybayin. It\'s like an interesting fusion of modern life and ancient traditions. Experience this cultural collision firsthand, and you\'ll discover the hidden stories behind letters, making you exclaim: wow, translation can be this fascinating!',
+        "VibeTrans is more than just a translation tool; it's a cultural bridge! Imagine the unique magic when your English name is written in Baybayin. It's like an interesting fusion of modern life and ancient traditions. Experience this cultural collision firsthand, and you'll discover the hidden stories behind letters, making you exclaim: wow, translation can be this fascinating!",
     },
     {
       title: 'Inspire Creativity',
       content:
-        'Hey, creative minds! VibeTrans isn\'t just a translation tool; it\'s your inspiration station! Spark new ideas with Baybayin letters - who says ancient scripts can\'t be trendy? Express your creativity freely, feeling like you\'re writing with magic. Every use is like starting a fantasy journey, truly fun! Are you ready?',
+        "Hey, creative minds! VibeTrans isn't just a translation tool; it's your inspiration station! Spark new ideas with Baybayin letters - who says ancient scripts can't be trendy? Express your creativity freely, feeling like you're writing with magic. Every use is like starting a fantasy journey, truly fun! Are you ready?",
     },
   ],
 };

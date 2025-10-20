@@ -206,9 +206,7 @@
         "errorHandling": 0
       },
       "errors": [],
-      "warnings": [
-        "No API endpoint found for this tool"
-      ],
+      "warnings": ["No API endpoint found for this tool"],
       "lastTested": "2025-10-18T05:47:05.127Z"
     },
     {
@@ -277,9 +275,7 @@
         "errorHandling": 0
       },
       "errors": [],
-      "warnings": [
-        "No API endpoint found for this tool"
-      ],
+      "warnings": ["No API endpoint found for this tool"],
       "lastTested": "2025-10-18T05:47:05.129Z"
     },
     {

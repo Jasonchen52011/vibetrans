@@ -27,7 +27,9 @@ interface QuickTestResult {
   error?: string;
 }
 
-async function quickApiHealthCheck(baseUrl: string = 'http://localhost:3000'): Promise<QuickTestResult[]> {
+async function quickApiHealthCheck(
+  baseUrl = 'http://localhost:3000'
+): Promise<QuickTestResult[]> {
   const results: QuickTestResult[] = [];
 
   console.log('🔍 Quick API Health Check...\n');
@@ -57,7 +59,9 @@ async function quickApiHealthCheck(baseUrl: string = 'http://localhost:3000'): P
           responseTime,
           error: `HTTP ${response.status}`,
         });
-        console.log(`⚠️  ${tool.name}: HTTP ${response.status} (${responseTime}ms)`);
+        console.log(
+          `⚠️  ${tool.name}: HTTP ${response.status} (${responseTime}ms)`
+        );
       }
     } catch (error: any) {
       const responseTime = Date.now() - startTime;
@@ -67,7 +71,9 @@ async function quickApiHealthCheck(baseUrl: string = 'http://localhost:3000'): P
         responseTime,
         error: error.name === 'AbortError' ? 'Timeout' : error.message,
       });
-      console.log(`❌ ${tool.name}: Offline - ${error.name === 'AbortError' ? 'Timeout' : error.message} (${responseTime}ms)`);
+      console.log(
+        `❌ ${tool.name}: Offline - ${error.name === 'AbortError' ? 'Timeout' : error.message} (${responseTime}ms)`
+      );
     }
   }
 
@@ -75,19 +81,25 @@ async function quickApiHealthCheck(baseUrl: string = 'http://localhost:3000'): P
 }
 
 function generateQuickSummary(results: QuickTestResult[]): void {
-  const online = results.filter(r => r.status === 'online').length;
+  const online = results.filter((r) => r.status === 'online').length;
   const total = results.length;
-  const avgResponseTime = Math.round(results.reduce((sum, r) => sum + r.responseTime, 0) / total);
+  const avgResponseTime = Math.round(
+    results.reduce((sum, r) => sum + r.responseTime, 0) / total
+  );
 
   console.log(`\n📊 Quick Summary:`);
-  console.log(`   Online: ${online}/${total} (${Math.round((online / total) * 100)}%)`);
+  console.log(
+    `   Online: ${online}/${total} (${Math.round((online / total) * 100)}%)`
+  );
   console.log(`   Average Response Time: ${avgResponseTime}ms`);
 
   if (online < total) {
     console.log(`\n🚨 Offline APIs:`);
-    results.filter(r => r.status !== 'online').forEach(r => {
-      console.log(`   ❌ ${r.api}: ${r.error || 'Unknown error'}`);
-    });
+    results
+      .filter((r) => r.status !== 'online')
+      .forEach((r) => {
+        console.log(`   ❌ ${r.api}: ${r.error || 'Unknown error'}`);
+      });
   }
 }
 
@@ -100,23 +112,30 @@ async function main() {
 
   // 保存结果
   const reportPath = path.join(process.cwd(), 'quick-api-health.json');
-  fs.writeFileSync(reportPath, JSON.stringify({
-    timestamp: new Date().toISOString(),
-    baseUrl,
-    results,
-  }, null, 2));
+  fs.writeFileSync(
+    reportPath,
+    JSON.stringify(
+      {
+        timestamp: new Date().toISOString(),
+        baseUrl,
+        results,
+      },
+      null,
+      2
+    )
+  );
 
   console.log(`\n📄 Report saved: ${reportPath}`);
 
   // 如果有API离线，退出码为1
-  const offlineCount = results.filter(r => r.status !== 'online').length;
+  const offlineCount = results.filter((r) => r.status !== 'online').length;
   if (offlineCount > 0) {
     process.exit(1);
   }
 }
 
 if (require.main === module) {
-  main().catch(error => {
+  main().catch((error) => {
     console.error('Quick health check failed:', error);
     process.exit(1);
   });

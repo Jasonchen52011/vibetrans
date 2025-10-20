@@ -10,55 +10,103 @@ const testCases = [
     url: 'http://localhost:3002/samoan-to-english-translator',
     api: '/api/samoan-to-english-translator',
     tests: [
-      { input: 'Talofa lava', expectedDirection: 'sm-to-en', description: '萨摩亚语到英语' },
-      { input: 'Hello my friend', expectedDirection: 'en-to-sm', description: '英语到萨摩亚语' }
-    ]
+      {
+        input: 'Talofa lava',
+        expectedDirection: 'sm-to-en',
+        description: '萨摩亚语到英语',
+      },
+      {
+        input: 'Hello my friend',
+        expectedDirection: 'en-to-sm',
+        description: '英语到萨摩亚语',
+      },
+    ],
   },
   {
     name: 'aramaic-translator',
     url: 'http://localhost:3002/aramaic-translator',
     api: '/api/aramaic-translator',
     tests: [
-      { input: 'Shlama', expectedDirection: 'aramaic-to-en', description: '阿拉姆语到英语' },
-      { input: 'Peace be upon you', expectedDirection: 'en-to-aramaic', description: '英语到阿拉姆语' }
-    ]
+      {
+        input: 'Shlama',
+        expectedDirection: 'aramaic-to-en',
+        description: '阿拉姆语到英语',
+      },
+      {
+        input: 'Peace be upon you',
+        expectedDirection: 'en-to-aramaic',
+        description: '英语到阿拉姆语',
+      },
+    ],
   },
   {
     name: 'baybayin-translator',
     url: 'http://localhost:3002/baybayin-translator',
     api: '/api/baybayin-translator',
     tests: [
-      { input: 'ᜀᜃᜌ᜔', expectedDirection: 'baybayin-to-en', description: '巴贝因文字到英语' },
-      { input: 'Hello world', expectedDirection: 'en-to-baybayin', description: '英语到巴贝因文字' }
-    ]
+      {
+        input: 'ᜀᜃᜌ᜔',
+        expectedDirection: 'baybayin-to-en',
+        description: '巴贝因文字到英语',
+      },
+      {
+        input: 'Hello world',
+        expectedDirection: 'en-to-baybayin',
+        description: '英语到巴贝因文字',
+      },
+    ],
   },
   {
     name: 'cuneiform-translator',
     url: 'http://localhost:3002/cuneiform-translator',
     api: '/api/cuneiform-translator',
     tests: [
-      { input: '𒀭', expectedDirection: 'cuneiform-to-en', description: '楔形文字到英语' },
-      { input: 'God', expectedDirection: 'en-to-cuneiform', description: '英语到楔形文字' }
-    ]
+      {
+        input: '𒀭',
+        expectedDirection: 'cuneiform-to-en',
+        description: '楔形文字到英语',
+      },
+      {
+        input: 'God',
+        expectedDirection: 'en-to-cuneiform',
+        description: '英语到楔形文字',
+      },
+    ],
   },
   {
     name: 'gaster-translator',
     url: 'http://localhost:3002/gaster-translator',
     api: '/api/gaster-translator',
     tests: [
-      { input: 'W.D. Gaster', expectedDirection: 'gaster-to-en', description: 'Gaster语言到英语' },
-      { input: 'Mystery', expectedDirection: 'en-to-gaster', description: '英语到Gaster语言' }
-    ]
+      {
+        input: 'W.D. Gaster',
+        expectedDirection: 'gaster-to-en',
+        description: 'Gaster语言到英语',
+      },
+      {
+        input: 'Mystery',
+        expectedDirection: 'en-to-gaster',
+        description: '英语到Gaster语言',
+      },
+    ],
   },
   {
     name: 'high-valyrian-translator',
     url: 'http://localhost:3002/high-valyrian-translator',
     api: '/api/high-valyrian-translator',
     tests: [
-      { input: 'Kirimvose', expectedDirection: 'valyrian-to-en', description: '高等瓦雷利亚语到英语' },
-      { input: 'Thank you', expectedDirection: 'en-to-valyrian', description: '英语到高等瓦雷利亚语' }
-    ]
-  }
+      {
+        input: 'Kirimvose',
+        expectedDirection: 'valyrian-to-en',
+        description: '高等瓦雷利亚语到英语',
+      },
+      {
+        input: 'Thank you',
+        expectedDirection: 'en-to-valyrian',
+        description: '英语到高等瓦雷利亚语',
+      },
+    ],
+  },
 ];
 
 // 测试结果
@@ -71,13 +119,13 @@ async function testPageAccessibility(tool) {
     return {
       status: 'success',
       httpStatus: response.status,
-      accessible: response.ok
+      accessible: response.ok,
     };
   } catch (error) {
     return {
       status: 'error',
       error: error.message,
-      accessible: false
+      accessible: false,
     };
   }
 }
@@ -92,8 +140,8 @@ async function testAPI(tool, test) {
       },
       body: JSON.stringify({
         text: test.input,
-        direction: test.expectedDirection
-      })
+        direction: test.expectedDirection,
+      }),
     });
 
     const data = await response.json();
@@ -105,14 +153,14 @@ async function testAPI(tool, test) {
       translation: data.translated || null,
       hasError: !!data.error,
       error: data.error || null,
-      responseStructure: Object.keys(data)
+      responseStructure: Object.keys(data),
     };
   } catch (error) {
     return {
       status: 'error',
       error: error.message,
       hasTranslation: false,
-      translation: null
+      translation: null,
     };
   }
 }
@@ -120,7 +168,7 @@ async function testAPI(tool, test) {
 // 检查页面组件是否包含双向切换功能
 function analyzeComponentCode(toolName) {
   const componentPaths = [
-    `src/app/[locale]/(marketing)/(pages)/${toolName}/${toolName.charAt(0).toUpperCase() + toolName.slice(1).replace('-to-', 'To').replace('-translator', 'Translator')}Tool.tsx`
+    `src/app/[locale]/(marketing)/(pages)/${toolName}/${toolName.charAt(0).toUpperCase() + toolName.slice(1).replace('-to-', 'To').replace('-translator', 'Translator')}Tool.tsx`,
   ];
 
   for (const componentPath of componentPaths) {
@@ -129,15 +177,23 @@ function analyzeComponentCode(toolName) {
       const content = fs.readFileSync(fullPath, 'utf8');
 
       return {
-        hasDirectionState: content.includes('direction') && content.includes('useState'),
-        hasClickHandlers: content.includes('onClick') && content.includes('setDirection'),
-        hasTitleSwitching: content.includes('direction ===') && content.includes('?'),
-        hasPlaceholderUpdate: content.includes('placeholder') && content.includes('direction'),
-        hasMultipleTitles: content.includes('Samoan Text') || content.includes('English Text') ||
-                        content.includes('Aramaic Text') || content.includes('Baybayin Text') ||
-                        content.includes('Cuneiform Text') || content.includes('Gaster Text') ||
-                        content.includes('Valyrian Text'),
-        codeExists: true
+        hasDirectionState:
+          content.includes('direction') && content.includes('useState'),
+        hasClickHandlers:
+          content.includes('onClick') && content.includes('setDirection'),
+        hasTitleSwitching:
+          content.includes('direction ===') && content.includes('?'),
+        hasPlaceholderUpdate:
+          content.includes('placeholder') && content.includes('direction'),
+        hasMultipleTitles:
+          content.includes('Samoan Text') ||
+          content.includes('English Text') ||
+          content.includes('Aramaic Text') ||
+          content.includes('Baybayin Text') ||
+          content.includes('Cuneiform Text') ||
+          content.includes('Gaster Text') ||
+          content.includes('Valyrian Text'),
+        codeExists: true,
       };
     }
   }
@@ -159,13 +215,15 @@ async function runAllTests() {
       apiTests: [],
       componentAnalysis: null,
       issues: [],
-      rating: null
+      rating: null,
     };
 
     // 1. 测试页面可访问性
     console.log('  🌐 测试页面可访问性...');
     toolResult.pageTest = await testPageAccessibility(tool);
-    console.log(`    状态: ${toolResult.pageTest.accessible ? '✅ 可访问' : '❌ 不可访问'}`);
+    console.log(
+      `    状态: ${toolResult.pageTest.accessible ? '✅ 可访问' : '❌ 不可访问'}`
+    );
 
     if (!toolResult.pageTest.accessible) {
       toolResult.issues.push('页面无法访问');
@@ -174,14 +232,26 @@ async function runAllTests() {
     // 2. 分析组件代码
     console.log('  🔍 分析组件代码...');
     toolResult.componentAnalysis = analyzeComponentCode(tool.name);
-    console.log(`    代码存在: ${toolResult.componentAnalysis.codeExists ? '✅' : '❌'}`);
+    console.log(
+      `    代码存在: ${toolResult.componentAnalysis.codeExists ? '✅' : '❌'}`
+    );
 
     if (toolResult.componentAnalysis.codeExists) {
-      console.log(`    双向状态管理: ${toolResult.componentAnalysis.hasDirectionState ? '✅' : '❌'}`);
-      console.log(`    点击切换处理: ${toolResult.componentAnalysis.hasClickHandlers ? '✅' : '❌'}`);
-      console.log(`    标题切换逻辑: ${toolResult.componentAnalysis.hasTitleSwitching ? '✅' : '❌'}`);
-      console.log(`    占位符更新: ${toolResult.componentAnalysis.hasPlaceholderUpdate ? '✅' : '❌'}`);
-      console.log(`    多语言标题: ${toolResult.componentAnalysis.hasMultipleTitles ? '✅' : '❌'}`);
+      console.log(
+        `    双向状态管理: ${toolResult.componentAnalysis.hasDirectionState ? '✅' : '❌'}`
+      );
+      console.log(
+        `    点击切换处理: ${toolResult.componentAnalysis.hasClickHandlers ? '✅' : '❌'}`
+      );
+      console.log(
+        `    标题切换逻辑: ${toolResult.componentAnalysis.hasTitleSwitching ? '✅' : '❌'}`
+      );
+      console.log(
+        `    占位符更新: ${toolResult.componentAnalysis.hasPlaceholderUpdate ? '✅' : '❌'}`
+      );
+      console.log(
+        `    多语言标题: ${toolResult.componentAnalysis.hasMultipleTitles ? '✅' : '❌'}`
+      );
 
       if (!toolResult.componentAnalysis.hasDirectionState) {
         toolResult.issues.push('缺少双向状态管理');
@@ -207,11 +277,15 @@ async function runAllTests() {
       toolResult.apiTests.push({
         ...apiResult,
         testDescription: test.description,
-        input: test.input
+        input: test.input,
       });
 
-      console.log(`      API状态: ${apiResult.status === 'success' ? '✅' : '❌'}`);
-      console.log(`      有翻译结果: ${apiResult.hasTranslation ? '✅' : '❌'}`);
+      console.log(
+        `      API状态: ${apiResult.status === 'success' ? '✅' : '❌'}`
+      );
+      console.log(
+        `      有翻译结果: ${apiResult.hasTranslation ? '✅' : '❌'}`
+      );
       if (apiResult.translation) {
         console.log(`      翻译结果: "${apiResult.translation}"`);
       }
@@ -239,21 +313,25 @@ async function runAllTests() {
       maxScore += 6;
     }
 
-    const successfulAPITests = toolResult.apiTests.filter(t => t.hasTranslation && !t.hasError).length;
+    const successfulAPITests = toolResult.apiTests.filter(
+      (t) => t.hasTranslation && !t.hasError
+    ).length;
     score += successfulAPITests;
     maxScore += toolResult.apiTests.length;
 
     toolResult.rating = {
       score: score,
       maxScore: maxScore,
-      percentage: Math.round((score / maxScore) * 100)
+      percentage: Math.round((score / maxScore) * 100),
     };
 
-    console.log(`\n  📊 评分: ${toolResult.rating.score}/${toolResult.rating.maxScore} (${toolResult.rating.percentage}%)`);
+    console.log(
+      `\n  📊 评分: ${toolResult.rating.score}/${toolResult.rating.maxScore} (${toolResult.rating.percentage}%)`
+    );
 
     if (toolResult.issues.length > 0) {
       console.log(`  ⚠️  发现问题:`);
-      toolResult.issues.forEach(issue => console.log(`    - ${issue}`));
+      toolResult.issues.forEach((issue) => console.log(`    - ${issue}`));
     }
 
     results.push(toolResult);
@@ -267,19 +345,23 @@ async function runAllTests() {
   let totalScore = 0;
   let totalMaxScore = 0;
 
-  results.forEach(result => {
+  results.forEach((result) => {
     totalScore += result.rating.score;
     totalMaxScore += result.rating.maxScore;
 
     console.log(`\n${result.name}:`);
-    console.log(`  评分: ${result.rating.score}/${result.rating.maxScore} (${result.rating.percentage}%)`);
+    console.log(
+      `  评分: ${result.rating.score}/${result.rating.maxScore} (${result.rating.percentage}%)`
+    );
     if (result.issues.length > 0) {
       console.log(`  问题: ${result.issues.join(', ')}`);
     }
   });
 
   const overallRating = Math.round((totalScore / totalMaxScore) * 100);
-  console.log(`\n🎯 总体评分: ${totalScore}/${totalMaxScore} (${overallRating}%)\n`);
+  console.log(
+    `\n🎯 总体评分: ${totalScore}/${totalMaxScore} (${overallRating}%)\n`
+  );
 
   // 保存详细报告
   const reportData = {
@@ -287,10 +369,13 @@ async function runAllTests() {
     overallRating: overallRating,
     totalScore: totalScore,
     totalMaxScore: totalMaxScore,
-    tools: results
+    tools: results,
   };
 
-  fs.writeFileSync('translation-tools-test-report.json', JSON.stringify(reportData, null, 2));
+  fs.writeFileSync(
+    'translation-tools-test-report.json',
+    JSON.stringify(reportData, null, 2)
+  );
   console.log('📄 详细报告已保存到: translation-tools-test-report.json');
 
   return reportData;

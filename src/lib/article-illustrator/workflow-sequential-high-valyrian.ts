@@ -146,7 +146,7 @@ export async function generateArticleIllustrationsSequential(
       // 添加延迟以避免API限制
       if (i < prompts.length - 1) {
         console.log('⏳ Waiting 2 seconds before next image...');
-        await new Promise(resolve => setTimeout(resolve, 2000));
+        await new Promise((resolve) => setTimeout(resolve, 2000));
       }
     }
 

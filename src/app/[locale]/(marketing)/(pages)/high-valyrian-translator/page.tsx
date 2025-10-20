@@ -6,7 +6,7 @@ import FaqSection from '@/components/blocks/faqs/faqs';
 import UserScenarios from '@/components/blocks/funfacts';
 import WhyChoose from '@/components/blocks/highlights';
 import HowTo from '@/components/blocks/how-to';
-import TestimonialsSection from '@/components/blocks/testimonials/testimonials';
+import TestimonialsThreeColumnSection from '@/components/blocks/testimonials/testimonials-three-column';
 import WhatIsSection from '@/components/blocks/whatis';
 import { AuroraBackground } from '@/components/ui/aurora-background';
 import { constructMetadata } from '@/lib/metadata';
@@ -126,7 +126,9 @@ export default async function HighValyrianTranslatorPage(
     description: (t as any)('whatIs.description'),
     features: [],
     image: {
-      src: (t as any)('whatIs.image') || '/images/docs/valyrian-translation-tool.webp',
+      src:
+        (t as any)('whatIs.image') ||
+        '/images/docs/valyrian-translation-tool.webp',
       alt: (t as any)('whatIs.imageAlt') || 'What is High Valyrian Translator',
     },
     cta: { text: (t as any)('ctaButton') },
@@ -203,16 +205,23 @@ export default async function HighValyrianTranslatorPage(
         title: (t as any)('funFacts.items.0.title'),
         description: (t as any)('funFacts.items.0.description'),
         image: {
-          src: (t as any)('funFacts.items.0.image') || '/images/docs/valyrian-grammar-fun.webp',
-          alt: (t as any)('funFacts.items.0.alt') || 'High Valyrian has four grammatical genders',
+          src:
+            (t as any)('funFacts.items.0.image') ||
+            '/images/docs/valyrian-grammar-fun.webp',
+          alt:
+            (t as any)('funFacts.items.0.alt') ||
+            'High Valyrian has four grammatical genders',
         },
       },
       {
         title: (t as any)('funFacts.items.1.title'),
         description: (t as any)('funFacts.items.1.description'),
         image: {
-          src: (t as any)('funFacts.items.1.image') || '/images/docs/dragon-language-magic.webp',
-          alt: (t as any)('funFacts.items.1.alt') || 'Dracarys means Dragon-fire',
+          src:
+            (t as any)('funFacts.items.1.image') ||
+            '/images/docs/dragon-language-magic.webp',
+          alt:
+            (t as any)('funFacts.items.1.alt') || 'Dracarys means Dragon-fire',
         },
       },
     ],
@@ -227,32 +236,48 @@ export default async function HighValyrianTranslatorPage(
         title: (t as any)('userInterest.items.0.title'),
         description: (t as any)('userInterest.items.0.description'),
         image: {
-          src: (t as any)('userInterest.items.0.image') || '/images/docs/sword-speech-bubbles.webp',
-          alt: (t as any)('userInterest.items.0.alt') || 'Translation accuracy comparison',
+          src:
+            (t as any)('userInterest.items.0.image') ||
+            '/images/docs/sword-speech-bubbles.webp',
+          alt:
+            (t as any)('userInterest.items.0.alt') ||
+            'Translation accuracy comparison',
         },
       },
       {
         title: (t as any)('userInterest.items.1.title'),
         description: (t as any)('userInterest.items.1.description'),
         image: {
-          src: (t as any)('userInterest.items.1.image') || '/images/docs/valyrian-vows.webp',
-          alt: (t as any)('userInterest.items.1.alt') || 'Marrying with High Valyrian',
+          src:
+            (t as any)('userInterest.items.1.image') ||
+            '/images/docs/valyrian-vows.webp',
+          alt:
+            (t as any)('userInterest.items.1.alt') ||
+            'Marrying with High Valyrian',
         },
       },
       {
         title: (t as any)('userInterest.items.2.title'),
         description: (t as any)('userInterest.items.2.description'),
         image: {
-          src: (t as any)('userInterest.items.2.image') || '/images/docs/valyrian-linguistics-journey.webp',
-          alt: (t as any)('userInterest.items.2.alt') || 'Learning different dialects',
+          src:
+            (t as any)('userInterest.items.2.image') ||
+            '/images/docs/valyrian-linguistics-journey.webp',
+          alt:
+            (t as any)('userInterest.items.2.alt') ||
+            'Learning different dialects',
         },
       },
       {
         title: (t as any)('userInterest.items.3.title'),
         description: (t as any)('userInterest.items.3.description'),
         image: {
-          src: (t as any)('userInterest.items.3.image') || '/images/docs/slang-translation.webp',
-          alt: (t as any)('userInterest.items.3.alt') || 'Translate modern slang to High Valyrian',
+          src:
+            (t as any)('userInterest.items.3.image') ||
+            '/images/docs/slang-translation.webp',
+          alt:
+            (t as any)('userInterest.items.3.alt') ||
+            'Translate modern slang to High Valyrian',
         },
       },
     ],
@@ -267,7 +292,7 @@ export default async function HighValyrianTranslatorPage(
       <div className="flex flex-col">
         {/* Hero Section */}
         <AuroraBackground className="bg-white dark:bg-zinc-900 !pt-12 !h-auto">
-          <div className="container max-w-5xl mx-auto px-4 text-center relative z-10 pb-8">
+          <div className="container max-w-7xl mx-auto px-4 text-center relative z-10 pb-8">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               {(t as any)('hero.title')}
             </h1>
@@ -356,7 +381,7 @@ export default async function HighValyrianTranslatorPage(
         />
 
         {/* Testimonials */}
-        <TestimonialsSection namespace="HighValyrianTranslatorPage.testimonials" />
+        <TestimonialsThreeColumnSection namespace="HighValyrianTranslatorPage.testimonials" />
 
         {/* FAQ */}
         <FaqSection namespace="HighValyrianTranslatorPage.faqs" />

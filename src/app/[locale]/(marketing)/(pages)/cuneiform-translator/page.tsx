@@ -6,7 +6,7 @@ import FaqSection from '@/components/blocks/faqs/faqs';
 import UserScenarios from '@/components/blocks/funfacts';
 import WhyChoose from '@/components/blocks/highlights';
 import HowTo from '@/components/blocks/how-to';
-import TestimonialsSection from '@/components/blocks/testimonials/testimonials';
+import TestimonialsThreeColumnSection from '@/components/blocks/testimonials/testimonials-three-column';
 import WhatIsSection from '@/components/blocks/whatis';
 import { AuroraBackground } from '@/components/ui/aurora-background';
 import { constructMetadata } from '@/lib/metadata';
@@ -39,7 +39,8 @@ export async function generateMetadata({
     // @ts-ignore - Translation type mismatch
     description: gt('description'),
     canonicalUrl: getUrlWithLocale('/cuneiform-translator', locale),
-    image: (t as any)('whatIs.image') || '/images/docs/cuneiform-translator.webp',
+    image:
+      (gt as any)('whatIs.image') || '/images/docs/cuneiform-translator.webp',
   });
 }
 
@@ -98,6 +99,10 @@ export default async function CuneiformTranslatorPage(
         sumerian: (t as any)('tool.scripts.sumerian'),
         akkadian: (t as any)('tool.scripts.akkadian'),
         babylonian: (t as any)('tool.scripts.babylonian'),
+        hittite: (t as any)('tool.scripts.hittite'),
+        elamite: (t as any)('tool.scripts.elamite'),
+        'old-persian': (t as any)('tool.scripts.old-persian'),
+        ugaritic: (t as any)('tool.scripts.ugaritic'),
       },
       loading: (t as any)('tool.loading'),
       error: (t as any)('tool.error'),
@@ -146,7 +151,9 @@ export default async function CuneiformTranslatorPage(
         title: (t as any)('funfacts.items.0.title'),
         description: (t as any)('funfacts.items.0.description'),
         image: {
-          src: (t as any)('funfacts.items.0.image') || '/images/docs/ancient-written-law.webp',
+          src:
+            (t as any)('funfacts.items.0.image') ||
+            '/images/docs/ancient-written-law.webp',
           alt: (t as any)('funfacts.items.0.imageAlt') || 'Ancient Written Law',
         },
       },
@@ -154,8 +161,12 @@ export default async function CuneiformTranslatorPage(
         title: (t as any)('funfacts.items.1.title'),
         description: (t as any)('funfacts.items.1.description'),
         image: {
-          src: (t as any)('funfacts.items.1.image') || '/images/docs/multi-purpose-script.webp',
-          alt: (t as any)('funfacts.items.1.imageAlt') || 'Multi-Purpose Cuneiform Script',
+          src:
+            (t as any)('funfacts.items.1.image') ||
+            '/images/docs/multi-purpose-script.webp',
+          alt:
+            (t as any)('funfacts.items.1.imageAlt') ||
+            'Multi-Purpose Cuneiform Script',
         },
       },
     ],
@@ -196,8 +207,12 @@ export default async function CuneiformTranslatorPage(
     description: (t as any)('whatIs.description'),
     features: [],
     image: {
-      src: (t as any)('whatIs.image') || '/images/docs/what-is-cuneiform-translator.webp',
-      alt: (t as any)('whatIs.imageAlt') || 'What is Cuneiform Translator - Ancient Script Translation',
+      src:
+        (t as any)('whatIs.image') ||
+        '/images/docs/what-is-cuneiform-translator.webp',
+      alt:
+        (t as any)('whatIs.imageAlt') ||
+        'What is Cuneiform Translator - Ancient Script Translation',
     },
     cta: {
       text: (t as any)('ctaButton'),
@@ -210,8 +225,12 @@ export default async function CuneiformTranslatorPage(
     title: (t as any)('howto.title'),
     description: (t as any)('howto.description'),
     image: {
-      src: (t as any)('howto.image') || '/images/docs/cuneiform-translator-how.webp',
-      alt: (t as any)('howto.imageAlt') || 'How to use Cuneiform Translator step by step guide',
+      src:
+        (t as any)('howto.image') ||
+        '/images/docs/cuneiform-translator-how.webp',
+      alt:
+        (t as any)('howto.imageAlt') ||
+        'How to use Cuneiform Translator step by step guide',
     },
     items: [
       {
@@ -246,32 +265,48 @@ export default async function CuneiformTranslatorPage(
         title: (t as any)('userInterest.items.0.title'),
         description: (t as any)('userInterest.items.0.description'),
         image: {
-          src: (t as any)('userInterest.items.0.image') || '/images/docs/cuneiform-texts-research.webp',
-          alt: (t as any)('userInterest.items.0.imageAlt') || 'Cuneiform Texts in Modern Research',
+          src:
+            (t as any)('userInterest.items.0.image') ||
+            '/images/docs/cuneiform-texts-research.webp',
+          alt:
+            (t as any)('userInterest.items.0.imageAlt') ||
+            'Cuneiform Texts in Modern Research',
         },
       },
       {
         title: (t as any)('userInterest.items.1.title'),
         description: (t as any)('userInterest.items.1.description'),
         image: {
-          src: (t as any)('userInterest.items.1.image') || '/images/docs/cultural-heritage-preservation.webp',
-          alt: (t as any)('userInterest.items.1.imageAlt') || 'Cultural Heritage and Preservation',
+          src:
+            (t as any)('userInterest.items.1.image') ||
+            '/images/docs/cultural-heritage-preservation.webp',
+          alt:
+            (t as any)('userInterest.items.1.imageAlt') ||
+            'Cultural Heritage and Preservation',
         },
       },
       {
         title: (t as any)('userInterest.items.2.title'),
         description: (t as any)('userInterest.items.2.description'),
         image: {
-          src: (t as any)('userInterest.items.2.image') || '/images/docs/cuneiform-ai-technology.webp',
-          alt: (t as any)('userInterest.items.2.imageAlt') || 'Cuneiform and AI Technology',
+          src:
+            (t as any)('userInterest.items.2.image') ||
+            '/images/docs/cuneiform-ai-technology.webp',
+          alt:
+            (t as any)('userInterest.items.2.imageAlt') ||
+            'Cuneiform and AI Technology',
         },
       },
       {
         title: (t as any)('userInterest.items.3.title'),
         description: (t as any)('userInterest.items.3.description'),
         image: {
-          src: (t as any)('userInterest.items.3.image') || '/images/docs/why-learn-cuneiform.webp',
-          alt: (t as any)('userInterest.items.3.imageAlt') || 'Why Learn Cuneiform',
+          src:
+            (t as any)('userInterest.items.3.image') ||
+            '/images/docs/why-learn-cuneiform.webp',
+          alt:
+            (t as any)('userInterest.items.3.imageAlt') ||
+            'Why Learn Cuneiform',
         },
       },
     ],
@@ -287,7 +322,7 @@ export default async function CuneiformTranslatorPage(
       <div className="flex flex-col">
         {/* Hero Section with Tool */}
         <AuroraBackground className="bg-white dark:bg-zinc-900 !pt-12 !h-auto">
-          <div className="container max-w-5xl mx-auto px-4 text-center relative z-10 pb-8">
+          <div className="container max-w-7xl mx-auto px-4 text-center relative z-10 pb-8">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               {(t as any)('hero.title')}
             </h1>
@@ -400,7 +435,7 @@ export default async function CuneiformTranslatorPage(
         />
 
         {/* Testimonials Section */}
-        <TestimonialsSection namespace="CuneiformTranslatorPage.testimonials" />
+        <TestimonialsThreeColumnSection namespace="CuneiformTranslatorPage.testimonials" />
 
         {/* FAQ Section */}
         <FaqSection namespace="CuneiformTranslatorPage.faqs" />

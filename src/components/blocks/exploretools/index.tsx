@@ -35,7 +35,7 @@ export default function ExploreOurAiTools({
     },
     'Bad Translator': {
       link: '/bad-translator',
-      image: '/images/docs/translation-slang.webp',
+      image: '/images/docs/what-is-bad-translator.webp',
     },
     'Ancient Greek Translator': {
       link: '/ancient-greek-translator',
@@ -197,7 +197,7 @@ export default function ExploreOurAiTools({
               href={tool.link}
               className="bg-white/50 rounded-2xl overflow-hidden hover:scale-[1.02] transition-all duration-300 border border-primary-light/20 cursor-pointer group block"
             >
-              <div className="relative h-40 group-hover:opacity-90 transition-opacity">
+              <div className="relative h-40 mt-4 group-hover:opacity-90 transition-opacity">
                 <img
                   src={tool.image}
                   alt={tool.title}

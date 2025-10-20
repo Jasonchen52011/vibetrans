@@ -51,7 +51,7 @@ const MONITOR_APIS = [
 
 class APIMonitor {
   private config: MonitorConfig;
-  private isRunning: boolean = false;
+  private isRunning = false;
   private intervalId: NodeJS.Timeout | null = null;
   private history: HistoryRecord[] = [];
 
@@ -94,7 +94,10 @@ class APIMonitor {
     }
   }
 
-  private async checkSingleApi(api: { name: string; api: string }): Promise<MonitoringData> {
+  private async checkSingleApi(api: {
+    name: string;
+    api: string;
+  }): Promise<MonitoringData> {
     const startTime = Date.now();
 
     try {
@@ -134,7 +137,9 @@ class APIMonitor {
 
   private async performCheck(): Promise<void> {
     const timestamp = new Date().toISOString();
-    console.log(`\n🔍 [${new Date().toLocaleTimeString()}] API Monitoring Check...`);
+    console.log(
+      `\n🔍 [${new Date().toLocaleTimeString()}] API Monitoring Check...`
+    );
 
     const results: MonitoringData[] = [];
 
@@ -143,18 +148,28 @@ class APIMonitor {
       results.push(result);
 
       // 实时输出结果
-      const statusEmoji = result.status === 'online' ? '✅' : result.status === 'error' ? '⚠️' : '❌';
+      const statusEmoji =
+        result.status === 'online'
+          ? '✅'
+          : result.status === 'error'
+            ? '⚠️'
+            : '❌';
       const timeDisplay = `${result.responseTime}ms`;
-      const alert = result.responseTime > this.config.alertThreshold ? ' 🐌' : '';
+      const alert =
+        result.responseTime > this.config.alertThreshold ? ' 🐌' : '';
 
-      console.log(`   ${statusEmoji} ${api.name}: ${result.status} (${timeDisplay})${alert}`);
+      console.log(
+        `   ${statusEmoji} ${api.name}: ${result.status} (${timeDisplay})${alert}`
+      );
     }
 
     // 计算摘要
-    const online = results.filter(r => r.status === 'online').length;
-    const offline = results.filter(r => r.status === 'offline').length;
-    const errors = results.filter(r => r.status === 'error').length;
-    const avgResponseTime = Math.round(results.reduce((sum, r) => sum + r.responseTime, 0) / results.length);
+    const online = results.filter((r) => r.status === 'online').length;
+    const offline = results.filter((r) => r.status === 'offline').length;
+    const errors = results.filter((r) => r.status === 'error').length;
+    const avgResponseTime = Math.round(
+      results.reduce((sum, r) => sum + r.responseTime, 0) / results.length
+    );
 
     const summary = {
       total: results.length,
@@ -166,16 +181,21 @@ class APIMonitor {
 
     // 输出摘要
     const healthPercentage = Math.round((online / results.length) * 100);
-    const healthEmoji = healthPercentage >= 90 ? '🟢' : healthPercentage >= 70 ? '🟡' : '🔴';
+    const healthEmoji =
+      healthPercentage >= 90 ? '🟢' : healthPercentage >= 70 ? '🟡' : '🔴';
 
-    console.log(`   ${healthEmoji} Health: ${healthPercentage}% | Online: ${online}/${results.length} | Avg: ${avgResponseTime}ms`);
+    console.log(
+      `   ${healthEmoji} Health: ${healthPercentage}% | Online: ${online}/${results.length} | Avg: ${avgResponseTime}ms`
+    );
 
     // 检查是否有严重问题
     if (offline > 0) {
       console.log(`   🚨 ${offline} API(s) are offline!`);
     }
     if (avgResponseTime > this.config.alertThreshold) {
-      console.log(`   ⚠️  Slow response times detected (avg: ${avgResponseTime}ms)`);
+      console.log(
+        `   ⚠️  Slow response times detected (avg: ${avgResponseTime}ms)`
+      );
     }
 
     // 保存历史记录
@@ -205,28 +225,41 @@ class APIMonitor {
     const oneHourAgo = new Date(Date.now() - 60 * 60 * 1000);
     const oneDayAgo = new Date(Date.now() - 24 * 60 * 60 * 1000);
 
-    const recentData = this.history.filter(record =>
-      new Date(record.timestamp) >= oneHourAgo
+    const recentData = this.history.filter(
+      (record) => new Date(record.timestamp) >= oneHourAgo
     );
 
-    const dayData = this.history.filter(record =>
-      new Date(record.timestamp) >= oneDayAgo
+    const dayData = this.history.filter(
+      (record) => new Date(record.timestamp) >= oneDayAgo
     );
 
     console.log('\n📊 API Monitoring Report');
-    console.log('=' .repeat(50));
+    console.log('='.repeat(50));
 
-    console.log(`\n📍 Current Status (${new Date(latest.timestamp).toLocaleString()}):`);
-    console.log(`   Health: ${Math.round((latest.summary.online / latest.summary.total) * 100)}%`);
+    console.log(
+      `\n📍 Current Status (${new Date(latest.timestamp).toLocaleString()}):`
+    );
+    console.log(
+      `   Health: ${Math.round((latest.summary.online / latest.summary.total) * 100)}%`
+    );
     console.log(`   Online: ${latest.summary.online}/${latest.summary.total}`);
-    console.log(`   Average Response Time: ${latest.summary.avgResponseTime}ms`);
+    console.log(
+      `   Average Response Time: ${latest.summary.avgResponseTime}ms`
+    );
 
     if (recentData.length > 0) {
       const avgOnline = Math.round(
-        recentData.reduce((sum, record) => sum + (record.summary.online / record.summary.total) * 100, 0) / recentData.length
+        recentData.reduce(
+          (sum, record) =>
+            sum + (record.summary.online / record.summary.total) * 100,
+          0
+        ) / recentData.length
       );
       const avgResponseTime = Math.round(
-        recentData.reduce((sum, record) => sum + record.summary.avgResponseTime, 0) / recentData.length
+        recentData.reduce(
+          (sum, record) => sum + record.summary.avgResponseTime,
+          0
+        ) / recentData.length
       );
 
       console.log(`\n📈 Last Hour (${recentData.length} checks):`);
@@ -235,8 +268,14 @@ class APIMonitor {
     }
 
     if (dayData.length > 0) {
-      const minHealth = Math.min(...dayData.map(record => (record.summary.online / record.summary.total) * 100));
-      const maxResponseTime = Math.max(...dayData.map(record => record.summary.avgResponseTime));
+      const minHealth = Math.min(
+        ...dayData.map(
+          (record) => (record.summary.online / record.summary.total) * 100
+        )
+      );
+      const maxResponseTime = Math.max(
+        ...dayData.map((record) => record.summary.avgResponseTime)
+      );
 
       console.log(`\n📅 Last 24 Hours:`);
       console.log(`   Lowest Health: ${Math.round(minHealth)}%`);
@@ -245,11 +284,13 @@ class APIMonitor {
     }
 
     // 显示离线API
-    const offlineApis = latest.details.filter(d => d.status !== 'online');
+    const offlineApis = latest.details.filter((d) => d.status !== 'online');
     if (offlineApis.length > 0) {
       console.log(`\n🚨 Current Issues:`);
-      offlineApis.forEach(api => {
-        console.log(`   ❌ ${api.api}: ${api.status}${api.error ? ` - ${api.error}` : ''}`);
+      offlineApis.forEach((api) => {
+        console.log(
+          `   ❌ ${api.api}: ${api.status}${api.error ? ` - ${api.error}` : ''}`
+        );
       });
     }
   }
@@ -291,16 +332,21 @@ class APIMonitor {
     process.stdin.setEncoding('utf8');
 
     process.stdin.on('data', (key) => {
-      if (key === '\u0003') { // Ctrl+C
+      if (key === '\u0003') {
+        // Ctrl+C
         this.stop();
-      } else if (key === 'r') { // R键 - 生成报告
+      } else if (key === 'r') {
+        // R键 - 生成报告
         this.generateReport();
-      } else if (key === 'q') { // Q键 - 退出
+      } else if (key === 'q') {
+        // Q键 - 退出
         this.stop();
       }
     });
 
-    console.log('Monitoring started. Press "r" for report, "q" to quit, or Ctrl+C to stop.\n');
+    console.log(
+      'Monitoring started. Press "r" for report, "q" to quit, or Ctrl+C to stop.\n'
+    );
   }
 
   public stop(): void {
@@ -359,12 +405,12 @@ API Monitor - 持续监控API健康状态
 
   const intervalIndex = args.indexOf('--interval');
   if (intervalIndex !== -1 && args[intervalIndex + 1]) {
-    config.interval = parseInt(args[intervalIndex + 1]) * 1000;
+    config.interval = Number.parseInt(args[intervalIndex + 1]) * 1000;
   }
 
   const thresholdIndex = args.indexOf('--threshold');
   if (thresholdIndex !== -1 && args[thresholdIndex + 1]) {
-    config.alertThreshold = parseInt(args[thresholdIndex + 1]);
+    config.alertThreshold = Number.parseInt(args[thresholdIndex + 1]);
   }
 
   const monitor = new APIMonitor(config);
@@ -372,7 +418,7 @@ API Monitor - 持续监控API健康状态
 }
 
 if (require.main === module) {
-  main().catch(error => {
+  main().catch((error) => {
     console.error('Monitor failed to start:', error);
     process.exit(1);
   });

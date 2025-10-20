@@ -504,6 +504,7 @@ ${intelligentTranslationRequirements}
    * 简要说明工具功能和使用价值
    * 使用对话式语气，突出用户利益
    * **重要：Hero Description 必须完整包含主关键词「${keyword}」，不能拆分或缩写**
+   * **必须包含 "best" 关键词，突出工具的优势**
 
 4. 写 "What is XXXX" 板块
    * 标题为：What is XXXX
@@ -515,7 +516,9 @@ ${intelligentTranslationRequirements}
    * 如果遇到符号翻译要有案例展示和推导过程，如果遇到语言翻译则是展示翻译案例，场景解释。
 
 6. 写 "How to XXXX" 板块
-   * 标题：How to XXXX
+   * 标题模式：
+     - 语言翻译类：How to translate xxx to English
+     - 非语言翻译类：How to translate English to xxx
    * 标题下有一句简短说明
    * 写 3–4 个步骤，每个步骤：
      - 名称以动词开头（如 Upload a File）
@@ -547,15 +550,18 @@ ${intelligentTranslationRequirements}
     * 角色：和使用产品的人群匹配的职业角色
     * 评价内容：2-3句话。要求：50-60个单词之间，像真人、有具体的产品使用细节！引入真实用户使用场景故事，包含前后的情感叙述。
 
-11. 根据上面调研，请帮我写 6 个 FAQ（问题 + 答案）
+11. 根据上面调研，请帮我写 3 个 FAQ（问题 + 答案）
     * 要求：
       1. 每个答案 30–80 词
       2. What is 问题必须以 "XXXX is …" 开头
       3. 不出现 What is [关键词] 问题
       4. How to 问题必须用 step-by-step 形式回答
       5. 语言直接、正面、清晰
-      7. 默认有的问题：这个xxx（软件名称）免费吗？我们的隐私如何？
-      8. 调研报告展示的用户关心和高频提到的问题，都写成faq。
+      6. 必须包含一个问题：What is best xxx 或 Which is best xxx（选择其中一个模式）
+      7. 不出现品牌相关的问题（如：关于VibeTrans、品牌名相关问题）
+      8. 默认有的问题：这个xxx（软件名称）免费吗？我们的隐私如何？
+      9. 必须说明：只支持web端使用，不支持app，不支持离线使用
+      10. 调研报告展示的用户关心和高频提到的问题，都写成faq。
 
 12. 请帮我写页面底部的CTA，包含标题和一句话描述，要求标题和内容都包含关键词和品牌词
 
@@ -945,6 +951,7 @@ async function regenerateSection(
 - 简要说明工具功能和使用价值
 - 使用对话式语气，突出用户利益
 - 展示品牌词：VibeTrans
+- 必须包含 "best" 关键词，突出工具的优势
 
 请以 JSON 格式输出：
 \`\`\`json

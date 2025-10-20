@@ -56,7 +56,7 @@
     "backToHome": "Back to home"
   },
   "exploreAiTools": {
-    "title": "Explore Other AI Tools",
+    "title": "Explore More Translator Tools",
     "description": "Check out these related translation and AI tools to enhance your experience",
     "tools": {
       "Gen Z Translator": {
@@ -94,6 +94,10 @@
       "Al Bhed Translator": {
         "title": "Al Bhed Translator",
         "description": "Translate Final Fantasy's Al Bhed language for fans and gamers"
+      },
+      "Alien Text Generator": {
+        "title": "Alien Text Generator",
+        "description": "Create mysterious alien-style text for sci-fi content and creative projects"
       }
     }
   }

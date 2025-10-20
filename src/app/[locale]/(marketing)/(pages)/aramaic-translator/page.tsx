@@ -6,7 +6,7 @@ import FaqSection from '@/components/blocks/faqs/faqs';
 import UserScenarios from '@/components/blocks/funfacts';
 import WhyChoose from '@/components/blocks/highlights';
 import HowTo from '@/components/blocks/how-to';
-import TestimonialsSection from '@/components/blocks/testimonials/testimonials';
+import TestimonialsThreeColumnSection from '@/components/blocks/testimonials/testimonials-three-column';
 import WhatIsSection from '@/components/blocks/whatis';
 import { AuroraBackground } from '@/components/ui/aurora-background';
 import { constructMetadata } from '@/lib/metadata';
@@ -34,7 +34,9 @@ export async function generateMetadata({
     title: `${gt('title')} | ${(t as any)('name')}`,
     description: gt('description'),
     canonicalUrl: getUrlWithLocale('/aramaic-translator', locale),
-    image: (t as any)('whatIs.image') || '/images/docs/aramaic-translation-bridge.webp',
+    image:
+      (t as any)('whatIs.image') ||
+      '/images/docs/aramaic-translation-bridge.webp',
   });
 }
 
@@ -267,7 +269,7 @@ export default async function AramaicTranslatorPage(
       <div className="flex flex-col">
         {/* Hero Section */}
         <AuroraBackground className="bg-white dark:bg-zinc-900 !pt-12 !h-auto">
-          <div className="container max-w-5xl mx-auto px-4 text-center relative z-10 pb-8">
+          <div className="container max-w-7xl mx-auto px-4 text-center relative z-10 pb-8">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               {(t as any)('hero.title')}
             </h1>
@@ -356,7 +358,7 @@ export default async function AramaicTranslatorPage(
         />
 
         {/* Testimonials */}
-        <TestimonialsSection namespace="AramaicTranslatorPage.testimonials" />
+        <TestimonialsThreeColumnSection namespace="AramaicTranslatorPage.testimonials" />
 
         {/* FAQ */}
         <FaqSection namespace="AramaicTranslatorPage.faqs" />

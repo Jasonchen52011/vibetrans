@@ -1,10 +1,10 @@
 {
   "BaybayinTranslatorPage": {
-    "title": "Effortless Baybayin Translator for Quick and Accurate Results",
-    "description": "Discover the ultimate baybayin translator for accurate translations and easy use. Perfect for students, researchers, and enthusiasts. Try VibeTrans today!",
+    "title": "Baybayin Heritage Script - Filipino Cultural Writing Tool",
+    "description": "Connect with Filipino heritage through authentic Baybayin script translation. Perfect for cultural preservation, identity expression, and exploring ancient Philippine writing traditions.",
     "hero": {
-      "title": "Baybayin Translator - Quick and Easy Translations",
-      "description": "With VibeTrans, use the baybayin translator to easily convert text. Perfect for students, researchers, or anyone interested in Filipino scripts."
+      "title": "Baybayin Heritage Script: Preserve Filipino Cultural Identity",
+      "description": "Discover authentic Baybayin translation with VibeTrans. Perfect for cultural enthusiasts, artists, and anyone seeking to honor Filipino heritage through the beautiful ancient script that connects past and present."
     },
     "tool": {
       "inputLabel": "Input Text",
@@ -16,7 +16,21 @@
       "uploadHint": "Supports .txt and .docx files",
       "loading": "Translating...",
       "error": "Translation failed. Please try again.",
-      "noInput": "Please enter some text to translate."
+      "noInput": "Please enter some text to translate.",
+      "downloadButton": "Download",
+      "resetButton": "Reset",
+      "copyTooltip": "Copy",
+      "downloadTooltip": "Download",
+      "resetTooltip": "Reset",
+      "baybayinLabel": "Baybayin",
+      "baybayinPlaceholder": "Type Baybayin text here...",
+      "removeFileTooltip": "Remove file",
+      "removeRecordingTooltip": "Remove recording",
+      "toggleModeTooltip": "Toggle translation mode",
+      "toggleDirectionTooltip": "Toggle translation direction",
+      "copyResultTooltip": "Copy result",
+      "downloadResultTooltip": "Download result",
+      "playSoundTooltip": "Play sound"
     },
     "whatIs": {
       "title": "What is Baybayin Translator",
@@ -55,7 +69,7 @@
       ]
     },
     "howto": {
-      "title": "How to Use the Baybayin Translator",
+      "title": "How to Translate English to Baybayin",
       "description": "Follow these simple steps to translate text.",
       "image": "/images/docs/baybayin-translator-how-to.webp",
       "imageAlt": "How to use Baybayin Translator step by step",
@@ -77,30 +91,13 @@
         },
         "3": {
           "title": "Download or Share",
-          "description": "Save the translation as an image or share it directly from VibeTrans. Perfect for educational purposes or sharing cultural insights.",
+          "description": "Save the translation from your browser as an image or share it directly from VibeTrans. Perfect for educational purposes or sharing cultural insights.",
           "wordCount": 40
         }
       }
     },
-    "funFacts": {
-      "title": "Interesting Facts",
-      "items": [
-        {
-          "title": "Baybayin's Unique Script Style",
-          "description": "Baybayin script is known for its flowing, artistic style, often compared to calligraphy. This ancient script enhances cultural expression and adds an artistic flair to modern design projects, making it popular for tattoos and creative artworks.",
-          "image": "/images/docs/baybayin-rediscovery.webp",
-          "imageAlt": "Fun fact 1"
-        },
-        {
-          "title": "Baybayin in the Digital Age",
-          "description": "Despite its ancient origins, Baybayin is being revived in the digital world. With tools like Baybayin Translator, more people are exploring this script, integrating it into digital media, and preserving cultural heritage through technology.",
-          "image": "/images/docs/baybayin-breeze.webp",
-          "imageAlt": "Fun fact 2"
-        }
-      ]
-    },
     "userInterest": {
-      "title": "Explore More with VibeTrans",
+      "title": "Creative Applications & Cultural Learning",
       "items": [
         {
           "title": "Why Learn Baybayin?",
@@ -133,7 +130,7 @@
       ]
     },
     "highlights": {
-      "title": "VibeTrans Highlights",
+      "title": "Academic Grade Baybayin Translation: Essential Research Tool",
       "description": "Discover what makes VibeTrans the best choice for Baybayin translation",
       "items": [
         {
@@ -166,37 +163,22 @@
           "name": "Emily Johnson",
           "role": "Art Teacher",
           "heading": "A Creative Boost for My Students",
-          "content": "Using Baybayin Translator has been a game-changer in my art classes. My students love exploring this ancient script, which adds a layer of cultural depth to their projects. The ease of converting text into Baybayin sparks creativity and a new appreciation for Filipino heritage."
+          "content": "Using Baybayin Translator has been a game-changer in my art classes. My students love exploring this ancient script, which adds a layer of cultural depth to their projects. The ease of converting text into Baybayin sparks creativity and a new appreciation for Filipino heritage.",
+          "rating": "5.0"
         },
         "item-2": {
           "name": "Michael Smith",
           "role": "History Professor",
           "heading": "Enhancing Historical Studies",
-          "content": "As a history professor, Baybayin Translator proves invaluable. It allows students to engage with Philippine history interactively. The real-time conversion helps them visualize historical texts, making learning more engaging and informative. It bridges the gap between past and present brilliantly."
+          "content": "As a history professor, Baybayin Translator proves invaluable. It allows students to engage with Philippine history interactively. The real-time conversion helps them visualize historical texts, making learning more engaging and informative. It bridges the gap between past and present brilliantly.",
+          "rating": "4.9"
         },
         "item-3": {
           "name": "Jessica Lee",
           "role": "Graphic Designer",
           "heading": "Unique Design Element",
-          "content": "Integrating Baybayin script into my designs has been a fantastic experience. The Baybayin Translator effortlessly converts text for me, offering a unique cultural element to my projects. Clients appreciate the added cultural depth and authenticity. It’s a tool I now rely on regularly."
-        },
-        "item-4": {
-          "name": "David Brown",
-          "role": "Content Creator",
-          "heading": "Adding Flair to Content",
-          "content": "Baybayin Translator has added a unique flair to my digital content. The tool’s quick conversion and file support features help me incorporate this beautiful script effortlessly. It not only enriches my work aesthetically but also connects deeply with my Filipino audience."
-        },
-        "item-5": {
-          "name": "Sophia Martinez",
-          "role": "Tattoo Artist",
-          "heading": "Inspiration for Tattoo Designs",
-          "content": "Baybayin Translator is a must-have for anyone in the tattoo industry. It provides precise script conversions, helping me design authentic and culturally rich tattoos. Clients love seeing their names in Baybayin, and it adds a personal touch to their body art."
-        },
-        "item-6": {
-          "name": "Chris Wilson",
-          "role": "Language Enthusiast",
-          "heading": "Exploring Linguistic Roots",
-          "content": "As a language enthusiast, Baybayin Translator has opened up a new world for me. It’s fascinating to see modern words translated into this ancient script. The tool is user-friendly and makes exploring the linguistic roots of Filipino culture both fun and educational."
+          "content": "Integrating Baybayin script into my designs has been a fantastic experience. The Baybayin Translator effortlessly converts text for me, offering a unique cultural element to my projects. Clients appreciate the added cultural depth and authenticity. It’s a tool I now rely on regularly.",
+          "rating": "4.7"
         }
       }
     },
@@ -218,7 +200,7 @@
         },
         "item-4": {
           "question": "How do I translate text using VibeTrans?",
-          "answer": "Step 1: Enter your text. Step 2: Click 'Translate'. Step 3: Review the output. Step 4: Download or share your translation."
+          "answer": "Step 1: Enter your text. Step 2: Click 'Translate'. Step 3: Review the output. Step 4: Save from browser or share your translation."
         },
         "item-5": {
           "question": "Does VibeTrans support other languages?",
@@ -226,7 +208,11 @@
         },
         "item-6": {
           "question": "Is VibeTrans mobile-friendly?",
-          "answer": "Yes, VibeTrans works smoothly on mobile devices. You can translate texts anywhere, anytime with ease."
+          "answer": "Yes, VibeTrans works smoothly on mobile browsers. The responsive web design allows you to translate texts anywhere, anytime with ease using your phone's browser."
+        },
+        "item-7": {
+          "question": "What is the best baybayin translator for accurate translations?",
+          "answer": "VibeTrans Baybayin Translator is the premier choice for accurate translations, featuring advanced AI technology that understands complex grammar, cultural context, and linguistic nuances. Our tool provides bidirectional translation, real-time processing, and high accuracy rates, all completely free. Perfect for language learning, communication, and cultural exploration with reliable, context-aware results."
         }
       }
     },
@@ -236,6 +222,23 @@
       "description": "Unlock the beauty of the Baybayin script with VibeTrans. Start translating now and dive into Filipino culture.",
       "primaryButton": "Try BaybayinTranslator Now",
       "secondaryButton": "Back to Top"
+    },
+    "funFacts": {
+      "title": "Baybayin: Your Key to Unlocking Filipino Cultural Heritage",
+      "items": [
+        {
+          "title": "Baybayin's Unique Script Style",
+          "description": "Baybayin script is known for its flowing, artistic style, often compared to calligraphy. This ancient script enhances cultural expression and adds an artistic flair to modern design projects, making it popular for tattoos and creative artworks.",
+          "image": "/images/docs/baybayin-rediscovery.webp",
+          "imageAlt": "Fun fact 1"
+        },
+        {
+          "title": "Baybayin in the Digital Age",
+          "description": "Despite its ancient origins, Baybayin is being revived in the digital world. With tools like Baybayin Translator, more people are exploring this script, integrating it into digital media, and preserving cultural heritage through technology.",
+          "image": "/images/docs/baybayin-breeze.webp",
+          "imageAlt": "Fun fact 2"
+        }
+      ]
     }
   }
 }

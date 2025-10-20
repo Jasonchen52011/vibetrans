@@ -127,18 +127,32 @@ export async function POST(request: NextRequest) {
 
       // 检测输入语言是否与指定方向匹配
       const isInputEnglish = detection.detectedLanguage === 'english';
-      const hasValyrianWords = /\b(valar|morghulis|ziry|kostilus|kirimvose|lēkia|āeha|uēny|jaelan|va|daor|muña|kepa|vīl|bē|pās|zȳhon|qogralar|kelīrēs|ȳdras|jēda|mērī|skoros|ñuhoso|aelia|vējos|dārys|valonqar|rȳbā|minides|pōja|vēz|mandia|issa|vōlor|jemē|zȳrys|ghesper|mazembar|vōdis|gēlion|rhaes|aeksia|ȳdra|dārā|vāedar|qorrion|lanna|zokla|vēzmen|kelī|tubī|zȳri|kessa|lia|vēzo|gīda|jikagon|keligon|ōñon|dovaogēdy|rytsas|kesys|skorosi|dovaogēdy|zaldrīzes|valyrio|muño|ēlies|hen|qogralbar|mazverdāghes|gēlenka|irge|zōbrie|jelmāzo|bantis|prōmphas|gevī|rȳnytsia|ñuhor|tobē|vēzos|kelīrīs|dōrī|jikāgon|ao|daorun|qogror|gīda|ñuha|vok|vaesis|jelmā|sōvēs|pāvot|kepa|uēpa|ola|ñuqae|kostilā|valōqas|ullus|qorrbor|lēkia)\b/i.test(text);
+      const hasValyrianWords =
+        /\b(valar|morghulis|ziry|kostilus|kirimvose|lēkia|āeha|uēny|jaelan|va|daor|muña|kepa|vīl|bē|pās|zȳhon|qogralar|kelīrēs|ȳdras|jēda|mērī|skoros|ñuhoso|aelia|vējos|dārys|valonqar|rȳbā|minides|pōja|vēz|mandia|issa|vōlor|jemē|zȳrys|ghesper|mazembar|vōdis|gēlion|rhaes|aeksia|ȳdra|dārā|vāedar|qorrion|lanna|zokla|vēzmen|kelī|tubī|zȳri|kessa|lia|vēzo|gīda|jikagon|keligon|ōñon|dovaogēdy|rytsas|kesys|skorosi|dovaogēdy|zaldrīzes|valyrio|muño|ēlies|hen|qogralbar|mazverdāghes|gēlenka|irge|zōbrie|jelmāzo|bantis|prōmphas|gevī|rȳnytsia|ñuhor|tobē|vēzos|kelīrīs|dōrī|jikāgon|ao|daorun|qogror|gīda|ñuha|vok|vaesis|jelmā|sōvēs|pāvot|kepa|uēpa|ola|ñuqae|kostilā|valōqas|ullus|qorrbor|lēkia)\b/i.test(
+          text
+        );
       const hasValyrianCharacters = /[āēīōūȳ]/.test(text);
 
       // 如果用户指定toEnglish但输入明显是英语，自动修正为toHighValyrian
-      if (userSpecifiedDirection === 'toEnglish' && isInputEnglish && !hasValyrianWords && !hasValyrianCharacters) {
+      if (
+        userSpecifiedDirection === 'toEnglish' &&
+        isInputEnglish &&
+        !hasValyrianWords &&
+        !hasValyrianCharacters
+      ) {
         finalDirection = 'toHighValyrian';
-        explanation = '检测到输入为英语但指定了英语翻译，已自动修正为英语到瓦雷利亚语翻译';
+        explanation =
+          '检测到输入为英语但指定了英语翻译，已自动修正为英语到瓦雷利亚语翻译';
       }
       // 如果用户指定toHighValyrian但输入明显是瓦雷利亚语，自动修正为toEnglish
-      else if (userSpecifiedDirection === 'toHighValyrian' && hasValyrianWords && !isInputEnglish) {
+      else if (
+        userSpecifiedDirection === 'toHighValyrian' &&
+        hasValyrianWords &&
+        !isInputEnglish
+      ) {
         finalDirection = 'toEnglish';
-        explanation = '检测到输入为瓦雷利亚语但指定了瓦雷利亚语翻译，已自动修正为瓦雷利亚语到英语翻译';
+        explanation =
+          '检测到输入为瓦雷利亚语但指定了瓦雷利亚语翻译，已自动修正为瓦雷利亚语到英语翻译';
       }
       // 否则尊重用户选择
       else {

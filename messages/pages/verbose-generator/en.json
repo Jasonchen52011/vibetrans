@@ -4,7 +4,7 @@
     "description": "Transform simple sentences into rich, detailed content with the Verbose Generator. Perfect for writing, creative tasks, and boosting your expression in any language.",
     "hero": {
       "title": "Verbose Generator: Turn Simple Text into Detailed Content",
-      "description": "Use the Verbose Generator to expand your ideas into comprehensive, rich text. Perfect for writing, creative tasks, and improving your content flow.",
+      "description": "Use the best Verbose Generator to expand your ideas into comprehensive, rich text. Perfect for writing, creative tasks, and improving your content flow.",
       "primaryButton": "Try Now",
       "secondaryButton": "Learn More"
     },
@@ -13,7 +13,7 @@
       "outputLabel": "Result",
       "inputPlaceholder": "Enter your text or upload a file...",
       "outputPlaceholder": "Translation results will appear here",
-      "translateButton": "Generate",
+      "translateButton": "Generate Verbose Text",
       "uploadButton": "Upload File",
       "uploadHint": "Supports .txt, .docx files",
       "recordButton": "Record Audio",
@@ -46,7 +46,22 @@
           "label": "Business Style",
           "description": "Professional, objective - for corporate communication"
         }
-      }
+      },
+      "downloadButton": "Download",
+      "resetButton": "Reset",
+      "copyTooltip": "Copy",
+      "downloadTooltip": "Download",
+      "resetTooltip": "Reset",
+      "verboseLabel": "Verbose",
+      "verbosePlaceholder": "Type verbose text here...",
+      "removeFileTooltip": "Remove file",
+      "removeRecordingTooltip": "Remove recording",
+      "toggleModeTooltip": "Toggle translation mode",
+      "toggleDirectionTooltip": "Toggle translation direction",
+      "copyResultTooltip": "Copy result",
+      "downloadResultTooltip": "Download result",
+      "playSoundTooltip": "Play sound",
+      "generateButton": "Generate"
     },
     "whatIs": {
       "title": "What is Verbose Generator",
@@ -83,7 +98,7 @@
       ]
     },
     "howto": {
-      "title": "How to Use Verbose Generator",
+      "title": "How to Translate English to Verbose",
       "description": "Follow these simple steps to expand your text into detailed, rich content.",
       "steps": [
         {
@@ -105,19 +120,6 @@
           "title": "Review and Edit",
           "description": "Review the expanded content and adjust it to ensure it meets your expectations before using it.",
           "wordCount": 18
-        }
-      ]
-    },
-    "funFacts": {
-      "title": "Fun Facts",
-      "items": [
-        {
-          "title": "Epic Love Letter",
-          "description": "A fan of 'The Lord of the Rings' used a verbose generator to transform a 15-word love letter into a 3,000-word epic poem, keeping just three original words. Talk about dedication to making words count!"
-        },
-        {
-          "title": "Verbose Cowsay",
-          "description": "On GitHub, there's a script called 'verbose-cowsay' that outputs overly long disclaimers using cow illustrations. This quirky tool has been starred over 1,000 times, proving that even verbose cows have a following!"
         }
       ]
     },
@@ -145,7 +147,7 @@
       ]
     },
     "highlights": {
-      "title": "Discover Verbose Generator Pro",
+      "title": "Professional Verbose Generator Engine for Quality Results",
       "description": "Discover what makes our tool unique",
       "items": [
         {
@@ -174,37 +176,22 @@
           "name": "John Smith",
           "role": "College Student",
           "heading": "Saved My Essay Grade",
-          "content": "Verbose Generator Pro was a lifesaver! I was struggling to meet the word count for my history essay. With just a few clicks, my 1,500-word draft became a well-rounded 2,000-word paper. My professor was impressed, and I got an A!"
+          "content": "Verbose Generator Pro was a lifesaver! I was struggling to meet the word count for my history essay. With just a few clicks, my 1,500-word draft became a well-rounded 2,000-word paper. My professor was impressed, and I got an A!",
+          "rating": "5.0"
         },
         "item-2": {
           "name": "Emily Johnson",
           "role": "Marketing Specialist",
           "heading": "Perfect for Product Descriptions",
-          "content": "Creating detailed product descriptions used to be a pain. With Verbose Generator Pro, I quickly expanded brief bullet points into engaging paragraphs. My team noticed an increase in customer engagement on our e-commerce site. It's a must-have for any marketing professional!"
+          "content": "Creating detailed product descriptions used to be a pain. With Verbose Generator Pro, I quickly expanded brief bullet points into engaging paragraphs. My team noticed an increase in customer engagement on our e-commerce site. It's a must-have for any marketing professional!",
+          "rating": "4.9"
         },
         "item-3": {
           "name": "Michael Brown",
           "role": "Software Developer",
           "heading": "Fun with Code Comments",
-          "content": "I use Verbose Generator Pro to write hilarious, exaggerated code comments for team meetings. It keeps my colleagues entertained and brings some humor into our daily routines. The adjustable verbosity level is perfect for tweaking the tone just right."
-        },
-        "item-4": {
-          "name": "Jessica Lee",
-          "role": "Content Creator",
-          "heading": "From Ideas to Scripts",
-          "content": "As a content creator, transforming ideas into scripts can be daunting. Verbose Generator Pro turns my rough outlines into complete scripts effortlessly. The tool's style options let me tailor the tone to match my brand's vibe perfectly. It's become indispensable in my creative process."
-        },
-        "item-5": {
-          "name": "Chris Davis",
-          "role": "High School Teacher",
-          "heading": "Helping Students Expand",
-          "content": "I recommend Verbose Generator Pro to my students who struggle with writing. It helps them expand their essays without losing coherence. The tool's user-friendly interface makes it easy for students to enhance their writing skills and meet academic requirements. It's a fantastic educational resource!"
-        },
-        "item-6": {
-          "name": "Linda Wilson",
-          "role": "Freelance Writer",
-          "heading": "Boosted My Writing Efficiency",
-          "content": "Verbose Generator Pro has significantly improved my workflow. I can take short client briefs and expand them into comprehensive articles in no time. The versatility of style options allows me to adapt to various writing assignments seamlessly. It's essential for any freelance writer!"
+          "content": "I use Verbose Generator Pro to write hilarious, exaggerated code comments for team meetings. It keeps my colleagues entertained and brings some humor into our daily routines. The adjustable verbosity level is perfect for tweaking the tone just right.",
+          "rating": "4.7"
         }
       }
     },
@@ -235,6 +222,10 @@
         "item-6": {
           "question": "Is my data safe?",
           "answer": "Absolutely! Your privacy is important to us, and VibeTrans ensures that all data used in the tool is handled securely, with no sharing or storing of your information."
+        },
+        "item-7": {
+          "question": "Which is the best verbose generator for creative projects?",
+          "answer": "VibeTrans Verbose Generator is the ultimate choice for creative projects, featuring advanced AI technology that generates comprehensive, detailed content from simple inputs. Our tool offers multiple customization options, intelligent expansion capabilities, and context-aware generation, all completely free. Perfect for content creators, writers, and marketing professionals seeking high-quality, verbose output with minimal effort."
         }
       }
     },
@@ -266,6 +257,19 @@
       "description": "Try the Verbose Generator now and transform your simple sentences into detailed content for free. Boost your writing and creativity with VibeTrans!",
       "primaryButton": "Try Verbose Generator Now",
       "secondaryButton": "Back to Top"
+    },
+    "funfacts": {
+      "title": "Discover Verbose Generator: Your Complete Guide",
+      "items": [
+        {
+          "title": "Epic Love Letter",
+          "description": "A fan of 'The Lord of the Rings' used a verbose generator to transform a 15-word love letter into a 3,000-word epic poem, keeping just three original words. Talk about dedication to making words count!"
+        },
+        {
+          "title": "Verbose Cowsay",
+          "description": "On GitHub, there's a script called 'verbose-cowsay' that outputs overly long disclaimers using cow illustrations. This quirky tool has been starred over 1,000 times, proving that even verbose cows have a following!"
+        }
+      ]
     }
   }
 }

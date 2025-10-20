@@ -2,6 +2,7 @@
 
 import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
 import type { CuneiformScript } from '@/lib/cuneiform';
+import { ArrowRightIcon } from 'lucide-react';
 import mammoth from 'mammoth';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
@@ -39,7 +40,9 @@ export default function CuneiformTranslatorTool({
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [script, setScript] = useState<CuneiformScript>('sumerian');
-  const [direction, setDirection] = useState<'toCuneiform' | 'toEnglish'>('toCuneiform');
+  const [direction, setDirection] = useState<'toCuneiform' | 'toEnglish'>(
+    'toCuneiform'
+  );
   const [fileName, setFileName] = useState<string | null>(null);
 
   // Handle file upload
@@ -230,7 +233,7 @@ export default function CuneiformTranslatorTool({
   };
 
   return (
-    <div className="container max-w-5xl mx-auto px-4 mb-10">
+    <div className="container max-w-7xl mx-auto px-4 mb-10">
       <main className="w-full bg-white dark:bg-zinc-800 shadow-xl border border-gray-100 dark:border-zinc-700 rounded-lg p-4 md:p-8">
         {/* Script Selection */}
         <div className="mb-6 flex items-center gap-4">
@@ -240,7 +243,13 @@ export default function CuneiformTranslatorTool({
           <select
             value={script}
             onChange={(e) => setScript(e.target.value as CuneiformScript)}
-            className="px-3 py-1 border border-gray-300 dark:border-zinc-600 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-zinc-700 text-gray-700 dark:text-gray-200 text-sm"
+            className="px-3 py-1 pr-8 border border-gray-300 dark:border-zinc-600 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-zinc-700 text-gray-700 dark:text-gray-200 text-sm appearance-none relative"
+            style={{
+              backgroundImage: "url('data:image/svg+xml;charset=utf-8,%3Csvg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 20 20\"%3E%3Cpath stroke=\"%236b7280\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\" d=\"M6 8l4 4 4-4\"/%3E%3C/svg%3E')",
+              backgroundSize: '1.5em 1.5em',
+              backgroundRepeat: 'no-repeat',
+              backgroundPosition: 'right 0.5rem center'
+            }}
           >
             <option value="sumerian">Sumerian</option>
             <option value="akkadian">Akkadian</option>
@@ -251,7 +260,6 @@ export default function CuneiformTranslatorTool({
           </select>
         </div>
 
-  
         {/* Input and Output Areas */}
         <div className="flex flex-col md:flex-row gap-2 md:gap-3">
           {/* Input Area */}
@@ -259,7 +267,11 @@ export default function CuneiformTranslatorTool({
             <h2
               className="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-3 cursor-pointer hover:text-primary transition-colors"
               onClick={handleTitleClick}
-              title={direction === 'toCuneiform' ? 'Switch to Cuneiform → English' : 'Switch to English → Cuneiform'}
+              title={
+                direction === 'toCuneiform'
+                  ? 'Switch to Cuneiform → English'
+                  : 'Switch to English → Cuneiform'
+              }
             >
               {getInputLabel()}
             </h2>
@@ -268,7 +280,7 @@ export default function CuneiformTranslatorTool({
               onChange={(e) => setInputText(e.target.value)}
               placeholder={getInputPlaceholder()}
               className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent resize-none text-gray-700 dark:text-gray-200 dark:bg-zinc-700"
-              aria-label="Input text"
+              aria-label={pageData.tool.inputLabel || "Input text"}
             />
 
             {/* File Upload */}
@@ -327,7 +339,7 @@ export default function CuneiformTranslatorTool({
                     setInputText('');
                   }}
                   className="ml-auto text-gray-500 hover:text-red-500 dark:text-gray-400 dark:hover:text-red-400"
-                  aria-label="Remove file"
+                  aria-label={pageData.tool.removeFileTooltip || "Remove file"}
                 >
                   <svg
                     className="w-4 h-4"
@@ -347,14 +359,17 @@ export default function CuneiformTranslatorTool({
             )}
           </div>
 
-          
           {/* Output Area */}
           <div className="flex-1">
             <div className="flex items-center justify-between mb-3">
               <h2
                 className="text-2xl font-semibold text-gray-800 dark:text-gray-100 cursor-pointer hover:text-primary transition-colors"
                 onClick={handleTitleClick}
-                title={direction === 'toCuneiform' ? 'Switch to Cuneiform → English' : 'Switch to English → Cuneiform'}
+                title={
+                  direction === 'toCuneiform'
+                    ? 'Switch to Cuneiform → English'
+                    : 'Switch to English → Cuneiform'
+                }
               >
                 {getOutputLabel()}
               </h2>
@@ -364,7 +379,7 @@ export default function CuneiformTranslatorTool({
                   <button
                     onClick={handleCopy}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
-                    title="Copy"
+                    title={pageData.tool.copyTooltip || "Copy"}
                   >
                     <svg
                       className="w-5 h-5"
@@ -383,7 +398,7 @@ export default function CuneiformTranslatorTool({
                   <button
                     onClick={handleDownload}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
-                    title="Download"
+                    title={pageData.tool.downloadTooltip || "Download"}
                   >
                     <svg
                       className="w-5 h-5"
@@ -403,7 +418,7 @@ export default function CuneiformTranslatorTool({
               )}
             </div>
             <div
-              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md bg-gray-50 dark:bg-zinc-700 flex items-center justify-center text-gray-700 dark:text-gray-200 overflow-y-auto"
+              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md bg-gray-50 dark:bg-zinc-700 flex items-start justify-start text-gray-700 dark:text-gray-200 overflow-y-auto"
               aria-live="polite"
             >
               {isLoading ? (
@@ -432,11 +447,12 @@ export default function CuneiformTranslatorTool({
           <button
             onClick={handleTranslate}
             disabled={isLoading}
-            className="px-8 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="inline-flex items-center px-8 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isLoading
               ? pageData.tool.loading || 'Translating...'
               : pageData.tool.translateButton || 'Translate'}
+            <ArrowRightIcon className="ml-2 h-4 w-4" />
           </button>
           <button
             onClick={handleReset}

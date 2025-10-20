@@ -1,6 +1,7 @@
 'use client';
 
 import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
+import { ArrowRightIcon } from 'lucide-react';
 import mammoth from 'mammoth';
 import { useState } from 'react';
 
@@ -161,13 +162,15 @@ export default function AramaicTranslatorTool({
 
   // 获取动态标签
   const getInputLabel = () => {
-    if (direction === 'auto') return 'Input Text';
-    return direction === 'toAramaic' ? 'English Text' : 'Aramaic Text';
+    if (direction === 'auto') return pageData.tool.inputLabel;
+    return direction === 'toAramaic' ? pageData.tool.englishLabel : pageData.tool.aramaicLabel;
   };
 
   const getOutputLabel = () => {
-    if (direction === 'auto') return 'Translation';
-    return direction === 'toAramaic' ? 'Aramaic Translation' : 'English Translation';
+    if (direction === 'auto') return pageData.tool.outputLabel;
+    return direction === 'toAramaic'
+      ? pageData.tool.aramaicLabel + ' ' + pageData.tool.outputLabel
+      : pageData.tool.englishLabel + ' ' + pageData.tool.outputLabel;
   };
 
   const getInputPlaceholder = () => {
@@ -178,9 +181,8 @@ export default function AramaicTranslatorTool({
   };
 
   return (
-    <div className="container max-w-5xl mx-auto px-4 mb-10">
+    <div className="container max-w-7xl mx-auto px-4 mb-10">
       <main className="w-full bg-white dark:bg-zinc-800 shadow-xl border border-gray-100 dark:border-zinc-700 rounded-lg p-4 md:p-8">
-        
         {/* Input and Output Areas */}
         <div className="flex flex-col md:flex-row gap-2 md:gap-3">
           {/* Input Area */}
@@ -188,7 +190,11 @@ export default function AramaicTranslatorTool({
             <h2
               className="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-3 cursor-pointer hover:text-primary transition-colors"
               onClick={handleTitleClick}
-              title={direction === 'toAramaic' ? 'Switch to Aramaic → English' : 'Switch to English → Aramaic'}
+              title={
+                direction === 'toAramaic'
+                  ? 'Switch to Aramaic → English'
+                  : 'Switch to English → Aramaic'
+              }
             >
               {getInputLabel()}
             </h2>
@@ -197,7 +203,7 @@ export default function AramaicTranslatorTool({
               onChange={(e) => setInputText(e.target.value)}
               placeholder={getInputPlaceholder()}
               className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent resize-none text-gray-700 dark:text-gray-200 dark:bg-zinc-700"
-              aria-label="Input text"
+              aria-label={pageData.tool.inputLabel || "Input text"}
             />
 
             {/* File Upload */}
@@ -256,7 +262,7 @@ export default function AramaicTranslatorTool({
                     setInputText('');
                   }}
                   className="ml-auto text-gray-500 hover:text-red-500 dark:text-gray-400 dark:hover:text-red-400"
-                  aria-label="Remove file"
+                  aria-label={pageData.tool.removeFileTooltip || "Remove file"}
                 >
                   <svg
                     className="w-4 h-4"
@@ -279,14 +285,18 @@ export default function AramaicTranslatorTool({
           {/* Direction Swap Button - Centered between inputs */}
           <div className="flex md:flex-col items-center justify-center md:justify-start md:pt-32">
             <button
-              onClick={() => setDirection(direction === 'toAramaic' ? 'toEnglish' : 'toAramaic')}
+              onClick={() =>
+                setDirection(
+                  direction === 'toAramaic' ? 'toEnglish' : 'toAramaic'
+                )
+              }
               className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors rotate-0 md:rotate-0"
               title={
                 direction === 'toAramaic'
                   ? 'Switch to Aramaic → English'
                   : 'Switch to English → Aramaic'
               }
-              aria-label="Toggle translation direction"
+              aria-label={pageData.tool.toggleDirectionTooltip || "Toggle translation direction"}
             >
               <svg
                 className="w-6 h-6"
@@ -310,7 +320,11 @@ export default function AramaicTranslatorTool({
               <h2
                 className="text-2xl font-semibold text-gray-800 dark:text-gray-100 cursor-pointer hover:text-primary transition-colors"
                 onClick={handleTitleClick}
-                title={direction === 'toAramaic' ? 'Switch to Aramaic → English' : 'Switch to English → Aramaic'}
+                title={
+                  direction === 'toAramaic'
+                    ? 'Switch to Aramaic → English'
+                    : 'Switch to English → Aramaic'
+                }
               >
                 {getOutputLabel()}
               </h2>
@@ -320,7 +334,7 @@ export default function AramaicTranslatorTool({
                   <button
                     onClick={handleCopy}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
-                    title="Copy"
+                    title={pageData.tool.copyTooltip || "Copy"}
                   >
                     <svg
                       className="w-5 h-5"
@@ -339,7 +353,7 @@ export default function AramaicTranslatorTool({
                   <button
                     onClick={handleDownload}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
-                    title="Download"
+                    title={pageData.tool.downloadTooltip || "Download"}
                   >
                     <svg
                       className="w-5 h-5"
@@ -359,21 +373,40 @@ export default function AramaicTranslatorTool({
               )}
             </div>
             <div
-              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md bg-gray-50 dark:bg-zinc-700 flex items-center justify-center text-gray-700 dark:text-gray-200 overflow-y-auto"
+              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md bg-gray-50 dark:bg-zinc-700 overflow-y-auto"
               aria-live="polite"
             >
               {isLoading ? (
-                <p>{pageData.tool.loading}</p>
-              ) : error ? (
-                <p className="text-red-600 dark:text-red-400">{error}</p>
-              ) : outputText ? (
-                <p className="text-lg whitespace-pre-wrap">{outputText}</p>
+                <div className="w-full h-full flex items-center justify-center text-gray-700 dark:text-gray-200">
+                  <div className="flex items-center gap-3">
+                    <div className="flex space-x-1">
+                      <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                      <div
+                        className="w-2 h-2 bg-primary rounded-full animate-pulse"
+                        style={{ animationDelay: '0.2s' }}
+                      ></div>
+                      <div
+                        className="w-2 h-2 bg-primary rounded-full animate-pulse"
+                        style={{ animationDelay: '0.4s' }}
+                      ></div>
+                    </div>
+                    <span>{pageData.tool.loading}</span>
+                  </div>
+                </div>
               ) : (
-                <p className="text-gray-500 dark:text-gray-400">
-                  {direction === 'auto'
-                    ? 'Translation will appear here...'
-                    : 'Translation will appear here...'}
-                </p>
+                <div className="flex flex-col items-start justify-start text-gray-700 dark:text-gray-200">
+                  {error ? (
+                    <p className="text-red-600 dark:text-red-400">{error}</p>
+                  ) : outputText ? (
+                    <p className="text-lg whitespace-pre-wrap">{outputText}</p>
+                  ) : (
+                    <p className="text-gray-500 dark:text-gray-400">
+                      {direction === 'auto'
+                        ? 'Translation will appear here...'
+                        : 'Translation will appear here...'}
+                    </p>
+                  )}
+                </div>
               )}
             </div>
           </div>
@@ -384,9 +417,15 @@ export default function AramaicTranslatorTool({
           <button
             onClick={handleTranslate}
             disabled={isLoading}
-            className="px-8 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="inline-flex items-center px-8 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {isLoading ? pageData.tool.loading : pageData.tool.translateButton}
+            <span>
+              {isLoading
+                ? pageData.tool.loading
+                : pageData.tool.translateButton}
+            </span>
+
+            <ArrowRightIcon className="ml-2 h-4 w-4" />
           </button>
           <button
             onClick={handleReset}

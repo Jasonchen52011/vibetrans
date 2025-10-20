@@ -6,7 +6,7 @@ import FaqSection from '@/components/blocks/faqs/faqs';
 import UserScenarios from '@/components/blocks/funfacts';
 import WhyChoose from '@/components/blocks/highlights';
 import HowTo from '@/components/blocks/how-to';
-import TestimonialsSection from '@/components/blocks/testimonials/testimonials';
+import TestimonialsThreeColumnSection from '@/components/blocks/testimonials/testimonials-three-column';
 import UniqueSection from '@/components/blocks/unique';
 import WhatIsSection from '@/components/blocks/whatis';
 import { AuroraBackground } from '@/components/ui/aurora-background';
@@ -239,7 +239,7 @@ export default async function BadTranslatorPage(props: BadTranslatorPageProps) {
         title: (t as any)('userInterests.sections.0.title'),
         description: (t as any)('userInterests.sections.0.content'),
         image: {
-          src: '/images/docs/fun-and-meme-creation.webp',
+          src: '/images/docs/bad-translator-accuracy-concept.webp',
           alt: (t as any)('userInterests.sections.0.title'),
         },
       },
@@ -247,7 +247,7 @@ export default async function BadTranslatorPage(props: BadTranslatorPageProps) {
         title: (t as any)('userInterests.sections.1.title'),
         description: (t as any)('userInterests.sections.1.content'),
         image: {
-          src: '/images/docs/alien-text-social-media.webp',
+          src: '/images/docs/bad-translator-social-media.webp',
           alt: (t as any)('userInterests.sections.1.title'),
         },
       },
@@ -255,7 +255,7 @@ export default async function BadTranslatorPage(props: BadTranslatorPageProps) {
         title: (t as any)('userInterests.sections.2.title'),
         description: (t as any)('userInterests.sections.2.content'),
         image: {
-          src: '/images/docs/alien-text-creative-projects.webp',
+          src: '/images/docs/bad-translator-advertising.webp',
           alt: (t as any)('userInterests.sections.2.title'),
         },
       },
@@ -263,7 +263,7 @@ export default async function BadTranslatorPage(props: BadTranslatorPageProps) {
         title: (t as any)('userInterests.sections.3.title'),
         description: (t as any)('userInterests.sections.3.content'),
         image: {
-          src: '/images/docs/bad-translator-celebration.webp',
+          src: '/images/docs/bad-translator-meme-creators.webp',
           alt: (t as any)('userInterests.sections.3.title'),
         },
       },
@@ -280,7 +280,7 @@ export default async function BadTranslatorPage(props: BadTranslatorPageProps) {
       <div className="flex flex-col">
         {/* Hero Section with Tool */}
         <AuroraBackground className="bg-white dark:bg-zinc-900 !pt-12 !h-auto">
-          <div className="container max-w-5xl mx-auto px-4 text-center relative z-10 pb-8">
+          <div className="container max-w-7xl mx-auto px-4 text-center relative z-10 pb-8">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               {(t as any)('hero.title')}
             </h1>
@@ -384,16 +384,16 @@ export default async function BadTranslatorPage(props: BadTranslatorPageProps) {
         <ExploreOurAiTools
           toolKeys={[
             'Gibberish Translator',
-            'Bad Translator',
             'Dog Translator',
             'Gen Z Translator',
             'Gen Alpha Translator',
             'Ancient Greek Translator',
+            'Alien Text Generator',
           ]}
         />
 
         {/* Testimonials Section */}
-        <TestimonialsSection namespace="BadTranslatorPage.testimonials" />
+        <TestimonialsThreeColumnSection namespace="BadTranslatorPage.testimonials" />
 
         {/* FAQ Section */}
         <FaqSection namespace="BadTranslatorPage.faqs" />

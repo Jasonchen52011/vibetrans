@@ -1,6 +1,7 @@
 'use client';
 
 import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
+import { ArrowRightIcon } from 'lucide-react';
 import mammoth from 'mammoth';
 import { useState } from 'react';
 
@@ -177,7 +178,7 @@ export default function GenAlphaTranslatorTool({
   };
 
   return (
-    <div className="container max-w-5xl mx-auto px-4 mb-10">
+    <div className="container max-w-7xl mx-auto px-4 mb-10">
       <main className="w-full bg-white dark:bg-zinc-800 shadow-xl border border-gray-100 dark:border-zinc-700 rounded-lg p-4 md:p-8">
         <div className="flex flex-col md:flex-row gap-2 md:gap-3">
           {/* Input Area */}
@@ -196,7 +197,7 @@ export default function GenAlphaTranslatorTool({
                   : pageData.tool.genAlphaPlaceholder
               }
               className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent resize-none text-gray-700 dark:text-gray-200 dark:bg-zinc-700"
-              aria-label="Input text"
+              aria-label={pageData.tool.inputLabel || "Input text"}
             />
 
             {/* File Upload */}
@@ -254,7 +255,7 @@ export default function GenAlphaTranslatorTool({
                       setInputText('');
                     }}
                     className="ml-auto text-gray-500 hover:text-red-500 dark:text-gray-400 dark:hover:text-red-400"
-                    aria-label="Remove file"
+                    aria-label={pageData.tool.removeFileTooltip || "Remove file"}
                   >
                     <svg
                       className="w-4 h-4"
@@ -285,7 +286,7 @@ export default function GenAlphaTranslatorTool({
                   ? 'Switch to Gen Alpha → Standard'
                   : 'Switch to Standard → Gen Alpha'
               }
-              aria-label="Toggle translation mode"
+              aria-label={pageData.tool.toggleModeTooltip || "Toggle translation mode"}
             >
               <svg
                 className="w-6 h-6"
@@ -323,8 +324,8 @@ export default function GenAlphaTranslatorTool({
                     <button
                       onClick={handleCopy}
                       className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
-                      title="Copy"
-                      aria-label="Copy result"
+                      title={pageData.tool.copyTooltip || "Copy"}
+                      aria-label={pageData.tool.copyResultTooltip || "Copy result"}
                     >
                       <svg
                         className="w-5 h-5"
@@ -343,8 +344,8 @@ export default function GenAlphaTranslatorTool({
                     <button
                       onClick={handleDownload}
                       className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
-                      title="Download"
-                      aria-label="Download result"
+                      title={pageData.tool.downloadTooltip || "Download"}
+                      aria-label={pageData.tool.downloadResultTooltip || "Download result"}
                     >
                       <svg
                         className="w-5 h-5"
@@ -365,7 +366,7 @@ export default function GenAlphaTranslatorTool({
               </div>
             </div>
             <div
-              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md bg-gray-50 dark:bg-zinc-700 flex items-center justify-center text-gray-700 dark:text-gray-200 overflow-y-auto"
+              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md bg-gray-50 dark:bg-zinc-700 flex items-start justify-start text-gray-700 dark:text-gray-200 overflow-y-auto"
               aria-live="polite"
             >
               {isLoading ? (
@@ -398,7 +399,7 @@ export default function GenAlphaTranslatorTool({
           <button
             onClick={handleReset}
             className="px-6 py-3 bg-gray-200 dark:bg-zinc-600 hover:bg-gray-300 dark:hover:bg-zinc-500 text-gray-800 dark:text-gray-100 font-semibold rounded-lg shadow-md transition-colors"
-            title="Reset"
+            title={pageData.tool.resetTooltip || "Reset"}
           >
             <svg
               className="w-5 h-5 inline-block mr-2"

@@ -1,6 +1,7 @@
 'use client';
 
 import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
+import { ArrowRightIcon } from 'lucide-react';
 import mammoth from 'mammoth';
 import { useState } from 'react';
 
@@ -169,16 +170,18 @@ export default function BaybayinTranslatorTool({
   // 获取动态标签
   const getInputLabel = () => {
     if (direction === 'auto') {
-      return 'Input Text';
+      return pageData.tool.inputLabel;
     }
-    return direction === 'toBaybayin' ? 'English Text' : 'Baybayin Text';
+    return direction === 'toBaybayin' ? 'English Text' : pageData.tool.baybayinLabel;
   };
 
   const getOutputLabel = () => {
     if (direction === 'auto') {
-      return 'Translation';
+      return pageData.tool.outputLabel;
     }
-    return direction === 'toBaybayin' ? 'Baybayin Translation' : 'English Translation';
+    return direction === 'toBaybayin'
+      ? pageData.tool.baybayinLabel + ' Translation'
+      : 'English Translation';
   };
 
   const getInputPlaceholder = () => {
@@ -191,9 +194,8 @@ export default function BaybayinTranslatorTool({
   };
 
   return (
-    <div className="container max-w-5xl mx-auto px-4 mb-10">
+    <div className="container max-w-7xl mx-auto px-4 mb-10">
       <main className="w-full bg-white dark:bg-zinc-800 shadow-xl border border-gray-100 dark:border-zinc-700 rounded-lg p-4 md:p-8">
-        
         {/* Input and Output Areas */}
         <div className="flex flex-col md:flex-row gap-2 md:gap-3">
           {/* Input Area */}
@@ -201,7 +203,11 @@ export default function BaybayinTranslatorTool({
             <h2
               className="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-3 cursor-pointer hover:text-primary transition-colors"
               onClick={handleTitleClick}
-              title={direction === 'toBaybayin' ? 'Switch to Baybayin → English' : 'Switch to English → Baybayin'}
+              title={
+                direction === 'toBaybayin'
+                  ? 'Switch to Baybayin → English'
+                  : 'Switch to English → Baybayin'
+              }
             >
               {getInputLabel()}
             </h2>
@@ -210,7 +216,7 @@ export default function BaybayinTranslatorTool({
               onChange={(e) => setInputText(e.target.value)}
               placeholder={getInputPlaceholder()}
               className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent resize-none text-gray-700 dark:text-gray-200 dark:bg-zinc-700"
-              aria-label="Input text"
+              aria-label={pageData.tool.inputLabel || "Input text"}
             />
 
             {/* File Upload */}
@@ -269,7 +275,7 @@ export default function BaybayinTranslatorTool({
                     setInputText('');
                   }}
                   className="ml-auto text-gray-500 hover:text-red-500 dark:text-gray-400 dark:hover:text-red-400"
-                  aria-label="Remove file"
+                  aria-label={pageData.tool.removeFileTooltip || "Remove file"}
                 >
                   <svg
                     className="w-4 h-4"
@@ -292,14 +298,18 @@ export default function BaybayinTranslatorTool({
           {/* Direction Swap Button - Centered between inputs */}
           <div className="flex md:flex-col items-center justify-center md:justify-start md:pt-32">
             <button
-              onClick={() => setDirection(direction === 'toBaybayin' ? 'toEnglish' : 'toBaybayin')}
+              onClick={() =>
+                setDirection(
+                  direction === 'toBaybayin' ? 'toEnglish' : 'toBaybayin'
+                )
+              }
               className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors rotate-0 md:rotate-0"
               title={
                 direction === 'toBaybayin'
                   ? 'Switch to Baybayin → English'
                   : 'Switch to English → Baybayin'
               }
-              aria-label="Toggle translation direction"
+              aria-label={pageData.tool.toggleDirectionTooltip || "Toggle translation direction"}
             >
               <svg
                 className="w-6 h-6"
@@ -323,7 +333,11 @@ export default function BaybayinTranslatorTool({
               <h2
                 className="text-2xl font-semibold text-gray-800 dark:text-gray-100 cursor-pointer hover:text-primary transition-colors"
                 onClick={handleTitleClick}
-                title={direction === 'toBaybayin' ? 'Switch to Baybayin → English' : 'Switch to English → Baybayin'}
+                title={
+                  direction === 'toBaybayin'
+                    ? 'Switch to Baybayin → English'
+                    : 'Switch to English → Baybayin'
+                }
               >
                 {getOutputLabel()}
               </h2>
@@ -333,7 +347,7 @@ export default function BaybayinTranslatorTool({
                   <button
                     onClick={handleCopy}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
-                    title="Copy"
+                    title={pageData.tool.copyTooltip || "Copy"}
                   >
                     <svg
                       className="w-5 h-5"
@@ -352,7 +366,7 @@ export default function BaybayinTranslatorTool({
                   <button
                     onClick={handleDownload}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
-                    title="Download"
+                    title={pageData.tool.downloadTooltip || "Download"}
                   >
                     <svg
                       className="w-5 h-5"
@@ -372,7 +386,7 @@ export default function BaybayinTranslatorTool({
               )}
             </div>
             <div
-              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md bg-gray-50 dark:bg-zinc-700 flex items-center justify-center text-gray-700 dark:text-gray-200 overflow-y-auto"
+              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md bg-gray-50 dark:bg-zinc-700 flex items-start justify-start text-gray-700 dark:text-gray-200 overflow-y-auto"
               aria-live="polite"
             >
               {isLoading ? (
@@ -397,9 +411,15 @@ export default function BaybayinTranslatorTool({
           <button
             onClick={handleTranslate}
             disabled={isLoading}
-            className="px-8 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="inline-flex items-center px-8 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {isLoading ? pageData.tool.loading : pageData.tool.translateButton}
+            <span>
+              {isLoading
+                ? pageData.tool.loading
+                : pageData.tool.translateButton}
+            </span>
+
+            <ArrowRightIcon className="ml-2 h-4 w-4" />
           </button>
           <button
             onClick={handleReset}

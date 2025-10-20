@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { constructMetadata } from '@/lib/metadata';
 import { getUrlWithLocale } from '@/lib/urls/urls';
 import {
+  ArrowRightIcon,
   BrainCircuitIcon,
   GlobeIcon,
   LanguagesIcon,
@@ -389,6 +390,7 @@ export default async function AboutPage() {
                   className="text-lg px-8 py-6 rounded-xl hover:scale-105 transition-transform duration-200"
                 >
                   {t('cta.button')}
+                  <ArrowRightIcon className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
             </div>

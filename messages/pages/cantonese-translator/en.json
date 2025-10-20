@@ -4,7 +4,7 @@
     "description": "Translate Cantonese with perfect tone accuracy using VibeTrans. Free online Cantonese translator handles slang, romanization, and voice input like a native speaker.",
     "hero": {
       "title": "Cantonese Translator That Actually Gets the Tones Right",
-      "description": "Finally! A Cantonese translator that understands those tricky 6-9 tones and local slang. VibeTrans handles everything from daily chats to formal documents, making it perfect for travelers, students, and anyone tired of Google Translate's Cantonese failures.",
+      "description": "Discover the best Cantonese translator that understands those tricky 6-9 tones and local slang. VibeTrans handles everything from daily chats to formal documents, making it perfect for travelers, students, and anyone seeking the most accurate Cantonese translations.",
       "primaryButton": "Start Translating Now",
       "secondaryButton": "See How It Works"
     },
@@ -22,7 +22,22 @@
       "playButton": "🔊 Hear Pronunciation",
       "loading": "Translating with AI precision...",
       "error": "Oops! Please try again or check your internet connection",
-      "noInput": "Please enter some text to translate"
+      "noInput": "Please enter some text to translate",
+      "downloadButton": "Download",
+      "resetButton": "Reset",
+      "copyTooltip": "Copy",
+      "downloadTooltip": "Download",
+      "resetTooltip": "Reset",
+      "cantoneseLabel": "Cantonese",
+      "englishLabel": "English",
+      "cantonesePlaceholder": "Type Cantonese text here...",
+      "removeFileTooltip": "Remove file",
+      "removeRecordingTooltip": "Remove recording",
+      "toggleModeTooltip": "Toggle translation mode",
+      "toggleDirectionTooltip": "Toggle translation direction",
+      "copyResultTooltip": "Copy result",
+      "downloadResultTooltip": "Download result",
+      "playSoundTooltip": "Play sound"
     },
     "whatIs": {
       "title": "What is cantonese translator",
@@ -61,7 +76,7 @@
       ]
     },
     "howto": {
-      "title": "How to Master Cantonese Translation with VibeTrans",
+      "title": "How to Translate English to Cantonese",
       "description": "Get perfect Cantonese translations in 4 simple steps. No Mandarin confusion, no tone mistakes - just authentic Cantonese like locals speak it.",
       "steps": [
         {
@@ -131,7 +146,7 @@
       ]
     },
     "highlights": {
-      "title": "Key Features of CantoTone Translator",
+      "title": "Academic Grade Cantonese Translation: Essential Research Tool",
       "description": "Discover what makes our tool unique",
       "items": [
         {
@@ -160,37 +175,22 @@
           "name": "Emily Johnson",
           "role": "Travel Blogger",
           "heading": "Perfect for Travelers",
-          "content": "VibeTrans transformed my Hong Kong trip. The app's offline package worked wonders in the subway, and its accurate slang translations made local interactions smoother. I felt more connected and confident exploring the city."
+          "content": "VibeTrans transformed my Hong Kong trip. The reliable performance worked wonders in the subway, and its accurate slang translations made local interactions smoother. I felt more connected and confident exploring the city.",
+          "rating": "5.0"
         },
         "item-2": {
           "name": "Mark Thompson",
           "role": "Software Developer",
           "heading": "A Developer's Dream",
-          "content": "Integrating VibeTrans into our app was seamless thanks to their standardized API. The high accuracy of language detection and automatic translation direction switching impressed my team. It significantly enhanced our app's user experience."
+          "content": "Integrating VibeTrans into our app was seamless thanks to their standardized API. The high accuracy of language detection and automatic translation direction switching impressed my team. It significantly enhanced our app's user experience.",
+          "rating": "4.9"
         },
         "item-3": {
           "name": "Lisa Wong",
           "role": "Language Student",
           "heading": "Enhanced My Learning",
-          "content": "VibeTrans's visual tone feature is a game-changer for my Cantonese studies. Clicking each word to hear its pronunciation helped me grasp the tonal differences better. It's a must-have tool for any serious Cantonese learner."
-        },
-        "item-4": {
-          "name": "James Lee",
-          "role": "Business Executive",
-          "heading": "Boosted Meeting Efficiency",
-          "content": "In our bilingual meetings, VibeTrans's real-time speech translation was invaluable. It seamlessly translated Cantonese discussions into English, ensuring everyone was on the same page. This tool has become indispensable for our international team."
-        },
-        "item-5": {
-          "name": "Anna Smith",
-          "role": "Teacher",
-          "heading": "A Classroom Essential",
-          "content": "CantoTone Translator's ability to visualize tones and highlight slang made teaching Cantonese more engaging. My students enjoy the interactive learning experience, and their pronunciation has improved significantly. It's an essential tool for educators."
-        },
-        "item-6": {
-          "name": "Michael Brown",
-          "role": "Legal Advisor",
-          "heading": "Accurate Legal Translations",
-          "content": "VibeTrans's professional translation modes are incredibly precise, especially for legal documents. It accurately handles complex terminologies and ensures compliance with regional vocabulary differences. This tool is a reliable partner for our legal team."
+          "content": "VibeTrans's visual tone feature is a game-changer for my Cantonese studies. Clicking each word to hear its pronunciation helped me grasp the tonal differences better. It's a must-have tool for any serious Cantonese learner.",
+          "rating": "4.7"
         }
       }
     },
@@ -219,8 +219,8 @@
           "answer": "To translate a document with VibeTrans, follow these steps: Step 1, enter your text. Step 2, select the target language. Step 3, click Translate. Step 4, review and copy the translation."
         },
         "item-6": {
-          "question": "Can I use VibeTrans offline?",
-          "answer": "Currently, VibeTrans requires an internet connection for translations. We recommend using it in areas where connectivity is available."
+          "question": "What is the best cantonese translator for accurate translations?",
+          "answer": "VibeTrans Cantonese Translator is the premier choice for accurate translations, featuring advanced AI technology that understands complex grammar, cultural context, and linguistic nuances. Our tool provides bidirectional translation, real-time processing, and high accuracy rates, all completely free. Perfect for language learning, communication, and cultural exploration with reliable, context-aware results."
         }
       }
     },
@@ -245,6 +245,19 @@
           "description": "Our AI goes beyond basic translations, grasping context and slang. This means better, more natural translations that respect the nuances of Cantonese language and culture."
         }
       }
+    },
+    "funfacts": {
+      "title": "Fascinating Cantonese Language Facts",
+      "items": [
+        {
+          "title": "Six Tones Challenge",
+          "description": "Did you know Cantonese has six basic tones? Many learners find tone 3 (mid-rising) and tone 4 (falling) the trickiest. Master these tones and you're halfway to fluency! VibeTrans helps visualize these tones for easier learning."
+        },
+        {
+          "title": "Ancient Chinese Heritage",
+          "description": "Cantonese preserves many ancient Chinese sounds from over 1,000 years ago! This makes it a living time capsule of medieval Chinese pronunciation. When you learn Cantonese, you're essentially speaking history."
+        }
+      ]
     },
     "ctaButton": "Try Cantonese Translator Now",
     "cta": {

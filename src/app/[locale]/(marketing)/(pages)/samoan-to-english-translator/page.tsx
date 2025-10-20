@@ -6,7 +6,7 @@ import FaqSection from '@/components/blocks/faqs/faqs';
 import UserScenarios from '@/components/blocks/funfacts';
 import WhyChoose from '@/components/blocks/highlights';
 import HowTo from '@/components/blocks/how-to';
-import TestimonialsSection from '@/components/blocks/testimonials/testimonials';
+import TestimonialsThreeColumnSection from '@/components/blocks/testimonials/testimonials-three-column';
 import WhatIsSection from '@/components/blocks/whatis';
 import { AuroraBackground } from '@/components/ui/aurora-background';
 import { constructMetadata } from '@/lib/metadata';
@@ -126,8 +126,11 @@ export default async function SamoanToEnglishTranslatorPage(
     description: (t as any)('whatIs.description'),
     features: [],
     image: {
-      src: (t as any)('whatIs.image') || '/images/docs/translate-samoa-english.webp',
-      alt: (t as any)('whatIs.imageAlt') || 'What is Samoan To English Translator',
+      src:
+        (t as any)('whatIs.image') ||
+        '/images/docs/translate-samoa-english.webp',
+      alt:
+        (t as any)('whatIs.imageAlt') || 'What is Samoan To English Translator',
     },
     cta: { text: (t as any)('ctaButton') },
   };
@@ -138,8 +141,12 @@ export default async function SamoanToEnglishTranslatorPage(
     title: (t as any)('howto.title'),
     description: (t as any)('howto.description'),
     image: {
-      src: (t as any)('howto.image') || '/images/docs/samoan-to-english-translator-how-to.webp',
-      alt: (t as any)('howto.imageAlt') || 'How to use Samoan-to-English Translator Plus',
+      src:
+        (t as any)('howto.image') ||
+        '/images/docs/samoan-to-english-translator-how-to.webp',
+      alt:
+        (t as any)('howto.imageAlt') ||
+        'How to use Samoan-to-English Translator Plus',
     },
     items: [
       {
@@ -203,7 +210,9 @@ export default async function SamoanToEnglishTranslatorPage(
         title: (t as any)('funFacts.items.0.content'),
         description: (t as any)('funFacts.items.0.content'),
         image: {
-          src: (t as any)('funFacts.items.0.image') || '/images/docs/alphabet-island.webp',
+          src:
+            (t as any)('funFacts.items.0.image') ||
+            '/images/docs/alphabet-island.webp',
           alt: (t as any)('funFacts.items.0.imageAlt') || 'Fun fact 1',
         },
       },
@@ -211,7 +220,9 @@ export default async function SamoanToEnglishTranslatorPage(
         title: (t as any)('funFacts.items.1.content'),
         description: (t as any)('funFacts.items.1.content'),
         image: {
-          src: (t as any)('funFacts.items.1.image') || '/images/docs/word-order-arrows.webp',
+          src:
+            (t as any)('funFacts.items.1.image') ||
+            '/images/docs/word-order-arrows.webp',
           alt: (t as any)('funFacts.items.1.imageAlt') || 'Fun fact 2',
         },
       },
@@ -227,32 +238,48 @@ export default async function SamoanToEnglishTranslatorPage(
         title: (t as any)('userInterest.items.0.title'),
         description: (t as any)('userInterest.items.0.description'),
         image: {
-          src: (t as any)('userInterest.items.0.image') || '/images/docs/culture-bridge.webp',
-          alt: (t as any)('userInterest.items.0.imageAlt') || 'Cultural Context Matters',
+          src:
+            (t as any)('userInterest.items.0.image') ||
+            '/images/docs/culture-bridge.webp',
+          alt:
+            (t as any)('userInterest.items.0.imageAlt') ||
+            'Cultural Context Matters',
         },
       },
       {
         title: (t as any)('userInterest.items.1.title'),
         description: (t as any)('userInterest.items.1.description'),
         image: {
-          src: (t as any)('userInterest.items.1.image') || '/images/docs/globe-speech-bubbles.webp',
-          alt: (t as any)('userInterest.items.1.imageAlt') || 'Pronunciation Prowess',
+          src:
+            (t as any)('userInterest.items.1.image') ||
+            '/images/docs/globe-speech-bubbles.webp',
+          alt:
+            (t as any)('userInterest.items.1.imageAlt') ||
+            'Pronunciation Prowess',
         },
       },
       {
         title: (t as any)('userInterest.items.2.title'),
         description: (t as any)('userInterest.items.2.description'),
         image: {
-          src: (t as any)('userInterest.items.2.image') || '/images/docs/text-wave-translation.webp',
-          alt: (t as any)('userInterest.items.2.imageAlt') || 'Bulk Translation Made Easy',
+          src:
+            (t as any)('userInterest.items.2.image') ||
+            '/images/docs/text-wave-translation.webp',
+          alt:
+            (t as any)('userInterest.items.2.imageAlt') ||
+            'Bulk Translation Made Easy',
         },
       },
       {
         title: (t as any)('userInterest.items.3.title'),
         description: (t as any)('userInterest.items.3.description'),
         image: {
-          src: (t as any)('userInterest.items.3.image') || '/images/docs/owl-safe-privacy.webp',
-          alt: (t as any)('userInterest.items.3.imageAlt') || 'Privacy You Can Trust',
+          src:
+            (t as any)('userInterest.items.3.image') ||
+            '/images/docs/owl-safe-privacy.webp',
+          alt:
+            (t as any)('userInterest.items.3.imageAlt') ||
+            'Privacy You Can Trust',
         },
       },
     ],
@@ -267,7 +294,7 @@ export default async function SamoanToEnglishTranslatorPage(
       <div className="flex flex-col">
         {/* Hero Section */}
         <AuroraBackground className="bg-white dark:bg-zinc-900 !pt-12 !h-auto">
-          <div className="container max-w-5xl mx-auto px-4 text-center relative z-10 pb-8">
+          <div className="container max-w-7xl mx-auto px-4 text-center relative z-10 pb-8">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               {(t as any)('hero.title')}
             </h1>
@@ -356,7 +383,7 @@ export default async function SamoanToEnglishTranslatorPage(
         />
 
         {/* Testimonials */}
-        <TestimonialsSection namespace="SamoanToEnglishTranslatorPage.testimonials" />
+        <TestimonialsThreeColumnSection namespace="SamoanToEnglishTranslatorPage.testimonials" />
 
         {/* FAQ */}
         <FaqSection namespace="SamoanToEnglishTranslatorPage.faqs" />

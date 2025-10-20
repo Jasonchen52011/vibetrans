@@ -80,7 +80,7 @@
       ]
     },
     "userScenarios": {
-      "title": "Fun Facts",
+      "title": "婴儿语言发展与亲子沟通",
       "items": [
         {
           "title": "Babies Speak Their Own Language",
@@ -101,7 +101,7 @@
       ]
     },
     "unique": {
-      "title": "User Interests",
+      "title": "早期学习与亲子 bonding 场景",
       "subtitle": "Tailored Solutions for Parents",
       "description": "VibeTrans Baby Translator Pro serves diverse needs - from understanding to soothing",
       "items": [
@@ -132,7 +132,7 @@
       ]
     },
     "highlights": {
-      "title": "Why Choose Baby Translator Pro",
+      "title": "为何选择我们的翻译工具",
       "description": "Discover what makes our Baby Translator unique and user-friendly",
       "items": [
         {
@@ -216,10 +216,6 @@
           "answer": "A baby cry translator is a tool that interprets baby cries and sounds, providing insights into their needs and offering soothing suggestions. It uses AI for accurate analysis."
         },
         "item-5": {
-          "question": "Can Baby Translator Pro work offline?",
-          "answer": "Yes, Baby Translator Pro supports offline functionality. You can use it without an internet connection, ensuring accessibility anytime, anywhere."
-        },
-        "item-6": {
           "question": "Does Baby Translator Pro integrate with smart devices?",
           "answer": "Absolutely! VibeTrans integrates seamlessly with smart home devices like Alexa, offering instant insights and making your parenting journey more convenient."
         }

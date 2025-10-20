@@ -27,7 +27,7 @@ async function regenerateSamoanHowToImage() {
 
     const imageResult = await generateIllustration({
       prompt: imagePrompt,
-      filename: 'samoan-translator-howto-guide'
+      filename: 'samoan-translator-howto-guide',
     });
 
     if (imageResult.url) {
@@ -38,7 +38,7 @@ async function regenerateSamoanHowToImage() {
       // 转换为 WebP 格式
       console.log('转换为 WebP 格式...');
       const webpResult = await convertURLToWebP(imageResult.url, {
-        filename: 'samoan-translator-howto-guide'
+        filename: 'samoan-translator-howto-guide',
       });
 
       if (webpResult.success) {
@@ -51,7 +51,10 @@ async function regenerateSamoanHowToImage() {
         const fs = await import('fs/promises');
         const path = await import('path');
 
-        const jsonPath = path.join(process.cwd(), 'messages/pages/samoan-to-english-translator/en.json');
+        const jsonPath = path.join(
+          process.cwd(),
+          'messages/pages/samoan-to-english-translator/en.json'
+        );
         const jsonContent = await fs.readFile(jsonPath, 'utf-8');
         const data = JSON.parse(jsonContent);
 
@@ -64,25 +67,24 @@ async function regenerateSamoanHowToImage() {
 
         await fs.writeFile(jsonPath, JSON.stringify(data, null, 2));
         console.log('✅ JSON 配置文件已更新');
-
       } else {
         console.error('❌ WebP 转换失败:', webpResult.error);
       }
-
     } else {
       console.error('❌ 图片生成失败: 未获取到图片URL');
     }
-
   } catch (error) {
     console.error('❌ 生成过程中出现错误:', error);
   }
 }
 
 // 执行重新生成
-regenerateSamoanHowToImage().then(() => {
-  console.log('How-To 部分配图重新生成完成!');
-  process.exit(0);
-}).catch((error) => {
-  console.error('执行失败:', error);
-  process.exit(1);
-});
+regenerateSamoanHowToImage()
+  .then(() => {
+    console.log('How-To 部分配图重新生成完成!');
+    process.exit(0);
+  })
+  .catch((error) => {
+    console.error('执行失败:', error);
+    process.exit(1);
+  });

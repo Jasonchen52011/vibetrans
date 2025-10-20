@@ -1,6 +1,7 @@
 'use client';
 
 import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
+import { ArrowRightIcon } from 'lucide-react';
 import mammoth from 'mammoth';
 import { useState } from 'react';
 
@@ -165,7 +166,7 @@ export default function DumbItDownTool({
   };
 
   return (
-    <div className="container max-w-5xl mx-auto px-4 mb-10">
+    <div className="container max-w-7xl mx-auto px-4 mb-10">
       <main className="w-full bg-white dark:bg-zinc-800 shadow-xl border border-gray-100 dark:border-zinc-700 rounded-lg p-4 md:p-8">
         <div className="flex flex-col md:flex-row gap-4 md:gap-8">
           {/* Input Area */}
@@ -311,19 +312,40 @@ export default function DumbItDownTool({
               )}
             </div>
             <div
-              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md bg-gray-50 dark:bg-zinc-700 flex items-center justify-center text-gray-700 dark:text-gray-200 overflow-y-auto"
+              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md bg-gray-50 dark:bg-zinc-700 overflow-y-auto"
               aria-live="polite"
             >
               {isLoading ? (
-                <p>{pageData.tool.loading}</p>
-              ) : error ? (
-                <p className="text-red-600 dark:text-red-400">{error}</p>
-              ) : simplifiedText ? (
-                <p className="text-lg whitespace-pre-wrap">{simplifiedText}</p>
+                <div className="w-full h-full flex items-center justify-center text-gray-700 dark:text-gray-200">
+                  <div className="flex items-center gap-3">
+                    <div className="flex space-x-1">
+                      <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                      <div
+                        className="w-2 h-2 bg-primary rounded-full animate-pulse"
+                        style={{ animationDelay: '0.2s' }}
+                      ></div>
+                      <div
+                        className="w-2 h-2 bg-primary rounded-full animate-pulse"
+                        style={{ animationDelay: '0.4s' }}
+                      ></div>
+                    </div>
+                    <span>{pageData.tool.loading}</span>
+                  </div>
+                </div>
               ) : (
-                <p className="text-gray-500 dark:text-gray-400">
-                  {pageData.tool.outputPlaceholder}
-                </p>
+                <div className="flex flex-col items-start justify-start text-gray-700 dark:text-gray-200">
+                  {error ? (
+                    <p className="text-red-600 dark:text-red-400">{error}</p>
+                  ) : simplifiedText ? (
+                    <p className="text-lg whitespace-pre-wrap">
+                      {simplifiedText}
+                    </p>
+                  ) : (
+                    <p className="text-gray-500 dark:text-gray-400">
+                      {pageData.tool.outputPlaceholder}
+                    </p>
+                  )}
+                </div>
               )}
             </div>
           </div>

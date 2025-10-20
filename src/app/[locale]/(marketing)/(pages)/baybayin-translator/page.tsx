@@ -6,7 +6,7 @@ import FaqSection from '@/components/blocks/faqs/faqs';
 import UserScenarios from '@/components/blocks/funfacts';
 import WhyChoose from '@/components/blocks/highlights';
 import HowTo from '@/components/blocks/how-to';
-import TestimonialsSection from '@/components/blocks/testimonials/testimonials';
+import TestimonialsThreeColumnSection from '@/components/blocks/testimonials/testimonials-three-column';
 import WhatIsSection from '@/components/blocks/whatis';
 import { AuroraBackground } from '@/components/ui/aurora-background';
 import { constructMetadata } from '@/lib/metadata';
@@ -34,7 +34,9 @@ export async function generateMetadata({
     title: `${gt('title')} | ${(t as any)('name')}`,
     description: gt('description'),
     canonicalUrl: getUrlWithLocale('/baybayin-translator', locale),
-    image: (t as any)('whatIs.image') || '/images/docs/what-is-baybayin-translator.webp',
+    image:
+      (t as any)('whatIs.image') ||
+      '/images/docs/what-is-baybayin-translator.webp',
   });
 }
 
@@ -126,7 +128,9 @@ export default async function BaybayinTranslatorPage(
     description: (t as any)('whatIs.description'),
     features: [],
     image: {
-      src: (t as any)('whatIs.image') || '/images/docs/what-is-baybayin-translator.webp',
+      src:
+        (t as any)('whatIs.image') ||
+        '/images/docs/what-is-baybayin-translator.webp',
       alt: (t as any)('whatIs.imageAlt') || 'What is Baybayin Translator',
     },
     cta: { text: (t as any)('ctaButton') },
@@ -138,7 +142,9 @@ export default async function BaybayinTranslatorPage(
     title: (t as any)('howto.title'),
     description: (t as any)('howto.description'),
     image: {
-      src: (t as any)('howto.image') || '/images/docs/baybayin-translator-how-to.webp',
+      src:
+        (t as any)('howto.image') ||
+        '/images/docs/baybayin-translator-how-to.webp',
       alt: (t as any)('howto.imageAlt') || 'How to use Baybayin Translator',
     },
     items: [
@@ -203,16 +209,24 @@ export default async function BaybayinTranslatorPage(
         title: (t as any)('funFacts.items.0.title'),
         description: (t as any)('funFacts.items.0.description'),
         image: {
-          src: (t as any)('funFacts.items.0.image') || '/images/docs/baybayin-translator-fact-1.webp',
-          alt: (t as any)('funFacts.items.0.imageAlt') || (t as any)('funFacts.items.0.title'),
+          src:
+            (t as any)('funFacts.items.0.image') ||
+            '/images/docs/baybayin-translator-fact-1.webp',
+          alt:
+            (t as any)('funFacts.items.0.imageAlt') ||
+            (t as any)('funFacts.items.0.title'),
         },
       },
       {
         title: (t as any)('funFacts.items.1.title'),
         description: (t as any)('funFacts.items.1.description'),
         image: {
-          src: (t as any)('funFacts.items.1.image') || '/images/docs/baybayin-translator-fact-2.webp',
-          alt: (t as any)('funFacts.items.1.imageAlt') || (t as any)('funFacts.items.1.title'),
+          src:
+            (t as any)('funFacts.items.1.image') ||
+            '/images/docs/baybayin-translator-fact-2.webp',
+          alt:
+            (t as any)('funFacts.items.1.imageAlt') ||
+            (t as any)('funFacts.items.1.title'),
         },
       },
     ],
@@ -227,32 +241,48 @@ export default async function BaybayinTranslatorPage(
         title: (t as any)('userInterest.items.0.title'),
         description: (t as any)('userInterest.items.0.description'),
         image: {
-          src: (t as any)('userInterest.items.0.image') || '/images/docs/baybayin-translator-interest-1.webp',
-          alt: (t as any)('userInterest.items.0.imageAlt') || (t as any)('userInterest.items.0.title'),
+          src:
+            (t as any)('userInterest.items.0.image') ||
+            '/images/docs/baybayin-translator-interest-1.webp',
+          alt:
+            (t as any)('userInterest.items.0.imageAlt') ||
+            (t as any)('userInterest.items.0.title'),
         },
       },
       {
         title: (t as any)('userInterest.items.1.title'),
         description: (t as any)('userInterest.items.1.description'),
         image: {
-          src: (t as any)('userInterest.items.1.image') || '/images/docs/baybayin-translator-interest-2.webp',
-          alt: (t as any)('userInterest.items.1.imageAlt') || (t as any)('userInterest.items.1.title'),
+          src:
+            (t as any)('userInterest.items.1.image') ||
+            '/images/docs/baybayin-translator-interest-2.webp',
+          alt:
+            (t as any)('userInterest.items.1.imageAlt') ||
+            (t as any)('userInterest.items.1.title'),
         },
       },
       {
         title: (t as any)('userInterest.items.2.title'),
         description: (t as any)('userInterest.items.2.description'),
         image: {
-          src: (t as any)('userInterest.items.2.image') || '/images/docs/baybayin-translator-interest-3.webp',
-          alt: (t as any)('userInterest.items.2.imageAlt') || (t as any)('userInterest.items.2.title'),
+          src:
+            (t as any)('userInterest.items.2.image') ||
+            '/images/docs/baybayin-translator-interest-3.webp',
+          alt:
+            (t as any)('userInterest.items.2.imageAlt') ||
+            (t as any)('userInterest.items.2.title'),
         },
       },
       {
         title: (t as any)('userInterest.items.3.title'),
         description: (t as any)('userInterest.items.3.description'),
         image: {
-          src: (t as any)('userInterest.items.3.image') || '/images/docs/baybayin-translator-interest-4.webp',
-          alt: (t as any)('userInterest.items.3.imageAlt') || (t as any)('userInterest.items.3.title'),
+          src:
+            (t as any)('userInterest.items.3.image') ||
+            '/images/docs/baybayin-translator-interest-4.webp',
+          alt:
+            (t as any)('userInterest.items.3.imageAlt') ||
+            (t as any)('userInterest.items.3.title'),
         },
       },
     ],
@@ -267,7 +297,7 @@ export default async function BaybayinTranslatorPage(
       <div className="flex flex-col">
         {/* Hero Section */}
         <AuroraBackground className="bg-white dark:bg-zinc-900 !pt-12 !h-auto">
-          <div className="container max-w-5xl mx-auto px-4 text-center relative z-10 pb-8">
+          <div className="container max-w-7xl mx-auto px-4 text-center relative z-10 pb-8">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               {(t as any)('hero.title')}
             </h1>
@@ -356,7 +386,7 @@ export default async function BaybayinTranslatorPage(
         />
 
         {/* Testimonials */}
-        <TestimonialsSection namespace="BaybayinTranslatorPage.testimonials" />
+        <TestimonialsThreeColumnSection namespace="BaybayinTranslatorPage.testimonials" />
 
         {/* FAQ */}
         <FaqSection namespace="BaybayinTranslatorPage.faqs" />

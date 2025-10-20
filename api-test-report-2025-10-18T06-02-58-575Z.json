@@ -200,9 +200,7 @@
         "errorHandling": 0
       },
       "errors": [],
-      "warnings": [
-        "No API endpoint found for this tool"
-      ],
+      "warnings": ["No API endpoint found for this tool"],
       "lastTested": "2025-10-18T06:02:48.043Z"
     },
     {
@@ -268,9 +266,7 @@
         "errorHandling": 0
       },
       "errors": [],
-      "warnings": [
-        "No API endpoint found for this tool"
-      ],
+      "warnings": ["No API endpoint found for this tool"],
       "lastTested": "2025-10-18T06:02:48.674Z"
     },
     {
@@ -473,9 +469,7 @@
         "postFunction": 2,
         "errorHandling": 2
       },
-      "errors": [
-        "POST Function: POST request failed: 400"
-      ],
+      "errors": ["POST Function: POST request failed: 400"],
       "warnings": [],
       "lastTested": "2025-10-18T06:02:53.040Z"
     },

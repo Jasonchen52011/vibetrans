@@ -56,7 +56,10 @@ function simulateApiCheck(api: string): DemoResult {
   }
 
   return {
-    toolName: api.replace('/api/', '').replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
+    toolName: api
+      .replace('/api/', '')
+      .replace(/-/g, ' ')
+      .replace(/\b\w/g, (l) => l.toUpperCase()),
     apiPath: api,
     status,
     responseTime,
@@ -76,13 +79,20 @@ function generateDemoReport(results: DemoResult[]): void {
 
   // 显示测试结果
   console.log('📋 测试结果详情:');
-  console.log('=' .repeat(80));
-  console.log(`{'Tool Name'.padEnd(25)} {'Status'.padEnd(10)} {'Response'.padEnd(10)} {'Tests'.padEnd(15)} Notes`);
+  console.log('='.repeat(80));
+  console.log(
+    `{'Tool Name'.padEnd(25)} {'Status'.padEnd(10)} {'Response'.padEnd(10)} {'Tests'.padEnd(15)} Notes`
+  );
   console.log('-'.repeat(80));
 
-  results.forEach(result => {
-    const statusEmoji = result.status === 'success' ? '✅' : result.status === 'warning' ? '⚠️' : '❌';
-    const testPassed = Object.values(result.tests).filter(t => t).length;
+  results.forEach((result) => {
+    const statusEmoji =
+      result.status === 'success'
+        ? '✅'
+        : result.status === 'warning'
+          ? '⚠️'
+          : '❌';
+    const testPassed = Object.values(result.tests).filter((t) => t).length;
     const testTotal = Object.keys(result.tests).length;
 
     console.log(
@@ -91,25 +101,29 @@ function generateDemoReport(results: DemoResult[]): void {
   });
 
   // 生成摘要
-  const successful = results.filter(r => r.status === 'success').length;
-  const warnings = results.filter(r => r.status === 'warning').length;
-  const errors = results.filter(r => r.status === 'error').length;
-  const avgResponseTime = Math.round(results.reduce((sum, r) => sum + r.responseTime, 0) / results.length);
+  const successful = results.filter((r) => r.status === 'success').length;
+  const warnings = results.filter((r) => r.status === 'warning').length;
+  const errors = results.filter((r) => r.status === 'error').length;
+  const avgResponseTime = Math.round(
+    results.reduce((sum, r) => sum + r.responseTime, 0) / results.length
+  );
 
   console.log('\n📊 测试摘要:');
   console.log(`   总工具数: ${results.length}`);
   console.log(`   ✅ 成功: ${successful}`);
   console.log(`   ⚠️  警告: ${warnings}`);
   console.log(`   ❌ 错误: ${errors}`);
-  console.log(`   📈 健康率: ${Math.round((successful / results.length) * 100)}%`);
+  console.log(
+    `   📈 健康率: ${Math.round((successful / results.length) * 100)}%`
+  );
   console.log(`   ⏱️  平均响应时间: ${avgResponseTime}ms`);
 
   // 显示详细的测试通过率
   const testResults = {
-    connectivity: results.filter(r => r.tests.connectivity).length,
-    getInfo: results.filter(r => r.tests.getInfo).length,
-    postFunction: results.filter(r => r.tests.postFunction).length,
-    errorHandling: results.filter(r => r.tests.errorHandling).length,
+    connectivity: results.filter((r) => r.tests.connectivity).length,
+    getInfo: results.filter((r) => r.tests.getInfo).length,
+    postFunction: results.filter((r) => r.tests.postFunction).length,
+    errorHandling: results.filter((r) => r.tests.errorHandling).length,
   };
 
   console.log('\n🔍 详细测试通过率:');
@@ -121,8 +135,12 @@ function generateDemoReport(results: DemoResult[]): void {
   // 演示报告生成
   console.log('\n📄 报告生成演示:');
   console.log('   实际使用时，脚本会生成以下文件:');
-  console.log('   - api-test-report-2024-01-15T10-30-00-000Z.json (详细JSON报告)');
-  console.log('   - api-test-report-2024-01-15T10-30-00-000Z.md (Markdown报告)');
+  console.log(
+    '   - api-test-report-2024-01-15T10-30-00-000Z.json (详细JSON报告)'
+  );
+  console.log(
+    '   - api-test-report-2024-01-15T10-30-00-000Z.md (Markdown报告)'
+  );
 
   // 保存演示结果
   const demoData = {
@@ -145,7 +163,7 @@ function generateDemoReport(results: DemoResult[]): void {
 
 function showUsageExamples(): void {
   console.log('\n🚀 实际使用方法:');
-  console.log('=' .repeat(50));
+  console.log('='.repeat(50));
   console.log('# 1. 确保开发服务器运行');
   console.log('pnpm dev');
   console.log('');
@@ -186,7 +204,7 @@ function main() {
   console.log('- 展示使用方法\n');
 
   // 模拟测试
-  const results = DEMO_TOOLS.map(tool => simulateApiCheck(tool.api));
+  const results = DEMO_TOOLS.map((tool) => simulateApiCheck(tool.api));
 
   // 生成报告
   generateDemoReport(results);
@@ -195,7 +213,9 @@ function main() {
   showUsageExamples();
 
   console.log('\n✅ 演示完成！');
-  console.log('\n💡 提示: 要进行真实的API测试，请启动开发服务器 (pnpm dev) 然后运行 pnpm api:test');
+  console.log(
+    '\n💡 提示: 要进行真实的API测试，请启动开发服务器 (pnpm dev) 然后运行 pnpm api:test'
+  );
 }
 
 if (require.main === module) {

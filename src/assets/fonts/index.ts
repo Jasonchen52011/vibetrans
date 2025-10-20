@@ -4,6 +4,7 @@ import {
   Noto_Sans_Mono,
   Noto_Serif,
 } from 'next/font/google';
+import localFont from 'next/font/local';
 
 /**
  * This file shows how to customize the font by using local font or google font
@@ -19,6 +20,29 @@ import {
 //   src: './Bricolage Grotesque-grotesque-v7-latin-regular.woff2',
 //   variable: '--font-bricolage-grotesque',
 // });
+
+// Satoshi font - local font
+export const fontSatoshi = localFont({
+  src: [
+    {
+      path: '../../fonts/satoshi-regular.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../../fonts/satoshi-medium.woff2',
+      weight: '500',
+      style: 'normal',
+    },
+    {
+      path: '../../fonts/satoshi-bold.woff2',
+      weight: '700',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-satoshi',
+  display: 'swap',
+});
 
 /**
  * [2] use google font

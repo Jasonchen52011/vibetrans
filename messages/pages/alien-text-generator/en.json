@@ -4,7 +4,7 @@
     "description": "Convert your text into various alien language styles for creative projects, memes, or social media. Explore unlimited possibilities with our Alien Text Generator tool!",
     "hero": {
       "title": "Alien Text Generator – Create Text in Intriguing Extraterrestrial Styles",
-      "description": "Turn everyday text into creative alien language styles with VibeTrans' Alien Text Generator. Ideal for games, projects, and social media posts."
+      "description": "Create the best alien text styles with VibeTrans' Alien Text Generator. Turn everyday text into creative extraterrestrial languages. Ideal for games, projects, and social media posts."
     },
     "tool": {
       "inputLabel": "Normal Text",
@@ -25,8 +25,26 @@
         "circle": "Circle Text",
         "square": "Square Text",
         "futuristic": "Futuristic",
-        "cursive": "Cursive"
-      }
+        "cursive": "Cursive",
+        "humor": "Humor",
+        "sci_fi": "Sci-Fi",
+        "robot": "Robot",
+        "emoji": "Emoji"
+      },
+      "translateButton": "Generate Alien Text",
+      "downloadButton": "Download",
+      "resetButton": "Reset",
+      "copyTooltip": "Copy",
+      "downloadTooltip": "Download",
+      "resetTooltip": "Reset",
+      "alienPlaceholder": "Type alien text here...",
+      "removeFileTooltip": "Remove file",
+      "removeRecordingTooltip": "Remove recording",
+      "toggleModeTooltip": "Toggle translation mode",
+      "toggleDirectionTooltip": "Toggle translation direction",
+      "copyResultTooltip": "Copy result",
+      "downloadResultTooltip": "Download result",
+      "playSoundTooltip": "Play sound"
     },
     "whatIs": {
       "title": "What is Alien Text Generator?",
@@ -37,7 +55,7 @@
       "description": "Create text in alien languages for your social media profile, design fun memes, or enhance your gaming experience with unique, creative text styles. Perfect for any project!"
     },
     "howto": {
-      "title": "How to Use Alien Text Generator",
+      "title": "How to Translate English to Alien Text",
       "description": "Follow these simple steps to transform your text into alien language styles with VibeTrans.",
       "steps": [
         {
@@ -59,7 +77,7 @@
       ]
     },
     "funfacts": {
-      "title": "Fun Facts",
+      "title": "Discover Alien Text Generator: Your Complete Guide",
       "items": [
         {
           "title": "Zalgo Text Origin",
@@ -95,7 +113,7 @@
       ]
     },
     "highlights": {
-      "title": "Alien Text Generator Highlights",
+      "title": "Professional Alien Text Generator Engine for Quality Results",
       "description": "Discover what makes our tool unique",
       "items": [
         {
@@ -124,37 +142,22 @@
           "name": "John Smith",
           "role": "Game Developer",
           "heading": "A Must-Have for Game Creators",
-          "content": "Using Alien Text Generator has transformed my game's UI. The tool allowed me to create unique alien scripts that perfectly fit my sci-fi theme. The ability to export in various formats was a game-changer, simplifying asset integration."
+          "content": "Using Alien Text Generator has transformed my game's UI. The tool allowed me to create unique alien scripts that perfectly fit my sci-fi theme. The ability to export in various formats was a game-changer, simplifying asset integration.",
+          "rating": "5.0"
         },
         "item-2": {
           "name": "Emily Johnson",
           "role": "Graphic Designer",
           "heading": "Perfect for Creative Projects",
-          "content": "Alien Text Generator helped me design a standout poster. The range of fonts and styles available made it easy to match the aesthetic I needed. It’s user-friendly, and the results are always visually striking."
+          "content": "Alien Text Generator helped me design a standout poster. The range of fonts and styles available made it easy to match the aesthetic I needed. It’s user-friendly, and the results are always visually striking.",
+          "rating": "4.9"
         },
         "item-3": {
           "name": "Michael Brown",
           "role": "Educator",
           "heading": "Engaging Classroom Tool",
-          "content": "I used Alien Text Generator in my classroom to create fun secret codes for my students. It made learning more interactive, and they loved decoding messages. This tool is a fantastic addition to any educator’s toolkit."
-        },
-        "item-4": {
-          "name": "Sarah Wilson",
-          "role": "Tattoo Artist",
-          "heading": "Essential for Tattoo Designs",
-          "content": "This tool is brilliant for designing alien-themed tattoos. It provides high-resolution previews, which are crucial for accurate inking. Clients love the unique scripts, and the easy export options streamline my design process."
-        },
-        "item-5": {
-          "name": "David Martinez",
-          "role": "Sci-Fi Author",
-          "heading": "Inspiration for Alien Cultures",
-          "content": "Alien Text Generator sparked my imagination while writing my latest novel. The ability to create believable alien languages added depth to my story's universe. It’s a fantastic resource for any writer venturing into sci-fi."
-        },
-        "item-6": {
-          "name": "Jessica Lee",
-          "role": "Social Media Influencer",
-          "heading": "Boosts Engagement",
-          "content": "Using Alien Text Generator for my posts has increased engagement significantly. The unique alien fonts make my content stand out, catching the eye immediately. It’s a fantastic way to add a creative flair to social media."
+          "content": "I used Alien Text Generator in my classroom to create fun secret codes for my students. It made learning more interactive, and they loved decoding messages. This tool is a fantastic addition to any educator’s toolkit.",
+          "rating": "4.7"
         }
       }
     },
@@ -192,7 +195,11 @@
         },
         "item-8": {
           "question": "Which platforms support alien text?",
-          "answer": "Most modern platforms support Unicode characters, including social media sites, messaging apps, and games. However, some older platforms may display alien text differently."
+          "answer": "Most modern platforms support Unicode characters, including social media sites, messaging websites, and games. However, some older platforms may display alien text differently."
+        },
+        "item-9": {
+          "question": "Which is the best alien text generator for creative projects?",
+          "answer": "VibeTrans Alien Text Generator stands out as the best choice for creative projects due to its advanced AI technology, variety of alien styles, and user-friendly interface. Our tool offers accurate conversion, multiple font options like Zalgo, symbols, and futuristic styles, all completely free. Perfect for social media, games, and creative projects with instant results."
         }
       }
     },

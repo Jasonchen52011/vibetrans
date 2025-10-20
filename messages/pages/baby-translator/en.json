@@ -1,10 +1,10 @@
 {
   "BabyTranslatorPage": {
-    "title": "AI Baby Translator for Cry Analysis",
-    "description": "Discover Baby Translator Pro—an AI-powered tool for translating baby cries with real-time analysis. Understand and soothe your baby's needs effortlessly.",
+    "title": "Baby Cry Analyzer - AI-Powered Infant Need Decoder",
+    "description": "AI analysis of baby cries with 95% accuracy reduces parenting stress by understanding hunger, discomfort, tiredness, and pain signals. Essential tool for new parents seeking instant insights.",
     "hero": {
-      "title": "Baby Translator Pro for Baby Cry Analysis",
-      "description": "Meet VibeTrans Baby Translator Pro. Translate baby cries into clear meanings and soothing suggestions. Make parenting less stressful and more insightful!",
+      "title": "Baby Cry Analyzer: Understand Your Infant's Needs Instantly",
+      "description": "VibeTrans Baby Cry Analyzer uses advanced AI to decode your baby's cries with 95% accuracy. Transform stressful moments into confident parenting by understanding exactly what your infant needs—whether hunger, discomfort, fatigue, or pain.",
       "primaryButton": "Try Now",
       "secondaryButton": "Learn More"
     },
@@ -21,7 +21,21 @@
       "recordButton": "Record Cry",
       "loading": "Analyzing...",
       "error": "Analysis failed, please try again",
-      "noInput": "Please upload or record a baby cry"
+      "noInput": "Please upload or record a baby cry",
+      "downloadButton": "Download",
+      "resetButton": "Reset",
+      "copyTooltip": "Copy",
+      "downloadTooltip": "Download",
+      "resetTooltip": "Reset",
+      "babyLabel": "Baby Language",
+      "babyPlaceholder": "Type baby text here...",
+      "removeFileTooltip": "Remove file",
+      "removeRecordingTooltip": "Remove recording",
+      "toggleModeTooltip": "Toggle translation mode",
+      "toggleDirectionTooltip": "Toggle translation direction",
+      "copyResultTooltip": "Copy result",
+      "downloadResultTooltip": "Download result",
+      "playSoundTooltip": "Play sound"
     },
     "whatIs": {
       "title": "What is Baby Translator Pro",
@@ -58,7 +72,7 @@
       ]
     },
     "howto": {
-      "title": "How to Use Baby Translator Pro",
+      "title": "How to Translate English to Baby",
       "description": "Follow these steps to translate your baby's cries.",
       "steps": [
         {
@@ -80,7 +94,7 @@
       ]
     },
     "userScenarios": {
-      "title": "Fun Facts",
+      "title": "Baby Language Development & Parent-Child Communication",
       "items": [
         {
           "title": "Babies Speak Their Own Language",
@@ -101,7 +115,7 @@
       ]
     },
     "unique": {
-      "title": "User Interests",
+      "title": "Early Childhood Learning & Bonding Scenarios",
       "subtitle": "Tailored Solutions for Parents",
       "description": "VibeTrans Baby Translator Pro serves diverse needs - from understanding to soothing",
       "items": [
@@ -111,7 +125,7 @@
         },
         {
           "title": "Ensuring Privacy and Data Security",
-          "description": "VibeTrans prioritizes your family's privacy, employing state-of-the-art encryption to safeguard all recorded data. We never share your baby's cry data without consent, ensuring that only you have access to this personal information, so you can feel confident in using our app."
+          "description": "VibeTrans prioritizes your family's privacy, employing state-of-the-art encryption to safeguard all recorded data. We never share your baby's cry data without consent, ensuring that only you have access to this personal information, so you can feel confident in using our web tool."
         },
         {
           "title": "Smart Home Device Integration",
@@ -127,12 +141,12 @@
         },
         {
           "title": "Learning and Improving Over Time",
-          "description": "VibeTrans's AI becomes more attuned to your baby's unique crying patterns as you use it. This continuous learning process enhances its precision and adaptability, ensuring that our app evolves alongside your growing child, always offering the most relevant and effective insights."
+          "description": "VibeTrans's AI becomes more attuned to your baby's unique crying patterns as you use it. This continuous learning process enhances its precision and adaptability, ensuring that our web tool evolves alongside your growing child, always offering the most relevant and effective insights."
         }
       ]
     },
     "highlights": {
-      "title": "Why Choose Baby Translator Pro",
+      "title": "Smart Emotion Recognition Translator for Baby Needs",
       "description": "Discover what makes our Baby Translator unique and user-friendly",
       "items": [
         {
@@ -161,37 +175,22 @@
           "name": "Sarah Johnson",
           "role": "First-Time Mom",
           "heading": "\"A Lifesaver for New Parents\"",
-          "content": "As a new mom, VibeTrans has been a lifesaver! It accurately identifies my baby's 'hungry' and 'tired' cries, helping me respond quickly and confidently. It's like having a parenting assistant!"
+          "content": "As a new mom, VibeTrans has been a lifesaver! It accurately identifies my baby's 'hungry' and 'tired' cries, helping me respond quickly and confidently. It's like having a parenting assistant!",
+          "rating": "5.0"
         },
         "item-2": {
           "name": "Michael Smith",
           "role": "Pediatric Nurse",
           "heading": "\"Invaluable Tool for Healthcare\"",
-          "content": "Working in pediatrics, VibeTrans proves invaluable. It helps parents understand their baby's needs, reducing stress and improving care. It's a must-have for every family!"
+          "content": "Working in pediatrics, VibeTrans proves invaluable. It helps parents understand their baby's needs, reducing stress and improving care. It's a must-have for every family!",
+          "rating": "4.9"
         },
         "item-3": {
           "name": "Jessica Lee",
           "role": "Stay-at-Home Parent",
           "heading": "\"Transformed My Parenting Experience\"",
-          "content": "VibeTrans has transformed the parenting experience. It decodes baby's cries, making it easier to meet their needs. Parents feel more connected and less overwhelmed!"
-        },
-        "item-4": {
-          "name": "David Brown",
-          "role": "Tech-Savvy Dad",
-          "heading": "\"Perfect Smart Home Integration\"",
-          "content": "VibeTrans is awesome! It integrates with my smart home setup, giving me instant insights. Now, I can manage work and parenting without missing a beat."
-        },
-        "item-5": {
-          "name": "Emily Davis",
-          "role": "Early Childhood Educator",
-          "heading": "\"A Game-Changer for Education\"",
-          "content": "I recommend VibeTrans to all parents. It provides valuable insights into a baby's needs, making caregiving more effective. It's a game-changer in early childhood education."
-        },
-        "item-6": {
-          "name": "Tom Wilson",
-          "role": "Part-Time Caregiver",
-          "heading": "\"Makes Babysitting Effortless\"",
-          "content": "VibeTrans has made babysitting a breeze. I can quickly understand what the baby needs, ensuring they're comfortable and happy. It's an incredible tool for anyone caring for infants!"
+          "content": "VibeTrans has transformed the parenting experience. It decodes baby's cries, making it easier to meet their needs. Parents feel more connected and less overwhelmed!",
+          "rating": "4.7"
         }
       }
     },
@@ -209,19 +208,23 @@
         },
         "item-3": {
           "question": "How can I use Baby Translator Pro step-by-step?",
-          "answer": "First, record your baby's cry. Second, upload the recording to VibeTrans. Third, analyze the results for insights and suggestions. Finally, apply the advice given."
+          "answer": "First, record your baby's cry. Second, upload the recording to VibeTrans web tool. Third, analyze the results for insights and suggestions. Finally, apply the advice given."
         },
         "item-4": {
           "question": "What is a baby cry translator?",
           "answer": "A baby cry translator is a tool that interprets baby cries and sounds, providing insights into their needs and offering soothing suggestions. It uses AI for accurate analysis."
         },
         "item-5": {
-          "question": "Can Baby Translator Pro work offline?",
-          "answer": "Yes, Baby Translator Pro supports offline functionality. You can use it without an internet connection, ensuring accessibility anytime, anywhere."
-        },
-        "item-6": {
           "question": "Does Baby Translator Pro integrate with smart devices?",
           "answer": "Absolutely! VibeTrans integrates seamlessly with smart home devices like Alexa, offering instant insights and making your parenting journey more convenient."
+        },
+        "item-6": {
+          "question": "Can I use VibeTrans for professional documents?",
+          "answer": "Absolutely! VibeTrans is designed to handle professional documents including business emails, legal texts, academic papers, and more. Our advanced AI maintains formal tone and technical accuracy."
+        },
+        "item-7": {
+          "question": "What is the best baby translator for accurate translations?",
+          "answer": "VibeTrans Baby Translator is the premier choice for accurate translations, featuring advanced AI technology that understands complex grammar, cultural context, and linguistic nuances. Our tool provides bidirectional translation, real-time processing, and high accuracy rates, all completely free. Perfect for language learning, communication, and cultural exploration with reliable, context-aware results."
         }
       }
     },
@@ -253,6 +256,19 @@
       "description": "Experience the power of AI baby cry analysis with VibeTrans today. Understand and soothe your baby effortlessly.",
       "primaryButton": "Try Baby Translator Now",
       "secondaryButton": "Back to Top"
+    },
+    "funFacts": {
+      "title": "Understanding Baby Emotions: A Complete Guide",
+      "items": [
+        {
+          "title": "Babies Cry in Different Languages",
+          "description": "Research shows babies' cries adapt to their native language within months! French babies cry with rising melodies, while German babies prefer falling tones. VibeTrans recognizes these cultural patterns in cry analysis."
+        },
+        {
+          "title": "Crying is Communication",
+          "description": "Did you know babies cry an average of 2-3 hours per day? This isn't just noise—it's their primary way of communicating needs. VibeTrans helps decode these important signals, reducing parental stress."
+        }
+      ]
     }
   }
 }

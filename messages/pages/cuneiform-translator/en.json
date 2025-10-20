@@ -1,16 +1,16 @@
 {
   "CuneiformTranslatorPage": {
-    "title": "Cuneiform Translator: Translate Ancient Scripts Easily | VibeTrans",
-    "description": "Discover the Cuneiform Translator, an AI-powered tool for translating Sumerian, Akkadian, and other ancient scripts. Translate texts with ease and accuracy using Vibetrans.",
+    "title": "Cuneiform Script Decoder - World's Oldest Writing System Tool",
+    "description": "Decode humanity's first written language dating back to 3200 BCE. Essential for historians, archaeologists, and ancient civilization enthusiasts seeking scholarly-accurate Sumerian, Akkadian, and Babylonian translations.",
     "metadata": {
-      "title": "Cuneiform Translator - AI-Powered Ancient Script Translation | VibeTrans",
-      "description": "Translate ancient cuneiform scripts with AI precision. Support for Sumerian, Akkadian, and Babylonian. Perfect for scholars, historians, and cultural heritage preservation."
+      "title": "Cuneiform Script Decoder - Decode 3200 BCE Ancient Writing | VibeTrans",
+      "description": "Translate the world's oldest writing system with AI precision. Perfect for scholars, archaeologists, and history enthusiasts exploring Sumerian, Akkadian, and Babylonian texts from ancient Mesopotamia."
     },
     "hero": {
-      "badge": "Ancient Language Translation",
-      "title": "Cuneiform Translator: Decode the World's Oldest Writing System with AI",
-      "subtitle": "Translate Sumerian, Akkadian, and Babylonian scripts accurately",
-      "description": "Experience VibeTrans' AI-powered cuneiform translator for scholarly-accurate translations of ancient Mesopotamian texts. Perfect for historians, archaeologists, and linguistic research."
+      "badge": "Ancient Civilization Tool",
+      "title": "Cuneiform Script Decoder: Unlock Humanity's First Written Language",
+      "subtitle": "Translate 3200 BCE Sumerian, Akkadian & Babylonian Texts",
+      "description": "Experience the best AI-powered cuneiform translator for scholarly-accurate translations of ancient Mesopotamian texts. Perfect for historians, archaeologists, and linguistic research."
     },
     "tool": {
       "inputLabel": "English",
@@ -26,11 +26,28 @@
       "scripts": {
         "sumerian": "Sumerian (3200-2000 BCE)",
         "akkadian": "Akkadian (2500-100 BCE)",
-        "babylonian": "Babylonian (1895-539 BCE)"
+        "babylonian": "Babylonian (1895-539 BCE)",
+        "hittite": "Hittite (1600-1178 BCE)",
+        "elamite": "Elamite (2700-539 BCE)",
+        "old-persian": "Old Persian (600-330 BCE)",
+        "ugaritic": "Ugaritic (1450-1200 BCE)",
+        "old_persian": "Old Persian (600-330 BCE)"
       },
       "loading": "Translating ancient script...",
       "error": "Translation failed, please try again",
-      "noInput": "Please enter some text to translate"
+      "noInput": "Please enter some text to translate",
+      "downloadButton": "Download",
+      "resetButton": "Reset",
+      "copyTooltip": "Copy",
+      "downloadTooltip": "Download",
+      "resetTooltip": "Reset",
+      "removeFileTooltip": "Remove file",
+      "removeRecordingTooltip": "Remove recording",
+      "toggleModeTooltip": "Toggle translation mode",
+      "toggleDirectionTooltip": "Toggle translation direction",
+      "copyResultTooltip": "Copy result",
+      "downloadResultTooltip": "Download result",
+      "playSoundTooltip": "Play sound"
     },
     "whatIs": {
       "badge": "About Cuneiform",
@@ -70,7 +87,7 @@
       ]
     },
     "howto": {
-      "title": "How to Use the Cuneiform Translator",
+      "title": "How to Translate English to Cuneiform",
       "description": "Translating ancient cuneiform has never been easier. Follow these steps to decode Mesopotamian texts with VibeTrans AI technology.",
       "image": "/images/docs/cuneiform-translator-how.webp",
       "imageAlt": "How to use Cuneiform Translator step by step guide",
@@ -89,12 +106,12 @@
         },
         {
           "title": "Review and Download Results",
-          "description": "Examine your translation with confidence scores for accuracy. VibeTrans provides transliteration, literal translation, and contextual interpretation. Download results as formatted documents or copy text directly. For complex texts, the tool highlights uncertain translations and suggests alternative interpretations based on scholarly consensus."
+          "description": "Examine your translation with confidence scores for accuracy. VibeTrans provides transliteration, literal translation, and contextual interpretation. Save results from your browser as formatted documents or copy text directly. For complex texts, the tool highlights uncertain translations and suggests alternative interpretations based on scholarly consensus."
         }
       ]
     },
-    "funfacts": {
-      "title": "Fascinating Cuneiform History",
+    "funFacts": {
+      "title": "Cuneiform: Your Key to Unlocking Ancient Civilizations Heritage",
       "items": [
         {
           "title": "The World's Oldest Writing System",
@@ -142,7 +159,7 @@
       ]
     },
     "highlights": {
-      "title": "Why Choose VibeTrans for Cuneiform Translation?",
+      "title": "Academic Grade Cuneiform Translation: Essential Research Tool",
       "description": "Scholarly accuracy meets cutting-edge AI technology",
       "items": [
         {
@@ -171,37 +188,22 @@
           "name": "John Smith",
           "role": "History Teacher",
           "heading": "A Classroom Revelation",
-          "content": "Using the Cuneiform Translator in my history class has been a game changer. Students love seeing their names in cuneiform, and it sparks discussions about ancient languages. It’s like bringing a piece of Mesopotamia into the classroom, making history tangible and exciting."
+          "content": "Using the Cuneiform Translator in my history class has been a game changer. Students love seeing their names in cuneiform, and it sparks discussions about ancient languages. It's like bringing a piece of Mesopotamia into the classroom, making history tangible and exciting.",
+          "rating": "5.0"
         },
         "item-2": {
           "name": "Emily Brown",
           "role": "Archaeology Student",
           "heading": "Perfect for Quick Translations",
-          "content": "As an archaeology student, I often need to translate cuneiform tablets quickly. This translator saves me so much time. The instant conversion feature is incredibly accurate, and I can focus more on analysis rather than decoding. It's a practical tool for anyone in the field."
+          "content": "As an archaeology student, I often need to translate cuneiform tablets quickly. This translator saves me so much time. The instant conversion feature is incredibly accurate, and I can focus more on analysis rather than decoding. It's a practical tool for anyone in the field.",
+          "rating": "4.9"
         },
         "item-3": {
           "name": "Michael Johnson",
           "role": "Museum Curator",
           "heading": "Enhancing Visitor Experience",
-          "content": "We use the Cuneiform Translator for visitor engagement in our museum. Visitors can snap a photo of a tablet and instantly get an English translation, enhancing their experience. It's delightful to see them connect with ancient stories in real time."
-        },
-        "item-4": {
-          "name": "Sarah Davis",
-          "role": "Linguistics Enthusiast",
-          "heading": "Learning Through Fun",
-          "content": "For someone fascinated by languages, this tool is a treasure. The learning mode, where each sign's pronunciation and grammar are explained, is incredibly educational. It's like a mini-course on ancient scripts, making learning interactive and enjoyable. I’m constantly discovering new things!"
-        },
-        "item-5": {
-          "name": "James Wilson",
-          "role": "Tattoo Artist",
-          "heading": "Inspiration for Unique Designs",
-          "content": "I've used the translator to create unique tattoo designs for my clients. The ability to convert phrases into cuneiform adds a personal and historical depth to their tattoos. It's a fantastic tool for artists looking to offer something truly distinctive. Clients love the connection to ancient culture!"
-        },
-        "item-6": {
-          "name": "Laura Thompson",
-          "role": "Cultural Enthusiast",
-          "heading": "Ancient World at My Fingertips",
-          "content": "I’m passionate about ancient cultures, and this tool lets me explore them effortlessly. Translating English into cuneiform and back is seamless. It feels like I’m holding a piece of history, understanding and appreciating the depth of ancient Mesopotamian storytelling. It's simply fascinating!"
+          "content": "We use the Cuneiform Translator for visitor engagement in our museum. Visitors can snap a photo of a tablet and instantly get an English translation, enhancing their experience. It's delightful to see them connect with ancient stories in real time.",
+          "rating": "4.7"
         }
       }
     },
@@ -215,11 +217,11 @@
         },
         "item-2": {
           "question": "How do I translate cuneiform texts with VibeTrans?",
-          "answer": "Step 1: Select your script type (Sumerian, Akkadian, or Babylonian) from the dropdown menu. Step 2: Input transliterated cuneiform text into the text box or upload a .txt or .docx file containing transliteration. Step 3: Click 'Translate' and VibeTrans AI will process your text, typically in 2-5 seconds. Step 4: Review the translation results, which include transliteration, literal translation, and contextual interpretation. Step 5: Download your translation or copy the text for use in research papers and academic work."
+          "answer": "Step 1: Select your script type (Sumerian, Akkadian, or Babylonian) from the dropdown menu. Step 2: Input transliterated cuneiform text into the text box or upload a .txt or .docx file containing transliteration. Step 3: Click 'Translate' and VibeTrans AI will process your text, typically in 2-5 seconds. Step 4: Review the translation results, which include transliteration, literal translation, and contextual interpretation. Step 5: Save your translation from your browser or copy the text for use in research papers and academic work."
         },
         "item-3": {
           "question": "What cuneiform scripts and dialects does VibeTrans support?",
-          "answer": "VibeTrans supports three major ancient Mesopotamian languages: Sumerian (3200-2000 BCE, the oldest known written language), Akkadian (2500-100 BCE, Semitic language of Babylonian and Assyrian empires), and Babylonian (1895-539 BCE, administrative and literary dialect). Within these, the AI recognizes multiple historical dialects including Old Akkadian, Old Babylonian, Middle Babylonian, Neo-Babylonian, and Neo-Assyrian, applying appropriate grammatical rules and vocabulary for each period."
+          "answer": "VibeTrans supports three major ancient Mesopotamian languages: Sumerian (3200-2000 BCE, the oldest known written language), Akkadian (2500-100 BCE, Semitic language of Babylonian and Assyrian empires), and Babylonian (1895-539 BCE, administrative and literary dialect). Within these, the web tool recognizes multiple historical dialects including Old Akkadian, Old Babylonian, Middle Babylonian, Neo-Babylonian, and Neo-Assyrian, applying appropriate grammatical rules and vocabulary for each period."
         },
         "item-4": {
           "question": "Can I translate from English to cuneiform script?",
@@ -232,6 +234,14 @@
         "item-6": {
           "question": "Does VibeTrans work with cuneiform images or only transliteration?",
           "answer": "Currently, VibeTrans accepts transliterated cuneiform text (romanized representation using standard Assyriological conventions). We're developing optical character recognition (OCR) capabilities to process photographs and scans of actual cuneiform tablets, but this feature is still in beta testing. For now, users should input text using standard transliteration from published sources or personal transcription. Many online cuneiform databases like CDLI provide transliterated texts compatible with VibeTrans."
+        },
+        "item-7": {
+          "question": "What are the limitations of AI cuneiform translation?",
+          "answer": "AI cuneiform translation has several limitations: 1) Fragmentary or damaged texts with missing signs are challenging to translate accurately. 2) Rare vocabulary or specialized technical terms may not be in the training database. 3) Poetic or metaphorical language often requires cultural context that AI may miss. 4) Different historical periods and dialects can confuse translation algorithms. 5) Personal names and place names without established transliteration remain uncertain. Always verify important translations with human experts for academic publications or critical research."
+        },
+        "item-8": {
+          "question": "What is the best cuneiform translator for accurate translations?",
+          "answer": "VibeTrans Cuneiform Translator is the premier choice for accurate translations, featuring advanced AI technology that understands complex grammar, cultural context, and linguistic nuances. Our tool provides bidirectional translation, real-time processing, and high accuracy rates, all completely free. Perfect for language learning, communication, and cultural exploration with reliable, context-aware results."
         }
       }
     },

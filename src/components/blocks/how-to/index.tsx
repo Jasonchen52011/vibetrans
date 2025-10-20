@@ -9,6 +9,7 @@ import {
 import { useState } from 'react';
 
 import Icon from '@/components/icon';
+import { HeaderSection } from '@/components/layout/header-section';
 import type { Section as SectionType } from '@/types/blocks/section';
 
 export default function HowTo({ section }: { section: SectionType }) {
@@ -19,15 +20,16 @@ export default function HowTo({ section }: { section: SectionType }) {
   const [currentStep, setCurrentStep] = useState('');
 
   return (
-    <section id={section.name} className="py-32">
+    <section id={section.name} className="py-10 mt-10 mb-8 bg-white">
       <div className="container max-w-5xl mx-auto">
-        <div className="text-center mb-8">
-          <h2 className="mb-6 text-pretty text-3xl font-bold lg:text-4xl">
-            {section.title}
-          </h2>
-          <p className="max-w-3xl mx-auto text-muted-foreground lg:text-lg">
-            {section.description}
-          </p>
+        <div className="text-center mb-16">
+          <HeaderSection
+            subtitle={section.title}
+            subtitleAs="h2"
+            description={section.description}
+            descriptionAs="p"
+            descriptionClassName="max-w-3xl mx-auto lg:text-lg"
+          />
         </div>
         <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
           <div>

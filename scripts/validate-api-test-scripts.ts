@@ -50,8 +50,11 @@ async function validateScript(scriptPath: string): Promise<ValidationResult> {
     result.syntaxValid = true;
 
     // 3. 检查关键函数
-    const hasMainFunction = content.includes('function main(') || content.includes('async function main(');
-    const hasExport = content.includes('export') || content.includes('module.exports');
+    const hasMainFunction =
+      content.includes('function main(') ||
+      content.includes('async function main(');
+    const hasExport =
+      content.includes('export') || content.includes('module.exports');
 
     if (!hasMainFunction) {
       result.warnings.push('No main function detected');
@@ -61,7 +64,9 @@ async function validateScript(scriptPath: string): Promise<ValidationResult> {
 
     // 4. 检查依赖
     const requiredImports = ['performance', 'fs'];
-    const missingImports = requiredImports.filter(imp => !content.includes(imp));
+    const missingImports = requiredImports.filter(
+      (imp) => !content.includes(imp)
+    );
 
     if (missingImports.length > 0) {
       result.warnings.push(`Missing imports: ${missingImports.join(', ')}`);
@@ -92,7 +97,6 @@ async function validateScript(scriptPath: string): Promise<ValidationResult> {
         result.errors.push('Missing start method');
       }
     }
-
   } catch (error: any) {
     result.errors.push(`Validation error: ${error.message}`);
   }
@@ -120,25 +124,29 @@ async function main() {
     console.log(`${status} ${script}`);
 
     if (result.errors.length > 0) {
-      result.errors.forEach(error => console.log(`   ❌ Error: ${error}`));
+      result.errors.forEach((error) => console.log(`   ❌ Error: ${error}`));
     }
 
     if (result.warnings.length > 0) {
-      result.warnings.forEach(warning => console.log(`   ⚠️  Warning: ${warning}`));
+      result.warnings.forEach((warning) =>
+        console.log(`   ⚠️  Warning: ${warning}`)
+      );
     }
 
     console.log('');
   }
 
   // 生成摘要
-  const validScripts = results.filter(r => r.errors.length === 0).length;
+  const validScripts = results.filter((r) => r.errors.length === 0).length;
   const totalScripts = results.length;
 
   console.log('📊 Validation Summary:');
   console.log(`   Total Scripts: ${totalScripts}`);
   console.log(`   Valid: ${validScripts}`);
   console.log(`   Invalid: ${totalScripts - validScripts}`);
-  console.log(`   Success Rate: ${Math.round((validScripts / totalScripts) * 100)}%`);
+  console.log(
+    `   Success Rate: ${Math.round((validScripts / totalScripts) * 100)}%`
+  );
 
   if (validScripts === totalScripts) {
     console.log('\n🎉 All scripts are valid and ready to use!');
@@ -148,7 +156,6 @@ async function main() {
     console.log('   pnpm api:test:quick    - Run quick health check');
     console.log('   pnpm api:monitor       - Start continuous monitoring');
     console.log('   pnpm api:monitor:report - View monitoring report');
-
   } else {
     console.log('\n🚨 Some scripts have issues that need to be fixed.');
     process.exit(1);
@@ -156,7 +163,7 @@ async function main() {
 }
 
 if (require.main === module) {
-  main().catch(error => {
+  main().catch((error) => {
     console.error('Validation failed:', error);
     process.exit(1);
   });

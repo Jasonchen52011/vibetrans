@@ -1,0 +1,199 @@
+{
+  "EsperantoTranslatorPage": {
+    "title": "Esperanto Translator Tool – Fast, Accurate & Free Translation",
+    "description": "Discover the best Esperanto translation tool with high-quality, instant translations. Translate text, speech, and documents easily with VibeTrans. Free and accurate service for all your translation needs.",
+    "hero": {
+      "title": "Esperanto Translator – Translate Text, Voice & Documents Instantly",
+      "description": "Use VibeTrans's best Esperanto Translator for quick, accurate translations of text, voice, and documents. Enhance your communication effortlessly with AI-powered precision."
+    },
+    "tool": {
+      "inputLabel": "English",
+      "esperantoLabel": "Esperanto",
+      "outputLabel": "English",
+      "inputPlaceholder": "Type or paste your text here...",
+      "esperantoPlaceholder": "Type Esperanto text here...",
+      "outputPlaceholder": "Translation will appear here",
+      "translateButton": "Translate",
+      "uploadButton": "Upload File",
+      "uploadHint": "Supported formats: .txt, .docx",
+      "loading": "Translating...",
+      "error": "Translation failed, please try again",
+      "noInput": "Please enter some text"
+    },
+    "whatIs": {
+      "title": "What is Esperanto Translator?",
+      "description": "Esperanto Translator is a powerful tool that allows you to instantly translate Esperanto text, speech, and documents with ease. VibeTrans offers both accuracy and speed, making communication in Esperanto seamless."
+    },
+    "examples": {
+      "title": "Example Translations Using Esperanto Translator",
+      "description": "Try translating Esperanto texts, documents, and even voice messages with VibeTrans. Experience quick, accurate translations that help you understand and communicate effortlessly in Esperanto. Perfect for learners and professionals alike!"
+    },
+    "howto": {
+      "title": "How to Translate English to Esperanto",
+      "description": "Using VibeTrans's Esperanto Translator is simple and quick. Follow these easy steps to get started:",
+      "steps": [
+        {
+          "title": "Upload Your Document",
+          "description": "Choose a text or document in Esperanto, and upload it directly into the tool. VibeTrans will automatically detect and prepare your file for translation."
+        },
+        {
+          "title": "Select the Translation Options",
+          "description": "Choose whether to translate text, voice, or documents. You can even select multiple formats for one translation."
+        },
+        {
+          "title": "Start Translation",
+          "description": "Click the 'Translate' button and let VibeTrans do its magic! You'll receive your translation instantly."
+        },
+        {
+          "title": "Download or Share the Translation",
+          "description": "Once translated, you can download the file or share the result with others directly from VibeTrans."
+        }
+      ]
+    },
+    "funfacts": {
+      "title": "Esperanto: Your Key to Unlocking International Language",
+      "items": [
+        {
+          "title": "Esperanto in NASA's Golden Record",
+          "description": "Did you know that Esperanto is included in NASA's Golden Record? It's a symbolic message from humanity to any potential extraterrestrial life. It's amazing how Esperanto is used to bridge worlds beyond Earth!"
+        },
+        {
+          "title": "Esperanto in Literature",
+          "description": "Esperanto is not just a language for communication – it has its place in literature too! Many classic books like 'The Hobbit' have been translated into Esperanto, bringing timeless stories to a global audience."
+        }
+      ]
+    },
+    "userInterest": {
+      "title": "Cultural Exchange & International Community Applications",
+      "subtitle": "Tailored Solutions for Everyone",
+      "description": "VibeTrans serves diverse needs - from language learners to international businesses",
+      "items": [
+        {
+          "title": "User-Friendly Design",
+          "description": "VibeTrans's Esperanto Translator is designed for simplicity, making it accessible for everyone, from beginners to language experts. It's the perfect tool for quick translations without a steep learning curve."
+        },
+        {
+          "title": "Instant Translation",
+          "description": "Whether you need to translate a quick message or an entire document, VibeTrans offers instant translation, so you're never kept waiting. No need for long processing times – get results in seconds!"
+        },
+        {
+          "title": "Multilingual Support",
+          "description": "VibeTrans supports more than just Esperanto. With its wide range of languages and translation options, you'll be able to translate across various platforms with ease, making it ideal for travelers and international businesses."
+        },
+        {
+          "title": "Voice Input & Output",
+          "description": "Not only can you translate text, but VibeTrans also supports voice input and output. This makes it easier than ever to speak in Esperanto and hear your translation in real-time, enhancing the learning experience."
+        }
+      ]
+    },
+    "highlights": {
+      "title": "Academic Grade Esperanto Translation: Essential Research Tool",
+      "description": "Simple, accurate, and secure translation tools for everyone",
+      "items": [
+        {
+          "title": "Simple & Free to Use",
+          "description": "VibeTrans is completely free, allowing you to translate texts, voice, and documents with no hidden fees. Enjoy hassle-free translations anytime!"
+        },
+        {
+          "title": "Accurate Translations",
+          "description": "Enjoy precise and high-quality translations that capture both meaning and context, ensuring you get the most accurate results for your translations."
+        },
+        {
+          "title": "Data Privacy & Security",
+          "description": "We take your privacy seriously. With VibeTrans, you can rest assured that your data is never stored or shared, ensuring complete security with every translation."
+        },
+        {
+          "title": "AI-Powered Context Understanding",
+          "description": "VibeTrans uses advanced AI to understand the context of your translation, ensuring that nuanced phrases and complex sentences are translated accurately every time."
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "What Our Users Are Saying",
+      "subtitle": "Real feedback from real users",
+      "items": {
+        "item-1": {
+          "name": "John Thompson",
+          "role": "Language Teacher",
+          "heading": "A Classroom Essential",
+          "content": "Esperanto-Translator Hub has transformed my language classes. My students are thrilled with how easily they can translate texts instantly. We used it for a project on Esperanto poetry, and the accuracy was impressive. The voice-ready feature makes listening practice a breeze. It's truly indispensable."
+        },
+        "item-2": {
+          "name": "Lisa Roberts",
+          "role": "Travel Blogger",
+          "heading": "Travel Companion",
+          "content": "While exploring remote areas, I rely on Esperanto-Translator Hub for instant translations. Its ability to handle complex sentences quickly is a lifesaver. It even helped translate local signs accurately, enhancing my travel experience. Users love how it supports my adventures seamlessly."
+        },
+        "item-3": {
+          "name": "Michael Adams",
+          "role": "Sci-Fi Writer",
+          "heading": "Must-Have for Writers",
+          "content": "Using Esperanto-Translator Hub has been a game-changer for my writing. Translating my scripts into Esperanto helps bridge cultural gaps and reach a global audience. The tool’s precise grammar correction is crucial for my detailed narratives. It’s like having a linguistic assistant right at my fingertips!"
+        },
+        "item-4": {
+          "name": "Samantha Lee",
+          "role": "Volunteer Coordinator",
+          "heading": "Perfect for Nonprofits",
+          "content": "Esperanto-Translator Hub is essential for our international volunteer communications. It ensures our messages are clear and consistent across different languages. The ability to translate entire documents in one click saves time and effort. Our team loves its user-friendly interface and reliable translations. It’s a vital tool."
+        },
+        "item-5": {
+          "name": "Nathan Green",
+          "role": "Anime Subtitler",
+          "heading": "Anime Lover's Dream",
+          "content": "For subtitling projects, Esperanto-Translator Hub is outstanding. It manages batch translations for anime scripts swiftly and accurately. The interactive sentence proofreading feature lets me perfect every line. It's amazing how much easier my work has become with this tool. I can’t imagine subtitling without it!"
+        },
+        "item-6": {
+          "name": "Emily Davis",
+          "role": "Tattoo Artist",
+          "heading": "Creative Tattoo Translations",
+          "content": "Esperanto-Translator Hub is a favorite for tattoo translations. Clients love its precision for short phrases. I used it to verify a complex design, ensuring accuracy. The translation confidence heatmap shows me exactly where to focus. It’s an artist’s best friend for language accuracy."
+        }
+      }
+    },
+    "faqs": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Frequently Asked Questions",
+      "items": {
+        "item-1": {
+          "question": "Is this Esperanto Translator free?",
+          "answer": "Yes! VibeTrans's Esperanto Translator is completely free to use, providing high-quality translations without any hidden costs."
+        },
+        "item-2": {
+          "question": "How accurate is the translation?",
+          "answer": "VibeTrans uses AI-powered algorithms to ensure accurate translations that maintain context, ensuring a high level of precision for all your translation needs."
+        },
+        "item-3": {
+          "question": "How do I translate my voice using VibeTrans?",
+          "answer": "Simply click the voice input option, speak your phrase in Esperanto, and VibeTrans will instantly translate and display the result."
+        },
+        "item-4": {
+          "question": "How to upload a document for translation?",
+          "answer": "Click the 'Upload Document' button, select your file, and VibeTrans will automatically translate it. You can upload text or PDF files."
+        },
+        "item-5": {
+          "question": "What about data security?",
+          "answer": "Your privacy is our priority. VibeTrans ensures that your data is never stored or shared, and all translations are processed securely."
+        },
+        "item-6": {
+          "question": "What file formats are supported?",
+          "answer": "VibeTrans supports .txt and .docx file formats for document translation, making it easy to work with most common text documents."
+        },
+        "item-7": {
+          "question": "Is there a character limit for translations?",
+          "answer": "For optimal performance, translations are limited to 5000 characters per request. For longer documents, you can split them into multiple sections."
+        },
+        "item-8": {
+          "question": "What is the best esperanto translator for accurate translations?",
+          "answer": "VibeTrans Esperanto Translator is the premier choice for accurate translations, featuring advanced AI technology that understands complex grammar, cultural context, and linguistic nuances. Our tool provides bidirectional translation, real-time processing, and high accuracy rates, all completely free. Perfect for language learning, communication, and cultural exploration with reliable, context-aware results."
+        }
+      }
+    },
+    "cta": {
+      "title": "Start Using VibeTrans Esperanto Translator Today!",
+      "description": "Translate Esperanto text, voice, and documents for free with VibeTrans. Get started now and enjoy seamless translations!",
+      "primaryButton": "Try Esperanto Translator Now",
+      "secondaryButton": "Back to Top"
+    },
+    "ctaButton": "Try Esperanto Translator Now"
+  }
+}

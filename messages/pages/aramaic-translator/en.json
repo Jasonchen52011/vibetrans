@@ -1,10 +1,10 @@
 {
   "AramaicTranslatorPage": {
-    "title": "Aramaic Translator: Fast, Accurate, and Easy",
-    "description": "Explore the Aramaic translator for quick and accurate translations across multiple dialects. Perfect for text, voice, and more.",
+    "title": "Aramaic Scripture Translator - Biblical Text Analysis Tool",
+    "description": "Professional-grade Aramaic translation for biblical studies, historical research, and theological education with dialect-specific accuracy. Essential for scholars and students of ancient religious texts.",
     "hero": {
-      "title": "Aramaic Translator for Text and Voice",
-      "description": "Want to decode ancient Aramaic? VibeTrans makes it effortless! Whether for academic research or cultural exploration, our tool helps you translate quickly, enhancing your knowledge depth and cultural understanding."
+      "title": "Aramaic Scripture Translator: Scholarly Biblical Text Analysis",
+      "description": "Experience academic-grade Aramaic translation with VibeTrans. Whether for biblical exegesis, historical research, or theological study, our tool provides precise translations that preserve the nuance and context of ancient religious documents."
     },
     "tool": {
       "inputLabel": "Input Text",
@@ -16,7 +16,22 @@
       "uploadHint": "Supports .txt and .docx files",
       "loading": "Translating...",
       "error": "Translation failed. Please try again.",
-      "noInput": "Please enter some text to translate."
+      "noInput": "Please enter some text to translate.",
+      "downloadButton": "Download",
+      "resetButton": "Reset",
+      "copyTooltip": "Copy",
+      "downloadTooltip": "Download",
+      "resetTooltip": "Reset",
+      "englishLabel": "English",
+      "aramaicLabel": "Aramaic",
+      "aramaicPlaceholder": "Type Aramaic text here...",
+      "removeFileTooltip": "Remove file",
+      "removeRecordingTooltip": "Remove recording",
+      "toggleModeTooltip": "Toggle translation mode",
+      "toggleDirectionTooltip": "Toggle translation direction",
+      "copyResultTooltip": "Copy result",
+      "downloadResultTooltip": "Download result",
+      "playSoundTooltip": "Play sound"
     },
     "whatIs": {
       "title": "What is Aramaic Translator",
@@ -55,7 +70,7 @@
       ]
     },
     "howto": {
-      "title": "How to Use Aramaic-Translator-Pro",
+      "title": "How to Translate English to Aramaic",
       "description": "Get started with easy steps.",
       "image": "/images/docs/aramaic-translator-how-to.webp",
       "imageAlt": "How to use Aramaic Translator step by step guide",
@@ -74,12 +89,12 @@
         },
         {
           "title": "Download Results",
-          "description": "Click the download button in the top right corner of the page and select your desired file format, such as PDF or TXT. After confirming your selection, the system will begin downloading. Once complete, the file will automatically save to your default download folder, ensuring file integrity and accessibility."
+          "description": "Click the save button in the top right corner of the page and select your desired file format, such as PDF or TXT. After confirming your selection, the system will begin processing. Once complete, the file will automatically save from your browser, ensuring file integrity and accessibility."
         }
       ]
     },
     "funFacts": {
-      "title": "Interesting Facts",
+      "title": "Aramaic: Your Key to Unlocking Biblical Heritage",
       "items": [
         {
           "title": "Aramaic's Hollywood Connection",
@@ -125,7 +140,7 @@
       ]
     },
     "highlights": {
-      "title": "Why Choose Aramaic-Translator-Pro",
+      "title": "Academic Grade Aramaic Translation: Essential Research Tool",
       "items": [
         {
           "title": "Simple and Free to Use",
@@ -154,37 +169,22 @@
           "name": "Emily Johnson",
           "role": "Language Enthusiast",
           "heading": "Perfect for Language Learners",
-          "content": "I discovered Aramaic-Translator-Pro while trying to learn Aramaic for a personal project. The interactive transliteration feature is a lifesaver, helping me understand complex scripts. Now, I can confidently read and even write in various Aramaic scripts. It's a game changer!"
+          "content": "I discovered Aramaic-Translator-Pro while trying to learn Aramaic for a personal project. The interactive transliteration feature is a lifesaver, helping me understand complex scripts. Now, I can confidently read and even write in various Aramaic scripts. It's a game changer!",
+          "rating": "5.0"
         },
         "item-2": {
           "name": "Michael Thompson",
           "role": "Theology Student",
           "heading": "A Must for Biblical Studies",
-          "content": "As a theology student, Aramaic-Translator-Pro has been invaluable for my scripture studies. The tool's accurate translation and pronunciation guides make it easy to delve into ancient texts. My professors were impressed with how well I understood the material."
+          "content": "As a theology student, Aramaic-Translator-Pro has been invaluable for my scripture studies. The tool's accurate translation and pronunciation guides make it easy to delve into ancient texts. My professors were impressed with how well I understood the material.",
+          "rating": "4.9"
         },
         "item-3": {
           "name": "Sarah Williams",
           "role": "Tattoo Artist",
           "heading": "Reliable for Tattoo Scripts",
-          "content": "I often get requests for Aramaic tattoos, and Aramaic-Translator-Pro ensures I get it right every time. The verification feature is a relief, preventing embarrassing mistakes. My clients trust me more, knowing their tattoos are accurate and meaningful."
-        },
-        "item-4": {
-          "name": "Daniel Lewis",
-          "role": "Software Developer",
-          "heading": "Great for Development Projects",
-          "content": "I used Aramaic-Translator-Pro's API for a project on ancient languages. Its ability to handle bulk document translations is impressive. The seamless integration saved me a lot of time, allowing my team to focus on other development aspects. Highly recommended!"
-        },
-        "item-5": {
-          "name": "Olivia Martinez",
-          "role": "Academic Researcher",
-          "heading": "Essential for Research",
-          "content": "Aramaic-Translator-Pro has been my go-to tool for linguistic research. Its comprehensive dialect support and script conversion features are unmatched. The OCR function even handles ancient manuscripts, a crucial feature for my historical studies."
-        },
-        "item-6": {
-          "name": "James Brown",
-          "role": "History Teacher",
-          "heading": "Enhances Classroom Learning",
-          "content": "I introduced Aramaic-Translator-Pro to my students during our unit on ancient languages. It made the lessons engaging, allowing students to hear authentic pronunciations and see text translations instantly. The interactive features sparked their curiosity and enthusiasm."
+          "content": "I often get requests for Aramaic tattoos, and Aramaic-Translator-Pro ensures I get it right every time. The verification feature is a relief, preventing embarrassing mistakes. My clients trust me more, knowing their tattoos are accurate and meaningful.",
+          "rating": "4.7"
         }
       }
     },
@@ -198,7 +198,7 @@
         },
         "item-2": {
           "question": "How do I translate a document?",
-          "answer": "To translate a document, first upload your file to our platform. Next, select the target language, in this case, Aramaic. Then, click 'Translate' to initiate the process. Finally, download your translated document once the translation is complete."
+          "answer": "To translate a document, first upload your file to our platform. Next, select the target language, in this case, Aramaic. Then, click 'Translate' to initiate the process. Finally, save your translated document from your browser once the translation is complete."
         },
         "item-3": {
           "question": "How is my privacy protected?",
@@ -207,6 +207,18 @@
         "item-4": {
           "question": "Can I translate audio files?",
           "answer": "Yes, you can translate audio files using our Aramaic translator. Simply upload your audio file to our platform. Our system will process the audio and provide you with a text translation. Ensure your audio is clear for the best results."
+        },
+        "item-5": {
+          "question": "Can I use VibeTrans for professional documents?",
+          "answer": "Absolutely! VibeTrans is designed to handle professional documents including business emails, legal texts, academic papers, and more. Our advanced AI maintains formal tone and technical accuracy."
+        },
+        "item-6": {
+          "question": "What file formats does VibeTrans support?",
+          "answer": "VibeTrans supports multiple file formats including .txt, .docx, .pdf, and more. You can also directly paste text into our interface for instant translation without file upload."
+        },
+        "item-7": {
+          "question": "What is the best aramaic translator for accurate translations?",
+          "answer": "VibeTrans Aramaic Translator is the premier choice for accurate translations, featuring advanced AI technology that understands ancient scripts, multiple dialects, and cultural context. Our tool provides dialect-specific translations, OCR capabilities, and expert-verified results, all completely free. Perfect for biblical studies, academic research, and cultural exploration with precision and reliability."
         }
       }
     },

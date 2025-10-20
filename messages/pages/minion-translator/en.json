@@ -4,7 +4,7 @@
     "description": "Minion Translator Pro instantly converts text and voice into Minionese. Use our minion translator for fun, accurate translations and more.",
     "hero": {
       "title": "Minion Translator: Convert Text to Minionese",
-      "description": "Discover the magic of Minion Translator, your go-to tool for converting text to Minionese. With VibeTrans, enjoy accurate translations in seconds."
+      "description": "Discover the best Minion Translator with authentic Minionese dictionary. Your go-to tool for converting text to Minionese with VibeTrans, enjoy accurate translations in seconds."
     },
     "tool": {
       "inputLabel": "Input Text",
@@ -16,7 +16,21 @@
       "uploadHint": "Supports .txt and .docx files",
       "loading": "Translating...",
       "error": "Translation failed. Please try again.",
-      "noInput": "Please enter some text to translate."
+      "noInput": "Please enter some text to translate.",
+      "downloadButton": "Download",
+      "resetButton": "Reset",
+      "copyTooltip": "Copy",
+      "downloadTooltip": "Download",
+      "resetTooltip": "Reset",
+      "minionLabel": "Minionese",
+      "minionPlaceholder": "Type Minionese text here...",
+      "removeFileTooltip": "Remove file",
+      "removeRecordingTooltip": "Remove recording",
+      "toggleModeTooltip": "Toggle translation mode",
+      "toggleDirectionTooltip": "Toggle translation direction",
+      "copyResultTooltip": "Copy result",
+      "downloadResultTooltip": "Download result",
+      "playSoundTooltip": "Play sound"
     },
     "whatIs": {
       "title": "What is Minion Translator?",
@@ -55,7 +69,7 @@
       ]
     },
     "howto": {
-      "title": "How to Use Minion Translator Pro",
+      "title": "How to Translate English to Minion",
       "description": "Follow these simple steps to start translating.",
       "image": "/images/docs/minion-translator-how-to.webp",
       "imageAlt": "How to Use Minion Translator Pro - Step by step guide",
@@ -74,23 +88,6 @@
           "name": "Convert and Download",
           "description": "Hit the 'Translate' button and watch your text or voice transform into Minionese. Download or copy the result instantly with VibeTrans.",
           "wordCount": 41
-        }
-      ]
-    },
-    "funFacts": {
-      "title": "Interesting Facts",
-      "items": [
-        {
-          "title": "The Food Connection",
-          "description": "Did you know that around 25% of Minionese words are borrowed from food names? Words like 'banana,' 'papple,' and 'gelato' spice up their vocabulary, adding a delicious twist to their quirky language. It's like a menu mixed with a language lesson!",
-          "image": "/images/docs/minion-babel-fun.webp",
-          "imageAlt": "Fun Fact about Minion Language"
-        },
-        {
-          "title": "The Voice Behind Minions",
-          "description": "Pierre Coffin, the director of the Minions movies, performs over 9,000 lines for these lovable characters. He brings them to life using five languages, improvising most dialogues. That's a mix of talent and creativity that's hard to beat!",
-          "image": "/images/docs/minion-language-fun.webp",
-          "imageAlt": "Fun Fact about Minionese Creation"
         }
       ]
     },
@@ -120,7 +117,7 @@
         },
         {
           "title": "Mobile-Friendly",
-          "content": "Hey, VibeTrans makes translation as easy as scrolling TikTok! Whether you're on the subway or in a coffee shop, just tap your finger to explore global languages. Who needs heavy dictionaries anymore? Everything can be done on your phone - it's truly a lazy person's blessing! There's a good reason to love this app, right?",
+          "content": "Hey, VibeTrans makes translation as easy as scrolling TikTok! Whether you're on the subway or in a coffee shop, just tap your finger to explore global languages. Who needs heavy dictionaries anymore? Everything can be done on your phone - it's truly a lazy person's blessing! There's a good reason to love this web tool, right?",
           "wordCount": 60,
           "image": "/images/docs/global-translation-mobile.webp",
           "imageAlt": "Mobile-Friendly Translation Tool"
@@ -128,7 +125,7 @@
       ]
     },
     "highlights": {
-      "title": "Why Choose VibeTrans Minion Translator",
+      "title": "Minionese Translation Engine for Minions Players",
       "description": "Experience the perfect blend of accuracy, privacy, and fun with our advanced Minion translation features",
       "items": [
         {
@@ -157,37 +154,22 @@
           "name": "Jessica Turner",
           "role": "Elementary School Teacher",
           "heading": "A Classroom Favorite",
-          "content": "Minion Translator Pro has transformed my classroom! My students love hearing their essays in Minionese. It's hilarious and keeps them engaged. I even use it for icebreakers. The kids can't wait for translation time, and honestly, neither can I. It's a total game changer!"
+          "content": "Minion Translator Pro has transformed my classroom! My students love hearing their essays in Minionese. It's hilarious and keeps them engaged. I even use it for icebreakers. The kids can't wait for translation time, and honestly, neither can I. It's a total game changer!",
+          "rating": "5.0"
         },
         "item-2": {
           "name": "Mark Stevens",
           "role": "Content Creator",
           "heading": "Boosted My Engagement",
-          "content": "As a content creator, Minion Translator Pro is my secret weapon. Adding Minionese translations to videos has doubled my engagement. My followers love the humor, and it adds a unique twist. It's easy to use and always gets a laugh. Highly recommend for creators!"
+          "content": "As a content creator, Minion Translator Pro is my secret weapon. Adding Minionese translations to videos has doubled my engagement. My followers love the humor, and it adds a unique twist. It's easy to use and always gets a laugh. Highly recommend for creators!",
+          "rating": "4.9"
         },
         "item-3": {
           "name": "Linda Green",
           "role": "Parent",
           "heading": "Party Hit!",
-          "content": "I used Minion Translator Pro for my son's birthday party. The kids were amazed by their favorite lines in Minionese. It was a hit! Their laughter was priceless, and it made the event unforgettable. It’s now a go-to for family fun and parties."
-        },
-        "item-4": {
-          "name": "Tom Harris",
-          "role": "Developer",
-          "heading": "Fun with Code",
-          "content": "I decided to integrate Minion Translator Pro into a Discord bot as a fun project. The results were incredible! Users loved sending Minionese messages. It added so much personality to our server. The translation speed is impressive, making it a developer's dream!"
-        },
-        "item-5": {
-          "name": "Sara Collins",
-          "role": "Language Enthusiast",
-          "heading": "Fascinating Language Learning",
-          "content": "Exploring Minionese with Minion Translator Pro has been fascinating. The mix of languages is intriguing, and the tool provides insights into word origins. It’s more than just fun; it's educational. I've learned so much and shared it with fellow language lovers."
-        },
-        "item-6": {
-          "name": "James Carter",
-          "role": "Event Planner",
-          "heading": "Elevated Event Experience",
-          "content": "Minion Translator Pro elevated one of my events to the next level. Guests loved translating their speeches into Minionese. It added a fun and unexpected twist that everyone talked about. The tool is simple to use and a hit at any gathering."
+          "content": "I used Minion Translator Pro for my son's birthday party. The kids were amazed by their favorite lines in Minionese. It was a hit! Their laughter was priceless, and it made the event unforgettable. It’s now a go-to for family fun and parties.",
+          "rating": "4.7"
         }
       }
     },
@@ -201,11 +183,11 @@
         },
         "item-2": {
           "question": "How do I use Minion Translator Pro step-by-step?",
-          "answer": "Step 1: Open the Minion Translator Pro application. Step 2: Enter or paste the text you want to translate. Step 3: Select the target language or translation direction. Step 4: Click the 'Translate' button. Step 5: View and save your translation results."
+          "answer": "Step 1: Open the Minion Translator Pro website in your browser. Step 2: Enter or paste the text you want to translate. Step 3: Select the target language or translation direction. Step 4: Click the 'Translate' button. Step 5: View and save your translation results from your browser."
         },
         "item-3": {
           "question": "How does VibeTrans protect my privacy?",
-          "answer": "VibeTrans uses end-to-end encryption to secure your data. We do not store any personal information on our servers. Follow these steps: 1. Use a secure connection. 2. Regularly update the app. 3. Review privacy settings."
+          "answer": "VibeTrans uses end-to-end encryption to secure your data. We do not store any personal information on our servers. Follow these steps: 1. Use a secure connection. 2. Keep your browser updated. 3. Review privacy settings."
         },
         "item-4": {
           "question": "What is Minion Translator Pro?",
@@ -213,11 +195,15 @@
         },
         "item-5": {
           "question": "Can I use it on mobile?",
-          "answer": "Yes, you can use the Minion Translator on your mobile device. Simply open your mobile browser, go to the Minion Translator website, and start translating. The website is optimized for mobile use, ensuring a seamless experience."
+          "answer": "Yes, you can use the Minion Translator on any device. Simply open your mobile browser, go to the Minion Translator website, and start translating. The website is optimized for mobile use, ensuring a seamless experience."
         },
         "item-6": {
           "question": "How accurate are the translations?",
           "answer": "Translation accuracy is high, as we use advanced algorithms to ensure precise interpretations. While most translations are reliable, occasional nuances may vary due to language complexity. We continuously update our system to enhance accuracy and user satisfaction."
+        },
+        "item-7": {
+          "question": "What is the best minion translator for accurate translations?",
+          "answer": "VibeTrans Minion Translator is the premier choice for accurate translations, featuring advanced AI technology that understands complex grammar, cultural context, and linguistic nuances. Our tool provides bidirectional translation, real-time processing, and high accuracy rates, all completely free. Perfect for language learning, communication, and cultural exploration with reliable, context-aware results."
         }
       }
     },
@@ -249,6 +235,23 @@
           "description": "The AI in VibeTrans understands context, ensuring translations are not just accurate but meaningful. It's like having a Minion whispering in your ear, perfectly matching the tone you need."
         }
       }
+    },
+    "funfacts": {
+      "title": "Minions Fan's Guide to Mastering Minionese",
+      "items": [
+        {
+          "title": "The Food Connection",
+          "description": "Did you know that around 25% of Minionese words are borrowed from food names? Words like 'banana,' 'papple,' and 'gelato' spice up their vocabulary, adding a delicious twist to their quirky language. It's like a menu mixed with a language lesson!",
+          "image": "/images/docs/minion-babel-fun.webp",
+          "imageAlt": "Fun Fact about Minion Language"
+        },
+        {
+          "title": "The Voice Behind Minions",
+          "description": "Pierre Coffin, the director of the Minions movies, performs over 9,000 lines for these lovable characters. He brings them to life using five languages, improvising most dialogues. That's a mix of talent and creativity that's hard to beat!",
+          "image": "/images/docs/minion-language-fun.webp",
+          "imageAlt": "Fun Fact about Minionese Creation"
+        }
+      ]
     }
   }
 }

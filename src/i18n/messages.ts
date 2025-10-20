@@ -15,40 +15,98 @@ const importLocale = async (locale: Locale): Promise<Messages> => {
   // Import all translation modules - 串行加载而非并发
   const common = await import(`../../messages/common/${locale}.json`);
   const mailCommon = await import(`../../messages/common/mail-${locale}.json`);
-  const newsletterCommon = await import(`../../messages/common/newsletter-${locale}.json`);
-  const premiumCommon = await import(`../../messages/common/premium-${locale}.json`);
+  const newsletterCommon = await import(
+    `../../messages/common/newsletter-${locale}.json`
+  );
+  const premiumCommon = await import(
+    `../../messages/common/premium-${locale}.json`
+  );
   const homePages = await import(`../../messages/pages/home/${locale}.json`);
-  const pricingPages = await import(`../../messages/pages/pricing/${locale}.json`);
+  const pricingPages = await import(
+    `../../messages/pages/pricing/${locale}.json`
+  );
   const blogPages = await import(`../../messages/pages/blog/${locale}.json`);
   const authPages = await import(`../../messages/pages/auth/${locale}.json`);
   const aboutPages = await import(`../../messages/pages/about/${locale}.json`);
   const docsPages = await import(`../../messages/pages/docs/${locale}.json`);
-  const dogTranslatorPages = await import(`../../messages/pages/dog-translator/${locale}.json`);
-  const genZTranslatorPages = await import(`../../messages/pages/gen-z-translator/${locale}.json`);
-  const genAlphaTranslatorPages = await import(`../../messages/pages/gen-alpha-translator/${locale}.json`);
-  const dumbItDownPages = await import(`../../messages/pages/dumb-it-down/${locale}.json`);
-  const badTranslatorPages = await import(`../../messages/pages/bad-translator/${locale}.json`);
-  const babyTranslatorPages = await import(`../../messages/pages/baby-translator/${locale}.json`);
-  const ancientGreekTranslatorPages = await import(`../../messages/pages/ancient-greek-translator/${locale}.json`);
-  const alBhedTranslatorPages = await import(`../../messages/pages/al-bhed-translator/${locale}.json`);
-  const gibberishTranslatorPages = await import(`../../messages/pages/gibberish-translator/${locale}.json`);
-  const alienTextGeneratorPages = await import(`../../messages/pages/alien-text-generator/${locale}.json`);
-  const esperantoTranslatorPages = await import(`../../messages/pages/esperanto-translator/${locale}.json`);
-  const cuneiformTranslatorPages = await import(`../../messages/pages/cuneiform-translator/${locale}.json`);
-  const ivrTranslatorPages = await import(`../../messages/pages/ivr-translator/${locale}.json`);
-  const verboseGeneratorPages = await import(`../../messages/pages/verbose-generator/${locale}.json`);
-  const albanianToEnglishPages = await import(`../../messages/pages/albanian-to-english/${locale}.json`);
-  const creoleToEnglishTranslatorPages = await import(`../../messages/pages/creole-to-english-translator/${locale}.json`);
-  const pigLatinTranslatorPages = await import(`../../messages/pages/pig-latin-translator/${locale}.json`);
-  const cantoneseTranslatorPages = await import(`../../messages/pages/cantonese-translator/${locale}.json`);
-  const chineseToEnglishTranslatorPages = await import(`../../messages/pages/chinese-to-english-translator/${locale}.json`);
-  const middleEnglishTranslatorPages = await import(`../../messages/pages/middle-english-translator/${locale}.json`);
-  const minionTranslatorPages = await import(`../../messages/pages/minion-translator/${locale}.json`);
-  const baybayinTranslatorPages = await import(`../../messages/pages/baybayin-translator/${locale}.json`);
-  const samoanToEnglishTranslatorPages = await import(`../../messages/pages/samoan-to-english-translator/${locale}.json`);
-  const gasterTranslatorPages = await import(`../../messages/pages/gaster-translator/${locale}.json`);
-  const highValyrianTranslatorPages = await import(`../../messages/pages/high-valyrian-translator/${locale}.json`);
-  const aramaicTranslatorPages = await import(`../../messages/pages/aramaic-translator/${locale}.json`);
+  const dogTranslatorPages = await import(
+    `../../messages/pages/dog-translator/${locale}.json`
+  );
+  const genZTranslatorPages = await import(
+    `../../messages/pages/gen-z-translator/${locale}.json`
+  );
+  const genAlphaTranslatorPages = await import(
+    `../../messages/pages/gen-alpha-translator/${locale}.json`
+  );
+  const dumbItDownPages = await import(
+    `../../messages/pages/dumb-it-down/${locale}.json`
+  );
+  const badTranslatorPages = await import(
+    `../../messages/pages/bad-translator/${locale}.json`
+  );
+  const babyTranslatorPages = await import(
+    `../../messages/pages/baby-translator/${locale}.json`
+  );
+  const ancientGreekTranslatorPages = await import(
+    `../../messages/pages/ancient-greek-translator/${locale}.json`
+  );
+  const alBhedTranslatorPages = await import(
+    `../../messages/pages/al-bhed-translator/${locale}.json`
+  );
+  const gibberishTranslatorPages = await import(
+    `../../messages/pages/gibberish-translator/${locale}.json`
+  );
+  const alienTextGeneratorPages = await import(
+    `../../messages/pages/alien-text-generator/${locale}.json`
+  );
+  const esperantoTranslatorPages = await import(
+    `../../messages/pages/esperanto-translator/${locale}.json`
+  );
+  const cuneiformTranslatorPages = await import(
+    `../../messages/pages/cuneiform-translator/${locale}.json`
+  );
+  const ivrTranslatorPages = await import(
+    `../../messages/pages/ivr-translator/${locale}.json`
+  );
+  const verboseGeneratorPages = await import(
+    `../../messages/pages/verbose-generator/${locale}.json`
+  );
+  const albanianToEnglishPages = await import(
+    `../../messages/pages/albanian-to-english/${locale}.json`
+  );
+  const creoleToEnglishTranslatorPages = await import(
+    `../../messages/pages/creole-to-english-translator/${locale}.json`
+  );
+  const pigLatinTranslatorPages = await import(
+    `../../messages/pages/pig-latin-translator/${locale}.json`
+  );
+  const cantoneseTranslatorPages = await import(
+    `../../messages/pages/cantonese-translator/${locale}.json`
+  );
+  const chineseToEnglishTranslatorPages = await import(
+    `../../messages/pages/chinese-to-english-translator/${locale}.json`
+  );
+  const middleEnglishTranslatorPages = await import(
+    `../../messages/pages/middle-english-translator/${locale}.json`
+  );
+  const minionTranslatorPages = await import(
+    `../../messages/pages/minion-translator/${locale}.json`
+  );
+  const baybayinTranslatorPages = await import(
+    `../../messages/pages/baybayin-translator/${locale}.json`
+  );
+  const samoanToEnglishTranslatorPages = await import(
+    `../../messages/pages/samoan-to-english-translator/${locale}.json`
+  );
+  const gasterTranslatorPages = await import(
+    `../../messages/pages/gaster-translator/${locale}.json`
+  );
+  const highValyrianTranslatorPages = await import(
+    `../../messages/pages/high-valyrian-translator/${locale}.json`
+  );
+  const aramaicTranslatorPages = await import(
+    `../../messages/pages/aramaic-translator/${locale}.json`
+  );
   const dashboard = await import(`../../messages/dashboard/${locale}.json`);
   const marketing = await import(`../../messages/marketing/${locale}.json`);
   const demo = await import(`../../messages/demo/${locale}.json`);

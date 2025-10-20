@@ -6,6 +6,7 @@ import {
   gibberishToText,
   textToGibberish,
 } from '@/lib/gibberish';
+import { ArrowRightIcon } from 'lucide-react';
 import mammoth from 'mammoth';
 import { useState } from 'react';
 
@@ -175,7 +176,7 @@ export default function GibberishTranslatorTool({
   };
 
   return (
-    <div className="container max-w-5xl mx-auto px-4 mb-10">
+    <div className="container max-w-7xl mx-auto px-4 mb-10">
       <main className="w-full bg-white dark:bg-zinc-800 shadow-xl border border-gray-100 dark:border-zinc-700 rounded-lg p-4 md:p-8">
         {/* Style Selector */}
         {mode === 'toGibberish' && (
@@ -235,7 +236,7 @@ export default function GibberishTranslatorTool({
                   : pageData.tool.gibberishPlaceholder
               }
               className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent resize-none text-gray-700 dark:text-gray-200 dark:bg-zinc-700"
-              aria-label="Input text"
+              aria-label={pageData.tool.inputLabel || "Input text"}
             />
 
             {/* File Upload */}
@@ -293,7 +294,7 @@ export default function GibberishTranslatorTool({
                       setInputText('');
                     }}
                     className="ml-auto text-gray-500 hover:text-red-500 dark:text-gray-400 dark:hover:text-red-400"
-                    aria-label="Remove file"
+                    aria-label={pageData.tool.removeFileTooltip || "Remove file"}
                   >
                     <svg
                       className="w-4 h-4"
@@ -324,7 +325,7 @@ export default function GibberishTranslatorTool({
                   ? 'Switch to Gibberish → Standard'
                   : 'Switch to Standard → Gibberish'
               }
-              aria-label="Toggle translation mode"
+              aria-label={pageData.tool.toggleModeTooltip || "Toggle translation mode"}
             >
               <svg
                 className="w-6 h-6"
@@ -357,8 +358,8 @@ export default function GibberishTranslatorTool({
                   <button
                     onClick={handleCopy}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
-                    title="Copy"
-                    aria-label="Copy result"
+                    title={pageData.tool.copyTooltip || "Copy"}
+                    aria-label={pageData.tool.copyResultTooltip || "Copy result"}
                   >
                     <svg
                       className="w-5 h-5"
@@ -377,8 +378,8 @@ export default function GibberishTranslatorTool({
                   <button
                     onClick={handleDownload}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
-                    title="Download"
-                    aria-label="Download result"
+                    title={pageData.tool.downloadTooltip || "Download"}
+                    aria-label={pageData.tool.downloadResultTooltip || "Download result"}
                   >
                     <svg
                       className="w-5 h-5"
@@ -398,19 +399,40 @@ export default function GibberishTranslatorTool({
               )}
             </div>
             <div
-              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md bg-gray-50 dark:bg-zinc-700 flex items-center justify-center text-gray-700 dark:text-gray-200 overflow-y-auto"
+              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md bg-gray-50 dark:bg-zinc-700 overflow-y-auto"
               aria-live="polite"
             >
               {isLoading ? (
-                <p>{pageData.tool.loading}</p>
-              ) : error ? (
-                <p className="text-red-600 dark:text-red-400">{error}</p>
-              ) : translatedText ? (
-                <p className="text-lg whitespace-pre-wrap">{translatedText}</p>
+                <div className="w-full h-full flex items-center justify-center text-gray-700 dark:text-gray-200">
+                  <div className="flex items-center gap-3">
+                    <div className="flex space-x-1">
+                      <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                      <div
+                        className="w-2 h-2 bg-primary rounded-full animate-pulse"
+                        style={{ animationDelay: '0.2s' }}
+                      ></div>
+                      <div
+                        className="w-2 h-2 bg-primary rounded-full animate-pulse"
+                        style={{ animationDelay: '0.4s' }}
+                      ></div>
+                    </div>
+                    <span>{pageData.tool.loading}</span>
+                  </div>
+                </div>
               ) : (
-                <p className="text-gray-500 dark:text-gray-400">
-                  {pageData.tool.outputPlaceholder}
-                </p>
+                <div className="flex flex-col items-start justify-start text-gray-700 dark:text-gray-200">
+                  {error ? (
+                    <p className="text-red-600 dark:text-red-400">{error}</p>
+                  ) : translatedText ? (
+                    <p className="text-lg whitespace-pre-wrap">
+                      {translatedText}
+                    </p>
+                  ) : (
+                    <p className="text-gray-500 dark:text-gray-400">
+                      {pageData.tool.outputPlaceholder}
+                    </p>
+                  )}
+                </div>
               )}
             </div>
           </div>
@@ -431,7 +453,7 @@ export default function GibberishTranslatorTool({
           <button
             onClick={handleReset}
             className="px-6 py-3 bg-gray-200 dark:bg-zinc-600 hover:bg-gray-300 dark:hover:bg-zinc-500 text-gray-800 dark:text-gray-100 font-semibold rounded-lg shadow-md transition-colors"
-            title="Reset"
+            title={pageData.tool.resetTooltip || "Reset"}
           >
             <svg
               className="w-5 h-5 inline-block mr-2"

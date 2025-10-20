@@ -6,7 +6,14 @@
  * advanced AI understanding of ancient scripts.
  */
 
-export type CuneiformScript = 'sumerian' | 'akkadian' | 'babylonian';
+export type CuneiformScript =
+  | 'sumerian'
+  | 'akkadian'
+  | 'babylonian'
+  | 'hittite'
+  | 'elamite'
+  | 'old-persian'
+  | 'ugaritic';
 
 export interface CuneiformTranslationOptions {
   script: CuneiformScript;
@@ -24,6 +31,14 @@ export function getScriptDescription(script: CuneiformScript): string {
       'Akkadian - Semitic language written in cuneiform, used in ancient Mesopotamia (circa 2500-100 BCE)',
     babylonian:
       'Babylonian - a dialect of Akkadian used in ancient Babylon (circa 1900-100 BCE)',
+    hittite:
+      'Hittite - Indo-European language written in cuneiform, used in the Hittite Empire (circa 1600-1178 BCE)',
+    elamite:
+      'Elamite - language isolate written in cuneiform, used in ancient Elam (circa 2700-539 BCE)',
+    'old-persian':
+      'Old Persian - Indo-Iranian language written in cuneiform, used in the Achaemenid Empire (circa 600-330 BCE)',
+    ugaritic:
+      'Ugaritic - Northwest Semitic language written in cuneiform alphabet, used in ancient Ugarit (circa 1450-1200 BCE)',
   };
 
   return descriptions[script];

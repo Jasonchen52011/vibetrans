@@ -9,7 +9,7 @@
 
 async function testBaybayinUIFix() {
   console.log('🚀 测试 Baybayin Translator UI 修复');
-  console.log('=' .repeat(50));
+  console.log('='.repeat(50));
 
   const baseUrl = 'http://localhost:3003';
   const apiUrl = `${baseUrl}/api/baybayin-translator`;
@@ -20,24 +20,24 @@ async function testBaybayinUIFix() {
       name: '输入英语翻译测试',
       input: 'Hello',
       expectedDirection: 'toBaybayin',
-      description: '输入英语应翻译为 Baybayin'
+      description: '输入英语应翻译为 Baybayin',
     },
     {
       name: '输入 Baybayin 翻译测试',
       input: 'ᜋᜑᜎ᜔',
       expectedDirection: 'toEnglish',
-      description: '输入 Baybayin 应翻译为英语'
+      description: '输入 Baybayin 应翻译为英语',
     },
     {
       name: '短语翻译测试',
       input: 'Thank you',
       expectedDirection: 'toBaybayin',
-      description: '英语短语应翻译为 Baybayin'
-    }
+      description: '英语短语应翻译为 Baybayin',
+    },
   ];
 
   let passedTests = 0;
-  let totalTests = testCases.length;
+  const totalTests = testCases.length;
 
   console.log('\n📋 开始测试 API 翻译方向检测...\n');
 
@@ -51,8 +51,8 @@ async function testBaybayinUIFix() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           text: testCase.input,
-          direction: 'auto' // 使用自动检测
-        })
+          direction: 'auto', // 使用自动检测
+        }),
       });
 
       if (!response.ok) {
@@ -81,7 +81,6 @@ async function testBaybayinUIFix() {
       } else {
         console.log(`   ❌ 翻译失败`);
       }
-
     } catch (error) {
       console.log(`   ❌ 错误: ${error.message}`);
     }
@@ -91,7 +90,7 @@ async function testBaybayinUIFix() {
 
   // 输出测试结果
   console.log('📊 测试结果统计');
-  console.log('=' .repeat(30));
+  console.log('='.repeat(30));
   console.log(`总测试数: ${totalTests}`);
   console.log(`✅ 通过: ${passedTests}`);
   console.log(`❌ 失败: ${totalTests - passedTests}`);
@@ -114,8 +113,12 @@ async function testBaybayinUIFix() {
   console.log('1. ✅ API 能正确检测输入语言');
   console.log('2. ✅ 翻译结果会返回正确的 direction');
   console.log('3. ✅ 页面组件会根据 API 返回的 direction 更新标题');
-  console.log('4. ✅ 输入英语后，标题会显示 "English Text" 和 "Baybayin Translation"');
-  console.log('5. ✅ 输入 Baybayin 后，标题会显示 "Baybayin Text" 和 "English Translation"');
+  console.log(
+    '4. ✅ 输入英语后，标题会显示 "English Text" 和 "Baybayin Translation"'
+  );
+  console.log(
+    '5. ✅ 输入 Baybayin 后，标题会显示 "Baybayin Text" 和 "English Translation"'
+  );
 
   console.log('\n🔧 已修复的问题:');
   console.log('- 组件会在翻译成功后根据 API 返回的 direction 更新状态');
@@ -136,10 +139,10 @@ async function testBaybayinUIFix() {
 
 // 运行测试
 testBaybayinUIFix()
-  .then(success => {
+  .then((success) => {
     process.exit(success ? 0 : 1);
   })
-  .catch(error => {
+  .catch((error) => {
     console.error('❌ 测试运行失败:', error);
     process.exit(1);
   });

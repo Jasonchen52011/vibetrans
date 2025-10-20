@@ -71,7 +71,7 @@ export default function UserScenarios({
                     <div className="flex flex-col items-center lg:items-start">
                       <Button onClick={scrollToTop} size="lg" variant="default">
                         {ctaText}
-                        <Icon name="FaArrowUp" />
+                        <Icon name="FaArrowRight" />
                       </Button>
                     </div>
                   </div>

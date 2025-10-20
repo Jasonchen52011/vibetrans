@@ -9,13 +9,19 @@ const pages = [
   'gaster-translator',
   'aramaic-translator',
   'baybayin-translator',
-  'cuneiform-translator'
+  'cuneiform-translator',
 ];
 
 function checkPage(pageName) {
   console.log(`\n🔍 检查页面: ${pageName}`);
 
-  const jsonPath = path.join(process.cwd(), 'messages', 'pages', pageName, 'en.json');
+  const jsonPath = path.join(
+    process.cwd(),
+    'messages',
+    'pages',
+    pageName,
+    'en.json'
+  );
 
   if (!fs.existsSync(jsonPath)) {
     console.log(`❌ JSON文件不存在: ${jsonPath}`);
@@ -34,7 +40,8 @@ function checkPage(pageName) {
 
     // 检查 whatIs 部分
     if (pageData.whatIs) {
-      const hasPlaceholder = pageData.whatIs.title && pageData.whatIs.title.includes('XXXX');
+      const hasPlaceholder =
+        pageData.whatIs.title && pageData.whatIs.title.includes('XXXX');
       if (hasPlaceholder) {
         console.log(`❌ whatIs 部分仍有占位符`);
         return false;
@@ -45,18 +52,22 @@ function checkPage(pageName) {
 
     // 检查 examples 部分
     if (pageData.examples && pageData.examples.items) {
-      const hasPlaceholder = pageData.examples.items.some(item =>
-        item.alt && item.alt.includes('placeholder')
+      const hasPlaceholder = pageData.examples.items.some(
+        (item) => item.alt && item.alt.includes('placeholder')
       );
 
       if (hasPlaceholder) {
         console.log(`❌ examples 部分仍有占位符`);
         return false;
       } else if (pageData.examples.items.length !== 6) {
-        console.log(`⚠️ examples 数量不正确 (${pageData.examples.items.length}/6)`);
+        console.log(
+          `⚠️ examples 数量不正确 (${pageData.examples.items.length}/6)`
+        );
         return false;
       } else {
-        console.log(`✅ examples 部分已修复 (${pageData.examples.items.length}个案例)`);
+        console.log(
+          `✅ examples 部分已修复 (${pageData.examples.items.length}个案例)`
+        );
       }
     }
 
@@ -71,7 +82,6 @@ function checkPage(pageName) {
     }
 
     return true;
-
   } catch (error) {
     console.log(`❌ JSON解析错误: ${error.message}`);
     return false;
@@ -83,7 +93,7 @@ console.log('🚀 开始验证翻译工具页面修复效果...\n');
 let successCount = 0;
 const totalTests = pages.length;
 
-pages.forEach(pageName => {
+pages.forEach((pageName) => {
   if (checkPage(pageName)) {
     successCount++;
   }
