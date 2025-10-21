@@ -257,7 +257,9 @@ export default function BabyTranslatorTool({
                     setFileName(null);
                   }}
                   className="text-gray-500 hover:text-red-500 dark:text-gray-400 dark:hover:text-red-400"
-                  aria-label={pageData.tool.removeRecordingTooltip || "Remove recording"}
+                  aria-label={
+                    pageData.tool.removeRecordingTooltip || 'Remove recording'
+                  }
                 >
                   <svg
                     className="w-5 h-5"
@@ -290,7 +292,7 @@ export default function BabyTranslatorTool({
                     type="button"
                     onClick={handleCopy}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
-                    title={pageData.tool.copyTooltip || "Copy"}
+                    title={pageData.tool.copyTooltip || 'Copy'}
                   >
                     <svg
                       className="w-5 h-5"
@@ -310,7 +312,7 @@ export default function BabyTranslatorTool({
                     type="button"
                     onClick={handleDownload}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
-                    title={pageData.tool.downloadTooltip || "Download"}
+                    title={pageData.tool.downloadTooltip || 'Download'}
                   >
                     <svg
                       className="w-5 h-5"

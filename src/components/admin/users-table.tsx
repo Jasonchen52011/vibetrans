@@ -29,7 +29,6 @@ import {
 import { formatDate } from '@/lib/formatter';
 import type { DatabaseUser } from '@/lib/supabase/types';
 import { getStripeDashboardCustomerUrl } from '@/lib/urls/urls';
-import { IconCaretDownFilled, IconCaretUpFilled } from '@tabler/icons-react';
 import {
   type ColumnDef,
   type ColumnFiltersState,
@@ -42,6 +41,7 @@ import {
   getSortedRowModel,
   useReactTable,
 } from '@tanstack/react-table';
+import { ChevronDown, ChevronUp } from 'lucide-react';
 import {
   ChevronDownIcon,
   ChevronLeftIcon,
@@ -87,8 +87,8 @@ function DataTableColumnHeader<TData, TValue>({
             className="cursor-pointer flex items-center gap-2 h-8 data-[state=open]:bg-accent"
           >
             {title}
-            {isSorted === 'asc' && <IconCaretUpFilled className="h-4 w-4" />}
-            {isSorted === 'desc' && <IconCaretDownFilled className="h-4 w-4" />}
+            {isSorted === 'asc' && <ChevronUp className="h-4 w-4" />}
+            {isSorted === 'desc' && <ChevronDown className="h-4 w-4" />}
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="start" className="w-36">

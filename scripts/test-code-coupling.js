@@ -36,7 +36,7 @@ const TRANSLATORS = [
   'middle-english-translator',
   'minion-translator',
   'pig-latin-translator',
-  'verbose-generator'
+  'verbose-generator',
 ];
 
 // 常见的硬编码英文文本模式
@@ -73,7 +73,7 @@ const HARDCODED_PATTERNS = [
 
   // 通用描述文本
   /\b(Hello|Thank you|Good morning|Good evening)\b/gi,
-  /\b(Example|Sample|Demo|Test)\b/gi
+  /\b(Example|Sample|Demo|Test)\b/gi,
 ];
 
 // 必需的字段列表
@@ -88,7 +88,7 @@ const REQUIRED_FIELDS = {
     'uploadHint',
     'loading',
     'error',
-    'noInput'
+    'noInput',
   ],
   testimonials: [
     'items.item-1.rating',
@@ -96,12 +96,9 @@ const REQUIRED_FIELDS = {
     'items.item-3.rating',
     'items.item-4.rating',
     'items.item-5.rating',
-    'items.item-6.rating'
+    'items.item-6.rating',
   ],
-  funfacts: [
-    'title',
-    'items'
-  ]
+  funfacts: ['title', 'items'],
 };
 
 // 颜色输出
@@ -112,7 +109,7 @@ const colors = {
   yellow: '\x1b[33m',
   blue: '\x1b[34m',
   magenta: '\x1b[35m',
-  cyan: '\x1b[36m'
+  cyan: '\x1b[36m',
 };
 
 function colorLog(color, message) {
@@ -168,17 +165,19 @@ function checkHardcodedText(content, filePath) {
 
         const lineMatches = line.match(pattern);
         if (lineMatches) {
-          lineMatches.forEach(match => {
+          lineMatches.forEach((match) => {
             // 检查是否在字符串字面量中
-            const inQuotes = line.includes(`'${match}'`) || line.includes(`"${match}"`);
+            const inQuotes =
+              line.includes(`'${match}'`) || line.includes(`"${match}"`);
             if (inQuotes) {
               // 检查是否是pageData引用
-              const hasPageDataRef = line.includes('pageData.') || line.includes('{pageData.');
+              const hasPageDataRef =
+                line.includes('pageData.') || line.includes('{pageData.');
               if (!hasPageDataRef) {
                 issues.push({
                   line: lineNum + 1,
                   text: match,
-                  context: line.trim()
+                  context: line.trim(),
                 });
               }
             }
@@ -198,7 +197,7 @@ function checkFieldReferences(toolContent, messageData, translatorName) {
   // 提取所有pageData.xxx引用
   const pageDataRefs = toolContent.match(/pageData\.[\w.]+/g) || [];
 
-  pageDataRefs.forEach(ref => {
+  pageDataRefs.forEach((ref) => {
     // 移除pageData.前缀
     const fieldPath = ref.replace('pageData.', '');
     const value = getFieldValue(messageData, fieldPath);
@@ -207,7 +206,7 @@ function checkFieldReferences(toolContent, messageData, translatorName) {
       issues.push({
         type: 'missing_field',
         field: fieldPath,
-        reference: ref
+        reference: ref,
       });
     }
   });
@@ -225,19 +224,19 @@ function checkRequiredFields(messageData, translatorName) {
     if (!sectionData) {
       issues.push({
         type: 'missing_section',
-        section: section
+        section: section,
       });
       return;
     }
 
-    fields.forEach(field => {
+    fields.forEach((field) => {
       const value = getFieldValue(messageData, `${section}.${field}`);
       if (value === undefined || value === '') {
         issues.push({
           type: 'missing_required_field',
           section: section,
           field: field,
-          fullPath: `${section}.${field}`
+          fullPath: `${section}.${field}`,
         });
       }
     });
@@ -254,25 +253,28 @@ function analyzeTranslator(translatorName) {
     issues: {
       hardcoded: [],
       fieldReferences: [],
-      requiredFields: []
-    }
+      requiredFields: [],
+    },
   };
 
   // 工具组件文件路径
   const toolFiles = [
-    `src/app/[locale]/(marketing)/(pages)/${translatorName}/${translatorName.split('-').map(word =>
-      word.charAt(0).toUpperCase() + word.slice(1)
-    ).join('')}TranslatorTool.tsx`,
+    `src/app/[locale]/(marketing)/(pages)/${translatorName}/${translatorName
+      .split('-')
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join('')}TranslatorTool.tsx`,
 
     // 备用文件名模式
-    `src/app/[locale]/(marketing)/(pages)/${translatorName}/${translatorName.split('-').map(word =>
-      word.charAt(0).toUpperCase() + word.slice(1)
-    ).join('')}Tool.tsx`,
+    `src/app/[locale]/(marketing)/(pages)/${translatorName}/${translatorName
+      .split('-')
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join('')}Tool.tsx`,
 
     // 特殊情况的文件名
-    `src/app/[locale]/(marketing)/(pages)/${translatorName}/${translatorName.split('-').map(word =>
-      word.charAt(0).toUpperCase() + word.slice(1)
-    ).join('')}GeneratorTool.tsx`
+    `src/app/[locale]/(marketing)/(pages)/${translatorName}/${translatorName
+      .split('-')
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join('')}GeneratorTool.tsx`,
   ];
 
   let toolContent = null;
@@ -309,7 +311,11 @@ function analyzeTranslator(translatorName) {
   results.issues.hardcoded = hardcodedIssues;
 
   // 2. 检查字段引用一致性
-  const fieldRefIssues = checkFieldReferences(toolContent, messageData, translatorName);
+  const fieldRefIssues = checkFieldReferences(
+    toolContent,
+    messageData,
+    translatorName
+  );
   results.issues.fieldReferences = fieldRefIssues;
 
   // 3. 检查必需字段完整性
@@ -317,7 +323,8 @@ function analyzeTranslator(translatorName) {
   results.issues.requiredFields = requiredFieldIssues;
 
   // 确定总体状态
-  const totalIssues = hardcodedIssues.length + fieldRefIssues.length + requiredFieldIssues.length;
+  const totalIssues =
+    hardcodedIssues.length + fieldRefIssues.length + requiredFieldIssues.length;
   if (totalIssues > 0) {
     results.status = 'FAIL';
   }
@@ -329,11 +336,11 @@ function analyzeTranslator(translatorName) {
 function printResults(results) {
   colorLog('cyan', '\n=== 代码耦合测试报告 ===\n');
 
-  let totalTranslators = results.length;
+  const totalTranslators = results.length;
   let passedTranslators = 0;
   let totalIssues = 0;
 
-  results.forEach(result => {
+  results.forEach((result) => {
     const issueCount =
       result.issues.hardcoded.length +
       result.issues.fieldReferences.length +
@@ -350,7 +357,7 @@ function printResults(results) {
       // 打印硬编码文本问题
       if (result.issues.hardcoded.length > 0) {
         colorLog('yellow', '   硬编码文本:');
-        result.issues.hardcoded.forEach(issue => {
+        result.issues.hardcoded.forEach((issue) => {
           console.log(`     Line ${issue.line}: "${issue.text}"`);
           console.log(`     Context: ${issue.context}`);
         });
@@ -359,23 +366,27 @@ function printResults(results) {
       // 打印字段引用问题
       if (result.issues.fieldReferences.length > 0) {
         colorLog('yellow', '   字段引用问题:');
-        result.issues.fieldReferences.forEach(issue => {
-          console.log(`     缺失字段: ${issue.field} (引用: ${issue.reference})`);
+        result.issues.fieldReferences.forEach((issue) => {
+          console.log(
+            `     缺失字段: ${issue.field} (引用: ${issue.reference})`
+          );
         });
       }
 
       // 打印必需字段问题
       if (result.issues.requiredFields.length > 0) {
         colorLog('yellow', '   必需字段缺失:');
-        result.issues.requiredFields.forEach(issue => {
-          console.log(`     缺失: ${issue.fullPath} (type: ${issue.type}, field: ${issue.field || 'undefined'})`);
+        result.issues.requiredFields.forEach((issue) => {
+          console.log(
+            `     缺失: ${issue.fullPath} (type: ${issue.type}, field: ${issue.field || 'undefined'})`
+          );
         });
       }
 
       // 打印文件缺失问题
       if (result.issues.missingFiles) {
         colorLog('yellow', '   文件缺失:');
-        result.issues.missingFiles.forEach(file => {
+        result.issues.missingFiles.forEach((file) => {
           console.log(`     ${file}`);
         });
       }
@@ -406,7 +417,7 @@ function main() {
 
   const results = [];
 
-  TRANSLATORS.forEach(translator => {
+  TRANSLATORS.forEach((translator) => {
     colorLog('blue', `正在测试: ${translator}`);
     const result = analyzeTranslator(translator);
     results.push(result);
@@ -424,5 +435,5 @@ module.exports = {
   analyzeTranslator,
   checkHardcodedText,
   checkFieldReferences,
-  checkRequiredFields
+  checkRequiredFields,
 };

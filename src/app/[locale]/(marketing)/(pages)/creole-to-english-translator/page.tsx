@@ -27,7 +27,7 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: 'Metadata' });
   const gt = await getTranslations({
     locale,
-    namespace: 'CreoleToEnglishPage',
+    namespace: 'CreoleToEnglishTranslatorPage',
   });
 
   return constructMetadata({
@@ -49,7 +49,7 @@ export default async function CreoleToEnglishPage(
   const { locale } = params;
   const t = await getTranslations({
     locale,
-    namespace: 'CreoleToEnglishPage',
+    namespace: 'CreoleToEnglishTranslatorPage',
   });
 
   // Structured Data for SEO
@@ -351,13 +351,13 @@ export default async function CreoleToEnglishPage(
         />
 
         {/* Testimonials */}
-        <TestimonialsThreeColumnSection namespace="CreoleToEnglishPage.testimonials" />
+        <TestimonialsThreeColumnSection namespace="CreoleToEnglishTranslatorPage.testimonials" />
 
         {/* FAQ */}
-        <FaqSection namespace="CreoleToEnglishPage.faqs" />
+        <FaqSection namespace="CreoleToEnglishTranslatorPage.faqs" />
 
         {/* CTA */}
-        <CallToActionSection namespace="CreoleToEnglishPage.cta" />
+        <CallToActionSection namespace="CreoleToEnglishTranslatorPage.cta" />
       </div>
     </>
   );

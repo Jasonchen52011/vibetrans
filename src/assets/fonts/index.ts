@@ -1,9 +1,9 @@
-import {
-  Bricolage_Grotesque,
-  Noto_Sans,
-  Noto_Sans_Mono,
-  Noto_Serif,
-} from 'next/font/google';
+// import {
+//   Bricolage_Grotesque,
+//   Noto_Sans,
+//   Noto_Sans_Mono,
+//   Noto_Serif,
+// } from 'next/font/google';
 import localFont from 'next/font/local';
 
 /**
@@ -54,33 +54,33 @@ export const fontSatoshi = localFont({
  * https://nextjs.org/docs/app/building-your-application/optimizing/fonts#google-fonts
  */
 // https://fonts.google.com/noto/specimen/Noto+Sans
-export const fontNotoSans = Noto_Sans({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-noto-sans',
-  weight: ['500', '600', '700'],
-});
+// export const fontNotoSans = Noto_Sans({
+//   subsets: ['latin'],
+//   display: 'swap',
+//   variable: '--font-noto-sans',
+//   weight: ['500', '600', '700'],
+// });
 
 // https://fonts.google.com/noto/specimen/Noto+Serif
-export const fontNotoSerif = Noto_Serif({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-noto-serif',
-  weight: ['400'],
-});
+// export const fontNotoSerif = Noto_Serif({
+//   subsets: ['latin'],
+//   display: 'swap',
+//   variable: '--font-noto-serif',
+//   weight: ['400'],
+// });
 
 // https://fonts.google.com/noto/specimen/Noto+Sans+Mono
-export const fontNotoSansMono = Noto_Sans_Mono({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-noto-sans-mono',
-  weight: ['400'],
-});
+// export const fontNotoSansMono = Noto_Sans_Mono({
+//   subsets: ['latin'],
+//   display: 'swap',
+//   variable: '--font-noto-sans-mono',
+//   weight: ['400'],
+// });
 
 // https://fonts.google.com/specimen/Bricolage+Grotesque
-export const fontBricolageGrotesque = Bricolage_Grotesque({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-bricolage-grotesque',
-  weight: ['400', '500', '600', '700'],
-});
+// export const fontBricolageGrotesque = Bricolage_Grotesque({
+//   subsets: ['latin'],
+//   display: 'swap',
+//   variable: '--font-bricolage-grotesque',
+//   weight: ['400', '500', '600', '700'],
+// });

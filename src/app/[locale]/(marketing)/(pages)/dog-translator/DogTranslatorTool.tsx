@@ -390,7 +390,7 @@ export default function DogTranslatorTool({
               onChange={(e) => setInputText(e.target.value)}
               placeholder={pageData.tool.inputPlaceholder}
               className="w-full h-48 md:h-64 p-3 border border-primary-light rounded-md focus:ring-2 focus:ring-primary-light focus:border-transparent resize-none text-gray-700"
-              aria-label={pageData.tool.inputLabel || "Your words to translate"}
+              aria-label={pageData.tool.inputLabel || 'Your words to translate'}
             />
           </div>
 
@@ -426,7 +426,9 @@ export default function DogTranslatorTool({
                         onClick={handlePlaySound}
                         disabled={isPlaying || isLoadingAudio}
                         className="px-6 py-2 bg-gray-800 hover:bg-primary-light text-white font-semibold rounded-lg shadow-md transition-colors disabled:opacity-50"
-                        aria-label={pageData.tool.playSoundTooltip || "Play sound"}
+                        aria-label={
+                          pageData.tool.playSoundTooltip || 'Play sound'
+                        }
                       >
                         {isLoadingAudio
                           ? locale === 'ja'

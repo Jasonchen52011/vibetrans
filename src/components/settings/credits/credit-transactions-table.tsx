@@ -36,11 +36,6 @@ import { CREDIT_TRANSACTION_TYPE } from '@/credits/types';
 import { formatDate } from '@/lib/formatter';
 import { CaretDownIcon, CaretUpIcon } from '@radix-ui/react-icons';
 import {
-  IconCaretDownFilled,
-  IconCaretUpFilled,
-  IconSortAscending2,
-} from '@tabler/icons-react';
-import {
   type ColumnDef,
   type ColumnFiltersState,
   type SortingState,
@@ -52,6 +47,7 @@ import {
   getSortedRowModel,
   useReactTable,
 } from '@tanstack/react-table';
+import { ArrowUp, ChevronDown, ChevronUp } from 'lucide-react';
 import {
   ArrowDownIcon,
   ArrowUpDownIcon,
@@ -123,8 +119,8 @@ function DataTableColumnHeader<TData, TValue>({
             className="h-8 data-[state=open]:bg-accent flex items-center gap-1"
           >
             <span>{title}</span>
-            {isSorted === 'asc' && <IconCaretUpFilled className="h-4 w-4" />}
-            {isSorted === 'desc' && <IconCaretDownFilled className="h-4 w-4" />}
+            {isSorted === 'asc' && <ChevronUp className="h-4 w-4" />}
+            {isSorted === 'desc' && <ChevronDown className="h-4 w-4" />}
             {/* {!isSorted && <ChevronsUpDownIcon className="h-4 w-4" />} */}
           </Button>
         </DropdownMenuTrigger>

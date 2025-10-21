@@ -9,6 +9,25 @@
       "primary": "Try VibeTrans Translator Now!",
       "secondary": "See Demo"
     },
+    "stats": {
+      "title": "VibeTrans in Numbers",
+      "subtitle": "Trusted by users worldwide",
+      "description": "VibeTrans delivers fast, accurate translations that break language barriers every day",
+      "items": {
+        "item-1": {
+          "title": "Languages Supported",
+          "value": "100+"
+        },
+        "item-2": {
+          "title": "Daily Translations",
+          "value": "50K+"
+        },
+        "item-3": {
+          "title": "Translation Accuracy",
+          "value": "98%"
+        }
+      }
+    },
     "logocloud": {
       "title": "Your favorite companies are our partners"
     },
@@ -177,88 +196,30 @@
           "rating": 4.6
         },
         "item-4": {
-          "name": "Tim Johnson",
-          "role": "Small Business Owner",
-          "image": "https://randomuser.me/api/portraits/men/8.jpg",
-          "heading": "Saves Time",
-          "content": "We're expanding into Spanish-speaking markets, and VibeTrans has been a lifesaver for translating marketing material and customer emails. It saves us time and helps ensure accurate translations.",
+          "name": "Michael Chen",
+          "role": "Software Developer",
+          "image": "https://randomuser.me/api/portraits/men/3.jpg",
+          "heading": "Amazing API Integration",
+          "content": "I integrated VibeTrans API into my application and the results have been outstanding. The documentation is clear and the translation quality is consistently high. Highly recommend for developers!",
           "rating": 4.9
         },
         "item-5": {
-          "name": "Olivia Martinez",
-          "role": "Educator",
-          "image": "https://randomuser.me/api/portraits/women/4.jpg",
-          "heading": "Perfect for Teaching",
-          "content": "I use VibeTrans to help my students with language practice. It's a great tool to show how translations can change depending on context, and it's perfect for learning new vocabulary. It's an all-around great tool!",
-          "rating": 4.7
-        },
-        "item-6": {
-          "name": "Daniel Lee",
-          "role": "Web Developer",
-          "image": "https://randomuser.me/api/portraits/men/2.jpg",
-          "heading": "Simple & Accurate",
-          "content": "I was building a multilingual website and needed quick translations for various pages. VibeTrans did the job flawlessly. It was simple to use and gave me accurate results every time!",
+          "name": "Lisa Anderson",
+          "role": "Content Creator",
+          "image": "https://randomuser.me/api/portraits/women/2.jpg",
+          "heading": "Perfect for Content Creation",
+          "content": "As a content creator working with international audiences, VibeTrans has been a game-changer. I can now create content in multiple languages while maintaining the original meaning and tone.",
           "rating": 5.0
         },
-        "item-7": {
-          "name": "Zeki",
-          "role": "Founder of ChatExtend",
-          "image": "https://randomuser.me/api/portraits/men/5.jpg",
-          "content": "VibeTrans is the perfect fusion of accuracy and speed, enabling us to translate content that is both natural and culturally appropriate."
-        },
-        "item-8": {
-          "name": "Joseph Kitheka",
-          "role": "Fullstack Developer",
-          "image": "https://randomuser.me/api/portraits/men/9.jpg",
-          "content": "VibeTrans has transformed the way I handle multilingual content. Their AI-powered translation is fast, accurate, and significantly accelerates my localization workflow."
-        },
-        "item-9": {
-          "name": "Khatab Wedaa",
-          "role": "MerakiUI Creator",
-          "image": "https://randomuser.me/api/portraits/men/10.jpg",
-          "content": "VibeTrans is an elegant, intuitive translation platform that makes it easy to translate documents and communicate across languages."
-        },
-        "item-10": {
-          "name": "Rodrigo Aguilar",
-          "role": "TailwindAwesome Creator",
-          "image": "https://randomuser.me/api/portraits/men/11.jpg",
-          "content": "VibeTrans ❤️. The translation results are accurate, context-aware, and beautifully preserve the original meaning. It makes multilingual communication effortless."
-        },
-        "item-11": {
-          "name": "Eric Ampire",
-          "role": "@GoogleDevExpert for Android",
-          "image": "https://randomuser.me/api/portraits/men/12.jpg",
-          "content": "VibeTrans is the perfect solution for anyone who needs professional translation without language expertise or technical knowledge."
-        },
-        "item-12": {
-          "name": "Roland Tubonge",
-          "role": "Software Engineer",
-          "image": "https://randomuser.me/api/portraits/men/13.jpg",
-          "content": "VibeTrans is so powerful that even with limited language knowledge you can achieve professional translations. The results are truly impressive!"
+        "item-6": {
+          "name": "David Kim",
+          "role": "Travel Enthusiast",
+          "image": "https://randomuser.me/api/portraits/men/4.jpg",
+          "heading": "Essential for Travel",
+          "content": "VibeTrans has been my travel companion for months. The ability to quickly translate signs, menus, and conversations in real-time has made my international trips so much more enjoyable and stress-free.",
+          "rating": 4.9
         }
       }
-    },
-    "stats": {
-      "title": "VibeTrans in Numbers",
-      "subtitle": "Trusted by users worldwide",
-      "description": "VibeTrans delivers fast, accurate translations that break language barriers every day",
-      "items": {
-        "item-1": {
-          "title": "Languages Supported"
-        },
-        "item-2": {
-          "title": "Daily Translations"
-        },
-        "item-3": {
-          "title": "Translation Accuracy"
-        }
-      }
-    },
-    "calltoaction": {
-      "title": "Ready to Break Language Barriers?",
-      "description": "Start translating with VibeTrans today. Fast, accurate, and context-aware translations for over 100 languages. No sign-up required for basic features!",
-      "primaryButton": "Try VibeTrans Translator Now!",
-      "secondaryButton": "See Demo"
     },
     "examples": {
       "title": "Discover the Power of Seamless Language Translation with VibeTrans",
@@ -330,6 +291,12 @@
           "description": "Breaking Language Barriers. VibeTrans supports over 100 languages, including dialects and rare languages. Whether you need to translate for business, travel, or fun, VibeTrans has you covered."
         }
       ]
+    },
+    "calltoaction": {
+      "title": "Ready to Break Language Barriers?",
+      "description": "Start translating with VibeTrans today. Fast, accurate, and context-aware translations for over 100 languages. No sign-up required for basic features!",
+      "primaryButton": "Try VibeTrans Translator Now!",
+      "secondaryButton": "See Demo"
     }
   }
 }

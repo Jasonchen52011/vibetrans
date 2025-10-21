@@ -20,9 +20,11 @@ try {
   if (tool === 'creole-to-english') {
     expectedKey = 'CreoleToEnglishPage';
   } else {
-    expectedKey = tool.split('-').map(part =>
-      part.charAt(0).toUpperCase() + part.slice(1)
-    ).join('') + 'Page';
+    expectedKey =
+      tool
+        .split('-')
+        .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+        .join('') + 'Page';
   }
 
   console.log('🎯 期望的主键:', expectedKey);
@@ -38,13 +40,20 @@ try {
     } else {
       const testimonials = pageData.testimonials;
       console.log('✅ testimonials标题:', testimonials.title);
-      console.log('✅ testimonials项目数量:', Object.keys(testimonials.items).length);
+      console.log(
+        '✅ testimonials项目数量:',
+        Object.keys(testimonials.items).length
+      );
 
       // 检查前3个项目
       let validItems = 0;
       for (let i = 1; i <= 3; i++) {
         const key = 'item-' + i;
-        if (testimonials.items[key] && testimonials.items[key].name && testimonials.items[key].content) {
+        if (
+          testimonials.items[key] &&
+          testimonials.items[key].name &&
+          testimonials.items[key].content
+        ) {
           validItems++;
           console.log('✅ ' + key + ': ' + testimonials.items[key].name);
         }
@@ -59,7 +68,6 @@ try {
       }
     }
   }
-
 } catch (error) {
   console.log('❌ 错误:', error.message);
 }

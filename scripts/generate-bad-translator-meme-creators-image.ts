@@ -14,7 +14,8 @@ const OUTPUT_DIR = path.join(process.cwd(), 'public', 'images', 'docs');
 
 const imageTask = {
   filename: 'bad-translator-meme-creators.webp',
-  description: 'For Meme Creators and Influencers section - Bad Translator helps content creators generate viral funny phrases and trending content',
+  description:
+    'For Meme Creators and Influencers section - Bad Translator helps content creators generate viral funny phrases and trending content',
   prompt: `Create a vibrant and modern illustration showing a young content creator (meme creator/influencer) using Bad Translator tool on their laptop and smartphone. The scene should include:
 
 1. A trendy young person sitting at a desk with a laptop showing the Bad Translator interface
@@ -65,7 +66,9 @@ async function main() {
 
     console.log(`🔗 Generated URL: ${result.url}`);
     if (result.revisedPrompt) {
-      console.log(`📄 Revised prompt: ${result.revisedPrompt.substring(0, 100)}...`);
+      console.log(
+        `📄 Revised prompt: ${result.revisedPrompt.substring(0, 100)}...`
+      );
     }
     console.log(`🤖 Model used: ${result.modelUsed}`);
 
@@ -75,7 +78,6 @@ async function main() {
 
     console.log(`✅ Image generated successfully: ${imageTask.filename}`);
     console.log(`📁 Saved to: ${outputPath}`);
-
   } catch (error) {
     console.error('❌ Error generating image:', error);
     process.exit(1);

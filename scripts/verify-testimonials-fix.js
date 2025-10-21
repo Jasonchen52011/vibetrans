@@ -26,7 +26,7 @@ const pagesToVerify = [
   'pig-latin-translator',
   'samoan-to-english-translator',
   'verbose-generator',
-  'bad-translator'
+  'bad-translator',
 ];
 
 function verifyTestimonials(filePath) {
@@ -66,7 +66,7 @@ function verifyTestimonials(filePath) {
     const expectedRatings = {
       'item-1': 5.0,
       'item-2': 4.9,
-      'item-3': 4.7
+      'item-3': 4.7,
     };
 
     let allCorrect = true;
@@ -75,9 +75,13 @@ function verifyTestimonials(filePath) {
       if (items[itemKey]) {
         const actualRating = items[itemKey].rating;
         if (actualRating === expectedRating) {
-          console.log(`  ✅ ${itemKey}: ${items[itemKey].name} (评分: ${actualRating})`);
+          console.log(
+            `  ✅ ${itemKey}: ${items[itemKey].name} (评分: ${actualRating})`
+          );
         } else {
-          console.log(`  ❌ ${itemKey}: 评分不正确，期望${expectedRating}，实际${actualRating}`);
+          console.log(
+            `  ❌ ${itemKey}: 评分不正确，期望${expectedRating}，实际${actualRating}`
+          );
           allCorrect = false;
         }
       } else {
@@ -95,7 +99,6 @@ function verifyTestimonials(filePath) {
     }
 
     return allCorrect;
-
   } catch (error) {
     console.error(`  ❌ 验证失败: ${error.message}`);
     return false;
@@ -105,12 +108,13 @@ function verifyTestimonials(filePath) {
 function main() {
   console.log('🔍 开始验证testimonials修复结果...\n');
 
-  const messagesDir = '/Users/jason-chen/Downloads/project/vibetrans/messages/pages';
+  const messagesDir =
+    '/Users/jason-chen/Downloads/project/vibetrans/messages/pages';
   let successCount = 0;
   let failCount = 0;
   const problemPages = [];
 
-  pagesToVerify.forEach(page => {
+  pagesToVerify.forEach((page) => {
     const filePath = path.join(messagesDir, page, 'en.json');
 
     if (fs.existsSync(filePath)) {
@@ -137,7 +141,7 @@ function main() {
 
   if (problemPages.length > 0) {
     console.log(`\n❌ 有问题的页面:`);
-    problemPages.forEach(page => {
+    problemPages.forEach((page) => {
       console.log(`  - ${page}`);
     });
   } else {

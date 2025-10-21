@@ -10,7 +10,9 @@ console.log('🔍 测试Albanian-to-English Testimonials组件渲染...\n');
 
 // 1. 验证JSON数据结构
 console.log('1. 验证JSON数据结构:');
-const jsonContent = JSON.parse(fs.readFileSync('messages/pages/albanian-to-english/en.json', 'utf8'));
+const jsonContent = JSON.parse(
+  fs.readFileSync('messages/pages/albanian-to-english/en.json', 'utf8')
+);
 const testimonials = jsonContent.AlbanianToEnglishPage.testimonials;
 
 console.log('✅ testimonials标题:', testimonials.title);

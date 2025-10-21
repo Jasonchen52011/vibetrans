@@ -145,27 +145,27 @@ export default async function CuneiformTranslatorPage(
   // Fun Facts section
   const funFactsSection = {
     name: 'funfacts',
-    title: (t as any)('funfacts.title'),
+    title: (t as any)('funFacts.title'),
     items: [
       {
-        title: (t as any)('funfacts.items.0.title'),
-        description: (t as any)('funfacts.items.0.description'),
+        title: (t as any)('funFacts.items.0.title'),
+        description: (t as any)('funFacts.items.0.description'),
         image: {
           src:
-            (t as any)('funfacts.items.0.image') ||
+            (t as any)('funFacts.items.0.image') ||
             '/images/docs/ancient-written-law.webp',
-          alt: (t as any)('funfacts.items.0.imageAlt') || 'Ancient Written Law',
+          alt: (t as any)('funFacts.items.0.imageAlt') || 'Ancient Written Law',
         },
       },
       {
-        title: (t as any)('funfacts.items.1.title'),
-        description: (t as any)('funfacts.items.1.description'),
+        title: (t as any)('funFacts.items.1.title'),
+        description: (t as any)('funFacts.items.1.description'),
         image: {
           src:
-            (t as any)('funfacts.items.1.image') ||
+            (t as any)('funFacts.items.1.image') ||
             '/images/docs/multi-purpose-script.webp',
           alt:
-            (t as any)('funfacts.items.1.imageAlt') ||
+            (t as any)('funFacts.items.1.imageAlt') ||
             'Multi-Purpose Cuneiform Script',
         },
       },

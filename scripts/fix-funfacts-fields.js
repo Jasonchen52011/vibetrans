@@ -27,15 +27,22 @@ const TRANSLATORS = [
   'middle-english-translator',
   'minion-translator',
   'pig-latin-translator',
-  'verbose-generator'
+  'verbose-generator',
 ];
 
 console.log('🔧 修复funfacts字段名...\n');
 
 let fixedCount = 0;
 
-TRANSLATORS.forEach(translator => {
-  const messagePath = path.join(__dirname, '..', 'messages', 'pages', translator, 'en.json');
+TRANSLATORS.forEach((translator) => {
+  const messagePath = path.join(
+    __dirname,
+    '..',
+    'messages',
+    'pages',
+    translator,
+    'en.json'
+  );
 
   if (!fs.existsSync(messagePath)) {
     console.log(`❌ ${translator}: 消息文件不存在`);

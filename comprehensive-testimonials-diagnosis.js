@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 console.log('🔍 Albanian-to-English Testimonials 综合诊断报告\n');
-console.log('=' .repeat(60));
+console.log('='.repeat(60));
 
 // 1. JSON数据完整性检查
 console.log('\n1️⃣ JSON数据完整性检查');
@@ -61,7 +61,8 @@ console.log('\n2️⃣ 页面文件检查');
 console.log('-'.repeat(30));
 
 try {
-  const pagePath = 'src/app/[locale]/(marketing)/(pages)/albanian-to-english/page.tsx';
+  const pagePath =
+    'src/app/[locale]/(marketing)/(pages)/albanian-to-english/page.tsx';
   if (fs.existsSync(pagePath)) {
     console.log('✅ 页面文件存在:', pagePath);
 
@@ -79,7 +80,9 @@ try {
       console.log('✅ TestimonialsThreeColumnSection已使用');
 
       // 提取namespace
-      const namespaceMatch = pageContent.match(/TestimonialsThreeColumnSection namespace="([^"]+)"/);
+      const namespaceMatch = pageContent.match(
+        /TestimonialsThreeColumnSection namespace="([^"]+)"/
+      );
       if (namespaceMatch) {
         console.log('📝 namespace:', namespaceMatch[1]);
       }
@@ -98,7 +101,8 @@ console.log('\n3️⃣ 组件文件检查');
 console.log('-'.repeat(30));
 
 try {
-  const componentPath = 'src/components/blocks/testimonials/testimonials-three-column.tsx';
+  const componentPath =
+    'src/components/blocks/testimonials/testimonials-three-column.tsx';
   if (fs.existsSync(componentPath)) {
     console.log('✅ 组件文件存在:', componentPath);
 
@@ -128,7 +132,9 @@ console.log('\n4️⃣ 模拟组件渲染逻辑');
 console.log('-'.repeat(30));
 
 try {
-  const jsonContent = JSON.parse(fs.readFileSync('messages/pages/albanian-to-english/en.json', 'utf8'));
+  const jsonContent = JSON.parse(
+    fs.readFileSync('messages/pages/albanian-to-english/en.json', 'utf8')
+  );
   const testimonials = jsonContent.AlbanianToEnglishPage.testimonials;
 
   // 模拟组件逻辑

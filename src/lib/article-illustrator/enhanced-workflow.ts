@@ -17,8 +17,8 @@ import path from 'node:path';
 import type {
   ArticleSections,
   SectionType,
-} from '../src/lib/article-illustrator/types';
-import { generateArticleIllustrations } from '../src/lib/article-illustrator/workflow';
+} from './types';
+import { generateArticleIllustrations } from './workflow';
 
 interface WorkflowConfig {
   toolName: string;

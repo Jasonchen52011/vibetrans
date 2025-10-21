@@ -3,7 +3,9 @@
 import { useTranslations } from 'next-intl';
 import { useEffect } from 'react';
 
-export default function DebugTestimonials({ namespace = 'GenAlphaTranslatorPage.testimonials' }) {
+export default function DebugTestimonials({
+  namespace = 'GenAlphaTranslatorPage.testimonials',
+}) {
   const t = useTranslations(namespace as any);
 
   useEffect(() => {
@@ -29,8 +31,12 @@ export default function DebugTestimonials({ namespace = 'GenAlphaTranslatorPage.
         const key = `item-${i}`;
         const name = t(`items.${key}.name`, { default: `DEFAULT_${key}` });
         const role = t(`items.${key}.role`, { default: `DEFAULT_${key}` });
-        const heading = t(`items.${key}.heading`, { default: `DEFAULT_${key}` });
-        const content = t(`items.${key}.content`, { default: `DEFAULT_${key}` });
+        const heading = t(`items.${key}.heading`, {
+          default: `DEFAULT_${key}`,
+        });
+        const content = t(`items.${key}.content`, {
+          default: `DEFAULT_${key}`,
+        });
         const rating = String(t(`items.${key}.rating`, { default: 5 }));
 
         console.log(`${key}:`, {
@@ -38,7 +44,7 @@ export default function DebugTestimonials({ namespace = 'GenAlphaTranslatorPage.
           role,
           heading,
           content: content?.substring(0, 50) + '...',
-          rating
+          rating,
         });
       }
     } catch (error) {
@@ -48,18 +54,20 @@ export default function DebugTestimonials({ namespace = 'GenAlphaTranslatorPage.
   }, [t, namespace]);
 
   return (
-    <div style={{
-      position: 'fixed',
-      top: '10px',
-      right: '10px',
-      background: 'rgba(0,0,0,0.8)',
-      color: 'white',
-      padding: '10px',
-      borderRadius: '5px',
-      fontSize: '12px',
-      zIndex: 9999,
-      maxWidth: '300px'
-    }}>
+    <div
+      style={{
+        position: 'fixed',
+        top: '10px',
+        right: '10px',
+        background: 'rgba(0,0,0,0.8)',
+        color: 'white',
+        padding: '10px',
+        borderRadius: '5px',
+        fontSize: '12px',
+        zIndex: 9999,
+        maxWidth: '300px',
+      }}
+    >
       <h4>Debug Testimonials</h4>
       <p>Namespace: {namespace}</p>
       <p>Check console for details</p>

@@ -5,12 +5,13 @@ console.log('🔍 最终检查所有翻译工具页面的用户评论...\n');
 
 // 获取所有工具页面目录
 const toolsDir = 'messages/pages';
-const tools = fs.readdirSync(toolsDir)
-  .filter(dir => {
+const tools = fs
+  .readdirSync(toolsDir)
+  .filter((dir) => {
     const dirPath = path.join(toolsDir, dir);
     return fs.statSync(dirPath).isDirectory();
   })
-  .filter(dir => dir.includes('-translator') || dir.includes('-generator'));
+  .filter((dir) => dir.includes('-translator') || dir.includes('-generator'));
 
 console.log('📋 发现的工具页面:', tools.length, '个');
 console.log(tools.join(', '));
@@ -20,14 +21,14 @@ const results = {
   total: tools.length,
   correct: 0,
   issues: [],
-  details: []
+  details: [],
 };
 
-tools.forEach(tool => {
+tools.forEach((tool) => {
   const jsonPath = path.join(toolsDir, tool, 'en.json');
   const issue = {
     tool: tool,
-    problems: []
+    problems: [],
   };
 
   try {
@@ -41,9 +42,11 @@ tools.forEach(tool => {
     } else if (tool === 'albanian-to-english') {
       expectedKey = 'AlbanianToEnglishPage';
     } else {
-      expectedKey = tool.split('-').map(part =>
-        part.charAt(0).toUpperCase() + part.slice(1)
-      ).join('') + 'Page';
+      expectedKey =
+        tool
+          .split('-')
+          .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+          .join('') + 'Page';
     }
 
     console.log('🔍 检查 ' + tool + ' (期望键: ' + expectedKey + ')');
@@ -73,7 +76,9 @@ tools.forEach(tool => {
           if (itemCount === 0) {
             issue.problems.push('❌ testimonials.items为空');
           } else {
-            console.log('✅ ' + tool + ': testimonials有 ' + itemCount + ' 个评论');
+            console.log(
+              '✅ ' + tool + ': testimonials有 ' + itemCount + ' 个评论'
+            );
 
             // 检查前3个项目
             let validItems = 0;
@@ -95,7 +100,8 @@ tools.forEach(tool => {
       }
 
       // 检查页面文件是否存在
-      const pagePath = 'src/app/[locale]/(marketing)/(pages)/' + tool + '/page.tsx';
+      const pagePath =
+        'src/app/[locale]/(marketing)/(pages)/' + tool + '/page.tsx';
       if (!fs.existsSync(pagePath)) {
         issue.problems.push('❌ 缺少页面文件: page.tsx');
       }
@@ -107,7 +113,7 @@ tools.forEach(tool => {
   if (issue.problems.length > 0) {
     results.issues.push(issue);
     console.log('❌ ' + tool + ':');
-    issue.problems.forEach(problem => console.log('   ' + problem));
+    issue.problems.forEach((problem) => console.log('   ' + problem));
   } else {
     console.log('✅ ' + tool + ': 所有检查通过');
   }
@@ -123,9 +129,9 @@ console.log('   有问题: ' + results.issues.length + ' 个工具');
 
 if (results.issues.length > 0) {
   console.log('\n\n🔴 需要修复的问题:');
-  results.issues.forEach(issue => {
+  results.issues.forEach((issue) => {
     console.log('\n📁 ' + issue.tool + ':');
-    issue.problems.forEach(problem => console.log('   ' + problem));
+    issue.problems.forEach((problem) => console.log('   ' + problem));
   });
 
   console.log('\n\n💡 修复建议:');

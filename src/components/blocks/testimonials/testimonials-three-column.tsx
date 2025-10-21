@@ -58,7 +58,7 @@ export default function TestimonialsThreeColumnSection({
           let ratingValue = 5; // Default rating
           try {
             const ratingStr = t(`items.${key}.rating`, { default: '5.0' });
-            ratingValue = parseFloat(ratingStr) || 5;
+            ratingValue = Number.parseFloat(ratingStr) || 5;
           } catch (e) {
             ratingValue = 5;
           }
@@ -119,7 +119,7 @@ export default function TestimonialsThreeColumnSection({
                       <>
                         {[...Array(5)].map((_, i) => {
                           let starClass = 'fill-gray-200 text-gray-300';
-                          let starStyle = {};
+                          const starStyle = {};
 
                           if (i < displayRating) {
                             // Full star

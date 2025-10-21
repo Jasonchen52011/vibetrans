@@ -245,10 +245,11 @@ export default function CuneiformTranslatorTool({
             onChange={(e) => setScript(e.target.value as CuneiformScript)}
             className="px-3 py-1 pr-8 border border-gray-300 dark:border-zinc-600 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-zinc-700 text-gray-700 dark:text-gray-200 text-sm appearance-none relative"
             style={{
-              backgroundImage: "url('data:image/svg+xml;charset=utf-8,%3Csvg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 20 20\"%3E%3Cpath stroke=\"%236b7280\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\" d=\"M6 8l4 4 4-4\"/%3E%3C/svg%3E')",
+              backgroundImage:
+                'url(\'data:image/svg+xml;charset=utf-8,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20"%3E%3Cpath stroke="%236b7280" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 8l4 4 4-4"/%3E%3C/svg%3E\')',
               backgroundSize: '1.5em 1.5em',
               backgroundRepeat: 'no-repeat',
-              backgroundPosition: 'right 0.5rem center'
+              backgroundPosition: 'right 0.5rem center',
             }}
           >
             <option value="sumerian">Sumerian</option>
@@ -280,7 +281,7 @@ export default function CuneiformTranslatorTool({
               onChange={(e) => setInputText(e.target.value)}
               placeholder={getInputPlaceholder()}
               className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent resize-none text-gray-700 dark:text-gray-200 dark:bg-zinc-700"
-              aria-label={pageData.tool.inputLabel || "Input text"}
+              aria-label={pageData.tool.inputLabel || 'Input text'}
             />
 
             {/* File Upload */}
@@ -339,7 +340,7 @@ export default function CuneiformTranslatorTool({
                     setInputText('');
                   }}
                   className="ml-auto text-gray-500 hover:text-red-500 dark:text-gray-400 dark:hover:text-red-400"
-                  aria-label={pageData.tool.removeFileTooltip || "Remove file"}
+                  aria-label={pageData.tool.removeFileTooltip || 'Remove file'}
                 >
                   <svg
                     className="w-4 h-4"
@@ -379,7 +380,7 @@ export default function CuneiformTranslatorTool({
                   <button
                     onClick={handleCopy}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
-                    title={pageData.tool.copyTooltip || "Copy"}
+                    title={pageData.tool.copyTooltip || 'Copy'}
                   >
                     <svg
                       className="w-5 h-5"
@@ -398,7 +399,7 @@ export default function CuneiformTranslatorTool({
                   <button
                     onClick={handleDownload}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
-                    title={pageData.tool.downloadTooltip || "Download"}
+                    title={pageData.tool.downloadTooltip || 'Download'}
                   >
                     <svg
                       className="w-5 h-5"

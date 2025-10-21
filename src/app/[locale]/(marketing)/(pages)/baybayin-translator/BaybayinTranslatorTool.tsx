@@ -172,7 +172,9 @@ export default function BaybayinTranslatorTool({
     if (direction === 'auto') {
       return pageData.tool.inputLabel;
     }
-    return direction === 'toBaybayin' ? 'English Text' : pageData.tool.baybayinLabel;
+    return direction === 'toBaybayin'
+      ? 'English Text'
+      : pageData.tool.baybayinLabel;
   };
 
   const getOutputLabel = () => {
@@ -216,7 +218,7 @@ export default function BaybayinTranslatorTool({
               onChange={(e) => setInputText(e.target.value)}
               placeholder={getInputPlaceholder()}
               className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent resize-none text-gray-700 dark:text-gray-200 dark:bg-zinc-700"
-              aria-label={pageData.tool.inputLabel || "Input text"}
+              aria-label={pageData.tool.inputLabel || 'Input text'}
             />
 
             {/* File Upload */}
@@ -275,7 +277,7 @@ export default function BaybayinTranslatorTool({
                     setInputText('');
                   }}
                   className="ml-auto text-gray-500 hover:text-red-500 dark:text-gray-400 dark:hover:text-red-400"
-                  aria-label={pageData.tool.removeFileTooltip || "Remove file"}
+                  aria-label={pageData.tool.removeFileTooltip || 'Remove file'}
                 >
                   <svg
                     className="w-4 h-4"
@@ -309,7 +311,10 @@ export default function BaybayinTranslatorTool({
                   ? 'Switch to Baybayin → English'
                   : 'Switch to English → Baybayin'
               }
-              aria-label={pageData.tool.toggleDirectionTooltip || "Toggle translation direction"}
+              aria-label={
+                pageData.tool.toggleDirectionTooltip ||
+                'Toggle translation direction'
+              }
             >
               <svg
                 className="w-6 h-6"
@@ -347,7 +352,7 @@ export default function BaybayinTranslatorTool({
                   <button
                     onClick={handleCopy}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
-                    title={pageData.tool.copyTooltip || "Copy"}
+                    title={pageData.tool.copyTooltip || 'Copy'}
                   >
                     <svg
                       className="w-5 h-5"
@@ -366,7 +371,7 @@ export default function BaybayinTranslatorTool({
                   <button
                     onClick={handleDownload}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
-                    title={pageData.tool.downloadTooltip || "Download"}
+                    title={pageData.tool.downloadTooltip || 'Download'}
                   >
                     <svg
                       className="w-5 h-5"

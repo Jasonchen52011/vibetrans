@@ -26,7 +26,7 @@ const pagesToFix = [
   'pig-latin-translator',
   'samoan-to-english-translator',
   'verbose-generator',
-  'bad-translator'
+  'bad-translator',
 ];
 
 function fixTestimonials(filePath) {
@@ -76,7 +76,9 @@ function fixTestimonials(filePath) {
           newItems[itemKey].rating = 4.7; // item-3 改为4.7
         }
 
-        console.log(`  ✅ 保留 ${itemKey}: ${newItems[itemKey].name} (评分: ${newItems[itemKey].rating})`);
+        console.log(
+          `  ✅ 保留 ${itemKey}: ${newItems[itemKey].name} (评分: ${newItems[itemKey].rating})`
+        );
       }
     });
 
@@ -89,7 +91,6 @@ function fixTestimonials(filePath) {
 
     console.log(`  ✅ 修复完成: 保留3个评论，删除${originalCount - 3}个评论`);
     return true;
-
   } catch (error) {
     console.error(`  ❌ 处理失败: ${error.message}`);
     return false;
@@ -99,11 +100,12 @@ function fixTestimonials(filePath) {
 function main() {
   console.log('🚀 开始批量修复testimonials评论...\n');
 
-  const messagesDir = '/Users/jason-chen/Downloads/project/vibetrans/messages/pages';
+  const messagesDir =
+    '/Users/jason-chen/Downloads/project/vibetrans/messages/pages';
   let successCount = 0;
   let failCount = 0;
 
-  pagesToFix.forEach(page => {
+  pagesToFix.forEach((page) => {
     const filePath = path.join(messagesDir, page, 'en.json');
 
     if (fs.existsSync(filePath)) {

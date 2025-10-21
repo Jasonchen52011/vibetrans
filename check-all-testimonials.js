@@ -30,12 +30,12 @@ const toolPages = [
   'pig-latin-translator',
   'samoan-to-english-translator',
   'verbose-generator',
-  'bad-translator'
+  'bad-translator',
 ];
 
 const pagesToFix = [];
 
-toolPages.forEach(page => {
+toolPages.forEach((page) => {
   try {
     const jsonPath = path.join(__dirname, 'messages/pages', page, 'en.json');
 
@@ -51,9 +51,12 @@ toolPages.forEach(page => {
     let namespace = null;
 
     const possibleNamespaces = [
-      `${page.split('-').map(part => part.charAt(0).toUpperCase() + part.slice(1)).join('')}Page`,
+      `${page
+        .split('-')
+        .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+        .join('')}Page`,
       `${page.replace(/-/g, '')}Page`,
-      `${page.replace(/-/g, '')}`
+      `${page.replace(/-/g, '')}`,
     ];
 
     // 特殊处理一些页面
@@ -79,7 +82,7 @@ toolPages.forEach(page => {
     }
 
     const itemCount = Object.keys(testimonials).length;
-    const ratings = Object.values(testimonials).map(item => item.rating || 5);
+    const ratings = Object.values(testimonials).map((item) => item.rating || 5);
 
     console.log(`${page}:`);
     console.log(`  评论数量: ${itemCount}`);
@@ -91,7 +94,7 @@ toolPages.forEach(page => {
       issues.push(`需要删除 ${itemCount - 3} 个评论`);
     }
 
-    const allFive = ratings.every(r => r === 5);
+    const allFive = ratings.every((r) => r === 5);
     if (allFive) {
       issues.push('所有评分都是5.0，需要调整到4.6-5.0之间');
     }
@@ -104,7 +107,6 @@ toolPages.forEach(page => {
     }
 
     console.log('');
-
   } catch (error) {
     console.log(`❌ ${page}: 读取失败 - ${error.message}`);
     pagesToFix.push({ page, issues: ['JSON读取失败'] });

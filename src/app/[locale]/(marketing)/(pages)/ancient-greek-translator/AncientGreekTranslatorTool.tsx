@@ -400,7 +400,9 @@ export default function AncientGreekTranslatorTool({
                     <p className="text-red-600 dark:text-red-400">{error}</p>
                   ) : outputText ? (
                     <div className="w-full">
-                      <p className="text-lg whitespace-pre-wrap">{outputText}</p>
+                      <p className="text-lg whitespace-pre-wrap">
+                        {outputText}
+                      </p>
                       {pronunciation && (
                         <div className="mt-4 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-md">
                           <h4 className="font-semibold text-blue-900 dark:text-blue-100 mb-1">

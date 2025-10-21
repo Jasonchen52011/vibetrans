@@ -129,60 +129,6 @@
           "role": "Medical Professional",
           "content": "Medical jargon can be hard to explain to patients. Dumb It Down AI made it so much easier to simplify complex terms for better patient communication. Highly recommend!",
           "rating": "5.0"
-        },
-        "item-4": {
-          "name": "John Marshall",
-          "role": "Developer",
-          "content": "I used this tool to simplify technical documentation for my team. It saved time and made understanding complex API references a lot easier.",
-          "rating": "5.0"
-        },
-        "item-5": {
-          "name": "Karen Smith",
-          "role": "Teacher",
-          "content": "Teaching students complicated subjects can be tough. This tool has made simplifying reading materials a breeze! Now, my students can easily grasp concepts.",
-          "rating": "5.0"
-        },
-        "item-6": {
-          "name": "Michael Johnson",
-          "role": "Project Manager",
-          "content": "Dumb It Down AI helped me simplify reports and make them easier for the team to understand. It's a must-have tool for anyone in management.",
-          "rating": "5.0"
-        },
-        "item-7": {
-          "name": "Lisa Chen",
-          "role": "Research Scientist",
-          "content": "Research papers can be incredibly dense. This tool helps me simplify complex findings for presentations and non-specialist audiences. Excellent!",
-          "rating": "5.0"
-        },
-        "item-8": {
-          "name": "David Martinez",
-          "role": "Technical Writer",
-          "content": "As a technical writer, I need to make complex concepts accessible. Dumb It Down AI is perfect for creating user-friendly documentation from technical specs.",
-          "rating": "5.0"
-        },
-        "item-9": {
-          "name": "Jennifer Williams",
-          "role": "Business Analyst",
-          "content": "Financial reports and business documents can be full of jargon. This tool helps me communicate insights clearly to all stakeholders. Highly effective!",
-          "rating": "5.0"
-        },
-        "item-10": {
-          "name": "Robert Taylor",
-          "role": "Graduate Student",
-          "content": "Working on my thesis means reading tons of complex papers. This tool helps me break down dense academic writing into digestible summaries. A lifesaver!",
-          "rating": "5.0"
-        },
-        "item-11": {
-          "name": "Amanda Lee",
-          "role": "HR Manager",
-          "content": "Policy documents and compliance materials can be overwhelming. Dumb It Down AI makes them accessible for all employees. Great for internal communications!",
-          "rating": "5.0"
-        },
-        "item-12": {
-          "name": "Thomas Brown",
-          "role": "Consultant",
-          "content": "I work with clients from various backgrounds. This tool helps me translate technical recommendations into language everyone understands. Invaluable for client presentations!",
-          "rating": "5.0"
         }
       }
     },

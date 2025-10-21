@@ -27,7 +27,7 @@ const TRANSLATORS = [
   'middle-english-translator',
   'minion-translator',
   'pig-latin-translator',
-  'verbose-generator'
+  'verbose-generator',
 ];
 
 // 基础工具字段
@@ -43,7 +43,7 @@ const BASE_TOOL_FIELDS = {
   error: 'An error occurred, please try again',
   noInput: 'Please enter some text',
   downloadButton: 'Download',
-  resetButton: 'Reset'
+  resetButton: 'Reset',
 };
 
 // 工具提示字段
@@ -57,18 +57,18 @@ const TOOLTIP_FIELDS = {
   toggleDirectionTooltip: 'Toggle translation direction',
   copyResultTooltip: 'Copy result',
   downloadResultTooltip: 'Download result',
-  playSoundTooltip: 'Play sound'
+  playSoundTooltip: 'Play sound',
 };
 
 // 特定翻译器字段
 const SPECIFIC_FIELDS = {
   'al-bhed-translator': {
     alBhedLabel: 'Al Bhed',
-    alBhedPlaceholder: 'Type Al Bhed text here...'
+    alBhedPlaceholder: 'Type Al Bhed text here...',
   },
   'albanian-to-english': {
     albanianLabel: 'Albanian',
-    englishLabel: 'English'
+    englishLabel: 'English',
   },
   'alien-text-generator': {
     alienLabel: 'Alien Language',
@@ -77,9 +77,9 @@ const SPECIFIC_FIELDS = {
       humor: 'Humor',
       sci_fi: 'Sci-Fi',
       robot: 'Robot',
-      emoji: 'Emoji'
+      emoji: 'Emoji',
     },
-    generateButton: 'Generate'
+    generateButton: 'Generate',
   },
   'ancient-greek-translator': {
     greekLabel: 'Ancient Greek',
@@ -88,18 +88,18 @@ const SPECIFIC_FIELDS = {
     dialects: {
       attic: 'Attic Greek',
       koine: 'Koine Greek',
-      byzantine: 'Byzantine Greek'
+      byzantine: 'Byzantine Greek',
     },
     pronunciationLabel: 'Pronunciation',
-    culturalContextLabel: 'Cultural Context'
+    culturalContextLabel: 'Cultural Context',
   },
   'aramaic-translator': {
     aramaicLabel: 'Aramaic',
-    aramaicPlaceholder: 'Type Aramaic text here...'
+    aramaicPlaceholder: 'Type Aramaic text here...',
   },
   'baby-translator': {
     babyLabel: 'Baby Language',
-    babyPlaceholder: 'Type baby text here...'
+    babyPlaceholder: 'Type baby text here...',
   },
   'bad-translator': {
     styleLabel: 'Translation Style',
@@ -107,29 +107,29 @@ const SPECIFIC_FIELDS = {
       humor: 'Humor',
       absurd: 'Absurd',
       funny: 'Funny',
-      chaos: 'Chaos'
+      chaos: 'Chaos',
     },
-    iterationsLabel: 'Translation Rounds'
+    iterationsLabel: 'Translation Rounds',
   },
   'baybayin-translator': {
     baybayinLabel: 'Baybayin',
-    baybayinPlaceholder: 'Type Baybayin text here...'
+    baybayinPlaceholder: 'Type Baybayin text here...',
   },
   'cantonese-translator': {
     cantoneseLabel: 'Cantonese',
-    cantonesePlaceholder: 'Type Cantonese text here...'
+    cantonesePlaceholder: 'Type Cantonese text here...',
   },
   'chinese-to-english-translator': {
     chineseLabel: 'Chinese',
     englishLabel: 'English',
     chinesePlaceholder: 'Type Chinese text here...',
-    englishPlaceholder: 'Type English text here...'
+    englishPlaceholder: 'Type English text here...',
   },
   'creole-to-english-translator': {
     creoleLabel: 'Creole',
     englishLabel: 'English',
     creolePlaceholder: 'Type Creole text here...',
-    englishPlaceholder: 'Type English text here...'
+    englishPlaceholder: 'Type English text here...',
   },
   'cuneiform-translator': {
     cuneiformLabel: 'Cuneiform',
@@ -141,68 +141,75 @@ const SPECIFIC_FIELDS = {
       hittite: 'Hittite (1600-1178 BCE)',
       elamite: 'Elamite (2700-539 BCE)',
       old_persian: 'Old Persian (600-330 BCE)',
-      ugaritic: 'Ugaritic (1450-1200 BCE)'
-    }
+      ugaritic: 'Ugaritic (1450-1200 BCE)',
+    },
   },
   'dog-translator': {
     dogLabel: 'Dog Language',
-    dogPlaceholder: 'Type dog text here...'
+    dogPlaceholder: 'Type dog text here...',
   },
   'esperanto-translator': {
     esperantoLabel: 'Esperanto',
-    esperantoPlaceholder: 'Type Esperanto text here...'
+    esperantoPlaceholder: 'Type Esperanto text here...',
   },
   'gaster-translator': {
     gasterLabel: 'Wingdings',
-    gasterPlaceholder: 'Type Wingdings text here...'
+    gasterPlaceholder: 'Type Wingdings text here...',
   },
   'gen-alpha-translator': {
     genAlphaLabel: 'Gen Alpha',
-    genAlphaPlaceholder: 'Type Gen Alpha text here...'
+    genAlphaPlaceholder: 'Type Gen Alpha text here...',
   },
   'gen-z-translator': {
     genZLabel: 'Gen Z',
-    genZPlaceholder: 'Type Gen Z text here...'
+    genZPlaceholder: 'Type Gen Z text here...',
   },
   'gibberish-translator': {
     gibberishLabel: 'Gibberish',
-    gibberishPlaceholder: 'Type gibberish text here...'
+    gibberishPlaceholder: 'Type gibberish text here...',
   },
   'high-valyrian-translator': {
     highValyrianLabel: 'High Valyrian',
-    highValyrianPlaceholder: 'Type High Valyrian text here...'
+    highValyrianPlaceholder: 'Type High Valyrian text here...',
   },
   'ivr-translator': {
     ivrLabel: 'IVR Script',
-    ivrPlaceholder: 'Type IVR script text here...'
+    ivrPlaceholder: 'Type IVR script text here...',
   },
   'middle-english-translator': {
     middleEnglishLabel: 'Middle English',
-    middleEnglishPlaceholder: 'Type Middle English text here...'
+    middleEnglishPlaceholder: 'Type Middle English text here...',
   },
   'minion-translator': {
     minionLabel: 'Minion Language',
-    minionPlaceholder: 'Type Minion text here...'
+    minionPlaceholder: 'Type Minion text here...',
   },
   'pig-latin-translator': {
     pigLatinLabel: 'Pig Latin',
-    pigLatinPlaceholder: 'Type Pig Latin text here...'
+    pigLatinPlaceholder: 'Type Pig Latin text here...',
   },
   'verbose-generator': {
     styleLabel: 'Style',
     styles: {
       academic: 'Academic',
     },
-    generateButton: 'Generate'
-  }
+    generateButton: 'Generate',
+  },
 };
 
 console.log('🔧 完整修复所有翻译器的代码耦合问题...\n');
 
 let totalFixed = 0;
 
-TRANSLATORS.forEach(translator => {
-  const messagePath = path.join(__dirname, '..', 'messages', 'pages', translator, 'en.json');
+TRANSLATORS.forEach((translator) => {
+  const messagePath = path.join(
+    __dirname,
+    '..',
+    'messages',
+    'pages',
+    translator,
+    'en.json'
+  );
 
   if (!fs.existsSync(messagePath)) {
     console.log(`❌ ${translator}: 消息文件不存在`);
@@ -275,14 +282,17 @@ TRANSLATORS.forEach(translator => {
       data[pageKey].testimonials = {
         title: 'What Our Users Are Saying',
         subtitle: 'Real feedback from real users',
-        items: {}
+        items: {},
       };
     }
 
     // 确保所有testimonials有rating字段
     if (data[pageKey].testimonials && data[pageKey].testimonials.items) {
-      Object.keys(data[pageKey].testimonials.items).forEach(key => {
-        if (data[pageKey].testimonials.items[key] && !data[pageKey].testimonials.items[key].rating) {
+      Object.keys(data[pageKey].testimonials.items).forEach((key) => {
+        if (
+          data[pageKey].testimonials.items[key] &&
+          !data[pageKey].testimonials.items[key].rating
+        ) {
           data[pageKey].testimonials.items[key].rating = 5;
           totalFixed++;
         }
@@ -291,7 +301,9 @@ TRANSLATORS.forEach(translator => {
 
     // 保存文件
     fs.writeFileSync(messagePath, JSON.stringify(data, null, 2));
-    console.log(`✅ ${translator}: 修复完成 (${Object.keys(tool).length} 个字段)`);
+    console.log(
+      `✅ ${translator}: 修复完成 (${Object.keys(tool).length} 个字段)`
+    );
   } catch (error) {
     console.log(`❌ ${translator}: 修复失败 - ${error.message}`);
   }

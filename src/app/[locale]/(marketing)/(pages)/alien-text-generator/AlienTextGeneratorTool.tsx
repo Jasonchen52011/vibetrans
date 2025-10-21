@@ -176,10 +176,11 @@ export default function AlienTextGeneratorTool({
             onChange={(e) => setSelectedStyle(e.target.value as AlienStyle)}
             className="w-full md:w-auto px-4 py-2 pr-8 border border-gray-300 dark:border-zinc-600 rounded-md bg-white dark:bg-zinc-700 text-gray-700 dark:text-gray-200 focus:ring-2 focus:ring-primary focus:border-transparent appearance-none relative"
             style={{
-              backgroundImage: "url('data:image/svg+xml;charset=utf-8,%3Csvg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 20 20\"%3E%3Cpath stroke=\"%236b7280\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\" d=\"M6 8l4 4 4-4\"/%3E%3C/svg%3E')",
+              backgroundImage:
+                'url(\'data:image/svg+xml;charset=utf-8,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20"%3E%3Cpath stroke="%236b7280" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 8l4 4 4-4"/%3E%3C/svg%3E\')',
               backgroundSize: '1.5em 1.5em',
               backgroundRepeat: 'no-repeat',
-              backgroundPosition: 'right 0.5rem center'
+              backgroundPosition: 'right 0.5rem center',
             }}
           >
             {alienStyles.map((style) => (
@@ -201,7 +202,7 @@ export default function AlienTextGeneratorTool({
               onChange={(e) => setInputText(e.target.value)}
               placeholder={pageData.tool.inputPlaceholder}
               className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent resize-none text-gray-700 dark:text-gray-200 dark:bg-zinc-700"
-              aria-label={pageData.tool.inputLabel || "Input text"}
+              aria-label={pageData.tool.inputLabel || 'Input text'}
             />
 
             {/* File Upload */}
@@ -259,7 +260,9 @@ export default function AlienTextGeneratorTool({
                       setInputText('');
                     }}
                     className="ml-auto text-gray-500 hover:text-red-500 dark:text-gray-400 dark:hover:text-red-400"
-                    aria-label={pageData.tool.removeFileTooltip || "Remove file"}
+                    aria-label={
+                      pageData.tool.removeFileTooltip || 'Remove file'
+                    }
                   >
                     <svg
                       className="w-4 h-4"
@@ -293,8 +296,10 @@ export default function AlienTextGeneratorTool({
                   <button
                     onClick={handleCopy}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
-                    title={pageData.tool.copyTooltip || "Copy"}
-                    aria-label={pageData.tool.copyResultTooltip || "Copy result"}
+                    title={pageData.tool.copyTooltip || 'Copy'}
+                    aria-label={
+                      pageData.tool.copyResultTooltip || 'Copy result'
+                    }
                   >
                     <svg
                       className="w-5 h-5"
@@ -313,8 +318,10 @@ export default function AlienTextGeneratorTool({
                   <button
                     onClick={handleDownload}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
-                    title={pageData.tool.downloadTooltip || "Download"}
-                    aria-label={pageData.tool.downloadResultTooltip || "Download result"}
+                    title={pageData.tool.downloadTooltip || 'Download'}
+                    aria-label={
+                      pageData.tool.downloadResultTooltip || 'Download result'
+                    }
                   >
                     <svg
                       className="w-5 h-5"
@@ -369,7 +376,7 @@ export default function AlienTextGeneratorTool({
           <button
             onClick={handleReset}
             className="px-6 py-3 bg-gray-200 dark:bg-zinc-600 hover:bg-gray-300 dark:hover:bg-zinc-500 text-gray-800 dark:text-gray-100 font-semibold rounded-lg shadow-md transition-colors"
-            title={pageData.tool.resetTooltip || "Reset"}
+            title={pageData.tool.resetTooltip || 'Reset'}
           >
             <svg
               className="w-5 h-5 inline-block mr-2"

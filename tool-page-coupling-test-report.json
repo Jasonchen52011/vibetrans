@@ -61,9 +61,7 @@
     },
     {
       "name": "dog-translator",
-      "jsonIssues": [
-        "⚠️  tool缺少uploadButton字段"
-      ],
+      "jsonIssues": ["⚠️  tool缺少uploadButton字段"],
       "componentIssues": [
         "⚠️  组件中未找到pageData.funFacts引用",
         "⚠️  组件中未找到pageData.highlights引用"

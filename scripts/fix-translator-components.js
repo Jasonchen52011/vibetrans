@@ -26,43 +26,49 @@ const translators = [
   'middle-english-translator',
   'minion-translator',
   'pig-latin-translator',
-  'verbose-generator'
+  'verbose-generator',
 ];
 
 // 需要替换的硬编码文本映射
 const hardcodedReplacements = [
   {
     pattern: /aria-label="Input text"/g,
-    replacement: 'aria-label={pageData.tool.inputLabel || "Input text"}'
+    replacement: 'aria-label={pageData.tool.inputLabel || "Input text"}',
   },
   {
     pattern: /title="Copy"/g,
-    replacement: 'title={pageData.tool.copyTooltip || "Copy"}'
+    replacement: 'title={pageData.tool.copyTooltip || "Copy"}',
   },
   {
     pattern: /title="Download"/g,
-    replacement: 'title={pageData.tool.downloadTooltip || "Download"}'
+    replacement: 'title={pageData.tool.downloadTooltip || "Download"}',
   },
   {
     pattern: /title="Reset"/g,
-    replacement: 'title={pageData.tool.resetTooltip || "Reset"}'
+    replacement: 'title={pageData.tool.resetTooltip || "Reset"}',
   },
   {
     pattern: /placeholder="Enter your text here\.\.\."/g,
-    replacement: 'placeholder={pageData.tool.inputPlaceholder || "Enter your text here..."}'
+    replacement:
+      'placeholder={pageData.tool.inputPlaceholder || "Enter your text here..."}',
   },
   {
     pattern: /placeholder="Translation will appear here"/g,
-    replacement: 'placeholder={pageData.tool.outputPlaceholder || "Translation will appear here"}'
+    replacement:
+      'placeholder={pageData.tool.outputPlaceholder || "Translation will appear here"}',
   },
   {
     pattern: /placeholder="Type or paste your text here\.\.\."/g,
-    replacement: 'placeholder={pageData.tool.inputPlaceholder || "Type or paste your text here..."}'
-  }
+    replacement:
+      'placeholder={pageData.tool.inputPlaceholder || "Type or paste your text here..."}',
+  },
 ];
 
 function fixTranslatorComponent(translatorName) {
-  const filePath = path.join(__dirname, `../src/app/[locale]/(marketing)/(pages)/${translatorName}/${getComponentName(translatorName)}.tsx`);
+  const filePath = path.join(
+    __dirname,
+    `../src/app/[locale]/(marketing)/(pages)/${translatorName}/${getComponentName(translatorName)}.tsx`
+  );
 
   if (!fs.existsSync(filePath)) {
     console.log(`组件文件不存在: ${filePath}`);
@@ -85,13 +91,13 @@ function fixTranslatorComponent(translatorName) {
     const hardcodedPatterns = [
       { pattern: /aria-label="[^"]*"/g, type: 'aria-label' },
       { pattern: /title="[^"]*"/g, type: 'title' },
-      { pattern: /placeholder="[^"]*"/g, type: 'placeholder' }
+      { pattern: /placeholder="[^"]*"/g, type: 'placeholder' },
     ];
 
     hardcodedPatterns.forEach(({ pattern, type }) => {
       const matches = content.match(pattern);
       if (matches) {
-        matches.forEach(match => {
+        matches.forEach((match) => {
           // 检查是否已经被修复（包含 pageData）
           if (!match.includes('pageData.tool.') && !match.includes('||')) {
             console.log(`  发现未修复的 ${type}: ${match}`);
@@ -108,7 +114,6 @@ function fixTranslatorComponent(translatorName) {
       console.log(`- 组件无需修复: ${translatorName}`);
       return false;
     }
-
   } catch (error) {
     console.error(`错误处理组件 ${translatorName}:`, error.message);
     return false;
@@ -141,12 +146,16 @@ function getComponentName(translatorName) {
     'middle-english-translator': 'MiddleEnglishTranslatorTool',
     'minion-translator': 'MinionTranslatorTool',
     'pig-latin-translator': 'PigLatinTranslatorTool',
-    'verbose-generator': 'VerboseGeneratorTool'
+    'verbose-generator': 'VerboseGeneratorTool',
   };
 
-  return nameMap[translatorName] || `${translatorName.split('-').map(word =>
-    word.charAt(0).toUpperCase() + word.slice(1)
-  ).join('')}Tool`;
+  return (
+    nameMap[translatorName] ||
+    `${translatorName
+      .split('-')
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join('')}Tool`
+  );
 }
 
 // 主函数
@@ -154,9 +163,9 @@ function main() {
   console.log('开始修复翻译器组件文件...\n');
 
   let fixedCount = 0;
-  let totalCount = translators.length;
+  const totalCount = translators.length;
 
-  translators.forEach(translator => {
+  translators.forEach((translator) => {
     if (fixTranslatorComponent(translator)) {
       fixedCount++;
     }

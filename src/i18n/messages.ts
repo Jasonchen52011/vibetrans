@@ -39,7 +39,7 @@ const importLocale = async (locale: Locale): Promise<Messages> => {
     `../../messages/pages/gen-alpha-translator/${locale}.json`
   );
   const dumbItDownPages = await import(
-    `../../messages/pages/dumb-it-down/${locale}.json`
+    `../../messages/pages/dumb-it-down-ai/${locale}.json`
   );
   const badTranslatorPages = await import(
     `../../messages/pages/bad-translator/${locale}.json`

@@ -39,21 +39,27 @@ export default function TestimonialsSection({
   }
 
   if (hasItems) {
-    for (let i = 1; i <= 6; i++) {
-      const itemKey = `item-${i}`;
+    // Get all available items to check how many exist
+    // @ts-ignore - Dynamic namespace support
+    const items = t.raw('items') as Record<string, any>;
+    const availableKeys = Object.keys(items).filter(key => key.startsWith('item-'));
 
+    // Sort keys numerically (item-1, item-2, etc.)
+    availableKeys.sort((a, b) => {
+      const numA = parseInt(a.split('-')[1]);
+      const numB = parseInt(b.split('-')[1]);
+      return numA - numB;
+    });
+
+    
+    for (const itemKey of availableKeys) {
       try {
-        // First check if the key exists by trying to get name with a default value
         // @ts-ignore - Dynamic translation keys
         const nameCheck = t(`items.${itemKey}.name`, { default: '' });
 
-        // If the translation doesn't exist, next-intl returns empty string
-        if (
-          !nameCheck ||
-          nameCheck === '' ||
-          nameCheck.includes(`items.${itemKey}`)
-        ) {
-          break;
+        // If the translation doesn't exist, skip it
+        if (!nameCheck || nameCheck === '') {
+          continue;
         }
 
         // Now safely get all values
@@ -81,7 +87,8 @@ export default function TestimonialsSection({
           '/images/avatars/female4.webp',
           '/images/avatars/male5.webp',
         ];
-        const avatarIndex = (i - 1) % avatarPool.length;
+        const itemNumber = parseInt(itemKey.split('-')[1]);
+        const avatarIndex = (itemNumber - 1) % avatarPool.length;
 
         testimonials.push({
           name,
@@ -89,11 +96,11 @@ export default function TestimonialsSection({
           heading: headingValue || undefined,
           quote,
           src: avatarPool[avatarIndex],
-          rating: i % 2 === 0 ? 4.8 : 5.0,
+          rating: itemNumber % 2 === 0 ? 4.8 : 5.0,
         });
       } catch (error) {
-        // If translation doesn't exist, stop looking for more
-        break;
+        // If translation doesn't exist, skip this item and continue
+        continue;
       }
     }
   }

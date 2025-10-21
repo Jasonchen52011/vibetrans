@@ -68,8 +68,10 @@ export default function ChineseToEnglishTranslatorTool({
           // 自动切换翻译方向
           if (
             data.detectedDirection &&
-            (data.detectedInputLanguage === pageData.tool.englishLabel.toLowerCase() ||
-              data.detectedInputLanguage === pageData.tool.chineseLabel.toLowerCase())
+            (data.detectedInputLanguage ===
+              pageData.tool.englishLabel.toLowerCase() ||
+              data.detectedInputLanguage ===
+                pageData.tool.chineseLabel.toLowerCase())
           ) {
             setDirection(data.detectedDirection);
           }
@@ -271,7 +273,7 @@ export default function ChineseToEnglishTranslatorTool({
                   ? 'border-amber-300 dark:border-amber-600 focus:ring-amber-500'
                   : 'border-gray-300 dark:border-zinc-600'
               }`}
-              aria-label={pageData.tool.inputLabel || "Input text"}
+              aria-label={pageData.tool.inputLabel || 'Input text'}
             />
 
             {/* File Upload */}
@@ -330,7 +332,7 @@ export default function ChineseToEnglishTranslatorTool({
                     setInputText('');
                   }}
                   className="ml-auto text-gray-500 hover:text-red-500 dark:text-gray-400 dark:hover:text-red-400"
-                  aria-label={pageData.tool.removeFileTooltip || "Remove file"}
+                  aria-label={pageData.tool.removeFileTooltip || 'Remove file'}
                 >
                   <svg
                     className="w-4 h-4"
@@ -362,7 +364,10 @@ export default function ChineseToEnglishTranslatorTool({
                   ? 'Switch to English → Chinese'
                   : 'Switch to Chinese → English'
               }
-              aria-label={pageData.tool.toggleDirectionTooltip || "Toggle translation direction"}
+              aria-label={
+                pageData.tool.toggleDirectionTooltip ||
+                'Toggle translation direction'
+              }
             >
               <svg
                 className="w-6 h-6"
@@ -394,7 +399,7 @@ export default function ChineseToEnglishTranslatorTool({
                   <button
                     onClick={handleCopy}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
-                    title={pageData.tool.copyTooltip || "Copy"}
+                    title={pageData.tool.copyTooltip || 'Copy'}
                   >
                     <svg
                       className="w-5 h-5"
@@ -413,7 +418,7 @@ export default function ChineseToEnglishTranslatorTool({
                   <button
                     onClick={handleDownload}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
-                    title={pageData.tool.downloadTooltip || "Download"}
+                    title={pageData.tool.downloadTooltip || 'Download'}
                   >
                     <svg
                       className="w-5 h-5"

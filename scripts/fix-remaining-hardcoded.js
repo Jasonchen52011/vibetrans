@@ -26,47 +26,55 @@ const translators = [
   'middle-english-translator',
   'minion-translator',
   'pig-latin-translator',
-  'verbose-generator'
+  'verbose-generator',
 ];
 
 // 额外的硬编码文本映射
 const additionalReplacements = [
   {
     pattern: /aria-label="Remove file"/g,
-    replacement: 'aria-label={pageData.tool.removeFileTooltip || "Remove file"}'
+    replacement:
+      'aria-label={pageData.tool.removeFileTooltip || "Remove file"}',
   },
   {
     pattern: /aria-label="Remove recording"/g,
-    replacement: 'aria-label={pageData.tool.removeRecordingTooltip || "Remove recording"}'
+    replacement:
+      'aria-label={pageData.tool.removeRecordingTooltip || "Remove recording"}',
   },
   {
     pattern: /aria-label="Toggle translation mode"/g,
-    replacement: 'aria-label={pageData.tool.toggleModeTooltip || "Toggle translation mode"}'
+    replacement:
+      'aria-label={pageData.tool.toggleModeTooltip || "Toggle translation mode"}',
   },
   {
     pattern: /aria-label="Toggle translation direction"/g,
-    replacement: 'aria-label={pageData.tool.toggleDirectionTooltip || "Toggle translation direction"}'
+    replacement:
+      'aria-label={pageData.tool.toggleDirectionTooltip || "Toggle translation direction"}',
   },
   {
     pattern: /aria-label="Copy result"/g,
-    replacement: 'aria-label={pageData.tool.copyResultTooltip || "Copy result"}'
+    replacement:
+      'aria-label={pageData.tool.copyResultTooltip || "Copy result"}',
   },
   {
     pattern: /aria-label="Download result"/g,
-    replacement: 'aria-label={pageData.tool.downloadResultTooltip || "Download result"}'
+    replacement:
+      'aria-label={pageData.tool.downloadResultTooltip || "Download result"}',
   },
   {
     pattern: /aria-label="Your words to translate"/g,
-    replacement: 'aria-label={pageData.tool.inputLabel || "Your words to translate"}'
+    replacement:
+      'aria-label={pageData.tool.inputLabel || "Your words to translate"}',
   },
   {
     pattern: /aria-label="Play generated dog sound"/g,
-    replacement: 'aria-label={pageData.tool.playSoundTooltip || "Play sound"}'
+    replacement: 'aria-label={pageData.tool.playSoundTooltip || "Play sound"}',
   },
   {
     pattern: /placeholder="Enter English text to convert to Gaster\.\.\."/g,
-    replacement: 'placeholder={pageData.tool.inputPlaceholder || "Enter English text to convert to Gaster..."}'
-  }
+    replacement:
+      'placeholder={pageData.tool.inputPlaceholder || "Enter English text to convert to Gaster..."}',
+  },
 ];
 
 function getComponentName(translatorName) {
@@ -95,31 +103,38 @@ function getComponentName(translatorName) {
     'middle-english-translator': 'MiddleEnglishTranslatorTool',
     'minion-translator': 'MinionTranslatorTool',
     'pig-latin-translator': 'PigLatinTranslatorTool',
-    'verbose-generator': 'VerboseGeneratorTool'
+    'verbose-generator': 'VerboseGeneratorTool',
   };
 
-  return nameMap[translatorName] || `${translatorName.split('-').map(word =>
-    word.charAt(0).toUpperCase() + word.slice(1)
-  ).join('')}Tool`;
+  return (
+    nameMap[translatorName] ||
+    `${translatorName
+      .split('-')
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join('')}Tool`
+  );
 }
 
 function updateMessageFilesWithAdditionalFields() {
   console.log('添加额外的工具提示字段到消息文件...\n');
 
   const additionalTooltipFields = {
-    removeFileTooltip: "Remove file",
-    removeRecordingTooltip: "Remove recording",
-    toggleModeTooltip: "Toggle translation mode",
-    toggleDirectionTooltip: "Toggle translation direction",
-    copyResultTooltip: "Copy result",
-    downloadResultTooltip: "Download result",
-    playSoundTooltip: "Play sound"
+    removeFileTooltip: 'Remove file',
+    removeRecordingTooltip: 'Remove recording',
+    toggleModeTooltip: 'Toggle translation mode',
+    toggleDirectionTooltip: 'Toggle translation direction',
+    copyResultTooltip: 'Copy result',
+    downloadResultTooltip: 'Download result',
+    playSoundTooltip: 'Play sound',
   };
 
   let updatedCount = 0;
 
-  translators.forEach(translator => {
-    const filePath = path.join(__dirname, `../messages/pages/${translator}/en.json`);
+  translators.forEach((translator) => {
+    const filePath = path.join(
+      __dirname,
+      `../messages/pages/${translator}/en.json`
+    );
 
     if (!fs.existsSync(filePath)) {
       console.log(`消息文件不存在: ${filePath}`);
@@ -131,9 +146,11 @@ function updateMessageFilesWithAdditionalFields() {
       const data = JSON.parse(content);
 
       // 获取页面键名
-      const pageKey = translator.split('-').map(word =>
-        word.charAt(0).toUpperCase() + word.slice(1)
-      ).join('') + 'Page';
+      const pageKey =
+        translator
+          .split('-')
+          .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+          .join('') + 'Page';
 
       if (!data[pageKey] || !data[pageKey].tool) {
         console.log(`${translator}: 找不到tool字段`);
@@ -159,7 +176,6 @@ function updateMessageFilesWithAdditionalFields() {
       } else {
         console.log(`- 无需添加字段: ${translator}`);
       }
-
     } catch (error) {
       console.error(`错误处理消息文件 ${translator}:`, error.message);
     }
@@ -169,7 +185,10 @@ function updateMessageFilesWithAdditionalFields() {
 }
 
 function fixRemainingHardcodedText(translatorName) {
-  const filePath = path.join(__dirname, `../src/app/[locale]/(marketing)/(pages)/${translatorName}/${getComponentName(translatorName)}.tsx`);
+  const filePath = path.join(
+    __dirname,
+    `../src/app/[locale]/(marketing)/(pages)/${translatorName}/${getComponentName(translatorName)}.tsx`
+  );
 
   if (!fs.existsSync(filePath)) {
     return false;
@@ -192,7 +211,6 @@ function fixRemainingHardcodedText(translatorName) {
       console.log(`✓ 已修复额外硬编码文本: ${translatorName}`);
       return true;
     }
-
   } catch (error) {
     console.error(`错误处理组件 ${translatorName}:`, error.message);
   }
@@ -210,7 +228,7 @@ function main() {
   console.log('\n开始修复组件中的剩余硬编码文本...\n');
 
   let fixedCount = 0;
-  translators.forEach(translator => {
+  translators.forEach((translator) => {
     if (fixRemainingHardcodedText(translator)) {
       fixedCount++;
     }
@@ -225,4 +243,7 @@ if (require.main === module) {
   main();
 }
 
-module.exports = { fixRemainingHardcodedText, updateMessageFilesWithAdditionalFields };
+module.exports = {
+  fixRemainingHardcodedText,
+  updateMessageFilesWithAdditionalFields,
+};
