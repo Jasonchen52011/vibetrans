@@ -207,7 +207,7 @@ export default async function SamoanToEnglishTranslatorPage(
     title: (t as any)('funFacts.title'),
     items: [
       {
-        title: (t as any)('funFacts.items.0.content'),
+        title: 'Samoan Alphabet Facts', // 根据内容生成合适的标题
         description: (t as any)('funFacts.items.0.content'),
         image: {
           src:
@@ -217,7 +217,7 @@ export default async function SamoanToEnglishTranslatorPage(
         },
       },
       {
-        title: (t as any)('funFacts.items.1.content'),
+        title: 'Samoan Word Order', // 根据内容生成合适的标题
         description: (t as any)('funFacts.items.1.content'),
         image: {
           src:
