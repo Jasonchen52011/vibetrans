@@ -373,7 +373,7 @@ export default function MiddleEnglishTranslatorTool({
             <select
               value={dialect}
               onChange={(e) => setDialect(e.target.value as any)}
-              className="px-3 py-1.5 border border-gray-300 dark:border-zinc-600 rounded-md text-sm bg-white dark:bg-zinc-700 text-gray-700 dark:text-gray-200"
+              className="px-3 py-1.5 border border-gray-300 dark:border-zinc-600 rounded-md text-sm bg-white dark:bg-zinc-700 text-gray-700 dark:text-gray-200 mr-2"
             >
               <option value="general">General</option>
               <option value="northern">Northern</option>
@@ -390,7 +390,7 @@ export default function MiddleEnglishTranslatorTool({
             <select
               value={period}
               onChange={(e) => setPeriod(e.target.value as any)}
-              className="px-3 py-1.5 border border-gray-300 dark:border-zinc-600 rounded-md text-sm bg-white dark:bg-zinc-700 text-gray-700 dark:text-gray-200"
+              className="px-3 py-1.5 border border-gray-300 dark:border-zinc-600 rounded-md text-sm bg-white dark:bg-zinc-700 text-gray-700 dark:text-gray-200 mr-2"
             >
               <option value="1150-1300">Early (1150-1300)</option>
               <option value="1300-1450">Classical (1300-1450)</option>

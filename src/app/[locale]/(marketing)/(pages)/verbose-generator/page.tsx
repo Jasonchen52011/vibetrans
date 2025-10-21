@@ -224,22 +224,22 @@ export default async function VerboseGeneratorPage(
   // Fun Facts section
   const funFactsSection = {
     name: 'funFacts',
-    title: (t as any)('funFacts.title'),
+    title: (t as any)('funfacts.title'),
     items: [
       {
-        title: (t as any)('funFacts.items.0.title'),
-        description: (t as any)('funFacts.items.0.description'),
+        title: (t as any)('funfacts.items.0.title'),
+        description: (t as any)('funfacts.items.0.description'),
         image: {
           src: '/images/docs/verbose-generator-fact-1.webp',
-          alt: (t as any)('funFacts.items.0.title'),
+          alt: (t as any)('funfacts.items.0.title'),
         },
       },
       {
-        title: (t as any)('funFacts.items.1.title'),
-        description: (t as any)('funFacts.items.1.description'),
+        title: (t as any)('funfacts.items.1.title'),
+        description: (t as any)('funfacts.items.1.description'),
         image: {
           src: '/images/docs/verbose-generator-fact-2.webp',
-          alt: (t as any)('funFacts.items.1.title'),
+          alt: (t as any)('funfacts.items.1.title'),
         },
       },
     ],

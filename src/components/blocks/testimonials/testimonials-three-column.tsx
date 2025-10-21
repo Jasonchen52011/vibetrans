@@ -93,9 +93,9 @@ export default function TestimonialsThreeColumnSection({
       <div className="mx-auto max-w-6xl">
         <HeaderSection
           // @ts-ignore - Dynamic translation keys
+          title={t('title')}
           subtitle={t('subtitle')}
           subtitleAs="h2"
-          description={t('title')}
         />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">

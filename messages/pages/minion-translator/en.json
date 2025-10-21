@@ -39,32 +39,32 @@
       "imageAlt": "What is Minion Translator - Visual explanation"
     },
     "examples": {
-      "title": "Example Scenarios",
-      "description": "Want to add some fun to your texts? Use Minion Translator to convert your messages into Minionese. Perfect for pranking friends or adding a unique twist to your communication.",
+      "title": "How to Translate to Minion Language: Real Examples",
+      "description": "See how our Minion translator transforms everyday English into hilarious Minionese. These real translation examples show the fun and authentic results you can get instantly.",
       "items": [
         {
-          "alt": "Example 1 placeholder",
-          "name": "Example 1"
+          "alt": "Daily conversation translated to Minionese",
+          "name": "Daily Conversation"
         },
         {
-          "alt": "Example 2 placeholder",
-          "name": "Example 2"
+          "alt": "Social media post in Minion language",
+          "name": "Social Media Post"
         },
         {
-          "alt": "Example 3 placeholder",
-          "name": "Example 3"
+          "alt": "Birthday wishes translated to Minionese",
+          "name": "Birthday Wishes"
         },
         {
-          "alt": "Example 4 placeholder",
-          "name": "Example 4"
+          "alt": "Work email in Minion language",
+          "name": "Work Email"
         },
         {
-          "alt": "Example 5 placeholder",
-          "name": "Example 5"
+          "alt": "Movie quote translated to Minionese",
+          "name": "Famous Movie Quote"
         },
         {
-          "alt": "Example 6 placeholder",
-          "name": "Example 6"
+          "alt": "Song lyrics in Minion language",
+          "name": "Song Lyrics"
         }
       ]
     },

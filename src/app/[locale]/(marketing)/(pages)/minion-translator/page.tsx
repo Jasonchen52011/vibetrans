@@ -191,23 +191,23 @@ export default async function MinionTranslatorPage(
 
   // Fun Facts section
   const funFactsSection = {
-    name: 'funFacts',
-    title: (t as any)('funFacts.title'),
+    name: 'funfacts',
+    title: (t as any)('funfacts.title'),
     items: [
       {
-        title: (t as any)('funFacts.items.0.title'),
-        description: (t as any)('funFacts.items.0.description'),
+        title: (t as any)('funfacts.items.0.title'),
+        description: (t as any)('funfacts.items.0.description'),
         image: {
-          src: (t as any)('funFacts.items.0.image'),
-          alt: (t as any)('funFacts.items.0.imageAlt'),
+          src: (t as any)('funfacts.items.0.image'),
+          alt: (t as any)('funfacts.items.0.imageAlt'),
         },
       },
       {
-        title: (t as any)('funFacts.items.1.title'),
-        description: (t as any)('funFacts.items.1.description'),
+        title: (t as any)('funfacts.items.1.title'),
+        description: (t as any)('funfacts.items.1.description'),
         image: {
-          src: (t as any)('funFacts.items.1.image'),
-          alt: (t as any)('funFacts.items.1.imageAlt'),
+          src: (t as any)('funfacts.items.1.image'),
+          alt: (t as any)('funfacts.items.1.imageAlt'),
         },
       },
     ],

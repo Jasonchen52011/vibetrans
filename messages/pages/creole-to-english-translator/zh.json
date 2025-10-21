@@ -10,7 +10,7 @@
     },
     "tool": {
       "yourWords": "您的文字",
-      "doggyVibe": "翻译结果",
+      "doggyVibe": "结果",
       "inputLabel": "输入内容",
       "outputLabel": "翻译结果",
       "inputPlaceholder": "输入您的文本或上传文件...",
@@ -22,7 +22,23 @@
       "playButton": "播放",
       "loading": "处理中...",
       "error": "发生错误，请重试",
-      "noInput": "请提供输入内容"
+      "noInput": "请提供输入内容",
+      "downloadButton": "下载",
+      "resetButton": "重置",
+      "copyTooltip": "复制",
+      "downloadTooltip": "下载",
+      "resetTooltip": "重置",
+      "creoleLabel": "克里奥尔语",
+      "creolePlaceholder": "在此输入克里奥尔语文本...",
+      "removeFileTooltip": "移除文件",
+      "removeRecordingTooltip": "移除录音",
+      "toggleModeTooltip": "切换翻译模式",
+      "toggleDirectionTooltip": "切换翻译方向",
+      "copyResultTooltip": "复制结果",
+      "downloadResultTooltip": "下载结果",
+      "playSoundTooltip": "播放声音",
+      "englishLabel": "英语",
+      "englishPlaceholder": "在此输入英语文本..."
     },
     "whatIs": {
       "title": "什么是克里奥尔语到英语翻译器",
@@ -103,6 +119,10 @@
         {
           "title": "学习模式",
           "description": "将翻译转化为学习体验。VibeTrans 突出显示关键词汇并提供交互式闪卡来提升您的技能。跟踪进度，练习发音，在真实对话中建立信心。无论您是初学者还是提高流利度，我们的学习模式都将每次翻译转化为成长的教育机会。"
+        },
+        {
+          "title": "文化语境整合",
+          "description": "超越字面翻译，VibeTrans 提供关键文化语境，帮助您理解克里奥尔语表达背后的细微差别。了解文化传统、社交礼仪和语言中蕴含的历史参考。这种更深入的理解促进更有意义的联系，防止跨文化交流中的潜在误解。"
         }
       ]
     },

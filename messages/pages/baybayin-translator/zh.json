@@ -1,0 +1,135 @@
+{
+  "BaybayinTranslatorPage": {
+    "title": "Baybayin 维护翻译器：英语到巴图文脚本翻译工具",
+    "description": "Baybayin 维护翻译器是一款直观工具，可轻松将英语翻译成古代巴图文脚本。完美适合文化保护和历史研究。",
+    "hero": {
+      "title": "Baybayin 维护翻译器：连接现代与传统文化",
+      "description": "通过我们的免费翻译工具发现巴图文文字之美。体验即时、准确的文化连接。",
+      "primaryButton": "立即试用",
+      "secondaryButton": "了解更多"
+    },
+    "tool": {
+      "inputLabel": "英语",
+      "outputLabel": "巴图文",
+      "inputPlaceholder": "在此输入您的英语文本...",
+      "outputPlaceholder": "翻译结果将在此显示",
+      "translateButton": "翻译",
+      "uploadButton": "上传文件",
+      "uploadHint": "支持 .txt 和 .docx 文件",
+      "loading": "翻译中...",
+      "error": "翻译失败，请重试",
+      "noInput": "请输入一些文本",
+      "downloadButton": "下载",
+      "resetButton": "重置",
+      "copyTooltip": "复制",
+      "downloadTooltip": "下载",
+      "resetTooltip": "重置",
+      "baybayinLabel": "巴图文",
+      "baybayinPlaceholder": "在此输入巴图文文本...",
+      "removeFileTooltip": "移除文件",
+      "removeRecordingTooltip": "移除录音",
+      "toggleModeTooltip": "切换翻译模式",
+      "toggleDirectionTooltip": "切换翻译方向",
+      "copyResultTooltip": "复制结果",
+      "downloadResultTooltip": "下载结果",
+      "playSoundTooltip": "播放声音"
+    },
+    "whatIs": {
+      "title": "什么是 Baybayin 维护翻译器？",
+      "description": "Baybayin 维护翻译器是一款专业工具，可将英语翻译成巴图文，一种古老的菲律宾文字系统。它能够实现现代与古老传统之间的文化桥梁。"
+    },
+    "examples": {
+      "title": "Baybayin 翻译示例",
+      "description": "查看我们的翻译工具如何将日常英语转换成神秘的巴图文语。非常适合最终幻想粉丝和密码爱好者！"
+    },
+    "howto": {
+      "title": "如何使用 Baybayin 维护翻译器",
+      "description": "按照以下简单步骤在英语和巴图文之间进行翻译。",
+      "steps": [
+        {
+          "name": "上传文件",
+          "description": "将您的 .txt 或 Word 文件拖放到工具中。翻译器会即时处理您的文本。"
+        },
+        {
+          "name": "输入文本",
+          "description": "在输入框中输入或粘贴您的文本。支持英语和巴图文文本。"
+        },
+        {
+          "name": "选择翻译方向",
+          "description": "一键切换英语到巴图文或巴图文到英语的翻译方向。"
+        },
+        {
+          "name": "点击翻译按钮",
+          "description": "点击翻译按钮，使用巴图文密码即时转换您的文本。"
+        }
+      ]
+    },
+    "highlights": {
+      "title": "Baybayin 维护翻译器：学术与研究必备工具",
+      "description": "发现是什么让我们的翻译工具成为最佳选择。",
+      "items": [
+        {
+          "title": "简单免费使用",
+          "description": "VibeTrans 提供简单易用的巴图文翻译工具，完全免费。只需输入文本，即可快速获得准确的翻译结果。我们的平台设计简洁，用户体验流畅，确保每个人都能轻松使用。"
+        },
+        {
+          "title": "准确翻译",
+          "description": "VibeTrans 提供精确的巴图文翻译服务，确保每个字符都能准确传达原意。我们的先进算法结合了深厚的语言学知识，能够处理复杂文本，为用户提供最可靠的翻译质量。"
+        },
+        {
+          "title": "隐私安全",
+          "description": "VibeTrans 重视用户隐私，确保您的巴图文翻译数据完全安全。我们使用先进的加密技术保护您的信息，不会存储或分享任何翻译内容，让您可以放心使用我们的服务。"
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "用户评价",
+      "subtitle": "巴图文使用者的真实反馈",
+      "items": {
+        "item-1": {
+          "name": "艾米丽·约翰逊",
+          "role": "艺术老师",
+          "heading": "课堂创意提升",
+          "content": "Baybayin 翻译器为我的艺术课程带来了革命性变化。学生们喜欢探索这种古老的文字系统，它为他们的作品增添了独特的文化深度。"
+        },
+        "item-2": {
+          "name": "迈克尔·史密斯",
+          "role": "历史教授",
+          "heading": "增强历史研究",
+          "content": "作为一名历史教授，Baybayin 翻译器证明是无价之宝。它让学生能够与菲律宾历史文化进行即时互动，使学习变得更加引人入胜。"
+        },
+        "item-3": {
+          "name": "莎拉·李",
+          "role": "平面设计师",
+          "heading": "独特设计元素",
+          "content": "我将 Baybayin 文字融入我的设计作品中，创造了令人惊叹的效果。客户们都很欣赏这种独特的文化元素，为我的作品增添了真实性和深度。"
+        }
+      }
+    },
+    "faqs": {
+      "title": "常见问题",
+      "subtitle": "关于巴图文翻译器的常见问题",
+      "items": {
+        "item-1": {
+          "question": "Baybayin 翻译器免费吗？",
+          "answer": "是的！VibeTrans 巴图文翻译器完全免费使用，无任何隐藏费用或使用限制。您可以随时在我们的平台上翻译英语和巴图文，享受高质量的服务。"
+        },
+        "item-2": {
+          "question": "如何保证我的隐私？",
+          "answer": "VibeTrans 优先考虑您的隐私。我们使用端到端加密技术处理所有翻译，确保您的数据安全。我们不会存储或分享您的任何个人信息，让您可以安心使用巴图文翻译器。"
+        },
+        "item-3": {
+          "question": "什么是最好的巴图文翻译器？",
+          "answer": "VibeTrans 巴图文翻译器是准确翻译的首选，采用先进的 AI 技术理解复杂的语法、文化语境和语言细节。我们的工具提供双向翻译、实时处理和高准确率，完全免费。"
+        }
+      }
+    },
+    "ctaButton": "立即试用巴图文翻译器",
+    "cta": {
+      "title": "立即试用 VibeTrans 巴图文翻译器",
+      "description": "准备好探索巴图文文字的神秘世界了吗？立即试用我们的巴图文翻译器，解锁这门迷人语言的秘密！",
+      "primaryButton": "立即试用巴图文翻译器",
+      "secondaryButton": "返回顶部"
+    }
+  }
+}

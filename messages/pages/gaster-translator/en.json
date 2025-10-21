@@ -163,21 +163,21 @@
           "name": "Sarah Johnson",
           "role": "Undertale Fan",
           "heading": "Perfect for Undertale Mysteries",
-          "content": "As a huge Undertale fan, I've always been fascinated by Gaster's mysterious messages. This translator helps me decode all the Wingdings text in the game and community theories. It's amazing how quickly it converts symbols to readable text. I've spent hours exploring fan theories with this tool!",
+          "content": "As a huge Undertale fan, I've always been fascinated by Gaster's mysterious messages. This translator helps me decode all the Wingdings text in the game and community theories. It's amazing how quickly it converts symbols to readable text.",
           "rating": "5.0"
         },
         "item-2": {
           "name": "Mike Chen",
           "role": "Game Developer",
           "heading": "Essential Tool for Game Development",
-          "content": "I'm developing an indie game with cryptic messages, and Gaster Translator has been invaluable. It helps me create and decode Wingdings-style puzzles for players. The accuracy is impressive, and it saves me so much time. My players love the mysterious touch it adds to the game!",
+          "content": "I'm developing an indie game with cryptic messages, and Gaster Translator has been invaluable. It helps me create and decode Wingdings-style puzzles for players. The accuracy is impressive, and it saves me so much time.",
           "rating": "4.9"
         },
         "item-3": {
           "name": "Emily Davis",
           "role": "Content Creator",
           "heading": "Great for Mystery Content",
-          "content": "I create YouTube videos about game theories and ARGs (Alternate Reality Games). Gaster Translator helps me analyze cryptic messages from games and online communities. My audience loves when I decode mysterious Wingdings text live on stream. It's become an essential part of my content creation toolkit!",
+          "content": "I create YouTube videos about game theories and ARGs (Alternate Reality Games). Gaster Translator helps me analyze cryptic messages from games and online communities. My audience loves when I decode mysterious Wingdings text live on stream.",
           "rating": "4.7"
         }
       }
@@ -230,13 +230,13 @@
           "content": "Dr. W. D. Gaster's name comes from Wingdings and Aster fonts. Interestingly, early browsers displayed Gaster text as empty boxes - a vintage tech quirk that adds to the mysterious aura surrounding this character!",
           "wordCount": 30,
           "image": "/images/docs/gaster-fonts-fact.webp",
-          "imageAlt": "Fun fact 1"
+          "imageAlt": "The Secret Behind Gaster's Name"
         },
         {
           "content": "Gaster's dialogue in Undertale always appears in uppercase Wingdings symbols. This creative choice by Toby Fox adds an extra layer of mystery that fans have been decoding for years using translation tools just like this one!",
           "wordCount": 30,
           "image": "/images/docs/gaster-wingdings-fun.webp",
-          "imageAlt": "Fun fact 2"
+          "imageAlt": "Mystery of Uppercase Wingdings"
         }
       ]
     }

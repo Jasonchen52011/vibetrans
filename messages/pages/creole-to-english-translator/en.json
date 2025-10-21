@@ -1,5 +1,5 @@
 {
-  "CreoleToEnglishPage": {
+  "CreoleToEnglishTranslatorPage": {
     "title": "Effortless Creole to English Translation Tool",
     "description": "Transform Creole to English with ease using VibeTrans. Enjoy accurate, fast translations that enhance communication.",
     "hero": {
@@ -233,7 +233,7 @@
       "primaryButton": "Try Creole To English Translator Now",
       "secondaryButton": "Back to Top"
     },
-    "funfacts": {
+    "funFacts": {
       "title": "Creole: Your Key to Unlocking Creole Cultures",
       "items": [
         {
