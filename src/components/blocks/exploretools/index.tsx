@@ -1,5 +1,6 @@
 'use client';
 
+import { HeaderSection } from '@/components/layout/header-section';
 import { useLocale, useTranslations } from 'next-intl';
 
 interface AiTool {
@@ -183,12 +184,10 @@ export default function ExploreOurAiTools({
     <section className="max-w-7xl mx-auto mt-16 mb-10">
       <div className="bg-surface-light rounded-3xl p-4">
         <div className="text-center mb-8">
-          <h2 className="text-4xl font-semibold text-gray-800 mb-10">
-            {t('title')}
-          </h2>
-          <p className="text-lg text-gray-600 text-center mb-8">
-            {t('description')}
-          </p>
+          <HeaderSection
+            title={t('title')}
+            description={t('description')}
+          />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 justify-items-center">
           {toolsToDisplay.map((tool, index) => (

@@ -143,7 +143,6 @@
     },
     "testimonials": {
       "title": "What Users Say",
-      "subtitle": "Real feedback from real users",
       "items": {
         "item-1": {
           "name": "Maria Thompson",
@@ -173,28 +172,28 @@
       "subtitle": "Have other questions? Feel free to contact us via email.",
       "items": {
         "item-1": {
+          "question": "What is the best albanian to english tool for accurate translations?",
+          "answer": "VibeTrans stands out as the best albanian to english translation tool due to its advanced AI algorithms specifically trained on Albanian-English language pairs. Our tool achieves exceptional accuracy by understanding Albanian's unique grammatical structures, including its five noun cases, complex verb conjugations, and definite article suffixes. Unlike generic translators, VibeTrans provides context-aware translations that preserve cultural nuances, idiomatic expressions, and formal business terminology. With free unlimited usage, document upload capabilities, and voice translation features, VibeTrans offers the most comprehensive solution for personal, academic, or professional Albanian-English translation needs."
+        },
+        "item-2": {
           "question": "Is this Albanian to English Translator free?",
           "answer": "Yes, VibeTrans Albanian to English Translator is completely free with no hidden charges, subscription fees, or usage limits. You can translate unlimited text, documents, and voice recordings anytime. We believe language should never be a barrier, so we provide this professional-grade translation tool at no cost to users worldwide, whether for personal, educational, or business purposes."
         },
-        "item-2": {
+        "item-3": {
           "question": "How does VibeTrans handle our privacy?",
           "answer": "Absolutely. VibeTrans prioritizes your privacy and data security. We use encrypted connections for all translations, process content locally when possible, and never store or share your translated text without consent. Our service is fully GDPR compliant, ensuring your Albanian communications—whether personal messages, business documents, or sensitive information—remain completely confidential and protected at all times."
         },
-        "item-3": {
+        "item-4": {
           "question": "How do I use Albanian to English Translator?",
           "answer": "Using VibeTrans Albanian to English Translator is simple: Step 1, enter your Albanian text by typing, pasting, or uploading files. Step 2, select your preferred translation mode—text, document, or voice input. Step 3, click the translate button for instant results. Step 4, review and use your English translation, with options to copy, save from browser, or listen to pronunciation. That's it!"
         },
-        "item-4": {
+        "item-5": {
           "question": "Can I use VibeTrans for professional documents?",
           "answer": "Absolutely! VibeTrans is designed to handle professional documents including business emails, legal texts, academic papers, and more. Our advanced AI maintains formal tone and technical accuracy."
         },
-        "item-5": {
+        "item-6": {
           "question": "What file formats does VibeTrans support?",
           "answer": "VibeTrans supports multiple file formats including .txt, .docx, .pdf, and more. You can also directly paste text into our interface for instant translation without file upload."
-        },
-        "item-6": {
-          "question": "What is the best albanian to english tool for accurate translations?",
-          "answer": "VibeTrans stands out as the best albanian to english translation tool due to its advanced AI algorithms specifically trained on Albanian-English language pairs. Our tool achieves exceptional accuracy by understanding Albanian's unique grammatical structures, including its five noun cases, complex verb conjugations, and definite article suffixes. Unlike generic translators, VibeTrans provides context-aware translations that preserve cultural nuances, idiomatic expressions, and formal business terminology. With free unlimited usage, document upload capabilities, and voice translation features, VibeTrans offers the most comprehensive solution for personal, academic, or professional Albanian-English translation needs."
         },
         "item-7": {
           "question": "How accurate is VibeTrans for Albanian dialects?",

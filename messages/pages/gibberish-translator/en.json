@@ -162,7 +162,6 @@
     },
     "testimonials": {
       "title": "What Our Users Are Saying",
-      "subtitle": "Real feedback from real users",
       "items": {
         "item-1": {
           "name": "Jessica Harper",
@@ -191,32 +190,32 @@
       "title": "Frequently Asked Questions",
       "items": {
         "item-1": {
+          "question": "What is the best gibberish translator for accurate translations?",
+          "answer": "VibeTrans Gibberish Translator is the premier choice for accurate translations, featuring advanced AI technology that understands complex grammar, cultural context, and linguistic nuances. Our tool provides bidirectional translation, real-time processing, and high accuracy rates, all completely free. Perfect for language learning, communication, and cultural exploration with reliable, context-aware results."
+        },
+        "item-2": {
           "question": "What is gibberish, and how does this translator work?",
           "answer": "Gibberish is nonsensical language that sounds like words but has no real meaning. VibeTrans' Gibberish Translator uses advanced algorithms to transform your text into gibberish by inserting random syllables, rearranging sounds, or replacing letters. You choose the style, and the translator does the rest! It's that simple."
         },
-        "item-2": {
+        "item-3": {
           "question": "Can I customize the gibberish output?",
           "answer": "Absolutely! VibeTrans offers multiple gibberish styles, including syllable-based, random, and reverse-and-shuffle patterns. You can experiment with different styles to find the one that suits your needs best. Customization is key, and we've made it easy for you!"
         },
-        "item-3": {
+        "item-4": {
           "question": "Is the Gibberish Translator free to use?",
           "answer": "Yes! VibeTrans' Gibberish Translator is completely free. We believe in making tools accessible to everyone, whether you're a student, teacher, content creator, or just someone looking to have fun. No hidden fees, no subscriptions—just pure gibberish fun!"
         },
-        "item-4": {
+        "item-5": {
           "question": "Can I use this tool for languages other than English?",
           "answer": "While VibeTrans' Gibberish Translator is optimized for English, it works with any Latin-alphabet text. The results may vary for other languages, but the phonetic patterns still create fun and playful gibberish. Give it a try with your preferred language and see what happens!"
         },
-        "item-5": {
+        "item-6": {
           "question": "What file formats can I upload?",
           "answer": "VibeTrans supports .txt and .docx file uploads. Simply upload your file, and the translator will process it instantly. Whether it's a single sentence or an entire document, we've got you covered. It's fast, efficient, and hassle-free!"
         },
-        "item-6": {
+        "item-7": {
           "question": "Is my data safe with VibeTrans?",
           "answer": "Your privacy is our priority! All translations happen locally in your browser using native JavaScript. Your text is never sent to any server, ensuring complete privacy and security. You can use VibeTrans web tool with confidence, knowing your data stays with you."
-        },
-        "item-7": {
-          "question": "What is the best gibberish translator for accurate translations?",
-          "answer": "VibeTrans Gibberish Translator is the premier choice for accurate translations, featuring advanced AI technology that understands complex grammar, cultural context, and linguistic nuances. Our tool provides bidirectional translation, real-time processing, and high accuracy rates, all completely free. Perfect for language learning, communication, and cultural exploration with reliable, context-aware results."
         },
         "item-8": {
           "question": "How can I create my own gibberish language patterns?",

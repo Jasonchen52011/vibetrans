@@ -27,7 +27,7 @@ export default function UserScenarios({
       {/* Section Title */}
       {section.title && (
         <div className="w-full max-w-6xl mx-auto px-2 sm:px-4 lg:px-6 pt-16">
-          <HeaderSection subtitle={section.title} subtitleAs="h2" />
+          <HeaderSection title={section.title} />
         </div>
       )}
 

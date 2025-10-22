@@ -9,6 +9,7 @@ import TestimonialsSection from '@/components/blocks/testimonials/testimonials';
 import UniqueSection from '@/components/blocks/unique';
 import WhatIsSection from '@/components/blocks/whatis';
 import { constructMetadata } from '@/lib/metadata';
+import { buildToolStructuredData } from '@/lib/seo/structured-data';
 import { getUrlWithLocale } from '@/lib/urls/urls';
 import type { Metadata } from 'next';
 import type { Locale } from 'next-intl';
@@ -49,27 +50,15 @@ export default async function HomePage(props: HomePageProps) {
   const t = await getTranslations('HomePage');
 
   // Structured Data for SEO
-  const structuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'WebApplication',
+  const structuredData = buildToolStructuredData({
     name: 'VibeTrans',
-    applicationCategory: 'UtilitiesApplication',
     description:
-      "VibeTrans offers powerful AI-driven translation tools for seamless language conversion. Whether you're translating texts, slang, or even ancient languages, VibeTrans makes communication easy.",
-    operatingSystem: 'Web',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
+      'VibeTrans offers powerful AI-driven translation tools for seamless language conversion. Whether you are translating texts, slang, or even ancient languages, VibeTrans makes communication easy.',
     aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      ratingCount: '8500',
-      bestRating: '5',
-      worstRating: '1',
+      ratingValue: 4.9,
+      ratingCount: 8500,
     },
-  };
+  });
 
   const userScenariosSection = {
     name: 'funfacts',

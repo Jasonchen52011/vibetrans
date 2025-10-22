@@ -163,7 +163,6 @@
     },
     "testimonials": {
       "title": "What Our Users Are Saying",
-      "subtitle": "Real feedback from real users",
       "items": {
         "item-1": {
           "name": "Emily Johnson",
@@ -193,32 +192,32 @@
       "subtitle": "Have other questions? Feel free to contact us via email.",
       "items": {
         "item-1": {
+          "question": "What is the best aramaic translator for accurate translations?",
+          "answer": "VibeTrans Aramaic Translator is the premier choice for accurate translations, featuring advanced AI technology that understands ancient scripts, multiple dialects, and cultural context. Our tool provides dialect-specific translations, OCR capabilities, and expert-verified results, all completely free. Perfect for biblical studies, academic research, and cultural exploration with precision and reliability."
+        },
+        "item-2": {
           "question": "Is the software free?",
           "answer": "The Aramaic translator is available in both free and premium versions. The free version offers basic translation capabilities, while the premium version provides advanced features and support. You can start with the free version to explore its basic functionalities."
         },
-        "item-2": {
+        "item-3": {
           "question": "How do I translate a document?",
           "answer": "To translate a document, first upload your file to our platform. Next, select the target language, in this case, Aramaic. Then, click 'Translate' to initiate the process. Finally, save your translated document from your browser once the translation is complete."
         },
-        "item-3": {
+        "item-4": {
           "question": "How is my privacy protected?",
           "answer": "Your privacy is our priority. We use advanced encryption to safeguard your data. Access is restricted to authorized personnel only. Regular audits and updates are conducted to ensure security. We never share your information with third parties without your consent."
         },
-        "item-4": {
+        "item-5": {
           "question": "Can I translate audio files?",
           "answer": "Yes, you can translate audio files using our Aramaic translator. Simply upload your audio file to our platform. Our system will process the audio and provide you with a text translation. Ensure your audio is clear for the best results."
         },
-        "item-5": {
+        "item-6": {
           "question": "Can I use VibeTrans for professional documents?",
           "answer": "Absolutely! VibeTrans is designed to handle professional documents including business emails, legal texts, academic papers, and more. Our advanced AI maintains formal tone and technical accuracy."
         },
-        "item-6": {
+        "item-7": {
           "question": "What file formats does VibeTrans support?",
           "answer": "VibeTrans supports multiple file formats including .txt, .docx, .pdf, and more. You can also directly paste text into our interface for instant translation without file upload."
-        },
-        "item-7": {
-          "question": "What is the best aramaic translator for accurate translations?",
-          "answer": "VibeTrans Aramaic Translator is the premier choice for accurate translations, featuring advanced AI technology that understands ancient scripts, multiple dialects, and cultural context. Our tool provides dialect-specific translations, OCR capabilities, and expert-verified results, all completely free. Perfect for biblical studies, academic research, and cultural exploration with precision and reliability."
         }
       }
     },

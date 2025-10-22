@@ -147,7 +147,6 @@
     },
     "testimonials": {
       "title": "What Users Say",
-      "subtitle": "Real feedback from real users",
       "items": {
         "item-1": {
           "name": "John Smith",
@@ -177,32 +176,32 @@
       "subtitle": "Have other questions? Feel free to contact us via email.",
       "items": {
         "item-1": {
+          "question": "What is the best high valyrian translator for accurate translations?",
+          "answer": "VibeTrans High Valyrian Translator is the premier choice for accurate translations, featuring advanced AI technology that understands complex grammar, cultural context, and linguistic nuances. Our tool provides bidirectional translation, real-time processing, and high accuracy rates, all completely free. Perfect for language learning, communication, and cultural exploration with reliable, context-aware results."
+        },
+        "item-2": {
           "question": "Is this High Valyrian Translator free?",
           "answer": "High Valyrian Translator is available at no cost. Users can access all basic features without any charges. To unlock premium functionalities, you may consider upgrading to a paid version. Enjoy translating with ease and explore the language more deeply."
         },
-        "item-2": {
+        "item-3": {
           "question": "How is our privacy protected?",
           "answer": "We ensure your privacy by using encryption for data transmission, storing data securely, and never sharing personal information with third parties. Regular audits and updates help maintain our security standards to protect your personal data effectively."
         },
-        "item-3": {
+        "item-4": {
           "question": "How does the 'Tattoo Check' feature work?",
           "answer": "To use the 'Tattoo Check' feature, follow these steps: 1. Upload the image of the tattoo. 2. The system analyzes the design. 3. Receive detailed insights on its cultural and linguistic significance. 4. Access translation and interpretation suggestions."
         },
-        "item-4": {
+        "item-5": {
           "question": "How do I translate a sentence step-by-step?",
           "answer": "First, select the sentence to translate; second, identify words and phrases in the sentence; then, use a dictionary or translation tool to find corresponding High Valyrian; finally, assemble the translated sentence and ensure correct grammar."
         },
-        "item-5": {
+        "item-6": {
           "question": "What is High Valyrian Translator Studio?",
           "answer": "High Valyrian Translator Studio is a comprehensive tool for translating text and files between English and High Valyrian, offering features like dual-pane display and syntax reordering."
         },
-        "item-6": {
+        "item-7": {
           "question": "Can I use VibeTrans for professional documents?",
           "answer": "Absolutely! VibeTrans is designed to handle professional documents including business emails, legal texts, academic papers, and more. Our advanced AI maintains formal tone and technical accuracy."
-        },
-        "item-7": {
-          "question": "What is the best high valyrian translator for accurate translations?",
-          "answer": "VibeTrans High Valyrian Translator is the premier choice for accurate translations, featuring advanced AI technology that understands complex grammar, cultural context, and linguistic nuances. Our tool provides bidirectional translation, real-time processing, and high accuracy rates, all completely free. Perfect for language learning, communication, and cultural exploration with reliable, context-aware results."
         }
       }
     },

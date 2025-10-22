@@ -168,7 +168,6 @@
     },
     "testimonials": {
       "title": "What Our Users Are Saying",
-      "subtitle": "Real feedback from real users",
       "items": {
         "item-1": {
           "name": "John Smith",
@@ -198,32 +197,32 @@
       "subtitle": "Have other questions? Feel free to contact us via email.",
       "items": {
         "item-1": {
+          "question": "What is the best pig latin translator for accurate translations?",
+          "answer": "VibeTrans Pig Latin Translator is the premier choice for accurate translations, featuring advanced AI technology that understands complex grammar, cultural context, and linguistic nuances. Our tool provides bidirectional translation, real-time processing, and high accuracy rates, all completely free. Perfect for language learning, communication, and cultural exploration with reliable, context-aware results."
+        },
+        "item-2": {
           "question": "How does VibeTrans ensure accurate translation?",
           "answer": "VibeTrans uses smart algorithms to convert English to Pig Latin accurately. It maintains capitalization and punctuation, ensuring your text remains clear. Whether it's a simple sentence or a lengthy document, VibeTrans handles it smoothly. With options to choose different translation rules, you can customize your Pig Latin experience. Plus, it supports translating text files, making it perfect for larger tasks. Enjoy seamless translations every time!"
         },
-        "item-2": {
+        "item-3": {
           "question": "How can I translate a document with VibeTrans?",
           "answer": "To translate a document with VibeTrans, follow these steps: Step 1, upload your text file, like a txt or docx. Step 2, choose your translation settings, like maintaining capitalization or displaying conversion steps. Step 3, click 'Translate' to see your text in Pig Latin. Step 4, save from browser or copy your results for easy sharing. It's that simple!"
         },
-        "item-3": {
+        "item-4": {
           "question": "Can VibeTrans help with learning Pig Latin?",
           "answer": "Absolutely! VibeTrans is not just a translator; it’s a learning tool too. By showing each conversion step, users can learn Pig Latin rules easily. The game mode challenges you to guess Pig Latin from English words, making learning entertaining. With TTS reading, you can also hear how Pig Latin sounds, enhancing your phonetic skills. It’s a fun way to master Pig Latin!"
         },
-        "item-4": {
+        "item-5": {
           "question": "Is this Pig Latin Translator free?",
           "answer": "Yes, VibeTrans is free to use. You can access all its basic features without any cost. Explore real-time translations, game modes, and document uploads at no charge. For advanced features or premium support, VibeTrans may offer optional upgrades. But rest assured, the essential translation capabilities are free, making it accessible for everyone!"
         },
-        "item-5": {
+        "item-6": {
           "question": "How does VibeTrans handle my privacy?",
           "answer": "Your privacy is a top priority for VibeTrans. All translations are processed locally in your browser, meaning your text never leaves your device. VibeTrans does not store or collect any data from you. You can translate with peace of mind, knowing your information remains private and secure. It's a safe space for all your Pig Latin needs!"
         },
-        "item-6": {
+        "item-7": {
           "question": "Why is Pig Latin translator a fun tool?",
           "answer": "Pig Latin translator is fun because it turns ordinary English into a playful secret code. With VibeTrans, you can easily convert text, making it great for games, learning, or just a laugh. Share your Pig Latin creations with friends or use it as a quirky way to communicate. It’s simple, entertaining, and brings a smile to language learning!"
-        },
-        "item-7": {
-          "question": "What is the best pig latin translator for accurate translations?",
-          "answer": "VibeTrans Pig Latin Translator is the premier choice for accurate translations, featuring advanced AI technology that understands complex grammar, cultural context, and linguistic nuances. Our tool provides bidirectional translation, real-time processing, and high accuracy rates, all completely free. Perfect for language learning, communication, and cultural exploration with reliable, context-aware results."
         }
       }
     },

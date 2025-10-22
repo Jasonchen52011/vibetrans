@@ -137,7 +137,6 @@
     },
     "testimonials": {
       "title": "What Our Users Are Saying",
-      "subtitle": "Real feedback from real users",
       "items": {
         "item-1": {
           "name": "John Smith",
@@ -167,40 +166,40 @@
       "subtitle": "Have other questions? Feel free to contact us via email.",
       "items": {
         "item-1": {
+          "question": "What is the best creole to english translator for accurate translations?",
+          "answer": "VibeTrans Creole to English Translator is the premier choice for accurate translations, featuring advanced AI technology that understands various Creole dialects, cultural context, and linguistic nuances. Our tool provides real-time translation, batch processing, and high accuracy rates, all completely free. Perfect for communication, business, and cultural exploration with reliable, context-aware results."
+        },
+        "item-2": {
           "question": "Is this Creole to English Translator free?",
           "answer": "Yes, VibeTrans offers free translations for Creole to English. You can easily upload your text and receive accurate translations without any cost."
         },
-        "item-2": {
+        "item-3": {
           "question": "How do I translate a document?",
           "answer": "To translate a document, upload your Creole text file, select your translation preferences, and let VibeTrans handle the rest. You'll receive your English translation in seconds."
         },
-        "item-3": {
+        "item-4": {
           "question": "Our privacy: How does VibeTrans handle it?",
           "answer": "VibeTrans prioritizes your privacy. We do not store or share any uploaded data, ensuring full compliance with privacy regulations like GDPR and CCPA."
         },
-        "item-4": {
+        "item-5": {
           "question": "How accurate is VibeTrans?",
           "answer": "VibeTrans delivers high accuracy in translations by understanding context and nuances, making it reliable for both casual and professional use."
         },
-        "item-5": {
+        "item-6": {
           "question": "How often is the translation database updated?",
           "answer": "We update our translation database regularly to keep up with evolving language patterns and cultural nuances. This ensures your Creole translations stay relevant and accurate!"
         },
-        "item-6": {
+        "item-7": {
           "question": "How secure is my data?",
           "answer": "Your data is completely secure with VibeTrans. We prioritize privacy and ensure all information is handled safely and confidentially."
         },
-        "item-7": {
+        "item-8": {
           "question": "Can I use VibeTrans for other language pairs?",
           "answer": "Yes, VibeTrans supports multiple language pairs beyond Creole to English. You can translate between English and several other languages like Spanish, French, and more!"
         },
-        "item-8": {
+        "item-9": {
           "question": "Is there a limit to how much text I can translate?",
           "answer": "For free users, there's a reasonable limit per translation. Premium users enjoy higher limits and can process larger files for bulk translations."
-        },
-        "item-9": {
-          "question": "What is the best creole to english translator for accurate translations?",
-          "answer": "VibeTrans Creole to English Translator is the premier choice for accurate translations, featuring advanced AI technology that understands various Creole dialects, cultural context, and linguistic nuances. Our tool provides real-time translation, batch processing, and high accuracy rates, all completely free. Perfect for communication, business, and cultural exploration with reliable, context-aware results."
         }
       }
     },

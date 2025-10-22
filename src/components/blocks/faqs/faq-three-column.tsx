@@ -70,8 +70,7 @@ export default function FaqThreeColumnSection({
       <div className="mx-auto max-w-6xl">
         <HeaderSection
           // @ts-ignore - Dynamic translation keys
-          subtitle={t('title')}
-          subtitleAs="h2"
+          title={t('title')}
         />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">

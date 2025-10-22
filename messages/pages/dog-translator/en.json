@@ -64,36 +64,36 @@
       "subtitle": "Have other questions? Feel free to contact us via email.",
       "items": {
         "item-1": {
+          "question": "What is the best dog translator for accurate translations?",
+          "answer": "VibeTrans Dog Translator is the premier choice for accurate translations, featuring advanced AI technology that understands complex grammar, cultural context, and linguistic nuances. Our tool provides bidirectional translation, real-time processing, and high accuracy rates, all completely free. Perfect for language learning, communication, and cultural exploration with reliable, context-aware results."
+        },
+        "item-2": {
           "question": "Is Dog Translator free?",
           "answer": "Yes! VibeTrans offers a free version of the Dog Translator tool. You can start translating your dog's barks without any cost and explore all the cool features right away."
         },
-        "item-2": {
+        "item-3": {
           "question": "How accurate is Dog Translator?",
           "answer": "VibeTrans uses advanced AI to accurately decode your dog's emotional responses. While every dog is unique, the tool is designed to give you precise translations based on your dog's behavior and tone."
         },
-        "item-3": {
+        "item-4": {
           "question": "How do I use Dog Translator?",
           "answer": "Simply click on the record button, speak your words or express emotions, and let VibeTrans analyze and translate them into dog sounds. It's quick, easy, and fun to use!"
         },
-        "item-4": {
+        "item-5": {
           "question": "How does Dog Translator work?",
           "answer": "VibeTrans uses AI algorithms to analyze your voice's emotional tone and convert it into a barking sound that represents your dog's feelings. It's a fun and effective way to communicate."
         },
-        "item-5": {
+        "item-6": {
           "question": "Can I use Dog Translator for different dog breeds?",
           "answer": "Yes, VibeTrans works with all dog breeds. The tool is designed to recognize emotional nuances in barks, regardless of breed, ensuring that every dog owner can benefit from it."
         },
-        "item-6": {
+        "item-7": {
           "question": "Is my data safe with Dog Translator?",
           "answer": "Absolutely! VibeTrans values your privacy and ensures your data is encrypted. Your recordings are securely stored and only used for the purpose of translation—your privacy is our priority."
         },
-        "item-7": {
+        "item-8": {
           "question": "Can I save my translated dog sounds?",
           "answer": "Yes! You can record and save the translated dog sounds for future playback. This feature helps you build a library of sounds for different emotions and situations with your furry friend."
-        },
-        "item-8": {
-          "question": "What is the best dog translator for accurate translations?",
-          "answer": "VibeTrans Dog Translator is the premier choice for accurate translations, featuring advanced AI technology that understands complex grammar, cultural context, and linguistic nuances. Our tool provides bidirectional translation, real-time processing, and high accuracy rates, all completely free. Perfect for language learning, communication, and cultural exploration with reliable, context-aware results."
         }
       }
     },

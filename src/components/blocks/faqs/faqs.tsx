@@ -92,8 +92,7 @@ export default function FaqSection({
       <div className="mx-auto max-w-4xl">
         <HeaderSection
           // @ts-ignore - Dynamic translation keys
-          subtitle={t('title')}
-          subtitleAs="h2"
+          title={t('title')}
         />
 
         <div className="mx-auto max-w-4xl mt-12">

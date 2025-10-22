@@ -126,7 +126,6 @@
     },
     "testimonials": {
       "title": "What Our Users Are Saying",
-      "subtitle": "Real feedback from real users",
       "items": {
         "item-1": {
           "name": "John Anderson",
@@ -156,40 +155,40 @@
       "subtitle": "",
       "items": {
         "item-1": {
+          "question": "What is the best bad translator for accurate translations?",
+          "answer": "VibeTrans Bad Translator is the premier choice for accurate translations, featuring advanced AI technology that understands complex grammar, cultural context, and linguistic nuances. Our tool provides bidirectional translation, real-time processing, and high accuracy rates, all completely free. Perfect for language learning, communication, and cultural exploration with reliable, context-aware results."
+        },
+        "item-2": {
           "question": "Is Bad Translator free to use?",
           "answer": "Yes, Bad Translator is completely free! You can use it to create funny, absurd translations without any cost. Enjoy all the features without worrying about hidden fees."
         },
-        "item-2": {
+        "item-3": {
           "question": "How does Bad Translator work?",
           "answer": "Bad Translator works by taking your text, translating it through multiple languages, and producing funny, sometimes absurd, translations. Simply input your text and choose your language pair to get started."
         },
-        "item-3": {
+        "item-4": {
           "question": "Is my data safe with Bad Translator?",
           "answer": "Yes, your data is secure. We don't store any of your inputted text, and your translations are private. VibeTrans ensures your privacy while using Bad Translator."
         },
-        "item-4": {
+        "item-5": {
           "question": "How many languages does Bad Translator support?",
           "answer": "Bad Translator supports a variety of languages, and you can experiment with different language combinations. The more languages you try, the more hilarious results you get!"
         },
-        "item-5": {
+        "item-6": {
           "question": "Can I use Bad Translator for business purposes?",
           "answer": "Absolutely! Bad Translator can be used to generate fun content for marketing campaigns, social media posts, or even creative brainstorming sessions. It's perfect for adding humor to your business content."
         },
-        "item-6": {
+        "item-7": {
           "question": "Can I download my translations?",
           "answer": "Yes, you can easily save the translations from your browser as a text file. Perfect for saving and sharing with friends, colleagues, or posting on social media!"
         },
-        "item-7": {
+        "item-8": {
           "question": "How many translation rounds should I use?",
           "answer": "The number of rounds affects how absurd your translation gets. For mild humor, try 5-7 rounds. For maximum chaos, go for 15-20 rounds! Experiment to find your perfect level of weirdness."
         },
-        "item-8": {
+        "item-9": {
           "question": "Can I save preferred translations?",
           "answer": "Yes! You can save any translation from your browser as a text file, copy it to your clipboard, or share it directly on social media. All your hilarious results are just a click away!"
-        },
-        "item-9": {
-          "question": "What is the best bad translator for accurate translations?",
-          "answer": "VibeTrans Bad Translator is the premier choice for accurate translations, featuring advanced AI technology that understands complex grammar, cultural context, and linguistic nuances. Our tool provides bidirectional translation, real-time processing, and high accuracy rates, all completely free. Perfect for language learning, communication, and cultural exploration with reliable, context-aware results."
         }
       }
     },

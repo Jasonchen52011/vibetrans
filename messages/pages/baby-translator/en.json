@@ -199,32 +199,32 @@
       "subtitle": "Have other questions? Feel free to contact us via email.",
       "items": {
         "item-1": {
+          "question": "What is the best baby translator for accurate translations?",
+          "answer": "VibeTrans Baby Translator is the premier choice for accurate translations, featuring advanced AI technology that understands complex grammar, cultural context, and linguistic nuances. Our tool provides bidirectional translation, real-time processing, and high accuracy rates, all completely free. Perfect for language learning, communication, and cultural exploration with reliable, context-aware results."
+        },
+        "item-2": {
           "question": "Is Baby Translator Pro free?",
           "answer": "Yes, Baby Translator Pro offers a free version with essential features. Upgrade to premium for advanced functionalities and additional insights."
         },
-        "item-2": {
+        "item-3": {
           "question": "How does Baby Translator Pro protect our privacy?",
           "answer": "VibeTrans ensures data privacy with GDPR and COPPA compliance. Your recordings are encrypted and stored securely, accessible only by you."
         },
-        "item-3": {
+        "item-4": {
           "question": "How can I use Baby Translator Pro step-by-step?",
           "answer": "First, record your baby's cry. Second, upload the recording to VibeTrans web tool. Third, analyze the results for insights and suggestions. Finally, apply the advice given."
         },
-        "item-4": {
+        "item-5": {
           "question": "What is a baby cry translator?",
           "answer": "A baby cry translator is a tool that interprets baby cries and sounds, providing insights into their needs and offering soothing suggestions. It uses AI for accurate analysis."
         },
-        "item-5": {
+        "item-6": {
           "question": "Does Baby Translator Pro integrate with smart devices?",
           "answer": "Absolutely! VibeTrans integrates seamlessly with smart home devices like Alexa, offering instant insights and making your parenting journey more convenient."
         },
-        "item-6": {
+        "item-7": {
           "question": "Can I use VibeTrans for professional documents?",
           "answer": "Absolutely! VibeTrans is designed to handle professional documents including business emails, legal texts, academic papers, and more. Our advanced AI maintains formal tone and technical accuracy."
-        },
-        "item-7": {
-          "question": "What is the best baby translator for accurate translations?",
-          "answer": "VibeTrans Baby Translator is the premier choice for accurate translations, featuring advanced AI technology that understands complex grammar, cultural context, and linguistic nuances. Our tool provides bidirectional translation, real-time processing, and high accuracy rates, all completely free. Perfect for language learning, communication, and cultural exploration with reliable, context-aware results."
         }
       }
     },

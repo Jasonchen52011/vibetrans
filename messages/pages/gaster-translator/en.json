@@ -76,7 +76,7 @@
       "steps": [
         {
           "name": "Upload Text",
-          "description": "Click the 'Upload Text' button on the page and select the file you want to translate. Multiple formats are supported. Ensure the file size doesn't exceed the limit. After upload, you'll see the filename and status提示, confirm everything is correct before proceeding.",
+          "description": "Click the 'Upload Text' button on the page and select the file you want to translate. Multiple formats are supported. Ensure the file size doesn't exceed the limit. After upload, you'll see the filename and status indicator—confirm everything is correct before proceeding.",
           "wordCount": 40
         },
         {
@@ -157,7 +157,6 @@
     },
     "testimonials": {
       "title": "What Users Say",
-      "subtitle": "Real feedback from real users",
       "items": {
         "item-1": {
           "name": "Sarah Johnson",
@@ -187,32 +186,32 @@
       "subtitle": "Have other questions? Feel free to contact us via email.",
       "items": {
         "item-1": {
+          "question": "What is the best gaster translator for accurate translations?",
+          "answer": "VibeTrans Gaster Translator is the premier choice for accurate translations, featuring advanced AI technology that understands complex grammar, cultural context, and linguistic nuances. Our tool provides bidirectional translation, real-time processing, and high accuracy rates, all completely free. Perfect for language learning, communication, and cultural exploration with reliable, context-aware results."
+        },
+        "item-2": {
           "question": "Is this Gaster Translator free?",
           "answer": "Gaster Translator is available in both free and premium versions. The free version offers basic translation features, while the premium version provides advanced functionalities and support. You can choose the version that best fits your needs and upgrade anytime if required."
         },
-        "item-2": {
+        "item-3": {
           "question": "How is our privacy handled?",
           "answer": "We prioritize your privacy. All data is stored and transmitted using advanced encryption technology, limited to necessary service functions only. We never sell user data and regularly review security measures to ensure your information is always protected."
         },
-        "item-3": {
+        "item-4": {
           "question": "How to use Gaster Translator?",
           "answer": "1. Enter your English text in the input field. 2. Click the 'Translate' button to convert to Gaster symbols. 3. Copy or save your translated text from your browser. The tool instantly converts English text into Wingdings-style symbols perfect for Undertale fans and creative projects."
         },
-        "item-4": {
+        "item-5": {
           "question": "Can I use Gaster Translator for commercial projects?",
           "answer": "Yes, you can use Gaster Translator for both personal and commercial projects. The translated symbols can be used in games, videos, educational materials, and other creative works. However, please respect the intellectual property rights of the original Undertale game and its creators."
         },
-        "item-5": {
+        "item-6": {
           "question": "What symbols does Gaster Translator use?",
           "answer": "Gaster Translator uses a combination of Wingdings symbols and special characters inspired by Undertale's mysterious language. The symbols include various geometric shapes, arrows, and special characters that create the distinctive Gaster aesthetic popularized by the game."
         },
-        "item-6": {
+        "item-7": {
           "question": "Can I use VibeTrans for professional documents?",
           "answer": "Absolutely! VibeTrans is designed to handle professional documents including business emails, legal texts, academic papers, and more. Our advanced AI maintains formal tone and technical accuracy."
-        },
-        "item-7": {
-          "question": "What is the best gaster translator for accurate translations?",
-          "answer": "VibeTrans Gaster Translator is the premier choice for accurate translations, featuring advanced AI technology that understands complex grammar, cultural context, and linguistic nuances. Our tool provides bidirectional translation, real-time processing, and high accuracy rates, all completely free. Perfect for language learning, communication, and cultural exploration with reliable, context-aware results."
         }
       }
     },

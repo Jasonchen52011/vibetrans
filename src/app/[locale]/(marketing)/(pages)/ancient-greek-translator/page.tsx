@@ -10,6 +10,7 @@ import TestimonialsThreeColumnSection from '@/components/blocks/testimonials/tes
 import WhatIsSection from '@/components/blocks/whatis';
 import { AuroraBackground } from '@/components/ui/aurora-background';
 import { constructMetadata } from '@/lib/metadata';
+import { buildToolStructuredData } from '@/lib/seo/structured-data';
 import { getUrlWithLocale } from '@/lib/urls/urls';
 import type { Metadata } from 'next';
 import type { Locale } from 'next-intl';
@@ -59,26 +60,10 @@ export default async function AncientGreekTranslatorPage(
   });
 
   // Structured Data for SEO
-  const structuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'WebApplication',
+  const structuredData = buildToolStructuredData({
     name: 'VibeTrans Ancient Greek Translator',
-    applicationCategory: 'UtilityApplication',
     description: (t as any)('description'),
-    operatingSystem: 'Web',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
-    featureList: [
-      'Text Translation',
-      'Reverse Translation',
-      'File Upload Support',
-      'Pronunciation Guide',
-      'Cultural Context',
-    ],
-  };
+  });
 
   // Page data for the tool
   const pageData = {

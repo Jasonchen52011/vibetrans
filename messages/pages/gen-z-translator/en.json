@@ -139,40 +139,40 @@
       "subtitle": "Frequently Asked Questions",
       "items": {
         "item-1": {
+          "question": "What is the best gen z translator for accurate translations?",
+          "answer": "VibeTrans Gen Z Translator is the premier choice for accurate translations, featuring advanced AI technology that understands complex grammar, cultural context, and linguistic nuances. Our tool provides bidirectional translation, real-time processing, and high accuracy rates, all completely free. Perfect for language learning, communication, and cultural exploration with reliable, context-aware results."
+        },
+        "item-2": {
           "question": "Is this Gen Z Translator free?",
           "answer": "Yes! VibeTrans is free to use for basic translations. For advanced features, such as bulk file uploads, we offer premium options."
         },
-        "item-2": {
+        "item-3": {
           "question": "How do I upload a file?",
           "answer": "Simply click the 'Upload File' button, select your txt or Word file, and VibeTrans will automatically translate the content. It's quick and easy!"
         },
-        "item-3": {
+        "item-4": {
           "question": "How accurate is the translation?",
           "answer": "VibeTrans delivers highly accurate translations, but as with any slang, context matters. We ensure that meanings are correctly captured, but some slang might have multiple interpretations."
         },
-        "item-4": {
+        "item-5": {
           "question": "How often is the slang database updated?",
           "answer": "We update our slang database regularly to keep up with evolving Gen Z trends. This ensures your translations stay relevant and accurate!"
         },
-        "item-5": {
+        "item-6": {
           "question": "How secure is my data?",
           "answer": "Your data is completely secure with VibeTrans. We prioritize privacy and ensure all information is handled safely and confidentially."
         },
-        "item-6": {
+        "item-7": {
           "question": "Can I use VibeTrans for non-English languages?",
           "answer": "Yes, VibeTrans supports multiple languages, allowing you to translate Gen Z slang between English and several other languages like Spanish, French, and more!"
         },
-        "item-7": {
+        "item-8": {
           "question": "Is there a limit to how much text I can translate?",
           "answer": "For free users, there's a reasonable limit per translation. Premium users enjoy higher limits and can process larger files for bulk translations."
         },
-        "item-8": {
+        "item-9": {
           "question": "Can I save my translation history?",
           "answer": "Yes! Once you create an account, VibeTrans automatically saves your translation history so you can access and reference previous translations anytime."
-        },
-        "item-9": {
-          "question": "What is the best gen z translator for accurate translations?",
-          "answer": "VibeTrans Gen Z Translator is the premier choice for accurate translations, featuring advanced AI technology that understands complex grammar, cultural context, and linguistic nuances. Our tool provides bidirectional translation, real-time processing, and high accuracy rates, all completely free. Perfect for language learning, communication, and cultural exploration with reliable, context-aware results."
         }
       }
     },

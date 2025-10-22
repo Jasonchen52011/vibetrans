@@ -148,7 +148,6 @@
     },
     "testimonials": {
       "title": "What Our Users Are Saying",
-      "subtitle": "Real feedback from real users",
       "items": {
         "item-1": {
           "name": "Jessica Turner",
@@ -178,32 +177,32 @@
       "subtitle": "Have other questions? Feel free to contact us via email.",
       "items": {
         "item-1": {
+          "question": "What is the best minion translator for accurate translations?",
+          "answer": "VibeTrans Minion Translator is the premier choice for accurate translations, featuring advanced AI technology that understands complex grammar, cultural context, and linguistic nuances. Our tool provides bidirectional translation, real-time processing, and high accuracy rates, all completely free. Perfect for language learning, communication, and cultural exploration with reliable, context-aware results."
+        },
+        "item-2": {
           "question": "Is Minion Translator Pro free to use?",
           "answer": "Minion Translator Pro is a paid service that offers premium features not available in the free version. To access these advanced tools and exclusive content, you need to subscribe to one of our available plans."
         },
-        "item-2": {
+        "item-3": {
           "question": "How do I use Minion Translator Pro step-by-step?",
           "answer": "Step 1: Open the Minion Translator Pro website in your browser. Step 2: Enter or paste the text you want to translate. Step 3: Select the target language or translation direction. Step 4: Click the 'Translate' button. Step 5: View and save your translation results from your browser."
         },
-        "item-3": {
+        "item-4": {
           "question": "How does VibeTrans protect my privacy?",
           "answer": "VibeTrans uses end-to-end encryption to secure your data. We do not store any personal information on our servers. Follow these steps: 1. Use a secure connection. 2. Keep your browser updated. 3. Review privacy settings."
         },
-        "item-4": {
+        "item-5": {
           "question": "What is Minion Translator Pro?",
           "answer": "Minion Translator Pro is an advanced tool that converts any text into the playful and unique language of the Minions. It offers enhanced features for accurate translations, making communication fun and entertaining for both personal and professional use."
         },
-        "item-5": {
+        "item-6": {
           "question": "Can I use it on mobile?",
           "answer": "Yes, you can use the Minion Translator on any device. Simply open your mobile browser, go to the Minion Translator website, and start translating. The website is optimized for mobile use, ensuring a seamless experience."
         },
-        "item-6": {
+        "item-7": {
           "question": "How accurate are the translations?",
           "answer": "Translation accuracy is high, as we use advanced algorithms to ensure precise interpretations. While most translations are reliable, occasional nuances may vary due to language complexity. We continuously update our system to enhance accuracy and user satisfaction."
-        },
-        "item-7": {
-          "question": "What is the best minion translator for accurate translations?",
-          "answer": "VibeTrans Minion Translator is the premier choice for accurate translations, featuring advanced AI technology that understands complex grammar, cultural context, and linguistic nuances. Our tool provides bidirectional translation, real-time processing, and high accuracy rates, all completely free. Perfect for language learning, communication, and cultural exploration with reliable, context-aware results."
         }
       }
     },

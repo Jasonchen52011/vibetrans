@@ -142,7 +142,6 @@
     },
     "testimonials": {
       "title": "What Our Users Are Saying",
-      "subtitle": "Real feedback from real users",
       "items": {
         "item-1": {
           "name": "Emily Johnson",
@@ -172,28 +171,28 @@
       "subtitle": "Common Questions About Al Bhed Translation",
       "items": {
         "item-1": {
+          "question": "What is the best al bhed translator for accurate translations?",
+          "answer": "VibeTrans stands out as the best al bhed translator for accurate translations due to its perfect implementation of the Final Fantasy X cipher system. Our tool ensures 100% accuracy in every character substitution, maintains context awareness, and provides instant bidirectional translation between English and Al Bhed. Unlike basic translators, VibeTrans offers audio pronunciation, batch file processing, and a user-friendly interface designed specifically for gamers, cosplayers, and language enthusiasts who need reliable results every time."
+        },
+        "item-2": {
           "question": "Is this Al Bhed Translator free?",
           "answer": "Yes, VibeTrans Al Bhed Translator is completely free with no hidden charges or usage limits. You can translate unlimited text between English and Al Bhed anytime. We believe language fun should be accessible to everyone, so we provide this professional-grade translation tool at no cost to users worldwide for personal or entertainment purposes."
         },
-        "item-2": {
+        "item-3": {
           "question": "How does VibeTrans handle our privacy?",
           "answer": "Yes, we take your privacy seriously. VibeTrans prioritizes your data security and never stores or shares your translations without consent. Your Al Bhed translations are processed securely with encrypted connections, ensuring complete confidentiality for all your translation activities."
         },
-        "item-3": {
+        "item-4": {
           "question": "How do I use Al Bhed Translator?",
           "answer": "Using VibeTrans Al Bhed Translator is simple: Step 1, type or paste your English or Al Bhed text in the input box. Step 2, click the 'Translate' button for instant conversion. Step 3, listen to the pronunciation using the audio feature if needed. Step 4, copy or save your translated text from your browser for later use. That's all you need!"
         },
-        "item-4": {
+        "item-5": {
           "question": "Can I use VibeTrans for professional documents?",
           "answer": "Absolutely! VibeTrans is designed to handle professional documents including business emails, legal texts, academic papers, and more. Our advanced AI maintains formal tone and technical accuracy."
         },
-        "item-5": {
+        "item-6": {
           "question": "What file formats does VibeTrans support?",
           "answer": "VibeTrans supports multiple file formats including .txt, .docx, .pdf, and more. You can also directly paste text into our interface for instant translation without file upload."
-        },
-        "item-6": {
-          "question": "What is the best al bhed translator for accurate translations?",
-          "answer": "VibeTrans stands out as the best al bhed translator for accurate translations due to its perfect implementation of the Final Fantasy X cipher system. Our tool ensures 100% accuracy in every character substitution, maintains context awareness, and provides instant bidirectional translation between English and Al Bhed. Unlike basic translators, VibeTrans offers audio pronunciation, batch file processing, and a user-friendly interface designed specifically for gamers, cosplayers, and language enthusiasts who need reliable results every time."
         }
       }
     },

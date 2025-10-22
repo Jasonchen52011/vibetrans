@@ -169,7 +169,6 @@
     },
     "testimonials": {
       "title": "What Our Users Are Saying",
-      "subtitle": "Real feedback from real users",
       "items": {
         "item-1": {
           "name": "Emily Johnson",
@@ -199,28 +198,28 @@
       "subtitle": "Have other questions? Feel free to contact us via email.",
       "items": {
         "item-1": {
+          "question": "What is the best cantonese translator for accurate translations?",
+          "answer": "VibeTrans Cantonese Translator is the premier choice for accurate translations, featuring advanced AI technology that understands complex grammar, cultural context, and linguistic nuances. Our tool provides bidirectional translation, real-time processing, and high accuracy rates, all completely free. Perfect for language learning, communication, and cultural exploration with reliable, context-aware results."
+        },
+        "item-2": {
           "question": "Is this Cantonese Translator free?",
           "answer": "Yes, VibeTrans offers its Cantonese translation services for free. You can enjoy accurate translations without any cost involved."
         },
-        "item-2": {
+        "item-3": {
           "question": "How does VibeTrans ensure privacy?",
           "answer": "VibeTrans prioritizes your privacy by using secure servers and robust encryption. Your data is never shared, ensuring complete confidentiality."
         },
-        "item-3": {
+        "item-4": {
           "question": "How does VibeTrans handle slang?",
           "answer": "VibeTrans recognizes Cantonese slang and colloquial phrases, providing accurate translations that maintain the original meaning, thanks to its advanced AI."
         },
-        "item-4": {
+        "item-5": {
           "question": "How accurate is VibeTrans?",
           "answer": "VibeTrans delivers high accuracy in translations by understanding context and nuances, making it reliable for both casual and professional use."
         },
-        "item-5": {
+        "item-6": {
           "question": "How to translate with VibeTrans?",
           "answer": "To translate a document with VibeTrans, follow these steps: Step 1, enter your text. Step 2, select the target language. Step 3, click Translate. Step 4, review and copy the translation."
-        },
-        "item-6": {
-          "question": "What is the best cantonese translator for accurate translations?",
-          "answer": "VibeTrans Cantonese Translator is the premier choice for accurate translations, featuring advanced AI technology that understands complex grammar, cultural context, and linguistic nuances. Our tool provides bidirectional translation, real-time processing, and high accuracy rates, all completely free. Perfect for language learning, communication, and cultural exploration with reliable, context-aware results."
         }
       }
     },

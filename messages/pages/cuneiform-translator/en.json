@@ -182,7 +182,6 @@
     },
     "testimonials": {
       "title": "What Our Users Are Saying",
-      "subtitle": "Real feedback from real users",
       "items": {
         "item-1": {
           "name": "John Smith",
@@ -212,36 +211,36 @@
       "subtitle": "Common questions from scholars and history enthusiasts",
       "items": {
         "item-1": {
+          "question": "What is the best cuneiform translator for accurate translations?",
+          "answer": "VibeTrans Cuneiform Translator is the premier choice for accurate translations, featuring advanced AI technology that understands complex grammar, cultural context, and linguistic nuances. Our tool provides bidirectional translation, real-time processing, and high accuracy rates, all completely free. Perfect for language learning, communication, and cultural exploration with reliable, context-aware results."
+        },
+        "item-2": {
           "question": "Is VibeTrans Cuneiform Translator free to use?",
           "answer": "Yes, VibeTrans offers free basic cuneiform translation for academic and educational purposes. This includes standard translations of Sumerian, Akkadian, and Babylonian texts with unlimited usage for students, educators, and independent researchers. Premium features include advanced dialect analysis, batch processing of multiple documents, detailed grammatical breakdowns, and priority processing for time-sensitive research projects. Premium subscriptions start at $9.99 monthly."
         },
-        "item-2": {
+        "item-3": {
           "question": "How do I translate cuneiform texts with VibeTrans?",
           "answer": "Step 1: Select your script type (Sumerian, Akkadian, or Babylonian) from the dropdown menu. Step 2: Input transliterated cuneiform text into the text box or upload a .txt or .docx file containing transliteration. Step 3: Click 'Translate' and VibeTrans AI will process your text, typically in 2-5 seconds. Step 4: Review the translation results, which include transliteration, literal translation, and contextual interpretation. Step 5: Save your translation from your browser or copy the text for use in research papers and academic work."
         },
-        "item-3": {
+        "item-4": {
           "question": "What cuneiform scripts and dialects does VibeTrans support?",
           "answer": "VibeTrans supports three major ancient Mesopotamian languages: Sumerian (3200-2000 BCE, the oldest known written language), Akkadian (2500-100 BCE, Semitic language of Babylonian and Assyrian empires), and Babylonian (1895-539 BCE, administrative and literary dialect). Within these, the web tool recognizes multiple historical dialects including Old Akkadian, Old Babylonian, Middle Babylonian, Neo-Babylonian, and Neo-Assyrian, applying appropriate grammatical rules and vocabulary for each period."
         },
-        "item-4": {
+        "item-5": {
           "question": "Can I translate from English to cuneiform script?",
           "answer": "Yes! VibeTrans supports bidirectional translation. You can translate from English to transliterated cuneiform and from cuneiform to English. When translating English to cuneiform, the AI converts your modern text into appropriate Sumerian, Akkadian, or Babylonian vocabulary and grammar, then provides standard academic transliteration. This feature is particularly useful for creating educational materials, comparative linguistics research, or understanding how ancient scribes would have expressed modern concepts."
         },
-        "item-5": {
+        "item-6": {
           "question": "How accurate is VibeTrans cuneiform translation compared to human experts?",
           "answer": "VibeTrans achieves approximately 75-85% accuracy for standard literary and administrative texts, based on comparison with published expert translations. Accuracy is highest for well-documented text types like legal codes, royal inscriptions, and literary works with extensive parallel texts. Accuracy decreases for fragmentary tablets, rare vocabulary, and highly poetic or metaphorical language. The tool is designed as a research accelerator rather than replacement for human expertise—it provides reliable preliminary translations that scholars should verify for publication-quality work."
         },
-        "item-6": {
+        "item-7": {
           "question": "Does VibeTrans work with cuneiform images or only transliteration?",
           "answer": "Currently, VibeTrans accepts transliterated cuneiform text (romanized representation using standard Assyriological conventions). We're developing optical character recognition (OCR) capabilities to process photographs and scans of actual cuneiform tablets, but this feature is still in beta testing. For now, users should input text using standard transliteration from published sources or personal transcription. Many online cuneiform databases like CDLI provide transliterated texts compatible with VibeTrans."
         },
-        "item-7": {
+        "item-8": {
           "question": "What are the limitations of AI cuneiform translation?",
           "answer": "AI cuneiform translation has several limitations: 1) Fragmentary or damaged texts with missing signs are challenging to translate accurately. 2) Rare vocabulary or specialized technical terms may not be in the training database. 3) Poetic or metaphorical language often requires cultural context that AI may miss. 4) Different historical periods and dialects can confuse translation algorithms. 5) Personal names and place names without established transliteration remain uncertain. Always verify important translations with human experts for academic publications or critical research."
-        },
-        "item-8": {
-          "question": "What is the best cuneiform translator for accurate translations?",
-          "answer": "VibeTrans Cuneiform Translator is the premier choice for accurate translations, featuring advanced AI technology that understands complex grammar, cultural context, and linguistic nuances. Our tool provides bidirectional translation, real-time processing, and high accuracy rates, all completely free. Perfect for language learning, communication, and cultural exploration with reliable, context-aware results."
         }
       }
     },

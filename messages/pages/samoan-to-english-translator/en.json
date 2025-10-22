@@ -160,7 +160,6 @@
     },
     "testimonials": {
       "title": "What Users Say",
-      "subtitle": "Real feedback from real users",
       "items": {
         "item-1": {
           "name": "John Smith",
@@ -190,32 +189,32 @@
       "subtitle": "Have other questions? Feel free to contact us via email.",
       "items": {
         "item-1": {
+          "question": "What is the best samoan to english translator for accurate translations?",
+          "answer": "VibeTrans Samoan To English Translator is the premier choice for accurate translations, featuring advanced AI technology that understands complex grammar, cultural context, and linguistic nuances. Our tool provides bidirectional translation, real-time processing, and high accuracy rates, all completely free. Perfect for language learning, communication, and cultural exploration with reliable, context-aware results."
+        },
+        "item-2": {
           "question": "Is this Samoan to English Translator free?",
           "answer": "Yes, this Samoan to English translation software is completely free to use. You can access all its features without any cost. Simply visit our website to start translating instantly with no hidden charges or subscription fees."
         },
-        "item-2": {
+        "item-3": {
           "question": "How is my privacy protected?",
           "answer": "We prioritize your privacy by implementing strong encryption and secure servers to protect your data. We do not store any translation history, ensuring that your information remains confidential and private at all times."
         },
-        "item-3": {
+        "item-4": {
           "question": "Can I translate large documents?",
           "answer": "Yes, you can translate large documents. Simply upload the document to the translator tool, and it will process the translation in segments. This ensures accuracy and efficiency. Please ensure the document format is supported for best results."
         },
-        "item-4": {
+        "item-5": {
           "question": "How accurate is the translation?",
           "answer": "Translation accuracy is generally high, capturing the essence of the text. However, for complex phrases or cultural nuances, it's recommended to cross-check with native speakers to ensure precise understanding."
         },
-        "item-5": {
+        "item-6": {
           "question": "Can I use this on my phone?",
           "answer": "Yes, you can use the Samoan to English translator on your phone. It is compatible with all modern mobile browsers. Simply open the website in your phone's browser, and you can start translating right away, anytime, anywhere."
         },
-        "item-6": {
+        "item-7": {
           "question": "Does the translator handle idioms?",
           "answer": "The web tool is designed to recognize and translate common Samoan idioms into English, providing context-appropriate meanings. However, idioms can be complex, and accuracy may vary. For best results, cross-reference with native speakers or additional resources if you encounter unusual phrases."
-        },
-        "item-7": {
-          "question": "What is the best samoan to english translator for accurate translations?",
-          "answer": "VibeTrans Samoan To English Translator is the premier choice for accurate translations, featuring advanced AI technology that understands complex grammar, cultural context, and linguistic nuances. Our tool provides bidirectional translation, real-time processing, and high accuracy rates, all completely free. Perfect for language learning, communication, and cultural exploration with reliable, context-aware results."
         }
       }
     },

@@ -109,7 +109,6 @@
     },
     "testimonials": {
       "title": "What Our Users Are Saying",
-      "subtitle": "Real feedback from real users",
       "items": {
         "item-1": {
           "name": "John Thompson",
@@ -139,36 +138,36 @@
       "subtitle": "Frequently Asked Questions",
       "items": {
         "item-1": {
+          "question": "What is the best esperanto translator for accurate translations?",
+          "answer": "VibeTrans Esperanto Translator is the premier choice for accurate translations, featuring advanced AI technology that understands complex grammar, cultural context, and linguistic nuances. Our tool provides bidirectional translation, real-time processing, and high accuracy rates, all completely free. Perfect for language learning, communication, and cultural exploration with reliable, context-aware results."
+        },
+        "item-2": {
           "question": "Is this Esperanto Translator free?",
           "answer": "Yes! VibeTrans's Esperanto Translator is completely free to use, providing high-quality translations without any hidden costs."
         },
-        "item-2": {
+        "item-3": {
           "question": "How accurate is the translation?",
           "answer": "VibeTrans uses AI-powered algorithms to ensure accurate translations that maintain context, ensuring a high level of precision for all your translation needs."
         },
-        "item-3": {
+        "item-4": {
           "question": "How do I translate my voice using VibeTrans?",
           "answer": "Simply click the voice input option, speak your phrase in Esperanto, and VibeTrans will instantly translate and display the result."
         },
-        "item-4": {
+        "item-5": {
           "question": "How to upload a document for translation?",
           "answer": "Click the 'Upload Document' button, select your file, and VibeTrans will automatically translate it. You can upload text or PDF files."
         },
-        "item-5": {
+        "item-6": {
           "question": "What about data security?",
           "answer": "Your privacy is our priority. VibeTrans ensures that your data is never stored or shared, and all translations are processed securely."
         },
-        "item-6": {
+        "item-7": {
           "question": "What file formats are supported?",
           "answer": "VibeTrans supports .txt and .docx file formats for document translation, making it easy to work with most common text documents."
         },
-        "item-7": {
+        "item-8": {
           "question": "Is there a character limit for translations?",
           "answer": "For optimal performance, translations are limited to 5000 characters per request. For longer documents, you can split them into multiple sections."
-        },
-        "item-8": {
-          "question": "What is the best esperanto translator for accurate translations?",
-          "answer": "VibeTrans Esperanto Translator is the premier choice for accurate translations, featuring advanced AI technology that understands complex grammar, cultural context, and linguistic nuances. Our tool provides bidirectional translation, real-time processing, and high accuracy rates, all completely free. Perfect for language learning, communication, and cultural exploration with reliable, context-aware results."
         }
       }
     },

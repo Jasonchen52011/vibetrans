@@ -12,6 +12,7 @@ import UniqueSection from '@/components/blocks/unique';
 import WhatIsSection from '@/components/blocks/whatis';
 import { AuroraBackground } from '@/components/ui/aurora-background';
 import { constructMetadata } from '@/lib/metadata';
+import { buildToolStructuredData } from '@/lib/seo/structured-data';
 import { getUrlWithLocale } from '@/lib/urls/urls';
 import type { Metadata } from 'next';
 import type { Locale } from 'next-intl';
@@ -53,25 +54,10 @@ export default async function DogTranslatorPage(props: DogTranslatorPageProps) {
   const t = await getTranslations({ locale, namespace: 'DogTranslatorPage' });
 
   // Structured Data for SEO
-  const structuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'WebApplication',
+  const structuredData = buildToolStructuredData({
     name: 'VibeTrans Dog Translator',
-    applicationCategory: 'EntertainmentApplication',
     description: (t as any)('description'),
-    operatingSystem: 'Web',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
-    featureList: [
-      'AI Emotion Intelligence',
-      'Authentic Sound Library',
-      'Real-time Translation',
-      'Multi-emotion Support',
-    ],
-  };
+  });
 
   // Page data for the tool
   const pageData = {

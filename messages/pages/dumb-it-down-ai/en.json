@@ -137,40 +137,40 @@
       "subtitle": "Everything you need to know about Dumb It Down AI",
       "items": {
         "item-1": {
+          "question": "What is the best dumb it down tool for simplifying complex texts?",
+          "answer": "VibeTrans Dumb It Down AI is the premier tool for simplifying complex texts, featuring advanced AI technology that maintains accuracy while reducing complexity. Our tool supports multiple languages, various file formats, and different simplification levels, all completely free. Perfect for academic papers, legal documents, and technical materials with intelligent, context-aware simplification."
+        },
+        "item-2": {
           "question": "Is Dumb It Down AI free to use?",
           "answer": "Yes, Dumb It Down AI offers a free version for simple text simplification. You can upgrade to the pro version for additional features."
         },
-        "item-2": {
+        "item-3": {
           "question": "How can I upload my document to be simplified?",
           "answer": "To upload, click the \"Upload\" button, select your .txt or .docx file, and it will automatically simplify the text for you."
         },
-        "item-3": {
+        "item-4": {
           "question": "How does Dumb It Down AI ensure data privacy?",
           "answer": "We prioritize your privacy. All files are processed securely, and no personal data is shared with third parties."
         },
-        "item-4": {
+        "item-5": {
           "question": "Can I use Dumb It Down AI for different languages?",
           "answer": "Yes, it supports multiple languages. You can easily switch between languages for both input and output."
         },
-        "item-5": {
+        "item-6": {
           "question": "How accurate is the simplification?",
           "answer": "The tool simplifies text while retaining accuracy and the core meaning. We ensure that the text is both clear and true to its original intent."
         },
-        "item-6": {
+        "item-7": {
           "question": "What happens if the text is too long?",
           "answer": "Long texts are simplified in chunks. The web tool processes each part and gives you a unified, simplified result."
         },
-        "item-7": {
+        "item-8": {
           "question": "What file formats are supported?",
           "answer": "You can upload .txt and .docx (Microsoft Word) files. You can also copy and paste text directly into the tool."
         },
-        "item-8": {
+        "item-9": {
           "question": "Is there a character limit?",
           "answer": "Yes, the current limit is 5,000 characters per simplification. For longer documents, you can break them into smaller parts."
-        },
-        "item-9": {
-          "question": "What is the best dumb it down tool for simplifying complex texts?",
-          "answer": "VibeTrans Dumb It Down AI is the premier tool for simplifying complex texts, featuring advanced AI technology that maintains accuracy while reducing complexity. Our tool supports multiple languages, various file formats, and different simplification levels, all completely free. Perfect for academic papers, legal documents, and technical materials with intelligent, context-aware simplification."
         }
       }
     },

@@ -139,7 +139,6 @@
     },
     "testimonials": {
       "title": "What Our Users Are Saying",
-      "subtitle": "Real feedback from real users",
       "items": {
         "item-1": {
           "name": "John Smith",
@@ -169,32 +168,32 @@
       "subtitle": "Have other questions? Feel free to contact us via email.",
       "items": {
         "item-1": {
+          "question": "What is the best middle english translator for accurate translations?",
+          "answer": "VibeTrans Middle English Translator is the premier choice for accurate translations, featuring advanced AI technology that understands complex grammar, cultural context, and linguistic nuances. Our tool provides bidirectional translation, real-time processing, and high accuracy rates, all completely free. Perfect for language learning, communication, and cultural exploration with reliable, context-aware results."
+        },
+        "item-2": {
           "question": "Is this Middle English Translator free?",
           "answer": "Yes, Middle English Translator Studio is free to use. You can translate text, use voice input, and more without any charge."
         },
-        "item-2": {
+        "item-3": {
           "question": "How do I ensure my privacy?",
           "answer": "Your privacy is our priority. VibeTrans handles your data with care, ensuring it remains secure and confidential at all times."
         },
-        "item-3": {
+        "item-4": {
           "question": "How does the dialect selection work?",
           "answer": "Choose your preferred dialect, like Kentish or Northern, from the options menu. This feature helps tailor translations to specific historical contexts."
         },
-        "item-4": {
+        "item-5": {
           "question": "Can I convert files other than text?",
           "answer": "Yes, VibeTrans supports various file formats. Upload your document, and our tool will handle the rest, ensuring accurate translations."
         },
-        "item-5": {
+        "item-6": {
           "question": "What is Middle English Translator Studio?",
           "answer": "Middle English Translator Studio is a tool that converts modern English into Middle English from 1150-1500, offering dialect and period precision."
         },
-        "item-6": {
+        "item-7": {
           "question": "How do I use the voice feature?",
           "answer": "Simply select the voice input option, speak, and VibeTrans will convert your words into Middle English with the chosen dialect and period."
-        },
-        "item-7": {
-          "question": "What is the best middle english translator for accurate translations?",
-          "answer": "VibeTrans Middle English Translator is the premier choice for accurate translations, featuring advanced AI technology that understands complex grammar, cultural context, and linguistic nuances. Our tool provides bidirectional translation, real-time processing, and high accuracy rates, all completely free. Perfect for language learning, communication, and cultural exploration with reliable, context-aware results."
         }
       }
     },

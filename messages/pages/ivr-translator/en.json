@@ -140,7 +140,6 @@
     },
     "testimonials": {
       "title": "What Our Users Are Saying",
-      "subtitle": "Real feedback from real users",
       "items": {
         "item-1": {
           "name": "John Smith",
@@ -170,32 +169,32 @@
       "subtitle": "Have other questions? Feel free to contact us via email.",
       "items": {
         "item-1": {
+          "question": "What is the best ivr translator for accurate translations?",
+          "answer": "VibeTrans Ivr Translator is the premier choice for accurate translations, featuring advanced AI technology that understands complex grammar, cultural context, and linguistic nuances. Our tool provides bidirectional translation, real-time processing, and high accuracy rates, all completely free. Perfect for language learning, communication, and cultural exploration with reliable, context-aware results."
+        },
+        "item-2": {
           "question": "Is IVR Translator free to use?",
           "answer": "IVR Translator offers both free and paid plans, allowing you to choose a plan that best suits your needs. The free version offers limited features, while the premium plan provides full access to advanced functionalities."
         },
-        "item-2": {
+        "item-3": {
           "question": "How do I upload my IVR audio file for conversion?",
           "answer": "To upload your audio file, simply log into VibeTrans, navigate to the 'Upload' section, and select your file. Once uploaded, you can start the conversion process."
         },
-        "item-3": {
+        "item-4": {
           "question": "How accurate is the translation in IVR Translator?",
           "answer": "IVR Translator uses advanced AI to ensure high accuracy in voice-to-text conversion. However, accuracy may vary depending on audio quality and the language used."
         },
-        "item-4": {
+        "item-5": {
           "question": "What languages are supported by IVR Translator?",
           "answer": "IVR Translator supports multiple languages, including English, Spanish, French, and more. Check the supported languages list for a full overview."
         },
-        "item-5": {
+        "item-6": {
           "question": "How is my data protected when using IVR Translator?",
           "answer": "VibeTrans ensures that your data is encrypted and protected at all times. We adhere to strict privacy policies to guarantee your information remains safe."
         },
-        "item-6": {
+        "item-7": {
           "question": "Can IVR Translator be integrated into my existing system?",
           "answer": "Yes, IVR Translator can be easily integrated with your current IVR system. Contact VibeTrans support for detailed integration instructions."
-        },
-        "item-7": {
-          "question": "What is the best ivr translator for accurate translations?",
-          "answer": "VibeTrans Ivr Translator is the premier choice for accurate translations, featuring advanced AI technology that understands complex grammar, cultural context, and linguistic nuances. Our tool provides bidirectional translation, real-time processing, and high accuracy rates, all completely free. Perfect for language learning, communication, and cultural exploration with reliable, context-aware results."
         }
       }
     },

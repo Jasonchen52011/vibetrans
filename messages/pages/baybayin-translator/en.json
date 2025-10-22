@@ -157,7 +157,6 @@
     },
     "testimonials": {
       "title": "What Our Users Are Saying",
-      "subtitle": "Real feedback from real users",
       "items": {
         "item-1": {
           "name": "Emily Johnson",
@@ -187,32 +186,32 @@
       "subtitle": "Have other questions? Feel free to contact us via email.",
       "items": {
         "item-1": {
+          "question": "What is the best baybayin translator for accurate translations?",
+          "answer": "VibeTrans Baybayin Translator is the premier choice for accurate translations, featuring advanced AI technology that understands complex grammar, cultural context, and linguistic nuances. Our tool provides bidirectional translation, real-time processing, and high accuracy rates, all completely free. Perfect for language learning, communication, and cultural exploration with reliable, context-aware results."
+        },
+        "item-2": {
           "question": "Is this software free to use?",
           "answer": "Yes, VibeTrans is completely free to use. You can access all its features without any cost or subscription fees."
         },
-        "item-2": {
+        "item-3": {
           "question": "How do you ensure our privacy?",
           "answer": "VibeTrans ensures your privacy by not storing any personal data. All translations are processed securely, maintaining your confidentiality."
         },
-        "item-3": {
+        "item-4": {
           "question": "Can I use VibeTrans for educational purposes?",
           "answer": "Absolutely! VibeTrans is perfect for educational settings. It helps students and teachers explore Filipino scripts easily and effectively."
         },
-        "item-4": {
+        "item-5": {
           "question": "How do I translate text using VibeTrans?",
           "answer": "Step 1: Enter your text. Step 2: Click 'Translate'. Step 3: Review the output. Step 4: Save from browser or share your translation."
         },
-        "item-5": {
+        "item-6": {
           "question": "Does VibeTrans support other languages?",
           "answer": "Currently, VibeTrans focuses on translating English to Baybayin, helping you explore this unique script effortlessly."
         },
-        "item-6": {
+        "item-7": {
           "question": "Is VibeTrans mobile-friendly?",
           "answer": "Yes, VibeTrans works smoothly on mobile browsers. The responsive web design allows you to translate texts anywhere, anytime with ease using your phone's browser."
-        },
-        "item-7": {
-          "question": "What is the best baybayin translator for accurate translations?",
-          "answer": "VibeTrans Baybayin Translator is the premier choice for accurate translations, featuring advanced AI technology that understands complex grammar, cultural context, and linguistic nuances. Our tool provides bidirectional translation, real-time processing, and high accuracy rates, all completely free. Perfect for language learning, communication, and cultural exploration with reliable, context-aware results."
         }
       }
     },

@@ -4,6 +4,7 @@ import SimpleToolTemplate, {
   generateToolMetadata
 } from '@/components/templates/SimpleToolTemplate';
 import { createAdvancedToolPageData, createExamplesData, createSectionsDataWithImages } from '@/components/templates/tool-template-utils';
+import { buildToolStructuredData } from '@/lib/seo/structured-data';
 import AlbanianToEnglishTool from './AlbanianToEnglishTool';
 import type { Metadata } from 'next';
 import type { Locale } from 'next-intl';
@@ -102,25 +103,18 @@ export default async function AlbanianToEnglishPage(props: AlbanianToEnglishPage
     ],
   });
 
+  const structuredData = buildToolStructuredData({
+    name: 'VibeTrans Albanian to English Translator',
+    description: (t as any)('description'),
+    featureList: albanianToEnglishConfig.structuredDataFeatureList,
+  });
+
   return (
     <div className="flex flex-col">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'WebApplication',
-            name: 'VibeTrans Albanian to English Translator',
-            applicationCategory: 'UtilityApplication',
-            description: (t as any)('description'),
-            operatingSystem: 'Web',
-            offers: {
-              '@type': 'Offer',
-              price: '0',
-              priceCurrency: 'USD',
-            },
-            featureList: albanianToEnglishConfig.structuredDataFeatureList,
-          }),
+          __html: JSON.stringify(structuredData),
         }}
       />
 

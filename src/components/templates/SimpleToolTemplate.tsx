@@ -10,6 +10,7 @@ import TestimonialsThreeColumnSection from '@/components/blocks/testimonials/tes
 import WhatIsSection from '@/components/blocks/whatis';
 import { AuroraBackground } from '@/components/ui/aurora-background';
 import { constructMetadata } from '@/lib/metadata';
+import { buildToolStructuredData } from '@/lib/seo/structured-data';
 import { getUrlWithLocale } from '@/lib/urls/urls';
 import type { Metadata } from 'next';
 import type { Locale } from 'next-intl';
@@ -89,20 +90,11 @@ export function createStructuredData(
   config: ToolPageConfig,
   description: string
 ) {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'WebApplication',
+  return buildToolStructuredData({
     name: `VibeTrans ${config.namespace.replace('Page', '')}`,
-    applicationCategory: 'UtilityApplication',
     description,
-    operatingSystem: 'Web',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
     featureList: config.structuredDataFeatureList,
-  };
+  });
 }
 
 export function createHeroSection({

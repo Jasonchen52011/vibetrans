@@ -139,40 +139,40 @@
       "subtitle": "Frequently Asked Questions",
       "items": {
         "item-1": {
+          "question": "What is the best gen alpha translator for accurate translations?",
+          "answer": "VibeTrans Gen Alpha Translator is the premier choice for accurate translations, featuring advanced AI technology that understands complex grammar, cultural context, and linguistic nuances. Our tool provides bidirectional translation, real-time processing, and high accuracy rates, all completely free. Perfect for language learning, communication, and cultural exploration with reliable, context-aware results."
+        },
+        "item-2": {
           "question": "Is Gen Alpha Translator free?",
           "answer": "Yes, Gen Alpha Translator is free to use. Simply visit the website and start translating Gen Alpha slang without any charges."
         },
-        "item-2": {
+        "item-3": {
           "question": "How does Gen Alpha Translator work?",
           "answer": "Gen Alpha Translator uses AI to convert traditional language into Gen Alpha slang. Just input your text and let the tool do the work."
         },
-        "item-3": {
+        "item-4": {
           "question": "What languages can Gen Alpha Translator translate?",
           "answer": "Gen Alpha Translator supports multiple languages, allowing you to convert text from various languages into Gen Alpha slang with ease."
         },
-        "item-4": {
+        "item-5": {
           "question": "How can I get started with Gen Alpha Translator?",
           "answer": "Simply visit the website, enter your text, select translation mode, and hit 'Translate'. It's quick and easy!"
         },
-        "item-5": {
+        "item-6": {
           "question": "How secure is my data with VibeTrans?",
           "answer": "VibeTrans takes your privacy seriously. Your data is kept secure and is never shared without your consent."
         },
-        "item-6": {
+        "item-7": {
           "question": "Can I reverse the translation?",
           "answer": "Yes! With Gen Alpha Translator, you can convert slang back to traditional language, making it easy to understand and use."
         },
-        "item-7": {
+        "item-8": {
           "question": "Is there a character limit for translations?",
           "answer": "Free users can translate up to 5,000 characters per session. Premium users enjoy unlimited translations with no restrictions."
         },
-        "item-8": {
+        "item-9": {
           "question": "Can I save my translation history?",
           "answer": "Yes! When you create an account, VibeTrans automatically saves your translation history so you can reference past translations anytime."
-        },
-        "item-9": {
-          "question": "What is the best gen alpha translator for accurate translations?",
-          "answer": "VibeTrans Gen Alpha Translator is the premier choice for accurate translations, featuring advanced AI technology that understands complex grammar, cultural context, and linguistic nuances. Our tool provides bidirectional translation, real-time processing, and high accuracy rates, all completely free. Perfect for language learning, communication, and cultural exploration with reliable, context-aware results."
         }
       }
     },

@@ -40,10 +40,20 @@ export function HeaderSection({
       id={id}
       className={cn('flex flex-col items-center text-center gap-4', className)}
     >
+      {title ? (
+        <TitleComponent
+          className={cn(
+            'max-w-5xl mx-auto text-center tracking-tight font-medium text-black dark:text-white text-3xl md:text-5xl md:leading-tight mb-6',
+            titleClassName
+          )}
+        >
+          {title}
+        </TitleComponent>
+      ) : null}
       {subtitle ? (
         <SubtitleComponent
           className={cn(
-            'max-w-5xl mx-auto text-center tracking-tight font-medium text-black dark:text-white text-3xl md:text-5xl md:leading-tight mb-6',
+            'text-balance text-lg text-muted-foreground',
             subtitleClassName
           )}
         >

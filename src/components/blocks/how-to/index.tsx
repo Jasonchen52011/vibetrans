@@ -20,15 +20,14 @@ export default function HowTo({ section }: { section: SectionType }) {
   const [currentStep, setCurrentStep] = useState('');
 
   return (
-    <section id={section.name} className="py-10 mt-10 mb-8 bg-white">
-      <div className="container max-w-5xl mx-auto">
+    <section id={section.name} className="py-10 mt-10 mb-8 bg-white px-4 sm:px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto">
         <div className="text-center mb-16">
           <HeaderSection
-            subtitle={section.title}
-            subtitleAs="h2"
+            title={section.title}
             description={section.description}
             descriptionAs="p"
-            descriptionClassName="max-w-3xl mx-auto lg:text-lg"
+            descriptionClassName="max-w-5xl mx-auto lg:text-lg"
           />
         </div>
         <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
@@ -46,20 +45,20 @@ export default function HowTo({ section }: { section: SectionType }) {
                   className="border-b-0 border-secondary mb-3"
                 >
                   <AccordionTrigger className="text-left hover:no-underline hover:text-primary transition-colors duration-200 group">
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-3 sm:gap-4">
                       {item.icon && (
                         <Icon
                           name={item.icon}
-                          className="mr-2 size-6 shrink-0 lg:mr-2 lg:size-8 text-primary"
+                          className="mr-2 size-5 shrink-0 sm:size-6 lg:mr-2 lg:size-8 text-primary"
                         />
                       )}
-                      <span className="font-medium lg:text-lg">
+                      <span className="font-medium text-sm sm:text-base lg:text-lg">
                         Step {i + 1}: {item.title}
                       </span>
                     </div>
                   </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground lg:text-base">
-                    <div className="pl-13">{item.description}</div>
+                  <AccordionContent className="text-muted-foreground text-sm sm:text-base lg:text-base">
+                    <div className="pl-9 sm:pl-11 lg:pl-13">{item.description}</div>
                   </AccordionContent>
                 </AccordionItem>
               ))}
