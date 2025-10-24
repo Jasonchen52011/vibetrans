@@ -345,6 +345,8 @@ export async function POST(request: Request) {
       sourceLanguage: actualSourceLanguage,
       targetLanguage: actualTargetLanguage,
       message: 'Translation successful',
+      status: 'success',
+      timestamp: new Date().toISOString(),
       languageInfo: {
         detected: true,
         detectedLanguage:

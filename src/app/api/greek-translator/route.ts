@@ -231,6 +231,8 @@ export async function POST(request: Request) {
       detectedInputLanguage: detectedLanguage,
       confidence,
       autoDetected: true,
+      status: 'success',
+      timestamp: new Date().toISOString(),
       languageInfo: {
         detected: true,
         detectedLanguage:
