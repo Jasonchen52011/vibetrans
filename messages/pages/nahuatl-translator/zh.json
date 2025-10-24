@@ -256,20 +256,24 @@
       "subtitle": "Have other questions? Feel free to contact us via email.",
       "items": {
         "item-1": {
-          "question": "Is Nahuatl Translator Suite free?",
-          "answer": "Yes, Nahuatl Translator Suite is completely free to use. There are no hidden charges or premium features. You can access all its features without any cost, making it an ideal tool for students, educators, and enthusiasts."
+          "question": "纳瓦特尔语翻译套件是免费的吗？",
+          "answer": "是的，纳瓦特尔语翻译套件完全免费使用。没有隐藏费用或高级功能。您可以免费访问其所有功能，使其成为学生、教育工作者和爱好者的理想工具。"
         },
         "item-2": {
-          "question": "How is our privacy protected?",
-          "answer": "We prioritize your privacy by not storing any user data. All translations are processed securely, ensuring that your personal information and text inputs remain confidential. You can use our translator with peace of mind, knowing your data is safe."
+          "question": "我们的隐私如何得到保护？",
+          "answer": "我们通过不存储任何用户数据来优先保护您的隐私。所有翻译都经过安全处理，确保您的个人信息和文本输入保持机密。您可以放心使用我们的翻译器，知道您的数据是安全的。"
         },
         "item-3": {
-          "question": "How accurate is Nahuatl Translator Suite?",
-          "answer": "The Nahuatl Translator Suite is designed for over 90% accuracy in translations. It uses advanced AI technology for precise language detection and contextual understanding, making it suitable for academic, professional, and personal use."
+          "question": "纳瓦特尔语翻译套件的准确性如何？",
+          "answer": "纳瓦特尔语翻译套件旨在实现超过90%的翻译准确性。它使用先进的人工智能技术进行精确的语言检测和上下文理解，使其适用于学术、专业和个人用途。"
         },
         "item-4": {
-          "question": "How to translate a document with VibeTrans?",
-          "answer": "To translate a document with VibeTrans, follow these steps: Step 1, upload your text file. Step 2, select translation mode. Step 3, click Translate. Step 4, download or copy your results."
+          "question": "如何使用VibeTrans翻译文档？",
+          "answer": "使用VibeTrans翻译文档，请按照以下步骤操作：步骤1，上传您的文本文件。步骤2，选择翻译模式。步骤3，点击翻译。步骤4，下载或复制您的结果。"
+        },
+        "item-5": {
+          "question": "纳瓦特尔语翻译套件支持哪些语言？",
+          "answer": "纳瓦特尔语翻译套件支持纳瓦特尔语与英语或西班牙语之间的翻译。这种双语支持迎合了广泛的用户群体，从学生和教育工作者到旅行者和文化爱好者。"
         }
       }
     },

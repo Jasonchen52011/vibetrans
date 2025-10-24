@@ -137,7 +137,7 @@ export default function EnglishToPersianTranslatorTool({
     setOutputText('');
 
     try {
-      // TODO: 替换为你的 API 端点
+      // TODO: Replace with your API endpoint
       const response = await fetch('/api/english-to-persian-translator', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

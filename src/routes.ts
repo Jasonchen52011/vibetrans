@@ -92,7 +92,7 @@ export enum Routes {
   WingdingsTranslator = '/wingdings-translator',
   GreekTranslator = '/greek-translator',
   MangaTranslator = '/manga-translator',
-    EnglishToPersianTranslator = '/english-to-persian-translator',
+  EnglishToPersianTranslator = '/english-to-persian-translator',
 
   // block routes
   MagicuiBlocks = '/magicui',

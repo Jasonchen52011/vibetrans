@@ -239,7 +239,7 @@ export function useFooterLinks(): NestedMenuItem[] {
           href: Routes.TeluguToEnglishTranslator,
           external: false,
         },
-          {
+        {
           title: t('languageTranslator.items.englishToPersianTranslator.title'),
           href: Routes.EnglishToPersianTranslator,
           external: false,

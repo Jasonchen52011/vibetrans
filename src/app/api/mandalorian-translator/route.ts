@@ -222,7 +222,7 @@ export async function POST(request: Request) {
         : 'Minimal changes made - text appears to be in target style',
       translator: {
         name: 'Mandalorian Translator',
-        type: 'constructed'
+        type: 'constructed',
       },
       style,
       language: "Mandalorian (Mando'a)",

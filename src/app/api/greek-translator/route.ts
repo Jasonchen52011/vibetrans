@@ -106,7 +106,7 @@ function detectGreekType(text: string): 'modern' | 'ancient' | 'unknown' {
   return 'unknown';
 }
 
-// 处理文本翻译
+// 处理文本翻译（希腊语到英语）
 async function translateText(
   text: string,
   mode: TranslationMode = 'general',
@@ -122,6 +122,68 @@ async function translateText(
   // 如果是古代希腊语且不是general模式，添加额外信息
   if (greekType === 'ancient' && mode !== 'general') {
     systemPrompt = `This text is in Ancient Greek. ${systemPrompt}`;
+  }
+
+  const fullPrompt = `${systemPrompt}\n\n"${text}"`;
+
+  const result = await model.generateContent(fullPrompt);
+  const response = result.response;
+  return response.text().trim();
+}
+
+// 处理英语到希腊语翻译
+async function translateEnglishToGreek(
+  text: string,
+  mode: TranslationMode = 'general'
+): Promise<string> {
+  const model = genAI.getGenerativeModel({
+    model: 'gemini-2.0-flash',
+  });
+
+  let systemPrompt: string;
+
+  // 根据模式构建不同的提示
+  switch (mode) {
+    case 'modern':
+      systemPrompt = `You are a professional translator specializing in English to Modern Greek translation.
+
+Focus on:
+- Contemporary Greek usage and natural expressions
+- Modern Greek grammar and syntax
+- Current cultural context
+- Everyday language that Greeks actually use
+- Proper Greek idioms and colloquialisms
+
+Translate the following English text to natural, contemporary Modern Greek:`;
+      break;
+    case 'ancient':
+      systemPrompt = `You are a classical scholar specializing in English to Ancient Greek translation.
+
+Focus on:
+- Classical Greek grammar and syntax
+- Ancient Greek vocabulary and style
+- Historical context appropriate for ancient texts
+- Proper classical Greek structure and forms
+- Maintaining ancient Greek literary conventions
+
+Translate the following English text to Ancient Greek:`;
+      break;
+    case 'literary':
+      systemPrompt = `You are a literary translator specializing in English to Greek literary translation.
+
+Focus on:
+- Preserving literary style and artistic expression
+- Greek literary devices and metaphors
+- Cultural and literary context
+- Maintaining emotional and aesthetic impact
+- Appropriate Greek poetic or prose style
+
+Translate the following English literary text to Greek while preserving its artistic essence:`;
+      break;
+    default:
+      systemPrompt = `You are a professional English to Greek translator. Translate the text directly without any explanations or instructions.
+
+Translate the following English text to Greek:`;
   }
 
   const fullPrompt = `${systemPrompt}\n\n"${text}"`;
@@ -211,19 +273,37 @@ export async function POST(request: Request) {
       });
     }
 
-    // 执行翻译
-    const translation = await translateText(text, mode, detectedGreekType);
+    // 执行翻译 - 根据检测到的语言确定翻译方向
+    let translation: string;
+    let actualTranslationDirection: string;
 
-    const isTranslated = translation !== text;
+    if (detectedLanguage === 'english') {
+      // 英语输入，翻译成希腊语
+      translation = await translateEnglishToGreek(text, mode);
+      actualTranslationDirection = 'English to Greek';
+    } else if (detectedLanguage === 'greek') {
+      // 希腊语输入，翻译成英语
+      translation = await translateText(text, mode, detectedGreekType);
+      actualTranslationDirection = 'Greek to English';
+    } else {
+      // 未知语言，尝试按希腊语处理翻译成英语
+      translation = await translateText(text, mode, detectedGreekType);
+      actualTranslationDirection = 'Assumed Greek to English';
+    }
+
+    const isTranslated =
+      translation !== text && translation.trim() !== text.trim();
 
     const result = {
       translated: translation,
       original: text,
       isTranslated,
-      message: isTranslated ? 'Translation successful' : 'No translation needed',
+      message: isTranslated
+        ? 'Translation successful'
+        : 'No translation needed',
       translator: {
         name: 'Greek Translator',
-        type: 'bilingual'
+        type: 'bilingual',
       },
       mode,
       modeName: TRANSLATION_MODES[mode].name,
@@ -231,6 +311,7 @@ export async function POST(request: Request) {
       detectedInputLanguage: detectedLanguage,
       confidence,
       autoDetected: true,
+      actualTranslationDirection,
       status: 'success',
       timestamp: new Date().toISOString(),
       languageInfo: {
@@ -242,14 +323,14 @@ export async function POST(request: Request) {
               ? 'English'
               : 'Unknown',
         greekType: detectedGreekType,
-        direction: 'Greek → English',
+        direction: actualTranslationDirection,
         confidence: Math.round(confidence * 100),
         explanation:
           detectedLanguage === 'greek'
             ? `Auto-detected ${detectedGreekType} Greek input, translated to English`
             : detectedLanguage === 'english'
-              ? 'Detected English input'
-              : 'Translation completed',
+              ? `Detected English input, translated to Greek`
+              : `Translation completed: ${actualTranslationDirection}`,
       },
     };
 

@@ -3,20 +3,22 @@
  * With smart prompt comparison before generation using Volcano 4.0 API
  */
 
+import fs from 'node:fs/promises';
+import path from 'node:path';
 import { GoogleGenerativeAI } from '@google/generative-ai';
+import { config } from 'dotenv';
+import sharp from 'sharp';
 import { testGeneratePrompt } from '../src/lib/article-illustrator/gemini-analyzer';
 import { convertURLToWebP } from '../src/lib/article-illustrator/webp-converter';
 import { generateImage as generateVolcanoImage } from '../src/lib/volcano-image';
-import { config } from 'dotenv';
-import sharp from 'sharp';
-import fs from 'node:fs/promises';
-import path from 'node:path';
 
 // Load environment variables
 config({ path: '.env.local' });
 
 // 火山4.0 API函数（使用正确的火山引擎库）
-async function generateImageWithVolcano(prompt: string): Promise<{ url: string }> {
+async function generateImageWithVolcano(
+  prompt: string
+): Promise<{ url: string }> {
   try {
     const result = await generateVolcanoImage({
       prompt: prompt,
@@ -75,18 +77,18 @@ const SECTIONS = [
   {
     title: 'Design Applications',
     content: `Discover creative ways to use Wingdings symbols in graphic design, presentations, and digital art projects. From logos to infographics, Wingdings adds a unique visual element that captures attention and conveys meaning through symbolic representation.`,
-    filename: 'wingdings-translator-interest-3'
+    filename: 'wingdings-translator-interest-3',
   },
   {
     title: "Microsoft's Creation",
     content: `Wingdings was created by Microsoft in 1990 as part of the Windows 3.1 operating system. It was designed to include a variety of useful symbols for documents, becoming one of the most recognizable symbolic fonts in digital history.`,
-    filename: 'wingdings-translator-fact-1'
+    filename: 'wingdings-translator-fact-1',
   },
   {
     title: 'Hidden Easter Eggs',
     content: `Wingdings contains several Easter eggs. For example, typing NYC displays symbols that some people interpreted as anti-Semitic, leading to controversy in the 1990s. These hidden messages have made Wingdings a subject of cultural fascination.`,
-    filename: 'wingdings-translator-fact-2'
-  }
+    filename: 'wingdings-translator-fact-2',
+  },
 ];
 
 /**
@@ -207,7 +209,9 @@ async function regenerateWingdingsTranslatorImages() {
       console.log(`📁 Location: public/images/docs/${section.filename}.webp`);
       console.log('-'.repeat(50) + '\n');
     } catch (error: any) {
-      console.error(`\n❌ Failed to generate image for ${section.title}: ${error.message}\n`);
+      console.error(
+        `\n❌ Failed to generate image for ${section.title}: ${error.message}\n`
+      );
       // 继续处理下一个部分，不中断整个流程
     }
 

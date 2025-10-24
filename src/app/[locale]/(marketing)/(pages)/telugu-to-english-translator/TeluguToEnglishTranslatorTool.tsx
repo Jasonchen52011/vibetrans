@@ -2,7 +2,8 @@
 
 import { SpeechToTextButton } from '@/components/ui/speech-to-text-button';
 import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
-import { Mic, Waves } from 'lucide-react';
+import { detectLanguage } from '@/lib/language-detection';
+import { ArrowLeftRight, Mic, Waves } from 'lucide-react';
 import mammoth from 'mammoth';
 import { useEffect, useRef, useState } from 'react';
 
@@ -22,7 +23,27 @@ export default function TeluguToEnglishTranslatorTool({
   const [fileName, setFileName] = useState<string | null>(null);
   const [isTranscribing, setIsTranscribing] = useState<boolean>(false);
   const [translationMode, setTranslationMode] = useState<string>('general');
+  const [detectedLanguage, setDetectedLanguage] = useState<string>('unknown');
+  const [targetLanguage, setTargetLanguage] = useState<string>('english');
   const audioInputRef = useRef<HTMLInputElement | null>(null);
+
+  // Auto-detect input language when text changes
+  useEffect(() => {
+    if (inputText.trim()) {
+      const detection = detectLanguage(inputText, 'telugu');
+      setDetectedLanguage(detection.detectedLanguage);
+
+      // Set target language based on detection
+      if (detection.detectedLanguage === 'english') {
+        setTargetLanguage('telugu');
+      } else {
+        setTargetLanguage('english');
+      }
+    } else {
+      setDetectedLanguage('unknown');
+      setTargetLanguage('english');
+    }
+  }, [inputText]);
 
   // Handle file upload
   const handleFileUpload = async (
@@ -143,8 +164,8 @@ export default function TeluguToEnglishTranslatorTool({
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           text: inputText,
-          sourceLanguage: 'telugu',
-          targetLanguage: 'english',
+          sourceLanguage: detectedLanguage === 'english' ? 'english' : 'telugu',
+          targetLanguage: targetLanguage,
           mode: translationMode,
         }),
       });
@@ -170,6 +191,8 @@ export default function TeluguToEnglishTranslatorTool({
     setOutputText('');
     setFileName(null);
     setError(null);
+    setDetectedLanguage('unknown');
+    setTargetLanguage('english');
   };
 
   // Copy
@@ -196,33 +219,58 @@ export default function TeluguToEnglishTranslatorTool({
     URL.revokeObjectURL(url);
   };
 
+  // Switch translation direction
+  const handleSwitchDirection = () => {
+    // Swap input and output text
+    const tempText = inputText;
+    setInputText(outputText);
+    setOutputText(tempText);
+
+    // Switch detected language and target language
+    const tempDetected = detectedLanguage;
+    setDetectedLanguage(targetLanguage === 'english' ? 'telugu' : 'english');
+    setTargetLanguage(
+      tempDetected === 'unknown'
+        ? 'english'
+        : tempDetected === 'telugu'
+          ? 'english'
+          : 'telugu'
+    );
+  };
+
   return (
     <div className="container max-w-5xl mx-auto px-4 mb-10">
       <main className="w-full bg-white dark:bg-zinc-800 shadow-xl border border-gray-100 dark:border-zinc-700 rounded-lg p-4 md:p-8">
         {/* Translation Mode Selector */}
-        <div className="mb-6">
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-            Translation Mode
-          </label>
-          <select
-            value={translationMode}
-            onChange={(e) => setTranslationMode(e.target.value)}
-            className="w-full md:w-auto px-4 py-2 border border-gray-300 dark:border-zinc-600 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-zinc-700 text-gray-700 dark:text-gray-200"
-          >
-            <option value="general">General Translation</option>
-            <option value="technical">Technical Translation</option>
-            <option value="literary">Literary Translation</option>
-            <option value="business">Business Translation</option>
-            <option value="casual">Casual Translation</option>
-          </select>
+        <div className="mb-6 md:flex md:items-center md:justify-between">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              Translation Mode
+            </label>
+            <select
+              value={translationMode}
+              onChange={(e) => setTranslationMode(e.target.value)}
+              className="w-full md:w-auto px-4 py-2 border border-gray-300 dark:border-zinc-600 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-zinc-700 text-gray-700 dark:text-gray-200"
+            >
+              <option value="general">General Translation</option>
+              <option value="technical">Technical Translation</option>
+              <option value="literary">Literary Translation</option>
+              <option value="business">Business Translation</option>
+              <option value="casual">Casual Translation</option>
+            </select>
+          </div>
         </div>
 
         {/* Input and Output Areas */}
-        <div className="flex flex-col md:flex-row gap-4 md:gap-8">
+        <div className="flex flex-col lg:flex-row gap-1 items-start">
           {/* Input Area */}
           <div className="flex-1">
             <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-3">
-              {pageData.tool.inputLabel}
+              {detectedLanguage === 'english'
+                ? 'English Text'
+                : detectedLanguage === 'telugu'
+                  ? 'Telugu Text'
+                  : pageData.tool.inputLabel}
             </h2>
             <textarea
               value={inputText}
@@ -337,11 +385,26 @@ export default function TeluguToEnglishTranslatorTool({
             )}
           </div>
 
+          {/* Switch Button */}
+          <div className="flex items-center justify-center mt-8 lg:mt-32 lg:mx-4">
+            <button
+              onClick={handleSwitchDirection}
+              className="flex items-center justify-center w-12 h-12 p-0 bg-gray-100 dark:bg-zinc-700 hover:bg-gray-200 dark:hover:bg-zinc-600 text-gray-500 dark:text-gray-400 rounded-full border border-gray-300 dark:border-zinc-600 transition-all duration-200 hover:scale-105"
+              title="Switch translation direction"
+            >
+              <ArrowLeftRight className="w-5 h-5" />
+            </button>
+          </div>
+
           {/* Output Area */}
           <div className="flex-1">
             <div className="flex items-center justify-between mb-3">
               <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">
-                {pageData.tool.outputLabel}
+                {targetLanguage === 'english'
+                  ? 'English Translation'
+                  : targetLanguage === 'telugu'
+                    ? 'Telugu Translation'
+                    : pageData.tool.outputLabel}
               </h2>
               {outputText && (
                 <div className="flex gap-2">
@@ -388,7 +451,7 @@ export default function TeluguToEnglishTranslatorTool({
               )}
             </div>
             <div
-              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md bg-gray-50 dark:bg-zinc-700 flex items-center justify-center text-gray-700 dark:text-gray-200 overflow-y-auto"
+              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md bg-gray-50 dark:bg-zinc-700 text-gray-700 dark:text-gray-200 overflow-y-auto"
               aria-live="polite"
             >
               {isLoading ? (

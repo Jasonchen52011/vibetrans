@@ -31,8 +31,26 @@ export default function TestimonialsThreeColumnSection({
     try {
       const titleValue = t('title', { default: '' });
       const subtitleValue = t('subtitle', { default: '' });
-      titleValid = titleValue && !titleValue.includes('title') && titleValue.trim().length > 0;
-      subtitleValid = subtitleValue && !subtitleValue.includes('subtitle') && subtitleValue.trim().length > 0;
+      // Check if the value looks like a translation key (invalid) vs actual title text (valid)
+      const isTranslationKey = (value: string) => {
+        // Translation keys usually contain dots or look like "testimonials.title"
+        // But actual titles should not contain these patterns
+        return (
+          value.includes('.') ||
+          value.includes('testimonials.title') ||
+          value.includes('testimonials.subtitle') ||
+          value === 'title' ||
+          value === 'subtitle'
+        );
+      };
+      titleValid =
+        titleValue &&
+        !isTranslationKey(titleValue) &&
+        titleValue.trim().length > 0;
+      subtitleValid =
+        subtitleValue &&
+        !isTranslationKey(subtitleValue) &&
+        subtitleValue.trim().length > 0;
     } catch (error) {
       titleValid = false;
       subtitleValid = false;
@@ -51,7 +69,8 @@ export default function TestimonialsThreeColumnSection({
       } else {
         // Fallback to item-1 format check
         const firstItemName = t('items.item-1.name', { default: null });
-        hasItems = firstItemName && !firstItemName.includes('items.item-1.name');
+        hasItems =
+          firstItemName && !firstItemName.includes('items.item-1.name');
       }
     } catch (error) {
       hasItems = false;
@@ -117,7 +136,7 @@ export default function TestimonialsThreeColumnSection({
     return {
       testimonialItems: items,
       hasValidTitle: titleValid,
-      hasValidSubtitle: subtitleValid
+      hasValidSubtitle: subtitleValid,
     };
   }, [t, namespace]);
 
@@ -135,7 +154,9 @@ export default function TestimonialsThreeColumnSection({
         <HeaderSection
           // @ts-ignore - Dynamic translation keys
           title={testimonialData.hasValidTitle ? t('title') : undefined}
-          subtitle={testimonialData.hasValidSubtitle ? t('subtitle') : undefined}
+          subtitle={
+            testimonialData.hasValidSubtitle ? t('subtitle') : undefined
+          }
           subtitleAs="h2"
         />
 

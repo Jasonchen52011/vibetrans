@@ -1,0 +1,54 @@
+{
+  "funFacts": [
+    {
+      "title": "Origins of 'Scanlation'",
+      "description": "Did you know the term 'Scanlation' combines 'scan' and 'translation'? It first appeared in the 1990s among IRC fan communities and is now an official slang entry in the Oxford English Dictionary."
+    },
+    {
+      "title": "Early Manga Publication",
+      "description": "The first officially published Japanese right-to-left manga in English was 'Lone Wolf and Cub' by Dark Horse in 1987. Before this, publishers mirrored pages to suit Western reading habits."
+    }
+  ],
+  "unique": {
+    "title": "Discover More with VibeTrans",
+    "items": [
+      {
+        "title": "Batch Translation Made Easy",
+        "content": "Tired of uploading manga page by page? With VibeTrans, you can translate entire chapters in one go. Just upload a ZIP or PDF, and let our tool handle the rest. It's a time-saver for manga enthusiasts and translators alike!"
+      },
+      {
+        "title": "In-Bubble Editing & Typesetting",
+        "content": "Want more than just translations? VibeTrans lets you edit and typeset text directly within speech bubbles. Perfect for sharing, fan-made scanlations, or simply enhancing your reading experience. Achieve professional-looking results with minimal effort!"
+      },
+      {
+        "title": "Sound-Effect Localisation",
+        "content": "Japanese manga often features exaggerated sound effects that don't translate directly into English. VibeTrans recognizes these unique fonts and helps you creatively localize them, ensuring your translated manga retains its original charm and impact."
+      },
+      {
+        "title": "Vertical Text OCR Accuracy",
+        "content": "Manga often uses vertical text, which can be tricky to OCR accurately. VibeTrans is designed to tackle this challenge, offering impressive accuracy for right-to-left and vertical text, ensuring you get the best possible translation results every time."
+      }
+    ]
+  },
+  "highlights": {
+    "title": "VibeTrans Features",
+    "features": [
+      {
+        "title": "Simple and Free",
+        "description": "VibeTrans offers a user-friendly interface and free access, making it easy for anyone to translate manga without hassle. Enjoy professional-grade translations without worrying about costs."
+      },
+      {
+        "title": "Data Privacy Ensured",
+        "description": "Your scans and translations are safe with us. VibeTrans doesn't store your data, ensuring your privacy and compliance with copyright laws. Translate with peace of mind."
+      },
+      {
+        "title": "Contextual AI Understanding",
+        "description": "Our AI deeply understands context, ensuring translations are accurate and meaningful. Enjoy translations that capture the essence of the original manga, making your reading experience more enjoyable."
+      },
+      {
+        "title": "More Explanations",
+        "description": "Need clarity? VibeTrans provides detailed explanations for complex translations, helping you understand nuanced expressions and cultural references. Make your manga reading experience richer and more informative."
+      }
+    ]
+  }
+}

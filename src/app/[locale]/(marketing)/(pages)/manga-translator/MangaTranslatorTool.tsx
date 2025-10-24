@@ -11,6 +11,20 @@ interface MangaTranslatorToolProps {
   locale?: string;
 }
 
+// Language detection patterns
+const JAPANESE_PATTERNS = /[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FAF]/; // Hiragana, Katakana, Kanji
+
+function detectLanguage(text: string): 'japanese' | 'english' | 'unknown' {
+  if (JAPANESE_PATTERNS.test(text)) {
+    return 'japanese';
+  }
+  // Basic check for English (latin characters and common words)
+  if (/[a-zA-Z]/.test(text) && text.length > 2) {
+    return 'english';
+  }
+  return 'unknown';
+}
+
 export default function MangaTranslatorTool({
   pageData,
   locale = 'en',
@@ -21,60 +35,85 @@ export default function MangaTranslatorTool({
   const [error, setError] = useState<string | null>(null);
   const [fileName, setFileName] = useState<string | null>(null);
   const [isTranscribing, setIsTranscribing] = useState<boolean>(false);
+  const [detectedLanguage, setDetectedLanguage] = useState<
+    'japanese' | 'english' | 'unknown'
+  >('unknown');
   const audioInputRef = useRef<HTMLInputElement | null>(null);
 
-  // Handle file upload
-  const handleFileUpload = async (
+  // Auto-detect language when input changes
+  useEffect(() => {
+    if (inputText.trim()) {
+      const detected = detectLanguage(inputText);
+      setDetectedLanguage(detected);
+    } else {
+      setDetectedLanguage('unknown');
+    }
+  }, [inputText]);
+
+  // Handle image upload for Japanese text recognition
+  const handleImageUpload = async (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     const file = event.target.files?.[0];
     if (!file) return;
 
+    // Check if file is an image
+    if (!file.type.startsWith('image/')) {
+      setError('Please upload an image file');
+      return;
+    }
+
     setFileName(file.name);
     setError(null);
+    setIsLoading(true);
 
     try {
-      const text = await readFileContent(file);
-      setInputText(text);
+      // Convert image to base64
+      const base64 = await convertImageToBase64(file);
+
+      // Call API to process image
+      const response = await fetch(
+        '/api/manga-translator/recognize-translate',
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ imageData: base64 }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to process image');
+      }
+
+      if (data.originalText && data.translatedText) {
+        setInputText(data.originalText);
+        setOutputText(data.translatedText);
+        setDetectedLanguage(data.detectedLanguage);
+      } else if (data.error) {
+        throw new Error(data.error);
+      }
     } catch (err: any) {
-      setError(err.message || 'Failed to read file');
+      setError(err.message || 'Failed to process image');
       setFileName(null);
+    } finally {
+      setIsLoading(false);
     }
   };
 
-  // Read file content
-  const readFileContent = async (file: File): Promise<string> => {
-    const fileExtension = file.name.split('.').pop()?.toLowerCase();
-
-    if (fileExtension === 'txt') {
-      return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          const content = e.target?.result as string;
-          if (content) resolve(content);
-          else reject(new Error('File is empty'));
-        };
-        reader.onerror = () => reject(new Error('Failed to read file'));
-        reader.readAsText(file);
-      });
-    }
-
-    if (fileExtension === 'docx') {
-      try {
-        const arrayBuffer = await file.arrayBuffer();
-        const result = await mammoth.extractRawText({ arrayBuffer });
-        if (result.value) return result.value;
-        throw new Error('Failed to extract text from Word document');
-      } catch (error) {
-        throw new Error(
-          'Failed to read .docx file. Please ensure it is a valid Word document.'
-        );
-      }
-    }
-
-    throw new Error(
-      'Unsupported file format. Please upload .txt or .docx files.'
-    );
+  // Convert image to base64
+  const convertImageToBase64 = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const result = e.target?.result as string;
+        if (result) resolve(result);
+        else reject(new Error('Failed to convert image'));
+      };
+      reader.onerror = () => reject(new Error('Failed to read image file'));
+      reader.readAsDataURL(file);
+    });
   };
 
   // Handle audio upload for transcription
@@ -134,12 +173,17 @@ export default function MangaTranslatorTool({
     setOutputText('');
 
     try {
-      // TODO: 替换为你的 API 端点
-      const response = await fetch('/api/manga-translator', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text: inputText }),
-      });
+      // Call our unified translation API
+      const response = await fetch(
+        '/api/manga-translator/recognize-translate',
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            text: inputText,
+          }),
+        }
+      );
 
       const data = await response.json();
 
@@ -147,7 +191,8 @@ export default function MangaTranslatorTool({
         throw new Error(data.error || pageData.tool.error);
       }
 
-      setOutputText(data.translated || data.result || '');
+      setDetectedLanguage(data.detectedLanguage);
+      setOutputText(data.translatedText || '');
     } catch (err: any) {
       setError(err.message || 'Translation failed');
       setOutputText('');
@@ -162,6 +207,7 @@ export default function MangaTranslatorTool({
     setOutputText('');
     setFileName(null);
     setError(null);
+    setDetectedLanguage('unknown');
   };
 
   // Copy
@@ -196,7 +242,11 @@ export default function MangaTranslatorTool({
           {/* Input Area */}
           <div className="flex-1">
             <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-3">
-              {pageData.tool.inputLabel}
+              {detectedLanguage === 'japanese'
+                ? 'Japanese Text (日本語)'
+                : detectedLanguage === 'english'
+                  ? 'English Text'
+                  : pageData.tool.inputLabel}
             </h2>
             <textarea
               value={inputText}
@@ -225,7 +275,7 @@ export default function MangaTranslatorTool({
                     d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
                   />
                 </svg>
-                {pageData.tool.uploadButton}
+                Upload Image
               </label>
 
               {/* Voice Input Button */}
@@ -250,13 +300,13 @@ export default function MangaTranslatorTool({
               </button>
 
               <p className="text-xs text-gray-500 dark:text-gray-400">
-                {pageData.tool.uploadHint}
+                Supports JPG, PNG, GIF, WebP formats
               </p>
               <input
                 id="file-upload"
                 type="file"
-                accept=".txt,.docx"
-                onChange={handleFileUpload}
+                accept="image/*"
+                onChange={handleImageUpload}
                 className="hidden"
               />
               <input
@@ -315,7 +365,11 @@ export default function MangaTranslatorTool({
           <div className="flex-1">
             <div className="flex items-center justify-between mb-3">
               <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">
-                {pageData.tool.outputLabel}
+                {detectedLanguage === 'japanese'
+                  ? 'English Translation'
+                  : detectedLanguage === 'english'
+                    ? '日本語翻訳'
+                    : pageData.tool.outputLabel}
               </h2>
               {outputText && (
                 <div className="flex gap-2">

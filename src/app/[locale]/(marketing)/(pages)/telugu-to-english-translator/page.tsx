@@ -236,7 +236,7 @@ export default async function TeluguToEnglishTranslatorPage(
     ],
   };
 
-  // User Interest section (8 content blocks - including new images)
+  // User Interest section (4 content blocks)
   const userInterestSection = {
     name: 'userInterest',
     title: (t as any)('userInterest.title'),
@@ -271,38 +271,6 @@ export default async function TeluguToEnglishTranslatorPage(
         image: {
           src: (t as any)('userInterest.items.3.image'),
           alt: (t as any)('userInterest.items.3.imageAlt'),
-        },
-      },
-      {
-        title: (t as any)('userInterest.items.4.title'),
-        description: (t as any)('userInterest.items.4.description'),
-        image: {
-          src: (t as any)('userInterest.items.4.image'),
-          alt: (t as any)('userInterest.items.4.imageAlt'),
-        },
-      },
-      {
-        title: (t as any)('userInterest.items.5.title'),
-        description: (t as any)('userInterest.items.5.description'),
-        image: {
-          src: (t as any)('userInterest.items.5.image'),
-          alt: (t as any)('userInterest.items.5.imageAlt'),
-        },
-      },
-      {
-        title: (t as any)('userInterest.items.6.title'),
-        description: (t as any)('userInterest.items.6.description'),
-        image: {
-          src: (t as any)('userInterest.items.6.image'),
-          alt: (t as any)('userInterest.items.6.imageAlt'),
-        },
-      },
-      {
-        title: (t as any)('userInterest.items.7.title'),
-        description: (t as any)('userInterest.items.7.description'),
-        image: {
-          src: (t as any)('userInterest.items.7.image'),
-          alt: (t as any)('userInterest.items.7.imageAlt'),
         },
       },
     ],

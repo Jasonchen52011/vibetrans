@@ -22,7 +22,7 @@
     "whatIs": {
       "title": "What is English To Persian Translator?",
       "description": "Our English to Persian Translator is a powerful AI-powered tool that helps you translate text, documents, and conversations from English to Persian with high accuracy and natural language flow.",
-      "image": "/images/docs/placeholder.webp",
+      "image": "/images/docs/what-is-english-to-persian-translator.webp",
       "imageAlt": "What is English to Persian Translator"
     },
     "examples": {
@@ -30,35 +30,41 @@
       "description": "See how our translator works with real examples",
       "items": [
         {
-          "alt": "English to Persian greeting example",
-          "name": "greeting-example"
+          "before": "Hello, how are you today?",
+          "after": "سلام، امروز حال شما چطور است؟",
+          "alt": "English to Persian greeting example"
         },
         {
-          "alt": "English to Persian business example",
-          "name": "business-example"
+          "before": "I would like to schedule a business meeting for next week.",
+          "after": "می‌خواهم برای هفته آینده یک جلسه کاری ترتیب دهم.",
+          "alt": "English to Persian business example"
         },
         {
-          "alt": "English to Persian academic example",
-          "name": "academic-example"
+          "before": "The research demonstrates significant findings in this field.",
+          "after": "تحقیقات نتایج قابل توجهی را در این زمینه نشان می‌دهد.",
+          "alt": "English to Persian academic example"
         },
         {
-          "alt": "English to Persian casual example",
-          "name": "casual-example"
+          "before": "Thank you for your wonderful hospitality!",
+          "after": "از مهمان‌نوازی فوق‌العاده شما متشکرم!",
+          "alt": "English to Persian casual example"
         },
         {
-          "alt": "English to Persian technical example",
-          "name": "technical-example"
+          "before": "The artificial intelligence algorithm processes data efficiently.",
+          "after": "الگوریتم هوش مصنوعی داده‌ها را به طور کارآمد پردازش می‌کند.",
+          "alt": "English to Persian technical example"
         },
         {
-          "alt": "English to Persian literary example",
-          "name": "literary-example"
+          "before": "Poetry is the rhythmical creation of beauty in words.",
+          "after": "شعر آفرینش ریتمیک زیبایی در کلمات است.",
+          "alt": "English to Persian literary example"
         }
       ]
     },
     "howto": {
       "title": "How to Use English To Persian Translator",
       "description": "Follow these simple steps to translate your English text to Persian",
-      "image": "/images/docs/placeholder.webp",
+      "image": "/images/docs/english-to-persian-translator-how-to.webp",
       "imageAlt": "How to use English to Persian Translator",
       "steps": [
         {
@@ -86,38 +92,22 @@
         {
           "title": "High Accuracy",
           "description": "Advanced AI ensures precise and natural Persian translations",
-          "icon": "FaBrain",
-          "tagline": "AI-Powered Precision",
-          "statLabel": "Translation Accuracy",
-          "statValue": "95%+",
-          "microCopy": "Contextually aware translations"
+          "icon": "FaBrain"
         },
         {
           "title": "Lightning Fast",
           "description": "Get instant translations in seconds, not minutes",
-          "icon": "FaRocket",
-          "tagline": "Instant Results",
-          "statLabel": "Translation Speed",
-          "statValue": "< 3s",
-          "microCopy": "Get translations instantly"
+          "icon": "FaRocket"
         },
         {
           "title": "Secure & Private",
           "description": "Your data is encrypted and never stored on our servers",
-          "icon": "FaShieldAlt",
-          "tagline": "Privacy First",
-          "statLabel": "Data Protection",
-          "statValue": "100%",
-          "microCopy": "Your data stays secure"
+          "icon": "FaShieldAlt"
         },
         {
           "title": "Completely Free",
           "description": "No registration or payment required - translate freely",
-          "icon": "FaGift",
-          "tagline": "No Cost",
-          "statLabel": "Free Features",
-          "statValue": "All",
-          "microCopy": "Translate without limits"
+          "icon": "FaHeart"
         }
       ]
     },
@@ -235,7 +225,8 @@
     "cta": {
       "title": "Ready to Translate English to Persian?",
       "description": "Start translating your English text to Persian now - it only takes seconds!",
-      "button": "Get Started Free"
+      "button": "Get Started Free",
+      "primaryButton": "Start Translating Now"
     }
   }
 }

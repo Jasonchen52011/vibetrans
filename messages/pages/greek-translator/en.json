@@ -4,7 +4,7 @@
     "description": "Discover the best Greek translator for accurate, real-time translations in text, audio, and images. Perfect for professional and casual use.",
     "hero": {
       "title": "Greek Translator for Accurate Results",
-      "description": "Looking for the best Greek translation experience? VibeTrans is your ideal choice! Our tool is accurate and fast, helping you easily break down language barriers and improve communication efficiency. Try it now and experience the charm of the best translation service!"
+      "description": "Looking for the best Greek translation experience? VibeTrans is your ideal choice! Our tool is accurate and fast, helping you easily break down language barriers and improve communication efficiency."
     },
     "tool": {
       "inputLabel": "Input Text",
@@ -32,32 +32,32 @@
       "imageAlt": "What is greek-translator - Visual explanation"
     },
     "examples": {
-      "title": "Translation Examples You Can Trust",
-      "description": "Translate Greek signs and menus with ease. Just snap a picture, and see the English text appear instantly, maintaining context and clarity.",
+      "title": "Authentic Greek Translation Examples",
+      "description": "Experience accurate Greek-to-English translations across various contexts. From everyday conversations to professional documents, see how our tool handles the nuances of the Greek language.",
       "items": [
         {
-          "alt": "Greek restaurant menu translated to English",
-          "name": "Restaurant Menu Translation"
+          "alt": "Καλημέρα! Πώς είστε; → Good morning! How are you?",
+          "name": "Daily Greeting"
         },
         {
-          "alt": "Greek street sign with directions in English",
-          "name": "Street Sign Translation"
+          "alt": "Μου αρέσει η ελληνική κουζίνα → I love Greek cuisine",
+          "name": "Food & Dining"
         },
         {
-          "alt": "Ancient Greek text translated to modern English",
-          "name": "Classical Text Translation"
+          "alt": "Πού είναι το nearest ξενοδοχείο; → Where is the nearest hotel?",
+          "name": "Travel Navigation"
         },
         {
-          "alt": "Greek medical prescription instructions",
-          "name": "Medical Document Translation"
+          "alt": "Θα ήθελα να κάνω μια κράτηση → I would like to make a reservation",
+          "name": "Hotel Booking"
         },
         {
-          "alt": "Greek business email translated to English",
-          "name": "Business Communication"
+          "alt": "Πόσο κοστίζει αυτό; → How much does this cost?",
+          "name": "Shopping & Prices"
         },
         {
-          "alt": "Greek recipe with cooking instructions",
-          "name": "Culinary Recipe Translation"
+          "alt": "Σας ευχαριστώ για τη βοήθεια → Thank you for your help",
+          "name": "Gratitude & Politeness"
         }
       ]
     },
@@ -109,25 +109,25 @@
       "items": [
         {
           "title": "Ancient Greek Translation",
-          "description": "Translate ancient texts accurately with our unique dual-mode feature. Perfect for historical research or academic work.",
+          "description": "Translate ancient texts accurately with our unique dual-mode feature. Perfect for historical research or academic work. Our advanced AI understands classical Greek grammar and syntax, ensuring faithful translations that preserve the original meaning and cultural context of ancient manuscripts, philosophical texts, and historical documents.",
           "image": "/images/docs/greek-scroll-translation.webp",
           "imageAlt": "Ancient Greek Translation"
         },
         {
           "title": "Transliteration Toggle",
-          "description": "Switch Greek alphabet to Latin letters with pronunciation aids. Ideal for learning or casual reading.",
+          "description": "Switch Greek alphabet to Latin letters with pronunciation aids. Ideal for learning or casual reading. This feature breaks down pronunciation barriers by providing phonetic transcriptions that help learners master Greek sounds, making it easier to read signs, menus, and basic Greek text without needing to learn the Greek alphabet first.",
           "image": "/images/docs/learn-ancient-greek.webp",
           "imageAlt": "Transliteration Toggle"
         },
         {
           "title": "Image-to-Text OCR",
-          "description": "Use your camera to translate Greek signs and menus instantly. A must-have for travelers.",
+          "description": "Use your camera to translate Greek signs and menus instantly. A must-have for travelers. Our advanced OCR technology recognizes handwritten and printed Greek text with remarkable accuracy, even in challenging lighting conditions or awkward angles, making navigation through Greece effortless and more enjoyable.",
           "image": "/images/docs/accurate-greek-translations.webp",
           "imageAlt": "Image-to-Text OCR"
         },
         {
           "title": "Voice Conversation Mode",
-          "description": "Engage in real-time Greek ↔ English voice conversations. Enhance language learning and practice.",
+          "description": "Engage in real-time Greek ↔ English voice conversations. Enhance language learning and practice. Practice natural conversations with native-like pronunciation feedback, accent reduction tools, and real-time corrections that help you develop authentic Greek speaking skills while building confidence in everyday communication scenarios.",
           "image": "/images/docs/ancient-greek-dialects.webp",
           "imageAlt": "Voice Conversation Mode"
         }

@@ -14,21 +14,24 @@ async function generateSpecificWingdingsImages() {
     {
       filename: 'wingdings-design-tools',
       title: 'Design Applications',
-      description: 'Discover creative ways to use Wingdings symbols in graphic design, presentations, and digital art projects.',
-      alt: 'Wingdings Design Applications'
+      description:
+        'Discover creative ways to use Wingdings symbols in graphic design, presentations, and digital art projects.',
+      alt: 'Wingdings Design Applications',
     },
     {
       filename: 'wingdings-microsoft-creation',
       title: "Microsoft's Creation",
-      description: 'Wingdings was created by Microsoft in 1990 as part of the Windows 3.1 operating system. It was designed to include a variety of useful symbols for documents.',
-      alt: 'Microsoft Wingdings History'
+      description:
+        'Wingdings was created by Microsoft in 1990 as part of the Windows 3.1 operating system. It was designed to include a variety of useful symbols for documents.',
+      alt: 'Microsoft Wingdings History',
     },
     {
       filename: 'wingdings-hidden-easter-eggs',
       title: 'Hidden Easter Eggs',
-      description: 'Wingdings contains several Easter eggs. For example, typing NYC displays symbols that some people interpreted as anti-Semitic, leading to controversy in the 1990s.',
-      alt: 'Wingdings Easter Eggs'
-    }
+      description:
+        'Wingdings contains several Easter eggs. For example, typing NYC displays symbols that some people interpreted as anti-Semitic, leading to controversy in the 1990s.',
+      alt: 'Wingdings Easter Eggs',
+    },
   ];
 
   for (const image of specificImages) {
@@ -41,7 +44,7 @@ async function generateSpecificWingdingsImages() {
         filename: image.filename,
         alt: image.alt,
         outputPath: 'public/images/docs/',
-        skipIfExists: false // 强制重新生成
+        skipIfExists: false, // 强制重新生成
       });
 
       console.log(`✅ 成功生成: ${image.title}\n`);

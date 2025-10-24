@@ -1,5 +1,5 @@
-import { NextResponse } from 'next/server';
 import { detectLanguage } from '@/lib/language-detection';
+import { NextResponse } from 'next/server';
 
 export const runtime = 'edge';
 
@@ -210,14 +210,14 @@ export async function POST(request: Request) {
         : 'No changes needed - text already matches style',
       translator: {
         name: 'Manga Translator',
-        type: 'stylistic'
+        type: 'stylistic',
       },
       style,
       mangaStyle: {
         name: style.charAt(0).toUpperCase() + style.slice(1),
         description: getStyleDescription(style),
         characteristics: getStyleCharacteristics(style),
-      }
+      },
     });
   } catch (error) {
     console.error('Manga translation error:', error);

@@ -24,8 +24,17 @@ function translateToYoda(text: string): string {
       const punctuation = trimmedSentence.match(/[.!?]$/)?.[0] || null;
 
       // Yoda标志性词汇
-      const yodaPrefixes = ['Hmm', 'Yes', 'Strong', 'Good', 'Patience', 'Master', 'I understand'];
-      const randomPrefix = yodaPrefixes[Math.floor(Math.random() * yodaPrefixes.length)];
+      const yodaPrefixes = [
+        'Hmm',
+        'Yes',
+        'Strong',
+        'Good',
+        'Patience',
+        'Master',
+        'I understand',
+      ];
+      const randomPrefix =
+        yodaPrefixes[Math.floor(Math.random() * yodaPrefixes.length)];
 
       return `${randomPrefix}. ${words.join(' ')}${punctuation || '.'}`;
     })
@@ -63,9 +72,9 @@ export async function POST(request: Request) {
         : 'No translation needed',
       translator: {
         name: 'Yoda Translator',
-        type: 'stylistic'
+        type: 'stylistic',
       },
-      style: 'yoda-speak'
+      style: 'yoda-speak',
     });
   } catch (error) {
     console.error('Translation error:', error);

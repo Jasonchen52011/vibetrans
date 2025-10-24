@@ -16,29 +16,36 @@ const ADDITIONAL_CONTENTS = [
   {
     key: 'fontCompatibility',
     title: 'Font Compatibility',
-    description: 'Our Telugu to English translator ensures proper font rendering and compatibility across different devices and platforms. The translation maintains text readability and preserves the original formatting while converting between Telugu and English scripts.'
+    description:
+      'Our Telugu to English translator ensures proper font rendering and compatibility across different devices and platforms. The translation maintains text readability and preserves the original formatting while converting between Telugu and English scripts.',
   },
   {
     key: 'designApplications',
     title: 'Design Applications',
-    description: 'Perfect for designers working on bilingual projects, UI/UX design, typography work, and creative applications. The translator helps maintain design consistency while translating Telugu content to English for international audiences.'
+    description:
+      'Perfect for designers working on bilingual projects, UI/UX design, typography work, and creative applications. The translator helps maintain design consistency while translating Telugu content to English for international audiences.',
   },
   {
     key: 'microsoftCreation',
-    title: 'Microsoft\'s Creation',
-    description: 'Microsoft has been instrumental in developing advanced translation technologies using AI and machine learning. Their translation services have revolutionized how we communicate across language barriers globally.'
+    title: "Microsoft's Creation",
+    description:
+      'Microsoft has been instrumental in developing advanced translation technologies using AI and machine learning. Their translation services have revolutionized how we communicate across language barriers globally.',
   },
   {
     key: 'hiddenEasterEggs',
     title: 'Hidden Easter Eggs',
-    description: 'Discover fun hidden features and Easter eggs in our translator! Try special Telugu phrases, use keyboard shortcuts, and explore advanced features that make translation more enjoyable and efficient.'
-  }
+    description:
+      'Discover fun hidden features and Easter eggs in our translator! Try special Telugu phrases, use keyboard shortcuts, and explore advanced features that make translation more enjoyable and efficient.',
+  },
 ];
 
 /**
  * Generate prompt for each content using Gemini
  */
-async function generatePromptForContent(title: string, description: string): Promise<string> {
+async function generatePromptForContent(
+  title: string,
+  description: string
+): Promise<string> {
   const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
 
   if (!apiKey) {
@@ -82,7 +89,7 @@ async function generateImageWithVolcanoOnly(prompt: string, filename: string) {
   try {
     const imageResult = await generateImage({
       prompt: prompt,
-      mode: 'text'
+      mode: 'text',
     });
 
     console.log(`✅ Volcano 4.0 image generated: ${imageResult.data[0].url}`);
@@ -95,7 +102,9 @@ async function generateImageWithVolcanoOnly(prompt: string, filename: string) {
     });
 
     if (webpResult.success) {
-      console.log(`✅ [WebP] 转换完成: ${webpResult.filename} (${webpResult.size}KB)`);
+      console.log(
+        `✅ [WebP] 转换完成: ${webpResult.filename} (${webpResult.size}KB)`
+      );
       return webpResult.filename;
     } else {
       throw new Error(webpResult.error || 'WebP conversion failed');
@@ -111,7 +120,9 @@ async function generateImageWithVolcanoOnly(prompt: string, filename: string) {
  */
 async function generateAdditionalImages() {
   console.log('\n' + '='.repeat(80));
-  console.log('🎨 Generating Additional Images for Telugu to English Translator');
+  console.log(
+    '🎨 Generating Additional Images for Telugu to English Translator'
+  );
   console.log('='.repeat(80) + '\n');
 
   const generatedFiles: string[] = [];
@@ -120,31 +131,44 @@ async function generateAdditionalImages() {
     const content = ADDITIONAL_CONTENTS[i];
     const index = i + 1;
 
-    console.log(`\n📋 [${index}/${ADDITIONAL_CONTENTS.length}] Processing: ${content.title}`);
-    console.log(`   Description: ${content.description.substring(0, 100)}...\n`);
+    console.log(
+      `\n📋 [${index}/${ADDITIONAL_CONTENTS.length}] Processing: ${content.title}`
+    );
+    console.log(
+      `   Description: ${content.description.substring(0, 100)}...\n`
+    );
 
     try {
       // Step 1: Generate prompt with Gemini
       console.log(`🧠 Step 1: Generating prompt with Gemini...`);
-      const prompt = await generatePromptForContent(content.title, content.description);
+      const prompt = await generatePromptForContent(
+        content.title,
+        content.description
+      );
       console.log(`✅ Prompt generated (${prompt.length} chars)\n`);
 
       // Step 2: Generate image with Volcano 4.0
       console.log(`🎨 Step 2: Generating image with Volcano 4.0...`);
       const filename = `telugu-to-english-translator-${content.key}.webp`;
-      const generatedFile = await generateImageWithVolcanoOnly(prompt, filename);
+      const generatedFile = await generateImageWithVolcanoOnly(
+        prompt,
+        filename
+      );
       generatedFiles.push(generatedFile);
 
-      console.log(`✅ [${index}/${ADDITIONAL_CONTENTS.length}] Success: ${generatedFile}\n`);
+      console.log(
+        `✅ [${index}/${ADDITIONAL_CONTENTS.length}] Success: ${generatedFile}\n`
+      );
 
       // Small delay between requests to avoid rate limiting
       if (index < ADDITIONAL_CONTENTS.length) {
         console.log(`⏳ Waiting 2 seconds before next request...\n`);
-        await new Promise(resolve => setTimeout(resolve, 2000));
+        await new Promise((resolve) => setTimeout(resolve, 2000));
       }
-
     } catch (error: any) {
-      console.error(`❌ Failed to generate image for ${content.title}: ${error.message}\n`);
+      console.error(
+        `❌ Failed to generate image for ${content.title}: ${error.message}\n`
+      );
       // Continue with next image even if one fails
     }
   }
@@ -153,11 +177,13 @@ async function generateAdditionalImages() {
   console.log('\n' + '='.repeat(80));
   console.log('📊 GENERATION SUMMARY');
   console.log('='.repeat(80));
-  console.log(`✅ Successfully generated: ${generatedFiles.length}/${ADDITIONAL_CONTENTS.length} images`);
+  console.log(
+    `✅ Successfully generated: ${generatedFiles.length}/${ADDITIONAL_CONTENTS.length} images`
+  );
 
   if (generatedFiles.length > 0) {
     console.log('\n📁 Generated Files:');
-    generatedFiles.forEach(file => {
+    generatedFiles.forEach((file) => {
       console.log(`   ✓ ${file}`);
     });
     console.log(`\n💾 Location: public/images/docs/`);

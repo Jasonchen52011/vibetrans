@@ -25,8 +25,8 @@ export async function POST(request: Request) {
         : 'No translation needed',
       translator: {
         name: 'English to Persian Translator',
-        type: 'bilingual'
-      }
+        type: 'bilingual',
+      },
     });
   } catch (error) {
     console.error('Translation error:', error);

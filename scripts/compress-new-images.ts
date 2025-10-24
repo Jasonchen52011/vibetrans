@@ -5,9 +5,9 @@
  * Targets the recently generated images from wingdings and telugu translators
  */
 
-import sharp from 'sharp';
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import sharp from 'sharp';
 
 // 需要压缩的图片列表（新生成的图片）
 const imagesToCompress = [
@@ -67,15 +67,16 @@ async function compressImage(filePath: string): Promise<void> {
       quality -= 10;
 
       currentBuffer = await sharp(inputBuffer)
-        .resize(1200, 900, { // 确保4:3比例
+        .resize(1200, 900, {
+          // 确保4:3比例
           fit: 'inside',
-          withoutEnlargement: true
+          withoutEnlargement: true,
         })
         .webp({
           quality,
           effort: 6,
           method: 6,
-          smartSubsample: true
+          smartSubsample: true,
         })
         .toBuffer();
 
@@ -90,7 +91,7 @@ async function compressImage(filePath: string): Promise<void> {
         { width: 1024, height: 768 },
         { width: 900, height: 675 },
         { width: 800, height: 600 },
-        { width: 640, height: 480 }
+        { width: 640, height: 480 },
       ];
 
       for (const { width, height } of resolutions) {
@@ -99,13 +100,13 @@ async function compressImage(filePath: string): Promise<void> {
         currentBuffer = await sharp(inputBuffer)
           .resize(width, height, {
             fit: 'inside',
-            withoutEnlargement: true
+            withoutEnlargement: true,
           })
           .webp({
             quality: 70,
             effort: 6,
             method: 6,
-            smartSubsample: true
+            smartSubsample: true,
           })
           .toBuffer();
 
@@ -120,14 +121,17 @@ async function compressImage(filePath: string): Promise<void> {
 
     console.log(`✅ Compression complete:`);
     console.log(`   Original: ${originalSize}KB → Final: ${finalSize}KB`);
-    console.log(`   Space saved: ${originalSize - finalSize}KB (${Math.round((originalSize - finalSize) / originalSize * 100)}%)`);
+    console.log(
+      `   Space saved: ${originalSize - finalSize}KB (${Math.round(((originalSize - finalSize) / originalSize) * 100)}%)`
+    );
 
     if (finalSize > 90) {
-      console.warn(`⚠️  Warning: Could not compress to ≤90KB (final: ${finalSize}KB)`);
+      console.warn(
+        `⚠️  Warning: Could not compress to ≤90KB (final: ${finalSize}KB)`
+      );
     } else {
       console.log(`🎉 Successfully compressed to ≤90KB!`);
     }
-
   } catch (error) {
     console.error(`❌ Failed to compress ${filePath}:`, error);
   }
@@ -149,7 +153,9 @@ async function ensureAspectRatio(filePath: string): Promise<void> {
 
     // 如果比例偏差超过5%，则调整
     if (Math.abs(currentRatio - targetRatio) > 0.05) {
-      console.log(`📐 Adjusting aspect ratio from ${currentRatio.toFixed(2)} to 4:3`);
+      console.log(
+        `📐 Adjusting aspect ratio from ${currentRatio.toFixed(2)} to 4:3`
+      );
 
       const newWidth = Math.floor(1200);
       const newHeight = Math.floor(900); // 4:3比例
@@ -158,19 +164,21 @@ async function ensureAspectRatio(filePath: string): Promise<void> {
         .resize(newWidth, newHeight, {
           fit: 'inside',
           withoutEnlargement: true,
-          position: 'center'
+          position: 'center',
         })
         .webp({
           quality: 85,
           effort: 6,
-          method: 6
+          method: 6,
         })
         .toBuffer();
 
       await fs.writeFile(filePath, processedBuffer);
       console.log(`✅ Aspect ratio adjusted to 4:3 (${newWidth}x${newHeight})`);
     } else {
-      console.log(`📐 Aspect ratio already correct: ${currentRatio.toFixed(2)} ≈ 4:3`);
+      console.log(
+        `📐 Aspect ratio already correct: ${currentRatio.toFixed(2)} ≈ 4:3`
+      );
     }
   } catch (error) {
     console.error(`❌ Failed to adjust aspect ratio for ${filePath}:`, error);
@@ -182,7 +190,7 @@ async function ensureAspectRatio(filePath: string): Promise<void> {
  */
 async function compressNewImages() {
   console.log('🗜️  Compressing Newly Generated Images to ≤90KB');
-  console.log('=' .repeat(60));
+  console.log('='.repeat(60));
 
   let successCount = 0;
   let failCount = 0;
@@ -197,10 +205,12 @@ async function compressNewImages() {
     }
   }
 
-  console.log('\n' + '=' .repeat(60));
+  console.log('\n' + '='.repeat(60));
   console.log('📊 SUMMARY');
-  console.log('=' .repeat(60));
-  console.log(`✅ Successfully processed: ${successCount}/${imagesToCompress.length}`);
+  console.log('='.repeat(60));
+  console.log(
+    `✅ Successfully processed: ${successCount}/${imagesToCompress.length}`
+  );
   console.log(`❌ Failed: ${failCount}/${imagesToCompress.length}`);
 
   // 最终验证

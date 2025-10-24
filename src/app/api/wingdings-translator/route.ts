@@ -222,7 +222,7 @@ export async function POST(request: Request) {
         : 'No translation needed - input appears to be in target format',
       translator: {
         name: 'Wingdings Translator',
-        type: 'symbolic'
+        type: 'symbolic',
       },
       direction: translationDirection,
       detectedDirection,

@@ -2772,11 +2772,16 @@ async function main() {
     await phase9_validateImagePaths(keyword, translationData, imageData);
 
     // Phase 10: 翻译文件国际化系统检查
-    const translationSystemResult = await phase10_checkTranslationSystem(keyword, translationData);
+    const translationSystemResult = await phase10_checkTranslationSystem(
+      keyword,
+      translationData
+    );
 
     if (!translationSystemResult.success) {
       logWarning('\n⚠️  翻译文件国际化系统检查发现问题：');
-      logWarning(`   ${translationSystemResult.error || translationSystemResult.warning}`);
+      logWarning(
+        `   ${translationSystemResult.error || translationSystemResult.warning}`
+      );
       logWarning('   建议检查翻译文件是否正确加载到国际化系统中');
     } else {
       logSuccess('\n✓ 翻译文件国际化系统检查通过');
@@ -2873,19 +2878,20 @@ async function phase10_checkTranslationSystem(keyword, translationData) {
     return {
       success: false,
       error: '缺少翻译文件导入语句',
-      fix: `需要在 messages.ts 中添加: import(\`${expectedImportPath}\`)`
+      fix: `需要在 messages.ts 中添加: import(\`${expectedImportPath}\`)`,
     };
   }
 
   logSuccess('✓ 翻译文件导入语句存在');
 
   // 4. 检查变量声明
-  const expectedVarName = slug
-    .split('-')
-    .map((word, index) =>
-      index === 0 ? word : word.charAt(0).toUpperCase() + word.slice(1)
-    )
-    .join('') + 'Pages';
+  const expectedVarName =
+    slug
+      .split('-')
+      .map((word, index) =>
+        index === 0 ? word : word.charAt(0).toUpperCase() + word.slice(1)
+      )
+      .join('') + 'Pages';
 
   const hasVariable = messagesContent.includes(`${expectedVarName} =`);
 
@@ -2895,7 +2901,7 @@ async function phase10_checkTranslationSystem(keyword, translationData) {
     return {
       success: false,
       error: '缺少翻译文件变量声明',
-      fix: `需要在 messages.ts 中添加: const ${expectedVarName} = await import(\`${expectedImportPath}\`);`
+      fix: `需要在 messages.ts 中添加: const ${expectedVarName} = await import(\`${expectedImportPath}\`);`,
     };
   }
 
@@ -2910,7 +2916,7 @@ async function phase10_checkTranslationSystem(keyword, translationData) {
     return {
       success: false,
       error: '缺少 deepmerge 配置',
-      fix: `需要在 deepmerge.all() 数组中添加: ${expectedVarName}.default`
+      fix: `需要在 deepmerge.all() 数组中添加: ${expectedVarName}.default`,
     };
   }
 
@@ -2931,7 +2937,7 @@ async function phase10_checkTranslationSystem(keyword, translationData) {
       logError(`✗ 英文翻译文件缺少命名空间: ${pageName}`);
       return {
         success: false,
-        error: `英文翻译文件缺少命名空间: ${pageName}`
+        error: `英文翻译文件缺少命名空间: ${pageName}`,
       };
     }
 
@@ -2940,7 +2946,7 @@ async function phase10_checkTranslationSystem(keyword, translationData) {
     logError(`✗ 英文翻译文件检查失败: ${error.message}`);
     return {
       success: false,
-      error: `英文翻译文件检查失败: ${error.message}`
+      error: `英文翻译文件检查失败: ${error.message}`,
     };
   }
 
@@ -2955,7 +2961,7 @@ async function phase10_checkTranslationSystem(keyword, translationData) {
       logError(`✗ 中文翻译文件缺少命名空间: ${pageName}`);
       return {
         success: false,
-        error: `中文翻译文件缺少命名空间: ${pageName}`
+        error: `中文翻译文件缺少命名空间: ${pageName}`,
       };
     }
 
@@ -2967,7 +2973,7 @@ async function phase10_checkTranslationSystem(keyword, translationData) {
       logError(`✗ 中文翻译文件检查失败: ${error.message}`);
       return {
         success: false,
-        error: `中文翻译文件检查失败: ${error.message}`
+        error: `中文翻译文件检查失败: ${error.message}`,
       };
     }
   }
@@ -2989,7 +2995,7 @@ async function phase10_checkTranslationSystem(keyword, translationData) {
       'tool.outputLabel',
       'whatIs.title',
       'whatIs.description',
-      'highlights.title'
+      'highlights.title',
     ];
 
     const missingKeys = [];
@@ -3007,7 +3013,7 @@ async function phase10_checkTranslationSystem(keyword, translationData) {
       return {
         success: true,
         warning: '缺少关键翻译键',
-        missingKeys: missingKeys
+        missingKeys: missingKeys,
       };
     }
 
@@ -3016,7 +3022,7 @@ async function phase10_checkTranslationSystem(keyword, translationData) {
     logError(`✗ 翻译键检查失败: ${error.message}`);
     return {
       success: false,
-      error: `翻译键检查失败: ${error.message}`
+      error: `翻译键检查失败: ${error.message}`,
     };
   }
 
@@ -3031,8 +3037,8 @@ async function phase10_checkTranslationSystem(keyword, translationData) {
       variableExists: true,
       deepmergeExists: true,
       translationFilesExist: true,
-      requiredKeysExist: true
-    }
+      requiredKeysExist: true,
+    },
   };
 }
 

@@ -339,7 +339,7 @@ export function useNavbarLinks(): NestedMenuItem[] {
           href: Routes.SamoanToEnglishTranslator,
           external: false,
         },
-          {
+        {
           title: t('languageTranslator.items.swahiliToEnglishTranslator.title'),
           icon: <LanguagesIcon className="size-4 shrink-0" />,
           href: Routes.SwahiliToEnglishTranslator,

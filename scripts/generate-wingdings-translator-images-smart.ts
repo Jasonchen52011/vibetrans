@@ -24,7 +24,7 @@ const sections: ArticleSections = {
   },
   funFacts: [
     {
-      title: 'Microsoft\'s Creation',
+      title: "Microsoft's Creation",
       content:
         'Wingdings was created by Microsoft in 1990 as part of the Windows 3.1 operating system. It was designed to include a variety of useful symbols for documents, featuring everything from basic shapes to complex icons. This revolutionary font transformed how people could express themselves through symbolic communication.',
       style: {
@@ -42,7 +42,7 @@ const sections: ArticleSections = {
     {
       title: 'Hidden Easter Eggs',
       content:
-        'Wingdings contains several interesting Easter eggs and hidden symbols. For example, certain character combinations reveal special icons and symbols that aren\'t immediately obvious. These hidden features have made Wingdings a favorite among designers and typography enthusiasts who enjoy discovering its secrets.',
+        "Wingdings contains several interesting Easter eggs and hidden symbols. For example, certain character combinations reveal special icons and symbols that aren't immediately obvious. These hidden features have made Wingdings a favorite among designers and typography enthusiasts who enjoy discovering its secrets.",
       style: {
         style: 'modern, clean, typographic',
         keywords: [
@@ -125,7 +125,7 @@ const sections: ArticleSections = {
   howto: {
     title: 'How to Use Wingdings Translator',
     content:
-      'Learn how to convert text to Wingdings symbols in just a few simple steps. Start by entering your text in the input area - you can type letters, numbers, and basic punctuation. Click the Translate button to instantly convert your text into Wingdings symbols. Copy the result to your clipboard for use anywhere. To decode Wingdings text back to regular text, simply paste the symbols and translate again. It\'s that simple to encode and decode messages using Wingdings!',
+      "Learn how to convert text to Wingdings symbols in just a few simple steps. Start by entering your text in the input area - you can type letters, numbers, and basic punctuation. Click the Translate button to instantly convert your text into Wingdings symbols. Copy the result to your clipboard for use anywhere. To decode Wingdings text back to regular text, simply paste the symbols and translate again. It's that simple to encode and decode messages using Wingdings!",
     style: {
       style: 'modern, clean, instructional',
       keywords: [
@@ -161,12 +161,18 @@ async function updateJsonImagePaths(result: any) {
       const imageMapping = {
         'what-is-wingdings-translator': jsonData.WingdingsTranslatorPage.whatIs,
         'wingdings-translator-how-to': jsonData.WingdingsTranslatorPage.howto,
-        'wingdings-translator-fact-1': jsonData.WingdingsTranslatorPage.funFacts.items[0],
-        'wingdings-translator-fact-2': jsonData.WingdingsTranslatorPage.funFacts.items[1],
-        'wingdings-translator-interest-1': jsonData.WingdingsTranslatorPage.userInterest.items[0],
-        'wingdings-translator-interest-2': jsonData.WingdingsTranslatorPage.userInterest.items[1],
-        'wingdings-translator-interest-3': jsonData.WingdingsTranslatorPage.userInterest.items[2],
-        'wingdings-translator-interest-4': jsonData.WingdingsTranslatorPage.userInterest.items[3],
+        'wingdings-translator-fact-1':
+          jsonData.WingdingsTranslatorPage.funFacts.items[0],
+        'wingdings-translator-fact-2':
+          jsonData.WingdingsTranslatorPage.funFacts.items[1],
+        'wingdings-translator-interest-1':
+          jsonData.WingdingsTranslatorPage.userInterest.items[0],
+        'wingdings-translator-interest-2':
+          jsonData.WingdingsTranslatorPage.userInterest.items[1],
+        'wingdings-translator-interest-3':
+          jsonData.WingdingsTranslatorPage.userInterest.items[2],
+        'wingdings-translator-interest-4':
+          jsonData.WingdingsTranslatorPage.userInterest.items[3],
       };
 
       // 更新图片路径

@@ -69,9 +69,21 @@ Translate the following Telugu casual text to English naturally:`,
   },
   general: {
     name: 'General Translation',
-    teluguToEnPrompt: `You are a professional Telugu to English translator. Translate the text directly without any explanations or instructions.
+    teluguToEnPrompt: `You are a translator for a Telugu to English translation service. Your task is to ALWAYS provide an English translation of the input text.
 
-Translate the following Telugu text to English:`,
+CRITICAL RULES:
+- The output must ALWAYS be in English, regardless of input language
+- If input is Telugu, translate it to English
+- If input is English, rephrase it or provide an English equivalent (do NOT return the same text)
+- Never return Telugu text as output
+- Never return the exact same input text
+- Output must be English only
+
+Example:
+Input: "నేను బాగున్నాను" → Output: "I am fine"
+Input: "Hello world" → Output: "Hello everyone in this world" or similar English rephrasing
+
+Translate the following text to English:`,
   },
 };
 
@@ -88,11 +100,18 @@ async function translateText(
 
   const modeConfig = TRANSLATION_MODES[mode];
   const systemPrompt = modeConfig.teluguToEnPrompt;
-  const fullPrompt = `${systemPrompt}\n\n"${text}"`;
+  const fullPrompt = `${systemPrompt}\n\nTelugu text: "${text}"\n\nEnglish translation:`;
 
   const result = await model.generateContent(fullPrompt);
   const response = result.response;
-  return response.text().trim();
+  let translatedText = response.text().trim();
+
+  // Remove quotes if present
+  if (translatedText.startsWith('"') && translatedText.endsWith('"')) {
+    translatedText = translatedText.slice(1, -1);
+  }
+
+  return translatedText;
 }
 
 // 处理反向文本翻译 (English → Telugu)
@@ -165,7 +184,7 @@ Translate the following English casual text to Telugu naturally:`;
 Translate the following English text to Telugu:`;
   }
 
-  const fullPrompt = `${systemPrompt}\n\n"${text}"`;
+  const fullPrompt = `${systemPrompt}\n\nEnglish text: "${text}"\n\nTelugu translation:`;
 
   const result = await model.generateContent(fullPrompt);
   const response = result.response;
@@ -228,32 +247,28 @@ export async function POST(request: Request) {
     const detection = detectLanguage(text, 'telugu');
     const { detectedLanguage, confidence } = detection;
 
-    // 根据检测结果和用户指定的语言参数，智能确定翻译方向
-    let actualSourceLanguage = sourceLanguage;
-    let actualTargetLanguage = targetLanguage;
-    let translationDirection = 'Telugu → English';
-    let shouldTranslate = true;
+    // 智能翻译逻辑 - 根据检测结果选择翻译方向
+    let actualSourceLanguage: string;
+    let actualTargetLanguage: string;
+    let translationDirection: string;
+    let translation: string;
 
-    // 如果用户没有明确指定语言，则使用自动检测结果
-    if (!sourceLanguage || !targetLanguage) {
-      if (detectedLanguage === 'telugu') {
-        actualSourceLanguage = 'telugu';
-        actualTargetLanguage = 'english';
-        translationDirection = 'Telugu → English';
-      } else if (detectedLanguage === 'english') {
-        actualSourceLanguage = 'english';
-        actualTargetLanguage = 'telugu';
-        translationDirection = 'English → Telugu';
-        // 如果检测到英文但期望泰卢固语到英语翻译，给出提示但仍进行翻译
-        if (sourceLanguage === 'telugu' && targetLanguage === 'english') {
-          shouldTranslate = false;
-        }
-      } else {
-        // 语言检测不确定，使用用户指定或默认值
-        actualSourceLanguage = sourceLanguage || 'telugu';
-        actualTargetLanguage = targetLanguage || 'english';
-        translationDirection = 'Telugu → English';
-      }
+    // 根据检测结果确定翻译方向
+    if (detectedLanguage === 'english') {
+      // 英语输入，翻译成泰卢固语
+      actualSourceLanguage = 'english';
+      actualTargetLanguage = 'telugu';
+      translationDirection = 'English → Telugu';
+    } else if (detectedLanguage === 'telugu') {
+      // 泰卢固语输入，翻译成英语
+      actualSourceLanguage = 'telugu';
+      actualTargetLanguage = 'english';
+      translationDirection = 'Telugu → English';
+    } else {
+      // 未知语言，假设为泰卢固语处理
+      actualSourceLanguage = 'telugu';
+      actualTargetLanguage = 'english';
+      translationDirection = 'Assumed Telugu → English';
     }
 
     // 如果只是检测语言，返回检测结果
@@ -279,51 +294,18 @@ export async function POST(request: Request) {
               ? 'Auto-detected Telugu input, will translate to English'
               : detectedLanguage === 'english'
                 ? 'Auto-detected English input, will translate to Telugu'
-                : 'Language detection uncertain, using default translation direction',
+                : 'Language detection uncertain, will attempt Telugu to English translation',
         },
       });
     }
 
-    // 如果不应该翻译（比如检测到英文但期望Telugu→English）
-    if (!shouldTranslate) {
-      return NextResponse.json({
-        translated: text,
-        original: text,
-        mode: mode,
-        modeName: TRANSLATION_MODES[mode].name,
-        detectedInputLanguage: detectedLanguage,
-        confidence,
-        autoDetected: true,
-        message:
-          'No translation needed - input appears to be in target language',
-        languageInfo: {
-          detected: true,
-          detectedLanguage: 'English',
-          direction: 'English → Telugu',
-          confidence: Math.round(confidence * 100),
-          explanation:
-            'Detected English input but Telugu → English translation requested',
-        },
-      });
-    }
-
-    // 执行翻译
-    let translation: string;
+    // 执行翻译 - 根据检测结果选择翻译方向
     try {
-      if (
-        actualSourceLanguage === 'telugu' &&
-        actualTargetLanguage === 'english'
-      ) {
-        // Telugu → English
-        translation = await translateText(text, mode);
-      } else if (
-        actualSourceLanguage === 'english' &&
-        actualTargetLanguage === 'telugu'
-      ) {
-        // English → Telugu (需要实现反向翻译)
+      if (detectedLanguage === 'english') {
+        // 英语 → 泰卢固语
         translation = await translateEnglishToTelugu(text, mode);
       } else {
-        // 默认 Telugu → English
+        // 泰卢固语 → 英语（包括未知语言的情况）
         translation = await translateText(text, mode);
       }
     } catch (translationError) {
@@ -344,6 +326,7 @@ export async function POST(request: Request) {
       autoDetected: true,
       sourceLanguage: actualSourceLanguage,
       targetLanguage: actualTargetLanguage,
+      actualTranslationDirection: translationDirection,
       message: 'Translation successful',
       status: 'success',
       timestamp: new Date().toISOString(),
@@ -361,10 +344,8 @@ export async function POST(request: Request) {
           detectedLanguage === 'telugu'
             ? 'Auto-detected Telugu input, translated to English'
             : detectedLanguage === 'english'
-              ? actualTargetLanguage === 'telugu'
-                ? 'Auto-detected English input, translated to Telugu'
-                : 'Detected English input, but Telugu → English requested'
-              : 'Translation completed using auto-detection',
+              ? 'Auto-detected English input, translated to Telugu'
+              : `Language detection uncertain, attempted ${translationDirection}`,
       },
     };
 

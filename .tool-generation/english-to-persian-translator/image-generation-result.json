@@ -15,7 +15,7 @@
     {
       "section": "funFacts #1",
       "title": "Rich Literary Heritage",
-      "filename": "poetry-heritage.webp",
+      "filename": "poetry-scroll-history.webp",
       "size": 0,
       "status": "failed",
       "error": "All image generation models failed. Last error: Failed to create Ideogram task: undefined"
@@ -23,15 +23,14 @@
     {
       "section": "funFacts #2",
       "title": "Widely Spoken Language",
-      "filename": "language-expansion.webp",
-      "size": 0,
-      "status": "failed",
-      "error": "All image generation models failed. Last error: Failed to create Ideogram task: undefined"
+      "filename": "language-connection.webp",
+      "size": 76,
+      "status": "success"
     },
     {
       "section": "userInterests #1",
       "title": "Business Communication",
-      "filename": "globe-translation.webp",
+      "filename": "global-communication.webp",
       "size": 0,
       "status": "failed",
       "error": "All image generation models failed. Last error: Failed to create Ideogram task: undefined"
@@ -47,7 +46,7 @@
     {
       "section": "userInterests #3",
       "title": "Cultural Exchange",
-      "filename": "poetry-bridge.webp",
+      "filename": "book-world-bridge.webp",
       "size": 0,
       "status": "failed",
       "error": "All image generation models failed. Last error: Failed to create Ideogram task: undefined"
@@ -55,15 +54,16 @@
     {
       "section": "userInterests #4",
       "title": "Travel Preparation",
-      "filename": "travel-prep.webp",
-      "size": 65,
-      "status": "success"
+      "filename": "travel-translation.webp",
+      "size": 0,
+      "status": "failed",
+      "error": "All image generation models failed. Last error: Failed to create Ideogram task: undefined"
     }
   ],
-  "totalTimeMs": 25570,
+  "totalTimeMs": 24696,
   "howToScreenshot": {
     "filename": "english-to-persian-translator-how-to.webp",
-    "size": 14,
+    "size": 24,
     "status": "success"
   }
 }

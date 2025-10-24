@@ -220,12 +220,12 @@ export default async function EnglishToPersianTranslatorPage(
       {
         title: (t as any)('funFacts.items.0.title'),
         description: (t as any)('funFacts.items.0.description'),
-        image: (t as any)('funFacts.items.0.image'),
+        image: (t as any)('funFacts.items.0.image.src'),
       },
       {
         title: (t as any)('funFacts.items.1.title'),
         description: (t as any)('funFacts.items.1.description'),
-        image: (t as any)('funFacts.items.1.image'),
+        image: (t as any)('funFacts.items.1.image.src'),
       },
     ],
   };
@@ -238,22 +238,22 @@ export default async function EnglishToPersianTranslatorPage(
       {
         title: (t as any)('userInterest.items.0.title'),
         description: (t as any)('userInterest.items.0.description'),
-        image: (t as any)('userInterest.items.0.image'),
+        image: (t as any)('userInterest.items.0.image.src'),
       },
       {
         title: (t as any)('userInterest.items.1.title'),
         description: (t as any)('userInterest.items.1.description'),
-        image: (t as any)('userInterest.items.1.image'),
+        image: (t as any)('userInterest.items.1.image.src'),
       },
       {
         title: (t as any)('userInterest.items.2.title'),
         description: (t as any)('userInterest.items.2.description'),
-        image: (t as any)('userInterest.items.2.image'),
+        image: (t as any)('userInterest.items.2.image.src'),
       },
       {
         title: (t as any)('userInterest.items.3.title'),
         description: (t as any)('userInterest.items.3.description'),
-        image: (t as any)('userInterest.items.3.image'),
+        image: (t as any)('userInterest.items.3.image.src'),
       },
     ],
   };

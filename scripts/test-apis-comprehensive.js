@@ -110,7 +110,9 @@ async function makeAPIRequest(endpoint, data) {
 
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({}));
-      throw new Error(`HTTP ${response.status}: ${errorData.error || response.statusText}`);
+      throw new Error(
+        `HTTP ${response.status}: ${errorData.error || response.statusText}`
+      );
     }
 
     const responseData = await response.json();
@@ -207,7 +209,10 @@ function validateResponse(apiType, response, testData) {
       if (!data.modeName || !data.greekType) {
         issues.push('缺少modeName或greekType字段');
       }
-      if (!data.languageInfo || typeof data.languageInfo.confidence !== 'number') {
+      if (
+        !data.languageInfo ||
+        typeof data.languageInfo.confidence !== 'number'
+      ) {
         issues.push('languageInfo信息不完整');
       }
       break;
@@ -222,7 +227,10 @@ function validateResponse(apiType, response, testData) {
       if (!data.style || !data.mangaStyle) {
         issues.push('缺少style或mangaStyle字段');
       }
-      if (data.mangaStyle && (!data.mangaStyle.name || !data.mangaStyle.description)) {
+      if (
+        data.mangaStyle &&
+        (!data.mangaStyle.name || !data.mangaStyle.description)
+      ) {
         issues.push('mangaStyle信息不完整');
       }
       break;
@@ -245,7 +253,11 @@ async function testAPI(apiType) {
 
   // 健康检查
   console.log('📋 执行健康检查...');
-  const healthResult = await healthCheck(apiType === 'telugu' ? 'telugu-to-english-translator' : `${apiType}-translator`);
+  const healthResult = await healthCheck(
+    apiType === 'telugu'
+      ? 'telugu-to-english-translator'
+      : `${apiType}-translator`
+  );
 
   if (healthResult.success) {
     console.log(`✅ 健康检查通过 (${healthResult.responseTime}ms)`);
@@ -261,17 +273,23 @@ async function testAPI(apiType) {
   console.log('\n📝 测试有效输入...');
   for (let i = 0; i < TEST_DATA[apiType].validInputs.length; i++) {
     const testData = TEST_DATA[apiType].validInputs[i];
-    console.log(`  测试 ${i + 1}: ${JSON.stringify(testData).substring(0, 80)}...`);
+    console.log(
+      `  测试 ${i + 1}: ${JSON.stringify(testData).substring(0, 80)}...`
+    );
 
     const result = await makeAPIRequest(
-      apiType === 'telugu' ? 'telugu-to-english-translator' : `${apiType}-translator`,
+      apiType === 'telugu'
+        ? 'telugu-to-english-translator'
+        : `${apiType}-translator`,
       testData
     );
 
     const issues = validateResponse(apiType, result, testData);
 
     if (result.success && issues.length === 0) {
-      console.log(`    ✅ 成功 (${result.responseTime}ms) - 输出: "${(result.data.translated || '').substring(0, 50)}..."`);
+      console.log(
+        `    ✅ 成功 (${result.responseTime}ms) - 输出: "${(result.data.translated || '').substring(0, 50)}..."`
+      );
       testResults[apiType].success++;
     } else {
       console.log(`    ❌ 失败: ${result.error || issues.join(', ')}`);
@@ -284,19 +302,27 @@ async function testAPI(apiType) {
   console.log('\n🔍 测试边界情况...');
   for (let i = 0; i < TEST_DATA[apiType].edgeCases.length; i++) {
     const testData = TEST_DATA[apiType].edgeCases[i];
-    console.log(`  边界测试 ${i + 1}: ${JSON.stringify(testData).substring(0, 50)}...`);
+    console.log(
+      `  边界测试 ${i + 1}: ${JSON.stringify(testData).substring(0, 50)}...`
+    );
 
     const result = await makeAPIRequest(
-      apiType === 'telugu' ? 'telugu-to-english-translator' : `${apiType}-translator`,
+      apiType === 'telugu'
+        ? 'telugu-to-english-translator'
+        : `${apiType}-translator`,
       testData
     );
 
     // 边界情况通常预期会失败，但不应该导致服务器错误
     if (result.data?.statusCode >= 400 && result.data?.statusCode < 500) {
-      console.log(`    ✅ 正确处理错误 (${result.responseTime}ms) - ${result.data.error}`);
+      console.log(
+        `    ✅ 正确处理错误 (${result.responseTime}ms) - ${result.data.error}`
+      );
       testResults[apiType].success++;
     } else if (result.success) {
-      console.log(`    ✅ 意外成功 (${result.responseTime}ms) - 输出: "${(result.data.translated || '').substring(0, 50)}..."`);
+      console.log(
+        `    ✅ 意外成功 (${result.responseTime}ms) - 输出: "${(result.data.translated || '').substring(0, 50)}..."`
+      );
       testResults[apiType].success++;
     } else {
       console.log(`    ❌ 服务器错误: ${result.error}`);
@@ -323,7 +349,9 @@ async function securityTest(apiType) {
   for (const test of securityTests) {
     console.log(`  ${test.name}...`);
     const result = await makeAPIRequest(
-      apiType === 'telugu' ? 'telugu-to-english-translator' : `${apiType}-translator`,
+      apiType === 'telugu'
+        ? 'telugu-to-english-translator'
+        : `${apiType}-translator`,
       test.data
     );
 
@@ -332,7 +360,9 @@ async function securityTest(apiType) {
       console.log(`    ✅ 通过 (${result.responseTime}ms)`);
     } else {
       console.log(`    ⚠️  潜在安全问题: ${result.error}`);
-      testResults[apiType].errors.push(`安全测试失败 - ${test.name}: ${result.error}`);
+      testResults[apiType].errors.push(
+        `安全测试失败 - ${test.name}: ${result.error}`
+      );
     }
   }
 }
@@ -352,7 +382,9 @@ async function performanceTest(apiType) {
 
   for (let i = 0; i < concurrentRequests; i++) {
     const result = await makeAPIRequest(
-      apiType === 'telugu' ? 'telugu-to-english-translator' : `${apiType}-translator`,
+      apiType === 'telugu'
+        ? 'telugu-to-english-translator'
+        : `${apiType}-translator`,
       performanceData
     );
 
@@ -411,7 +443,9 @@ function generateReport() {
   console.log('总体统计:');
   console.log(`  ✅ 总成功: ${totalSuccess}`);
   console.log(`  ❌ 总失败: ${totalFailed}`);
-  console.log(`  📈 成功率: ${((totalSuccess / (totalSuccess + totalFailed)) * 100).toFixed(1)}%`);
+  console.log(
+    `  📈 成功率: ${((totalSuccess / (totalSuccess + totalFailed)) * 100).toFixed(1)}%`
+  );
 
   // 保存报告到文件
   const reportData = {
@@ -419,7 +453,10 @@ function generateReport() {
     summary: {
       totalSuccess,
       totalFailed,
-      successRate: ((totalSuccess / (totalSuccess + totalFailed)) * 100).toFixed(1),
+      successRate: (
+        (totalSuccess / (totalSuccess + totalFailed)) *
+        100
+      ).toFixed(1),
     },
     details: testResults,
   };
@@ -467,10 +504,4 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   main().catch(console.error);
 }
 
-export {
-  testAPI,
-  securityTest,
-  performanceTest,
-  TEST_DATA,
-  TEST_CONFIG,
-};
+export { testAPI, securityTest, performanceTest, TEST_DATA, TEST_CONFIG };

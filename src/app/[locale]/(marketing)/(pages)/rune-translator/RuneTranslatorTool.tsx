@@ -321,9 +321,7 @@ export default function RuneTranslatorTool({
           </button>
         </div>
 
-        <ToolInfoSections
-          funFacts={pageData.funFacts}
-        />
+        <ToolInfoSections funFacts={pageData.funFacts} />
       </main>
     </div>
   );
