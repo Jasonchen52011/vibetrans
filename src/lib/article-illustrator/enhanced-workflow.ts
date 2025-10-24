@@ -14,10 +14,7 @@
 
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import type {
-  ArticleSections,
-  SectionType,
-} from './types';
+import type { ArticleSections, SectionType } from './types';
 import { generateArticleIllustrations } from './workflow';
 
 interface WorkflowConfig {

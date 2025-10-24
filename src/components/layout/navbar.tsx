@@ -94,10 +94,10 @@ export function Navbar({ scroll }: NavBarProps) {
                       <NavigationMenuContent>
                         <ul
                           className={cn(
-                            'grid gap-4 p-4',
+                            'grid gap-2 p-3',
                             item.items && item.items.length === 1
                               ? 'w-[280px]'
-                              : 'w-[400px] md:w-[500px] md:grid-cols-2 lg:w-[600px]'
+                              : 'w-[500px] md:w-[700px] md:grid-cols-3 lg:w-[900px] lg:grid-cols-4'
                           )}
                         >
                           {item.items?.map((subItem, subIndex) => {
@@ -118,8 +118,8 @@ export function Navbar({ scroll }: NavBarProps) {
                                         : undefined
                                     }
                                     className={cn(
-                                      'group flex select-none flex-row items-center gap-4 rounded-md',
-                                      'p-2 leading-none no-underline outline-hidden transition-colors',
+                                      'group flex select-none flex-row items-center gap-3 rounded-md',
+                                      'p-1.5 leading-none no-underline outline-hidden transition-colors',
                                       'hover:bg-accent hover:text-accent-foreground',
                                       'focus:bg-accent focus:text-accent-foreground',
                                       isSubItemActive &&

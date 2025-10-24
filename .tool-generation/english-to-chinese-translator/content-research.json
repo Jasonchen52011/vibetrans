@@ -1,0 +1,304 @@
+{
+  "contentGaps": [
+    {
+      "topic": "Tone control (formal / informal / business / casual) in the Chinese output",
+      "reason": "用户往往需要根据场景选择语气，但多数工具只给出单一译文。",
+      "competitors": [
+        "Google Translate",
+        "Bing Translator",
+        "DeepL",
+        "Yandex Translate",
+        "Reverso"
+      ]
+    },
+    {
+      "topic": "Idioms & cultural-nuance explanations alongside the translation",
+      "reason": "英汉成语直译经常失真，用户想知道原理和替代表达。",
+      "competitors": [
+        "Google Translate",
+        "Lingvanex",
+        "Babylon",
+        "Cambridge Translator"
+      ]
+    },
+    {
+      "topic": "Automatic Pinyin + audio pronunciation in one view",
+      "reason": "初学者希望快速对应拼音和发音，目前需要切换到第二个工具。",
+      "competitors": ["DeepL", "Reverso", "Bing Translator", "ImTranslator"]
+    },
+    {
+      "topic": "Simplified vs Traditional Chinese switch with regional vocabulary (CN / TW / HK)",
+      "reason": "不同区域用词差异大，直接字符转换无法满足本地化。",
+      "competitors": [
+        "Google Translate",
+        "DeepL",
+        "Yandex Translate",
+        "Babylon"
+      ]
+    },
+    {
+      "topic": "Batch / bulk translation for CSV, Excel or entire folders",
+      "reason": "跨境电商或软件本地化一次需要翻译成百上千条文本。",
+      "competitors": [
+        "Cambridge Translator",
+        "Reverso",
+        "Babylon",
+        "iTranslate"
+      ]
+    },
+    {
+      "topic": "Document-layout preservation (DOCX, PPT, PDF) when translating",
+      "reason": "商务用户担心排版丢失，需要一键保持格式。",
+      "competitors": [
+        "Google Translate",
+        "Yandex Translate",
+        "Lingvanex",
+        "Babylon"
+      ]
+    },
+    {
+      "topic": "Privacy-first / on-device translation with no server upload",
+      "reason": "法律、医疗等敏感文件须确保不泄露至云端。",
+      "competitors": [
+        "Google Translate",
+        "DeepL Web",
+        "Bing Translator",
+        "Reverso"
+      ]
+    },
+    {
+      "topic": "API & webhook integration details with clear pricing",
+      "reason": "开发者寻找可嵌入服务，大多页面只针对终端用户。",
+      "competitors": ["Cambridge", "Babylon", "Reverso", "iTranslate"]
+    },
+    {
+      "topic": "Quality assurance vs. human translator comparison / hybrid workflow",
+      "reason": "团队希望知道机器+人工校对的最佳实践与成本。",
+      "competitors": [
+        "Google Translate",
+        "Bing Translator",
+        "Yandex",
+        "Lingvanex"
+      ]
+    },
+    {
+      "topic": "Real-time voice or video chat subtitle translation EN⇄ZH",
+      "reason": "远程会议和游戏语音需求激增，网页工具尚未覆盖。",
+      "competitors": [
+        "DeepL",
+        "Google Translate Web",
+        "Reverso",
+        "ImTranslator"
+      ]
+    }
+  ],
+  "socialTopics": [
+    {
+      "platform": "Reddit",
+      "topic": "Is DeepL really better than Google Translate for Chinese?",
+      "engagement": "高",
+      "summary": "大量对比示例贴，投票较多，最终结论：DeepL在长句更自然，但对专业术语支持不足。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "Why does Google Translate mess up Chinese word order?",
+      "engagement": "高",
+      "summary": "讨论语序差异、依存句法及Transformer模型的局限；附上解决办法如分句。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "Best translation apps when travelling in China (offline)",
+      "engagement": "中",
+      "summary": "关注VPN限制、离线包大小及拍照翻译准确率。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "What is the most accurate English to Chinese translator available online?",
+      "engagement": "高",
+      "summary": "回答从专业翻译、DeepL、Google到有道智云，投票上千。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "How to translate English names into Chinese correctly?",
+      "engagement": "中",
+      "summary": "介绍音译 vs. 意译，常见姓氏转写规则；工具很少支持，需人工查字典。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "Challenges in translating idioms between English and Chinese",
+      "engagement": "中",
+      "summary": "列举“break a leg”等误译案例，呼吁加注文化注释。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "Funny machine-translation fails from English to Chinese",
+      "engagement": "中",
+      "summary": "网友晒出商场标牌‘翻译腔’图片，评论区热度高。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "How can I add Pinyin to Chinese translations automatically?",
+      "engagement": "中",
+      "summary": "回答推荐Chrome扩展、Anki插件；现有主流翻译站点缺此功能。"
+    }
+  ],
+  "funFacts": [
+    "Chinese has over 50,000 characters, but everyday literacy needs about 3,500; most MT engines map ~100,000 English lemmas to these 3,500 core characters.",
+    "Until 2015 Google Translate often output ‘I am gay’ for ‘我很快乐’ because ‘快乐’ (happy) was aligned with ‘gay’ in older bilingual corpora.",
+    "The greeting ‘吃了吗?’ literally means ‘Have you eaten?’; naïve translators render it word-for-word, missing its function as ‘How are you?’.",
+    "Tone in Mandarin (four main tones) is ignored in text-only machine translation, which is why Pinyin without tone marks can create ambiguity for learners.",
+    "Simplified Chinese was introduced in the 1950s to boost literacy; Taiwan, Hong Kong, Macau and many overseas communities still use Traditional characters, so one English sentence can yield at least two written Chinese versions."
+  ],
+  "highFrequencyWords": [
+    {
+      "word": "translate",
+      "frequency": "高",
+      "context": "按钮、标题"
+    },
+    {
+      "word": "translation",
+      "frequency": "高",
+      "context": "功能描述"
+    },
+    {
+      "word": "english",
+      "frequency": "高",
+      "context": "语言对"
+    },
+    {
+      "word": "chinese",
+      "frequency": "高",
+      "context": "语言对"
+    },
+    {
+      "word": "free",
+      "frequency": "高",
+      "context": "定价口号"
+    },
+    {
+      "word": "online",
+      "frequency": "高",
+      "context": "访问方式"
+    },
+    {
+      "word": "text",
+      "frequency": "高",
+      "context": "输入类型"
+    },
+    {
+      "word": "language",
+      "frequency": "高",
+      "context": "多语支持"
+    },
+    {
+      "word": "tool",
+      "frequency": "中",
+      "context": "产品定位"
+    },
+    {
+      "word": "instant",
+      "frequency": "中",
+      "context": "速度卖点"
+    },
+    {
+      "word": "accurate",
+      "frequency": "中",
+      "context": "质量卖点"
+    },
+    {
+      "word": "voice",
+      "frequency": "中",
+      "context": "语音输入"
+    },
+    {
+      "word": "camera",
+      "frequency": "中",
+      "context": "拍照翻译"
+    },
+    {
+      "word": "document",
+      "frequency": "中",
+      "context": "文件翻译"
+    },
+    {
+      "word": "audio",
+      "frequency": "中",
+      "context": "发音播报"
+    },
+    {
+      "word": "pronunciation",
+      "frequency": "中",
+      "context": "学习功能"
+    },
+    {
+      "word": "dictionary",
+      "frequency": "中",
+      "context": "词典链接"
+    },
+    {
+      "word": "sentences",
+      "frequency": "中",
+      "context": "示例句"
+    },
+    {
+      "word": "words",
+      "frequency": "中",
+      "context": "词汇查找"
+    },
+    {
+      "word": "automatic",
+      "frequency": "中",
+      "context": "检测语言"
+    },
+    {
+      "word": "detect",
+      "frequency": "中",
+      "context": "自动识别"
+    },
+    {
+      "word": "languages",
+      "frequency": "中",
+      "context": "列表"
+    },
+    {
+      "word": "download",
+      "frequency": "中",
+      "context": "App离线包"
+    },
+    {
+      "word": "app",
+      "frequency": "中",
+      "context": "移动端"
+    },
+    {
+      "word": "service",
+      "frequency": "中",
+      "context": "SaaS定位"
+    },
+    {
+      "word": "software",
+      "frequency": "中",
+      "context": "桌面客户端"
+    },
+    {
+      "word": "quality",
+      "frequency": "中",
+      "context": "准确度宣传"
+    },
+    {
+      "word": "professional",
+      "frequency": "中",
+      "context": "专业翻译"
+    },
+    {
+      "word": "voice-input",
+      "frequency": "中",
+      "context": "功能列表"
+    },
+    {
+      "word": "share",
+      "frequency": "中",
+      "context": "复制/分享译文"
+    }
+  ]
+}

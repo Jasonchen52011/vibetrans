@@ -1,0 +1,210 @@
+{
+  "EnglishToPolishTranslatorPage": {
+    "title": "准确的英语波兰语在线翻译器",
+    "description": "发现最佳的英语到波兰语翻译器，提供实时准确的翻译，支持语音输入输出和专业模式。",
+    "hero": {
+      "title": "英语波兰语翻译工具",
+      "description": "体验最佳的英语到波兰语翻译器，提供准确、上下文感知的翻译功能，支持语音输入和输出。"
+    },
+    "tool": {
+      "inputLabel": "输入文本",
+      "outputLabel": "翻译文本",
+      "inputPlaceholder": "在此输入您的文本...",
+      "outputPlaceholder": "翻译将在此显示...",
+      "translateButton": "翻译",
+      "uploadButton": "上传文件",
+      "uploadHint": "支持 .txt 和 .docx 文件",
+      "voiceInputButton": "语音输入",
+      "voiceInputHint": "点击开始语音输入",
+      "audioUploadButton": "上传音频",
+      "audioUploadHint": "上传音频文件进行转录",
+      "voiceOutputButton": "播放音频",
+      "voiceOutputHint": "收听翻译",
+      "loading": "翻译中...",
+      "transcribing": "转录音频中...",
+      "error": "翻译失败，请重试。",
+      "noInput": "请输入要翻译的文本。"
+    },
+    "whatIs": {
+      "title": "什么是英语波兰语翻译器",
+      "description": "英语波兰语翻译器是一个精密的工具，旨在无缝弥合语言差距。由VibeTrans驱动，它提供高精度的实时翻译，满足休闲用户和专业人士的需求。无论您是旅行、参与国际项目还是学习波兰语，这个工具都能确保有效沟通。VibeTrans通过提供上下文翻译和用户友好功能而脱颖而出，使其成为全球互动的必备伴侣。",
+      "image": "/images/docs/translation-bridge.webp",
+      "imageAlt": "什么是英语波兰语翻译器 - 视觉解释"
+    },
+    "examples": {
+      "title": "翻译示例",
+      "description": "查看真实的英语到波兰语翻译例子，从日常对话到专业文档。",
+      "items": [
+        {
+          "alt": "Hello, how are you today? → Cześć, jak się masz dzisiaj?",
+          "name": "问候翻译"
+        },
+        {
+          "alt": "Thank you very much for your help → Dziękuję bardzo za pomoc",
+          "name": "感谢表达"
+        },
+        {
+          "alt": "I need to book a hotel room → Muszę zarezerwować pokój hotelowy",
+          "name": "酒店预订"
+        },
+        {
+          "alt": "The meeting is scheduled for 3 PM → Spotkanie zaplanowano na godzinę 15:00",
+          "name": "会议安排"
+        },
+        {
+          "alt": "What time does the restaurant open? | O której godzinie otwiera się restauracja?",
+          "name": "餐厅询问"
+        },
+        {
+          "alt": "I love learning new languages → Kocham uczyć się nowych języków",
+          "name": "语言学习"
+        }
+      ]
+    },
+    "howto": {
+      "title": "如何将英语翻译成波兰语",
+      "description": "通过以下步骤轻松将英语翻译成波兰语：",
+      "image": "/images/docs/translate-success.webp",
+      "imageAlt": "如何使用英语波兰语翻译器",
+      "steps": [
+        {
+          "title": "输入文本",
+          "description": "在输入字段中输入或粘贴您的英语文本。您也可以上传.txt或.docx文件，或使用语音输入以便捷操作。"
+        },
+        {
+          "title": "点击翻译",
+          "description": "按翻译按钮，使用我们先进的翻译技术即时将您的英语文本转换为波兰语。"
+        },
+        {
+          "title": "获取结果",
+          "description": "立即收到您的波兰语翻译。收听音频发音，复制或根据需要下载翻译文本。"
+        },
+        {
+          "title": "使用翻译",
+          "description": "您的翻译已准备就绪！与波兰语使用者分享或保存以备将来参考。"
+        }
+      ]
+    },
+    "funFacts": {
+      "title": "有趣的事实",
+      "items": [
+        {
+          "title": "语法复杂性",
+          "description": "VibeTrans在将英语翻译成波兰语时面临挑战，因为波兰语有七个语法格和十五种性别-数字组合。波兰语还有九个带变音符号的特殊字符，使翻译更加复杂。",
+          "image": "/images/docs/polish-translation-puzzle.webp",
+          "imageAlt": "语法复杂性"
+        },
+        {
+          "title": "最长单词",
+          "description": "VibeTrans面临波兰语复杂的七个语法格和十五种性别-数字组合的挑战，使翻译变得有趣。波兰语充满了像'konstantynopolitańczykowianeczka'这样的长单词，挑战机器翻译的极限！",
+          "image": "/images/docs/polish-word-challenge.webp",
+          "imageAlt": "最长单词"
+        }
+      ]
+    },
+    "userInterest": {
+      "title": "探索更多功能",
+      "items": [
+        {
+          "title": "语法洞察",
+          "description": "VibeTrans揭示英语和波兰语之间的语法误区：英语中的'I am reading'在波兰语中可能只是'Czytam'。波兰语时态更简洁，常常让英语学习者感到惊讶！在VibeTrans的帮助下，语法不再是障碍，而是探索语言之美的有趣旅程。",
+          "image": "/images/docs/grammar-translation-shapes.webp",
+          "imageAlt": "语法洞察"
+        },
+        {
+          "title": "上下文示例",
+          "description": "在英语和波兰语之间导航细微差别？VibeTrans支持您。考虑'break a leg'——在波兰语中是'połamania nóg'，捕捉同样的鼓励精神。通过VibeTrans轻松探索独特短语和弥合对话差距，您的语言伙伴。",
+          "image": "/images/docs/translation-bridge.webp",
+          "imageAlt": "上下文示例"
+        },
+        {
+          "title": "专业模式",
+          "description": "VibeTrans的专业模式让翻译像变形金刚一样自由切换。无论是商务会议还是情书，都能以独特的波兰风格给人留下深刻印象。想要不同的翻译体验？VibeTrans让每个词都有自己的节奏。",
+          "image": "/images/docs/transformer-translation-modes.webp",
+          "imageAlt": "专业模式"
+        },
+        {
+          "title": "语音输入/输出",
+          "description": "VibeTrans的语音输入/输出功能为翻译增添了酷炫的科技感。说出您的需求，听到您的答案，就像科幻电影中一样。无需打字，让翻译更流畅、更快速。VibeTrans让翻译不再是单调的任务。",
+          "image": "/images/docs/voice-translator.webp",
+          "imageAlt": "语音输入/输出"
+        }
+      ]
+    },
+    "highlights": {
+      "title": "主要功能",
+      "description": "探索我们翻译工具的突出功能，确保高性能和用户满意度。",
+      "features": [
+        {
+          "title": "免费波兰语翻译",
+          "icon": "FaRocket",
+          "description": "免费将英语翻译成波兰语。无需注册 - 只需输入或粘贴文本即可在几秒钟内获得准确结果。"
+        },
+        {
+          "title": "语音翻译",
+          "icon": "FaShieldAlt",
+          "description": "说英语，立即听到波兰语翻译。我们的语音输入和输出功能让沟通变得轻松自然。"
+        },
+        {
+          "title": "安全私密",
+          "icon": "FaBrain",
+          "description": "您的翻译完全私密。我们使用先进加密技术保护您的数据，绝不存储您的个人信息。"
+        },
+        {
+          "title": "智能上下文翻译",
+          "icon": "FaChartLine",
+          "description": "获得理解上下文和文化细微差别的翻译。我们的AI确保准确、自然的波兰语翻译。"
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "用户评价",
+      "subtitle": "真实用户的真实反馈",
+      "items": {
+        "item-1": {
+          "name": "Sarah Johnson",
+          "role": "自由撰稿人",
+          "heading": "Sarah Johnson的评价",
+          "content": "作为自由撰稿人，我使用这个英语-波兰语翻译器来帮助我处理国际客户文档。最初担心准确性，但在一次紧急翻译中，它快速而精确地完成了任务，给我留下了深刻印象。不再有语言障碍，工作变得更高效了。"
+        },
+        "item-2": {
+          "name": "Michael Chen",
+          "role": "商业顾问",
+          "heading": "Michael Chen的评价",
+          "content": "作为商业顾问，这个翻译器帮助我与波兰客户轻松沟通。上周，我用它翻译技术文档，客户反馈准确无误，为我节省了大量时间。我对它的精确性和流畅性印象深刻。"
+        },
+        "item-3": {
+          "name": "Emily Rodriguez",
+          "role": "自由翻译员",
+          "heading": "Emily Rodriguez的评价",
+          "content": "作为自由翻译员，我经常需要将英语文档翻译成波兰语。这个翻译器在处理项目截止日期时帮助我很大，特别是在处理专业术语方面表现出令人难以置信的精确性。它提高了我的工作效率和翻译质量信心。"
+        }
+      }
+    },
+    "faqs": {
+      "title": "常见问题",
+      "subtitle": "有其他问题？欢迎通过邮件联系我们。",
+      "items": {
+        "item-1": {
+          "question": "英语波兰语翻译器专业版是免费的吗？",
+          "answer": "英语波兰语翻译器专业版是一项需要订阅的高级服务。虽然可能有基本的免费功能可用，但高级功能和更高翻译准确性的访问权限保留给付费订阅用户。建议在订阅前尝试免费版本。"
+        },
+        "item-2": {
+          "question": "哪个是最好的英语到波兰语翻译器？",
+          "answer": "DeepL是最好的英语到波兰语翻译器之一，以其高准确性和上下文理解能力而闻名。Google Translate也因其易用性和与其他Google服务的集成而受欢迎。两者都提供可靠的翻译服务。"
+        },
+        "item-3": {
+          "question": "我的隐私是否受到保护？",
+          "answer": "是的，您的隐私是我们的首要任务。我们实施强大的加密方法来保护您的数据。只有授权人员才能访问，确保您的信息在整个翻译过程中保持机密和安全。"
+        }
+      }
+    },
+    "ctaButton": "立即尝试英语波兰语翻译器",
+    "cta": {
+      "title": "立即体验英语波兰语翻译器专业版",
+      "description": "通过VibeTrans体验无缝翻译。轻松准确地将英语翻译成波兰语。",
+      "primaryButton": "立即尝试英语波兰语翻译器",
+      "secondaryButton": "返回顶部"
+    }
+  }
+}

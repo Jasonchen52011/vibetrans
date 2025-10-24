@@ -1,0 +1,64 @@
+{
+  "success": true,
+  "totalImages": 7,
+  "successfulImages": 1,
+  "failedImages": 6,
+  "images": [
+    {
+      "section": "whatIs",
+      "title": "What is Greek-Translator Suite",
+      "filename": "greek-translation-suite.webp",
+      "size": 0,
+      "status": "failed",
+      "error": "All image generation models failed. Last error: Failed to create Ideogram task: undefined"
+    },
+    {
+      "section": "funFacts #1",
+      "title": "Fun Fact",
+      "filename": "greek-roots-words.webp",
+      "size": 0,
+      "status": "failed",
+      "error": "All image generation models failed. Last error: Failed to create Ideogram task: undefined"
+    },
+    {
+      "section": "funFacts #2",
+      "title": "Fun Fact",
+      "filename": "greek-yes-icon.webp",
+      "size": 0,
+      "status": "failed",
+      "error": "All image generation models failed. Last error: Failed to create Ideogram task: undefined"
+    },
+    {
+      "section": "userInterests #1",
+      "title": "Ancient Greek Translation",
+      "filename": "greek-scroll-translation.webp",
+      "size": 42,
+      "status": "success"
+    },
+    {
+      "section": "userInterests #2",
+      "title": "Transliteration Toggle",
+      "filename": "alphabet-switch.webp",
+      "size": 0,
+      "status": "failed",
+      "error": "All image generation models failed. Last error: Failed to create Ideogram task: undefined"
+    },
+    {
+      "section": "userInterests #3",
+      "title": "Image-to-Text OCR",
+      "filename": "translate-travel-scan.webp",
+      "size": 0,
+      "status": "failed",
+      "error": "All image generation models failed. Last error: Failed to create Ideogram task: undefined"
+    },
+    {
+      "section": "userInterests #4",
+      "title": "Voice Conversation Mode",
+      "filename": "voice-exchange.webp",
+      "size": 0,
+      "status": "failed",
+      "error": "All image generation models failed. Last error: Failed to create Ideogram task: undefined"
+    }
+  ],
+  "totalTimeMs": 17835
+}

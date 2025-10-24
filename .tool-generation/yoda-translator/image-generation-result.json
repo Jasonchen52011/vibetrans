@@ -1,0 +1,69 @@
+{
+  "success": true,
+  "totalImages": 7,
+  "successfulImages": 1,
+  "failedImages": 6,
+  "images": [
+    {
+      "section": "whatIs",
+      "title": "What is Yoda Translator",
+      "filename": "yoda-text-swap.webp",
+      "size": 0,
+      "status": "failed",
+      "error": "All image generation models failed. Last error: Failed to create Ideogram task: undefined"
+    },
+    {
+      "section": "funFacts #1",
+      "title": "Fun Fact",
+      "filename": "yoda-speak-fun.webp",
+      "size": 0,
+      "status": "failed",
+      "error": "All image generation models failed. Last error: Failed to create Ideogram task: undefined"
+    },
+    {
+      "section": "funFacts #2",
+      "title": "Fun Fact",
+      "filename": "yoda-language-fun.webp",
+      "size": 60,
+      "status": "success"
+    },
+    {
+      "section": "userInterests #1",
+      "title": "API & Developer Access",
+      "filename": "api-developer-connection.webp",
+      "size": 0,
+      "status": "failed",
+      "error": "All image generation models failed. Last error: Failed to create Ideogram task: undefined"
+    },
+    {
+      "section": "userInterests #2",
+      "title": "Educational Use",
+      "filename": "yoda-learning.webp",
+      "size": 0,
+      "status": "failed",
+      "error": "All image generation models failed. Last error: Failed to create Ideogram task: undefined"
+    },
+    {
+      "section": "userInterests #3",
+      "title": "Voice and Audio Integration",
+      "filename": "yoda-voice-wave.webp",
+      "size": 0,
+      "status": "failed",
+      "error": "All image generation models failed. Last error: Failed to create Ideogram task: undefined"
+    },
+    {
+      "section": "userInterests #4",
+      "title": "Privacy and Security",
+      "filename": "data-safe-haven.webp",
+      "size": 0,
+      "status": "failed",
+      "error": "All image generation models failed. Last error: Failed to create Ideogram task: undefined"
+    }
+  ],
+  "totalTimeMs": 41701,
+  "howToScreenshot": {
+    "filename": "yoda-translator-how-to.webp",
+    "size": 54,
+    "status": "success"
+  }
+}

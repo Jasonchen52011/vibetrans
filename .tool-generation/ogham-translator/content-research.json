@@ -1,0 +1,271 @@
+{
+  "contentGaps": [
+    {
+      "topic": "Audio pronunciation guide for every Ogham letter",
+      "reason": "使用者常想确认读音（尤其是为纹身或演讲准备名字时），但现有站点几乎只有静态文本。",
+      "competitors": [
+        "dcode.fr/ogham",
+        "lingojam.com/ogham",
+        "ogham.co",
+        "omniglot.com",
+        "rune-generator.org"
+      ]
+    },
+    {
+      "topic": "Tattoo-style visual preview with multiple Ogham fonts (vertical & horizontal)",
+      "reason": "最多用户询问如何在皮肤或珠宝上呈现，需先看到实际字形与排列方向。",
+      "competitors": [
+        "dcode.fr/ogham",
+        "ogham.co",
+        "tetragrammaton.net",
+        "runesecrets.net"
+      ]
+    },
+    {
+      "topic": "Clear transliteration rules & unsupported Latin letters (J, K, V, W, Y, Z) work-arounds",
+      "reason": "英文名字里常含这些字母；用户想知道替代写法，现多数工具只是静默丢弃或错误替换。",
+      "competitors": [
+        "lingojam.com/ogham",
+        "dcode.fr/ogham",
+        "oghamtranslator.net"
+      ]
+    },
+    {
+      "topic": "Reverse translation (Ogham ➜ Latin) with error-highlight",
+      "reason": "学术研究者与考古爱好者需从石刻文本反向解析；目前工具几乎只支持单向转换。",
+      "competitors": ["dcode.fr/ogham", "ogham.co"]
+    },
+    {
+      "topic": "One-click copy in true Unicode block U+1680-U+169F + legacy font fallback",
+      "reason": "用户抱怨复制后粘贴到社媒或设计软件显示方框；需要解释字体兼容并提供解决方案。",
+      "competitors": ["lingojam.com/ogham", "dcode.fr/ogham", "omniglot.com"]
+    },
+    {
+      "topic": "Interactive timeline & map of historical Ogham stones",
+      "reason": "文化旅游或学术兴趣人群想知道分布、年代和照片；当前页面仅简短历史段落。",
+      "competitors": ["ogham.co", "omniglot.com", "wikipedia.org/Ogham"]
+    },
+    {
+      "topic": "Tree lore: 每个字母对应的凯尔特树寓意",
+      "reason": "灵性/手工艺社区对此极感兴趣，常在 Reddit 提问『Which tree is the letter N?』",
+      "competitors": [
+        "lingojam.com/ogham",
+        "oghamtranslator.net",
+        "dcode.fr/ogham"
+      ]
+    },
+    {
+      "topic": "Common mistakes checklist for Ogham tattoos (spacing, vowel points, orientation)",
+      "reason": "纹身是搜索量最大的使用场景；用户担心永久错误。",
+      "competitors": ["dcode.fr/ogham", "ogham.co", "omniglot.com"]
+    },
+    {
+      "topic": "Mobile Ogham keyboard / IME download",
+      "reason": "想在手机上发推或短信用 Ogham，但缺少输入法。",
+      "competitors": ["全部前 15 名网站"]
+    }
+  ],
+  "socialTopics": [
+    {
+      "platform": "Reddit",
+      "topic": "How do I write my name in Ogham for a tattoo?",
+      "engagement": "高",
+      "summary": "r/translator 与 r/ireland 帖子多次破 500 upvotes，用户关注正确拼写和视觉排版。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "Is there an Ogham symbol for 'love' or other single words?",
+      "engagement": "中",
+      "summary": "讨论中常被纠正：Ogham 是字母系统，不是象形符号。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "Are online Ogham translators accurate?",
+      "engagement": "中",
+      "summary": "多条热门评论指出某些网站丢失字母或混用树字母。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "What is the difference between Ogham and Viking runes?",
+      "engagement": "高",
+      "summary": "对历史脚本混淆度高，回答点赞 1k+。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "Why are there only 20 letters in Ogham?",
+      "engagement": "中",
+      "summary": "涉及早期爱尔兰语音系与追加辅音改革。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "Best Ogham fonts / Unicode support?",
+      "engagement": "中",
+      "summary": "开发者和设计师交换可用字体下载链接。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "How were Ogham stones read—top-to-bottom or bottom-to-top?",
+      "engagement": "中",
+      "summary": "回答解释行向与刻石物理方向。"
+    }
+  ],
+  "funFacts": [
+    "每个 Ogham 字母传统上对应一棵树，例如 B = Beith（桦树），因此又称 'Celtic Tree Alphabet'。",
+    "Ogham block 在 Unicode 中是 U+1680–U+169F，但 U+1680 ‘Ogham Space Mark’ 是唯一的空格字符。",
+    "大多数现存 Ogham 石刻只是人名和祖辈名，类似『X 子孙 Y』的铭文。",
+    "托尔金在《指环王》手稿里使用过修改版 Ogham 来记录怪兽语言。",
+    "史料记载，早期基督教修士曾把 Ogham 用作手势暗号的基础，被称为 'Ogham in air'."
+  ],
+  "highFrequencyWords": [
+    {
+      "word": "ogham",
+      "frequency": "高",
+      "context": "标题、功能描述"
+    },
+    {
+      "word": "translator",
+      "frequency": "高",
+      "context": "工具命名"
+    },
+    {
+      "word": "alphabet",
+      "frequency": "高",
+      "context": "介绍脚本"
+    },
+    {
+      "word": "irish",
+      "frequency": "高",
+      "context": "历史来源"
+    },
+    {
+      "word": "script",
+      "frequency": "高",
+      "context": "定义 Ogham"
+    },
+    {
+      "word": "runes",
+      "frequency": "中",
+      "context": "比较其他符文"
+    },
+    {
+      "word": "online",
+      "frequency": "高",
+      "context": "工具说明"
+    },
+    {
+      "word": "convert",
+      "frequency": "高",
+      "context": "功能动作"
+    },
+    {
+      "word": "text",
+      "frequency": "高",
+      "context": "用户输入"
+    },
+    {
+      "word": "latin",
+      "frequency": "高",
+      "context": "源/目标字母"
+    },
+    {
+      "word": "transliterate",
+      "frequency": "中",
+      "context": "技术术语"
+    },
+    {
+      "word": "unicode",
+      "frequency": "中",
+      "context": "编码支持"
+    },
+    {
+      "word": "runes",
+      "frequency": "中",
+      "context": "比较说明"
+    },
+    {
+      "word": "stones",
+      "frequency": "中",
+      "context": "历史文物"
+    },
+    {
+      "word": "ancient",
+      "frequency": "中",
+      "context": "形容年代"
+    },
+    {
+      "word": "inscription",
+      "frequency": "中",
+      "context": "石刻描述"
+    },
+    {
+      "word": "tool",
+      "frequency": "高",
+      "context": "产品定位"
+    },
+    {
+      "word": "generator",
+      "frequency": "中",
+      "context": "同义词用法"
+    },
+    {
+      "word": "language",
+      "frequency": "中",
+      "context": "整体背景"
+    },
+    {
+      "word": "gaelic",
+      "frequency": "中",
+      "context": "语言范围"
+    },
+    {
+      "word": "celtic",
+      "frequency": "中",
+      "context": "文化归属"
+    },
+    {
+      "word": "letters",
+      "frequency": "高",
+      "context": "字符集合"
+    },
+    {
+      "word": "copy",
+      "frequency": "中",
+      "context": "复制功能"
+    },
+    {
+      "word": "paste",
+      "frequency": "中",
+      "context": "复制功能"
+    },
+    {
+      "word": "font",
+      "frequency": "中",
+      "context": "显示样式"
+    },
+    {
+      "word": "vertical",
+      "frequency": "中",
+      "context": "排版方向"
+    },
+    {
+      "word": "horizontal",
+      "frequency": "中",
+      "context": "排版方向"
+    },
+    {
+      "word": "name",
+      "frequency": "高",
+      "context": "个人化用例"
+    },
+    {
+      "word": "tattoo",
+      "frequency": "中",
+      "context": "常见应用"
+    },
+    {
+      "word": "history",
+      "frequency": "中",
+      "context": "介绍段落"
+    }
+  ]
+}

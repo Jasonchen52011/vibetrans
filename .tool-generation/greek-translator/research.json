@@ -1,0 +1,141 @@
+{
+  "keyword": "greek translator",
+  "productName": "Greek-Translator Suite",
+  "description": "A web-based Greek ↔ Multilingual translator that blends best-in-class neural engines with grammar/context helpers, voice I/O and file handling in one minimalist page.",
+  "competitors": [
+    {
+      "name": "Google Translate",
+      "url": "https://translate.google.com/",
+      "features": ["数百语言互译，一键自动检测", "短语收藏与发音朗读"]
+    },
+    {
+      "name": "DeepL Translator",
+      "url": "https://www.deepl.com/translator",
+      "features": ["神经网络翻译质量高", "语句可点选词义微调"]
+    },
+    {
+      "name": "Reverso Context",
+      "url": "https://context.reverso.net/translation/greek-english/",
+      "features": ["上下文例句检索", "集成语法/拼写校正"]
+    },
+    {
+      "name": "Microsoft Bing Translator",
+      "url": "https://www.bing.com/translator",
+      "features": ["对话模式/实时字幕", "自动朗读多音色"]
+    },
+    {
+      "name": "Glosbe",
+      "url": "https://glosbe.com/",
+      "features": ["社区词条众包", "短语与例句丰富"]
+    },
+    {
+      "name": "Lexilogos Greek Tools",
+      "url": "https://www.lexilogos.com/english/greek_dictionary.htm",
+      "features": ["古希腊语/多版本辞典入口", "虚拟希腊字母键盘"]
+    },
+    {
+      "name": "Collins Dictionary Translator",
+      "url": "https://www.collinsdictionary.com/translator",
+      "features": ["权威词典释义", "例句+同义词网络"]
+    },
+    {
+      "name": "PONS Online Translator",
+      "url": "https://en.pons.com/translate",
+      "features": ["真人发音库", "学习卡片功能"]
+    },
+    {
+      "name": "ImTranslator",
+      "url": "https://imtranslator.net/translation/greek/translator/",
+      "features": ["一次调用多引擎比较", "朗读+反向翻译按钮"]
+    },
+    {
+      "name": "Babylon Online Translator",
+      "url": "https://translation.babylon-software.com/greek/",
+      "features": ["离线 PC 版词典", "专业领域术语库"]
+    },
+    {
+      "name": "SDL/RWS Language Cloud",
+      "url": "https://languagecloud.sdl.com/",
+      "features": ["翻译记忆库管理", "术语库一致性"]
+    },
+    {
+      "name": "Gengo",
+      "url": "https://gengo.com/greek-translation-services/",
+      "features": ["众包人工翻译", "分级质量+快速交付"]
+    },
+    {
+      "name": "Tomedes",
+      "url": "https://www.tomedes.com/greek-translation",
+      "features": ["24/7 人工翻译客服", "行业专精（法律/金融）"]
+    },
+    {
+      "name": "iTranslate Web",
+      "url": "https://www.itranslate.com/translate",
+      "features": ["多平台同步词库", "离线包下载"]
+    },
+    {
+      "name": "OnlineGreekTranslation.com",
+      "url": "https://www.onlinegreektranslation.com/",
+      "features": ["希腊语母语译员", "免费报价+CAT 支持"]
+    }
+  ],
+  "socialTopics": [
+    {
+      "platform": "Reddit",
+      "topic": "Best app/website to translate menus while travelling in Greece?",
+      "votes": 870,
+      "summary": "旅行者寻找离线拍照翻译及菜谱专用词汇的解决方案，Google Lens 和 DeepL 被频繁推荐但仍吐槽希腊字母 OCR 不准。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "r/translator – Ancient Greek tattoo check",
+      "votes": 540,
+      "summary": "用户在纹身前请求古希腊语校对，社区常纠正语法时态与多形写法。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "What’s the most accurate English-to-Greek online translator?",
+      "votes": 320,
+      "summary": "答主比较 Google, DeepL, Reverso，指出长句易错，建议结合语法资料与人工校对。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "Why does Google Translate struggle with polytonic Ancient Greek?",
+      "votes": 290,
+      "summary": "讨论古希腊多音符号、训练语料稀缺导致的错误，呼吁专门语料库。"
+    }
+  ],
+  "funFacts": [
+    "希腊语拥有 48% 的英语医学术语来源；‘cardiology’ 等词直译能逆向拆解为古希腊词根。",
+    "现代希腊语 1982 年才官方弃用多音符号系统，翻译时常出现古/今正写混用。",
+    "希腊语有词 ‘φιλότιμο’ （filotimo）被认为无法精确翻译，意指“名誉感与慷慨”的混合概念。"
+  ],
+  "features": {
+    "basic": [
+      "文本框输入/输出",
+      "上传 .txt .docx 解析与清空",
+      "结果复制、.txt 下载",
+      "语音输入（Chrome Web Speech）",
+      "语音输出（TTS）"
+    ],
+    "competitive": [
+      "神经网络机器翻译（质量对标 DeepL）",
+      "上下文例句/词义点击替换（对标 Reverso）",
+      "虚拟希腊键盘及字母 OCR（对标 Google Lens + Lexilogos）",
+      "离线缓存包（对标 iTranslate）"
+    ],
+    "innovative": [
+      "Ancient-Modern 双语模式与多音符自动正规化（填补古希腊翻译痛点）",
+      "菜谱&旅游模式：内置 3,000 道希腊菜名与食材对译，一键拍照/粘贴识别",
+      "纹身/标语校对助手：检测短语语法错误并给出多写法示例",
+      "不可翻词库提示 ‘filotimo’ 等文化词，附文化解释卡片"
+    ]
+  },
+  "useCases": [
+    "游客在希腊餐馆现场拍照翻译菜单并离线朗读发音",
+    "学者转换古希腊文献到现代英语，保留多音符标注",
+    "设计师在制作纹身或标语前快速校对希腊语短句",
+    "医学生查询希腊词源以理解专业术语"
+  ],
+  "asciiDesign": "\n+--------------------------------------------------------------+\n|                          Greek-Translator Suite              |\n+-------------------------------+------------------------------+\n|  INPUT                        |  OUTPUT                      |\n|  ┌──────────────────────────┐ | ┌──────────────────────────┐ |\n|  │  (Paste / type text)     │ | │  (Instant translation)   │ |\n|  │                          │ | │                          │ |\n|  └──────────────────────────┘ | └──────────────────────────┘ |\n|  [Upload txt/docx] [Clear]    |  [Copy Result] [Download]   |\n|  [🎤 Voice In]                |  [🔊 Voice Out]             |\n+-------------------------------+------------------------------+\n"
+}

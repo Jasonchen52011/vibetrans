@@ -1,0 +1,669 @@
+{
+  "generatedAt": "2025-10-22T05:20:24.064Z",
+  "apiCount": 29,
+  "tools": [
+    {
+      "slug": "al-bhed-translator",
+      "runtime": "edge",
+      "httpMethods": ["POST", "GET"],
+      "supportedDirections": [],
+      "maxLength": 10000,
+      "models": [],
+      "featureFlags": {
+        "autoLanguageDetection": false,
+        "usesFileUpload": false,
+        "hasVoiceSupport": false,
+        "usesStreaming": false,
+        "mentionsRateLimit": false
+      },
+      "warnings": ["未检测到 supported_directions", "未检测到模型配置"],
+      "routes": {
+        "api": "src/app/api/al-bhed-translator/route.ts",
+        "page": "src/app/[locale]/(marketing)/(pages)/al-bhed-translator/page.tsx",
+        "toolComponent": "src/app/[locale]/(marketing)/(pages)/al-bhed-translator/AlBhedTranslatorTool.tsx",
+        "messages": "messages/pages/al-bhed-translator/en.json"
+      }
+    },
+    {
+      "slug": "albanian-to-english",
+      "runtime": "edge",
+      "httpMethods": ["POST"],
+      "supportedDirections": [],
+      "maxLength": null,
+      "models": [],
+      "featureFlags": {
+        "autoLanguageDetection": true,
+        "usesFileUpload": false,
+        "hasVoiceSupport": false,
+        "usesStreaming": false,
+        "mentionsRateLimit": false
+      },
+      "warnings": [
+        "未检测到 supported_directions",
+        "未检测到 maxLength",
+        "未检测到模型配置"
+      ],
+      "routes": {
+        "api": "src/app/api/albanian-to-english/route.ts",
+        "page": "src/app/[locale]/(marketing)/(pages)/albanian-to-english/page.tsx",
+        "toolComponent": "src/app/[locale]/(marketing)/(pages)/albanian-to-english/AlbanianToEnglishTool.tsx",
+        "messages": "messages/pages/albanian-to-english/en.json"
+      }
+    },
+    {
+      "slug": "albanian-to-english-translator",
+      "runtime": "edge",
+      "httpMethods": ["POST"],
+      "supportedDirections": [],
+      "maxLength": null,
+      "models": ["gemini-2.0-flash"],
+      "featureFlags": {
+        "autoLanguageDetection": true,
+        "usesFileUpload": false,
+        "hasVoiceSupport": true,
+        "usesStreaming": false,
+        "mentionsRateLimit": false
+      },
+      "warnings": [
+        "未检测到 supported_directions",
+        "未检测到 maxLength",
+        "缺少页面文件",
+        "缺少英文文案"
+      ],
+      "routes": {
+        "api": "src/app/api/albanian-to-english-translator/route.ts",
+        "page": null,
+        "toolComponent": null,
+        "messages": null
+      }
+    },
+    {
+      "slug": "ancient-greek-translator",
+      "runtime": "edge",
+      "httpMethods": ["POST", "GET"],
+      "supportedDirections": [],
+      "maxLength": 5000,
+      "models": ["gemini-2.0-flash-exp"],
+      "featureFlags": {
+        "autoLanguageDetection": true,
+        "usesFileUpload": false,
+        "hasVoiceSupport": false,
+        "usesStreaming": false,
+        "mentionsRateLimit": false
+      },
+      "warnings": ["未检测到 supported_directions"],
+      "routes": {
+        "api": "src/app/api/ancient-greek-translator/route.ts",
+        "page": "src/app/[locale]/(marketing)/(pages)/ancient-greek-translator/page.tsx",
+        "toolComponent": "src/app/[locale]/(marketing)/(pages)/ancient-greek-translator/AncientGreekTranslatorTool.tsx",
+        "messages": "messages/pages/ancient-greek-translator/en.json"
+      }
+    },
+    {
+      "slug": "aramaic-translator",
+      "runtime": "edge",
+      "httpMethods": ["POST", "GET"],
+      "supportedDirections": ["toAramaic", "toEnglish", "auto"],
+      "maxLength": 5000,
+      "models": ["gemini-2.0-flash-exp"],
+      "featureFlags": {
+        "autoLanguageDetection": true,
+        "usesFileUpload": false,
+        "hasVoiceSupport": false,
+        "usesStreaming": false,
+        "mentionsRateLimit": false
+      },
+      "warnings": [],
+      "routes": {
+        "api": "src/app/api/aramaic-translator/route.ts",
+        "page": "src/app/[locale]/(marketing)/(pages)/aramaic-translator/page.tsx",
+        "toolComponent": "src/app/[locale]/(marketing)/(pages)/aramaic-translator/AramaicTranslatorTool.tsx",
+        "messages": "messages/pages/aramaic-translator/en.json"
+      }
+    },
+    {
+      "slug": "baby-translator",
+      "runtime": "edge",
+      "httpMethods": ["POST"],
+      "supportedDirections": [],
+      "maxLength": null,
+      "models": [],
+      "featureFlags": {
+        "autoLanguageDetection": false,
+        "usesFileUpload": true,
+        "hasVoiceSupport": true,
+        "usesStreaming": false,
+        "mentionsRateLimit": false
+      },
+      "warnings": [
+        "未检测到 supported_directions",
+        "未检测到 maxLength",
+        "未检测到模型配置"
+      ],
+      "routes": {
+        "api": "src/app/api/baby-translator/route.ts",
+        "page": "src/app/[locale]/(marketing)/(pages)/baby-translator/page.tsx",
+        "toolComponent": "src/app/[locale]/(marketing)/(pages)/baby-translator/BabyTranslatorTool.tsx",
+        "messages": "messages/pages/baby-translator/en.json"
+      }
+    },
+    {
+      "slug": "bad-translator",
+      "runtime": "edge",
+      "httpMethods": ["POST", "GET"],
+      "supportedDirections": [],
+      "maxLength": null,
+      "models": [],
+      "featureFlags": {
+        "autoLanguageDetection": false,
+        "usesFileUpload": false,
+        "hasVoiceSupport": false,
+        "usesStreaming": false,
+        "mentionsRateLimit": false
+      },
+      "warnings": [
+        "未检测到 supported_directions",
+        "未检测到 maxLength",
+        "未检测到模型配置"
+      ],
+      "routes": {
+        "api": "src/app/api/bad-translator/route.ts",
+        "page": "src/app/[locale]/(marketing)/(pages)/bad-translator/page.tsx",
+        "toolComponent": "src/app/[locale]/(marketing)/(pages)/bad-translator/BadTranslatorTool.tsx",
+        "messages": "messages/pages/bad-translator/en.json"
+      }
+    },
+    {
+      "slug": "baybayin-translator",
+      "runtime": "edge",
+      "httpMethods": ["POST", "GET"],
+      "supportedDirections": ["toBaybayin", "toEnglish", "auto"],
+      "maxLength": 5000,
+      "models": ["gemini-2.0-flash-exp"],
+      "featureFlags": {
+        "autoLanguageDetection": true,
+        "usesFileUpload": false,
+        "hasVoiceSupport": false,
+        "usesStreaming": false,
+        "mentionsRateLimit": false
+      },
+      "warnings": [],
+      "routes": {
+        "api": "src/app/api/baybayin-translator/route.ts",
+        "page": "src/app/[locale]/(marketing)/(pages)/baybayin-translator/page.tsx",
+        "toolComponent": "src/app/[locale]/(marketing)/(pages)/baybayin-translator/BaybayinTranslatorTool.tsx",
+        "messages": "messages/pages/baybayin-translator/en.json"
+      }
+    },
+    {
+      "slug": "cantonese-translator",
+      "runtime": "edge",
+      "httpMethods": ["GET", "POST"],
+      "supportedDirections": [],
+      "maxLength": null,
+      "models": ["gemini-2.0-flash-exp"],
+      "featureFlags": {
+        "autoLanguageDetection": true,
+        "usesFileUpload": false,
+        "hasVoiceSupport": false,
+        "usesStreaming": false,
+        "mentionsRateLimit": false
+      },
+      "warnings": ["未检测到 supported_directions", "未检测到 maxLength"],
+      "routes": {
+        "api": "src/app/api/cantonese-translator/route.ts",
+        "page": "src/app/[locale]/(marketing)/(pages)/cantonese-translator/page.tsx",
+        "toolComponent": "src/app/[locale]/(marketing)/(pages)/cantonese-translator/CantoneseTranslatorTool.tsx",
+        "messages": "messages/pages/cantonese-translator/en.json"
+      }
+    },
+    {
+      "slug": "chinese-to-english-translator",
+      "runtime": "edge",
+      "httpMethods": ["GET", "POST"],
+      "supportedDirections": [],
+      "maxLength": null,
+      "models": ["gemini-2.0-flash"],
+      "featureFlags": {
+        "autoLanguageDetection": true,
+        "usesFileUpload": false,
+        "hasVoiceSupport": true,
+        "usesStreaming": false,
+        "mentionsRateLimit": false
+      },
+      "warnings": ["未检测到 supported_directions", "未检测到 maxLength"],
+      "routes": {
+        "api": "src/app/api/chinese-to-english-translator/route.ts",
+        "page": "src/app/[locale]/(marketing)/(pages)/chinese-to-english-translator/page.tsx",
+        "toolComponent": "src/app/[locale]/(marketing)/(pages)/chinese-to-english-translator/ChineseToEnglishTranslatorTool.tsx",
+        "messages": "messages/pages/chinese-to-english-translator/en.json"
+      }
+    },
+    {
+      "slug": "creole-to-english-translator",
+      "runtime": "edge",
+      "httpMethods": ["POST"],
+      "supportedDirections": [],
+      "maxLength": null,
+      "models": [],
+      "featureFlags": {
+        "autoLanguageDetection": true,
+        "usesFileUpload": false,
+        "hasVoiceSupport": false,
+        "usesStreaming": false,
+        "mentionsRateLimit": false
+      },
+      "warnings": [
+        "未检测到 supported_directions",
+        "未检测到 maxLength",
+        "未检测到模型配置"
+      ],
+      "routes": {
+        "api": "src/app/api/creole-to-english-translator/route.ts",
+        "page": "src/app/[locale]/(marketing)/(pages)/creole-to-english-translator/page.tsx",
+        "toolComponent": "src/app/[locale]/(marketing)/(pages)/creole-to-english-translator/CreoleToEnglishTranslatorTool.tsx",
+        "messages": "messages/pages/creole-to-english-translator/en.json"
+      }
+    },
+    {
+      "slug": "cuneiform-translator",
+      "runtime": "edge",
+      "httpMethods": ["POST", "GET"],
+      "supportedDirections": ["toCuneiform", "toEnglish"],
+      "maxLength": 5000,
+      "models": ["gemini-2.0-flash-exp"],
+      "featureFlags": {
+        "autoLanguageDetection": false,
+        "usesFileUpload": false,
+        "hasVoiceSupport": false,
+        "usesStreaming": false,
+        "mentionsRateLimit": false
+      },
+      "warnings": [],
+      "routes": {
+        "api": "src/app/api/cuneiform-translator/route.ts",
+        "page": "src/app/[locale]/(marketing)/(pages)/cuneiform-translator/page.tsx",
+        "toolComponent": "src/app/[locale]/(marketing)/(pages)/cuneiform-translator/CuneiformTranslatorTool.tsx",
+        "messages": "messages/pages/cuneiform-translator/en.json"
+      }
+    },
+    {
+      "slug": "dog-translator",
+      "runtime": "edge",
+      "httpMethods": ["POST", "GET"],
+      "supportedDirections": [],
+      "maxLength": null,
+      "models": [],
+      "featureFlags": {
+        "autoLanguageDetection": false,
+        "usesFileUpload": false,
+        "hasVoiceSupport": false,
+        "usesStreaming": false,
+        "mentionsRateLimit": false
+      },
+      "warnings": [
+        "未检测到 supported_directions",
+        "未检测到 maxLength",
+        "未检测到模型配置"
+      ],
+      "routes": {
+        "api": "src/app/api/dog-translator/route.ts",
+        "page": "src/app/[locale]/(marketing)/(pages)/dog-translator/page.tsx",
+        "toolComponent": "src/app/[locale]/(marketing)/(pages)/dog-translator/DogTranslatorTool.tsx",
+        "messages": "messages/pages/dog-translator/en.json"
+      }
+    },
+    {
+      "slug": "dumb-it-down-ai",
+      "runtime": "edge",
+      "httpMethods": ["POST", "GET"],
+      "supportedDirections": [],
+      "maxLength": 5000,
+      "models": ["gemini-2.0-flash-exp"],
+      "featureFlags": {
+        "autoLanguageDetection": false,
+        "usesFileUpload": false,
+        "hasVoiceSupport": true,
+        "usesStreaming": false,
+        "mentionsRateLimit": false
+      },
+      "warnings": ["未检测到 supported_directions"],
+      "routes": {
+        "api": "src/app/api/dumb-it-down-ai/route.ts",
+        "page": "src/app/[locale]/(marketing)/(pages)/dumb-it-down-ai/page.tsx",
+        "toolComponent": "src/app/[locale]/(marketing)/(pages)/dumb-it-down-ai/DumbItDownTool.tsx",
+        "messages": "messages/pages/dumb-it-down-ai/en.json"
+      }
+    },
+    {
+      "slug": "esperanto-translator",
+      "runtime": "edge",
+      "httpMethods": ["POST", "GET"],
+      "supportedDirections": [],
+      "maxLength": 5000,
+      "models": ["gemini-2.0-flash-exp"],
+      "featureFlags": {
+        "autoLanguageDetection": true,
+        "usesFileUpload": false,
+        "hasVoiceSupport": false,
+        "usesStreaming": false,
+        "mentionsRateLimit": false
+      },
+      "warnings": ["未检测到 supported_directions"],
+      "routes": {
+        "api": "src/app/api/esperanto-translator/route.ts",
+        "page": "src/app/[locale]/(marketing)/(pages)/esperanto-translator/page.tsx",
+        "toolComponent": "src/app/[locale]/(marketing)/(pages)/esperanto-translator/EsperantoTranslatorTool.tsx",
+        "messages": "messages/pages/esperanto-translator/en.json"
+      }
+    },
+    {
+      "slug": "gaster-translator",
+      "runtime": "edge",
+      "httpMethods": ["POST", "GET"],
+      "supportedDirections": ["toGaster"],
+      "maxLength": 5000,
+      "models": ["gemini-2.0-flash"],
+      "featureFlags": {
+        "autoLanguageDetection": true,
+        "usesFileUpload": false,
+        "hasVoiceSupport": false,
+        "usesStreaming": false,
+        "mentionsRateLimit": false
+      },
+      "warnings": [],
+      "routes": {
+        "api": "src/app/api/gaster-translator/route.ts",
+        "page": "src/app/[locale]/(marketing)/(pages)/gaster-translator/page.tsx",
+        "toolComponent": "src/app/[locale]/(marketing)/(pages)/gaster-translator/GasterTranslatorTool.tsx",
+        "messages": "messages/pages/gaster-translator/en.json"
+      }
+    },
+    {
+      "slug": "gen-alpha-translator",
+      "runtime": "edge",
+      "httpMethods": ["POST", "GET"],
+      "supportedDirections": [],
+      "maxLength": null,
+      "models": ["gpt-4o-mini"],
+      "featureFlags": {
+        "autoLanguageDetection": false,
+        "usesFileUpload": false,
+        "hasVoiceSupport": false,
+        "usesStreaming": false,
+        "mentionsRateLimit": false
+      },
+      "warnings": ["未检测到 supported_directions", "未检测到 maxLength"],
+      "routes": {
+        "api": "src/app/api/gen-alpha-translator/route.ts",
+        "page": "src/app/[locale]/(marketing)/(pages)/gen-alpha-translator/page.tsx",
+        "toolComponent": "src/app/[locale]/(marketing)/(pages)/gen-alpha-translator/GenAlphaTranslatorTool.tsx",
+        "messages": "messages/pages/gen-alpha-translator/en.json"
+      }
+    },
+    {
+      "slug": "gen-z-translator",
+      "runtime": "edge",
+      "httpMethods": ["POST", "GET"],
+      "supportedDirections": [],
+      "maxLength": 5000,
+      "models": ["gemini-2.0-flash-exp"],
+      "featureFlags": {
+        "autoLanguageDetection": false,
+        "usesFileUpload": false,
+        "hasVoiceSupport": false,
+        "usesStreaming": false,
+        "mentionsRateLimit": false
+      },
+      "warnings": ["未检测到 supported_directions"],
+      "routes": {
+        "api": "src/app/api/gen-z-translator/route.ts",
+        "page": "src/app/[locale]/(marketing)/(pages)/gen-z-translator/page.tsx",
+        "toolComponent": "src/app/[locale]/(marketing)/(pages)/gen-z-translator/GenZTranslatorTool.tsx",
+        "messages": "messages/pages/gen-z-translator/en.json"
+      }
+    },
+    {
+      "slug": "high-valyrian-translator",
+      "runtime": "edge",
+      "httpMethods": ["POST", "GET"],
+      "supportedDirections": ["toHighValyrian", "toEnglish", "auto"],
+      "maxLength": 5000,
+      "models": ["gemini-2.0-flash"],
+      "featureFlags": {
+        "autoLanguageDetection": true,
+        "usesFileUpload": false,
+        "hasVoiceSupport": false,
+        "usesStreaming": false,
+        "mentionsRateLimit": false
+      },
+      "warnings": [],
+      "routes": {
+        "api": "src/app/api/high-valyrian-translator/route.ts",
+        "page": "src/app/[locale]/(marketing)/(pages)/high-valyrian-translator/page.tsx",
+        "toolComponent": "src/app/[locale]/(marketing)/(pages)/high-valyrian-translator/HighValyrianTranslatorTool.tsx",
+        "messages": "messages/pages/high-valyrian-translator/en.json"
+      }
+    },
+    {
+      "slug": "ivr-translator",
+      "runtime": "edge",
+      "httpMethods": ["POST"],
+      "supportedDirections": [],
+      "maxLength": null,
+      "models": [],
+      "featureFlags": {
+        "autoLanguageDetection": false,
+        "usesFileUpload": false,
+        "hasVoiceSupport": false,
+        "usesStreaming": false,
+        "mentionsRateLimit": false
+      },
+      "warnings": [
+        "未检测到 supported_directions",
+        "未检测到 maxLength",
+        "未检测到模型配置"
+      ],
+      "routes": {
+        "api": "src/app/api/ivr-translator/route.ts",
+        "page": "src/app/[locale]/(marketing)/(pages)/ivr-translator/page.tsx",
+        "toolComponent": "src/app/[locale]/(marketing)/(pages)/ivr-translator/IvrTranslatorTool.tsx",
+        "messages": "messages/pages/ivr-translator/en.json"
+      }
+    },
+    {
+      "slug": "middle-english-translator",
+      "runtime": "edge",
+      "httpMethods": ["GET", "POST"],
+      "supportedDirections": [],
+      "maxLength": null,
+      "models": ["gemini-2.0-flash"],
+      "featureFlags": {
+        "autoLanguageDetection": true,
+        "usesFileUpload": false,
+        "hasVoiceSupport": false,
+        "usesStreaming": false,
+        "mentionsRateLimit": false
+      },
+      "warnings": ["未检测到 supported_directions", "未检测到 maxLength"],
+      "routes": {
+        "api": "src/app/api/middle-english-translator/route.ts",
+        "page": "src/app/[locale]/(marketing)/(pages)/middle-english-translator/page.tsx",
+        "toolComponent": "src/app/[locale]/(marketing)/(pages)/middle-english-translator/MiddleEnglishTranslatorTool.tsx",
+        "messages": "messages/pages/middle-english-translator/en.json"
+      }
+    },
+    {
+      "slug": "minion-translator",
+      "runtime": "edge",
+      "httpMethods": ["POST"],
+      "supportedDirections": [],
+      "maxLength": null,
+      "models": [],
+      "featureFlags": {
+        "autoLanguageDetection": false,
+        "usesFileUpload": false,
+        "hasVoiceSupport": false,
+        "usesStreaming": false,
+        "mentionsRateLimit": false
+      },
+      "warnings": [
+        "未检测到 supported_directions",
+        "未检测到 maxLength",
+        "未检测到模型配置"
+      ],
+      "routes": {
+        "api": "src/app/api/minion-translator/route.ts",
+        "page": "src/app/[locale]/(marketing)/(pages)/minion-translator/page.tsx",
+        "toolComponent": "src/app/[locale]/(marketing)/(pages)/minion-translator/MinionTranslatorTool.tsx",
+        "messages": "messages/pages/minion-translator/en.json"
+      }
+    },
+    {
+      "slug": "pig-latin-translator",
+      "runtime": "edge",
+      "httpMethods": ["POST"],
+      "supportedDirections": [],
+      "maxLength": null,
+      "models": [],
+      "featureFlags": {
+        "autoLanguageDetection": false,
+        "usesFileUpload": false,
+        "hasVoiceSupport": false,
+        "usesStreaming": false,
+        "mentionsRateLimit": false
+      },
+      "warnings": [
+        "未检测到 supported_directions",
+        "未检测到 maxLength",
+        "未检测到模型配置"
+      ],
+      "routes": {
+        "api": "src/app/api/pig-latin-translator/route.ts",
+        "page": "src/app/[locale]/(marketing)/(pages)/pig-latin-translator/page.tsx",
+        "toolComponent": "src/app/[locale]/(marketing)/(pages)/pig-latin-translator/AlbanianToEnglishTool.tsx",
+        "messages": "messages/pages/pig-latin-translator/en.json"
+      }
+    },
+    {
+      "slug": "ping",
+      "runtime": "edge",
+      "httpMethods": ["GET"],
+      "supportedDirections": [],
+      "maxLength": null,
+      "models": [],
+      "featureFlags": {
+        "autoLanguageDetection": false,
+        "usesFileUpload": false,
+        "hasVoiceSupport": false,
+        "usesStreaming": false,
+        "mentionsRateLimit": false
+      },
+      "warnings": [
+        "未检测到 supported_directions",
+        "未检测到 maxLength",
+        "未检测到模型配置",
+        "缺少页面文件",
+        "缺少英文文案"
+      ],
+      "routes": {
+        "api": "src/app/api/ping/route.ts",
+        "page": null,
+        "toolComponent": null,
+        "messages": null
+      }
+    },
+    {
+      "slug": "rune-translator",
+      "runtime": "edge",
+      "httpMethods": ["POST"],
+      "supportedDirections": [],
+      "maxLength": null,
+      "models": [],
+      "featureFlags": {
+        "autoLanguageDetection": false,
+        "usesFileUpload": false,
+        "hasVoiceSupport": false,
+        "usesStreaming": false,
+        "mentionsRateLimit": false
+      },
+      "warnings": [
+        "未检测到 supported_directions",
+        "未检测到 maxLength",
+        "未检测到模型配置"
+      ],
+      "routes": {
+        "api": "src/app/api/rune-translator/route.ts",
+        "page": "src/app/[locale]/(marketing)/(pages)/rune-translator/page.tsx",
+        "toolComponent": "src/app/[locale]/(marketing)/(pages)/rune-translator/RuneTranslatorTool.tsx",
+        "messages": "messages/pages/rune-translator/en.json"
+      }
+    },
+    {
+      "slug": "samoan-to-english-translator",
+      "runtime": "edge",
+      "httpMethods": ["POST"],
+      "supportedDirections": [],
+      "maxLength": null,
+      "models": [],
+      "featureFlags": {
+        "autoLanguageDetection": true,
+        "usesFileUpload": false,
+        "hasVoiceSupport": false,
+        "usesStreaming": false,
+        "mentionsRateLimit": false
+      },
+      "warnings": [
+        "未检测到 supported_directions",
+        "未检测到 maxLength",
+        "未检测到模型配置"
+      ],
+      "routes": {
+        "api": "src/app/api/samoan-to-english-translator/route.ts",
+        "page": "src/app/[locale]/(marketing)/(pages)/samoan-to-english-translator/page.tsx",
+        "toolComponent": "src/app/[locale]/(marketing)/(pages)/samoan-to-english-translator/SamoanToEnglishTranslatorTool.tsx",
+        "messages": "messages/pages/samoan-to-english-translator/en.json"
+      }
+    },
+    {
+      "slug": "sitemap.xml",
+      "warnings": ["route.ts 缺失", "缺少页面文件", "缺少英文文案"],
+      "routes": {
+        "page": null,
+        "toolComponent": null,
+        "messages": null
+      }
+    },
+    {
+      "slug": "tts",
+      "warnings": ["route.ts 缺失", "缺少页面文件", "缺少英文文案"],
+      "routes": {
+        "page": null,
+        "toolComponent": null,
+        "messages": null
+      }
+    },
+    {
+      "slug": "verbose-generator",
+      "runtime": "edge",
+      "httpMethods": ["POST"],
+      "supportedDirections": [],
+      "maxLength": null,
+      "models": ["gemini-2.0-flash-exp"],
+      "featureFlags": {
+        "autoLanguageDetection": false,
+        "usesFileUpload": false,
+        "hasVoiceSupport": true,
+        "usesStreaming": false,
+        "mentionsRateLimit": false
+      },
+      "warnings": ["未检测到 supported_directions", "未检测到 maxLength"],
+      "routes": {
+        "api": "src/app/api/verbose-generator/route.ts",
+        "page": "src/app/[locale]/(marketing)/(pages)/verbose-generator/page.tsx",
+        "toolComponent": "src/app/[locale]/(marketing)/(pages)/verbose-generator/VerboseGeneratorTool.tsx",
+        "messages": "messages/pages/verbose-generator/en.json"
+      }
+    }
+  ]
+}

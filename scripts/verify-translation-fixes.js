@@ -35,7 +35,7 @@ function getToolPageMapping() {
     'pig-latin-translator': 'PigLatinTranslatorPage',
     'samoan-to-english-translator': 'SamoanToEnglishTranslatorPage',
     'verbose-generator': 'VerboseGeneratorPage',
-    'dumb-it-down-ai': 'DumbItDownPage'
+    'dumb-it-down-ai': 'DumbItDownPage',
   };
 }
 
@@ -53,7 +53,7 @@ const problematicKeys = [
   "'howto.title'",
   "'userInterest.title'",
   "'hero.title'",
-  "'ctaButton'"
+  "'ctaButton'",
 ];
 
 // 读取文件内容
@@ -78,14 +78,14 @@ function verifyPageTranslationKeys(pagePath, toolName, pageNamespace) {
   const issues = [];
 
   // 检查是否还有无命名空间的翻译键
-  problematicKeys.forEach(key => {
+  problematicKeys.forEach((key) => {
     // 匹配 (t as any)('key') 模式，但排除已经有命名空间的键
     const regex = new RegExp(`\\(t\\s+as\\s+any\\)\\(${key}`, 'g');
     const matches = content.match(regex);
 
     if (matches) {
       // 检查是否已经有命名空间
-      matches.forEach(match => {
+      matches.forEach((match) => {
         if (!match.includes(pageNamespace)) {
           issues.push(`Found untranslated key: ${match}`);
         }
@@ -99,15 +99,21 @@ function verifyPageTranslationKeys(pagePath, toolName, pageNamespace) {
     const foundNamespace = namespaceMatch[1];
     if (foundNamespace === 'Metadata') {
       // 检查是否有第二个getTranslations调用用于页面
-      const pageNamespaceMatch = content.match(/namespace:\s*['"`]([^'"`]+)['"`](?![^]*?namespace:)/s);
+      const pageNamespaceMatch = content.match(
+        /namespace:\s*['"`]([^'"`]+)['"`](?![^]*?namespace:)/s
+      );
       if (pageNamespaceMatch) {
         const pageNs = pageNamespaceMatch[1];
         if (pageNs !== pageNamespace) {
-          issues.push(`Namespace mismatch: expected ${pageNamespace}, found ${pageNs}`);
+          issues.push(
+            `Namespace mismatch: expected ${pageNamespace}, found ${pageNs}`
+          );
         }
       }
     } else if (foundNamespace !== pageNamespace) {
-      issues.push(`Namespace mismatch: expected ${pageNamespace}, found ${foundNamespace}`);
+      issues.push(
+        `Namespace mismatch: expected ${pageNamespace}, found ${foundNamespace}`
+      );
     }
   }
 
@@ -116,14 +122,17 @@ function verifyPageTranslationKeys(pagePath, toolName, pageNamespace) {
     return { success: true, issues: [] };
   } else {
     console.log(`  ⚠️  Found ${issues.length} issues:`);
-    issues.forEach(issue => console.log(`    - ${issue}`));
+    issues.forEach((issue) => console.log(`    - ${issue}`));
     return { success: false, issues };
   }
 }
 
 // 获取所有工具页面路径
 function getAllToolPages() {
-  const pagesDir = path.join(process.cwd(), 'src/app/[locale]/(marketing)/(pages)');
+  const pagesDir = path.join(
+    process.cwd(),
+    'src/app/[locale]/(marketing)/(pages)'
+  );
   const toolMapping = getToolPageMapping();
   const toolPages = [];
 
@@ -139,7 +148,7 @@ function getAllToolPages() {
           toolPages.push({
             toolName,
             pageNamespace: toolMapping[toolName],
-            pagePath
+            pagePath,
           });
         }
       }
@@ -182,7 +191,9 @@ function main() {
 
   console.log('📊 Verification Summary:');
   console.log('=========================');
-  console.log(`✅ Successfully verified: ${successCount}/${toolPages.length} pages`);
+  console.log(
+    `✅ Successfully verified: ${successCount}/${toolPages.length} pages`
+  );
   console.log(`⚠️  Total issues found: ${totalIssues}`);
   console.log(`❌ Failed pages: ${toolPages.length - successCount}`);
 
@@ -191,7 +202,9 @@ function main() {
     console.log('✨ The project is ready for deployment.');
   } else {
     console.log('\n⚠️  Some translation key issues still need to be addressed.');
-    console.log('💡 Review the issues above and run the fix scripts again if needed.');
+    console.log(
+      '💡 Review the issues above and run the fix scripts again if needed.'
+    );
   }
 }
 
@@ -204,5 +217,5 @@ module.exports = {
   verifyPageTranslationKeys,
   getAllToolPages,
   getToolPageMapping,
-  problematicKeys
+  problematicKeys,
 };

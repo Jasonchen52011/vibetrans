@@ -42,16 +42,17 @@ export default function TestimonialsSection({
     // Get all available items to check how many exist
     // @ts-ignore - Dynamic namespace support
     const items = t.raw('items') as Record<string, any>;
-    const availableKeys = Object.keys(items).filter(key => key.startsWith('item-'));
+    const availableKeys = Object.keys(items).filter((key) =>
+      key.startsWith('item-')
+    );
 
     // Sort keys numerically (item-1, item-2, etc.)
     availableKeys.sort((a, b) => {
-      const numA = parseInt(a.split('-')[1]);
-      const numB = parseInt(b.split('-')[1]);
+      const numA = Number.parseInt(a.split('-')[1]);
+      const numB = Number.parseInt(b.split('-')[1]);
       return numA - numB;
     });
 
-    
     for (const itemKey of availableKeys) {
       try {
         // @ts-ignore - Dynamic translation keys
@@ -87,7 +88,7 @@ export default function TestimonialsSection({
           '/images/avatars/female4.webp',
           '/images/avatars/male5.webp',
         ];
-        const itemNumber = parseInt(itemKey.split('-')[1]);
+        const itemNumber = Number.parseInt(itemKey.split('-')[1]);
         const avatarIndex = (itemNumber - 1) % avatarPool.length;
 
         testimonials.push({

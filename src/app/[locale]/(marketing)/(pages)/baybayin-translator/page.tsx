@@ -62,21 +62,6 @@ export default async function BaybayinTranslatorPage(
   });
 
   // Page data for the tool
-  const pageData = {
-    tool: {
-      inputLabel: (t as any)('tool.inputLabel'),
-      outputLabel: (t as any)('tool.outputLabel'),
-      inputPlaceholder: (t as any)('tool.inputPlaceholder'),
-      outputPlaceholder: (t as any)('tool.outputPlaceholder'),
-      translateButton: (t as any)('tool.translateButton'),
-      uploadButton: (t as any)('tool.uploadButton'),
-      uploadHint: (t as any)('tool.uploadHint'),
-      loading: (t as any)('tool.loading'),
-      error: (t as any)('tool.error'),
-      noInput: (t as any)('tool.noInput'),
-    },
-  };
-
   // Examples section data
   const examplesData = {
     title: (t as any)('examples.title'),
@@ -219,6 +204,24 @@ export default async function BaybayinTranslatorPage(
     ],
   };
 
+  // Page data provided to the tool component
+  const pageData = {
+    tool: {
+      inputLabel: (t as any)('tool.inputLabel'),
+      outputLabel: (t as any)('tool.outputLabel'),
+      inputPlaceholder: (t as any)('tool.inputPlaceholder'),
+      outputPlaceholder: (t as any)('tool.outputPlaceholder'),
+      translateButton: (t as any)('tool.translateButton'),
+      uploadButton: (t as any)('tool.uploadButton'),
+      uploadHint: (t as any)('tool.uploadHint'),
+      loading: (t as any)('tool.loading'),
+      error: (t as any)('tool.error'),
+      noInput: (t as any)('tool.noInput'),
+    },
+    funFacts: funFactsSection,
+    highlights: highlightsSection,
+  };
+
   // User Interest section (4 content blocks)
   const userInterestSection = {
     name: 'userInterest',
@@ -353,12 +356,12 @@ export default async function BaybayinTranslatorPage(
 
         {/* Fun Facts */}
         <UserScenarios
-          section={funFactsSection}
+          section={pageData.funFacts}
           ctaText={(t as any)('ctaButton')}
         />
 
         {/* Highlights */}
-        <WhyChoose section={highlightsSection} />
+        <WhyChoose section={pageData.highlights} />
 
         {/* Explore Other Tools */}
         <ExploreOurAiTools

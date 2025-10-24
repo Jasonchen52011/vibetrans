@@ -1,0 +1,287 @@
+{
+  "NahuatlTranslatorPage": {
+    "title": "VibeTrans: Nahuatl Translator - AI-Powered Language Translation",
+    "description": "Translate between Nahuatl and 100+ languages with AI-powered precision. Perfect for researchers, students, and cultural preservation projects.",
+    "hero": {
+      "title": "Best Nahuatl Translator for Cultural Heritage and Modern Communication",
+      "description": "Experience accurate Nahuatl translation powered by advanced AI. Connect with Mexico's indigenous heritage, support academic research, and preserve linguistic diversity through our comprehensive translation tool.",
+      "userAvatars": ["male3", "female4", "male1", "female3", "male4"],
+      "userCount": "from 18,000+ happy users"
+    },
+    "ctaButton": "Try Nahuatl Translator Now",
+    "tool": {
+      "inputLabel": "Input Text",
+      "outputLabel": "Translated Text",
+      "inputPlaceholder": "Enter text to translate (Nahuatl, English, or any supported language)...",
+      "outputPlaceholder": "Your accurate translation will appear here...",
+      "translateButton": "Translate",
+      "uploadButton": "Upload File",
+      "uploadHint": "Supports .txt and .docx files",
+      "loading": "Translating with cultural context awareness...",
+      "error": "Translation failed. Please try again.",
+      "noInput": "Please enter some text to translate."
+    },
+    "whatIs": {
+      "title": "What is the VibeTrans Nahuatl Translator?",
+      "description": "The VibeTrans Nahuatl Translator is an advanced AI-powered tool specifically designed to handle the unique linguistic characteristics of Nahuatl, one of Mexico's most important indigenous languages. Our system understands dialectal variations, cultural context, and historical significance to provide translations that honor both traditional usage and modern communication needs. Researchers, educators, cultural activists, and language learners rely on our translator to bridge communication gaps while preserving linguistic heritage that spans over 500 years of documented history.",
+      "image": "/images/docs/what-is-nahuatl-translator.webp",
+      "imageAlt": "Nahuatl language and cultural heritage visualization"
+    },
+    "examples": {
+      "title": "Nahuatl Translation Examples",
+      "description": "See how VibeTrans handles diverse translation scenarios, from everyday conversations to academic content, with cultural accuracy and linguistic precision.",
+      "items": [
+        {
+          "alt": "Original: Hello, how are you? → Nahuatl: Niltze, ¿cēmōc yāuhqui?",
+          "name": "Hello, how are you? → Niltze, ¿cēmōc yāuhqui?"
+        },
+        {
+          "alt": "Original: Thank you very much → Nahuatl: Tlazohcamati nepapan",
+          "name": "Thank you very much → Tlazohcamati nepapan"
+        },
+        {
+          "alt": "Original: The beautiful flowers bloom → Nahuatl: In xōchipīltin in cuīcani",
+          "name": "The beautiful flowers bloom → In xōchipīltin in cuīcani"
+        },
+        {
+          "alt": "Original: I study ancient culture → Nahuatl: Niquīzquīz in tlahtōllōtl tlen momāhti",
+          "name": "I study ancient culture → Niquīzquīz in tlahtōllōtl tlen momāhti"
+        },
+        {
+          "alt": "Original: The corn is growing well → Nahuatl: In cintli quipiya in tzopelic",
+          "name": "The corn is growing well → In cintli quipiya in tzopelic"
+        },
+        {
+          "alt": "Original: We respect Mother Earth → Nahuatl: Tehwān techtlazohtla in Tlalticpac",
+          "name": "We respect Mother Earth → Tehwān techtlazohtla in Tlalticpac"
+        }
+      ]
+    },
+    "howto": {
+      "title": "How to Translate Nahuatl",
+      "description": "Simple steps to get started with our nahuatl translator.",
+      "image": "/images/docs/nahuatl-translator-how-to.webp",
+      "imageAlt": "How to use Nahuatl Translator - Step by step guide",
+      "steps": [
+        {
+          "title": "Upload Your Document",
+          "description": "Start by uploading a text file in txt or docx format. Ensure the file is clear and legible for better accuracy."
+        },
+        {
+          "title": "Select Translation Mode",
+          "description": "Choose between technical, legal, literature, idioms, or general mode to fit your specific needs."
+        },
+        {
+          "title": "Translate and Review",
+          "description": "Click the 'Translate' button. Review the translation and use the audio feature for pronunciation."
+        },
+        {
+          "title": "Download or Copy Results",
+          "description": "Download the translated text or copy it directly. Use it in your applications or share with others."
+        }
+      ]
+    },
+    "funFacts": {
+      "title": "Interesting Facts",
+      "items": [
+        {
+          "title": "Nahuatl's Influence on English",
+          "description": "Did you know that many English words like chocolate, tomato, and avocado come from Nahuatl? These words have traveled through time, bringing a taste of Nahuatl culture to everyday language.",
+          "image": "/images/docs/nahuatl-translator-fact-1.webp",
+          "imageAlt": "Nahuatl's Influence on English - Language history visualization"
+        },
+        {
+          "title": "Unique Nahuatl Language Features",
+          "description": "Nahuatl is a fascinating agglutinative language where a single verb can contain over 20 morphemes, expressing entire sentences in one word. This complexity makes it both challenging and intriguing to study.",
+          "image": "/images/docs/nahuatl-translator-fact-2.webp",
+          "imageAlt": "Unique Nahuatl Language Features - Linguistic structure visualization"
+        }
+      ]
+    },
+    "exploreMoreTranslator": {
+      "title": "Explore More Translator",
+      "items": [
+        {
+          "title": "Quick Translation",
+          "icon": "FaRocket",
+          "description": "Get instant translations with our easy-to-use interface"
+        },
+        {
+          "title": "Accurate Results",
+          "icon": "FaBrain",
+          "description": "Experience over 90% accuracy with AI-powered technology"
+        },
+        {
+          "title": "Privacy First",
+          "icon": "FaShieldAlt",
+          "description": "Your data is always protected with our secure translation system"
+        },
+        {
+          "title": "Smart Context",
+          "icon": "FaMagic",
+          "description": "Advanced AI understands cultural context and nuances"
+        },
+        {
+          "title": "Voice Support",
+          "icon": "FaMicrophone",
+          "description": "Use voice input for hands-free translation experience"
+        },
+        {
+          "title": "File Upload",
+          "icon": "FaFileUpload",
+          "description": "Upload documents for batch translation processing"
+        }
+      ]
+    },
+    "highlights": {
+      "title": "Why Choose Our Nahuatl Translator?",
+      "description": "Discover what makes our Nahuatl translator unique with powerful features designed for accuracy and ease of use.",
+      "features": [
+        {
+          "title": "Easy and Free to Use",
+          "icon": "FaRocket",
+          "description": "Our tool is completely free and user-friendly, designed for quick translations without any cost. Perfect for students and hobbyists."
+        },
+        {
+          "title": "Data Accuracy",
+          "icon": "FaBrain",
+          "description": "Experience translations with over 90% accuracy, thanks to our advanced AI technology that ensures precise language detection and contextual understanding."
+        },
+        {
+          "title": "Data Privacy Security",
+          "icon": "FaShieldAlt",
+          "description": "Your data is safe with us. We do not store any user data, ensuring complete privacy and security during your translation sessions."
+        },
+        {
+          "title": "AI Contextual Understanding",
+          "icon": "FaMagic",
+          "description": "Our AI's advanced understanding of context provides translations with human-level clarity, capturing the nuances of language and culture effectively."
+        }
+      ]
+    },
+    "relatedTools": [
+      "Dog Translator",
+      "Gen Z Translator",
+      "Rune Translator",
+      "Runic Translator",
+      "Ancient Greek Translator",
+      "English to Amharic Translator",
+      "English to Swahili Translator"
+    ],
+    "userInterest": {
+      "title": "Team Use Nahuatl Translator For",
+      "items": [
+        {
+          "title": "Academic Research & Linguistics",
+          "description": "Empower linguistic research and academic studies with precise Nahuatl translation. Essential for universities, research institutions, and scholars studying indigenous languages, Mesoamerican cultures, and linguistic preservation.",
+          "image": "/images/docs/nahuatl-translator-interest-1.webp",
+          "imageAlt": "Academic research with Nahuatl translation tools"
+        },
+        {
+          "title": "Cultural Heritage Preservation",
+          "description": "Support indigenous communities in preserving their linguistic heritage. Perfect for cultural organizations, museums, and tribal entities working to document and revitalize Nahuatl language traditions.",
+          "image": "/images/docs/nahuatl-translator-interest-2.webp",
+          "imageAlt": "Cultural heritage preservation with Nahuatl language"
+        },
+        {
+          "title": "Educational Institutions",
+          "description": "Enhance language learning programs in schools and universities. Ideal for educators teaching indigenous languages, cultural studies, and Mexican history with authentic Nahuatl content integration.",
+          "image": "/images/docs/nahuatl-translator-interest-3.webp",
+          "imageAlt": "Educational programs featuring Nahuatl language learning"
+        },
+        {
+          "title": "Media & Content Creation",
+          "description": "Create authentic content respecting indigenous cultures. Essential for filmmakers, journalists, documentarians, and content creators working with Mexican and Mesoamerican cultural themes.",
+          "image": "/images/docs/nahuatl-translator-interest-4.webp",
+          "imageAlt": "Media production with authentic Nahuatl language elements"
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "What Our Users Are Saying",
+      "subtitle": "Real feedback from real users",
+      "items": {
+        "item-1": {
+          "name": "Susan Miller",
+          "role": "Linguist",
+          "heading": "Transformative Language Learning Tool",
+          "content": "Using Nahuatl Translator Suite in my classes has been transformative. Students appreciate the accuracy and ease of use. It bridges the gap between classical texts and modern language, making learning engaging and effective. The audio pronunciation feature is particularly helpful for mastering difficult sounds.",
+          "text": "Using Nahuatl Translator Suite in my classes has been transformative. Students appreciate the accuracy and ease of use. It bridges the gap between classical texts and modern language, making learning engaging and effective. The audio pronunciation feature is particularly helpful for mastering difficult sounds.",
+          "rating": "4.8"
+        },
+        "item-2": {
+          "name": "Tom Jackson",
+          "role": "Travel Blogger",
+          "heading": "Essential Travel Companion",
+          "content": "As a travel blogger exploring Mexico, Nahuatl Translator Suite has become my go-to tool. It makes asking locals questions and understanding cultural nuances so much easier. The ability to switch dialects is invaluable, and free access is a fantastic bonus for frequent travelers like me.",
+          "text": "As a travel blogger exploring Mexico, Nahuatl Translator Suite has become my go-to tool. It makes asking locals questions and understanding cultural nuances so much easier. The ability to switch dialects is invaluable, and free access is a fantastic bonus for frequent travelers like me.",
+          "rating": "4.6"
+        },
+        "item-3": {
+          "name": "Emily Ross",
+          "role": "History Professor",
+          "heading": "Authentic Cultural Resource",
+          "content": "I've incorporated Nahuatl Translator Suite into my curriculum, and the response from students has been overwhelmingly positive. It's user-friendly and offers an authentic glimpse into Nahuatl culture and language. The free access ensures that all my students can benefit from this amazing resource.",
+          "text": "I've incorporated Nahuatl Translator Suite into my curriculum, and the response from students has been overwhelmingly positive. It's user-friendly and offers an authentic glimpse into Nahuatl culture and language. The free access ensures that all my students can benefit from this amazing resource.",
+          "rating": "4.9"
+        },
+        "item-4": {
+          "name": "Michael Lee",
+          "role": "Game Developer",
+          "heading": "Authentic Game Development Asset",
+          "content": "Incorporating authentic Nahuatl names and phrases into my game was challenging until I found this translator. It's incredibly accurate and provides essential cultural context. The ability to toggle between orthographies adds depth to character development, ensuring an immersive experience for players.",
+          "text": "Incorporating authentic Nahuatl names and phrases into my game was challenging until I found this translator. It's incredibly accurate and provides essential cultural context. The ability to toggle between orthographies adds depth to character development, ensuring an immersive experience for players.",
+          "rating": "4.5"
+        },
+        "item-5": {
+          "name": "Jessica Brown",
+          "role": "Documentary Filmmaker",
+          "heading": "Indispensable Media Tool",
+          "content": "The Nahuatl Translator Suite has been a crucial tool in my filmmaking process. It ensures accurate translations for subtitles and voiceovers, preserving the authenticity of indigenous stories. The user-friendly interface and free access make it an indispensable resource for anyone in the media industry.",
+          "text": "The Nahuatl Translator Suite has been a crucial tool in my filmmaking process. It ensures accurate translations for subtitles and voiceovers, preserving the authenticity of indigenous stories. The user-friendly interface and free access make it an indispensable resource for anyone in the media industry.",
+          "rating": "4.7"
+        },
+        "item-6": {
+          "name": "Daniel White",
+          "role": "Content Creator",
+          "heading": "Cultural Respect Creator",
+          "content": "Creating content that respects and accurately represents indigenous cultures is important to me. The Nahuatl Translator Suite offers just that. Its accurate translations and audio features help me craft content that is both educational and respectful, enhancing my audience's cultural appreciation.",
+          "text": "Creating content that respects and accurately represents indigenous cultures is important to me. The Nahuatl Translator Suite offers just that. Its accurate translations and audio features help me craft content that is both educational and respectful, enhancing my audience's cultural appreciation.",
+          "rating": "4.4"
+        }
+      }
+    },
+    "faqs": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Have other questions? Feel free to contact us via email.",
+      "items": {
+        "item-1": {
+          "question": "Is Nahuatl Translator Suite free?",
+          "answer": "Yes, Nahuatl Translator Suite is completely free to use. There are no hidden charges or premium features. You can access all its features without any cost, making it an ideal tool for students, educators, and enthusiasts."
+        },
+        "item-2": {
+          "question": "How is our privacy protected?",
+          "answer": "We prioritize your privacy by not storing any user data. All translations are processed securely, ensuring that your personal information and text inputs remain confidential. You can use our translator with peace of mind, knowing your data is safe."
+        },
+        "item-3": {
+          "question": "How accurate is Nahuatl Translator Suite?",
+          "answer": "The Nahuatl Translator Suite is designed for over 90% accuracy in translations. It uses advanced AI technology for precise language detection and contextual understanding, making it suitable for academic, professional, and personal use."
+        },
+        "item-4": {
+          "question": "How to translate a document with VibeTrans?",
+          "answer": "To translate a document with VibeTrans, follow these steps: Step 1, upload your text file. Step 2, select translation mode. Step 3, click Translate. Step 4, download or copy your results."
+        },
+        "item-5": {
+          "question": "What languages does Nahuatl Translator Suite support?",
+          "answer": "The Nahuatl Translator Suite supports translations between Nahuatl and English or Spanish. This dual-language support caters to a wide range of users, from students and educators to travelers and cultural enthusiasts."
+        }
+      }
+    },
+    "cta": {
+      "title": "Try VibeTrans Nahuatl Translator Now",
+      "description": "Experience seamless translations with VibeTrans Nahuatl Translator and explore the Nahuatl language and culture today!",
+      "primaryButton": "Try NahuatlTranslator Now",
+      "secondaryButton": "Back to Top"
+    }
+  }
+}

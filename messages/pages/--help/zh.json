@@ -1,0 +1,82 @@
+{
+  "HelpPage": {
+    "title": "帮助中心",
+    "description": "找到您需要的所有帮助和支持资源",
+    "hero": {
+      "title": "我们如何帮助您？",
+      "description": "浏览我们的帮助文档，找到常见问题的解答，了解如何使用我们的工具。"
+    },
+    "search": {
+      "placeholder": "搜索帮助文章...",
+      "button": "搜索"
+    },
+    "categories": {
+      "title": "帮助分类",
+      "gettingStarted": {
+        "title": "入门指南",
+        "description": "了解如何开始使用我们的翻译工具",
+        "icon": "FaRocket"
+      },
+      "features": {
+        "title": "功能介绍",
+        "description": "深入了解我们的翻译功能和特性",
+        "icon": "FaStar"
+      },
+      "troubleshooting": {
+        "title": "故障排除",
+        "description": "解决常见问题和技术故障",
+        "icon": "FaWrench"
+      },
+      "api": {
+        "title": "API 文档",
+        "description": "开发者集成指南和API参考",
+        "icon": "FaCode"
+      }
+    },
+    "popularArticles": {
+      "title": "热门文章",
+      "items": [
+        {
+          "title": "如何选择正确的翻译器",
+          "description": "了解不同翻译器的用途和适用场景",
+          "link": "#"
+        },
+        {
+          "title": "翻译准确度说明",
+          "description": "了解我们的AI翻译技术的工作原理",
+          "link": "#"
+        },
+        {
+          "title": "文件上传指南",
+          "description": "学习如何上传和翻译文档文件",
+          "link": "#"
+        },
+        {
+          "title": "隐私和安全",
+          "description": "了解我们如何保护您的数据安全",
+          "link": "#"
+        }
+      ]
+    },
+    "quickHelp": {
+      "title": "快速帮助",
+      "faq": {
+        "title": "常见问题",
+        "description": "查看用户最常问的问题"
+      },
+      "contact": {
+        "title": "联系我们",
+        "description": "需要更多帮助？联系我们的支持团队"
+      },
+      "feedback": {
+        "title": "意见反馈",
+        "description": "帮助我们改进产品和服务"
+      }
+    },
+    "contactSupport": {
+      "title": "需要更多帮助？",
+      "description": "我们的支持团队随时为您提供帮助",
+      "button": "联系支持"
+    }
+  }
+}

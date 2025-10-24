@@ -53,21 +53,6 @@ export default async function BabyTranslatorPage(
   });
 
   // Page data for the tool
-  const pageData = {
-    tool: {
-      inputLabel: (t as any)('tool.inputLabel'),
-      outputLabel: (t as any)('tool.outputLabel'),
-      inputPlaceholder: (t as any)('tool.inputPlaceholder'),
-      outputPlaceholder: (t as any)('tool.outputPlaceholder'),
-      translateButton: (t as any)('tool.translateButton'),
-      uploadButton: (t as any)('tool.uploadButton'),
-      uploadHint: (t as any)('tool.uploadHint'),
-      loading: (t as any)('tool.loading'),
-      error: (t as any)('tool.error'),
-      noInput: (t as any)('tool.noInput'),
-    },
-  };
-
   // What is section
   const whatIsSection = {
     title: (t as any)('whatIs.title'),
@@ -164,6 +149,30 @@ export default async function BabyTranslatorPage(
         },
       },
     ],
+  };
+
+  // Page data shared with the tool component
+  const pageData = {
+    tool: {
+      inputLabel: (t as any)('tool.inputLabel'),
+      outputLabel: (t as any)('tool.outputLabel'),
+      inputPlaceholder: (t as any)('tool.inputPlaceholder'),
+      outputPlaceholder: (t as any)('tool.outputPlaceholder'),
+      translateButton: (t as any)('tool.translateButton'),
+      uploadButton: (t as any)('tool.uploadButton'),
+      uploadHint: (t as any)('tool.uploadHint'),
+      loading: (t as any)('tool.loading'),
+      error: (t as any)('tool.error'),
+      noInput: (t as any)('tool.noInput'),
+      removeRecordingTooltip: (t as any)('tool.removeRecordingTooltip'),
+      copyTooltip: (t as any)('tool.copyTooltip'),
+      downloadTooltip: (t as any)('tool.downloadTooltip'),
+      resetTooltip: (t as any)('tool.resetTooltip'),
+      copyResultTooltip: (t as any)('tool.copyResultTooltip'),
+      downloadResultTooltip: (t as any)('tool.downloadResultTooltip'),
+    },
+    funFacts: funFactsSection,
+    highlights: highlightsSection,
   };
 
   // User Interest section (4 content blocks)
@@ -279,12 +288,12 @@ export default async function BabyTranslatorPage(
 
         {/* Fun Facts */}
         <UserScenarios
-          section={funFactsSection}
+          section={pageData.funFacts}
           ctaText={(t as any)('ctaButton')}
         />
 
         {/* Highlights */}
-        <WhyChoose section={highlightsSection} />
+        <WhyChoose section={pageData.highlights} />
 
         {/* Explore Other Tools */}
         <ExploreOurAiTools

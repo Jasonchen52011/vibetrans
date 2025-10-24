@@ -18,9 +18,9 @@ const PAGE_CATEGORIES = {
       'chinese-to-english-translator',
       'cantonese-translator',
       'baybayin-translator',
-      'aramaic-translator'
+      'aramaic-translator',
     ],
-    template: 'simple-tool-template'
+    template: 'simple-tool-template',
   },
   complex: {
     name: '复杂翻译工具',
@@ -42,20 +42,16 @@ const PAGE_CATEGORIES = {
       'ivr-translator',
       'pig-latin-translator',
       'al-bhed-translator',
-      'cuneiform-translator'
+      'cuneiform-translator',
     ],
-    template: 'advanced-tool-template'
+    template: 'advanced-tool-template',
   },
   generative: {
     name: '生成类工具',
     description: '非翻译类的文本生成和处理工具',
-    pages: [
-      'dumb-it-down-ai',
-      'verbose-generator',
-      'alien-text-generator'
-    ],
-    template: 'generative-tool-template'
-  }
+    pages: ['dumb-it-down-ai', 'verbose-generator', 'alien-text-generator'],
+    template: 'generative-tool-template',
+  },
 };
 
 // 模板内容

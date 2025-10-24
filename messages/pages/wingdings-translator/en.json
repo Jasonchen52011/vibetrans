@@ -1,0 +1,231 @@
+{
+  "WingdingsTranslatorPage": {
+    "title": "Free Wingdings Translator Online - Convert Text to Symbols",
+    "description": "Free online Wingdings translator tool to convert text to Wingdings symbols and back. Instantly transform your messages with the famous Wingdings font.",
+    "hero": {
+      "title": "Free Wingdings Translator Online",
+      "description": "Convert text to Wingdings symbols and back with our free online translator. Perfect for creating unique messages and understanding Wingdings text."
+    },
+    "tool": {
+      "inputLabel": "Input Text",
+      "outputLabel": "Wingdings Translation",
+      "inputPlaceholder": "Enter your text here...",
+      "outputPlaceholder": "Wingdings symbols will appear here...",
+      "translateButton": "Translate",
+      "uploadButton": "Upload File",
+      "uploadHint": "Supports .txt and .docx files",
+      "voiceInputButton": "Voice Input",
+      "voiceInputHint": "Click to start voice input",
+      "audioUploadButton": "Upload Audio",
+      "audioUploadHint": "Upload audio file for transcription",
+      "voiceOutputButton": "Play Audio",
+      "voiceOutputHint": "Listen to translation",
+      "loading": "Translating...",
+      "transcribing": "Transcribing audio...",
+      "error": "Translation failed. Please try again.",
+      "noInput": "Please enter some text to translate."
+    },
+    "whatIs": {
+      "title": "What is Wingdings Translator",
+      "description": "A Wingdings translator is a tool that converts regular text into Wingdings symbols and vice versa. Wingdings is a symbolic font created by Microsoft that uses various symbols instead of letters, numbers, and punctuation marks. Our translator makes it easy to encode and decode messages using this iconic font.",
+      "image": "/images/docs/what-is-wingdings-translator.webp",
+      "imageAlt": "What is Wingdings Translator"
+    },
+    "examples": {
+      "title": "Wingdings Translation Examples",
+      "description": "See how regular text is converted to Wingdings symbols with these practical examples.",
+      "items": [
+        {
+          "alt": "Hello World converted to Wingdings symbols with perfect accuracy",
+          "name": "Basic Greeting Translation"
+        },
+        {
+          "alt": "Phone number 123-456-7890 transformed into Wingdings symbols",
+          "name": "Contact Number Conversion"
+        },
+        {
+          "alt": "Secret message 'Meet me at midnight' encoded in Wingdings",
+          "name": "Covert Message Encoding"
+        },
+        {
+          "alt": "Email address user@domain.com converted to symbolic format",
+          "name": "Email Address Translation"
+        },
+        {
+          "alt": "Happy Birthday! message with celebration symbols in Wingdings",
+          "name": "Festive Message Creation"
+        },
+        {
+          "alt": "Computer programming code symbols converted to Wingdings",
+          "name": "Technical Code Translation"
+        }
+      ]
+    },
+    "howto": {
+      "title": "How to Use Wingdings Translator",
+      "description": "Learn how to convert text to Wingdings symbols in just a few simple steps:",
+      "steps": [
+        {
+          "title": "Enter Your Text",
+          "description": "Type or paste the text you want to convert into Wingdings symbols in the input area. You can enter letters, numbers, and basic punctuation."
+        },
+        {
+          "title": "Click Translate",
+          "description": "Press the Translate button to instantly convert your text into Wingdings symbols. The conversion happens in real-time with perfect accuracy."
+        },
+        {
+          "title": "Copy the Result",
+          "description": "Copy the Wingdings symbols to your clipboard using the copy button. You can then paste them anywhere you want to use the symbols."
+        },
+        {
+          "title": "Reverse Translation",
+          "description": "To decode Wingdings text back to regular text, simply paste the Wingdings symbols in the input area and translate again."
+        }
+      ]
+    },
+    "funFacts": {
+      "title": "Interesting Facts About Wingdings",
+      "items": [
+        {
+          "title": "Microsoft's Creation",
+          "description": "Wingdings was created by Microsoft in 1990 as part of the Windows 3.1 operating system. It was designed to include a variety of useful symbols for documents.",
+          "image": "/images/docs/wingdings-translator-fact-1.webp",
+          "imageAlt": "Microsoft Wingdings History"
+        },
+        {
+          "title": "Hidden Easter Eggs",
+          "description": "Wingdings contains several Easter eggs. For example, typing NYC displays symbols that some people interpreted as anti-Semitic, leading to controversy in the 1990s.",
+          "image": "/images/docs/wingdings-translator-fact-2.webp",
+          "imageAlt": "Wingdings Easter Eggs"
+        }
+      ]
+    },
+    "userInterest": {
+      "title": "Explore Wingdings Features",
+      "items": [
+        {
+          "title": "Symbol Gallery",
+          "description": "Explore our complete Wingdings symbol gallery to see every available character and its corresponding symbol. Perfect for finding the right symbol for your message.",
+          "image": "/images/docs/wingdings-translator-interest-1.webp",
+          "imageAlt": "Wingdings Symbol Gallery"
+        },
+        {
+          "title": "Font Compatibility",
+          "description": "Learn about font compatibility issues with Wingdings and how to ensure your symbols display correctly across different devices and platforms.",
+          "image": "/images/docs/wingdings-translator-interest-2.webp",
+          "imageAlt": "Wingdings Font Compatibility"
+        },
+        {
+          "title": "Design Applications",
+          "description": "Discover creative ways to use Wingdings symbols in graphic design, presentations, and digital art projects.",
+          "image": "/images/docs/wingdings-translator-interest-3.webp",
+          "imageAlt": "Wingdings Design Applications"
+        },
+        {
+          "title": "Unicode Alternatives",
+          "description": "Find modern Unicode alternatives to Wingdings symbols for better web compatibility and accessibility.",
+          "image": "/images/docs/wingdings-translator-interest-4.webp",
+          "imageAlt": "Wingdings Unicode Alternatives"
+        }
+      ]
+    },
+    "highlights": {
+      "title": "Key Features",
+      "description": "Discover the powerful features that make our Wingdings translator the best choice for symbol conversion.",
+      "features": [
+        {
+          "title": "Instant Translation",
+          "icon": "FaRocket",
+          "tagline": "Lightning-fast conversion",
+          "statLabel": null,
+          "statValue": null,
+          "description": "Convert text to Wingdings symbols instantly with our advanced translation engine. No waiting, no delays.",
+          "wordCount": 20,
+          "microCopy": "Fast and reliable"
+        },
+        {
+          "title": "Perfect Accuracy",
+          "icon": "FaBrain",
+          "tagline": "100% accurate mapping",
+          "statLabel": null,
+          "statValue": null,
+          "description": "Our translator uses the official Wingdings character mapping to ensure perfect accuracy every time.",
+          "wordCount": 20,
+          "microCopy": "Always accurate"
+        },
+        {
+          "title": "Free to Use",
+          "icon": "FaShieldAlt",
+          "tagline": "Completely free",
+          "statLabel": null,
+          "statValue": null,
+          "description": "No registration, no fees, no limits. Use our Wingdings translator as much as you need, completely free.",
+          "wordCount": 20,
+          "microCopy": "Always free"
+        },
+        {
+          "title": "Cross-Platform",
+          "icon": "FaChartLine",
+          "tagline": "Works everywhere",
+          "statLabel": null,
+          "statValue": null,
+          "description": "Our translator works on all devices and browsers, ensuring you can convert text anywhere.",
+          "wordCount": 20,
+          "microCopy": "Universal access"
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "What Users Say",
+      "subtitle": "Real feedback from our users",
+      "items": {
+        "item-1": {
+          "name": "Alex Chen",
+          "role": "Graphic Designer",
+          "heading": "Perfect Tool for Design Projects",
+          "content": "This Wingdings translator is amazing for my design work! I can quickly convert text to symbols for logos and graphics. The accuracy is perfect and it saves me so much time.",
+          "rating": "4.8"
+        },
+        "item-2": {
+          "name": "Sarah Johnson",
+          "role": "Content Creator",
+          "heading": "Engaging Social Media Content",
+          "content": "I use this tool to create fun social media posts with hidden messages. My followers love trying to decode the Wingdings symbols. It's become a signature part of my content!",
+          "rating": "4.9"
+        },
+        "item-3": {
+          "name": "Mike Wilson",
+          "role": "Educator",
+          "heading": "Excellent Educational Resource",
+          "content": "Perfect for teaching students about fonts and symbols. The instant feedback helps students understand how character mapping works. Great educational tool!",
+          "rating": "4.7"
+        }
+      }
+    },
+    "faqs": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Have questions? We have answers.",
+      "items": {
+        "item-1": {
+          "question": "Is the Wingdings translator really free?",
+          "answer": "Yes! Our Wingdings translator is completely free to use with no hidden charges, registration requirements, or usage limits."
+        },
+        "item-2": {
+          "question": "Can I convert Wingdings back to regular text?",
+          "answer": "Absolutely! Our translator works both ways - you can convert text to Wingdings and Wingdings symbols back to regular text."
+        },
+        "item-3": {
+          "question": "Why do Wingdings symbols sometimes not display correctly?",
+          "answer": "Wingdings requires the specific font to be installed. If symbols don't display, the device might not have the Wingdings font installed."
+        }
+      }
+    },
+    "ctaButton": "Try Wingdings Translator Now",
+    "cta": {
+      "title": "Start Converting Text to Wingdings Today",
+      "description": "Join thousands of users who trust our Wingdings translator for accurate and instant symbol conversion.",
+      "primaryButton": "Try Wingdings Translator Now",
+      "secondaryButton": "Back to Top"
+    }
+  }
+}

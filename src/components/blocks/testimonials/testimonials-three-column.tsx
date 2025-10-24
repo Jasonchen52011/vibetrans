@@ -21,22 +21,60 @@ export default function TestimonialsThreeColumnSection({
   // @ts-ignore - Dynamic namespace support
   const t = useTranslations(namespace as any);
 
-  // Use useMemo to build testimonial items only once
-  const testimonialItems = useMemo(() => {
+  // Use useMemo to build testimonial items and check title/subtitle
+  const testimonialData = useMemo(() => {
     const items: TestimonialItem[] = [];
+
+    // Check if title and subtitle are valid
+    let titleValid = false;
+    let subtitleValid = false;
+    try {
+      const titleValue = t('title', { default: '' });
+      const subtitleValue = t('subtitle', { default: '' });
+      titleValid = titleValue && !titleValue.includes('title') && titleValue.trim().length > 0;
+      subtitleValid = subtitleValue && !subtitleValue.includes('subtitle') && subtitleValue.trim().length > 0;
+    } catch (error) {
+      titleValid = false;
+      subtitleValid = false;
+    }
 
     // Only attempt to load testimonials if the namespace has items
     let hasItems = false;
+    let useArrayFormat = false;
+
     try {
-      // Check if items exist by trying to get first item
-      const firstItemName = t('items.item-1.name', { default: null });
-      hasItems = firstItemName && !firstItemName.includes('items.item-1.name');
+      // First try to check if array format exists (items.0.name)
+      const rawItems = t.raw('items');
+      if (Array.isArray(rawItems) && rawItems.length > 0) {
+        hasItems = true;
+        useArrayFormat = true;
+      } else {
+        // Fallback to item-1 format check
+        const firstItemName = t('items.item-1.name', { default: null });
+        hasItems = firstItemName && !firstItemName.includes('items.item-1.name');
+      }
     } catch (error) {
       hasItems = false;
     }
 
-    if (hasItems) {
-      // Try to load up to 3 testimonials
+    if (hasItems && useArrayFormat) {
+      // Load from array format (items.0, items.1, etc.)
+      const rawItems = t.raw('items') as any[];
+      for (let i = 0; i < Math.min(3, rawItems.length); i++) {
+        const item = rawItems[i];
+        if (item && item.name) {
+          items.push({
+            id: `item-${i}`,
+            name: item.name,
+            role: item.role || '',
+            heading: item.heading || '',
+            content: item.content || '',
+            rating: Number.parseFloat(item.rating) || 5,
+          });
+        }
+      }
+    } else if (hasItems) {
+      // Try to load up to 3 testimonials (item-1 format)
       for (let i = 1; i <= 3; i++) {
         const key = `item-${i}`;
 
@@ -50,7 +88,7 @@ export default function TestimonialsThreeColumnSection({
 
           // @ts-ignore - Dynamic translation keys
           const role = t(`items.${key}.role`);
-          const heading = t(`items.${key}.heading`);
+          const heading = t(`items.${key}.heading`, { default: '' });
           const content = t(`items.${key}.content`);
 
           // Get rating from translation (now stored as string in JSON)
@@ -76,11 +114,15 @@ export default function TestimonialsThreeColumnSection({
       }
     }
 
-    return items;
+    return {
+      testimonialItems: items,
+      hasValidTitle: titleValid,
+      hasValidSubtitle: subtitleValid
+    };
   }, [t, namespace]);
 
   // If no testimonial items found, don't render the section
-  if (testimonialItems.length === 0) {
+  if (testimonialData.testimonialItems.length === 0) {
     return null;
   }
 
@@ -92,13 +134,13 @@ export default function TestimonialsThreeColumnSection({
       <div className="mx-auto max-w-6xl">
         <HeaderSection
           // @ts-ignore - Dynamic translation keys
-          title={t('title')}
-          subtitle={t('subtitle')}
+          title={testimonialData.hasValidTitle ? t('title') : undefined}
+          subtitle={testimonialData.hasValidSubtitle ? t('subtitle') : undefined}
           subtitleAs="h2"
         />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
-          {testimonialItems.map((item, index) => (
+          {testimonialData.testimonialItems.map((item, index) => (
             <Card
               key={item.id}
               className="relative h-full group hover:shadow-xl transition-all duration-500 border border-primary/10 overflow-hidden"
@@ -209,8 +251,7 @@ export default function TestimonialsThreeColumnSection({
             </Card>
           ))}
         </div>
-
-        </div>
+      </div>
     </section>
   );
 }

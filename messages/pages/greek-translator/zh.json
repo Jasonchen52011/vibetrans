@@ -1,0 +1,260 @@
+{
+  "GreekTranslatorPage": {
+    "title": "Greek Translator：最佳在线希腊语翻译工具",
+    "description": "使用最可靠的希腊语翻译工具，快速处理文本、音频与图像翻译，满足日常与专业需求。",
+    "hero": {
+      "title": "专业希腊语翻译体验",
+      "description": "想要最好的希腊语翻译体验吗？VibeTrans 是您的理想选择！我们的工具精确、快速，帮助您轻松打破语言障碍，提升交流效率。立即体验，感受最佳翻译服务的魅力！"
+    },
+    "tool": {
+      "inputLabel": "输入文本",
+      "outputLabel": "翻译结果",
+      "inputPlaceholder": "在此输入或粘贴内容……",
+      "outputPlaceholder": "翻译结果将显示在这里",
+      "translateButton": "开始翻译",
+      "uploadButton": "上传文件",
+      "uploadHint": "支持 .txt 与 .docx 文件",
+      "voiceInputButton": "语音输入",
+      "voiceInputHint": "点击开始语音输入",
+      "audioUploadButton": "上传音频",
+      "audioUploadHint": "上传音频文件进行转写",
+      "voiceOutputButton": "播放语音",
+      "voiceOutputHint": "收听翻译语音",
+      "loading": "正在翻译……",
+      "transcribing": "正在转写音频……",
+      "error": "翻译失败，请稍后重试。",
+      "noInput": "请输入需要翻译的内容。"
+    },
+    "whatIs": {
+      "title": "什么是 Greek-Translator Suite？",
+      "description": "Greek-Translator Suite 是一个基于网页的希腊语翻译工具，支持文本、音频与图片输入，帮助专业人士与日常用户高效完成希腊语翻译。",
+      "image": "/images/docs/ai-powered-greek-translation.webp",
+      "imageAlt": "Greek-Translator Suite 功能示意"
+    },
+    "examples": {
+      "title": "翻译示例，所见即所得",
+      "description": "翻译希腊语招牌或菜单只需拍照，立即获得清晰的英文结果，完整保留上下文。",
+      "items": [
+        {
+          "alt": "示例 1",
+          "name": "示例 1"
+        },
+        {
+          "alt": "示例 2",
+          "name": "示例 2"
+        },
+        {
+          "alt": "示例 3",
+          "name": "示例 3"
+        },
+        {
+          "alt": "示例 4",
+          "name": "示例 4"
+        },
+        {
+          "alt": "示例 5",
+          "name": "示例 5"
+        },
+        {
+          "alt": "示例 6",
+          "name": "示例 6"
+        }
+      ]
+    },
+    "howto": {
+      "title": "4 步完成希腊语翻译",
+      "description": "按照以下步骤，即可轻松完成希腊语翻译任务。",
+      "steps": [
+        {
+          "title": "输入或粘贴文本",
+          "name": "输入或粘贴文本",
+          "description": "在输入框中键入或粘贴希腊语内容，系统会自动检测语言，帮你快速开始翻译。",
+          "wordCount": 40
+        },
+        {
+          "title": "选择翻译模式",
+          "name": "选择翻译模式",
+          "description": "在技术、法律或日常模式中选择最适合的选项，确保术语与语境准确。",
+          "wordCount": 40
+        },
+        {
+          "title": "预览并编辑",
+          "name": "预览并编辑",
+          "description": "检查翻译结果，可使用语境辅助工具对关键字或语气进行调整。",
+          "wordCount": 40
+        },
+        {
+          "title": "获取语音结果",
+          "name": "获取语音结果",
+          "description": "播放翻译语音掌握发音，适合学习与口语练习，也可直接下载文本。",
+          "wordCount": 40
+        }
+      ]
+    },
+    "funFacts": {
+      "title": "关于希腊语的趣味知识",
+      "items": [
+        {
+          "title": "趣味知识",
+          "description": "大约 30% 的英文科学术语源自希腊语词根。了解更多请参考 [维基百科](https://en.wikipedia.org/wiki/Greek_language)。",
+          "image": "/images/docs/ancient-greek-language-influence.webp",
+          "imageAlt": "趣味知识插图"
+        },
+        {
+          "title": "趣味知识",
+          "description": "希腊语的\"是\"写作\"Ναι\"，读音接近英语的 \"nay\"。想了解更多希腊语发音，可查看 [Modern Greek phonology](https://en.wikipedia.org/wiki/Modern_Greek_phonology)。",
+          "image": "/images/docs/greek-cultural-insights.webp",
+          "imageAlt": "趣味知识插图"
+        }
+      ]
+    },
+    "userInterest": {
+      "title": "探索更多希腊语相关功能",
+      "items": [
+        {
+          "title": "古希腊语翻译",
+          "description": "双模式翻译古希腊文本，适用于历史研究与学术用途。",
+          "image": "/images/docs/greek-scroll-translation.webp",
+          "imageAlt": "古希腊语翻译"
+        },
+        {
+          "title": "字母转写开关",
+          "description": "一键将希腊字母转为拉丁字母，并提供发音提示，适合学习与阅读。",
+          "image": "/images/docs/learn-ancient-greek.webp",
+          "imageAlt": "字母转写开关"
+        },
+        {
+          "title": "图片转文字 OCR",
+          "description": "拍摄希腊文招牌或菜单即可获得即时翻译，是旅行者的必备工具。",
+          "image": "/images/docs/accurate-greek-translations.webp",
+          "imageAlt": "图片转文字 OCR"
+        },
+        {
+          "title": "实时语音对话模式",
+          "description": "支持希腊语与英语的实时语音对话，帮助练习听说能力。",
+          "image": "/images/docs/ancient-greek-dialects.webp",
+          "imageAlt": "实时语音对话模式"
+        }
+      ]
+    },
+    "highlights": {
+      "title": "Greek-Translator Suite 亮点功能",
+      "description": "了解这款希腊语翻译工具的核心优势。",
+      "features": [
+        {
+          "title": "AI 语境理解",
+          "icon": "FaBrain",
+          "tagline": "更懂语境的翻译",
+          "statLabel": "语境准确率",
+          "statValue": "95%",
+          "description": "AI 会理解上下文，让翻译更加自然准确，适合复杂文档或专业内容。",
+          "wordCount": 42,
+          "microCopy": "语境决定品质"
+        },
+        {
+          "title": "语音输入与输出",
+          "icon": "FaVolumeUp",
+          "tagline": "说与听都轻松",
+          "statLabel": "语音识别率",
+          "statValue": "98%",
+          "description": "直接语音输入并听取翻译结果，适合练习发音或需要解放双手的场景。",
+          "wordCount": 42,
+          "microCopy": "随时随地听说"
+        },
+        {
+          "title": "数据安全",
+          "icon": "FaShieldAlt",
+          "tagline": "隐私全程守护",
+          "statLabel": "隐私保证",
+          "statValue": "100%",
+          "description": "翻译过程加密且不保留内容，适合处理敏感或机密文件。",
+          "wordCount": 42,
+          "microCopy": "安心使用"
+        },
+        {
+          "title": "专业模式可选",
+          "icon": "FaCog",
+          "tagline": "翻译更对场景",
+          "statLabel": "用户满意度",
+          "statValue": "97%",
+          "description": "提供技术、法律、日常等专用模式，让翻译风格与术语更加贴近需求。",
+          "wordCount": 42,
+          "microCopy": "一键切换模式"
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "用户怎么说",
+      "subtitle": "来自真实用户的评价",
+      "items": {
+        "item-1": {
+          "name": "John Smith",
+          "role": "学术研究者",
+          "heading": "John Smith 的评价",
+          "content": "Greek-Translator Suite 让我的研究效率大幅提升。处理古希腊文本不再麻烦，语境理解非常出色。",
+          "text": "Greek-Translator Suite 让我的研究效率大幅提升。处理古希腊文本不再麻烦，语境理解非常出色。"
+        },
+        "item-2": {
+          "name": "Emily Johnson",
+          "role": "旅行博主",
+          "heading": "Emily Johnson 的评价",
+          "content": "旅行时拍下希腊文招牌即可获得翻译，就像随身携带的导游。",
+          "text": "旅行时拍下希腊文招牌即可获得翻译，就像随身携带的导游。"
+        },
+        "item-3": {
+          "name": "Michael Brown",
+          "role": "法律顾问",
+          "heading": "Michael Brown 的评价",
+          "content": "专业法律模式让术语翻译更精准，法律文件也能保持原意。",
+          "text": "专业法律模式让术语翻译更精准，法律文件也能保持原意。"
+        },
+        "item-4": {
+          "name": "Sarah Williams",
+          "role": "语言教师",
+          "heading": "Sarah Williams 的评价",
+          "content": "我使用语音对话功能与学生互动。这是练习希腊语的有趣有效方式，提高了他们的发音和信心。",
+          "text": "我使用语音对话功能与学生互动。这是练习希腊语的有趣有效方式，提高了他们的发音和信心。"
+        },
+        "item-5": {
+          "name": "David Miller",
+          "role": "技术爱好者",
+          "heading": "David Miller 的评价",
+          "content": "API 集成非常流畅，对像我这样的开发者来说非常完美。它支持批量翻译，节省了项目时间并提高了效率。",
+          "text": "API 集成非常流畅，对像我这样的开发者来说非常完美。它支持批量翻译，节省了项目时间并提高了效率。"
+        },
+        "item-6": {
+          "name": "Nancy Davis",
+          "role": "厨师",
+          "heading": "Nancy Davis 的评价",
+          "content": "翻译希腊食谱现在变得轻而易举。内置的烹饪术语让理解食材和烹饪方法变得简单。",
+          "text": "翻译希腊食谱现在变得轻而易举。内置的烹饪术语让理解食材和烹饪方法变得简单。"
+        }
+      }
+    },
+    "faqs": {
+      "title": "常见问题",
+      "subtitle": "如果还有疑问，欢迎通过邮件联系我们。",
+      "items": {
+        "item-1": {
+          "question": "Greek-Translator Suite 是免费的吗？",
+          "answer": "工具提供免费与付费版本。免费版涵盖常用功能，付费版提供专业模式与更多资源，可按需求选择。"
+        },
+        "item-2": {
+          "question": "如何保护我的翻译隐私？",
+          "answer": "我们采用加密传输并不保存用户数据，可放心翻译敏感内容。"
+        },
+        "item-3": {
+          "question": "哪款希腊语翻译工具最好？",
+          "answer": "Greek-Translator Suite 提供多模式翻译、语音输入与安全保障，是目前最全面的网页翻译工具之一。"
+        }
+      }
+    },
+    "ctaButton": "立即体验 Greek Translator",
+    "cta": {
+      "title": "马上体验 Greek-Translator Suite",
+      "description": "立即免费使用 VibeTrans，体验高效准确的希腊语翻译。",
+      "primaryButton": "立即开始翻译",
+      "secondaryButton": "返回顶部"
+    }
+  }
+}

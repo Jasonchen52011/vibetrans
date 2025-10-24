@@ -1,5 +1,6 @@
 'use client';
 
+import { ToolInfoSections } from '@/components/blocks/tool/tool-info-sections';
 import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
 import { ArrowRightIcon } from 'lucide-react';
 import mammoth from 'mammoth';
@@ -344,6 +345,11 @@ export default function GasterTranslatorTool({
             Reset
           </button>
         </div>
+
+        <ToolInfoSections
+          highlights={pageData.highlights}
+          funFacts={pageData.funFacts}
+        />
       </main>
     </div>
   );

@@ -72,6 +72,22 @@
             "title": "Pig Latin Translator",
             "description": "Translate between English and Pig Latin playfully"
           },
+          "minionTranslator": {
+            "title": "Minion Translator",
+            "description": "Translate text to Minion language and back"
+          },
+          "baybayinTranslator": {
+            "title": "Baybayin Translator",
+            "description": "Translate between Baybayin script and modern languages"
+          },
+          "samoanToEnglishTranslator": {
+            "title": "Samoan To English Translator",
+            "description": "Translate between Samoan and English language"
+          },
+          "nahuatlTranslator": {
+            "title": "Nahuatl Translator",
+            "description": "Translate between Nahuatl and English languages"
+          },
           "ivrTranslator": {
             "title": "IVR Translator",
             "description": "Convert IVR inputs into text with multi-language support"
@@ -142,6 +158,14 @@
             "title": "Chinese To English Translator",
             "description": "Translate between Chinese and English with AI"
           },
+          "englishToChineseTranslator": {
+            "title": "English To Chinese Translator",
+            "description": "Translate between English and Chinese with AI"
+          },
+          "mangaTranslator": {
+            "title": "Manga Translator",
+            "description": "Translate manga and comics between languages"
+          },
           "middleEnglishTranslator": {
             "title": "Middle English Translator",
             "description": "Translate between Middle English and modern English"
@@ -169,6 +193,102 @@
           "aramaicTranslator": {
             "title": "Aramaic Translator",
             "description": "Translate ancient Aramaic script to modern languages"
+          },
+          "greekTranslator": {
+            "title": "Greek Translator",
+            "description": "Translate between modern Greek and English languages"
+          },
+          "oghamTranslator": {
+            "title": "Ogham Translator",
+            "description": "Translate ancient Ogham script to modern languages"
+          },
+          "nahuatlTranslator": {
+            "title": "Nahuatl Translator",
+            "description": "Translate between Nahuatl and English languages"
+          },
+          "englishToSwahiliTranslator": {
+            "title": "English To Swahili Translator",
+            "description": "Translate from English to Swahili language"
+          },
+          "swahiliToEnglishTranslator": {
+            "title": "Swahili To English Translator",
+            "description": "Translate from Swahili to English language"
+          },
+          "englishToAmharicTranslator": {
+            "title": "English To Amharic Translator",
+            "description": "Translate from English to Amharic language"
+          },
+          "englishToPolishTranslator": {
+            "title": "English To Polish Translator",
+            "description": "Translate from English to Polish language"
+          },
+          "teluguToEnglishTranslator": {
+            "title": "Telugu To English Translator",
+            "description": "Translate from Telugu to English language"
+          },
+          "smartLanguageTranslator": {
+            "title": "Smart Language Translator",
+            "description": "AI-powered smart translation between multiple languages"
+          },
+          "runeTranslator": {
+            "title": "Rune Translator",
+            "description": "Translate ancient runes to modern languages"
+          },
+          "runicTranslator": {
+            "title": "Runic Translator",
+            "description": "Translate between runic scripts and modern languages"
+          },
+          "drowTranslator": {
+            "title": "Drow Translator",
+            "description": "Translate Drow language from Dungeons & Dragons"
+          },
+          "yodaTranslator": {
+            "title": "Yoda Translator",
+            "description": "Translate text to Yoda's unique speech pattern"
+          },
+          "mandalorianTranslator": {
+            "title": "Mandalorian Translator",
+            "description": "Translate Mandalorian language from Star Wars"
+          },
+          "yodaTranslator": {
+            "title": "Yoda Translator",
+            "description": "Translate text to Yoda's unique speech pattern"
+          },
+          "englishToPersianTranslator": {
+            "title": "English To Persian Translator",
+            "description": "Translate from English to Persian language"
+          },
+          "greekTranslator": {
+            "title": "Greek Translator",
+            "description": "Translate between Greek and English languages"
+          },
+          "wingdingsTranslator": {
+            "title": "Wingdings Translator",
+            "description": "Convert text to Wingdings symbols"
+          },
+          "japaneseToEnglishTranslator": {
+            "title": "Japanese To English Translator",
+            "description": "Translate from Japanese to English language"
+          },
+          "minionTranslator": {
+            "title": "Minion Translator",
+            "description": "Translate text to Minion language and back"
+          },
+          "gasterTranslator": {
+            "title": "Gaster Translator",
+            "description": "Decode and encode Gaster's mysterious symbols"
+          },
+          "wingdingsTranslator": {
+            "title": "Wingdings Translator",
+            "description": "Translate between Wingdings symbols and text"
+          },
+          "highValyrianTranslator": {
+            "title": "High Valyrian Translator",
+            "description": "Translate between High Valyrian and English"
+          },
+          "englishToPersianTranslator": {
+            "title": "English To Persian Translator",
+            "description": "Translate from English to Persian language"
           }
         }
       },
@@ -272,10 +392,181 @@
     "footer": {
       "tagline": "VibeTrans provides advanced AI-powered tools for seamless language conversion. Translate texts, slang, and even ancient languages effortlessly with VibeTrans.",
       "funTranslate": {
-        "title": "Fun Translate"
+        "title": "Fun Translate",
+        "items": {
+          "dogTranslator": {
+            "title": "Dog Translator"
+          },
+          "genZTranslator": {
+            "title": "Gen Z Translator"
+          },
+          "genAlphaTranslator": {
+            "title": "Gen Alpha Translator"
+          },
+          "dumbItDown": {
+            "title": "Dumb It Down AI"
+          },
+          "badTranslator": {
+            "title": "Bad Translator"
+          },
+          "babyTranslator": {
+            "title": "Baby Translator"
+          },
+          "gibberishTranslator": {
+            "title": "Gibberish Translator"
+          },
+          "alienTextGenerator": {
+            "title": "Alien Text Generator"
+          },
+          "verboseGenerator": {
+            "title": "Verbose Generator"
+          },
+          "pigLatinTranslator": {
+            "title": "Pig Latin Translator"
+          }
+        }
+      },
+      "gameTranslator": {
+        "title": "Game Translator",
+        "items": {
+          "drowTranslator": {
+            "title": "Drow Translator"
+          },
+          "runeTranslator": {
+            "title": "Rune Translator"
+          },
+          "runicTranslator": {
+            "title": "Runic Translator"
+          },
+          "yodaTranslator": {
+            "title": "Yoda Translator"
+          },
+          "mandalorianTranslator": {
+            "title": "Mandalorian Translator"
+          },
+          "minionTranslator": {
+            "title": "Minion Translator"
+          },
+          "gasterTranslator": {
+            "title": "Gaster Translator"
+          },
+          "wingdingsTranslator": {
+            "title": "Wingdings Translator"
+          },
+          "highValyrianTranslator": {
+            "title": "High Valyrian Translator"
+          },
+          "alBhedTranslator": {
+            "title": "Al Bhed Translator"
+          }
+        }
       },
       "languageTranslator": {
-        "title": "Language Translator"
+        "title": "Language Translator",
+        "items": {
+          "drowTranslator": {
+            "title": "Drow Translator"
+          },
+          "runeTranslator": {
+            "title": "Rune Translator"
+          },
+          "runicTranslator": {
+            "title": "Runic Translator"
+          },
+          "yodaTranslator": {
+            "title": "Yoda Translator"
+          },
+          "mandalorianTranslator": {
+            "title": "Mandalorian Translator"
+          },
+          "minionTranslator": {
+            "title": "Minion Translator"
+          },
+          "gasterTranslator": {
+            "title": "Gaster Translator"
+          },
+          "wingdingsTranslator": {
+            "title": "Wingdings Translator"
+          },
+          "highValyrianTranslator": {
+            "title": "High Valyrian Translator"
+          },
+          "alBhedTranslator": {
+            "title": "Al Bhed Translator"
+          },
+          "oghamTranslator": {
+            "title": "Ogham Translator"
+          },
+          "samoanToEnglishTranslator": {
+            "title": "Samoan To English Translator"
+          },
+          "aramaicTranslator": {
+            "title": "Aramaic Translator"
+          },
+          "nahuatlTranslator": {
+            "title": "Nahuatl Translator"
+          },
+          "englishToSwahiliTranslator": {
+            "title": "English To Swahili Translator"
+          },
+          "swahiliToEnglishTranslator": {
+            "title": "Swahili To English Translator"
+          },
+          "englishToAmharicTranslator": {
+            "title": "English To Amharic Translator"
+          },
+          "englishToPolishTranslator": {
+            "title": "English To Polish Translator"
+          },
+          "teluguToEnglishTranslator": {
+            "title": "Telugu To English Translator"
+          },
+          "smartLanguageTranslator": {
+            "title": "Smart Language Translator"
+          },
+          "englishToPersianTranslator": {
+            "title": "English To Persian Translator"
+          },
+          "ancientGreekTranslator": {
+            "title": "Ancient Greek Translator"
+          },
+          "greekTranslator": {
+            "title": "Greek Translator"
+          },
+          "mangaTranslator": {
+            "title": "Manga Translator"
+          },
+          "esperantoTranslator": {
+            "title": "Esperanto Translator"
+          },
+          "cuneiformTranslator": {
+            "title": "Cuneiform Translator"
+          },
+          "ivrTranslator": {
+            "title": "IVR Translator"
+          },
+          "albanianToEnglish": {
+            "title": "Albanian To English"
+          },
+          "creoleToEnglishTranslator": {
+            "title": "Creole To English Translator"
+          },
+          "cantoneseTranslator": {
+            "title": "Cantonese Translator"
+          },
+          "chineseToEnglishTranslator": {
+            "title": "Chinese To English Translator"
+          },
+          "englishToChineseTranslator": {
+            "title": "English To Chinese Translator"
+          },
+          "middleEnglishTranslator": {
+            "title": "Middle English Translator"
+          },
+          "baybayinTranslator": {
+            "title": "Baybayin Translator"
+          }
+        }
       },
       "product": {
         "title": "Product",

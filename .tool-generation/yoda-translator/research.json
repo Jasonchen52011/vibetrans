@@ -1,0 +1,151 @@
+{
+  "keyword": "yoda translator",
+  "productName": "Yoda-Translator-Studio",
+  "description": "Paste, speak or upload text and get instant, grammatically-correct Yoda-speak on the spot.",
+  "competitors": [
+    {
+      "name": "Funtranslations Yoda Translator",
+      "url": "https://funtranslations.com/yoda",
+      "features": ["网页即译", "可试听合成语音"]
+    },
+    {
+      "name": "Lingojam Yoda Speak Generator",
+      "url": "https://lingojam.com/Yoda-Speak-Generator",
+      "features": ["实时双栏输入输出", "字符统计"]
+    },
+    {
+      "name": "Yodish.com",
+      "url": "https://yodish.com",
+      "features": ["简洁界面", "生成可分享短链"]
+    },
+    {
+      "name": "GeneratorFun Yoda Speak",
+      "url": "https://generatorfun.com/yoda_speak",
+      "features": ["批量随机名言", "可下载 TXT"]
+    },
+    {
+      "name": "ConvertCase Yoda Translator",
+      "url": "https://convertcase.net/yoda-speak-translator",
+      "features": ["支持大段文本", "大小写批量转换"]
+    },
+    {
+      "name": "Shmoop Yoda Talk",
+      "url": "https://www.shmoop.com/yoda-speak-translator/",
+      "features": ["附带语法讲解", "教育场景示例"]
+    },
+    {
+      "name": "Imtranslator Yoda Converter",
+      "url": "https://imtranslator.net/yoda-speak/",
+      "features": ["40+界面语言", "复制按钮"]
+    },
+    {
+      "name": "CodePen Yoda Translator Demo",
+      "url": "https://codepen.io/tag/yoda/",
+      "features": ["开源前端代码", "本地 JS 离线可用"]
+    },
+    {
+      "name": "YodaSpeak.co.uk",
+      "url": "https://yodaspeak.co.uk/",
+      "features": ["可调幽默度", "随机彩蛋句子"]
+    },
+    {
+      "name": "Textise Dot Net Yoda Tool",
+      "url": "https://textise dot net/yoda",
+      "features": ["极简纯文本", "夜间模式"]
+    },
+    {
+      "name": "Tidio Yoda Chat Bot Demo",
+      "url": "https://www.tidio.com/blog/yoda-chat-bot/",
+      "features": ["聊天形式翻译", "可嵌入网站"]
+    },
+    {
+      "name": "ThinkMindset Yoda Translator",
+      "url": "https://thinkmindset.com/tools/yoda-translator",
+      "features": ["心理学引导语", "励志语句库"]
+    },
+    {
+      "name": "WriteExpress Yoda Converter",
+      "url": "https://writeexpress.com/yoda",
+      "features": ["作文示例转换", "打印友好格式"]
+    },
+    {
+      "name": "EZGIF Yoda Text Maker",
+      "url": "https://ezgif.com/yoda-text",
+      "features": ["生成 GIF 字幕", "字体自定义"]
+    },
+    {
+      "name": "NPM yoda-speak CLI",
+      "url": "https://www.npmjs.com/package/yoda-speak",
+      "features": ["命令行工具", "可作为库调用"]
+    }
+  ],
+  "socialTopics": [
+    {
+      "platform": "Reddit",
+      "topic": "Why does Yoda speak in Object-Subject-Verb order?",
+      "votes": 3200,
+      "summary": "语法学家与影迷探讨 Yoda 的倒装来源和语言学依据。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "I wrote a Python Yoda translator – feedback?",
+      "votes": 2100,
+      "summary": "开发者分享算法，讨论如何处理介词和助动词。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "How to talk like Yoda without sounding silly?",
+      "votes": 890,
+      "summary": "语言训练技巧与常见误区，回答者给出三条记忆规则。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "Best online Yoda translators?",
+      "votes": 760,
+      "summary": "对比多款工具的准确度和娱乐性。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "Translate famous movie quotes into Yoda-speak!",
+      "votes": 560,
+      "summary": "社区互动贴，高频生成创意句子。"
+    }
+  ],
+  "funFacts": [
+    "Yoda 的语序在语言学上被称为 OSV，全世界只占 0.3% 的自然语言使用这种结构。",
+    "《帝国反击战》原剧本里 Yoda 只写了部分倒装，演员 Frank Oz 即兴强化了这种说话方式。",
+    "英语作者常用把介词移到句末的简单规则模拟 Yoda，却容易忽略助动词位置，导致 \"Wrong, it is\" 变 \"It is wrong\"。",
+    "第一款网络 Yoda Translator 早在 1997 年的星战论坛上以 Perl CGI 实现。"
+  ],
+  "features": {
+    "basic": [
+      "文本框输入",
+      "TXT/DOCX 上传",
+      "上传清空按钮",
+      "结果复制",
+      "结果 TXT 下载",
+      "语音输入",
+      "语音输出"
+    ],
+    "competitive": [
+      "实时双栏对照翻译",
+      "字符/单词统计",
+      "幽默度或正式度滑块",
+      "暗色模式",
+      "离线可用前端脚本"
+    ],
+    "innovative": [
+      "多语言→Yoda 模式(自动识别并先译为英语再倒装)",
+      "可调语法严格度(教学/娱乐)",
+      "批量文件翻译(合并导出)",
+      "句子粒度编辑(点句子即回到输入)",
+      "OSV 语序可视化高亮"
+    ]
+  },
+  "useCases": [
+    "星战粉生成趣味社群贴",
+    "教师在课堂讲解语序或倒装",
+    "编剧或作者创作彩蛋式对白"
+  ],
+  "asciiDesign": "┌────────────────────────────┬─────────────────────────────┐\\n│            INPUT            │            OUTPUT           │\\n│  ┌───────────────────────┐ │  ┌───────────────────────┐  │\\n│  │ Paste / Type here     │ │  │ Yoda-speak appears     │  │\\n│  │                       │ │  │                       │  │\\n│  └───────────────────────┘ │  └───────────────────────┘  │\\n│  [Upload TXT/DOCX] [Clear] │  [Copy] [Download TXT] [🔊]  │\\n│  [🎤 Voice In]             │                             │\\n└────────────────────────────┴─────────────────────────────┘"
+}

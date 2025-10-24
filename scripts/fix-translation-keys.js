@@ -38,7 +38,7 @@ function getToolPageMapping() {
     'pig-latin-translator': 'PigLatinTranslatorPage',
     'samoan-to-english-translator': 'SamoanToEnglishTranslatorPage',
     'verbose-generator': 'VerboseGeneratorPage',
-    'dumb-it-down-ai': 'DumbItDownPage'
+    'dumb-it-down-ai': 'DumbItDownPage',
   };
 }
 
@@ -113,7 +113,7 @@ const commonKeyPatterns = [
   'testimonials.items.item-3.content',
   'hero.title',
   'hero.description',
-  'ctaButton'
+  'ctaButton',
 ];
 
 // 读取文件内容
@@ -159,34 +159,46 @@ function fixPageTranslationKeys(pagePath, toolName, pageNamespace) {
   // 检查是否已经使用了正确的命名空间
   const currentNamespace = getCurrentNamespace(content);
   if (currentNamespace !== pageNamespace) {
-    console.log(`  ⚠️  Namespace mismatch: expected ${pageNamespace}, found ${currentNamespace}`);
+    console.log(
+      `  ⚠️  Namespace mismatch: expected ${pageNamespace}, found ${currentNamespace}`
+    );
   }
 
   // 修复常见的翻译键模式
-  commonKeyPatterns.forEach(key => {
+  commonKeyPatterns.forEach((key) => {
     // 匹配 (t as any)('key') 或类似模式
-    const regex = new RegExp(`\\(t\\s+as\\s+any\\)\\(['"\`]${key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}['"\`]\\)`, 'g');
+    const regex = new RegExp(
+      `\\(t\\s+as\\s+any\\)\\(['"\`]${key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}['"\`]\\)`,
+      'g'
+    );
     const matches = fixedContent.match(regex);
 
     if (matches) {
       fixCount += matches.length;
       const newKey = `${pageNamespace}.${key}`;
       fixedContent = fixedContent.replace(regex, `(t as any)('${newKey}')`);
-      console.log(`  ✓ Fixed ${matches.length} occurrences: '${key}' -> '${newKey}'`);
+      console.log(
+        `  ✓ Fixed ${matches.length} occurrences: '${key}' -> '${newKey}'`
+      );
     }
   });
 
   // 修复hero部分的键
   const heroKeys = ['title', 'description', 'badge', 'subtitle'];
-  heroKeys.forEach(key => {
-    const regex = new RegExp(`\\(t\\s+as\\s+any\\)\\(['"\`]hero\\.${key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}['"\`]\\)`, 'g');
+  heroKeys.forEach((key) => {
+    const regex = new RegExp(
+      `\\(t\\s+as\\s+any\\)\\(['"\`]hero\\.${key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}['"\`]\\)`,
+      'g'
+    );
     const matches = fixedContent.match(regex);
 
     if (matches) {
       fixCount += matches.length;
       const newKey = `${pageNamespace}.hero.${key}`;
       fixedContent = fixedContent.replace(regex, `(t as any)('${newKey}')`);
-      console.log(`  ✓ Fixed ${matches.length} hero keys: 'hero.${key}' -> '${newKey}'`);
+      console.log(
+        `  ✓ Fixed ${matches.length} hero keys: 'hero.${key}' -> '${newKey}'`
+      );
     }
   });
 
@@ -207,12 +219,17 @@ function fixPageTranslationKeys(pagePath, toolName, pageNamespace) {
 
 // 获取所有工具页面路径
 function getAllToolPages() {
-  const pagesDir = path.join(process.cwd(), 'src/app/[locale]/(marketing)/(pages)');
+  const pagesDir = path.join(
+    process.cwd(),
+    'src/app/[locale]/(marketing)/(pages)'
+  );
   const toolMapping = getToolPageMapping();
   const toolPages = [];
 
   try {
-    const entries = require('fs').readdirSync(pagesDir, { withFileTypes: true });
+    const entries = require('fs').readdirSync(pagesDir, {
+      withFileTypes: true,
+    });
 
     for (const entry of entries) {
       if (entry.isDirectory()) {
@@ -223,7 +240,7 @@ function getAllToolPages() {
           toolPages.push({
             toolName,
             pageNamespace: toolMapping[toolName],
-            pagePath
+            pagePath,
           });
         }
       }
@@ -266,7 +283,9 @@ function main() {
 
   console.log('📊 Summary:');
   console.log(`============`);
-  console.log(`✅ Successfully processed: ${successCount}/${toolPages.length} pages`);
+  console.log(
+    `✅ Successfully processed: ${successCount}/${toolPages.length} pages`
+  );
   console.log(`🔧 Total fixes applied: ${totalFixes}`);
   console.log(`⚠️  Failed pages: ${toolPages.length - successCount}`);
 
@@ -290,5 +309,5 @@ module.exports = {
   fixPageTranslationKeys,
   getAllToolPages,
   getToolPageMapping,
-  commonKeyPatterns
+  commonKeyPatterns,
 };

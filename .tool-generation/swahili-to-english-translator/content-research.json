@@ -1,0 +1,313 @@
+{
+  "contentGaps": [
+    {
+      "topic": "Swahili dialect differences and their impact on translation accuracy (Kiunguja, Kimvita, Congolese, Sheng etc.)",
+      "reason": "旅行者和研究者发现主流机器翻译对不同方言/行话的准确率差异大，他们想知道如何处理这种差异。",
+      "competitors": [
+        "Google Translate",
+        "Bing Translator",
+        "Yandex Translate",
+        "Reverso",
+        "Glosbe",
+        "bab.la",
+        "Collins Dictionary",
+        "Cambridge Dictionary"
+      ]
+    },
+    {
+      "topic": "Privacy & data-security policy when translating sensitive text",
+      "reason": "企业/法律文件用户担心上传内容被保存或训练 AI，需要明确加密和删除策略。",
+      "competitors": [
+        "Google Translate",
+        "Bing Translator",
+        "Translate.com",
+        "Lingvanex",
+        "iLoveTranslation",
+        "Online-translator.com"
+      ]
+    },
+    {
+      "topic": "Human vs. machine Swahili translation – when to choose which and cost comparison",
+      "reason": "用户在学术论文、移民材料等情境下需要官方/人工翻译认证，不确定机器翻译是否足够。",
+      "competitors": [
+        "Google Translate",
+        "Yandex Translate",
+        "Bab.la",
+        "Glosbe",
+        "NiceTranslator"
+      ]
+    },
+    {
+      "topic": "Swahili pronunciation guide with audio (including stress & intonation)",
+      "reason": "语言学习者和旅行者想听到单词/句子正确读法，而多数站点只给文字结果。",
+      "competitors": [
+        "Translate.com",
+        "Glosbe",
+        "Collins",
+        "Reverso",
+        "Lingvanex",
+        "Bab.la"
+      ]
+    },
+    {
+      "topic": "Offline translation options & data-light modes for low-bandwidth areas",
+      "reason": "东非许多地区网速慢/流量昂贵，游客和当地人需要离线或轻量解决方案。",
+      "competitors": [
+        "Google Translate (web)",
+        "Bing Translator (web)",
+        "Reverso",
+        "Cambridge",
+        "Collins"
+      ]
+    },
+    {
+      "topic": "API / developer integration for Swahili <-> English translation",
+      "reason": "电商、聊天机器人、研究者想把翻译功能嵌入产品，寻找文档与价格。",
+      "competitors": [
+        "Translate.com",
+        "Glosbe",
+        "Collins",
+        "Cambridge",
+        "Online-translator.com",
+        "iLoveTranslation"
+      ]
+    },
+    {
+      "topic": "Common Swahili idioms & proverbs that do NOT translate literally",
+      "reason": "机器翻译经常逐字直译，导致误解；用户希望提前知道典型误区。",
+      "competitors": [
+        "Google Translate",
+        "Bing",
+        "Yandex",
+        "Reverso",
+        "Bab.la",
+        "Lingvanex"
+      ]
+    },
+    {
+      "topic": "Document & subtitle batch translation (PDF, DOCX, SRT)",
+      "reason": "学术、商务或媒体用户常有整份文件或字幕需求，但大多数工具只支持粘贴文本。",
+      "competitors": ["Glosbe", "Bab.la", "Yandex", "NiceTranslator", "Collins"]
+    },
+    {
+      "topic": "Optical Character Recognition (OCR) and image-to-text for Swahili signage",
+      "reason": "旅途中拍照翻译路标/菜单是高频场景，现有网页版本普遍缺失。",
+      "competitors": [
+        "Translate.com",
+        "Glosbe",
+        "Collins",
+        "Online-translator.com",
+        "Reverso"
+      ]
+    },
+    {
+      "topic": "Accuracy benchmarks: side-by-side comparison of top 5 translators on real Swahili sentences",
+      "reason": "用户想知道“哪个最好”而不仅是广告语，需要客观示例对比。",
+      "competitors": [
+        "Google Translate",
+        "Bing",
+        "Yandex",
+        "Reverso",
+        "Bab.la",
+        "Lingvanex"
+      ]
+    }
+  ],
+  "socialTopics": [
+    {
+      "platform": "Reddit",
+      "topic": "Why does Google Translate struggle with Swahili noun classes?",
+      "engagement": "高",
+      "summary": "上千点赞的语言学讨论，用户分析 Swahili 18个名词类导致主谓一致难以自动化。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "Best offline Swahili translator app for backpacking in Tanzania?",
+      "engagement": "高",
+      "summary": "r/solotravel 帖子，旅行者对比 Google 离线包 vs. Microsoft Translator vs. SayHi，评论超200条。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "Is DeepL going to add Swahili support?",
+      "engagement": "中",
+      "summary": "技术爱好者在 r/MachineLearning 关注 DeepL 计划及开源 Swahili 语料短缺问题。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "What are some Swahili phrases that don’t translate well into English?",
+      "engagement": "高",
+      "summary": "回答涉及‘pole pole’, ‘haraka haraka haina baraka’ 等文化表达，上万阅读与赞同。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "How accurate is Google Translate for Swahili legal documents?",
+      "engagement": "中",
+      "summary": "律师与译者解释机器翻译局限，推荐人工审校。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "Why is Sheng (Kenyan slang) so hard for translators?",
+      "engagement": "中",
+      "summary": "Sheng 夹杂英语/斯瓦希里/当地方言，机器识别率低，回答中给出示例。"
+    }
+  ],
+  "funFacts": [
+    "The English word ‘Safari’ comes directly from the Swahili word ‘safari’ meaning ‘journey’.",
+    "About 30–35% of modern Swahili vocabulary is borrowed from Arabic due to centuries-long coastal trade.",
+    "Google Translate added Swahili in 2009, making it one of the first African languages on the platform.",
+    "Swahili has 18 noun classes; this complex agreement system is a major pain-point for machine translation.",
+    "‘Hakuna Matata’, popularized by Disney’s The Lion King, literally means ‘there are no worries’ in Swahili."
+  ],
+  "highFrequencyWords": [
+    {
+      "word": "Swahili",
+      "frequency": "high",
+      "context": "language name"
+    },
+    {
+      "word": "English",
+      "frequency": "high",
+      "context": "target language"
+    },
+    {
+      "word": "translate",
+      "frequency": "high",
+      "context": "action button/CTA"
+    },
+    {
+      "word": "translation",
+      "frequency": "high",
+      "context": "service description"
+    },
+    {
+      "word": "online",
+      "frequency": "high",
+      "context": "service type"
+    },
+    {
+      "word": "free",
+      "frequency": "high",
+      "context": "pricing promise"
+    },
+    {
+      "word": "text",
+      "frequency": "high",
+      "context": "input type"
+    },
+    {
+      "word": "words",
+      "frequency": "high",
+      "context": "scope of service"
+    },
+    {
+      "word": "phrases",
+      "frequency": "high",
+      "context": "scope of service"
+    },
+    {
+      "word": "sentences",
+      "frequency": "high",
+      "context": "scope of service"
+    },
+    {
+      "word": "copy",
+      "frequency": "medium",
+      "context": "user instruction"
+    },
+    {
+      "word": "paste",
+      "frequency": "medium",
+      "context": "user instruction"
+    },
+    {
+      "word": "dictionary",
+      "frequency": "medium",
+      "context": "feature"
+    },
+    {
+      "word": "example",
+      "frequency": "medium",
+      "context": "usage samples"
+    },
+    {
+      "word": "pronunciation",
+      "frequency": "medium",
+      "context": "audio feature"
+    },
+    {
+      "word": "voice",
+      "frequency": "medium",
+      "context": "speech input/output"
+    },
+    {
+      "word": "audio",
+      "frequency": "medium",
+      "context": "speech output"
+    },
+    {
+      "word": "instant",
+      "frequency": "medium",
+      "context": "speed promise"
+    },
+    {
+      "word": "accuracy",
+      "frequency": "medium",
+      "context": "quality claim"
+    },
+    {
+      "word": "language",
+      "frequency": "high",
+      "context": "general term"
+    },
+    {
+      "word": "tool",
+      "frequency": "medium",
+      "context": "service descriptor"
+    },
+    {
+      "word": "service",
+      "frequency": "medium",
+      "context": "business descriptor"
+    },
+    {
+      "word": "app",
+      "frequency": "medium",
+      "context": "mobile offering"
+    },
+    {
+      "word": "website",
+      "frequency": "medium",
+      "context": "platform reference"
+    },
+    {
+      "word": "typing",
+      "frequency": "medium",
+      "context": "input instruction"
+    },
+    {
+      "word": "detect",
+      "frequency": "medium",
+      "context": "auto-language detection"
+    },
+    {
+      "word": "switch",
+      "frequency": "medium",
+      "context": "swap languages UI"
+    },
+    {
+      "word": "result",
+      "frequency": "medium",
+      "context": "output section"
+    },
+    {
+      "word": "share",
+      "frequency": "medium",
+      "context": "social feature"
+    },
+    {
+      "word": "professional",
+      "frequency": "medium",
+      "context": "human translation upsell"
+    }
+  ]
+}

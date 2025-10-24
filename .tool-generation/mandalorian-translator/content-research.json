@@ -1,0 +1,253 @@
+{
+  "contentGaps": [
+    {
+      "topic": "Pronunciation & Audio Playback",
+      "reason": "大多数用户不仅想看到文字翻译，还想知道如何用 Mando’a 正确发音。",
+      "competitors": [
+        "lingojam.com",
+        "funtranslations.com",
+        "generatorfun.com",
+        "textise dot everything else"
+      ]
+    },
+    {
+      "topic": "Canonical vs. Legends Vocabulary Differences",
+      "reason": "星战正史 (Canon) 与 Legends 词汇差异会影响粉丝在不同语境中使用。",
+      "competitors": [
+        "lingojam.com",
+        "funtranslations.com",
+        "randomtextgenerator.com"
+      ]
+    },
+    {
+      "topic": "Mandalorian Script (Mando'a alphabet) Rendering & Copy-Paste",
+      "reason": "不少用户希望把拉丁字母翻译成 Mandalorian 字母并直接粘贴到社交媒体或设计软件中。",
+      "competitors": ["funtranslations.com", "lingojam.com", "polyglotclub.com"]
+    },
+    {
+      "topic": "Grammar Cheatsheet (sentence order, verb tenses)",
+      "reason": "仅单词翻译无法满足写整句/台词的需求，粉丝需要简易语法指引。",
+      "competitors": [
+        "lingojam.com",
+        "funtranslations.com",
+        "translatorking.com"
+      ]
+    },
+    {
+      "topic": "Common Phrases From The Show (\"This is the way\", \"I have spoken\")",
+      "reason": "剧集高频台词是用户最想即刻复制使用的内容。",
+      "competitors": [
+        "lingojam.com",
+        "funtranslations.com",
+        "generatorfun.com",
+        "imaginary microlink sites"
+      ]
+    },
+    {
+      "topic": "API / Batch Translation Endpoint",
+      "reason": "开发者或 Discord 机器人作者希望程序化调用翻译。",
+      "competitors": ["全部当前排名站点均无 API，除 funtranslations 付费 API"]
+    },
+    {
+      "topic": "Cultural Notes & Etiquette (e.g., how Mandalorians name themselves)",
+      "reason": "硬核粉丝不仅关心语言，也关心背后的文化与使用场景。",
+      "competitors": ["lingojam.com", "funtranslations.com"]
+    },
+    {
+      "topic": "Mobile-First / Offline PWA Support",
+      "reason": "Cosplay 或 Comic-Con 现场常无稳定网络，离线模式更实用。",
+      "competitors": ["所有桌面网页工具"]
+    }
+  ],
+  "socialTopics": [
+    {
+      "platform": "Reddit",
+      "topic": "Is there any 100% accurate Mandalorian translator?",
+      "engagement": "高",
+      "summary": "r/StarWars 和 r/Mandalorian 常见提问，讨论哪些网站最靠谱以及 Mando’a 词根来源。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "How do you say “This is the Way” in proper Mando’a?",
+      "engagement": "高",
+      "summary": "投票/评论都在争论官方拼写 ke’parjai vs. Ten gar beskar? 并引用 Karen Traviss 材料。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "What resources can I use to actually learn Mando’a, not just translate single words?",
+      "engagement": "中",
+      "summary": "回答推荐《Republic Commando》附录、fan-made PDF、Discord 语伴以及 Duolingo 社群。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "Request: Need Mandalorian translation for a tattoo design",
+      "engagement": "中",
+      "summary": "大量用户寻求社区校正翻译，担心永久纹身出错。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "What is the difference between Mandalorian and Galactic Basic?",
+      "engagement": "中",
+      "summary": "探讨语系、字符集、在正史中的使用场景。"
+    }
+  ],
+  "funFacts": [
+    "Mando’a was originally developed by author Karen Traviss for the 2004 novel Star Wars: Republic Commando, not by the TV series team.",
+    "Unlike many constructed languages, Mando’a purposely lacks gendered nouns, reflecting Mandalorian culture’s egalitarian view.",
+    "The iconic line “This is the way” never appeared in Traviss’s original Mando’a corpus; fans retro-translated it only after the Disney+ series aired.",
+    "The Mandalorian alphabet is essentially a stylized version of the Mandalorian Neo-Crusader symbols seen in the 2003 game Knights of the Old Republic.",
+    "‘Beskar’ literally means ‘iron’ in Mando’a; the phrase ‘Beskar’gam’ translates to ‘iron skin’, i.e., armor."
+  ],
+  "highFrequencyWords": [
+    {
+      "word": "Mandalorian",
+      "frequency": "高",
+      "context": "标题、说明"
+    },
+    {
+      "word": "translator",
+      "frequency": "高",
+      "context": "工具功能"
+    },
+    {
+      "word": "Mando'a",
+      "frequency": "高",
+      "context": "语言名称"
+    },
+    {
+      "word": "English",
+      "frequency": "高",
+      "context": "源语言选项"
+    },
+    {
+      "word": "translate",
+      "frequency": "高",
+      "context": "按钮、CTA"
+    },
+    {
+      "word": "language",
+      "frequency": "高",
+      "context": "描述"
+    },
+    {
+      "word": "text",
+      "frequency": "高",
+      "context": "输入框提示"
+    },
+    {
+      "word": "Star",
+      "frequency": "高",
+      "context": "品牌关联"
+    },
+    {
+      "word": "Wars",
+      "frequency": "高",
+      "context": "品牌关联"
+    },
+    {
+      "word": "online",
+      "frequency": "中",
+      "context": "服务性质"
+    },
+    {
+      "word": "tool",
+      "frequency": "中",
+      "context": "产品类型"
+    },
+    {
+      "word": "free",
+      "frequency": "中",
+      "context": "价值主张"
+    },
+    {
+      "word": "generator",
+      "frequency": "中",
+      "context": "同义词"
+    },
+    {
+      "word": "convert",
+      "frequency": "中",
+      "context": "功能动词"
+    },
+    {
+      "word": "phrases",
+      "frequency": "中",
+      "context": "用例"
+    },
+    {
+      "word": "sentences",
+      "frequency": "中",
+      "context": "用例"
+    },
+    {
+      "word": "instant",
+      "frequency": "中",
+      "context": "速度卖点"
+    },
+    {
+      "word": "copy",
+      "frequency": "中",
+      "context": "操作指令"
+    },
+    {
+      "word": "result",
+      "frequency": "中",
+      "context": "输出"
+    },
+    {
+      "word": "share",
+      "frequency": "中",
+      "context": "社交动作"
+    },
+    {
+      "word": "alphabet",
+      "frequency": "中",
+      "context": "脚本转换"
+    },
+    {
+      "word": "script",
+      "frequency": "中",
+      "context": "脚本转换"
+    },
+    {
+      "word": "font",
+      "frequency": "中",
+      "context": "设计需求"
+    },
+    {
+      "word": "unicode",
+      "frequency": "中",
+      "context": "技术实现"
+    },
+    {
+      "word": "phrasebook",
+      "frequency": "中",
+      "context": "常用短语"
+    },
+    {
+      "word": "examples",
+      "frequency": "中",
+      "context": "教学"
+    },
+    {
+      "word": "audio",
+      "frequency": "中",
+      "context": "发音"
+    },
+    {
+      "word": "pronunciation",
+      "frequency": "中",
+      "context": "发音"
+    },
+    {
+      "word": "API",
+      "frequency": "中",
+      "context": "开发者"
+    },
+    {
+      "word": "legend",
+      "frequency": "中",
+      "context": "正史区分"
+    }
+  ]
+}

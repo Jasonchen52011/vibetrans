@@ -1,0 +1,300 @@
+{
+  "contentGaps": [
+    {
+      "topic": "Batch or Whole-Chapter Translation (one-click upload of a ZIP/PDF)",
+      "reason": "搜索者往往想一次性翻译整本漫画，而多数现有工具只能逐页上传，非常耗时。",
+      "competitors": [
+        "ImageTranslate",
+        "CopyFish",
+        "Google Translate Camera",
+        "Manga Translator (Android)",
+        "DeepL + OCR 工作流"
+      ]
+    },
+    {
+      "topic": "In-bubble Editing & Typesetting After Translation",
+      "reason": "用户不仅想看译文，更想把译文直接排进气泡，用于分享或做同人扫本。",
+      "competitors": [
+        "GitHub MangaTranslator",
+        "ImageTranslate",
+        "DeepL",
+        "Yandex Image Translate",
+        "Photo Translator App"
+      ]
+    },
+    {
+      "topic": "Sound-Effect (SFX) Recognition & Localisation",
+      "reason": "日语 SFX 字体夸张，OCR 识别率低；英文没有直译，需要创意本地化。",
+      "competitors": [
+        "Manga Translator (Android)",
+        "CopyFish",
+        "Google Translate Camera",
+        "DeepL",
+        "ImageTranslate"
+      ]
+    },
+    {
+      "topic": "Vertical/Right-to-Left Text OCR Accuracy Metrics",
+      "reason": "漫画常用纵排文本，用户关心工具对纵排及右翻排版的准确率。",
+      "competitors": ["ImageTranslate", "CopyFish", "Photo Translator", "DeepL"]
+    },
+    {
+      "topic": "Data Privacy & Copyright Compliance When Uploading Scans",
+      "reason": "扫描件属版权灰区，用户担心上传到云端是否被存档或追溯。",
+      "competitors": [
+        "Google Translate Camera",
+        "ImageTranslate",
+        "Photo Translator",
+        "CopyFish",
+        "Manga Translator (Android)"
+      ]
+    },
+    {
+      "topic": "Human-vs-AI Quality Benchmark (BLEU or human review samples)",
+      "reason": "想知道 AI 翻译与专业译者差距，决定是否仍需人工润色。",
+      "competitors": [
+        "DeepL",
+        "ImageTranslate",
+        "GitHub MangaTranslator",
+        "Google Translate Camera"
+      ]
+    },
+    {
+      "topic": "Multi-language Output (非英语，如西班牙语、法语)",
+      "reason": "欧美、西语地区大量漫迷，希望直接译成母语；目前多只支持英语。",
+      "competitors": [
+        "Manga Translator (Android)",
+        "CopyFish",
+        "ImageTranslate",
+        "GitHub tool"
+      ]
+    },
+    {
+      "topic": "Mobile-Desktop Sync (拍照后自动同步到桌面阅读器)",
+      "reason": "读者用手机拍照翻译，但真正阅读想在大屏，期待无缝切换。",
+      "competitors": [
+        "Google Translate Camera",
+        "Photo Translator",
+        "Manga Translator (Android)"
+      ]
+    },
+    {
+      "topic": "Built-in Reader with RTL Navigation & Layered Text Toggle",
+      "reason": "希望直接在工具内阅读译文，可随时切换原文/译文。",
+      "competitors": [
+        "ImageTranslate",
+        "CopyFish",
+        "DeepL",
+        "GitHub MangaTranslator"
+      ]
+    },
+    {
+      "topic": "Legal Guide: Fair Use, Scanlation Ethics & DMCA Risk",
+      "reason": "用户担心非法分享译本触法，想要明确指引与风险提示。",
+      "competitors": ["所有排名页面几乎均未涉及"]
+    }
+  ],
+  "socialTopics": [
+    {
+      "platform": "Reddit",
+      "topic": "Is there any camera app that can reliably translate Japanese manga on the fly?",
+      "engagement": "高",
+      "summary": "r/manga、r/learnjapanese 中重复出现；用户分享 Google 翻译、DeepL+CopyFish 组合并吐槽字体识别差。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "How do scanlation groups split work between cleaners, typesetters, and translators?",
+      "engagement": "中",
+      "summary": "讨论分工、所需软件、翻译时间成本，对想进入翻译圈的人很有参考价值。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "Can AI replace human manga translators?",
+      "engagement": "高",
+      "summary": "在 r/translator 和 r/manga tech 频道均有长帖，比较 GPT、DeepL 与人工润色差异。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "What is the best manga translator app for Android/iOS?",
+      "engagement": "高",
+      "summary": "多答案上千阅读，列出 Top 5 应用并评价 OCR 准确性、广告体验。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "How much do professional manga translators earn?",
+      "engagement": "中",
+      "summary": "提到按页计价 5-8 美元、版权分成及出版社流程。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "Tools for vertical Japanese OCR—any way to improve accuracy?",
+      "engagement": "中",
+      "summary": "分享把图片旋转、用 Tesseract vertical 模型、后期手修的方法。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "How to become a manga translator without being fluent in Japanese?",
+      "engagement": "中",
+      "summary": "答案多建议先学 N2 以上，再用辅助工具；强调文化理解。"
+    }
+  ],
+  "funFacts": [
+    "英文圈最早正式出版的日式右翻漫画是 1987 年 Dark Horse 的《Lone Wolf and Cub》，此前出版社会把所有页镜像翻转以适应西方阅读习惯。",
+    "“Scanlation” 一词由“scan”+“translation”组合而来，最早出现于 1990 年代的 IRC 同人圈，目前已被牛津英语词典收录为俚语条目。",
+    "日语漫画常见拟声词超过 2,500 个，而官方英语本地化指南里只列出约 300 个常用替换，导致大量 SFX 被保留原文。",
+    "在 Reddit 调查中，超过 60% 的读者曾尝试用 Google Translate Camera 阅读生肉漫画，但不到 10% 的人觉得“可以接受地流畅”。",
+    "Tesseract OCR 自 5.0 起新增了对竖排日文训练数据，其在漫画对话框中的识别准确率从 ~68% 提升到 ~84%。"
+  ],
+  "highFrequencyWords": [
+    {
+      "word": "manga",
+      "frequency": "高",
+      "context": "核心主题、文件类型说明"
+    },
+    {
+      "word": "translate",
+      "frequency": "高",
+      "context": "动作/主功能"
+    },
+    {
+      "word": "Japanese",
+      "frequency": "高",
+      "context": "源语言描述"
+    },
+    {
+      "word": "English",
+      "frequency": "高",
+      "context": "目标语言描述"
+    },
+    {
+      "word": "OCR",
+      "frequency": "高",
+      "context": "技术实现"
+    },
+    {
+      "word": "image",
+      "frequency": "高",
+      "context": "输入类型"
+    },
+    {
+      "word": "app",
+      "frequency": "高",
+      "context": "移动端产品称呼"
+    },
+    {
+      "word": "online",
+      "frequency": "高",
+      "context": "SaaS/网页版声明"
+    },
+    {
+      "word": "free",
+      "frequency": "高",
+      "context": "价格卖点"
+    },
+    {
+      "word": "tool",
+      "frequency": "高",
+      "context": "产品定位"
+    },
+    {
+      "word": "comic",
+      "frequency": "中",
+      "context": "同义词拓展"
+    },
+    {
+      "word": "AI",
+      "frequency": "中",
+      "context": "卖点/质量说明"
+    },
+    {
+      "word": "panel",
+      "frequency": "中",
+      "context": "漫画分栏引用"
+    },
+    {
+      "word": "bubble",
+      "frequency": "中",
+      "context": "对话框编辑说明"
+    },
+    {
+      "word": "camera",
+      "frequency": "中",
+      "context": "即时拍照翻译"
+    },
+    {
+      "word": "accuracy",
+      "frequency": "中",
+      "context": "质量指标"
+    },
+    {
+      "word": "scan",
+      "frequency": "中",
+      "context": "文件获取方式"
+    },
+    {
+      "word": "instant",
+      "frequency": "中",
+      "context": "速度卖点"
+    },
+    {
+      "word": "upload",
+      "frequency": "中",
+      "context": "操作流程"
+    },
+    {
+      "word": "Android",
+      "frequency": "中",
+      "context": "平台标签"
+    },
+    {
+      "word": "iOS",
+      "frequency": "中",
+      "context": "平台标签"
+    },
+    {
+      "word": "text",
+      "frequency": "中",
+      "context": "识别对象"
+    },
+    {
+      "word": "software",
+      "frequency": "中",
+      "context": "桌面产品称呼"
+    },
+    {
+      "word": "recognition",
+      "frequency": "中",
+      "context": "OCR 描述"
+    },
+    {
+      "word": "reader",
+      "frequency": "中",
+      "context": "阅读器功能"
+    },
+    {
+      "word": "support",
+      "frequency": "中",
+      "context": "技术支持/语言支持"
+    },
+    {
+      "word": "automatic",
+      "frequency": "中",
+      "context": "自动化特性"
+    },
+    {
+      "word": "export",
+      "frequency": "中",
+      "context": "输出功能"
+    },
+    {
+      "word": "desktop",
+      "frequency": "中",
+      "context": "使用场景"
+    },
+    {
+      "word": "quality",
+      "frequency": "中",
+      "context": "效果描述"
+    }
+  ]
+}

@@ -1,0 +1,230 @@
+{
+  "EnglishToAmharicTranslatorPage": {
+    "title": "VibeTrans：英语到阿姆哈拉语翻译器",
+    "description": "将英语内容翻译成地道的阿姆哈拉语文字，支持语调控制、协作模式和导出工作流程，适用于营销、客户支持和文化叙事。",
+    "hero": {
+      "title": "为真实团队打造的英语到阿姆哈拉语翻译器",
+      "description": "在英语和阿姆哈拉语之间即时切换，具备语调感知AI、音译提示和协作工具，专为在多个渠道工作的埃塞俄比亚企业、非营利组织和侨民创作者而设计。"
+    },
+    "tool": {
+      "inputLabel": "英语文本",
+      "outputLabel": "阿姆哈拉语翻译",
+      "inputPlaceholder": "粘贴英语文案、邮件或脚本...",
+      "outputPlaceholder": "您的阿姆哈拉语翻译将在这里显示...",
+      "translateButton": "翻译",
+      "uploadButton": "上传文件",
+      "uploadHint": "支持 .txt 和 .docx 文件",
+      "voiceInputButton": "语音输入",
+      "voiceInputHint": "点击开始语音输入",
+      "audioUploadButton": "上传音频",
+      "audioUploadHint": "上传音频文件进行转录",
+      "voiceOutputButton": "播放音频",
+      "voiceOutputHint": "收听翻译",
+      "loading": "正在翻译成阿姆哈拉语...",
+      "transcribing": "正在转录音频...",
+      "error": "翻译失败，请重试。",
+      "noInput": "请输入要翻译的英语文本。"
+    },
+    "whatIs": {
+      "title": "什么是阿姆哈拉语翻译器？",
+      "description": "VibeTrans英语到阿姆哈拉语翻译器是一个专为埃塞俄比亚正式语体、吉兹文字和现代俚语调校的AI工作空间。上传Word文件、聊天记录或通话记录，接收精炼的阿姆哈拉语和可选的拉丁音译。内置审查提示帮助双语团队在与客户、政府部门或侨民社区分享之前最终确定信息。它会在每次导出时保持日期格式、敬称和地名的一致性。",
+      "image": "/images/docs/english-amharic-translate.webp",
+      "imageAlt": "英语到阿姆哈拉语翻译工作流程插图"
+    },
+    "examples": {
+      "title": "英语到阿姆哈拉语翻译示例",
+      "description": "了解VibeTrans在将日常商务、旅行和文化短语从英语翻译成阿姆哈拉语时如何保持语调、上下文和吉兹文字的清晰度。",
+      "items": [
+        {
+          "alt": "英语：Welcome to our Addis Ababa office → 阿姆哈拉语：እንኳን ወደ አዲስ አበባ ቢሮቻችን መጡ",
+          "name": "Welcome to our Addis Ababa office → እንኳን ወደ አዲስ አበባ ቢሮቻችን መጡ"
+        },
+        {
+          "alt": "英语：Please review the updated invoice → 阿姆哈拉语：እባክዎን የተዘመነውን ደረሰኝ ይመልከቱ",
+          "name": "Please review the updated invoice → እባክዎን የተዘመነውን ደረሰኝ ይመልከቱ"
+        },
+        {
+          "alt": "英语：Where can I find vegetarian options? → 阿姆哈拉语：የተንስ ምርጫዎችን የት ማግኘት እችላለሁ?",
+          "name": "Where can I find vegetarian options? → የተንስ ምርጫዎችን የት ማግኘት እችላለሁ?"
+        },
+        {
+          "alt": "英语：Flight ET302 departs at 9 AM → 阿姆哈拉语：የET302 በረራ በጠዋት 9 ሰአት ይጀምራል",
+          "name": "Flight ET302 departs at 9 AM → የET302 በረራ በጠዋት 9 ሰአት ይጀምራል"
+        },
+        {
+          "alt": "英语：Let's celebrate Meskel together → 阿姆哈拉语：እንደጋ ሜስቀልን በአንድነት እንከብር",
+          "name": "Let's celebrate Meskel together → እንደጋ ሜስቀልን በአንድነት እንከብር"
+        },
+        {
+          "alt": "英语：Share the partnership agreement today → 阿姆哈拉语：የአባልነት ስምምነቱን ዛሬ ያጋሩ",
+          "name": "Share the partnership agreement today → የአባልነት ስምምነቱን ዛሬ ያጋሩ"
+        }
+      ]
+    },
+    "howto": {
+      "title": "如何将英语翻译成阿姆哈拉语",
+      "description": "按照这些指导步骤，将英语草稿转换为准确的阿姆哈拉语文案，准备发布或发送。",
+      "image": "/images/docs/translate-improve-arrows.webp",
+      "imageAlt": "如何将英语翻译成阿姆哈拉语的步骤",
+      "steps": [
+        {
+          "title": "收集源材料",
+          "description": "从电子邮件、聊天或.docx文件中收集英语消息、提案或记录。上传器保持原始格式完整，检测数字和货币，准备文本以便AI能够为每个段落自动保持商务语调。",
+          "wordCount": 37
+        },
+        {
+          "title": "选择上下文模式",
+          "description": "选择正式政府、商务、支持或创意叙事模式。每个选项加载精选的阿姆哈拉语短语库、敬称和音译规则，以便您的信息以适当的尊重和温暖程度传达给接收者。",
+          "wordCount": 35
+        },
+        {
+          "title": "翻译和协作",
+          "description": "点击翻译接收阿姆哈拉语文字和可选的拉丁音译。提及团队成员进行审查注释，突出需要法律批准的段落，让AI建议语调调整，然后您为所选渠道最终确定客户就绪的草稿。",
+          "wordCount": 41
+        },
+        {
+          "title": "交付和衡量",
+          "description": "将精炼的阿姆哈拉语文案导出为文本、Word或CSV，或触发webhook传送到您的CRM中。启用实时分析跟踪词汇表使用情况、审查者评论和交付状态，确保每个活动与埃塞俄比亚国内外的利益相关者保持一致。",
+          "wordCount": 44
+        }
+      ]
+    },
+    "funFacts": {
+      "title": "阿姆哈拉语见解",
+      "items": [
+        {
+          "title": "具有生活节奏的吉兹文字",
+          "description": "阿姆哈拉语从古老的吉兹音节文字发展而来，融合了闪米特语根源和现代创新——每个字形已经编码辅音和元音，因此准确的间距和语调使书面信息保持音乐感和清晰度。",
+          "image": "/images/docs/amharic-alphabet-fun.webp",
+          "imageAlt": "风格化的阿姆哈拉语字母插图"
+        },
+        {
+          "title": "商务和文化语言",
+          "description": "超过3200万母语者在埃塞俄比亚、大使馆、教堂和侨民媒体中使用阿姆哈拉语，使其对合同、旅游、社区外展和文化故事叙述至关重要，这些需要尊重的本地化细微差别。",
+          "image": "/images/docs/global-communication.webp",
+          "imageAlt": "与埃塞俄比亚团队进行全球协作"
+        }
+      ]
+    },
+    "userInterest": {
+      "title": "团队使用英语到阿姆哈拉语翻译的地方",
+      "items": [
+        {
+          "title": "政府和企业通讯",
+          "description": "起草双语简报、政策更新和采购通知，尊重埃塞俄比亚行政风格，同时保持国际合作伙伴和侨民社区的可及性。",
+          "image": "/images/docs/global-business-tools.webp",
+          "imageAlt": "专业人员就政府简报进行协作"
+        },
+        {
+          "title": "客户支持中心",
+          "description": "将帮助文章和在线聊天回复转换为清晰的阿姆哈拉语，然后同步回您的CRM，使代理无需切换工具即可解决问题。",
+          "image": "/images/docs/global-communication.webp",
+          "imageAlt": "支持专家用阿姆哈拉语协助客户"
+        },
+        {
+          "title": "学习和NGO项目",
+          "description": "使用简化的审查者工作流程和一致的术语库本地化培训手册、教育短信活动和健康外展内容。",
+          "image": "/images/docs/learning-translation-tools.webp",
+          "imageAlt": "教育者在教室中使用翻译工具"
+        },
+        {
+          "title": "文化和媒体工作室",
+          "description": "改编纪录片、流媒体字幕和节日剧本，使用语调预设保留习语、庆祝活动和文化引用，供全球观众欣赏。",
+          "image": "/images/docs/culture-bridge-tools.webp",
+          "imageAlt": "创意团队准备双语媒体内容"
+        }
+      ]
+    },
+    "highlights": {
+      "title": "为什么埃塞俄比亚团队选择VibeTrans",
+      "overview": "AI驱动的英语↔阿姆哈拉语翻译，支持音译、审查保障和导出自动化，专为现代埃塞俄比亚工作流程设计。",
+      "description": "将吉兹文字掌握与商务就绪工具相结合，使法律、支持和营销团队能够提供精炼的阿姆哈拉语文案，而无需追逐自由职业者或处理电子表格。",
+      "features": [
+        {
+          "icon": "FaRocket",
+          "title": "上下文感知草稿",
+          "description": "自适应提示理解地区习语，尊重正式问候，并保持姓名一致，使每次翻译听起来都像埃塞俄比亚利益相关者的母语。"
+        },
+        {
+          "icon": "FaShieldAlt",
+          "title": "安全协作",
+          "description": "基于角色的审查队列、编辑工具和加密导出保护敏感协议和政府文档端到端安全。"
+        },
+        {
+          "icon": "FaBrain",
+          "title": "持续学习",
+          "description": "反馈循环将来自政府部门、银行和媒体机构的新术语反馈给AI，使翻译与不断发展的语言保持同步。"
+        },
+        {
+          "icon": "FaChartLine",
+          "title": "工作流程自动化",
+          "description": "集成将批准的阿姆哈拉语文案自动推送到CMS、CRM或SMS平台，节省手动发布和QA的时间。"
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "用户评价",
+      "subtitle": "每天使用VibeTrans连接英语和阿姆哈拉语的团队故事",
+      "items": {
+        "item-1": {
+          "name": "萨巴·门吉斯图",
+          "role": "亚的斯亚贝巴通讯负责人",
+          "heading": "政策更新以完美的阿姆哈拉语送达",
+          "content": "每周政策简报过去在翻译中停滞不前。使用VibeTrans，我们可以在几小时内发布双语更新，审查者信任每个政府合作伙伴的敬称和措辞。",
+          "rating": "4.9"
+        },
+        "item-2": {
+          "name": "约纳坦·贝克莱",
+          "role": "金融科技初创公司客户体验总监",
+          "heading": "支持工单保持友好和精确",
+          "content": "我们的代理最终能够用精炼的阿姆哈拉语回复，而不会失去个人风格。语调预设让合规部门满意，同时客户感到被即时倾听。",
+          "rating": "4.7"
+        },
+        "item-3": {
+          "name": "汉娜·费卡杜",
+          "role": "侨民媒体集体制片人",
+          "heading": "字幕匹配故事的核心",
+          "content": "我们为三大洲的观众制作纪录片字幕。VibeTrans准确把握文化引用并提供音译，使叙述者能够自然地控制每一条线的节奏。",
+          "rating": "4.8"
+        }
+      }
+    },
+    "faqs": {
+      "title": "常见问题",
+      "subtitle": "在启动下一个英语到阿姆哈拉语项目之前的快速解答",
+      "items": [
+        {
+          "question": "翻译器能保持敬称和正式措辞吗？",
+          "answer": "是的。选择正式预设，VibeTrans保持标题、尊重的问候和结尾行，符合埃塞俄比亚商务礼仪。"
+        },
+        {
+          "question": "它是否为学习者支持音译？",
+          "answer": "启用音译模式在阿姆哈拉语输出旁边显示拉丁文字，以便双语审查者和学习者可以快速确认发音。"
+        },
+        {
+          "question": "我们如何在大型文档上协作？",
+          "answer": "上传.docx文件，添加审查者，跟踪内联评论。审批会自动同步回您的CMS或云存储。"
+        },
+        {
+          "question": "是否有现有平台的API？",
+          "answer": "绝对有。使用REST API或webhook触发器将翻译推送到帮助中心、CRM自动化或SMS活动，无需手动复制粘贴。"
+        },
+        {
+          "question": "我们的数据如何受到保护？",
+          "answer": "项目在静态和传输过程中都是加密的。管理员可以设置保留窗口、编辑敏感数据和审计每次导出。"
+        },
+        {
+          "question": "翻译器是免费的吗？",
+          "answer": "是的。英语到阿姆哈拉语翻译器提供免费基础翻译，需要高级协作工具的团队可使用高级功能。"
+        }
+      ]
+    },
+    "ctaButton": "试试英语到阿姆哈拉语翻译器",
+    "cta": {
+      "title": "开始使用VibeTrans英语到阿姆哈拉语翻译",
+      "description": "在几分钟内启动准确的阿姆哈拉语文案——非常适合政府更新、企业支持、文化媒体和社区外展。",
+      "primaryButton": "立即试用英语到阿姆哈拉语翻译器",
+      "secondaryButton": "返回顶部"
+    }
+  }
+}

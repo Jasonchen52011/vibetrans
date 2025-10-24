@@ -1,0 +1,231 @@
+{
+  "EnglishToSwahiliTranslatorPage": {
+    "title": "VibeTrans：英语到斯瓦希里语翻译器",
+    "description": "使用AI即时将英语翻译为斯瓦希里语，尊重语气、俚语和商业术语，专为东非受众定制。",
+    "hero": {
+      "title": "最适合真实对话的英语到斯瓦希里语翻译器",
+      "description": "使用最佳英语到斯瓦希里语翻译器进行跨境业务、旅行和内容交流。从一个简单的仪表板提供准确的短语、自然的俚语和友好的音频脚本。",
+      "userCount": "来自 25,000+ 满意用户"
+    },
+    "tool": {
+      "inputLabel": "输入文本",
+      "outputLabel": "翻译文本",
+      "inputPlaceholder": "粘贴需要斯瓦希里语本地化的英语内容…",
+      "outputPlaceholder": "您的斯瓦希里语翻译将显示在这里…",
+      "translateButton": "翻译",
+      "uploadButton": "上传文件",
+      "uploadHint": "支持 .txt 和 .docx 文件",
+      "voiceInputButton": "语音输入",
+      "voiceInputHint": "点击开始语音输入",
+      "audioUploadButton": "上传音频",
+      "audioUploadHint": "上传音频文件进行转录",
+      "voiceOutputButton": "播放音频",
+      "voiceOutputHint": "收听翻译",
+      "loading": "正在将英语翻译成斯瓦希里语…",
+      "transcribing": "正在转录音频...",
+      "error": "翻译失败，请重试。",
+      "noInput": "请输入一些英语文本进行翻译。"
+    },
+    "whatIs": {
+      "title": "什么是VibeTrans英语到斯瓦希里语翻译器？",
+      "description": "VibeTrans英语到斯瓦希里语翻译器是一款AI驱动的本地化助手，专为东非快速、文化意识交流而构建。它保持地区俚语、敬语和语调一致，同时处理文档、语音笔记和API请求。企业、非政府组织和创作者依靠它与肯尼亚、坦桑尼亚、乌干达和其他地区的斯瓦希里语使用者自信合作。",
+      "image": "/images/docs/swahili-speaking-world.webp",
+      "imageAlt": "突出显示斯瓦希里语使用世界的地图"
+    },
+    "examples": {
+      "title": "英语到斯瓦希里语翻译示例",
+      "description": "了解VibeTrans在将商业更新、旅行提示和对话短语翻译成斯瓦希里语时如何保持细微差别。",
+      "items": [
+        {
+          "alt": "原文：Thank you for your patience → 斯瓦希里语：Asante kwa uvumilivu wako",
+          "name": "感谢您的耐心 → Asante kwa uvumilivu wako"
+        },
+        {
+          "alt": "原文：The shipment leaves on Friday → 斯瓦希里语：Usafirishaji unaondoka Ijumaa",
+          "name": "货物周五发出 → Usafirishaji unaondoka Ijumaa"
+        },
+        {
+          "alt": "原文：Please sign the partnership agreement → 斯瓦希里语：Tafadhali saini makubaliano ya ushirikiano",
+          "name": "请签署合作协议 → Tafadhali saini makubaliano ya ushirikiano"
+        },
+        {
+          "alt": "原文：Where can I find the bus stop? → 斯瓦希里语：Naweza kupata kituo cha basi wapi?",
+          "name": "公交站在哪里？ → Naweza kupata kituo cha basi wapi?"
+        },
+        {
+          "alt": "原文：Let me know if the price works for you → 斯瓦希里语：Nijulishe kama bei hiyo inakufaa",
+          "name": "价格适合您吗？ → Nijulishe kama bei hiyo inakufaa"
+        },
+        {
+          "alt": "原文：We are live-streaming the product demo → 斯瓦希里语：Tunasambaza moja kwa moja onyesho la bidhaa",
+          "name": "我们正在直播产品演示 → Tunasambaza moja kwa moja onyesho la bidhaa"
+        }
+      ]
+    },
+    "howto": {
+      "title": "如何将英语翻译成斯瓦希里语",
+      "description": "按照这些快速步骤将英语内容转换为准确的斯瓦希里语文本。",
+      "image": "/images/docs/english-to-swahili-translator-how-to.webp",
+      "imageAlt": "英语到斯瓦希里语翻译的分步指南",
+      "steps": [
+        {
+          "title": "收集您的内容",
+          "description": "粘贴英语句子或上传 .txt 和 .docx 文件。VibeTrans自动检测术语、日期和数字，您无需预先格式化任何内容。",
+          "wordCount": 36
+        },
+        {
+          "title": "选择上下文",
+          "description": "选择商业、旅行、教育或非政府组织模式，解锁专为东非合作伙伴和受众量身定制领域特定术语包。",
+          "wordCount": 30
+        },
+        {
+          "title": "使用AI翻译",
+          "description": "点击翻译生成人性化的斯瓦希里语文本。根据您选择的模式，语气、俚语和正式程度会自动调整。",
+          "wordCount": 31
+        },
+        {
+          "title": "审查和导出",
+          "description": "收听语音朗读、复制到剪贴板或下载干净的 .txt 文件。直接与队友分享，确保每个人在批准的斯瓦希里语措辞上保持一致。",
+          "wordCount": 37
+        }
+      ]
+    },
+    "funFacts": {
+      "title": "斯瓦希里语语言洞察",
+      "items": [
+        {
+          "title": "斯瓦希里语与阿拉伯语的联系",
+          "description": "您知道斯瓦希里语约35%的词汇来自阿拉伯语吗？这种混合为翻译工具创造了有趣的挑战。特别是在处理金融或宗教文本时，阿拉伯语借词很常见。",
+          "image": "/images/docs/swahili-speakers-map.webp",
+          "imageAlt": "显示讲斯瓦希里语地区的地图"
+        },
+        {
+          "title": "《狮子王》的隐藏课程",
+          "description": "还记得《狮子王》中的辛巴和拉菲奇吗？他们的名字都是斯瓦希里语！粉丝们用这个来测试翻译工具。这是一个有趣的方式来看看这些工具处理斯瓦希里语名字和短语的准确度。",
+          "image": "/images/docs/swahili-idioms.webp",
+          "imageAlt": "斯瓦希里语习语和文化引用的插图"
+        }
+      ]
+    },
+    "userInterest": {
+      "title": "团队使用英语到斯瓦希里语翻译的场合",
+      "items": [
+        {
+          "title": "东非交易室",
+          "description": "为内罗毕、达累斯萨拉姆和坎帕拉的合作伙伴本地化提案、发票和法律条款，而不失去意图或语气。",
+          "image": "/images/docs/africa-expansion-flat.webp",
+          "imageAlt": "商业专业人士在东非跨区域合作"
+        },
+        {
+          "title": "旅行和酒店业",
+          "description": "为导游、酒店和野生动物园经营者配备快速翻译，帮助客人从机场接送到日落巡航都感到受欢迎。",
+          "image": "/images/docs/travel-translation-africa.webp",
+          "imageAlt": "旅行者在非洲接受翻译帮助"
+        },
+        {
+          "title": "非政府组织实地项目",
+          "description": "将培训手册、健康更新和社区公告翻译成居民能立即理解的平易近人的斯瓦希里语文本。",
+          "image": "/images/docs/culture-exchange-globe.webp",
+          "imageAlt": "全球团队交流文化和知识"
+        },
+        {
+          "title": "语言学习者",
+          "description": "将抽认卡与口语短语练习结合，学生可以在教科书语法的同时练习现代斯瓦希里语表达。",
+          "image": "/images/docs/swahili-learning.webp",
+          "imageAlt": "学生在笔记本电脑上练习斯瓦希里语"
+        }
+      ]
+    },
+    "highlights": {
+      "title": "东非团队选择VibeTrans的原因",
+      "overview": "AI驱动的英语↔斯瓦希里语翻译，具有即时方向切换、文化流利度和语音工作流程，专为真实世界团队构建。",
+      "description": "融合双向文案起草、习语意识语言模型和语音到文本支持，让每个利益相关者——从内罗毕运营到全球合作伙伴——都能即时使用正确的语言。",
+      "features": [
+        {
+          "title": "一键双向切换",
+          "icon": "FaRocket",
+          "description": "即时切换英语↔斯瓦希里语，保持源和目标草案对齐，使商业、法律和产品团队能够迭代而无需处理多个工具。"
+        },
+        {
+          "title": "上下文感知AI",
+          "icon": "FaBrain",
+          "description": "区域语料库加上社区反馈识别像'sasa'或'karibu'这样的习语，保持语气自然，无论您是在与司机、捐赠者还是学生交谈。"
+        },
+        {
+          "title": "语音和音频就绪",
+          "icon": "FaVolumeUp",
+          "description": "录制更新或上传实地录音。内置语音识别和Whisper驱动的转录将口语斯瓦希里语或英语转换为干净、可编辑的文本。"
+        },
+        {
+          "title": "灵活交付",
+          "icon": "FaDownload",
+          "description": "在几秒钟内复制、下载或通过语音朗读传递。保持客户回复、法律条款和学习内容在所有渠道上保持最新。"
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "用户评价",
+      "subtitle": "每天使用VibeTrans连接英语和斯瓦希里的团队故事",
+      "items": [
+        {
+          "name": "艾莎·卡马乌",
+          "role": "物流经理，内罗毕",
+          "heading": "运输警报现在几分钟内发出",
+          "content": "我们从处理自由译者转为在几分钟内完成运输更新。VibeTrans保持我们的斯瓦希里语通知专业，同时对路线上每个司机听起来友好。",
+          "rating": "4.9"
+        },
+        {
+          "name": "迈克尔·特纳",
+          "role": "野生动物园旅游创始人",
+          "heading": "导游在每次简报中都听起来地道",
+          "content": "我们的导游现在可以用流利的斯瓦希里语和英语进行简报，无需记忆脚本。翻译器掌握地区习语，让游客从落地那一刻就感到沉浸。",
+          "rating": "4.6"
+        },
+        {
+          "name": "纳斯拉·阿卜杜拉",
+          "role": "社区卫生协调员",
+          "heading": "每周健康更新更快触达社区",
+          "content": "每周健康公告过去需要三天时间翻译。使用VibeTrans，我们在诊所开门前发布双语更新，让家庭了解信息并保持安全。",
+          "rating": "4.8"
+        }
+      ]
+    },
+    "faqs": {
+      "title": "常见问题",
+      "subtitle": "启动下一个英语到斯瓦希里语项目前的快速解答",
+      "items": [
+        {
+          "question": "什么是最好的商业团队英语到斯瓦希里语翻译器？",
+          "answer": "VibeTrans结合AI与精选的东非短语库，使其成为需要可靠语气控制的销售、法律和运营团队的最佳英语到斯瓦希里语翻译器。"
+        },
+        {
+          "question": "我可以同时翻译文档和音频吗？",
+          "answer": "可以。上传文本、Word文件或粘贴脚本，然后生成斯瓦希里语文案、可下载转录，甚至语音朗读音频用于配音工作。"
+        },
+        {
+          "question": "翻译器处理地区俚语和习语吗？",
+          "answer": "当然。社区反馈和领域词汇表帮助VibeTrans解释像'shwari'或'pole sana'这样的俚语，让您的信息自然落地。"
+        },
+        {
+          "question": "开发者可以将这个翻译器集成到现有工具中吗？",
+          "answer": "可以。使用REST API或webhook将英语到斯瓦希里语翻译直接推送到应用程序、CRM或聊天自动化中，无需手动复制粘贴。"
+        },
+        {
+          "question": "我的翻译数据如何得到保护？",
+          "answer": "所有项目在静态和传输中都经过加密，具有基于角色的访问控制和可选的数据保留控制，确保只有您的团队能看到翻译。"
+        },
+        {
+          "question": "我可以离线使用翻译器吗？",
+          "answer": "此翻译器仅限网络使用，需要互联网连接。不支持离线使用或移动应用。所有翻译都通过我们的安全服务器在线进行。"
+        }
+      ]
+    },
+    "ctaButton": "试用英语到斯瓦希里语翻译器",
+    "cta": {
+      "title": "开始使用VibeTrans英语到斯瓦希里语翻译",
+      "description": "在几分钟内启动准确的斯瓦希里语文案——完美适用于销售演示文稿、旅行脚本、非政府组织更新和多语言媒体。",
+      "primaryButton": "立即试用英语到斯瓦希里语翻译器",
+      "secondaryButton": "返回顶部"
+    }
+  }
+}

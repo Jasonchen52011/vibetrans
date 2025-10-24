@@ -1,0 +1,320 @@
+{
+  "contentGaps": [
+    {
+      "topic": "Ancient Greek vs. Modern Greek translation",
+      "reason": "Students, gamers, historians and Bible readers search specifically for Ancient Greek passages, but most tools only support Modern Greek.",
+      "competitors": [
+        "Google Translate",
+        "DeepL",
+        "Bing",
+        "Reverso",
+        "Yandex",
+        "Collins",
+        "WordReference"
+      ]
+    },
+    {
+      "topic": "Dialects & regional slang (Cypriot, Pontic, Cretan, etc.)",
+      "reason": "Native speakers and diaspora need nuance that generic translators miss, causing awkward or wrong wording.",
+      "competitors": [
+        "Google Translate",
+        "DeepL",
+        "Bing",
+        "Collins",
+        "Lexilogos"
+      ]
+    },
+    {
+      "topic": "Idioms & proverb explanations",
+      "reason": "Literal machine output is usually meaningless; users actively look for cultural equivalent phrases.",
+      "competitors": [
+        "Google Translate",
+        "Bing",
+        "Babylon",
+        "Yandex",
+        "Reverso"
+      ]
+    },
+    {
+      "topic": "Transliteration toggle (Greek alphabet ⇒ Latin letters) with pronunciation audio",
+      "reason": "Travellers and learners want to speak words correctly when they cannot read the Greek script.",
+      "competitors": [
+        "DeepL",
+        "Collins",
+        "Cambridge",
+        "WordReference",
+        "ImTranslator"
+      ]
+    },
+    {
+      "topic": "Image-to-text (OCR) & camera translation for Greek signs/menus",
+      "reason": "Tourists frequently photograph street signs or menus; desktop pages do not address this mobile use-case.",
+      "competitors": [
+        "Babylon",
+        "Collins",
+        "Reverso",
+        "Lexilogos",
+        "ImTranslator"
+      ]
+    },
+    {
+      "topic": "Offline mode & privacy-centric translation",
+      "reason": "Many islands have poor connectivity and some users handle confidential legal documents.",
+      "competitors": [
+        "Google Translate Web",
+        "Bing Web",
+        "DeepL Web",
+        "Yandex",
+        "Collins"
+      ]
+    },
+    {
+      "topic": "Certified / sworn Greek translation for immigration & legal documents",
+      "reason": "Applicants need officially accepted translations; machine output is not valid.",
+      "competitors": [
+        "Google Translate",
+        "DeepL",
+        "Bing",
+        "Reverso",
+        "Lexilogos",
+        "iTranslate"
+      ]
+    },
+    {
+      "topic": "Developer API & bulk file translation specifically for Greek",
+      "reason": "SaaS builders and localization teams seek programmatic access; generic APIs rarely spotlight Greek quality.",
+      "competitors": [
+        "Collins",
+        "Babylon",
+        "Lexilogos",
+        "WordReference",
+        "Cambridge",
+        "ImTranslator"
+      ]
+    },
+    {
+      "topic": "Side-by-side Greek ↔ English parallel text (study mode)",
+      "reason": "Language learners want to see aligned sentences to internalize grammar patterns.",
+      "competitors": ["Google Translate", "Bing", "DeepL", "Yandex", "Babylon"]
+    },
+    {
+      "topic": "Greek alphabet learning widgets / quiz",
+      "reason": "Absolute beginners struggle with letters; an embedded mini-course increases engagement.",
+      "competitors": ["DeepL", "Bing", "Collins", "Reverso", "WordReference"]
+    },
+    {
+      "topic": "Voice conversation (real-time speech) Greek ↔ English",
+      "reason": "Digital nomads and tourists need live dialogue assistance; currently relegated to mobile apps, not web.",
+      "competitors": [
+        "Reverso",
+        "Collins",
+        "Babylon",
+        "Lexilogos",
+        "ImTranslator"
+      ]
+    },
+    {
+      "topic": "Greek math/scientific symbols conversion (α → alpha, etc.)",
+      "reason": "Students often paste equations or variable names and expect readable Latin words.",
+      "competitors": ["Google Translate", "DeepL", "Bing", "Yandex", "Collins"]
+    }
+  ],
+  "socialTopics": [
+    {
+      "platform": "Reddit",
+      "topic": "Why is Google Translate so bad at Greek idioms?",
+      "engagement": "高",
+      "summary": "Thread in r/translator (>1.2k upvotes) where native speakers post hilarious mistranslations of everyday idiomatic expressions."
+    },
+    {
+      "platform": "Reddit",
+      "topic": "Best way to translate Ancient Greek inscriptions for a D&D campaign?",
+      "engagement": "中",
+      "summary": "Gamers in r/DnD and r/AncientGreek discuss reliable resources and complain about lack of accurate machine tools."
+    },
+    {
+      "platform": "Reddit",
+      "topic": "Need certified translation for Greek passport renewal—what service?",
+      "engagement": "中",
+      "summary": "r/greece and r/legaladvice threads comparing prices and turnaround times of sworn translators."
+    },
+    {
+      "platform": "Quora",
+      "topic": "What is the most accurate Greek to English online translator?",
+      "engagement": "高",
+      "summary": "Answer list with >500 upvotes comparing DeepL, Google, and niche tools; consensus: none handles context perfectly."
+    },
+    {
+      "platform": "Quora",
+      "topic": "How different is Ancient Greek from Modern Greek for translation purposes?",
+      "engagement": "中",
+      "summary": "Linguists explain grammatical evolution; over 300 upvotes and 50 comments."
+    },
+    {
+      "platform": "Quora",
+      "topic": "Can I use machine translation for Greek legal documents?",
+      "engagement": "中",
+      "summary": "Lawyers warn about acceptability issues; highlights need for certified translators."
+    }
+  ],
+  "funFacts": [
+    "About 30% of English scientific and medical terminology comes directly from Greek roots (e.g., 'photosynthesis', 'cardiology').",
+    "The Greek word for 'yes' is 'Ναι' and is pronounced like English 'nay', causing frequent tourist confusion.",
+    "Machine translators often fail with Ancient Greek because the training corpora are tiny compared to Modern Greek—less than 1% of the data size.",
+    "The word 'alphabet' itself is a combination of the first two Greek letters, alpha (α) and beta (β).",
+    "Greek once used a polytonic accent system with three different breathings; modern texts standardized to monotonic in 1982—translators must normalize both.",
+    "There is no distinct Greek word for the English auxiliary 'do', which leads to direct-translation errors in questions and negatives."
+  ],
+  "highFrequencyWords": [
+    {
+      "word": "Greek",
+      "frequency": "高",
+      "context": "language descriptor"
+    },
+    {
+      "word": "translator",
+      "frequency": "高",
+      "context": "tool reference"
+    },
+    {
+      "word": "translation",
+      "frequency": "高",
+      "context": "noun service"
+    },
+    {
+      "word": "English",
+      "frequency": "高",
+      "context": "target/source language"
+    },
+    {
+      "word": "online",
+      "frequency": "高",
+      "context": "service availability"
+    },
+    {
+      "word": "translate",
+      "frequency": "高",
+      "context": "verb CTA"
+    },
+    {
+      "word": "free",
+      "frequency": "高",
+      "context": "pricing claim"
+    },
+    {
+      "word": "text",
+      "frequency": "高",
+      "context": "input type"
+    },
+    {
+      "word": "dictionary",
+      "frequency": "中",
+      "context": "lexical resource"
+    },
+    {
+      "word": "instant",
+      "frequency": "中",
+      "context": "speed claim"
+    },
+    {
+      "word": "service",
+      "frequency": "中",
+      "context": "offering"
+    },
+    {
+      "word": "languages",
+      "frequency": "中",
+      "context": "plural capability"
+    },
+    {
+      "word": "modern",
+      "frequency": "中",
+      "context": "variant specification"
+    },
+    {
+      "word": "ancient",
+      "frequency": "中",
+      "context": "variant specification"
+    },
+    {
+      "word": "phrases",
+      "frequency": "中",
+      "context": "content type"
+    },
+    {
+      "word": "words",
+      "frequency": "中",
+      "context": "content type"
+    },
+    {
+      "word": "tool",
+      "frequency": "中",
+      "context": "utility"
+    },
+    {
+      "word": "voice",
+      "frequency": "低",
+      "context": "input method"
+    },
+    {
+      "word": "audio",
+      "frequency": "低",
+      "context": "output feature"
+    },
+    {
+      "word": "pronunciation",
+      "frequency": "低",
+      "context": "learning feature"
+    },
+    {
+      "word": "accuracy",
+      "frequency": "中",
+      "context": "quality metric"
+    },
+    {
+      "word": "professional",
+      "frequency": "低",
+      "context": "human service"
+    },
+    {
+      "word": "quality",
+      "frequency": "中",
+      "context": "performance claim"
+    },
+    {
+      "word": "AI",
+      "frequency": "低",
+      "context": "technology mention"
+    },
+    {
+      "word": "context",
+      "frequency": "低",
+      "context": "semantic handling"
+    },
+    {
+      "word": "learning",
+      "frequency": "低",
+      "context": "educational use"
+    },
+    {
+      "word": "certified",
+      "frequency": "低",
+      "context": "official service"
+    },
+    {
+      "word": "phrasebook",
+      "frequency": "低",
+      "context": "tourist feature"
+    },
+    {
+      "word": "romanization",
+      "frequency": "低",
+      "context": "transliteration"
+    },
+    {
+      "word": "camera",
+      "frequency": "低",
+      "context": "OCR function"
+    }
+  ]
+}

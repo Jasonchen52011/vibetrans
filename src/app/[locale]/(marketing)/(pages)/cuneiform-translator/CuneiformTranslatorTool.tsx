@@ -1,5 +1,6 @@
 'use client';
 
+import { ToolInfoSections } from '@/components/blocks/tool/tool-info-sections';
 import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
 import type { CuneiformScript } from '@/lib/cuneiform';
 import { ArrowRightIcon } from 'lucide-react';
@@ -462,6 +463,11 @@ export default function CuneiformTranslatorTool({
             Reset
           </button>
         </div>
+
+        <ToolInfoSections
+          highlights={pageData.highlights}
+          funFacts={pageData.funFacts}
+        />
       </main>
     </div>
   );

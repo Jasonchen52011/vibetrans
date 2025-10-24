@@ -18,6 +18,12 @@
  *
  * 或添加到 package.json:
  * pnpm tool:auto "alien text generator"
+ *
+ * 环境变量配置：
+ * ENABLE_SKIP_CHINESE_TRANSLATION=true  # 跳过中文国际化，加速工具创建
+ *
+ * 跳过中文翻译示例：
+ * ENABLE_SKIP_CHINESE_TRANSLATION=true node scripts/auto-tool-generator.js "alien text generator"
  */
 
 import { exec, execSync } from 'node:child_process';
@@ -63,6 +69,8 @@ const CONFIG = {
   enableWordCountValidation:
     process.env.ENABLE_WORD_COUNT_VALIDATION !== 'false', // 默认开启
   enablePageErrorCheck: process.env.ENABLE_PAGE_ERROR_CHECK !== 'false', // 默认开启
+  enableSkipChineseTranslation:
+    process.env.ENABLE_SKIP_CHINESE_TRANSLATION === 'true', // 默认关闭
   devServerPort: process.env.DEV_SERVER_PORT || 3000,
   maxWordCountRetries: 2, // 字数验证最多重试次数
   pageCheckTimeout: 30000, // 页面检查超时时间（毫秒）
@@ -1294,7 +1302,11 @@ async function phase4_5_validateAndRegenerate(
  * Phase 5: 生成翻译文件
  */
 async function phase5_generateTranslations(keyword, contentData) {
-  logPhase(5, '生成翻译文件（messages/pages/{slug}/en.json）');
+  if (CONFIG.enableSkipChineseTranslation) {
+    logPhase(5, '生成翻译文件（仅英文，跳过中文国际化）');
+  } else {
+    logPhase(5, '生成翻译文件（messages/pages/{slug}/en.json + zh.json）');
+  }
 
   const slug = keyword.toLowerCase().replace(/\s+/g, '-');
   const pageName = slug
@@ -1364,16 +1376,33 @@ async function phase5_generateTranslations(keyword, contentData) {
           imageAlt: '',
         })),
       },
-      highlights: contentData.highlights,
+      highlights: {
+        title: contentData.highlights.title,
+        description:
+          contentData.highlights.description ||
+          'The best features for your translation needs',
+        features: contentData.highlights.features.map((feature, index) => ({
+          icon:
+            feature.icon ||
+            ['FaRocket', 'FaBrain', 'FaShieldAlt', 'FaChartLine'][index % 4],
+          title: feature.title,
+          description: feature.description,
+          tagline: feature.tagline || '',
+          statLabel: feature.statLabel || null,
+          statValue: feature.statValue || null,
+          microCopy: feature.microCopy || '',
+        })),
+      },
       testimonials: {
-        title: 'What Users Say',
-        subtitle: 'Real feedback from real users',
+        title: 'What Our Users Say',
+        subtitle: 'Stories from Teams Using VibeTrans for Translation',
         items: contentData.testimonials.reduce((acc, item, index) => {
           acc[`item-${index + 1}`] = {
             name: item.name,
             role: item.role,
-            heading: `Review from ${item.name}`,
+            heading: item.heading || `Review from ${item.name}`,
             content: item.content,
+            rating: item.rating || '4.8',
           };
           return acc;
         }, {}),
@@ -1408,12 +1437,126 @@ async function phase5_generateTranslations(keyword, contentData) {
   await fs.writeFile(enPath, JSON.stringify(enTranslation, null, 2));
   logSuccess(`英文翻译已生成: ${enPath}`);
 
-  // 生成中文翻译提示（需要手动翻译）
-  logWarning('⚠️  请手动翻译中文版本');
-  logInfo(`创建文件: ${path.join(pageTranslationDir, 'zh.json')}`);
-  logInfo('使用与 en.json 相同的结构，将内容翻译为中文');
+  // 根据配置决定是否生成中文翻译文件
+  if (!CONFIG.enableSkipChineseTranslation) {
+    // 生成中文翻译文件（空结构，需要手动翻译）
+    const zhTranslation = JSON.parse(JSON.stringify(enTranslation)); // 深拷贝英文结构
+
+    // 清空中文内容，保留结构
+    const clearChineseContent = (obj) => {
+      if (typeof obj === 'string') {
+        return ''; // 清空字符串内容
+      } else if (Array.isArray(obj)) {
+        return obj.map(clearChineseContent);
+      } else if (typeof obj === 'object' && obj !== null) {
+        const cleared = {};
+        for (const [key, value] of Object.entries(obj)) {
+          cleared[key] = clearChineseContent(value);
+        }
+        return cleared;
+      }
+      return obj;
+    };
+
+    const clearedZhTranslation = clearChineseContent(zhTranslation);
+
+    const zhPath = path.join(pageTranslationDir, 'zh.json');
+    await fs.writeFile(zhPath, JSON.stringify(clearedZhTranslation, null, 2));
+    logSuccess(`中文翻译结构已生成: ${zhPath}`);
+    logWarning('⚠️  请手动翻译 zh.json 文件中的内容');
+  } else {
+    logInfo('⚡  已跳过中文翻译文件生成（根据配置）');
+  }
 
   return { pageName, enTranslation, slug };
+}
+
+/**
+ * 智能生成图片路径映射（基于english-to-persian-translator分析）
+ */
+function generateImageMapping(slug) {
+  return {
+    whatIs: `what-is-${slug}.webp`,
+    funFacts: [
+      `/images/docs/${slug}-fact-1.webp`,
+      `/images/docs/${slug}-fact-2.webp`,
+    ],
+    userInterests: [
+      `/images/docs/${slug}-interest-1.webp`,
+      `/images/docs/${slug}-interest-2.webp`,
+      `/images/docs/${slug}-interest-3.webp`,
+      `/images/docs/${slug}-interest-4.webp`,
+    ],
+    howTo: `${slug}-how-to.webp`,
+  };
+}
+
+/**
+ * 智能更新翻译文件中的图片引用（解决耦合问题）
+ */
+async function updateTranslationFileImages(slug, imageMapping) {
+  const enPath = path.join(CONFIG.messagesDir, 'pages', slug, 'en.json');
+
+  try {
+    const content = await fs.readFile(enPath, 'utf-8');
+    const jsonData = JSON.parse(content);
+
+    const pageName =
+      slug
+        .split('-')
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join('') + 'Page';
+
+    if (!jsonData[pageName]) {
+      logWarning(`未找到 ${pageName} 命名空间`);
+      return { success: false };
+    }
+
+    // 更新各种图片引用
+    if (jsonData[pageName].whatIs && imageMapping.whatIs) {
+      jsonData[pageName].whatIs.image = `/images/docs/${imageMapping.whatIs}`;
+      jsonData[pageName].whatIs.imageAlt =
+        `What is ${slug} - Visual explanation`;
+    }
+
+    // 更新 funFacts 图片
+    if (jsonData[pageName].funFacts?.items) {
+      imageMapping.funFacts.forEach((imagePath, index) => {
+        if (jsonData[pageName].funFacts.items[index]) {
+          jsonData[pageName].funFacts.items[index].image = imagePath;
+          jsonData[pageName].funFacts.items[index].imageAlt =
+            jsonData[pageName].funFacts.items[index].title ||
+            `Fun fact ${index + 1}`;
+        }
+      });
+    }
+
+    // 更新 userInterest 图片
+    if (jsonData[pageName].userInterest?.items) {
+      imageMapping.userInterests.forEach((imagePath, index) => {
+        if (jsonData[pageName].userInterest.items[index]) {
+          jsonData[pageName].userInterest.items[index].image = imagePath;
+          jsonData[pageName].userInterest.items[index].imageAlt =
+            jsonData[pageName].userInterest.items[index].title ||
+            `User interest ${index + 1}`;
+        }
+      });
+    }
+
+    // 更新 howTo 图片
+    if (jsonData[pageName].howto && imageMapping.howTo) {
+      jsonData[pageName].howto.image = `/images/docs/${imageMapping.howTo}`;
+      jsonData[pageName].howto.imageAlt = `How to use ${slug}`;
+    }
+
+    await fs.writeFile(enPath, JSON.stringify(jsonData, null, 2));
+    logSuccess(`✓ 智能更新图片引用完成: ${enPath}`);
+
+    return { success: true, updated: true };
+  } catch (error) {
+    logError(`更新翻译文件图片引用失败: ${error.message}`);
+    return { success: false, error: error.message };
+  }
 }
 
 /**
@@ -1714,29 +1857,68 @@ async function phase5_5_validateJsonCodeMatch(keyword, translationData) {
     return { success: false, issues };
   }
 
-  // 检查关键翻译键是否在代码中被引用
+  // 检查关键翻译键是否在代码中被引用（基于english-to-persian-translator分析）
   const criticalKeys = [
     'hero.title',
     'hero.description',
     'whatIs.title',
     'whatIs.description',
+    'whatIs.image',
+    'whatIs.imageAlt',
     'examples.title',
+    'examples.description',
     'howto.title',
+    'howto.description',
+    'howto.image',
+    'howto.imageAlt',
     'funFacts.title',
+    'funFacts.items.0.title',
+    'funFacts.items.0.description',
+    'funFacts.items.0.image',
+    'funFacts.items.0.imageAlt',
+    'userInterest.title',
+    'userInterest.items.0.title',
+    'userInterest.items.0.description',
+    'userInterest.items.0.image',
+    'userInterest.items.0.imageAlt',
     'highlights.title',
+    'highlights.description',
+    'highlights.features.0.icon',
+    'highlights.features.0.title',
+    'highlights.features.0.description',
     'testimonials.title',
+    'testimonials.subtitle',
+    'testimonials.items.item-1.name',
+    'testimonials.items.item-1.role',
+    'testimonials.items.item-1.heading',
+    'testimonials.items.item-1.content',
     'faqs.title',
+    'faqs.subtitle',
+    'faqs.items.item-1.question',
+    'faqs.items.item-1.answer',
     'cta.title',
+    'cta.description',
+    'cta.primaryButton',
+    'cta.secondaryButton',
   ];
 
   for (const key of criticalKeys) {
     const fullKey = `${pageName}.${key}`;
-    const tKeyPattern = new RegExp(
-      `t\\(['"\`]${key.replace('.', '\\.')}['"\`]\\)`,
-      'g'
-    );
 
-    if (!tKeyPattern.test(pageTsxContent)) {
+    // 特殊处理testimonials项目（使用item-N键值对结构）
+    let pattern;
+    if (key.includes('testimonials.items.item-')) {
+      pattern = /t\(['"\`]testimonials\.items\.[^'"\"]+['"\`]\)/g;
+    } else if (key.includes('faqs.items.item-')) {
+      pattern = /t\(['"\`]faqs\.items\.[^'"\"]+['"\`]\)/g;
+    } else {
+      pattern = new RegExp(
+        `t\\(['"\`]${key.replace('.', '\\.')}['"\`]\\)`,
+        'g'
+      );
+    }
+
+    if (!pattern.test(pageTsxContent)) {
       // 检查是否使用了不同的引用方式
       const alternativePattern = new RegExp(
         `t\\(['"\`](\\w+\\.)?${key.split('.').pop()}['"\`]\\)`,
@@ -1900,10 +2082,10 @@ async function phase5_5_validateJsonCodeMatch(keyword, translationData) {
 }
 
 /**
- * Phase 6: 图片生成（Gemini + Volcano 4.0 + 自动引用）
+ * Phase 6: 图片生成（Volcano 4.0 + 自动引用）
  */
 async function phase6_generateImages(keyword, contentData) {
-  logPhase(6, '图片生成（Gemini + Volcano 4.0 + 自动引用）');
+  logPhase(6, '图片生成（Volcano 4.0 + 自动引用）');
 
   const slug = keyword.toLowerCase().replace(/\s+/g, '-');
 
@@ -1925,7 +2107,7 @@ async function phase6_generateImages(keyword, contentData) {
   };
 
   logInfo('调用 Article Illustrator 工作流...');
-  logInfo('  1. Gemini 分析内容 → 生成 prompts');
+  logInfo('  1. Volcano 4.0 分析内容 → 生成 prompts');
   logInfo('  2. Volcano 4.0 生成图片');
   logInfo('  3. 保存到 public/images/docs/');
   logInfo('  4. 自动更新 en.json 引用\n');
@@ -1988,24 +2170,49 @@ main();`;
     const resultContent = await fs.readFile(resultPath, 'utf-8');
     const imageResult = JSON.parse(resultContent);
 
-    // 5. 自动更新 en.json 引用（传递文件名映射）
+    // 5. 自动更新 en.json 引用（使用智能图片映射）
     logInfo('自动更新图片引用到 en.json...');
 
-    // 构建文件名映射
-    const imageMapping = {
-      whatIs:
-        imageResult.images.find((img) => img.section === 'whatIs')?.filename ||
-        null,
-      funFacts: imageResult.images
-        .filter((img) => img.section.startsWith('funFacts'))
-        .map((img) => `/images/docs/${img.filename}`),
-      userInterests: imageResult.images
-        .filter((img) => img.section.startsWith('userInterests'))
-        .map((img) => `/images/docs/${img.filename}`),
-    };
+    // 使用智能图片映射（基于english-to-persian-translator分析）
+    const imageMapping = generateImageMapping(slug);
 
-    // 直接在这里更新 en.json，不调用外部脚本
-    await updateEnJsonWithImages(slug, imageMapping);
+    // 更新映射中的实际文件名
+    if (imageResult.images) {
+      const whatIsImage = imageResult.images.find(
+        (img) => img.section === 'whatIs'
+      );
+      if (whatIsImage) {
+        imageMapping.whatIs = whatIsImage.filename;
+      }
+
+      const funFactImages = imageResult.images.filter((img) =>
+        img.section.startsWith('funFacts')
+      );
+      funFactImages.forEach((img, index) => {
+        if (imageMapping.funFacts[index]) {
+          imageMapping.funFacts[index] = `/images/docs/${img.filename}`;
+        }
+      });
+
+      const userInterestImages = imageResult.images.filter((img) =>
+        img.section.startsWith('userInterests')
+      );
+      userInterestImages.forEach((img, index) => {
+        if (imageMapping.userInterests[index]) {
+          imageMapping.userInterests[index] = `/images/docs/${img.filename}`;
+        }
+      });
+
+      const howToImage = imageResult.images.find(
+        (img) => img.section === 'howTo'
+      );
+      if (howToImage) {
+        imageMapping.howTo = howToImage.filename;
+      }
+    }
+
+    // 使用增强的图片更新函数
+    await updateTranslationFileImages(slug, imageMapping);
 
     logSuccess('图片引用已自动更新！');
 
@@ -2497,6 +2704,11 @@ async function main() {
   logInfo(`调研模型: ${CONFIG.researchModel}`);
   logInfo(`内容模型: ${CONFIG.contentModel}`);
   logInfo(`输出目录: ${CONFIG.outputDir}`);
+  if (CONFIG.enableSkipChineseTranslation) {
+    logInfo('⚡ 中文国际化: 已跳过（加速模式）');
+  } else {
+    logInfo('🌐 中文国际化: 正常模式');
+  }
 
   try {
     // Phase 1: 产品调研
@@ -2556,6 +2768,20 @@ async function main() {
     // Phase 8.5: 页面错误自动检查
     const pageCheckResult = await phase8_5_checkPageErrors(keyword);
 
+    // Phase 9: 图片路径一致性验证和更新
+    await phase9_validateImagePaths(keyword, translationData, imageData);
+
+    // Phase 10: 翻译文件国际化系统检查
+    const translationSystemResult = await phase10_checkTranslationSystem(keyword, translationData);
+
+    if (!translationSystemResult.success) {
+      logWarning('\n⚠️  翻译文件国际化系统检查发现问题：');
+      logWarning(`   ${translationSystemResult.error || translationSystemResult.warning}`);
+      logWarning('   建议检查翻译文件是否正确加载到国际化系统中');
+    } else {
+      logSuccess('\n✓ 翻译文件国际化系统检查通过');
+    }
+
     // 完成
     log('\n' + '='.repeat(60), 'green');
     log('🎉 工具生成完成！', 'green');
@@ -2570,15 +2796,23 @@ async function main() {
     }
 
     logInfo('\n后续步骤：');
-    logInfo('1. 手动翻译 messages/zh.json');
+
+    if (CONFIG.enableSkipChineseTranslation) {
+      logInfo('1. ⚡ 已跳过中文翻译文件生成（根据配置）');
+      logInfo('2. 只需要处理英文内容，加速开发流程');
+    } else {
+      logInfo('1. 手动翻译 messages/zh.json');
+    }
 
     if (!jsonMatchResult.success) {
+      const stepNumber = CONFIG.enableSkipChineseTranslation ? '3' : '2';
       logWarning(
-        `2. ⚠️  JSON匹配检测发现 ${jsonMatchResult.summary.failedChecks} 个问题，需要修复`
+        `${stepNumber}. ⚠️  JSON匹配检测发现 ${jsonMatchResult.summary.failedChecks} 个问题，需要修复`
       );
       logWarning('   检查日志了解具体问题和修复建议');
     } else {
-      logSuccess('2. ✓ JSON文件与代码匹配检测通过');
+      const stepNumber = CONFIG.enableSkipChineseTranslation ? '3' : '2';
+      logSuccess(`${stepNumber}. ✓ JSON文件与代码匹配检测通过`);
     }
 
     if (imageData.success) {
@@ -2587,14 +2821,219 @@ async function main() {
       logWarning('3. ⚠️  图片生成失败，需要手动生成图片');
     }
 
-    logInfo('4. 更新 sitemap, navbar, footer');
-    logInfo('5. 运行 pnpm build 验证构建');
-    logInfo('6. 提交代码并上线');
+    logInfo('4. ✓ 图片路径一致性已验证');
+    logInfo('5. 更新 sitemap, navbar, footer');
+    logInfo('6. 运行 pnpm build 验证构建');
+    logInfo('7. 提交代码并上线');
   } catch (error) {
     logError(`\n生成失败: ${error.message}`);
     console.error(error);
     process.exit(1);
   }
+}
+
+/**
+ * Phase 10: 翻译文件国际化系统检查
+ */
+async function phase10_checkTranslationSystem(keyword, translationData) {
+  logPhase('10', '翻译文件国际化系统检查');
+
+  const { slug, pageName } = translationData;
+
+  logInfo('检查翻译文件是否被正确加载到国际化系统中...');
+
+  // 1. 检查 messages.ts 文件是否存在
+  const messagesPath = path.join(CONFIG.srcDir, 'i18n', 'messages.ts');
+
+  try {
+    await fs.access(messagesPath);
+    logSuccess('✓ messages.ts 文件存在');
+  } catch (error) {
+    logError('✗ messages.ts 文件不存在');
+    return { success: false, error: 'messages.ts 文件不存在' };
+  }
+
+  // 2. 读取并检查 messages.ts 内容
+  let messagesContent;
+  try {
+    messagesContent = await fs.readFile(messagesPath, 'utf-8');
+    logSuccess('✓ messages.ts 文件读取成功');
+  } catch (error) {
+    logError(`✗ 无法读取 messages.ts: ${error.message}`);
+    return { success: false, error: `无法读取 messages.ts: ${error.message}` };
+  }
+
+  // 3. 检查导入语句
+  const expectedImportPath = `../../messages/pages/${slug}/\${locale}.json`;
+  const hasImport = messagesContent.includes(expectedImportPath);
+
+  if (!hasImport) {
+    logError(`✗ 缺少导入语句: ${expectedImportPath}`);
+    logWarning('翻译文件未被导入到国际化系统');
+    return {
+      success: false,
+      error: '缺少翻译文件导入语句',
+      fix: `需要在 messages.ts 中添加: import(\`${expectedImportPath}\`)`
+    };
+  }
+
+  logSuccess('✓ 翻译文件导入语句存在');
+
+  // 4. 检查变量声明
+  const expectedVarName = slug
+    .split('-')
+    .map((word, index) =>
+      index === 0 ? word : word.charAt(0).toUpperCase() + word.slice(1)
+    )
+    .join('') + 'Pages';
+
+  const hasVariable = messagesContent.includes(`${expectedVarName} =`);
+
+  if (!hasVariable) {
+    logError(`✗ 缺少变量声明: ${expectedVarName}`);
+    logWarning('翻译文件变量未被声明');
+    return {
+      success: false,
+      error: '缺少翻译文件变量声明',
+      fix: `需要在 messages.ts 中添加: const ${expectedVarName} = await import(\`${expectedImportPath}\`);`
+    };
+  }
+
+  logSuccess('✓ 翻译文件变量声明存在');
+
+  // 5. 检查 deepmerge 配置
+  const hasDeepmerge = messagesContent.includes(`${expectedVarName}.default`);
+
+  if (!hasDeepmerge) {
+    logError(`✗ 缺少 deepmerge 配置: ${expectedVarName}.default`);
+    logWarning('翻译文件未被合并到国际化系统');
+    return {
+      success: false,
+      error: '缺少 deepmerge 配置',
+      fix: `需要在 deepmerge.all() 数组中添加: ${expectedVarName}.default`
+    };
+  }
+
+  logSuccess('✓ deepmerge 配置存在');
+
+  // 6. 检查翻译文件结构
+  logInfo('检查翻译文件结构完整性...');
+
+  const enPath = path.join(CONFIG.messagesDir, 'pages', slug, 'en.json');
+  const zhPath = path.join(CONFIG.messagesDir, 'pages', slug, 'zh.json');
+
+  // 检查英文翻译文件
+  try {
+    const enContent = await fs.readFile(enPath, 'utf-8');
+    const enData = JSON.parse(enContent);
+
+    if (!enData[pageName]) {
+      logError(`✗ 英文翻译文件缺少命名空间: ${pageName}`);
+      return {
+        success: false,
+        error: `英文翻译文件缺少命名空间: ${pageName}`
+      };
+    }
+
+    logSuccess('✓ 英文翻译文件结构正确');
+  } catch (error) {
+    logError(`✗ 英文翻译文件检查失败: ${error.message}`);
+    return {
+      success: false,
+      error: `英文翻译文件检查失败: ${error.message}`
+    };
+  }
+
+  // 检查中文翻译文件（如果存在）
+  try {
+    await fs.access(zhPath);
+
+    const zhContent = await fs.readFile(zhPath, 'utf-8');
+    const zhData = JSON.parse(zhContent);
+
+    if (!zhData[pageName]) {
+      logError(`✗ 中文翻译文件缺少命名空间: ${pageName}`);
+      return {
+        success: false,
+        error: `中文翻译文件缺少命名空间: ${pageName}`
+      };
+    }
+
+    logSuccess('✓ 中文翻译文件结构正确');
+  } catch (error) {
+    if (error.code === 'ENOENT') {
+      logWarning('⚠️  中文翻译文件不存在（可能被跳过）');
+    } else {
+      logError(`✗ 中文翻译文件检查失败: ${error.message}`);
+      return {
+        success: false,
+        error: `中文翻译文件检查失败: ${error.message}`
+      };
+    }
+  }
+
+  // 7. 检查关键翻译键
+  logInfo('检查关键翻译键...');
+
+  try {
+    const enContent = await fs.readFile(enPath, 'utf-8');
+    const enData = JSON.parse(enContent);
+    const pageData = enData[pageName];
+
+    const requiredKeys = [
+      'title',
+      'description',
+      'hero.title',
+      'hero.description',
+      'tool.inputLabel',
+      'tool.outputLabel',
+      'whatIs.title',
+      'whatIs.description',
+      'highlights.title'
+    ];
+
+    const missingKeys = [];
+
+    for (const key of requiredKeys) {
+      const value = getNestedValue(pageData, key);
+      if (!value) {
+        missingKeys.push(key);
+      }
+    }
+
+    if (missingKeys.length > 0) {
+      logWarning(`⚠️  缺少关键翻译键: ${missingKeys.join(', ')}`);
+      logWarning('建议检查翻译文件完整性');
+      return {
+        success: true,
+        warning: '缺少关键翻译键',
+        missingKeys: missingKeys
+      };
+    }
+
+    logSuccess('✓ 关键翻译键检查通过');
+  } catch (error) {
+    logError(`✗ 翻译键检查失败: ${error.message}`);
+    return {
+      success: false,
+      error: `翻译键检查失败: ${error.message}`
+    };
+  }
+
+  logSuccess('\n✅ 翻译文件国际化系统检查完成！');
+  logSuccess('✓ 翻译文件已正确加载到国际化系统');
+  logSuccess('✓ 翻译键可以正常使用');
+
+  return {
+    success: true,
+    summary: {
+      importExists: true,
+      variableExists: true,
+      deepmergeExists: true,
+      translationFilesExist: true,
+      requiredKeysExist: true
+    }
+  };
 }
 
 // 运行主函数

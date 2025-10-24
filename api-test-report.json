@@ -1,0 +1,47 @@
+{
+  "timestamp": "2025-10-24T08:50:59.020Z",
+  "summary": {
+    "totalSuccess": 25,
+    "totalFailed": 9,
+    "successRate": "73.5"
+  },
+  "details": {
+    "wingdings": {
+      "success": 10,
+      "failed": 1,
+      "errors": [
+        "边界测试失败: HTTP 400: No text provided"
+      ]
+    },
+    "greek": {
+      "success": 8,
+      "failed": 3,
+      "errors": [
+        "缺少translated字段",
+        "缺少original字段",
+        "缺少modeName或greekType字段",
+        "边界测试失败: HTTP 400: No text provided",
+        "边界测试失败: HTTP 400: Invalid mode. Available modes: modern, ancient, literary, general"
+      ]
+    },
+    "telugu": {
+      "success": 7,
+      "failed": 4,
+      "errors": [
+        "响应时间过长: 5666ms",
+        "缺少translated字段",
+        "缺少original字段",
+        "缺少modeName、sourceLanguage或targetLanguage字段",
+        "边界测试失败: HTTP 400: No text provided",
+        "边界测试失败: HTTP 400: Invalid mode. Available modes: technical, literary, business, casual, general"
+      ]
+    },
+    "manga": {
+      "success": 0,
+      "failed": 1,
+      "errors": [
+        "健康检查失败: HTTP 500: Internal Server Error"
+      ]
+    }
+  }
+}

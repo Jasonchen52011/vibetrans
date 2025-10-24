@@ -220,8 +220,8 @@ function getTargetLanguagePatterns(language: string): RegExp[] {
     'middle-english': [
       // 中古英语常见词汇和模式
       /\b(knyght|sweorde|godes|soule|herte|lufe|freond|fader|moder|brot|suster|sonne|dohter|kynge|quene|lorde|lady|man|woman|childe|chirche|gode|deue|heuen|helle|world|lyf|deth|tyme|day|nyght|sonne|mone|sterre|fyer|water|erthe|wynd|reyn|snow|hook|crook|bok|letter|song|musike|speche|word|wisdom|sotil|gret|small|longe|shorte|hye|lowe|whyte|blake|reede|grene|blewe|golde|selver|yren|ston|tre| gras|flour|fruyt|bred|wyn|ale|fleshe|fishe|foul|best|hors|ox|cowe|sheep|goat|dogge|cat|mouse|brid|snak|fly|bee|ant|spider|nettle|thistle|rose|lilie|violet|oak|pine|elme|ash|maple|wyllowe|nutt|appel|pere|cherry|grape|figge|date|olive|peper|salt|sugre|hony|melk|chese|butter|egge|ryce|wheate|barley|oates|corn|herbe|spice|saffron|gynger|canel|cloves|noutes|almondes|rysons|fyges|dates|ores|apples|peches|plummes|cherries|berrys|nutes|walnuts|chestenuts|fylenydes|almandes|pynes|pistaches)\b/i, // 日常词汇
-      /\b(thou|thee|thy|thine|ye|you|your|yours|our|oure|us|hath|doth|didst|hadst|shalt|shouldst|wilt|wouldst|art|wert|wast|weren|wert|canst|couldst|mayst|mightst|must|ought|nere|nolde|wolde|sholde|kouthe|koude|durst|dirst|dorste|myste|myghte|wost|wyste|wyst|wiste|wite|wot|wit|whilom|sithen|whanne|whan|thanne|than|therto|therfore|forthi|forwhy|forþi|forþy|bifore|before|aftur|after|at|in|on|upon|vpon|of|from|fro|by|wyth|with|with|with|oute|without|within|atwix|atwen|betwix|betwixt|amid|among|amonges|agayns|ayeyns|ayeyn|agayn|agayns|ayenst|aynste|ayenst|aynes|ayns|ayn|an|a|on|o|and|but|ne|nor|or|for|if|whil|til|til|tille|as|so|right|riht|riht|riht|also|al|also|also|al|al|yet|yat|yit|yit|nat|nat|nat|nat|nat|nat|nat|nat|nat|nat|nat|nat|nat)\b/i, // 代词、连词、介词等
-      /\b(am|art|is|be|been|bith|beth|was|were|wast|wert|weren|werst|wert|han|hath|have|hast|hath|haven|has|had|haddest|hadde|haddes|shalt|shalt|sholdest|sholdest|sholde|shold|shold|shold|shold|wilt|wilt|wolt|wolt|wold|wold|wold|wold|wold|wold|canst|canst|couth|couthe|couth|couthe|mayst|mayst|mighte|mighte|mighte|mighte|durst|durst|durst|durst|durst|durst|must|must|most|moste|moste|moste|oughte|oughte|oughte|oughte|sholde|sholde|sholde|sholde|wolde|wolde|wolde|wolde|sholde|sholde|sholde|sholde)\b/i, // 动词变位
+      /\b(thou|thee|thy|thine|ye|you|your|yours|our|oure|us|hath|doth|didst|hadst|shalt|shouldst|wilt|wouldst|art|wert|wast|weren|wert|canst|couldst|mayst|mightst|must|ought|nere|nolde|wolde|sholde|kouthe|koude|durst|dirst|dorste|myste|myghte|wost|wyste|wyst|wiste|wite|wot|wit|whilom|sithen|whanne|whan|thanne|than|therto|therfor|forthi|forwhy|forþi|forþy|bifore|before|aftur|after|at|in|on|upon|vpon|of|from|fro|by|wyth|with|with|with|oute|without|within|atwix|atwen|betwix|betwixt|amid|among|amonges|agayns|ayeyns|ayeyn|agayn|agayns|ayenst|aynste|ayenst|aynes|ayns|ayn|an|a|on|o|and|but|ne|nor|or|for|if|whil|til|til|tille|as|so|right|riht|riht|riht|also|al|also|also|al|al|yet|yat|yit|yit|nat|nat|nat|nat|nat|nat|nat|nat|nat|nat|nat)\b/i, // 代词、连词、介词等
+      /\b(am|art|is|be|been|bith|beth|was|were|wast|wert|weren|werst|wert|han|hath|have|hast|hath|haven|has|had|haddest|hadde|haddes|shalt|shalt|sholdest|sholdest|sholde|shold|shold|shold|shold|wilt|wilt|wolt|wolt|wold|wold|wold|wold|wold|wold|canst|canst|couth|couthe|couth|couthe|mayst|mayst|mighte|mighte|mighte|mighte|durst|durst|durst|durst|durst|must|must|most|moste|moste|moste|moste|oughte|oughte|oughte|oughte|sholde|sholde|sholde|sholde|wolde|wolde|wolde|wolde|sholde|sholde|sholde|sholde)\b/i, // 动词变位
       /\b(-eth| -es| -en| -e| -ing| -inde| -ande| -yng| -ynge| -ed| -de| -t| -d| -s| -)\b/g, // 动词词尾
       /\b(wh|th|gh|ch|sh|sc|ng|mb|nd|ld|rd|rn)\b/g, // 特殊辅音组合
       /\b(a|e|i|o|u|y|aa|ee|ii|oo|uu|ae|oe|ei|ie|ou|ow|aw|ew)\w+e?\b/g, // 元音模式
@@ -250,6 +250,14 @@ function getTargetLanguagePatterns(language: string): RegExp[] {
       /\b(\w+ay|\w+[aeiou]way|\w+[aeiou]\w+ay)/gi, // 猪拉丁语模式
       /\b(a|e|i|o|u)\w+/gi, // 元音开头的词
       /\b(\w[^aeiou]+)ay/gi, // 辅音群开头的词
+    ],
+    telugu: [
+      // 泰卢固语特征模式
+      /\b(\w+um|\w+u|\w+i|\w+ā|\w+ī|\w+ū|\w+ē|\w+ō)\b/i,
+      // 泰卢固语常见词汇
+      /\b(nēnu|మీ|మే|మై|వు|వూ|దే|దె|గు|గూ|ఘే|ఘై|ఙ్|ఙ౏|ఙొ)\b/i,
+      // 泰卢固语字符
+      /[\u0C00-\u0C7F]/g,
     ],
   };
 

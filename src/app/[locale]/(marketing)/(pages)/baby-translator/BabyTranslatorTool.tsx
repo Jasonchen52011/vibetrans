@@ -1,5 +1,6 @@
 'use client';
 
+import { ToolInfoSections } from '@/components/blocks/tool/tool-info-sections';
 import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
 import { ArrowRightIcon } from 'lucide-react';
 import { useRef, useState } from 'react';
@@ -370,6 +371,11 @@ export default function BabyTranslatorTool({
             Reset
           </button>
         </div>
+
+        <ToolInfoSections
+          highlights={pageData.highlights}
+          funFacts={pageData.funFacts}
+        />
       </main>
     </div>
   );

@@ -1,0 +1,200 @@
+{
+  "JapaneseToEnglishTranslatorPage": {
+    "title": "Effortless Japanese to English Translator Tool",
+    "description": "Discover the best Japanese to English translator with 90%+ accuracy, real-time detection, and multi-modal support. Perfect for technical, legal, and literary translations.",
+    "hero": {
+      "title": "Japanese to English Translator Pro",
+      "description": "Experience the best Japanese to English translator for instant, accurate translations with cultural insights."
+    },
+    "tool": {
+      "inputLabel": "Japanese Text",
+      "outputLabel": "English Translation",
+      "inputPlaceholder": "Enter Japanese text here...",
+      "outputPlaceholder": "English translation will appear here...",
+      "translateButton": "Translate",
+      "uploadButton": "Upload File",
+      "uploadHint": "Supports .txt and .docx files",
+      "loading": "Translating...",
+      "error": "Translation failed. Please try again.",
+      "noInput": "Please enter Japanese text to translate."
+    },
+    "whatIs": {
+      "title": "What is Japanese-to-English Translator Pro",
+      "description": "Japanese-to-English Translator Pro is an advanced online tool designed to convert Japanese text, speech, and images into English. It supports multiple translation modes and provides cultural context for precise communication.",
+      "image": "/images/docs/placeholder.webp",
+      "imageAlt": "What is Japanese to English Translator"
+    },
+    "examples": {
+      "title": "Translation in Action",
+      "description": "Upload a Japanese document, and watch as the tool seamlessly translates kanji and kana into English, preserving context and meaning for technical or literary text.",
+      "items": [
+        { "alt": "Example 1", "name": "example-1" },
+        { "alt": "Example 2", "name": "example-2" },
+        { "alt": "Example 3", "name": "example-3" },
+        { "alt": "Example 4", "name": "example-4" },
+        { "alt": "Example 5", "name": "example-5" },
+        { "alt": "Example 6", "name": "example-6" }
+      ]
+    },
+    "howto": {
+      "title": "How to Translate Japanese to English",
+      "description": "Quick guide to using the translator.",
+      "image": "/images/docs/placeholder.webp",
+      "imageAlt": "How to use Japanese to English Translator",
+      "steps": [
+        {
+          "title": "Upload Text or File",
+          "description": "Begin by uploading your Japanese text, document, or image. The tool detects the language and prepares for translation."
+        },
+        {
+          "title": "Select Translation Mode",
+          "description": "Choose from technical, legal, literary, idioms, or general translation modes for tailored results."
+        },
+        {
+          "title": "Receive Translated Output",
+          "description": "Get your translated text with cultural notes and confidence scores, ready for immediate use."
+        }
+      ]
+    },
+    "funFacts": {
+      "title": "Interesting Facts About Japanese Language",
+      "items": [
+        {
+          "title": "Three Writing Systems",
+          "description": "Japanese uses three scripts—kanji, hiragana, and katakana—often mixed in a single sentence, challenging translation tools.",
+          "image": "/images/docs/placeholder.webp",
+          "imageAlt": "Japanese writing systems - kanji, hiragana, and katakana"
+        },
+        {
+          "title": "Early Machine Translation",
+          "description": "The first machine translation of Japanese was on an IBM 7090 in 1959, showcasing early AI potential.",
+          "image": "/images/docs/placeholder.webp",
+          "imageAlt": "Historical IBM 7090 computer used for Japanese translation"
+        }
+      ]
+    },
+    "userInterest": {
+      "title": "Explore More Features",
+      "items": [
+        {
+          "title": "Contextual Translation",
+          "description": "Our tool excels in understanding context, ensuring accurate translations even in complex sentences.",
+          "image": "/images/docs/placeholder.webp",
+          "imageAlt": "Contextual Japanese to English translation process"
+        },
+        {
+          "title": "Cultural Insights",
+          "description": "Gain valuable cultural insights with every translation, helping you understand nuances and idioms.",
+          "image": "/images/docs/placeholder.webp",
+          "imageAlt": "Cultural insights in Japanese to English translation"
+        },
+        {
+          "title": "AI-Powered Accuracy",
+          "description": "Benefit from AI-driven precision, offering over 90% accuracy in language detection and translation.",
+          "image": "/images/docs/placeholder.webp",
+          "imageAlt": "AI-powered accuracy in Japanese translation"
+        },
+        {
+          "title": "Multi-modal Support",
+          "description": "Translate text, images, and audio effortlessly with our comprehensive multi-modal support.",
+          "image": "/images/docs/placeholder.webp",
+          "imageAlt": "Multi-modal support for Japanese translation"
+        }
+      ]
+    },
+    "highlights": {
+      "title": "Key Features of Japanese-to-English Translator Pro",
+      "description": "Discover what makes our Japanese translator unique with powerful features designed for accuracy and ease of use.",
+      "features": [
+        {
+          "icon": "FaRocket",
+          "title": "Easy to Use",
+          "description": "Our user-friendly interface allows you to quickly upload and translate text without hassle.",
+          "tagline": "Simple & Intuitive",
+          "statLabel": "User Satisfaction",
+          "statValue": "95%",
+          "microCopy": "Get started in seconds"
+        },
+        {
+          "icon": "FaBrain",
+          "title": "High Accuracy",
+          "description": "With advanced AI, enjoy translations with over 90% accuracy, capturing the true essence of the text.",
+          "tagline": "AI-Powered Precision",
+          "statLabel": "Translation Accuracy",
+          "statValue": "90%+",
+          "microCopy": "Contextually aware translations"
+        },
+        {
+          "icon": "FaShieldAlt",
+          "title": "Privacy Assured",
+          "description": "Your data is secure with our privacy-first approach, ensuring no server uploads for translations.",
+          "tagline": "Secure & Private",
+          "statLabel": "Data Protection",
+          "statValue": "100%",
+          "microCopy": "Your data stays private"
+        },
+        {
+          "icon": "FaMagic",
+          "title": "Contextual Understanding",
+          "description": "AI understands context, providing nuanced translations that respect the source material's intent.",
+          "tagline": "Smart Context",
+          "statLabel": "Context Recognition",
+          "statValue": "Advanced",
+          "microCopy": "Understands cultural nuances"
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "What Our Users Say",
+      "subtitle": "Stories from Teams Using VibeTrans for Japanese Translation",
+      "items": {
+        "item-1": {
+          "name": "John Smith",
+          "role": "Technical Writer",
+          "heading": "Essential for Technical Writing",
+          "content": "As a technical writer, I rely on accurate translations. This tool helps me maintain precision and context in my work, making my job much easier.",
+          "rating": "4.9"
+        },
+        "item-2": {
+          "name": "Emily Johnson",
+          "role": "Legal Analyst",
+          "heading": "Reliable for Legal Documents",
+          "content": "I use this translator for legal documents. Its accuracy and understanding of legal language ensure my translations are reliable and professional.",
+          "rating": "4.8"
+        },
+        "item-3": {
+          "name": "Michael Brown",
+          "role": "Literary Editor",
+          "heading": "Perfect for Literary Content",
+          "content": "Translating literary content is hard. This tool captures the subtlety of the original text, preserving meaning and style.",
+          "rating": "4.7"
+        }
+      }
+    },
+    "faqs": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Quick answers about Japanese to English translation",
+      "items": {
+        "item-1": {
+          "question": "Is this translator free?",
+          "answer": "Yes, the Japanese-to-English Translator Pro is free to use on the web. However, it requires an internet connection and does not support offline usage."
+        },
+        "item-2": {
+          "question": "Which is the best Japanese to English translator?",
+          "answer": "The best translator offers high accuracy, context awareness, and multi-modal support. Japanese-to-English Translator Pro excels in these areas, making it a top choice."
+        },
+        "item-3": {
+          "question": "How is my privacy protected?",
+          "answer": "Your privacy is crucial. Our tool ensures data security by not uploading your translations to servers, maintaining confidentiality."
+        }
+      }
+    },
+    "ctaButton": "Try Japanese to English Translator Now",
+    "cta": {
+      "title": "Try Japanese-to-English Translator Pro Now",
+      "description": "Experience effortless and accurate translations with Japanese-to-English Translator Pro.",
+      "primaryButton": "Get Started Free",
+      "secondaryButton": "Back to Top"
+    }
+  }
+}

@@ -66,34 +66,6 @@ export default async function CuneiformTranslatorPage(
     description: (t as any)('description'),
   });
 
-  // Page data for the tool
-  const pageData = {
-    tool: {
-      inputLabel: (t as any)('tool.inputLabel'),
-      cuneiformLabel: (t as any)('tool.cuneiformLabel'),
-      outputLabel: (t as any)('tool.outputLabel'),
-      inputPlaceholder: (t as any)('tool.inputPlaceholder'),
-      cuneiformPlaceholder: (t as any)('tool.cuneiformPlaceholder'),
-      outputPlaceholder: (t as any)('tool.outputPlaceholder'),
-      translateButton: (t as any)('tool.translateButton'),
-      uploadButton: (t as any)('tool.uploadButton'),
-      uploadHint: (t as any)('tool.uploadHint'),
-      scriptLabel: (t as any)('tool.scriptLabel'),
-      scripts: {
-        sumerian: (t as any)('tool.scripts.sumerian'),
-        akkadian: (t as any)('tool.scripts.akkadian'),
-        babylonian: (t as any)('tool.scripts.babylonian'),
-        hittite: (t as any)('tool.scripts.hittite'),
-        elamite: (t as any)('tool.scripts.elamite'),
-        'old-persian': (t as any)('tool.scripts.old-persian'),
-        ugaritic: (t as any)('tool.scripts.ugaritic'),
-      },
-      loading: (t as any)('tool.loading'),
-      error: (t as any)('tool.error'),
-      noInput: (t as any)('tool.noInput'),
-    },
-  };
-
   // Examples section data
   const examplesData = {
     title: (t as any)('examples.title'),
@@ -128,7 +100,7 @@ export default async function CuneiformTranslatorPage(
 
   // Fun Facts section
   const funFactsSection = {
-    name: 'funfacts',
+    name: 'funFacts',
     title: (t as any)('funFacts.title'),
     items: [
       {
@@ -183,6 +155,36 @@ export default async function CuneiformTranslatorPage(
         description: (t as any)('highlights.items.3.description'),
       },
     ],
+  };
+
+  // Page data for the tool
+  const pageData = {
+    tool: {
+      inputLabel: (t as any)('tool.inputLabel'),
+      cuneiformLabel: (t as any)('tool.cuneiformLabel'),
+      outputLabel: (t as any)('tool.outputLabel'),
+      inputPlaceholder: (t as any)('tool.inputPlaceholder'),
+      cuneiformPlaceholder: (t as any)('tool.cuneiformPlaceholder'),
+      outputPlaceholder: (t as any)('tool.outputPlaceholder'),
+      translateButton: (t as any)('tool.translateButton'),
+      uploadButton: (t as any)('tool.uploadButton'),
+      uploadHint: (t as any)('tool.uploadHint'),
+      scriptLabel: (t as any)('tool.scriptLabel'),
+      scripts: {
+        sumerian: (t as any)('tool.scripts.sumerian'),
+        akkadian: (t as any)('tool.scripts.akkadian'),
+        babylonian: (t as any)('tool.scripts.babylonian'),
+        hittite: (t as any)('tool.scripts.hittite'),
+        elamite: (t as any)('tool.scripts.elamite'),
+        'old-persian': (t as any)('tool.scripts.old-persian'),
+        ugaritic: (t as any)('tool.scripts.ugaritic'),
+      },
+      loading: (t as any)('tool.loading'),
+      error: (t as any)('tool.error'),
+      noInput: (t as any)('tool.noInput'),
+    },
+    funFacts: funFactsSection,
+    highlights: highlightsSection,
   };
 
   // What is section
@@ -399,12 +401,12 @@ export default async function CuneiformTranslatorPage(
 
         {/* Fun Facts */}
         <UserScenarios
-          section={funFactsSection}
+          section={pageData.funFacts}
           ctaText={(t as any)('ctaButton')}
         />
 
         {/* Highlights/Why Choose */}
-        <WhyChoose section={highlightsSection} />
+        <WhyChoose section={pageData.highlights} />
 
         {/* Explore Other Tools */}
         <ExploreOurAiTools

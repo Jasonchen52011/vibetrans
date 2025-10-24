@@ -1,0 +1,153 @@
+{
+  "keyword": "ogham translator",
+  "productName": "Ogham Translator",
+  "description": "A web-based tool that converts text to and from the ancient Irish Ogham script, with voice I/O, file upload and typographic download in one click.",
+  "competitors": [
+    {
+      "name": "dCode Ogham Translator",
+      "url": "https://www.dcode.fr/ogham-translator",
+      "features": ["双向翻译（Ogham↔拉丁字母）", "自动侦测+密码学统计"]
+    },
+    {
+      "name": "Ogham.co Name Translator",
+      "url": "https://ogham.co/",
+      "features": [
+        "姓名转Ogham 并生成竖排石刻风格图片",
+        "PNG 下载适合纹身/礼物"
+      ]
+    },
+    {
+      "name": "LingoJam Ogham Generator",
+      "url": "https://lingojam.com/OghamTranslator",
+      "features": ["左右两栏实时翻译", "可自定义字体粗细"]
+    },
+    {
+      "name": "GeneratorFun Ogham Tool",
+      "url": "https://generatorfun.com/ogham-translator",
+      "features": ["随机 Ogham 生成器", "批量 API（需付费）"]
+    },
+    {
+      "name": "Steve Morse Ogham Transliterator",
+      "url": "https://stevemorse.org/ogham/ogham.html",
+      "features": ["纯前端离线运行", "提供完整字母对照表"]
+    },
+    {
+      "name": "CeltNet Ogham Translator",
+      "url": "https://www.celtnet.org.uk/online/ogham-translator.html",
+      "features": ["附带古爱尔兰语简史", "示例石碑图像"]
+    },
+    {
+      "name": "Ancient-Scripts Ogham Page",
+      "url": "http://www.ancientscripts.com/ogham.html",
+      "features": ["互动字母表", "文化背景长文"]
+    },
+    {
+      "name": "IrishGaelicTranslator Forum",
+      "url": "https://irishgaelictranslator.com/translation/ogham.html",
+      "features": ["社区人工校对", "纹身译名求助区"]
+    },
+    {
+      "name": "The Ogham Stone Translator",
+      "url": "https://theoghamstone.com/translator",
+      "features": ["首饰设计预览", "SVG 导出"]
+    },
+    {
+      "name": "Unicode-Table Ogham Converter",
+      "url": "https://unicode-table.com/en/sections/ogham/",
+      "features": ["字符编码查询", "复制单字"]
+    },
+    {
+      "name": "Omniglot Ogham Converter",
+      "url": "https://www.omniglot.com/conscripts/ogham.htm",
+      "features": ["多语言对照", "学习资源链接"]
+    },
+    {
+      "name": "FontSpace Ogham Font Tester",
+      "url": "https://www.fontspace.com/category/ogham",
+      "features": ["在线打样不同 Ogham 字体", "字体下载"]
+    },
+    {
+      "name": "Runes - Ogham on D&D Wiki",
+      "url": "https://www.dandwiki.com/wiki/Ogham_Translator",
+      "features": ["RPG 用字生成", "怪物名批量转换"]
+    },
+    {
+      "name": "Ogham Unicode Converter (CSup)",
+      "url": "https://www.csupomona.edu/~ogham",
+      "features": ["UTF-8/UTF-16 互转", "批量 txt 上传"]
+    },
+    {
+      "name": "Transliterator.org Ogham",
+      "url": "https://transliterator.org/ogham",
+      "features": ["即时键盘布局", "移动端响应式"]
+    }
+  ],
+  "socialTopics": [
+    {
+      "platform": "Reddit",
+      "topic": "Can someone translate my name into Ogham for a tattoo?",
+      "votes": 214,
+      "summary": "纹身求助帖，高票回答指出常见拼写错误并附正确语法。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "Is there a reliable online Ogham translator?",
+      "votes": 143,
+      "summary": "用户讨论各站准确率，dCode 与 Ogham.co 被频繁提及，普遍抱怨没有语音或图片识别功能。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "How historically accurate is writing modern English in Ogham?",
+      "votes": 97,
+      "summary": "学术派争论 Ogham 是否只适合古爱尔兰语，引出对音位映射需求。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "What is the best Ogham translator on the web?",
+      "votes": 122,
+      "summary": "回答对比 dCode、LingoJam 并建议手工校对；指出缺乏批量转换与SVG导出功能。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "How do you read Ogham inscriptions vertically?",
+      "votes": 88,
+      "summary": "解释自下而上阅读方式，引申需求：把竖排转横排示例。"
+    }
+  ],
+  "funFacts": [
+    "现存约400块刻有 Ogham 的石碑，大多位于爱尔兰西南部。",
+    "Ogham 传统上是自下而上竖读，后来手稿中改为横向左→右。",
+    "字母名称多取自树木，如 B 对应『Beith』(桦树)。",
+    "传说 Ogham 由凯尔特神祇 Ogma 发明，被称为『Celtic Tree Alphabet』。",
+    "中世纪派生出手语版『Finger Ogham』，用手指触碰腕部各点代替刻痕。"
+  ],
+  "features": {
+    "basic": [
+      "txt, docx 文件上传与清空",
+      "结果复制与 txt 下载",
+      "语音输入（麦克风识别英语/爱尔兰语）",
+      "语音输出（朗读拉丁或 Ogham 名称）"
+    ],
+    "competitive": [
+      "双向文本翻译 Ogham↔拉丁",
+      "实时预览竖排与横排两种排版",
+      "字母表对照表和解释",
+      "高分辨率 PNG/SVG 下载",
+      "离线前端运算，保障隐私"
+    ],
+    "innovative": [
+      "Ogham OCR：上传石碑/手写图片自动识别并转文字",
+      "发音指导：IPA 音标+语音播放古爱尔兰发音",
+      "批量处理：一次上传名单或 CSV 批量输出所有 Ogham 竖排图片",
+      "错拼检测：对照古爱尔兰音系给出准确建议",
+      "可选树木/纹身/石刻三种风格字体包"
+    ]
+  },
+  "useCases": [
+    "纹身或珠宝设计者快速生成正确 Ogham 图案",
+    "凯尔特文化爱好者/学生学习阅读与发音",
+    "考古/历史研究人员批量录入石碑拓片文本",
+    "RPG/Game 开发者为道具、地图生成神秘文字效果"
+  ],
+  "asciiDesign": "┌──────────────────────── Left: INPUT ────────────────────────┐\\n│ [ Text Area ]                                              │\\n│ ---------------------------------------------------------- │\\n│ [📂 Upload txt/docx] [🎤 Voice Input] [🧹 Clear]             │\\n└─────────────────────────────────────────────────────────────┘\\n                               │\\n                               ▼\\n┌──────────────────────── Right: OUTPUT ──────────────────────┐\\n│ [ Ogham / Latin Result Area ]                               │\\n│ ---------------------------------------------------------- │\\n│ [📋 Copy] [💾 Download txt] [🔊 Voice Play]                  │\\n└─────────────────────────────────────────────────────────────┘"
+}

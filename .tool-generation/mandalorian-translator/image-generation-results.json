@@ -1,0 +1,97 @@
+{
+  "timestamp": "2025-10-23T06:41:20.284Z",
+  "config": {
+    "tool": "mandalorian translator",
+    "baseUrl": "https://vibetrans.com",
+    "locale": "en",
+    "images": [
+      {
+        "filename": "what-is-mandalorian-translator.webp",
+        "prompt": "Professional infographic explaining what is a Mandalorian translator tool for English to Mando'a language conversion, showing a clean interface with Star Wars themed design elements, language translation concept, educational diagram, modern web application layout",
+        "category": "what-is"
+      },
+      {
+        "filename": "mandalorian-translator-how-to.webp",
+        "prompt": "Step-by-step tutorial infographic showing how to use a Mandalorian translator, clean numbered steps 1-4, simple user interface, English to Mando'a translation process, modern web design, instructional guide",
+        "category": "how-to"
+      },
+      {
+        "filename": "mandalorian-translator-fact-1.webp",
+        "prompt": "Educational infographic about Mando'a language creation by author Karen Traviss, book cover aesthetic, Star Wars Expanded Universe, literary reference, professional educational design",
+        "category": "fact"
+      },
+      {
+        "filename": "mandalorian-translator-fact-2.webp",
+        "prompt": "Infographic showing genderless language structure of Mando'a, equality symbols, linguistic features, Mandalorian cultural values, educational diagram with clean design",
+        "category": "fact"
+      },
+      {
+        "filename": "mandalorian-translator-interest-1.webp",
+        "prompt": "Grammar cheatsheet for Mando'a language, sentence structure diagram, verb conjugation chart, linguistic learning tools, educational infographic with Star Wars theme",
+        "category": "interest"
+      },
+      {
+        "filename": "mandalorian-translator-interest-2.webp",
+        "prompt": "Audio pronunciation guide for Mando'a language phrases, sound waves, speaker icons, language learning interface, pronunciation practice tools, modern educational app design",
+        "category": "interest"
+      },
+      {
+        "filename": "mandalorian-translator-interest-3.webp",
+        "prompt": "Mandalorian culture insights infographic, traditional symbols, cultural etiquette guide, naming conventions, Star Wars cultural elements, educational content design",
+        "category": "interest"
+      },
+      {
+        "filename": "mandalorian-translator-interest-4.webp",
+        "prompt": "Mobile-responsive translator app interface, smartphone and tablet screens, modern web design, language translation on the go, user experience focused design",
+        "category": "interest"
+      }
+    ]
+  },
+  "results": {
+    "success": 0,
+    "failed": 8,
+    "skipped": 0,
+    "details": [
+      {
+        "filename": "what-is-mandalorian-translator.webp",
+        "status": "error",
+        "error": "(0 , import_enhanced_workflow.generateSmartImage) is not a function"
+      },
+      {
+        "filename": "mandalorian-translator-how-to.webp",
+        "status": "error",
+        "error": "(0 , import_enhanced_workflow.generateSmartImage) is not a function"
+      },
+      {
+        "filename": "mandalorian-translator-fact-1.webp",
+        "status": "error",
+        "error": "(0 , import_enhanced_workflow.generateSmartImage) is not a function"
+      },
+      {
+        "filename": "mandalorian-translator-fact-2.webp",
+        "status": "error",
+        "error": "(0 , import_enhanced_workflow.generateSmartImage) is not a function"
+      },
+      {
+        "filename": "mandalorian-translator-interest-1.webp",
+        "status": "error",
+        "error": "(0 , import_enhanced_workflow.generateSmartImage) is not a function"
+      },
+      {
+        "filename": "mandalorian-translator-interest-2.webp",
+        "status": "error",
+        "error": "(0 , import_enhanced_workflow.generateSmartImage) is not a function"
+      },
+      {
+        "filename": "mandalorian-translator-interest-3.webp",
+        "status": "error",
+        "error": "(0 , import_enhanced_workflow.generateSmartImage) is not a function"
+      },
+      {
+        "filename": "mandalorian-translator-interest-4.webp",
+        "status": "error",
+        "error": "(0 , import_enhanced_workflow.generateSmartImage) is not a function"
+      }
+    ]
+  }
+}

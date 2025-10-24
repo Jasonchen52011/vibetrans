@@ -1,0 +1,217 @@
+{
+  "RunicTranslatorPage": {
+    "title": "Runic Translator: Accurate Runic Alphabet Translation Tool",
+    "description": "Translate text to ancient runic alphabets with our AI-powered tool. Support for multiple runic systems, image OCR recognition, and high-resolution downloads.",
+    "hero": {
+      "title": "Runic Translator",
+      "description": "Translate text to ancient runic alphabets with our advanced AI-powered tool. Perfect for tattoos, games, and creative projects."
+    },
+    "tool": {
+      "inputLabel": "Input Text",
+      "outputLabel": "Translated Text",
+      "inputPlaceholder": "Enter your text here...",
+      "outputPlaceholder": "Translation will appear here...",
+      "translateButton": "Translate",
+      "uploadButton": "Upload File",
+      "uploadHint": "Supports .txt and .docx files",
+      "loading": "Translating...",
+      "error": "Translation failed. Please try again.",
+      "noInput": "Please enter some text to translate."
+    },
+    "whatIs": {
+      "title": "What is Runic Translator?",
+      "description": "Runic Translator is an innovative AI-powered tool that supports multiple runic alphabet systems. Through advanced image and OCR functionality, it quickly identifies runes from manuscripts or photos and provides accurate translations, perfect for tattoos and commercial printing.",
+      "image": "/images/docs/rune-translation.webp",
+      "imageAlt": "What is Runic Translator - Visual explanation"
+    },
+    "examples": {
+      "title": "Runic Translation Examples",
+      "description": "See how our runic translator works with real examples and use cases",
+      "items": [
+        {
+          "title": "Ancient Rune Translation",
+          "role": "Historical Documents",
+          "description": "Accurately translate ancient Nordic runes into modern text",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "title": "Modern Rune Applications",
+          "role": "Art Design",
+          "description": "Modern design applications with rune element translation",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "title": "Tattoo Rune Design",
+          "role": "Personal Expression",
+          "description": "Transform personal ideas into mysterious rune patterns",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "title": "Game Rune Systems",
+          "role": "Game Development",
+          "description": "Create unique rune language systems for games",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "title": "Magic Rune Translation",
+          "role": "Creative Writing",
+          "description": "Translate rune spells from fantasy works",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "title": "Personalized Runes",
+          "role": "Custom Service",
+          "description": "Create exclusive personal rune identifiers",
+          "image": "",
+          "imageAlt": ""
+        }
+      ]
+    },
+    "howto": {
+      "title": "How to Use Runic Translator",
+      "description": "Simple steps to translate text to runic alphabets accurately.",
+      "image": "/images/docs/rune-translator-how-to.webp",
+      "imageAlt": "How to use Runic Translator",
+      "steps": [
+        {
+          "title": "Input Text",
+          "description": "Enter your text in the input box or upload a file"
+        },
+        {
+          "title": "Click Translate",
+          "description": "Press the translate button to start the translation process"
+        },
+        {
+          "title": "View Results",
+          "description": "See instant translation results with copy and download options"
+        },
+        {
+          "title": "Save & Share",
+          "description": "Save your translation results and share with friends or use in projects"
+        }
+      ]
+    },
+    "funFacts": {
+      "title": "Interesting Runic Facts",
+      "items": [
+      {
+        "title": "Rune Origins",
+        "description": "Runes originated in ancient Europe for writing and mystical ceremonies, with rich historical and cultural significance.",
+        "image": "/images/docs/rune-origin-story.webp",
+        "imageAlt": "Rune origin story"
+      },
+      {
+        "title": "Runes & Tattoos",
+        "description": "Runes are popular in modern tattoo art, symbolizing mystery and power as a unique form of personal expression.",
+        "image": "/images/docs/rune-tattoo-art.webp",
+        "imageAlt": "Rune tattoo art"
+      }
+    ],
+    "userInterest": {
+      "title": "Discover Your Journey",
+      "items": [
+        {
+          "title": "Explore Ancient Cultures",
+          "role": "",
+          "description": "Discover ancient European culture and mysterious runic writing systems through our translator.",
+          "image": "/images/docs/runes-personalized-design.webp",
+          "imageAlt": "Explore ancient cultures"
+        },
+        {
+          "title": "个性化设计",
+          "role": "",
+          "description": "利用高分辨率符文设计，创造独特的个人或商业项目。",
+          "image": "/images/docs/runes-community-connect.webp",
+          "imageAlt": "Personalized design"
+        },
+        {
+          "title": "社区互动",
+          "role": "",
+          "description": "加入我们的符文爱好者社区，分享设计，获取灵感。",
+          "image": "/images/docs/language-switch-icons.webp",
+          "imageAlt": "Community interaction"
+        },
+        {
+          "title": "多语言支持",
+          "role": "",
+          "description": "支持多种符文字母表，快速切换，满足不同翻译需求。",
+          "image": "/images/docs/rune-translation.webp",
+          "imageAlt": "Multi-language support"
+        }
+      ]
+    },
+    "highlights": {
+      "title": "核心优势",
+      "features": [
+        {
+          "icon": "FaRocket",
+          "title": "快速翻译",
+          "description": "支持图像和OCR识别，瞬间完成符文翻译，方便快捷。"
+        },
+        {
+          "icon": "FaShieldAlt",
+          "title": "翻译准确",
+          "description": "确保翻译结果的高准确性，避免纹身和印刷错误。"
+        },
+        {
+          "icon": "FaBrain",
+          "title": "多符文字母表",
+          "description": "支持多种符文字母表，轻松切换，满足不同用户需求。"
+        },
+        {
+          "icon": "FaChartLine",
+          "title": "高分辨率下载",
+          "description": "提供高质量符文设计下载，适用于商业用途。"
+        }
+      ]
+    },
+    "socialProof": [
+      {
+        "title": "用户满意度",
+        "description": "用户爱不释手，满意度高达4.8/5，感谢您对我们的支持！",
+        "image": "",
+        "imageAlt": ""
+      },
+      {
+        "title": "全球用户",
+        "description": "超过10万用户信赖我们的符文翻译器，遍布全球，持续增长中。",
+        "image": "",
+        "imageAlt": ""
+      },
+      {
+        "title": "社区活跃度",
+        "description": "社区有超过2000名活跃用户，分享和下载符文设计每天都在增加。",
+        "image": "",
+        "imageAlt": ""
+      }
+    ],
+    "faqs": {
+      "title": "Frequently Asked Questions",
+      "items": [
+        {
+          "question": "Is the Runic Translator free to use?",
+          "answer": "Yes, our basic runic translation services are free to use for everyone."
+        },
+        {
+          "question": "Which runic alphabets are supported?",
+          "answer": "We support multiple runic systems including Elder Futhark, Younger Futhark, and Anglo-Saxon runes."
+        },
+        {
+          "question": "Can I use the translations for tattoos?",
+          "answer": "Yes, many users use our translations for tattoo designs. We recommend double-checking with a runic expert for important pieces."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Start Translating with Runic Translator",
+      "description": "Experience our powerful runic translation tool - accurate, fast, and professional.",
+      "image": "",
+      "imageAlt": ""
+    }
+  }
+}

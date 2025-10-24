@@ -1,14 +1,18 @@
 // @ts-nocheck - Translation keys type mismatch
 import SimpleToolTemplate, {
   type ToolPageConfig,
-  generateToolMetadata
+  generateToolMetadata,
 } from '@/components/templates/SimpleToolTemplate';
-import { createAdvancedToolPageData, createExamplesData, createSectionsDataWithImages } from '@/components/templates/tool-template-utils';
+import {
+  createAdvancedToolPageData,
+  createExamplesData,
+  createSectionsDataWithImages,
+} from '@/components/templates/tool-template-utils';
 import { buildToolStructuredData } from '@/lib/seo/structured-data';
-import AlbanianToEnglishTool from './AlbanianToEnglishTool';
 import type { Metadata } from 'next';
 import type { Locale } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
+import AlbanianToEnglishTool from './AlbanianToEnglishTool';
 
 export const runtime = 'edge';
 
@@ -45,10 +49,15 @@ interface AlbanianToEnglishPageProps {
   params: Promise<{ locale: Locale }>;
 }
 
-export default async function AlbanianToEnglishPage(props: AlbanianToEnglishPageProps) {
+export default async function AlbanianToEnglishPage(
+  props: AlbanianToEnglishPageProps
+) {
   const params = await props.params;
   const { locale } = params;
-  const t = await getTranslations({ locale, namespace: 'AlbanianToEnglishPage' });
+  const t = await getTranslations({
+    locale,
+    namespace: 'AlbanianToEnglishPage',
+  });
 
   // Create tool page data
   const pageData = {
@@ -88,20 +97,24 @@ export default async function AlbanianToEnglishPage(props: AlbanianToEnglishPage
   ]);
 
   // Create sections data with custom images
-  const sectionsData = createSectionsDataWithImages(t, 'AlbanianToEnglishPage', {
-    whatIs: '/images/docs/what-is-albanian-to-english.webp',
-    howTo: '/images/docs/albanian-to-english-how-to.webp',
-    userInterest: [
-      '/images/docs/albanian-to-english-interest-1.webp',
-      '/images/docs/albanian-to-english-interest-2.webp',
-      '/images/docs/albanian-to-english-interest-3.webp',
-      '/images/docs/albanian-to-english-interest-4.webp',
-    ],
-    funFacts: [
-      '/images/docs/albanian-to-english-fact-1.webp',
-      '/images/docs/albanian-to-english-fact-2.webp',
-    ],
-  });
+  const sectionsData = createSectionsDataWithImages(
+    t,
+    'AlbanianToEnglishPage',
+    {
+      whatIs: '/images/docs/what-is-albanian-to-english.webp',
+      howTo: '/images/docs/albanian-to-english-how-to.webp',
+      userInterest: [
+        '/images/docs/albanian-to-english-interest-1.webp',
+        '/images/docs/albanian-to-english-interest-2.webp',
+        '/images/docs/albanian-to-english-interest-3.webp',
+        '/images/docs/albanian-to-english-interest-4.webp',
+      ],
+      funFacts: [
+        '/images/docs/albanian-to-english-fact-1.webp',
+        '/images/docs/albanian-to-english-fact-2.webp',
+      ],
+    }
+  );
 
   const structuredData = buildToolStructuredData({
     name: 'VibeTrans Albanian to English Translator',

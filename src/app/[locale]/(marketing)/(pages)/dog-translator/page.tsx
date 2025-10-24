@@ -59,20 +59,6 @@ export default async function DogTranslatorPage(props: DogTranslatorPageProps) {
     description: (t as any)('description'),
   });
 
-  // Page data for the tool
-  const pageData = {
-    tool: {
-      yourWords: (t as any)('tool.yourWords'),
-      doggyVibe: (t as any)('tool.doggyVibe'),
-      inputPlaceholder: (t as any)('tool.inputPlaceholder'),
-      translateButton: (t as any)('tool.translateButton'),
-      playButton: (t as any)('tool.playButton'),
-      loading: (t as any)('tool.loading'),
-      error: (t as any)('tool.error'),
-      noInput: (t as any)('tool.noInput'),
-    },
-  };
-
   // Examples section data
   const examplesData = {
     title: (t as any)('examples.title'),
@@ -147,6 +133,22 @@ export default async function DogTranslatorPage(props: DogTranslatorPageProps) {
     ],
   };
 
+  // Fun Facts section (text-focused)
+  const funFactsSection = {
+    name: 'funFacts',
+    title: (t as any)('funFacts.title'),
+    items: [
+      {
+        title: (t as any)('funFacts.items.0.title'),
+        description: (t as any)('funFacts.items.0.description'),
+      },
+      {
+        title: (t as any)('funFacts.items.1.title'),
+        description: (t as any)('funFacts.items.1.description'),
+      },
+    ],
+  };
+
   // Highlights section
   const highlightsSection = {
     name: 'highlights',
@@ -174,6 +176,28 @@ export default async function DogTranslatorPage(props: DogTranslatorPageProps) {
         description: (t as any)('highlights.items.3.description'),
       },
     ],
+  };
+
+  // Page data for tool component consumption
+  const pageData = {
+    tool: {
+      yourWords: (t as any)('tool.yourWords'),
+      doggyVibe: (t as any)('tool.doggyVibe'),
+      inputPlaceholder: (t as any)('tool.inputPlaceholder'),
+      inputLabel: (t as any)('tool.inputLabel'),
+      outputPlaceholder: (t as any)('tool.outputPlaceholder'),
+      outputLabel: (t as any)('tool.outputLabel'),
+      translateButton: (t as any)('tool.translateButton'),
+      playButton: (t as any)('tool.playButton'),
+      playSoundTooltip: (t as any)('tool.playSoundTooltip'),
+      loading: (t as any)('tool.loading'),
+      error: (t as any)('tool.error'),
+      noInput: (t as any)('tool.noInput'),
+      uploadButton: (t as any)('tool.uploadButton'),
+      uploadHint: (t as any)('tool.uploadHint'),
+    },
+    funFacts: funFactsSection,
+    highlights: highlightsSection,
   };
 
   // What is section

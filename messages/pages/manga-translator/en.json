@@ -1,0 +1,233 @@
+{
+  "MangaTranslatorPage": {
+    "title": "Manga Translator Studio: The Best Manga Translation Tool",
+    "description": "Manga Translator Studio offers the best manga translator for efficient AI-driven image recognition, translation, and typesetting in three easy steps.",
+    "hero": {
+      "title": "Manga Translator Studio for Seamless Manga Translation",
+      "description": "Discover the best manga translator with AI-driven accuracy and seamless translation features."
+    },
+    "tool": {
+      "inputLabel": "Input Text",
+      "outputLabel": "Translated Text",
+      "inputPlaceholder": "Enter your text here...",
+      "outputPlaceholder": "Translation will appear here...",
+      "translateButton": "Translate",
+      "uploadButton": "Upload File",
+      "uploadHint": "Supports .txt and .docx files",
+      "voiceInputButton": "Voice Input",
+      "voiceInputHint": "Click to start voice input",
+      "audioUploadButton": "Upload Audio",
+      "audioUploadHint": "Upload audio file for transcription",
+      "voiceOutputButton": "Play Audio",
+      "voiceOutputHint": "Listen to translation",
+      "loading": "Translating...",
+      "transcribing": "Transcribing audio...",
+      "error": "Translation failed. Please try again.",
+      "noInput": "Please enter some text to translate."
+    },
+    "whatIs": {
+      "title": "What is Manga Translator Studio",
+      "description": "Manga Translator Studio is an all-in-one tool that offers advanced AI capabilities for manga translation. It features automatic bubble detection, context-consistent translations, and customizable typesetting to provide an exceptional localization experience.",
+      "image": "/images/docs/what-is-manga-translator.webp",
+      "imageAlt": "What is Manga Translator Studio"
+    },
+    "examples": {
+      "title": "See Manga Translator Studio in Action",
+      "description": "Watch how our tool accurately translates Japanese manga into English, maintaining original style and context. Our AI detects and translates SFX, ensuring a seamless reading experience.",
+      "items": [
+        {
+          "alt": "Japanese manga panel translated to English",
+          "name": "Japanese to English Translation"
+        },
+        {
+          "alt": "Manga speech bubbles with text recognition",
+          "name": "Speech Bubble Recognition"
+        },
+        {
+          "alt": "SFX effects translation example",
+          "name": "Sound Effects Translation"
+        },
+        {
+          "alt": "Vertical text manga translation",
+          "name": "Vertical Text Handling"
+        },
+        {
+          "alt": "Manga character dialogue translation",
+          "name": "Character Dialogue"
+        },
+        {
+          "alt": "Manga panel typesetting after translation",
+          "name": "Professional Typesetting"
+        }
+      ]
+    },
+    "howto": {
+      "title": "How to Translate Manga with Ease",
+      "description": "Learn to translate manga effortlessly in just a few steps.",
+      "steps": [
+        {
+          "name": "Upload Your Manga",
+          "description": "Start by uploading your manga pages to our platform. Ensure images are clear for optimal bubble detection and text recognition.",
+          "wordCount": 27
+        },
+        {
+          "name": "Choose Translation Mode",
+          "description": "Select from our professional translation modes that suit your needs, whether it's technical or literary style.",
+          "wordCount": 24
+        },
+        {
+          "name": "Review and Edit",
+          "description": "Review translated content. Utilize our AI tools to edit and refine translations, ensuring they meet your quality standards.",
+          "wordCount": 24
+        },
+        {
+          "name": "Download and Share",
+          "description": "Once satisfied, download your translated manga in your preferred format, ready to share with your audience.",
+          "wordCount": 23
+        }
+      ],
+      "totalWordCount": 98
+    },
+    "funFacts": {
+      "title": "Interesting Facts",
+      "items": [
+        {
+          "title": "First Official Translation",
+          "description": "The first manga officially translated into English was 'The Legend of Kamui' in 1983, and it had 12% of the text removed due to bubble size constraints.",
+          "image": "/images/docs/manga-translator-fact-1.webp",
+          "imageAlt": "First Official Translation"
+        },
+        {
+          "title": "SFX Translation Challenge",
+          "description": "An average 200-page manga contains 15%-20% SFX, which many translation tools struggle to accurately recognize and translate.",
+          "image": "/images/docs/manga-translator-fact-2.webp",
+          "imageAlt": "SFX Translation Challenge"
+        }
+      ]
+    },
+    "userInterest": {
+      "title": "Explore More with Manga Translator Studio",
+      "items": [
+        {
+          "title": "Data Privacy and Security",
+          "description": "Your data's safety is our priority. Learn how Manga Translator Studio ensures privacy and security during the manga translation process.",
+          "image": "/images/docs/manga-translator-interest-1.webp",
+          "imageAlt": "Data Privacy and Security"
+        },
+        {
+          "title": "Accuracy Benchmarking",
+          "description": "Discover how our translation accuracy compares to human experts, ensuring high-quality results for your manga projects.",
+          "image": "/images/docs/manga-translator-interest-2.webp",
+          "imageAlt": "Accuracy Benchmarking"
+        },
+        {
+          "title": "Vertical Text and SFX Recognition",
+          "description": "Our tool excels in recognizing vertical Japanese text and SFX, providing a seamless translation experience.",
+          "image": "/images/docs/manga-translator-interest-3.webp",
+          "imageAlt": "Vertical Text and SFX Recognition"
+        },
+        {
+          "title": "Batch Processing for Efficiency",
+          "description": "Translate entire volumes effortlessly with our batch processing feature, designed to save you time and effort.",
+          "image": "/images/docs/manga-translator-interest-4.webp",
+          "imageAlt": "Batch Processing for Efficiency"
+        }
+      ]
+    },
+    "highlights": {
+      "title": "Key Features of Manga Translator Studio",
+      "description": "Explore the standout features making Manga Translator Studio the ultimate tool for manga translation.",
+      "features": [
+        {
+          "title": "AI Context Understanding",
+          "icon": "FaBrain",
+          "tagline": "Smart context-aware translations",
+          "statLabel": "Translation Accuracy",
+          "statValue": "90%+",
+          "description": "Our AI provides context-consistent translations, capturing nuanced meanings and ensuring accurate localization.",
+          "wordCount": 20,
+          "microCopy": "Experience precise translations."
+        },
+        {
+          "title": "Voice Input and Output",
+          "icon": "FaVolumeUp",
+          "tagline": "Seamless voice interactions",
+          "statLabel": "Voice Recognition",
+          "statValue": "Real-Time",
+          "description": "Utilize voice input for hands-free operation and enjoy translated content read aloud with our voice output feature.",
+          "wordCount": 24,
+          "microCopy": "Speak, listen, and translate effortlessly."
+        },
+        {
+          "title": "Data Privacy and Security",
+          "icon": "FaShieldAlt",
+          "tagline": "Your data, our priority",
+          "statLabel": "Data Protection",
+          "statValue": "High",
+          "description": "We prioritize your data's safety, ensuring secure uploads and translations with industry-standard encryption methods.",
+          "wordCount": 23,
+          "microCopy": "Your privacy is guaranteed."
+        },
+        {
+          "title": "High Accuracy OCR",
+          "icon": "FaMagic",
+          "tagline": "Precise text recognition",
+          "statLabel": "OCR Accuracy",
+          "statValue": "90%+",
+          "description": "Experience high-accuracy optical character recognition, perfect for manga's unique text styles and layouts.",
+          "wordCount": 23,
+          "microCopy": "OCR you can trust."
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "What Users Say",
+      "subtitle": "Real feedback from real users",
+      "items": {
+        "item-1": {
+          "name": "John Smith",
+          "role": "Freelance Translator",
+          "heading": "Review from John Smith",
+          "content": "Using Manga Translator Studio has transformed my workflow. The AI context understanding is incredible, ensuring my translations maintain their original meaning and style. It's a game-changer for professional manga translators."
+        },
+        "item-2": {
+          "name": "Emily Johnson",
+          "role": "Manga Publisher",
+          "heading": "Review from Emily Johnson",
+          "content": "Manga Translator Studio's batch processing feature saves us time and effort. We can translate entire volumes quickly and efficiently, maintaining high-quality standards. It's an essential tool for our publishing team."
+        },
+        "item-3": {
+          "name": "Alex Chen",
+          "role": "Manga Enthusiast",
+          "heading": "Review from Alex Chen",
+          "content": "As someone who loves reading manga, this tool helps me understand Japanese content better. The translation quality is impressive, and the voice feature makes it even more accessible."
+        }
+      }
+    },
+    "faqs": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Have other questions? Feel free to contact us via email.",
+      "items": {
+        "item-1": {
+          "question": "Is Manga Translator Studio free to use?",
+          "answer": "Manga Translator Studio offers a range of pricing plans, including a free version with essential features. Explore our premium options for more advanced capabilities."
+        },
+        "item-2": {
+          "question": "How secure is my data with Manga Translator Studio?",
+          "answer": "Your privacy is our priority. Manga Translator Studio uses state-of-the-art encryption to protect your data during uploads and translations, ensuring your information remains confidential."
+        },
+        "item-3": {
+          "question": "Which is the best manga translator tool?",
+          "answer": "Manga Translator Studio is considered the best manga translator tool due to its high accuracy, context-aware translations, and user-friendly features designed for professional and casual users alike."
+        }
+      }
+    },
+    "ctaButton": "Try MangaTranslator Now",
+    "cta": {
+      "title": "Get Started with Manga Translator Studio Today",
+      "description": "Experience the best manga translation with Manga Translator Studio. Start your free trial now!",
+      "primaryButton": "Try MangaTranslator Now",
+      "secondaryButton": "Back to Top"
+    }
+  }
+}

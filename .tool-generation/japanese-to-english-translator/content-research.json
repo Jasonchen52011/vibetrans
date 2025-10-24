@@ -1,0 +1,287 @@
+{
+  "contentGaps": [
+    {
+      "topic": "How machine translators handle honorifics & politeness levels (敬語)",
+      "reason": "In Japanese, politeness can completely change meaning and social appropriateness. Users worry automated tools drop these nuances.",
+      "competitors": [
+        "Google Translate",
+        "DeepL",
+        "Bing Translator",
+        "Yandex Translate",
+        "Reverso",
+        "Cambridge Translator"
+      ]
+    },
+    {
+      "topic": "Manga / Anime-specific slang and sound-effect translation",
+      "reason": "A large portion of traffic comes from fans wanting to translate manga panels or subtitles accurately.",
+      "competitors": [
+        "Google Translate",
+        "DeepL",
+        "Lingvanex",
+        "Translate.com",
+        "iLoveTranslate"
+      ]
+    },
+    {
+      "topic": "Side-by-side romanization (romaji) output",
+      "reason": "Learners often need Latin letters to grasp pronunciation or type unfamiliar kanji, but most tools show only source & target texts.",
+      "competitors": [
+        "DeepL",
+        "Reverso",
+        "Bing Translator",
+        "Yandex Translate",
+        "Translatron",
+        "Babelfish"
+      ]
+    },
+    {
+      "topic": "Offline privacy-first translation (no server uploads)",
+      "reason": "Corporate and legal users worry about NDA breaches when texts are sent to cloud APIs.",
+      "competitors": [
+        "Google Translate Web",
+        "DeepL Web",
+        "Reverso",
+        "Translate.com",
+        "Online-Convert"
+      ]
+    },
+    {
+      "topic": "Bulk document / PDF with vertical Japanese text (縦書き) OCR + translate",
+      "reason": "Business users need to process contracts or novels that still use vertical layout; few translators preserve formatting.",
+      "competitors": [
+        "Google Translate",
+        "Bing Translator",
+        "DeepL (web)",
+        "Yandex Translate",
+        "i2OCR + Translate combo"
+      ]
+    },
+    {
+      "topic": "API price & rate-limit comparison table for devs",
+      "reason": "Developers search “Japanese to English translator API” but must manually dig into each provider’s docs.",
+      "competitors": [
+        "All top 15 consumer-facing pages except DeepL API pricing page"
+      ]
+    },
+    {
+      "topic": "Detecting & explaining cultural idioms (ことわざ) with notes",
+      "reason": "Direct word-for-word translation loses idiomatic meaning; users want short cultural footnotes.",
+      "competitors": [
+        "Google Translate",
+        "DeepL",
+        "Reverso",
+        "Papago",
+        "Linguee"
+      ]
+    },
+    {
+      "topic": "Voice-input → subtitle (.srt) auto-generation for Japanese videos",
+      "reason": "Streamers and educators want to auto-generate English subtitles from spoken Japanese.",
+      "competitors": ["All top 15"]
+    }
+  ],
+  "socialTopics": [
+    {
+      "platform": "Reddit",
+      "topic": "Is DeepL really better than Google for Japanese → English?",
+      "engagement": "高",
+      "summary": "Threads in r/translator and r/japanese compare side-by-side outputs; consensus: DeepL wins for natural flow but still mistranslates slang."
+    },
+    {
+      "platform": "Reddit",
+      "topic": "Best OCR apps for translating Japanese text on signs or menus",
+      "engagement": "高",
+      "summary": "r/JapanTravel and r/japanese learners up-vote lists of camera apps (Google Lens, Papago, Yomiwa) and discuss offline reliability."
+    },
+    {
+      "platform": "Reddit",
+      "topic": "How to translate Switch/PlayStation games that have no English option",
+      "engagement": "中",
+      "summary": "Gamers share overlay tools and HDMI capture + OCR setups to live-translate on PC."
+    },
+    {
+      "platform": "Quora",
+      "topic": "Why is Japanese machine translation still so hard?",
+      "engagement": "高",
+      "summary": "Ex-Google engineers and linguists explain syntax differences, dropping of subjects, multiple scripts."
+    },
+    {
+      "platform": "Quora",
+      "topic": "Can I rely on Google Translate for a Japanese business email?",
+      "engagement": "中",
+      "summary": "Native speakers caution against politeness mistakes; suggest proofreading services."
+    },
+    {
+      "platform": "Reddit",
+      "topic": "Translating Japanese honorifics (-san, ‑kun, ‑sama) or leaving them intact?",
+      "engagement": "中",
+      "summary": "Localization vs. literal debate; many up-votes in r/translationstudies."
+    },
+    {
+      "platform": "Quora",
+      "topic": "How long does it take to become a professional JP-EN translator?",
+      "engagement": "中",
+      "summary": "Real-world timelines, JLPT levels, and rate cards discussed."
+    }
+  ],
+  "funFacts": [
+    "Japanese uses three scripts—kanji, hiragana, katakana—and a single sentence often mixes all three, confusing statistical MT models.",
+    "The first successful machine translation of Japanese was demonstrated in 1959 by IBM on an IBM 7090 mainframe.",
+    "DeepL’s unusually good Japanese output partly comes from training on millions of bilingual sentence pairs sourced from EU & Japanese patent filings.",
+    "Only about 2,136 kanji are required for daily literacy (the Jōyō list), yet Unicode includes over 83,000 CJK characters.",
+    "Because Japanese frequently omits subjects, MT systems must guess who is doing the action, leading to comical mistranslations (‘I love you’ → ‘He loves you’)."
+  ],
+  "highFrequencyWords": [
+    {
+      "word": "translation",
+      "frequency": "高",
+      "context": "Core service description"
+    },
+    {
+      "word": "Japanese",
+      "frequency": "高",
+      "context": "Source language mention"
+    },
+    {
+      "word": "English",
+      "frequency": "高",
+      "context": "Target language mention"
+    },
+    {
+      "word": "text",
+      "frequency": "高",
+      "context": "Input type users paste"
+    },
+    {
+      "word": "online",
+      "frequency": "高",
+      "context": "Mode of access"
+    },
+    {
+      "word": "free",
+      "frequency": "高",
+      "context": "Pricing hook"
+    },
+    {
+      "word": "accurate",
+      "frequency": "高",
+      "context": "Quality claim"
+    },
+    {
+      "word": "instant",
+      "frequency": "中",
+      "context": "Speed claim"
+    },
+    {
+      "word": "convert",
+      "frequency": "中",
+      "context": "Action verb"
+    },
+    {
+      "word": "voice",
+      "frequency": "中",
+      "context": "Feature (speech)"
+    },
+    {
+      "word": "dictionary",
+      "frequency": "中",
+      "context": "Supplementary feature"
+    },
+    {
+      "word": "tool",
+      "frequency": "中",
+      "context": "Generic product category"
+    },
+    {
+      "word": "camera",
+      "frequency": "中",
+      "context": "OCR feature"
+    },
+    {
+      "word": "OCR",
+      "frequency": "中",
+      "context": "Image‐to‐text capability"
+    },
+    {
+      "word": "app",
+      "frequency": "中",
+      "context": "Mobile solutions"
+    },
+    {
+      "word": "AI",
+      "frequency": "中",
+      "context": "Underlying tech marketing"
+    },
+    {
+      "word": "context",
+      "frequency": "中",
+      "context": "Quality qualifier (contextual)"
+    },
+    {
+      "word": "upload",
+      "frequency": "中",
+      "context": "User action for files"
+    },
+    {
+      "word": "document",
+      "frequency": "中",
+      "context": "File type support"
+    },
+    {
+      "word": "API",
+      "frequency": "中",
+      "context": "Developer offering"
+    },
+    {
+      "word": "kanji",
+      "frequency": "中",
+      "context": "Script mention"
+    },
+    {
+      "word": "romanization",
+      "frequency": "中",
+      "context": "Alternate output"
+    },
+    {
+      "word": "pronunciation",
+      "frequency": "中",
+      "context": "Learning aid"
+    },
+    {
+      "word": "examples",
+      "frequency": "中",
+      "context": "Sample sentences"
+    },
+    {
+      "word": "copy",
+      "frequency": "中",
+      "context": "UI action"
+    },
+    {
+      "word": "paste",
+      "frequency": "中",
+      "context": "UI action"
+    },
+    {
+      "word": "download",
+      "frequency": "中",
+      "context": "Offline use"
+    },
+    {
+      "word": "batch",
+      "frequency": "中",
+      "context": "Bulk processing"
+    },
+    {
+      "word": "secure",
+      "frequency": "中",
+      "context": "Privacy claim"
+    },
+    {
+      "word": "learning",
+      "frequency": "中",
+      "context": "Educational angle"
+    }
+  ]
+}

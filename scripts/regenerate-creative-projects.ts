@@ -1,34 +1,107 @@
 /**
- * Regenerate Alien Text for Creative Projects image
- * With smart prompt comparison before generation
+ * Regenerate Telugu to English Translator images for specific sections
+ * With smart prompt comparison before generation using Volcano 4.0 API
  */
 
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { testGeneratePrompt } from '../src/lib/article-illustrator/gemini-analyzer';
 import { convertURLToWebP } from '../src/lib/article-illustrator/webp-converter';
-import { generateImageWithKie } from '../src/lib/kie-text-to-image';
+import { generateImage as generateVolcanoImage } from '../src/lib/volcano-image';
+import { config } from 'dotenv';
+import sharp from 'sharp';
+import fs from 'node:fs/promises';
+import path from 'node:path';
 
-// 现有的 prompt（从原始生成脚本获取）
-const EXISTING_PROMPT = `Geometric Flat Style cartoon illustration for "Alien Text for Creative Projects". Sky blue (#87CEEB) primary with soft gradient. Center features an artist's workspace with an open laptop (rectangular frame in silver) showing a sci-fi project with alien text overlays. A cartoon creator (circular head, rectangular body wearing creative beret) types enthusiastically. Around the workspace: storyboard panels with alien text labels, character design sketches with futuristic name tags, UI mockups with alien interface text. Floating creative tools: pencil (cylinder shape), paintbrush (geometric bristles), digital pen (sleek rectangle). Alien text examples float in bubbles: story titles in zalgo style, character names in circle text, UI elements in square text. Background shows: planet shapes representing different creative genres, constellation lines connecting ideas, geometric stars for inspiration. Color palette: sky blue dominant, deep purple (#6A0DAD), emerald green (#50C878), coral pink (#FF6B6B), lemon yellow (#FFF44F). Creative, inspiring, project-focused atmosphere. 4:3 aspect ratio, 800x600px.`;
+// Load environment variables
+config({ path: '.env.local' });
 
-// 内容标题和说明
-const SECTION_TITLE = 'Alien Text for Creative Projects';
-const SECTION_CONTENT = `Use alien text to make your creative projects stand out. Whether you're designing a sci-fi story, creating character names, or building a futuristic UI, alien text adds an otherworldly touch that captures attention and sparks imagination.`;
+// 火山4.0 API函数（使用正确的火山引擎库）
+async function generateImageWithVolcano(prompt: string): Promise<{ url: string }> {
+  try {
+    const result = await generateVolcanoImage({
+      prompt: prompt,
+      mode: 'text',
+      size: '2K',
+      watermark: false,
+    });
+
+    if (result.data && result.data[0] && result.data[0].url) {
+      return { url: result.data[0].url };
+    } else {
+      throw new Error('No image URL in Volcano response');
+    }
+  } catch (error) {
+    throw new Error(`Failed to generate image with Volcano: ${error}`);
+  }
+}
+
+// 下载并转换图片为WebP
+async function downloadAndConvertImage(
+  url: string,
+  outputPath: string
+): Promise<void> {
+  console.log(`📥 Downloading image from: ${url}`);
+
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`Failed to download image: ${response.statusText}`);
+  }
+
+  const arrayBuffer = await response.arrayBuffer();
+  const buffer = Buffer.from(arrayBuffer);
+
+  // 确保输出目录存在
+  await fs.mkdir(path.dirname(outputPath), { recursive: true });
+
+  // Convert to WebP with optimization for 90kb target
+  await sharp(buffer)
+    .webp({
+      quality: 75,
+      effort: 6,
+      method: 6,
+      smartSubsample: true,
+    })
+    .resize(1200, 900, {
+      fit: 'inside',
+      withoutEnlargement: true,
+    })
+    .toFile(outputPath);
+
+  console.log(`✅ Image saved and converted to WebP: ${outputPath}`);
+}
+
+// 三个部分的内容配置 - Wingdings Translator
+const SECTIONS = [
+  {
+    title: 'Design Applications',
+    content: `Discover creative ways to use Wingdings symbols in graphic design, presentations, and digital art projects. From logos to infographics, Wingdings adds a unique visual element that captures attention and conveys meaning through symbolic representation.`,
+    filename: 'wingdings-translator-interest-3'
+  },
+  {
+    title: "Microsoft's Creation",
+    content: `Wingdings was created by Microsoft in 1990 as part of the Windows 3.1 operating system. It was designed to include a variety of useful symbols for documents, becoming one of the most recognizable symbolic fonts in digital history.`,
+    filename: 'wingdings-translator-fact-1'
+  },
+  {
+    title: 'Hidden Easter Eggs',
+    content: `Wingdings contains several Easter eggs. For example, typing NYC displays symbols that some people interpreted as anti-Semitic, leading to controversy in the 1990s. These hidden messages have made Wingdings a subject of cultural fascination.`,
+    filename: 'wingdings-translator-fact-2'
+  }
+];
 
 /**
  * 使用 Gemini 比较两个 prompt 的质量
  */
 async function comparePrompts(
   existingPrompt: string,
-  newPrompt: string
+  newPrompt: string,
+  sectionTitle: string
 ): Promise<{
   shouldUseExisting: boolean;
   reason: string;
   recommendation: string;
 }> {
-  const apiKey =
-    process.env.GOOGLE_GENERATIVE_AI_API_KEY ||
-    process.env.NEXT_PUBLIC_GOOGLE_GENERATIVE_AI_API_KEY;
+  const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
 
   if (!apiKey) {
     console.warn('⚠️  No Gemini API key found, using new prompt by default');
@@ -44,7 +117,7 @@ async function comparePrompts(
 
   const comparisonPrompt = `You are an expert at evaluating image generation prompts for geometric flat-style illustrations.
 
-Compare these two prompts for the same image concept "${SECTION_TITLE}":
+Compare these two prompts for the same image concept "${sectionTitle}":
 
 EXISTING PROMPT:
 ${existingPrompt}
@@ -57,7 +130,7 @@ Evaluate based on:
 2. Color palette accuracy (must use sky blue #87CEEB as primary)
 3. Geometric flat style adherence
 4. Completeness of scene description
-5. Keyword integration for "${SECTION_TITLE}"
+5. Keyword integration for "${sectionTitle}"
 
 Response format:
 DECISION: [USE_EXISTING or USE_NEW]
@@ -95,78 +168,59 @@ Now evaluate:`;
   }
 }
 
-async function regenerateCreativeProjectsImage() {
+async function regenerateWingdingsTranslatorImages() {
   console.log('\n' + '='.repeat(70));
-  console.log('🎨 Regenerating: Alien Text for Creative Projects');
+  console.log('🎨 Regenerating Wingdings Translator Section Images');
   console.log('='.repeat(70) + '\n');
 
-  // Step 1: 检查是否存在现有 prompt
-  console.log('📋 Step 1: Checking existing prompt...');
-  if (EXISTING_PROMPT) {
-    console.log(`✅ Found existing prompt (${EXISTING_PROMPT.length} chars)`);
-    console.log(`📝 Existing: ${EXISTING_PROMPT.substring(0, 100)}...\n`);
-  } else {
-    console.log('⚠️  No existing prompt found\n');
-  }
+  const OUTPUT_DIR = path.join(process.cwd(), 'public', 'images', 'docs');
 
-  // Step 2: 使用 Gemini 生成新 prompt
-  console.log('📋 Step 2: Generating new prompt with Gemini...');
-  const { prompt: newPrompt } = await testGeneratePrompt(
-    SECTION_TITLE,
-    SECTION_CONTENT
-  );
-  console.log(`✅ Generated new prompt (${newPrompt.length} chars)`);
-  console.log(`📝 New: ${newPrompt.substring(0, 100)}...\n`);
+  // 确保输出目录存在
+  await fs.mkdir(OUTPUT_DIR, { recursive: true });
 
-  // Step 3: 比较两个 prompt
-  let finalPrompt = newPrompt;
+  for (const section of SECTIONS) {
+    console.log(`\n🎯 Processing: ${section.title}`);
+    console.log('-'.repeat(50));
 
-  if (EXISTING_PROMPT) {
-    console.log('📋 Step 3: Comparing prompts with Gemini...');
-    const comparison = await comparePrompts(EXISTING_PROMPT, newPrompt);
+    try {
+      // Step 1: 使用 Gemini 生成新 prompt
+      console.log('📋 Step 1: Generating new prompt with Gemini...');
+      const { prompt: newPrompt } = await testGeneratePrompt(
+        `Telugu to English Translator - ${section.title}`,
+        section.content
+      );
+      console.log(`✅ Generated new prompt (${newPrompt.length} chars)`);
+      console.log(`📝 New: ${newPrompt.substring(0, 100)}...\n`);
 
-    console.log(
-      `\n🎯 Decision: ${comparison.shouldUseExisting ? 'USE EXISTING' : 'USE NEW'}`
-    );
-    console.log(`💡 Reason: ${comparison.reason}\n`);
+      // Step 2: 生成图片（直接使用新prompt，没有现有prompt需要比较）
+      console.log('📋 Step 2: Generating image with Volcano 4.0 API...');
+      const imageResult = await generateImageWithVolcano(newPrompt);
+      console.log(`✅ Image generated: ${imageResult.url}\n`);
 
-    finalPrompt = comparison.recommendation;
-  } else {
-    console.log('📋 Step 3: No comparison needed (no existing prompt)\n');
-  }
+      // Step 3: 下载并转换为 WebP
+      console.log('📋 Step 3: Downloading and converting to WebP...');
+      const outputPath = path.join(OUTPUT_DIR, `${section.filename}.webp`);
+      await downloadAndConvertImage(imageResult.url, outputPath);
 
-  console.log(`📝 Final prompt: ${finalPrompt.substring(0, 100)}...\n`);
-
-  // Step 4: 生成图片
-  console.log('📋 Step 4: Generating image with KIE API...');
-
-  try {
-    const imageResult = await generateImageWithKie(finalPrompt, {
-      imageSize: '4:3',
-      outputFormat: 'png',
-    });
-
-    console.log(`✅ Image generated: ${imageResult.url}\n`);
-
-    // Step 5: 转换为 WebP
-    console.log('📋 Step 5: Converting to WebP...');
-    const webpResult = await convertURLToWebP(imageResult.url, {
-      filename: 'alien-text-creative-projects',
-      targetSize: 90,
-    });
-
-    if (webpResult.success) {
-      console.log('\n' + '='.repeat(70));
-      console.log(`✅ Success: ${webpResult.filename} (${webpResult.size}KB)`);
-      console.log(`📁 Location: public/images/docs/${webpResult.filename}`);
-      console.log('='.repeat(70) + '\n');
-    } else {
-      throw new Error(webpResult.error || 'WebP conversion failed');
+      console.log('\n' + '-'.repeat(50));
+      console.log(`✅ Success: ${section.filename}.webp`);
+      console.log(`📁 Location: public/images/docs/${section.filename}.webp`);
+      console.log('-'.repeat(50) + '\n');
+    } catch (error: any) {
+      console.error(`\n❌ Failed to generate image for ${section.title}: ${error.message}\n`);
+      // 继续处理下一个部分，不中断整个流程
     }
-  } catch (error: any) {
-    console.error(`\n❌ Failed: ${error.message}\n`);
-    throw error;
+
+    // 添加延迟以避免速率限制
+    if (SECTIONS.indexOf(section) < SECTIONS.length - 1) {
+      console.log(`⏱️  Waiting 3 seconds before next request...`);
+      await new Promise((resolve) => setTimeout(resolve, 3000));
+    }
   }
+
+  console.log('\n' + '='.repeat(70));
+  console.log('🎉 All sections processed!');
+  console.log('='.repeat(70) + '\n');
 }
 
-regenerateCreativeProjectsImage().catch(console.error);
+regenerateWingdingsTranslatorImages().catch(console.error);

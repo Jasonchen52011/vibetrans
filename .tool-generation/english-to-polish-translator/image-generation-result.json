@@ -1,0 +1,64 @@
+{
+  "success": true,
+  "totalImages": 7,
+  "successfulImages": 1,
+  "failedImages": 6,
+  "images": [
+    {
+      "section": "whatIs",
+      "title": "What is English to Polish Translator",
+      "filename": "language-bridge.webp",
+      "size": 0,
+      "status": "failed",
+      "error": "All image generation models failed. Last error: Failed to create Ideogram task: undefined"
+    },
+    {
+      "section": "funFacts #1",
+      "title": "Grammar Complexity",
+      "filename": "polish-grammar-maze.webp",
+      "size": 0,
+      "status": "failed",
+      "error": "All image generation models failed. Last error: Failed to create Ideogram task: undefined"
+    },
+    {
+      "section": "funFacts #2",
+      "title": "Longest Words",
+      "filename": "word-length-challenge.webp",
+      "size": 37,
+      "status": "success"
+    },
+    {
+      "section": "userInterests #1",
+      "title": "Grammar Insights",
+      "filename": "grammar-insights.webp",
+      "size": 0,
+      "status": "failed",
+      "error": "All image generation models failed. Last error: Failed to create Ideogram task: undefined"
+    },
+    {
+      "section": "userInterests #2",
+      "title": "Contextual Examples",
+      "filename": "english-polish-bridge.webp",
+      "size": 0,
+      "status": "failed",
+      "error": "All image generation models failed. Last error: Failed to create Ideogram task: undefined"
+    },
+    {
+      "section": "userInterests #3",
+      "title": "Professional Modes",
+      "filename": "gears-communication.webp",
+      "size": 0,
+      "status": "failed",
+      "error": "All image generation models failed. Last error: Failed to create Ideogram task: undefined"
+    },
+    {
+      "section": "userInterests #4",
+      "title": "Voice Input/Output",
+      "filename": "voice-translate.webp",
+      "size": 0,
+      "status": "failed",
+      "error": "All image generation models failed. Last error: Failed to create Ideogram task: undefined"
+    }
+  ],
+  "totalTimeMs": 20256
+}

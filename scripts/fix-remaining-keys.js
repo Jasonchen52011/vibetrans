@@ -35,7 +35,7 @@ function getToolPageMapping() {
     'pig-latin-translator': 'PigLatinTranslatorPage',
     'samoan-to-english-translator': 'SamoanToEnglishTranslatorPage',
     'verbose-generator': 'VerboseGeneratorPage',
-    'dumb-it-down-ai': 'DumbItDownPage'
+    'dumb-it-down-ai': 'DumbItDownPage',
   };
 }
 
@@ -82,7 +82,7 @@ const remainingKeyPatterns = [
   'unique.items.3.image',
   'unique.items.3.imageAlt',
   'tool.alBhedLabel', // Al Bhed specific
-  'tool.alBhedPlaceholder' // Al Bhed specific
+  'tool.alBhedPlaceholder', // Al Bhed specific
 ];
 
 // 读取文件内容
@@ -120,19 +120,26 @@ function fixRemainingKeys(pagePath, toolName, pageNamespace) {
   let fixCount = 0;
 
   // 修复剩余的翻译键模式
-  remainingKeyPatterns.forEach(key => {
+  remainingKeyPatterns.forEach((key) => {
     // 匹配 (t as any)('key') 或类似模式，但排除已经有命名空间的键
-    const regex = new RegExp(`\\(t\\s+as\\s+any\\)\\(['"\`]${key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}['"\`]\\)`, 'g');
+    const regex = new RegExp(
+      `\\(t\\s+as\\s+any\\)\\(['"\`]${key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}['"\`]\\)`,
+      'g'
+    );
     const matches = fixedContent.match(regex);
 
     if (matches) {
       // 检查是否已经有命名空间
-      const hasNamespace = matches.some(match => match.includes(pageNamespace));
+      const hasNamespace = matches.some((match) =>
+        match.includes(pageNamespace)
+      );
       if (!hasNamespace) {
         fixCount += matches.length;
         const newKey = `${pageNamespace}.${key}`;
         fixedContent = fixedContent.replace(regex, `(t as any)('${newKey}')`);
-        console.log(`  ✓ Fixed ${matches.length} remaining keys: '${key}' -> '${newKey}'`);
+        console.log(
+          `  ✓ Fixed ${matches.length} remaining keys: '${key}' -> '${newKey}'`
+        );
       }
     }
   });
@@ -140,7 +147,9 @@ function fixRemainingKeys(pagePath, toolName, pageNamespace) {
   // 如果有修改，写回文件
   if (fixCount > 0) {
     if (writeFile(pagePath, fixedContent)) {
-      console.log(`  ✅ Successfully fixed ${fixCount} remaining keys in ${pagePath}`);
+      console.log(
+        `  ✅ Successfully fixed ${fixCount} remaining keys in ${pagePath}`
+      );
       return { success: true, fixes: fixCount };
     } else {
       console.error(`  ❌ Failed to write fixed content to ${pagePath}`);
@@ -154,7 +163,10 @@ function fixRemainingKeys(pagePath, toolName, pageNamespace) {
 
 // 获取所有工具页面路径
 function getAllToolPages() {
-  const pagesDir = path.join(process.cwd(), 'src/app/[locale]/(marketing)/(pages)');
+  const pagesDir = path.join(
+    process.cwd(),
+    'src/app/[locale]/(marketing)/(pages)'
+  );
   const toolMapping = getToolPageMapping();
   const toolPages = [];
 
@@ -170,7 +182,7 @@ function getAllToolPages() {
           toolPages.push({
             toolName,
             pageNamespace: toolMapping[toolName],
-            pagePath
+            pagePath,
           });
         }
       }
@@ -194,7 +206,9 @@ function main() {
     return;
   }
 
-  console.log(`Found ${toolPages.length} tool pages to process for remaining fixes:\n`);
+  console.log(
+    `Found ${toolPages.length} tool pages to process for remaining fixes:\n`
+  );
 
   let totalFixes = 0;
   let successCount = 0;
@@ -213,7 +227,9 @@ function main() {
 
   console.log('📊 Summary:');
   console.log('============');
-  console.log(`✅ Successfully processed: ${successCount}/${toolPages.length} pages`);
+  console.log(
+    `✅ Successfully processed: ${successCount}/${toolPages.length} pages`
+  );
   console.log(`🔧 Total remaining fixes applied: ${totalFixes}`);
   console.log(`⚠️  Failed pages: ${toolPages.length - successCount}`);
 
@@ -237,5 +253,5 @@ module.exports = {
   fixRemainingKeys,
   getAllToolPages,
   getToolPageMapping,
-  remainingKeyPatterns
+  remainingKeyPatterns,
 };

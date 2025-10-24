@@ -20,7 +20,10 @@ export default function HowTo({ section }: { section: SectionType }) {
   const [currentStep, setCurrentStep] = useState('');
 
   return (
-    <section id={section.name} className="py-10 mt-10 mb-8 bg-white px-4 sm:px-6 lg:px-8">
+    <section
+      id={section.name}
+      className="py-10 mt-10 mb-8 bg-white px-4 sm:px-6 lg:px-8"
+    >
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-16">
           <HeaderSection
@@ -58,7 +61,9 @@ export default function HowTo({ section }: { section: SectionType }) {
                     </div>
                   </AccordionTrigger>
                   <AccordionContent className="text-muted-foreground text-sm sm:text-base lg:text-base">
-                    <div className="pl-9 sm:pl-11 lg:pl-13">{item.description}</div>
+                    <div className="pl-9 sm:pl-11 lg:pl-13">
+                      {item.description}
+                    </div>
                   </AccordionContent>
                 </AccordionItem>
               ))}

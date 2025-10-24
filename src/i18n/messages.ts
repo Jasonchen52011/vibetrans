@@ -86,8 +86,14 @@ const importLocale = async (locale: Locale): Promise<Messages> => {
   const chineseToEnglishTranslatorPages = await import(
     `../../messages/pages/chinese-to-english-translator/${locale}.json`
   );
+  const englishToChineseTranslatorPages = await import(
+    `../../messages/pages/english-to-chinese-translator/${locale}.json`
+  );
   const middleEnglishTranslatorPages = await import(
     `../../messages/pages/middle-english-translator/${locale}.json`
+  );
+  const mangaTranslatorPages = await import(
+    `../../messages/pages/manga-translator/${locale}.json`
   );
   const minionTranslatorPages = await import(
     `../../messages/pages/minion-translator/${locale}.json`
@@ -107,6 +113,55 @@ const importLocale = async (locale: Locale): Promise<Messages> => {
   const aramaicTranslatorPages = await import(
     `../../messages/pages/aramaic-translator/${locale}.json`
   );
+  const runeTranslatorPages = await import(
+    `../../messages/pages/rune-translator/${locale}.json`
+  );
+  const englishToSwahiliTranslatorPages = await import(
+    `../../messages/pages/english-to-swahili-translator/${locale}.json`
+  );
+  const nahuatlTranslatorPages = await import(
+    `../../messages/pages/nahuatl-translator/${locale}.json`
+  );
+  const englishToAmharicTranslatorPages = await import(
+    `../../messages/pages/english-to-amharic-translator/${locale}.json`
+  );
+  const runicTranslatorPages = await import(
+    `../../messages/pages/runic-translator/${locale}.json`
+  );
+  const drowTranslatorPages = await import(
+    `../../messages/pages/drow-translator/${locale}.json`
+  );
+  const swahiliToEnglishTranslatorPages = await import(
+    `../../messages/pages/swahili-to-english-translator/${locale}.json`
+  );
+  const englishToPolishTranslatorPages = await import(
+    `../../messages/pages/english-to-polish-translator/${locale}.json`
+  );
+  const oghamTranslatorPages = await import(
+    `../../messages/pages/ogham-translator/${locale}.json`
+  );
+  const mandalorianTranslatorPages = await import(
+    `../../messages/pages/mandalorian-translator/${locale}.json`
+  );
+  const yodaTranslatorPages = await import(
+    `../../messages/pages/yoda-translator/${locale}.json`
+  );
+  const englishToPersianTranslatorPages = await import(
+    `../../messages/pages/english-to-persian-translator/${locale}.json`
+  );
+  const greekTranslatorPages = await import(
+    `../../messages/pages/greek-translator/${locale}.json`
+  );
+  const wingdingsTranslatorPages = await import(
+    `../../messages/pages/wingdings-translator/${locale}.json`
+  );
+  const japaneseToEnglishTranslatorPages = await import(
+    `../../messages/pages/japanese-to-english-translator/${locale}.json`
+  );
+  const teluguToEnglishTranslatorPages = await import(
+    `../../messages/pages/telugu-to-english-translator/${locale}.json`
+  );
+  const helpPages = await import(`../../messages/pages/--help/${locale}.json`);
   const dashboard = await import(`../../messages/dashboard/${locale}.json`);
   const marketing = await import(`../../messages/marketing/${locale}.json`);
   const demo = await import(`../../messages/demo/${locale}.json`);
@@ -142,13 +197,32 @@ const importLocale = async (locale: Locale): Promise<Messages> => {
     pigLatinTranslatorPages.default,
     cantoneseTranslatorPages.default,
     chineseToEnglishTranslatorPages.default,
+    englishToChineseTranslatorPages.default,
     middleEnglishTranslatorPages.default,
+    mangaTranslatorPages.default,
     minionTranslatorPages.default,
     baybayinTranslatorPages.default,
     samoanToEnglishTranslatorPages.default,
     gasterTranslatorPages.default,
     highValyrianTranslatorPages.default,
     aramaicTranslatorPages.default,
+    runeTranslatorPages.default,
+    englishToSwahiliTranslatorPages.default,
+    nahuatlTranslatorPages.default,
+    englishToAmharicTranslatorPages.default,
+    runicTranslatorPages.default,
+    drowTranslatorPages.default,
+    swahiliToEnglishTranslatorPages.default,
+    englishToPolishTranslatorPages.default,
+    oghamTranslatorPages.default,
+    mandalorianTranslatorPages.default,
+    yodaTranslatorPages.default,
+    englishToPersianTranslatorPages.default,
+    greekTranslatorPages.default,
+    wingdingsTranslatorPages.default,
+    japaneseToEnglishTranslatorPages.default,
+    teluguToEnglishTranslatorPages.default,
+    helpPages.default,
     dashboard.default,
     marketing.default,
     demo.default,

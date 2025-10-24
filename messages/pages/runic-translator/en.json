@@ -1,0 +1,248 @@
+{
+  "RunicTranslatorPage": {
+    "title": "Runic Translator: Accurate Runic Alphabet Translation Tool",
+    "description": "Translate text to ancient runic alphabets with our AI-powered tool. Support for multiple runic systems, image OCR recognition, and high-resolution downloads.",
+    "hero": {
+      "title": "Free Runic Translator Online",
+      "description": "Translate text to ancient runic alphabets with our advanced AI-powered tool. Perfect for tattoos, games, and creative projects."
+    },
+    "tool": {
+      "inputLabel": "Input Text",
+      "outputLabel": "Translated Text",
+      "inputPlaceholder": "Enter your text here...",
+      "outputPlaceholder": "Translation will appear here...",
+      "translateButton": "Translate",
+      "uploadButton": "Upload File",
+      "uploadHint": "Supports .txt and .docx files",
+      "loading": "Translating...",
+      "error": "Translation failed. Please try again.",
+      "noInput": "Please enter some text to translate."
+    },
+    "whatIs": {
+      "title": "What is Runic Translator Studio?",
+      "description": "Runic Translator Studio is your comprehensive online platform for runic transcription, visualization, and audio output. Supporting major runic writing systems including Elder Futhark, Younger Futhark, Anglo-Saxon Futhorc, and Medieval runes, our studio offers professional-grade tools for text-to-rune conversion, voice input/output, high-resolution exports, tattoo-safe mode, and engraving optimization. Perfect for tattoo design, tabletop gaming, handcrafting, educational demonstrations, and cosplay prop creation.",
+      "image": "/images/docs/rune-translate-tool.webp",
+      "imageAlt": "Runic Translator Studio - Professional runic transcription and visualization platform"
+    },
+    "examples": {
+      "title": "Runic Translation Examples",
+      "description": "Explore real-world applications and professional translations using our advanced runic systems",
+      "items": [
+        {
+          "title": "Viking Warrior Memorial",
+          "role": "Tattoo Design",
+          "description": "ᚠᚢᚦᚨᚱᚲ ᛋᛏᚱᛖᚾᚷᚦ - 'STRENGTH' in Elder Futhark, perfect for powerful tattoo statements with historical accuracy.",
+          "image": "/images/docs/rune-warrior-campfire-reading.webp",
+          "imageAlt": "Viking warrior memorial tattoo design in Elder Futhark runes"
+        },
+        {
+          "title": "Tabletop Game Magic System",
+          "role": "Game Development",
+          "description": "ᚷᚨᛗᛖ ᛗᚨᚷᛁᚲ - Custom spell system using Anglo-Saxon runes for immersive fantasy gaming experiences.",
+          "image": "/images/docs/rune-tabletop-gaming-friends.webp",
+          "imageAlt": "Tabletop gaming magic system with Anglo-Saxon runic spells"
+        },
+        {
+          "title": "Nordic Jewelry Engraving",
+          "role": "Handcrafting",
+          "description": "ᛚᚢᚠᛖ ᛖᛏᛖᚱᚾᛁᛏᛁ - 'LOVE ETERNAL' in Younger Futhark, optimized for precise jewelry engraving.",
+          "image": "/images/docs/rune-streamer-professional-setup.webp",
+          "imageAlt": "Nordic jewelry with LOVE ETERNAL engraving in Younger Futhark"
+        },
+        {
+          "title": "Educational Classroom Display",
+          "role": "Teaching Materials",
+          "description": "ᚺᛁᛋᛏᛟᚱᛁᚲᚨᛚ ᚱᚢᚾᛖᛋ - Complete medieval rune chart with pronunciation guides for students.",
+          "image": "/images/docs/rune-ancient-carving-mystical.webp",
+          "imageAlt": "Educational medieval rune chart with pronunciation guides"
+        },
+        {
+          "title": "Cosplay Weapon Prop",
+          "role": "Cosplay Design",
+          "description": "ᚦᛟᚱ ᚨᛊᚷᚨᚱᛞ ᛋᚹᛟᚱᛞ - 'THOR GUARDIAN SWORD' with authentic runes for realistic Viking cosplay.",
+          "image": "/images/docs/rune-adventure-portal.webp",
+          "imageAlt": "Thor guardian sword cosplay prop with authentic runic inscriptions"
+        },
+        {
+          "title": "Personal Brand Logo",
+          "role": "Commercial Design",
+          "description": "ᛏᛖᚲ ᛗᚨᛋᛏᛖᚱ - 'TECH MASTER' in mixed runic systems for modern tech brand identity.",
+          "image": "/images/docs/rune-transformation.webp",
+          "imageAlt": "Modern tech brand logo using mixed runic systems"
+        }
+      ]
+    },
+    "howto": {
+      "title": "How to Use Runic Translator Studio",
+      "description": "Master the art of runic translation with our intuitive four-step process designed for professionals and enthusiasts alike.",
+      "image": "/images/docs/runic-translator-how-to.webp",
+      "imageAlt": "Step-by-step guide to using Runic Translator Studio",
+      "steps": [
+        {
+          "title": "Choose Your Runic System",
+          "description": "Select from Elder Futhark, Younger Futhark, Anglo-Saxon Futhorc, or Medieval runes based on your project needs and historical period preferences."
+        },
+        {
+          "title": "Input Your Text",
+          "description": "Type your message, use voice input for authentic pronunciation, or upload an image for OCR recognition of existing runic text."
+        },
+        {
+          "title": "Customize & Translate",
+          "description": "Apply tattoo-safe mode, enable engraving optimization, add stylistic elements, then click translate for instant conversion."
+        },
+        {
+          "title": "Export & Apply",
+          "description": "Download high-resolution files in multiple formats, access pronunciation guides, and use your professional runic designs confidently."
+        }
+      ]
+    },
+    "funFacts": {
+      "title": "Fascinating Runic Insights",
+      "items": [
+        {
+          "title": "24 Characters of Power",
+          "description": "The Elder Futhark consists of exactly 24 runes, each representing both a sound and a concept. Our platform accurately preserves this ancient numerical tradition, ensuring authentic translations that honor the original Nordic spiritual and linguistic heritage.",
+          "image": "/images/docs/rune-origins-ancient.webp",
+          "imageAlt": "24 characters of Elder Futhark runic alphabet"
+        },
+        {
+          "title": "Viking Communication Code",
+          "description": "Vikings used runes not just for writing but as magical symbols for protection and divination. Runic Translator Studio includes historical context annotations, helping users understand the deeper meanings behind each symbol beyond simple phonetic translation.",
+          "image": "/images/docs/rune-magic-power.webp",
+          "imageAlt": "Viking runic magic and communication symbols"
+        }
+      ]
+    },
+    "userInterest": {
+      "title": "Perfect for Your Creative Journey",
+      "items": [
+        {
+          "title": "Tattoo Artists & Enthusiasts",
+          "role": "Professional Body Art",
+          "description": "Create meaningful, historically accurate rune tattoos with our tattoo-safe mode and mirror-reversal features for perfect stencil application.",
+          "image": "/images/docs/rune-tattoo-art.webp",
+          "imageAlt": "Professional rune tattoo design with artist sketching"
+        },
+        {
+          "title": "Game Designers & Developers",
+          "role": "Interactive Entertainment",
+          "description": "Build immersive fantasy worlds with authentic runic languages, magical systems, and lore elements that captivate players and enrich storytelling.",
+          "image": "/images/docs/rune-translation-exploration.webp",
+          "imageAlt": "Game designers developing runic systems for fantasy games"
+        },
+        {
+          "title": "Artisans & Craftsmen",
+          "role": "Handcrafted Creations",
+          "description": "Engrave jewelry, carve wood, or create metalwork with precise, optimized rune designs scaled perfectly for your chosen medium and tools.",
+          "image": "/images/docs/rune-design-kit.webp",
+          "imageAlt": "Artisan crafting jewelry with runic engravings"
+        },
+        {
+          "title": "Educators & History Buffs",
+          "role": "Cultural Preservation",
+          "description": "Teach ancient Nordic history, demonstrate writing evolution, and create engaging educational materials with historically accurate runic content.",
+          "image": "/images/docs/community-interaction-runes.webp",
+          "imageAlt": "Teacher explaining runic history in classroom setting"
+        }
+      ]
+    },
+    "highlights": {
+      "title": "Studio Features",
+      "description": "AI-powered runic translation with professional features for tattoo artists, game developers, and creative professionals.",
+      "features": [
+        {
+          "icon": "FaRocket",
+          "title": "Multi-System Support",
+          "description": "Complete support for Elder Futhark, Younger Futhark, Anglo-Saxon Futhorc, and Medieval runes with instant switching between systems."
+        },
+        {
+          "icon": "FaShieldAlt",
+          "title": "Tattoo-Safe Mode",
+          "description": "Specialized mode ensuring accurate, mirror-reversed designs perfect for tattoo application with professional quality assurance."
+        },
+        {
+          "icon": "FaBrain",
+          "title": "Voice Integration",
+          "description": "Advanced voice input/output functionality for authentic pronunciation and audio learning of runic texts."
+        },
+        {
+          "icon": "FaChartLine",
+          "title": "Professional Export",
+          "description": "High-resolution exports optimized for engraving, printing, and digital use with multiple format support."
+        }
+      ]
+    },
+    "ctaButton": "Try Runic Translator",
+    "socialProof": [
+      {
+        "title": "User Satisfaction",
+        "description": "Users love it, satisfaction rate up to 4.8/5, thank you for your support!",
+        "image": "",
+        "imageAlt": ""
+      },
+      {
+        "title": "Global Users",
+        "description": "Over 100,000 users trust our runic translator, spread globally and continuously growing.",
+        "image": "",
+        "imageAlt": ""
+      },
+      {
+        "title": "Community Activity",
+        "description": "The community has over 2,000 active users, sharing and downloading rune designs every day.",
+        "image": "",
+        "imageAlt": ""
+      }
+    ],
+    "faqs": {
+      "title": "Frequently Asked Questions",
+      "items": [
+        {
+          "question": "Is the Runic Translator free to use?",
+          "answer": "Yes, our basic runic translation services are free to use for everyone."
+        },
+        {
+          "question": "Which runic alphabets are supported?",
+          "answer": "We support multiple runic systems including Elder Futhark, Younger Futhark, and Anglo-Saxon runes."
+        },
+        {
+          "question": "Can I use the translations for tattoos?",
+          "answer": "Yes, many users use our translations for tattoo designs. We recommend double-checking with a runic expert for important pieces."
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "What Users Say",
+      "subtitle": "Stories from Creative Professionals Using Runic Translator Studio",
+      "items": {
+        "item-1": {
+          "name": "Erik Magnusson",
+          "role": "Tattoo Artist, Stockholm",
+          "heading": "Historically Accurate Designs",
+          "content": "The tattoo-safe mode is a game-changer. My clients love the authentic Elder Futhark designs, and the mirror reversal feature ensures perfect stencils every time.",
+          "rating": "4.9"
+        },
+        "item-2": {
+          "name": "Sarah Lindberg",
+          "role": "Game Developer, Oslo",
+          "heading": "Immersive World Building",
+          "content": "Creating believable runic languages for our Viking RPG was effortless. The multiple system support gave us the flexibility we needed for different cultures in our game world.",
+          "rating": "4.8"
+        },
+        "item-3": {
+          "name": "Prof. Anders Nordstrom",
+          "role": "History Teacher, Copenhagen",
+          "heading": "Engaging Educational Tool",
+          "content": "My students are fascinated by runes. The platform's accuracy and historical context annotations make teaching ancient Nordic writing systems interactive and fun.",
+          "rating": "5.0"
+        }
+      }
+    },
+    "cta": {
+      "title": "Start Translating with Runic Translator",
+      "description": "Experience our powerful runic translation tool - accurate, fast, and professional.",
+      "primaryButton": "Try Runic Translator Now",
+      "image": "",
+      "imageAlt": ""
+    }
+  }
+}

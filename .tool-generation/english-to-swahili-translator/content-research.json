@@ -1,0 +1,301 @@
+{
+  "contentGaps": [
+    {
+      "topic": "Dialect-specific accuracy (Kenyan vs. Tanzanian Swahili)",
+      "reason": "用户担心机器翻译只支持标准 Swahili，而忽略不同国家/地区常用的方言词汇和拼写差异，导致翻译不地道。",
+      "competitors": [
+        "Google Translate",
+        "DeepL",
+        "Bing Translator",
+        "Reverso",
+        "Lingvanex"
+      ]
+    },
+    {
+      "topic": "Idioms & cultural expressions catalogue",
+      "reason": "俚语、俗语和文化相关表达机器直译往往出错，用户希望有专门板块或提示。",
+      "competitors": [
+        "Google Translate",
+        "Yandex Translate",
+        "ImTranslator",
+        "Translate.com"
+      ]
+    },
+    {
+      "topic": "Privacy / GDPR & HIPAA-grade data protection",
+      "reason": "企业或律师文件需要保密，用户关心上传文本是否被存储或训练模型。",
+      "competitors": [
+        "Google Translate",
+        "Reverso",
+        "Bing Translator",
+        "Yandex Translate"
+      ]
+    },
+    {
+      "topic": "Offline & low-bandwidth mode",
+      "reason": "东非部分地区网络不稳定，用户希望可离线或弱网下使用。",
+      "competitors": [
+        "DeepL Web",
+        "Translate.com",
+        "Collins Dictionary",
+        "WordReference"
+      ]
+    },
+    {
+      "topic": "Document/file translation (PDF, Word, subtitle)",
+      "reason": "大量用户搜索“如何把整份合同/字幕文件从英语转成斯瓦希里语”。",
+      "competitors": [
+        "Google Translate Web",
+        "Collins",
+        "Cambridge",
+        "WordReference"
+      ]
+    },
+    {
+      "topic": "Speech-to-speech real-time translation",
+      "reason": "旅行或线上会议场景需要语音输入与朗读输出。",
+      "competitors": ["Reverso", "Translate.com", "Collins", "Cambridge"]
+    },
+    {
+      "topic": "API / developer integration guide",
+      "reason": "开发者想把英↔斯翻译嵌入自身 APP、Chatbot、网站。",
+      "competitors": [
+        "Collins API",
+        "Reverso",
+        "WordReference API(无)",
+        "Lingvanex Free tier"
+      ]
+    },
+    {
+      "topic": "Certification & notarized translation service",
+      "reason": "移民、签证、学术资料需要具备法律效力的翻译。",
+      "competitors": [
+        "Google Translate",
+        "DeepL",
+        "Bing",
+        "Yandex",
+        "ImTranslator"
+      ]
+    },
+    {
+      "topic": "Learning resources tie-in (flashcards, grammar tips)",
+      "reason": "很多搜索者其实在学习 Swahili，希望翻译工具附带学习功能。",
+      "competitors": [
+        "Google Translate",
+        "Bing",
+        "Yandex",
+        "Translate.com",
+        "ImTranslator"
+      ]
+    },
+    {
+      "topic": "Quality benchmark vs. human translators",
+      "reason": "用户想知道机器译文与专业人工译文的差距和可接受场景。",
+      "competitors": [
+        "DeepL",
+        "Google Translate",
+        "Bing",
+        "Reverso",
+        "Lingvanex"
+      ]
+    }
+  ],
+  "socialTopics": [
+    {
+      "platform": "Reddit",
+      "topic": "‘Best free English-to-Swahili translator for Android while travelling in Kenya’",
+      "engagement": "高",
+      "summary": "r/travel & r/kenya 频繁帖子比较 Google Translate 离线包 vs. Microsoft Translator vs. African startup apps。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "‘Funny Swahili mistranslations and meme thread’",
+      "engagement": "中",
+      "summary": "用户分享机器翻译把‘hot dog’译成‘mbwa moto’等尴尬例子，讨论算法局限。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "‘Is Swahili hard for English speakers? How can translators handle noun classes?’",
+      "engagement": "高",
+      "summary": "回答解释 16 个名词类系统对机器翻译的挑战，并推荐工具配合语法学习。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "‘Can I rely on Google Translate for legal documents from English to Swahili?’",
+      "engagement": "高",
+      "summary": "律师和翻译专业人士警告机器翻译风险，推荐人工校对或认证服务。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "‘API options for English↔Swahili machine translation in a chatbot’",
+      "engagement": "中",
+      "summary": "r/MachineLearning & r/LanguageTechnology 讨论 Google Cloud, Azure, AWS, and open-source Marian-NMT models。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "‘Why does Google sometimes return blank when translating long Swahili text?’",
+      "engagement": "中",
+      "summary": "技术答主解释字符上限、 502 错误以及如何分段。"
+    }
+  ],
+  "funFacts": [
+    "Swahili is the first African language to become an official working language of the African Union and UNESCO (2022).",
+    "English word ‘safari’ comes directly from Swahili ‘safiri’ (to travel).",
+    "Swahili borrows about 30–40% of its vocabulary from Arabic – making Arabic loanwords a major pain-point for translation engines.",
+    "Disney’s ‘The Lion King’ popularised several Swahili words worldwide, e.g., ‘Simba’ (lion), ‘Rafiki’ (friend), ‘Hakuna Matata’ (no worries).",
+    "Swahili uses 16 noun classes instead of grammatical gender; this is one reason machine translation often slips on agreement.",
+    "Google Translate added Swahili as one of its first African languages back in 2003, yet parity with European pairs remains low (BLEU < 35)."
+  ],
+  "highFrequencyWords": [
+    {
+      "word": "translator",
+      "frequency": "高",
+      "context": "tool name / H1"
+    },
+    {
+      "word": "translate",
+      "frequency": "高",
+      "context": "CTA buttons"
+    },
+    {
+      "word": "english",
+      "frequency": "高",
+      "context": "language selector"
+    },
+    {
+      "word": "swahili",
+      "frequency": "高",
+      "context": "language selector"
+    },
+    {
+      "word": "language",
+      "frequency": "高",
+      "context": "description"
+    },
+    {
+      "word": "text",
+      "frequency": "高",
+      "context": "input description"
+    },
+    {
+      "word": "free",
+      "frequency": "高",
+      "context": "pricing badge"
+    },
+    {
+      "word": "online",
+      "frequency": "高",
+      "context": "title tags"
+    },
+    {
+      "word": "words",
+      "frequency": "高",
+      "context": "feature list"
+    },
+    {
+      "word": "sentences",
+      "frequency": "高",
+      "context": "feature list"
+    },
+    {
+      "word": "instant",
+      "frequency": "中",
+      "context": "speed descriptor"
+    },
+    {
+      "word": "accurate",
+      "frequency": "中",
+      "context": "quality claim"
+    },
+    {
+      "word": "tool",
+      "frequency": "中",
+      "context": "body copy"
+    },
+    {
+      "word": "service",
+      "frequency": "中",
+      "context": "body copy"
+    },
+    {
+      "word": "dictionary",
+      "frequency": "中",
+      "context": "SEO keyword"
+    },
+    {
+      "word": "voice",
+      "frequency": "中",
+      "context": "feature bullet"
+    },
+    {
+      "word": "pronunciation",
+      "frequency": "中",
+      "context": "audio feature"
+    },
+    {
+      "word": "copy",
+      "frequency": "中",
+      "context": "button tooltip"
+    },
+    {
+      "word": "share",
+      "frequency": "中",
+      "context": "social feature"
+    },
+    {
+      "word": "typing",
+      "frequency": "中",
+      "context": "input help"
+    },
+    {
+      "word": "swap",
+      "frequency": "中",
+      "context": "switch languages"
+    },
+    {
+      "word": "automatic",
+      "frequency": "中",
+      "context": "AI descriptor"
+    },
+    {
+      "word": "documents",
+      "frequency": "中",
+      "context": "file translation"
+    },
+    {
+      "word": "upload",
+      "frequency": "中",
+      "context": "file feature"
+    },
+    {
+      "word": "download",
+      "frequency": "中",
+      "context": "output feature"
+    },
+    {
+      "word": "api",
+      "frequency": "中",
+      "context": "developer section"
+    },
+    {
+      "word": "mobile",
+      "frequency": "中",
+      "context": "app promotion"
+    },
+    {
+      "word": "learning",
+      "frequency": "中",
+      "context": "educational angle"
+    },
+    {
+      "word": "professional",
+      "frequency": "中",
+      "context": "premium tier"
+    },
+    {
+      "word": "phrasebook",
+      "frequency": "中",
+      "context": "extra feature"
+    }
+  ]
+}

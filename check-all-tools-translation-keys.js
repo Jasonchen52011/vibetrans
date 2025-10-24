@@ -11,11 +11,14 @@
  * 4. 提供修复建议
  */
 
-import fs from 'fs/promises';
 import path from 'path';
+import fs from 'fs/promises';
 
 // 工具页面目录
-const PAGES_DIR = path.join(process.cwd(), 'src/app/[locale]/(marketing)/(pages)');
+const PAGES_DIR = path.join(
+  process.cwd(),
+  'src/app/[locale]/(marketing)/(pages)'
+);
 const MESSAGES_DIR = path.join(process.cwd(), 'messages/pages');
 
 // 获取所有工具页面
@@ -23,9 +26,19 @@ async function getAllToolPages() {
   try {
     const entries = await fs.readdir(PAGES_DIR, { withFileTypes: true });
     return entries
-      .filter(entry => entry.isDirectory())
-      .map(entry => entry.name)
-      .filter(name => !name.includes('-') || name === 'albanian-to-english' || name === 'chinese-to-english-translator' || name.includes('-translators') || name.includes('-translator') || name.includes('-generator') || name === 'creole-to-english-translator' || name === 'samoan-to-english-translator')
+      .filter((entry) => entry.isDirectory())
+      .map((entry) => entry.name)
+      .filter(
+        (name) =>
+          !name.includes('-') ||
+          name === 'albanian-to-english' ||
+          name === 'chinese-to-english-translator' ||
+          name.includes('-translators') ||
+          name.includes('-translator') ||
+          name.includes('-generator') ||
+          name === 'creole-to-english-translator' ||
+          name === 'samoan-to-english-translator'
+      )
       .sort();
   } catch (error) {
     console.error('❌ 读取页面目录失败:', error.message);
@@ -44,7 +57,7 @@ async function checkPageTranslationKeys(toolName) {
     pageKeys: new Set(),
     jsonKeys: new Set(),
     issues: [],
-    fixSuggestions: []
+    fixSuggestions: [],
   };
 
   try {
@@ -57,9 +70,10 @@ async function checkPageTranslationKeys(toolName) {
 
       // 提取页面中使用的翻译键
       const tCallMatches = pageContent.match(/t\(['"`]([^'"`]+)['"`]\)/g) || [];
-      const tAnyMatches = pageContent.match(/\(t as any\)\(['"`]([^'"`]+)['"`]\)/g) || [];
+      const tAnyMatches =
+        pageContent.match(/\(t as any\)\(['"`]([^'"`]+)['"`]\)/g) || [];
 
-      [...tCallMatches, ...tAnyMatches].forEach(match => {
+      [...tCallMatches, ...tAnyMatches].forEach((match) => {
         const keyMatch = match.match(/['"`]([^'"`]+)['"`]/);
         if (keyMatch) {
           result.pageKeys.add(keyMatch[1]);
@@ -67,15 +81,16 @@ async function checkPageTranslationKeys(toolName) {
       });
 
       // 检查命名空间
-      const namespaceMatch = pageContent.match(/namespace:\s*['"`]([^'"`]+)['"`]/);
+      const namespaceMatch = pageContent.match(
+        /namespace:\s*['"`]([^'"`]+)['"`]/
+      );
       if (namespaceMatch) {
         result.namespace = namespaceMatch[1];
       }
-
     } catch (error) {
       result.issues.push({
         type: 'missing_page',
-        message: `页面文件不存在: ${pagePath}`
+        message: `页面文件不存在: ${pagePath}`,
       });
     }
 
@@ -94,18 +109,21 @@ async function checkPageTranslationKeys(toolName) {
           const fullKey = prefix ? `${prefix}.${key}` : key;
           result.jsonKeys.add(fullKey);
 
-          if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+          if (
+            typeof value === 'object' &&
+            value !== null &&
+            !Array.isArray(value)
+          ) {
             extractKeys(value, fullKey);
           }
         }
       }
 
       extractKeys(jsonData);
-
     } catch (error) {
       result.issues.push({
         type: 'missing_json',
-        message: `JSON文件不存在: ${jsonPath}`
+        message: `JSON文件不存在: ${jsonPath}`,
       });
     }
 
@@ -115,9 +133,10 @@ async function checkPageTranslationKeys(toolName) {
       for (const pageKey of result.pageKeys) {
         if (!result.jsonKeys.has(pageKey)) {
           // 尝试找到相似的键
-          const similarKeys = Array.from(result.jsonKeys).filter(jsonKey =>
-            jsonKey.toLowerCase().includes(pageKey.toLowerCase()) ||
-            pageKey.toLowerCase().includes(jsonKey.toLowerCase())
+          const similarKeys = Array.from(result.jsonKeys).filter(
+            (jsonKey) =>
+              jsonKey.toLowerCase().includes(pageKey.toLowerCase()) ||
+              pageKey.toLowerCase().includes(jsonKey.toLowerCase())
           );
 
           result.issues.push({
@@ -125,7 +144,7 @@ async function checkPageTranslationKeys(toolName) {
             severity: 'high',
             key: pageKey,
             message: `页面使用的翻译键在JSON中不存在: ${pageKey}`,
-            similarKeys: similarKeys.length > 0 ? similarKeys : null
+            similarKeys: similarKeys.length > 0 ? similarKeys : null,
           });
 
           // 如果找到相似键，提供修复建议
@@ -136,7 +155,7 @@ async function checkPageTranslationKeys(toolName) {
               file: result.pageFile,
               key: pageKey,
               suggestedKey: bestMatch,
-              action: `将 "${pageKey}" 修改为 "${bestMatch}"`
+              action: `将 "${pageKey}" 修改为 "${bestMatch}"`,
             });
           }
         }
@@ -153,7 +172,7 @@ async function checkPageTranslationKeys(toolName) {
               file: result.pageFile,
               key: pageKey,
               suggestedKey: funFactsKey,
-              action: `将 "${pageKey}" 修改为 "${funFactsKey}" (大小写问题)`
+              action: `将 "${pageKey}" 修改为 "${funFactsKey}" (大小写问题)`,
             });
           }
         }
@@ -167,7 +186,7 @@ async function checkPageTranslationKeys(toolName) {
               file: result.pageFile,
               key: pageKey,
               suggestedKey: hyphenKey,
-              action: `将 "${pageKey}" 修改为 "${hyphenKey}" (下划线转连字符)`
+              action: `将 "${pageKey}" 修改为 "${hyphenKey}" (下划线转连字符)`,
             });
           }
         }
@@ -180,17 +199,16 @@ async function checkPageTranslationKeys(toolName) {
               file: result.pageFile,
               key: pageKey,
               suggestedKey: underscoreKey,
-              action: `将 "${pageKey}" 修改为 "${underscoreKey}" (连字符转下划线)`
+              action: `将 "${pageKey}" 修改为 "${underscoreKey}" (连字符转下划线)`,
             });
           }
         }
       }
     }
-
   } catch (error) {
     result.issues.push({
       type: 'error',
-      message: `检查页面 ${toolName} 时出错: ${error.message}`
+      message: `检查页面 ${toolName} 时出错: ${error.message}`,
     });
   }
 
@@ -200,7 +218,7 @@ async function checkPageTranslationKeys(toolName) {
 // 主函数
 async function main() {
   console.log('🔍 VibeTrans 工具页面翻译键耦合检查');
-  console.log('=' .repeat(60));
+  console.log('='.repeat(60));
   console.log('');
 
   const toolPages = await getAllToolPages();
@@ -217,12 +235,16 @@ async function main() {
     const result = await checkPageTranslationKeys(toolName);
     results.push(result);
 
-    const highSeverityIssues = result.issues.filter(i => i.severity === 'high').length;
+    const highSeverityIssues = result.issues.filter(
+      (i) => i.severity === 'high'
+    ).length;
     totalIssues += result.issues.length;
     totalFixSuggestions += result.fixSuggestions.length;
 
     if (result.issues.length > 0) {
-      console.log(`  ⚠️  发现 ${result.issues.length} 个问题 (${highSeverityIssues} 个严重)`);
+      console.log(
+        `  ⚠️  发现 ${result.issues.length} 个问题 (${highSeverityIssues} 个严重)`
+      );
     } else {
       console.log('  ✅ 无问题');
     }
@@ -236,7 +258,7 @@ async function main() {
   console.log('');
 
   // 显示有问题页面详情
-  const problematicPages = results.filter(r => r.issues.length > 0);
+  const problematicPages = results.filter((r) => r.issues.length > 0);
   if (problematicPages.length > 0) {
     console.log('🔧 需要修复的页面:');
     console.log('');
@@ -252,11 +274,15 @@ async function main() {
           console.log(`      ${index + 1}. ${suggestion.action}`);
         });
         if (result.fixSuggestions.length > 3) {
-          console.log(`      ... 还有 ${result.fixSuggestions.length - 3} 个建议`);
+          console.log(
+            `      ... 还有 ${result.fixSuggestions.length - 3} 个建议`
+          );
         }
       }
 
-      const highSeverityIssues = result.issues.filter(i => i.severity === 'high');
+      const highSeverityIssues = result.issues.filter(
+        (i) => i.severity === 'high'
+      );
       if (highSeverityIssues.length > 0) {
         console.log('   🚨 严重问题:');
         highSeverityIssues.slice(0, 2).forEach((issue, index) => {

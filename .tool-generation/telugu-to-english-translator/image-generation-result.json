@@ -1,0 +1,70 @@
+{
+  "success": true,
+  "totalImages": 7,
+  "successfulImages": 1,
+  "failedImages": 6,
+  "images": [
+    {
+      "section": "whatIs",
+      "title": "What is Telugu to English Translator?",
+      "filename": "language-bridge.webp",
+      "size": 0,
+      "status": "failed",
+      "error": "All image generation models failed. Last error: Failed to create Ideogram task: undefined"
+    },
+    {
+      "section": "funFacts #1",
+      "title": "Ancient Language Heritage",
+      "filename": "language-scroll-heritage.webp",
+      "size": 48,
+      "status": "success"
+    },
+    {
+      "section": "funFacts #2",
+      "title": "Global Reach",
+      "filename": "globe-speech-bubbles.webp",
+      "size": 0,
+      "status": "failed",
+      "error": "All image generation models failed. Last error: Failed to create Ideogram task: undefined"
+    },
+    {
+      "section": "userInterests #1",
+      "title": "Cultural Context Preservation",
+      "filename": "culture-heart-protect.webp",
+      "size": 0,
+      "status": "failed",
+      "error": "All image generation models failed. Last error: Failed to create Ideogram task: undefined"
+    },
+    {
+      "section": "userInterests #2",
+      "title": "Technical & Professional Translation",
+      "filename": "translation-fields.webp",
+      "size": 0,
+      "status": "failed",
+      "error": "All image generation models failed. Last error: Failed to create Ideogram task: undefined"
+    },
+    {
+      "section": "userInterests #3",
+      "title": "Educational Applications",
+      "filename": "learning-globe-icons.webp",
+      "size": 0,
+      "status": "failed",
+      "error": "All image generation models failed. Last error: Failed to create Ideogram task: undefined"
+    },
+    {
+      "section": "userInterests #4",
+      "title": "Business Integration",
+      "filename": "language-expansion.webp",
+      "size": 0,
+      "status": "failed",
+      "error": "All image generation models failed. Last error: Failed to create Ideogram task: undefined"
+    }
+  ],
+  "totalTimeMs": 49892,
+  "howToScreenshot": {
+    "filename": "telugu-to-english-translator-how-to.webp",
+    "size": 0,
+    "status": "failed",
+    "error": "Screenshot failed: page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3001/telugu-to-english-translator\", waiting until \"networkidle\"\u001b[22m\n"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "success": true,
+  "totalImages": 7,
+  "successfulImages": 7,
+  "failedImages": 0,
+  "images": [
+    {
+      "section": "whatIs",
+      "title": "What is XXX",
+      "filename": "rune-adventure-portal.webp",
+      "size": 94,
+      "status": "success"
+    },
+    {
+      "section": "funFacts #1",
+      "title": "Fun Fact",
+      "filename": "rune-magic-power.webp",
+      "size": 60,
+      "status": "success"
+    },
+    {
+      "section": "funFacts #2",
+      "title": "Fun Fact",
+      "filename": "rune-alphabet-history.webp",
+      "size": 67,
+      "status": "success"
+    },
+    {
+      "section": "userInterests #1",
+      "title": "Cosplay Magic",
+      "filename": "rune-transformation.webp",
+      "size": 79,
+      "status": "success"
+    },
+    {
+      "section": "userInterests #2",
+      "title": "Game Enhancements",
+      "filename": "game-magic-boost.webp",
+      "size": 87,
+      "status": "success"
+    },
+    {
+      "section": "userInterests #3",
+      "title": "Community Creations",
+      "filename": "runes-community-share.webp",
+      "size": 74,
+      "status": "success"
+    },
+    {
+      "section": "userInterests #4",
+      "title": "Artistic Expression",
+      "filename": "art-rune-transform.webp",
+      "size": 88,
+      "status": "success"
+    }
+  ],
+  "totalTimeMs": 80276
+}

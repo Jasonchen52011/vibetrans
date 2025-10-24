@@ -1,0 +1,69 @@
+{
+  "success": true,
+  "totalImages": 7,
+  "successfulImages": 1,
+  "failedImages": 6,
+  "images": [
+    {
+      "section": "whatIs",
+      "title": "What is Mandalorian Translator Hub?",
+      "filename": "mando-translation-web.webp",
+      "size": 0,
+      "status": "failed",
+      "error": "All image generation models failed. Last error: Failed to create Ideogram task: undefined"
+    },
+    {
+      "section": "funFacts #1",
+      "title": "Created by an Author",
+      "filename": "mandoa-author-creation.webp",
+      "size": 61,
+      "status": "success"
+    },
+    {
+      "section": "funFacts #2",
+      "title": "Genderless Language",
+      "filename": "equal-speech-bubbles.webp",
+      "size": 0,
+      "status": "failed",
+      "error": "All image generation models failed. Last error: Failed to create Ideogram task: undefined"
+    },
+    {
+      "section": "userInterests #1",
+      "title": "Grammar Cheatsheet",
+      "filename": "mandoa-grammar.webp",
+      "size": 0,
+      "status": "failed",
+      "error": "All image generation models failed. Last error: Failed to create Ideogram task: undefined"
+    },
+    {
+      "section": "userInterests #2",
+      "title": "Audio Pronunciations",
+      "filename": "speech-bubble-audio.webp",
+      "size": 0,
+      "status": "failed",
+      "error": "All image generation models failed. Last error: Failed to create Ideogram task: undefined"
+    },
+    {
+      "section": "userInterests #3",
+      "title": "Cultural Insights",
+      "filename": "mando-culture-guide.webp",
+      "size": 0,
+      "status": "failed",
+      "error": "All image generation models failed. Last error: Failed to create Ideogram task: undefined"
+    },
+    {
+      "section": "userInterests #4",
+      "title": "Mobile-First Experience",
+      "filename": "mobile-translation.webp",
+      "size": 0,
+      "status": "failed",
+      "error": "All image generation models failed. Last error: Failed to create Ideogram task: undefined"
+    }
+  ],
+  "totalTimeMs": 26756,
+  "howToScreenshot": {
+    "filename": "mandalorian-translator-how-to.webp",
+    "size": 36,
+    "status": "success"
+  }
+}

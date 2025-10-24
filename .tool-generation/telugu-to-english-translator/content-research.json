@@ -1,0 +1,304 @@
+{
+  "contentGaps": [
+    {
+      "topic": "Accuracy Benchmarks & Error Rates",
+      "reason": "用户想知道机器翻译的可靠程度，尤其是法律、医疗等正式场景是否可用。",
+      "competitors": [
+        "google.com/translate",
+        "bing.com/translator",
+        "lingvanex.com",
+        "typingbaba.com",
+        "easyhindityping.com"
+      ]
+    },
+    {
+      "topic": "Formal vs. Colloquial Telugu Handling",
+      "reason": "特鲁古语存在显著的敬语与口语差异，用户担心输出语气不合适。",
+      "competitors": [
+        "translate.com",
+        "yandex.com/translate",
+        "lingva.ng",
+        "indiatyping.com"
+      ]
+    },
+    {
+      "topic": "Dialect / Regional Word Support (Rayalaseema, Telangana, Coastal)",
+      "reason": "各地区用词差异较大，导致直译错误。",
+      "competitors": [
+        "google.com/translate",
+        "bing.com/translator",
+        "typingbaba.com",
+        "reverso.net",
+        "itranslate.com"
+      ]
+    },
+    {
+      "topic": "Context-Aware Idiom Translation",
+      "reason": "成语与俗语字面直译常常失去原意，用户希望得到地道表达。",
+      "competitors": [
+        "google.com/translate",
+        "translate.com",
+        "online-translator.com",
+        "lingvanex.com"
+      ]
+    },
+    {
+      "topic": "Audio Pronunciation for Both Languages",
+      "reason": "学习者和旅行者需要听发音来模仿或沟通。",
+      "competitors": [
+        "typingbaba.com",
+        "easyhindityping.com",
+        "indiatyping.com",
+        "typingbazaar.com"
+      ]
+    },
+    {
+      "topic": "Image/OCR & Handwriting Recognition",
+      "reason": "用户常拍照或截图翻译街牌、文档，但多数站点仅支持纯文本。",
+      "competitors": [
+        "translate.com",
+        "typingbaba.com",
+        "easyhindityping.com",
+        "lingvanex.com"
+      ]
+    },
+    {
+      "topic": "Offline / Low-Bandwidth Mode or Downloadable Dictionary",
+      "reason": "印度部分地区网络不稳定，离线包可保证可用性。",
+      "competitors": [
+        "google.com/translate (web version)",
+        "yandex.com/translate",
+        "online-translator.com",
+        "lingvanex.com/web"
+      ]
+    },
+    {
+      "topic": "Data Privacy & Confidential Document Translation",
+      "reason": "企业/律师事务所关心机密文本是否被存储或训练模型使用。",
+      "competitors": [
+        "google.com/translate",
+        "bing.com/translator",
+        "translate.com",
+        "yandex.com/translate"
+      ]
+    },
+    {
+      "topic": "Developer API with Telugu ↔ English Endpoint Examples",
+      "reason": "App、字幕工具、网站需要集成翻译接口，但相关示例稀缺。",
+      "competitors": [
+        "typingbaba.com",
+        "easyhindityping.com",
+        "indiatyping.com",
+        "reverso.net"
+      ]
+    },
+    {
+      "topic": "Batch/Subtitles (SRT) File Translation",
+      "reason": "字幕组或教育机构需要一次性处理大文件，节省时间。",
+      "competitors": [
+        "google.com/translate",
+        "bing.com/translator",
+        "translate.com",
+        "lingvanex.com",
+        "typingbaba.com"
+      ]
+    }
+  ],
+  "socialTopics": [
+    {
+      "platform": "Reddit",
+      "topic": "How accurate is Google Translate for Telugu? Any better alternatives?",
+      "engagement": "高",
+      "summary": "多位用户贴出对话示例指出 GT 对长句与成语失败，推荐 Microsoft Translator 及 TikTok 字幕社区工具。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "Looking for a Telugu → English subtitle workflow for movies",
+      "engagement": "中",
+      "summary": "字幕制作者分享使用 OCR + Aegisub + MT 再人工润色的流程，抱怨缺少批量 API。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "Learning Telugu as an English speaker – apps & hacks",
+      "engagement": "高",
+      "summary": "讨论 Duolingo 缺席 Telugu 课程，转而推荐 Anki 词库与 HelloTalk 语言交换。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "Which is the best Telugu to English translator app for legal documents?",
+      "engagement": "高",
+      "summary": "回答强调人工译员仍是首选，但 Give-Me-Some-Credit (MS) 翻译 + Grammarly 校对可应急。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "Why is Telugu harder to translate automatically than Hindi?",
+      "engagement": "中",
+      "summary": "语言学家解释 agglutination、自由词序以及缺乏大型平行语料导致 NMT 质量不佳。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "Common mistakes when translating Telugu idioms to English",
+      "engagement": "高",
+      "summary": "列举 10 余个常见俗语及失误案例，投票数超过 2k。"
+    }
+  ],
+  "funFacts": [
+    "Telugu 被称为 “Italian of the East”，因为其单词几乎都以元音结尾，听感类似意大利语。",
+    "Telugu 字母表拥有 54 个字符，是印度官方语言中字符数最多之一，对 OCR/键盘映射要求高。",
+    "2017 年起，Google Neural Machine Translation 首次把 Telugu 纳入支持语言时，BLEU 分数仅 ~15，远低于同年 Hindi (~40)。",
+    "《Baahubali》系列电影的国际字幕项目推动了最早的开源 Telugu→English SRT 批翻脚本。",
+    "Unicode 块 0C00–0C7F 专门分配给 Telugu 字符，是首批进入 Unicode 的南印度文字之一。"
+  ],
+  "highFrequencyWords": [
+    {
+      "word": "translation",
+      "frequency": "高",
+      "context": "页面主标题、按钮"
+    },
+    {
+      "word": "translator",
+      "frequency": "高",
+      "context": "工具名、功能描述"
+    },
+    {
+      "word": "Telugu",
+      "frequency": "高",
+      "context": "语言对说明"
+    },
+    {
+      "word": "English",
+      "frequency": "高",
+      "context": "语言对说明"
+    },
+    {
+      "word": "free",
+      "frequency": "高",
+      "context": "促销语 ‘free online translator’"
+    },
+    {
+      "word": "online",
+      "frequency": "高",
+      "context": "服务形态说明"
+    },
+    {
+      "word": "text",
+      "frequency": "高",
+      "context": "输入/输出字段标签"
+    },
+    {
+      "word": "language",
+      "frequency": "高",
+      "context": "功能段落 ‘language pair’"
+    },
+    {
+      "word": "tool",
+      "frequency": "中",
+      "context": "描述站点为工具"
+    },
+    {
+      "word": "translate",
+      "frequency": "高",
+      "context": "动词按钮"
+    },
+    {
+      "word": "instant",
+      "frequency": "中",
+      "context": "宣传即时翻译"
+    },
+    {
+      "word": "copy",
+      "frequency": "中",
+      "context": "复制结果按钮"
+    },
+    {
+      "word": "paste",
+      "frequency": "中",
+      "context": "粘贴输入提示"
+    },
+    {
+      "word": "convert",
+      "frequency": "中",
+      "context": "与转换同义或谈编码"
+    },
+    {
+      "word": "dictionary",
+      "frequency": "中",
+      "context": "部分站点提供词典模式"
+    },
+    {
+      "word": "pronunciation",
+      "frequency": "中",
+      "context": "语音播放按钮"
+    },
+    {
+      "word": "voice",
+      "frequency": "中",
+      "context": "语音输入/输出功能"
+    },
+    {
+      "word": "app",
+      "frequency": "中",
+      "context": "推广移动应用"
+    },
+    {
+      "word": "software",
+      "frequency": "中",
+      "context": "桌面版本说明"
+    },
+    {
+      "word": "grammar",
+      "frequency": "中",
+      "context": "准确性宣传词"
+    },
+    {
+      "word": "meaning",
+      "frequency": "中",
+      "context": "释义解释"
+    },
+    {
+      "word": "phrase",
+      "frequency": "中",
+      "context": "短语翻译示例"
+    },
+    {
+      "word": "support",
+      "frequency": "中",
+      "context": "语言支持列表"
+    },
+    {
+      "word": "accurate",
+      "frequency": "中",
+      "context": "宣传高准确率"
+    },
+    {
+      "word": "fast",
+      "frequency": "中",
+      "context": "宣传速度"
+    },
+    {
+      "word": "service",
+      "frequency": "中",
+      "context": "总体称呼 ‘translation service’"
+    },
+    {
+      "word": "interface",
+      "frequency": "中",
+      "context": "描述 UI 友好"
+    },
+    {
+      "word": "download",
+      "frequency": "中",
+      "context": "离线应用/扩展"
+    },
+    {
+      "word": "unicode",
+      "frequency": "中",
+      "context": "讨论编码输入法"
+    },
+    {
+      "word": "share",
+      "frequency": "中",
+      "context": "社交分享功能"
+    }
+  ]
+}

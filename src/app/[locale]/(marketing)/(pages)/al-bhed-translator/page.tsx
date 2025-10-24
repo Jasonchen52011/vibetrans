@@ -65,24 +65,6 @@ export default async function AlBhedTranslatorPage(
     description: (t as any)('description'),
   });
 
-  // Page data for the tool
-  const pageData = {
-    tool: {
-      inputLabel: (t as any)('tool.inputLabel'),
-      alBhedLabel: (t as any)('tool.alBhedLabel'),
-      outputLabel: (t as any)('tool.outputLabel'),
-      inputPlaceholder: (t as any)('tool.inputPlaceholder'),
-      alBhedPlaceholder: (t as any)('tool.alBhedPlaceholder'),
-      outputPlaceholder: (t as any)('tool.outputPlaceholder'),
-      translateButton: (t as any)('tool.translateButton'),
-      uploadButton: (t as any)('tool.uploadButton'),
-      uploadHint: (t as any)('tool.uploadHint'),
-      loading: (t as any)('tool.loading'),
-      error: (t as any)('tool.error'),
-      noInput: (t as any)('tool.noInput'),
-    },
-  };
-
   // Examples section data
   const examplesData = {
     title: (t as any)('examples.title'),
@@ -117,7 +99,7 @@ export default async function AlBhedTranslatorPage(
 
   // User scenarios section (Fun Facts)
   const userScenariosSection = {
-    name: 'userscenarios',
+    name: 'funFacts',
     title: (t as any)('funfacts.title'),
     items: [
       {
@@ -166,6 +148,26 @@ export default async function AlBhedTranslatorPage(
         description: (t as any)('highlights.items.3.description'),
       },
     ],
+  };
+
+  // Page data for tool component
+  const pageData = {
+    tool: {
+      inputLabel: (t as any)('tool.inputLabel'),
+      alBhedLabel: (t as any)('tool.alBhedLabel'),
+      outputLabel: (t as any)('tool.outputLabel'),
+      inputPlaceholder: (t as any)('tool.inputPlaceholder'),
+      alBhedPlaceholder: (t as any)('tool.alBhedPlaceholder'),
+      outputPlaceholder: (t as any)('tool.outputPlaceholder'),
+      translateButton: (t as any)('tool.translateButton'),
+      uploadButton: (t as any)('tool.uploadButton'),
+      uploadHint: (t as any)('tool.uploadHint'),
+      loading: (t as any)('tool.loading'),
+      error: (t as any)('tool.error'),
+      noInput: (t as any)('tool.noInput'),
+    },
+    funFacts: userScenariosSection,
+    highlights: highlightsSection,
   };
 
   // What is section
@@ -358,12 +360,12 @@ export default async function AlBhedTranslatorPage(
 
         {/* Fun Facts */}
         <UserScenarios
-          section={userScenariosSection}
+          section={pageData.funFacts}
           ctaText={(t as any)('ctaButton')}
         />
 
         {/* Highlights/Why Choose */}
-        <WhyChoose section={highlightsSection} />
+        <WhyChoose section={pageData.highlights} />
 
         {/* Explore Other Tools */}
         <ExploreOurAiTools

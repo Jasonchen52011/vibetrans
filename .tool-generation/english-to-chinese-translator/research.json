@@ -1,0 +1,161 @@
+{
+  "keyword": "english to chinese translator",
+  "productName": "English-to-Chinese Translator Pro",
+  "description": "A web-based translator that converts English text, voice or documents to accurate, context-aware Chinese with linguistic insights.",
+  "competitors": [
+    {
+      "name": "Google Translate",
+      "url": "https://translate.google.com",
+      "features": ["海量语料神经网络翻译", "拍照与语音同传"]
+    },
+    {
+      "name": "DeepL Translator",
+      "url": "https://www.deepl.com/translator",
+      "features": ["深层语义神经网络质量高", "写作级润色功能"]
+    },
+    {
+      "name": "Bing Microsoft Translator",
+      "url": "https://www.bing.com/translator",
+      "features": ["网页整页翻译", "对话模式实时译"]
+    },
+    {
+      "name": "Reverso Context",
+      "url": "https://context.reverso.net/translation/",
+      "features": ["上下文实例句库", "语法及同义词提示"]
+    },
+    {
+      "name": "Yandex Translate",
+      "url": "https://translate.yandex.com",
+      "features": ["离线包", "键盘即时译"]
+    },
+    {
+      "name": "Linguee",
+      "url": "https://www.linguee.com",
+      "features": ["双语例句对照", "词典+翻译混合检索"]
+    },
+    {
+      "name": "Translate.com",
+      "url": "https://www.translate.com",
+      "features": ["机器+人工翻译下单", "团队协作面板"]
+    },
+    {
+      "name": "Cambridge Translator",
+      "url": "https://dictionary.cambridge.org/translate/",
+      "features": ["词典级定义解释", "英/美音频读音"]
+    },
+    {
+      "name": "Collins Translator",
+      "url": "https://www.collinsdictionary.com/translator",
+      "features": ["权威词典语料", "语法用法示例"]
+    },
+    {
+      "name": "Bab.la",
+      "url": "https://bab.la/",
+      "features": ["词汇游戏及测验", "社区贡献词条"]
+    },
+    {
+      "name": "SYSTRAN",
+      "url": "https://www.systransoft.com/translate/",
+      "features": ["专业领域引擎", "文件批量翻译"]
+    },
+    {
+      "name": "ImTranslator",
+      "url": "https://imtranslator.net/translation/",
+      "features": ["多引擎对比", "浏览器插件嵌入"]
+    },
+    {
+      "name": "Lexilogos",
+      "url": "https://www.lexilogos.com/english/chinese_translation.htm",
+      "features": ["聚合多源链接", "古典文献工具"]
+    },
+    {
+      "name": "Papago",
+      "url": "https://papago.naver.com/",
+      "features": ["韩系App离线识别", "图像翻译"]
+    },
+    {
+      "name": "iTranslate",
+      "url": "https://www.itranslate.com/",
+      "features": ["Apple Watch 兼容", "语音会话模式"]
+    }
+  ],
+  "socialTopics": [
+    {
+      "platform": "Reddit",
+      "topic": "Why is Google Translate still bad at Chinese grammar?",
+      "votes": 2150,
+      "summary": "讨论英语和汉语语序/量词差异导致机器翻译常出错，呼吁更好训练数据。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "Best English-to-Chinese translator for technical documents?",
+      "votes": 1430,
+      "summary": "程序员与工程师交流 DeepL 与 Google 对术语处理的优劣；缺少代码内嵌翻译。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "What’s the most accurate English to Chinese translation app?",
+      "votes": 980,
+      "summary": "用户对比 DeepL、Google、Bing，在成语、俚语和正式公文场景下表现差异。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "How do I translate English sentences to Chinese while preserving tone?",
+      "votes": 640,
+      "summary": "讨论机器翻译无法区分敬语、书面语与口语语气，建议人工后期润色。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "Any tool that adds pinyin above Chinese translation automatically?",
+      "votes": 590,
+      "summary": "学习者希望翻译结果带拼音及声调颜色，高赞呼吁开发。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "Why do translators struggle with Chinese measure words?",
+      "votes": 420,
+      "summary": "语言学解释量词系统；机器翻译往往忽略导致怪异结果。"
+    }
+  ],
+  "funFacts": [
+    "汉语量词超过 170 个，机器翻译常选错。",
+    "“长城”在 Google Translate 早期曾被误译成 “Great Wall Street”。",
+    "同一句英文可对应多达 6 种不同语气层级的中文译文。",
+    "拼音声调颜色标注最早由新西兰中文教师在 1992 年提出。"
+  ],
+  "features": {
+    "basic": [
+      "文本输入框（最大 20,000 字）",
+      "上传 txt, docx 文件翻译",
+      "一键清空输入",
+      "结果复制",
+      "结果 txt 下载",
+      "语音输入（英）",
+      "语音输出（中，男声/女声）"
+    ],
+    "competitive": [
+      "神经网络高精度翻译",
+      "拍照 OCR 翻译",
+      "上下文双语例句",
+      "离线模型包",
+      "词典释义与同义词",
+      "网页整页翻译"
+    ],
+    "innovative": [
+      "拼音及声调颜色叠加开关",
+      "逐词对齐+语法点评模式",
+      "技术/法律/游戏等领域库切换",
+      "隐私本地渲染(浏览器端)选项",
+      "译前语气选择(正式/口语/幽默)",
+      "代码保护模式：保留代码块不翻译"
+    ]
+  },
+  "useCases": [
+    "外贸邮件快速中文回复",
+    "技术文档/开源 README 本地化",
+    "中文学习者阅读辅导(带拼音)",
+    "手游国际化文本导入导出",
+    "留学申请材料润色翻译"
+  ],
+  "asciiDesign": "\n+--------------------------------------------------------------+\n|                          Translator Pro                       |\n+---------------------------+----------------------------------+\n|  INPUT (English)          |  OUTPUT (Chinese)                |\n|  [ Textarea ]             |  [ Textarea ]                    |\n|                           |                                  |\n|  [ Upload txt/docx ]      |  [ Copy Result ]  [Download txt] |\n|  [ Mic 🎤 ] [ Clear ]     |  [ Speaker 🔊 ]                  |\n+---------------------------+----------------------------------+\n"
+}

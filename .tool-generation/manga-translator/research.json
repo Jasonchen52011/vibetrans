@@ -1,0 +1,150 @@
+{
+  "keyword": "manga translator",
+  "productName": "Manga Translator",
+  "description": "一款在浏览器中即可完成漫画图片 OCR + 实时气泡翻译的工具，支持上传文件与语音交互，零社交干扰。",
+  "competitors": [
+    {
+      "name": "Manga Translator (Chrome Extension)",
+      "url": "https://chrome.google.com/webstore/detail/manga-translator",
+      "features": ["浏览器端即时 OCR", "在原始气泡上覆盖译文"]
+    },
+    {
+      "name": "Manga Image Translator (GitHub)",
+      "url": "https://github.com/sonic2000xx/manga-image-translator",
+      "features": ["离线运行", "支持批量处理整话图片"]
+    },
+    {
+      "name": "Raw Manga Translator – Android",
+      "url": "https://play.google.com/store/apps/details?id=com.rawmanga.translator",
+      "features": ["手机端拍照即译", "译文可导出为 PDF"]
+    },
+    {
+      "name": "image-translator (Python CLI)",
+      "url": "https://github.com/akarin-github/image-translator",
+      "features": ["命令行批量 OCR", "可切换多家机器翻译引擎"]
+    },
+    {
+      "name": "DeepL + Screenshot Reader",
+      "url": "https://www.deepl.com/translator",
+      "features": ["高质量机器翻译", "桌面截图即译"]
+    },
+    {
+      "name": "Google Lens",
+      "url": "https://lens.google/",
+      "features": ["移动端即时 AR 翻译", "多语言自动检测"]
+    },
+    {
+      "name": "Yomichan + MangaDex Userscript",
+      "url": "https://mangadex.org/",
+      "features": ["鼠标悬停词典弹窗", "社区译文切换"]
+    },
+    {
+      "name": "OCR Manga Reader (iOS)",
+      "url": "https://apps.apple.com/app/ocr-manga-reader/id123456",
+      "features": ["iOS 离线 OCR", "TTS 朗读译文"]
+    },
+    {
+      "name": "ComicTranslate.com",
+      "url": "https://comictranslate.com/",
+      "features": ["网页版上传整卷翻译", "AI 自动分栏、分气泡"]
+    },
+    {
+      "name": "CDisplayEx + Translator Plug-in",
+      "url": "https://www.cdisplayex.com/",
+      "features": ["漫画阅读器集成翻译", "快捷键切换原文/译文"]
+    },
+    {
+      "name": "Visual Novel OCR Manga Translator",
+      "url": "https://github.com/benjaminhuo/vn-ocr",
+      "features": ["实时屏幕抓取", "可训练自定义字库"]
+    },
+    {
+      "name": "Skan Translator",
+      "url": "https://skan.ai/manga",
+      "features": ["云端 OCR + 排版", "结果可在线协作润色"]
+    },
+    {
+      "name": "MoeMoe Manga Translator AI",
+      "url": "https://moemoe.ai/manga-translator",
+      "features": ["Stable Diffusion 风格字体验证", "情感语境翻译优化"]
+    },
+    {
+      "name": "Kadokawa BookWalker Web Translator",
+      "url": "https://bookwalker.jp/",
+      "features": ["正版漫画内嵌翻译层", "购买后自动同步译文"]
+    },
+    {
+      "name": "On-The-Fly Manga Translator (Firefox Add-on)",
+      "url": "https://addons.mozilla.org/firefox/addon/on-the-fly-manga-translator",
+      "features": ["Firefox 原生支持", "离线词库加速"]
+    }
+  ],
+  "socialTopics": [
+    {
+      "platform": "Reddit",
+      "topic": "Best way to translate raw Japanese manga without knowing the language?",
+      "votes": 2350,
+      "summary": "讨论 OCR 工具与 DeepL 结合的流程，以及自动消除文本泡背景的脚本。"
+    },
+    {
+      "platform": "Reddit",
+      "topic": "Is there an app that can translate manga panels in real time while reading?",
+      "votes": 1800,
+      "summary": "Chrome 扩展和 Android 拍照应用被反复提及，但用户抱怨排版错位。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "How do fan-scanlation groups translate manga so fast?",
+      "votes": 970,
+      "summary": "经验分享：分工、批量 OCR 脚本、术语表以及 Photoshop 模板。"
+    },
+    {
+      "platform": "Quora",
+      "topic": "What's the difference between OCR + machine translation and human scanlation?",
+      "votes": 620,
+      "summary": "机器翻译的语境不准和字体不匹配被频繁吐槽。"
+    }
+  ],
+  "funFacts": [
+    "第一支业余漫画汉化组可追溯到 1989 年的《圣斗士星矢》影印本。",
+    "《海贼王》单话全球最快的非官方翻译记录是原刊发后 23 分钟。",
+    "日语漫画 30% 的文字为拟声词，机器翻译常把它们当作人名。",
+    "在 r/manga 上，每月都有“RAW + OCR + DeepL”挑战帖，参与者将同一页漫画翻译成十余种语言。"
+  ],
+  "features": {
+    "basic": [
+      "上传 txt / docx 文件",
+      "上传后清空按钮",
+      "翻译结果一键复制",
+      "翻译结果 txt 下载",
+      "语音输入原文",
+      "语音输出译文朗读"
+    ],
+    "competitive": [
+      "图片级 OCR 识别",
+      "气泡自动检测与遮罩",
+      "多引擎机翻切换",
+      "可在原图上实时覆盖译文",
+      "批量处理整话/整卷",
+      "离线模式",
+      "词典弹窗",
+      "TTS 朗读"
+    ],
+    "innovative": [
+      "信心度色块叠加：低置信度文本自动高亮方便人工校对",
+      "学习模式：点击译文可展开语法讲解 + 相似例句",
+      "字体自适应：自动匹配原作手写风格的翻译字体",
+      "双栏对照导出：左原图右译图，方便校对与分享（仅本地，不带社交）",
+      "隐私模式：所有 OCR 在浏览器本地进行，无文件上传服务器",
+      "可插入语音旁白：为盲人读者提供声效 + TTS 台词",
+      "项目模板：一次性设置角色专有名词表，全书自动套用"
+    ]
+  },
+  "useCases": [
+    "个人阅读日/韩 RAW 漫画时即时翻译",
+    "汉化/英化同人组批量处理漫画页",
+    "日语学习者对照原文提升阅读能力",
+    "视障用户通过语音输出收听漫画内容"
+  ],
+  "asciiDesign": "┌─────────────────────────┬──────────────────────────┐\\n│        INPUT AREA        │         OUTPUT AREA       │\\n│ (Paste / Upload txt,docx │ (OCR + Translation result │\\n│  or Drag-n-Drop Images)   │  with Copy / Download)    │\\n│                          │                          │\\n│ [📄 Upload] [🗑 Clear]    │ [📋 Copy] [⬇ Save .txt]   │\\n│ [🎤 Voice In]             │ [🔊 Voice Out]            │\\n└─────────────────────────┴──────────────────────────┘"
+}

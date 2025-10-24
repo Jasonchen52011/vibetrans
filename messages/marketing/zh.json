@@ -44,6 +44,22 @@
             "title": "胡言乱语翻译器",
             "description": "将任何文本转换为有趣的胡言乱语"
           },
+          "minionTranslator": {
+            "title": "小黄人翻译器",
+            "description": "将文本翻译成小黄人语言"
+          },
+          "baybayinTranslator": {
+            "title": "巴贝因文字翻译器",
+            "description": "在巴贝因文字和现代语言之间翻译"
+          },
+          "samoanToEnglishTranslator": {
+            "title": "萨摩亚语翻译器",
+            "description": "在萨摩亚语和英语之间翻译"
+          },
+          "nahuatlTranslator": {
+            "title": "纳瓦特尔语翻译器",
+            "description": "在纳瓦特尔语和英语之间翻译"
+          },
           "alienTextGenerator": {
             "title": "外星文字生成器",
             "description": "将您的文本转换为各种外星语言风格"
@@ -93,6 +109,14 @@
             "title": "中文翻译器",
             "description": "在中文和英语之间智能翻译"
           },
+          "englishToChineseTranslator": {
+            "title": "英中翻译器",
+            "description": "在英语和中文之间智能翻译"
+          },
+          "mangaTranslator": {
+            "title": "漫画翻译器",
+            "description": "在多种语言之间翻译漫画和连环画"
+          },
           "middleEnglishTranslator": {
             "title": "中古英语翻译器",
             "description": "在中古英语和现代英语之间翻译"
@@ -120,6 +144,82 @@
           "aramaicTranslator": {
             "title": "阿拉姆语翻译器",
             "description": "将古代阿拉姆语翻译成现代语言"
+          },
+          "greekTranslator": {
+            "title": "希腊语翻译器",
+            "description": "在现代希腊语和英语之间翻译"
+          },
+          "oghamTranslator": {
+            "title": "欧甘文字翻译器",
+            "description": "翻译古代欧甘文字为现代语言"
+          },
+          "nahuatlTranslator": {
+            "title": "纳瓦特尔语翻译器",
+            "description": "在纳瓦特尔语和英语之间翻译"
+          },
+          "englishToSwahiliTranslator": {
+            "title": "英语到斯瓦希里语翻译器",
+            "description": "从英语翻译为斯瓦希里语"
+          },
+          "swahiliToEnglishTranslator": {
+            "title": "斯瓦希里语到英语翻译器",
+            "description": "从斯瓦希里语翻译为英语"
+          },
+          "englishToAmharicTranslator": {
+            "title": "英语到阿姆哈拉语翻译器",
+            "description": "从英语翻译为阿姆哈拉语"
+          },
+          "englishToPolishTranslator": {
+            "title": "英语到波兰语翻译器",
+            "description": "从英语翻译为波兰语"
+          },
+          "teluguToEnglishTranslator": {
+            "title": "泰卢固语到英语翻译器",
+            "description": "从泰卢固语翻译为英语"
+          },
+          "smartLanguageTranslator": {
+            "title": "智能语言翻译器",
+            "description": "AI驱动的多语言智能翻译"
+          },
+          "runeTranslator": {
+            "title": "符文翻译器",
+            "description": "将古代符文翻译为现代语言"
+          },
+          "runicTranslator": {
+            "title": "卢恩文字翻译器",
+            "description": "在卢恩文字和现代语言之间翻译"
+          },
+          "drowTranslator": {
+            "title": "卓尔精灵语翻译器",
+            "description": "翻译《龙与地下城》中的卓尔精灵语"
+          },
+          "yodaTranslator": {
+            "title": "尤达大师翻译器",
+            "description": "将文本翻译成尤达大师独特的说话方式"
+          },
+          "mandalorianTranslator": {
+            "title": "曼达洛语翻译器",
+            "description": "翻译《星球大战》中的曼达洛语"
+          },
+          "minionTranslator": {
+            "title": "小黄人翻译器",
+            "description": "将文本翻译成小黄人语言"
+          },
+          "gasterTranslator": {
+            "title": "Gaster语翻译器",
+            "description": "解码和编码Gaster的神秘符号"
+          },
+          "wingdingsTranslator": {
+            "title": "Wingdings字体翻译器",
+            "description": "在Wingdings符号和文本之间翻译"
+          },
+          "highValyrianTranslator": {
+            "title": "高等瓦雷利亚语翻译器",
+            "description": "在高等瓦雷利亚语和英语之间翻译"
+          },
+          "englishToPersianTranslator": {
+            "title": "英语到波斯语翻译器",
+            "description": "从英语翻译为波斯语"
           }
         }
       },
@@ -248,10 +348,181 @@
     "footer": {
       "tagline": "VibeTrans提供先进的AI驱动工具，实现无缝语言转换。使用VibeTrans轻松翻译文本、俚语，甚至古代语言。",
       "funTranslate": {
-        "title": "趣味翻译"
+        "title": "趣味翻译",
+        "items": {
+          "dogTranslator": {
+            "title": "狗狗翻译器"
+          },
+          "genZTranslator": {
+            "title": "Gen Z翻译器"
+          },
+          "genAlphaTranslator": {
+            "title": "Gen Alpha翻译器"
+          },
+          "dumbItDown": {
+            "title": "简化AI"
+          },
+          "badTranslator": {
+            "title": "搞笑翻译器"
+          },
+          "babyTranslator": {
+            "title": "婴儿翻译器"
+          },
+          "gibberishTranslator": {
+            "title": "胡言乱语翻译器"
+          },
+          "alienTextGenerator": {
+            "title": "外星文字生成器"
+          },
+          "verboseGenerator": {
+            "title": "冗长生成器"
+          },
+          "pigLatinTranslator": {
+            "title": "猪拉丁语翻译器"
+          }
+        }
+      },
+      "gameTranslator": {
+        "title": "游戏翻译器",
+        "items": {
+          "drowTranslator": {
+            "title": "卓尔精灵语翻译器"
+          },
+          "runeTranslator": {
+            "title": "符文翻译器"
+          },
+          "runicTranslator": {
+            "title": "卢恩文字翻译器"
+          },
+          "yodaTranslator": {
+            "title": "尤达大师翻译器"
+          },
+          "mandalorianTranslator": {
+            "title": "曼达洛语翻译器"
+          },
+          "minionTranslator": {
+            "title": "小黄人翻译器"
+          },
+          "gasterTranslator": {
+            "title": "Gaster语翻译器"
+          },
+          "wingdingsTranslator": {
+            "title": "Wingdings字体翻译器"
+          },
+          "highValyrianTranslator": {
+            "title": "高等瓦雷利亚语翻译器"
+          },
+          "alBhedTranslator": {
+            "title": "艾尔贝德语翻译器"
+          }
+        }
       },
       "languageTranslator": {
-        "title": "语言翻译"
+        "title": "语言翻译",
+        "items": {
+          "drowTranslator": {
+            "title": "卓尔精灵语翻译器"
+          },
+          "runeTranslator": {
+            "title": "符文翻译器"
+          },
+          "runicTranslator": {
+            "title": "卢恩文字翻译器"
+          },
+          "yodaTranslator": {
+            "title": "尤达大师翻译器"
+          },
+          "mandalorianTranslator": {
+            "title": "曼达洛语翻译器"
+          },
+          "minionTranslator": {
+            "title": "小黄人翻译器"
+          },
+          "gasterTranslator": {
+            "title": "Gaster语翻译器"
+          },
+          "wingdingsTranslator": {
+            "title": "Wingdings字体翻译器"
+          },
+          "highValyrianTranslator": {
+            "title": "高等瓦雷利亚语翻译器"
+          },
+          "alBhedTranslator": {
+            "title": "艾尔贝德语翻译器"
+          },
+          "oghamTranslator": {
+            "title": "欧甘文字翻译器"
+          },
+          "samoanToEnglishTranslator": {
+            "title": "萨摩亚语翻译器"
+          },
+          "aramaicTranslator": {
+            "title": "阿拉姆语翻译器"
+          },
+          "nahuatlTranslator": {
+            "title": "纳瓦特尔语翻译器"
+          },
+          "englishToSwahiliTranslator": {
+            "title": "英语到斯瓦希里语翻译器"
+          },
+          "swahiliToEnglishTranslator": {
+            "title": "斯瓦希里语到英语翻译器"
+          },
+          "englishToAmharicTranslator": {
+            "title": "英语到阿姆哈拉语翻译器"
+          },
+          "englishToPolishTranslator": {
+            "title": "英语到波兰语翻译器"
+          },
+          "teluguToEnglishTranslator": {
+            "title": "泰卢固语到英语翻译器"
+          },
+          "smartLanguageTranslator": {
+            "title": "智能语言翻译器"
+          },
+          "englishToPersianTranslator": {
+            "title": "英语到波斯语翻译器"
+          },
+          "ancientGreekTranslator": {
+            "title": "古希腊语翻译器"
+          },
+          "greekTranslator": {
+            "title": "希腊语翻译器"
+          },
+          "mangaTranslator": {
+            "title": "漫画翻译器"
+          },
+          "esperantoTranslator": {
+            "title": "世界语翻译器"
+          },
+          "cuneiformTranslator": {
+            "title": "楔形文字翻译器"
+          },
+          "ivrTranslator": {
+            "title": "IVR翻译器"
+          },
+          "albanianToEnglish": {
+            "title": "阿尔巴尼亚语翻译器"
+          },
+          "creoleToEnglishTranslator": {
+            "title": "克里奥尔语翻译器"
+          },
+          "cantoneseTranslator": {
+            "title": "粤语翻译器"
+          },
+          "chineseToEnglishTranslator": {
+            "title": "中文翻译器"
+          },
+          "englishToChineseTranslator": {
+            "title": "英中翻译器"
+          },
+          "middleEnglishTranslator": {
+            "title": "中古英语翻译器"
+          },
+          "baybayinTranslator": {
+            "title": "巴贝因文字翻译器"
+          }
+        }
       },
       "product": {
         "title": "产品",

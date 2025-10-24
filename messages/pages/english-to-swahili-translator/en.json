@@ -1,0 +1,230 @@
+{
+  "EnglishToSwahiliTranslatorPage": {
+    "title": "VibeTrans: English to Swahili Translator",
+    "description": "Translate English to Swahili instantly with AI that respects tone, slang, and business terminology for East African audiences.",
+    "hero": {
+      "title": "Best English to Swahili Translator for Real Conversations",
+      "description": "Use the best English to Swahili translator for cross-border business, travel, and content. Deliver accurate phrases, natural slang, and audio-friendly scripts from one simple dashboard.",
+      "userCount": "from 25,000+ happy users"
+    },
+    "tool": {
+      "inputLabel": "Input Text",
+      "outputLabel": "Translated Text",
+      "inputPlaceholder": "Paste English content that needs Swahili localization…",
+      "outputPlaceholder": "Your Swahili translation appears here…",
+      "translateButton": "Translate",
+      "uploadButton": "Upload File",
+      "uploadHint": "Supports .txt and .docx files",
+      "voiceInputButton": "Voice Input",
+      "voiceInputHint": "Click to start voice input",
+      "audioUploadButton": "Upload Audio",
+      "audioUploadHint": "Upload audio file for transcription",
+      "voiceOutputButton": "Play Audio",
+      "voiceOutputHint": "Listen to translation",
+      "loading": "Translating English into Swahili…",
+      "transcribing": "Transcribing audio...",
+      "error": "Translation failed. Please try again.",
+      "noInput": "Please enter some English text to translate."
+    },
+    "whatIs": {
+      "title": "What is VibeTrans English to Swahili Translator?",
+      "description": "The VibeTrans English to Swahili Translator is an AI-powered localization assistant built for fast, culturally-aware communication across East Africa. It keeps regional slang, honorifics, and tone consistent while handling docs, voice notes, and API requests. Businesses, NGOs, and creators rely on it to collaborate confidently with Swahili speakers in Kenya, Tanzania, Uganda, and beyond.",
+      "image": "/images/docs/swahili-speaking-world.webp",
+      "imageAlt": "Map highlighting Swahili speaking world"
+    },
+    "examples": {
+      "title": "English to Swahili Translation Examples",
+      "description": "See how VibeTrans preserves nuance when translating business updates, travel tips, and conversational phrases into Swahili.",
+      "items": [
+        {
+          "alt": "Original: Thank you for your patience → Swahili: Asante kwa uvumilivu wako",
+          "name": "Thank you for your patience → Asante kwa uvumilivu wako"
+        },
+        {
+          "alt": "Original: The shipment leaves on Friday → Swahili: Usafirishaji unaondoka Ijumaa",
+          "name": "The shipment leaves on Friday → Usafirishaji unaondoka Ijumaa"
+        },
+        {
+          "alt": "Original: Please sign the partnership agreement → Swahili: Tafadhali saini makubaliano ya ushirikiano",
+          "name": "Sign partnership agreement → Tafadhali saini makubaliano ya ushirikiano"
+        },
+        {
+          "alt": "Original: Where can I find the bus stop? → Swahili: Naweza kupata kituo cha basi wapi?",
+          "name": "Where is the bus stop? → Naweza kupata kituo cha basi wapi?"
+        },
+        {
+          "alt": "Original: Let me know if the price works for you → Swahili: Nijulishe kama bei hiyo inakufaa",
+          "name": "Does the price work for you? → Nijulishe kama bei hiyo inakufaa"
+        },
+        {
+          "alt": "Original: We are live-streaming the product demo → Swahili: Tunasambaza moja kwa mojaonyesho la bidhaa",
+          "name": "We are live-streaming demo → Tunasambaza moja kwa moja onyesho la bidhaa"
+        }
+      ]
+    },
+    "howto": {
+      "title": "How to translate English to Swahili",
+      "description": "Follow these quick steps to convert English content into accurate Swahili copy.",
+      "steps": [
+        {
+          "title": "Gather Your Content",
+          "description": "Paste English sentences or upload .txt and .docx files. VibeTrans detects jargon, dates, and numbers automatically so you do not have to pre-format anything.",
+          "wordCount": 36
+        },
+        {
+          "title": "Select Context",
+          "description": "Choose business, travel, education, or NGO mode to unlock domain-specific terminology packs tailored for East African partners and audiences.",
+          "wordCount": 30
+        },
+        {
+          "title": "Translate with AI",
+          "description": "Click Translate to generate human-friendly Swahili text. Tone, slang, and formality shift automatically based on the mode you selected.",
+          "wordCount": 31
+        },
+        {
+          "title": "Review & Export",
+          "description": "Listen with text-to-speech, copy to clipboard, or download a clean .txt file. Share directly with teammates so everyone aligns on approved Swahili wording.",
+          "wordCount": 37
+        }
+      ],
+      "totalWordCount": 160
+    },
+    "funFacts": {
+      "title": "Swahili Language Insights",
+      "items": [
+        {
+          "title": "Swahili's Arabic Connection",
+          "description": "Did you know about 35% of Swahili words come from Arabic? This mix creates interesting challenges for translation tools. Especially when handling financial or religious texts, where Arabic loanwords are common.",
+          "image": "/images/docs/swahili-speakers-map.webp",
+          "imageAlt": "Map showing regions where Swahili is spoken"
+        },
+        {
+          "title": "The Lion King's Hidden Lesson",
+          "description": "Remember Simba and Rafiki from The Lion King? Their names are Swahili! Fans use this to test translation tools. It's a fun way to see how accurately these tools handle Swahili names and phrases.",
+          "image": "/images/docs/swahili-idioms.webp",
+          "imageAlt": "Illustration of Swahili idioms and cultural references"
+        }
+      ]
+    },
+    "userInterest": {
+      "title": "Where Teams Use English to Swahili Translation",
+      "items": [
+        {
+          "title": "East African Deal Rooms",
+          "description": "Localize proposals, invoices, and legal clauses for partners in Nairobi, Dar es Salaam, and Kampala without losing intent or tone.",
+          "image": "/images/docs/africa-expansion-flat.webp",
+          "imageAlt": "Business professionals collaborating across East Africa"
+        },
+        {
+          "title": "Travel & Hospitality",
+          "description": "Equip tour guides, hotels, and safari operators with fast translations that help guests feel welcome from airport pickup to sunset cruises.",
+          "image": "/images/docs/travel-translation-africa.webp",
+          "imageAlt": "Traveler receiving translation help in Africa"
+        },
+        {
+          "title": "NGO Field Programs",
+          "description": "Translate training manuals, health updates, and community announcements into approachable Swahili copy that residents understand instantly.",
+          "image": "/images/docs/culture-exchange-globe.webp",
+          "imageAlt": "Global team exchanging culture and knowledge"
+        },
+        {
+          "title": "Language Learners",
+          "description": "Blend flashcards with spoken phrase drills so students can practice modern Swahili expressions alongside textbook grammar.",
+          "image": "/images/docs/swahili-learning.webp",
+          "imageAlt": "Student practicing Swahili on a laptop"
+        }
+      ]
+    },
+    "highlights": {
+      "title": "Why East African teams choose VibeTrans",
+      "overview": "AI-powered English ↔ Swahili translation with on-the-fly direction swapping, cultural fluency, and speech workflows built for real-world teams.",
+      "description": "Blend bidirectional copy drafting, idiom-aware language models, and voice-to-text support so every stakeholder—from Nairobi operations to global partners—speaks the right language instantly.",
+      "features": [
+        {
+          "title": "Bidirectional in One Click",
+          "icon": "FaRocket",
+          "description": "Swap English ↔ Swahili instantly and keep source and target drafts aligned so commercial, legal, and product teams iterate without juggling multiple tools."
+        },
+        {
+          "title": "Context-Aware AI",
+          "icon": "FaBrain",
+          "description": "Regional corpora plus community feedback recognize idioms like \"asante\" or \"karibu\", keeping tone natural whether you're talking to drivers, donors, or students."
+        },
+        {
+          "title": "Voice & Audio Ready",
+          "icon": "FaVolumeUp",
+          "description": "Dictate updates or upload field recordings. Built-in speech recognition and Whisper-powered transcription turn spoken Swahili or English into clean, editable text."
+        },
+        {
+          "title": "Flexible Delivery",
+          "icon": "FaDownload",
+          "description": "Copy, download, or hand off via text-to-speech in seconds. Keep customer replies, legal clauses, and learning content current across every channel."
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "What Users Say",
+      "subtitle": "Stories from Teams Using VibeTrans to Bridge English and Swahili Every Day",
+      "items": [
+        {
+          "name": "Aisha Kamau",
+          "role": "Logistics Manager, Nairobi",
+          "heading": "Shipping Alerts Now Go Out in Minutes",
+          "content": "We went from juggling freelance translators to turning around shipping updates in minutes. VibeTrans keeps our Swahili notifications professional while still sounding friendly to every driver on the route.",
+          "rating": "4.9"
+        },
+        {
+          "name": "Michael Turner",
+          "role": "Safari Tour Founder",
+          "heading": "Guides Sound Native During Every Briefing",
+          "content": "Our guides now brief guests in polished Swahili and English without memorizing scripts. The translator nails regional idioms so visitors feel immersed the moment they land.",
+          "rating": "4.6"
+        },
+        {
+          "name": "Nasra Abdallah",
+          "role": "Community Health Coordinator",
+          "heading": "Weekly Health Updates Reach Communities Faster",
+          "content": "Weekly health bulletins used to take three days to translate. With VibeTrans we publish bilingual updates before clinic doors open, keeping families informed and safe.",
+          "rating": "4.8"
+        }
+      ]
+    },
+    "faqs": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Quick answers before you launch your next English to Swahili project",
+      "items": [
+        {
+          "question": "What is the best English to Swahili translator for business teams?",
+          "answer": "VibeTrans combines AI with curated East African phrase banks, making it the best English to Swahili translator for sales, legal, and operations teams that need reliable tone control."
+        },
+        {
+          "question": "Can I translate documents and audio together?",
+          "answer": "Yes. Upload text, Word files, or paste scripts, then generate Swahili copy, downloadable transcripts, and even text-to-speech audio for voice-over work."
+        },
+        {
+          "question": "Does this translator handle regional slang and idioms?",
+          "answer": "Absolutely. Community feedback and domain glossaries help VibeTrans interpret slang like \"shwari\" or \"pole sana\" so your message lands naturally."
+        },
+        {
+          "question": "Can developers integrate this translator into existing tools?",
+          "answer": "Yes. Use the REST API or webhook to push English to Swahili translations directly into apps, CRMs, or chat automation without manual copy-paste."
+        },
+        {
+          "question": "How is my translation data protected?",
+          "answer": "All projects are encrypted at rest and in transit, with role-based access and optional data retention controls so only your team sees translations."
+        },
+        {
+          "question": "Can I use the translator offline?",
+          "answer": "This translator is web-based only and requires an internet connection. It does not support offline usage or mobile apps. All translations happen online through our secure servers."
+        }
+      ]
+    },
+    "ctaButton": "Try English to Swahili Translator",
+    "cta": {
+      "title": "Start translating with VibeTrans English to Swahili",
+      "description": "Launch accurate Swahili copy in minutes—perfect for sales decks, travel scripts, NGO updates, and multilingual media.",
+      "primaryButton": "Try English to Swahili Translator Now",
+      "secondaryButton": "Back to Top"
+    }
+  }
+}

@@ -1,6 +1,7 @@
 // app/dog-translator/tool-page.tsx
 'use client'; // Client component declaration
 
+import { ToolInfoSections } from '@/components/blocks/tool/tool-info-sections';
 import { ArrowRightIcon } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 
@@ -479,6 +480,11 @@ export default function DogTranslatorTool({
             ></i>
           </button>
         </div>
+
+        <ToolInfoSections
+          highlights={pageData.highlights}
+          funFacts={pageData.funFacts}
+        />
       </main>
     </div>
   );
