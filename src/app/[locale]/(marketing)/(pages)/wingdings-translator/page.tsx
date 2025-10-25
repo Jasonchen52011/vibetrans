@@ -16,9 +16,6 @@ import type { Metadata } from 'next';
 import type { Locale } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import WingdingsTranslatorTool from './WingdingsTranslatorTool';
-
-export const runtime = 'edge';
-
 export async function generateMetadata({
   params,
 }: {

@@ -6,9 +6,6 @@ import SimpleToolTemplate, {
 import type { Metadata } from 'next';
 import type { Locale } from 'next-intl';
 import AlbanianToEnglishTool from './AlbanianToEnglishTool';
-
-export const runtime = 'edge';
-
 // Tool configuration
 const albanianToEnglishConfig: ToolPageConfig = {
   namespace: 'AlbanianToEnglishPage',

@@ -13,7 +13,7 @@ if (process.env.NODE_ENV === 'development') {
  */
 const nextConfig: NextConfig = {
   // Output for Cloudflare Pages compatibility
-  output: 'standalone',
+  output: 'export',
 
   /* config options here */
   devIndicators: false,
@@ -26,11 +26,8 @@ const nextConfig: NextConfig = {
       'framer-motion',
       'recharts',
     ],
-    // 减少客户端引用清单生成
-    serverComponentsExternalPackages: ['@ai-sdk/openai', '@google/generative-ai'],
-    // 禁用某些优化以减少文件数量
-    optimizeCss: false,
-    adjustFontFallbacks: false,
+    // Enable static generation to reduce worker size
+    forceSwcTransforms: true,
   },
 
   // Skip type checking during build
@@ -39,12 +36,34 @@ const nextConfig: NextConfig = {
   },
 
   // Exclude Node.js-only packages from Edge Runtime bundles
-  serverExternalPackages: ['fumadocs-mdx'],
+  serverExternalPackages: [
+    'fumadocs-mdx',
+    '@aws-sdk/client-s3',
+    '@google-cloud/text-to-speech',
+    'google-auth-library',
+    'pg',
+    'postgres',
+    'drizzle-orm',
+    '@supabase/supabase-js',
+    '@supabase/ssr',
+    'stripe',
+    '@stripe/stripe-js',
+    'resend',
+    'crisp-sdk-web',
+    'posthog-js',
+    '@vercel/analytics',
+    '@vercel/speed-insights',
+    'tone',
+    'mammoth',
+    'streamdown',
+  ],
 
   // https://nextjs.org/docs/architecture/nextjs-compiler#remove-console
   // Remove all console.* calls in production only
   compiler: {
-    // removeConsole: process.env.NODE_ENV === 'production',
+    removeConsole: process.env.NODE_ENV === 'production',
+    // Remove React prop types in production
+    reactRemoveProperties: process.env.NODE_ENV === 'production',
   },
 
   // Webpack configuration for Cloudflare Pages Edge Runtime compatibility
@@ -63,7 +82,6 @@ const nextConfig: NextConfig = {
       config.resolve.alias['crypto'] = 'crypto-browserify';
     }
 
-    
     // Disable Node.js modules not available in Edge Runtime
     config.resolve.fallback = {
       ...config.resolve.fallback,
@@ -78,43 +96,30 @@ const nextConfig: NextConfig = {
       'node:crypto': false,
       querystring: false,
       vm: false,
+      zlib: false,
+      events: false,
+      util: false,
+      url: false,
+      assert: false,
+      buffer: false,
     };
 
     // Aggressive tree shaking and chunking optimization
     if (!dev) {
       config.optimization.usedExports = true;
       config.optimization.sideEffects = false;
+
+      // Minimize bundles more aggressively
       config.optimization.minimize = true;
 
-      // 更大的chunk以减少文件数量
-      config.optimization.splitChunks = {
-        chunks: 'all',
-        minSize: 50000, // 增大最小chunk大小
-        maxSize: 200000, // 增大最大chunk大小
-        cacheGroups: {
-          default: {
-            minChunks: 3, // 增加重复次数要求
-            chunks: 'async',
-            priority: -10,
-            reuseExistingChunk: true,
-          },
-          vendor: {
-            test: /[\\/]node_modules[\\/]/,
-            name: 'vendors',
-            priority: -10,
-            chunks: 'async',
-            minChunks: 1,
-          },
-        },
-      };
+      }
 
-      // Performance limits
-      config.performance = {
-        maxAssetSize: 150 * 1024, // 150KB per chunk
-        maxEntrypointSize: 300 * 1024, // 300KB per entry
-        hints: 'warning',
-      };
-    }
+    // Reduce chunk size limits
+    config.performance = {
+      maxAssetSize: 244 * 1024, // 244KB per chunk
+      maxEntrypointSize: 244 * 1024, // 244KB per entry point
+      hints: 'warning',
+    };
 
     return config;
   },

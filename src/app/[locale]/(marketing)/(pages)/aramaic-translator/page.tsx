@@ -16,9 +16,6 @@ import type { Metadata } from 'next';
 import type { Locale } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import AramaicTranslatorTool from './AramaicTranslatorTool';
-
-export const runtime = 'edge';
-
 export async function generateMetadata({
   params,
 }: {

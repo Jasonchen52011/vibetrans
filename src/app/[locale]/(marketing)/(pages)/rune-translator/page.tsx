@@ -16,8 +16,6 @@ import type { Locale } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import RuneTranslatorTool from './RuneTranslatorTool';
 
-export const runtime = 'edge';
-
 export async function generateMetadata({
   params,
 }: {

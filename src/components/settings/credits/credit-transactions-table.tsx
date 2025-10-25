@@ -34,7 +34,6 @@ import {
 } from '@/components/ui/tooltip';
 import { CREDIT_TRANSACTION_TYPE } from '@/credits/types';
 import { formatDate } from '@/lib/formatter';
-import { CaretDownIcon, CaretUpIcon } from '@radix-ui/react-icons';
 import {
   type ColumnDef,
   type ColumnFiltersState,

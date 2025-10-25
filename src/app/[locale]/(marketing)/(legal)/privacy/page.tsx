@@ -8,7 +8,6 @@ import type { Locale } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 
-export const runtime = 'edge';
 
 export async function generateMetadata({
   params,

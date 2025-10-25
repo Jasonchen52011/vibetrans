@@ -25,9 +25,6 @@ function addCacheBust(src: string): string {
     ? `${src}&_v=${timestamp}`
     : `${src}?_v=${timestamp}`;
 }
-
-export const runtime = 'edge';
-
 export async function generateMetadata({
   params,
 }: {

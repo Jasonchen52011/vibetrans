@@ -18,9 +18,6 @@ import type { Metadata } from 'next';
 import type { Locale } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import DogTranslatorTool from './DogTranslatorTool';
-
-export const runtime = 'edge';
-
 /**
  * https://next-intl.dev/docs/environments/actions-metadata-route-handlers#metadata-api
  */
