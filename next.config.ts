@@ -26,11 +26,6 @@ const nextConfig: NextConfig = {
       'framer-motion',
       'recharts',
     ],
-    // 减少客户端引用清单生成
-    serverComponentsExternalPackages: ['@ai-sdk/openai', '@google/generative-ai'],
-    // 禁用某些优化以减少文件数量
-    optimizeCss: false,
-    adjustFontFallbacks: false,
   },
 
   // Skip type checking during build
@@ -39,7 +34,7 @@ const nextConfig: NextConfig = {
   },
 
   // Exclude Node.js-only packages from Edge Runtime bundles
-  serverExternalPackages: ['fumadocs-mdx'],
+  serverExternalPackages: ['fumadocs-mdx', '@ai-sdk/openai', '@google/generative-ai'],
 
   // https://nextjs.org/docs/architecture/nextjs-compiler#remove-console
   // Remove all console.* calls in production only
