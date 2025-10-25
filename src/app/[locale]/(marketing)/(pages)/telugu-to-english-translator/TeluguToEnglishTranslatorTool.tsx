@@ -3,8 +3,8 @@
 import { SpeechToTextButton } from '@/components/ui/speech-to-text-button';
 import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
 import { detectLanguage } from '@/lib/language-detection';
-import { ArrowLeftRight, Mic, Waves } from 'lucide-react';
-import mammoth from 'mammoth';
+import { readFileContent } from '@/lib/utils/file-utils';
+import { ArrowLeftRight, Waves } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 
 interface TeluguToEnglishTranslatorToolProps {
@@ -64,41 +64,7 @@ export default function TeluguToEnglishTranslatorTool({
     }
   };
 
-  // Read file content
-  const readFileContent = async (file: File): Promise<string> => {
-    const fileExtension = file.name.split('.').pop()?.toLowerCase();
-
-    if (fileExtension === 'txt') {
-      return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          const content = e.target?.result as string;
-          if (content) resolve(content);
-          else reject(new Error('File is empty'));
-        };
-        reader.onerror = () => reject(new Error('Failed to read file'));
-        reader.readAsText(file);
-      });
-    }
-
-    if (fileExtension === 'docx') {
-      try {
-        const arrayBuffer = await file.arrayBuffer();
-        const result = await mammoth.extractRawText({ arrayBuffer });
-        if (result.value) return result.value;
-        throw new Error('Failed to extract text from Word document');
-      } catch (error) {
-        throw new Error(
-          'Failed to read .docx file. Please ensure it is a valid Word document.'
-        );
-      }
-    }
-
-    throw new Error(
-      'Unsupported file format. Please upload .txt or .docx files.'
-    );
-  };
-
+  
   // Handle audio upload for transcription
   const handleAudioUploadClick = () => {
     audioInputRef.current?.click();
