@@ -13,10 +13,22 @@ if (process.env.NODE_ENV === 'development') {
  */
 const nextConfig: NextConfig = {
   // Output for Cloudflare Pages compatibility
-  output: 'standalone',
+  output: 'export',
 
   /* config options here */
   devIndicators: false,
+
+  // Experimental optimizations for size reduction
+  experimental: {
+    optimizePackageImports: [
+      'lucide-react',
+      'date-fns',
+      'framer-motion',
+      'recharts',
+    ],
+    // Enable static generation to reduce worker size
+    forceSwcTransforms: true,
+  },
 
   // Skip type checking during build
   typescript: {
@@ -24,16 +36,38 @@ const nextConfig: NextConfig = {
   },
 
   // Exclude Node.js-only packages from Edge Runtime bundles
-  serverExternalPackages: ['fumadocs-mdx'],
+  serverExternalPackages: [
+    'fumadocs-mdx',
+    '@aws-sdk/client-s3',
+    '@google-cloud/text-to-speech',
+    'google-auth-library',
+    'pg',
+    'postgres',
+    'drizzle-orm',
+    '@supabase/supabase-js',
+    '@supabase/ssr',
+    'stripe',
+    '@stripe/stripe-js',
+    'resend',
+    'crisp-sdk-web',
+    'posthog-js',
+    '@vercel/analytics',
+    '@vercel/speed-insights',
+    'tone',
+    'mammoth',
+    'streamdown',
+  ],
 
   // https://nextjs.org/docs/architecture/nextjs-compiler#remove-console
   // Remove all console.* calls in production only
   compiler: {
-    // removeConsole: process.env.NODE_ENV === 'production',
+    removeConsole: process.env.NODE_ENV === 'production',
+    // Remove React prop types in production
+    reactRemoveProperties: process.env.NODE_ENV === 'production',
   },
 
   // Webpack configuration for Cloudflare Pages Edge Runtime compatibility
-  webpack: (config, { webpack, isServer }) => {
+  webpack: (config, { webpack, isServer, dev }) => {
     // Ignore native modules
     config.plugins.push(
       new webpack.IgnorePlugin({
@@ -62,6 +96,34 @@ const nextConfig: NextConfig = {
       'node:crypto': false,
       querystring: false,
       vm: false,
+      zlib: false,
+      events: false,
+      util: false,
+      url: false,
+      assert: false,
+      buffer: false,
+    };
+
+    // Aggressive tree shaking and chunking optimization
+    if (!dev) {
+      config.optimization.usedExports = true;
+      config.optimization.sideEffects = false;
+
+      // Minimize bundles more aggressively
+      config.optimization.minimize = true;
+
+      // Externalize large libraries that can be loaded from CDN
+      config.externals = {
+        ...config.externals,
+        // Add external libraries that don't need to be bundled
+      };
+    }
+
+    // Reduce chunk size limits
+    config.performance = {
+      maxAssetSize: 244 * 1024, // 244KB per chunk
+      maxEntrypointSize: 244 * 1024, // 244KB per entry point
+      hints: 'warning',
     };
 
     return config;
