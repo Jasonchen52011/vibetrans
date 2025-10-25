@@ -17,8 +17,8 @@ export const config = {
   // The `matcher` is relative to the `basePath`
   matcher: [
     // Match all pathnames except for
-    // - if they start with `/api`, `/_next` or `/_vercel`
+    // - if they start with `/api`, `/_next`, `_vercel` or `/_cloudflare`
     // - if they contain a dot (e.g. `favicon.ico`)
-    '/((?!api|_next|_vercel|.*\\..*).*)',
+    '/((?!api|_next|_vercel|_cloudflare|.*\\..*).*)',
   ],
 };

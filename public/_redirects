@@ -1,0 +1,17 @@
+# Handle root path redirect for internationalized Next.js app
+/*  /:splat 200
+
+# Redirect root to default locale
+/    /en    302
+
+# API routes and static assets should pass through
+/api/*    /api/:splat    200
+/_next/*  /_next/:splat  200
+/favicon.ico    /favicon.ico    200
+/robots.txt      /robots.txt      200
+/sitemap.xml     /sitemap.xml     200
+/images/*       /images/:splat    200
+/*.webp          /:splat.webp     200
+/*.png           /:splat.png      200
+/*.js            /:splat.js       200
+/*.css           /:splat.css      200
