@@ -16,7 +16,7 @@
       "inputPlaceholder": "Try typing '你好嗎？' or 'How are you?'...",
       "outputPlaceholder": "Your accurate Cantonese translation appears here with tone marks",
       "translateButton": "Translate Now",
-      "uploadButton": "Upload Document",
+      "uploadButton": "",
       "uploadHint": "Supports .txt, .docx, .srt files",
       "recordButton": "🎤 Speak Cantonese",
       "playButton": "🔊 Hear Pronunciation",
@@ -169,6 +169,7 @@
     },
     "testimonials": {
       "title": "What Our Users Are Saying",
+      "subtitle": "Real experiences from users who trust our Cantonese translator",
       "items": {
         "item-1": {
           "name": "Emily Johnson",
@@ -220,6 +221,14 @@
         "item-6": {
           "question": "How to translate with VibeTrans?",
           "answer": "To translate a document with VibeTrans, follow these steps: Step 1, enter your text. Step 2, select the target language. Step 3, click Translate. Step 4, review and copy the translation."
+        },
+        "item-7": {
+          "question": "Can VibeTrans handle complex Cantonese characters and traditional writing?",
+          "answer": "Yes, VibeTrans excels at handling both traditional and simplified Chinese characters, including complex Cantonese-specific characters. Our AI understands the nuances of traditional writing systems used in Hong Kong and other Cantonese-speaking regions."
+        },
+        "item-8": {
+          "question": "Does VibeTrans support voice input for Cantonese translation?",
+          "answer": "Yes, VibeTrans supports voice input for Cantonese translation. Simply click the microphone button and speak in Cantonese or English, and our AI will transcribe and translate your speech with high accuracy. Perfect for practicing pronunciation or hands-free translation."
         }
       }
     },

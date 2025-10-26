@@ -3,6 +3,9 @@ import { Button } from '@/components/ui/button';
 import { LocaleLink } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 
+// Edge runtime configuration for Cloudflare Pages compatibility
+export const runtime = 'edge';
+
 /**
  * Note that `app/[locale]/[...rest]/page.tsx`
  * is necessary for this page to render.

@@ -1,8 +1,14 @@
 'use client';
 
+import { DirectionIndicator } from '@/components/translator/DirectionIndicator';
+import { SpeechToTextButton } from '@/components/ui/speech-to-text-button';
 import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
+import { useSmartTranslatorDirection } from '@/hooks/use-smart-translator-direction';
+import { ArrowRightIcon } from 'lucide-react';
 import mammoth from 'mammoth';
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+
+type TranslatorDirection = 'sw-en' | 'en-sw';
 
 interface SwahiliToEnglishTranslatorToolProps {
   pageData: any;
@@ -13,13 +19,80 @@ export default function SwahiliToEnglishTranslatorTool({
   pageData,
   locale = 'en',
 }: SwahiliToEnglishTranslatorToolProps) {
-  const [inputText, setInputText] = useState<string>('');
-  const [outputText, setOutputText] = useState<string>('');
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string | null>(null);
+  const [inputText, setInputText] = useState('');
+  const [outputText, setOutputText] = useState('');
   const [fileName, setFileName] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  // Handle file upload
+  const {
+    activeDirection,
+    isManualDirection,
+    detectedLanguage,
+    languageWarning,
+    runLanguageDetection,
+    toggleDirection,
+    setAutoDirection,
+    resetDirection,
+    clearWarning,
+  } = useSmartTranslatorDirection<TranslatorDirection>({
+    apiPath: '/api/swahili-to-english-translator',
+    defaultDirection: 'sw-en',
+    directions: ['sw-en', 'en-sw'],
+    locale,
+    supportedLanguages: ['swahili', 'english'],
+    warningMessage:
+      pageData.tool.languageWarning ||
+      'Please enter Swahili or English text.',
+  });
+
+  const isSwahiliToEnglish = activeDirection === 'sw-en';
+  const swahiliLabel = pageData.tool.swahiliLabel || 'Swahili';
+  const englishLabel = pageData.tool.englishLabel || 'English';
+
+  const inputPlaceholder = useMemo(
+    () =>
+      isSwahiliToEnglish
+        ? pageData.tool.inputPlaceholder ||
+          'Andika maandishi ya Kiswahili kwa kutafsiriwa kwa Kiingereza...'
+        : pageData.tool.englishInputPlaceholder ||
+          'Enter English text for Swahili translation...',
+    [isSwahiliToEnglish, pageData.tool]
+  );
+
+  const outputPlaceholder = useMemo(
+    () =>
+      isSwahiliToEnglish
+        ? pageData.tool.outputPlaceholder ||
+          'Polished English translation will appear here'
+        : pageData.tool.swahiliOutputPlaceholder ||
+          'Swahili translation will appear here',
+    [isSwahiliToEnglish, pageData.tool]
+  );
+
+  const directionStatusLabel = isSwahiliToEnglish
+    ? `${swahiliLabel} → ${englishLabel}`
+    : `${englishLabel} → ${swahiliLabel}`;
+
+  const detectionStatus =
+    detectedLanguage === 'swahili'
+      ? `Detected input: ${swahiliLabel}`
+      : detectedLanguage === 'english'
+        ? `Detected input: ${englishLabel}`
+        : 'Auto-detecting. Enter Swahili or English text.';
+
+  useEffect(() => {
+    const trimmed = inputText.trim();
+    if (!trimmed) {
+      clearWarning();
+      return;
+    }
+    const timeoutId = setTimeout(async () => {
+      await runLanguageDetection(trimmed);
+    }, 600);
+    return () => clearTimeout(timeoutId);
+  }, [inputText, runLanguageDetection, clearWarning]);
+
   const handleFileUpload = async (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
@@ -33,20 +106,19 @@ export default function SwahiliToEnglishTranslatorTool({
       const text = await readFileContent(file);
       setInputText(text);
     } catch (err: any) {
-      setError(err.message || 'Failed to read file');
+      setError(err.message || pageData.tool.error);
       setFileName(null);
     }
   };
 
-  // Read file content
   const readFileContent = async (file: File): Promise<string> => {
-    const fileExtension = file.name.split('.').pop()?.toLowerCase();
+    const extension = file.name.split('.').pop()?.toLowerCase();
 
-    if (fileExtension === 'txt') {
+    if (extension === 'txt') {
       return new Promise((resolve, reject) => {
         const reader = new FileReader();
-        reader.onload = (e) => {
-          const content = e.target?.result as string;
+        reader.onload = (event) => {
+          const content = event.target?.result as string;
           if (content) resolve(content);
           else reject(new Error('File is empty'));
         };
@@ -55,13 +127,13 @@ export default function SwahiliToEnglishTranslatorTool({
       });
     }
 
-    if (fileExtension === 'docx') {
+    if (extension === 'docx') {
       try {
         const arrayBuffer = await file.arrayBuffer();
         const result = await mammoth.extractRawText({ arrayBuffer });
         if (result.value) return result.value;
         throw new Error('Failed to extract text from Word document');
-      } catch (error) {
+      } catch {
         throw new Error(
           'Failed to read .docx file. Please ensure it is a valid Word document.'
         );
@@ -73,9 +145,15 @@ export default function SwahiliToEnglishTranslatorTool({
     );
   };
 
-  // Handle translation
+  const handleSpeechTranscript = (transcript: string) => {
+    setInputText((previous) =>
+      previous ? `${previous.trim()}\n${transcript}` : transcript
+    );
+  };
+
   const handleTranslate = async () => {
-    if (!inputText.trim()) {
+    const trimmed = inputText.trim();
+    if (!trimmed) {
       setError(pageData.tool.noInput);
       setOutputText('');
       return;
@@ -86,20 +164,57 @@ export default function SwahiliToEnglishTranslatorTool({
     setOutputText('');
 
     try {
-      // TODO: 替换为你的 API 端点
+      const detectionSummary = await runLanguageDetection(trimmed);
+      if (
+        !isManualDirection &&
+        (languageWarning ||
+          detectionSummary.detectedInputLanguage === 'unknown') &&
+        detectionSummary.confidence < 0.3
+      ) {
+        throw new Error(
+          pageData.tool.languageWarning ||
+            'Please enter Swahili or English text.'
+        );
+      }
+
+      const finalDirection = isManualDirection
+        ? activeDirection
+        : detectionSummary.detectedDirection;
+
       const response = await fetch('/api/swahili-to-english-translator', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text: inputText }),
+        body: JSON.stringify({
+          text: trimmed,
+          direction: finalDirection,
+        }),
       });
 
       const data = await response.json();
-
       if (!response.ok) {
         throw new Error(data.error || pageData.tool.error);
       }
 
-      setOutputText(data.translated || data.result || '');
+      const translated = (data.translated || '').trim();
+      if (!translated) {
+        throw new Error(pageData.tool.error);
+      }
+
+      if (translated.toLowerCase() === trimmed.toLowerCase()) {
+        throw new Error(
+          pageData.tool.sameOutputError ||
+            'Translation matches the input. Please try different text.'
+        );
+      }
+
+      setOutputText(translated);
+      if (!isManualDirection) {
+        const nextDirection =
+          (data.detectedDirection as TranslatorDirection | undefined) ||
+          finalDirection;
+        setAutoDirection(nextDirection);
+      }
+      clearWarning();
     } catch (err: any) {
       setError(err.message || 'Translation failed');
       setOutputText('');
@@ -108,60 +223,69 @@ export default function SwahiliToEnglishTranslatorTool({
     }
   };
 
-  // Reset
   const handleReset = () => {
     setInputText('');
     setOutputText('');
     setFileName(null);
     setError(null);
+    resetDirection();
+    clearWarning();
   };
 
-  // Copy
   const handleCopy = async () => {
     if (!outputText) return;
     try {
       await navigator.clipboard.writeText(outputText);
     } catch (err) {
-      console.error('Failed to copy:', err);
+      console.error('Failed to copy output text', err);
     }
   };
 
-  // Download
   const handleDownload = () => {
     if (!outputText) return;
     const blob = new Blob([outputText], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `swahili-to-english-translator-${Date.now()}.txt`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
+    const anchor = document.createElement('a');
+    anchor.href = url;
+    anchor.download = `swahili-english-${Date.now()}.txt`;
+    document.body.appendChild(anchor);
+    anchor.click();
+    document.body.removeChild(anchor);
     URL.revokeObjectURL(url);
   };
 
+  const handleDirectionToggle = () => {
+    toggleDirection();
+    clearWarning();
+    if (outputText.trim()) {
+      setInputText(outputText);
+      setOutputText('');
+    }
+  };
+
   return (
-    <div className="container max-w-5xl mx-auto px-4 mb-10">
+    <div className="container max-w-7xl mx-auto px-4 mb-10">
       <main className="w-full bg-white dark:bg-zinc-800 shadow-xl border border-gray-100 dark:border-zinc-700 rounded-lg p-4 md:p-8">
-        {/* Input and Output Areas */}
-        <div className="flex flex-col md:flex-row gap-4 md:gap-8">
-          {/* Input Area */}
+        <div className="flex flex-col md:flex-row gap-3 md:gap-4">
           <div className="flex-1">
             <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-3">
-              {pageData.tool.inputLabel}
+              {isSwahiliToEnglish ? swahiliLabel : englishLabel}
             </h2>
             <textarea
               value={inputText}
-              onChange={(e) => setInputText(e.target.value)}
-              placeholder={pageData.tool.inputPlaceholder}
-              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent resize-none text-gray-700 dark:text-gray-200 dark:bg-zinc-700"
-              aria-label="Input text"
+              onChange={(event) => setInputText(event.target.value)}
+              placeholder={inputPlaceholder}
+              className={`w-full h-48 md:h-64 p-3 border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent resize-none text-gray-700 dark:text-gray-200 dark:bg-zinc-700 ${
+                languageWarning
+                  ? 'border-amber-300 dark:border-amber-600 focus:ring-amber-500'
+                  : 'border-gray-300 dark:border-zinc-600'
+              }`}
+              aria-label={isSwahiliToEnglish ? swahiliLabel : englishLabel}
             />
 
-            {/* File Upload */}
-            <div className="mt-4 flex items-center gap-3">
+            <div className="mt-4 flex items-center gap-3 flex-wrap">
               <label
-                htmlFor="file-upload"
+                htmlFor="file-upload-swahili-to-english"
                 className="inline-flex items-center px-4 py-2 bg-gray-200 dark:bg-zinc-600 hover:bg-gray-300 dark:hover:bg-zinc-500 text-gray-800 dark:text-gray-100 font-medium rounded-lg cursor-pointer transition-colors"
               >
                 <svg
@@ -179,11 +303,16 @@ export default function SwahiliToEnglishTranslatorTool({
                 </svg>
                 {pageData.tool.uploadButton}
               </label>
+              <SpeechToTextButton
+                onTranscript={handleSpeechTranscript}
+                locale={locale}
+              />
               <p className="text-xs text-gray-500 dark:text-gray-400">
-                {pageData.tool.uploadHint}
+                {pageData.tool.uploadHint ||
+                  'Supports .txt and .docx files plus speech input.'}
               </p>
               <input
-                id="file-upload"
+                id="file-upload-swahili-to-english"
                 type="file"
                 accept=".txt,.docx"
                 onChange={handleFileUpload}
@@ -191,7 +320,6 @@ export default function SwahiliToEnglishTranslatorTool({
               />
             </div>
 
-            {/* File Name Display */}
             {fileName && (
               <div className="mt-3 flex items-center gap-2 p-2 bg-gray-100 dark:bg-zinc-700 rounded-md border border-gray-200 dark:border-zinc-600">
                 <svg
@@ -209,12 +337,13 @@ export default function SwahiliToEnglishTranslatorTool({
                   {fileName}
                 </span>
                 <button
+                  type="button"
                   onClick={() => {
                     setFileName(null);
                     setInputText('');
                   }}
                   className="ml-auto text-gray-500 hover:text-red-500 dark:text-gray-400 dark:hover:text-red-400"
-                  aria-label="Remove file"
+                  aria-label={pageData.tool.removeFileTooltip || 'Remove file'}
                 >
                   <svg
                     className="w-4 h-4"
@@ -234,19 +363,35 @@ export default function SwahiliToEnglishTranslatorTool({
             )}
           </div>
 
-          {/* Output Area */}
+          <DirectionIndicator
+            onToggle={handleDirectionToggle}
+            directionLabel={directionStatusLabel}
+            detectionStatus={detectionStatus}
+            warning={languageWarning}
+            toggleTitle={
+              isSwahiliToEnglish
+                ? 'Switch to English → Swahili'
+                : 'Switch to Swahili → English'
+            }
+            ariaLabel={
+              pageData.tool.toggleDirectionTooltip ||
+              'Toggle translation direction'
+            }
+          />
+
           <div className="flex-1">
             <div className="flex items-center justify-between mb-3">
               <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">
-                {pageData.tool.outputLabel}
+                {isSwahiliToEnglish ? englishLabel : swahiliLabel}
               </h2>
               {outputText && (
                 <div className="flex gap-2">
                   <TextToSpeechButton text={outputText} locale={locale} />
                   <button
+                    type="button"
                     onClick={handleCopy}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
-                    title="Copy"
+                    title={pageData.tool.copyTooltip || 'Copy'}
                   >
                     <svg
                       className="w-5 h-5"
@@ -263,9 +408,10 @@ export default function SwahiliToEnglishTranslatorTool({
                     </svg>
                   </button>
                   <button
+                    type="button"
                     onClick={handleDownload}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
-                    title="Download"
+                    title={pageData.tool.downloadTooltip || 'Download'}
                   >
                     <svg
                       className="w-5 h-5"
@@ -285,38 +431,53 @@ export default function SwahiliToEnglishTranslatorTool({
               )}
             </div>
             <div
-              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md bg-gray-50 dark:bg-zinc-700 flex items-center justify-center text-gray-700 dark:text-gray-200 overflow-y-auto"
+              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md bg-gray-50 dark:bg-zinc-700 flex items-start justify-start text-gray-700 dark:text-gray-200 overflow-y-auto"
               aria-live="polite"
             >
               {isLoading ? (
-                <p>{pageData.tool.loading}</p>
+                <div className="flex items-center gap-3">
+                  <div className="flex space-x-1">
+                    <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+                    <div
+                      className="w-2 h-2 bg-primary rounded-full animate-pulse"
+                      style={{ animationDelay: '0.2s' }}
+                    />
+                    <div
+                      className="w-2 h-2 bg-primary rounded-full animate-pulse"
+                      style={{ animationDelay: '0.4s' }}
+                    />
+                  </div>
+                  <span>{pageData.tool.loading || 'Translating...'}</span>
+                </div>
               ) : error ? (
                 <p className="text-red-600 dark:text-red-400">{error}</p>
               ) : outputText ? (
                 <p className="text-lg whitespace-pre-wrap">{outputText}</p>
               ) : (
                 <p className="text-gray-500 dark:text-gray-400">
-                  {pageData.tool.outputPlaceholder}
+                  {outputPlaceholder}
                 </p>
               )}
             </div>
           </div>
         </div>
 
-        {/* Action Buttons */}
         <div className="mt-6 flex justify-center gap-4">
           <button
+            type="button"
             onClick={handleTranslate}
             disabled={isLoading}
-            className="px-8 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="inline-flex items-center px-8 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isLoading ? pageData.tool.loading : pageData.tool.translateButton}
+            <ArrowRightIcon className="ml-2 h-4 w-4" />
           </button>
           <button
+            type="button"
             onClick={handleReset}
             className="px-6 py-3 bg-gray-200 dark:bg-zinc-600 hover:bg-gray-300 dark:hover:bg-zinc-500 text-gray-800 dark:text-gray-100 font-semibold rounded-lg shadow-md transition-colors"
           >
-            Reset
+            {pageData.tool.resetButton || 'Reset'}
           </button>
         </div>
       </main>

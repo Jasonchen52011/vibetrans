@@ -2,7 +2,10 @@
   "Metadata": {
     "name": "VibeTrans",
     "title": "Advanced AI Translation Tools for Fast & Accurate Language Conversion",
-    "description": "VibeTrans offers powerful AI-driven translation tools for seamless language conversion. Whether you're translating texts, slang, or even ancient languages, VibeTrans makes communication easy."
+    "description": "VibeTrans offers powerful AI-driven translation tools for seamless language conversion. Whether you're translating texts, slang, or even ancient languages, VibeTrans makes communication easy.",
+    "whatIs": {
+      "image": "/images/docs/vibetrans-translation-tools-what-is.webp"
+    }
   },
   "Common": {
     "premium": "Premium",

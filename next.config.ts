@@ -9,7 +9,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 /**
- * https://nextjs.org/docs/app/api-reference/config/next-config-js
+ * Configuration for Cloudflare Pages with Functions
  */
 const nextConfig: NextConfig = {
   // Output for Cloudflare Pages compatibility
@@ -18,23 +18,13 @@ const nextConfig: NextConfig = {
   /* config options here */
   devIndicators: false,
 
-  // Experimental optimizations for size reduction
-  experimental: {
-    optimizePackageImports: [
-      'lucide-react',
-      'date-fns',
-      'framer-motion',
-      'recharts',
-    ],
-  },
-
   // Skip type checking during build
   typescript: {
     ignoreBuildErrors: true,
   },
 
   // Exclude Node.js-only packages from Edge Runtime bundles
-  serverExternalPackages: ['fumadocs-mdx', '@ai-sdk/openai', '@google/generative-ai'],
+  serverExternalPackages: ['fumadocs-mdx'],
 
   // https://nextjs.org/docs/architecture/nextjs-compiler#remove-console
   // Remove all console.* calls in production only
@@ -42,8 +32,9 @@ const nextConfig: NextConfig = {
     // removeConsole: process.env.NODE_ENV === 'production',
   },
 
+  
   // Webpack configuration for Cloudflare Pages Edge Runtime compatibility
-  webpack: (config, { webpack, isServer, dev }) => {
+  webpack: (config, { webpack, isServer }) => {
     // Ignore native modules
     config.plugins.push(
       new webpack.IgnorePlugin({
@@ -58,7 +49,6 @@ const nextConfig: NextConfig = {
       config.resolve.alias['crypto'] = 'crypto-browserify';
     }
 
-    
     // Disable Node.js modules not available in Edge Runtime
     config.resolve.fallback = {
       ...config.resolve.fallback,
@@ -75,42 +65,7 @@ const nextConfig: NextConfig = {
       vm: false,
     };
 
-    // Aggressive tree shaking and chunking optimization
-    if (!dev) {
-      config.optimization.usedExports = true;
-      config.optimization.sideEffects = false;
-      config.optimization.minimize = true;
-
-      // 更大的chunk以减少文件数量
-      config.optimization.splitChunks = {
-        chunks: 'all',
-        minSize: 50000, // 增大最小chunk大小
-        maxSize: 200000, // 增大最大chunk大小
-        cacheGroups: {
-          default: {
-            minChunks: 3, // 增加重复次数要求
-            chunks: 'async',
-            priority: -10,
-            reuseExistingChunk: true,
-          },
-          vendor: {
-            test: /[\\/]node_modules[\\/]/,
-            name: 'vendors',
-            priority: -10,
-            chunks: 'async',
-            minChunks: 1,
-          },
-        },
-      };
-
-      // Performance limits
-      config.performance = {
-        maxAssetSize: 150 * 1024, // 150KB per chunk
-        maxEntrypointSize: 300 * 1024, // 300KB per entry
-        hints: 'warning',
-      };
-    }
-
+    
     return config;
   },
 
@@ -156,17 +111,7 @@ const nextConfig: NextConfig = {
   },
 };
 
-/**
- * You can specify the path to the request config file or use the default one (@/i18n/request.ts)
- *
- * https://next-intl.dev/docs/getting-started/app-router/with-i18n-routing#next-config
- */
 const withNextIntl = createNextIntlPlugin();
-
-/**
- * https://fumadocs.dev/docs/ui/manual-installation
- * https://fumadocs.dev/docs/mdx/plugin
- */
 const withMDX = createMDX();
 
 export default withMDX(withNextIntl(nextConfig));

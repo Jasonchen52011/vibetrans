@@ -30,31 +30,37 @@
       "description": "See how our translator works with real examples",
       "items": [
         {
+          "name": "Basic Greeting",
           "before": "Hello, how are you today?",
           "after": "سلام، امروز حال شما چطور است؟",
           "alt": "English to Persian greeting example"
         },
         {
+          "name": "Business Communication",
           "before": "I would like to schedule a business meeting for next week.",
           "after": "می‌خواهم برای هفته آینده یک جلسه کاری ترتیب دهم.",
           "alt": "English to Persian business example"
         },
         {
+          "name": "Academic Text",
           "before": "The research demonstrates significant findings in this field.",
           "after": "تحقیقات نتایج قابل توجهی را در این زمینه نشان می‌دهد.",
           "alt": "English to Persian academic example"
         },
         {
+          "name": "Casual Conversation",
           "before": "Thank you for your wonderful hospitality!",
           "after": "از مهمان‌نوازی فوق‌العاده شما متشکرم!",
           "alt": "English to Persian casual example"
         },
         {
+          "name": "Technical Content",
           "before": "The artificial intelligence algorithm processes data efficiently.",
           "after": "الگوریتم هوش مصنوعی داده‌ها را به طور کارآمد پردازش می‌کند.",
           "alt": "English to Persian technical example"
         },
         {
+          "name": "Literary Expression",
           "before": "Poetry is the rhythmical creation of beauty in words.",
           "after": "شعر آفرینش ریتمیک زیبایی در کلمات است.",
           "alt": "English to Persian literary example"

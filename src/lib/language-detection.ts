@@ -11,6 +11,63 @@ export interface LanguageDetectionResult {
 }
 
 /**
+ * 快速语言检测函数 - 基于字符集
+ */
+function quickLanguageDetection(text: string, targetLanguage: string): string | null {
+  // 检测平假名（优先级高于中文）
+  if (/[\u3040-\u309f]/.test(text)) {
+    return 'japanese';
+  }
+
+  // 检测片假名（优先级高于中文）
+  if (/[\u30a0-\u30ff]/.test(text)) {
+    return 'japanese';
+  }
+
+  // 检测中文字符（需要排除日文字符的影响）
+  if (/[\u4e00-\u9fff]/.test(text) && !/[\u3040-\u30ff]/.test(text)) {
+    return 'chinese';
+  }
+
+  // 检测希腊字母
+  if (/[\u0370-\u03ff]/.test(text)) {
+    return 'greek';
+  }
+
+  // 检测世界语特殊字符
+  if (/[ĉĝĥĵŝŭ]/.test(text)) {
+    return 'esperanto';
+  }
+
+  // 检测阿尔巴尼亚语特殊字符
+  if (/[ëç]/.test(text)) {
+    return 'albanian';
+  }
+
+  // 检测波兰语特殊字符
+  if (/[ąćęłńóśźż]/i.test(text)) {
+    return 'polish';
+  }
+
+  // 检测纳瓦特尔语常见特征（tl 组合和 glottal 标记）
+  if (/\b(\w*tl|\w*hua|\w*nahua)\b/i.test(text) || /[āēīōū]/i.test(text)) {
+    return 'nahuatl';
+  }
+
+  // 检测奥甘文字
+  if (/[\u1680-\u169C]/.test(text)) {
+    return 'ogham';
+  }
+
+  // 检测萨摩亚语特殊字符
+  if (/[āēīōū]/.test(text)) {
+    return 'samoan';
+  }
+
+  return null;
+}
+
+/**
  * 智能语言检测函数 - 优化版
  * 基于字符集、词汇模式、语法特征的综合检测
  */
@@ -79,15 +136,20 @@ export function detectLanguage(
     }
   });
 
-  // 字符集分析
+  // 字符集分析 - 更宽松的检测
   const hasNonLatinChars = /[^\x00-\x7F]/.test(cleanText);
   const hasAccentedChars = /[àáâäãåāèéêëēìíîïīòóôöõōùúûüūǜýÿ]/.test(cleanText);
 
-  if (
-    hasNonLatinChars &&
-    targetLanguage !== 'chinese' &&
-    targetLanguage !== 'cuneiform'
-  ) {
+  // 基于字符集的快速加分
+  if (targetLanguage === 'chinese' && /[\u4e00-\u9fff]/.test(cleanText)) {
+    targetScore += 5; // 中文字符高权重
+  } else if (targetLanguage === 'japanese' && (/[\u3040-\u309f]/.test(cleanText) || /[\u30a0-\u30ff]/.test(cleanText))) {
+    targetScore += 5; // 日文字符高权重
+  } else if (targetLanguage === 'greek' && /[\u0370-\u03ff]/.test(cleanText)) {
+    targetScore += 5; // 希腊字符高权重
+  } else if (targetLanguage === 'esperanto' && /[ĉĝĥĵŝŭ]/.test(cleanText)) {
+    targetScore += 5; // 世界语字符高权重
+  } else if (hasNonLatinChars && targetLanguage !== 'chinese' && targetLanguage !== 'cuneiform') {
     // 非拉丁字符（非中文/楔形文字）很可能是目标语言
     targetScore += 3;
   } else if (hasAccentedChars && targetLanguage === 'creole') {
@@ -110,15 +172,20 @@ export function detectLanguage(
   let detectedLanguage: string;
   let confidence: number;
 
-  if (englishScore === 0 && targetScore === 0) {
+  // 特殊处理：基于字符集的快速检测
+  const quickDetect = quickLanguageDetection(cleanText, targetLanguage);
+  if (quickDetect) {
+    detectedLanguage = quickDetect;
+    confidence = 0.8; // 给予较高的置信度
+  } else if (englishScore === 0 && targetScore === 0) {
     // 无法确定语言
     detectedLanguage = 'unknown';
     confidence = 0;
-  } else if (englishScore > targetScore * 1.5) {
+  } else if (englishScore > targetScore * 1.2) { // 降低阈值，更容易检测到英语
     // 明显是英语
     detectedLanguage = 'english';
     confidence = Math.min((englishScore - targetScore) / englishScore, 1);
-  } else if (targetScore > englishScore * 1.5) {
+  } else if (targetScore > englishScore * 1.2) { // 降低阈值
     // 明显是目标语言
     detectedLanguage = targetLanguage;
     confidence = Math.min((targetScore - englishScore) / targetScore, 1);
@@ -257,6 +324,18 @@ function getTargetLanguagePatterns(language: string): RegExp[] {
       /\b(a|e|i|o|u)\w+/gi, // 元音开头的词
       /\b(\w[^aeiou]+)ay/gi, // 辅音群开头的词
     ],
+    japanese: [
+      // 平假名字符
+      /[\u3040-\u309F]/g,
+      // 片假名字符
+      /[\u30A0-\u30FF]/g,
+      // 日文汉字
+      /[\u4E00-\u9FAF]/g,
+      // 常见日语词汇
+      /\b(こんにちは|ありがとう|さようなら|おはよう|おやすみ|すみません|はい|いいえ|こんにちは|こんばんは|はじめまして|よろしくお願いします|どうぞ|ありがとうございます|ごめんなさい|大丈夫|分かりました|失礼します|お元気ですか|どこですか|いくらですか|何時ですか|誰ですか|何ですか|どうですか|好き|嫌い|食べる|飲む|見る|聞く|話す|行く|来る|帰る|働く|勉強する|寝る|起きる|読む|書く|買う|売る|開く|閉まる|始まる|終わる|待つ|会う|電話する|メールする|運転する|泳ぐ|走る|歩く|飛ぶ|歌う|踊る|遊ぶ|笑う|泣く|怒る|考える|思う|知る|忘れる|覚える|教える|学ぶ|練習する|試す|作る|壊す|修理する|掃除する|洗う|料理する|注文する|支払う|予約する|計画する|決める|約束する|助ける|手伝う|貸す|借る|返す|探す|見つける|持つ|置く|取る|あげる|もらう|貸す|借りる|売る|買う|交換する|選ぶ|比べる|調べる|試す|使う|止める|続ける|始める|終わる|待つ|会う|別れる|結婚する|離婚する|引っ越す|旅行する)\b/i,
+      // 日语语法特征
+      /\b(\w+です|\w+ます|\w+ました|\w+ません|\w+でしょう|\w+ましょう|\w+たい|\w+たがる|\w+られる|\w+させる|\w+ない|\w+なく|\w+ので|\w+から|\w+まで|\w+より|\w+ほど|\w+くらい|\w+ぐらい|\w+ばかり|\w+だけ|\w+しか|\w+も|\w+でも|\w+とか|\w+やら|\w+なり|\w+だの|\w+かしら|\w+かな|\w+わ|\w+ね|\w+よ|\w+ぞ|\w+ぜ|\w+さ|\w+の|\w+もの|\w+こと|\w+ところ|\w+はず|\w+わけ|\w+べき|\w+はず|\w+つもり|\w+うえ|\w+うち|\w+あと|\w+まえ|\w+とき|\w+ため|\w+ように|\w+ために|\w+ので|\w+から|\w+し|\w+ながら|\w+たり|\w+て|わたし|あなた|かれ|かのじょ|これ|それ|あれ|ここ|そこ|あそこ|どこ|いつ|だれ|なに|どれ|どの|こんな|そんな|あんな|どんな|この|その|あの|どの|こんなに|そんなに|あんなに|どれくらい|いくら|いくつ|なんぼ)\b/i,
+    ],
     telugu: [
       // 泰卢固语字符 - 最高权重
       /[\u0C00-\u0C7F]/g,
@@ -264,6 +343,19 @@ function getTargetLanguagePatterns(language: string): RegExp[] {
       /\b(నేను|మీరు|అతను|ఆమె|అది|ఇది|మనం|వారు|చాలా|బాగుంది|వద్ద|వచ్చు|ఉంది|చేయండి|ధన్యవాదాలు|క్షమించండి|దయచేసి|ఎక్కడ|ఎప్పుడు|ఎందుకు|ఏమి|ఎలా|ఎంత|ఎంతమంది|ఏ విధంగా|ఇప్పుడు|అప్పుడు|రేపు|సరే|అవును|లేదు|వస్తున్నాను|వెళ్తున్నాను|తినడం|త్రాగడం|పని|ఇల్లు|పాఠశాల|ఆహారం|నీళ్లు|గంగ|సూర్యుడు|చంద్రుడు|ఆకాశం|భూమి|నీటి|గాలి|నిప్పు|చెట్టు|పువ్వు|జంతువు|పక్షి|చేప|పుస్తకం|కథ|పాట|సినిమా|ఆట|సంగీతం|నృత్యం|చిత్రం|రంగు|పెద్ద|చిన్న|మంచి|చెడు|కొత్త|పాత|సులభం|కష్టం|వేగవంతం|నెమ్మదిగా|ఎక్కువ|తక్కువ|లోపల|బయట|పైన|కింద|ఎదురుగా|వెనుక|దగ్గర|దూరం|ఇక్కడ|అక్కడ|అందరూ|ఒక్కరు|రెండు|మూడు|నాలుగు|ఐదు|ఆరు|ఏడు|ఎనిమిది|తొమ్మిది|పది)\b/i,
       // 泰卢固语语法特征
       /\b(\w+ము|\w+వు|\w+లు|\w+లో|\w+కి|\w+తో|\w+కు|\w+నుండి|\w+వరకు|\w+వద్ద|\w+గా|\w+గానీ|\w+అంటే|\w+అయితే|\w+కానీ|\w+అయితే|\w+మరియు|\w+లేదా)\b/i,
+    ],
+    nahuatl: [
+      /\b(niltze|tlazohcamati|tlazotla|teotl|atl|tletl|tlalli|calli|icniuhtli|cintli|xochitl|tonatiuh|metztli|yaotl|cualli|ahuac|hueyi|piltzintli|yollotl|ehecatl|yahuali|quetzal|ocelotl|tlatoani)\b/i,
+      /\b(\w*tl|\w*hua|\w*nahua|\w*quetz|\w*ayot|\w*teotl)\b/i,
+      /[āēīōū]/gi,
+    ],
+    ogham: [
+      /[\u1680-\u169C]/g,
+    ],
+    polish: [
+      /\b(cześć|dzień dobry|dobry wieczór|do widzenia|proszę|dziękuję|tak|nie|jak się masz|przepraszam|kocham cię|przyjaciel|szczęście|dom|rodzina|miasto|szkoła|uniwersytet|praca|jedzenie|woda|kawa|herbata|śnieg|słońce|księżyc|droga|samochód|pociąg|lotnisko|książka|muzyka|film|teatr|sport|zdrowie|choroba|piękny|brzydki|miły|dobry|zły|duży|mały|szybko|wolno|dzisiaj|jutro|wczoraj|zawsze|nigdy|jeszcze|już|wejście|wyjście|lewo|prawo|góra|dół)\b/i,
+      /[ąćęłńóśźż]/gi,
+      /\b(\w+łem|\w+łam|\w+łam|\w+łeś|\w+łaś|\w+liśmy|\w+łyśmy|\w+liście|\w+łyście|\w+ają|\w+uję|\w+ujesz|\w+ujemy|\w+ujecie|\w+ował|\w+owała|\w+owali|\w+ować|\w+ujesz|\w+owałem|\w+owałam)\b/i,
     ],
   };
 

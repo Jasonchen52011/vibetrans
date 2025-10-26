@@ -1,13 +1,25 @@
 'use client';
 
+import { DirectionIndicator } from '@/components/translator/DirectionIndicator';
+import { SpeechToTextButton } from '@/components/ui/speech-to-text-button';
 import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
-import { ArrowRightIcon } from 'lucide-react';
+import { useSmartTranslatorDirection } from '@/hooks/use-smart-translator-direction';
+import { ArrowRightIcon, Mic, Square } from 'lucide-react';
 import mammoth from 'mammoth';
-import { useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
 interface CantoneseTranslatorToolProps {
   pageData: any;
   locale?: string;
+}
+
+type TranslatorDirection = 'yue-to-en' | 'en-to-yue';
+
+declare global {
+  interface Window {
+    webkitSpeechRecognition?: any;
+    SpeechRecognition?: any;
+  }
 }
 
 export default function CantoneseTranslatorTool({
@@ -19,19 +31,136 @@ export default function CantoneseTranslatorTool({
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [fileName, setFileName] = useState<string | null>(null);
-
-  // 智能翻译状态
-  const [direction, setDirection] = useState<'yue-to-en' | 'en-to-yue'>(
-    'yue-to-en'
-  );
-
-  // 语音录制状态
   const [isRecording, setIsRecording] = useState<boolean>(false);
-  const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder | null>(
-    null
+  const [isSpeechSupported, setIsSpeechSupported] = useState<boolean>(true);
+  const recognitionRef = useRef<any>(null);
+
+  const {
+    activeDirection,
+    isManualDirection,
+    detectedLanguage,
+    languageWarning,
+    runLanguageDetection,
+    toggleDirection,
+    setAutoDirection,
+    resetDirection,
+    clearWarning,
+  } = useSmartTranslatorDirection<TranslatorDirection>({
+    apiPath: '/api/cantonese-translator',
+    defaultDirection: 'yue-to-en',
+    directions: ['yue-to-en', 'en-to-yue'],
+    locale,
+    supportedLanguages: ['english', 'cantonese'],
+    warningMessage:
+      pageData.tool.languageWarning ||
+      'Please input Cantonese or English text.',
+  });
+
+  const isCantoneseToEnglish = activeDirection === 'yue-to-en';
+  const englishLabel = pageData.tool.englishLabel || 'English';
+  const cantoneseLabel = pageData.tool.cantoneseLabel || 'Cantonese';
+  const speechErrorMessage =
+    pageData.tool.microphonePermission ||
+    'Speech recognition is not available or microphone permission was denied.';
+
+  const inputPlaceholder = useMemo(
+    () =>
+      isCantoneseToEnglish
+        ? pageData.tool.inputPlaceholder || '輸入粵語內容或上載檔案...'
+        : pageData.tool.englishPlaceholder ||
+          'Enter English text or upload a file...',
+    [isCantoneseToEnglish, pageData.tool]
   );
 
-  // Handle file upload
+  const outputPlaceholder = useMemo(
+    () =>
+      isCantoneseToEnglish
+        ? pageData.tool.outputPlaceholder ||
+          'English translation will appear here'
+        : pageData.tool.cantoneseOutputPlaceholder || '粵語翻譯會顯示在此處',
+    [isCantoneseToEnglish, pageData.tool]
+  );
+
+  const directionStatusLabel = isCantoneseToEnglish
+    ? `${cantoneseLabel} → ${englishLabel}`
+    : `${englishLabel} → ${cantoneseLabel}`;
+
+  const detectionStatus =
+    detectedLanguage === 'english'
+      ? `Detected input: ${englishLabel}`
+      : detectedLanguage === 'cantonese'
+        ? `Detected input: ${cantoneseLabel}`
+        : 'Auto-detecting. Enter Cantonese or English.';
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const SpeechRecognition =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    if (!SpeechRecognition) {
+      setIsSpeechSupported(false);
+      recognitionRef.current = null;
+      return;
+    }
+
+    setIsSpeechSupported(true);
+    const recognition = new SpeechRecognition();
+    recognition.continuous = true;
+    recognition.interimResults = false;
+    recognitionRef.current = recognition;
+
+    return () => {
+      recognition.stop();
+    };
+  }, []);
+
+  useEffect(() => {
+    const recognition = recognitionRef.current;
+    if (!recognition) return;
+
+    recognition.lang = isCantoneseToEnglish ? 'yue-Hant-HK' : 'en-US';
+
+    recognition.onresult = (event: any) => {
+      const transcript = Array.from(event.results)
+        .slice(event.resultIndex)
+        .map((result: any) => result[0].transcript)
+        .join(' ')
+        .trim();
+
+      if (transcript) {
+        setInputText((prev) =>
+          prev ? `${prev.trim()}\n${transcript}` : transcript
+        );
+      }
+    };
+
+    recognition.onerror = (event: any) => {
+      console.error('Speech recognition error:', event.error);
+      setIsRecording(false);
+      setError(
+        event.error === 'not-allowed'
+          ? speechErrorMessage
+          : pageData.tool.audioError || 'Unable to transcribe audio.'
+      );
+    };
+
+    recognition.onend = () => {
+      setIsRecording(false);
+    };
+  }, [isCantoneseToEnglish, pageData.tool, speechErrorMessage]);
+
+  useEffect(() => {
+    const trimmed = inputText.trim();
+    if (!trimmed) {
+      clearWarning();
+      return;
+    }
+    const timeoutId = setTimeout(async () => {
+      await runLanguageDetection(trimmed);
+    }, 600);
+    return () => clearTimeout(timeoutId);
+  }, [inputText, runLanguageDetection, clearWarning]);
+
   const handleFileUpload = async (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
@@ -45,12 +174,11 @@ export default function CantoneseTranslatorTool({
       const text = await readFileContent(file);
       setInputText(text);
     } catch (err: any) {
-      setError(err.message || 'Failed to read file');
+      setError(err.message || pageData.tool.error);
       setFileName(null);
     }
   };
 
-  // Read file content
   const readFileContent = async (file: File): Promise<string> => {
     const fileExtension = file.name.split('.').pop()?.toLowerCase();
 
@@ -73,7 +201,7 @@ export default function CantoneseTranslatorTool({
         const result = await mammoth.extractRawText({ arrayBuffer });
         if (result.value) return result.value;
         throw new Error('Failed to extract text from Word document');
-      } catch (error) {
+      } catch {
         throw new Error(
           'Failed to read .docx file. Please ensure it is a valid Word document.'
         );
@@ -85,9 +213,41 @@ export default function CantoneseTranslatorTool({
     );
   };
 
-  // Handle translation with smart detection
+  const handleSpeechTranscript = (transcript: string) => {
+    setInputText((prev) =>
+      prev ? `${prev.trim()}\n${transcript}` : transcript
+    );
+  };
+
+  const toggleRecording = () => {
+    if (!recognitionRef.current) {
+      setError(speechErrorMessage);
+      return;
+    }
+
+    try {
+      if (isRecording) {
+        recognitionRef.current.stop();
+        setIsRecording(false);
+        return;
+      }
+
+      recognitionRef.current.lang = isCantoneseToEnglish
+        ? 'yue-Hant-HK'
+        : 'en-US';
+      setError(null);
+      recognitionRef.current.start();
+      setIsRecording(true);
+    } catch (err: any) {
+      console.error('Failed to start speech recognition:', err);
+      setError(speechErrorMessage);
+      setIsRecording(false);
+    }
+  };
+
   const handleTranslate = async () => {
-    if (!inputText.trim()) {
+    const trimmed = inputText.trim();
+    if (!trimmed) {
       setError(pageData.tool.noInput);
       setOutputText('');
       return;
@@ -98,34 +258,56 @@ export default function CantoneseTranslatorTool({
     setOutputText('');
 
     try {
+      const detectionSummary = await runLanguageDetection(trimmed);
+      if (
+        !isManualDirection &&
+        (languageWarning ||
+          detectionSummary.detectedInputLanguage === 'unknown') &&
+        detectionSummary.confidence < 0.3
+      ) {
+        throw new Error(
+          pageData.tool.languageWarning ||
+            'Please input Cantonese or English text.'
+        );
+      }
+
+      const finalDirection = isManualDirection
+        ? activeDirection
+        : detectionSummary.detectedDirection;
+
       const response = await fetch('/api/cantonese-translator', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          text: inputText,
-          direction: direction,
+          text: trimmed,
+          direction: finalDirection,
         }),
       });
 
-      const data = (await response.json()) as {
-        error?: string;
-        translated?: string;
-        suggestion?: string;
-        needsUserConfirmation?: boolean;
-        detectedInputLanguage?: string;
-        detectedDirection?: string;
-        languageInfo?: any;
-      };
-
+      const data = await response.json();
       if (!response.ok) {
-        if (data.needsUserConfirmation && data.suggestion) {
-          // 如果是语言检测问题，显示具体建议
-          throw new Error(data.error);
-        }
         throw new Error(data.error || pageData.tool.error);
       }
 
-      setOutputText(data.translated || '');
+      const translated = (data.translated || '').trim();
+      if (!translated) {
+        throw new Error(pageData.tool.error);
+      }
+
+      if (translated.toLowerCase() === trimmed.toLowerCase()) {
+        throw new Error(
+          pageData.tool.sameOutputError ||
+            'Translation matches the input. Please try different text.'
+        );
+      }
+
+      setOutputText(translated);
+      if (!isManualDirection && data.detectedDirection) {
+        setAutoDirection(
+          (data.detectedDirection as TranslatorDirection) || 'yue-to-en'
+        );
+      }
+      clearWarning();
     } catch (err: any) {
       setError(err.message || 'Translation failed');
       setOutputText('');
@@ -134,28 +316,16 @@ export default function CantoneseTranslatorTool({
     }
   };
 
-  // 切换翻译方向并交换文本
-  const handleDirectionToggle = () => {
-    const newDirection = direction === 'yue-to-en' ? 'en-to-yue' : 'yue-to-en';
-    setDirection(newDirection);
-
-    // 如果有翻译结果，交换输入输出文本
-    if (outputText.trim()) {
-      setInputText(outputText);
-      setOutputText(inputText);
-    }
-  };
-
-  // Reset
   const handleReset = () => {
+    recognitionRef.current?.stop();
+    setIsRecording(false);
     setInputText('');
     setOutputText('');
     setFileName(null);
     setError(null);
-    setDirection('yue-to-en');
+    resetDirection();
   };
 
-  // Copy
   const handleCopy = async () => {
     if (!outputText) return;
     try {
@@ -165,7 +335,6 @@ export default function CantoneseTranslatorTool({
     }
   };
 
-  // Download
   const handleDownload = () => {
     if (!outputText) return;
     const blob = new Blob([outputText], { type: 'text/plain' });
@@ -179,109 +348,38 @@ export default function CantoneseTranslatorTool({
     URL.revokeObjectURL(url);
   };
 
-  // Start recording with real-time speech recognition
-  const startRecording = async () => {
-    try {
-      setError(null);
-      setIsLoading(true);
-
-      // Use Web Speech API for real-time transcription
-      const SpeechRecognition =
-        (window as any).SpeechRecognition ||
-        (window as any).webkitSpeechRecognition;
-
-      if (!SpeechRecognition) {
-        throw new Error(
-          'Speech recognition not supported in this browser. Please use Chrome or Edge.'
-        );
-      }
-
-      const recognition = new SpeechRecognition();
-      recognition.lang = direction === 'yue-to-en' ? 'yue-Hant-HK' : 'en-US';
-      recognition.continuous = false;
-      recognition.interimResults = false;
-      recognition.maxAlternatives = 1;
-
-      recognition.onstart = () => {
-        setIsRecording(true);
-        setIsLoading(false);
-      };
-
-      recognition.onresult = (event: any) => {
-        const transcript = event.results[0][0].transcript;
-        setInputText((prev) => prev + ' ' + transcript);
-        setIsRecording(false);
-      };
-
-      recognition.onerror = (event: any) => {
-        console.error('Speech recognition error:', event.error);
-        if (event.error === 'no-speech') {
-          setError('No speech detected. Please try again.');
-        } else if (event.error === 'not-allowed') {
-          setError(
-            'Microphone access denied. Please enable microphone permissions.'
-          );
-        } else {
-          setError('Speech recognition failed: ' + event.error);
-        }
-        setIsRecording(false);
-        setIsLoading(false);
-      };
-
-      recognition.onend = () => {
-        setIsRecording(false);
-        setIsLoading(false);
-      };
-
-      recognition.start();
-      setMediaRecorder(recognition as any); // Store recognition instance
-    } catch (err: any) {
-      setError(err.message || 'Failed to start speech recognition');
-      setIsRecording(false);
-      setIsLoading(false);
-      console.error('Error starting speech recognition:', err);
-    }
-  };
-
-  // Stop recording
-  const stopRecording = () => {
-    if (mediaRecorder && isRecording) {
-      try {
-        (mediaRecorder as any).stop();
-      } catch (err) {
-        console.error('Error stopping recognition:', err);
-      }
-      setIsRecording(false);
-      setMediaRecorder(null);
+  const handleDirectionToggle = () => {
+    toggleDirection();
+    clearWarning();
+    if (outputText.trim()) {
+      setInputText(outputText);
+      setOutputText('');
     }
   };
 
   return (
     <div className="container max-w-7xl mx-auto px-4 mb-10">
       <main className="w-full bg-white dark:bg-zinc-800 shadow-xl border border-gray-100 dark:border-zinc-700 rounded-lg p-4 md:p-8">
-        {/* Input and Output Areas */}
         <div className="flex flex-col md:flex-row gap-2 md:gap-3">
-          {/* Input Area */}
           <div className="flex-1 relative">
             <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-3">
-              {direction === 'yue-to-en' ? 'Cantonese Text' : 'English Text'}
+              {isCantoneseToEnglish ? cantoneseLabel : englishLabel}
             </h2>
             <textarea
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
-              placeholder={
-                direction === 'yue-to-en'
-                  ? pageData.tool.inputPlaceholder
-                  : 'Enter English text or upload a file...'
-              }
-              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent resize-none text-gray-700 dark:text-gray-200 dark:bg-zinc-700"
-              aria-label={pageData.tool.inputLabel || 'Input text'}
+              placeholder={inputPlaceholder}
+              className={`w-full h-48 md:h-64 p-3 border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent resize-none text-gray-700 dark:text-gray-200 dark:bg-zinc-700 ${
+                languageWarning
+                  ? 'border-amber-300 dark:border-amber-600 focus:ring-amber-500'
+                  : 'border-gray-300 dark:border-zinc-600'
+              }`}
+              aria-label={isCantoneseToEnglish ? cantoneseLabel : englishLabel}
             />
 
-            {/* File Upload and Voice Recording */}
             <div className="mt-4 flex items-center gap-3 flex-wrap">
               <label
-                htmlFor="file-upload"
+                htmlFor="file-upload-cantonese"
                 className="inline-flex items-center px-4 py-2 bg-gray-200 dark:bg-zinc-600 hover:bg-gray-300 dark:hover:bg-zinc-500 text-gray-800 dark:text-gray-100 font-medium rounded-lg cursor-pointer transition-colors"
               >
                 <svg
@@ -299,45 +397,46 @@ export default function CantoneseTranslatorTool({
                 </svg>
                 {pageData.tool.uploadButton}
               </label>
+              <SpeechToTextButton
+                onTranscript={handleSpeechTranscript}
+                locale={locale}
+              />
+              <button
+                type="button"
+                onClick={toggleRecording}
+                className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
+                  isRecording
+                    ? 'bg-red-500 text-white hover:bg-red-600 animate-pulse'
+                    : 'bg-gray-200 dark:bg-zinc-600 hover:bg-gray-300 dark:hover:bg-zinc-500 text-gray-800 dark:text-gray-100'
+                }`}
+                title={
+                  isRecording
+                    ? pageData.tool.stopRecording || 'Stop recording'
+                    : pageData.tool.recordButton || 'Start recording'
+                }
+                disabled={!isSpeechSupported}
+              >
+                {isRecording ? (
+                  <Square className="w-4 h-4" />
+                ) : (
+                  <Mic className="w-4 h-4" />
+                )}
+                {isRecording
+                  ? pageData.tool.stopRecording || 'Stop'
+                  : pageData.tool.recordButton || 'Record'}
+              </button>
               <p className="text-xs text-gray-500 dark:text-gray-400">
                 {pageData.tool.uploadHint}
               </p>
               <input
-                id="file-upload"
+                id="file-upload-cantonese"
                 type="file"
                 accept=".txt,.docx"
                 onChange={handleFileUpload}
                 className="hidden"
               />
-
-              {/* Voice Recording Button */}
-              <button
-                onClick={isRecording ? stopRecording : startRecording}
-                className={`inline-flex items-center px-4 py-2 font-medium rounded-lg transition-colors ${
-                  isRecording
-                    ? 'bg-red-500 hover:bg-red-600 text-white'
-                    : 'bg-blue-500 hover:bg-blue-600 text-white'
-                }`}
-                disabled={isLoading}
-              >
-                <svg
-                  className="w-5 h-5 mr-2"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"
-                  />
-                </svg>
-                {isRecording ? 'Stop Recording' : 'Record Voice'}
-              </button>
             </div>
 
-            {/* File Name Display */}
             {fileName && (
               <div className="mt-3 flex items-center gap-2 p-2 bg-gray-100 dark:bg-zinc-700 rounded-md border border-gray-200 dark:border-zinc-600">
                 <svg
@@ -355,6 +454,7 @@ export default function CantoneseTranslatorTool({
                   {fileName}
                 </span>
                 <button
+                  type="button"
                   onClick={() => {
                     setFileName(null);
                     setInputText('');
@@ -380,49 +480,32 @@ export default function CantoneseTranslatorTool({
             )}
           </div>
 
-          {/* Direction Swap Button - Centered between inputs */}
-          <div className="flex md:flex-col items-center justify-center md:justify-start md:pt-32">
-            <button
-              onClick={handleDirectionToggle}
-              className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors rotate-0 md:rotate-0"
-              title={
-                direction === 'yue-to-en'
-                  ? 'Switch to English → Cantonese'
-                  : 'Switch to Cantonese → English'
-              }
-              aria-label={
-                pageData.tool.toggleDirectionTooltip ||
-                'Toggle translation direction'
-              }
-            >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"
-                />
-              </svg>
-            </button>
-          </div>
+          <DirectionIndicator
+            onToggle={handleDirectionToggle}
+            directionLabel={directionStatusLabel}
+            detectionStatus={detectionStatus}
+            warning={languageWarning}
+            toggleTitle={
+              isCantoneseToEnglish
+                ? 'Switch to English → Cantonese'
+                : 'Switch to Cantonese → English'
+            }
+            ariaLabel={
+              pageData.tool.toggleDirectionTooltip ||
+              'Toggle translation direction'
+            }
+          />
 
-          {/* Output Area */}
           <div className="flex-1">
             <div className="flex items-center justify-between mb-3">
               <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">
-                {direction === 'yue-to-en'
-                  ? 'English Translation'
-                  : 'Cantonese Translation'}
+                {isCantoneseToEnglish ? englishLabel : cantoneseLabel}
               </h2>
               {outputText && (
                 <div className="flex gap-2">
                   <TextToSpeechButton text={outputText} locale={locale} />
                   <button
+                    type="button"
                     onClick={handleCopy}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
                     title={pageData.tool.copyTooltip || 'Copy'}
@@ -442,6 +525,7 @@ export default function CantoneseTranslatorTool({
                     </svg>
                   </button>
                   <button
+                    type="button"
                     onClick={handleDownload}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
                     title={pageData.tool.downloadTooltip || 'Download'}
@@ -464,65 +548,53 @@ export default function CantoneseTranslatorTool({
               )}
             </div>
             <div
-              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md bg-gray-50 dark:bg-zinc-700 overflow-y-auto"
+              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md bg-gray-50 dark:bg-zinc-700 flex items-start justify-start text-gray-700 dark:text-gray-200 overflow-y-auto"
               aria-live="polite"
             >
               {isLoading ? (
-                <div className="w-full h-full flex items-center justify-center text-gray-700 dark:text-gray-200">
-                  <div className="flex items-center gap-3">
-                    <div className="flex space-x-1">
-                      <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
-                      <div
-                        className="w-2 h-2 bg-primary rounded-full animate-pulse"
-                        style={{ animationDelay: '0.2s' }}
-                      ></div>
-                      <div
-                        className="w-2 h-2 bg-primary rounded-full animate-pulse"
-                        style={{ animationDelay: '0.4s' }}
-                      ></div>
-                    </div>
-                    <span>{pageData.tool.loading}</span>
+                <div className="flex items-center gap-3">
+                  <div className="flex space-x-1">
+                    <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+                    <div
+                      className="w-2 h-2 bg-primary rounded-full animate-pulse"
+                      style={{ animationDelay: '0.2s' }}
+                    />
+                    <div
+                      className="w-2 h-2 bg-primary rounded-full animate-pulse"
+                      style={{ animationDelay: '0.4s' }}
+                    />
                   </div>
+                  <span>{pageData.tool.loading}</span>
                 </div>
+              ) : error ? (
+                <p className="text-red-600 dark:text-red-400">{error}</p>
+              ) : outputText ? (
+                <p className="text-lg whitespace-pre-wrap">{outputText}</p>
               ) : (
-                <div className="flex flex-col items-start justify-start text-gray-700 dark:text-gray-200">
-                  {error ? (
-                    <p className="text-red-600 dark:text-red-400">{error}</p>
-                  ) : outputText ? (
-                    <p className="text-lg whitespace-pre-wrap">{outputText}</p>
-                  ) : (
-                    <p className="text-gray-500 dark:text-gray-400">
-                      {direction === 'yue-to-en'
-                        ? pageData.tool.outputPlaceholder
-                        : 'Cantonese translation will appear here'}
-                    </p>
-                  )}
-                </div>
+                <p className="text-gray-500 dark:text-gray-400">
+                  {outputPlaceholder}
+                </p>
               )}
             </div>
           </div>
         </div>
 
-        {/* Action Buttons */}
         <div className="mt-6 flex justify-center gap-4">
           <button
+            type="button"
             onClick={handleTranslate}
             disabled={isLoading}
             className="inline-flex items-center px-8 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            <span>
-              {isLoading
-                ? pageData.tool.loading
-                : pageData.tool.translateButton}
-            </span>
-
+            {isLoading ? pageData.tool.loading : pageData.tool.translateButton}
             <ArrowRightIcon className="ml-2 h-4 w-4" />
           </button>
           <button
+            type="button"
             onClick={handleReset}
             className="px-6 py-3 bg-gray-200 dark:bg-zinc-600 hover:bg-gray-300 dark:hover:bg-zinc-500 text-gray-800 dark:text-gray-100 font-semibold rounded-lg shadow-md transition-colors"
           >
-            Reset
+            {pageData.tool.resetButton || 'Reset'}
           </button>
         </div>
       </main>

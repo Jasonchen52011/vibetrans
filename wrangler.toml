@@ -3,4 +3,5 @@ compatibility_date = "2025-01-01"
 compatibility_flags = ["nodejs_compat"]
 
 # Cloudflare Pages configuration
+# Use the @cloudflare/next-on-pages adapter output
 pages_build_output_dir = ".vercel/output/static"

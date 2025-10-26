@@ -17,6 +17,9 @@ import type { Locale } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import NahuatlTranslatorTool from './NahuatlTranslatorTool';
 
+// Edge runtime configuration for Cloudflare Pages compatibility
+export const runtime = 'edge';
+
 // Helper function to add cache-busting parameter to images
 function addCacheBust(src: string): string {
   if (!src) return src;

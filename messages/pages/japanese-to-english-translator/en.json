@@ -53,6 +53,10 @@
         {
           "title": "Receive Translated Output",
           "description": "Get your translated text with cultural notes and confidence scores, ready for immediate use."
+        },
+        {
+          "title": "Copy or Download Results",
+          "description": "Easily copy your English translation to clipboard or download as a .txt file for future use. You can also listen to the pronunciation."
         }
       ]
     },
@@ -105,7 +109,7 @@
     "highlights": {
       "title": "Key Features of Japanese-to-English Translator Pro",
       "description": "Discover what makes our Japanese translator unique with powerful features designed for accuracy and ease of use.",
-      "features": [
+      "items": [
         {
           "icon": "FaRocket",
           "title": "Easy to Use",

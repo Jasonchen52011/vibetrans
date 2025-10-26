@@ -87,6 +87,23 @@
         }
       ]
     },
+    "funfacts": {
+      "title": "Fun Facts About Al Bhed Language",
+      "items": [
+        {
+          "title": "Al Bhed's Secret Cipher",
+          "description": "Did you know Al Bhed is a 26-letter substitution cipher? Each English letter swaps with another, creating a playful code. This simple trick makes learning feel like cracking a secret code! VibeTrans decodes this charming cipher perfectly.",
+          "image": "/images/docs/al-bhed-translator-fun-fact.webp",
+          "imageAlt": "Al Bhed's Secret Cipher - Visual explanation"
+        },
+        {
+          "title": "Hidden Primers in FFX",
+          "description": "In Final Fantasy X, collecting all 26 Al Bhed Primers unlocks English translations. It's like finding secret treasure! Many players miss these gems. VibeTrans makes discovery and translation much easier—like having a cheat sheet ready!",
+          "image": "/images/docs/learn-al-bhed.webp",
+          "imageAlt": "Hidden Primers in Final Fantasy X - Visual guide"
+        }
+      ]
+    },
     "userInterest": {
       "title": "Entertainment & Community Communication Applications",
       "subtitle": "Everything you need to master the Al Bhed language",

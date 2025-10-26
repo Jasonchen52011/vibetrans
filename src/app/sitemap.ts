@@ -52,6 +52,8 @@ const staticRoutes = [
   '/terms',
 ];
 
+export const dynamic = 'force-static';
+
 /**
  * Generate a sitemap for the website
  *

@@ -3,11 +3,6 @@
 import { ToolInfoSections } from '@/components/blocks/tool/tool-info-sections';
 import { SpeechToTextButton } from '@/components/ui/speech-to-text-button';
 import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
-import {
-  autoTranslate,
-  detectLanguage,
-  smartAutoTranslate,
-} from '@/lib/al-bhed';
 import { detectLanguage as smartDetectLanguage } from '@/lib/language-detection';
 import { ArrowRightIcon } from 'lucide-react';
 import mammoth from 'mammoth';
@@ -39,7 +34,34 @@ export default function AlBhedTranslatorTool({
   const [outputLabel, setOutputLabel] = useState<string>('');
   const [inputPlaceholder, setInputPlaceholder] = useState<string>('');
   const [outputPlaceholder, setOutputPlaceholder] = useState<string>('');
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const detectionTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  // API call function for Al Bhed translation
+  const translateWithAPI = async (text: string, targetMode: 'toAlBhed' | 'toEnglish'): Promise<string> => {
+    try {
+      const response = await fetch('/api/al-bhed-translator', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          text: text,
+          mode: targetMode,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Translation failed');
+      }
+
+      const data = await response.json();
+      return data.translated || '';
+    } catch (error) {
+      console.error('API translation error:', error);
+      throw error;
+    }
+  };
 
   // Handle file upload
   const handleFileUpload = async (
@@ -122,7 +144,7 @@ export default function AlBhedTranslatorTool({
   };
 
   // Real-time translation function
-  const handleTranslateNow = (text: string) => {
+  const handleTranslateNow = async (text: string) => {
     if (!text.trim()) {
       setError(pageData.tool.noInput);
       setTranslatedText('');
@@ -132,18 +154,34 @@ export default function AlBhedTranslatorTool({
     }
 
     setError(null);
+    setIsLoading(true);
 
     try {
-      // Use smart auto-translate that handles both translation and language queries
-      const result = smartAutoTranslate(text);
-      setTranslatedText(result.result);
-      setIsQuery(result.isQuery);
-      setShowExplanation(result.isQuery);
+      // Detect language first to determine translation direction
+      const detection = smartDetectLanguage(text, 'albhed');
+      let targetMode: 'toAlBhed' | 'toEnglish';
+
+      if (detection.detectedLanguage === 'english') {
+        targetMode = 'toAlBhed';
+      } else if (detection.detectedLanguage === 'albhed') {
+        targetMode = 'toEnglish';
+      } else {
+        // Default to English to Al Bhed for unknown languages
+        targetMode = 'toAlBhed';
+      }
+
+      // Call API for translation
+      const translation = await translateWithAPI(text, targetMode);
+      setTranslatedText(translation);
+      setIsQuery(false);
+      setShowExplanation(false);
     } catch (err: any) {
       setError(err.message || 'Translation failed');
       setTranslatedText('');
       setIsQuery(false);
       setShowExplanation(false);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -412,6 +450,10 @@ export default function AlBhedTranslatorTool({
             >
               {error ? (
                 <p className="text-red-600 dark:text-red-400">{error}</p>
+              ) : isLoading ? (
+                <div className="flex items-center justify-center h-full">
+                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+                </div>
               ) : translatedText ? (
                 <div>
                   {isQuery ? (
@@ -419,15 +461,7 @@ export default function AlBhedTranslatorTool({
                       <div className="whitespace-pre-wrap text-sm leading-relaxed">
                         {translatedText}
                       </div>
-                      {showExplanation && (
-                        <div className="mt-4 p-3 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-md">
-                          <p className="text-xs text-blue-700 dark:text-blue-300">
-                            💡 <strong>提示：</strong>输入任何文本进行Al
-                            Bhed翻译，或询问关于Al Bhed语言的问题。
-                          </p>
-                        </div>
-                      )}
-                    </div>
+                                          </div>
                   ) : (
                     <p className="text-lg whitespace-pre-wrap">
                       {translatedText}

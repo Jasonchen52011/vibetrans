@@ -1,11 +1,16 @@
 'use client';
 
+import { DirectionIndicator } from '@/components/translator/DirectionIndicator';
 import { SpeechToTextButton } from '@/components/ui/speech-to-text-button';
 import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
-import { detectLanguage } from '@/lib/language-detection';
-import { readFileContent } from '@/lib/utils/file-utils';
-import { ArrowLeftRight, Waves } from 'lucide-react';
-import { useEffect, useRef, useState } from 'react';
+import { useSmartTranslatorDirection } from '@/hooks/use-smart-translator-direction';
+import { ArrowRightIcon, Waves } from 'lucide-react';
+import mammoth from 'mammoth';
+import { useEffect, useMemo, useRef, useState } from 'react';
+
+type TranslatorDirection = 'te-en' | 'en-te';
+
+type TranslationMode = 'general' | 'technical' | 'literary' | 'business' | 'casual';
 
 interface TeluguToEnglishTranslatorToolProps {
   pageData: any;
@@ -16,36 +21,119 @@ export default function TeluguToEnglishTranslatorTool({
   pageData,
   locale = 'en',
 }: TeluguToEnglishTranslatorToolProps) {
-  const [inputText, setInputText] = useState<string>('');
-  const [outputText, setOutputText] = useState<string>('');
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string | null>(null);
+  const [inputText, setInputText] = useState('');
+  const [outputText, setOutputText] = useState('');
   const [fileName, setFileName] = useState<string | null>(null);
-  const [isTranscribing, setIsTranscribing] = useState<boolean>(false);
-  const [translationMode, setTranslationMode] = useState<string>('general');
-  const [detectedLanguage, setDetectedLanguage] = useState<string>('unknown');
-  const [targetLanguage, setTargetLanguage] = useState<string>('english');
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [isTranscribing, setIsTranscribing] = useState(false);
+  const [translationMode, setTranslationMode] = useState<TranslationMode>('general');
   const audioInputRef = useRef<HTMLInputElement | null>(null);
 
-  // Auto-detect input language when text changes
+  const {
+    activeDirection,
+    isManualDirection,
+    detectedLanguage,
+    languageWarning,
+    runLanguageDetection,
+    toggleDirection,
+    setAutoDirection,
+    resetDirection,
+    clearWarning,
+  } = useSmartTranslatorDirection<TranslatorDirection>({
+    apiPath: '/api/telugu-to-english-translator',
+    defaultDirection: 'te-en',
+    directions: ['te-en', 'en-te'],
+    locale,
+    supportedLanguages: ['telugu', 'english'],
+    warningMessage:
+      pageData.tool.languageWarning ||
+      'Please enter Telugu or English text.',
+  });
+
+  const isTeluguToEnglish = activeDirection === 'te-en';
+  const teluguLabel = pageData.tool.teluguLabel || 'Telugu';
+  const englishLabel = pageData.tool.englishLabel || 'English';
+
+  const inputPlaceholder = useMemo(
+    () =>
+      isTeluguToEnglish
+        ? pageData.tool.inputPlaceholder ||
+          'తెలుగు వాక్యాలను ఇక్కడ ఇవ్వండి...'
+        : pageData.tool.englishInputPlaceholder ||
+          'Enter English text for Telugu localisation...'
+    ,
+    [isTeluguToEnglish, pageData.tool]
+  );
+
+  const outputPlaceholder = useMemo(
+    () =>
+      isTeluguToEnglish
+        ? pageData.tool.outputPlaceholder ||
+          'English translation will appear here'
+        : pageData.tool.teluguOutputPlaceholder ||
+          'తెలుగు అనువాదం ఇక్కడ కనిపిస్తుంది'
+    ,
+    [isTeluguToEnglish, pageData.tool]
+  );
+
+  const directionStatusLabel = isTeluguToEnglish
+    ? `${teluguLabel} → ${englishLabel}`
+    : `${englishLabel} → ${teluguLabel}`;
+
+  const detectionStatus =
+    detectedLanguage === 'telugu'
+      ? `Detected input: ${teluguLabel}`
+      : detectedLanguage === 'english'
+        ? `Detected input: ${englishLabel}`
+        : 'Auto-detecting. Enter Telugu or English text.';
+
   useEffect(() => {
-    if (inputText.trim()) {
-      const detection = detectLanguage(inputText, 'telugu');
-      setDetectedLanguage(detection.detectedLanguage);
-
-      // Set target language based on detection
-      if (detection.detectedLanguage === 'english') {
-        setTargetLanguage('telugu');
-      } else {
-        setTargetLanguage('english');
-      }
-    } else {
-      setDetectedLanguage('unknown');
-      setTargetLanguage('english');
+    const trimmed = inputText.trim();
+    if (!trimmed) {
+      clearWarning();
+      return;
     }
-  }, [inputText]);
+    const timeoutId = setTimeout(async () => {
+      await runLanguageDetection(trimmed);
+    }, 600);
+    return () => clearTimeout(timeoutId);
+  }, [inputText, runLanguageDetection, clearWarning]);
 
-  // Handle file upload
+  const readFileContent = async (file: File): Promise<string> => {
+    const extension = file.name.split('.').pop()?.toLowerCase();
+
+    if (extension === 'txt') {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          const content = event.target?.result as string;
+          if (content) resolve(content);
+          else reject(new Error('File is empty'));
+        };
+        reader.onerror = () => reject(new Error('Failed to read file'));
+        reader.readAsText(file);
+      });
+    }
+
+    if (extension === 'docx') {
+      try {
+        const arrayBuffer = await file.arrayBuffer();
+        const result = await mammoth.extractRawText({ arrayBuffer });
+        if (result.value) return result.value;
+        throw new Error('Failed to extract text from Word document');
+      } catch {
+        throw new Error(
+          'Failed to read .docx file. Please ensure it is a valid Word document.'
+        );
+      }
+    }
+
+    throw new Error(
+      'Unsupported file format. Please upload .txt or .docx files.'
+    );
+  };
+
   const handleFileUpload = async (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
@@ -59,13 +147,17 @@ export default function TeluguToEnglishTranslatorTool({
       const text = await readFileContent(file);
       setInputText(text);
     } catch (err: any) {
-      setError(err.message || 'Failed to read file');
+      setError(err.message || pageData.tool.error);
       setFileName(null);
     }
   };
 
-  
-  // Handle audio upload for transcription
+  const handleSpeechTranscript = (transcript: string) => {
+    setInputText((previous) =>
+      previous ? `${previous.trim()}\n${transcript}` : transcript
+    );
+  };
+
   const handleAudioUploadClick = () => {
     audioInputRef.current?.click();
   };
@@ -97,8 +189,8 @@ export default function TeluguToEnglishTranslatorTool({
       }
 
       if (data.transcription) {
-        setInputText((prev) =>
-          prev ? `${prev}\n${data.transcription}` : data.transcription
+        setInputText((previous) =>
+          previous ? `${previous.trim()}\n${data.transcription}` : data.transcription
         );
       }
     } catch (err: any) {
@@ -112,9 +204,9 @@ export default function TeluguToEnglishTranslatorTool({
     }
   };
 
-  // Handle translation
   const handleTranslate = async () => {
-    if (!inputText.trim()) {
+    const trimmed = inputText.trim();
+    if (!trimmed) {
       setError(pageData.tool.noInput);
       setOutputText('');
       return;
@@ -125,24 +217,58 @@ export default function TeluguToEnglishTranslatorTool({
     setOutputText('');
 
     try {
+      const detectionSummary = await runLanguageDetection(trimmed);
+      if (
+        !isManualDirection &&
+        (languageWarning ||
+          detectionSummary.detectedInputLanguage === 'unknown') &&
+        detectionSummary.confidence < 0.3
+      ) {
+        throw new Error(
+          pageData.tool.languageWarning ||
+            'Please enter Telugu or English text.'
+        );
+      }
+
+      const finalDirection = isManualDirection
+        ? activeDirection
+        : detectionSummary.detectedDirection;
+
       const response = await fetch('/api/telugu-to-english-translator', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          text: inputText,
-          sourceLanguage: detectedLanguage === 'english' ? 'english' : 'telugu',
-          targetLanguage: targetLanguage,
+          text: trimmed,
+          direction: finalDirection,
           mode: translationMode,
         }),
       });
 
       const data = await response.json();
-
       if (!response.ok) {
         throw new Error(data.error || pageData.tool.error);
       }
 
-      setOutputText(data.translated || data.result || '');
+      const translated = (data.translated || '').trim();
+      if (!translated) {
+        throw new Error(pageData.tool.error);
+      }
+
+      if (translated.toLowerCase() === trimmed.toLowerCase()) {
+        throw new Error(
+          pageData.tool.sameOutputError ||
+            'Translation matches the input. Please try different text.'
+        );
+      }
+
+      setOutputText(translated);
+      if (!isManualDirection) {
+        const nextDirection =
+          (data.detectedDirection as TranslatorDirection | undefined) ||
+          finalDirection;
+        setAutoDirection(nextDirection);
+      }
+      clearWarning();
     } catch (err: any) {
       setError(err.message || 'Translation failed');
       setOutputText('');
@@ -151,105 +277,93 @@ export default function TeluguToEnglishTranslatorTool({
     }
   };
 
-  // Reset
   const handleReset = () => {
     setInputText('');
     setOutputText('');
     setFileName(null);
     setError(null);
-    setDetectedLanguage('unknown');
-    setTargetLanguage('english');
+    if (audioInputRef.current) {
+      audioInputRef.current.value = '';
+    }
+    resetDirection();
+    clearWarning();
   };
 
-  // Copy
   const handleCopy = async () => {
     if (!outputText) return;
     try {
       await navigator.clipboard.writeText(outputText);
     } catch (err) {
-      console.error('Failed to copy:', err);
+      console.error('Failed to copy output text', err);
     }
   };
 
-  // Download
   const handleDownload = () => {
     if (!outputText) return;
     const blob = new Blob([outputText], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `telugu-to-english-translator-${Date.now()}.txt`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
+    const anchor = document.createElement('a');
+    anchor.href = url;
+    anchor.download = `telugu-translation-${Date.now()}.txt`;
+    document.body.appendChild(anchor);
+    anchor.click();
+    document.body.removeChild(anchor);
     URL.revokeObjectURL(url);
   };
 
-  // Switch translation direction
-  const handleSwitchDirection = () => {
-    // Swap input and output text
-    const tempText = inputText;
-    setInputText(outputText);
-    setOutputText(tempText);
-
-    // Switch detected language and target language
-    const tempDetected = detectedLanguage;
-    setDetectedLanguage(targetLanguage === 'english' ? 'telugu' : 'english');
-    setTargetLanguage(
-      tempDetected === 'unknown'
-        ? 'english'
-        : tempDetected === 'telugu'
-          ? 'english'
-          : 'telugu'
-    );
+  const handleDirectionToggle = () => {
+    toggleDirection();
+    clearWarning();
+    if (outputText.trim()) {
+      setInputText(outputText);
+      setOutputText('');
+    }
   };
 
   return (
-    <div className="container max-w-5xl mx-auto px-4 mb-10">
+    <div className="container max-w-7xl mx-auto px-4 mb-10">
       <main className="w-full bg-white dark:bg-zinc-800 shadow-xl border border-gray-100 dark:border-zinc-700 rounded-lg p-4 md:p-8">
-        {/* Translation Mode Selector */}
-        <div className="mb-6 md:flex md:items-center md:justify-between">
+        <div className="mb-6 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-              Translation Mode
+              {pageData.tool.modeLabel || 'Translation Mode'}
             </label>
             <select
               value={translationMode}
-              onChange={(e) => setTranslationMode(e.target.value)}
+              onChange={(event) =>
+                setTranslationMode(event.target.value as TranslationMode)
+              }
               className="w-full md:w-auto px-4 py-2 border border-gray-300 dark:border-zinc-600 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-zinc-700 text-gray-700 dark:text-gray-200"
             >
-              <option value="general">General Translation</option>
-              <option value="technical">Technical Translation</option>
-              <option value="literary">Literary Translation</option>
-              <option value="business">Business Translation</option>
-              <option value="casual">Casual Translation</option>
+              <option value="general">{pageData.tool.generalMode || 'General Translation'}</option>
+              <option value="technical">{pageData.tool.technicalMode || 'Technical Translation'}</option>
+              <option value="literary">{pageData.tool.literaryMode || 'Literary Translation'}</option>
+              <option value="business">{pageData.tool.businessMode || 'Business Translation'}</option>
+              <option value="casual">{pageData.tool.casualMode || 'Casual Translation'}</option>
             </select>
           </div>
         </div>
 
-        {/* Input and Output Areas */}
-        <div className="flex flex-col lg:flex-row gap-1 items-start">
-          {/* Input Area */}
+        <div className="flex flex-col md:flex-row gap-3 md:gap-4">
           <div className="flex-1">
             <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-3">
-              {detectedLanguage === 'english'
-                ? 'English Text'
-                : detectedLanguage === 'telugu'
-                  ? 'Telugu Text'
-                  : pageData.tool.inputLabel}
+              {isTeluguToEnglish ? teluguLabel : englishLabel}
             </h2>
             <textarea
               value={inputText}
-              onChange={(e) => setInputText(e.target.value)}
-              placeholder={pageData.tool.inputPlaceholder}
-              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent resize-none text-gray-700 dark:text-gray-200 dark:bg-zinc-700"
-              aria-label="Input text"
+              onChange={(event) => setInputText(event.target.value)}
+              placeholder={inputPlaceholder}
+              className={`w-full h-48 md:h-64 p-3 border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent resize-none text-gray-700 dark:text-gray-200 dark:bg-zinc-700 ${
+                languageWarning
+                  ? 'border-amber-300 dark:border-amber-600 focus:ring-amber-500'
+                  : 'border-gray-300 dark:border-zinc-600'
+              }`}
+              aria-label={isTeluguToEnglish ? teluguLabel : englishLabel}
             />
 
-            {/* File Upload and Voice Input */}
-            <div className="mt-4 flex items-center gap-3">
+            <div className="mt-4 flex items-center gap-3 flex-wrap">
               <label
-                htmlFor="file-upload"
+                htmlFor="file-upload-telugu"
                 className="inline-flex items-center px-4 py-2 bg-gray-200 dark:bg-zinc-600 hover:bg-gray-300 dark:hover:bg-zinc-500 text-gray-800 dark:text-gray-100 font-medium rounded-lg cursor-pointer transition-colors"
               >
                 <svg
@@ -267,33 +381,31 @@ export default function TeluguToEnglishTranslatorTool({
                 </svg>
                 {pageData.tool.uploadButton}
               </label>
-
-              {/* Voice Input Button */}
               <SpeechToTextButton
-                onTranscript={(text) =>
-                  setInputText((prev) => (prev ? `${prev} ${text}` : text))
-                }
+                onTranscript={handleSpeechTranscript}
                 locale={locale}
               />
-
-              {/* Audio Upload Button */}
               <button
+                type="button"
                 onClick={handleAudioUploadClick}
                 className={`flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 dark:border-zinc-600 transition-colors ${
                   isTranscribing
                     ? 'bg-primary text-white hover:bg-primary/90'
                     : 'bg-gray-100 dark:bg-zinc-700 hover:bg-gray-200 dark:hover:bg-zinc-600 text-gray-700 dark:text-gray-100'
                 }`}
-                aria-label="Upload audio for transcription"
+                aria-label={pageData.tool.audioUploadTooltip || 'Upload audio for transcription'}
+                disabled={isTranscribing}
               >
                 <Waves className="h-5 w-5" />
               </button>
-
               <p className="text-xs text-gray-500 dark:text-gray-400">
-                {pageData.tool.uploadHint}
+                {isTranscribing
+                  ? pageData.tool.transcribingLabel || 'Transcribing audio...'
+                  : pageData.tool.uploadHint ||
+                    'Supports .txt, .docx, and audio uploads.'}
               </p>
               <input
-                id="file-upload"
+                id="file-upload-telugu"
                 type="file"
                 accept=".txt,.docx"
                 onChange={handleFileUpload}
@@ -308,7 +420,6 @@ export default function TeluguToEnglishTranslatorTool({
               />
             </div>
 
-            {/* File Name Display */}
             {fileName && (
               <div className="mt-3 flex items-center gap-2 p-2 bg-gray-100 dark:bg-zinc-700 rounded-md border border-gray-200 dark:border-zinc-600">
                 <svg
@@ -326,12 +437,13 @@ export default function TeluguToEnglishTranslatorTool({
                   {fileName}
                 </span>
                 <button
+                  type="button"
                   onClick={() => {
                     setFileName(null);
                     setInputText('');
                   }}
                   className="ml-auto text-gray-500 hover:text-red-500 dark:text-gray-400 dark:hover:text-red-400"
-                  aria-label="Remove file"
+                  aria-label={pageData.tool.removeFileTooltip || 'Remove file'}
                 >
                   <svg
                     className="w-4 h-4"
@@ -351,34 +463,35 @@ export default function TeluguToEnglishTranslatorTool({
             )}
           </div>
 
-          {/* Switch Button */}
-          <div className="flex items-center justify-center mt-8 lg:mt-32 lg:mx-4">
-            <button
-              onClick={handleSwitchDirection}
-              className="flex items-center justify-center w-12 h-12 p-0 bg-gray-100 dark:bg-zinc-700 hover:bg-gray-200 dark:hover:bg-zinc-600 text-gray-500 dark:text-gray-400 rounded-full border border-gray-300 dark:border-zinc-600 transition-all duration-200 hover:scale-105"
-              title="Switch translation direction"
-            >
-              <ArrowLeftRight className="w-5 h-5" />
-            </button>
-          </div>
+          <DirectionIndicator
+            onToggle={handleDirectionToggle}
+            directionLabel={directionStatusLabel}
+            detectionStatus={detectionStatus}
+            warning={languageWarning}
+            toggleTitle={
+              isTeluguToEnglish
+                ? 'Switch to English → Telugu'
+                : 'Switch to Telugu → English'
+            }
+            ariaLabel={
+              pageData.tool.toggleDirectionTooltip ||
+              'Toggle translation direction'
+            }
+          />
 
-          {/* Output Area */}
           <div className="flex-1">
             <div className="flex items-center justify-between mb-3">
               <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">
-                {targetLanguage === 'english'
-                  ? 'English Translation'
-                  : targetLanguage === 'telugu'
-                    ? 'Telugu Translation'
-                    : pageData.tool.outputLabel}
+                {isTeluguToEnglish ? englishLabel : teluguLabel}
               </h2>
               {outputText && (
                 <div className="flex gap-2">
                   <TextToSpeechButton text={outputText} locale={locale} />
                   <button
+                    type="button"
                     onClick={handleCopy}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
-                    title="Copy"
+                    title={pageData.tool.copyTooltip || 'Copy'}
                   >
                     <svg
                       className="w-5 h-5"
@@ -395,9 +508,10 @@ export default function TeluguToEnglishTranslatorTool({
                     </svg>
                   </button>
                   <button
+                    type="button"
                     onClick={handleDownload}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
-                    title="Download"
+                    title={pageData.tool.downloadTooltip || 'Download'}
                   >
                     <svg
                       className="w-5 h-5"
@@ -417,38 +531,53 @@ export default function TeluguToEnglishTranslatorTool({
               )}
             </div>
             <div
-              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md bg-gray-50 dark:bg-zinc-700 text-gray-700 dark:text-gray-200 overflow-y-auto"
+              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md bg-gray-50 dark:bg-zinc-700 flex items-start justify-start text-gray-700 dark:text-gray-200 overflow-y-auto"
               aria-live="polite"
             >
               {isLoading ? (
-                <p>{pageData.tool.loading}</p>
+                <div className="flex items-center gap-3">
+                  <div className="flex space-x-1">
+                    <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+                    <div
+                      className="w-2 h-2 bg-primary rounded-full animate-pulse"
+                      style={{ animationDelay: '0.2s' }}
+                    />
+                    <div
+                      className="w-2 h-2 bg-primary rounded-full animate-pulse"
+                      style={{ animationDelay: '0.4s' }}
+                    />
+                  </div>
+                  <span>{pageData.tool.loading || 'Translating...'}</span>
+                </div>
               ) : error ? (
                 <p className="text-red-600 dark:text-red-400">{error}</p>
               ) : outputText ? (
                 <p className="text-lg whitespace-pre-wrap">{outputText}</p>
               ) : (
                 <p className="text-gray-500 dark:text-gray-400">
-                  {pageData.tool.outputPlaceholder}
+                  {outputPlaceholder}
                 </p>
               )}
             </div>
           </div>
         </div>
 
-        {/* Action Buttons */}
         <div className="mt-6 flex justify-center gap-4">
           <button
+            type="button"
             onClick={handleTranslate}
             disabled={isLoading}
-            className="px-8 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="inline-flex items-center px-8 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isLoading ? pageData.tool.loading : pageData.tool.translateButton}
+            <ArrowRightIcon className="ml-2 h-4 w-4" />
           </button>
           <button
+            type="button"
             onClick={handleReset}
             className="px-6 py-3 bg-gray-200 dark:bg-zinc-600 hover:bg-gray-300 dark:hover:bg-zinc-500 text-gray-800 dark:text-gray-100 font-semibold rounded-lg shadow-md transition-colors"
           >
-            Reset
+            {pageData.tool.resetButton || 'Reset'}
           </button>
         </div>
       </main>

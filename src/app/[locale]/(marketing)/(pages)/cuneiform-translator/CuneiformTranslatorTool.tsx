@@ -1,36 +1,21 @@
 'use client';
 
 import { ToolInfoSections } from '@/components/blocks/tool/tool-info-sections';
+import { DirectionIndicator } from '@/components/translator/DirectionIndicator';
+import { SpeechToTextButton } from '@/components/ui/speech-to-text-button';
 import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
+import { useSmartTranslatorDirection } from '@/hooks/use-smart-translator-direction';
 import type { CuneiformScript } from '@/lib/cuneiform';
 import { ArrowRightIcon } from 'lucide-react';
 import mammoth from 'mammoth';
-import { useCallback, useEffect, useRef, useState } from 'react';
-
-// 简单的debounce函数实现
-function useDebounce<T extends (...args: any[]) => void>(
-  callback: T,
-  delay: number
-): T {
-  const timeoutRef = useRef<NodeJS.Timeout>();
-
-  const debouncedCallback = useCallback(
-    (...args: Parameters<T>) => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
-      timeoutRef.current = setTimeout(() => callback(...args), delay);
-    },
-    [callback, delay]
-  ) as T;
-
-  return debouncedCallback;
-}
+import { useEffect, useMemo, useState } from 'react';
 
 interface CuneiformTranslatorToolProps {
   pageData: any;
   locale?: string;
 }
+
+type TranslatorDirection = 'toCuneiform' | 'toEnglish';
 
 export default function CuneiformTranslatorTool({
   pageData,
@@ -40,13 +25,78 @@ export default function CuneiformTranslatorTool({
   const [translatedText, setTranslatedText] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-  const [script, setScript] = useState<CuneiformScript>('sumerian');
-  const [direction, setDirection] = useState<'toCuneiform' | 'toEnglish'>(
-    'toCuneiform'
-  );
   const [fileName, setFileName] = useState<string | null>(null);
+  const [script, setScript] = useState<CuneiformScript>('sumerian');
 
-  // Handle file upload
+  const {
+    activeDirection,
+    isManualDirection,
+    detectedLanguage,
+    languageWarning,
+    runLanguageDetection,
+    toggleDirection,
+    setAutoDirection,
+    resetDirection,
+    clearWarning,
+  } = useSmartTranslatorDirection<TranslatorDirection>({
+    apiPath: '/api/cuneiform-translator',
+    defaultDirection: 'toCuneiform',
+    directions: ['toCuneiform', 'toEnglish'],
+    locale,
+    supportedLanguages: ['english', 'cuneiform'],
+    warningMessage:
+      pageData.tool.languageWarning ||
+      'Please input English text or provide valid cuneiform characters.',
+  });
+
+  const isEnglishToCuneiform = activeDirection === 'toCuneiform';
+
+  const inputLabel = isEnglishToCuneiform
+    ? pageData.tool.inputLabel || 'English Text'
+    : pageData.tool.cuneiformLabel || 'Cuneiform Text';
+
+  const outputLabel = isEnglishToCuneiform
+    ? pageData.tool.outputLabel || 'Cuneiform Translation'
+    : pageData.tool.englishOutputLabel || 'English Translation';
+
+  const inputPlaceholder = isEnglishToCuneiform
+    ? pageData.tool.inputPlaceholder ||
+      'Enter English text to convert to cuneiform...'
+    : pageData.tool.cuneiformPlaceholder ||
+      'Paste cuneiform Unicode characters to translate to English...';
+
+  const outputPlaceholder = isEnglishToCuneiform
+    ? pageData.tool.outputPlaceholder ||
+      'Cuneiform translation will appear here'
+    : pageData.tool.englishOutputPlaceholder ||
+      'English translation will appear here';
+
+  const directionStatusLabel = isEnglishToCuneiform
+    ? 'English → Cuneiform'
+    : 'Cuneiform → English';
+
+  const detectionStatus =
+    detectedLanguage === 'english'
+      ? 'Detected input: English'
+      : detectedLanguage === 'cuneiform'
+        ? 'Detected input: Cuneiform'
+        : 'Auto-detecting. Enter English text or cuneiform characters.';
+
+  useEffect(() => {
+    const trimmed = inputText.trim();
+
+    if (!trimmed) {
+      clearWarning();
+      return;
+    }
+
+    const timeoutId = setTimeout(async () => {
+      await runLanguageDetection(trimmed);
+    }, 600);
+
+    return () => clearTimeout(timeoutId);
+  }, [inputText, runLanguageDetection, clearWarning]);
+
   const handleFileUpload = async (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
@@ -60,58 +110,38 @@ export default function CuneiformTranslatorTool({
       const text = await readFileContent(file);
       setInputText(text);
     } catch (err: any) {
-      setError(err.message || 'Failed to read file');
+      setError(err.message || pageData.tool.error);
       setFileName(null);
     }
   };
 
-  // Read file content
   const readFileContent = async (file: File): Promise<string> => {
     const fileExtension = file.name.split('.').pop()?.toLowerCase();
 
-    // Handle .txt files
     if (fileExtension === 'txt') {
       return new Promise((resolve, reject) => {
         const reader = new FileReader();
-
         reader.onload = (e) => {
           const content = e.target?.result as string;
-          if (content) {
-            resolve(content);
-          } else {
-            reject(new Error('File is empty'));
-          }
+          if (content) resolve(content);
+          else reject(new Error('File is empty'));
         };
-
-        reader.onerror = () => {
-          reject(new Error('Failed to read file'));
-        };
-
+        reader.onerror = () => reject(new Error('Failed to read file'));
         reader.readAsText(file);
       });
     }
 
-    // Handle .docx files with mammoth
     if (fileExtension === 'docx') {
       try {
         const arrayBuffer = await file.arrayBuffer();
         const result = await mammoth.extractRawText({ arrayBuffer });
-        if (result.value) {
-          return result.value;
-        }
+        if (result.value) return result.value;
         throw new Error('Failed to extract text from Word document');
-      } catch (error) {
+      } catch {
         throw new Error(
           'Failed to read .docx file. Please ensure it is a valid Word document.'
         );
       }
-    }
-
-    // Unsupported file type
-    if (fileExtension === 'doc') {
-      throw new Error(
-        'Old .doc format is not supported. Please save as .docx (File → Save As → Word Document (.docx)) or copy-paste the text directly.'
-      );
     }
 
     throw new Error(
@@ -119,9 +149,15 @@ export default function CuneiformTranslatorTool({
     );
   };
 
-  // Handle translation
+  const handleSpeechTranscript = (transcript: string) => {
+    setInputText((prev) =>
+      prev ? `${prev.trim()}\n${transcript}` : transcript
+    );
+  };
+
   const handleTranslate = async () => {
-    if (!inputText.trim()) {
+    const trimmed = inputText.trim();
+    if (!trimmed) {
       setError(pageData.tool.noInput);
       setTranslatedText('');
       return;
@@ -132,30 +168,57 @@ export default function CuneiformTranslatorTool({
     setTranslatedText('');
 
     try {
+      const detectionSummary = await runLanguageDetection(trimmed);
+      if (
+        !isManualDirection &&
+        (languageWarning ||
+          detectionSummary.detectedInputLanguage === 'unknown') &&
+        detectionSummary.confidence < 0.3
+      ) {
+        throw new Error(
+          pageData.tool.languageWarning ||
+            'Please input English text or provide valid cuneiform characters.'
+        );
+      }
+
+      const finalDirection = isManualDirection
+        ? activeDirection
+        : detectionSummary.detectedDirection;
+
       const response = await fetch('/api/cuneiform-translator', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          text: inputText,
+          text: trimmed,
           script,
-          direction,
+          direction: finalDirection,
         }),
       });
 
-      const data = (await response.json()) as {
-        translated?: string;
-        error?: string;
-        languageInfo?: any;
-        direction?: string;
-      };
-
+      const data = await response.json();
       if (!response.ok) {
         throw new Error(data.error || pageData.tool.error);
       }
 
-      setTranslatedText(data.translated || '');
+      const translated = (data.translated || '').trim();
+      if (!translated) {
+        throw new Error(pageData.tool.error);
+      }
+
+      if (translated.toLowerCase() === trimmed.toLowerCase()) {
+        throw new Error(
+          pageData.tool.sameOutputError ||
+            'Translation matches the input. Please try different text.'
+        );
+      }
+
+      setTranslatedText(translated);
+      if (!isManualDirection && data.direction) {
+        setAutoDirection(
+          (data.direction as TranslatorDirection) || 'toCuneiform'
+        );
+      }
+      clearWarning();
     } catch (err: any) {
       setError(err.message || 'Translation failed');
       setTranslatedText('');
@@ -164,79 +227,61 @@ export default function CuneiformTranslatorTool({
     }
   };
 
-  // Toggle translation direction when clicking titles
-  const handleTitleClick = () => {
-    // Swap input and output
-    const temp = inputText;
-    setInputText(translatedText);
-    setTranslatedText(temp);
-    setDirection((prev) =>
-      prev === 'toCuneiform' ? 'toEnglish' : 'toCuneiform'
-    );
-    setFileName(null);
-    setError(null);
+  const handleDirectionToggle = () => {
+    toggleDirection();
+    clearWarning();
+    if (translatedText.trim()) {
+      setInputText(translatedText);
+      setTranslatedText('');
+    }
   };
 
-  // Reset all content
   const handleReset = () => {
     setInputText('');
     setTranslatedText('');
     setFileName(null);
     setError(null);
-    setDirection('toCuneiform');
+    resetDirection();
   };
 
-  // Copy result to clipboard
   const handleCopy = async () => {
     if (!translatedText) return;
     try {
       await navigator.clipboard.writeText(translatedText);
-      // Optional: Show success feedback
     } catch (err) {
       console.error('Failed to copy:', err);
     }
   };
 
-  // Download result as text file
   const handleDownload = () => {
     if (!translatedText) return;
     const blob = new Blob([translatedText], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `cuneiform-${script}-${direction}-${Date.now()}.txt`;
+    a.download = `cuneiform-${script}-${activeDirection}-${Date.now()}.txt`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
   };
 
-  // 获取动态标签
-  const getInputLabel = () => {
-    if (direction === 'toCuneiform') {
-      return 'English Text';
-    }
-    return 'Cuneiform Text';
-  };
-
-  const getOutputLabel = () => {
-    if (direction === 'toCuneiform') {
-      return 'Cuneiform Translation';
-    }
-    return 'English Translation';
-  };
-
-  const getInputPlaceholder = () => {
-    if (direction === 'toCuneiform') {
-      return 'Enter English text to convert to cuneiform...';
-    }
-    return 'Enter cuneiform text to translate to English...';
-  };
+  const scriptOptions: { value: CuneiformScript; label: string }[] = useMemo(
+    () => [
+      { value: 'sumerian', label: 'Sumerian' },
+      { value: 'akkadian', label: 'Akkadian' },
+      { value: 'babylonian', label: 'Babylonian' },
+      { value: 'hittite', label: 'Hittite' },
+      { value: 'elamite', label: 'Elamite' },
+      { value: 'old-persian', label: 'Old Persian' },
+      { value: 'ugaritic', label: 'Ugaritic' },
+    ],
+    []
+  );
 
   return (
     <div className="container max-w-7xl mx-auto px-4 mb-10">
       <main className="w-full bg-white dark:bg-zinc-800 shadow-xl border border-gray-100 dark:border-zinc-700 rounded-lg p-4 md:p-8">
-        {/* Script Selection */}
         <div className="mb-6 flex items-center gap-4">
           <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
             Script:
@@ -244,51 +289,43 @@ export default function CuneiformTranslatorTool({
           <select
             value={script}
             onChange={(e) => setScript(e.target.value as CuneiformScript)}
-            className="px-3 py-1 pr-8 border border-gray-300 dark:border-zinc-600 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-zinc-700 text-gray-700 dark:text-gray-200 text-sm appearance-none relative"
+            className="px-3 py-1 pr-8 border border-gray-300 dark:border-zinc-600 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-zinc-700 text-gray-700 dark:text-gray-200 text-sm appearance-none"
             style={{
               backgroundImage:
-                'url(\'data:image/svg+xml;charset=utf-8,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20"%3E%3Cpath stroke="%236b7280" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 8l4 4 4-4"/%3E%3C/svg%3E\')',
+                'url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 20 20\'%3E%3Cpath stroke=\'%236b7280\' stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M6 8l4 4 4-4\'/%3E%3C/svg%3E")',
               backgroundSize: '1.5em 1.5em',
               backgroundRepeat: 'no-repeat',
               backgroundPosition: 'right 0.5rem center',
             }}
           >
-            <option value="sumerian">Sumerian</option>
-            <option value="akkadian">Akkadian</option>
-            <option value="hittite">Hittite</option>
-            <option value="elamite">Elamite</option>
-            <option value="old-persian">Old Persian</option>
-            <option value="ugaritic">Ugaritic</option>
+            {scriptOptions.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
           </select>
         </div>
 
-        {/* Input and Output Areas */}
         <div className="flex flex-col md:flex-row gap-2 md:gap-3">
-          {/* Input Area */}
           <div className="flex-1 relative">
-            <h2
-              className="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-3 cursor-pointer hover:text-primary transition-colors"
-              onClick={handleTitleClick}
-              title={
-                direction === 'toCuneiform'
-                  ? 'Switch to Cuneiform → English'
-                  : 'Switch to English → Cuneiform'
-              }
-            >
-              {getInputLabel()}
+            <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-3">
+              {inputLabel}
             </h2>
             <textarea
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
-              placeholder={getInputPlaceholder()}
-              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent resize-none text-gray-700 dark:text-gray-200 dark:bg-zinc-700"
-              aria-label={pageData.tool.inputLabel || 'Input text'}
+              placeholder={inputPlaceholder}
+              className={`w-full h-48 md:h-64 p-3 border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent resize-none text-gray-700 dark:text-gray-200 dark:bg-zinc-700 ${
+                languageWarning
+                  ? 'border-amber-300 dark:border-amber-600 focus:ring-amber-500'
+                  : 'border-gray-300 dark:border-zinc-600'
+              }`}
+              aria-label={inputLabel}
             />
 
-            {/* File Upload */}
-            <div className="mt-4 flex items-center gap-3">
+            <div className="mt-4 flex items-center gap-3 flex-wrap">
               <label
-                htmlFor="file-upload"
+                htmlFor="file-upload-cuneiform"
                 className="inline-flex items-center px-4 py-2 bg-gray-200 dark:bg-zinc-600 hover:bg-gray-300 dark:hover:bg-zinc-500 text-gray-800 dark:text-gray-100 font-medium rounded-lg cursor-pointer transition-colors"
               >
                 <svg
@@ -306,11 +343,16 @@ export default function CuneiformTranslatorTool({
                 </svg>
                 {pageData.tool.uploadButton || 'Upload File'}
               </label>
+              <SpeechToTextButton
+                onTranscript={handleSpeechTranscript}
+                locale={locale}
+              />
               <p className="text-xs text-gray-500 dark:text-gray-400">
-                {pageData.tool.uploadHint || 'Supports .txt and .docx files'}
+                {pageData.tool.uploadHint ||
+                  'Supports .txt and .docx files (Unicode cuneiform).'}
               </p>
               <input
-                id="file-upload"
+                id="file-upload-cuneiform"
                 type="file"
                 accept=".txt,.docx"
                 onChange={handleFileUpload}
@@ -318,7 +360,6 @@ export default function CuneiformTranslatorTool({
               />
             </div>
 
-            {/* File Name Display */}
             {fileName && (
               <div className="mt-3 flex items-center gap-2 p-2 bg-gray-100 dark:bg-zinc-700 rounded-md border border-gray-200 dark:border-zinc-600">
                 <svg
@@ -361,19 +402,26 @@ export default function CuneiformTranslatorTool({
             )}
           </div>
 
-          {/* Output Area */}
+          <DirectionIndicator
+            onToggle={handleDirectionToggle}
+            directionLabel={directionStatusLabel}
+            detectionStatus={detectionStatus}
+            warning={languageWarning}
+            toggleTitle={
+              isEnglishToCuneiform
+                ? 'Switch to Cuneiform → English'
+                : 'Switch to English → Cuneiform'
+            }
+            ariaLabel={
+              pageData.tool.toggleDirectionTooltip ||
+              'Toggle translation direction'
+            }
+          />
+
           <div className="flex-1">
             <div className="flex items-center justify-between mb-3">
-              <h2
-                className="text-2xl font-semibold text-gray-800 dark:text-gray-100 cursor-pointer hover:text-primary transition-colors"
-                onClick={handleTitleClick}
-                title={
-                  direction === 'toCuneiform'
-                    ? 'Switch to Cuneiform → English'
-                    : 'Switch to English → Cuneiform'
-                }
-              >
-                {getOutputLabel()}
+              <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">
+                {outputLabel}
               </h2>
               {translatedText && (
                 <div className="flex gap-2">
@@ -424,43 +472,49 @@ export default function CuneiformTranslatorTool({
               aria-live="polite"
             >
               {isLoading ? (
-                <div className="flex flex-col items-center gap-3">
-                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
-                  <p>{pageData.tool.loading || 'Translating...'}</p>
+                <div className="flex items-center gap-3">
+                  <div className="flex space-x-1">
+                    <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                    <div
+                      className="w-2 h-2 bg-primary rounded-full animate-pulse"
+                      style={{ animationDelay: '0.2s' }}
+                    ></div>
+                    <div
+                      className="w-2 h-2 bg-primary rounded-full animate-pulse"
+                      style={{ animationDelay: '0.4s' }}
+                    ></div>
+                  </div>
+                  <span>{pageData.tool.loading || 'Translating...'}</span>
                 </div>
               ) : error ? (
                 <p className="text-red-600 dark:text-red-400">{error}</p>
               ) : translatedText ? (
-                <p className="text-lg whitespace-pre-wrap font-mono">
+                <p className={`text-lg whitespace-pre-wrap ${isEnglishToCuneiform ? 'font-mono tracking-wider' : ''}`}>
                   {translatedText}
                 </p>
               ) : (
                 <p className="text-gray-500 dark:text-gray-400">
-                  {pageData.tool.outputPlaceholder ||
-                    'Translation will appear here'}
+                  {outputPlaceholder}
                 </p>
               )}
             </div>
           </div>
         </div>
 
-        {/* Action Buttons */}
         <div className="mt-6 flex justify-center gap-4">
           <button
             onClick={handleTranslate}
             disabled={isLoading}
             className="inline-flex items-center px-8 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {isLoading
-              ? pageData.tool.loading || 'Translating...'
-              : pageData.tool.translateButton || 'Translate'}
+            {isLoading ? pageData.tool.loading || 'Translating...' : pageData.tool.translateButton || 'Translate'}
             <ArrowRightIcon className="ml-2 h-4 w-4" />
           </button>
           <button
             onClick={handleReset}
             className="px-6 py-3 bg-gray-200 dark:bg-zinc-600 hover:bg-gray-300 dark:hover:bg-zinc-500 text-gray-800 dark:text-gray-100 font-semibold rounded-lg shadow-md transition-colors"
           >
-            Reset
+            {pageData.tool.resetButton || 'Reset'}
           </button>
         </div>
 
@@ -472,3 +526,4 @@ export default function CuneiformTranslatorTool({
     </div>
   );
 }
+

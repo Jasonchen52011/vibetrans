@@ -1,82 +1,197 @@
 {
   "HelpPage": {
     "title": "帮助中心",
-    "description": "找到您需要的所有帮助和支持资源",
+    "description": "在这里获取功能指南、实操示例和支持资源，让团队高效完成本地化工作。",
     "hero": {
-      "title": "我们如何帮助您？",
-      "description": "浏览我们的帮助文档，找到常见问题的解答，了解如何使用我们的工具。"
+      "title": "需要帮助？我们就在这里",
+      "description": "浏览精选文档、常见场景和专业辅助，帮助您迅速解决问题、持续交付成果。"
     },
-    "search": {
-      "placeholder": "搜索帮助文章...",
-      "button": "搜索"
+    "ctaButton": "立即开始翻译",
+    "tool": {
+      "inputLabel": "描述您的问题",
+      "outputLabel": "推荐解答",
+      "inputPlaceholder": "请输入您遇到的任务或困难...",
+      "outputPlaceholder": "系统会推荐相关文章或操作步骤。",
+      "translateButton": "搜索帮助内容",
+      "uploadButton": "上传参考文件",
+      "uploadHint": "支持 .txt、.docx 文件",
+      "loading": "正在为您查找资源...",
+      "error": "暂时未找到答案，请重试或联系客服。",
+      "noInput": "请输入具体问题，我们才能更好地帮助您。"
     },
-    "categories": {
-      "title": "帮助分类",
-      "gettingStarted": {
-        "title": "入门指南",
-        "description": "了解如何开始使用我们的翻译工具",
-        "icon": "FaRocket"
-      },
-      "features": {
-        "title": "功能介绍",
-        "description": "深入了解我们的翻译功能和特性",
-        "icon": "FaStar"
-      },
-      "troubleshooting": {
-        "title": "故障排除",
-        "description": "解决常见问题和技术故障",
-        "icon": "FaWrench"
-      },
-      "api": {
-        "title": "API 文档",
-        "description": "开发者集成指南和API参考",
-        "icon": "FaCode"
-      }
+    "whatIs": {
+      "title": "什么是 VibeTrans 帮助中心",
+      "description": "VibeTrans 帮助中心集中提供入门指南、功能解析和故障排除方案，帮助团队无需等待工单即可保持高效。",
+      
+      "image": "/images/docs/what-is---help.webp",
+      "imageAlt": "帮助中心概览"
     },
-    "popularArticles": {
-      "title": "热门文章",
+    "examples": {
+      "title": "常见使用场景",
+      "description": "以下真实场景可以快速指引您找到解决方案。",
       "items": [
         {
-          "title": "如何选择正确的翻译器",
-          "description": "了解不同翻译器的用途和适用场景",
-          "link": "#"
+          "name": "启用语音输入",
+          "alt": "如何开启语音转写功能并授权麦克风？"
         },
         {
-          "title": "翻译准确度说明",
-          "description": "了解我们的AI翻译技术的工作原理",
-          "link": "#"
+          "name": "管理 API 调用",
+          "alt": "调用统一翻译 API 时需要注意哪些限额？"
         },
         {
-          "title": "文件上传指南",
-          "description": "学习如何上传和翻译文档文件",
-          "link": "#"
+          "name": "翻译长文档",
+          "alt": "如何高效处理产品手册或合同等长篇内容？"
         },
         {
-          "title": "隐私和安全",
-          "description": "了解我们如何保护您的数据安全",
-          "link": "#"
+          "name": "品牌术语管理",
+          "alt": "保持品牌术语一致性的最佳实践。"
+        },
+        {
+          "name": "本地化营销文案",
+          "alt": "发布区域性落地页前需要检查哪些要点？"
+        },
+        {
+          "name": "语音故障排查",
+          "alt": "遇到麦克风权限或语音识别报错时如何处理？"
         }
       ]
     },
-    "quickHelp": {
-      "title": "快速帮助",
-      "faq": {
-        "title": "常见问题",
-        "description": "查看用户最常问的问题"
-      },
-      "contact": {
-        "title": "联系我们",
-        "description": "需要更多帮助？联系我们的支持团队"
-      },
-      "feedback": {
-        "title": "意见反馈",
-        "description": "帮助我们改进产品和服务"
+    "howto": {
+      "title": "如何快速找到答案",
+      "description": "按照以下步骤即可高效使用帮助中心。",
+      "image": "/images/docs/--help-how-to.webp",
+      "imageAlt": "帮助中心操作说明",
+      "steps": [
+        {
+          "title": "描述问题",
+          "description": "详细说明您要完成的任务或遇到的阻塞点，描述越清晰，推荐越准确。"
+        },
+        {
+          "title": "查看推荐",
+          "description": "系统会即时匹配相关文章、API 示例或视频演示。"
+        },
+        {
+          "title": "跟随步骤执行",
+          "description": "按照推荐清单操作，可直接复制示例或脚本到项目中。"
+        },
+        {
+          "title": "需要时升级",
+          "description": "仍未解决？点击联系按钮，将上下文交给支持工程师处理。"
+        }
+      ]
+    },
+    "highlights": {
+      "title": "团队信赖帮助中心的理由",
+      "description": "让本地化协作更顺畅的关键能力。",
+      "features": [
+        {
+          "title": "按角色定制",
+          "description": "为市场、产品、工程等角色提供专属操作手册，团队协同更清晰。",
+          "icon": "FaRocket"
+        },
+        {
+          "title": "持续更新",
+          "description": "每次功能发布都会同步更新文档，确保步骤与实际表现一致。",
+          "icon": "FaChartLine"
+        },
+        {
+          "title": "权威可靠",
+          "description": "所有内容均由 VibeTrans 团队审核，确保指南可真正落地。",
+          "icon": "FaShieldAlt"
+        },
+        {
+          "title": "智能搜索",
+          "description": "自然语言搜索理解口语化提问，秒级匹配最相关的解答。",
+          "icon": "FaBrain"
+        }
+      ]
+    },
+    "funFacts": {
+      "title": "小知识",
+      "items": [
+        {
+          "title": "92% 自助解决率",
+          "description": "绝大多数团队无需提交工单即可在帮助中心完成排障。",
+          "image": "/images/docs/--help-fact-1.webp",
+          "imageAlt": "自助解决率"
+        },
+        {
+          "title": "与版本同步更新",
+          "description": "文档会在每次 VibeTrans 发布时同步刷新，避免步骤变更。",
+          "image": "/images/docs/--help-fact-2.webp",
+          "imageAlt": "版本更新"
+        }
+      ]
+    },
+    "userInterest": {
+      "title": "高频精品教程",
+      "items": [
+        {
+          "title": "语音翻译搭建",
+          "description": "一步步完成麦克风授权与实时会话配置。",
+          "image": "/images/docs/--help-interest-1.webp",
+          "imageAlt": "语音翻译"
+        },
+        {
+          "title": "术语库自动化",
+          "description": "确保品牌关键词在所有语言版本中保持统一。",
+          "image": "/images/docs/--help-interest-2.webp",
+          "imageAlt": "术语管理"
+        },
+        {
+          "title": "API 快速入门",
+          "description": "通过示例代码快速调用统一翻译 API。",
+          "image": "/images/docs/--help-interest-3.webp",
+          "imageAlt": "API 入门"
+        },
+        {
+          "title": "协作与审核",
+          "description": "在 VibeTrans 中分配审核、追踪修改并完成 QA。",
+          "image": "/images/docs/--help-interest-4.webp",
+          "imageAlt": "协作流程"
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "用户反馈",
+      "subtitle": "这些团队正在依赖帮助中心完成工作",
+      "items": {
+        "item-1": {
+          "name": "陈晓彤",
+          "role": "本地化负责人",
+          "heading": "来自陈晓彤的反馈",
+          "content": "交付周期非常紧时，我不可能等待邮件回复。帮助中心提供的标准流程和 API 提示让团队始终保持节奏。"
+        },
+        "item-2": {
+          "name": "Lars Müller",
+          "role": "产品经理",
+          "heading": "来自 Lars Müller 的反馈",
+          "content": "每次新版本发布都会附带“操作手册”，新人只需跟着文档操作，入职速度快了好几倍。"
+        }
       }
     },
-    "contactSupport": {
-      "title": "需要更多帮助？",
-      "description": "我们的支持团队随时为您提供帮助",
-      "button": "联系支持"
+    "faqs": {
+      "title": "常见问题",
+      "subtitle": "还有疑问？随时联系我们。",
+      "items": {
+        "item-1": {
+          "question": "访问帮助中心需要登录吗？",
+          "answer": "不需要。所有文章和示例均对外开放，登录用户可额外获取项目模板。"
+        },
+        "item-2": {
+          "question": "文档多久更新一次？",
+          "answer": "我们会在每次 VibeTrans 功能或版本更新时同步刷新文档，也会根据反馈补充缺失步骤。"
+        },
+        "item-3": {
+          "question": "如何提交新的文档需求？",
+          "answer": "在任意文章底部填写反馈表单，或发送邮件至 support@vibetrans.ai，我们会安排文档团队跟进。"
+        }
+      }
+    },
+    "cta": {
+      "title": "需要专人协助？",
+      "description": "我们的支持工程师可以结合您的工作区提供定制化建议。",
+      "button": "联系支持团队"
     }
   }
 }

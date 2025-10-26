@@ -1,5 +1,8 @@
 {
   "Marketing": {
+    "title": "VibeTrans - AI-Powered Translation Tools",
+    "description": "Advanced AI-powered tools for seamless language conversion",
+    "tagline": "Translate texts, slang, and even ancient languages effortlessly",
     "navbar": {
       "features": {
         "title": "Features"
@@ -15,376 +18,143 @@
       },
       "funTranslate": {
         "title": "Fun Translate",
+        "languageTranslator": {
+          "title": "Language Translator"
+        },
+        "ai": {
+          "title": "AI Tools"
+        },
+        "pages": {
+          "title": "Pages"
+        },
+        "blocks": {
+          "title": "Blocks"
+        },
         "items": {
-          "dogTranslator": {
-            "title": "Dog Translator",
-            "description": "Translate your words into dog language with AI"
-          },
-          "genZTranslator": {
-            "title": "Gen Z Translator",
-            "description": "Translate between standard English and Gen Z slang"
-          },
-          "genAlphaTranslator": {
-            "title": "Gen Alpha Translator",
-            "description": "Translate between standard English and Gen Alpha slang"
-          },
-          "dumbItDown": {
-            "title": "Dumb It Down AI",
-            "description": "Simplify complex texts into easy-to-understand language"
-          },
-          "badTranslator": {
-            "title": "Bad Translator",
-            "description": "Turn normal text into hilarious mistranslations"
+          "alienTextGenerator": {
+            "title": "Alien Text Generator"
           },
           "babyTranslator": {
-            "title": "Baby Translator",
-            "description": "Translate baby cries into clear meanings with AI"
+            "title": "Baby Translator"
           },
-          "ancientGreekTranslator": {
-            "title": "Ancient Greek Translator",
-            "description": "Translate between English and Ancient Greek"
+          "badTranslator": {
+            "title": "Bad Translator"
           },
-          "alBhedTranslator": {
-            "title": "Al Bhed Translator",
-            "description": "Translate between English and Al Bhed from Final Fantasy X"
+          "dogTranslator": {
+            "title": "Dog Translator"
+          },
+          "dumbItDown": {
+            "title": "Dumb It Down AI"
+          },
+          "genAlphaTranslator": {
+            "title": "Gen Alpha Translator"
+          },
+          "genZTranslator": {
+            "title": "Gen Z Translator"
           },
           "gibberishTranslator": {
-            "title": "Gibberish Translator",
-            "description": "Convert any text into playful gibberish language"
-          },
-          "alienTextGenerator": {
-            "title": "Alien Text Generator",
-            "description": "Transform your text into various alien language styles"
-          },
-          "esperantoTranslator": {
-            "title": "Esperanto Translator",
-            "description": "Translate between English and Esperanto language"
-          },
-          "cuneiformTranslator": {
-            "title": "Cuneiform Translator",
-            "description": "Translate ancient cuneiform scripts"
-          },
-          "verboseGenerator": {
-            "title": "Verbose Generator",
-            "description": "Expand short text into detailed, elaborate prose"
+            "title": "Gibberish Translator"
           },
           "pigLatinTranslator": {
-            "title": "Pig Latin Translator",
-            "description": "Translate between English and Pig Latin playfully"
+            "title": "Pig Latin Translator"
           },
-          "minionTranslator": {
-            "title": "Minion Translator",
-            "description": "Translate text to Minion language and back"
-          },
-          "baybayinTranslator": {
-            "title": "Baybayin Translator",
-            "description": "Translate between Baybayin script and modern languages"
-          },
-          "samoanToEnglishTranslator": {
-            "title": "Samoan To English Translator",
-            "description": "Translate between Samoan and English language"
-          },
-          "nahuatlTranslator": {
-            "title": "Nahuatl Translator",
-            "description": "Translate between Nahuatl and English languages"
-          },
-          "ivrTranslator": {
-            "title": "IVR Translator",
-            "description": "Convert IVR inputs into text with multi-language support"
-          }
-        }
-      },
-      "ai": {
-        "title": "AI Tools",
-        "items": {
-          "text": {
-            "title": "AI Text",
-            "description": "Show how to use AI to write stunning text"
-          },
-          "image": {
-            "title": "AI Image",
-            "description": "Show how to use AI to generate beautiful images"
-          },
-          "chat": {
-            "title": "AI Chat",
-            "description": "Show how to use AI to chat with your customers"
-          },
-          "video": {
-            "title": "AI Video",
-            "description": "Show how to use AI to generate amazing videos"
-          },
-          "audio": {
-            "title": "AI Audio",
-            "description": "Show how to use AI to generate wonderful audio"
+          "verboseGenerator": {
+            "title": "Verbose Generator"
           }
         }
       },
       "languageTranslator": {
         "title": "Language Translator",
         "items": {
-          "ancientGreekTranslator": {
-            "title": "Ancient Greek Translator",
-            "description": "Translate between English and Ancient Greek"
-          },
-          "alBhedTranslator": {
-            "title": "Al Bhed Translator",
-            "description": "Translate between English and Al Bhed from Final Fantasy X"
-          },
-          "esperantoTranslator": {
-            "title": "Esperanto Translator",
-            "description": "Translate between English and Esperanto language"
-          },
-          "cuneiformTranslator": {
-            "title": "Cuneiform Translator",
-            "description": "Translate ancient cuneiform scripts"
-          },
-          "ivrTranslator": {
-            "title": "IVR Translator",
-            "description": "Convert IVR inputs into text with multi-language support"
-          },
           "albanianToEnglish": {
-            "title": "Albanian To English",
-            "description": "Translate between Albanian and English language"
+            "title": "Albanian To English"
           },
-          "creoleToEnglishTranslator": {
-            "title": "Creole To English Translator",
-            "description": "Translate between Creole and English language"
-          },
-          "cantoneseTranslator": {
-            "title": "Cantonese Translator",
-            "description": "Translate between Cantonese and English language"
-          },
-          "chineseToEnglishTranslator": {
-            "title": "Chinese To English Translator",
-            "description": "Translate between Chinese and English with AI"
-          },
-          "englishToChineseTranslator": {
-            "title": "English To Chinese Translator",
-            "description": "Translate between English and Chinese with AI"
-          },
-          "mangaTranslator": {
-            "title": "Manga Translator",
-            "description": "Translate manga and comics between languages"
-          },
-          "middleEnglishTranslator": {
-            "title": "Middle English Translator",
-            "description": "Translate between Middle English and modern English"
-          },
-          "minionTranslator": {
-            "title": "Minion Translator",
-            "description": "Translate text to Minion language and back"
-          },
-          "baybayinTranslator": {
-            "title": "Baybayin Translator",
-            "description": "Translate between Baybayin script and modern languages"
-          },
-          "samoanToEnglishTranslator": {
-            "title": "Samoan To English Translator",
-            "description": "Translate between Samoan and English language"
-          },
-          "gasterTranslator": {
-            "title": "Gaster Translator",
-            "description": "Decode and encode Gaster's mysterious symbols"
-          },
-          "highValyrianTranslator": {
-            "title": "High Valyrian Translator",
-            "description": "Translate between High Valyrian and English"
+          "ancientGreekTranslator": {
+            "title": "Ancient Greek Translator"
           },
           "aramaicTranslator": {
-            "title": "Aramaic Translator",
-            "description": "Translate ancient Aramaic script to modern languages"
+            "title": "Aramaic Translator"
           },
-          "greekTranslator": {
-            "title": "Greek Translator",
-            "description": "Translate between modern Greek and English languages"
+          "baybayinTranslator": {
+            "title": "Baybayin Translator"
           },
-          "oghamTranslator": {
-            "title": "Ogham Translator",
-            "description": "Translate ancient Ogham script to modern languages"
+          "cantoneseTranslator": {
+            "title": "Cantonese Translator"
           },
-          "nahuatlTranslator": {
-            "title": "Nahuatl Translator",
-            "description": "Translate between Nahuatl and English languages"
+          "chineseToEnglishTranslator": {
+            "title": "Chinese To English Translator"
           },
-          "englishToSwahiliTranslator": {
-            "title": "English To Swahili Translator",
-            "description": "Translate from English to Swahili language"
+          "englishToChineseTranslator": {
+            "title": "English To Chinese Translator"
           },
-          "swahiliToEnglishTranslator": {
-            "title": "Swahili To English Translator",
-            "description": "Translate from Swahili to English language"
+          "creoleToEnglishTranslator": {
+            "title": "Creole To English Translator"
+          },
+          "cuneiformTranslator": {
+            "title": "Cuneiform Translator"
           },
           "englishToAmharicTranslator": {
-            "title": "English To Amharic Translator",
-            "description": "Translate from English to Amharic language"
+            "title": "English To Amharic Translator"
           },
-          "englishToPolishTranslator": {
-            "title": "English To Polish Translator",
-            "description": "Translate from English to Polish language"
-          },
-          "teluguToEnglishTranslator": {
-            "title": "Telugu To English Translator",
-            "description": "Translate from Telugu to English language"
-          },
-          "smartLanguageTranslator": {
-            "title": "Smart Language Translator",
-            "description": "AI-powered smart translation between multiple languages"
-          },
-          "runeTranslator": {
-            "title": "Rune Translator",
-            "description": "Translate ancient runes to modern languages"
-          },
-          "runicTranslator": {
-            "title": "Runic Translator",
-            "description": "Translate between runic scripts and modern languages"
-          },
-          "drowTranslator": {
-            "title": "Drow Translator",
-            "description": "Translate Drow language from Dungeons & Dragons"
-          },
-          "yodaTranslator": {
-            "title": "Yoda Translator",
-            "description": "Translate text to Yoda's unique speech pattern"
-          },
-          "mandalorianTranslator": {
-            "title": "Mandalorian Translator",
-            "description": "Translate Mandalorian language from Star Wars"
-          },
-          "yodaTranslator": {
-            "title": "Yoda Translator",
-            "description": "Translate text to Yoda's unique speech pattern"
-          },
-          "englishToPersianTranslator": {
-            "title": "English To Persian Translator",
-            "description": "Translate from English to Persian language"
+          "esperantoTranslator": {
+            "title": "Esperanto Translator"
           },
           "greekTranslator": {
-            "title": "Greek Translator",
-            "description": "Translate between Greek and English languages"
+            "title": "Greek Translator"
           },
-          "wingdingsTranslator": {
-            "title": "Wingdings Translator",
-            "description": "Convert text to Wingdings symbols"
+          "mangaTranslator": {
+            "title": "Manga Translator"
           },
-          "japaneseToEnglishTranslator": {
-            "title": "Japanese To English Translator",
-            "description": "Translate from Japanese to English language"
+          "ivrTranslator": {
+            "title": "IVR Translator"
           },
-          "minionTranslator": {
-            "title": "Minion Translator",
-            "description": "Translate text to Minion language and back"
+          "middleEnglishTranslator": {
+            "title": "Middle English Translator"
+          },
+          "nahuatlTranslator": {
+            "title": "Nahuatl Translator"
+          },
+          "oghamTranslator": {
+            "title": "Ogham Translator"
+          },
+          "samoanToEnglishTranslator": {
+            "title": "Samoan To English Translator"
+          },
+          "swahiliToEnglishTranslator": {
+            "title": "Swahili To English Translator"
+          },
+          "teluguToEnglishTranslator": {
+            "title": "Telugu To English Translator"
+          },
+          "alBhedTranslator": {
+            "title": "Al Bhed Translator"
+          },
+          "drowTranslator": {
+            "title": "Drow Translator"
           },
           "gasterTranslator": {
-            "title": "Gaster Translator",
-            "description": "Decode and encode Gaster's mysterious symbols"
-          },
-          "wingdingsTranslator": {
-            "title": "Wingdings Translator",
-            "description": "Translate between Wingdings symbols and text"
+            "title": "Gaster Translator"
           },
           "highValyrianTranslator": {
-            "title": "High Valyrian Translator",
-            "description": "Translate between High Valyrian and English"
+            "title": "High Valyrian Translator"
           },
-          "englishToPersianTranslator": {
-            "title": "English To Persian Translator",
-            "description": "Translate from English to Persian language"
-          }
-        }
-      },
-      "pages": {
-        "title": "Pages",
-        "items": {
-          "about": {
-            "title": "About",
-            "description": "Learn more about our company, mission, and values"
+          "mandalorianTranslator": {
+            "title": "Mandalorian Translator"
           },
-          "contact": {
-            "title": "Contact",
-            "description": "Get in touch with our team for support or inquiries"
+          "minionTranslator": {
+            "title": "Minion Translator"
           },
-          "waitlist": {
-            "title": "Waitlist",
-            "description": "Join our waitlist for latest news and updates"
+          "runeTranslator": {
+            "title": "Rune Translator"
           },
-          "changelog": {
-            "title": "Changelog",
-            "description": "See the latest updates to our products"
+          "runicTranslator": {
+            "title": "Runic Translator"
           },
-          "roadmap": {
-            "title": "Roadmap",
-            "description": "Explore our future plans and upcoming features"
+          "wingdingsTranslator": {
+            "title": "Wingdings Translator"
           },
-          "cookiePolicy": {
-            "title": "Cookie Policy",
-            "description": "How we use the cookies on our website"
-          },
-          "privacyPolicy": {
-            "title": "Privacy Policy",
-            "description": "How we protect and handle your data"
-          },
-          "termsOfService": {
-            "title": "Terms of Service",
-            "description": "The legal agreement between you and our company"
-          }
-        }
-      },
-      "blocks": {
-        "title": "Blocks",
-        "items": {
-          "magicui": {
-            "title": "MagicUI Blocks"
-          },
-          "hero-section": {
-            "title": "Hero Blocks"
-          },
-          "logo-cloud": {
-            "title": "Logo Cloud Blocks"
-          },
-          "integrations": {
-            "title": "Integrations Blocks"
-          },
-          "features": {
-            "title": "Features Blocks"
-          },
-          "content": {
-            "title": "Content Blocks"
-          },
-          "stats": {
-            "title": "Stats Blocks"
-          },
-          "team": {
-            "title": "Team Blocks"
-          },
-          "testimonials": {
-            "title": "Testimonials Blocks"
-          },
-          "callToAction": {
-            "title": "Call to Action Blocks"
-          },
-          "footer": {
-            "title": "Footer Blocks"
-          },
-          "pricing": {
-            "title": "Pricing Blocks"
-          },
-          "comparator": {
-            "title": "Comparator Blocks"
-          },
-          "faq": {
-            "title": "FAQ Blocks"
-          },
-          "login": {
-            "title": "Login Blocks"
-          },
-          "signup": {
-            "title": "Signup Blocks"
-          },
-          "forgot-password": {
-            "title": "Forgot Password Blocks"
-          },
-          "contact": {
-            "title": "Contact Blocks"
+          "yodaTranslator": {
+            "title": "Yoda Translator"
           }
         }
       }
@@ -464,69 +234,6 @@
       "languageTranslator": {
         "title": "Language Translator",
         "items": {
-          "drowTranslator": {
-            "title": "Drow Translator"
-          },
-          "runeTranslator": {
-            "title": "Rune Translator"
-          },
-          "runicTranslator": {
-            "title": "Runic Translator"
-          },
-          "yodaTranslator": {
-            "title": "Yoda Translator"
-          },
-          "mandalorianTranslator": {
-            "title": "Mandalorian Translator"
-          },
-          "minionTranslator": {
-            "title": "Minion Translator"
-          },
-          "gasterTranslator": {
-            "title": "Gaster Translator"
-          },
-          "wingdingsTranslator": {
-            "title": "Wingdings Translator"
-          },
-          "highValyrianTranslator": {
-            "title": "High Valyrian Translator"
-          },
-          "alBhedTranslator": {
-            "title": "Al Bhed Translator"
-          },
-          "oghamTranslator": {
-            "title": "Ogham Translator"
-          },
-          "samoanToEnglishTranslator": {
-            "title": "Samoan To English Translator"
-          },
-          "aramaicTranslator": {
-            "title": "Aramaic Translator"
-          },
-          "nahuatlTranslator": {
-            "title": "Nahuatl Translator"
-          },
-          "englishToSwahiliTranslator": {
-            "title": "English To Swahili Translator"
-          },
-          "swahiliToEnglishTranslator": {
-            "title": "Swahili To English Translator"
-          },
-          "englishToAmharicTranslator": {
-            "title": "English To Amharic Translator"
-          },
-          "englishToPolishTranslator": {
-            "title": "English To Polish Translator"
-          },
-          "teluguToEnglishTranslator": {
-            "title": "Telugu To English Translator"
-          },
-          "smartLanguageTranslator": {
-            "title": "Smart Language Translator"
-          },
-          "englishToPersianTranslator": {
-            "title": "English To Persian Translator"
-          },
           "ancientGreekTranslator": {
             "title": "Ancient Greek Translator"
           },
@@ -565,6 +272,39 @@
           },
           "baybayinTranslator": {
             "title": "Baybayin Translator"
+          },
+          "oghamTranslator": {
+            "title": "Ogham Translator"
+          },
+          "samoanToEnglishTranslator": {
+            "title": "Samoan To English Translator"
+          },
+          "aramaicTranslator": {
+            "title": "Aramaic Translator"
+          },
+          "nahuatlTranslator": {
+            "title": "Nahuatl Translator"
+          },
+          "englishToSwahiliTranslator": {
+            "title": "English To Swahili Translator"
+          },
+          "swahiliToEnglishTranslator": {
+            "title": "Swahili To English Translator"
+          },
+          "englishToAmharicTranslator": {
+            "title": "English To Amharic Translator"
+          },
+          "englishToPolishTranslator": {
+            "title": "English To Polish Translator"
+          },
+          "teluguToEnglishTranslator": {
+            "title": "Telugu To English Translator"
+          },
+          "englishToPersianTranslator": {
+            "title": "English To Persian Translator"
+          },
+          "japaneseToEnglishTranslator": {
+            "title": "Japanese To English Translator"
           }
         }
       },
