@@ -2,11 +2,8 @@ import { createMDX } from 'fumadocs-mdx/next';
 import type { NextConfig } from 'next';
 import createNextIntlPlugin from 'next-intl/plugin';
 
-// Setup Cloudflare dev platform for local development
-const { setupDevPlatform } = require('@cloudflare/next-on-pages/next-dev');
-if (process.env.NODE_ENV === 'development') {
-  setupDevPlatform().catch(console.error);
-}
+// Note: Removed @cloudflare/next-on-pages as it's deprecated
+// Using direct Next.js output for Cloudflare Pages compatibility
 
 /**
  * Configuration for Cloudflare Pages with Functions
