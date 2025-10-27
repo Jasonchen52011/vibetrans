@@ -12,7 +12,7 @@ import { useAvatarLinks } from '@/config/avatar-config';
 import { websiteConfig } from '@/config/website';
 import { useLocaleRouter } from '@/i18n/navigation';
 import { authClient } from '@/lib/auth-client';
-import type { User } from 'better-auth';
+import type { User } from '@supabase/supabase-js';
 import { LogOutIcon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
@@ -29,19 +29,14 @@ export function UserButton({ user }: UserButtonProps) {
   const localeRouter = useLocaleRouter();
   const [open, setOpen] = useState(false);
   const handleSignOut = async () => {
-    await authClient.signOut({
-      fetchOptions: {
-        onSuccess: () => {
-          console.log('sign out success');
-          // TanStack Query automatically handles cache invalidation on sign out
-          localeRouter.replace('/');
-        },
-        onError: (error) => {
-          console.error('sign out error:', error);
-          toast.error(t('Common.logoutFailed'));
-        },
-      },
-    });
+    try {
+      await authClient.signOut();
+      console.log('sign out success');
+      localeRouter.replace('/');
+    } catch (error) {
+      console.error('sign out error:', error);
+      toast.error(t('Common.logoutFailed'));
+    }
   };
 
   // Desktop View, use DropdownMenu
@@ -49,8 +44,12 @@ export function UserButton({ user }: UserButtonProps) {
     <DropdownMenu open={open} onOpenChange={setOpen}>
       <DropdownMenuTrigger>
         <UserAvatar
-          name={user.name}
-          image={user.image}
+          name={user.user_metadata?.name || user.email || ''}
+          image={
+            user.user_metadata?.avatar_url ||
+            user.user_metadata?.picture ||
+            undefined
+          }
           className="size-8 border cursor-pointer"
         />
       </DropdownMenuTrigger>
@@ -58,7 +57,9 @@ export function UserButton({ user }: UserButtonProps) {
         {/* show user name and email */}
         <div className="flex items-center justify-start gap-2 p-2">
           <div className="flex flex-col space-y-1 leading-none">
-            <p className="font-medium">{user.name}</p>
+            <p className="font-medium">
+              {user.user_metadata?.name || user.email || ''}
+            </p>
             <p className="w-[200px] truncate text-sm text-muted-foreground">
               {user.email}
             </p>

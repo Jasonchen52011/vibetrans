@@ -17,51 +17,82 @@ type FAQItem = {
   answer: string;
 };
 
-export default function FaqSection() {
+export default function FaqSection({
+  namespace = 'HomePage.faqs',
+}: { namespace?: string } = {}) {
   const locale = useLocale();
-  const t = useTranslations('HomePage.faqs');
+  // @ts-ignore - Dynamic namespace support
+  const t = useTranslations(namespace as any);
 
-  const faqItems: FAQItem[] = [
-    {
-      id: 'item-1',
-      icon: 'calendar-clock',
-      question: t('items.item-1.question'),
-      answer: t('items.item-1.answer'),
-    },
-    {
-      id: 'item-2',
-      icon: 'wallet',
-      question: t('items.item-2.question'),
-      answer: t('items.item-2.answer'),
-    },
-    {
-      id: 'item-3',
-      icon: 'refresh-cw',
-      question: t('items.item-3.question'),
-      answer: t('items.item-3.answer'),
-    },
-    {
-      id: 'item-4',
-      icon: 'hand-coins',
-      question: t('items.item-4.question'),
-      answer: t('items.item-4.answer'),
-    },
-    {
-      id: 'item-5',
-      icon: 'mail',
-      question: t('items.item-5.question'),
-      answer: t('items.item-5.answer'),
-    },
+  // Dynamically build FAQ items based on available translations
+  const faqItems: FAQItem[] = [];
+  const icons: IconName[] = [
+    'calendar-clock',
+    'wallet',
+    'refresh-cw',
+    'hand-coins',
+    'languages',
+    'globe',
+    'mail',
+    'shield-check',
+    'help-circle',
+    'info',
+    'message-circle',
+    'book-open',
   ];
 
+  // Only attempt to load FAQs if the namespace has items
+  let hasItems = false;
+  try {
+    // @ts-ignore
+    const testCheck = t.raw('items');
+    hasItems = testCheck && typeof testCheck === 'object';
+  } catch {
+    hasItems = false;
+  }
+
+  if (hasItems) {
+    for (let i = 1; i <= 8; i++) {
+      const key = `item-${i}`;
+
+      try {
+        // @ts-ignore - Dynamic translation keys with fallback
+        const question = t(`items.${key}.question`, { default: null });
+
+        if (!question || question.includes(`items.${key}.question`)) {
+          break;
+        }
+
+        // @ts-ignore - Dynamic translation keys
+        const answer = t(`items.${key}.answer`);
+
+        faqItems.push({
+          id: key,
+          icon: icons[i - 1] || 'help-circle',
+          question,
+          answer,
+        });
+      } catch {
+        break;
+      }
+    }
+  }
+
+  // If no FAQ items found, don't render the section
+  if (faqItems.length === 0) {
+    return null;
+  }
+
+  // Note: MISSING_MESSAGE errors in development console are expected behavior
+  // when the loop checks for items beyond what's available in translations.
+  // This is harmless and allows flexible content without manual item counts.
+
   return (
-    <section id="faqs" className="px-4 py-16">
+    <section id="faqs" className="px-4 py-12">
       <div className="mx-auto max-w-4xl">
         <HeaderSection
+          // @ts-ignore - Dynamic translation keys
           title={t('title')}
-          titleAs="h2"
-          subtitle={t('subtitle')}
-          subtitleAs="p"
         />
 
         <div className="mx-auto max-w-4xl mt-12">
@@ -80,9 +111,55 @@ export default function FaqSection() {
                   {item.question}
                 </AccordionTrigger>
                 <AccordionContent>
-                  <p className="text-base text-muted-foreground">
-                    {item.answer}
-                  </p>
+                  <div className="text-base text-muted-foreground">
+                    {(() => {
+                      // Check if the answer contains step-by-step format
+                      const stepRegex = /Step \d+[,:.]/gi;
+                      const hasSteps = stepRegex.test(item.answer);
+
+                      if (hasSteps) {
+                        // Split by step markers and render as a list
+                        const parts = item.answer.split(/(Step \d+[,:.])/gi);
+                        const steps: { label: string; content: string }[] = [];
+
+                        for (let i = 0; i < parts.length; i++) {
+                          if (/Step \d+[,:.]/.test(parts[i])) {
+                            const label = parts[i].replace(/[,:]$/, ''); // Remove trailing comma or colon
+                            const content = parts[i + 1]?.trim() || '';
+                            steps.push({ label, content });
+                            i++; // Skip the next part as we've consumed it
+                          }
+                        }
+
+                        // Find intro text (before first step)
+                        const introMatch = item.answer.match(/^(.*?)Step \d+/i);
+                        const intro = introMatch ? introMatch[1].trim() : '';
+
+                        return (
+                          <>
+                            {intro && <p className="mb-3">{intro}</p>}
+                            {steps.length > 0 && (
+                              <ol className="space-y-2 list-none">
+                                {steps.map((step, idx) => (
+                                  <li key={idx} className="flex gap-2">
+                                    <span className="font-medium whitespace-nowrap">
+                                      {step.label}:
+                                    </span>
+                                    <span>{step.content}</span>
+                                  </li>
+                                ))}
+                              </ol>
+                            )}
+                          </>
+                        );
+                      }
+
+                      // Regular answer without steps
+                      return (
+                        <p className="whitespace-pre-line">{item.answer}</p>
+                      );
+                    })()}
+                  </div>
                 </AccordionContent>
               </AccordionItem>
             ))}

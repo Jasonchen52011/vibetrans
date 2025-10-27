@@ -1,12 +1,9 @@
 'use client';
 
-import { LoginWrapper } from '@/components/auth/login-wrapper';
 import Container from '@/components/layout/container';
 import { Logo } from '@/components/layout/logo';
 import { ModeSwitcher } from '@/components/layout/mode-switcher';
 import { NavbarMobile } from '@/components/layout/navbar-mobile';
-import { UserButton } from '@/components/layout/user-button';
-import { Button, buttonVariants } from '@/components/ui/button';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -19,13 +16,10 @@ import {
 import { useNavbarLinks } from '@/config/navbar-config';
 import { useScroll } from '@/hooks/use-scroll';
 import { LocaleLink, useLocalePathname } from '@/i18n/navigation';
-import { authClient } from '@/lib/auth-client';
 import { cn } from '@/lib/utils';
-import { Routes } from '@/routes';
 import { ArrowUpRightIcon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
-import { Skeleton } from '../ui/skeleton';
 import LocaleSwitcher from './locale-switcher';
 
 interface NavBarProps {
@@ -47,9 +41,6 @@ export function Navbar({ scroll }: NavBarProps) {
   const menuLinks = useNavbarLinks();
   const localePathname = useLocalePathname();
   const [mounted, setMounted] = useState(false);
-  const { data: session, isPending } = authClient.useSession();
-  const currentUser = session?.user;
-  // console.log(`Navbar, user:`, user);
 
   useEffect(() => {
     setMounted(true);
@@ -61,16 +52,16 @@ export function Navbar({ scroll }: NavBarProps) {
         'sticky inset-x-0 top-0 z-40 py-4 transition-all duration-300',
         scroll
           ? scrolled
-            ? 'bg-muted/50 backdrop-blur-md border-b supports-backdrop-filter:bg-muted/50'
+            ? 'bg-white/80 dark:bg-black/80 backdrop-blur-lg border-b border-gray-200/50 dark:border-gray-700/50 shadow-sm'
             : 'bg-transparent'
-          : 'border-b bg-muted/50'
+          : 'bg-transparent'
       )}
     >
       <Container className="px-4">
         {/* desktop navbar */}
-        <nav className="hidden lg:flex">
+        <nav className="hidden lg:flex lg:items-center lg:w-full">
           {/* logo and name */}
-          <div className="flex items-center">
+          <div className="flex items-center mr-8">
             <LocaleLink href="/" className="flex items-center space-x-2">
               <Logo />
               <span className="text-xl font-semibold">
@@ -80,7 +71,7 @@ export function Navbar({ scroll }: NavBarProps) {
           </div>
 
           {/* menu links */}
-          <div className="flex-1 flex items-center justify-center space-x-2">
+          <div className="flex items-center space-x-2 flex-1">
             <NavigationMenu className="relative">
               <NavigationMenuList className="flex items-center">
                 {menuLinks?.map((item, index) =>
@@ -101,7 +92,14 @@ export function Navbar({ scroll }: NavBarProps) {
                         {item.title}
                       </NavigationMenuTrigger>
                       <NavigationMenuContent>
-                        <ul className="grid w-[400px] gap-4 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                        <ul
+                          className={cn(
+                            'grid gap-2 p-3',
+                            item.items && item.items.length === 1
+                              ? 'w-[280px]'
+                              : 'w-[500px] md:w-[700px] md:grid-cols-3 lg:w-[900px] lg:grid-cols-4'
+                          )}
+                        >
                           {item.items?.map((subItem, subIndex) => {
                             const isSubItemActive =
                               subItem.href &&
@@ -120,8 +118,8 @@ export function Navbar({ scroll }: NavBarProps) {
                                         : undefined
                                     }
                                     className={cn(
-                                      'group flex select-none flex-row items-center gap-4 rounded-md',
-                                      'p-2 leading-none no-underline outline-hidden transition-colors',
+                                      'group flex select-none flex-row items-center gap-3 rounded-md',
+                                      'p-1.5 leading-none no-underline outline-hidden transition-colors',
                                       'hover:bg-accent hover:text-accent-foreground',
                                       'focus:bg-accent focus:text-accent-foreground',
                                       isSubItemActive &&
@@ -215,43 +213,10 @@ export function Navbar({ scroll }: NavBarProps) {
             </NavigationMenu>
           </div>
 
-          {/* navbar right show sign in or user */}
-          <div className="flex items-center gap-x-4">
-            {!mounted || isPending ? (
-              <Skeleton className="size-8 border rounded-full" />
-            ) : currentUser ? (
-              <>
-                {/* <CreditsBalanceButton /> */}
-                <UserButton user={currentUser} />
-              </>
-            ) : (
-              <div className="flex items-center gap-x-4">
-                <LoginWrapper mode="modal" asChild>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="cursor-pointer"
-                  >
-                    {t('Common.login')}
-                  </Button>
-                </LoginWrapper>
-
-                <LocaleLink
-                  href={Routes.Register}
-                  className={cn(
-                    buttonVariants({
-                      variant: 'default',
-                      size: 'sm',
-                    })
-                  )}
-                >
-                  {t('Common.signUp')}
-                </LocaleLink>
-              </div>
-            )}
-
+          {/* navbar right - only theme switcher */}
+          <div className="flex items-center gap-x-4 ml-auto">
             <ModeSwitcher />
-            <LocaleSwitcher />
+            {/* <LocaleSwitcher /> */}
           </div>
         </nav>
 

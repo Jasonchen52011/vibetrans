@@ -1,0 +1,35 @@
+# Cloudflare Pages ignore file
+# Exclude files that should not be uploaded to Cloudflare
+
+# Next.js build artifacts (OpenNext creates its own in .open-next)
+.next/
+out/
+
+# Dependencies
+node_modules/
+
+# Development files
+.env*
+!.env.example
+
+# Git
+.git/
+.gitignore
+
+# Logs
+*.log
+
+# Cache
+.cache/
+
+# IDE
+.vscode/
+.idea/
+
+# Testing
+coverage/
+.nyc_output/
+
+# Misc
+.DS_Store
+*.pem

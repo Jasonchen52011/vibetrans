@@ -1,0 +1,232 @@
+{
+  "EnglishToPersianTranslatorPage": {
+    "title": "English To Persian Translator",
+    "description": "Translate text from English to Persian instantly with our free online tool. Fast, accurate, and easy to use.",
+    "hero": {
+      "title": "English To Persian Translator",
+      "description": "Transform your English text into Persian with our advanced translation tool. Fast, accurate, and completely free."
+    },
+    "ctaButton": "Try English To Persian Translator Now",
+    "tool": {
+      "inputLabel": "English Text",
+      "outputLabel": "Persian Translation",
+      "inputPlaceholder": "Enter your English text here...",
+      "outputPlaceholder": "Persian translation will appear here...",
+      "translateButton": "Translate to Persian",
+      "uploadButton": "Upload File",
+      "uploadHint": "Supports .txt and .docx files",
+      "loading": "Translating...",
+      "error": "Translation failed. Please try again.",
+      "noInput": "Please enter some English text to translate."
+    },
+    "whatIs": {
+      "title": "What is English To Persian Translator?",
+      "description": "Our English to Persian Translator is a powerful AI-powered tool that helps you translate text, documents, and conversations from English to Persian with high accuracy and natural language flow.",
+      "image": "/images/docs/what-is-english-to-persian-translator.webp",
+      "imageAlt": "What is English to Persian Translator"
+    },
+    "examples": {
+      "title": "Translation Examples",
+      "description": "See how our translator works with real examples",
+      "items": [
+        {
+          "before": "Hello, how are you today?",
+          "after": "سلام، امروز حال شما چطور است؟",
+          "alt": "English to Persian greeting example"
+        },
+        {
+          "before": "I would like to schedule a business meeting for next week.",
+          "after": "می‌خواهم برای هفته آینده یک جلسه کاری ترتیب دهم.",
+          "alt": "English to Persian business example"
+        },
+        {
+          "before": "The research demonstrates significant findings in this field.",
+          "after": "تحقیقات نتایج قابل توجهی را در این زمینه نشان می‌دهد.",
+          "alt": "English to Persian academic example"
+        },
+        {
+          "before": "Thank you for your wonderful hospitality!",
+          "after": "از مهمان‌نوازی فوق‌العاده شما متشکرم!",
+          "alt": "English to Persian casual example"
+        },
+        {
+          "before": "The artificial intelligence algorithm processes data efficiently.",
+          "after": "الگوریتم هوش مصنوعی داده‌ها را به طور کارآمد پردازش می‌کند.",
+          "alt": "English to Persian technical example"
+        },
+        {
+          "before": "Poetry is the rhythmical creation of beauty in words.",
+          "after": "شعر آفرینش ریتمیک زیبایی در کلمات است.",
+          "alt": "English to Persian literary example"
+        }
+      ]
+    },
+    "howto": {
+      "title": "How to Use English To Persian Translator",
+      "description": "Follow these simple steps to translate your English text to Persian",
+      "image": "/images/docs/english-to-persian-translator-how-to.webp",
+      "imageAlt": "How to use English to Persian Translator",
+      "steps": [
+        {
+          "title": "Enter English Text",
+          "description": "Type or paste your English text in the input area"
+        },
+        {
+          "title": "Click Translate",
+          "description": "Press the translate button to start the translation"
+        },
+        {
+          "title": "Get Persian Result",
+          "description": "View your accurate Persian translation instantly"
+        },
+        {
+          "title": "Copy or Download",
+          "description": "Save your Persian translation for later use"
+        }
+      ]
+    },
+    "highlights": {
+      "title": "Why Choose Our English To Persian Translator?",
+      "description": "The best features for your English to Persian translation needs",
+      "features": [
+        {
+          "title": "High Accuracy",
+          "description": "Advanced AI ensures precise and natural Persian translations",
+          "icon": "FaBrain"
+        },
+        {
+          "title": "Lightning Fast",
+          "description": "Get instant translations in seconds, not minutes",
+          "icon": "FaRocket"
+        },
+        {
+          "title": "Secure & Private",
+          "description": "Your data is encrypted and never stored on our servers",
+          "icon": "FaShieldAlt"
+        },
+        {
+          "title": "Completely Free",
+          "description": "No registration or payment required - translate freely",
+          "icon": "FaHeart"
+        }
+      ]
+    },
+    "funFacts": {
+      "title": "Interesting Facts About Persian Language",
+      "items": [
+        {
+          "title": "Rich Literary Heritage",
+          "description": "Persian (Farsi) has a literary history spanning over 2,500 years, with renowned poets like Rumi and Hafez shaping world literature.",
+          "image": {
+            "src": "/images/docs/english-to-persian-translator-fact-1.webp",
+            "alt": "Persian literary heritage with ancient manuscripts and poetry"
+          }
+        },
+        {
+          "title": "Widely Spoken Language",
+          "description": "Over 110 million people speak Persian worldwide, making it one of the most significant languages in the Middle East and Central Asia.",
+          "image": {
+            "src": "/images/docs/english-to-persian-translator-fact-2.webp",
+            "alt": "Map showing Persian language distribution across Middle East and Central Asia"
+          }
+        }
+      ]
+    },
+    "userInterest": {
+      "title": "Discover More About Persian Translation",
+      "items": [
+        {
+          "title": "Business Communication",
+          "description": "Break down language barriers in international business with accurate English to Persian translations for contracts, emails, and presentations.",
+          "image": {
+            "src": "/images/docs/english-to-persian-translator-interest-1.webp",
+            "alt": "Business professionals using Persian translation for international communication"
+          }
+        },
+        {
+          "title": "Academic Research",
+          "description": "Access Persian academic resources and share your research with Persian-speaking scholars using our reliable translation tool.",
+          "image": {
+            "src": "/images/docs/english-to-persian-translator-interest-2.webp",
+            "alt": "Academic researchers translating Persian scholarly content"
+          }
+        },
+        {
+          "title": "Cultural Exchange",
+          "description": "Explore Persian literature, poetry, and cultural content by translating English works into beautiful, natural-sounding Persian.",
+          "image": {
+            "src": "/images/docs/english-to-persian-translator-interest-3.webp",
+            "alt": "Cultural exchange through Persian literature and poetry translation"
+          }
+        },
+        {
+          "title": "Travel Preparation",
+          "description": "Prepare for your trip to Iran, Afghanistan, or Tajikistan by learning key phrases and understanding local culture through translation.",
+          "image": {
+            "src": "/images/docs/english-to-persian-translator-interest-4.webp",
+            "alt": "Travelers using Persian translation for cultural preparation"
+          }
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "What Our Users Say",
+      "subtitle": "Stories from Teams Using VibeTrans for Persian Translation",
+      "items": {
+        "item-1": {
+          "name": "Sarah Johnson",
+          "role": "Business Consultant",
+          "heading": "Essential for My Work",
+          "content": "This English to Persian translator has been invaluable for my consulting work with Iranian clients. The translations are accurate and natural.",
+          "rating": "4.9"
+        },
+        "item-2": {
+          "name": "Mohammad Rezaei",
+          "role": "Student",
+          "heading": "Perfect for Studies",
+          "content": "As a Persian student studying abroad, this tool helps me communicate with family and access Persian content easily.",
+          "rating": "4.8"
+        },
+        "item-3": {
+          "name": "Emily Chen",
+          "role": "Researcher",
+          "heading": "Academic Excellence",
+          "content": "I use this translator for my research on Persian literature. The quality of translations helps me understand nuanced texts better.",
+          "rating": "4.7"
+        }
+      }
+    },
+    "faqs": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Quick answers about English to Persian translation",
+      "items": {
+        "item-1": {
+          "question": "Is this English to Persian translator completely free?",
+          "answer": "Yes, our English to Persian translator is completely free to use with no hidden charges, registration requirements, or usage limits."
+        },
+        "item-2": {
+          "question": "How accurate is the English to Persian translation?",
+          "answer": "Our translator uses advanced AI technology to provide highly accurate translations that capture the meaning, tone, and cultural context of the original text."
+        },
+        "item-3": {
+          "question": "Can I translate documents from English to Persian?",
+          "answer": "Yes! You can upload .txt and .docx files for direct translation from English to Persian, making it easy to translate longer texts and documents."
+        },
+        "item-4": {
+          "question": "What Persian dialect does this translator use?",
+          "answer": "Our translator primarily uses standard Iranian Persian (Farsi), which is widely understood across Persian-speaking regions including Iran, Afghanistan, and Tajikistan."
+        },
+        "item-5": {
+          "question": "Is my data secure when using this translator?",
+          "answer": "Absolutely. We use secure encryption for all translations and don't store your text on our servers. Your privacy and data security are our top priorities."
+        }
+      }
+    },
+    "cta": {
+      "title": "Ready to Translate English to Persian?",
+      "description": "Start translating your English text to Persian now - it only takes seconds!",
+      "button": "Get Started Free",
+      "primaryButton": "Start Translating Now"
+    }
+  }
+}

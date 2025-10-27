@@ -1,4 +1,5 @@
-import { randomUUID } from 'crypto';
+// Use Web Crypto API for Edge Runtime compatibility
+const randomUUID = () => crypto.randomUUID();
 import { s3mini } from 's3mini';
 import { storageConfig } from '../config/storage-config';
 import {
@@ -13,9 +14,6 @@ import {
 
 /**
  * Amazon S3 storage provider implementation using s3mini
- *
- * docs:
- * https://mksaas.com/docs/storage
  *
  * This provider works with Amazon S3 and compatible services like Cloudflare R2
  * using s3mini for better Cloudflare Workers compatibility

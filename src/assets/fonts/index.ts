@@ -1,15 +1,13 @@
-import {
-  Bricolage_Grotesque,
-  Noto_Sans,
-  Noto_Sans_Mono,
-  Noto_Serif,
-} from 'next/font/google';
+// import {
+//   Bricolage_Grotesque,
+//   Noto_Sans,
+//   Noto_Sans_Mono,
+//   Noto_Serif,
+// } from 'next/font/google';
+import localFont from 'next/font/local';
 
 /**
- * 1. Fonts Documentation
- * https://mksaas.com/docs/fonts
- *
- * 2. This file shows how to customize the font by using local font or google font
+ * This file shows how to customize the font by using local font or google font
  *
  * [1] use local font
  *
@@ -23,6 +21,29 @@ import {
 //   variable: '--font-bricolage-grotesque',
 // });
 
+// Satoshi font - local font
+export const fontSatoshi = localFont({
+  src: [
+    {
+      path: '../../fonts/satoshi-regular.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../../fonts/satoshi-medium.woff2',
+      weight: '500',
+      style: 'normal',
+    },
+    {
+      path: '../../fonts/satoshi-bold.woff2',
+      weight: '700',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-satoshi',
+  display: 'swap',
+});
+
 /**
  * [2] use google font
  *
@@ -33,33 +54,33 @@ import {
  * https://nextjs.org/docs/app/building-your-application/optimizing/fonts#google-fonts
  */
 // https://fonts.google.com/noto/specimen/Noto+Sans
-export const fontNotoSans = Noto_Sans({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-noto-sans',
-  weight: ['500', '600', '700'],
-});
+// export const fontNotoSans = Noto_Sans({
+//   subsets: ['latin'],
+//   display: 'swap',
+//   variable: '--font-noto-sans',
+//   weight: ['500', '600', '700'],
+// });
 
 // https://fonts.google.com/noto/specimen/Noto+Serif
-export const fontNotoSerif = Noto_Serif({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-noto-serif',
-  weight: ['400'],
-});
+// export const fontNotoSerif = Noto_Serif({
+//   subsets: ['latin'],
+//   display: 'swap',
+//   variable: '--font-noto-serif',
+//   weight: ['400'],
+// });
 
 // https://fonts.google.com/noto/specimen/Noto+Sans+Mono
-export const fontNotoSansMono = Noto_Sans_Mono({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-noto-sans-mono',
-  weight: ['400'],
-});
+// export const fontNotoSansMono = Noto_Sans_Mono({
+//   subsets: ['latin'],
+//   display: 'swap',
+//   variable: '--font-noto-sans-mono',
+//   weight: ['400'],
+// });
 
 // https://fonts.google.com/specimen/Bricolage+Grotesque
-export const fontBricolageGrotesque = Bricolage_Grotesque({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-bricolage-grotesque',
-  weight: ['400', '500', '600', '700'],
-});
+// export const fontBricolageGrotesque = Bricolage_Grotesque({
+//   subsets: ['latin'],
+//   display: 'swap',
+//   variable: '--font-bricolage-grotesque',
+//   weight: ['400', '500', '600', '700'],
+// });

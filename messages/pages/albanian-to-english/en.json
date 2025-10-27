@@ -1,0 +1,247 @@
+{
+  "AlbanianToEnglishPage": {
+    "title": "Albanian to English Translator – Free & Accurate Translation",
+    "description": "Translate Albanian to English instantly with VibeTrans. Free, accurate tool for text, voice, and documents. Perfect for travelers, students, and professionals.",
+    "hero": {
+      "title": "Professional Albanian to English Translator – Instant & Accurate Results",
+      "description": "Get the best Albanian to English translator with VibeTrans. Translate Albanian text, voice, and documents to English instantly. Whether you're traveling, learning, or working, get accurate translations in seconds.",
+      "primaryButton": "Try Now",
+      "secondaryButton": "Learn More"
+    },
+    "tool": {
+      "inputLabel": "Albanian",
+      "outputLabel": "English",
+      "inputPlaceholder": "Enter Albanian text or upload a file...",
+      "outputPlaceholder": "English translation will appear here",
+      "translateButton": "Translate",
+      "uploadButton": "Upload File",
+      "uploadHint": "Supports .txt, .docx files",
+      "recordButton": "Record Audio",
+      "loading": "Translating...",
+      "error": "Translation failed. Please try again.",
+      "noInput": "Please enter text to translate",
+      "downloadButton": "Download",
+      "resetButton": "Reset",
+      "copyTooltip": "Copy",
+      "downloadTooltip": "Download",
+      "resetTooltip": "Reset",
+      "albanianLabel": "Albanian",
+      "albanianPlaceholder": "Type Albanian text here...",
+      "removeFileTooltip": "Remove file",
+      "removeRecordingTooltip": "Remove recording",
+      "toggleModeTooltip": "Toggle translation mode",
+      "toggleDirectionTooltip": "Toggle translation direction",
+      "copyResultTooltip": "Copy result",
+      "downloadResultTooltip": "Download result",
+      "playSoundTooltip": "Play sound",
+      "englishLabel": "English"
+    },
+    "whatIs": {
+      "title": "The Ultimate Albanian to English Translation Solution",
+      "description": "Albanian to English Translator by VibeTrans is an AI-powered tool that instantly translates Albanian text, voice, and documents into English. With advanced machine learning algorithms, it provides accurate, context-aware translations for everyday phrases, business communications, and academic texts. Whether you're exploring Albania's rich cultural heritage, communicating with Albanian-speaking colleagues, or learning the language, this free tool makes translation effortless."
+    },
+    "examples": {
+      "title": "Real-World Albanian to English Translation Examples",
+      "description": "Explore practical translation examples with detailed explanations. See how VibeTrans accurately translates Albanian phrases while preserving meaning and context.",
+      "items": [
+        {
+          "alt": "Albanian: 'Tavë kosi është një nga pjatat më të njohura tradicionale shqiptare'\n\nEnglish: 'Tavë kosi is one of the most famous traditional Albanian dishes'\n\nExplanation: This translation demonstrates proper handling of Albanian articles and superlatives. The definite article 'të' before 'njohura' (famous) is correctly rendered. The phrase 'pjatat tradicionale shqiptare' follows Albanian's adjective-after-noun structure, which we naturally reorder to English's adjective-before-noun pattern.",
+          "name": "Restaurant Menu Translation"
+        },
+        {
+          "alt": "Albanian: 'Jemi të nderuar të bashkëpunojmë me kompaninë tuaj dhe shpresojmë në një partneritet të suksesshëm afatgjatë'\n\nEnglish: 'We are honored to cooperate with your company and hope for a successful long-term partnership'\n\nExplanation: This formal business phrase requires capturing the respectful tone. 'Të nderuar' (honored) uses the Albanian passive participle construction. The phrase 'partneritet të suksesshëm afatgjatë' demonstrates Albanian's postpositive definite article and compound adjective structure, which we preserve as 'successful long-term partnership' in English.",
+          "name": "Business Email Translation"
+        },
+        {
+          "alt": "Albanian: 'Gjuha shqipe është një gjuhë e veçantë indoeuropiane me histori të pasur që shtrihet për mijëra vjet'\n\nEnglish: 'The Albanian language is a unique Indo-European language with a rich history spanning thousands of years'\n\nExplanation: This academic sentence contains complex grammatical structures. 'E veçantë' (unique) uses the feminine singular agreement marker 'e'. The relative clause 'që shtrihet për mijëra vjet' (that spans thousands of years) is correctly translated with the present tense verb form, maintaining the continuous aspect of Albanian.",
+          "name": "Academic Text Translation"
+        },
+        {
+          "alt": "Albanian: 'Kthehuni majtas te kryqëzimi, pastaj vazhdoni drejt për 200 metra dhe do ta gjeni muzeun në krahun e djathtë'\n\nEnglish: 'Turn left at the intersection, then continue straight for 200 meters and you will find the museum on the right side'\n\nExplanation: This directional phrase uses Albanian's imperative mood. 'Kthehuni' is the reflexive imperative form (turn yourself). The future construction 'do ta gjeni' combines the future particle 'do' with the clitic pronoun 'ta' and verb 'gjeni', translated as 'you will find'. Note how 'krahun e djathtë' (right side) uses the definite accusative case.",
+          "name": "Street Direction Translation"
+        },
+        {
+          "alt": "Albanian: 'Na mungoni shumë dhe shpresojmë të vini së shpejti për të vizituar familjen. Gjithmonë jeni në mendimet dhe zemrat tona'\n\nEnglish: 'We miss you very much and hope you come soon to visit the family. You are always in our thoughts and hearts'\n\nExplanation: This emotional family message demonstrates Albanian's dative pronoun usage. 'Na mungoni' literally means 'you are lacking to us' but translates naturally as 'we miss you'. The subjunctive 'të vini' (that you come) after 'shpresojmë' (we hope) shows Albanian's subjunctive mood. The possessive 'tona' (our) agrees with the plural nouns 'mendimet dhe zemrat' (thoughts and hearts).",
+          "name": "Family Message Translation"
+        },
+        {
+          "alt": "Albanian: 'Shqipëria ka një trashëgimi kulturore të pasur që përfshin ndikime ilire, romake, bizantine dhe osmane, duke krijuar një identitet unik ballkanik'\n\nEnglish: 'Albania has a rich cultural heritage that includes Illyrian, Roman, Byzantine and Ottoman influences, creating a unique Balkan identity'\n\nExplanation: This historical text uses the gerund construction 'duke krijuar' (creating), which expresses simultaneous action. The phrase 'trashëgimi kulturore të pasur' shows Albanian's postpositive adjective placement with definite article 'të'. The list of influences 'ilire, romake, bizantine dhe osmane' maintains parallel structure with Albanian's adjectival endings agreeing with the feminine plural 'ndikime' (influences).",
+          "name": "Historical Document Translation"
+        }
+      ]
+    },
+    "howto": {
+      "title": "How to Translate Albanian to English",
+      "description": "Translate Albanian to English in four simple steps. Get instant, accurate results.",
+      "steps": [
+        {
+          "title": "Enter Albanian Text",
+          "description": "Type, paste, or upload your Albanian text. VibeTrans supports various file formats including documents and voice recordings for maximum convenience.",
+          "wordCount": 16
+        },
+        {
+          "title": "Select Translation Options",
+          "description": "Choose your preferred translation mode. You can translate text instantly, upload documents for batch processing, or use voice input for spoken Albanian.",
+          "wordCount": 17
+        },
+        {
+          "title": "Click Translate Button",
+          "description": "Press the translate button and let VibeTrans's AI process your content. Advanced algorithms analyze context, grammar, and idiomatic expressions to deliver accurate English translations instantly.",
+          "wordCount": 20
+        },
+        {
+          "title": "Review and Use Results",
+          "description": "Get your English translation immediately. Copy the text, save the translated document from your browser, or listen to pronunciation. VibeTrans maintains formatting and provides contextual notes when needed.",
+          "wordCount": 18
+        }
+      ]
+    },
+    "userInterest": {
+      "title": "Why Use Albanian English Translator",
+      "subtitle": "Discover More About Albanian Language",
+      "description": "Explore unique features and cultural insights",
+      "items": [
+        {
+          "title": "Albanian Grammar and Structure",
+          "description": "Albanian grammar features five noun cases and complex verb conjugations that challenge learners but create precise meaning. The language uses both definite and indefinite articles, with the definite article appearing as a suffix (like 'libri' meaning 'the book'). VibeTrans understands these grammatical nuances, ensuring translations maintain proper case usage and verb agreements. Word order is relatively flexible, allowing emphasis through position changes, which our AI accurately interprets to preserve the original meaning and tone in English translations."
+        },
+        {
+          "title": "Albanian Cultural Expressions",
+          "description": "Albanian culture is rich with unique expressions and traditions that don't translate literally. Concepts like 'besa' (a sacred code of honor) and traditional greetings reflect deep cultural values. VibeTrans goes beyond word-for-word translation, capturing these cultural nuances and providing context notes when needed. From hospitality phrases to family-centered expressions, our tool helps you understand not just the words, but the cultural meaning behind them, making your interactions with Albanian speakers more authentic and respectful."
+        },
+        {
+          "title": "Learning Albanian Language",
+          "description": "Learning Albanian opens doors to understanding Balkan history, literature, and culture spanning millennia. The language offers insights into ancient Illyrian roots while connecting you to vibrant modern communities across Albania, Kosovo, North Macedonia, and diaspora worldwide. VibeTrans serves as your study companion, helping translate learning materials, practice conversations, and understand complex texts. Whether you're exploring Albanian poetry, following contemporary news, or preparing for travel, our translator accelerates your learning journey with accurate, contextual translations."
+        },
+        {
+          "title": "Albanian Business Communication",
+          "description": "Albania's growing economy and strategic Balkan location make Albanian valuable for international business. From tourism and energy sectors to IT and manufacturing, Albanian-English translation facilitates partnerships and market access. VibeTrans handles formal business correspondence, contracts, and professional communications with appropriate register and terminology. Our tool understands business context, ensuring your emails, proposals, and documents maintain professionalism while accurately conveying terms, agreements, and intentions essential for successful Albanian business relationships."
+        }
+      ]
+    },
+    "highlights": {
+      "title": "Academic Grade Albanian Translation: Essential Research Tool",
+      "description": "Discover what makes our tool unique",
+      "items": [
+        {
+          "title": "Completely Free Tool",
+          "description": "VibeTrans Albanian to English Translator is 100% free with no hidden costs, registration requirements, or usage limits. Translate unlimited text, documents, and voice recordings anytime."
+        },
+        {
+          "title": "Context-Aware AI",
+          "description": "Advanced AI understands Albanian grammar, idioms, and cultural context. VibeTrans delivers natural English translations that preserve meaning, tone, and nuance rather than literal word-for-word conversion."
+        },
+        {
+          "title": "Privacy Protected",
+          "description": "Your data security matters. VibeTrans processes translations locally when possible and never stores your content. GDPR compliant with encrypted connections ensures your Albanian communications remain confidential."
+        },
+        {
+          "title": "Multiple Input Methods",
+          "description": "Translate through text input, document upload, or voice recording. VibeTrans supports various file formats and audio inputs, adapting to your workflow and translation needs effortlessly."
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "What Users Say",
+      "items": {
+        "item-1": {
+          "name": "Maria Thompson",
+          "role": "Travel Blogger",
+          "heading": "Essential for Albanian Travel",
+          "content": "I spent three weeks exploring Albania from Tirana to Gjirokastër, and VibeTrans was indispensable. It helped me translate restaurant menus, chat with locals, and understand historical sites.",
+          "rating": "5.0"
+        },
+        "item-2": {
+          "name": "Robert Chen",
+          "role": "Import-Export Manager",
+          "heading": "Perfect for Business Needs",
+          "content": "Our company expanded operations to Albania, and VibeTrans became our go-to translation tool. From translating supplier contracts to understanding customs documentation, it handles business Albanian excellently. The context-aware translations maintain professional tone.",
+          "rating": "4.9"
+        },
+        "item-3": {
+          "name": "Elira Krasniqi",
+          "role": "University Student",
+          "heading": "Great for Academic Work",
+          "content": "As an Albanian immigrant studying in the US, VibeTrans helps me translate research papers and stay connected with Albanian academic resources. It accurately handles technical vocabulary and complex sentence structures.",
+          "rating": "4.7"
+        }
+      }
+    },
+    "faqs": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Have other questions? Feel free to contact us via email.",
+      "items": {
+        "item-1": {
+          "question": "What is the best albanian to english tool for accurate translations?",
+          "answer": "VibeTrans stands out as the best albanian to english translation tool due to its advanced AI algorithms specifically trained on Albanian-English language pairs. Our tool achieves exceptional accuracy by understanding Albanian's unique grammatical structures, including its five noun cases, complex verb conjugations, and definite article suffixes. Unlike generic translators, VibeTrans provides context-aware translations that preserve cultural nuances, idiomatic expressions, and formal business terminology. With free unlimited usage, document upload capabilities, and voice translation features, VibeTrans offers the most comprehensive solution for personal, academic, or professional Albanian-English translation needs."
+        },
+        "item-2": {
+          "question": "Is this Albanian to English Translator free?",
+          "answer": "Yes, VibeTrans Albanian to English Translator is completely free with no hidden charges, subscription fees, or usage limits. You can translate unlimited text, documents, and voice recordings anytime. We believe language should never be a barrier, so we provide this professional-grade translation tool at no cost to users worldwide, whether for personal, educational, or business purposes."
+        },
+        "item-3": {
+          "question": "How does VibeTrans handle our privacy?",
+          "answer": "Absolutely. VibeTrans prioritizes your privacy and data security. We use encrypted connections for all translations, process content locally when possible, and never store or share your translated text without consent. Our service is fully GDPR compliant, ensuring your Albanian communications—whether personal messages, business documents, or sensitive information—remain completely confidential and protected at all times."
+        },
+        "item-4": {
+          "question": "How do I use Albanian to English Translator?",
+          "answer": "Using VibeTrans Albanian to English Translator is simple: Step 1, enter your Albanian text by typing, pasting, or uploading files. Step 2, select your preferred translation mode—text, document, or voice input. Step 3, click the translate button for instant results. Step 4, review and use your English translation, with options to copy, save from browser, or listen to pronunciation. That's it!"
+        },
+        "item-5": {
+          "question": "Can I use VibeTrans for professional documents?",
+          "answer": "Absolutely! VibeTrans is designed to handle professional documents including business emails, legal texts, academic papers, and more. Our advanced AI maintains formal tone and technical accuracy."
+        },
+        "item-6": {
+          "question": "What file formats does VibeTrans support?",
+          "answer": "VibeTrans supports multiple file formats including .txt, .docx, .pdf, and more. You can also directly paste text into our interface for instant translation without file upload."
+        },
+        "item-7": {
+          "question": "How accurate is VibeTrans for Albanian dialects?",
+          "answer": "VibeTrans maintains high accuracy for both Gheg and Tosk Albanian dialects, recognizing key linguistic differences while providing standardized translations. Our AI is trained on diverse Albanian sources from different regions, ensuring accurate translation of dialectal expressions, regional vocabulary, and pronunciation variations. Whether you're translating content from northern Albania (Gheg) or southern regions (Tosk), VibeTrans delivers consistent, contextually appropriate English translations that preserve the original meaning while adapting to standard English usage."
+        }
+      }
+    },
+    "features": {
+      "title": "Core Features",
+      "subtitle": "An intelligent tool crafted for users.",
+      "items": {
+        "item-1": {
+          "title": "Completely Free Tool",
+          "description": "VibeTrans Albanian to English Translator is 100% free with no hidden costs, registration requirements, or usage limits. Translate unlimited text, documents, and voice recordings anytime."
+        },
+        "item-2": {
+          "title": "Context-Aware AI",
+          "description": "Advanced AI understands Albanian grammar, idioms, and cultural context. VibeTrans delivers natural English translations that preserve meaning, tone, and nuance rather than literal word-for-word conversion."
+        },
+        "item-3": {
+          "title": "Privacy Protected",
+          "description": "Your data security matters. VibeTrans processes translations locally when possible and never stores your content. GDPR compliant with encrypted connections ensures your Albanian communications remain confidential."
+        },
+        "item-4": {
+          "title": "Multiple Input Methods",
+          "description": "Translate through text input, document upload, or voice recording. VibeTrans supports various file formats and audio inputs, adapting to your workflow and translation needs effortlessly."
+        }
+      }
+    },
+    "ctaButton": "Try Albanian Translator Now",
+    "cta": {
+      "title": "Start Translating Albanian to English Today with VibeTrans",
+      "description": "Experience accurate, free Albanian translation instantly. Perfect for travel, business, learning, and staying connected with Albanian culture.",
+      "primaryButton": "Try Albanian Translator Now",
+      "secondaryButton": "Back to Top"
+    },
+    "funFacts": {
+      "title": "Albanian: Your Key to Unlocking Balkan Heritage",
+      "items": [
+        {
+          "title": "Albanian: Europe's Unique Language Branch",
+          "description": "Albanian forms its own distinct branch in the Indo-European language family, making it truly unique among European languages. With over 7 million speakers worldwide, it has preserved ancient linguistic features lost in other languages. The language uses 36 letters in its alphabet, including unique characters like 'ë' and 'ç', reflecting its rich phonetic system."
+        },
+        {
+          "title": "Two Dialects, One Nation",
+          "description": "Albanian has two main dialects: Gheg in the north and Tosk in the south, with the Shkumbin River forming a natural dividing line. Standard Albanian, based on Tosk, became official in 1972. Despite dialectal differences, speakers understand each other, showcasing the language's unity and Albania's cultural cohesion across regions."
+        }
+      ]
+    }
+  }
+}

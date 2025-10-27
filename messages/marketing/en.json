@@ -1,0 +1,362 @@
+{
+  "Marketing": {
+    "title": "VibeTrans - AI-Powered Translation Tools",
+    "description": "Advanced AI-powered tools for seamless language conversion",
+    "tagline": "Translate texts, slang, and even ancient languages effortlessly",
+    "navbar": {
+      "features": {
+        "title": "Features"
+      },
+      "pricing": {
+        "title": "Pricing"
+      },
+      "blog": {
+        "title": "Blog"
+      },
+      "docs": {
+        "title": "Docs"
+      },
+      "funTranslate": {
+        "title": "Fun Translate",
+        "languageTranslator": {
+          "title": "Language Translator"
+        },
+        "ai": {
+          "title": "AI Tools"
+        },
+        "pages": {
+          "title": "Pages"
+        },
+        "blocks": {
+          "title": "Blocks"
+        },
+        "items": {
+          "alienTextGenerator": {
+            "title": "Alien Text Generator",
+            "description": ""
+          },
+          "babyTranslator": {
+            "title": "Baby Translator",
+            "description": ""
+          },
+          "badTranslator": {
+            "title": "Bad Translator",
+            "description": ""
+          },
+          "dogTranslator": {
+            "title": "Dog Translator",
+            "description": ""
+          },
+          "dumbItDown": {
+            "title": "Dumb It Down AI",
+            "description": ""
+          },
+          "genAlphaTranslator": {
+            "title": "Gen Alpha Translator",
+            "description": ""
+          },
+          "genZTranslator": {
+            "title": "Gen Z Translator",
+            "description": ""
+          },
+          "gibberishTranslator": {
+            "title": "Gibberish Translator",
+            "description": ""
+          },
+          "pigLatinTranslator": {
+            "title": "Pig Latin Translator",
+            "description": ""
+          },
+          "verboseGenerator": {
+            "title": "Verbose Generator",
+            "description": ""
+          }
+        }
+      },
+      "home": "Home",
+      "about": "About",
+      "languageTranslator": {
+        "title": "Language Translator",
+        "items": {
+          "albanianToEnglish": {
+            "title": "Albanian To English",
+            "description": ""
+          },
+          "ancientGreekTranslator": {
+            "title": "Ancient Greek Translator",
+            "description": ""
+          },
+          "aramaicTranslator": {
+            "title": "Aramaic Translator",
+            "description": ""
+          },
+          "baybayinTranslator": {
+            "title": "Baybayin Translator",
+            "description": ""
+          },
+          "cantoneseTranslator": {
+            "title": "Cantonese Translator",
+            "description": ""
+          },
+          "chineseToEnglishTranslator": {
+            "title": "Chinese To English Translator",
+            "description": ""
+          },
+          "englishToChineseTranslator": {
+            "title": "English To Chinese Translator",
+            "description": ""
+          },
+          "creoleToEnglishTranslator": {
+            "title": "Creole To English Translator",
+            "description": ""
+          },
+          "cuneiformTranslator": {
+            "title": "Cuneiform Translator",
+            "description": ""
+          },
+          "englishToAmharicTranslator": {
+            "title": "English To Amharic Translator",
+            "description": ""
+          },
+          "esperantoTranslator": {
+            "title": "Esperanto Translator",
+            "description": ""
+          },
+          "greekTranslator": {
+            "title": "Greek Translator",
+            "description": ""
+          },
+          "mangaTranslator": {
+            "title": "Manga Translator",
+            "description": ""
+          },
+          "ivrTranslator": {
+            "title": "IVR Translator",
+            "description": ""
+          },
+          "middleEnglishTranslator": {
+            "title": "Middle English Translator",
+            "description": ""
+          },
+          "nahuatlTranslator": {
+            "title": "Nahuatl Translator",
+            "description": ""
+          },
+          "oghamTranslator": {
+            "title": "Ogham Translator",
+            "description": ""
+          },
+          "samoanToEnglishTranslator": {
+            "title": "Samoan To English Translator",
+            "description": ""
+          },
+          "swahiliToEnglishTranslator": {
+            "title": "Swahili To English Translator",
+            "description": ""
+          },
+          "teluguToEnglishTranslator": {
+            "title": "Telugu To English Translator",
+            "description": ""
+          },
+          "alBhedTranslator": {
+            "title": "Al Bhed Translator",
+            "description": ""
+          },
+          "drowTranslator": {
+            "title": "Drow Translator",
+            "description": ""
+          },
+          "gasterTranslator": {
+            "title": "Gaster Translator",
+            "description": ""
+          },
+          "highValyrianTranslator": {
+            "title": "High Valyrian Translator",
+            "description": ""
+          },
+          "mandalorianTranslator": {
+            "title": "Mandalorian Translator",
+            "description": ""
+          },
+          "minionTranslator": {
+            "title": "Minion Translator",
+            "description": ""
+          },
+          "runeTranslator": {
+            "title": "Rune Translator",
+            "description": ""
+          },
+          "runicTranslator": {
+            "title": "Runic Translator",
+            "description": ""
+          },
+          "wingdingsTranslator": {
+            "title": "Wingdings Translator",
+            "description": ""
+          },
+          "yodaTranslator": {
+            "title": "Yoda Translator",
+            "description": ""
+          },
+          "englishToPersianTranslator": {
+            "title": "English To Persian Translator",
+            "description": ""
+          },
+          "englishToPolishTranslator": {
+            "title": "English To Polish Translator",
+            "description": ""
+          },
+          "englishToSwahiliTranslator": {
+            "title": "English To Swahili Translator",
+            "description": ""
+          },
+          "japaneseToEnglishTranslator": {
+            "title": "Japanese To English Translator",
+            "description": ""
+          }
+        }
+      },
+      "gameTranslator": {
+        "title": "Game Translators",
+        "description": "Fantasy & game language translators",
+        "items": {
+          "alBhedTranslator": {
+            "title": "Albhedtranslator",
+            "description": ""
+          },
+          "drowTranslator": {
+            "title": "Drowtranslator",
+            "description": ""
+          },
+          "gasterTranslator": {
+            "title": "Gastertranslator",
+            "description": ""
+          },
+          "highValyrianTranslator": {
+            "title": "Highvalyriantranslator",
+            "description": ""
+          },
+          "mandalorianTranslator": {
+            "title": "Mandaloriantranslator",
+            "description": ""
+          },
+          "minionTranslator": {
+            "title": "Miniontranslator",
+            "description": ""
+          },
+          "runeTranslator": {
+            "title": "Runetranslator",
+            "description": ""
+          },
+          "runicTranslator": {
+            "title": "Runictranslator",
+            "description": ""
+          },
+          "wingdingsTranslator": {
+            "title": "Wingdingstranslator",
+            "description": ""
+          },
+          "yodaTranslator": {
+            "title": "Yodatranslator",
+            "description": ""
+          }
+        }
+      }
+    },
+    "footer": {
+      "tagline": "VibeTrans provides advanced AI-powered tools for seamless language conversion. Translate texts, slang, and even ancient languages effortlessly with VibeTrans.",
+      "funTranslate": {
+        "title": "Fun Translate",
+        "items": {
+          "dogTranslator": "Dog Translator",
+          "genZTranslator": "Gen Z Translator",
+          "genAlphaTranslator": "Gen Alpha Translator",
+          "dumbItDown": "Dumb It Down AI",
+          "badTranslator": "Bad Translator",
+          "babyTranslator": "Baby Translator",
+          "gibberishTranslator": "Gibberish Translator",
+          "alienTextGenerator": "Alien Text Generator",
+          "verboseGenerator": "Verbose Generator",
+          "pigLatinTranslator": "Pig Latin Translator"
+        }
+      },
+      "gameTranslator": {
+        "title": "Game Translator",
+        "items": {
+          "drowTranslator": "Drow Translator",
+          "runeTranslator": "Rune Translator",
+          "runicTranslator": "Runic Translator",
+          "yodaTranslator": "Yoda Translator",
+          "mandalorianTranslator": "Mandalorian Translator",
+          "minionTranslator": "Minion Translator",
+          "gasterTranslator": "Gaster Translator",
+          "wingdingsTranslator": "Wingdings Translator",
+          "highValyrianTranslator": "High Valyrian Translator",
+          "alBhedTranslator": "Al Bhed Translator"
+        }
+      },
+      "languageTranslator": {
+        "title": "Language Translator",
+        "items": {
+          "ancientGreekTranslator": "Ancient Greek Translator",
+          "greekTranslator": "Greek Translator",
+          "mangaTranslator": "Manga Translator",
+          "esperantoTranslator": "Esperanto Translator",
+          "cuneiformTranslator": "Cuneiform Translator",
+          "ivrTranslator": "IVR Translator",
+          "albanianToEnglish": "Albanian To English",
+          "creoleToEnglishTranslator": "Creole To English Translator",
+          "cantoneseTranslator": "Cantonese Translator",
+          "chineseToEnglishTranslator": "Chinese To English Translator",
+          "englishToChineseTranslator": "English To Chinese Translator",
+          "middleEnglishTranslator": "Middle English Translator",
+          "baybayinTranslator": "Baybayin Translator",
+          "oghamTranslator": "Ogham Translator",
+          "samoanToEnglishTranslator": "Samoan To English Translator",
+          "aramaicTranslator": "Aramaic Translator",
+          "nahuatlTranslator": "Nahuatl Translator",
+          "englishToSwahiliTranslator": "English To Swahili Translator",
+          "swahiliToEnglishTranslator": "Swahili To English Translator",
+          "englishToAmharicTranslator": "English To Amharic Translator",
+          "englishToPolishTranslator": "English To Polish Translator",
+          "teluguToEnglishTranslator": "Telugu To English Translator",
+          "englishToPersianTranslator": "English To Persian Translator",
+          "japaneseToEnglishTranslator": "Japanese To English Translator"
+        }
+      },
+      "product": {
+        "title": "Product",
+        "items": {
+          "features": "Features",
+          "pricing": "Pricing",
+          "faq": "FAQ"
+        }
+      },
+      "resources": {
+        "title": "Resources",
+        "items": {
+          "blog": "Blog",
+          "docs": "Documentation",
+          "changelog": "Changelog",
+          "roadmap": "Roadmap"
+        }
+      },
+      "company": {
+        "title": "Company",
+        "items": {
+          "about": "About",
+          "contact": "Contact",
+          "waitlist": "Waitlist"
+        }
+      },
+      "legal": {
+        "title": "Legal",
+        "items": {
+          "cookiePolicy": "Cookie Policy",
+          "privacyPolicy": "Privacy Policy",
+          "termsOfService": "Terms of Service"
+        }
+      }
+    }
+  }
+}

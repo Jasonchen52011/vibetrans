@@ -1,159 +1,234 @@
+'use client';
+
 import { HeaderSection } from '@/components/layout/header-section';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Card, CardContent } from '@/components/ui/card';
+import { Star } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
+import { TestimonialColumnContainer } from './testimonial-column-container';
 
 type Testimonial = {
   name: string;
   role: string;
-  image: string;
+  heading?: string;
   quote: string;
+  src: string;
+  rating?: number;
 };
 
-const chunkArray = (
-  array: Testimonial[],
-  chunkSize: number
-): Testimonial[][] => {
-  const result: Testimonial[][] = [];
-  for (let i = 0; i < array.length; i += chunkSize) {
-    result.push(array.slice(i, i + chunkSize));
+interface TestimonialsSectionProps {
+  namespace?: string;
+}
+
+export default function TestimonialsSection({
+  namespace = 'HomePage.testimonials',
+}: TestimonialsSectionProps = {}) {
+  // @ts-ignore - Dynamic namespace support
+  const t = useTranslations(namespace as any);
+
+  // Dynamically build testimonials array based on available items
+  const testimonials: Testimonial[] = [];
+
+  // Only attempt to load testimonials if the namespace has items
+  let hasItems = false;
+  try {
+    // @ts-ignore
+    const testCheck = t.raw('items');
+    hasItems = testCheck && typeof testCheck === 'object';
+  } catch {
+    hasItems = false;
   }
-  return result;
-};
 
-export default function TestimonialsSection() {
-  const t = useTranslations('HomePage.testimonials');
+  if (hasItems) {
+    // Get all available items to check how many exist
+    // @ts-ignore - Dynamic namespace support
+    const items = t.raw('items') as Record<string, any>;
+    const availableKeys = Object.keys(items).filter((key) =>
+      key.startsWith('item-')
+    );
 
-  const testimonials: Testimonial[] = [
-    {
-      name: t('items.item-1.name'),
-      role: t('items.item-1.role'),
-      image: t('items.item-1.image'),
-      quote: t('items.item-1.quote'),
-    },
-    {
-      name: t('items.item-2.name'),
-      role: t('items.item-2.role'),
-      image: t('items.item-2.image'),
-      quote: t('items.item-2.quote'),
-    },
-    {
-      name: t('items.item-3.name'),
-      role: t('items.item-3.role'),
-      image: t('items.item-3.image'),
-      quote: t('items.item-3.quote'),
-    },
-    {
-      name: t('items.item-4.name'),
-      role: t('items.item-4.role'),
-      image: t('items.item-4.image'),
-      quote: t('items.item-4.quote'),
-    },
-    {
-      name: t('items.item-5.name'),
-      role: t('items.item-5.role'),
-      image: t('items.item-5.image'),
-      quote: t('items.item-5.quote'),
-    },
-    {
-      name: t('items.item-6.name'),
-      role: t('items.item-6.role'),
-      image: t('items.item-6.image'),
-      quote: t('items.item-6.quote'),
-    },
-    {
-      name: t('items.item-7.name'),
-      role: t('items.item-7.role'),
-      image: t('items.item-7.image'),
-      quote: t('items.item-7.quote'),
-    },
-    {
-      name: t('items.item-8.name'),
-      role: t('items.item-8.role'),
-      image: t('items.item-8.image'),
-      quote: t('items.item-8.quote'),
-    },
-    {
-      name: t('items.item-9.name'),
-      role: t('items.item-9.role'),
-      image: t('items.item-9.image'),
-      quote: t('items.item-9.quote'),
-    },
-    {
-      name: t('items.item-10.name'),
-      role: t('items.item-10.role'),
-      image: t('items.item-10.image'),
-      quote: t('items.item-10.quote'),
-    },
-    {
-      name: t('items.item-11.name'),
-      role: t('items.item-11.role'),
-      image: t('items.item-11.image'),
-      quote: t('items.item-11.quote'),
-    },
-    {
-      name: t('items.item-12.name'),
-      role: t('items.item-12.role'),
-      image: t('items.item-12.image'),
-      quote: t('items.item-12.quote'),
-    },
-  ];
+    // Sort keys numerically (item-1, item-2, etc.)
+    availableKeys.sort((a, b) => {
+      const numA = Number.parseInt(a.split('-')[1]);
+      const numB = Number.parseInt(b.split('-')[1]);
+      return numA - numB;
+    });
 
-  const testimonialChunks = chunkArray(
-    testimonials,
-    Math.ceil(testimonials.length / 3)
-  );
+    for (const itemKey of availableKeys) {
+      try {
+        // @ts-ignore - Dynamic translation keys
+        const nameCheck = t(`items.${itemKey}.name`, { default: '' });
+
+        // If the translation doesn't exist, skip it
+        if (!nameCheck || nameCheck === '') {
+          continue;
+        }
+
+        // Now safely get all values
+        // @ts-ignore - Dynamic translation keys
+        const name = nameCheck;
+        // @ts-ignore - Dynamic translation keys
+        const role = t(`items.${itemKey}.role`);
+        // @ts-ignore - Dynamic translation keys
+        const heading = t(`items.${itemKey}.heading`, { default: '' });
+        // Filter out translation keys that weren't found
+        const headingValue =
+          heading && !heading.includes(`items.${itemKey}`) ? heading : '';
+        // @ts-ignore - Dynamic translation keys
+        const quote = t(`items.${itemKey}.content`);
+
+        // Use local avatar images to avoid duplicates
+        const avatarPool = [
+          '/images/avatars/male1.webp',
+          '/images/avatars/female1.webp',
+          '/images/avatars/male2.webp',
+          '/images/avatars/female2.webp',
+          '/images/avatars/male3.webp',
+          '/images/avatars/female3.webp',
+          '/images/avatars/male4.webp',
+          '/images/avatars/female4.webp',
+          '/images/avatars/male5.webp',
+        ];
+        const itemNumber = Number.parseInt(itemKey.split('-')[1]);
+        const avatarIndex = (itemNumber - 1) % avatarPool.length;
+
+        testimonials.push({
+          name,
+          role,
+          heading: headingValue || undefined,
+          quote,
+          src: avatarPool[avatarIndex],
+          rating: itemNumber % 2 === 0 ? 4.8 : 5.0,
+        });
+      } catch (error) {
+        // If translation doesn't exist, skip this item and continue
+        continue;
+      }
+    }
+  }
+
+  // If no testimonials found, don't render the section
+  if (testimonials.length === 0) {
+    return null;
+  }
+
+  // Note: MISSING_MESSAGE errors in development console are expected behavior
+  // when the loop checks for items beyond what's available in translations.
+  // This is harmless and allows flexible content without manual item counts.
+
+  // Dynamically split testimonials into 3 columns
+  const itemsPerColumn = Math.ceil(testimonials.length / 3);
+  const column1 = testimonials.slice(0, itemsPerColumn);
+  const column2 = testimonials.slice(itemsPerColumn, itemsPerColumn * 2);
+  const column3 = testimonials.slice(itemsPerColumn * 2);
 
   return (
-    <section id="testimonials" className="px-4 py-16">
-      <div className="mx-auto max-w-6xl">
-        <HeaderSection
-          title={t('title')}
-          titleAs="h2"
-          subtitle={t('subtitle')}
-          subtitleAs="p"
-        />
+    <section id="testimonials" className="relative z-20 py-10 md:py-20">
+      <div className="mx-auto max-w-7xl px-4">
+        {/* @ts-ignore - Dynamic namespace support */}
 
-        <div className="mt-8 grid gap-3 sm:grid-cols-2 md:mt-12 lg:grid-cols-3">
-          {testimonialChunks.map((chunk, chunkIndex) => (
-            <div key={chunkIndex} className="space-y-3">
-              {chunk.map(({ name, role, quote, image }, index) => (
-                <Card
-                  key={index}
-                  className="shadow-none bg-transparent hover:bg-accent dark:hover:bg-card"
-                >
-                  <CardContent className="grid grid-cols-[auto_1fr] gap-3 pt-4">
-                    <Avatar className="size-9 border-2 border-gray-200">
-                      <AvatarImage
-                        alt={name}
-                        src={image}
-                        loading="lazy"
-                        width="120"
-                        height="120"
-                      />
-                      <AvatarFallback />
-                    </Avatar>
+        <div className="relative -mx-4 mt-16 grid h-[49rem] max-h-[150vh] grid-cols-1 items-start gap-4 overflow-hidden px-4 sm:mt-20 md:grid-cols-2 lg:grid-cols-3">
+          {/* Column 1 */}
+          <TestimonialColumnContainer shift={10}>
+            {[...column1, ...column1].map((testimonial, index) => (
+              <TestimonialCard key={index} testimonial={testimonial} />
+            ))}
+          </TestimonialColumnContainer>
 
-                    <div>
-                      <h3 className="font-medium">{name}</h3>
+          {/* Column 2 - Hidden on mobile */}
+          <TestimonialColumnContainer className="hidden md:block" shift={15}>
+            {[...column2, ...column2].map((testimonial, index) => (
+              <TestimonialCard key={index} testimonial={testimonial} />
+            ))}
+          </TestimonialColumnContainer>
 
-                      <span className="text-muted-foreground block text-sm tracking-wide">
-                        {role}
-                      </span>
+          {/* Column 3 - Hidden on mobile and tablet */}
+          <TestimonialColumnContainer className="hidden lg:block" shift={10}>
+            {[...column3, ...column3].map((testimonial, index) => (
+              <TestimonialCard key={index} testimonial={testimonial} />
+            ))}
+          </TestimonialColumnContainer>
 
-                      <blockquote className="mt-3">
-                        <p className="text-gray-700 dark:text-gray-300">
-                          {quote}
-                        </p>
-                      </blockquote>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          ))}
+          {/* Gradient overlays */}
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-background" />
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-background" />
         </div>
       </div>
     </section>
+  );
+}
+
+function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
+  const rating = testimonial.rating || 5.0;
+  const isHalfStar = rating < 5.0;
+
+  return (
+    <figure className="rounded-3xl bg-card p-6 shadow-lg border border-border dark:bg-neutral-900">
+      <div className="flex flex-col items-start">
+        {/* Star Rating - 大星星 + 评分 */}
+        <div className="flex items-center gap-2 mb-4">
+          {[...Array(4)].map((_, i) => (
+            <svg
+              key={i}
+              className="w-8 h-8 text-yellow-400"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+          ))}
+          {isHalfStar ? (
+            <svg className="w-8 h-8 text-yellow-400" viewBox="0 0 20 20">
+              <defs>
+                <linearGradient id={`half-${rating}`}>
+                  <stop offset="50%" stopColor="currentColor" />
+                  <stop offset="50%" stopColor="transparent" />
+                </linearGradient>
+              </defs>
+              <path
+                fill={`url(#half-${rating})`}
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+              />
+              <path
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1"
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+              />
+            </svg>
+          ) : (
+            <svg
+              className="w-8 h-8 text-yellow-400"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+          )}
+          <span className="text-base font-semibold text-foreground ml-1">
+            {rating.toFixed(1)}
+          </span>
+        </div>
+
+        {/* 小标题（如果有） */}
+        {testimonial.heading && (
+          <h3 className="text-lg font-semibold text-foreground mb-3 before:content-['\201C'] after:content-['\201D']">
+            {testimonial.heading}
+          </h3>
+        )}
+
+        {/* 评论内容 */}
+        <p className="text-base text-muted-foreground mb-4">
+          {testimonial.quote}
+        </p>
+
+        {/* 作者信息 - 去掉分隔线 */}
+        <div className="mt-auto pt-3 w-full">
+          <p className="text-sm text-foreground font-medium">
+            {testimonial.name}
+          </p>
+          <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+        </div>
+      </div>
+    </figure>
   );
 }

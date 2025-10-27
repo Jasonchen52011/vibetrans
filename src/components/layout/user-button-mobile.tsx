@@ -13,7 +13,7 @@ import {
 import { useAvatarLinks } from '@/config/avatar-config';
 import { LocaleLink, useLocaleRouter } from '@/i18n/navigation';
 import { authClient } from '@/lib/auth-client';
-import type { User } from 'better-auth';
+import type { User } from '@supabase/supabase-js';
 import { LogOutIcon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
@@ -33,27 +33,26 @@ export function UserButtonMobile({ user }: UserButtonProps) {
   };
 
   const handleSignOut = async () => {
-    await authClient.signOut({
-      fetchOptions: {
-        onSuccess: () => {
-          console.log('sign out success');
-          // TanStack Query automatically handles cache invalidation on sign out
-          localeRouter.replace('/');
-        },
-        onError: (error) => {
-          console.error('sign out error:', error);
-          toast.error(t('Common.logoutFailed'));
-        },
-      },
-    });
+    try {
+      await authClient.signOut();
+      console.log('sign out success');
+      localeRouter.replace('/');
+    } catch (error) {
+      console.error('sign out error:', error);
+      toast.error(t('Common.logoutFailed'));
+    }
   };
 
   return (
     <Drawer open={open} onClose={closeDrawer}>
       <DrawerTrigger onClick={() => setOpen(true)}>
         <UserAvatar
-          name={user.name}
-          image={user.image}
+          name={user.user_metadata?.name || user.email || ''}
+          image={
+            user.user_metadata?.avatar_url ||
+            user.user_metadata?.picture ||
+            undefined
+          }
           className="size-8 border cursor-pointer"
         />
       </DrawerTrigger>
@@ -68,12 +67,18 @@ export function UserButtonMobile({ user }: UserButtonProps) {
           </DrawerHeader>
           <div className="flex items-center justify-start gap-4 p-2">
             <UserAvatar
-              name={user.name}
-              image={user.image}
+              name={user.user_metadata?.name || user.email || ''}
+              image={
+                user.user_metadata?.avatar_url ||
+                user.user_metadata?.picture ||
+                undefined
+              }
               className="size-8 border cursor-pointer"
             />
             <div className="flex flex-col">
-              <p className="font-medium">{user.name}</p>
+              <p className="font-medium">
+                {user.user_metadata?.name || user.email || ''}
+              </p>
               <p className="w-[200px] truncate text-muted-foreground">
                 {user.email}
               </p>

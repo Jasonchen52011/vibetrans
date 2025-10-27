@@ -1,0 +1,170 @@
+{
+  "MandalorianTranslatorPage": {
+    "title": "曼达洛语翻译器中心 - 精准的Mando'a翻译",
+    "description": "发现曼达洛语翻译器中心，提供即时精准的英语到Mando'a翻译，支持语音输入和音频播放。",
+    "hero": {
+      "title": "英语到Mando'a曼达洛语翻译器中心",
+      "description": "体验最佳的曼达洛语文本和语音翻译器，提供无缝的英语到Mando'a转换。"
+    },
+    "ctaButton": "立即尝试曼达洛语翻译器",
+    "tool": {
+      "inputLabel": "输入文本",
+      "outputLabel": "翻译文本",
+      "inputPlaceholder": "在此输入您的英语文本...",
+      "outputPlaceholder": "翻译将在此处显示...",
+      "translateButton": "翻译",
+      "uploadButton": "上传文件",
+      "uploadHint": "支持 .txt 和 .docx 文件",
+      "loading": "翻译中...",
+      "error": "翻译失败，请重试。",
+      "noInput": "请输入要翻译的文本。"
+    },
+    "whatIs": {
+      "title": "什么是曼达洛语翻译器中心？",
+      "description": "曼达洛语翻译器中心是一个基于网络工具，用于将英语文本和语音翻译成Mando'a，提供准确的翻译结果和音频播放功能。非常适合《星球大战》粉丝和语言爱好者。",
+      "image": "/images/docs/what-is-mandalorian-translator.webp"
+    },
+    "examples": {
+      "title": "实际翻译示例",
+      "description": "轻松将'这就是道'等短语翻译成Mando'a。体验完美转换，保持原文语境和语调，确保完全理解。"
+    },
+    "howto": {
+      "title": "如何将英语翻译成Mando'a",
+      "description": "按照以下步骤进行无缝翻译。",
+      "steps": [
+        {
+          "title": "上传或粘贴文本",
+          "description": "通过粘贴文本或上传文档来输入您的英语文本。工具会即时检测并分析内容进行翻译。"
+        },
+        {
+          "title": "选择翻译模式",
+          "description": "在文本、语音或音频翻译模式之间选择。工具会自动适应您的输入类型，以获得最佳效果。"
+        },
+        {
+          "title": "下载或收听",
+          "description": "接收可下载格式的翻译后Mando'a文本，或通过我们的高质量音频播放功能收听。"
+        }
+      ],
+      "image": "/images/docs/mandalorian-translator-how-to.webp"
+    },
+    "highlights": {
+      "title": "曼达洛语翻译器中心的主要特性",
+      "description": "发现使我们的翻译器卓越的突出功能。",
+      "items": [
+        {
+          "title": "语音输入和输出",
+          "description": "轻松将口语英语翻译成Mando'a，并通过清晰的音频播放收听翻译结果，增强语言学习。",
+          "statLabel": "准确率",
+          "statValue": "90%"
+        },
+        {
+          "title": "专业翻译模式",
+          "description": "在技术、法律、文学、惯用和通用模式之间切换，获得适合您语境的精确翻译。",
+          "statLabel": "可用模式",
+          "statValue": "5"
+        },
+        {
+          "title": "边缘运行时性能",
+          "description": "通过我们的边缘优化工具体验高性能翻译，确保在不影响准确性的情况下快速响应。",
+          "statLabel": "延迟",
+          "statValue": "低"
+        },
+        {
+          "title": "数据隐私和安全",
+          "description": "请放心，您的数据在翻译过程中保持安全，并采取严格的隐私保护措施。",
+          "statLabel": "隐私级别",
+          "statValue": "高"
+        }
+      ]
+    },
+    "funFacts": {
+      "title": "有趣的事实",
+      "items": [
+        {
+          "title": "由作者创造",
+          "description": "Mando'a由作者Karen Traviss为2004年的一部小说创造，而非电视剧。",
+          "image": "/images/docs/mandalorian-translator-fact-1.webp"
+        },
+        {
+          "title": "无性别语言",
+          "description": "与许多语言不同，Mando'a没有性别名词，反映了曼达洛文化的平等主义价值观。",
+          "image": "/images/docs/mandalorian-translator-fact-2.webp"
+        }
+      ]
+    },
+    "userInterest": {
+      "title": "探索更多功能",
+      "items": [
+        {
+          "title": "语法速查表",
+          "description": "通过我们易于遵循的语法速查表学习Mando'a句子结构和动词时态，非常适合语言学习者。",
+          "image": "/images/docs/mandalorian-translator-interest-1.webp"
+        },
+        {
+          "title": "音频发音",
+          "description": "通过常见短语的音频发音增强您的理解，确保您正确地说Mando'a。",
+          "image": "/images/docs/mandalorian-translator-interest-2.webp"
+        },
+        {
+          "title": "文化见解",
+          "description": "获得关于曼达洛文化和礼仪的知识，包括命名约定和传统短语。",
+          "image": "/images/docs/mandalorian-translator-interest-3.webp"
+        },
+        {
+          "title": "移动优先体验",
+          "description": "我们的工具针对移动设备进行了优化，提供随时随地的无缝翻译体验。",
+          "image": "/images/docs/mandalorian-translator-interest-4.webp"
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "用户评价",
+      "subtitle": "真实用户的体验",
+      "items": {
+        "item-1": {
+          "name": "John Smith",
+          "role": "语言教师",
+          "heading": "课堂完美",
+          "content": "在课堂中使用曼达洛语翻译器中心改变了游戏规则。我的学生喜欢听到他们的翻译被大声朗读，使语言学习变得引人入胜且互动。",
+          "rating": "4.8"
+        },
+        "item-2": {
+          "name": "Emily Johnson",
+          "role": "星球大战爱好者",
+          "heading": "沉浸体验",
+          "content": "作为忠实粉丝，我使用曼达洛语翻译器中心将我最喜欢的引用翻译成Mando'a。语音播放功能为我的体验增添了沉浸感。",
+          "rating": "4.9"
+        },
+        "item-3": {
+          "name": "Michael Brown",
+          "role": "Web开发人员",
+          "heading": "开发者友好",
+          "content": "曼达洛语翻译器中心的标准化API和边缘运行时功能使其易于集成到我的项目中，每次都能提供快速准确的翻译。",
+          "rating": "4.7"
+        }
+      }
+    },
+    "faqs": {
+      "title": "常见问题",
+      "items": {
+        "item-1": {
+          "question": "曼达洛语翻译器中心免费使用吗？",
+          "answer": "是的，曼达洛语翻译器中心在网络上免费使用。不支持应用下载或离线使用。"
+        },
+        "item-2": {
+          "question": "曼达洛语翻译器中心如何保护我的隐私？",
+          "answer": "曼达洛语翻译器中心通过高级别安全协议确保您的数据隐私，让您的信息保持安全和机密。"
+        },
+        "item-3": {
+          "question": "将英语翻译成Mando'a的最佳工具是什么？",
+          "answer": "曼达洛语翻译器中心是将英语翻译成Mando'a的最佳工具，提供准确的文本和语音翻译。"
+        }
+      }
+    },
+    "cta": {
+      "title": "立即尝试曼达洛语翻译器中心",
+      "description": "今天就用曼达洛语翻译器中心体验无缝的文本和语音翻译！",
+      "primaryButton": "免费开始"
+    }
+  }
+}

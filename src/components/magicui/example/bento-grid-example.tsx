@@ -1,16 +1,16 @@
 import {
-    BellIcon,
-    CalendarIcon,
-    FileTextIcon,
-    GlobeIcon,
-    InputIcon,
-  } from "@radix-ui/react-icons";
+    Bell,
+    Calendar,
+    FileText,
+    Globe,
+    Type,
+  } from "lucide-react";
   
   import { BentoCard, BentoGrid } from "@/components/magicui/bento-grid";
   
   const features = [
     {
-      Icon: FileTextIcon,
+      Icon: FileText,
       name: "Save your files",
       description: "We automatically save your files as you type.",
       href: "/",
@@ -19,7 +19,7 @@ import {
       className: "lg:row-start-1 lg:row-end-4 lg:col-start-2 lg:col-end-3",
     },
     {
-      Icon: InputIcon,
+      Icon: Type,
       name: "Full text search",
       description: "Search through all your files in one place.",
       href: "/",
@@ -28,7 +28,7 @@ import {
       className: "lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-3",
     },
     {
-      Icon: GlobeIcon,
+      Icon: Globe,
       name: "Multilingual",
       description: "Supports 100+ languages and counting.",
       href: "/",
@@ -37,7 +37,7 @@ import {
       className: "lg:col-start-1 lg:col-end-2 lg:row-start-3 lg:row-end-4",
     },
     {
-      Icon: CalendarIcon,
+      Icon: Calendar,
       name: "Calendar",
       description: "Use the calendar to filter your files by date.",
       href: "/",
@@ -46,7 +46,7 @@ import {
       className: "lg:col-start-3 lg:col-end-3 lg:row-start-1 lg:row-end-2",
     },
     {
-      Icon: BellIcon,
+      Icon: Bell,
       name: "Notifications",
       description:
         "Get notified when someone shares a file or mentions you in a comment.",

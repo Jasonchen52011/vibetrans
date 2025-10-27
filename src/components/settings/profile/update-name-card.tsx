@@ -52,13 +52,14 @@ export function UpdateNameCard({ className }: UpdateNameCardProps) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: session?.user?.name || '',
+      name: session?.user?.user_metadata?.name || '',
     },
   });
 
   useEffect(() => {
-    if (session?.user?.name) {
-      form.setValue('name', session.user.name);
+    const userName = session?.user?.user_metadata?.name;
+    if (userName) {
+      form.setValue('name', userName);
     }
   }, [session, form]);
 
@@ -71,7 +72,8 @@ export function UpdateNameCard({ className }: UpdateNameCardProps) {
   // Handle form submission
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     // Don't update if the name hasn't changed
-    if (values.name === session?.user?.name) {
+    const currentName = session?.user?.user_metadata?.name;
+    if (values.name === currentName) {
       console.log('No changes to save');
       return;
     }

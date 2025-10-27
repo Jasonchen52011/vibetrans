@@ -1,0 +1,235 @@
+{
+  "EnglishToChineseTranslatorPage": {
+    "title": "VibeTrans: 英中翻译器",
+    "description": "使用语调控制、协作模式和导出工作流，将英文内容转换为地道的中文，适用于商务、教育和跨文化交流。",
+    "hero": {
+      "title": "为现代团队打造的英中翻译器",
+      "description": "在英文和中文之间即时切换，配备AI驱动翻译、文化背景感知和协作工具，专为全球企业、教育机构和内容创作者而设计。",
+      "userCount": "来自 20,000+ 满意用户"
+    },
+    "tool": {
+      "inputLabel": "英文文本",
+      "outputLabel": "中文翻译",
+      "inputPlaceholder": "输入英文文本、文档或内容...",
+      "outputPlaceholder": "您的中文翻译将在这里显示...",
+      "translateButton": "翻译",
+      "uploadButton": "上传文件",
+      "uploadHint": "支持 .txt 和 .docx 文件",
+      "voiceInputButton": "语音输入",
+      "voiceInputHint": "点击开始语音输入",
+      "audioUploadButton": "上传音频",
+      "audioUploadHint": "上传音频文件进行转录",
+      "voiceOutputButton": "播放音频",
+      "voiceOutputHint": "收听翻译",
+      "loading": "正在翻译成中文...",
+      "transcribing": "正在转录音频...",
+      "error": "翻译失败。请重试。",
+      "noInput": "请输入英文文本进行翻译。"
+    },
+    "whatIs": {
+      "title": "什么是英中翻译器？",
+      "description": "VibeTrans 英中翻译器是一款先进的AI工作区，旨在连接东西方交流。它处理商务文档、教育内容和创意材料，具有适当的文化背景、合适的正式程度和准确的用字。完美适用于拓展中国市场的公司、学习普通话的学生以及接触中文受众的内容创作者。",
+      "image": "/images/docs/english-amharic-translate.webp",
+      "imageAlt": "英中翻译工作流程插图"
+    },
+    "examples": {
+      "title": "英中翻译示例",
+      "description": "看看VibeTrans在将英文翻译成中文时如何保持意义、语调和文化背景。",
+      "items": [
+        {
+          "alt": "英文: Welcome to our Beijing office → 中文: 欢迎来到我们的北京办公室",
+          "name": "Welcome to our Beijing office → 欢迎来到我们的北京办公室"
+        },
+        {
+          "alt": "英文: Please review the quarterly report → 中文: 请审阅季度报告",
+          "name": "Please review the quarterly report → 请审阅季度报告"
+        },
+        {
+          "alt": "英文: Where can I find vegetarian options? → 中文: 在哪里可以找到素食选择？",
+          "name": "Where can I find vegetarian options? → 在哪里可以找到素食选择？"
+        },
+        {
+          "alt": "英文: The meeting starts at 9 AM → 中文: 会议上午9点开始",
+          "name": "The meeting starts at 9 AM → 会议上午9点开始"
+        },
+        {
+          "alt": "英文: Let's celebrate the Spring Festival together → 中文: 让我们一起庆祝春节",
+          "name": "Let's celebrate the Spring Festival together → 让我们一起庆祝春节"
+        },
+        {
+          "alt": "英文: Share the partnership agreement today → 中文: 今天分享合作协议",
+          "name": "Share the partnership agreement today → 今天分享合作协议"
+        }
+      ]
+    },
+    "howto": {
+      "title": "如何英中翻译",
+      "description": "按照这些简单步骤将英文文本转换为准确的中文翻译。",
+      "image": "/images/docs/translate-improve-arrows.webp",
+      "imageAlt": "英中翻译步骤",
+      "steps": [
+        {
+          "title": "输入英文文本",
+          "description": "在翻译器中输入或粘贴您的英文内容。AI将自动检测背景并为具有适当文化考虑的翻译做好准备。",
+          "wordCount": 35
+        },
+        {
+          "title": "选择翻译背景",
+          "description": "选择正式商务、日常对话、学术或创意写作模式。每个选项都使用适合目标受众的专业词汇和措辞。",
+          "wordCount": 32
+        },
+        {
+          "title": "审查和完善",
+          "description": "获得包含简体或繁体字符选项的即时中文翻译。审查输出并调整语调、正式程度和文化适宜性。",
+          "wordCount": 30
+        },
+        {
+          "title": "导出和分享",
+          "description": "将翻译下载为文本、Word文档或直接分享。非常适合商务沟通、教育材料或社交媒体内容。",
+          "wordCount": 28
+        }
+      ]
+    },
+    "funFacts": {
+      "title": "中文语言洞察",
+      "items": [
+        {
+          "title": "世界上使用最多的语言",
+          "description": "全球有超过13亿人说中文，使其成为世界上使用最多的语言。学习中文为丰富的文化遗产和商机打开了大门。",
+          "image": "/images/docs/global-communication.webp",
+          "imageAlt": "全球中文交流插图"
+        },
+        {
+          "title": "古老的文字系统",
+          "description": "汉字在3000多年中不断演变，结合了象形文字、表意文字和语音元素。每个字符都讲述着一个故事，承载着深厚的文化意义。",
+          "image": "/images/docs/learning-translation-tools.webp",
+          "imageAlt": "古代汉字演变插图"
+        }
+      ]
+    },
+    "userInterest": {
+      "title": "团队使用英中翻译的场景",
+      "items": [
+        {
+          "title": "全球商务运营",
+          "description": "为中国市场翻译商务提案、营销材料和企业沟通，同时保持专业语调和文化敏感性。",
+          "image": "/images/docs/global-business-tools.webp",
+          "imageAlt": "跨文化商务专业人士协作"
+        },
+        {
+          "title": "教育内容",
+          "description": "创建双语学习材料、翻译学术论文，并为全球学生和研究人员开发语言学习资源。",
+          "image": "/images/docs/learning-translation-tools.webp",
+          "imageAlt": "英汉双语教育材料"
+        },
+        {
+          "title": "电商和营销",
+          "description": "本地化产品描述、客户评论和营销活动，以文化适宜的信息接触中国消费者。",
+          "image": "/images/docs/culture-bridge-tools.webp",
+          "imageAlt": "营销团队创建多文化内容"
+        },
+        {
+          "title": "技术文档",
+          "description": "为中文开发团队和最终用户翻译用户手册、API文档和技术规范。",
+          "image": "/images/docs/global-communication.webp",
+          "imageAlt": "多语言技术文档"
+        }
+      ]
+    },
+    "highlights": {
+      "title": "为什么团队选择VibeTrans进行英中翻译",
+      "overview": "AI驱动的英汉双向翻译，具有文化背景、字符选择和语调保持功能，专为现代全球工作流程设计。",
+      "description": "将语言准确性与文化智能相结合，使商务、教育和创意团队能够有效地与中文受众沟通。",
+      "features": [
+        {
+          "icon": "FaRocket",
+          "title": "文化背景感知",
+          "description": "AI理解文化细微差别、适当问候和社交背景，确保翻译能自然地与中文受众产生共鸣。"
+        },
+        {
+          "icon": "FaShieldAlt",
+          "title": "企业级安全",
+          "description": "加密翻译、安全文档处理和隐私控制保护敏感商务沟通和知识产权。"
+        },
+        {
+          "icon": "FaBrain",
+          "title": "智能字符选择",
+          "description": "根据目标受众和地区偏好自动选择简体和繁体字符。"
+        },
+        {
+          "icon": "FaChartLine",
+          "title": "工作流程集成",
+          "description": "API集成和导出选项与您现有工具和内容管理系统无缝连接。"
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "用户评价",
+      "subtitle": "使用VibeTrans进行英中翻译的团队故事",
+      "items": [
+        {
+          "name": "李伟",
+          "role": "上海营销总监",
+          "heading": "活动本地化现在变得轻松",
+          "content": "我们过去要花几周时间翻译营销材料。VibeTrans帮助我们在几天内启动双语活动，同时保持品牌声音和文化相关性。",
+          "rating": "4.9"
+        },
+        {
+          "name": "Sarah Johnson",
+          "role": "新加坡教育科技创始人",
+          "heading": "教育内容触达数百万人",
+          "content": "我们的学习平台现在为中文学生无缝服务。翻译准确，对不同年龄群体都具有文化适宜性。",
+          "rating": "4.8"
+        },
+        {
+          "name": "张敏",
+          "role": "国际业务经理",
+          "heading": "谈判顺利进行",
+          "content": "使用适当正式语言翻译的商务提案和合同帮助我们与中国合作伙伴建立更牢固的关系。",
+          "rating": "4.7"
+        }
+      ]
+    },
+    "faqs": {
+      "title": "常见问题",
+      "subtitle": "关于英中翻译的快速解答",
+      "items": [
+        {
+          "question": "是否支持简体和繁体中文？",
+          "answer": "是的。VibeTrans会自动检测适当的字符集，或者让您在简体（中国大陆、新加坡）和繁体（台湾、香港）字符之间选择。"
+        },
+        {
+          "question": "能否处理技术和商务术语？",
+          "answer": "绝对可以。AI接受过金融、技术、医疗和法律等行业的专业词汇训练。"
+        },
+        {
+          "question": "文化引用的准确性如何？",
+          "answer": "VibeTrans考虑文化背景，避免生硬的字面翻译，确保习语和表达对母语者来说听起来自然。"
+        },
+        {
+          "question": "文档大小有限制吗？",
+          "answer": "免费用户每个文档最多可翻译5,000个字符。高级计划提供更高的限制和批处理功能。"
+        },
+        {
+          "question": "我可以与团队成员协作翻译吗？",
+          "answer": "是的。高级计划包括协作功能，团队成员可以审查、评论和共同改进翻译。"
+        },
+        {
+          "question": "如何处理不同的中文方言？",
+          "answer": "翻译器主要关注标准普通话，但在指定时可以适应地区偏好的词汇和措辞。"
+        },
+        {
+          "question": "翻译是否适合法律文件？",
+          "answer": "虽然VibeTrans提供高质量翻译，但我们建议让熟悉中文法律术语和要求的合格法律专业人士审查法律文件。"
+        }
+      ]
+    },
+    "ctaButton": "试用英中翻译器",
+    "cta": {
+      "title": "开始使用VibeTrans英中翻译",
+      "description": "打破语言障碍，在几分钟内用专业、具有文化意识的翻译接触中文受众。",
+      "primaryButton": "立即试用英中翻译器",
+      "secondaryButton": "返回顶部"
+    }
+  }
+}

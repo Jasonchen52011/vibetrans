@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { Logo } from '../layout/logo';
-import { Menu, X } from 'lucide-react';
+import { ArrowRightIcon, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import React from 'react';
 import { useScroll } from 'motion/react';
@@ -96,6 +96,7 @@ export const HeroHeader = () => {
                 <Button asChild size="sm">
                   <Link href="#">
                     <span>Sign Up</span>
+                    <ArrowRightIcon className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
               </div>

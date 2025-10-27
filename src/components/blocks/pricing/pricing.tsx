@@ -11,7 +11,6 @@ export default function PricingSection() {
         <HeaderSection
           subtitle={t('subtitle')}
           subtitleAs="h2"
-          subtitleClassName="text-4xl font-bold"
           description={t('description')}
           descriptionAs="p"
         />

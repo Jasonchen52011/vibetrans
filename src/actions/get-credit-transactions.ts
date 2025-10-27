@@ -2,8 +2,8 @@
 
 import { getDb } from '@/db';
 import { creditTransaction } from '@/db/schema';
-import type { User } from '@/lib/auth-types';
 import { userActionClient } from '@/lib/safe-action';
+import type { User } from '@/lib/supabase/types';
 import { and, asc, desc, eq, ilike, or, sql } from 'drizzle-orm';
 import { z } from 'zod';
 

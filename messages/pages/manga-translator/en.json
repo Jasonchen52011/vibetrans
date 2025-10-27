@@ -1,0 +1,233 @@
+{
+  "MangaTranslatorPage": {
+    "title": "Manga Translator Studio: The Best Manga Translation Tool",
+    "description": "Manga Translator Studio offers the best manga translator for efficient AI-driven image recognition, translation, and typesetting in three easy steps.",
+    "hero": {
+      "title": "Manga Translator Studio for Seamless Manga Translation",
+      "description": "Discover the best manga translator with AI-driven accuracy and seamless translation features."
+    },
+    "tool": {
+      "inputLabel": "Input Text",
+      "outputLabel": "Translated Text",
+      "inputPlaceholder": "Enter your text here...",
+      "outputPlaceholder": "Translation will appear here...",
+      "translateButton": "Translate",
+      "uploadButton": "Upload File",
+      "uploadHint": "Supports .txt and .docx files",
+      "voiceInputButton": "Voice Input",
+      "voiceInputHint": "Click to start voice input",
+      "audioUploadButton": "Upload Audio",
+      "audioUploadHint": "Upload audio file for transcription",
+      "voiceOutputButton": "Play Audio",
+      "voiceOutputHint": "Listen to translation",
+      "loading": "Translating...",
+      "transcribing": "Transcribing audio...",
+      "error": "Translation failed. Please try again.",
+      "noInput": "Please enter some text to translate."
+    },
+    "whatIs": {
+      "title": "What is Manga Translator Studio",
+      "description": "Manga Translator Studio is an all-in-one tool that offers advanced AI capabilities for manga translation. It features automatic bubble detection, context-consistent translations, and customizable typesetting to provide an exceptional localization experience.",
+      "image": "/images/docs/what-is-manga-translator.webp",
+      "imageAlt": "What is Manga Translator Studio"
+    },
+    "examples": {
+      "title": "See Manga Translator Studio in Action",
+      "description": "Watch how our tool accurately translates Japanese manga into English, maintaining original style and context. Our AI detects and translates SFX, ensuring a seamless reading experience.",
+      "items": [
+        {
+          "alt": "ページをめくるって！→ Let's turn the page!",
+          "name": "Action Scene Translation"
+        },
+        {
+          "alt": "心配しないでください→ Don't worry about it",
+          "name": "Emotional Dialogue"
+        },
+        {
+          "alt": "ドキドキ…♥→ *Heart pounds*...♥",
+          "name": "Sound Effects & Onomatopoeia"
+        },
+        {
+          "alt": "これは秘密だよ→ This is a secret",
+          "name": "Character Expression"
+        },
+        {
+          "alt": "必ず見つけ出す！→ I'll definitely find it!",
+          "name": "Determined Declaration"
+        },
+        {
+          "alt": "早く行こう！→ Let's hurry up!",
+          "name": "Urgent Conversation"
+        }
+      ]
+    },
+    "howto": {
+      "title": "How to Translate Manga with Ease",
+      "description": "Learn to translate manga effortlessly in just a few steps.",
+      "steps": [
+        {
+          "name": "Upload Your Manga",
+          "description": "Start by uploading your manga pages to our platform. Ensure images are clear for optimal bubble detection and text recognition.",
+          "wordCount": 27
+        },
+        {
+          "name": "Choose Translation Mode",
+          "description": "Select from our professional translation modes that suit your needs, whether it's technical or literary style.",
+          "wordCount": 24
+        },
+        {
+          "name": "Review and Edit",
+          "description": "Review translated content. Utilize our AI tools to edit and refine translations, ensuring they meet your quality standards.",
+          "wordCount": 24
+        },
+        {
+          "name": "Download and Share",
+          "description": "Once satisfied, download your translated manga in your preferred format, ready to share with your audience.",
+          "wordCount": 23
+        }
+      ],
+      "totalWordCount": 98
+    },
+    "funFacts": {
+      "title": "Interesting Facts",
+      "items": [
+        {
+          "title": "Origins of 'Scanlation'",
+          "description": "Did you know the term 'Scanlation' combines 'scan' and 'translation'? It first appeared in the 1990s among IRC fan communities and is now an official slang entry in the Oxford English Dictionary.",
+          "image": "/images/docs/manga-translator-fact-1.webp",
+          "imageAlt": "Manga Global Impact"
+        },
+        {
+          "title": "Early Manga Publication",
+          "description": "The first officially published Japanese right-to-left manga in English was 'Lone Wolf and Cub' by Dark Horse in 1987. Before this, publishers mirrored pages to suit Western reading habits.",
+          "image": "/images/docs/manga-translator-fact-2.webp",
+          "imageAlt": "AI Translation Revolution"
+        }
+      ]
+    },
+    "userInterest": {
+      "title": "Explore More with Manga Translator Studio",
+      "subtitle": "Tailored Solutions for Users",
+      "description": "Exploring unique features and capabilities",
+      "items": [
+        {
+          "title": "Batch Translation Made Easy",
+          "description": "Tired of uploading manga page by page? With VibeTrans, you can translate entire chapters in one go. Just upload a ZIP or PDF, and let our tool handle the rest. It's a time-saver for manga enthusiasts and translators alike!",
+          "image": "/images/docs/manga-translator-interest-1.webp",
+          "imageAlt": "Data Privacy and Security"
+        },
+        {
+          "title": "In-Bubble Editing & Typesetting",
+          "description": "Want more than just translations? VibeTrans lets you edit and typeset text directly within speech bubbles. Perfect for sharing, fan-made scanlations, or simply enhancing your reading experience. Achieve professional-looking results with minimal effort!",
+          "image": "/images/docs/manga-translator-interest-2.webp",
+          "imageAlt": "Accuracy Benchmarking"
+        },
+        {
+          "title": "Sound-Effect Localisation",
+          "description": "Japanese manga often features exaggerated sound effects that don't translate directly into English. VibeTrans recognizes these unique fonts and helps you creatively localize them, ensuring your translated manga retains its original charm and impact.",
+          "image": "/images/docs/manga-translator-interest-3.webp",
+          "imageAlt": "Vertical Text and SFX Recognition"
+        },
+        {
+          "title": "Vertical Text OCR Accuracy",
+          "description": "Manga often uses vertical text, which can be tricky to OCR accurately. VibeTrans is designed to tackle this challenge, offering impressive accuracy for right-to-left and vertical text, ensuring you get the best possible translation results every time.",
+          "image": "/images/docs/manga-translator-interest-4.webp",
+          "imageAlt": "Batch Processing for Efficiency"
+        }
+      ]
+    },
+    "highlights": {
+      "title": "VibeTrans Features",
+      "description": "Discover what makes our tool unique",
+      "items": [
+        {
+          "title": "Simple and Free",
+          "description": "VibeTrans offers a user-friendly interface and free access, making it easy for anyone to translate manga without hassle. Enjoy professional-grade translations without worrying about costs."
+        },
+        {
+          "title": "Data Privacy Ensured",
+          "description": "Your scans and translations are safe with us. VibeTrans doesn't store your data, ensuring your privacy and compliance with copyright laws. Translate with peace of mind."
+        },
+        {
+          "title": "Contextual AI Understanding",
+          "description": "Our AI deeply understands context, ensuring translations are accurate and meaningful. Enjoy translations that capture the essence of the original manga, making your reading experience more enjoyable."
+        },
+        {
+          "title": "More Explanations",
+          "description": "Need clarity? VibeTrans provides detailed explanations for complex translations, helping you understand nuanced expressions and cultural references. Make your manga reading experience richer and more informative."
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "What Users Say",
+      "subtitle": "Real feedback from real users",
+      "items": {
+        "item-1": {
+          "name": "John Smith",
+          "role": "Freelance Translator",
+          "heading": "Transformed Translation Workflow",
+          "content": "Using Manga Translator Studio has transformed my workflow. The AI context understanding is incredible, ensuring my translations maintain their original meaning and style. It's a game-changer for professional manga translators."
+        },
+        "item-2": {
+          "name": "Emily Johnson",
+          "role": "Manga Publisher",
+          "heading": "Essential Publishing Tool",
+          "content": "Manga Translator Studio's batch processing feature saves us time and effort. We can translate entire volumes quickly and efficiently, maintaining high-quality standards. It's an essential tool for our publishing team."
+        },
+        "item-3": {
+          "name": "Alex Chen",
+          "role": "Manga Enthusiast",
+          "heading": "Breaking Language Barriers",
+          "content": "As someone who loves reading manga, this tool helps me understand Japanese content better. The translation quality is impressive, and the voice feature makes it even more accessible."
+        }
+      }
+    },
+    "faqs": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Have other questions? Feel free to contact us via email.",
+      "items": {
+        "item-1": {
+          "question": "Is Manga Translator Studio free to use?",
+          "answer": "Manga Translator Studio offers a range of pricing plans, including a free version with essential features. Explore our premium options for more advanced capabilities."
+        },
+        "item-2": {
+          "question": "How secure is my data with Manga Translator Studio?",
+          "answer": "Your privacy is our priority. Manga Translator Studio uses state-of-the-art encryption to protect your data during uploads and translations, ensuring your information remains confidential."
+        },
+        "item-3": {
+          "question": "Which is the best manga translator tool?",
+          "answer": "Manga Translator Studio is considered the best manga translator tool due to its high accuracy, context-aware translations, and user-friendly features designed for professional and casual users alike."
+        }
+      }
+    },
+    "ctaButton": "Try MangaTranslator Now",
+    "cta": {
+      "title": "Get Started with Manga Translator Studio Today",
+      "description": "Experience the best manga translation with Manga Translator Studio. Start your free trial now!",
+      "primaryButton": "Try MangaTranslator Now",
+      "secondaryButton": "Back to Top"
+    },
+    "features": {
+      "title": "Core Features",
+      "subtitle": "An intelligent tool crafted for users.",
+      "items": {
+        "item-1": {
+          "title": "Simple and Free",
+          "description": "VibeTrans offers a user-friendly interface and free access, making it easy for anyone to translate manga without hassle. Enjoy professional-grade translations without worrying about costs."
+        },
+        "item-2": {
+          "title": "Data Privacy Ensured",
+          "description": "Your scans and translations are safe with us. VibeTrans doesn't store your data, ensuring your privacy and compliance with copyright laws. Translate with peace of mind."
+        },
+        "item-3": {
+          "title": "Contextual AI Understanding",
+          "description": "Our AI deeply understands context, ensuring translations are accurate and meaningful. Enjoy translations that capture the essence of the original manga, making your reading experience more enjoyable."
+        },
+        "item-4": {
+          "title": "More Explanations",
+          "description": "Need clarity? VibeTrans provides detailed explanations for complex translations, helping you understand nuanced expressions and cultural references. Make your manga reading experience richer and more informative."
+        }
+      }
+    }
+  }
+}

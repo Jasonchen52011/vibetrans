@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { HeaderSection } from '@/components/layout/header-section';
 import {
   CpuIcon,
@@ -17,7 +18,7 @@ export default function Features3Section() {
   const t = useTranslations('HomePage.features3');
 
   return (
-    <section id="features3" className="px-4 py-16">
+    <section id="features3" className="px-4 py-16 bg-white">
       <div className="mx-auto max-w-6xl space-y-8 lg:space-y-20">
         <HeaderSection
           title={t('title')}
@@ -27,10 +28,10 @@ export default function Features3Section() {
           descriptionAs="p"
         />
 
-        <div className="relative mx-auto grid divide-x divide-y border *:p-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="relative mx-auto grid *:p-8 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           <div className="space-y-2">
             <div className="flex items-center gap-2">
-              <ZapIcon className="size-4" />
+              <ZapIcon className="size-8 text-primary" />
               <h3 className="text-base font-medium">
                 {t('items.item-1.title')}
               </h3>
@@ -41,7 +42,7 @@ export default function Features3Section() {
           </div>
           <div className="space-y-2">
             <div className="flex items-center gap-2">
-              <CpuIcon className="size-4" />
+              <CpuIcon className="size-8 text-primary" />
               <h3 className="text-base font-medium">
                 {t('items.item-2.title')}
               </h3>
@@ -52,7 +53,7 @@ export default function Features3Section() {
           </div>
           <div className="space-y-2">
             <div className="flex items-center gap-2">
-              <FingerprintIcon className="size-4" />
+              <FingerprintIcon className="size-8 text-primary" />
 
               <h3 className="text-base font-medium">
                 {t('items.item-3.title')}
@@ -64,7 +65,7 @@ export default function Features3Section() {
           </div>
           <div className="space-y-2">
             <div className="flex items-center gap-2">
-              <PencilIcon className="size-4" />
+              <PencilIcon className="size-8 text-primary" />
 
               <h3 className="text-base font-medium">
                 {t('items.item-4.title')}
@@ -76,7 +77,7 @@ export default function Features3Section() {
           </div>
           <div className="space-y-2">
             <div className="flex items-center gap-2">
-              <Settings2Icon className="size-4" />
+              <Settings2Icon className="size-8 text-primary" />
 
               <h3 className="text-base font-medium">
                 {t('items.item-5.title')}
@@ -88,7 +89,7 @@ export default function Features3Section() {
           </div>
           <div className="space-y-2">
             <div className="flex items-center gap-2">
-              <SparklesIcon className="size-4" />
+              <SparklesIcon className="size-8 text-primary" />
 
               <h3 className="text-base font-medium">
                 {t('items.item-6.title')}

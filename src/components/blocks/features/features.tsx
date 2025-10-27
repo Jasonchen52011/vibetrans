@@ -9,153 +9,105 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import {
-  ChartBarIncreasingIcon,
-  Database,
-  Fingerprint,
-  IdCard,
+  ArrowRight,
+  FileText,
+  MousePointerClick,
+  Sparkles,
 } from 'lucide-react';
-import { AnimatePresence, motion } from 'motion/react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { useState } from 'react';
 
-/**
- * https://nsui.irung.me/features
- * pnpm dlx shadcn@canary add https://nsui.irung.me/r/features-12.json
- */
 export default function FeaturesSection() {
   const t = useTranslations('HomePage.features');
-  type ImageKey = 'item-1' | 'item-2' | 'item-3' | 'item-4';
-  const [activeItem, setActiveItem] = useState<ImageKey>('item-1');
+  const [activeItem, setActiveItem] = useState('item-1');
 
-  const images = {
-    'item-1': {
-      image: '/blocks/charts-light.png',
-      darkImage: '/blocks/charts.png',
-      alt: 'Product Feature One',
+  const steps = [
+    {
+      icon: FileText,
+      title: 'Sign Up',
+      description: 'Create your account in seconds with just your email',
     },
-    'item-2': {
-      image: '/blocks/music-light.png',
-      darkImage: '/blocks/music.png',
-      alt: 'Product Feature Two',
+    {
+      icon: MousePointerClick,
+      title: 'Choose Your Plan',
+      description: 'Select the perfect plan that fits your needs',
     },
-    'item-3': {
-      image: '/blocks/mail2-light.png',
-      darkImage: '/blocks/mail2.png',
-      alt: 'Product Feature Three',
+    {
+      icon: Sparkles,
+      title: 'Start Creating',
+      description: 'Begin using our AI tools immediately',
     },
-    'item-4': {
-      image: '/blocks/payments-light.png',
-      darkImage: '/blocks/payments.png',
-      alt: 'Product Feature Four',
+    {
+      icon: ArrowRight,
+      title: 'Scale & Grow',
+      description: 'Expand your capabilities as your needs grow',
     },
-  };
+  ];
 
   return (
-    <section id="features" className="px-4 py-16">
-      {/* <div className="bg-linear-to-b absolute inset-0 -z-10 sm:inset-6 sm:rounded-b-3xl dark:block dark:to-[color-mix(in_oklab,var(--color-zinc-900)_75%,var(--color-background))]" /> */}
-      <div className="mx-auto max-w-6xl space-y-8 lg:space-y-20 dark:[--color-border:color-mix(in_oklab,var(--color-white)_10%,transparent)]">
+    <section id="features" className="px-4 py-16 bg-white">
+      <div className="mx-auto max-w-6xl space-y-8 lg:space-y-20">
         <HeaderSection
-          title={t('title')}
-          subtitle={t('subtitle')}
+          subtitle="How to Get Started"
           subtitleAs="h2"
-          description={t('description')}
+          description="Follow these simple steps to start using our platform"
           descriptionAs="p"
         />
 
-        <div className="grid gap-12 sm:px-12 lg:grid-cols-12 lg:gap-24 lg:px-0">
-          <div className="lg:col-span-5 flex flex-col gap-8">
-            <div className="lg:pr-0 text-left">
-              <h3 className="text-3xl font-semibold lg:text-4xl text-foreground leading-normal py-1">
-                {t('title')}
-              </h3>
-              <p className="mt-4 text-muted-foreground">{t('description')}</p>
-            </div>
+        <div className="grid gap-6 sm:px-6 lg:grid-cols-12 lg:gap-12 lg:px-0 lg:items-center">
+          <div className="lg:col-span-5 flex flex-col">
             <Accordion
               type="single"
+              collapsible
+              className="w-full border-none"
               value={activeItem}
-              onValueChange={(value) => setActiveItem(value as ImageKey)}
-              className="w-full"
+              onValueChange={setActiveItem}
             >
-              <AccordionItem value="item-1">
-                <AccordionTrigger>
-                  <div className="flex items-center gap-2 text-base">
-                    <Database className="size-4" />
-                    {t('items.item-1.title')}
-                  </div>
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground">
-                  {t('items.item-1.description')}
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="item-2">
-                <AccordionTrigger>
-                  <div className="flex items-center gap-2 text-base">
-                    <Fingerprint className="size-4" />
-                    {t('items.item-2.title')}
-                  </div>
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground">
-                  {t('items.item-2.description')}
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="item-3">
-                <AccordionTrigger>
-                  <div className="flex items-center gap-2 text-base">
-                    <IdCard className="size-4" />
-                    {t('items.item-3.title')}
-                  </div>
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground">
-                  {t('items.item-3.description')}
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="item-4">
-                <AccordionTrigger>
-                  <div className="flex items-center gap-2 text-base">
-                    <ChartBarIncreasingIcon className="size-4" />
-                    {t('items.item-4.title')}
-                  </div>
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground">
-                  {t('items.item-4.description')}
-                </AccordionContent>
-              </AccordionItem>
+              {steps.map((step, index) => (
+                <AccordionItem
+                  key={index}
+                  value={`item-${index + 1}`}
+                  className="border-none"
+                  onMouseEnter={() => setActiveItem(`item-${index + 1}`)}
+                >
+                  <AccordionTrigger className="hover:no-underline">
+                    <div className="flex items-center gap-2 text-base">
+                      <step.icon className="size-6 text-primary" />
+                      {step.title}
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground">
+                    {step.description}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
             </Accordion>
           </div>
 
-          <div className="bg-background w-full relative flex overflow-hidden rounded-2xl border p-2 lg:h-auto lg:col-span-7">
-            <div className="aspect-76/59 bg-background relative w-full rounded-2xl">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={`${activeItem}-id`}
-                  initial={{ opacity: 0, y: 6, scale: 0.98 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: 6, scale: 0.98 }}
-                  transition={{ duration: 0.2 }}
-                  className="size-full overflow-hidden rounded-2xl border bg-zinc-900 shadow-md"
-                >
-                  <Image
-                    src={images[activeItem].image}
-                    className="size-full object-cover object-left-top dark:hidden"
-                    alt={images[activeItem].alt}
-                    width={1207}
-                    height={929}
-                  />
-                  <Image
-                    src={images[activeItem].darkImage}
-                    className="size-full object-cover object-left-top dark:block hidden"
-                    alt={images[activeItem].alt}
-                    width={1207}
-                    height={929}
-                  />
-                </motion.div>
-              </AnimatePresence>
+          <div className="bg-background w-full relative flex overflow-hidden rounded-2xl border p-2 lg:h-[400px] lg:col-span-7">
+            <div className="bg-background relative w-full rounded-2xl">
+              <div className="size-full overflow-hidden rounded-2xl border bg-zinc-900 shadow-md">
+                <Image
+                  src="/blocks/charts-light.png"
+                  className="size-full object-cover object-left-top dark:hidden"
+                  alt="Getting Started Dashboard"
+                  width={1207}
+                  height={929}
+                />
+                <Image
+                  src="/blocks/charts.png"
+                  className="size-full object-cover object-left-top dark:block hidden"
+                  alt="Getting Started Dashboard"
+                  width={1207}
+                  height={929}
+                />
+              </div>
             </div>
             <BorderBeam
               duration={6}
               size={200}
-              className="from-transparent via-violet-700 to-transparent dark:via-white/50"
+              className="from-transparent via-blue-700 to-transparent dark:via-white/50"
             />
           </div>
         </div>

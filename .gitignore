@@ -65,3 +65,12 @@ next-env.d.ts
 .dev.vars
 .dev.vars*
 !.dev.vars.example
+
+# generated content - exclude from production
+.tool-generation/
+messages/tools/*-zh.json
+scripts/test-*.js
+scripts/fix-*.js
+scripts/remove-*.js
+scripts/final-*.js
+backup/

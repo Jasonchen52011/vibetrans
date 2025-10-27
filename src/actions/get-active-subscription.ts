@@ -2,8 +2,8 @@
 
 import { getDb } from '@/db';
 import { payment } from '@/db/schema';
-import type { User } from '@/lib/auth-types';
 import { userActionClient } from '@/lib/safe-action';
+import type { User } from '@/lib/supabase/types';
 import {
   type PaymentStatus,
   PaymentTypes,

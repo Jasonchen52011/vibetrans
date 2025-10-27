@@ -1,4 +1,4 @@
-import { IconTrendingDown, IconTrendingUp } from '@tabler/icons-react';
+import { TrendingDown, TrendingUp } from 'lucide-react';
 
 import { Badge } from '@/components/ui/badge';
 import {
@@ -21,7 +21,7 @@ export function SectionCards() {
           </CardTitle>
           <CardAction>
             <Badge variant="outline">
-              <IconTrendingUp />
+              <TrendingUp />
               +12.5%
             </Badge>
           </CardAction>
@@ -43,7 +43,7 @@ export function SectionCards() {
           </CardTitle>
           <CardAction>
             <Badge variant="outline">
-              <IconTrendingDown />
+              <TrendingDown />
               -20%
             </Badge>
           </CardAction>
@@ -65,7 +65,7 @@ export function SectionCards() {
           </CardTitle>
           <CardAction>
             <Badge variant="outline">
-              <IconTrendingUp />
+              <TrendingUp />
               +12.5%
             </Badge>
           </CardAction>
@@ -85,7 +85,7 @@ export function SectionCards() {
           </CardTitle>
           <CardAction>
             <Badge variant="outline">
-              <IconTrendingUp />
+              <TrendingUp />
               +4.5%
             </Badge>
           </CardAction>

@@ -1,0 +1,210 @@
+{
+  "TeluguToEnglishTranslatorPage": {
+    "title": "Telugu to English Translator",
+    "description": "Translate Telugu text to English instantly with our free online tool. Fast, accurate, and easy to use.",
+    "hero": {
+      "title": "Telugu to English Translator",
+      "description": "Transform your Telugu text into English with our powerful translation tool. Fast, accurate, and free to use.",
+      "userCount": "from 25,000+ happy users"
+    },
+    "ctaButton": "Try Telugu to English Translator Now",
+    "tool": {
+      "inputLabel": "Telugu Text",
+      "outputLabel": "English Translation",
+      "inputPlaceholder": "Enter your Telugu text here...",
+      "outputPlaceholder": "English translation will appear here...",
+      "translateButton": "Translate",
+      "uploadButton": "Upload File",
+      "uploadHint": "Supports .txt and .docx files",
+      "loading": "Translating...",
+      "error": "Translation failed. Please try again.",
+      "noInput": "Please enter some Telugu text to translate."
+    },
+    "whatIs": {
+      "title": "What is Telugu to English Translator?",
+      "description": "Our Telugu to English Translator is a powerful AI-powered tool that helps you translate Telugu text to English quickly and accurately. Whether you need to translate documents, conversations, or any content, our tool provides reliable translations that preserve meaning and context.",
+      "image": "/images/docs/telugu-to-english-translator-what-is.webp",
+      "imageAlt": "What is Telugu to English Translator"
+    },
+    "examples": {
+      "title": "Translation Examples",
+      "description": "See how our Telugu to English translator works with real examples",
+      "items": [
+        {
+          "alt": "నాకు తెలుగు చాలా ఇష్టం → I like Telugu very much",
+          "name": "Expressing Preference"
+        },
+        {
+          "alt": "నేను పాఠశాలకు వెళ్తున్నాను → I am going to school",
+          "name": "Daily Activity"
+        },
+        {
+          "alt": "భారతదేశం అందమైన దేశం → India is a beautiful country",
+          "name": "Describing Scenery"
+        },
+        {
+          "alt": "ఆహారం చాలా రుచిగా ఉంది → The food is very delicious",
+          "name": "Food Review"
+        },
+        {
+          "alt": "మీరు ఎక్కడ నుండి వస్తున్నారు? → Where are you coming from?",
+          "name": "Location Inquiry"
+        },
+        {
+          "alt": "నేను రేపు తాగుతాను → I will drink tomorrow",
+          "name": "Future Plans"
+        }
+      ]
+    },
+    "howto": {
+      "title": "How to Use Telugu to English Translator",
+      "description": "Follow these simple steps to translate your Telugu text to English",
+      "image": "/images/docs/telugu-to-english-translator-how-to.webp",
+      "imageAlt": "How to Use Telugu to English Translator",
+      "steps": [
+        {
+          "title": "Enter Your Telugu Text",
+          "description": "Type or paste your Telugu content into the input field. You can also upload .txt or .docx files directly."
+        },
+        {
+          "title": "Start Translation",
+          "description": "Click the blue Translate button to process your text. Our AI will analyze and translate your content."
+        },
+        {
+          "title": "Review Results",
+          "description": "Your English translation appears instantly in the output field. Check the accuracy and natural flow."
+        },
+        {
+          "title": "Save or Share",
+          "description": "Copy the translated text to your clipboard or download it as a document for future reference."
+        }
+      ]
+    },
+    "highlights": {
+      "title": "Why Choose Our Telugu to English Translator?",
+      "description": "Experience the best Telugu to English translation with advanced features",
+      "features": [
+        {
+          "title": "Lightning Fast",
+          "description": "Get instant Telugu to English translations in seconds, powered by advanced AI technology ensuring rapid response times. No more waiting for high-quality translation results that boost your productivity.",
+          "icon": "FaRocket"
+        },
+        {
+          "title": "High Accuracy",
+          "description": "AI-powered translations with 95%+ accuracy, utilizing deep learning algorithms to understand Telugu grammar structure and context. Ensures both accuracy and naturalness in translation results.",
+          "icon": "FaBrain"
+        },
+        {
+          "title": "Secure & Private",
+          "description": "Your data is encrypted and never stored, using end-to-end encryption technology to protect your privacy. All translations are processed locally, ensuring your sensitive information remains confidential.",
+          "icon": "FaShieldAlt"
+        },
+        {
+          "title": "Completely Free",
+          "description": "No registration or payment required, with unlimited usage of our translation service. No hidden fees or usage limits, making high-quality translation accessible to everyone.",
+          "icon": "FaGift"
+        }
+      ]
+    },
+    "funFacts": {
+      "title": "Interesting Facts About Telugu and English",
+      "items": [
+        {
+          "title": "Ancient Language Heritage",
+          "description": "Telugu is one of India's classical languages with a rich literary tradition spanning over 1,000 years, making translations culturally significant. The language has been declared 'India's classical language' by the Indian government due to its historical importance and rich heritage.",
+          "image": "/images/docs/telugu-to-english-translator-fact-1.webp",
+          "imageAlt": "Ancient Language Heritage"
+        },
+        {
+          "title": "Global Reach",
+          "description": "With over 82 million Telugu speakers worldwide and English being the global language of business, translation bridges communication gaps across continents. Telugu is the most spoken Dravidian language and ranks 15th among the most spoken languages globally.",
+          "image": "/images/docs/telugu-to-english-translator-fact-2.webp",
+          "imageAlt": "Global Reach"
+        }
+      ]
+    },
+    "userInterest": {
+      "title": "More About Telugu to English Translation",
+      "items": [
+        {
+          "title": "Cultural Context Preservation",
+          "description": "Our AI understands cultural nuances in Telugu literature, idioms, and expressions, ensuring translations maintain the original cultural significance and emotional impact. The system recognizes specific cultural references like festivals, traditions, and local customs that are unique to Telugu-speaking regions.",
+          "image": "/images/docs/telugu-to-english-translator-interest-1.webp",
+          "imageAlt": "Cultural Context Preservation"
+        },
+        {
+          "title": "Technical & Professional Translation",
+          "description": "From technical documents to business communications, our translator handles specialized terminology in fields like medicine, law, engineering, and information technology. The AI is trained on domain-specific vocabulary and can accurately translate complex technical terms while maintaining professional tone.",
+          "image": "/images/docs/telugu-to-english-translator-interest-2.webp",
+          "imageAlt": "Technical & Professional Translation"
+        },
+        {
+          "title": "Educational Applications",
+          "description": "Perfect for students learning English, researchers accessing global content, or educators creating bilingual materials for Telugu-speaking students. The translation tool supports academic writing formats and can handle educational content from primary school to university level.",
+          "image": "/images/docs/telugu-to-english-translator-interest-3.webp",
+          "imageAlt": "Educational Applications"
+        },
+        {
+          "title": "Business Integration",
+          "description": "Seamlessly translate business proposals, emails, marketing materials, and customer communications to expand your reach from Telugu markets to English-speaking regions. The tool understands business etiquette and maintains professional communication standards across both languages.",
+          "image": "/images/docs/telugu-to-english-translator-interest-4.webp",
+          "imageAlt": "Business Integration"
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "What Our Users Say",
+      "subtitle": "Real feedback from real users",
+      "items": [
+        {
+          "name": "Priya Sharma",
+          "role": "Software Developer",
+          "content": "This Telugu to English translator is incredibly accurate. It helps me communicate with international clients effectively.",
+          "rating": 4.8
+        },
+        {
+          "name": "Ravi Kumar",
+          "role": "Student",
+          "content": "As someone learning English, this tool has been invaluable for understanding and improving my language skills.",
+          "rating": 4.5
+        },
+        {
+          "name": "Anjali Naidu",
+          "role": "Business Owner",
+          "content": "I use this daily for my business correspondence. The translations are professional and reliable.",
+          "rating": 4.7
+        }
+      ]
+    },
+    "faqs": {
+      "title": "Frequently Asked Questions",
+      "items": [
+        {
+          "question": "Is the Telugu to English translator free to use?",
+          "answer": "Yes, our Telugu to English translator is completely free to use with no hidden charges or registration requirements."
+        },
+        {
+          "question": "How accurate is the Telugu to English translation?",
+          "answer": "Our AI-powered translator provides highly accurate translations with over 95% accuracy for general content, maintaining context and cultural nuances."
+        },
+        {
+          "question": "Can I translate entire documents from Telugu to English?",
+          "answer": "Yes, you can upload .txt and .docx files directly to our tool for instant Telugu to English translation while preserving formatting."
+        },
+        {
+          "question": "What types of content can I translate from Telugu to English?",
+          "answer": "You can translate various content types including casual conversations, business emails, academic papers, creative writing, and technical documents."
+        },
+        {
+          "question": "How long does Telugu to English translation take?",
+          "answer": "Most translations are completed instantly within seconds. Longer documents may take a few moments but are still processed very quickly."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Ready to Translate Telugu to English?",
+      "description": "Start translating your Telugu text to English now - it only takes seconds!",
+      "primaryButton": "Get Started Free"
+    }
+  }
+}

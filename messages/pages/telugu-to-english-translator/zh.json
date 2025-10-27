@@ -1,0 +1,210 @@
+{
+  "TeluguToEnglishTranslatorPage": {
+    "title": "泰卢固语到英语翻译器",
+    "description": "使用我们的免费在线工具即时将泰卢固语翻译成英语。快速、准确、易于使用。",
+    "hero": {
+      "title": "泰卢固语到英语翻译器",
+      "description": "使用我们强大的翻译工具将您的泰卢固语文本转换为英语。快速、准确且免费使用。",
+      "userCount": "来自25,000+满意用户"
+    },
+    "ctaButton": "立即尝试泰卢固语到英语翻译器",
+    "tool": {
+      "inputLabel": "泰卢固语文本",
+      "outputLabel": "英语翻译",
+      "inputPlaceholder": "在此输入您的泰卢固语文本...",
+      "outputPlaceholder": "英语翻译将显示在这里...",
+      "translateButton": "翻译",
+      "uploadButton": "上传文件",
+      "uploadHint": "支持 .txt 和 .docx 文件",
+      "loading": "翻译中...",
+      "error": "翻译失败，请重试。",
+      "noInput": "请输入一些泰卢固语文本进行翻译。"
+    },
+    "whatIs": {
+      "title": "什么是泰卢固语到英语翻译器？",
+      "description": "我们的泰卢固语到英语翻译器是一个强大的AI驱动工具，帮助您快速准确地将泰卢固语文本翻译成英语。无论您需要翻译文档、对话还是任何内容，我们的工具都能提供保持原意和语境的可靠翻译。",
+      "image": "/images/docs/telugu-to-english-translator-what-is.webp",
+      "imageAlt": "什么是泰卢固语到英语翻译器"
+    },
+    "examples": {
+      "title": "翻译示例",
+      "description": "查看我们的泰卢固语到英语翻译器如何处理真实示例",
+      "items": [
+        {
+          "alt": "నాకు తెలుగు చాలా ఇష్టం → I like Telugu very much",
+          "name": "表达喜好"
+        },
+        {
+          "alt": "నేను పాఠశాలకు వెళ్తున్నాను → I am going to school",
+          "name": "日常活动"
+        },
+        {
+          "alt": "భారతదేశం అందమైన దేశం → India is a beautiful country",
+          "name": "描述风景"
+        },
+        {
+          "alt": "ఆహారం చాలా రుచిగా ఉంది → The food is very delicious",
+          "name": "评价食物"
+        },
+        {
+          "alt": "మీరు ఎక్కడ నుండి వస్తున్నారు? → Where are you coming from?",
+          "name": "询问位置"
+        },
+        {
+          "alt": "నేను రేపు తాగుతాను → I will drink tomorrow",
+          "name": "未来计划"
+        }
+      ]
+    },
+    "howto": {
+      "title": "如何使用泰卢固语到英语翻译器",
+      "description": "按照这些简单步骤将您的泰卢固语文本翻译成英语",
+      "image": "/images/docs/telugu-to-english-translator-how-to.webp",
+      "imageAlt": "如何使用泰卢固语到英语翻译器",
+      "steps": [
+        {
+          "title": "输入您的泰卢固语文本",
+          "description": "在输入字段中输入或粘贴您的泰卢固语内容。您也可以直接上传.txt或.docx文件。"
+        },
+        {
+          "title": "开始翻译",
+          "description": "点击蓝色翻译按钮处理您的文本。我们的AI将分析并翻译您的内容。"
+        },
+        {
+          "title": "审查结果",
+          "description": "您的英语翻译会即时出现在输出字段中。检查准确性和自然流畅度。"
+        },
+        {
+          "title": "保存或分享",
+          "description": "将翻译文本复制到剪贴板或下载为文档供将来参考使用。"
+        }
+      ]
+    },
+    "highlights": {
+      "title": "为什么选择我们的泰卢固语到英语翻译器？",
+      "description": "体验具有先进功能的最佳泰卢固语到英语翻译",
+      "features": [
+        {
+          "title": "闪电般快速",
+          "description": "在几秒内获得即时的泰卢固语到英语翻译，采用先进的AI技术确保快速响应，无需等待即可获得高质量的翻译结果，提高您的工作效率。",
+          "icon": "FaRocket"
+        },
+        {
+          "title": "高准确性",
+          "description": "AI驱动的翻译，准确率达95%以上，通过深度学习算法理解泰卢固语的语法结构和语境，确保翻译结果的准确性和自然度。",
+          "icon": "FaBrain"
+        },
+        {
+          "title": "安全私密",
+          "description": "您的数据经过加密且从不存储，采用端到端加密技术保护您的隐私，所有翻译都在本地处理，确保您的敏感信息不会泄露。",
+          "icon": "FaShieldAlt"
+        },
+        {
+          "title": "完全免费",
+          "description": "无需注册或付费，您可以无限次使用我们的翻译服务，没有隐藏费用或使用限制，让每个人都能享受到高质量的翻译体验。",
+          "icon": "FaGift"
+        }
+      ]
+    },
+    "funFacts": {
+      "title": "关于泰卢固语和英语的有趣事实",
+      "items": [
+        {
+          "title": "古老的语言遗产",
+          "description": "泰卢固语是印度的古典语言之一，拥有跨越1000多年的丰富文学传统，这使得翻译具有重要的文化意义。该语言因其历史重要性和丰富遗产被印度政府宣布为'印度古典语言'。",
+          "image": "/images/docs/telugu-to-english-translator-fact-1.webp",
+          "imageAlt": "古老的语言遗产"
+        },
+        {
+          "title": "全球影响力",
+          "description": "全球有超过8200万泰卢固语使用者，而英语是全球商业语言，翻译连接了各大洲的沟通差距。泰卢固语是使用最广泛的达罗毗荼语，在全球语言中排名第15位。",
+          "image": "/images/docs/telugu-to-english-translator-fact-2.webp",
+          "imageAlt": "全球影响力"
+        }
+      ]
+    },
+    "userInterest": {
+      "title": "更多关于泰卢固语到英语翻译",
+      "items": [
+        {
+          "title": "文化语境保护",
+          "description": "我们的AI理解泰卢固语文学、习语和表达中的文化细微差别，确保翻译保持原有的文化意义和情感影响。系统能够识别泰卢固语地区特有的文化参考文献，如节日、传统和当地习俗。",
+          "image": "/images/docs/telugu-to-english-translator-interest-1.webp",
+          "imageAlt": "文化语境保护"
+        },
+        {
+          "title": "专业和技术翻译",
+          "description": "从技术文档到商务沟通，我们的翻译器处理医学、法律、工程和信息技术等领域的专业术语。AI经过特定领域词汇训练，能够准确翻译复杂技术术语，同时保持专业语调。",
+          "image": "/images/docs/telugu-to-english-translator-interest-2.webp",
+          "imageAlt": "专业和技术翻译"
+        },
+        {
+          "title": "教育应用",
+          "description": "非常适合学习英语的学生、访问全球内容的研究人员，或为讲泰卢固语的学生创建双语材料的教育工作者。翻译工具支持学术写作格式，能够处理从小学到大学水平的教育内容。",
+          "image": "/images/docs/telugu-to-english-translator-interest-3.webp",
+          "imageAlt": "教育应用"
+        },
+        {
+          "title": "商业整合",
+          "description": "无缝翻译商业提案、电子邮件、营销材料和客户沟通，将您的影响力从泰卢固语市场扩展到英语地区。工具理解商务礼仪，在两种语言中保持专业沟通标准。",
+          "image": "/images/docs/telugu-to-english-translator-interest-4.webp",
+          "imageAlt": "商业整合"
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "用户评价",
+      "subtitle": "来自真实用户的真实反馈",
+      "items": [
+        {
+          "name": "普里亚·夏尔马",
+          "role": "软件开发者",
+          "content": "这个泰卢固语到英语翻译器非常准确。它帮助我有效地与国际客户沟通。",
+          "rating": 4.8
+        },
+        {
+          "name": "拉维·库马尔",
+          "role": "学生",
+          "content": "作为学习英语的人，这个工具对于理解和提高我的语言技能非常有价值。",
+          "rating": 4.5
+        },
+        {
+          "name": "安贾利·奈杜",
+          "role": "企业主",
+          "content": "我每天用它处理商务信函。翻译专业且可靠。",
+          "rating": 4.7
+        }
+      ]
+    },
+    "faqs": {
+      "title": "常见问题",
+      "items": [
+        {
+          "question": "泰卢固语到英语翻译器是免费的吗？",
+          "answer": "是的，我们的泰卢固语到英语翻译器完全免费使用，没有隐藏费用或注册要求。"
+        },
+        {
+          "question": "泰卢固语到英语翻译的准确性如何？",
+          "answer": "我们AI驱动的翻译器提供高度准确的翻译，一般内容准确率超过95%，保持语境和文化细微差别。"
+        },
+        {
+          "question": "我可以将整个文档从泰卢固语翻译成英语吗？",
+          "answer": "是的，您可以直接上传.txt和.docx文件到我们的工具进行即时泰卢固语到英语翻译，同时保持格式。"
+        },
+        {
+          "question": "我可以翻译哪些类型的泰卢固语内容？",
+          "answer": "您可以翻译各种内容类型，包括日常对话、商务邮件、学术论文、创意写作和技术文档。"
+        },
+        {
+          "question": "泰卢固语到英语翻译需要多长时间？",
+          "answer": "大多数翻译在几秒内即时完成。较长的文档可能需要一些时间，但仍然处理得非常快。"
+        }
+      ]
+    },
+    "cta": {
+      "title": "准备开始泰卢固语到英语翻译吗？",
+      "description": "现在就开始将您的泰卢固语文本翻译成英语 - 只需几秒钟！",
+      "primaryButton": "免费开始使用"
+    }
+  }
+}

@@ -68,8 +68,7 @@ export const ResetPasswordForm = () => {
   const onSubmit = async (values: z.infer<typeof ResetPasswordSchema>) => {
     await authClient.resetPassword(
       {
-        newPassword: values.password,
-        token,
+        password: values.password,
       },
       {
         onRequest: (ctx) => {

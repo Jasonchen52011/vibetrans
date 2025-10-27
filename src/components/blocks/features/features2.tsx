@@ -29,7 +29,9 @@ export default function Features2Section() {
         <div className="grid items-center gap-12 lg:grid-cols-5 lg:gap-24">
           <div className="lg:col-span-2">
             <div className="lg:pr-0">
-              <h2 className="text-4xl font-semibold">{t('title')}</h2>
+              <h2 className="max-w-5xl mx-auto text-center tracking-tight font-medium text-black dark:text-white text-3xl md:text-5xl md:leading-tight">
+                {t('title')}
+              </h2>
               <p className="mt-6">{t('description')}</p>
             </div>
 

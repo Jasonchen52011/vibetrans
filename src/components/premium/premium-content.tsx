@@ -15,7 +15,7 @@ interface PremiumContentProps {
  */
 export function PremiumContent({ children }: PremiumContentProps) {
   const currentUser = useCurrentUser();
-  const { data: paymentData } = useCurrentPlan(currentUser?.id);
+  const { data: paymentData } = useCurrentPlan(currentUser?.user?.id);
 
   // Determine if user has premium access
   const hasPremiumAccess =

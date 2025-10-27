@@ -21,9 +21,9 @@ import { Separator } from '@/components/ui/separator';
 import { Textarea } from '@/components/ui/textarea';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { useBanUser, useUnbanUser } from '@/hooks/use-users';
-import type { User } from '@/lib/auth-types';
 import { isDemoWebsite } from '@/lib/demo';
 import { formatDate } from '@/lib/formatter';
+import type { DatabaseUser } from '@/lib/supabase/types';
 import { getStripeDashboardCustomerUrl } from '@/lib/urls/urls';
 import { cn } from '@/lib/utils';
 import {
@@ -39,7 +39,7 @@ import { useState } from 'react';
 import { toast } from 'sonner';
 
 interface UserDetailViewerProps {
-  user: User;
+  user: DatabaseUser;
 }
 
 export function UserDetailViewer({ user }: UserDetailViewerProps) {
@@ -121,7 +121,7 @@ export function UserDetailViewer({ user }: UserDetailViewerProps) {
         >
           <div className="flex items-center gap-2 pl-3">
             <UserAvatar
-              name={user.name}
+              name={user.name || user.email || ''}
               image={user.image}
               className="size-8 border"
             />
@@ -135,7 +135,7 @@ export function UserDetailViewer({ user }: UserDetailViewerProps) {
         <DrawerHeader className="gap-1">
           <div className="flex items-center gap-4">
             <UserAvatar
-              name={user.name}
+              name={user.name || user.email || ''}
               image={user.image}
               className="size-12 border"
             />
@@ -191,7 +191,7 @@ export function UserDetailViewer({ user }: UserDetailViewerProps) {
                     variant="outline"
                     className="text-sm px-1.5 cursor-pointer hover:bg-accent"
                     onClick={() => {
-                      navigator.clipboard.writeText(user.email);
+                      navigator.clipboard.writeText(user.email || '');
                       toast.success(t('emailCopied'));
                     }}
                   >
@@ -228,11 +228,15 @@ export function UserDetailViewer({ user }: UserDetailViewerProps) {
           <div className="grid gap-3">
             <div className="flex justify-between items-center">
               <span className="text-muted-foreground">{t('joined')}:</span>
-              <span>{formatDate(user.createdAt)}</span>
+              <span>
+                {user.createdAt ? formatDate(new Date(user.createdAt)) : '-'}
+              </span>
             </div>
             <div className="flex justify-between items-center">
               <span className="text-muted-foreground">{t('updated')}:</span>
-              <span>{formatDate(user.updatedAt)}</span>
+              <span>
+                {user.updatedAt ? formatDate(new Date(user.updatedAt)) : '-'}
+              </span>
             </div>
           </div>
           <Separator />
@@ -248,7 +252,7 @@ export function UserDetailViewer({ user }: UserDetailViewerProps) {
               </div>
               <div className="">
                 {t('ban.expires')}:{' '}
-                {(user.banExpires && formatDate(user.banExpires)) ||
+                {(user.banExpires && formatDate(new Date(user.banExpires))) ||
                   t('ban.never')}
               </div>
               <Button

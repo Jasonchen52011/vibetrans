@@ -1,0 +1,210 @@
+{
+  "MangaTranslatorPage": {
+    "title": "漫画翻译工作室：最佳漫画翻译工具",
+    "description": "漫画翻译工作室提供最佳漫画翻译器，通过三步简单操作实现高效的AI驱动图像识别、翻译和排版。",
+    "hero": {
+      "title": "漫画翻译工作室，无缝漫画翻译体验",
+      "description": "发现最佳漫画翻译器，具有AI驱动精度和无缝翻译功能。"
+    },
+    "tool": {
+      "inputLabel": "输入文本",
+      "outputLabel": "翻译文本",
+      "inputPlaceholder": "在此输入您的文本...",
+      "outputPlaceholder": "翻译将在此显示...",
+      "translateButton": "翻译",
+      "uploadButton": "上传文件",
+      "uploadHint": "支持 .txt 和 .docx 文件",
+      "voiceInputButton": "语音输入",
+      "voiceInputHint": "点击开始语音输入",
+      "audioUploadButton": "上传音频",
+      "audioUploadHint": "上传音频文件进行转录",
+      "voiceOutputButton": "播放音频",
+      "voiceOutputHint": "收听翻译",
+      "loading": "翻译中...",
+      "transcribing": "转录音频中...",
+      "error": "翻译失败，请重试。",
+      "noInput": "请输入要翻译的文本。"
+    },
+    "whatIs": {
+      "title": "什么是漫画翻译工作室",
+      "description": "漫画翻译工作室是一款一体化工具，为漫画翻译提供先进的AI功能。它具有自动气泡检测、上下文一致的翻译和可定制的排版功能，提供卓越的本地化体验。",
+      "image": "/images/docs/what-is-manga-translator.webp",
+      "imageAlt": "什么是漫画翻译工作室"
+    },
+    "examples": {
+      "title": "观看漫画翻译工作室实际操作",
+      "description": "观看我们的工具如何准确地将日语漫画翻译成英语，保持原始风格和上下文。我们的AI检测并翻译音效，确保无缝的阅读体验。",
+      "items": [
+        { "alt": "日语漫画分镜翻译成英语", "name": "日语到英语翻译" },
+        { "alt": "漫画对话气泡文字识别", "name": "对话气泡识别" },
+        { "alt": "音效翻译示例", "name": "音效翻译处理" },
+        { "alt": "竖排文本漫画翻译", "name": "竖排文本处理" },
+        { "alt": "漫画人物对话翻译", "name": "角色对话处理" },
+        { "alt": "漫画分镜翻译后排版", "name": "专业排版效果" }
+      ]
+    },
+    "howto": {
+      "title": "如何轻松翻译漫画",
+      "description": "仅需几个步骤即可轻松学会翻译漫画。",
+      "steps": [
+        {
+          "name": "上传您的漫画",
+          "description": "首先将您的漫画页面上传到我们的平台。确保图像清晰以获得最佳的气泡检测和文本识别效果。"
+        },
+        {
+          "name": "选择翻译模式",
+          "description": "从我们的专业翻译模式中选择适合您需求的模式，无论是技术性还是文学性风格。"
+        },
+        {
+          "name": "审查和编辑",
+          "description": "审查翻译内容。利用我们的AI工具编辑和完善翻译，确保它们符合您的质量标准。"
+        },
+        {
+          "name": "下载和分享",
+          "description": "满意后，以您喜欢的格式下载翻译好的漫画，准备好与您的受众分享。"
+        }
+      ]
+    },
+    "funFacts": {
+      "title": "有趣的事实",
+      "items": [
+        {
+          "title": "首次官方翻译",
+          "description": "第一部正式翻译成英语的漫画是1983年的《神威传说》，由于气泡大小限制，其中12%的文本被删除。",
+          "image": "/images/docs/manga-translator-fact-1.webp",
+          "imageAlt": "首次官方翻译"
+        },
+        {
+          "title": "音效翻译挑战",
+          "description": "一本200页的漫画平均包含15%-20%的音效，许多翻译工具难以准确识别和翻译。",
+          "image": "/images/docs/manga-translator-fact-2.webp",
+          "imageAlt": "音效翻译挑战"
+        }
+      ]
+    },
+    "userInterest": {
+      "title": "探索更多漫画翻译工作室功能",
+      "items": [
+        {
+          "title": "数据隐私和安全",
+          "description": "您数据的安全是我们的首要任务。了解漫画翻译工作室如何在漫画翻译过程中确保隐私和安全。",
+          "image": "/images/docs/manga-translator-interest-1.webp",
+          "imageAlt": "数据隐私和安全"
+        },
+        {
+          "title": "准确性基准测试",
+          "description": "了解我们的翻译准确度如何与人类专家相比，确保您的漫画项目获得高质量结果。",
+          "image": "/images/docs/manga-translator-interest-2.webp",
+          "imageAlt": "准确性基准测试"
+        },
+        {
+          "title": "竖排文本和音效识别",
+          "description": "我们的工具在识别日语竖排文本和音效方面表现出色，提供无缝的翻译体验。",
+          "image": "/images/docs/manga-translator-interest-3.webp",
+          "imageAlt": "竖排文本和音效识别"
+        },
+        {
+          "title": "批量处理提高效率",
+          "description": "通过我们的批量处理功能毫不费力地翻译整卷，旨在节省您时间和精力。",
+          "image": "/images/docs/manga-translator-interest-4.webp",
+          "imageAlt": "批量处理提高效率"
+        }
+      ]
+    },
+    "highlights": {
+      "title": "漫画翻译工作室的主要功能",
+      "description": "探索使漫画翻译工作室成为漫画翻译终极工具的突出功能。",
+      "features": [
+        {
+          "title": "AI上下文理解",
+          "icon": "FaBrain",
+          "tagline": "智能上下文感知翻译",
+          "statLabel": "翻译准确率",
+          "statValue": "90%+",
+          "description": "我们的AI提供上下文一致的翻译，捕捉细微含义并确保准确的本地化。",
+          "wordCount": 20,
+          "microCopy": "体验精确翻译。"
+        },
+        {
+          "title": "语音输入输出",
+          "icon": "FaVolumeUp",
+          "tagline": "无缝语音交互",
+          "statLabel": "语音识别",
+          "statValue": "实时",
+          "description": "利用语音输入实现免提操作，通过我们的语音输出功能收听翻译内容的朗读。",
+          "wordCount": 24,
+          "microCopy": "说话、收听、轻松翻译。"
+        },
+        {
+          "title": "数据隐私和安全",
+          "icon": "FaShieldAlt",
+          "tagline": "您的数据，我们的优先事项",
+          "statLabel": "数据保护",
+          "statValue": "高级",
+          "description": "我们优先考虑您数据的安全，通过行业标准加密方法确保安全上传和翻译。",
+          "wordCount": 23,
+          "microCopy": "您的隐私得到保证。"
+        },
+        {
+          "title": "高精度OCR",
+          "icon": "FaMagic",
+          "tagline": "精确文本识别",
+          "statLabel": "OCR准确率",
+          "statValue": "90%+",
+          "description": "体验高精度的光学字符识别，完美适应漫画独特的文本样式和布局。",
+          "wordCount": 23,
+          "microCopy": "值得信赖的OCR。"
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "用户评价",
+      "subtitle": "真实用户真实反馈",
+      "items": {
+        "item-1": {
+          "name": "张三",
+          "role": "自由译者",
+          "heading": "张三的评价",
+          "content": "使用漫画翻译工作室彻底改变了我的工作流程。AI上下文理解令人难以置信，确保我的翻译保持原有的意义和风格。对于专业漫画翻译师来说，这是一个游戏规则改变者。"
+        },
+        "item-2": {
+          "name": "李四",
+          "role": "漫画出版商",
+          "heading": "李四的评价",
+          "content": "漫画翻译工作室的批量处理功能为我们节省了时间和精力。我们可以快速高效地翻译整卷，保持高质量标准。这是我们出版团队必不可少的工具。"
+        },
+        "item-3": {
+          "name": "王五",
+          "role": "漫画爱好者",
+          "heading": "王五的评价",
+          "content": "作为热爱阅读漫画的人，这个工具帮助我更好地理解日语内容。翻译质量令人印象深刻，语音功能使其更加易于访问。"
+        }
+      }
+    },
+    "faqs": {
+      "title": "常见问题",
+      "subtitle": "有其他问题？欢迎通过邮件联系我们。",
+      "items": {
+        "item-1": {
+          "question": "漫画翻译工作室免费使用吗？",
+          "answer": "漫画翻译工作室提供一系列定价计划，包括具有基本功能的免费版本。探索我们的高级选项以获得更高级的功能。"
+        },
+        "item-2": {
+          "question": "我的数据在漫画翻译工作室中有多安全？",
+          "answer": "您的隐私是我们的首要任务。漫画翻译工作室使用最先进的加密技术在上传和翻译过程中保护您的数据，确保您的信息保持机密。"
+        },
+        "item-3": {
+          "question": "哪个是最好的漫画翻译工具？",
+          "answer": "漫画翻译工作室被认为是最好的漫画翻译工具，因为它的高准确度、上下文感知翻译以及为专业和休闲用户设计的用户友好功能。"
+        }
+      }
+    },
+    "ctaButton": "立即试用漫画翻译器",
+    "cta": {
+      "title": "今天就开始使用漫画翻译工作室",
+      "description": "通过漫画翻译工作室体验最佳漫画翻译。立即开始您的免费试用！",
+      "primaryButton": "免费开始",
+      "secondaryButton": "返回顶部"
+    }
+  }
+}

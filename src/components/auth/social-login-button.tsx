@@ -58,11 +58,9 @@ export const SocialLoginButton = ({
         /**
          * a url to redirect if an error occurs during the sign in process
          */
-        errorCallbackURL: Routes.AuthError,
         /**
          * a url to redirect if the user is newly registered
          */
-        // newUserCallbackURL: "/auth/welcome",
         /**
          * disable the automatic redirect to the provider.
          * @default false

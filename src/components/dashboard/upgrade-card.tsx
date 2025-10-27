@@ -13,7 +13,7 @@ import { useCurrentPlan } from '@/hooks/use-payment';
 import { LocaleLink } from '@/i18n/navigation';
 import { authClient } from '@/lib/auth-client';
 import { Routes } from '@/routes';
-import { SparklesIcon } from 'lucide-react';
+import { ArrowRightIcon, SparklesIcon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
 
@@ -56,7 +56,10 @@ export function UpgradeCard() {
       </CardHeader>
       <CardContent>
         <Button className="cursor-pointer w-full shadow-none" size="sm">
-          <LocaleLink href={Routes.SettingsBilling}>{t('button')}</LocaleLink>
+          <LocaleLink href={Routes.SettingsBilling}>
+            {t('button')}
+            <ArrowRightIcon className="ml-2 h-4 w-4" />
+          </LocaleLink>
         </Button>
       </CardContent>
     </Card>

@@ -1,0 +1,230 @@
+{
+  "EnglishToAmharicTranslatorPage": {
+    "title": "VibeTrans: English to Amharic Translator",
+    "description": "Translate English content into authentic Amharic script with tone controls, collaboration modes, and export workflows for marketing, customer support, and cultural storytelling.",
+    "hero": {
+      "title": "English to Amharic Translator Built for Real Teams",
+      "description": "Switch between English and Amharic instantly with tone-aware AI, transliteration hints, and collaboration tools built for Ethiopian enterprises, nonprofits, and diaspora creators working across multiple channels."
+    },
+    "tool": {
+      "inputLabel": "English Text",
+      "outputLabel": "Amharic Translation",
+      "inputPlaceholder": "Paste English copy, emails, or scripts...",
+      "outputPlaceholder": "Your Amharic translation appears here...",
+      "translateButton": "Translate",
+      "uploadButton": "Upload File",
+      "uploadHint": "Supports .txt and .docx files",
+      "voiceInputButton": "Voice Input",
+      "voiceInputHint": "Click to start voice input",
+      "audioUploadButton": "Upload Audio",
+      "audioUploadHint": "Upload audio file for transcription",
+      "voiceOutputButton": "Play Audio",
+      "voiceOutputHint": "Listen to translation",
+      "loading": "Translating to Amharic...",
+      "transcribing": "Transcribing audio...",
+      "error": "Translation failed. Please try again.",
+      "noInput": "Please enter English text to translate."
+    },
+    "whatIs": {
+      "title": "What is the Amharic Translator?",
+      "description": "The VibeTrans English to Amharic Translator is an AI workspace tuned to Ethiopia's formal register, Ge'ez script, and modern slang. Upload Word files, chat threads, or call transcripts and receive polished Amharic plus optional Latin transliteration. Built-in review cues help bilingual teams finalize messaging before sharing it with customers, ministries, or diaspora communities. It keeps date formats, honorifics, and place names consistent across every export.",
+      "image": "/images/docs/english-amharic-translate.webp",
+      "imageAlt": "Illustration of English to Amharic translation workflow"
+    },
+    "examples": {
+      "title": "English to Amharic Translation Examples",
+      "description": "See how VibeTrans preserves tone, context, and Ge'ez script clarity when translating everyday business, travel, and cultural phrases from English into Amharic.",
+      "items": [
+        {
+          "alt": "English: Welcome to our Addis Ababa office → Amharic: እንኳን ወደ አዲስ አበባ ቢሮቻችን መጡ",
+          "name": "Welcome to our Addis Ababa office → እንኳን ወደ አዲስ አበባ ቢሮቻችን መጡ"
+        },
+        {
+          "alt": "English: Please review the updated invoice → Amharic: እባክዎን የተዘመነውን ደረሰኝ ይመልከቱ",
+          "name": "Please review the updated invoice → እባክዎን የተዘመነውን ደረሰኝ ይመልከቱ"
+        },
+        {
+          "alt": "English: Where can I find vegetarian options? → Amharic: የተንስ ምርጫዎችን የት ማግኘት እችላለሁ?",
+          "name": "Where can I find vegetarian options? → የተንስ ምርጫዎችን የት ማግኘት እችላለሁ?"
+        },
+        {
+          "alt": "English: Flight ET302 departs at 9 AM → Amharic: የET302 በረራ በጠዋት 9 ሰአት ይጀምራል",
+          "name": "Flight ET302 departs at 9 AM → የET302 በረራ በጠዋት 9 ሰአት ይጀምራል"
+        },
+        {
+          "alt": "English: Let's celebrate Meskel together → Amharic: እንደጋ ሜስቀልን በአንድነት እንከብር",
+          "name": "Let's celebrate Meskel together → እንደጋ ሜስቀልን በአንድነት እንከብር"
+        },
+        {
+          "alt": "English: Share the partnership agreement today → Amharic: የአባልነት ስምምነቱን ዛሬ ያጋሩ",
+          "name": "Share the partnership agreement today → የአባልነት ስምምነቱን ዛሬ ያጋሩ"
+        }
+      ]
+    },
+    "howto": {
+      "title": "How to translate English to Amharic",
+      "description": "Follow these guided steps to turn English drafts into accurate Amharic copy that is ready to publish or send.",
+      "image": "/images/docs/translate-improve-arrows.webp",
+      "imageAlt": "How to translate English to Amharic steps",
+      "steps": [
+        {
+          "title": "Collect Your Source Material",
+          "description": "Gather English messages, proposals, or transcripts from email, chat, or .docx files. The uploader keeps original formatting intact, detects numbers and currency, and prepares the text so the AI can preserve business tone automatically for every paragraph.",
+          "wordCount": 37
+        },
+        {
+          "title": "Select Context Mode",
+          "description": "Choose formal government, business, support, or creative storytelling mode. Each option loads curated Amharic phrase banks, honorifics, and transliteration rules so your message lands with the right level of respect and warmth for the recipient.",
+          "wordCount": 35
+        },
+        {
+          "title": "Translate and Collaborate",
+          "description": "Hit Translate to receive Amharic script plus optional latin transliteration. Mention teammates for review notes, highlight segments needing legal approval, and let the AI suggest tone adjustments before you finalize the customer-ready draft for your chosen channel.",
+          "wordCount": 41
+        },
+        {
+          "title": "Deliver and Measure",
+          "description": "Export polished Amharic copy as text, Word, or CSV, or trigger webhook delivery into your CRM. Enable real-time analytics to track glossary usage, reviewer comments, and delivery status so every campaign stays aligned with stakeholders across Ethiopia and abroad.",
+          "wordCount": 44
+        }
+      ]
+    },
+    "funFacts": {
+      "title": "Amharic Language Insights",
+      "items": [
+        {
+          "title": "Ge'ez Script with Living Rhythm",
+          "description": "Amharic grew from the ancient Ge'ez abugida, blending Semitic roots with modern innovations—each glyph already encodes consonant and vowel sounds, so accurate spacing and tone keep the written message musical and clear.",
+          "image": "/images/docs/amharic-alphabet-fun.webp",
+          "imageAlt": "Stylized Amharic alphabet illustration"
+        },
+        {
+          "title": "Language of Business and Culture",
+          "description": "Over 32 million native speakers use Amharic across Ethiopia, embassies, churches, and diaspora media, making it essential for contracts, tourism, community outreach, and cultural storytelling that needs respectful, localized nuance.",
+          "image": "/images/docs/global-communication.webp",
+          "imageAlt": "Global collaboration with Ethiopian teams"
+        }
+      ]
+    },
+    "userInterest": {
+      "title": "Where Teams Use English to Amharic Translation",
+      "items": [
+        {
+          "title": "Government and Enterprise Comms",
+          "description": "Draft bilingual briefings, policy updates, and procurement notices that respect Ethiopian administrative style while remaining accessible to international partners and diaspora communities.",
+          "image": "/images/docs/global-business-tools.webp",
+          "imageAlt": "Professionals collaborating over government briefings"
+        },
+        {
+          "title": "Customer Support Hubs",
+          "description": "Convert help articles and live chat replies into clear Amharic, then sync them back into your CRM so agents can resolve questions without switching tools.",
+          "image": "/images/docs/global-communication.webp",
+          "imageAlt": "Support specialist assisting customers in Amharic"
+        },
+        {
+          "title": "Learning and NGO Programs",
+          "description": "Localize training manuals, educational SMS campaigns, and health outreach content with streamlined reviewer workflows and consistent terminology libraries.",
+          "image": "/images/docs/learning-translation-tools.webp",
+          "imageAlt": "Educators using translation tools in a classroom"
+        },
+        {
+          "title": "Culture and Media Studios",
+          "description": "Adapt documentaries, streaming captions, and festival scripts with tone presets that preserve idioms, celebrations, and cultural references for global audiences.",
+          "image": "/images/docs/culture-bridge-tools.webp",
+          "imageAlt": "Creative team preparing bilingual media content"
+        }
+      ]
+    },
+    "highlights": {
+      "title": "Why Ethiopian teams choose VibeTrans",
+      "overview": "AI-powered English ↔ Amharic translation with transliteration support, review safeguards, and export automations designed for modern Ethiopian workflows.",
+      "description": "Blend Ge'ez script mastery with business-ready tooling so legal, support, and marketing teams can deliver polished Amharic copy without chasing freelancers or juggling spreadsheets.",
+      "features": [
+        {
+          "icon": "FaRocket",
+          "title": "Context-Aware Drafts",
+          "description": "Adaptive prompts understand regional idioms, respect formal greetings, and keep names consistent, making every translation sound native to Ethiopian stakeholders."
+        },
+        {
+          "icon": "FaShieldAlt",
+          "title": "Secure Collaboration",
+          "description": "Role-based review queues, redaction tools, and encrypted exports keep sensitive agreements and government documents protected end to end."
+        },
+        {
+          "icon": "FaBrain",
+          "title": "Continuous Learning",
+          "description": "Feedback loops feed new terminology from ministries, banks, and media houses back into the AI so translations stay current with evolving language."
+        },
+        {
+          "icon": "FaChartLine",
+          "title": "Workflow Automation",
+          "description": "Integrations push approved Amharic copy into CMS, CRM, or SMS platforms automatically, saving hours on manual posting and QA."
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "What Users Say",
+      "subtitle": "Stories from Teams Using VibeTrans to Bridge English and Amharic Every Day",
+      "items": {
+        "item-1": {
+          "name": "Saba Mengistu",
+          "role": "Communications Lead, Addis Ababa",
+          "heading": "Policy Updates Arrive in Perfect Amharic",
+          "content": "Weekly policy bulletins used to stall in translation. With VibeTrans we publish bilingual updates in hours, and reviewers trust the honorifics and phrasing for every ministry partner.",
+          "rating": "4.9"
+        },
+        "item-2": {
+          "name": "Yonatan Bekele",
+          "role": "CX Director, Fintech Startup",
+          "heading": "Support Tickets Stay Friendly and Precise",
+          "content": "Our agents finally reply in polished Amharic without losing the personal touch. Tone presets keep compliance happy while customers feel heard instantly.",
+          "rating": "4.7"
+        },
+        "item-3": {
+          "name": "Hanna Fekadu",
+          "role": "Producer, Diaspora Media Collective",
+          "heading": "Captions Match the Heart of the Story",
+          "content": "We subtitle documentaries for audiences on three continents. VibeTrans nails cultural references and provides transliteration so narrators can pace every line naturally.",
+          "rating": "4.8"
+        }
+      }
+    },
+    "faqs": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Quick answers before you launch your next English to Amharic project",
+      "items": {
+        "item-1": {
+          "question": "Can the translator keep honorifics and formal phrasing?",
+          "answer": "Yes. Choose a formal preset and VibeTrans maintains titles, respectful greetings, and closing lines that match Ethiopian business etiquette."
+        },
+        "item-2": {
+          "question": "Does it support transliteration for learners?",
+          "answer": "Enable transliteration mode to display Latin script alongside Amharic output so bilingual reviewers and learners can confirm pronunciation quickly."
+        },
+        "item-3": {
+          "question": "How do we collaborate on large documents?",
+          "answer": "Upload .docx files, add reviewers, and track inline comments. Approvals sync back to your CMS or cloud drive automatically."
+        },
+        "item-4": {
+          "question": "Is there an API for existing platforms?",
+          "answer": "Absolutely. Use the REST API or webhook triggers to push translations into help centers, CRM automations, or SMS campaigns without manual copy-paste."
+        },
+        "item-5": {
+          "question": "How is our data protected?",
+          "answer": "Projects are encrypted at rest and in transit. Administrators can set retention windows, redact sensitive data, and audit every export."
+        },
+        "item-6": {
+          "question": "Is the translator free to use?",
+          "answer": "Yes. The English to Amharic translator offers free basic translations with premium features available for teams needing advanced collaboration tools."
+        }
+      }
+    },
+    "ctaButton": "Try English to Amharic Translator",
+    "cta": {
+      "title": "Start translating with VibeTrans English to Amharic",
+      "description": "Launch accurate Amharic copy in minutes—ideal for government updates, enterprise support, cultural media, and community outreach.",
+      "primaryButton": "Try English to Amharic Translator Now",
+      "secondaryButton": "Back to Top"
+    }
+  }
+}

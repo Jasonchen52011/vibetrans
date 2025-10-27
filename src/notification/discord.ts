@@ -1,5 +1,4 @@
 import { websiteConfig } from '@/config/website';
-import { defaultMessages } from '@/i18n/messages';
 import { getBaseUrl } from '@/lib/urls/urls';
 
 /**
@@ -28,7 +27,7 @@ export async function sendMessageToDiscord(
     // Format the message
     const message = {
       // You can customize these values later
-      username: `${defaultMessages.Metadata.name} Bot`,
+      username: 'VibeTrans Bot',
       avatar_url: `${getBaseUrl()}${websiteConfig.metadata?.images?.logoLight}`,
       embeds: [
         {

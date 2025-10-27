@@ -14,8 +14,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { PaperPlaneIcon } from '@radix-ui/react-icons';
-import { Loader2Icon } from 'lucide-react';
+import { Loader2, Send } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useState, useTransition } from 'react';
 import { useForm } from 'react-hook-form';
@@ -108,9 +107,9 @@ export function NewsletterForm() {
             disabled={isPending}
           >
             {isPending ? (
-              <Loader2Icon className="size-6 animate-spin" aria-hidden="true" />
+              <Loader2 className="size-6 animate-spin" aria-hidden="true" />
             ) : (
-              <PaperPlaneIcon className="size-6" aria-hidden="true" />
+              <Send className="size-6" aria-hidden="true" />
             )}
             <span className="sr-only">{t('subscribe')}</span>
           </Button>

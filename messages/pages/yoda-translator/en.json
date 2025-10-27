@@ -1,0 +1,218 @@
+{
+  "YodaTranslatorPage": {
+    "title": "Yoda Translator: Real-Time Language Translation",
+    "description": "Experience seamless translations with Yoda translator. Convert text, speech, and images into authentic Yoda-speak with high accuracy and speed.",
+    "hero": {
+      "title": "Yoda Translator: Speak Like a Jedi Master",
+      "description": "Transform your text into Yoda's iconic speech pattern with VibeTrans! Experience the most magical translation tool that adds fun and creativity to your conversations. Try it now and discover its unique value!",
+      "userCount": "from 25,000+ happy users"
+    },
+    "tool": {
+      "inputLabel": "Input Text",
+      "outputLabel": "Translated Text",
+      "inputPlaceholder": "Enter your text here...",
+      "outputPlaceholder": "Translation will appear here...",
+      "translateButton": "Translate",
+      "uploadButton": "Upload File",
+      "uploadHint": "Supports .txt and .docx files",
+      "voiceInputButton": "Voice Input",
+      "voiceInputHint": "Click to start voice input",
+      "audioUploadButton": "Upload Audio",
+      "audioUploadHint": "Upload audio file for transcription",
+      "voiceOutputButton": "Play Audio",
+      "voiceOutputHint": "Listen to translation",
+      "loading": "Translating...",
+      "transcribing": "Transcribing audio...",
+      "error": "Translation failed. Please try again.",
+      "noInput": "Please enter some text to translate."
+    },
+    "whatIs": {
+      "title": "What is Yoda Translator",
+      "description": "Yoda Translator is a fun and engaging tool designed to convert English text into the unique speech pattern of the iconic Star Wars character, Yoda. By rearranging syntax and structure, it creates entertaining renditions perfect for fans or creative writing. VibeTrans, the brand behind this tool, ensures a seamless experience, allowing users to easily transform ordinary sentences into Yoda's memorable style, making communication both playful and imaginative.",
+      "image": "/images/docs/what-is-yoda-translator.webp",
+      "imageAlt": "What is yoda-translator - Visual explanation"
+    },
+    "examples": {
+      "title": "Real-World Translation Examples",
+      "description": "Witness Yoda Translator in action: 'Hello, how are you?' becomes 'How are you, hello?' in Yoda-speak. Perfect for adding a Star Wars twist to your conversations.",
+      "items": [
+        {
+          "alt": "English to Yoda: I will help you learn",
+          "name": "Help you learn, I will"
+        },
+        {
+          "alt": "English to Yoda: The force is strong with you",
+          "name": "Strong with you, the force is"
+        },
+        {
+          "alt": "English to Yoda: Patience you must have",
+          "name": "Patience you must have, my young padawan"
+        },
+        {
+          "alt": "English to Yoda: Do or do not, there is no try",
+          "name": "Do or do not, there is no try"
+        },
+        {
+          "alt": "English to Yoda: Size matters not",
+          "name": "Matters not, the size of the force"
+        },
+        {
+          "alt": "English to Yoda: Always in motion is the future",
+          "name": "In motion, the future always is"
+        }
+      ]
+    },
+    "howto": {
+      "title": "How to Translate Text to Yoda-Speak",
+      "description": "Easily convert any text into Yoda-speak with these steps.",
+      "image": "/images/docs/yoda-translator-how-to.webp",
+      "imageAlt": "How to use Yoda Translator step by step",
+      "steps": [
+        {
+          "title": "Enter Text",
+          "description": "Type or paste the text you want to convert into the Yoda Translator input field. Ensure the text is clear and free of errors for the best results.",
+          "wordCount": 37
+        },
+        {
+          "title": "Select Translation Mode",
+          "description": "On the main interface, find the translation mode options. Click the dropdown menu to view the available mode list. Select your desired translation mode and ensure it's highlighted. Confirm your selection and click the confirm button to apply the mode.",
+          "wordCount": 40
+        },
+        {
+          "title": "Convert",
+          "description": "Enter your text in the input box and click the 'Convert' button. The system will automatically transform your sentences into Yoda Master's style. Ensure the text is error-free for best results. Then, review the converted output and make necessary adjustments.",
+          "wordCount": 40
+        },
+        {
+          "title": "Review and Share",
+          "description": "After conversion, carefully check the accuracy of the translated content. Once confirmed, click the share button, select a platform or copy the link to easily share your translation work with friends. Ensure you're logged in to complete sharing successfully.",
+          "wordCount": 40
+        }
+      ]
+    },
+    "funFacts": {
+      "title": "Interesting Facts",
+      "items": [
+        {
+          "title": "Unique Language Pattern",
+          "description": "Yoda's unique word order is used by only 0.3% of real-world languages. VibeTrans' Yoda translator mimics this pattern, inspired by script changes and Frank Oz's creative interpretation.",
+          "image": "/images/docs/yoda-translator-fact-1.webp",
+          "imageAlt": "Unique Language Pattern"
+        },
+        {
+          "title": "OSV Grammar Structure",
+          "description": "Yoda's classic Object-Subject-Verb word order is used by only 0.3% of languages in reality. VibeTrans can transform ordinary sentences into Yoda-style, providing fun and challenges that make language learning more engaging.",
+          "image": "/images/docs/yoda-translator-fact-2.webp",
+          "imageAlt": "OSV Grammar Structure"
+        }
+      ]
+    },
+    "userInterest": {
+      "title": "Explore More with Yoda Translator",
+      "items": [
+        {
+          "title": "API & Developer Access",
+          "description": "Unlock the power of VibeTrans with our API. Developers, dive deep into Yoda-speak and integrate it like a boss. Whether crafting quirky apps or adding spice to existing ones, our seamless API access keeps the creative juices flowing. Your project, your rules.",
+          "image": "/images/docs/yoda-translator-interest-1.webp",
+          "imageAlt": "API & Developer Access"
+        },
+        {
+          "title": "Educational Use",
+          "description": "VibeTrans makes learning incredibly fun, speaking like Yoda turns classroom knowledge into Star Wars quotes. Students can master grammar and vocabulary through imitation, sparking curiosity and learning motivation. Teachers can use its engaging nature to liven up classroom atmosphere and enhance interactive effects.",
+          "image": "/images/docs/yoda-translator-interest-2.webp",
+          "imageAlt": "Educational Use"
+        },
+        {
+          "title": "Voice and Audio Integration",
+          "description": "Dive into seamless audio with VibeTrans: where Jedi wisdom meets modern tech. Translate any voice into Yoda's legendary syntax, turning ordinary chat into galactic banter. Impress your pals or prank them—VibeTrans keeps it lively and full of surprises. Unleash the force, you will.",
+          "image": "/images/docs/yoda-translator-interest-3.webp",
+          "imageAlt": "Voice and Audio Integration"
+        },
+        {
+          "title": "Privacy and Security",
+          "description": "In the VibeTrans realm, your data's no open book. With encryption tighter than a drum, snoopers can't play peekaboo. Trustworthy as a Jedi, our safeguards ensure your info's in safe hands. So, chillax and let the Yoda magic do its thing, worry-free.",
+          "image": "/images/docs/yoda-translator-interest-4.webp",
+          "imageAlt": "Privacy and Security"
+        }
+      ]
+    },
+    "highlights": {
+      "title": "Highlights of Yoda Translator",
+      "description": "Discover why Yoda Translator is the preferred choice for language enthusiasts.",
+      "features": [
+        {
+          "title": "Voice Input & Output",
+          "icon": "FaRocket",
+          "description": "Experience VibeTrans' excellent voice input and output features, allowing you to convert and listen to Yoda-style conversations without typing. Wherever you are, easily enjoy brand-new voice interaction, adding fun and convenience to your communication."
+        },
+        {
+          "title": "Real-time Translation",
+          "icon": "FaShieldAlt",
+          "description": "With VibeTrans, experience seamless real-time translation, effortlessly bridging language barriers. Instantly translate spoken or written words into Yoda-speak, ensuring communication flows naturally and engagingly, enhancing your interactions with a touch of Star Wars magic."
+        },
+        {
+          "title": "Data Privacy",
+          "icon": "FaBrain",
+          "description": "VibeTrans is committed to protecting your data privacy. We use advanced encryption technology to ensure the security of all translation requests and personal information. Your data is never shared, completely confidential, letting you use our services with peace of mind."
+        },
+        {
+          "title": "Custom Translation Modes",
+          "icon": "FaChartLine",
+          "description": "VibeTrans provides personalized translation modes, allowing users to customize translation styles according to specific scenarios. Whether for professional settings or casual conversations, users can easily adjust to ensure translations fit their needs."
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "What Users Say",
+      "subtitle": "Real feedback from real users",
+      "items": {
+        "item-1": {
+          "name": "Professor Michael Roberts",
+          "role": "Linguistics Professor",
+          "heading": "Perfect for Classroom",
+          "content": "Using Yoda Translator in my classes has been a game-changer. My students are more engaged, and it offers a unique way to study complex sentence structures. It's an innovative tool that makes learning fun.",
+          "rating": "4.8"
+        },
+        "item-2": {
+          "name": "Sarah Thompson",
+          "role": "Content Creator",
+          "heading": "Creative Content Enhancement",
+          "content": "Yoda Translator adds a fun twist to my video scripts. The voice-to-text feature is incredibly accurate, and I love the privacy aspect as none of my data is stored online. Highly recommend it for creatives!",
+          "rating": "4.9"
+        },
+        "item-3": {
+          "name": "David Chen",
+          "role": "Star Wars Fan",
+          "heading": "Fan Experience Delight",
+          "content": "After using Yoda Translator, my emails became incredibly fun. Last weekend, I used it to convert an ordinary birthday greeting into Yoda Master's style, and all my friends laughed out loud. Although the translation is occasionally stiff, the overall experience is great. Recommended for all Star Wars fans!",
+          "rating": "4.7"
+        }
+      }
+    },
+    "faqs": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Have other questions? Feel free to contact us via email.",
+      "items": [
+        {
+          "question": "Is Yoda Translator free to use?",
+          "answer": "Yes, Yoda Translator is completely free to use on the web. You can access all features without any cost. However, note that it is not available as an app and requires an internet connection."
+        },
+        {
+          "question": "What is the best way to use Yoda Translator for learning?",
+          "answer": "Yoda Translator is best used in learning by exploring sentence structures. It allows users to see how standard English sentences transform into Yoda-speak, providing insight into grammar and syntax."
+        },
+        {
+          "question": "How is my privacy protected with Yoda Translator?",
+          "answer": "Yoda Translator ensures your privacy by operating entirely on the frontend. No data is stored on servers, and all translations are processed locally on your device, keeping your information secure."
+        }
+      ]
+    },
+    "ctaButton": "Try YodaTranslator Now",
+    "cta": {
+      "title": "Try Yoda Translator Today",
+      "description": "Experience the power of Yoda Translator and transform your text into unique Yoda-speak. Start converting now!",
+      "primaryButton": "Try YodaTranslator Now",
+      "secondaryButton": "Back to Top"
+    }
+  }
+}

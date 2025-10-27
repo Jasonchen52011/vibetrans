@@ -1,4 +1,5 @@
-import { randomUUID } from 'crypto';
+// Use Web Crypto API for Edge Runtime compatibility
+const randomUUID = () => crypto.randomUUID();
 import { websiteConfig } from '@/config/website';
 import {
   addCredits,
@@ -34,9 +35,6 @@ import {
 
 /**
  * Stripe payment provider implementation
- *
- * docs:
- * https://mksaas.com/docs/payment
  */
 export class StripeProvider implements PaymentProvider {
   private stripe: Stripe;
@@ -57,7 +55,13 @@ export class StripeProvider implements PaymentProvider {
     }
 
     // Initialize Stripe without specifying apiVersion to use default/latest version
-    this.stripe = new Stripe(apiKey);
+    // https://opennext.js.org/cloudflare/howtos/stripeAPI
+    // When creating a Stripe object, the default http client implementation is based on
+    // node:https which is not implemented on Workers.
+    this.stripe = new Stripe(apiKey, {
+      // Cloudflare Workers use the Fetch API for their API requests.
+      httpClient: Stripe.createFetchHttpClient(),
+    });
     this.webhookSecret = webhookSecret;
   }
 

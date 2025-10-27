@@ -1,0 +1,170 @@
+{
+  "MandalorianTranslatorPage": {
+    "title": "Mandalorian Translator Hub - Accurate Mando'a Translations",
+    "description": "Discover the Mandalorian Translator Hub for instant, accurate English to Mando'a translations with voice input and audio playback.",
+    "hero": {
+      "title": "Mandalorian Translator Hub for English to Mando'a",
+      "description": "Experience the best Mandalorian translator for text and voice, offering seamless English to Mando'a conversions."
+    },
+    "ctaButton": "Try Mandalorian Translator Now",
+    "tool": {
+      "inputLabel": "Input Text",
+      "outputLabel": "Translated Text",
+      "inputPlaceholder": "Enter your English text here...",
+      "outputPlaceholder": "Translation will appear here...",
+      "translateButton": "Translate",
+      "uploadButton": "Upload File",
+      "uploadHint": "Supports .txt and .docx files",
+      "loading": "Translating...",
+      "error": "Translation failed. Please try again.",
+      "noInput": "Please enter some text to translate."
+    },
+    "whatIs": {
+      "title": "What is Mandalorian Translator Hub?",
+      "description": "Mandalorian Translator Hub is a web-based tool for translating English text and voice to Mando'a, providing accurate results and audio playback. It's perfect for Star Wars fans and language enthusiasts.",
+      "image": "/images/docs/what-is-mandalorian-translator.webp"
+    },
+    "examples": {
+      "title": "Real-World Translation Examples",
+      "description": "Translate phrases like 'This is the way' into Mando'a with ease. Experience flawless conversions, maintaining original context and tone for perfect comprehension."
+    },
+    "howto": {
+      "title": "How to translate English to Mando'a",
+      "description": "Follow these steps for seamless translation.",
+      "steps": [
+        {
+          "title": "Upload or Paste Text",
+          "description": "Insert your English text by pasting it or uploading a document. The tool will instantly detect and analyze the content for translation."
+        },
+        {
+          "title": "Select Translation Mode",
+          "description": "Choose between text, voice, or audio translation modes. The tool adapts automatically to your input type for optimal results."
+        },
+        {
+          "title": "Download or Listen",
+          "description": "Receive your translated Mando'a text in a downloadable format, or listen to it with our high-quality audio playback feature."
+        }
+      ],
+      "image": "/images/docs/mandalorian-translator-how-to.webp"
+    },
+    "highlights": {
+      "title": "Key Features of Mandalorian Translator Hub",
+      "description": "Discover the standout features that make our translator exceptional.",
+      "items": [
+        {
+          "title": "Voice Input and Output",
+          "description": "Easily translate spoken English to Mando'a and hear translations with clear audio playback, enhancing language learning.",
+          "statLabel": "Accuracy",
+          "statValue": "90%"
+        },
+        {
+          "title": "Professional Translation Modes",
+          "description": "Switch between technical, legal, literary, idiomatic, and general modes for precise translations suited to your context.",
+          "statLabel": "Modes Available",
+          "statValue": "5"
+        },
+        {
+          "title": "Edge Runtime Performance",
+          "description": "Experience high-performance translations with our edge-optimized tool, ensuring swift responses without compromising accuracy.",
+          "statLabel": "Latency",
+          "statValue": "Low"
+        },
+        {
+          "title": "Data Privacy and Security",
+          "description": "Rest assured that your data remains secure during translation, with stringent privacy measures in place.",
+          "statLabel": "Privacy Level",
+          "statValue": "High"
+        }
+      ]
+    },
+    "funFacts": {
+      "title": "Interesting Facts",
+      "items": [
+        {
+          "title": "Created by an Author",
+          "description": "Mando'a was created by author Karen Traviss for a 2004 novel, not the TV series.",
+          "image": "/images/docs/mandalorian-translator-fact-1.webp"
+        },
+        {
+          "title": "Genderless Language",
+          "description": "Unlike many languages, Mando'a lacks gendered nouns, reflecting Mandalorian culture's egalitarian values.",
+          "image": "/images/docs/mandalorian-translator-fact-2.webp"
+        }
+      ]
+    },
+    "userInterest": {
+      "title": "Explore More Features",
+      "items": [
+        {
+          "title": "Grammar Cheatsheet",
+          "description": "Learn Mando'a sentence structure and verb tenses with our easy-to-follow grammar cheatsheet, perfect for language learners.",
+          "image": "/images/docs/mandalorian-translator-interest-1.webp"
+        },
+        {
+          "title": "Audio Pronunciations",
+          "description": "Enhance your understanding with audio pronunciations of common phrases, ensuring you speak Mando'a correctly.",
+          "image": "/images/docs/mandalorian-translator-interest-2.webp"
+        },
+        {
+          "title": "Cultural Insights",
+          "description": "Gain knowledge on Mandalorian culture and etiquette, including naming conventions and traditional phrases.",
+          "image": "/images/docs/mandalorian-translator-interest-3.webp"
+        },
+        {
+          "title": "Mobile-First Experience",
+          "description": "Our tool is optimized for mobile devices, offering a seamless translation experience on the go.",
+          "image": "/images/docs/mandalorian-translator-interest-4.webp"
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "What Our Users Say",
+      "subtitle": "Real experiences from real users",
+      "items": {
+        "item-1": {
+          "name": "John Smith",
+          "role": "Language Teacher",
+          "heading": "Perfect for Classroom",
+          "content": "Using Mandalorian Translator Hub in my classroom has been a game-changer. My students love hearing their translations spoken aloud, making language learning engaging and interactive.",
+          "rating": "4.8"
+        },
+        "item-2": {
+          "name": "Emily Johnson",
+          "role": "Star Wars Enthusiast",
+          "heading": "Immersive Experience",
+          "content": "As a huge fan, I use Mandalorian Translator Hub to translate my favorite quotes into Mando'a. The voice playback feature adds an immersive touch to my experience.",
+          "rating": "4.9"
+        },
+        "item-3": {
+          "name": "Michael Brown",
+          "role": "Web Developer",
+          "heading": "Developer Friendly",
+          "content": "The standardized API and edge runtime features of Mandalorian Translator Hub make it easy to integrate into my projects, delivering fast and accurate translations every time.",
+          "rating": "4.7"
+        }
+      }
+    },
+    "faqs": {
+      "title": "Frequently Asked Questions",
+      "items": {
+        "item-1": {
+          "question": "Is Mandalorian Translator Hub free to use?",
+          "answer": "Yes, Mandalorian Translator Hub is free to use on the web. No app downloads or offline usage is supported."
+        },
+        "item-2": {
+          "question": "How does Mandalorian Translator Hub protect my privacy?",
+          "answer": "Mandalorian Translator Hub ensures your data privacy with high-level security protocols, keeping your information safe and confidential."
+        },
+        "item-3": {
+          "question": "What is the best tool for translating English to Mando'a?",
+          "answer": "Mandalorian Translator Hub is the best tool for translating English to Mando'a, offering accurate text and voice translations."
+        }
+      }
+    },
+    "cta": {
+      "title": "Try Mandalorian Translator Hub Now",
+      "description": "Experience seamless text and voice translations with Mandalorian Translator Hub today!",
+      "primaryButton": "Get Started Free"
+    }
+  }
+}

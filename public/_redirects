@@ -1,0 +1,28 @@
+# Handle Next.js internationalized routing
+/en/* /en/:splat 200
+/zh/* /zh/:splat 200
+
+# Default locale redirect
+/ /en 302
+
+# API routes
+/api/* /api/:splat 200
+
+# Static assets
+/_next/* /_next/:splat 200
+/favicon.ico /favicon.ico 200
+/robots.txt /robots.txt 200
+/sitemap.xml /sitemap.xml 200
+/manifest.webmanifest /manifest.webmanifest 200
+
+# Images
+/images/* /images/:splat 200
+
+# Static files
+/*.js /:splat.js 200
+/*.css /:splat.css 200
+/*.json /:splat.json 200
+/*.webp /:splat.webp 200
+/*.png /:splat.png 200
+/*.svg /:splat.svg 200
+/*.ico /:splat.ico 200

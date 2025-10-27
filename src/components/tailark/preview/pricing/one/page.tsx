@@ -8,7 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { Check } from 'lucide-react';
+import { ArrowRightIcon, Check } from 'lucide-react';
 
 export default function Pricing() {
   return (
@@ -52,7 +52,10 @@ export default function Pricing() {
 
             <CardFooter className="mt-auto">
               <Button asChild variant="outline" className="w-full">
-                <Link href="">Get Started</Link>
+                <Link href="">
+                  Get Started
+                  <ArrowRightIcon className="ml-2 h-4 w-4" />
+                </Link>
               </Button>
             </CardFooter>
           </Card>
@@ -83,7 +86,6 @@ export default function Pricing() {
                     'Access to Community Forum',
                     'Single User Access',
                     'Access to Basic Templates',
-                    'Mobile App Access',
                     '1 Custom Report Per Month',
                     'Monthly Product Updates',
                     'Standard Security Features',
@@ -98,7 +100,10 @@ export default function Pricing() {
 
               <CardFooter>
                 <Button asChild className="w-full">
-                  <Link href="">Get Started</Link>
+                  <Link href="">
+                  Get Started
+                  <ArrowRightIcon className="ml-2 h-4 w-4" />
+                </Link>
                 </Button>
               </CardFooter>
             </div>
@@ -132,7 +137,10 @@ export default function Pricing() {
 
             <CardFooter className="mt-auto">
               <Button asChild variant="outline" className="w-full">
-                <Link href="">Get Started</Link>
+                <Link href="">
+                  Get Started
+                  <ArrowRightIcon className="ml-2 h-4 w-4" />
+                </Link>
               </Button>
             </CardFooter>
           </Card>

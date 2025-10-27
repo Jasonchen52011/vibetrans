@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { Logo } from '../layout/logo';
-import { Menu, X } from 'lucide-react';
+import { ArrowRightIcon, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import React from 'react';
 import { cn } from '@/lib/utils';
@@ -105,6 +105,7 @@ export const HeroHeader = () => {
                 >
                   <Link href="#">
                     <span>Sign Up</span>
+                    <ArrowRightIcon className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
                 <Button
@@ -114,6 +115,7 @@ export const HeroHeader = () => {
                 >
                   <Link href="#">
                     <span>Get Started</span>
+                    <ArrowRightIcon className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
               </div>

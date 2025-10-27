@@ -1,10 +1,6 @@
+export const runtime = 'edge';
 import { Analytics } from '@/analytics/analytics';
-import {
-  fontBricolageGrotesque,
-  fontNotoSans,
-  fontNotoSansMono,
-  fontNotoSerif,
-} from '@/assets/fonts';
+import { fontSatoshi } from '@/assets/fonts';
 import AffonsoScript from '@/components/affiliate/affonso';
 import PromotekitScript from '@/components/affiliate/promotekit';
 import { TailwindIndicator } from '@/components/layout/tailwind-indicator';
@@ -45,18 +41,13 @@ export default async function LocaleLayout({
   return (
     <html suppressHydrationWarning lang={locale}>
       <head>
+        <meta name="msvalidate.01" content="518A1A066EA7B7ED31AA7B89CDC8BC86" />
         <AffonsoScript />
         <PromotekitScript />
       </head>
       <body
         suppressHydrationWarning
-        className={cn(
-          'size-full antialiased',
-          fontNotoSans.className,
-          fontNotoSerif.variable,
-          fontNotoSansMono.variable,
-          fontBricolageGrotesque.variable
-        )}
+        className={cn('size-full antialiased', fontSatoshi.className)}
       >
         <NuqsAdapter>
           <NextIntlClientProvider>
