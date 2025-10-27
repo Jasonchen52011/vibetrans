@@ -25,7 +25,6 @@ const staticRoutes = [
   '/creole-to-english-translator',
   '/pig-latin-translator',
   '/cantonese-translator',
-  '/chinese-to-english-translator',
   '/middle-english-translator',
   '/minion-translator',
   '/baybayin-translator',

@@ -5,7 +5,3 @@ compatibility_flags = ["nodejs_compat"]
 # Cloudflare Pages configuration
 # Use Vercel build output directory
 pages_build_output_dir = ".vercel/output/static"
-
-# Build configuration
-[build]
-command = "pnpm build:cf"
