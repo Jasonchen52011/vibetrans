@@ -39,49 +39,22 @@ const LANGUAGE_HINTS = {
   english: ['the', 'and', 'you', 'with', 'that', 'from', 'this'],
 } as const;
 
-interface DetectionSummary {
-  detectedLanguage: 'english' | 'swahili' | 'unknown';
-  confidence: number;
-  suggestedDirection: 'en-sw' | 'sw-en';
-}
+function detectLanguageLocally(text: string) {
+  const swahiliHints = LANGUAGE_HINTS.swahili;
+  const englishHints = LANGUAGE_HINTS.english;
 
-function detectLanguageLocally(text: string): DetectionSummary {
   const normalized = text.toLowerCase();
-  const swHits = LANGUAGE_HINTS.swahili.filter((hint) =>
+  const swHits = swahiliHints.filter((hint) =>
     normalized.includes(hint)
   ).length;
-  const enHits = LANGUAGE_HINTS.english.filter((hint) =>
+  const enHits = englishHints.filter((hint) =>
     normalized.includes(hint)
   ).length;
-  const hasSwahiliDiacritics = /[āēīōū]/.test(text);
 
-  if (hasSwahiliDiacritics) {
-    return {
-      detectedLanguage: 'swahili',
-      confidence: 0.8,
-      suggestedDirection: 'sw-en',
-    };
+  if (swHits === enHits) {
+    return 'Auto';
   }
-
-  if (swHits === 0 && enHits === 0) {
-    return {
-      detectedLanguage: 'unknown',
-      confidence: 0.2,
-      suggestedDirection: 'en-sw',
-    };
-  }
-
-  const detectedLanguage =
-    swHits > enHits ? 'swahili' : enHits > swHits ? 'english' : 'unknown';
-  const diff = Math.abs(swHits - enHits);
-  const total = swHits + enHits || 1;
-  const confidence = Math.min(1, diff / total);
-
-  return {
-    detectedLanguage,
-    confidence,
-    suggestedDirection: detectedLanguage === 'swahili' ? 'sw-en' : 'en-sw',
-  };
+  return swHits > enHits ? 'Swahili' : 'English';
 }
 
 async function callOpenAIForTranslation(
@@ -150,13 +123,8 @@ Provide the translation respecting cultural context, professional tone, and ever
 
 export async function POST(request: Request) {
   try {
-    const {
-      text,
-      direction,
-      detectOnly = false,
-    }: TranslationRequest & {
-      detectOnly?: boolean;
-    } = await request.json();
+    const { text, direction = 'en-sw' }: TranslationRequest =
+      await request.json();
 
     if (!text || typeof text !== 'string') {
       return NextResponse.json(
@@ -165,34 +133,8 @@ export async function POST(request: Request) {
       );
     }
 
-    const detection = detectLanguageLocally(text);
     const normalizedDirection: 'en-sw' | 'sw-en' =
-      direction === 'sw-en' || direction === 'en-sw'
-        ? direction
-        : detection.suggestedDirection;
-
-    if (detectOnly) {
-      return NextResponse.json({
-        detectedInputLanguage: detection.detectedLanguage,
-        detectedDirection: normalizedDirection,
-        confidence: detection.confidence,
-        autoDetected: !direction,
-        languageInfo: {
-          detected: detection.detectedLanguage !== 'unknown',
-          detectedLanguage:
-            detection.detectedLanguage === 'swahili'
-              ? 'Swahili'
-              : detection.detectedLanguage === 'english'
-                ? 'English'
-                : 'Unknown',
-          direction:
-            normalizedDirection === 'en-sw'
-              ? 'English → Swahili'
-              : 'Swahili → English',
-          confidence: Math.round(detection.confidence * 100),
-        },
-      });
-    }
+      direction === 'sw-en' ? 'sw-en' : 'en-sw';
 
     const aiResult = await callOpenAIForTranslation({
       text,
@@ -206,18 +148,10 @@ export async function POST(request: Request) {
         detectedSourceLanguage: aiResult.detectedSourceLanguage,
         detectedTargetLanguage: aiResult.detectedTargetLanguage,
         backTranslation: aiResult.backTranslation,
-        detectedInputLanguage: aiResult.detectedSourceLanguage
-          ?.toLowerCase()
-          .includes('swahili')
-          ? 'swahili'
-          : aiResult.detectedSourceLanguage?.toLowerCase().includes('english')
-            ? 'english'
-            : 'unknown',
-        detectedDirection: normalizedDirection,
-        confidence: detection.confidence,
       });
     }
 
+    const localDetection = detectLanguageLocally(text);
     const fallbackTranslation =
       normalizedDirection === 'en-sw'
         ? `${text} (translated to Swahili - demo mode)`
@@ -225,18 +159,10 @@ export async function POST(request: Request) {
 
     return NextResponse.json({
       translated: fallbackTranslation,
-      detectedSourceLanguage:
-        detection.detectedLanguage === 'swahili'
-          ? 'Swahili'
-          : detection.detectedLanguage === 'english'
-            ? 'English'
-            : 'Auto',
+      detectedSourceLanguage: localDetection,
       detectedTargetLanguage:
         normalizedDirection === 'en-sw' ? 'Swahili' : 'English',
       backTranslation: null,
-      detectedInputLanguage: detection.detectedLanguage,
-      detectedDirection: normalizedDirection,
-      confidence: detection.confidence,
       warning: 'OpenAI translation unavailable, using fallback translation.',
     });
   } catch (error) {

@@ -61,19 +61,38 @@ export interface TranslatorConfig {
 }
 
 export type LanguageDirection =
-  | 'zh-en' | 'en-zh'
-  | 'swahili-en' | 'en-swahili'
-  | 'esperanto-en' | 'en-esperanto'
-  | 'albanian-en' | 'en-albanian'
-  | 'japanese-en' | 'en-japanese'
-  | 'greek-en' | 'en-greek'
-  | 'telugu-en' | 'en-telugu'
-  | 'cantonese-en' | 'en-cantonese'
-  | 'creole-en' | 'en-creole'
-  | 'samoan-en' | 'en-samoan'
-  | 'persian-en' | 'en-persian'
-  | 'amharic-en' | 'en-amharic'
-  | 'polish-en' | 'en-polish';
+  | 'zh-en'
+  | 'en-zh'
+  | 'swahili-en'
+  | 'en-swahili'
+  | 'esperanto-en'
+  | 'en-esperanto'
+  | 'albanian-en'
+  | 'en-albanian'
+  | 'japanese-en'
+  | 'en-japanese'
+  | 'greek-en'
+  | 'en-greek'
+  | 'telugu-en'
+  | 'en-telugu'
+  | 'cantonese-en'
+  | 'en-cantonese'
+  | 'creole-en'
+  | 'en-creole'
+  | 'samoan-en'
+  | 'en-samoan'
+  | 'persian-en'
+  | 'en-persian'
+  | 'amharic-en'
+  | 'en-amharic'
+  | 'polish-en'
+  | 'en-polish';
 
 export type TranslationModeType =
-  | 'general' | 'formal' | 'casual' | 'literary' | 'technical' | 'legal' | 'idioms';
+  | 'general'
+  | 'formal'
+  | 'casual'
+  | 'literary'
+  | 'technical'
+  | 'legal'
+  | 'idioms';

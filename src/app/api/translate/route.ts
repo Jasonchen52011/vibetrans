@@ -1,6 +1,14 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { initializeTranslators, getTranslator, getAvailableTools } from '@/lib/translator/factory';
-import type { TranslationRequest, TranslationResult, TranslationTool } from '@/lib/translator/types';
+import {
+  getAvailableTools,
+  getTranslator,
+  initializeTranslators,
+} from '@/lib/translator/factory';
+import type {
+  TranslationRequest,
+  TranslationResult,
+  TranslationTool,
+} from '@/lib/translator/types';
+import { type NextRequest, NextResponse } from 'next/server';
 
 export const runtime = 'edge';
 
@@ -15,16 +23,16 @@ export async function GET(request: NextRequest) {
   try {
     if (action === 'tools') {
       // 返回所有可用工具
-      const tools = getAvailableTools();
+      const tools = await getAvailableTools();
       return NextResponse.json({
         status: 'healthy',
         message: 'Unified Translation API - Tools List',
         timestamp: new Date().toISOString(),
         tools,
         categories: {
-          language: tools.filter(t => t.type === 'language'),
-          fictional: tools.filter(t => t.type === 'fictional'),
-          stylistic: tools.filter(t => t.type === 'stylistic'),
+          language: tools.filter((t) => t.type === 'language'),
+          fictional: tools.filter((t) => t.type === 'fictional'),
+          stylistic: tools.filter((t) => t.type === 'stylistic'),
         },
         totalTools: tools.length,
       });
@@ -86,7 +94,10 @@ export async function POST(request: NextRequest) {
 
     if (!tool) {
       return NextResponse.json(
-        { error: 'Tool is required. Use GET /api/translate?action=tools to see available tools' },
+        {
+          error:
+            'Tool is required. Use GET /api/translate?action=tools to see available tools',
+        },
         { status: 400 }
       );
     }
@@ -94,13 +105,14 @@ export async function POST(request: NextRequest) {
     // 获取翻译器实例
     let translator;
     try {
-      translator = getTranslator(tool);
+      translator = await getTranslator(tool);
     } catch (error) {
       return NextResponse.json(
         {
           error: `Tool "${tool}" not found`,
-          availableTools: getAvailableTools().map(t => t.id),
-          suggestion: 'Use GET /api/translate?action=tools to see available tools'
+          availableTools: (await getAvailableTools()).map((t) => t.id),
+          suggestion:
+            'Use GET /api/translate?action=tools to see available tools',
         },
         { status: 404 }
       );
@@ -118,48 +130,44 @@ export async function POST(request: NextRequest) {
     });
 
     return NextResponse.json(result);
-
   } catch (error: any) {
     console.error('Translation error:', error);
 
     // 处理特定错误类型
     if (error.message.includes('Text is required')) {
-      return NextResponse.json(
-        { error: error.message },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: error.message }, { status: 400 });
     }
 
     if (error.message.includes('Tool')) {
-      return NextResponse.json(
-        { error: error.message },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: error.message }, { status: 400 });
     }
 
-    if (error.message.includes('Invalid mode') || error.message.includes('Invalid direction')) {
-      return NextResponse.json(
-        { error: error.message },
-        { status: 400 }
-      );
+    if (
+      error.message.includes('Invalid mode') ||
+      error.message.includes('Invalid direction')
+    ) {
+      return NextResponse.json({ error: error.message }, { status: 400 });
     }
 
     if (error.message.includes('too long')) {
-      return NextResponse.json(
-        { error: error.message },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: error.message }, { status: 400 });
     }
 
     // 处理AI API错误
-    if (error.message.includes('API key') || error.message.includes('configuration')) {
+    if (
+      error.message.includes('API key') ||
+      error.message.includes('configuration')
+    ) {
       return NextResponse.json(
         { error: 'Invalid API key configuration' },
         { status: 500 }
       );
     }
 
-    if (error.message.includes('quota') || error.message.includes('rate limit')) {
+    if (
+      error.message.includes('quota') ||
+      error.message.includes('rate limit')
+    ) {
       return NextResponse.json(
         { error: 'API quota exceeded. Please try again later.' },
         { status: 429 }
@@ -170,7 +178,8 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(
       {
         error: 'Translation failed. Please try again.',
-        details: process.env.NODE_ENV === 'development' ? error.message : undefined
+        details:
+          process.env.NODE_ENV === 'development' ? error.message : undefined,
       },
       { status: 500 }
     );

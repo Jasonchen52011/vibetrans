@@ -1,11 +1,9 @@
+export const runtime = 'edge';
 import type { ReactNode } from 'react';
 
 interface Props {
   children: ReactNode;
 }
-
-// Edge runtime configuration for Cloudflare Pages compatibility
-export const runtime = 'edge';
 
 /**
  * Since we have a `not-found.tsx` page on the root, a layout file

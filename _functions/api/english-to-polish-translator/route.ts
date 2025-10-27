@@ -1,5 +1,5 @@
+import { GoogleGenerativeAI } from '@/lib/ai/gemini';
 import { detectLanguage } from '@/lib/language-detection';
-import { GoogleGenerativeAI } from '@google/generative-ai';
 import { NextResponse } from 'next/server';
 
 export const runtime = 'edge';
@@ -72,9 +72,7 @@ async function translateText(
 
   const modeConfig = TRANSLATION_MODES[mode];
   const prompt =
-    direction === 'en-pl'
-      ? modeConfig.enToPlPrompt
-      : modeConfig.plToEnPrompt;
+    direction === 'en-pl' ? modeConfig.enToPlPrompt : modeConfig.plToEnPrompt;
   const fullPrompt = `${prompt}\n\n"${text}"`;
 
   const result = await model.generateContent(fullPrompt);
@@ -132,12 +130,7 @@ export async function POST(request: Request) {
       detectOnly?: boolean;
     };
 
-    const {
-      text,
-      direction,
-      mode = 'general',
-      detectOnly = false,
-    } = body;
+    const { text, direction, mode = 'general', detectOnly = false } = body;
 
     const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
     if (!apiKey) {
@@ -149,10 +142,7 @@ export async function POST(request: Request) {
     }
 
     if (!text || typeof text !== 'string') {
-      return NextResponse.json(
-        { error: 'No text provided' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'No text provided' }, { status: 400 });
     }
 
     if (direction && direction !== 'en-pl' && direction !== 'pl-en') {

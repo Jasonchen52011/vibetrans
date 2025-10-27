@@ -1,14 +1,8 @@
 'use client';
 
-import { DirectionIndicator } from '@/components/translator/DirectionIndicator';
-import { SpeechToTextButton } from '@/components/ui/speech-to-text-button';
 import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
-import { useSmartTranslatorDirection } from '@/hooks/use-smart-translator-direction';
-import { ArrowRightIcon } from 'lucide-react';
 import mammoth from 'mammoth';
-import { useEffect, useMemo, useState } from 'react';
-
-type TranslatorDirection = 'en-to-am' | 'am-to-en';
+import { useState } from 'react';
 
 interface EnglishToAmharicTranslatorToolProps {
   pageData: any;
@@ -21,81 +15,12 @@ export default function EnglishToAmharicTranslatorTool({
 }: EnglishToAmharicTranslatorToolProps) {
   const [inputText, setInputText] = useState<string>('');
   const [outputText, setOutputText] = useState<string>('');
-  const [transliteration, setTransliteration] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [fileName, setFileName] = useState<string | null>(null);
+  const [transliteration, setTransliteration] = useState<string>('');
 
-  const {
-    activeDirection,
-    isManualDirection,
-    detectedLanguage,
-    languageWarning,
-    runLanguageDetection,
-    toggleDirection,
-    setAutoDirection,
-    resetDirection,
-    clearWarning,
-  } = useSmartTranslatorDirection<TranslatorDirection>({
-    apiPath: '/api/english-to-amharic-translator',
-    defaultDirection: 'en-to-am',
-    directions: ['en-to-am', 'am-to-en'],
-    locale,
-    supportedLanguages: ['english', 'amharic'],
-    warningMessage:
-      pageData.tool.languageWarning ||
-      'Please input English or Amharic text.',
-  });
-
-  const isEnglishToAmharic = activeDirection === 'en-to-am';
-  const englishLabel = pageData.tool.englishLabel || 'English';
-  const amharicLabel = pageData.tool.amharicLabel || 'Amharic';
-
-  const inputPlaceholder = useMemo(
-    () =>
-      isEnglishToAmharic
-        ? pageData.tool.inputPlaceholder ||
-          'Enter English text or upload a file...'
-        : pageData.tool.amharicPlaceholder ||
-          'እባክዎ አማርኛ ጽሑፍ ይጻፉ ወይም ፋይል ያስገቡ...'
-    ,
-    [isEnglishToAmharic, pageData.tool]
-  );
-
-  const outputPlaceholder = useMemo(
-    () =>
-      isEnglishToAmharic
-        ? pageData.tool.outputPlaceholder ||
-          'Amharic translation will appear here'
-        : pageData.tool.englishOutputPlaceholder ||
-          'English translation will appear here'
-    ,
-    [isEnglishToAmharic, pageData.tool]
-  );
-
-  const directionStatusLabel = isEnglishToAmharic
-    ? `${englishLabel} → ${amharicLabel}`
-    : `${amharicLabel} → ${englishLabel}`;
-
-  const detectionStatus =
-    detectedLanguage === 'english'
-      ? `Detected input: ${englishLabel}`
-      : detectedLanguage === 'amharic'
-        ? `Detected input: ${amharicLabel}`
-        : 'Auto-detecting. Enter English or Amharic.';
-
-  useEffect(() => {
-    const trimmed = inputText.trim();
-    if (!trimmed) {
-      clearWarning();
-      return;
-    }
-    const timeoutId = setTimeout(async () => {
-      await runLanguageDetection(trimmed);
-    }, 600);
-    return () => clearTimeout(timeoutId);
-  }, [inputText, runLanguageDetection, clearWarning]);
-
+  // Handle file upload
   const handleFileUpload = async (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
@@ -109,15 +34,16 @@ export default function EnglishToAmharicTranslatorTool({
       const text = await readFileContent(file);
       setInputText(text);
     } catch (err: any) {
-      setError(err.message || pageData.tool.error);
+      setError(err.message || 'Failed to read file');
       setFileName(null);
     }
   };
 
+  // Read file content
   const readFileContent = async (file: File): Promise<string> => {
-    const ext = file.name.split('.').pop()?.toLowerCase();
+    const fileExtension = file.name.split('.').pop()?.toLowerCase();
 
-    if (ext === 'txt') {
+    if (fileExtension === 'txt') {
       return new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.onload = (e) => {
@@ -130,31 +56,27 @@ export default function EnglishToAmharicTranslatorTool({
       });
     }
 
-    if (ext === 'docx') {
+    if (fileExtension === 'docx') {
       try {
         const arrayBuffer = await file.arrayBuffer();
         const result = await mammoth.extractRawText({ arrayBuffer });
         if (result.value) return result.value;
         throw new Error('Failed to extract text from Word document');
-      } catch {
+      } catch (error) {
         throw new Error(
           'Failed to read .docx file. Please ensure it is a valid Word document.'
         );
       }
     }
 
-    throw new Error('Unsupported file format. Please upload .txt or .docx files.');
-  };
-
-  const handleSpeechTranscript = (transcript: string) => {
-    setInputText((prev) =>
-      prev ? prev.trim() + '\\n' + transcript : transcript
+    throw new Error(
+      'Unsupported file format. Please upload .txt or .docx files.'
     );
   };
 
+  // Handle translation
   const handleTranslate = async () => {
-    const trimmed = inputText.trim();
-    if (!trimmed) {
+    if (!inputText.trim()) {
       setError(pageData.tool.noInput);
       setOutputText('');
       setTransliteration('');
@@ -167,56 +89,21 @@ export default function EnglishToAmharicTranslatorTool({
     setTransliteration('');
 
     try {
-      const detectionSummary = await runLanguageDetection(trimmed);
-      if (
-        !isManualDirection &&
-        (languageWarning ||
-          detectionSummary.detectedInputLanguage === 'unknown') &&
-        detectionSummary.confidence < 0.3
-      ) {
-        throw new Error(
-          pageData.tool.languageWarning ||
-            'Please input English or Amharic text.'
-        );
-      }
-
-      const finalDirection = isManualDirection
-        ? activeDirection
-        : detectionSummary.detectedDirection;
-
+      // TODO: 替换为你的 API 端点
       const response = await fetch('/api/english-to-amharic-translator', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          text: trimmed,
-          direction: finalDirection,
-          includeTransliteration: finalDirection === 'en-to-am',
-        }),
+        body: JSON.stringify({ text: inputText, includeTransliteration: true }),
       });
 
       const data = await response.json();
+
       if (!response.ok) {
         throw new Error(data.error || pageData.tool.error);
       }
 
-      const translated = (data.translated || '').trim();
-      if (!translated) {
-        throw new Error(pageData.tool.error);
-      }
-
-      if (translated.toLowerCase() === trimmed.toLowerCase()) {
-        throw new Error(
-          pageData.tool.sameOutputError ||
-            'Translation matches the input. Please try different text.'
-        );
-      }
-
-      setOutputText(translated);
-      setTransliteration((data.transliteration || '').trim());
-      if (!isManualDirection && data.direction) {
-        setAutoDirection((data.direction as TranslatorDirection) || 'en-to-am');
-      }
-      clearWarning();
+      setOutputText(data.translated || data.result || '');
+      setTransliteration(data.transliteration || '');
     } catch (err: any) {
       setError(err.message || 'Translation failed');
       setOutputText('');
@@ -226,15 +113,16 @@ export default function EnglishToAmharicTranslatorTool({
     }
   };
 
+  // Reset
   const handleReset = () => {
     setInputText('');
     setOutputText('');
-    setTransliteration('');
     setFileName(null);
     setError(null);
-    resetDirection();
+    setTransliteration('');
   };
 
+  // Copy
   const handleCopy = async () => {
     if (!outputText) return;
     try {
@@ -244,13 +132,14 @@ export default function EnglishToAmharicTranslatorTool({
     }
   };
 
+  // Download
   const handleDownload = () => {
     if (!outputText) return;
     const blob = new Blob([outputText], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `english-amharic-${Date.now()}.txt`;
+    a.download = `english-to-amharic-translator-${Date.now()}.txt`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -258,28 +147,27 @@ export default function EnglishToAmharicTranslatorTool({
   };
 
   return (
-    <div className="container max-w-7xl mx-auto px-4 mb-10">
+    <div className="container max-w-5xl mx-auto px-4 mb-10">
       <main className="w-full bg-white dark:bg-zinc-800 shadow-xl border border-gray-100 dark:border-zinc-700 rounded-lg p-4 md:p-8">
-        <div className="flex flex-col md:flex-row gap-2 md:gap-3">
-          <div className="flex-1 relative">
+        {/* Input and Output Areas */}
+        <div className="flex flex-col md:flex-row gap-4 md:gap-8">
+          {/* Input Area */}
+          <div className="flex-1">
             <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-3">
-              {isEnglishToAmharic ? englishLabel : amharicLabel}
+              {pageData.tool.inputLabel}
             </h2>
             <textarea
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
-              placeholder={inputPlaceholder}
-              className={`w-full h-48 md:h-64 p-3 border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent resize-none text-gray-700 dark:text-gray-200 dark:bg-zinc-700 ${
-                languageWarning
-                  ? 'border-amber-300 dark:border-amber-600 focus:ring-amber-500'
-                  : 'border-gray-300 dark:border-zinc-600'
-              }`}
-              aria-label={isEnglishToAmharic ? englishLabel : amharicLabel}
+              placeholder={pageData.tool.inputPlaceholder}
+              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent resize-none text-gray-700 dark:text-gray-200 dark:bg-zinc-700"
+              aria-label="Input text"
             />
 
-            <div className="mt-4 flex items-center gap-3 flex-wrap">
+            {/* File Upload */}
+            <div className="mt-4 flex items-center gap-3">
               <label
-                htmlFor="file-upload-amharic"
+                htmlFor="file-upload"
                 className="inline-flex items-center px-4 py-2 bg-gray-200 dark:bg-zinc-600 hover:bg-gray-300 dark:hover:bg-zinc-500 text-gray-800 dark:text-gray-100 font-medium rounded-lg cursor-pointer transition-colors"
               >
                 <svg
@@ -297,15 +185,11 @@ export default function EnglishToAmharicTranslatorTool({
                 </svg>
                 {pageData.tool.uploadButton}
               </label>
-              <SpeechToTextButton
-                onTranscript={handleSpeechTranscript}
-                locale={locale}
-              />
               <p className="text-xs text-gray-500 dark:text-gray-400">
                 {pageData.tool.uploadHint}
               </p>
               <input
-                id="file-upload-amharic"
+                id="file-upload"
                 type="file"
                 accept=".txt,.docx"
                 onChange={handleFileUpload}
@@ -313,6 +197,7 @@ export default function EnglishToAmharicTranslatorTool({
               />
             </div>
 
+            {/* File Name Display */}
             {fileName && (
               <div className="mt-3 flex items-center gap-2 p-2 bg-gray-100 dark:bg-zinc-700 rounded-md border border-gray-200 dark:border-zinc-600">
                 <svg
@@ -335,7 +220,7 @@ export default function EnglishToAmharicTranslatorTool({
                     setInputText('');
                   }}
                   className="ml-auto text-gray-500 hover:text-red-500 dark:text-gray-400 dark:hover:text-red-400"
-                  aria-label={pageData.tool.removeFileTooltip || 'Remove file'}
+                  aria-label="Remove file"
                 >
                   <svg
                     className="w-4 h-4"
@@ -355,34 +240,11 @@ export default function EnglishToAmharicTranslatorTool({
             )}
           </div>
 
-          <DirectionIndicator
-            onToggle={() => {
-              toggleDirection();
-              clearWarning();
-              if (outputText.trim()) {
-                setInputText(outputText);
-                setOutputText('');
-                setTransliteration('');
-              }
-            }}
-            directionLabel={directionStatusLabel}
-            detectionStatus={detectionStatus}
-            warning={languageWarning}
-            toggleTitle={
-              isEnglishToAmharic
-                ? 'Switch to Amharic → English'
-                : 'Switch to English → Amharic'
-            }
-            ariaLabel={
-              pageData.tool.toggleDirectionTooltip ||
-              'Toggle translation direction'
-            }
-          />
-
+          {/* Output Area */}
           <div className="flex-1">
             <div className="flex items-center justify-between mb-3">
               <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">
-                {isEnglishToAmharic ? amharicLabel : englishLabel}
+                {pageData.tool.outputLabel}
               </h2>
               {outputText && (
                 <div className="flex gap-2">
@@ -390,7 +252,7 @@ export default function EnglishToAmharicTranslatorTool({
                   <button
                     onClick={handleCopy}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
-                    title={pageData.tool.copyTooltip || 'Copy'}
+                    title="Copy"
                   >
                     <svg
                       className="w-5 h-5"
@@ -409,7 +271,7 @@ export default function EnglishToAmharicTranslatorTool({
                   <button
                     onClick={handleDownload}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
-                    title={pageData.tool.downloadTooltip || 'Download'}
+                    title="Download"
                   >
                     <svg
                       className="w-5 h-5"
@@ -429,58 +291,49 @@ export default function EnglishToAmharicTranslatorTool({
               )}
             </div>
             <div
-              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md bg-gray-50 dark:bg-zinc-700 flex items-start justify-start text-gray-700 dark:text-gray-200 overflow-y-auto"
+              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md bg-gray-50 dark:bg-zinc-700 flex items-center justify-center text-gray-700 dark:text-gray-200 overflow-y-auto"
               aria-live="polite"
             >
               {isLoading ? (
-                <div className="flex items-center gap-3">
-                  <div className="flex space-x-1">
-                    <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
-                    <div
-                      className="w-2 h-2 bg-primary rounded-full animate-pulse"
-                      style={{ animationDelay: '0.2s' }}
-                    ></div>
-                    <div
-                      className="w-2 h-2 bg-primary rounded-full animate-pulse"
-                      style={{ animationDelay: '0.4s' }}
-                    ></div>
-                  </div>
-                  <span>{pageData.tool.loading}</span>
-                </div>
+                <p>{pageData.tool.loading}</p>
               ) : error ? (
                 <p className="text-red-600 dark:text-red-400">{error}</p>
               ) : outputText ? (
-                <div>
-                  <p className="text-lg whitespace-pre-wrap">{outputText}</p>
-                  {transliteration && (
-                    <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
-                      {pageData.tool.transliterationLabel || 'Transliteration'}: {transliteration}
-                    </p>
-                  )}
-                </div>
+                <p className="text-lg whitespace-pre-wrap">{outputText}</p>
               ) : (
                 <p className="text-gray-500 dark:text-gray-400">
-                  {outputPlaceholder}
+                  {pageData.tool.outputPlaceholder}
                 </p>
               )}
             </div>
           </div>
         </div>
 
+        {transliteration && !isLoading && !error && (
+          <div className="mt-6 bg-gray-50 dark:bg-zinc-700 border border-gray-200 dark:border-zinc-600 rounded-lg p-4">
+            <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
+              Latin transliteration
+            </h3>
+            <p className="text-sm text-gray-600 dark:text-gray-300 whitespace-pre-wrap">
+              {transliteration}
+            </p>
+          </div>
+        )}
+
+        {/* Action Buttons */}
         <div className="mt-6 flex justify-center gap-4">
           <button
             onClick={handleTranslate}
             disabled={isLoading}
-            className="inline-flex items-center px-8 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="px-8 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isLoading ? pageData.tool.loading : pageData.tool.translateButton}
-            <ArrowRightIcon className="ml-2 h-4 w-4" />
           </button>
           <button
             onClick={handleReset}
             className="px-6 py-3 bg-gray-200 dark:bg-zinc-600 hover:bg-gray-300 dark:hover:bg-zinc-500 text-gray-800 dark:text-gray-100 font-semibold rounded-lg shadow-md transition-colors"
           >
-            {pageData.tool.resetButton || 'Reset'}
+            Reset
           </button>
         </div>
       </main>

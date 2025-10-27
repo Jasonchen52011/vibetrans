@@ -227,19 +227,6 @@
       "primaryButton": "Try IVR Translator Now",
       "secondaryButton": "Back to Top"
     },
-    "funFacts": {
-      "title": "IVR: Your Key to Unlocking Communication Systems",
-      "items": [
-        {
-          "title": "The Number Mix-Up",
-          "description": "In some Arabic dialects, the pronunciation of the number '2' sounds similar to English '8'. This often confuses automated voice translators, causing them to misinterpret customers' extension numbers during calls. It's a fascinating quirk in cross-language communication!"
-        },
-        {
-          "title": "French Length Challenge",
-          "description": "Did you know French IVR prompts are, on average, 27% longer than English ones? This means menus often need redesigning after translation. It's not just about language; it's about fitting the message into the same time frame!"
-        }
-      ]
-    },
     "funfacts": {
       "title": "IVR: Your Key to Unlocking Communication Systems",
       "items": [

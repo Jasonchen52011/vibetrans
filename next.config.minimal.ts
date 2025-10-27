@@ -55,7 +55,6 @@ const nextConfig: NextConfig = {
     '@ai-sdk/openai',
     '@ai-sdk/react',
     '@ai-sdk/replicate',
-    '@google/generative-ai',
     '@openrouter/ai-sdk-provider',
     'ai',
     'tone',
@@ -124,7 +123,8 @@ const nextConfig: NextConfig = {
     // Ignore problematic modules
     config.plugins.push(
       new webpack.IgnorePlugin({
-        resourceRegExp: /^pg-native$|^cloudflare:sockets$|^aws-sdk$|^google-cloud$/,
+        resourceRegExp:
+          /^pg-native$|^cloudflare:sockets$|^aws-sdk$|^google-cloud$/,
       })
     );
 

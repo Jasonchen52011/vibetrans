@@ -1,11 +1,16 @@
 'use client';
 
-import { DirectionIndicator } from '@/components/translator/DirectionIndicator';
 import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
-import { useSmartTranslatorDirection } from '@/hooks/use-smart-translator-direction';
 import { ArrowRightIcon } from 'lucide-react';
 import mammoth from 'mammoth';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
+
+// 语言检测结果接口
+interface LanguageDetectionResult {
+  detectedLanguage: string;
+  confidence: number;
+  suggestedDirection: 'to-english' | 'from-english';
+}
 
 interface ChineseToEnglishTranslatorToolProps {
   pageData: any;
@@ -22,120 +27,73 @@ export default function ChineseToEnglishTranslatorTool({
   const [error, setError] = useState<string | null>(null);
   const [fileName, setFileName] = useState<string | null>(null);
 
-  const {
-    activeDirection,
-    isManualDirection,
-    detectedLanguage,
-    languageWarning,
-    runLanguageDetection,
-    toggleDirection,
-    setManualDirection,
-    setAutoDirection,
-    resetDirection,
-    clearWarning,
-  } = useSmartTranslatorDirection<'zh-to-en' | 'en-to-zh'>({
-    apiPath: '/api/chinese-to-english-translator',
-    defaultDirection: 'zh-to-en',
-    directions: ['zh-to-en', 'en-to-zh'],
-    locale,
-    supportedLanguages: ['english', 'chinese'],
-    warningMessage: locale?.toLowerCase().startsWith('zh')
-      ? '请输入中文或英文内容'
-      : 'Please input Chinese or English text',
-    buildDetectPayload: (text) => ({
-      text,
-      detectOnly: true,
-      inputType: 'text',
-    }),
-  });
-
-  const isChineseLocale = locale?.toLowerCase().startsWith('zh');
-  const fallbackEnglishLabel = isChineseLocale ? '英语' : 'English';
-  const fallbackChineseLabel = isChineseLocale ? '中文' : 'Chinese';
-  const englishLabel =
-    typeof pageData?.tool?.englishLabel === 'string' &&
-    pageData.tool.englishLabel.trim()
-      ? pageData.tool.englishLabel
-      : fallbackEnglishLabel;
-  const chineseLabel =
-    typeof pageData?.tool?.chineseLabel === 'string' &&
-    pageData.tool.chineseLabel.trim()
-      ? pageData.tool.chineseLabel
-      : fallbackChineseLabel;
-  const englishPlaceholder =
-    typeof pageData?.tool?.englishPlaceholder === 'string' &&
-    pageData.tool.englishPlaceholder.trim()
-      ? pageData.tool.englishPlaceholder
-      : isChineseLocale
-        ? '请输入英文文本或上传文件...'
-        : 'Enter English text or upload a file...';
-  const chinesePlaceholder =
-    typeof pageData?.tool?.chinesePlaceholder === 'string' &&
-    pageData.tool.chinesePlaceholder?.trim()
-      ? pageData.tool.chinesePlaceholder
-      : pageData.tool.inputPlaceholder ||
-        (isChineseLocale
-          ? '请输入中文文本或上传文件...'
-          : 'Enter Chinese text or upload a file...');
-  const chineseOutputPlaceholder = isChineseLocale
-    ? '中文翻译结果将显示在这里'
-    : 'Chinese translation will appear here';
-  const languageWarningText = useMemo(
-    () =>
-      isChineseLocale
-        ? '请输入中文或英文内容'
-        : 'Please input Chinese or English text',
-    [isChineseLocale]
+  // 智能翻译状态
+  const [direction, setDirection] = useState<'zh-to-en' | 'en-to-zh'>(
+    'zh-to-en'
   );
-  const isZhToEn = activeDirection === 'zh-to-en';
-  const inputHeading = isZhToEn
-    ? isChineseLocale
-      ? `${chineseLabel}输入`
-      : `${chineseLabel} Text`
-    : isChineseLocale
-      ? `${englishLabel}输入`
-      : `${englishLabel} Text`;
-  const outputHeading = isZhToEn
-    ? isChineseLocale
-      ? `${englishLabel}翻译`
-      : `${englishLabel} Translation`
-    : isChineseLocale
-      ? `${chineseLabel}翻译`
-      : `${chineseLabel} Translation`;
-  const textareaPlaceholder = isZhToEn
-    ? chinesePlaceholder
-    : englishPlaceholder;
-  const outputAreaPlaceholder = isZhToEn
-    ? pageData.tool.outputPlaceholder
-    : chineseOutputPlaceholder;
-  const directionStatusLabel =
-    detectedLanguage === 'unknown'
-      ? isChineseLocale
-        ? '方向检测中…'
-        : 'Detecting direction…'
-      : isZhToEn
-        ? `${chineseLabel} → ${englishLabel}`
-        : `${englishLabel} → ${chineseLabel}`;
-  const detectionStatus =
-    detectedLanguage === 'english'
-      ? isChineseLocale
-        ? '检测到输入语言：英语'
-        : `Detected input: ${englishLabel}`
-      : detectedLanguage === 'chinese'
-        ? isChineseLocale
-          ? '检测到输入语言：中文'
-          : `Detected input: ${chineseLabel}`
-        : isChineseLocale
-          ? '自动检测中，请输入中文或英文'
-          : 'Auto-detecting. Enter Chinese or English.';
+  const [detectedLanguage, setDetectedLanguage] = useState<string>('unknown');
+  const [detectedDirection, setDetectedDirection] = useState<
+    'zh-to-en' | 'en-to-zh'
+  >('zh-to-en');
+  const [languageWarning, setLanguageWarning] = useState<string>('');
+
   // 实时语言检测
   useEffect(() => {
+    if (!inputText.trim()) {
+      setDetectedLanguage('unknown');
+      setDetectedDirection('zh-to-en');
+      setLanguageWarning('');
+      return;
+    }
+
+    // 防抖处理，避免频繁检测
     const timeoutId = setTimeout(async () => {
-      await runLanguageDetection(inputText);
-    }, 600);
+      try {
+        // 调用语言检测API
+        const response = await fetch('/api/chinese-to-english-translator', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            text: inputText,
+            detectOnly: true,
+            inputType: 'text',
+          }),
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          setDetectedLanguage(data.detectedInputLanguage);
+          setDetectedDirection(data.detectedDirection);
+
+          // 自动切换翻译方向
+          if (
+            data.detectedDirection &&
+            (data.detectedInputLanguage ===
+              pageData.tool.englishLabel.toLowerCase() ||
+              data.detectedInputLanguage ===
+                pageData.tool.chineseLabel.toLowerCase())
+          ) {
+            setDirection(data.detectedDirection);
+          }
+
+          // 如果检测到其他语言，显示警告
+          if (
+            data.detectedInputLanguage === 'unknown' &&
+            data.confidence < 0.3
+          ) {
+            setLanguageWarning('Please input Chinese or English text');
+          } else {
+            setLanguageWarning('');
+          }
+        }
+      } catch (err) {
+        // 如果检测失败，保持当前状态
+        console.warn('Language detection failed:', err);
+      }
+    }, 800); // 800ms 防抖
 
     return () => clearTimeout(timeoutId);
-  }, [inputText, runLanguageDetection]);
+  }, [inputText]);
 
   // Handle file upload
   const handleFileUpload = async (
@@ -200,34 +158,23 @@ export default function ChineseToEnglishTranslatorTool({
     }
 
     // 如果有语言警告，不进行翻译
+    if (languageWarning) {
+      setError(languageWarning);
+      setOutputText('');
+      return;
+    }
+
     setIsLoading(true);
     setError(null);
     setOutputText('');
 
     try {
-      const detectionSummary = await runLanguageDetection(inputText);
-      if (
-        !isManualDirection &&
-        (languageWarning ||
-          detectionSummary.detectedInputLanguage === 'unknown') &&
-        detectionSummary.confidence < 0.3
-      ) {
-        setIsLoading(false);
-        setError(languageWarningText);
-        setOutputText('');
-        return;
-      }
-
-      const finalDirection = isManualDirection
-        ? activeDirection
-        : detectionSummary.detectedDirection;
-
       const response = await fetch('/api/chinese-to-english-translator', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           text: inputText,
-          direction: finalDirection,
+          direction: direction,
           inputType: 'text',
         }),
       });
@@ -253,10 +200,12 @@ export default function ChineseToEnglishTranslatorTool({
       setOutputText(data.translated || '');
 
       // 更新检测到的语言信息
-      if (data.detectedDirection && !isManualDirection) {
-        setAutoDirection(data.detectedDirection as 'zh-to-en' | 'en-to-zh');
+      if (data.detectedInputLanguage) {
+        setDetectedLanguage(data.detectedInputLanguage);
       }
-      clearWarning();
+      if (data.detectedDirection) {
+        setDetectedDirection(data.detectedDirection as 'zh-to-en' | 'en-to-zh');
+      }
     } catch (err: any) {
       setError(err.message || 'Translation failed');
       setOutputText('');
@@ -271,7 +220,10 @@ export default function ChineseToEnglishTranslatorTool({
     setOutputText('');
     setFileName(null);
     setError(null);
-    resetDirection();
+    setDirection('zh-to-en');
+    setDetectedLanguage('unknown');
+    setDetectedDirection('zh-to-en');
+    setLanguageWarning('');
   };
 
   // Copy
@@ -306,18 +258,22 @@ export default function ChineseToEnglishTranslatorTool({
           {/* Input Area */}
           <div className="flex-1 relative">
             <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-3">
-              {inputHeading}
+              {direction === 'zh-to-en' ? 'Chinese Text' : 'English Text'}
             </h2>
             <textarea
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
-              placeholder={textareaPlaceholder}
+              placeholder={
+                direction === 'zh-to-en'
+                  ? pageData.tool.inputPlaceholder
+                  : 'Enter English text or upload a file...'
+              }
               className={`w-full h-48 md:h-64 p-3 border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent resize-none text-gray-700 dark:text-gray-200 dark:bg-zinc-700 ${
                 languageWarning
                   ? 'border-amber-300 dark:border-amber-600 focus:ring-amber-500'
                   : 'border-gray-300 dark:border-zinc-600'
               }`}
-              aria-label={pageData.tool.inputLabel || inputHeading}
+              aria-label={pageData.tool.inputLabel || 'Input text'}
             />
 
             {/* File Upload */}
@@ -396,31 +352,46 @@ export default function ChineseToEnglishTranslatorTool({
             )}
           </div>
 
-          <DirectionIndicator
-            onToggle={() => {
-              toggleDirection();
-              clearWarning();
-            }}
-            directionLabel={directionStatusLabel}
-            detectionStatus={detectionStatus}
-            warning={languageWarning}
-            toggleTitle={
-              activeDirection === 'zh-to-en'
-                ? isChineseLocale
-                  ? '切换为 英语 → 中文'
-                  : 'Switch to English → Chinese'
-                : isChineseLocale
-                  ? '切换为 中文 → 英语'
+          {/* Direction Swap Button - Centered between inputs */}
+          <div className="flex md:flex-col items-center justify-center md:justify-start md:pt-32">
+            <button
+              onClick={() =>
+                setDirection(direction === 'zh-to-en' ? 'en-to-zh' : 'zh-to-en')
+              }
+              className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors rotate-0 md:rotate-0"
+              title={
+                direction === 'zh-to-en'
+                  ? 'Switch to English → Chinese'
                   : 'Switch to Chinese → English'
-            }
-            ariaLabel={pageData.tool.toggleDirectionTooltip}
-          />
+              }
+              aria-label={
+                pageData.tool.toggleDirectionTooltip ||
+                'Toggle translation direction'
+              }
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"
+                />
+              </svg>
+            </button>
+          </div>
 
           {/* Output Area */}
           <div className="flex-1">
             <div className="flex items-center justify-between mb-3">
               <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">
-                {outputHeading}
+                {direction === 'zh-to-en'
+                  ? 'English Translation'
+                  : 'Chinese Translation'}
               </h2>
               {outputText && (
                 <div className="flex gap-2">
@@ -491,7 +462,9 @@ export default function ChineseToEnglishTranslatorTool({
                 <p className="text-lg whitespace-pre-wrap">{outputText}</p>
               ) : (
                 <p className="text-gray-500 dark:text-gray-400">
-                  {isZhToEn ? pageData.tool.outputPlaceholder : outputAreaPlaceholder}
+                  {direction === 'zh-to-en'
+                    ? pageData.tool.outputPlaceholder
+                    : 'Chinese translation will appear here'}
                 </p>
               )}
             </div>
@@ -512,7 +485,7 @@ export default function ChineseToEnglishTranslatorTool({
             onClick={handleReset}
             className="px-6 py-3 bg-gray-200 dark:bg-zinc-600 hover:bg-gray-300 dark:hover:bg-zinc-500 text-gray-800 dark:text-gray-100 font-semibold rounded-lg shadow-md transition-colors"
           >
-            {pageData.tool.resetButton || 'Reset'}
+            Reset
           </button>
         </div>
       </main>

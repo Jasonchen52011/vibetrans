@@ -125,7 +125,6 @@ export default function TestimonialsSection({
     <section id="testimonials" className="relative z-20 py-10 md:py-20">
       <div className="mx-auto max-w-7xl px-4">
         {/* @ts-ignore - Dynamic namespace support */}
-        <HeaderSection subtitle={t('subtitle')} subtitleAs="h2" />
 
         <div className="relative -mx-4 mt-16 grid h-[49rem] max-h-[150vh] grid-cols-1 items-start gap-4 overflow-hidden px-4 sm:mt-20 md:grid-cols-2 lg:grid-cols-3">
           {/* Column 1 */}

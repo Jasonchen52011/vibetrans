@@ -1,6 +1,6 @@
 import { BaseTranslator } from '../base-translator';
-import type { TranslatorConfig } from '../types';
 import type { DetectionResult } from '../base-translator';
+import type { TranslatorConfig } from '../types';
 
 export class EsperantoTranslator extends BaseTranslator {
   constructor() {
@@ -106,7 +106,10 @@ TASK: Translate Esperanto to English
     return 'esperanto';
   }
 
-  protected suggestDirection(detectedLanguage: string, currentDirection?: string): string {
+  protected suggestDirection(
+    detectedLanguage: string,
+    currentDirection?: string
+  ): string {
     if (currentDirection) {
       return currentDirection;
     }
@@ -132,9 +135,14 @@ TASK: Translate Esperanto to English
     }
   }
 
-  protected getDirectionDescription(detectedLanguage: string, currentDirection?: string): string {
+  protected getDirectionDescription(
+    detectedLanguage: string,
+    currentDirection?: string
+  ): string {
     if (currentDirection) {
-      return currentDirection === 'toEsperanto' ? 'English → Esperanto' : 'Esperanto → English';
+      return currentDirection === 'toEsperanto'
+        ? 'English → Esperanto'
+        : 'Esperanto → English';
     }
 
     switch (detectedLanguage) {
@@ -147,7 +155,9 @@ TASK: Translate Esperanto to English
     }
   }
 
-  protected getDetectionExplanation(detectionResult: DetectionResult | null): string {
+  protected getDetectionExplanation(
+    detectionResult: DetectionResult | null
+  ): string {
     if (!detectionResult) return 'Language detection failed';
 
     const { detectedLanguage, confidence } = detectionResult;
@@ -162,13 +172,19 @@ TASK: Translate Esperanto to English
     }
   }
 
-  protected getTranslationExplanation(detectionResult: DetectionResult | null, direction?: string): string {
+  protected getTranslationExplanation(
+    detectionResult: DetectionResult | null,
+    direction?: string
+  ): string {
     if (!detectionResult) return 'Translation completed';
 
     const { detectedLanguage } = detectionResult;
 
     if (direction) {
-      const directionDesc = direction === 'toEsperanto' ? 'English → Esperanto' : 'Esperanto → English';
+      const directionDesc =
+        direction === 'toEsperanto'
+          ? 'English → Esperanto'
+          : 'Esperanto → English';
       return `Manual translation: ${directionDesc}`;
     }
 

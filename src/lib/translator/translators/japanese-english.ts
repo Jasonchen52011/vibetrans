@@ -1,6 +1,6 @@
 import { BaseTranslator } from '../base-translator';
-import type { TranslatorConfig } from '../types';
 import type { DetectionResult } from '../base-translator';
+import type { TranslatorConfig } from '../types';
 
 export class JapaneseEnglishTranslator extends BaseTranslator {
   constructor() {
@@ -10,7 +10,13 @@ export class JapaneseEnglishTranslator extends BaseTranslator {
         name: 'Japanese-English Translator',
         type: 'language',
         supportedDirections: ['ja-to-en', 'en-to-ja'],
-        supportedModes: ['general', 'formal', 'casual', 'literary', 'technical'],
+        supportedModes: [
+          'general',
+          'formal',
+          'casual',
+          'literary',
+          'technical',
+        ],
         supportedInputTypes: ['text'],
         requiresAI: true,
         maxLength: 5000,
@@ -120,7 +126,10 @@ TASK: Translate English to Japanese
     return 'japanese';
   }
 
-  protected suggestDirection(detectedLanguage: string, currentDirection?: string): string {
+  protected suggestDirection(
+    detectedLanguage: string,
+    currentDirection?: string
+  ): string {
     if (currentDirection) {
       return currentDirection;
     }
@@ -146,9 +155,14 @@ TASK: Translate English to Japanese
     }
   }
 
-  protected getDirectionDescription(detectedLanguage: string, currentDirection?: string): string {
+  protected getDirectionDescription(
+    detectedLanguage: string,
+    currentDirection?: string
+  ): string {
     if (currentDirection) {
-      return currentDirection === 'ja-to-en' ? 'Japanese → English' : 'English → Japanese';
+      return currentDirection === 'ja-to-en'
+        ? 'Japanese → English'
+        : 'English → Japanese';
     }
 
     switch (detectedLanguage) {
@@ -161,7 +175,9 @@ TASK: Translate English to Japanese
     }
   }
 
-  protected getDetectionExplanation(detectionResult: DetectionResult | null): string {
+  protected getDetectionExplanation(
+    detectionResult: DetectionResult | null
+  ): string {
     if (!detectionResult) return 'Language detection failed';
 
     const { detectedLanguage, confidence } = detectionResult;
@@ -176,13 +192,17 @@ TASK: Translate English to Japanese
     }
   }
 
-  protected getTranslationExplanation(detectionResult: DetectionResult | null, direction?: string): string {
+  protected getTranslationExplanation(
+    detectionResult: DetectionResult | null,
+    direction?: string
+  ): string {
     if (!detectionResult) return 'Translation completed';
 
     const { detectedLanguage } = detectionResult;
 
     if (direction) {
-      const directionDesc = direction === 'ja-to-en' ? 'Japanese → English' : 'English → Japanese';
+      const directionDesc =
+        direction === 'ja-to-en' ? 'Japanese → English' : 'English → Japanese';
       return `Manual translation: ${directionDesc}`;
     }
 

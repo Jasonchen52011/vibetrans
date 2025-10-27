@@ -7,35 +7,37 @@ type TranslatorDirection = 'en-og' | 'og-en';
 
 const OGHAM_TO_ENGLISH: Record<string, string> = {
   ' ': 'B',
-  'ᚁ': 'L',
-  'ᚂ': 'F',
-  'ᚃ': 'S',
-  'ᚄ': 'N',
-  'ᚅ': 'H',
-  'ᚆ': 'D',
-  'ᚇ': 'T',
-  'ᚈ': 'C',
-  'ᚉ': 'Q',
-  'ᚊ': 'M',
-  'ᚋ': 'G',
-  'ᚌ': 'NG',
-  'ᚍ': 'Z',
-  'ᚎ': 'R',
-  'ᚏ': 'A',
-  'ᚐ': 'O',
-  'ᚑ': 'U',
-  'ᚒ': 'E',
-  'ᚓ': 'I',
-  'ᚔ': 'EA',
-  'ᚕ': 'OI',
-  'ᚖ': 'UI',
-  'ᚗ': 'IO',
-  'ᚘ': 'AE',
-  'ᚙ': 'P',
-  'ᚚ': 'X',
+  ᚁ: 'L',
+  ᚂ: 'F',
+  ᚃ: 'S',
+  ᚄ: 'N',
+  ᚅ: 'H',
+  ᚆ: 'D',
+  ᚇ: 'T',
+  ᚈ: 'C',
+  ᚉ: 'Q',
+  ᚊ: 'M',
+  ᚋ: 'G',
+  ᚌ: 'NG',
+  ᚍ: 'Z',
+  ᚎ: 'R',
+  ᚏ: 'A',
+  ᚐ: 'O',
+  ᚑ: 'U',
+  ᚒ: 'E',
+  ᚓ: 'I',
+  ᚔ: 'EA',
+  ᚕ: 'OI',
+  ᚖ: 'UI',
+  ᚗ: 'IO',
+  ᚘ: 'AE',
+  ᚙ: 'P',
+  ᚚ: 'X',
 };
 
-const ENGLISH_TO_OGHAM: Record<string, string> = Object.entries(OGHAM_TO_ENGLISH).reduce(
+const ENGLISH_TO_OGHAM: Record<string, string> = Object.entries(
+  OGHAM_TO_ENGLISH
+).reduce(
   (acc, [ogham, english]) => {
     acc[english] = ogham;
     return acc;
@@ -133,10 +135,7 @@ export async function POST(request: Request) {
     const { text, direction, detectOnly = false } = body;
 
     if (!text || typeof text !== 'string') {
-      return NextResponse.json(
-        { error: 'No text provided' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'No text provided' }, { status: 400 });
     }
 
     const detection = detectLanguage(text, 'ogham');
@@ -161,9 +160,7 @@ export async function POST(request: Request) {
 
     let translated = translateOgham(text, detectedDirection);
 
-    if (
-      translated.trim().toLowerCase() === text.trim().toLowerCase()
-    ) {
+    if (translated.trim().toLowerCase() === text.trim().toLowerCase()) {
       translated = fallbackTranslation(text, detectedDirection);
     }
 

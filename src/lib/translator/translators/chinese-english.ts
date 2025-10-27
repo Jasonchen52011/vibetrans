@@ -1,5 +1,5 @@
 import { BaseTranslator } from '../base-translator';
-import type { TranslatorConfig, TranslationMode } from '../types';
+import type { TranslationMode, TranslatorConfig } from '../types';
 
 export class ChineseEnglishTranslator extends BaseTranslator {
   constructor() {
@@ -33,7 +33,8 @@ Focus on:
 - Scientific and mathematical expressions
 
 Translate the following Chinese text to English with technical precision:`,
-          description: 'Specialized translation for technical and scientific content',
+          description:
+            'Specialized translation for technical and scientific content',
         },
         legal: {
           name: 'Legal Translation',
@@ -48,7 +49,8 @@ Focus on:
 - Maintaining legal formality
 
 Translate the following Chinese legal text to English with legal accuracy:`,
-          description: 'Professional translation for legal documents and contracts',
+          description:
+            'Professional translation for legal documents and contracts',
         },
         literary: {
           name: 'Literary Translation',
@@ -63,7 +65,8 @@ Focus on:
 - Emotional and aesthetic impact
 
 Translate the following Chinese literary text to English while preserving its artistic essence:`,
-          description: 'Artistic translation for literature and creative content',
+          description:
+            'Artistic translation for literature and creative content',
         },
         idioms: {
           name: 'Idioms & Slang Translation',
@@ -78,7 +81,8 @@ Focus on:
 - Providing both literal and contextual translations
 
 Translate the following Chinese text to English, explaining idioms and slang:`,
-          description: 'Translation with focus on cultural expressions and idioms',
+          description:
+            'Translation with focus on cultural expressions and idioms',
         },
       },
       aiProvider: 'google',
@@ -144,7 +148,10 @@ Focus on:
 Translate the following English text to Chinese, explaining idioms and slang:`,
       };
 
-      return enToZhPrompts[mode as keyof typeof enToZhPrompts] || enToZhPrompts.general;
+      return (
+        enToZhPrompts[mode as keyof typeof enToZhPrompts] ||
+        enToZhPrompts.general
+      );
     }
   }
 
@@ -160,7 +167,10 @@ Translate the following English text to Chinese, explaining idioms and slang:`,
     return 'chinese';
   }
 
-  protected suggestDirection(detectedLanguage: string, currentDirection?: string): string {
+  protected suggestDirection(
+    detectedLanguage: string,
+    currentDirection?: string
+  ): string {
     if (currentDirection) {
       return currentDirection;
     }
@@ -186,9 +196,14 @@ Translate the following English text to Chinese, explaining idioms and slang:`,
     }
   }
 
-  protected getDirectionDescription(detectedLanguage: string, currentDirection?: string): string {
+  protected getDirectionDescription(
+    detectedLanguage: string,
+    currentDirection?: string
+  ): string {
     if (currentDirection) {
-      return currentDirection === 'zh-to-en' ? 'Chinese → English' : 'English → Chinese';
+      return currentDirection === 'zh-to-en'
+        ? 'Chinese → English'
+        : 'English → Chinese';
     }
 
     switch (detectedLanguage) {
@@ -216,13 +231,17 @@ Translate the following English text to Chinese, explaining idioms and slang:`,
     }
   }
 
-  protected getTranslationExplanation(detectionResult: any, direction?: string): string {
+  protected getTranslationExplanation(
+    detectionResult: any,
+    direction?: string
+  ): string {
     if (!detectionResult) return 'Translation completed';
 
     const { detectedLanguage } = detectionResult;
 
     if (direction) {
-      const directionDesc = direction === 'zh-to-en' ? 'Chinese → English' : 'English → Chinese';
+      const directionDesc =
+        direction === 'zh-to-en' ? 'Chinese → English' : 'English → Chinese';
       return `Manual translation: ${directionDesc}`;
     }
 

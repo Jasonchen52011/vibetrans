@@ -111,8 +111,7 @@ const nextConfig: NextConfig = {
 
       // Minimize bundles more aggressively
       config.optimization.minimize = true;
-
-      }
+    }
 
     // Reduce chunk size limits
     config.performance = {

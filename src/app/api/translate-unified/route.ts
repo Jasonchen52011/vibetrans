@@ -1,5 +1,5 @@
+import { GoogleGenerativeAI } from '@/lib/ai/gemini';
 import { detectLanguage } from '@/lib/language-detection';
-import { GoogleGenerativeAI } from '@google/generative-ai';
 import { NextResponse } from 'next/server';
 
 export const runtime = 'edge';
@@ -13,21 +13,78 @@ const genAI = new GoogleGenerativeAI(
 const SYMBOLIC_TRANSLATORS = {
   rune: {
     mappings: {
-      a: 'ᚨ', b: 'ᛒ', c: 'ᚲ', d: 'ᛞ', e: 'ᛖ', f: 'ᚠ', g: 'ᚷ', h: 'ᚻ', i: 'ᛁ',
-      j: 'ᛃ', k: 'ᚲ', l: 'ᛚ', m: 'ᛗ', n: 'ᚾ', o: 'ᛟ', p: 'ᛈ', q: 'ᛩ', r: 'ᚱ',
-      s: 'ᛋ', t: 'ᛏ', u: 'ᚢ', v: 'ᚡ', w: 'ᚹ', x: 'ᛉ', y: 'ᛇ', z: 'ᛎ', th: 'ᚦ',
-      ng: 'ᛜ', ea: 'ᛠ', ' ': ' ', '.': '᛫', ',': '᛬', '!': '!', '?': '?', '-': '-'
+      a: 'ᚨ',
+      b: 'ᛒ',
+      c: 'ᚲ',
+      d: 'ᛞ',
+      e: 'ᛖ',
+      f: 'ᚠ',
+      g: 'ᚷ',
+      h: 'ᚻ',
+      i: 'ᛁ',
+      j: 'ᛃ',
+      k: 'ᚲ',
+      l: 'ᛚ',
+      m: 'ᛗ',
+      n: 'ᚾ',
+      o: 'ᛟ',
+      p: 'ᛈ',
+      q: 'ᛩ',
+      r: 'ᚱ',
+      s: 'ᛋ',
+      t: 'ᛏ',
+      u: 'ᚢ',
+      v: 'ᚡ',
+      w: 'ᚹ',
+      x: 'ᛉ',
+      y: 'ᛇ',
+      z: 'ᛎ',
+      th: 'ᚦ',
+      ng: 'ᛜ',
+      ea: 'ᛠ',
+      ' ': ' ',
+      '.': '᛫',
+      ',': '᛬',
+      '!': '!',
+      '?': '?',
+      '-': '-',
     },
-    formatter: (text: string) => `ᚱᚢᚾᛖ ᛏᚱᚨᚾᛋᛚᚨᛏᛁᛟᚾ:\n\n${text}\n\nᚦᛖ ᚱᚢᚾᛖᛋ ᚺᚨᚹᛖ ᛊᛈᛟᚲᛖᚾ!`
+    formatter: (text: string) =>
+      `ᚱᚢᚾᛖ ᛏᚱᚨᚾᛋᛚᚨᛏᛁᛟᚾ:\n\n${text}\n\nᚦᛖ ᚱᚢᚾᛖᛋ ᚺᚨᚹᛖ ᛊᛈᛟᚲᛖᚾ!`,
   },
   wingdings: {
     mappings: {
-      a: '', b: '', c: '', d: '', e: '', f: '', g: '', h: '', i: '',
-      j: '', k: '', l: '', m: '', n: '', o: '', p: '', q: '', r: '',
-      s: '', t: '', u: '', v: '', w: '', x: '', y: '', z: '', ' ': ' '
+      a: '',
+      b: '',
+      c: '',
+      d: '',
+      e: '',
+      f: '',
+      g: '',
+      h: '',
+      i: '',
+      j: '',
+      k: '',
+      l: '',
+      m: '',
+      n: '',
+      o: '',
+      p: '',
+      q: '',
+      r: '',
+      s: '',
+      t: '',
+      u: '',
+      v: '',
+      w: '',
+      x: '',
+      y: '',
+      z: '',
+      ' ': ' ',
     },
-    formatter: (text: string) => `🎯 Wingdings Translation:\n\n${text}\n\n📝 Decoded!`
-  }
+    formatter: (text: string) =>
+      `🎯 Wingdings Translation:\n\n${text}\n\n📝 Decoded!`,
+  },
 };
 
 // AI翻译器配置
@@ -35,33 +92,41 @@ const AI_TRANSLATORS = {
   greek: {
     modes: {
       general: 'Translate the following Greek text to English directly:',
-      modern: 'You are a professional Modern Greek translator. Focus on contemporary usage and expressions:',
-      ancient: 'You are a classical scholar specializing in Ancient Greek. Focus on historical context:'
+      modern:
+        'You are a professional Modern Greek translator. Focus on contemporary usage and expressions:',
+      ancient:
+        'You are a classical scholar specializing in Ancient Greek. Focus on historical context:',
     },
     targetLanguage: 'greek',
-    bidirectional: true
+    bidirectional: true,
   },
   telugu: {
     modes: {
       general: 'Translate the following Telugu text to English directly:',
-      technical: 'You are a professional technical Telugu translator. Focus on technical terminology:',
-      literary: 'You are a literary Telugu translator. Focus on preserving cultural nuances:'
+      technical:
+        'You are a professional technical Telugu translator. Focus on technical terminology:',
+      literary:
+        'You are a literary Telugu translator. Focus on preserving cultural nuances:',
     },
     targetLanguage: 'telugu',
-    bidirectional: true
+    bidirectional: true,
   },
   yoda: {
     modes: {
-      general: 'Translate the following text to Yoda speak. Yoda speaks in inverted sentences, using object-subject-verb order.'
+      general:
+        'Translate the following text to Yoda speak. Yoda speaks in inverted sentences, using object-subject-verb order.',
     },
     targetLanguage: 'yoda',
     bidirectional: false,
-    customPrompt: (text: string) => `Translate this to Yoda speak: "${text}"`
-  }
+    customPrompt: (text: string) => `Translate this to Yoda speak: "${text}"`,
+  },
 };
 
 // 简单翻译函数
-function translateSimple(text: string, mappings: Record<string, string>): string {
+function translateSimple(
+  text: string,
+  mappings: Record<string, string>
+): string {
   let translated = '';
   let i = 0;
 
@@ -85,14 +150,15 @@ function translateSimple(text: string, mappings: Record<string, string>): string
 async function translateAI(
   text: string,
   translator: string,
-  mode: string = 'general'
+  mode = 'general'
 ): Promise<string> {
   const config = AI_TRANSLATORS[translator as keyof typeof AI_TRANSLATORS];
   if (!config) throw new Error(`Unknown AI translator: ${translator}`);
 
   const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
 
-  let prompt = config.modes[mode as keyof typeof config.modes] || config.modes.general;
+  let prompt =
+    config.modes[mode as keyof typeof config.modes] || config.modes.general;
 
   if (config.customPrompt) {
     prompt = config.customPrompt(text);
@@ -120,7 +186,8 @@ export async function POST(request: Request) {
 
     // 检查是否是简单翻译器
     if (SYMBOLIC_TRANSLATORS[translator as keyof typeof SYMBOLIC_TRANSLATORS]) {
-      const config = SYMBOLIC_TRANSLATORS[translator as keyof typeof SYMBOLIC_TRANSLATORS];
+      const config =
+        SYMBOLIC_TRANSLATORS[translator as keyof typeof SYMBOLIC_TRANSLATORS];
       translated = translateSimple(text, config.mappings);
       translated = config.formatter(translated);
       metadata = { type: 'symbolic', processingTime: '1.0s' };
@@ -142,15 +209,11 @@ export async function POST(request: Request) {
       translator,
       mode,
       metadata,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     });
-
   } catch (error) {
     console.error('Translation error:', error);
-    return NextResponse.json(
-      { error: 'Translation failed' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Translation failed' }, { status: 500 });
   }
 }
 
@@ -160,8 +223,8 @@ export async function GET() {
     message: 'Unified Translation API is running',
     available_translators: {
       symbolic: Object.keys(SYMBOLIC_TRANSLATORS),
-      ai: Object.keys(AI_TRANSLATORS)
+      ai: Object.keys(AI_TRANSLATORS),
     },
-    timestamp: new Date().toISOString()
+    timestamp: new Date().toISOString(),
   });
 }

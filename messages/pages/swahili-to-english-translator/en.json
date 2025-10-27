@@ -59,22 +59,18 @@
       "description": "Follow these simple steps to translate your Swahili text to English using our best online translator tool.",
       "steps": [
         {
-          "title": "Input or Upload Swahili Text",
           "name": "Input or Upload Swahili Text",
           "description": "Type your Swahili text directly in the input box or upload a .txt/.docx file containing Swahili content. You can also use voice input for convenience."
         },
         {
-          "title": "Click Translate Button",
           "name": "Click Translate Button",
           "description": "Press the blue \"Translate\" button to start the translation process. Our advanced AI will analyze your Swahili text and convert it to accurate English."
         },
         {
-          "title": "Review Your Translation",
           "name": "Review Your Translation",
           "description": "Your English translation will appear instantly in the output box. The translation maintains the original Swahili meaning, context, and cultural nuances."
         },
         {
-          "title": "Copy or Download Results",
           "name": "Copy or Download Results",
           "description": "Easily copy your English translation to clipboard or download as a .txt file for future use. You can also listen to the pronunciation."
         }

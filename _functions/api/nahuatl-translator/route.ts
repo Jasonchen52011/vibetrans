@@ -140,7 +140,9 @@ const EN_TO_NAHUATL: Record<string, string> = {
   black: 'tliltic',
 };
 
-const NAHUATL_TO_EN: Record<string, string> = Object.entries(EN_TO_NAHUATL).reduce(
+const NAHUATL_TO_EN: Record<string, string> = Object.entries(
+  EN_TO_NAHUATL
+).reduce(
   (acc, [english, nahuatl]) => {
     acc[normalizeWord(nahuatl)] = english;
     return acc;
@@ -259,7 +261,8 @@ function buildLanguageInfo(
   return {
     detected: detectedLanguage !== 'unknown',
     detectedLanguage: friendlyLanguage,
-    direction: direction === 'en-na' ? 'English → Nahuatl' : 'Nahuatl → English',
+    direction:
+      direction === 'en-na' ? 'English → Nahuatl' : 'Nahuatl → English',
     confidence: Math.round(confidence * 100),
     explanation:
       detectedLanguage === 'nahuatl'
@@ -289,10 +292,7 @@ export async function POST(request: Request) {
     const { text, direction, detectOnly = false } = body;
 
     if (!text || typeof text !== 'string') {
-      return NextResponse.json(
-        { error: 'No text provided' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'No text provided' }, { status: 400 });
     }
 
     const detection = detectLanguage(text, 'nahuatl');

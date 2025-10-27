@@ -1,14 +1,9 @@
 'use client';
 
-import { DirectionIndicator } from '@/components/translator/DirectionIndicator';
-import { SpeechToTextButton } from '@/components/ui/speech-to-text-button';
 import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
-import { useSmartTranslatorDirection } from '@/hooks/use-smart-translator-direction';
 import { ArrowRightIcon } from 'lucide-react';
 import mammoth from 'mammoth';
-import { useEffect, useMemo, useState } from 'react';
-
-type TranslatorDirection = 'al-to-en' | 'en-to-al';
+import { useState } from 'react';
 
 interface AlbanianToEnglishToolProps {
   pageData: any;
@@ -25,77 +20,12 @@ export default function AlbanianToEnglishTool({
   const [error, setError] = useState<string | null>(null);
   const [fileName, setFileName] = useState<string | null>(null);
 
-  const {
-    activeDirection,
-    isManualDirection,
-    detectedLanguage,
-    languageWarning,
-    runLanguageDetection,
-    toggleDirection,
-    setAutoDirection,
-    resetDirection,
-    clearWarning,
-  } = useSmartTranslatorDirection<TranslatorDirection>({
-    apiPath: '/api/albanian-to-english',
-    defaultDirection: 'al-to-en',
-    directions: ['al-to-en', 'en-to-al'],
-    locale,
-    supportedLanguages: ['albanian', 'english'],
-    warningMessage:
-      pageData.tool.languageWarning ||
-      'Please input Albanian or English text.',
-  });
-
-  const isAlbanianToEnglish = activeDirection === 'al-to-en';
-  const albanianLabel = pageData.tool.albanianLabel || 'Albanian';
-  const englishLabel = pageData.tool.englishLabel || 'English';
-
-  const inputPlaceholder = useMemo(
-    () =>
-      isAlbanianToEnglish
-        ? pageData.tool.albanianInputPlaceholder ||
-          pageData.tool.inputPlaceholder ||
-          'Shkruani tekstin shqip ose ngarkoni një skedar...'
-        : pageData.tool.englishInputPlaceholder ||
-          pageData.tool.englishPlaceholder ||
-          'Enter English text or upload a file...',
-    [isAlbanianToEnglish, pageData.tool]
+  // 智能翻译状态
+  const [direction, setDirection] = useState<'al-to-en' | 'en-to-al'>(
+    'al-to-en'
   );
 
-  const outputPlaceholder = useMemo(
-    () =>
-      isAlbanianToEnglish
-        ? pageData.tool.englishOutputPlaceholder ||
-          pageData.tool.outputPlaceholder ||
-          'English translation will appear here'
-        : pageData.tool.albanianOutputPlaceholder ||
-          'Përkthimi në shqip do të shfaqet këtu',
-    [isAlbanianToEnglish, pageData.tool]
-  );
-
-  const directionStatusLabel = isAlbanianToEnglish
-    ? `${albanianLabel} → ${englishLabel}`
-    : `${englishLabel} → ${albanianLabel}`;
-
-  const detectionStatus =
-    detectedLanguage === 'albanian'
-      ? `Detected input: ${albanianLabel}`
-      : detectedLanguage === 'english'
-        ? `Detected input: ${englishLabel}`
-        : 'Auto-detecting. Enter Albanian or English text.';
-
-  useEffect(() => {
-    const trimmed = inputText.trim();
-    if (!trimmed) {
-      clearWarning();
-      return;
-    }
-    const timeoutId = setTimeout(async () => {
-      await runLanguageDetection(trimmed);
-    }, 600);
-    return () => clearTimeout(timeoutId);
-  }, [inputText, runLanguageDetection, clearWarning]);
-
+  // Handle file upload
   const handleFileUpload = async (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
@@ -109,15 +39,16 @@ export default function AlbanianToEnglishTool({
       const text = await readFileContent(file);
       setInputText(text);
     } catch (err: any) {
-      setError(err.message || pageData.tool.error);
+      setError(err.message || 'Failed to read file');
       setFileName(null);
     }
   };
 
+  // Read file content
   const readFileContent = async (file: File): Promise<string> => {
-    const ext = file.name.split('.').pop()?.toLowerCase();
+    const fileExtension = file.name.split('.').pop()?.toLowerCase();
 
-    if (ext === 'txt') {
+    if (fileExtension === 'txt') {
       return new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.onload = (e) => {
@@ -130,31 +61,27 @@ export default function AlbanianToEnglishTool({
       });
     }
 
-    if (ext === 'docx') {
+    if (fileExtension === 'docx') {
       try {
         const arrayBuffer = await file.arrayBuffer();
         const result = await mammoth.extractRawText({ arrayBuffer });
         if (result.value) return result.value;
         throw new Error('Failed to extract text from Word document');
-      } catch {
+      } catch (error) {
         throw new Error(
           'Failed to read .docx file. Please ensure it is a valid Word document.'
         );
       }
     }
 
-    throw new Error('Unsupported file format. Please upload .txt or .docx files.');
-  };
-
-  const handleSpeechTranscript = (transcript: string) => {
-    setInputText((prev) =>
-      prev ? `${prev.trim()}\n${transcript}` : transcript
+    throw new Error(
+      'Unsupported file format. Please upload .txt or .docx files.'
     );
   };
 
+  // Handle translation with smart detection
   const handleTranslate = async () => {
-    const trimmed = inputText.trim();
-    if (!trimmed) {
+    if (!inputText.trim()) {
       setError(pageData.tool.noInput);
       setOutputText('');
       return;
@@ -165,74 +92,51 @@ export default function AlbanianToEnglishTool({
     setOutputText('');
 
     try {
-      const detectionSummary = await runLanguageDetection(trimmed);
-      if (
-        !isManualDirection &&
-        (languageWarning ||
-          detectionSummary.detectedInputLanguage === 'unknown') &&
-        detectionSummary.confidence < 0.3
-      ) {
-        throw new Error(
-          pageData.tool.languageWarning ||
-            'Please input Albanian or English text.'
-        );
-      }
-
-      const finalDirection = isManualDirection
-        ? activeDirection
-        : detectionSummary.detectedDirection;
-
       const response = await fetch('/api/albanian-to-english', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          text: trimmed,
-          direction: finalDirection,
+          text: inputText,
         }),
       });
 
-      const data = await response.json();
+      const data = (await response.json()) as {
+        error?: string;
+        translated?: string;
+        suggestion?: string;
+        needsUserConfirmation?: boolean;
+        detectedInputLanguage?: string;
+        detectedDirection?: string;
+        languageInfo?: any;
+      };
+
       if (!response.ok) {
+        if (data.needsUserConfirmation && data.suggestion) {
+          // 如果是语言检测问题，显示具体建议
+          throw new Error(data.error);
+        }
         throw new Error(data.error || pageData.tool.error);
       }
 
-      const translated = (data.translated || '').trim();
-      if (!translated) {
-        throw new Error(pageData.tool.error);
-      }
-
-      if (translated.toLowerCase() === trimmed.toLowerCase()) {
-        throw new Error(
-          pageData.tool.sameOutputError ||
-            'Translation matches the input. Please try different text.'
-        );
-      }
-
-      setOutputText(translated);
-      if (!isManualDirection) {
-        const nextDirection =
-          (data.detectedDirection as TranslatorDirection | undefined) ||
-          (data.direction as TranslatorDirection | undefined) ||
-          finalDirection;
-        setAutoDirection(nextDirection);
-      }
-      clearWarning();
+      setOutputText(data.translated || '');
     } catch (err: any) {
-      setError(err.message || 'Translation failed.');
+      setError(err.message || 'Translation failed');
       setOutputText('');
     } finally {
       setIsLoading(false);
     }
   };
 
+  // Reset
   const handleReset = () => {
     setInputText('');
     setOutputText('');
-    setError(null);
     setFileName(null);
-    resetDirection();
+    setError(null);
+    setDirection('al-to-en');
   };
 
+  // Copy
   const handleCopy = async () => {
     if (!outputText) return;
     try {
@@ -242,51 +146,48 @@ export default function AlbanianToEnglishTool({
     }
   };
 
+  // Download
   const handleDownload = () => {
     if (!outputText) return;
     const blob = new Blob([outputText], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `albanian-english-translation-${Date.now()}.txt`;
+    a.download = `albanian-to-english-${Date.now()}.txt`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
   };
 
-  const handleDirectionToggle = () => {
-    toggleDirection();
-    clearWarning();
-    if (outputText.trim()) {
-      setInputText(outputText);
-      setOutputText('');
-    }
-  };
-
   return (
     <div className="container max-w-7xl mx-auto px-4 mb-10">
       <main className="w-full bg-white dark:bg-zinc-800 shadow-xl border border-gray-100 dark:border-zinc-700 rounded-lg p-4 md:p-8">
-        <div className="flex flex-col md:flex-row gap-3 md:gap-4">
-          <div className="flex-1">
+        {/* Input and Output Areas */}
+        <div className="flex flex-col md:flex-row gap-2 md:gap-3">
+          {/* Input Area */}
+          <div className="flex-1 relative">
             <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-3">
-              {isAlbanianToEnglish ? albanianLabel : englishLabel}
+              {direction === 'al-to-en'
+                ? pageData.tool.albanianLabel
+                : pageData.tool.englishLabel}
             </h2>
             <textarea
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
-              placeholder={inputPlaceholder}
-              className={`w-full h-48 md:h-64 p-3 border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent resize-none text-gray-700 dark:text-gray-200 dark:bg-zinc-700 ${
-                languageWarning
-                  ? 'border-amber-300 dark:border-amber-600 focus:ring-amber-500'
-                  : 'border-gray-300 dark:border-zinc-600'
-              }`}
-              aria-label={isAlbanianToEnglish ? albanianLabel : englishLabel}
+              placeholder={
+                direction === 'al-to-en'
+                  ? pageData.tool.inputPlaceholder
+                  : pageData.tool.inputPlaceholder
+              }
+              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent resize-none text-gray-700 dark:text-gray-200 dark:bg-zinc-700"
+              aria-label={pageData.tool.inputLabel || 'Input text'}
             />
 
-            <div className="mt-4 flex items-center gap-3 flex-wrap">
+            {/* File Upload */}
+            <div className="mt-4 flex items-center gap-3">
               <label
-                htmlFor="file-upload-albanian"
+                htmlFor="file-upload"
                 className="inline-flex items-center px-4 py-2 bg-gray-200 dark:bg-zinc-600 hover:bg-gray-300 dark:hover:bg-zinc-500 text-gray-800 dark:text-gray-100 font-medium rounded-lg cursor-pointer transition-colors"
               >
                 <svg
@@ -302,18 +203,13 @@ export default function AlbanianToEnglishTool({
                     d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
                   />
                 </svg>
-                {pageData.tool.uploadButton || 'Upload File'}
+                {pageData.tool.uploadButton}
               </label>
-              <SpeechToTextButton
-                onTranscript={handleSpeechTranscript}
-                locale={locale}
-              />
               <p className="text-xs text-gray-500 dark:text-gray-400">
-                {pageData.tool.uploadHint ||
-                  'Supports .txt and .docx files for quick translation.'}
+                {pageData.tool.uploadHint}
               </p>
               <input
-                id="file-upload-albanian"
+                id="file-upload"
                 type="file"
                 accept=".txt,.docx"
                 onChange={handleFileUpload}
@@ -321,6 +217,7 @@ export default function AlbanianToEnglishTool({
               />
             </div>
 
+            {/* File Name Display */}
             {fileName && (
               <div className="mt-3 flex items-center gap-2 p-2 bg-gray-100 dark:bg-zinc-700 rounded-md border border-gray-200 dark:border-zinc-600">
                 <svg
@@ -338,7 +235,6 @@ export default function AlbanianToEnglishTool({
                   {fileName}
                 </span>
                 <button
-                  type="button"
                   onClick={() => {
                     setFileName(null);
                     setInputText('');
@@ -364,32 +260,51 @@ export default function AlbanianToEnglishTool({
             )}
           </div>
 
-          <DirectionIndicator
-            onToggle={handleDirectionToggle}
-            directionLabel={directionStatusLabel}
-            detectionStatus={detectionStatus}
-            warning={languageWarning}
-            toggleTitle={
-              isAlbanianToEnglish
-                ? 'Switch to English → Albanian'
-                : 'Switch to Albanian → English'
-            }
-            ariaLabel={
-              pageData.tool.toggleDirectionTooltip ||
-              'Toggle translation direction'
-            }
-          />
+          {/* Direction Swap Button - Centered between inputs */}
+          <div className="flex md:flex-col items-center justify-center md:justify-start md:pt-32">
+            <button
+              onClick={() =>
+                setDirection(direction === 'al-to-en' ? 'en-to-al' : 'al-to-en')
+              }
+              className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors rotate-0 md:rotate-0"
+              title={
+                direction === 'al-to-en'
+                  ? 'Switch to English → Albanian'
+                  : 'Switch to Albanian → English'
+              }
+              aria-label={
+                pageData.tool.toggleDirectionTooltip ||
+                'Toggle translation direction'
+              }
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"
+                />
+              </svg>
+            </button>
+          </div>
 
+          {/* Output Area */}
           <div className="flex-1">
             <div className="flex items-center justify-between mb-3">
               <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">
-                {isAlbanianToEnglish ? englishLabel : albanianLabel}
+                {direction === 'al-to-en'
+                  ? pageData.tool.englishLabel
+                  : pageData.tool.albanianLabel}
               </h2>
               {outputText && (
                 <div className="flex gap-2">
                   <TextToSpeechButton text={outputText} locale={locale} />
                   <button
-                    type="button"
                     onClick={handleCopy}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
                     title={pageData.tool.copyTooltip || 'Copy'}
@@ -409,7 +324,6 @@ export default function AlbanianToEnglishTool({
                     </svg>
                   </button>
                   <button
-                    type="button"
                     onClick={handleDownload}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
                     title={pageData.tool.downloadTooltip || 'Download'}
@@ -432,40 +346,48 @@ export default function AlbanianToEnglishTool({
               )}
             </div>
             <div
-              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md bg-gray-50 dark:bg-zinc-700 flex items-start justify-start text-gray-700 dark:text-gray-200 overflow-y-auto"
+              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md bg-gray-50 dark:bg-zinc-700 overflow-y-auto"
               aria-live="polite"
             >
               {isLoading ? (
-                <div className="flex items-center gap-3">
-                  <div className="flex space-x-1">
-                    <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-                    <div
-                      className="w-2 h-2 bg-primary rounded-full animate-pulse"
-                      style={{ animationDelay: '0.2s' }}
-                    />
-                    <div
-                      className="w-2 h-2 bg-primary rounded-full animate-pulse"
-                      style={{ animationDelay: '0.4s' }}
-                    />
+                <div className="w-full h-full flex items-center justify-center text-gray-700 dark:text-gray-200">
+                  <div className="flex items-center gap-3">
+                    <div className="flex space-x-1">
+                      <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                      <div
+                        className="w-2 h-2 bg-primary rounded-full animate-pulse"
+                        style={{ animationDelay: '0.2s' }}
+                      ></div>
+                      <div
+                        className="w-2 h-2 bg-primary rounded-full animate-pulse"
+                        style={{ animationDelay: '0.4s' }}
+                      ></div>
+                    </div>
+                    <span>{pageData.tool.loading}</span>
                   </div>
-                  <span>{pageData.tool.loading || 'Translating...'}</span>
                 </div>
-              ) : error ? (
-                <p className="text-red-600 dark:text-red-400">{error}</p>
-              ) : outputText ? (
-                <p className="text-lg whitespace-pre-wrap">{outputText}</p>
               ) : (
-                <p className="text-gray-500 dark:text-gray-400">
-                  {outputPlaceholder}
-                </p>
+                <div className="flex flex-col items-start justify-start text-gray-700 dark:text-gray-200">
+                  {error ? (
+                    <p className="text-red-600 dark:text-red-400">{error}</p>
+                  ) : outputText ? (
+                    <p className="text-lg whitespace-pre-wrap">{outputText}</p>
+                  ) : (
+                    <p className="text-gray-500 dark:text-gray-400">
+                      {direction === 'al-to-en'
+                        ? pageData.tool.outputPlaceholder
+                        : pageData.tool.outputPlaceholder}
+                    </p>
+                  )}
+                </div>
               )}
             </div>
           </div>
         </div>
 
+        {/* Action Buttons */}
         <div className="mt-6 flex justify-center gap-4">
           <button
-            type="button"
             onClick={handleTranslate}
             disabled={isLoading}
             className="inline-flex items-center px-8 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
@@ -474,11 +396,10 @@ export default function AlbanianToEnglishTool({
             <ArrowRightIcon className="ml-2 h-4 w-4" />
           </button>
           <button
-            type="button"
             onClick={handleReset}
             className="px-6 py-3 bg-gray-200 dark:bg-zinc-600 hover:bg-gray-300 dark:hover:bg-zinc-500 text-gray-800 dark:text-gray-100 font-semibold rounded-lg shadow-md transition-colors"
           >
-            {pageData.tool.resetButton || 'Reset'}
+            {pageData.tool.resetButton}
           </button>
         </div>
       </main>

@@ -1,5 +1,5 @@
+import { GoogleGenerativeAI } from '@/lib/ai/gemini';
 import { detectLanguage } from '@/lib/language-detection';
-import { GoogleGenerativeAI } from '@google/generative-ai';
 import { NextResponse } from 'next/server';
 
 export const runtime = 'edge';
@@ -69,8 +69,30 @@ type TranslationRequest = {
 };
 
 function detectGreekType(text: string): 'modern' | 'ancient' | 'unknown' {
-  const ancientIndicators = ['Ἀ', 'Ἀν', 'δὲ', 'γὰρ', 'μὲν', 'οὐ', 'ἔστιν', 'ἔστι', 'εἰς', 'ἐπὶ'];
-  const modernIndicators = ['και', 'είναι', 'όχι', 'να', 'το', 'της', 'για', 'με', 'σε', 'έχω'];
+  const ancientIndicators = [
+    'Ἀ',
+    'Ἀν',
+    'δὲ',
+    'γὰρ',
+    'μὲν',
+    'οὐ',
+    'ἔστιν',
+    'ἔστι',
+    'εἰς',
+    'ἐπὶ',
+  ];
+  const modernIndicators = [
+    'και',
+    'είναι',
+    'όχι',
+    'να',
+    'το',
+    'της',
+    'για',
+    'με',
+    'σε',
+    'έχω',
+  ];
 
   const textLower = text.toLowerCase();
   let ancientScore = 0;

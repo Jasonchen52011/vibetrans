@@ -1,99 +1,30 @@
 'use client';
 
 import { ToolInfoSections } from '@/components/blocks/tool/tool-info-sections';
-import { DirectionIndicator } from '@/components/translator/DirectionIndicator';
-import { SpeechToTextButton } from '@/components/ui/speech-to-text-button';
 import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
-import { useSmartTranslatorDirection } from '@/hooks/use-smart-translator-direction';
 import { ArrowRightIcon } from 'lucide-react';
 import mammoth from 'mammoth';
-import { useEffect, useMemo, useState } from 'react';
-
-type TranslatorDirection = 'toAramaic' | 'toEnglish';
+import { useState } from 'react';
 
 interface AramaicTranslatorToolProps {
   pageData: any;
   locale?: string;
 }
 
+type TranslationDirection = 'toAramaic' | 'toEnglish' | 'auto';
+
 export default function AramaicTranslatorTool({
   pageData,
   locale = 'en',
 }: AramaicTranslatorToolProps) {
-  const [inputText, setInputText] = useState('');
-  const [outputText, setOutputText] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+  const [inputText, setInputText] = useState<string>('');
+  const [outputText, setOutputText] = useState<string>('');
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [fileName, setFileName] = useState<string | null>(null);
+  const [direction, setDirection] = useState<TranslationDirection>('auto');
 
-  const {
-    activeDirection,
-    isManualDirection,
-    detectedLanguage,
-    languageWarning,
-    runLanguageDetection,
-    toggleDirection,
-    setAutoDirection,
-    resetDirection,
-    clearWarning,
-  } = useSmartTranslatorDirection<TranslatorDirection>({
-    apiPath: '/api/aramaic-translator',
-    defaultDirection: 'toAramaic',
-    directions: ['toAramaic', 'toEnglish'],
-    locale,
-    supportedLanguages: ['english', 'aramaic'],
-    warningMessage:
-      pageData.tool.languageWarning ||
-      'Please enter Aramaic script or English text.',
-  });
-
-  const isEnglishToAramaic = activeDirection === 'toAramaic';
-  const englishLabel = pageData.tool.englishLabel || 'English';
-  const aramaicLabel = pageData.tool.aramaicLabel || 'Aramaic';
-
-  const inputPlaceholder = useMemo(
-    () =>
-      isEnglishToAramaic
-        ? pageData.tool.inputPlaceholder ||
-          'Enter English text to translate into Aramaic script...'
-        : pageData.tool.aramaicInputPlaceholder ||
-          'Paste Aramaic script (Syriac/Mandaic) for English translation...',
-    [isEnglishToAramaic, pageData.tool]
-  );
-
-  const outputPlaceholder = useMemo(
-    () =>
-      isEnglishToAramaic
-        ? pageData.tool.aramaicOutputPlaceholder ||
-          'Aramaic script translation will appear here'
-        : pageData.tool.outputPlaceholder ||
-          'Modern English translation will appear here',
-    [isEnglishToAramaic, pageData.tool]
-  );
-
-  const directionStatusLabel = isEnglishToAramaic
-    ? `${englishLabel} → ${aramaicLabel}`
-    : `${aramaicLabel} → ${englishLabel}`;
-
-  const detectionStatus =
-    detectedLanguage === 'english'
-      ? `Detected input: ${englishLabel}`
-      : detectedLanguage === 'aramaic'
-        ? `Detected input: ${aramaicLabel}`
-        : 'Auto-detecting. Enter Aramaic script or English text.';
-
-  useEffect(() => {
-    const trimmed = inputText.trim();
-    if (!trimmed) {
-      clearWarning();
-      return;
-    }
-    const timeoutId = setTimeout(async () => {
-      await runLanguageDetection(trimmed);
-    }, 600);
-    return () => clearTimeout(timeoutId);
-  }, [inputText, runLanguageDetection, clearWarning]);
-
+  // Handle file upload
   const handleFileUpload = async (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
@@ -107,11 +38,12 @@ export default function AramaicTranslatorTool({
       const text = await readFileContent(file);
       setInputText(text);
     } catch (err: any) {
-      setError(err.message || pageData.tool.error);
+      setError(err.message || 'Failed to read file');
       setFileName(null);
     }
   };
 
+  // Read file content
   const readFileContent = async (file: File): Promise<string> => {
     const fileExtension = file.name.split('.').pop()?.toLowerCase();
 
@@ -134,7 +66,7 @@ export default function AramaicTranslatorTool({
         const result = await mammoth.extractRawText({ arrayBuffer });
         if (result.value) return result.value;
         throw new Error('Failed to extract text from Word document');
-      } catch {
+      } catch (error) {
         throw new Error(
           'Failed to read .docx file. Please ensure it is a valid Word document.'
         );
@@ -146,15 +78,9 @@ export default function AramaicTranslatorTool({
     );
   };
 
-  const handleSpeechTranscript = (transcript: string) => {
-    setInputText((prev) =>
-      prev ? `${prev.trim()}\n${transcript}` : transcript
-    );
-  };
-
+  // Handle translation
   const handleTranslate = async () => {
-    const trimmed = inputText.trim();
-    if (!trimmed) {
+    if (!inputText.trim()) {
       setError(pageData.tool.noInput);
       setOutputText('');
       return;
@@ -165,58 +91,22 @@ export default function AramaicTranslatorTool({
     setOutputText('');
 
     try {
-      const detectionSummary = await runLanguageDetection(trimmed);
-      if (
-        !isManualDirection &&
-        (languageWarning ||
-          detectionSummary.detectedInputLanguage === 'unknown') &&
-        detectionSummary.confidence < 0.3
-      ) {
-        throw new Error(
-          pageData.tool.languageWarning ||
-            'Please enter Aramaic script or English text.'
-        );
-      }
-
-      const finalDirection = isManualDirection
-        ? activeDirection
-        : detectionSummary.detectedDirection;
-
       const response = await fetch('/api/aramaic-translator', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          text: trimmed,
-          direction: finalDirection,
+          text: inputText,
+          direction: direction,
         }),
       });
 
       const data = await response.json();
+
       if (!response.ok) {
         throw new Error(data.error || pageData.tool.error);
       }
 
-      const translated = (data.translated || '').trim();
-      if (!translated) {
-        throw new Error(pageData.tool.error);
-      }
-
-      if (translated.toLowerCase() === trimmed.toLowerCase()) {
-        throw new Error(
-          pageData.tool.sameOutputError ||
-            'Translation matches the input. Please try different text.'
-        );
-      }
-
-      setOutputText(translated);
-      if (!isManualDirection) {
-        const nextDirection =
-          (data.detectedDirection as TranslatorDirection | undefined) ||
-          (data.direction as TranslatorDirection | undefined) ||
-          finalDirection;
-        setAutoDirection(nextDirection);
-      }
-      clearWarning();
+      setOutputText(data.translated || data.result || '');
     } catch (err: any) {
       setError(err.message || 'Translation failed');
       setOutputText('');
@@ -225,14 +115,29 @@ export default function AramaicTranslatorTool({
     }
   };
 
+  // Toggle translation direction when clicking titles
+  const handleTitleClick = () => {
+    if (direction === 'auto') return;
+
+    // Swap input and output
+    const temp = inputText;
+    setInputText(outputText);
+    setOutputText(temp);
+    setDirection((prev) => (prev === 'toAramaic' ? 'toEnglish' : 'toAramaic'));
+    setFileName(null);
+    setError(null);
+  };
+
+  // Reset
   const handleReset = () => {
     setInputText('');
     setOutputText('');
     setFileName(null);
     setError(null);
-    resetDirection();
+    setDirection('auto');
   };
 
+  // Copy
   const handleCopy = async () => {
     if (!outputText) return;
     try {
@@ -242,51 +147,72 @@ export default function AramaicTranslatorTool({
     }
   };
 
+  // Download
   const handleDownload = () => {
     if (!outputText) return;
     const blob = new Blob([outputText], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `aramaic-translation-${Date.now()}.txt`;
+    a.download = `aramaic-translator-${Date.now()}.txt`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
   };
 
-  const handleDirectionToggle = () => {
-    toggleDirection();
-    clearWarning();
-    if (outputText.trim()) {
-      setInputText(outputText);
-      setOutputText('');
-    }
+  // 获取动态标签
+  const getInputLabel = () => {
+    if (direction === 'auto') return pageData.tool.inputLabel;
+    return direction === 'toAramaic'
+      ? pageData.tool.englishLabel
+      : pageData.tool.aramaicLabel;
+  };
+
+  const getOutputLabel = () => {
+    if (direction === 'auto') return pageData.tool.outputLabel;
+    return direction === 'toAramaic'
+      ? pageData.tool.aramaicLabel + ' ' + pageData.tool.outputLabel
+      : pageData.tool.englishLabel + ' ' + pageData.tool.outputLabel;
+  };
+
+  const getInputPlaceholder = () => {
+    if (direction === 'auto') return 'Enter text to translate...';
+    return direction === 'toAramaic'
+      ? 'Enter English text to translate to Aramaic...'
+      : 'Enter Aramaic text to translate to English...';
   };
 
   return (
     <div className="container max-w-7xl mx-auto px-4 mb-10">
       <main className="w-full bg-white dark:bg-zinc-800 shadow-xl border border-gray-100 dark:border-zinc-700 rounded-lg p-4 md:p-8">
-        <div className="flex flex-col md:flex-row gap-3 md:gap-4">
+        {/* Input and Output Areas */}
+        <div className="flex flex-col md:flex-row gap-2 md:gap-3">
+          {/* Input Area */}
           <div className="flex-1">
-            <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-3">
-              {isEnglishToAramaic ? englishLabel : aramaicLabel}
+            <h2
+              className="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-3 cursor-pointer hover:text-primary transition-colors"
+              onClick={handleTitleClick}
+              title={
+                direction === 'toAramaic'
+                  ? 'Switch to Aramaic → English'
+                  : 'Switch to English → Aramaic'
+              }
+            >
+              {getInputLabel()}
             </h2>
             <textarea
               value={inputText}
-              onChange={(event) => setInputText(event.target.value)}
-              placeholder={inputPlaceholder}
-              className={`w-full h-48 md:h-64 p-3 border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent resize-none text-gray-700 dark:text-gray-200 dark:bg-zinc-700 ${
-                languageWarning
-                  ? 'border-amber-300 dark:border-amber-600 focus:ring-amber-500'
-                  : 'border-gray-300 dark:border-zinc-600'
-              }`}
-              aria-label={isEnglishToAramaic ? englishLabel : aramaicLabel}
+              onChange={(e) => setInputText(e.target.value)}
+              placeholder={getInputPlaceholder()}
+              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent resize-none text-gray-700 dark:text-gray-200 dark:bg-zinc-700"
+              aria-label={pageData.tool.inputLabel || 'Input text'}
             />
 
-            <div className="mt-4 flex items-center gap-3 flex-wrap">
+            {/* File Upload */}
+            <div className="mt-4 flex items-center gap-3">
               <label
-                htmlFor="file-upload-aramaic"
+                htmlFor="file-upload"
                 className="inline-flex items-center px-4 py-2 bg-gray-200 dark:bg-zinc-600 hover:bg-gray-300 dark:hover:bg-zinc-500 text-gray-800 dark:text-gray-100 font-medium rounded-lg cursor-pointer transition-colors"
               >
                 <svg
@@ -304,16 +230,11 @@ export default function AramaicTranslatorTool({
                 </svg>
                 {pageData.tool.uploadButton}
               </label>
-              <SpeechToTextButton
-                onTranscript={handleSpeechTranscript}
-                locale={locale}
-              />
               <p className="text-xs text-gray-500 dark:text-gray-400">
-                {pageData.tool.uploadHint ||
-                  'Supports .txt and .docx files plus speech input.'}
+                {pageData.tool.uploadHint}
               </p>
               <input
-                id="file-upload-aramaic"
+                id="file-upload"
                 type="file"
                 accept=".txt,.docx"
                 onChange={handleFileUpload}
@@ -321,6 +242,7 @@ export default function AramaicTranslatorTool({
               />
             </div>
 
+            {/* File Name Display */}
             {fileName && (
               <div className="mt-3 flex items-center gap-2 p-2 bg-gray-100 dark:bg-zinc-700 rounded-md border border-gray-200 dark:border-zinc-600">
                 <svg
@@ -338,7 +260,6 @@ export default function AramaicTranslatorTool({
                   {fileName}
                 </span>
                 <button
-                  type="button"
                   onClick={() => {
                     setFileName(null);
                     setInputText('');
@@ -364,32 +285,59 @@ export default function AramaicTranslatorTool({
             )}
           </div>
 
-          <DirectionIndicator
-            onToggle={handleDirectionToggle}
-            directionLabel={directionStatusLabel}
-            detectionStatus={detectionStatus}
-            warning={languageWarning}
-            toggleTitle={
-              isEnglishToAramaic
-                ? 'Switch to Aramaic → English'
-                : 'Switch to English → Aramaic'
-            }
-            ariaLabel={
-              pageData.tool.toggleDirectionTooltip ||
-              'Toggle translation direction'
-            }
-          />
+          {/* Direction Swap Button - Centered between inputs */}
+          <div className="flex md:flex-col items-center justify-center md:justify-start md:pt-32">
+            <button
+              onClick={() =>
+                setDirection(
+                  direction === 'toAramaic' ? 'toEnglish' : 'toAramaic'
+                )
+              }
+              className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors rotate-0 md:rotate-0"
+              title={
+                direction === 'toAramaic'
+                  ? 'Switch to Aramaic → English'
+                  : 'Switch to English → Aramaic'
+              }
+              aria-label={
+                pageData.tool.toggleDirectionTooltip ||
+                'Toggle translation direction'
+              }
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"
+                />
+              </svg>
+            </button>
+          </div>
 
+          {/* Output Area */}
           <div className="flex-1">
             <div className="flex items-center justify-between mb-3">
-              <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">
-                {isEnglishToAramaic ? aramaicLabel : englishLabel}
+              <h2
+                className="text-2xl font-semibold text-gray-800 dark:text-gray-100 cursor-pointer hover:text-primary transition-colors"
+                onClick={handleTitleClick}
+                title={
+                  direction === 'toAramaic'
+                    ? 'Switch to Aramaic → English'
+                    : 'Switch to English → Aramaic'
+                }
+              >
+                {getOutputLabel()}
               </h2>
               {outputText && (
                 <div className="flex gap-2">
                   <TextToSpeechButton text={outputText} locale={locale} />
                   <button
-                    type="button"
                     onClick={handleCopy}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
                     title={pageData.tool.copyTooltip || 'Copy'}
@@ -409,7 +357,6 @@ export default function AramaicTranslatorTool({
                     </svg>
                   </button>
                   <button
-                    type="button"
                     onClick={handleDownload}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
                     title={pageData.tool.downloadTooltip || 'Download'}
@@ -432,53 +379,65 @@ export default function AramaicTranslatorTool({
               )}
             </div>
             <div
-              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md bg-gray-50 dark:bg-zinc-700 flex items-start justify-start text-gray-700 dark:text-gray-200 overflow-y-auto"
+              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md bg-gray-50 dark:bg-zinc-700 overflow-y-auto"
               aria-live="polite"
             >
               {isLoading ? (
-                <div className="flex items-center gap-3">
-                  <div className="flex space-x-1">
-                    <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-                    <div
-                      className="w-2 h-2 bg-primary rounded-full animate-pulse"
-                      style={{ animationDelay: '0.2s' }}
-                    />
-                    <div
-                      className="w-2 h-2 bg-primary rounded-full animate-pulse"
-                      style={{ animationDelay: '0.4s' }}
-                    />
+                <div className="w-full h-full flex items-center justify-center text-gray-700 dark:text-gray-200">
+                  <div className="flex items-center gap-3">
+                    <div className="flex space-x-1">
+                      <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                      <div
+                        className="w-2 h-2 bg-primary rounded-full animate-pulse"
+                        style={{ animationDelay: '0.2s' }}
+                      ></div>
+                      <div
+                        className="w-2 h-2 bg-primary rounded-full animate-pulse"
+                        style={{ animationDelay: '0.4s' }}
+                      ></div>
+                    </div>
+                    <span>{pageData.tool.loading}</span>
                   </div>
-                  <span>{pageData.tool.loading || 'Translating...'}</span>
                 </div>
-              ) : error ? (
-                <p className="text-red-600 dark:text-red-400">{error}</p>
-              ) : outputText ? (
-                <p className="text-lg whitespace-pre-wrap">{outputText}</p>
               ) : (
-                <p className="text-gray-500 dark:text-gray-400">
-                  {outputPlaceholder}
-                </p>
+                <div className="flex flex-col items-start justify-start text-gray-700 dark:text-gray-200">
+                  {error ? (
+                    <p className="text-red-600 dark:text-red-400">{error}</p>
+                  ) : outputText ? (
+                    <p className="text-lg whitespace-pre-wrap">{outputText}</p>
+                  ) : (
+                    <p className="text-gray-500 dark:text-gray-400">
+                      {direction === 'auto'
+                        ? 'Translation will appear here...'
+                        : 'Translation will appear here...'}
+                    </p>
+                  )}
+                </div>
               )}
             </div>
           </div>
         </div>
 
+        {/* Action Buttons */}
         <div className="mt-6 flex justify-center gap-4">
           <button
-            type="button"
             onClick={handleTranslate}
             disabled={isLoading}
             className="inline-flex items-center px-8 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {isLoading ? pageData.tool.loading : pageData.tool.translateButton}
+            <span>
+              {isLoading
+                ? pageData.tool.loading
+                : pageData.tool.translateButton}
+            </span>
+
             <ArrowRightIcon className="ml-2 h-4 w-4" />
           </button>
           <button
-            type="button"
             onClick={handleReset}
             className="px-6 py-3 bg-gray-200 dark:bg-zinc-600 hover:bg-gray-300 dark:hover:bg-zinc-500 text-gray-800 dark:text-gray-100 font-semibold rounded-lg shadow-md transition-colors"
           >
-            {pageData.tool.resetButton || 'Reset'}
+            Reset
           </button>
         </div>
 

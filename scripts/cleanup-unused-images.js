@@ -30,7 +30,7 @@ const imagesToDelete = [
   'verbose-generator-interest-4.webp',
   'what-is-albanian-to-english.webp',
   'what-is-alien-text-generator.webp',
-  'what-is-verbose-generator.webp'
+  'what-is-verbose-generator.webp',
 ];
 
 function formatSize(bytes) {
@@ -38,11 +38,14 @@ function formatSize(bytes) {
   const k = 1024;
   const sizes = ['Bytes', 'KB', 'MB', 'GB'];
   const i = Math.floor(Math.log(bytes) / Math.log(k));
-  return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+  return (
+    Number.parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i]
+  );
 }
 
 function main() {
-  const imagesDir = '/Users/jason-chen/Downloads/project/vibetrans/public/images/docs';
+  const imagesDir =
+    '/Users/jason-chen/Downloads/project/vibetrans/public/images/docs';
   let totalSize = 0;
   let deletedCount = 0;
   let errorCount = 0;
@@ -59,13 +62,19 @@ function main() {
       try {
         fs.unlinkSync(filePath);
         deletedCount++;
-        console.log(`✅ (${index + 1}/${imagesToDelete.length}) 删除: ${image} (${formatSize(stats.size)})`);
+        console.log(
+          `✅ (${index + 1}/${imagesToDelete.length}) 删除: ${image} (${formatSize(stats.size)})`
+        );
       } catch (error) {
         errorCount++;
-        console.log(`❌ (${index + 1}/${imagesToDelete.length}) 删除失败: ${image} - ${error.message}`);
+        console.log(
+          `❌ (${index + 1}/${imagesToDelete.length}) 删除失败: ${image} - ${error.message}`
+        );
       }
     } else {
-      console.log(`⚠️ (${index + 1}/${imagesToDelete.length}) 文件不存在: ${image}`);
+      console.log(
+        `⚠️ (${index + 1}/${imagesToDelete.length}) 文件不存在: ${image}`
+      );
     }
   });
 
@@ -75,7 +84,9 @@ function main() {
   console.log(`- 释放空间: ${formatSize(totalSize)}`);
 
   if (errorCount > 0) {
-    console.log(`\n⚠️ 有 ${errorCount} 个文件删除失败，请检查权限或文件是否被占用`);
+    console.log(
+      `\n⚠️ 有 ${errorCount} 个文件删除失败，请检查权限或文件是否被占用`
+    );
   } else {
     console.log(`\n🎉 清理完成！`);
   }

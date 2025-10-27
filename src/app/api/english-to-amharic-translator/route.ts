@@ -1,172 +1,99 @@
-import { detectLanguage } from '@/lib/language-detection';
-import { NextResponse } from 'next/server';
-
 export const runtime = 'edge';
 
-type TranslatorDirection = 'en-to-am' | 'am-to-en';
+export async function POST(request: Request) {
+  try {
+    const apiKey = process.env.OPENAI_API_KEY;
+    if (!apiKey) {
+      return new Response(
+        JSON.stringify({ error: 'Translation service unavailable' }),
+        { status: 500, headers: { 'Content-Type': 'application/json' } }
+      );
+    }
 
-type TranslationRequest = {
-  text?: string;
-  direction?: TranslatorDirection;
-  includeTransliteration?: boolean;
-  detectOnly?: boolean;
-};
+    const { text, includeTransliteration = false } = await request.json();
 
-const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+    if (!text || typeof text !== 'string' || text.trim().length === 0) {
+      return new Response(JSON.stringify({ error: 'No text provided' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
 
-function detectDirection(text: string, direction?: TranslatorDirection) {
-  const detection = detectLanguage(text, 'amharic');
-  const finalDirection: TranslatorDirection = direction
-    ? direction
-    : detection.detectedLanguage === 'amharic'
-      ? 'am-to-en'
-      : 'en-to-am';
+    const model =
+      process.env.TRANSLATION_MODEL ||
+      process.env.CONTENT_MODEL ||
+      'gpt-4o-mini';
 
-  return {
-    detection,
-    finalDirection,
-  };
-}
-
-async function callTranslationProvider(
-  text: string,
-  direction: TranslatorDirection,
-  includeTransliteration: boolean
-) {
-  if (!OPENAI_API_KEY) {
-    return null;
-  }
-
-  const targetLanguage = direction === 'en-to-am' ? 'Amharic' : 'English';
-  const sourceLanguage = direction === 'en-to-am' ? 'English' : 'Amharic';
-
-  const systemPrompt = `You are a professional translator for ${sourceLanguage} ↔ ${targetLanguage}. Return strict JSON matching the schema {"translation": "string", "transliteration": "string"}. Transliteration should be empty when not applicable.`;
-
-  const userPrompt = `Translate the following ${sourceLanguage} text into ${targetLanguage}.
+    const systemPrompt =
+      'You are a professional translator specializing in English ↔ Amharic. Return precise Amharic that respects tone, honorifics, and domain context.';
+    const userPrompt = `Translate the following English text into Amharic. Preserve formatting and numbers. Always reply with valid JSON using the schema {"translation": "Amharic text", "transliteration": "Latin transliteration or empty string"}. ${
+      includeTransliteration
+        ? 'Provide a helpful Latin transliteration.'
+        : 'Return an empty string for "transliteration".'
+    }
 
 Text:
 """
 ${text}
-"""
+"""`;
 
-${includeTransliteration ? 'Provide a helpful transliteration as well.' : 'Provide an empty transliteration string.'}`;
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify({
+        model,
+        temperature: 0.2,
+        messages: [
+          { role: 'system', content: systemPrompt },
+          { role: 'user', content: userPrompt },
+        ],
+        response_format: { type: 'json_object' },
+      }),
+    });
 
-  const response = await fetch('https://api.openai.com/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${OPENAI_API_KEY}`,
-    },
-    body: JSON.stringify({
-      model: process.env.TRANSLATION_MODEL || process.env.CONTENT_MODEL || 'gpt-4o-mini',
-      messages: [
-        { role: 'system', content: systemPrompt },
-        { role: 'user', content: userPrompt },
-      ],
-      temperature: 0.3,
-      response_format: { type: 'json_object' },
-    }),
-  });
-
-  if (!response.ok) {
-    const errorBody = await response.text();
-    console.error('Translation provider error:', errorBody);
-    return null;
-  }
-
-  const data = await response.json();
-  try {
-    const parsed = JSON.parse(data?.choices?.[0]?.message?.content ?? '{}');
-    return {
-      translated: parsed.translation?.trim() ?? '',
-      transliteration: parsed.transliteration?.trim() ?? '',
-    };
-  } catch (err) {
-    console.error('Failed to parse provider response:', err);
-    return null;
-  }
-}
-
-function fallbackTranslation(text: string, direction: TranslatorDirection) {
-  if (direction === 'en-to-am') {
-    return {
-      translated: `${text} (translated to Amharic - demo mode)`,
-      transliteration: '',
-    };
-  }
-  return {
-    translated: `${text} (translated to English - demo mode)`,
-    transliteration: '',
-  };
-}
-
-export async function POST(request: Request) {
-  try {
-    const {
-      text,
-      direction,
-      includeTransliteration = false,
-      detectOnly = false,
-    } = (await request.json()) as TranslationRequest;
-
-    if (!text || typeof text !== 'string') {
-      return NextResponse.json(
-        { error: 'Text is required for translation' },
-        { status: 400 }
+    if (!response.ok) {
+      const errorBody = await response.text();
+      throw new Error(
+        `Translation provider error: ${response.status} ${errorBody}`
       );
     }
 
-    const { detection, finalDirection } = detectDirection(text, direction);
+    const data = await response.json();
+    const content =
+      data?.choices?.[0]?.message?.content?.trim() ?? '{"translation": ""}';
 
-    if (detectOnly) {
-      return NextResponse.json({
-        detectedInputLanguage: detection.detectedLanguage,
-        detectedDirection: finalDirection,
-        confidence: detection.confidence,
-        autoDetected: !direction,
-        languageInfo: {
-          detected: detection.detectedLanguage !== 'unknown',
-          detectedLanguage:
-            detection.detectedLanguage === 'english'
-              ? 'English'
-              : detection.detectedLanguage === 'amharic'
-                ? 'Amharic'
-                : 'Unknown',
-          direction:
-            finalDirection === 'en-to-am'
-              ? 'English → Amharic'
-              : 'Amharic → English',
-          confidence: Math.round(detection.confidence * 100),
-        },
-      });
+    let parsed: { translation?: string; transliteration?: string };
+
+    try {
+      parsed = JSON.parse(content);
+    } catch {
+      const match = content.match(/```json\s*([\s\S]*?)\s*```/);
+      if (match) {
+        parsed = JSON.parse(match[1]);
+      } else {
+        parsed = { translation: content };
+      }
     }
 
-    const providerResult = await callTranslationProvider(
-      text,
-      finalDirection,
-      includeTransliteration
-    );
+    const translated = parsed.translation?.trim() ?? '';
+    const transliteration = parsed.transliteration?.trim() ?? '';
 
-    const result = providerResult ?? fallbackTranslation(text, finalDirection);
-
-    if (!result.translated.trim()) {
-      throw new Error('Translation provider returned empty result');
+    if (!translated) {
+      throw new Error('Empty translation received from provider');
     }
 
-    return NextResponse.json({
-      translated: result.translated,
-      transliteration: includeTransliteration ? result.transliteration : '',
-      direction: finalDirection,
-      detectedInputLanguage: detection.detectedLanguage,
-      confidence: detection.confidence,
-      autoDetected: !direction,
-      message: 'Translation successful',
+    return new Response(JSON.stringify({ translated, transliteration }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
     });
   } catch (error) {
     console.error('Translation error:', error);
-    return NextResponse.json(
-      { error: 'Translation failed' },
-      { status: 500 }
-    );
+    return new Response(JSON.stringify({ error: 'Translation failed' }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' },
+    });
   }
 }

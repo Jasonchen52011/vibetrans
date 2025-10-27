@@ -1,14 +1,10 @@
 'use client';
 
-import { DirectionIndicator } from '@/components/translator/DirectionIndicator';
 import { SpeechToTextButton } from '@/components/ui/speech-to-text-button';
 import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
-import { useSmartTranslatorDirection } from '@/hooks/use-smart-translator-direction';
-import { ArrowRightIcon, Waves } from 'lucide-react';
+import { Mic, Waves } from 'lucide-react';
 import mammoth from 'mammoth';
-import { useEffect, useMemo, useRef, useState } from 'react';
-
-type TranslatorDirection = 'en-pl' | 'pl-en';
+import { useEffect, useRef, useState } from 'react';
 
 interface EnglishToPolishTranslatorToolProps {
   pageData: any;
@@ -19,116 +15,15 @@ export default function EnglishToPolishTranslatorTool({
   pageData,
   locale = 'en',
 }: EnglishToPolishTranslatorToolProps) {
-  const [inputText, setInputText] = useState('');
-  const [outputText, setOutputText] = useState('');
-  const [fileName, setFileName] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isTranscribing, setIsTranscribing] = useState(false);
+  const [inputText, setInputText] = useState<string>('');
+  const [outputText, setOutputText] = useState<string>('');
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const [fileName, setFileName] = useState<string | null>(null);
+  const [isTranscribing, setIsTranscribing] = useState<boolean>(false);
   const audioInputRef = useRef<HTMLInputElement | null>(null);
 
-  const {
-    activeDirection,
-    isManualDirection,
-    detectedLanguage,
-    languageWarning,
-    runLanguageDetection,
-    toggleDirection,
-    setAutoDirection,
-    resetDirection,
-    clearWarning,
-  } = useSmartTranslatorDirection<TranslatorDirection>({
-    apiPath: '/api/english-to-polish-translator',
-    defaultDirection: 'en-pl',
-    directions: ['en-pl', 'pl-en'],
-    locale,
-    supportedLanguages: ['english', 'polish'],
-    warningMessage:
-      pageData.tool.languageWarning ||
-      'Please enter English or Polish text.',
-  });
-
-  const isEnglishToPolish = activeDirection === 'en-pl';
-  const englishLabel = pageData.tool.englishLabel || 'English';
-  const polishLabel = pageData.tool.polishLabel || 'Polish';
-
-  const inputPlaceholder = useMemo(
-    () =>
-      isEnglishToPolish
-        ? pageData.tool.inputPlaceholder ||
-          'Paste English content that needs a polished Polish translation...'
-        : pageData.tool.polishInputPlaceholder ||
-          'Wprowadź tekst po polsku do przetłumaczenia na angielski...',
-    [isEnglishToPolish, pageData.tool]
-  );
-
-  const outputPlaceholder = useMemo(
-    () =>
-      isEnglishToPolish
-        ? pageData.tool.polishOutputPlaceholder ||
-          'Refined Polish translation will appear here'
-        : pageData.tool.outputPlaceholder ||
-          'Fluent English translation will appear here',
-    [isEnglishToPolish, pageData.tool]
-  );
-
-  const directionStatusLabel = isEnglishToPolish
-    ? `${englishLabel} → ${polishLabel}`
-    : `${polishLabel} → ${englishLabel}`;
-
-  const detectionStatus =
-    detectedLanguage === 'english'
-      ? `Detected input: ${englishLabel}`
-      : detectedLanguage === 'polish'
-        ? `Detected input: ${polishLabel}`
-        : 'Auto-detecting. Enter English or Polish text.';
-
-  useEffect(() => {
-    const trimmed = inputText.trim();
-    if (!trimmed) {
-      clearWarning();
-      return;
-    }
-    const timeoutId = setTimeout(async () => {
-      await runLanguageDetection(trimmed);
-    }, 600);
-    return () => clearTimeout(timeoutId);
-  }, [inputText, runLanguageDetection, clearWarning]);
-
-  const readFileContent = async (file: File): Promise<string> => {
-    const extension = file.name.split('.').pop()?.toLowerCase();
-
-    if (extension === 'txt') {
-      return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = (event) => {
-          const content = event.target?.result as string;
-          if (content) resolve(content);
-          else reject(new Error('File is empty'));
-        };
-        reader.onerror = () => reject(new Error('Failed to read file'));
-        reader.readAsText(file);
-      });
-    }
-
-    if (extension === 'docx') {
-      try {
-        const arrayBuffer = await file.arrayBuffer();
-        const result = await mammoth.extractRawText({ arrayBuffer });
-        if (result.value) return result.value;
-        throw new Error('Failed to extract text from Word document');
-      } catch {
-        throw new Error(
-          'Failed to read .docx file. Please ensure it is a valid Word document.'
-        );
-      }
-    }
-
-    throw new Error(
-      'Unsupported file format. Please upload .txt or .docx files.'
-    );
-  };
-
+  // Handle file upload
   const handleFileUpload = async (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
@@ -142,17 +37,47 @@ export default function EnglishToPolishTranslatorTool({
       const text = await readFileContent(file);
       setInputText(text);
     } catch (err: any) {
-      setError(err.message || pageData.tool.error);
+      setError(err.message || 'Failed to read file');
       setFileName(null);
     }
   };
 
-  const handleSpeechTranscript = (transcript: string) => {
-    setInputText((previous) =>
-      previous ? `${previous.trim()}\n${transcript}` : transcript
+  // Read file content
+  const readFileContent = async (file: File): Promise<string> => {
+    const fileExtension = file.name.split('.').pop()?.toLowerCase();
+
+    if (fileExtension === 'txt') {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const content = e.target?.result as string;
+          if (content) resolve(content);
+          else reject(new Error('File is empty'));
+        };
+        reader.onerror = () => reject(new Error('Failed to read file'));
+        reader.readAsText(file);
+      });
+    }
+
+    if (fileExtension === 'docx') {
+      try {
+        const arrayBuffer = await file.arrayBuffer();
+        const result = await mammoth.extractRawText({ arrayBuffer });
+        if (result.value) return result.value;
+        throw new Error('Failed to extract text from Word document');
+      } catch (error) {
+        throw new Error(
+          'Failed to read .docx file. Please ensure it is a valid Word document.'
+        );
+      }
+    }
+
+    throw new Error(
+      'Unsupported file format. Please upload .txt or .docx files.'
     );
   };
 
+  // Handle audio upload for transcription
   const handleAudioUploadClick = () => {
     audioInputRef.current?.click();
   };
@@ -184,13 +109,12 @@ export default function EnglishToPolishTranslatorTool({
       }
 
       if (data.transcription) {
-        setInputText((previous) =>
-          previous
-            ? `${previous.trim()}\n${data.transcription}`
-            : data.transcription
+        setInputText((prev) =>
+          prev ? `${prev}\n${data.transcription}` : data.transcription
         );
       }
     } catch (err: any) {
+      console.error('Transcription error:', err);
       setError(err.message || 'Unable to transcribe audio at this time.');
     } finally {
       setIsTranscribing(false);
@@ -200,9 +124,9 @@ export default function EnglishToPolishTranslatorTool({
     }
   };
 
+  // Handle translation
   const handleTranslate = async () => {
-    const trimmed = inputText.trim();
-    if (!trimmed) {
+    if (!inputText.trim()) {
       setError(pageData.tool.noInput);
       setOutputText('');
       return;
@@ -213,57 +137,21 @@ export default function EnglishToPolishTranslatorTool({
     setOutputText('');
 
     try {
-      const detectionSummary = await runLanguageDetection(trimmed);
-      if (
-        !isManualDirection &&
-        (languageWarning ||
-          detectionSummary.detectedInputLanguage === 'unknown') &&
-        detectionSummary.confidence < 0.3
-      ) {
-        throw new Error(
-          pageData.tool.languageWarning ||
-            'Please enter English or Polish text.'
-        );
-      }
-
-      const finalDirection = isManualDirection
-        ? activeDirection
-        : detectionSummary.detectedDirection;
-
       const response = await fetch('/api/english-to-polish-translator', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          text: trimmed,
-          direction: finalDirection,
+          text: inputText,
         }),
       });
 
       const data = await response.json();
+
       if (!response.ok) {
         throw new Error(data.error || pageData.tool.error);
       }
 
-      const translated = (data.translated || '').trim();
-      if (!translated) {
-        throw new Error(pageData.tool.error);
-      }
-
-      if (translated.toLowerCase() === trimmed.toLowerCase()) {
-        throw new Error(
-          pageData.tool.sameOutputError ||
-            'Translation matches the input. Please try different text.'
-        );
-      }
-
-      setOutputText(translated);
-      if (!isManualDirection) {
-        const nextDirection =
-          (data.detectedDirection as TranslatorDirection | undefined) ||
-          finalDirection;
-        setAutoDirection(nextDirection);
-      }
-      clearWarning();
+      setOutputText(data.translated || '');
     } catch (err: any) {
       setError(err.message || 'Translation failed');
       setOutputText('');
@@ -272,72 +160,60 @@ export default function EnglishToPolishTranslatorTool({
     }
   };
 
+  // Reset
   const handleReset = () => {
     setInputText('');
     setOutputText('');
     setFileName(null);
     setError(null);
-    if (audioInputRef.current) {
-      audioInputRef.current.value = '';
-    }
-    resetDirection();
-    clearWarning();
   };
 
+  // Copy
   const handleCopy = async () => {
     if (!outputText) return;
     try {
       await navigator.clipboard.writeText(outputText);
     } catch (err) {
-      console.error('Failed to copy output text', err);
+      console.error('Failed to copy:', err);
     }
   };
 
+  // Download
   const handleDownload = () => {
     if (!outputText) return;
     const blob = new Blob([outputText], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
-    const anchor = document.createElement('a');
-    anchor.href = url;
-    anchor.download = `english-polish-${Date.now()}.txt`;
-    document.body.appendChild(anchor);
-    anchor.click();
-    document.body.removeChild(anchor);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `english-to-polish-translator-${Date.now()}.txt`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
     URL.revokeObjectURL(url);
   };
 
-  const handleDirectionToggle = () => {
-    toggleDirection();
-    clearWarning();
-    if (outputText.trim()) {
-      setInputText(outputText);
-      setOutputText('');
-    }
-  };
-
   return (
-    <div className="container max-w-7xl mx-auto px-4 mb-10">
+    <div className="container max-w-5xl mx-auto px-4 mb-10">
       <main className="w-full bg-white dark:bg-zinc-800 shadow-xl border border-gray-100 dark:border-zinc-700 rounded-lg p-4 md:p-8">
-        <div className="flex flex-col md:flex-row gap-3 md:gap-4">
+        {/* Input and Output Areas */}
+        <div className="flex flex-col md:flex-row gap-4 md:gap-8">
+          {/* Input Area */}
           <div className="flex-1">
             <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-3">
-              {isEnglishToPolish ? englishLabel : polishLabel}
+              {pageData.tool.inputLabel}
             </h2>
             <textarea
               value={inputText}
-              onChange={(event) => setInputText(event.target.value)}
-              placeholder={inputPlaceholder}
-              className={`w-full h-48 md:h-64 p-3 border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent resize-none text-gray-700 dark:text-gray-200 dark:bg-zinc-700 ${
-                languageWarning
-                  ? 'border-amber-300 dark:border-amber-600 focus:ring-amber-500'
-                  : 'border-gray-300 dark:border-zinc-600'
-              }`}
-              aria-label={isEnglishToPolish ? englishLabel : polishLabel}
+              onChange={(e) => setInputText(e.target.value)}
+              placeholder={pageData.tool.inputPlaceholder}
+              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent resize-none text-gray-700 dark:text-gray-200 dark:bg-zinc-700"
+              aria-label="Input text"
             />
 
-            <div className="mt-4 flex items-center gap-3 flex-wrap">
+            {/* File Upload and Voice Input */}
+            <div className="mt-4 flex items-center gap-3">
               <label
-                htmlFor="file-upload-english-polish"
+                htmlFor="file-upload"
                 className="inline-flex items-center px-4 py-2 bg-gray-200 dark:bg-zinc-600 hover:bg-gray-300 dark:hover:bg-zinc-500 text-gray-800 dark:text-gray-100 font-medium rounded-lg cursor-pointer transition-colors"
               >
                 <svg
@@ -355,31 +231,33 @@ export default function EnglishToPolishTranslatorTool({
                 </svg>
                 {pageData.tool.uploadButton}
               </label>
+
+              {/* Voice Input Button */}
               <SpeechToTextButton
-                onTranscript={handleSpeechTranscript}
+                onTranscript={(text) =>
+                  setInputText((prev) => (prev ? `${prev} ${text}` : text))
+                }
                 locale={locale}
               />
+
+              {/* Audio Upload Button */}
               <button
-                type="button"
                 onClick={handleAudioUploadClick}
                 className={`flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 dark:border-zinc-600 transition-colors ${
                   isTranscribing
                     ? 'bg-primary text-white hover:bg-primary/90'
                     : 'bg-gray-100 dark:bg-zinc-700 hover:bg-gray-200 dark:hover:bg-zinc-600 text-gray-700 dark:text-gray-100'
                 }`}
-                aria-label={pageData.tool.audioUploadTooltip || 'Upload audio for transcription'}
-                disabled={isTranscribing}
+                aria-label="Upload audio for transcription"
               >
                 <Waves className="h-5 w-5" />
               </button>
+
               <p className="text-xs text-gray-500 dark:text-gray-400">
-                {isTranscribing
-                  ? pageData.tool.transcribingLabel || 'Transcribing audio...'
-                  : pageData.tool.uploadHint ||
-                    'Supports .txt, .docx, and audio uploads.'}
+                {pageData.tool.uploadHint}
               </p>
               <input
-                id="file-upload-english-polish"
+                id="file-upload"
                 type="file"
                 accept=".txt,.docx"
                 onChange={handleFileUpload}
@@ -394,6 +272,7 @@ export default function EnglishToPolishTranslatorTool({
               />
             </div>
 
+            {/* File Name Display */}
             {fileName && (
               <div className="mt-3 flex items-center gap-2 p-2 bg-gray-100 dark:bg-zinc-700 rounded-md border border-gray-200 dark:border-zinc-600">
                 <svg
@@ -411,13 +290,12 @@ export default function EnglishToPolishTranslatorTool({
                   {fileName}
                 </span>
                 <button
-                  type="button"
                   onClick={() => {
                     setFileName(null);
                     setInputText('');
                   }}
                   className="ml-auto text-gray-500 hover:text-red-500 dark:text-gray-400 dark:hover:text-red-400"
-                  aria-label={pageData.tool.removeFileTooltip || 'Remove file'}
+                  aria-label="Remove file"
                 >
                   <svg
                     className="w-4 h-4"
@@ -437,35 +315,19 @@ export default function EnglishToPolishTranslatorTool({
             )}
           </div>
 
-          <DirectionIndicator
-            onToggle={handleDirectionToggle}
-            directionLabel={directionStatusLabel}
-            detectionStatus={detectionStatus}
-            warning={languageWarning}
-            toggleTitle={
-              isEnglishToPolish
-                ? 'Switch to Polish → English'
-                : 'Switch to English → Polish'
-            }
-            ariaLabel={
-              pageData.tool.toggleDirectionTooltip ||
-              'Toggle translation direction'
-            }
-          />
-
+          {/* Output Area */}
           <div className="flex-1">
             <div className="flex items-center justify-between mb-3">
               <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">
-                {isEnglishToPolish ? polishLabel : englishLabel}
+                {pageData.tool.outputLabel}
               </h2>
               {outputText && (
                 <div className="flex gap-2">
                   <TextToSpeechButton text={outputText} locale={locale} />
                   <button
-                    type="button"
                     onClick={handleCopy}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
-                    title={pageData.tool.copyTooltip || 'Copy'}
+                    title="Copy"
                   >
                     <svg
                       className="w-5 h-5"
@@ -482,10 +344,9 @@ export default function EnglishToPolishTranslatorTool({
                     </svg>
                   </button>
                   <button
-                    type="button"
                     onClick={handleDownload}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
-                    title={pageData.tool.downloadTooltip || 'Download'}
+                    title="Download"
                   >
                     <svg
                       className="w-5 h-5"
@@ -505,53 +366,38 @@ export default function EnglishToPolishTranslatorTool({
               )}
             </div>
             <div
-              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md bg-gray-50 dark:bg-zinc-700 flex items-start justify-start text-gray-700 dark:text-gray-200 overflow-y-auto"
+              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md bg-gray-50 dark:bg-zinc-700 text-gray-700 dark:text-gray-200 overflow-y-auto"
               aria-live="polite"
             >
               {isLoading ? (
-                <div className="flex items-center gap-3">
-                  <div className="flex space-x-1">
-                    <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-                    <div
-                      className="w-2 h-2 bg-primary rounded-full animate-pulse"
-                      style={{ animationDelay: '0.2s' }}
-                    />
-                    <div
-                      className="w-2 h-2 bg-primary rounded-full animate-pulse"
-                      style={{ animationDelay: '0.4s' }}
-                    />
-                  </div>
-                  <span>{pageData.tool.loading || 'Translating...'}</span>
-                </div>
+                <p>{pageData.tool.loading}</p>
               ) : error ? (
                 <p className="text-red-600 dark:text-red-400">{error}</p>
               ) : outputText ? (
                 <p className="text-lg whitespace-pre-wrap">{outputText}</p>
               ) : (
                 <p className="text-gray-500 dark:text-gray-400">
-                  {outputPlaceholder}
+                  {pageData.tool.outputPlaceholder}
                 </p>
               )}
             </div>
           </div>
         </div>
 
+        {/* Action Buttons */}
         <div className="mt-6 flex justify-center gap-4">
           <button
-            type="button"
             onClick={handleTranslate}
             disabled={isLoading}
-            className="inline-flex items-center px-8 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="px-8 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isLoading ? pageData.tool.loading : pageData.tool.translateButton}
-            <ArrowRightIcon className="ml-2 h-4 w-4" />
           </button>
           <button
-            type="button"
             onClick={handleReset}
             className="px-6 py-3 bg-gray-200 dark:bg-zinc-600 hover:bg-gray-300 dark:hover:bg-zinc-500 text-gray-800 dark:text-gray-100 font-semibold rounded-lg shadow-md transition-colors"
           >
-            {pageData.tool.resetButton || 'Reset'}
+            Reset
           </button>
         </div>
       </main>

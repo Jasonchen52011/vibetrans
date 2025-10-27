@@ -53,10 +53,7 @@ export async function POST(request: Request) {
     const { text, direction, detectOnly = false } = body;
 
     if (!text || typeof text !== 'string') {
-      return NextResponse.json(
-        { error: 'No text provided' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'No text provided' }, { status: 400 });
     }
 
     const detection = detectLanguage(text, 'albanian');

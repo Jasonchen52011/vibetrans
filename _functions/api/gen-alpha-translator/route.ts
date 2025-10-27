@@ -20,14 +20,14 @@ async function initializeDictionaries() {
       amazing: 'fire',
       good: 'bussin',
       cool: 'drip',
-      wow: 'gyat'
+      wow: 'gyat',
     };
     reverseSlangMap = {
       rizz: 'charisma',
       fire: 'amazing',
       bussin: 'excellent',
       drip: 'stylish',
-      gyat: 'impressive'
+      gyat: 'impressive',
     };
   }
 }
@@ -70,7 +70,10 @@ async function translateWithAI(
 }
 
 // Dictionary translation
-function translateWithDictionary(text: string, mode: 'toGenAlpha' | 'toStandard'): string {
+function translateWithDictionary(
+  text: string,
+  mode: 'toGenAlpha' | 'toStandard'
+): string {
   const map = mode === 'toGenAlpha' ? genAlphaSlangMap : reverseSlangMap;
   let translated = text;
 

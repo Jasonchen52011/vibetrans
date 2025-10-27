@@ -1,71 +1,91 @@
 import { type NextRequest, NextResponse } from 'next/server';
-import { GoogleGenerativeAI } from '@google/generative-ai';
 
 export const runtime = 'edge';
 
-// Initialize Gemini API
-const genAI = new GoogleGenerativeAI(
-  process.env.GOOGLE_GENERATIVE_AI_API_KEY || ''
-);
+// Al Bhed to English mapping (from Final Fantasy X)
+const AL_BHED_TO_ENGLISH: Record<string, string> = {
+  Y: 'A',
+  P: 'B',
+  L: 'C',
+  T: 'D',
+  A: 'E',
+  V: 'F',
+  K: 'G',
+  R: 'H',
+  E: 'I',
+  Z: 'J',
+  G: 'K',
+  M: 'L',
+  S: 'M',
+  H: 'N',
+  U: 'O',
+  B: 'P',
+  X: 'Q',
+  N: 'R',
+  C: 'S',
+  D: 'T',
+  I: 'U',
+  F: 'V',
+  W: 'W',
+  O: 'X',
+  Q: 'Y',
+  J: 'Z',
+};
+
+// English to Al Bhed mapping (reverse of the above)
+const ENGLISH_TO_AL_BHED: Record<string, string> = {
+  A: 'Y',
+  B: 'P',
+  C: 'L',
+  D: 'T',
+  E: 'A',
+  F: 'V',
+  G: 'K',
+  H: 'R',
+  I: 'E',
+  J: 'Z',
+  K: 'G',
+  L: 'M',
+  M: 'S',
+  N: 'H',
+  O: 'U',
+  P: 'B',
+  Q: 'X',
+  R: 'N',
+  S: 'C',
+  T: 'D',
+  U: 'I',
+  V: 'F',
+  W: 'W',
+  X: 'O',
+  Y: 'Q',
+  Z: 'J',
+};
 
 /**
- * Translate text using Gemini AI for Al Bhed translation
+ * Translate text using Al Bhed cipher
  * @param text - Input text to translate
  * @param mode - Translation mode: 'toAlBhed' or 'toEnglish'
  * @returns Translated text
  */
-async function translateAlBhed(text: string, mode: 'toAlBhed' | 'toEnglish'): Promise<string> {
-  const model = genAI.getGenerativeModel({
-    model: 'gemini-2.0-flash',
-  });
+function translateAlBhed(text: string, mode: 'toAlBhed' | 'toEnglish'): string {
+  const mapping = mode === 'toAlBhed' ? ENGLISH_TO_AL_BHED : AL_BHED_TO_ENGLISH;
 
-  let systemPrompt: string;
-
-  if (mode === 'toAlBhed') {
-    systemPrompt = `You are an expert in the Al Bhed language from Final Fantasy X. Al Bhed uses a specific letter substitution cipher where each English letter is replaced with a corresponding Al Bhed letter.
-
-The official Al Bhed cipher mapping is:
-A↔Y, B↔P, C↔L, D↔T, E↔A, F↔V, G↔R, H↔O, I↔E, J↔B,
-K↔G, L↔M, M↔N, N↔H, O↔U, P↔C, Q↔D, R↔I, S↔J, T↔S,
-U↔V, V↔K, W↔W, X↔Z, Y↔Q, Z↔X
-
-Rules:
-- Apply the cipher substitution for all alphabetic characters
-- Preserve the original case (uppercase/lowercase)
-- Keep numbers, punctuation, and spaces unchanged
-- Only return the translated text, no explanations
-
-Translate the following English text to Al Bhed:`;
-  } else {
-    systemPrompt = `You are an expert in the Al Bhed language from Final Fantasy X. Al Bhed uses a specific letter substitution cipher where each Al Bhed letter corresponds to an English letter.
-
-The official Al Bhed cipher mapping is:
-A↔Y, B↔P, C↔L, D↔T, E↔A, F↔V, G↔R, H↔O, I↔E, J↔B,
-K↔G, L↔M, M↔N, N↔H, O↔U, P↔C, Q↔D, R↔I, S↔J, T↔S,
-U↔V, V↔K, W↔W, X↔Z, Y↔Q, Z↔X
-
-Rules:
-- Apply the reverse cipher substitution for all alphabetic characters
-- Preserve the original case (uppercase/lowercase)
-- Keep numbers, punctuation, and spaces unchanged
-- Only return the translated text, no explanations
-
-Translate the following Al Bhed text to English:`;
-  }
-
-  const fullPrompt = `${systemPrompt}\n\n"${text}"`;
-
-  const result = await model.generateContent(fullPrompt);
-  const response = result.response;
-  let translatedText = response.text().trim();
-
-  // Remove surrounding quotes if present
-  if ((translatedText.startsWith('"') && translatedText.endsWith('"')) ||
-      (translatedText.startsWith("'") && translatedText.endsWith("'"))) {
-    translatedText = translatedText.slice(1, -1);
-  }
-
-  return translatedText;
+  return text
+    .split('')
+    .map((char) => {
+      const upperChar = char.toUpperCase();
+      if (mapping[upperChar]) {
+        // Preserve case: if original was lowercase, return lowercase
+        const translatedChar = mapping[upperChar];
+        return char === char.toLowerCase()
+          ? translatedChar.toLowerCase()
+          : translatedChar;
+      }
+      // Keep non-alphabetic characters unchanged (spaces, punctuation, numbers)
+      return char;
+    })
+    .join('');
 }
 
 export async function POST(request: NextRequest) {
@@ -75,16 +95,6 @@ export async function POST(request: NextRequest) {
       mode?: 'toAlBhed' | 'toEnglish';
     };
     const { text, mode = 'toAlBhed' } = body;
-
-    // Validate API key
-    const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
-    if (!apiKey) {
-      console.error('Missing GOOGLE_GENERATIVE_AI_API_KEY');
-      return NextResponse.json(
-        { error: 'API configuration error' },
-        { status: 500 }
-      );
-    }
 
     if (!text || typeof text !== 'string') {
       return NextResponse.json(
@@ -107,8 +117,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Perform translation using Gemini AI
-    const translatedText = await translateAlBhed(text, mode);
+    // Perform translation using Al Bhed cipher
+    const translatedText = translateAlBhed(text, mode);
 
     return NextResponse.json({
       original: text,
@@ -118,22 +128,6 @@ export async function POST(request: NextRequest) {
     });
   } catch (error: any) {
     console.error('Error processing Al Bhed translation:', error);
-
-    // Handle specific Gemini errors
-    if (error?.message?.includes('API key')) {
-      return NextResponse.json(
-        { error: 'Invalid API key configuration' },
-        { status: 500 }
-      );
-    }
-
-    if (error?.message?.includes('quota')) {
-      return NextResponse.json(
-        { error: 'API quota exceeded. Please try again later.' },
-        { status: 429 }
-      );
-    }
-
     return NextResponse.json(
       {
         error: error.message || 'Failed to process translation',

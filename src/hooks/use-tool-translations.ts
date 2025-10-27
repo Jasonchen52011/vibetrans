@@ -22,8 +22,12 @@ export function useToolTranslation(toolKey: string): ToolTranslation {
     // Add more tools as needed
   };
 
-  return fallbackTranslations[toolKey as keyof typeof fallbackTranslations] || {
-    title: toolKey.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase()),
-    description: 'AI-powered translation tool',
-  };
+  return (
+    fallbackTranslations[toolKey as keyof typeof fallbackTranslations] || {
+      title: toolKey
+        .replace(/([A-Z])/g, ' $1')
+        .replace(/^./, (str) => str.toUpperCase()),
+      description: 'AI-powered translation tool',
+    }
+  );
 }

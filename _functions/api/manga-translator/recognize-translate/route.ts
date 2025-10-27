@@ -30,8 +30,12 @@ export const runtime = 'edge';
 
 export async function POST(request: Request) {
   try {
-    const { imageData, text, direction, detectOnly = false } =
-      (await request.json()) as RecognizeTranslateRequest;
+    const {
+      imageData,
+      text,
+      direction,
+      detectOnly = false,
+    } = (await request.json()) as RecognizeTranslateRequest;
 
     if (imageData) {
       return NextResponse.json(
@@ -47,7 +51,8 @@ export async function POST(request: Request) {
             detectedLanguage: 'Unknown',
             direction: 'Japanese → English',
             confidence: 10,
-            explanation: 'Image recognition not yet supported. Please upload text.',
+            explanation:
+              'Image recognition not yet supported. Please upload text.',
           },
           error:
             'Image recognition is temporarily unavailable. Please type the text manually or try again later.',
@@ -74,7 +79,11 @@ export async function POST(request: Request) {
         detectedDirection,
         confidence,
         autoDetected,
-        languageInfo: buildLanguageInfo(detectedLanguage, detectedDirection, confidence),
+        languageInfo: buildLanguageInfo(
+          detectedLanguage,
+          detectedDirection,
+          confidence
+        ),
       } satisfies RecognizeTranslateResponse);
     }
 
@@ -87,31 +96,43 @@ export async function POST(request: Request) {
       detectedDirection,
       confidence,
       autoDetected,
-      languageInfo: buildLanguageInfo(detectedLanguage, detectedDirection, confidence),
+      languageInfo: buildLanguageInfo(
+        detectedLanguage,
+        detectedDirection,
+        confidence
+      ),
     } satisfies RecognizeTranslateResponse);
   } catch (error) {
     console.error('Error in recognize-translate API:', error);
     return NextResponse.json(
-      { error: 'Failed to process request' } satisfies RecognizeTranslateResponse,
+      {
+        error: 'Failed to process request',
+      } satisfies RecognizeTranslateResponse,
       { status: 500 }
     );
   }
 }
 
-async function translateByDirection(text: string, direction: TranslatorDirection) {
+async function translateByDirection(
+  text: string,
+  direction: TranslatorDirection
+) {
   const from = direction === 'ja-en' ? 'ja' : 'en';
   const to = direction === 'ja-en' ? 'en' : 'ja';
 
   try {
-    const response = await fetch('https://manga-translator-api.vercel.app/translate', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        text,
-        from_lang: from,
-        to_lang: to,
-      }),
-    });
+    const response = await fetch(
+      'https://manga-translator-api.vercel.app/translate',
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          text,
+          from_lang: from,
+          to_lang: to,
+        }),
+      }
+    );
 
     const data = await response.json();
 
@@ -170,7 +191,8 @@ function buildLanguageInfo(
   return {
     detected: detectedLanguage !== 'unknown',
     detectedLanguage: friendlyLanguage,
-    direction: direction === 'ja-en' ? 'Japanese → English' : 'English → Japanese',
+    direction:
+      direction === 'ja-en' ? 'Japanese → English' : 'English → Japanese',
     confidence: Math.round(confidence * 100),
     explanation:
       detectedLanguage === 'japanese'

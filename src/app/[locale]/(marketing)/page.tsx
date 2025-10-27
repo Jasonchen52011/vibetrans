@@ -1,4 +1,6 @@
 import CallToActionSection from '@/components/blocks/calltoaction/calltoaction';
+
+export const runtime = 'edge';
 import FaqSection from '@/components/blocks/faqs/faqs';
 import UserScenarios from '@/components/blocks/funfacts';
 import HeroSection from '@/components/blocks/hero/hero';
@@ -189,7 +191,6 @@ export default async function HomePage(props: HomePageProps) {
   const uniqueSection = {
     name: 'unique',
     title: 'User Interests',
-    subtitle: 'Tailored Solutions for Everyone',
     description:
       'VibeTrans serves diverse needs - from businesses to travelers',
     items: [

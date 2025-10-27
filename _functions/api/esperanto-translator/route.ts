@@ -115,11 +115,7 @@ export async function POST(request: NextRequest) {
       detectOnly?: boolean;
       inputType?: 'text' | 'audio' | 'image';
     };
-    const {
-      text,
-      direction,
-      detectOnly = false,
-    } = body;
+    const { text, direction, detectOnly = false } = body;
 
     if (!text || typeof text !== 'string') {
       return NextResponse.json(

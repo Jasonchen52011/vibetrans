@@ -111,127 +111,126 @@ export default function NahuatlTranslatorTool({
   };
 
   reader.onerror = () => reject(new Error('Failed to read file'));
-        reader.readAsText(file);
-      });
-    }
+  reader.readAsText(file);
+}
+)
+}
 
-    if (fileExtension === 'docx') {
-      try {
-        const arrayBuffer = await file.arrayBuffer();
-        const result = await mammoth.extractRawText({ arrayBuffer });
-        if (result.value) return result.value;
-        throw new Error('Failed to extract text from Word document');
-      } catch (error) {
-        throw new Error(
-          'Failed to read .docx file. Please ensure it is a valid Word document.'
-        );
-      }
-    }
-
+if (fileExtension === 'docx') {
+  try {
+    const arrayBuffer = await file.arrayBuffer();
+    const result = await mammoth.extractRawText({ arrayBuffer });
+    if (result.value) return result.value;
+    throw new Error('Failed to extract text from Word document');
+  } catch (error) {
     throw new Error(
-      'Unsupported file format. Please upload .txt or .docx files.'
+      'Failed to read .docx file. Please ensure it is a valid Word document.'
     );
-  };
+  }
+}
 
-  // Toggle speech recognition
-  const toggleListening = () => {
-    if (!recognitionRef.current) return;
+throw new Error('Unsupported file format. Please upload .txt or .docx files.');
+}
 
-    if (isListening) {
-      recognitionRef.current.stop();
-      setIsListening(false);
-    } else {
-      recognitionRef.current.start();
-      setIsListening(true);
-    }
-  };
+// Toggle speech recognition
+const toggleListening = () => {
+  if (!recognitionRef.current) return;
 
-  // Handle smart translation
-  const handleTranslate = async () => {
-    if (!inputText.trim()) {
-      setError(pageData.tool?.noInput || 'Please enter some text to translate');
-      setOutputText('');
-      return;
-    }
+  if (isListening) {
+    recognitionRef.current.stop();
+    setIsListening(false);
+  } else {
+    recognitionRef.current.start();
+    setIsListening(true);
+  }
+};
 
-    setIsLoading(true);
-    setError(null);
+// Handle smart translation
+const handleTranslate = async () => {
+  if (!inputText.trim()) {
+    setError(pageData.tool?.noInput || 'Please enter some text to translate');
     setOutputText('');
-    setDetectedLanguage('');
+    return;
+  }
 
-    try {
-      const response = await fetch('/api/nahuatl-translator', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          text: inputText,
-          targetLanguage: targetLanguage,
-          context: contextNotes,
-          sourceLanguage: 'auto', // Auto-detect source language
-        }),
-      });
+  setIsLoading(true);
+  setError(null);
+  setOutputText('');
+  setDetectedLanguage('');
 
-      const data = await response.json();
+  try {
+    const response = await fetch('/api/nahuatl-translator', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        text: inputText,
+        targetLanguage: targetLanguage,
+        context: contextNotes,
+        sourceLanguage: 'auto', // Auto-detect source language
+      }),
+    });
 
-      if (!response.ok) {
-        throw new Error(
-          data.error || pageData.tool?.error || 'Translation failed'
-        );
-      }
+    const data = await response.json();
 
-      setOutputText(data.translated || data.result || '');
-      setDetectedLanguage(data.detectedLanguage || '');
-
-      // Update context if provided
-      if (data.contextNotes) {
-        setContextNotes(data.contextNotes);
-      }
-    } catch (err: any) {
-      setError(err.message || 'Translation failed');
-      setOutputText('');
-    } finally {
-      setIsLoading(false);
+    if (!response.ok) {
+      throw new Error(
+        data.error || pageData.tool?.error || 'Translation failed'
+      );
     }
-  };
 
-  // Reset
-  const handleReset = () => {
-    setInputText('');
+    setOutputText(data.translated || data.result || '');
+    setDetectedLanguage(data.detectedLanguage || '');
+
+    // Update context if provided
+    if (data.contextNotes) {
+      setContextNotes(data.contextNotes);
+    }
+  } catch (err: any) {
+    setError(err.message || 'Translation failed');
     setOutputText('');
-    setFileName(null);
-    setError(null);
-    setDetectedLanguage('');
-    setContextNotes('');
-    if (isListening && recognitionRef.current) {
-      recognitionRef.current.stop();
-    }
-  };
+  } finally {
+    setIsLoading(false);
+  }
+};
 
-  // Copy
-  const handleCopy = async () => {
-    if (!outputText) return;
-    try {
-      await navigator.clipboard.writeText(outputText);
-    } catch (err) {
-      console.error('Failed to copy:', err);
-    }
-  };
+// Reset
+const handleReset = () => {
+  setInputText('');
+  setOutputText('');
+  setFileName(null);
+  setError(null);
+  setDetectedLanguage('');
+  setContextNotes('');
+  if (isListening && recognitionRef.current) {
+    recognitionRef.current.stop();
+  }
+};
 
-  // Download
-  const handleDownload = () => {
-    if (!outputText) return;
-    const blob = new Blob([outputText], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `nahuatl-translation-${Date.now()}.txt`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-  };
+// Copy
+const handleCopy = async () => {
+  if (!outputText) return;
+  try {
+    await navigator.clipboard.writeText(outputText);
+  } catch (err) {
+    console.error('Failed to copy:', err);
+  }
+};
 
-  return (
+// Download
+const handleDownload = () => {
+  if (!outputText) return;
+  const blob = new Blob([outputText], { type: 'text/plain' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `nahuatl-translation-${Date.now()}.txt`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+};
+
+return (
     <div className="container max-w-6xl mx-auto px-4 mb-10">
       <main className="w-full bg-white dark:bg-zinc-800 shadow-xl border border-gray-100 dark:border-zinc-700 rounded-lg p-4 md:p-8">
         {/* Language Settings and Context */}

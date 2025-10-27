@@ -1,4 +1,3 @@
-// @ts-nocheck
 'use client';
 
 import { Routes } from '@/routes';
@@ -6,349 +5,280 @@ import type { NestedMenuItem } from '@/types';
 import {
   AudioLinesIcon,
   BookIcon,
-  BuildingIcon,
-  ChartNoAxesCombinedIcon,
-  CircleDollarSignIcon,
-  CircleHelpIcon,
-  ComponentIcon,
-  CookieIcon,
   CrownIcon,
   DogIcon,
   EyeIcon,
   FeatherIcon,
-  FileTextIcon,
-  FilmIcon,
   FlameIcon,
-  FootprintsIcon,
   GlobeIcon,
-  ImageIcon,
   KeyIcon,
   LanguagesIcon,
-  ListChecksIcon,
-  LockKeyholeIcon,
-  LogInIcon,
-  MailIcon,
-  MailboxIcon,
   MessageCircleIcon,
   MessageSquareIcon,
-  NewspaperIcon,
   RocketIcon,
   ScrollTextIcon,
-  ShieldCheckIcon,
   SmileIcon,
-  SnowflakeIcon,
   SparklesIcon,
-  SplitSquareVerticalIcon,
-  SquareCodeIcon,
-  SquareKanbanIcon,
-  SquarePenIcon,
-  ThumbsUpIcon,
-  UserPlusIcon,
-  UsersIcon,
   WandSparklesIcon,
 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { websiteConfig } from './website';
 
-/**
- * Get navbar config with translations
- *
- * NOTICE: used in client components only
- *
- * @returns The navbar config with translated titles and descriptions
- */
+const NAV_CATEGORY_CONFIG: {
+  funTranslate: { key: string; route: Routes; icon: JSX.Element }[];
+  gameTranslator: { key: string; route: Routes; icon: JSX.Element }[];
+  languageTranslator: { key: string; route: Routes; icon: JSX.Element }[];
+} = {
+  funTranslate: [
+    {
+      key: 'alienTextGenerator',
+      route: Routes.AlienTextGenerator,
+      icon: <RocketIcon className="size-4 shrink-0" />,
+    },
+    {
+      key: 'babyTranslator',
+      route: Routes.BabyTranslator,
+      icon: <AudioLinesIcon className="size-4 shrink-0" />,
+    },
+    {
+      key: 'badTranslator',
+      route: Routes.BadTranslator,
+      icon: <FlameIcon className="size-4 shrink-0" />,
+    },
+    {
+      key: 'dogTranslator',
+      route: Routes.DogTranslator,
+      icon: <DogIcon className="size-4 shrink-0" />,
+    },
+    {
+      key: 'dumbItDown',
+      route: Routes.DumbItDownAI,
+      icon: <WandSparklesIcon className="size-4 shrink-0" />,
+    },
+    {
+      key: 'genAlphaTranslator',
+      route: Routes.GenAlphaTranslator,
+      icon: <SparklesIcon className="size-4 shrink-0" />,
+    },
+    {
+      key: 'genZTranslator',
+      route: Routes.GenZTranslator,
+      icon: <MessageCircleIcon className="size-4 shrink-0" />,
+    },
+    {
+      key: 'gibberishTranslator',
+      route: Routes.GibberishTranslator,
+      icon: <SparklesIcon className="size-4 shrink-0" />,
+    },
+    {
+      key: 'pigLatinTranslator',
+      route: Routes.PigLatinTranslator,
+      icon: <SmileIcon className="size-4 shrink-0" />,
+    },
+    {
+      key: 'verboseGenerator',
+      route: Routes.VerboseGenerator,
+      icon: <WandSparklesIcon className="size-4 shrink-0" />,
+    },
+  ],
+  gameTranslator: [
+    {
+      key: 'alBhedTranslator',
+      route: Routes.AlBhedTranslator,
+      icon: <KeyIcon className="size-4 shrink-0" />,
+    },
+    {
+      key: 'drowTranslator',
+      route: Routes.DrowTranslator,
+      icon: <CrownIcon className="size-4 shrink-0" />,
+    },
+    {
+      key: 'gasterTranslator',
+      route: Routes.GasterTranslator,
+      icon: <EyeIcon className="size-4 shrink-0" />,
+    },
+    {
+      key: 'highValyrianTranslator',
+      route: Routes.HighValyrianTranslator,
+      icon: <CrownIcon className="size-4 shrink-0" />,
+    },
+    {
+      key: 'mandalorianTranslator',
+      route: Routes.MandalorianTranslator,
+      icon: <CrownIcon className="size-4 shrink-0" />,
+    },
+    {
+      key: 'minionTranslator',
+      route: Routes.MinionTranslator,
+      icon: <SmileIcon className="size-4 shrink-0" />,
+    },
+    {
+      key: 'runeTranslator',
+      route: Routes.RuneTranslator,
+      icon: <ScrollTextIcon className="size-4 shrink-0" />,
+    },
+    {
+      key: 'runicTranslator',
+      route: Routes.RunicTranslator,
+      icon: <ScrollTextIcon className="size-4 shrink-0" />,
+    },
+    {
+      key: 'wingdingsTranslator',
+      route: Routes.WingdingsTranslator,
+      icon: <MessageSquareIcon className="size-4 shrink-0" />,
+    },
+    {
+      key: 'yodaTranslator',
+      route: Routes.YodaTranslator,
+      icon: <SparklesIcon className="size-4 shrink-0" />,
+    },
+  ],
+  languageTranslator: [
+    {
+      key: 'albanianToEnglish',
+      route: Routes.AlbanianToEnglish,
+      icon: <LanguagesIcon className="size-4 shrink-0" />,
+    },
+    {
+      key: 'ancientGreekTranslator',
+      route: Routes.AncientGreekTranslator,
+      icon: <BookIcon className="size-4 shrink-0" />,
+    },
+    {
+      key: 'aramaicTranslator',
+      route: Routes.AramaicTranslator,
+      icon: <ScrollTextIcon className="size-4 shrink-0" />,
+    },
+    {
+      key: 'baybayinTranslator',
+      route: Routes.BaybayinTranslator,
+      icon: <FeatherIcon className="size-4 shrink-0" />,
+    },
+    {
+      key: 'cantoneseTranslator',
+      route: Routes.CantoneseTranslator,
+      icon: <MessageSquareIcon className="size-4 shrink-0" />,
+    },
+    {
+      key: 'chineseToEnglishTranslator',
+      route: Routes.ChineseToEnglishTranslator,
+      icon: <LanguagesIcon className="size-4 shrink-0" />,
+    },
+    {
+      key: 'creoleToEnglishTranslator',
+      route: Routes.CreoleToEnglishTranslator,
+      icon: <GlobeIcon className="size-4 shrink-0" />,
+    },
+    {
+      key: 'cuneiformTranslator',
+      route: Routes.CuneiformTranslator,
+      icon: <ScrollTextIcon className="size-4 shrink-0" />,
+    },
+    {
+      key: 'englishToAmharicTranslator',
+      route: Routes.EnglishToAmharicTranslator,
+      icon: <GlobeIcon className="size-4 shrink-0" />,
+    },
+    {
+      key: 'englishToPolishTranslator',
+      route: Routes.EnglishToPolishTranslator,
+      icon: <LanguagesIcon className="size-4 shrink-0" />,
+    },
+    {
+      key: 'englishToSwahiliTranslator',
+      route: Routes.EnglishToSwahiliTranslator,
+      icon: <LanguagesIcon className="size-4 shrink-0" />,
+    },
+    {
+      key: 'esperantoTranslator',
+      route: Routes.EsperantoTranslator,
+      icon: <GlobeIcon className="size-4 shrink-0" />,
+    },
+    {
+      key: 'greekTranslator',
+      route: Routes.GreekTranslator,
+      icon: <BookIcon className="size-4 shrink-0" />,
+    },
+    {
+      key: 'ivrTranslator',
+      route: Routes.IvrTranslator,
+      icon: <AudioLinesIcon className="size-4 shrink-0" />,
+    },
+    {
+      key: 'mangaTranslator',
+      route: Routes.MangaTranslator,
+      icon: <BookIcon className="size-4 shrink-0" />,
+    },
+    {
+      key: 'middleEnglishTranslator',
+      route: Routes.MiddleEnglishTranslator,
+      icon: <BookIcon className="size-4 shrink-0" />,
+    },
+    {
+      key: 'nahuatlTranslator',
+      route: Routes.NahuatlTranslator,
+      icon: <ScrollTextIcon className="size-4 shrink-0" />,
+    },
+    {
+      key: 'oghamTranslator',
+      route: Routes.OghamTranslator,
+      icon: <FeatherIcon className="size-4 shrink-0" />,
+    },
+    {
+      key: 'samoanToEnglishTranslator',
+      route: Routes.SamoanToEnglishTranslator,
+      icon: <GlobeIcon className="size-4 shrink-0" />,
+    },
+    {
+      key: 'swahiliToEnglishTranslator',
+      route: Routes.SwahiliToEnglishTranslator,
+      icon: <LanguagesIcon className="size-4 shrink-0" />,
+    },
+    {
+      key: 'teluguToEnglishTranslator',
+      route: Routes.TeluguToEnglishTranslator,
+      icon: <LanguagesIcon className="size-4 shrink-0" />,
+    },
+  ],
+};
+
+const HIDDEN_LANGUAGE_KEYS = new Set([
+  'englishToChineseTranslator',
+  'englishToPersianTranslator',
+  'japaneseToEnglishTranslator',
+]);
+
+function buildItems(
+  t: ReturnType<typeof useTranslations>,
+  category: keyof typeof NAV_CATEGORY_CONFIG
+) {
+  return NAV_CATEGORY_CONFIG[category]
+    .filter(
+      (item) =>
+        category !== 'languageTranslator' || !HIDDEN_LANGUAGE_KEYS.has(item.key)
+    )
+    .map((item) => ({
+      title: t(`${category}.items.${item.key}.title`),
+      icon: item.icon,
+      href: item.route,
+      external: false,
+    }));
+}
+
 export function useNavbarLinks(): NestedMenuItem[] {
   const t = useTranslations('Marketing.navbar');
 
   return [
     {
-      title: 'Home',
-      href: Routes.Root,
-      external: false,
-    },
-    {
       title: t('funTranslate.title'),
-      items: [
-        {
-          title: t('funTranslate.items.alienTextGenerator.title'),
-          icon: <RocketIcon className="size-4 shrink-0" />,
-          href: Routes.AlienTextGenerator,
-          external: false,
-        },
-        {
-          title: t('funTranslate.items.babyTranslator.title'),
-          icon: <AudioLinesIcon className="size-4 shrink-0" />,
-          href: Routes.BabyTranslator,
-          external: false,
-        },
-        {
-          title: t('funTranslate.items.badTranslator.title'),
-          icon: <FlameIcon className="size-4 shrink-0" />,
-          href: Routes.BadTranslator,
-          external: false,
-        },
-        {
-          title: t('funTranslate.items.dogTranslator.title'),
-          icon: <DogIcon className="size-4 shrink-0" />,
-          href: Routes.DogTranslator,
-          external: false,
-        },
-        {
-          title: t('funTranslate.items.dumbItDown.title'),
-          icon: <WandSparklesIcon className="size-4 shrink-0" />,
-          href: Routes.DumbItDownAI,
-          external: false,
-        },
-        {
-          title: t('funTranslate.items.genAlphaTranslator.title'),
-          icon: <FlameIcon className="size-4 shrink-0" />,
-          href: Routes.GenAlphaTranslator,
-          external: false,
-        },
-        {
-          title: t('funTranslate.items.genZTranslator.title'),
-          icon: <MessageCircleIcon className="size-4 shrink-0" />,
-          href: Routes.GenZTranslator,
-          external: false,
-        },
-        {
-          title: t('funTranslate.items.gibberishTranslator.title'),
-          icon: <WandSparklesIcon className="size-4 shrink-0" />,
-          href: Routes.GibberishTranslator,
-          external: false,
-        },
-        {
-          title: t('funTranslate.items.pigLatinTranslator.title'),
-          icon: <SmileIcon className="size-4 shrink-0" />,
-          href: Routes.PigLatinTranslator,
-          external: false,
-        },
-        {
-          title: t('funTranslate.items.verboseGenerator.title'),
-          icon: <WandSparklesIcon className="size-4 shrink-0" />,
-          href: Routes.VerboseGenerator,
-          external: false,
-        },
-      ],
+      items: buildItems(t, 'funTranslate'),
     },
     {
-      title: 'Game Translator',
-      items: [
-        {
-          title: t('languageTranslator.items.alBhedTranslator.title'),
-          icon: <KeyIcon className="size-4 shrink-0" />,
-          href: Routes.AlBhedTranslator,
-          external: false,
-        },
-        {
-          title: t('languageTranslator.items.drowTranslator.title'),
-          icon: <CrownIcon className="size-4 shrink-0" />,
-          href: Routes.DrowTranslator,
-          external: false,
-        },
-        {
-          title: t('languageTranslator.items.gasterTranslator.title'),
-          icon: <EyeIcon className="size-4 shrink-0" />,
-          href: Routes.GasterTranslator,
-          external: false,
-        },
-        {
-          title: t('languageTranslator.items.highValyrianTranslator.title'),
-          icon: <CrownIcon className="size-4 shrink-0" />,
-          href: Routes.HighValyrianTranslator,
-          external: false,
-        },
-        {
-          title: t('languageTranslator.items.mandalorianTranslator.title'),
-          icon: <CrownIcon className="size-4 shrink-0" />,
-          href: Routes.MandalorianTranslator,
-          external: false,
-        },
-        {
-          title: t('languageTranslator.items.minionTranslator.title'),
-          icon: <SmileIcon className="size-4 shrink-0" />,
-          href: Routes.MinionTranslator,
-          external: false,
-        },
-        {
-          title: t('languageTranslator.items.runeTranslator.title'),
-          icon: <EyeIcon className="size-4 shrink-0" />,
-          href: Routes.RuneTranslator,
-          external: false,
-        },
-        {
-          title: t('languageTranslator.items.runicTranslator.title'),
-          icon: <EyeIcon className="size-4 shrink-0" />,
-          href: Routes.RunicTranslator,
-          external: false,
-        },
-        {
-          title: t('languageTranslator.items.wingdingsTranslator.title'),
-          icon: <MessageSquareIcon className="size-4 shrink-0" />,
-          href: Routes.WingdingsTranslator,
-          external: false,
-        },
-        {
-          title: t('languageTranslator.items.yodaTranslator.title'),
-          icon: <SmileIcon className="size-4 shrink-0" />,
-          href: Routes.YodaTranslator,
-          external: false,
-        },
-      ],
+      title: t('gameTranslator.title'),
+      items: buildItems(t, 'gameTranslator'),
     },
     {
       title: t('languageTranslator.title'),
-      items: [
-        {
-          title: t('languageTranslator.items.albanianToEnglish.title'),
-          icon: <LanguagesIcon className="size-4 shrink-0" />,
-          href: Routes.AlbanianToEnglish,
-          external: false,
-        },
-        {
-          title: t('languageTranslator.items.ancientGreekTranslator.title'),
-          icon: <SquarePenIcon className="size-4 shrink-0" />,
-          href: Routes.AncientGreekTranslator,
-          external: false,
-        },
-        {
-          title: t('languageTranslator.items.aramaicTranslator.title'),
-          icon: <ScrollTextIcon className="size-4 shrink-0" />,
-          href: Routes.AramaicTranslator,
-          external: false,
-        },
-        {
-          title: t('languageTranslator.items.baybayinTranslator.title'),
-          icon: <FeatherIcon className="size-4 shrink-0" />,
-          href: Routes.BaybayinTranslator,
-          external: false,
-        },
-        {
-          title: t('languageTranslator.items.cantoneseTranslator.title'),
-          icon: <MessageSquareIcon className="size-4 shrink-0" />,
-          href: Routes.CantoneseTranslator,
-          external: false,
-        },
-        {
-          title: t('languageTranslator.items.chineseToEnglishTranslator.title'),
-          icon: <LanguagesIcon className="size-4 shrink-0" />,
-          href: Routes.ChineseToEnglishTranslator,
-          external: false,
-        },
-        {
-          title: t('languageTranslator.items.englishToChineseTranslator.title'),
-          icon: <LanguagesIcon className="size-4 shrink-0" />,
-          href: Routes.EnglishToChineseTranslator,
-          external: false,
-        },
-        {
-          title: t('languageTranslator.items.creoleToEnglishTranslator.title'),
-          icon: <GlobeIcon className="size-4 shrink-0" />,
-          href: Routes.CreoleToEnglishTranslator,
-          external: false,
-        },
-        {
-          title: t('languageTranslator.items.cuneiformTranslator.title'),
-          icon: <SquarePenIcon className="size-4 shrink-0" />,
-          href: Routes.CuneiformTranslator,
-          external: false,
-        },
-        {
-          title: t('languageTranslator.items.englishToAmharicTranslator.title'),
-          icon: <GlobeIcon className="size-4 shrink-0" />,
-          href: Routes.EnglishToAmharicTranslator,
-          external: false,
-        },
-        {
-          title: t('languageTranslator.items.esperantoTranslator.title'),
-          icon: <GlobeIcon className="size-4 shrink-0" />,
-          href: Routes.EsperantoTranslator,
-          external: false,
-        },
-        {
-          title: t('languageTranslator.items.greekTranslator.title'),
-          icon: <BookIcon className="size-4 shrink-0" />,
-          href: Routes.GreekTranslator,
-          external: false,
-        },
-        {
-          title: t('languageTranslator.items.mangaTranslator.title'),
-          icon: <BookIcon className="size-4 shrink-0" />,
-          href: Routes.MangaTranslator,
-          external: false,
-        },
-        {
-          title: t('languageTranslator.items.ivrTranslator.title'),
-          icon: <AudioLinesIcon className="size-4 shrink-0" />,
-          href: Routes.IvrTranslator,
-          external: false,
-        },
-        {
-          title: t('languageTranslator.items.middleEnglishTranslator.title'),
-          icon: <BookIcon className="size-4 shrink-0" />,
-          href: Routes.MiddleEnglishTranslator,
-          external: false,
-        },
-        {
-          title: t('languageTranslator.items.nahuatlTranslator.title'),
-          icon: <ScrollTextIcon className="size-4 shrink-0" />,
-          href: Routes.NahuatlTranslator,
-          external: false,
-        },
-        {
-          title: t('languageTranslator.items.oghamTranslator.title'),
-          icon: <FeatherIcon className="size-4 shrink-0" />,
-          href: Routes.OghamTranslator,
-          external: false,
-        },
-        {
-          title: t('languageTranslator.items.samoanToEnglishTranslator.title'),
-          icon: <GlobeIcon className="size-4 shrink-0" />,
-          href: Routes.SamoanToEnglishTranslator,
-          external: false,
-        },
-        {
-          title: t('languageTranslator.items.swahiliToEnglishTranslator.title'),
-          icon: <LanguagesIcon className="size-4 shrink-0" />,
-          href: Routes.SwahiliToEnglishTranslator,
-          external: false,
-        },
-        {
-          title: t('languageTranslator.items.teluguToEnglishTranslator.title'),
-          icon: <LanguagesIcon className="size-4 shrink-0" />,
-          href: Routes.TeluguToEnglishTranslator,
-          external: false,
-        },
-        {
-          title: t('languageTranslator.items.englishToPersianTranslator.title'),
-          icon: <GlobeIcon className="size-4 shrink-0" />,
-          href: Routes.EnglishToPersianTranslator,
-          external: false,
-        },
-        {
-          title: t('languageTranslator.items.englishToPolishTranslator.title'),
-          icon: <LanguagesIcon className="size-4 shrink-0" />,
-          href: Routes.EnglishToPolishTranslator,
-          external: false,
-        },
-        {
-          title: t('languageTranslator.items.englishToSwahiliTranslator.title'),
-          icon: <LanguagesIcon className="size-4 shrink-0" />,
-          href: Routes.EnglishToSwahiliTranslator,
-          external: false,
-        },
-        {
-          title: t('languageTranslator.items.japaneseToEnglishTranslator.title'),
-          icon: <LanguagesIcon className="size-4 shrink-0" />,
-          href: Routes.JapaneseToEnglishTranslator,
-          external: false,
-        },
-      ],
-    },
-    {
-      title: 'About',
-      href: Routes.About,
-      external: false,
+      items: buildItems(t, 'languageTranslator'),
     },
   ];
 }

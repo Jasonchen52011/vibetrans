@@ -1,142 +1,63 @@
 'use client';
 
-import { DirectionIndicator } from '@/components/translator/DirectionIndicator';
 import { SpeechToTextButton } from '@/components/ui/speech-to-text-button';
 import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
-import { useSmartTranslatorDirection } from '@/hooks/use-smart-translator-direction';
-import { ArrowRightIcon, Waves } from 'lucide-react';
+import { Mic, Waves } from 'lucide-react';
 import mammoth from 'mammoth';
-import { useEffect, useMemo, useRef, useState } from 'react';
-
-type TranslatorDirection = 'ja-en' | 'en-ja';
+import { useEffect, useRef, useState } from 'react';
 
 interface MangaTranslatorToolProps {
   pageData: any;
   locale?: string;
 }
 
+// Language detection patterns
+const JAPANESE_PATTERNS = /[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FAF]/; // Hiragana, Katakana, Kanji
+
+function detectLanguage(text: string): 'japanese' | 'english' | 'unknown' {
+  if (JAPANESE_PATTERNS.test(text)) {
+    return 'japanese';
+  }
+  // Basic check for English (latin characters and common words)
+  if (/[a-zA-Z]/.test(text) && text.length > 2) {
+    return 'english';
+  }
+  return 'unknown';
+}
+
 export default function MangaTranslatorTool({
   pageData,
   locale = 'en',
 }: MangaTranslatorToolProps) {
-  const [inputText, setInputText] = useState('');
-  const [outputText, setOutputText] = useState('');
-  const [fileName, setFileName] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isTranscribing, setIsTranscribing] = useState(false);
+  const [inputText, setInputText] = useState<string>('');
+  const [outputText, setOutputText] = useState<string>('');
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const [fileName, setFileName] = useState<string | null>(null);
+  const [isTranscribing, setIsTranscribing] = useState<boolean>(false);
+  const [detectedLanguage, setDetectedLanguage] = useState<
+    'japanese' | 'english' | 'unknown'
+  >('unknown');
   const audioInputRef = useRef<HTMLInputElement | null>(null);
 
-  const {
-    activeDirection,
-    isManualDirection,
-    detectedLanguage,
-    languageWarning,
-    runLanguageDetection,
-    toggleDirection,
-    setAutoDirection,
-    resetDirection,
-    clearWarning,
-  } = useSmartTranslatorDirection<TranslatorDirection>({
-    apiPath: '/api/manga-translator/recognize-translate',
-    defaultDirection: 'ja-en',
-    directions: ['ja-en', 'en-ja'],
-    locale,
-    supportedLanguages: ['japanese', 'english'],
-    warningMessage:
-      pageData.tool.languageWarning ||
-      'Please enter Japanese or English text.',
-  });
-
-  const isJapaneseToEnglish = activeDirection === 'ja-en';
-  const japaneseLabel = pageData.tool.japaneseLabel || 'Japanese';
-  const englishLabel = pageData.tool.englishLabel || 'English';
-
-  const inputPlaceholder = useMemo(
-    () =>
-      isJapaneseToEnglish
-        ? pageData.tool.inputPlaceholder ||
-          '日本語の台詞やナレーションを入力してください...'
-        : pageData.tool.englishInputPlaceholder ||
-          'Enter English text to localize into Japanese manga style...'
-    ,
-    [isJapaneseToEnglish, pageData.tool]
-  );
-
-  const outputPlaceholder = useMemo(
-    () =>
-      isJapaneseToEnglish
-        ? pageData.tool.outputPlaceholder ||
-          'English localization will appear here'
-        : pageData.tool.japaneseOutputPlaceholder ||
-          '日本語訳がここに表示されます'
-    ,
-    [isJapaneseToEnglish, pageData.tool]
-  );
-
-  const directionStatusLabel = isJapaneseToEnglish
-    ? `${japaneseLabel} → ${englishLabel}`
-    : `${englishLabel} → ${japaneseLabel}`;
-
-  const detectionStatus =
-    detectedLanguage === 'japanese'
-      ? `Detected input: ${japaneseLabel}`
-      : detectedLanguage === 'english'
-        ? `Detected input: ${englishLabel}`
-        : 'Auto-detecting. Enter Japanese or English text.';
-
+  // Auto-detect language when input changes
   useEffect(() => {
-    const trimmed = inputText.trim();
-    if (!trimmed) {
-      clearWarning();
-      return;
+    if (inputText.trim()) {
+      const detected = detectLanguage(inputText);
+      setDetectedLanguage(detected);
+    } else {
+      setDetectedLanguage('unknown');
     }
-    const timeoutId = setTimeout(async () => {
-      await runLanguageDetection(trimmed);
-    }, 600);
-    return () => clearTimeout(timeoutId);
-  }, [inputText, runLanguageDetection, clearWarning]);
+  }, [inputText]);
 
-  const readFileContent = async (file: File): Promise<string> => {
-    const extension = file.name.split('.').pop()?.toLowerCase();
-
-    if (extension === 'txt') {
-      return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = (event) => {
-          const content = event.target?.result as string;
-          if (content) resolve(content);
-          else reject(new Error('File is empty'));
-        };
-        reader.onerror = () => reject(new Error('Failed to read file'));
-        reader.readAsText(file);
-      });
-    }
-
-    if (extension === 'docx') {
-      try {
-        const arrayBuffer = await file.arrayBuffer();
-        const result = await mammoth.extractRawText({ arrayBuffer });
-        if (result.value) return result.value;
-        throw new Error('Failed to extract text from Word document');
-      } catch {
-        throw new Error(
-          'Failed to read .docx file. Please ensure it is a valid Word document.'
-        );
-      }
-    }
-
-    throw new Error(
-      'Unsupported file format. Please upload .txt or .docx files.'
-    );
-  };
-
+  // Handle image upload for Japanese text recognition
   const handleImageUpload = async (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     const file = event.target.files?.[0];
     if (!file) return;
 
+    // Check if file is an image
     if (!file.type.startsWith('image/')) {
       setError('Please upload an image file');
       return;
@@ -147,7 +68,10 @@ export default function MangaTranslatorTool({
     setIsLoading(true);
 
     try {
+      // Convert image to base64
       const base64 = await convertImageToBase64(file);
+
+      // Call API to process image
       const response = await fetch(
         '/api/manga-translator/recognize-translate',
         {
@@ -166,9 +90,7 @@ export default function MangaTranslatorTool({
       if (data.originalText && data.translatedText) {
         setInputText(data.originalText);
         setOutputText(data.translatedText);
-        if (data.detectedDirection) {
-          setAutoDirection(data.detectedDirection as TranslatorDirection);
-        }
+        setDetectedLanguage(data.detectedLanguage);
       } else if (data.error) {
         throw new Error(data.error);
       }
@@ -180,41 +102,21 @@ export default function MangaTranslatorTool({
     }
   };
 
-  const convertImageToBase64 = (file: File): Promise<string> =>
-    new Promise((resolve, reject) => {
+  // Convert image to base64
+  const convertImageToBase64 = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
       const reader = new FileReader();
-      reader.onload = (event) => {
-        const result = event.target?.result as string;
+      reader.onload = (e) => {
+        const result = e.target?.result as string;
         if (result) resolve(result);
         else reject(new Error('Failed to convert image'));
       };
       reader.onerror = () => reject(new Error('Failed to read image file'));
       reader.readAsDataURL(file);
     });
-
-  const handleDocumentUpload = async (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    const file = event.target.files?.[0];
-    if (!file) return;
-
-    if (file.type.startsWith('image/')) {
-      await handleImageUpload(event);
-      return;
-    }
-
-    setFileName(file.name);
-    setError(null);
-
-    try {
-      const text = await readFileContent(file);
-      setInputText(text);
-    } catch (err: any) {
-      setError(err.message || pageData.tool.error);
-      setFileName(null);
-    }
   };
 
+  // Handle audio upload for transcription
   const handleAudioUploadClick = () => {
     audioInputRef.current?.click();
   };
@@ -243,8 +145,8 @@ export default function MangaTranslatorTool({
       }
 
       if (data.transcription) {
-        setInputText((previous) =>
-          previous ? `${previous.trim()}\n${data.transcription}` : data.transcription
+        setInputText((prev) =>
+          prev ? `${prev}\n${data.transcription}` : data.transcription
         );
       }
     } catch (err: any) {
@@ -258,9 +160,9 @@ export default function MangaTranslatorTool({
     }
   };
 
+  // Handle translation
   const handleTranslate = async () => {
-    const trimmed = inputText.trim();
-    if (!trimmed) {
+    if (!inputText.trim()) {
       setError(pageData.tool.noInput);
       setOutputText('');
       return;
@@ -271,57 +173,26 @@ export default function MangaTranslatorTool({
     setOutputText('');
 
     try {
-      const detectionSummary = await runLanguageDetection(trimmed);
-      if (
-        !isManualDirection &&
-        (languageWarning ||
-          detectionSummary.detectedInputLanguage === 'unknown') &&
-        detectionSummary.confidence < 0.3
-      ) {
-        throw new Error(
-          pageData.tool.languageWarning ||
-            'Please enter Japanese or English text.'
-        );
-      }
-
-      const finalDirection = isManualDirection
-        ? activeDirection
-        : detectionSummary.detectedDirection;
-
+      // Call our unified translation API
       const response = await fetch(
         '/api/manga-translator/recognize-translate',
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            text: trimmed,
-            direction: finalDirection,
+            text: inputText,
           }),
         }
       );
 
       const data = await response.json();
+
       if (!response.ok) {
         throw new Error(data.error || pageData.tool.error);
       }
 
-      const translated = (data.translatedText || '').trim();
-      if (!translated) {
-        throw new Error(pageData.tool.error);
-      }
-
-      if (translated.toLowerCase() === trimmed.toLowerCase()) {
-        throw new Error(
-          pageData.tool.sameOutputError ||
-            'Translation matches the input. Please try different text.'
-        );
-      }
-
-      setOutputText(translated);
-      if (!isManualDirection && data.detectedDirection) {
-        setAutoDirection(data.detectedDirection as TranslatorDirection);
-      }
-      clearWarning();
+      setDetectedLanguage(data.detectedLanguage);
+      setOutputText(data.translatedText || '');
     } catch (err: any) {
       setError(err.message || 'Translation failed');
       setOutputText('');
@@ -330,18 +201,16 @@ export default function MangaTranslatorTool({
     }
   };
 
+  // Reset
   const handleReset = () => {
     setInputText('');
     setOutputText('');
     setFileName(null);
     setError(null);
-    if (audioInputRef.current) {
-      audioInputRef.current.value = '';
-    }
-    resetDirection();
-    clearWarning();
+    setDetectedLanguage('unknown');
   };
 
+  // Copy
   const handleCopy = async () => {
     if (!outputText) return;
     try {
@@ -351,42 +220,46 @@ export default function MangaTranslatorTool({
     }
   };
 
+  // Download
   const handleDownload = () => {
     if (!outputText) return;
     const blob = new Blob([outputText], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
-    const anchor = document.createElement('a');
-    anchor.href = url;
-    anchor.download = `manga-translation-${Date.now()}.txt`;
-    document.body.appendChild(anchor);
-    anchor.click();
-    document.body.removeChild(anchor);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `manga-translator-${Date.now()}.txt`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
     URL.revokeObjectURL(url);
   };
 
   return (
-    <div className="container max-w-7xl mx-auto px-4 mb-10">
+    <div className="container max-w-5xl mx-auto px-4 mb-10">
       <main className="w-full bg-white dark:bg-zinc-800 shadow-xl border border-gray-100 dark:border-zinc-700 rounded-lg p-4 md:p-8">
-        <div className="flex flex-col md:flex-row gap-4 md:gap-6">
+        {/* Input and Output Areas */}
+        <div className="flex flex-col md:flex-row gap-4 md:gap-8">
+          {/* Input Area */}
           <div className="flex-1">
             <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-3">
-              {isJapaneseToEnglish ? japaneseLabel : englishLabel}
+              {detectedLanguage === 'japanese'
+                ? 'Japanese Text (日本語)'
+                : detectedLanguage === 'english'
+                  ? 'English Text'
+                  : pageData.tool.inputLabel}
             </h2>
             <textarea
               value={inputText}
-              onChange={(event) => setInputText(event.target.value)}
-              placeholder={inputPlaceholder}
-              className={`w-full h-48 md:h-64 p-3 border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent resize-none text-gray-700 dark:text-gray-200 dark:bg-zinc-700 ${
-                languageWarning
-                  ? 'border-amber-300 dark:border-amber-600 focus:ring-amber-500'
-                  : 'border-gray-300 dark:border-zinc-600'
-              }`}
-              aria-label={isJapaneseToEnglish ? japaneseLabel : englishLabel}
+              onChange={(e) => setInputText(e.target.value)}
+              placeholder={pageData.tool.inputPlaceholder}
+              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent resize-none text-gray-700 dark:text-gray-200 dark:bg-zinc-700"
+              aria-label="Input text"
             />
 
-            <div className="mt-4 flex items-center gap-3 flex-wrap">
+            {/* File Upload and Voice Input */}
+            <div className="mt-4 flex items-center gap-3">
               <label
-                htmlFor="file-upload-manga"
+                htmlFor="file-upload"
                 className="inline-flex items-center px-4 py-2 bg-gray-200 dark:bg-zinc-600 hover:bg-gray-300 dark:hover:bg-zinc-500 text-gray-800 dark:text-gray-100 font-medium rounded-lg cursor-pointer transition-colors"
               >
                 <svg
@@ -402,40 +275,38 @@ export default function MangaTranslatorTool({
                     d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
                   />
                 </svg>
-                {pageData.tool.uploadButton || 'Upload Image'}
+                Upload Image
               </label>
+
+              {/* Voice Input Button */}
               <SpeechToTextButton
                 onTranscript={(text) =>
-                  setInputText((previous) =>
-                    previous ? `${previous.trim()} ${text}` : text
-                  )
+                  setInputText((prev) => (prev ? `${prev} ${text}` : text))
                 }
                 locale={locale}
               />
+
+              {/* Audio Upload Button */}
               <button
-                type="button"
                 onClick={handleAudioUploadClick}
                 className={`flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 dark:border-zinc-600 transition-colors ${
                   isTranscribing
                     ? 'bg-primary text-white hover:bg-primary/90'
                     : 'bg-gray-100 dark:bg-zinc-700 hover:bg-gray-200 dark:hover:bg-zinc-600 text-gray-700 dark:text-gray-100'
                 }`}
-                aria-label={pageData.tool.audioUploadTooltip || 'Upload audio for transcription'}
-                disabled={isTranscribing}
+                aria-label="Upload audio for transcription"
               >
                 <Waves className="h-5 w-5" />
               </button>
+
               <p className="text-xs text-gray-500 dark:text-gray-400">
-                {isTranscribing
-                  ? pageData.tool.transcribingLabel || 'Transcribing audio...'
-                  : pageData.tool.uploadHint ||
-                    'Supports .txt, .docx, and audio uploads.'}
+                Supports JPG, PNG, GIF, WebP formats
               </p>
               <input
-                id="file-upload-manga"
+                id="file-upload"
                 type="file"
-                accept="image/*,.txt,.docx"
-                onChange={handleDocumentUpload}
+                accept="image/*"
+                onChange={handleImageUpload}
                 className="hidden"
               />
               <input
@@ -447,6 +318,7 @@ export default function MangaTranslatorTool({
               />
             </div>
 
+            {/* File Name Display */}
             {fileName && (
               <div className="mt-3 flex items-center gap-2 p-2 bg-gray-100 dark:bg-zinc-700 rounded-md border border-gray-200 dark:border-zinc-600">
                 <svg
@@ -464,13 +336,12 @@ export default function MangaTranslatorTool({
                   {fileName}
                 </span>
                 <button
-                  type="button"
                   onClick={() => {
                     setFileName(null);
                     setInputText('');
                   }}
                   className="ml-auto text-gray-500 hover:text-red-500 dark:text-gray-400 dark:hover:text-red-400"
-                  aria-label={pageData.tool.removeFileTooltip || 'Remove file'}
+                  aria-label="Remove file"
                 >
                   <svg
                     className="w-4 h-4"
@@ -490,35 +361,23 @@ export default function MangaTranslatorTool({
             )}
           </div>
 
-          <DirectionIndicator
-            onToggle={handleDirectionToggle}
-            directionLabel={directionStatusLabel}
-            detectionStatus={detectionStatus}
-            warning={languageWarning}
-            toggleTitle={
-              isJapaneseToEnglish
-                ? 'Switch to English → Japanese'
-                : 'Switch to Japanese → English'
-            }
-            ariaLabel={
-              pageData.tool.toggleDirectionTooltip ||
-              'Toggle translation direction'
-            }
-          />
-
+          {/* Output Area */}
           <div className="flex-1">
             <div className="flex items-center justify-between mb-3">
               <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">
-                {isJapaneseToEnglish ? englishLabel : japaneseLabel}
+                {detectedLanguage === 'japanese'
+                  ? 'English Translation'
+                  : detectedLanguage === 'english'
+                    ? '日本語翻訳'
+                    : pageData.tool.outputLabel}
               </h2>
               {outputText && (
                 <div className="flex gap-2">
                   <TextToSpeechButton text={outputText} locale={locale} />
                   <button
-                    type="button"
                     onClick={handleCopy}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
-                    title={pageData.tool.copyTooltip || 'Copy'}
+                    title="Copy"
                   >
                     <svg
                       className="w-5 h-5"
@@ -535,10 +394,9 @@ export default function MangaTranslatorTool({
                     </svg>
                   </button>
                   <button
-                    type="button"
                     onClick={handleDownload}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
-                    title={pageData.tool.downloadTooltip || 'Download'}
+                    title="Download"
                   >
                     <svg
                       className="w-5 h-5"
@@ -558,40 +416,38 @@ export default function MangaTranslatorTool({
               )}
             </div>
             <div
-              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md bg-gray-50 dark:bg-zinc-700 text-gray-700 dark:text-gray-200 overflow-y-auto"
+              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md bg-gray-50 dark:bg-zinc-700 flex items-start justify-start text-gray-700 dark:text-gray-200 overflow-y-auto"
               aria-live="polite"
             >
               {isLoading ? (
-                <p>{pageData.tool.loading || 'Translating...'}</p>
+                <p>{pageData.tool.loading}</p>
               ) : error ? (
                 <p className="text-red-600 dark:text-red-400">{error}</p>
               ) : outputText ? (
                 <p className="text-lg whitespace-pre-wrap">{outputText}</p>
               ) : (
                 <p className="text-gray-500 dark:text-gray-400">
-                  {outputPlaceholder}
+                  {pageData.tool.outputPlaceholder}
                 </p>
               )}
             </div>
           </div>
         </div>
 
+        {/* Action Buttons */}
         <div className="mt-6 flex justify-center gap-4">
           <button
-            type="button"
             onClick={handleTranslate}
             disabled={isLoading}
-            className="inline-flex items-center px-8 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="px-8 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isLoading ? pageData.tool.loading : pageData.tool.translateButton}
-            <ArrowRightIcon className="ml-2 h-4 w-4" />
           </button>
           <button
-            type="button"
             onClick={handleReset}
             className="px-6 py-3 bg-gray-200 dark:bg-zinc-600 hover:bg-gray-300 dark:hover:bg-zinc-500 text-gray-800 dark:text-gray-100 font-semibold rounded-lg shadow-md transition-colors"
           >
-            {pageData.tool.resetButton || 'Reset'}
+            Reset
           </button>
         </div>
       </main>

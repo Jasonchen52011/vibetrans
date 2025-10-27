@@ -1,4 +1,4 @@
-import { GoogleGenerativeAI } from '@google/generative-ai';
+import { GoogleGenerativeAI } from '@/lib/ai/gemini';
 import { NextResponse } from 'next/server';
 
 export const runtime = 'edge';

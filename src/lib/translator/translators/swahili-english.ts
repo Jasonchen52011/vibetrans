@@ -1,6 +1,6 @@
 import { BaseTranslator } from '../base-translator';
-import type { TranslatorConfig } from '../types';
 import type { DetectionResult } from '../base-translator';
+import type { TranslatorConfig } from '../types';
 
 export class SwahiliEnglishTranslator extends BaseTranslator {
   constructor() {
@@ -89,7 +89,10 @@ Translate the following Swahili literary text to English while preserving its ar
     return 'swahili';
   }
 
-  protected suggestDirection(detectedLanguage: string, currentDirection?: string): string {
+  protected suggestDirection(
+    detectedLanguage: string,
+    currentDirection?: string
+  ): string {
     if (currentDirection) {
       return currentDirection;
     }
@@ -109,11 +112,16 @@ Translate the following Swahili literary text to English while preserving its ar
     }
   }
 
-  protected getDirectionDescription(detectedLanguage: string, currentDirection?: string): string {
+  protected getDirectionDescription(
+    detectedLanguage: string,
+    currentDirection?: string
+  ): string {
     return 'Swahili → English';
   }
 
-  protected getDetectionExplanation(detectionResult: DetectionResult | null): string {
+  protected getDetectionExplanation(
+    detectionResult: DetectionResult | null
+  ): string {
     if (!detectionResult) return 'Language detection failed';
 
     const { detectedLanguage, confidence } = detectionResult;
@@ -128,7 +136,10 @@ Translate the following Swahili literary text to English while preserving its ar
     }
   }
 
-  protected getTranslationExplanation(detectionResult: DetectionResult | null, direction?: string): string {
+  protected getTranslationExplanation(
+    detectionResult: DetectionResult | null,
+    direction?: string
+  ): string {
     if (!detectionResult) return 'Translation completed';
 
     const { detectedLanguage } = detectionResult;

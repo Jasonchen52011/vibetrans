@@ -1,152 +1,75 @@
 'use client';
 
-import { DirectionIndicator } from '@/components/translator/DirectionIndicator';
-import { SpeechToTextButton } from '@/components/ui/speech-to-text-button';
 import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
-import { useSmartTranslatorDirection } from '@/hooks/use-smart-translator-direction';
-import { ArrowRightIcon, Mic, Square } from 'lucide-react';
+import { ArrowLeftRight, Mic, RefreshCw, Waves } from 'lucide-react';
 import mammoth from 'mammoth';
-import { useEffect, useMemo, useRef, useState } from 'react';
-
-type TranslatorDirection = 'en-sw' | 'sw-en';
+import { useEffect, useRef, useState } from 'react';
 
 interface EnglishToSwahiliTranslatorToolProps {
   pageData: any;
   locale?: string;
 }
 
+type TranslatorDirection = 'en-sw' | 'sw-en';
+
 export default function EnglishToSwahiliTranslatorTool({
   pageData,
   locale = 'en',
 }: EnglishToSwahiliTranslatorToolProps) {
-  const [inputText, setInputText] = useState('');
-  const [outputText, setOutputText] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+  const [inputText, setInputText] = useState<string>('');
+  const [outputText, setOutputText] = useState<string>('');
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [fileName, setFileName] = useState<string | null>(null);
+  const [detectedSource, setDetectedSource] = useState<string>('');
+  const [detectedTarget, setDetectedTarget] = useState<string>('');
+  const [direction, setDirection] = useState<TranslatorDirection>('en-sw');
+  const [isListening, setIsListening] = useState<boolean>(false);
+  const [isTranscribing, setIsTranscribing] = useState<boolean>(false);
   const recognitionRef = useRef<any>(null);
-  const [isSpeechSupported, setIsSpeechSupported] = useState(true);
-  const [isRecording, setIsRecording] = useState(false);
+  const audioInputRef = useRef<HTMLInputElement | null>(null);
 
-  const {
-    activeDirection,
-    isManualDirection,
-    detectedLanguage,
-    languageWarning,
-    runLanguageDetection,
-    toggleDirection,
-    setAutoDirection,
-    resetDirection,
-    clearWarning,
-  } = useSmartTranslatorDirection<TranslatorDirection>({
-    apiPath: '/api/english-to-swahili-translator',
-    defaultDirection: 'en-sw',
-    directions: ['en-sw', 'sw-en'],
-    locale,
-    supportedLanguages: ['english', 'swahili'],
-    warningMessage:
-      pageData.tool.languageWarning || 'Please enter English or Swahili text.',
-  });
-
-  const isEnglishToSwahili = activeDirection === 'en-sw';
-  const englishLabel = pageData.tool.englishLabel || 'English';
-  const swahiliLabel = pageData.tool.swahiliLabel || 'Swahili';
-  const speechErrorMessage =
-    pageData.tool.microphonePermission ||
-    'Speech recognition is not available or microphone permission was denied.';
-
-  const inputPlaceholder = useMemo(
-    () =>
-      isEnglishToSwahili
-        ? pageData.tool.inputPlaceholder ||
-          'Paste English content that needs Swahili localization...'
-        : pageData.tool.swahiliInputPlaceholder ||
-          'Andika maandishi ya Kiswahili kwa kutafsiriwa Kwa Kiingereza...',
-    [isEnglishToSwahili, pageData.tool]
-  );
-
-  const outputPlaceholder = useMemo(
-    () =>
-      isEnglishToSwahili
-        ? pageData.tool.swahiliOutputPlaceholder ||
-          'Polished Swahili translation will appear here'
-        : pageData.tool.outputPlaceholder ||
-          'Fluent English translation will appear here',
-    [isEnglishToSwahili, pageData.tool]
-  );
-
-  const directionStatusLabel = isEnglishToSwahili
-    ? `${englishLabel} → ${swahiliLabel}`
-    : `${swahiliLabel} → ${englishLabel}`;
-
-  const detectionStatus =
-    detectedLanguage === 'english'
-      ? `Detected input: ${englishLabel}`
-      : detectedLanguage === 'swahili'
-        ? `Detected input: ${swahiliLabel}`
-        : 'Auto-detecting. Enter English or Swahili text.';
+  const isEnglishToSwahili = direction === 'en-sw';
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
+
     const SpeechRecognition =
-      window.SpeechRecognition || window.webkitSpeechRecognition;
+      (window as any).SpeechRecognition ||
+      (window as any).webkitSpeechRecognition;
 
     if (!SpeechRecognition) {
-      setIsSpeechSupported(false);
       recognitionRef.current = null;
       return;
     }
 
-    setIsSpeechSupported(true);
     const recognition = new SpeechRecognition();
-    recognition.continuous = true;
+    recognition.continuous = false;
     recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
     recognitionRef.current = recognition;
 
     recognition.onresult = (event: any) => {
-      const transcript = Array.from(event.results)
-        .slice(event.resultIndex)
-        .map((result: any) => result[0].transcript)
-        .join(' ')
-        .trim();
-
+      const transcript = event.results?.[0]?.[0]?.transcript ?? '';
       if (transcript) {
-        setInputText((prev) =>
-          prev ? `${prev.trim()}\n${transcript}` : transcript
-        );
+        setInputText((prev) => (prev ? `${prev} ${transcript}` : transcript));
       }
+      setIsListening(false);
     };
 
-    recognition.onerror = (event: any) => {
-      console.error('Speech recognition error:', event.error);
-      setIsRecording(false);
-      setError(
-        event.error === 'not-allowed'
-          ? speechErrorMessage
-          : pageData.tool.audioError || 'Unable to transcribe audio.'
-      );
+    recognition.onerror = () => {
+      setIsListening(false);
     };
 
     recognition.onend = () => {
-      setIsRecording(false);
+      setIsListening(false);
     };
 
     return () => {
       recognition.stop();
+      recognitionRef.current = null;
     };
-  }, [pageData.tool, speechErrorMessage]);
-
-  useEffect(() => {
-    const trimmed = inputText.trim();
-    if (!trimmed) {
-      clearWarning();
-      return;
-    }
-    const timeoutId = setTimeout(async () => {
-      await runLanguageDetection(trimmed);
-    }, 600);
-    return () => clearTimeout(timeoutId);
-  }, [inputText, runLanguageDetection, clearWarning]);
+  }, []);
 
   const handleFileUpload = async (
     event: React.ChangeEvent<HTMLInputElement>
@@ -161,7 +84,7 @@ export default function EnglishToSwahiliTranslatorTool({
       const text = await readFileContent(file);
       setInputText(text);
     } catch (err: any) {
-      setError(err.message || pageData.tool.error);
+      setError(err.message || 'Failed to read file');
       setFileName(null);
     }
   };
@@ -188,7 +111,7 @@ export default function EnglishToSwahiliTranslatorTool({
         const result = await mammoth.extractRawText({ arrayBuffer });
         if (result.value) return result.value;
         throw new Error('Failed to extract text from Word document');
-      } catch {
+      } catch (error) {
         throw new Error(
           'Failed to read .docx file. Please ensure it is a valid Word document.'
         );
@@ -200,39 +123,89 @@ export default function EnglishToSwahiliTranslatorTool({
     );
   };
 
-  const handleSpeechTranscript = (transcript: string) => {
-    setInputText((prev) =>
-      prev ? `${prev.trim()}\n${transcript}` : transcript
-    );
+  const toggleDirection = () => {
+    const newDirection = direction === 'en-sw' ? 'sw-en' : 'en-sw';
+    setDirection(newDirection);
+    if (outputText) {
+      setInputText(outputText);
+      setOutputText('');
+    }
+    setDetectedSource('');
+    setDetectedTarget('');
+    setError(null);
   };
 
-  const toggleRecording = () => {
+  const handleVoiceInput = () => {
     if (!recognitionRef.current) {
-      setError(speechErrorMessage);
+      setError('Speech recognition is not supported in this browser.');
       return;
     }
 
     try {
-      if (isRecording) {
+      if (isListening) {
         recognitionRef.current.stop();
-        setIsRecording(false);
         return;
       }
 
       recognitionRef.current.lang = isEnglishToSwahili ? 'en-US' : 'sw-TZ';
       recognitionRef.current.start();
-      setIsRecording(true);
+      setIsListening(true);
       setError(null);
     } catch (err: any) {
-      console.error('Failed to start speech recognition:', err);
-      setError(speechErrorMessage);
-      setIsRecording(false);
+      console.error('Voice input error:', err);
+      setIsListening(false);
+      setError('Unable to start voice recognition. Please try again.');
+    }
+  };
+
+  const handleAudioUploadClick = () => {
+    audioInputRef.current?.click();
+  };
+
+  const handleAudioSelected = async (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const audioFile = event.target.files?.[0];
+    if (!audioFile) return;
+
+    setIsTranscribing(true);
+    setError(null);
+
+    try {
+      const formData = new FormData();
+      formData.append('file', audioFile);
+
+      const response = await fetch(
+        '/api/english-to-swahili-translator/transcribe',
+        {
+          method: 'POST',
+          body: formData,
+        }
+      );
+
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error || 'Transcription failed');
+      }
+
+      if (data.transcription) {
+        setInputText((prev) =>
+          prev ? `${prev}\n${data.transcription}` : data.transcription
+        );
+      }
+    } catch (err: any) {
+      console.error('Transcription error:', err);
+      setError(err.message || 'Unable to transcribe audio at this time.');
+    } finally {
+      setIsTranscribing(false);
+      if (audioInputRef.current) {
+        audioInputRef.current.value = '';
+      }
     }
   };
 
   const handleTranslate = async () => {
-    const trimmed = inputText.trim();
-    if (!trimmed) {
+    if (!inputText.trim()) {
       setError(pageData.tool.noInput);
       setOutputText('');
       return;
@@ -243,58 +216,29 @@ export default function EnglishToSwahiliTranslatorTool({
     setOutputText('');
 
     try {
-      const detectionSummary = await runLanguageDetection(trimmed);
-      if (
-        !isManualDirection &&
-        (languageWarning ||
-          detectionSummary.detectedInputLanguage === 'unknown') &&
-        detectionSummary.confidence < 0.3
-      ) {
-        throw new Error(
-          pageData.tool.languageWarning ||
-            'Please enter English or Swahili text.'
-        );
-      }
-
-      const finalDirection = isManualDirection
-        ? activeDirection
-        : detectionSummary.detectedDirection;
-
       const response = await fetch('/api/english-to-swahili-translator', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          text: trimmed,
-          direction: finalDirection,
+          text: inputText,
+          direction,
+          enableDualTranslation: true,
         }),
       });
 
       const data = await response.json();
+
       if (!response.ok) {
         throw new Error(data.error || pageData.tool.error);
       }
 
-      const translated = (data.translated || '').trim();
-      if (!translated) {
-        throw new Error(pageData.tool.error);
-      }
+      setOutputText(data.translated || data.result || '');
+      setDetectedSource(data.detectedSourceLanguage || '');
+      setDetectedTarget(data.detectedTargetLanguage || '');
 
-      if (translated.toLowerCase() === trimmed.toLowerCase()) {
-        throw new Error(
-          pageData.tool.sameOutputError ||
-            'Translation matches the input. Please try different text.'
-        );
+      if (data.warning) {
+        setError(data.warning);
       }
-
-      setOutputText(translated);
-      if (!isManualDirection) {
-        const nextDirection =
-          (data.detectedDirection as TranslatorDirection | undefined) ||
-          (data.direction as TranslatorDirection | undefined) ||
-          finalDirection;
-        setAutoDirection(nextDirection);
-      }
-      clearWarning();
     } catch (err: any) {
       setError(err.message || 'Translation failed');
       setOutputText('');
@@ -304,13 +248,12 @@ export default function EnglishToSwahiliTranslatorTool({
   };
 
   const handleReset = () => {
-    recognitionRef.current?.stop();
-    setIsRecording(false);
     setInputText('');
     setOutputText('');
     setFileName(null);
     setError(null);
-    resetDirection();
+    setDetectedSource('');
+    setDetectedTarget('');
   };
 
   const handleCopy = async () => {
@@ -328,45 +271,37 @@ export default function EnglishToSwahiliTranslatorTool({
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `english-swahili-${Date.now()}.txt`;
+    a.download = `english-to-swahili-translator-${Date.now()}.txt`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
   };
 
-  const handleDirectionToggle = () => {
-    toggleDirection();
-    clearWarning();
-    if (outputText.trim()) {
-      setInputText(outputText);
-      setOutputText('');
-    }
-  };
-
   return (
-    <div className="container max-w-7xl mx-auto px-4 mb-10">
+    <div className="container max-w-5xl mx-auto px-4 mb-10">
       <main className="w-full bg-white dark:bg-zinc-800 shadow-xl border border-gray-100 dark:border-zinc-700 rounded-lg p-4 md:p-8">
-        <div className="flex flex-col md:flex-row gap-3 md:gap-4">
+        <div className="flex flex-col md:flex-row md:items-stretch gap-1">
           <div className="flex-1">
             <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-3">
-              {isEnglishToSwahili ? englishLabel : swahiliLabel}
+              {isEnglishToSwahili ? 'English Input' : 'Swahili Input'}
             </h2>
             <textarea
               value={inputText}
-              onChange={(event) => setInputText(event.target.value)}
-              placeholder={inputPlaceholder}
-              className={`w-full h-48 md:h-64 p-3 border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent resize-none text-gray-700 dark:text-gray-200 dark:bg-zinc-700 ${
-                languageWarning
-                  ? 'border-amber-300 dark:border-amber-600 focus:ring-amber-500'
-                  : 'border-gray-300 dark:border-zinc-600'
-              }`}
-              aria-label={isEnglishToSwahili ? englishLabel : swahiliLabel}
+              onChange={(e) => setInputText(e.target.value)}
+              placeholder={
+                isEnglishToSwahili
+                  ? 'Paste English content that needs Swahili localization…'
+                  : 'Andika maandishi ya Kiswahili kwa kutafsiriwa kwa Kiingereza…'
+              }
+              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent resize-none text-gray-700 dark:text-gray-200 dark:bg-zinc-700"
+              aria-label="Input text"
             />
 
-            <div className="mt-4 flex items-center gap-3 flex-wrap">
+            {/* File Upload and Voice Input buttons */}
+            <div className="mt-4 flex items-center gap-3">
               <label
-                htmlFor="file-upload-english-swahili"
+                htmlFor="file-upload"
                 className="inline-flex items-center px-4 py-2 bg-gray-200 dark:bg-zinc-600 hover:bg-gray-300 dark:hover:bg-zinc-500 text-gray-800 dark:text-gray-100 font-medium rounded-lg cursor-pointer transition-colors"
               >
                 <svg
@@ -382,42 +317,33 @@ export default function EnglishToSwahiliTranslatorTool({
                     d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
                   />
                 </svg>
-                {pageData.tool.uploadButton}
               </label>
-              <SpeechToTextButton
-                onTranscript={handleSpeechTranscript}
-                locale={locale}
-              />
               <button
-                type="button"
-                onClick={toggleRecording}
-                className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
-                  isRecording
-                    ? 'bg-red-500 text-white hover:bg-red-600 animate-pulse'
-                    : 'bg-gray-200 dark:bg-zinc-600 hover:bg-gray-300 dark:hover:bg-zinc-500 text-gray-800 dark:text-gray-100'
+                onClick={handleVoiceInput}
+                className={`flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 dark:border-zinc-600 transition-colors ${
+                  isListening
+                    ? 'bg-primary text-white hover:bg-primary/90'
+                    : 'bg-gray-100 dark:bg-zinc-700 hover:bg-gray-200 dark:hover:bg-zinc-600 text-gray-700 dark:text-gray-100'
                 }`}
-                title={
-                  isRecording
-                    ? pageData.tool.stopRecording || 'Stop recording'
-                    : pageData.tool.recordButton || 'Start recording'
+                aria-label={
+                  isListening ? 'Stop voice input' : 'Start voice input'
                 }
-                disabled={!isSpeechSupported}
               >
-                {isRecording ? (
-                  <Square className="w-4 h-4" />
-                ) : (
-                  <Mic className="w-4 h-4" />
-                )}
-                {isRecording
-                  ? pageData.tool.stopRecording || 'Stop'
-                  : pageData.tool.recordButton || 'Record'}
+                <Mic className="h-5 w-5" />
               </button>
-              <p className="text-xs text-gray-500 dark:text-gray-400">
-                {pageData.tool.uploadHint ||
-                  'Supports .txt and .docx files or speech input.'}
-              </p>
+              <button
+                onClick={handleAudioUploadClick}
+                className={`flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 dark:border-zinc-600 transition-colors ${
+                  isTranscribing
+                    ? 'bg-primary text-white hover:bg-primary/90'
+                    : 'bg-gray-100 dark:bg-zinc-700 hover:bg-gray-200 dark:hover:bg-zinc-600 text-gray-700 dark:text-gray-100'
+                }`}
+                aria-label="Upload audio for transcription"
+              >
+                <Waves className="h-5 w-5" />
+              </button>
               <input
-                id="file-upload-english-swahili"
+                id="file-upload"
                 type="file"
                 accept=".txt,.docx"
                 onChange={handleFileUpload}
@@ -442,13 +368,12 @@ export default function EnglishToSwahiliTranslatorTool({
                   {fileName}
                 </span>
                 <button
-                  type="button"
                   onClick={() => {
                     setFileName(null);
                     setInputText('');
                   }}
                   className="ml-auto text-gray-500 hover:text-red-500 dark:text-gray-400 dark:hover:text-red-400"
-                  aria-label={pageData.tool.removeFileTooltip || 'Remove file'}
+                  aria-label="Remove file"
                 >
                   <svg
                     className="w-4 h-4"
@@ -466,37 +391,47 @@ export default function EnglishToSwahiliTranslatorTool({
                 </button>
               </div>
             )}
+
+            <input
+              ref={audioInputRef}
+              type="file"
+              accept="audio/*"
+              className="hidden"
+              onChange={handleAudioSelected}
+            />
           </div>
 
-          <DirectionIndicator
-            onToggle={handleDirectionToggle}
-            directionLabel={directionStatusLabel}
-            detectionStatus={detectionStatus}
-            warning={languageWarning}
-            toggleTitle={
-              isEnglishToSwahili
-                ? 'Switch to Swahili → English'
-                : 'Switch to English → Swahili'
-            }
-            ariaLabel={
-              pageData.tool.toggleDirectionTooltip ||
-              'Toggle translation direction'
-            }
-          />
+          {/* Swap Button - in the middle */}
+          <div className="flex items-center justify-center px-2">
+            <button
+              onClick={toggleDirection}
+              className="p-2 text-gray-400 hover:text-gray-600 dark:text-gray-600 dark:hover:text-gray-400 transition-colors"
+              title={
+                isEnglishToSwahili
+                  ? 'Switch to Swahili → English'
+                  : 'Switch to English → Swahili'
+              }
+              aria-label="Swap translation direction"
+            >
+              <ArrowLeftRight className="h-6 w-6" />
+            </button>
+          </div>
 
           <div className="flex-1">
             <div className="flex items-center justify-between mb-3">
               <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">
-                {isEnglishToSwahili ? swahiliLabel : englishLabel}
+                {isEnglishToSwahili ? 'Swahili Output' : 'English Output'}
               </h2>
               {outputText && (
                 <div className="flex gap-2">
-                  <TextToSpeechButton text={outputText} locale={locale} />
+                  <TextToSpeechButton
+                    text={outputText}
+                    locale={isEnglishToSwahili ? 'sw' : 'en'}
+                  />
                   <button
-                    type="button"
                     onClick={handleCopy}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
-                    title={pageData.tool.copyTooltip || 'Copy'}
+                    title="Copy"
                   >
                     <svg
                       className="w-5 h-5"
@@ -513,10 +448,9 @@ export default function EnglishToSwahiliTranslatorTool({
                     </svg>
                   </button>
                   <button
-                    type="button"
                     onClick={handleDownload}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
-                    title={pageData.tool.downloadTooltip || 'Download'}
+                    title="Download"
                   >
                     <svg
                       className="w-5 h-5"
@@ -536,55 +470,52 @@ export default function EnglishToSwahiliTranslatorTool({
               )}
             </div>
             <div
-              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md bg-gray-50 dark:bg-zinc-700 flex items-start justify-start text-gray-700 dark:text-gray-200 overflow-y-auto"
+              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md bg-gray-50 dark:bg-zinc-700 flex items-center justify-center text-gray-700 dark:text-gray-200 overflow-y-auto"
               aria-live="polite"
             >
               {isLoading ? (
-                <div className="flex items-center gap-3">
-                  <div className="flex space-x-1">
-                    <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-                    <div
-                      className="w-2 h-2 bg-primary rounded-full animate-pulse"
-                      style={{ animationDelay: '0.2s' }}
-                    />
-                    <div
-                      className="w-2 h-2 bg-primary rounded-full animate-pulse"
-                      style={{ animationDelay: '0.4s' }}
-                    />
-                  </div>
-                  <span>{pageData.tool.loading || 'Translating...'}</span>
-                </div>
-              ) : error ? (
+                <p>{pageData.tool.loading}</p>
+              ) : error && !outputText ? (
                 <p className="text-red-600 dark:text-red-400">{error}</p>
               ) : outputText ? (
                 <p className="text-lg whitespace-pre-wrap">{outputText}</p>
               ) : (
                 <p className="text-gray-500 dark:text-gray-400">
-                  {outputPlaceholder}
+                  {pageData.tool.outputPlaceholder}
                 </p>
               )}
             </div>
           </div>
         </div>
 
-        <div className="mt-6 flex justify-center gap-4">
+        <div className="mt-6 flex justify-center gap-1">
           <button
-            type="button"
             onClick={handleTranslate}
             disabled={isLoading}
-            className="inline-flex items-center px-8 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="px-8 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {isLoading ? pageData.tool.loading : pageData.tool.translateButton}
-            <ArrowRightIcon className="ml-2 h-4 w-4" />
+            {isLoading ? (
+              <span className="flex items-center gap-2">
+                <RefreshCw className="h-5 w-5 animate-spin" />
+                {pageData.tool.loading}
+              </span>
+            ) : (
+              pageData.tool.translateButton
+            )}
           </button>
           <button
-            type="button"
             onClick={handleReset}
             className="px-6 py-3 bg-gray-200 dark:bg-zinc-600 hover:bg-gray-300 dark:hover:bg-zinc-500 text-gray-800 dark:text-gray-100 font-semibold rounded-lg shadow-md transition-colors"
           >
-            {pageData.tool.resetButton || 'Reset'}
+            Reset
           </button>
         </div>
+
+        {error && outputText && (
+          <div className="mt-4 flex justify-center text-sm text-yellow-600 dark:text-yellow-400">
+            {error}
+          </div>
+        )}
       </main>
     </div>
   );

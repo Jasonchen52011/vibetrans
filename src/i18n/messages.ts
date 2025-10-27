@@ -4,12 +4,7 @@ import { routing } from './routing';
 
 /**
  * Import all translation modules for a given locale
- * New modular translation structure:
- * - common/: Common translations (Metadata, Common, errors, etc.)
- * - pages/: Page-specific translations (home, pricing, blog, auth, etc.)
- * - dashboard/: Dashboard and admin translations
- * - marketing/: Marketing components (navbar, footer)
- * - demo/: AI demo pages translations
+ * Only includes existing translation files to avoid build errors
  */
 const importLocale = async (locale: Locale): Promise<Messages> => {
   // Import all translation modules - 串行加载而非并发
@@ -29,139 +24,36 @@ const importLocale = async (locale: Locale): Promise<Messages> => {
   const authPages = await import(`../../messages/pages/auth/${locale}.json`);
   const aboutPages = await import(`../../messages/pages/about/${locale}.json`);
   const docsPages = await import(`../../messages/pages/docs/${locale}.json`);
-  const dogTranslatorPages = await import(
-    `../../messages/pages/dog-translator/${locale}.json`
-  );
-  const genZTranslatorPages = await import(
-    `../../messages/pages/gen-z-translator/${locale}.json`
-  );
-  const genAlphaTranslatorPages = await import(
-    `../../messages/pages/gen-alpha-translator/${locale}.json`
-  );
-  const dumbItDownPages = await import(
-    `../../messages/pages/dumb-it-down-ai/${locale}.json`
-  );
-  const badTranslatorPages = await import(
-    `../../messages/pages/bad-translator/${locale}.json`
-  );
-  const babyTranslatorPages = await import(
-    `../../messages/pages/baby-translator/${locale}.json`
-  );
-  const ancientGreekTranslatorPages = await import(
-    `../../messages/pages/ancient-greek-translator/${locale}.json`
-  );
   const alBhedTranslatorPages = await import(
     `../../messages/pages/al-bhed-translator/${locale}.json`
-  );
-  const gibberishTranslatorPages = await import(
-    `../../messages/pages/gibberish-translator/${locale}.json`
-  );
-  const alienTextGeneratorPages = await import(
-    `../../messages/pages/alien-text-generator/${locale}.json`
-  );
-  const esperantoTranslatorPages = await import(
-    `../../messages/pages/esperanto-translator/${locale}.json`
-  );
-  const cuneiformTranslatorPages = await import(
-    `../../messages/pages/cuneiform-translator/${locale}.json`
-  );
-  const ivrTranslatorPages = await import(
-    `../../messages/pages/ivr-translator/${locale}.json`
-  );
-  const verboseGeneratorPages = await import(
-    `../../messages/pages/verbose-generator/${locale}.json`
   );
   const albanianToEnglishPages = await import(
     `../../messages/pages/albanian-to-english/${locale}.json`
   );
-  const creoleToEnglishTranslatorPages = await import(
-    `../../messages/pages/creole-to-english-translator/${locale}.json`
-  );
-  const pigLatinTranslatorPages = await import(
-    `../../messages/pages/pig-latin-translator/${locale}.json`
-  );
-  const cantoneseTranslatorPages = await import(
-    `../../messages/pages/cantonese-translator/${locale}.json`
-  );
   const chineseToEnglishTranslatorPages = await import(
     `../../messages/pages/chinese-to-english-translator/${locale}.json`
   );
-  const englishToChineseTranslatorPages = await import(
-    `../../messages/pages/english-to-chinese-translator/${locale}.json`
-  );
-  const middleEnglishTranslatorPages = await import(
-    `../../messages/pages/middle-english-translator/${locale}.json`
-  );
-  const mangaTranslatorPages = await import(
-    `../../messages/pages/manga-translator/${locale}.json`
-  );
-  const minionTranslatorPages = await import(
-    `../../messages/pages/minion-translator/${locale}.json`
-  );
-  const baybayinTranslatorPages = await import(
-    `../../messages/pages/baybayin-translator/${locale}.json`
-  );
-  const samoanToEnglishTranslatorPages = await import(
-    `../../messages/pages/samoan-to-english-translator/${locale}.json`
-  );
-  const gasterTranslatorPages = await import(
-    `../../messages/pages/gaster-translator/${locale}.json`
-  );
-  const highValyrianTranslatorPages = await import(
-    `../../messages/pages/high-valyrian-translator/${locale}.json`
-  );
-  const aramaicTranslatorPages = await import(
-    `../../messages/pages/aramaic-translator/${locale}.json`
-  );
-  const runeTranslatorPages = await import(
-    `../../messages/pages/rune-translator/${locale}.json`
-  );
-  const englishToSwahiliTranslatorPages = await import(
-    `../../messages/pages/english-to-swahili-translator/${locale}.json`
-  );
-  const nahuatlTranslatorPages = await import(
-    `../../messages/pages/nahuatl-translator/${locale}.json`
+  const dumbItDownPages = await import(
+    `../../messages/pages/dumb-it-down-ai/${locale}.json`
   );
   const englishToAmharicTranslatorPages = await import(
     `../../messages/pages/english-to-amharic-translator/${locale}.json`
   );
-  const runicTranslatorPages = await import(
-    `../../messages/pages/runic-translator/${locale}.json`
-  );
-  const drowTranslatorPages = await import(
-    `../../messages/pages/drow-translator/${locale}.json`
-  );
-  const swahiliToEnglishTranslatorPages = await import(
-    `../../messages/pages/swahili-to-english-translator/${locale}.json`
+  const englishToChineseTranslatorPages = await import(
+    `../../messages/pages/english-to-chinese-translator/${locale}.json`
   );
   const englishToPolishTranslatorPages = await import(
     `../../messages/pages/english-to-polish-translator/${locale}.json`
   );
-  const oghamTranslatorPages = await import(
-    `../../messages/pages/ogham-translator/${locale}.json`
-  );
-  const mandalorianTranslatorPages = await import(
-    `../../messages/pages/mandalorian-translator/${locale}.json`
-  );
-  const yodaTranslatorPages = await import(
-    `../../messages/pages/yoda-translator/${locale}.json`
-  );
-  const englishToPersianTranslatorPages = await import(
-    `../../messages/pages/english-to-persian-translator/${locale}.json`
+  const englishToSwahiliTranslatorPages = await import(
+    `../../messages/pages/english-to-swahili-translator/${locale}.json`
   );
   const greekTranslatorPages = await import(
     `../../messages/pages/greek-translator/${locale}.json`
   );
-  const wingdingsTranslatorPages = await import(
-    `../../messages/pages/wingdings-translator/${locale}.json`
+  const verboseGeneratorPages = await import(
+    `../../messages/pages/verbose-generator/${locale}.json`
   );
-  const japaneseToEnglishTranslatorPages = await import(
-    `../../messages/pages/japanese-to-english-translator/${locale}.json`
-  );
-  const teluguToEnglishTranslatorPages = await import(
-    `../../messages/pages/telugu-to-english-translator/${locale}.json`
-  );
-  const helpPages = await import(`../../messages/pages/--help/${locale}.json`);
   const dashboard = await import(`../../messages/dashboard/${locale}.json`);
   const marketing = await import(`../../messages/marketing/${locale}.json`);
   const demo = await import(`../../messages/demo/${locale}.json`);
@@ -178,51 +70,16 @@ const importLocale = async (locale: Locale): Promise<Messages> => {
     authPages.default,
     aboutPages.default,
     docsPages.default,
-    dogTranslatorPages.default,
-    genZTranslatorPages.default,
-    genAlphaTranslatorPages.default,
-    dumbItDownPages.default,
-    badTranslatorPages.default,
-    babyTranslatorPages.default,
-    ancientGreekTranslatorPages.default,
     alBhedTranslatorPages.default,
-    gibberishTranslatorPages.default,
-    alienTextGeneratorPages.default,
-    esperantoTranslatorPages.default,
-    cuneiformTranslatorPages.default,
-    ivrTranslatorPages.default,
-    verboseGeneratorPages.default,
     albanianToEnglishPages.default,
-    creoleToEnglishTranslatorPages.default,
-    pigLatinTranslatorPages.default,
-    cantoneseTranslatorPages.default,
     chineseToEnglishTranslatorPages.default,
-    englishToChineseTranslatorPages.default,
-    middleEnglishTranslatorPages.default,
-    mangaTranslatorPages.default,
-    minionTranslatorPages.default,
-    baybayinTranslatorPages.default,
-    samoanToEnglishTranslatorPages.default,
-    gasterTranslatorPages.default,
-    highValyrianTranslatorPages.default,
-    aramaicTranslatorPages.default,
-    runeTranslatorPages.default,
-    englishToSwahiliTranslatorPages.default,
-    nahuatlTranslatorPages.default,
+    dumbItDownPages.default,
     englishToAmharicTranslatorPages.default,
-    runicTranslatorPages.default,
-    drowTranslatorPages.default,
-    swahiliToEnglishTranslatorPages.default,
+    englishToChineseTranslatorPages.default,
     englishToPolishTranslatorPages.default,
-    oghamTranslatorPages.default,
-    mandalorianTranslatorPages.default,
-    yodaTranslatorPages.default,
-    englishToPersianTranslatorPages.default,
+    englishToSwahiliTranslatorPages.default,
     greekTranslatorPages.default,
-    wingdingsTranslatorPages.default,
-    japaneseToEnglishTranslatorPages.default,
-    teluguToEnglishTranslatorPages.default,
-    helpPages.default,
+    verboseGeneratorPages.default,
     dashboard.default,
     marketing.default,
     demo.default,

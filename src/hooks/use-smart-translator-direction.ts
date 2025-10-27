@@ -107,8 +107,7 @@ export function useSmartTranslatorDirection<Direction extends string>({
   const [activeDirection, setActiveDirection] =
     useState<Direction>(defaultDirection);
   const [isManualDirection, setIsManualDirection] = useState<boolean>(false);
-  const [detectedLanguage, setDetectedLanguage] =
-    useState<string>('unknown');
+  const [detectedLanguage, setDetectedLanguage] = useState<string>('unknown');
   const [languageWarning, setLanguageWarning] = useState<string>('');
 
   const fallbackWarning = useMemo(
@@ -176,12 +175,14 @@ export function useSmartTranslatorDirection<Direction extends string>({
 
         const data = await response.json();
         const confidence = normaliseConfidence(data.confidence);
-        const detectedInputLanguage =
-          data.detectedInputLanguage || 'unknown';
-        const detectedDirectionRaw = data.detectedDirection as Direction | undefined;
-        const nextDirection = detectedDirectionRaw && directions.includes(detectedDirectionRaw)
-          ? detectedDirectionRaw
-          : defaultDirection;
+        const detectedInputLanguage = data.detectedInputLanguage || 'unknown';
+        const detectedDirectionRaw = data.detectedDirection as
+          | Direction
+          | undefined;
+        const nextDirection =
+          detectedDirectionRaw && directions.includes(detectedDirectionRaw)
+            ? detectedDirectionRaw
+            : defaultDirection;
 
         if (!isManualDirection) {
           setActiveDirection(nextDirection);

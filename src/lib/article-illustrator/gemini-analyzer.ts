@@ -2,7 +2,7 @@
  * Gemini Analyzer - Generate image prompts for article illustrations
  */
 
-import { GoogleGenerativeAI } from '@google/generative-ai';
+import { GoogleGenerativeAI } from '@/lib/ai/gemini';
 import type {
   ArticleSections,
   GeneratedPrompt,

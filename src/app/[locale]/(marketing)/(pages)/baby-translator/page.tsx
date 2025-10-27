@@ -16,8 +16,8 @@ import type { Locale } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import BabyTranslatorTool from './BabyTranslatorTool';
 
-// Edge runtime configuration for Cloudflare Pages compatibility
 export const runtime = 'edge';
+
 export async function generateMetadata({
   params,
 }: {

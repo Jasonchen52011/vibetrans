@@ -13,7 +13,10 @@ export interface LanguageDetectionResult {
 /**
  * 快速语言检测函数 - 基于字符集
  */
-function quickLanguageDetection(text: string, targetLanguage: string): string | null {
+function quickLanguageDetection(
+  text: string,
+  targetLanguage: string
+): string | null {
   // 检测平假名（优先级高于中文）
   if (/[\u3040-\u309f]/.test(text)) {
     return 'japanese';
@@ -143,13 +146,20 @@ export function detectLanguage(
   // 基于字符集的快速加分
   if (targetLanguage === 'chinese' && /[\u4e00-\u9fff]/.test(cleanText)) {
     targetScore += 5; // 中文字符高权重
-  } else if (targetLanguage === 'japanese' && (/[\u3040-\u309f]/.test(cleanText) || /[\u30a0-\u30ff]/.test(cleanText))) {
+  } else if (
+    targetLanguage === 'japanese' &&
+    (/[\u3040-\u309f]/.test(cleanText) || /[\u30a0-\u30ff]/.test(cleanText))
+  ) {
     targetScore += 5; // 日文字符高权重
   } else if (targetLanguage === 'greek' && /[\u0370-\u03ff]/.test(cleanText)) {
     targetScore += 5; // 希腊字符高权重
   } else if (targetLanguage === 'esperanto' && /[ĉĝĥĵŝŭ]/.test(cleanText)) {
     targetScore += 5; // 世界语字符高权重
-  } else if (hasNonLatinChars && targetLanguage !== 'chinese' && targetLanguage !== 'cuneiform') {
+  } else if (
+    hasNonLatinChars &&
+    targetLanguage !== 'chinese' &&
+    targetLanguage !== 'cuneiform'
+  ) {
     // 非拉丁字符（非中文/楔形文字）很可能是目标语言
     targetScore += 3;
   } else if (hasAccentedChars && targetLanguage === 'creole') {
@@ -181,11 +191,13 @@ export function detectLanguage(
     // 无法确定语言
     detectedLanguage = 'unknown';
     confidence = 0;
-  } else if (englishScore > targetScore * 1.2) { // 降低阈值，更容易检测到英语
+  } else if (englishScore > targetScore * 1.2) {
+    // 降低阈值，更容易检测到英语
     // 明显是英语
     detectedLanguage = 'english';
     confidence = Math.min((englishScore - targetScore) / englishScore, 1);
-  } else if (targetScore > englishScore * 1.2) { // 降低阈值
+  } else if (targetScore > englishScore * 1.2) {
+    // 降低阈值
     // 明显是目标语言
     detectedLanguage = targetLanguage;
     confidence = Math.min((targetScore - englishScore) / targetScore, 1);
@@ -349,9 +361,7 @@ function getTargetLanguagePatterns(language: string): RegExp[] {
       /\b(\w*tl|\w*hua|\w*nahua|\w*quetz|\w*ayot|\w*teotl)\b/i,
       /[āēīōū]/gi,
     ],
-    ogham: [
-      /[\u1680-\u169C]/g,
-    ],
+    ogham: [/[\u1680-\u169C]/g],
     polish: [
       /\b(cześć|dzień dobry|dobry wieczór|do widzenia|proszę|dziękuję|tak|nie|jak się masz|przepraszam|kocham cię|przyjaciel|szczęście|dom|rodzina|miasto|szkoła|uniwersytet|praca|jedzenie|woda|kawa|herbata|śnieg|słońce|księżyc|droga|samochód|pociąg|lotnisko|książka|muzyka|film|teatr|sport|zdrowie|choroba|piękny|brzydki|miły|dobry|zły|duży|mały|szybko|wolno|dzisiaj|jutro|wczoraj|zawsze|nigdy|jeszcze|już|wejście|wyjście|lewo|prawo|góra|dół)\b/i,
       /[ąćęłńóśźż]/gi,

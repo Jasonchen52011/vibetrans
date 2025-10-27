@@ -1,5 +1,5 @@
-import { readFile, writeFile } from 'fs/promises';
 import { join } from 'path';
+import { readFile, writeFile } from 'fs/promises';
 import { glob } from 'glob';
 
 interface FileInfo {
@@ -11,7 +11,7 @@ interface FileInfo {
 
 async function findFilesWithMammoth(): Promise<string[]> {
   const files = await glob('src/**/*{.ts,.tsx}', {
-    ignore: ['**/node_modules/**', '**/.next/**']
+    ignore: ['**/node_modules/**', '**/.next/**'],
   });
 
   const filesWithMammoth: string[] = [];
@@ -19,7 +19,10 @@ async function findFilesWithMammoth(): Promise<string[]> {
   for (const file of files) {
     try {
       const content = await readFile(file, 'utf-8');
-      if (content.includes("import mammoth") || content.includes("from 'mammoth'")) {
+      if (
+        content.includes('import mammoth') ||
+        content.includes("from 'mammoth'")
+      ) {
         filesWithMammoth.push(file);
       }
     } catch (error) {
@@ -44,20 +47,25 @@ function optimizeFile(content: string): string {
   );
 
   // Add file-utils import if not present
-  if (!optimizedContent.includes("import { readFileContent }")) {
+  if (!optimizedContent.includes('import { readFileContent }')) {
     // Find the import section and add our import
     const importRegex = /(import[^;]+;?\s*\n)+/;
     const match = optimizedContent.match(importRegex);
 
     if (match) {
       const lastImport = match[0];
-      const newImport = "import { readFileContent } from '@/lib/utils/file-utils';\n";
-      optimizedContent = optimizedContent.replace(lastImport, lastImport + newImport);
+      const newImport =
+        "import { readFileContent } from '@/lib/utils/file-utils';\n";
+      optimizedContent = optimizedContent.replace(
+        lastImport,
+        lastImport + newImport
+      );
     }
   }
 
   // Remove the readFileContent function and replace with function call
-  const functionRegex = /\/\/\s*Read\s*file\s*content\s*[\s\S]*?\n\s*};?\s*\n?/g;
+  const functionRegex =
+    /\/\/\s*Read\s*file\s*content\s*[\s\S]*?\n\s*};?\s*\n?/g;
   optimizedContent = optimizedContent.replace(functionRegex, '');
 
   return optimizedContent;

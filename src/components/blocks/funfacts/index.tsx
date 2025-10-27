@@ -3,6 +3,7 @@
 import Icon from '@/components/icon';
 import { HeaderSection } from '@/components/layout/header-section';
 import { Button } from '@/components/ui/button';
+import { LinkableText } from '@/components/ui/linkable-text';
 import type { Section as SectionType } from '@/types/blocks/section';
 
 interface UserScenariosProps {

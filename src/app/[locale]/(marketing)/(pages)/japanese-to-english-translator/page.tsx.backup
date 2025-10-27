@@ -1,0 +1,15 @@
+'use client';
+
+export const runtime = 'edge';
+
+// 临时占位页面 - 此页面暂时不部署
+export default function TempPlaceholder() {
+  return (
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="text-center">
+        <h1 className="text-2xl font-bold mb-4">页面暂时不可用</h1>
+        <p className="text-gray-600">此页面正在维护中，请稍后再试。</p>
+      </div>
+    </div>
+  );
+}

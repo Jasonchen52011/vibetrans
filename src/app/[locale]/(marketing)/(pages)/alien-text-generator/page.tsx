@@ -17,8 +17,8 @@ import type { Locale } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import AlienTextGeneratorTool from './AlienTextGeneratorTool';
 
-// Edge runtime configuration for Cloudflare Pages compatibility
 export const runtime = 'edge';
+
 /**
  * https://next-intl.dev/docs/environments/actions-metadata-route-handlers#metadata-api
  */
@@ -126,19 +126,19 @@ export default async function AlienTextGeneratorPage(
   // User scenarios section (Fun Facts)
   const userScenariosSection = {
     name: 'userscenarios',
-    title: (t as any)('funfacts.title'),
+    title: (t as any)('funFacts.title'),
     items: [
       {
-        title: (t as any)('funfacts.items.0.title'),
-        description: (t as any)('funfacts.items.0.description'),
+        title: (t as any)('funFacts.items.0.title'),
+        description: (t as any)('funFacts.items.0.description'),
         image: {
           src: '/images/docs/zalgo-text-origin.webp',
           alt: 'Zalgo Text Origin',
         },
       },
       {
-        title: (t as any)('funfacts.items.1.title'),
-        description: (t as any)('funfacts.items.1.description'),
+        title: (t as any)('funFacts.items.1.title'),
+        description: (t as any)('funFacts.items.1.description'),
         image: {
           src: '/images/docs/unicode-magic.webp',
           alt: 'Unicode Magic',

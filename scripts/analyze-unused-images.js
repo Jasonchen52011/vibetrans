@@ -45,7 +45,7 @@ function getExistingTranslators() {
     'swahili-to-english-translator',
     'telugu-to-english-translator',
     'wingdings-translator',
-    'yoda-translator'
+    'yoda-translator',
   ];
 
   return new Set(translatorDirs);
@@ -53,9 +53,10 @@ function getExistingTranslators() {
 
 // 获取所有图片文件
 function getAllImages() {
-  const imagesDir = '/Users/jason-chen/Downloads/project/vibetrans/public/images/docs';
+  const imagesDir =
+    '/Users/jason-chen/Downloads/project/vibetrans/public/images/docs';
   const files = fs.readdirSync(imagesDir);
-  return files.filter(file => file.endsWith('.webp'));
+  return files.filter((file) => file.endsWith('.webp'));
 }
 
 // 分析图片属于哪个翻译器
@@ -64,16 +65,17 @@ function analyzeImageTranslators(images, existingTranslators) {
   const orphanedImages = [];
   const genericImages = [];
 
-  images.forEach(image => {
+  images.forEach((image) => {
     // 检查是否是不存在的工具/翻译器的图片
-    if (image.startsWith('albanian-to-english') ||
-        image.startsWith('verbose-generator') ||
-        image.startsWith('alien-text') ||
-        (image.startsWith('what-is-') && (
-          image.includes('albanian-to-english') ||
+    if (
+      image.startsWith('albanian-to-english') ||
+      image.startsWith('verbose-generator') ||
+      image.startsWith('alien-text') ||
+      (image.startsWith('what-is-') &&
+        (image.includes('albanian-to-english') ||
           image.includes('verbose-generator') ||
-          image.includes('alien-text-generator')
-        ))) {
+          image.includes('alien-text-generator')))
+    ) {
       orphanedImages.push(image);
       return;
     }
@@ -197,10 +199,10 @@ function isGenericImage(image) {
     /^word-/,
     /^world-/,
     /^yogh/,
-    /^zalgo/
+    /^zalgo/,
   ];
 
-  return genericPatterns.some(pattern => pattern.test(image));
+  return genericPatterns.some((pattern) => pattern.test(image));
 }
 
 // 提取基础名称
@@ -244,7 +246,7 @@ function extractBaseName(image) {
     /^(yoda-translator)/,
     /^(greek-translator)/,
     /^(alien-text-generator)/,
-    /^(verbose-generator)/
+    /^(verbose-generator)/,
   ];
 
   for (const pattern of patterns) {
@@ -259,10 +261,11 @@ function extractBaseName(image) {
 
 // 计算文件大小
 function getFileSize(files) {
-  const imagesDir = '/Users/jason-chen/Downloads/project/vibetrans/public/images/docs';
+  const imagesDir =
+    '/Users/jason-chen/Downloads/project/vibetrans/public/images/docs';
   let totalSize = 0;
 
-  files.forEach(file => {
+  files.forEach((file) => {
     const filePath = path.join(imagesDir, file);
     if (fs.existsSync(filePath)) {
       const stats = fs.statSync(filePath);
@@ -279,7 +282,9 @@ function formatSize(bytes) {
   const k = 1024;
   const sizes = ['Bytes', 'KB', 'MB', 'GB'];
   const i = Math.floor(Math.log(bytes) / Math.log(k));
-  return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+  return (
+    Number.parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i]
+  );
 }
 
 // 主函数
@@ -293,10 +298,13 @@ function main() {
   console.log(`- 现有翻译器数量: ${existingTranslators.size}`);
   console.log(`- 图片文件总数: ${allImages.length}`);
 
-  const { translatorImages, orphanedImages, genericImages } = analyzeImageTranslators(allImages, existingTranslators);
+  const { translatorImages, orphanedImages, genericImages } =
+    analyzeImageTranslators(allImages, existingTranslators);
 
   console.log(`\n📁 分类结果:`);
-  console.log(`- 有对应翻译器的图片: ${Object.values(translatorImages).flat().length}`);
+  console.log(
+    `- 有对应翻译器的图片: ${Object.values(translatorImages).flat().length}`
+  );
   console.log(`- 无对应翻译器的图片: ${orphanedImages.length}`);
   console.log(`- 通用图片: ${genericImages.length}`);
 
@@ -312,15 +320,21 @@ function main() {
   }
 
   console.log(`\n💡 建议:`);
-  console.log(`1. 删除 ${orphanedImages.length} 个无对应翻译器的图片，可节省 ${formatSize(orphanedSize)} 空间`);
+  console.log(
+    `1. 删除 ${orphanedImages.length} 个无对应翻译器的图片，可节省 ${formatSize(orphanedSize)} 空间`
+  );
   console.log(`2. 保留 ${genericImages.length} 个通用图片，可能被其他页面复用`);
-  console.log(`3. 保留 ${Object.values(translatorImages).flat().length} 个有对应翻译器的图片`);
+  console.log(
+    `3. 保留 ${Object.values(translatorImages).flat().length} 个有对应翻译器的图片`
+  );
 
   // 生成删除命令
   if (orphanedImages.length > 0) {
     console.log(`\n🔧 删除命令:`);
-    console.log(`cd /Users/jason-chen/Downloads/project/vibetrans/public/images/docs`);
-    orphanedImages.forEach(image => {
+    console.log(
+      `cd /Users/jason-chen/Downloads/project/vibetrans/public/images/docs`
+    );
+    orphanedImages.forEach((image) => {
       console.log(`rm "${image}"`);
     });
   }

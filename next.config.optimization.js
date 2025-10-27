@@ -1,11 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
-    optimizePackageImports: [
-      'lucide-react',
-      'framer-motion',
-      'recharts',
-    ],
+    optimizePackageImports: ['lucide-react', 'framer-motion', 'recharts'],
     webpack: (config, { isServer }) => {
       if (!isServer) {
         config.resolve.fallback = {

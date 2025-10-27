@@ -20,8 +20,6 @@ import type { MetadataRoute } from 'next';
  *
  * @returns {MetadataRoute.Manifest} The manifest configuration object
  */
-export const dynamic = 'force-static';
-
 export default async function manifest(): Promise<MetadataRoute.Manifest> {
   const defaultMessages = await getDefaultMessages();
   return {

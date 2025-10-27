@@ -1,12 +1,17 @@
+import { GoogleGenerativeAI } from '@/lib/ai/gemini';
 import { detectLanguage } from '@/lib/language-detection';
-import { GoogleGenerativeAI } from '@google/generative-ai';
 import { NextResponse } from 'next/server';
 
 export const runtime = 'edge';
 
 type TranslatorDirection = 'te-en' | 'en-te';
 
-type TranslationMode = 'technical' | 'literary' | 'business' | 'casual' | 'general';
+type TranslationMode =
+  | 'technical'
+  | 'literary'
+  | 'business'
+  | 'casual'
+  | 'general';
 
 type TranslationRequest = {
   text?: string;
@@ -19,7 +24,10 @@ const genAI = new GoogleGenerativeAI(
   process.env.GOOGLE_GENERATIVE_AI_API_KEY || ''
 );
 
-const TRANSLATION_MODES: Record<TranslationMode, { name: string; teluguToEnPrompt: string; enToTeluguPrompt: string }> = {
+const TRANSLATION_MODES: Record<
+  TranslationMode,
+  { name: string; teluguToEnPrompt: string; enToTeluguPrompt: string }
+> = {
   technical: {
     name: 'Technical Translation',
     teluguToEnPrompt: `You are a professional technical translator specializing in Telugu to English translation.
@@ -135,7 +143,9 @@ async function translateTeluguToEnglish(text: string, mode: TranslationMode) {
   const prompt = TRANSLATION_MODES[mode].teluguToEnPrompt;
   const result = await genAI
     .getGenerativeModel({ model: 'gemini-2.0-flash' })
-    .generateContent(`${prompt}\n\nTelugu text: "${text}"\n\nEnglish translation:`);
+    .generateContent(
+      `${prompt}\n\nTelugu text: "${text}"\n\nEnglish translation:`
+    );
 
   const content = result.response.text().trim();
   return stripQuotes(content);
@@ -145,14 +155,19 @@ async function translateEnglishToTelugu(text: string, mode: TranslationMode) {
   const prompt = TRANSLATION_MODES[mode].enToTeluguPrompt;
   const result = await genAI
     .getGenerativeModel({ model: 'gemini-2.0-flash' })
-    .generateContent(`${prompt}\n\nEnglish text: "${text}"\n\nTelugu translation:`);
+    .generateContent(
+      `${prompt}\n\nEnglish text: "${text}"\n\nTelugu translation:`
+    );
 
   const content = result.response.text().trim();
   return stripQuotes(content);
 }
 
 function stripQuotes(value: string) {
-  if ((value.startsWith('"') && value.endsWith('"')) || (value.startsWith('“') && value.endsWith('”'))) {
+  if (
+    (value.startsWith('"') && value.endsWith('"')) ||
+    (value.startsWith('“') && value.endsWith('”'))
+  ) {
     return value.slice(1, -1);
   }
   return value;
@@ -205,8 +220,12 @@ export async function GET() {
 
 export async function POST(request: Request) {
   try {
-    const { text, direction, mode = 'general', detectOnly = false } =
-      (await request.json()) as TranslationRequest;
+    const {
+      text,
+      direction,
+      mode = 'general',
+      detectOnly = false,
+    } = (await request.json()) as TranslationRequest;
 
     const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
     if (!apiKey) {

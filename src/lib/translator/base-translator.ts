@@ -1,13 +1,13 @@
+import { GoogleGenerativeAI } from '@/lib/ai/gemini';
 import { detectLanguage } from '@/lib/language-detection';
-import { GoogleGenerativeAI } from '@google/generative-ai';
 import { google } from '@ai-sdk/google';
 import { generateText } from 'ai';
 import type {
+  LanguageDirection,
+  TranslationMode,
   TranslationRequest,
   TranslationResult,
   TranslatorConfig,
-  TranslationMode,
-  LanguageDirection,
 } from './types';
 
 interface DetectionResult {
@@ -69,7 +69,13 @@ export abstract class BaseTranslator {
 
     // 仅检测语言模式
     if (detectOnly) {
-      return this.createDetectionResult(text, tool, mode, detectionResult, true);
+      return this.createDetectionResult(
+        text,
+        tool,
+        mode,
+        detectionResult,
+        true
+      );
     }
 
     // 执行翻译
@@ -139,7 +145,10 @@ export abstract class BaseTranslator {
       return {
         detectedLanguage: detection.detectedLanguage,
         confidence: detection.confidence,
-        suggestedDirection: this.suggestDirection(detection.detectedLanguage, direction),
+        suggestedDirection: this.suggestDirection(
+          detection.detectedLanguage,
+          direction
+        ),
       };
     } catch (error) {
       console.error('Language detection failed:', error);
@@ -187,7 +196,7 @@ export abstract class BaseTranslator {
     tool: string,
     mode: string,
     detectionResult: DetectionResult | null,
-    autoDetected: boolean = true
+    autoDetected = true
   ): TranslationResult {
     return {
       translated: '',
@@ -201,8 +210,12 @@ export abstract class BaseTranslator {
       message: 'Language detection completed',
       languageInfo: {
         detected: true,
-        detectedLanguage: this.formatLanguageName(detectionResult?.detectedLanguage),
-        direction: this.getDirectionDescription(detectionResult?.detectedLanguage),
+        detectedLanguage: this.formatLanguageName(
+          detectionResult?.detectedLanguage
+        ),
+        direction: this.getDirectionDescription(
+          detectionResult?.detectedLanguage
+        ),
         confidence: Math.round((detectionResult?.confidence || 0) * 100),
         explanation: this.getDetectionExplanation(detectionResult),
       },
@@ -218,7 +231,7 @@ export abstract class BaseTranslator {
     direction: string,
     detectionResult: DetectionResult | null,
     inputType: string,
-    autoDetected: boolean = false
+    autoDetected = false
   ): TranslationResult {
     return {
       translated,
@@ -232,8 +245,13 @@ export abstract class BaseTranslator {
       message: 'Translation successful',
       languageInfo: {
         detected: true,
-        detectedLanguage: this.formatLanguageName(detectionResult?.detectedLanguage),
-        direction: this.getDirectionDescription(detectionResult?.detectedLanguage, direction),
+        detectedLanguage: this.formatLanguageName(
+          detectionResult?.detectedLanguage
+        ),
+        direction: this.getDirectionDescription(
+          detectionResult?.detectedLanguage,
+          direction
+        ),
         confidence: Math.round((detectionResult?.confidence || 0) * 100),
         explanation: this.getTranslationExplanation(detectionResult, direction),
       },
@@ -242,9 +260,20 @@ export abstract class BaseTranslator {
 
   // 抽象辅助方法，子类需要实现
   protected abstract getSourceLanguage(): string;
-  protected abstract suggestDirection(detectedLanguage: string, currentDirection?: string): string;
+  protected abstract suggestDirection(
+    detectedLanguage: string,
+    currentDirection?: string
+  ): string;
   protected abstract formatLanguageName(language: string): string;
-  protected abstract getDirectionDescription(detectedLanguage: string, currentDirection?: string): string;
-  protected abstract getDetectionExplanation(detectionResult: DetectionResult | null): string;
-  protected abstract getTranslationExplanation(detectionResult: DetectionResult | null, direction?: string): string;
+  protected abstract getDirectionDescription(
+    detectedLanguage: string,
+    currentDirection?: string
+  ): string;
+  protected abstract getDetectionExplanation(
+    detectionResult: DetectionResult | null
+  ): string;
+  protected abstract getTranslationExplanation(
+    detectionResult: DetectionResult | null,
+    direction?: string
+  ): string;
 }

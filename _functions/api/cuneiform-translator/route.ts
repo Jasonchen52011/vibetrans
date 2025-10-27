@@ -126,12 +126,7 @@ export async function POST(request: NextRequest) {
       direction?: 'toCuneiform' | 'toEnglish';
       detectOnly?: boolean;
     };
-    const {
-      text,
-      script = 'sumerian',
-      direction,
-      detectOnly = false,
-    } = body;
+    const { text, script = 'sumerian', direction, detectOnly = false } = body;
 
     if (!text || typeof text !== 'string') {
       return NextResponse.json(

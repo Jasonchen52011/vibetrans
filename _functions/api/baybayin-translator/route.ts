@@ -97,7 +97,8 @@ export async function POST(request: NextRequest) {
         (detection.detectedLanguage === 'unknown' && hasBaybayinChars)
       ) {
         finalDirection = 'toEnglish';
-        explanation = 'Detected Baybayin characters, switching to Baybayin → English.';
+        explanation =
+          'Detected Baybayin characters, switching to Baybayin → English.';
       } else {
         finalDirection = 'toBaybayin';
         explanation =

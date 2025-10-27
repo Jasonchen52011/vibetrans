@@ -1,6 +1,6 @@
 import { BaseTranslator } from '../base-translator';
-import type { TranslatorConfig } from '../types';
 import type { DetectionResult } from '../base-translator';
+import type { TranslatorConfig } from '../types';
 
 export class GreekEnglishTranslator extends BaseTranslator {
   constructor() {
@@ -94,23 +94,37 @@ TASK: Translate ${direction === 'greek-to-en' ? 'Greek to English' : 'English to
     return 'greek';
   }
 
-  protected suggestDirection(detectedLanguage: string, currentDirection?: string): string {
+  protected suggestDirection(
+    detectedLanguage: string,
+    currentDirection?: string
+  ): string {
     if (currentDirection) return currentDirection;
     return detectedLanguage === 'greek' ? 'greek-to-en' : 'en-to-greek';
   }
 
   protected formatLanguageName(language: string): string {
-    return language === 'greek' ? 'Greek' : language === 'english' ? 'English' : 'Unknown';
+    return language === 'greek'
+      ? 'Greek'
+      : language === 'english'
+        ? 'English'
+        : 'Unknown';
   }
 
-  protected getDirectionDescription(detectedLanguage: string, currentDirection?: string): string {
+  protected getDirectionDescription(
+    detectedLanguage: string,
+    currentDirection?: string
+  ): string {
     if (currentDirection) {
-      return currentDirection === 'greek-to-en' ? 'Greek → English' : 'English → Greek';
+      return currentDirection === 'greek-to-en'
+        ? 'Greek → English'
+        : 'English → Greek';
     }
     return detectedLanguage === 'greek' ? 'Greek → English' : 'English → Greek';
   }
 
-  protected getDetectionExplanation(detectionResult: DetectionResult | null): string {
+  protected getDetectionExplanation(
+    detectionResult: DetectionResult | null
+  ): string {
     if (!detectionResult) return 'Language detection failed';
     const { detectedLanguage, confidence } = detectionResult;
     if (detectedLanguage === 'greek') {
@@ -121,13 +135,19 @@ TASK: Translate ${direction === 'greek-to-en' ? 'Greek to English' : 'English to
     return `Language detection uncertain (${Math.round(confidence * 100)}% confidence), please input Greek or English`;
   }
 
-  protected getTranslationExplanation(detectionResult: DetectionResult | null, direction?: string): string {
+  protected getTranslationExplanation(
+    detectionResult: DetectionResult | null,
+    direction?: string
+  ): string {
     if (!detectionResult) return 'Translation completed';
     const { detectedLanguage } = detectionResult;
     if (direction) {
-      const directionDesc = direction === 'greek-to-en' ? 'Greek → English' : 'English → Greek';
+      const directionDesc =
+        direction === 'greek-to-en' ? 'Greek → English' : 'English → Greek';
       return `Manual translation: ${directionDesc}`;
     }
-    return detectedLanguage === 'greek' ? 'Auto-detected Greek input, translated to English' : 'Auto-detected English input, translated to Greek';
+    return detectedLanguage === 'greek'
+      ? 'Auto-detected Greek input, translated to English'
+      : 'Auto-detected English input, translated to Greek';
   }
 }

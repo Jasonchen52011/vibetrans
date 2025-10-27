@@ -1,3 +1,4 @@
+export const runtime = 'edge';
 import { Analytics } from '@/analytics/analytics';
 import { fontSatoshi } from '@/assets/fonts';
 import AffonsoScript from '@/components/affiliate/affonso';
@@ -7,15 +8,12 @@ import { routing } from '@/i18n/routing';
 import { cn } from '@/lib/utils';
 import { type Locale, NextIntlClientProvider, hasLocale } from 'next-intl';
 import { notFound } from 'next/navigation';
+import { NuqsAdapter } from 'nuqs/adapters/next/app';
 import type { ReactNode } from 'react';
 import { Toaster } from 'sonner';
 import { Providers } from './providers';
 
 import '@/styles/globals.css';
-
-export function generateStaticParams() {
-  return routing.locales.map((locale) => ({ locale }));
-}
 
 interface LocaleLayoutProps {
   children: ReactNode;
@@ -51,15 +49,17 @@ export default async function LocaleLayout({
         suppressHydrationWarning
         className={cn('size-full antialiased', fontSatoshi.className)}
       >
-        <NextIntlClientProvider>
-          <Providers locale={locale}>
-            {children}
+        <NuqsAdapter>
+          <NextIntlClientProvider>
+            <Providers locale={locale}>
+              {children}
 
-            <Toaster richColors position="top-right" offset={64} />
-            <TailwindIndicator />
-            <Analytics />
-          </Providers>
-        </NextIntlClientProvider>
+              <Toaster richColors position="top-right" offset={64} />
+              <TailwindIndicator />
+              <Analytics />
+            </Providers>
+          </NextIntlClientProvider>
+        </NuqsAdapter>
       </body>
     </html>
   );

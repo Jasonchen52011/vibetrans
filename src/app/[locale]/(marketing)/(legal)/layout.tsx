@@ -1,3 +1,4 @@
+export const runtime = 'edge';
 import Container from '@/components/layout/container';
 import type { PropsWithChildren } from 'react';
 

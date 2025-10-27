@@ -1,14 +1,9 @@
 'use client';
 
-import { DirectionIndicator } from '@/components/translator/DirectionIndicator';
-import { SpeechToTextButton } from '@/components/ui/speech-to-text-button';
 import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
-import { useSmartTranslatorDirection } from '@/hooks/use-smart-translator-direction';
 import { ArrowRightIcon } from 'lucide-react';
 import mammoth from 'mammoth';
-import { useEffect, useMemo, useState } from 'react';
-
-type TranslatorDirection = 'sm-to-en' | 'en-to-sm';
+import { useState } from 'react';
 
 interface SamoanToEnglishTranslatorToolProps {
   pageData: any;
@@ -19,79 +14,30 @@ export default function SamoanToEnglishTranslatorTool({
   pageData,
   locale = 'en',
 }: SamoanToEnglishTranslatorToolProps) {
-  const [inputText, setInputText] = useState('');
-  const [outputText, setOutputText] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+  const [inputText, setInputText] = useState<string>('');
+  const [outputText, setOutputText] = useState<string>('');
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [fileName, setFileName] = useState<string | null>(null);
 
-  const {
-    activeDirection,
-    isManualDirection,
-    detectedLanguage,
-    languageWarning,
-    runLanguageDetection,
-    toggleDirection,
-    setAutoDirection,
-    resetDirection,
-    clearWarning,
-  } = useSmartTranslatorDirection<TranslatorDirection>({
-    apiPath: '/api/samoan-to-english-translator',
-    defaultDirection: 'sm-to-en',
-    directions: ['sm-to-en', 'en-to-sm'],
-    locale,
-    supportedLanguages: ['samoan', 'english'],
-    warningMessage:
-      pageData.tool.languageWarning || 'Please enter Samoan or English text.',
-  });
-
-  const isSamoanToEnglish = activeDirection === 'sm-to-en';
-  const samoanLabel = pageData.tool.samoanLabel || 'Samoan';
-  const englishLabel = pageData.tool.englishLabel || 'English';
-
-  const inputPlaceholder = useMemo(
-    () =>
-      isSamoanToEnglish
-        ? pageData.tool.inputPlaceholder ||
-          'Type or paste Samoan phrases to translate...'
-        : pageData.tool.englishInputPlaceholder ||
-          'Type English text for a Samoan-friendly version...',
-    [isSamoanToEnglish, pageData.tool]
+  // 智能翻译状态
+  const [direction, setDirection] = useState<'sm-to-en' | 'en-to-sm'>(
+    'sm-to-en'
   );
 
-  const outputPlaceholder = useMemo(
-    () =>
-      isSamoanToEnglish
-        ? pageData.tool.outputPlaceholder ||
-          'Natural English translation will appear here'
-        : pageData.tool.samoanOutputPlaceholder ||
-          'Conversational Samoan translation will appear here',
-    [isSamoanToEnglish, pageData.tool]
-  );
+  // 切换翻译方向并交换文本
+  const handleDirectionToggle = () => {
+    const newDirection = direction === 'sm-to-en' ? 'en-to-sm' : 'sm-to-en';
+    setDirection(newDirection);
 
-  const directionStatusLabel = isSamoanToEnglish
-    ? `${samoanLabel} → ${englishLabel}`
-    : `${englishLabel} → ${samoanLabel}`;
-
-  const detectionStatus =
-    detectedLanguage === 'samoan'
-      ? `Detected input: ${samoanLabel}`
-      : detectedLanguage === 'english'
-        ? `Detected input: ${englishLabel}`
-        : 'Auto-detecting. Enter Samoan or English.';
-
-  useEffect(() => {
-    const trimmed = inputText.trim();
-    if (!trimmed) {
-      clearWarning();
-      return;
+    // 如果有翻译结果，交换输入输出文本
+    if (outputText.trim()) {
+      setInputText(outputText);
+      setOutputText(inputText);
     }
-    const timeoutId = setTimeout(async () => {
-      await runLanguageDetection(trimmed);
-    }, 600);
-    return () => clearTimeout(timeoutId);
-  }, [inputText, runLanguageDetection, clearWarning]);
+  };
 
+  // Handle file upload
   const handleFileUpload = async (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
@@ -105,11 +51,12 @@ export default function SamoanToEnglishTranslatorTool({
       const text = await readFileContent(file);
       setInputText(text);
     } catch (err: any) {
-      setError(err.message || pageData.tool.error);
+      setError(err.message || 'Failed to read file');
       setFileName(null);
     }
   };
 
+  // Read file content
   const readFileContent = async (file: File): Promise<string> => {
     const fileExtension = file.name.split('.').pop()?.toLowerCase();
 
@@ -132,7 +79,7 @@ export default function SamoanToEnglishTranslatorTool({
         const result = await mammoth.extractRawText({ arrayBuffer });
         if (result.value) return result.value;
         throw new Error('Failed to extract text from Word document');
-      } catch {
+      } catch (error) {
         throw new Error(
           'Failed to read .docx file. Please ensure it is a valid Word document.'
         );
@@ -144,15 +91,9 @@ export default function SamoanToEnglishTranslatorTool({
     );
   };
 
-  const handleSpeechTranscript = (transcript: string) => {
-    setInputText((prev) =>
-      prev ? `${prev.trim()}\n${transcript}` : transcript
-    );
-  };
-
+  // Handle translation with smart detection
   const handleTranslate = async () => {
-    const trimmed = inputText.trim();
-    if (!trimmed) {
+    if (!inputText.trim()) {
       setError(pageData.tool.noInput);
       setOutputText('');
       return;
@@ -163,58 +104,41 @@ export default function SamoanToEnglishTranslatorTool({
     setOutputText('');
 
     try {
-      const detectionSummary = await runLanguageDetection(trimmed);
-      if (
-        !isManualDirection &&
-        (languageWarning ||
-          detectionSummary.detectedInputLanguage === 'unknown') &&
-        detectionSummary.confidence < 0.3
-      ) {
-        throw new Error(
-          pageData.tool.languageWarning ||
-            'Please enter Samoan or English text.'
-        );
-      }
-
-      const finalDirection = isManualDirection
-        ? activeDirection
-        : detectionSummary.detectedDirection;
-
+      // 使用智能检测，不指定固定方向
       const response = await fetch('/api/samoan-to-english-translator', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          text: trimmed,
-          direction: finalDirection,
+          text: inputText,
+          // direction: direction, // 注释掉固定方向，让API自动检测
         }),
       });
 
-      const data = await response.json();
+      const data = (await response.json()) as {
+        error?: string;
+        translated?: string;
+        suggestion?: string;
+        needsUserConfirmation?: boolean;
+        detectedInputLanguage?: string;
+        detectedDirection?: string;
+        languageInfo?: any;
+        direction?: 'sm-to-en' | 'en-to-sm';
+      };
+
       if (!response.ok) {
+        if (data.needsUserConfirmation && data.suggestion) {
+          // 如果是语言检测问题，显示具体建议
+          throw new Error(data.error);
+        }
         throw new Error(data.error || pageData.tool.error);
       }
 
-      const translated = (data.translated || '').trim();
-      if (!translated) {
-        throw new Error(pageData.tool.error);
+      // 根据API返回的检测方向更新组件状态
+      if (data.direction && data.direction !== direction) {
+        setDirection(data.direction);
       }
 
-      if (translated.toLowerCase() === trimmed.toLowerCase()) {
-        throw new Error(
-          pageData.tool.sameOutputError ||
-            'Translation matches the input. Please try different text.'
-        );
-      }
-
-      setOutputText(translated);
-      if (!isManualDirection) {
-        const nextDirection =
-          (data.detectedDirection as TranslatorDirection | undefined) ||
-          (data.direction as TranslatorDirection | undefined) ||
-          finalDirection;
-        setAutoDirection(nextDirection);
-      }
-      clearWarning();
+      setOutputText(data.translated || '');
     } catch (err: any) {
       setError(err.message || 'Translation failed');
       setOutputText('');
@@ -223,14 +147,16 @@ export default function SamoanToEnglishTranslatorTool({
     }
   };
 
+  // Reset
   const handleReset = () => {
     setInputText('');
     setOutputText('');
     setFileName(null);
     setError(null);
-    resetDirection();
+    setDirection('sm-to-en');
   };
 
+  // Copy
   const handleCopy = async () => {
     if (!outputText) return;
     try {
@@ -240,51 +166,54 @@ export default function SamoanToEnglishTranslatorTool({
     }
   };
 
+  // Download
   const handleDownload = () => {
     if (!outputText) return;
     const blob = new Blob([outputText], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `samoan-english-${Date.now()}.txt`;
+    a.download = `samoan-to-english-translator-${Date.now()}.txt`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
   };
 
-  const handleDirectionToggle = () => {
-    toggleDirection();
-    clearWarning();
-    if (outputText.trim()) {
-      setInputText(outputText);
-      setOutputText('');
-    }
-  };
-
   return (
     <div className="container max-w-7xl mx-auto px-4 mb-10">
       <main className="w-full bg-white dark:bg-zinc-800 shadow-xl border border-gray-100 dark:border-zinc-700 rounded-lg p-4 md:p-8">
-        <div className="flex flex-col md:flex-row gap-3 md:gap-4">
-          <div className="flex-1">
-            <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-3">
-              {isSamoanToEnglish ? samoanLabel : englishLabel}
+        {/* Input and Output Areas */}
+        <div className="flex flex-col md:flex-row gap-2 md:gap-3">
+          {/* Input Area */}
+          <div className="flex-1 relative">
+            <h2
+              className="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-3 cursor-pointer hover:text-primary transition-colors"
+              onClick={handleDirectionToggle}
+              title={
+                direction === 'sm-to-en'
+                  ? 'Switch to English → Samoan'
+                  : 'Switch to Samoan → English'
+              }
+            >
+              {direction === 'sm-to-en' ? 'Samoan Text' : 'English Text'}
             </h2>
             <textarea
               value={inputText}
-              onChange={(event) => setInputText(event.target.value)}
-              placeholder={inputPlaceholder}
-              className={`w-full h-48 md:h-64 p-3 border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent resize-none text-gray-700 dark:text-gray-200 dark:bg-zinc-700 ${
-                languageWarning
-                  ? 'border-amber-300 dark:border-amber-600 focus:ring-amber-500'
-                  : 'border-gray-300 dark:border-zinc-600'
-              }`}
-              aria-label={isSamoanToEnglish ? samoanLabel : englishLabel}
+              onChange={(e) => setInputText(e.target.value)}
+              placeholder={
+                direction === 'sm-to-en'
+                  ? pageData.tool.inputPlaceholder
+                  : 'Enter English text or upload a file...'
+              }
+              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent resize-none text-gray-700 dark:text-gray-200 dark:bg-zinc-700"
+              aria-label="Input text"
             />
 
-            <div className="mt-4 flex items-center gap-3 flex-wrap">
+            {/* File Upload */}
+            <div className="mt-4 flex items-center gap-3">
               <label
-                htmlFor="file-upload-samoan"
+                htmlFor="file-upload"
                 className="inline-flex items-center px-4 py-2 bg-gray-200 dark:bg-zinc-600 hover:bg-gray-300 dark:hover:bg-zinc-500 text-gray-800 dark:text-gray-100 font-medium rounded-lg cursor-pointer transition-colors"
               >
                 <svg
@@ -302,16 +231,11 @@ export default function SamoanToEnglishTranslatorTool({
                 </svg>
                 {pageData.tool.uploadButton}
               </label>
-              <SpeechToTextButton
-                onTranscript={handleSpeechTranscript}
-                locale={locale}
-              />
               <p className="text-xs text-gray-500 dark:text-gray-400">
-                {pageData.tool.uploadHint ||
-                  'Supports .txt and .docx files plus voice input.'}
+                {pageData.tool.uploadHint}
               </p>
               <input
-                id="file-upload-samoan"
+                id="file-upload"
                 type="file"
                 accept=".txt,.docx"
                 onChange={handleFileUpload}
@@ -319,6 +243,7 @@ export default function SamoanToEnglishTranslatorTool({
               />
             </div>
 
+            {/* File Name Display */}
             {fileName && (
               <div className="mt-3 flex items-center gap-2 p-2 bg-gray-100 dark:bg-zinc-700 rounded-md border border-gray-200 dark:border-zinc-600">
                 <svg
@@ -336,13 +261,12 @@ export default function SamoanToEnglishTranslatorTool({
                   {fileName}
                 </span>
                 <button
-                  type="button"
                   onClick={() => {
                     setFileName(null);
                     setInputText('');
                   }}
                   className="ml-auto text-gray-500 hover:text-red-500 dark:text-gray-400 dark:hover:text-red-400"
-                  aria-label={pageData.tool.removeFileTooltip || 'Remove file'}
+                  aria-label="Remove file"
                 >
                   <svg
                     className="w-4 h-4"
@@ -362,35 +286,57 @@ export default function SamoanToEnglishTranslatorTool({
             )}
           </div>
 
-          <DirectionIndicator
-            onToggle={handleDirectionToggle}
-            directionLabel={directionStatusLabel}
-            detectionStatus={detectionStatus}
-            warning={languageWarning}
-            toggleTitle={
-              isSamoanToEnglish
-                ? 'Switch to English → Samoan'
-                : 'Switch to Samoan → English'
-            }
-            ariaLabel={
-              pageData.tool.toggleDirectionTooltip ||
-              'Toggle translation direction'
-            }
-          />
+          {/* Direction Swap Button - Centered between inputs */}
+          <div className="flex md:flex-col items-center justify-center md:justify-start md:pt-32">
+            <button
+              onClick={handleDirectionToggle}
+              className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors rotate-0 md:rotate-0"
+              title={
+                direction === 'sm-to-en'
+                  ? 'Switch to English → Samoan'
+                  : 'Switch to Samoan → English'
+              }
+              aria-label="Toggle translation direction"
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"
+                />
+              </svg>
+            </button>
+          </div>
 
+          {/* Output Area */}
           <div className="flex-1">
             <div className="flex items-center justify-between mb-3">
-              <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">
-                {isSamoanToEnglish ? englishLabel : samoanLabel}
+              <h2
+                className="text-2xl font-semibold text-gray-800 dark:text-gray-100 cursor-pointer hover:text-primary transition-colors"
+                onClick={handleDirectionToggle}
+                title={
+                  direction === 'en-to-sm'
+                    ? 'Switch to Samoan → English'
+                    : 'Switch to English → Samoan'
+                }
+              >
+                {direction === 'sm-to-en'
+                  ? 'English Translation'
+                  : 'Samoan Translation'}
               </h2>
               {outputText && (
                 <div className="flex gap-2">
                   <TextToSpeechButton text={outputText} locale={locale} />
                   <button
-                    type="button"
                     onClick={handleCopy}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
-                    title={pageData.tool.copyTooltip || 'Copy'}
+                    title="Copy"
                   >
                     <svg
                       className="w-5 h-5"
@@ -407,10 +353,9 @@ export default function SamoanToEnglishTranslatorTool({
                     </svg>
                   </button>
                   <button
-                    type="button"
                     onClick={handleDownload}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
-                    title={pageData.tool.downloadTooltip || 'Download'}
+                    title="Download"
                   >
                     <svg
                       className="w-5 h-5"
@@ -436,17 +381,17 @@ export default function SamoanToEnglishTranslatorTool({
               {isLoading ? (
                 <div className="flex items-center gap-3">
                   <div className="flex space-x-1">
-                    <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+                    <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
                     <div
                       className="w-2 h-2 bg-primary rounded-full animate-pulse"
                       style={{ animationDelay: '0.2s' }}
-                    />
+                    ></div>
                     <div
                       className="w-2 h-2 bg-primary rounded-full animate-pulse"
                       style={{ animationDelay: '0.4s' }}
-                    />
+                    ></div>
                   </div>
-                  <span>{pageData.tool.loading || 'Translating...'}</span>
+                  <span>{pageData.tool.loading}</span>
                 </div>
               ) : error ? (
                 <p className="text-red-600 dark:text-red-400">{error}</p>
@@ -454,29 +399,35 @@ export default function SamoanToEnglishTranslatorTool({
                 <p className="text-lg whitespace-pre-wrap">{outputText}</p>
               ) : (
                 <p className="text-gray-500 dark:text-gray-400">
-                  {outputPlaceholder}
+                  {direction === 'sm-to-en'
+                    ? pageData.tool.outputPlaceholder
+                    : 'Samoan translation will appear here'}
                 </p>
               )}
             </div>
           </div>
         </div>
 
+        {/* Action Buttons */}
         <div className="mt-6 flex justify-center gap-4">
           <button
-            type="button"
             onClick={handleTranslate}
             disabled={isLoading}
             className="inline-flex items-center px-8 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {isLoading ? pageData.tool.loading : pageData.tool.translateButton}
+            <span>
+              {isLoading
+                ? pageData.tool.loading
+                : pageData.tool.translateButton}
+            </span>
+
             <ArrowRightIcon className="ml-2 h-4 w-4" />
           </button>
           <button
-            type="button"
             onClick={handleReset}
             className="px-6 py-3 bg-gray-200 dark:bg-zinc-600 hover:bg-gray-300 dark:hover:bg-zinc-500 text-gray-800 dark:text-gray-100 font-semibold rounded-lg shadow-md transition-colors"
           >
-            {pageData.tool.resetButton || 'Reset'}
+            Reset
           </button>
         </div>
       </main>

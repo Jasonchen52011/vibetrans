@@ -58,7 +58,10 @@ ${includeTransliteration ? 'Provide a helpful transliteration as well.' : 'Provi
       Authorization: `Bearer ${OPENAI_API_KEY}`,
     },
     body: JSON.stringify({
-      model: process.env.TRANSLATION_MODEL || process.env.CONTENT_MODEL || 'gpt-4o-mini',
+      model:
+        process.env.TRANSLATION_MODEL ||
+        process.env.CONTENT_MODEL ||
+        'gpt-4o-mini',
       messages: [
         { role: 'system', content: systemPrompt },
         { role: 'user', content: userPrompt },
@@ -164,9 +167,6 @@ export async function POST(request: Request) {
     });
   } catch (error) {
     console.error('Translation error:', error);
-    return NextResponse.json(
-      { error: 'Translation failed' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Translation failed' }, { status: 500 });
   }
 }

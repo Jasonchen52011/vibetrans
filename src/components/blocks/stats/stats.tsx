@@ -9,8 +9,6 @@ export default function StatsSection() {
       <div className="mx-auto max-w-5xl px-6 space-y-8 md:space-y-16">
         <HeaderSection
           title={t('title')}
-          subtitle={t('subtitle')}
-          subtitleAs="h2"
           description={t('description')}
           descriptionAs="p"
         />

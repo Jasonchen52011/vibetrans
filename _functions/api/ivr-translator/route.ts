@@ -70,14 +70,14 @@ export async function POST(request: Request) {
     const { text, direction, detectOnly = false } = body;
 
     if (!text || typeof text !== 'string') {
-      return NextResponse.json(
-        { error: 'No text provided' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'No text provided' }, { status: 400 });
     }
 
     const detection = detectIvrLanguage(text);
-    const finalDirection = normaliseDirection(direction, detection.detectedLanguage);
+    const finalDirection = normaliseDirection(
+      direction,
+      detection.detectedLanguage
+    );
 
     if (detectOnly) {
       return NextResponse.json({
@@ -94,9 +94,7 @@ export async function POST(request: Request) {
                 ? 'English'
                 : 'Unknown',
           direction:
-            finalDirection === 'ivr-to-en'
-              ? 'IVR → English'
-              : 'English → IVR',
+            finalDirection === 'ivr-to-en' ? 'IVR → English' : 'English → IVR',
           confidence: Math.round(detection.confidence * 100),
         },
       });

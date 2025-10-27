@@ -1,15 +1,15 @@
+import { GoogleGenerativeAI } from '@/lib/ai/gemini';
 import { detectLanguage } from '@/lib/language-detection';
-import { GoogleGenerativeAI } from '@google/generative-ai';
 import { NextResponse } from 'next/server';
 
 export const runtime = 'edge';
 
-type TranslatorDirection = 'gr-en' | 'en-gr';
-
+// 初始化 Gemini API
 const genAI = new GoogleGenerativeAI(
   process.env.GOOGLE_GENERATIVE_AI_API_KEY || ''
 );
 
+// 翻译模式定义
 const TRANSLATION_MODES = {
   modern: {
     name: 'Modern Greek Translation',
@@ -56,21 +56,38 @@ Translate the following Greek literary text to English while preserving its arti
 
 Translate the following Greek text to English:`,
   },
-} as const;
+};
 
 type TranslationMode = keyof typeof TRANSLATION_MODES;
 
-type TranslationRequest = {
-  text?: string;
-  mode?: TranslationMode;
-  greekType?: 'modern' | 'ancient';
-  direction?: TranslatorDirection;
-  detectOnly?: boolean;
-};
-
+// 检测希腊语类型（现代vs古代）
 function detectGreekType(text: string): 'modern' | 'ancient' | 'unknown' {
-  const ancientIndicators = ['Ἀ', 'Ἀν', 'δὲ', 'γὰρ', 'μὲν', 'οὐ', 'ἔστιν', 'ἔστι', 'εἰς', 'ἐπὶ'];
-  const modernIndicators = ['και', 'είναι', 'όχι', 'να', 'το', 'της', 'για', 'με', 'σε', 'έχω'];
+  // 简化的检测逻辑 - 实际应用中可能需要更复杂的分析
+  const ancientIndicators = [
+    'Ἀ',
+    'Ἀν',
+    'δὲ',
+    'γὰρ',
+    'μὲν',
+    'οὐ',
+    'ἔστιν',
+    'ἔστι',
+    'εἰς',
+    'ἐπὶ',
+  ];
+  const modernIndicators = [
+    'και',
+    'είναι',
+    'όχι',
+    'να',
+    'το',
+    'της',
+    'για',
+    'με',
+    'σε',
+    'είναι',
+    'έχω',
+  ];
 
   const textLower = text.toLowerCase();
   let ancientScore = 0;
@@ -89,33 +106,43 @@ function detectGreekType(text: string): 'modern' | 'ancient' | 'unknown' {
   return 'unknown';
 }
 
-async function translateGreekToEnglish(
+// 处理文本翻译（希腊语到英语）
+async function translateText(
   text: string,
   mode: TranslationMode = 'general',
   greekType?: 'modern' | 'ancient'
-) {
+): Promise<string> {
+  const model = genAI.getGenerativeModel({
+    model: 'gemini-2.0-flash',
+  });
+
   const modeConfig = TRANSLATION_MODES[mode];
   let systemPrompt = modeConfig.prompt;
 
+  // 如果是古代希腊语且不是general模式，添加额外信息
   if (greekType === 'ancient' && mode !== 'general') {
     systemPrompt = `This text is in Ancient Greek. ${systemPrompt}`;
   }
 
   const fullPrompt = `${systemPrompt}\n\n"${text}"`;
 
-  const result = await genAI
-    .getGenerativeModel({ model: 'gemini-2.0-flash' })
-    .generateContent(fullPrompt);
-
-  return result.response.text().trim();
+  const result = await model.generateContent(fullPrompt);
+  const response = result.response;
+  return response.text().trim();
 }
 
+// 处理英语到希腊语翻译
 async function translateEnglishToGreek(
   text: string,
   mode: TranslationMode = 'general'
-) {
+): Promise<string> {
+  const model = genAI.getGenerativeModel({
+    model: 'gemini-2.0-flash',
+  });
+
   let systemPrompt: string;
 
+  // 根据模式构建不同的提示
   switch (mode) {
     case 'modern':
       systemPrompt = `You are a professional translator specializing in English to Modern Greek translation.
@@ -161,48 +188,9 @@ Translate the following English text to Greek:`;
 
   const fullPrompt = `${systemPrompt}\n\n"${text}"`;
 
-  const result = await genAI
-    .getGenerativeModel({ model: 'gemini-2.0-flash' })
-    .generateContent(fullPrompt);
-
-  return result.response.text().trim();
-}
-
-function determineDirection(
-  detectedLanguage: string,
-  provided?: TranslatorDirection
-): TranslatorDirection {
-  if (provided) return provided;
-  if (detectedLanguage === 'greek') return 'gr-en';
-  if (detectedLanguage === 'english') return 'en-gr';
-  return 'gr-en';
-}
-
-function buildLanguageInfo(
-  detectedLanguage: string,
-  direction: TranslatorDirection,
-  confidence: number,
-  greekType?: 'modern' | 'ancient' | 'unknown'
-) {
-  const friendlyLanguage =
-    detectedLanguage === 'greek'
-      ? 'Greek'
-      : detectedLanguage === 'english'
-        ? 'English'
-        : 'Unknown';
-
-  return {
-    detected: detectedLanguage !== 'unknown',
-    detectedLanguage: friendlyLanguage,
-    direction: direction === 'gr-en' ? 'Greek → English' : 'English → Greek',
-    confidence: Math.round(confidence * 100),
-    explanation:
-      detectedLanguage === 'greek'
-        ? `Auto-detected ${greekType || 'greek'} input, translated to English`
-        : detectedLanguage === 'english'
-          ? 'Auto-detected English input, translated to Greek'
-          : 'Translation completed',
-  };
+  const result = await model.generateContent(fullPrompt);
+  const response = result.response;
+  return response.text().trim();
 }
 
 export async function GET() {
@@ -216,14 +204,16 @@ export async function GET() {
 
 export async function POST(request: Request) {
   try {
-    const {
-      text,
-      mode = 'general',
-      greekType,
-      direction,
-      detectOnly = false,
-    } = (await request.json()) as TranslationRequest;
+    const body = (await request.json()) as {
+      text?: string;
+      mode?: TranslationMode;
+      greekType?: 'modern' | 'ancient';
+      detectOnly?: boolean;
+    };
 
+    const { text, mode = 'general', greekType, detectOnly = false } = body;
+
+    // 验证 API 密钥
     const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
     if (!apiKey) {
       console.error('Missing GOOGLE_GENERATIVE_AI_API_KEY');
@@ -233,6 +223,7 @@ export async function POST(request: Request) {
       );
     }
 
+    // 验证翻译模式
     if (!TRANSLATION_MODES[mode]) {
       return NextResponse.json(
         {
@@ -242,66 +233,112 @@ export async function POST(request: Request) {
       );
     }
 
-    if (!text || typeof text !== 'string') {
+    if (!text) {
       return NextResponse.json({ error: 'No text provided' }, { status: 400 });
     }
 
+    // 智能检测输入语言
     const detection = detectLanguage(text, 'greek');
-    const detectedLanguage = detection.detectedLanguage;
-    const confidence = detection.confidence;
-    const detectedGreekType = greekType || detectGreekType(text);
-    const detectedDirection = determineDirection(detectedLanguage, direction);
-    const autoDetected = !direction;
+    const { detectedLanguage, confidence } = detection;
 
+    // 自动检测希腊语类型
+    const detectedGreekType = greekType || detectGreekType(text);
+
+    // 如果只是检测语言，返回检测结果
     if (detectOnly) {
       return NextResponse.json({
         detectedInputLanguage: detectedLanguage,
-        detectedDirection,
+        detectedGreekType,
         confidence,
-        autoDetected,
-        greekType: detectedGreekType,
-        languageInfo: buildLanguageInfo(
-          detectedLanguage,
-          detectedDirection,
-          confidence,
-          detectedGreekType
-        ),
+        autoDetected: true,
+        languageInfo: {
+          detected: true,
+          detectedLanguage:
+            detectedLanguage === 'greek'
+              ? 'Greek'
+              : detectedLanguage === 'english'
+                ? 'English'
+                : 'Unknown',
+          greekType: detectedGreekType,
+          direction:
+            detectedLanguage === 'greek' ? 'Greek → English' : 'Unknown',
+          confidence: Math.round(confidence * 100),
+          explanation:
+            detectedLanguage === 'greek'
+              ? `Detected ${detectedGreekType} Greek input, will translate to English`
+              : detectedLanguage === 'english'
+                ? 'Detected English input'
+                : 'Language detection uncertain, please input Greek text',
+        },
       });
     }
 
-    let translated: string;
+    // 执行翻译 - 根据检测到的语言确定翻译方向
+    let translation: string;
+    let actualTranslationDirection: string;
 
-    if (detectedDirection === 'gr-en') {
-      translated = await translateGreekToEnglish(text, mode, detectedGreekType);
+    if (detectedLanguage === 'english') {
+      // 英语输入，翻译成希腊语
+      translation = await translateEnglishToGreek(text, mode);
+      actualTranslationDirection = 'English to Greek';
+    } else if (detectedLanguage === 'greek') {
+      // 希腊语输入，翻译成英语
+      translation = await translateText(text, mode, detectedGreekType);
+      actualTranslationDirection = 'Greek to English';
     } else {
-      translated = await translateEnglishToGreek(text, mode);
+      // 未知语言，尝试按希腊语处理翻译成英语
+      translation = await translateText(text, mode, detectedGreekType);
+      actualTranslationDirection = 'Assumed Greek to English';
     }
 
-    if (!translated.trim()) {
-      throw new Error('Translation returned empty result');
-    }
+    const isTranslated =
+      translation !== text && translation.trim() !== text.trim();
 
-    return NextResponse.json({
-      translated: translated.trim(),
+    const result = {
+      translated: translation,
       original: text,
-      direction: detectedDirection,
-      detectedDirection,
-      detectedInputLanguage: detectedLanguage,
-      confidence,
-      autoDetected,
+      isTranslated,
+      message: isTranslated
+        ? 'Translation successful'
+        : 'No translation needed',
+      translator: {
+        name: 'Greek Translator',
+        type: 'bilingual',
+      },
       mode,
       modeName: TRANSLATION_MODES[mode].name,
       greekType: detectedGreekType,
-      languageInfo: buildLanguageInfo(
-        detectedLanguage,
-        detectedDirection,
-        confidence,
-        detectedGreekType
-      ),
-    });
+      detectedInputLanguage: detectedLanguage,
+      confidence,
+      autoDetected: true,
+      actualTranslationDirection,
+      status: 'success',
+      timestamp: new Date().toISOString(),
+      languageInfo: {
+        detected: true,
+        detectedLanguage:
+          detectedLanguage === 'greek'
+            ? 'Greek'
+            : detectedLanguage === 'english'
+              ? 'English'
+              : 'Unknown',
+        greekType: detectedGreekType,
+        direction: actualTranslationDirection,
+        confidence: Math.round(confidence * 100),
+        explanation:
+          detectedLanguage === 'greek'
+            ? `Auto-detected ${detectedGreekType} Greek input, translated to English`
+            : detectedLanguage === 'english'
+              ? `Detected English input, translated to Greek`
+              : `Translation completed: ${actualTranslationDirection}`,
+      },
+    };
+
+    return NextResponse.json(result);
   } catch (error: any) {
     console.error('Greek translation error:', error);
 
+    // 处理特定的 Gemini 错误
     if (error?.message?.includes('API key')) {
       return NextResponse.json(
         { error: 'Invalid API key configuration' },

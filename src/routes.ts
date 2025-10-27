@@ -1,15 +1,15 @@
 import { websiteConfig } from './config/website';
 
 /**
- * The routes for the application
+ * The routes for the application (Optimized version)
  */
 export enum Routes {
   Root = '/',
 
   // marketing pages
-  FAQ = '/#faq',
-  Features = '/#features',
-  Pricing = '/pricing', // change to /#pricing if you want to use the pricing section in homepage
+  FAQ = '/faq',
+  Features = '/features',
+  Pricing = '/pricing', // change to /#pricing if you want to use pricing section in homepage
   Blog = '/blog',
   Docs = '/docs',
   About = '/about',
@@ -47,52 +47,57 @@ export enum Routes {
   AIVideo = '/ai/video',
   AIAudio = '/ai/audio',
 
-  // Fun Tools routes
-  DogTranslator = '/dog-translator',
-  GenZTranslator = '/gen-z-translator',
-  GenAlphaTranslator = '/gen-alpha-translator',
+  // Core Fun Tools routes (optimized)
   DumbItDownAI = '/dumb-it-down-ai',
-  BadTranslator = '/bad-translator',
-  BabyTranslator = '/baby-translator',
-  GibberishTranslator = '/gibberish-translator',
-  AncientGreekTranslator = '/ancient-greek-translator',
-  AlBhedTranslator = '/al-bhed-translator',
-  AlienTextGenerator = '/alien-text-generator',
-  EsperantoTranslator = '/esperanto-translator',
-  CuneiformTranslator = '/cuneiform-translator',
   VerboseGenerator = '/verbose-generator',
-  IvrTranslator = '/ivr-translator',
-  AlbanianToEnglish = '/albanian-to-english',
-  CreoleToEnglishTranslator = '/creole-to-english-translator',
-  PigLatinTranslator = '/pig-latin-translator',
-  CantoneseTranslator = '/cantonese-translator',
-  ChineseToEnglishTranslator = '/chinese-to-english-translator',
-  EnglishToChineseTranslator = '/english-to-chinese-translator',
-  MiddleEnglishTranslator = '/middle-english-translator',
-  MinionTranslator = '/minion-translator',
-  BaybayinTranslator = '/baybayin-translator',
-  SamoanToEnglishTranslator = '/samoan-to-english-translator',
+
+  // Core Game Translator routes (optimized)
+  AlBhedTranslator = '/al-bhed-translator',
+  DrowTranslator = '/drow-translator',
   GasterTranslator = '/gaster-translator',
   HighValyrianTranslator = '/high-valyrian-translator',
-  AramaicTranslator = '/aramaic-translator',
-
-  // Additional translator routes
-  RuneTranslator = '/rune-translator',
-  EnglishToSwahiliTranslator = '/english-to-swahili-translator',
-  NahuatlTranslator = '/nahuatl-translator',
-  EnglishToAmharicTranslator = '/english-to-amharic-translator',
-  RunicTranslator = '/runic-translator',
-  DrowTranslator = '/drow-translator',
-  SwahiliToEnglishTranslator = '/swahili-to-english-translator',
-  EnglishToPolishTranslator = '/english-to-polish-translator',
-  OghamTranslator = '/ogham-translator',
-  TeluguToEnglishTranslator = '/telugu-to-english-translator',
-  YodaTranslator = '/yoda-translator',
   MandalorianTranslator = '/mandalorian-translator',
+  MinionTranslator = '/minion-translator',
+  RuneTranslator = '/rune-translator',
+  RunicTranslator = '/runic-translator',
   WingdingsTranslator = '/wingdings-translator',
-  GreekTranslator = '/greek-translator',
-  MangaTranslator = '/manga-translator',
+  YodaTranslator = '/yoda-translator',
+
+  // Core Language Translator routes (optimized)
+  AlbanianToEnglish = '/albanian-to-english',
+  AncientGreekTranslator = '/ancient-greek-translator',
+  AramaicTranslator = '/aramaic-translator',
+  BaybayinTranslator = '/baybayin-translator',
+  CantoneseTranslator = '/cantonese-translator',
+  ChineseToEnglishTranslator = '/chinese-to-english-translator',
+  CreoleToEnglishTranslator = '/creole-to-english-translator',
+  CuneiformTranslator = '/cuneiform-translator',
+  EnglishToAmharicTranslator = '/english-to-amharic-translator',
+  EnglishToChineseTranslator = '/english-to-chinese-translator',
   EnglishToPersianTranslator = '/english-to-persian-translator',
+  EnglishToPolishTranslator = '/english-to-polish-translator',
+  EnglishToSwahiliTranslator = '/english-to-swahili-translator',
+  EsperantoTranslator = '/esperanto-translator',
+  GreekTranslator = '/greek-translator',
+  IvrTranslator = '/ivr-translator',
+  JapaneseToEnglishTranslator = '/japanese-to-english-translator',
+  MangaTranslator = '/manga-translator',
+  MiddleEnglishTranslator = '/middle-english-translator',
+  NahuatlTranslator = '/nahuatl-translator',
+  OghamTranslator = '/ogham-translator',
+  SamoanToEnglishTranslator = '/samoan-to-english-translator',
+  SwahiliToEnglishTranslator = '/swahili-to-english-translator',
+  TeluguToEnglishTranslator = '/telugu-to-english-translator',
+
+  // Additional routes for navbar compatibility
+  AlienTextGenerator = '/alien-text-generator',
+  BabyTranslator = '/baby-translator',
+  BadTranslator = '/bad-translator',
+  DogTranslator = '/dog-translator',
+  GenAlphaTranslator = '/gen-alpha-translator',
+  GenZTranslator = '/gen-z-translator',
+  GibberishTranslator = '/gibberish-translator',
+  PigLatinTranslator = '/pig-latin-translator',
 
   // block routes
   MagicuiBlocks = '/magicui',

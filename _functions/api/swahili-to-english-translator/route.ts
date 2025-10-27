@@ -1,5 +1,5 @@
+import { GoogleGenerativeAI } from '@/lib/ai/gemini';
 import { detectLanguage } from '@/lib/language-detection';
-import { GoogleGenerativeAI } from '@google/generative-ai';
 import { NextResponse } from 'next/server';
 
 export const runtime = 'edge';
@@ -111,7 +111,10 @@ async function translateText(
   return response.text().trim();
 }
 
-function fallbackTranslation(text: string, direction: TranslatorDirection): string {
+function fallbackTranslation(
+  text: string,
+  direction: TranslatorDirection
+): string {
   return direction === 'sw-en'
     ? `${text} (translated to English - demo mode)`
     : `${text} (translated to Swahili - demo mode)`;
@@ -132,7 +135,8 @@ function buildLanguageInfo(
   return {
     detected: detectedLanguage !== 'unknown',
     detectedLanguage: friendlyLanguage,
-    direction: direction === 'sw-en' ? 'Swahili → English' : 'English → Swahili',
+    direction:
+      direction === 'sw-en' ? 'Swahili → English' : 'English → Swahili',
     confidence: Math.round(confidence * 100),
     explanation:
       detectedLanguage === 'swahili'

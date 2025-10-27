@@ -4,11 +4,7 @@ const path = require('path');
 const nextConfig = {
   // Experimental optimizations for size reduction
   experimental: {
-    optimizePackageImports: [
-      'lucide-react',
-      'date-fns',
-      'framer-motion',
-    ],
+    optimizePackageImports: ['lucide-react', 'date-fns', 'framer-motion'],
   },
 
   // Advanced webpack optimizations
@@ -73,7 +69,7 @@ const nextConfig = {
   ...(process.env.NODE_ENV === 'production' && {
     externals: {
       // Don't bundle these in production if available via CDN
-      'react': 'React',
+      react: 'React',
       'react-dom': 'ReactDOM',
     },
   }),
