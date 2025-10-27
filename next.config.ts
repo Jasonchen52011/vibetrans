@@ -9,8 +9,7 @@ import createNextIntlPlugin from 'next-intl/plugin';
  * Configuration for Cloudflare Pages with Functions
  */
 const nextConfig: NextConfig = {
-  // Output for Cloudflare Pages compatibility
-  output: 'standalone',
+  // Output for Cloudflare Pages compatibility - keep default for API routes support
 
   /* config options here */
   devIndicators: false,
