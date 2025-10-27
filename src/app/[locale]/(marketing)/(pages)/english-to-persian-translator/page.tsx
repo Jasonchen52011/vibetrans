@@ -79,30 +79,36 @@ export default async function EnglishToPersianTranslatorPage(
   const examplesData = {
     title: (t as any)('examples.title'),
     description: (t as any)('examples.description'),
-    images: [
+    examples: [
       {
+        before: (t as any)('examples.items.0.before'),
+        after: (t as any)('examples.items.0.after'),
         alt: (t as any)('examples.items.0.alt'),
-        name: (t as any)('examples.items.0.name'),
       },
       {
+        before: (t as any)('examples.items.1.before'),
+        after: (t as any)('examples.items.1.after'),
         alt: (t as any)('examples.items.1.alt'),
-        name: (t as any)('examples.items.1.name'),
       },
       {
+        before: (t as any)('examples.items.2.before'),
+        after: (t as any)('examples.items.2.after'),
         alt: (t as any)('examples.items.2.alt'),
-        name: (t as any)('examples.items.2.name'),
       },
       {
+        before: (t as any)('examples.items.3.before'),
+        after: (t as any)('examples.items.3.after'),
         alt: (t as any)('examples.items.3.alt'),
-        name: (t as any)('examples.items.3.name'),
       },
       {
+        before: (t as any)('examples.items.4.before'),
+        after: (t as any)('examples.items.4.after'),
         alt: (t as any)('examples.items.4.alt'),
-        name: (t as any)('examples.items.4.name'),
       },
       {
+        before: (t as any)('examples.items.5.before'),
+        after: (t as any)('examples.items.5.after'),
         alt: (t as any)('examples.items.5.alt'),
-        name: (t as any)('examples.items.5.name'),
       },
     ],
   };
