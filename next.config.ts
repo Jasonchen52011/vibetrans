@@ -2,8 +2,8 @@ import { createMDX } from 'fumadocs-mdx/next';
 import type { NextConfig } from 'next';
 import createNextIntlPlugin from 'next-intl/plugin';
 
-// Note: Removed @cloudflare/next-on-pages as it's deprecated
-// Using direct Next.js output for Cloudflare Pages compatibility
+// Note: @cloudflare/next-on-pages handles Cloudflare Pages compatibility
+// Including proper output directory and function routing
 
 /**
  * Configuration for Cloudflare Pages with Functions
