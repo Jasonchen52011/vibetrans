@@ -308,7 +308,6 @@
           "creoleToEnglishTranslator": "Creole To English Translator",
           "cantoneseTranslator": "Cantonese Translator",
           "chineseToEnglishTranslator": "Chinese To English Translator",
-          "englishToChineseTranslator": "English To Chinese Translator",
           "middleEnglishTranslator": "Middle English Translator",
           "baybayinTranslator": "Baybayin Translator",
           "oghamTranslator": "Ogham Translator",
@@ -319,9 +318,7 @@
           "swahiliToEnglishTranslator": "Swahili To English Translator",
           "englishToAmharicTranslator": "English To Amharic Translator",
           "englishToPolishTranslator": "English To Polish Translator",
-          "teluguToEnglishTranslator": "Telugu To English Translator",
-          "englishToPersianTranslator": "English To Persian Translator",
-          "japaneseToEnglishTranslator": "Japanese To English Translator"
+          "teluguToEnglishTranslator": "Telugu To English Translator"
         }
       },
       "product": {
