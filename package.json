@@ -6,7 +6,7 @@
     "dev": "next dev",
     "cf-dev": "next dev -p 8787",
     "build": "node scripts/clean-before-build.js && next build",
-    "build:cf": "node scripts/clean-before-build.js && next build",
+    "build:cf": "node scripts/clean-before-build.js && next build && pnpm exec next-on-pages",
     "preview:cf": "pnpm build:cf && pnpm exec wrangler pages dev .vercel/output/static",
     "deploy:cf": "pnpm build:cf && pnpm exec wrangler pages deploy",
     "start": "next start",
