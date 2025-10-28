@@ -70,9 +70,9 @@ export default function DumbItDownTool({
       try {
         const arrayBuffer = await file.arrayBuffer();
         // mammoth.extractRawText disabled for Edge Runtime
-    const result = {
-      text: 'Word document processing is not available in this environment. Please use plain text input.'
-    };
+        const result = {
+          text: 'Word document processing is not available in this environment. Please use plain text input.',
+        };
         if (result.value) {
           return result.value;
         }

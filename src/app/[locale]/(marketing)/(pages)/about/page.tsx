@@ -1,4 +1,3 @@
-// @ts-nocheck - Translation keys type mismatch
 import Container from '@/components/layout/container';
 import { AuroraBackground } from '@/components/ui/aurora-background';
 import { Button } from '@/components/ui/button';
@@ -32,9 +31,7 @@ export async function generateMetadata({
   const pt = await getTranslations({ locale, namespace: 'AboutPage' });
 
   return constructMetadata({
-    // @ts-ignore - Translation type mismatch
     title: pt('title') + ' | ' + t('title'),
-    // @ts-ignore - Translation type mismatch
     description: pt('description'),
     canonicalUrl: getUrlWithLocale('/about', locale),
     image: '/images/docs/what-is-vibetrans.webp',

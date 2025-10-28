@@ -198,5 +198,10 @@
       "primaryButton": "Start Bad Translating"
     },
     "ctaButton": "Try Bad Translator Now"
+  },
+  "Metadata": {
+    "name": "VibeTrans",
+    "title": "Bad Translator - VibeTrans",
+    "description": "Break language barriers with AI-powered translations. Supports 100+ languages with accurate, context-aware translations."
   }
 }

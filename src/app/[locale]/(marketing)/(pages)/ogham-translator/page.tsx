@@ -1,4 +1,3 @@
-// @ts-nocheck - Translation keys type mismatch
 import BeforeAfterSection from '@/components/blocks/Examples';
 import CallToActionSection from '@/components/blocks/calltoaction/calltoaction';
 import ExploreOurAiTools from '@/components/blocks/exploretools';
@@ -32,7 +31,7 @@ export async function generateMetadata({
   });
 
   return constructMetadata({
-    title: `${gt('title')} | ${(t as any)('name')}`,
+    title: `${gt('title')} | ${t('name')}`,
     description: gt('description'),
     canonicalUrl: getUrlWithLocale('/ogham-translator', locale),
     image: '/images/docs/what-is-ogham-translator.webp',
@@ -53,53 +52,53 @@ export default async function OghamTranslatorPage(
   // Structured Data for SEO
   const structuredData = buildToolStructuredData({
     name: 'VibeTrans Ogham Translator',
-    description: (t as any)('description'),
+    description: t('description'),
   });
 
   // Page data for the tool
   const pageData = {
     tool: {
-      inputLabel: (t as any)('tool.inputLabel'),
-      outputLabel: (t as any)('tool.outputLabel'),
-      inputPlaceholder: (t as any)('tool.inputPlaceholder'),
-      outputPlaceholder: (t as any)('tool.outputPlaceholder'),
-      translateButton: (t as any)('tool.translateButton'),
-      uploadButton: (t as any)('tool.uploadButton'),
-      uploadHint: (t as any)('tool.uploadHint'),
-      loading: (t as any)('tool.loading'),
-      error: (t as any)('tool.error'),
-      noInput: (t as any)('tool.noInput'),
+      inputLabel: t('tool.inputLabel'),
+      outputLabel: t('tool.outputLabel'),
+      inputPlaceholder: t('tool.inputPlaceholder'),
+      outputPlaceholder: t('tool.outputPlaceholder'),
+      translateButton: t('tool.translateButton'),
+      uploadButton: t('tool.uploadButton'),
+      uploadHint: t('tool.uploadHint'),
+      loading: t('tool.loading'),
+      error: t('tool.error'),
+      noInput: t('tool.noInput'),
     },
   };
 
   // Examples section data
   const examplesData = {
-    title: (t as any)('examples.title'),
-    description: (t as any)('examples.description'),
+    title: t('examples.title'),
+    description: t('examples.description'),
     images: [
       {
-        alt: (t as any)('examples.items.0.alt'),
-        name: (t as any)('examples.items.0.name'),
+        alt: t('examples.items.0.alt'),
+        name: t('examples.items.0.name'),
       },
       {
-        alt: (t as any)('examples.items.1.alt'),
-        name: (t as any)('examples.items.1.name'),
+        alt: t('examples.items.1.alt'),
+        name: t('examples.items.1.name'),
       },
       {
-        alt: (t as any)('examples.items.2.alt'),
-        name: (t as any)('examples.items.2.name'),
+        alt: t('examples.items.2.alt'),
+        name: t('examples.items.2.name'),
       },
       {
-        alt: (t as any)('examples.items.3.alt'),
-        name: (t as any)('examples.items.3.name'),
+        alt: t('examples.items.3.alt'),
+        name: t('examples.items.3.name'),
       },
       {
-        alt: (t as any)('examples.items.4.alt'),
-        name: (t as any)('examples.items.4.name'),
+        alt: t('examples.items.4.alt'),
+        name: t('examples.items.4.name'),
       },
       {
-        alt: (t as any)('examples.items.5.alt'),
-        name: (t as any)('examples.items.5.name'),
+        alt: t('examples.items.5.alt'),
+        name: t('examples.items.5.name'),
       },
     ],
   };
@@ -108,7 +107,7 @@ export default async function OghamTranslatorPage(
   let whatIsImageSrc = '/images/docs/ogham-translation-tool.webp';
   let whatIsImageAlt = 'What is Ogham Translator';
   try {
-    const candidate = (t as any)('whatIs.image');
+    const candidate = t('whatIs.image');
     if (typeof candidate === 'string' && candidate.trim().length > 0) {
       whatIsImageSrc = candidate;
     }
@@ -116,7 +115,7 @@ export default async function OghamTranslatorPage(
     whatIsImageSrc = '/images/docs/ogham-translation-tool.webp';
   }
   try {
-    const candidateAlt = (t as any)('whatIs.imageAlt');
+    const candidateAlt = t('whatIs.imageAlt');
     if (typeof candidateAlt === 'string' && candidateAlt.trim().length > 0) {
       whatIsImageAlt = candidateAlt;
     }
@@ -125,21 +124,21 @@ export default async function OghamTranslatorPage(
   }
 
   const whatIsSection = {
-    title: (t as any)('whatIs.title'),
-    description: (t as any)('whatIs.description'),
+    title: t('whatIs.title'),
+    description: t('whatIs.description'),
     features: [],
     image: {
       src: whatIsImageSrc,
       alt: whatIsImageAlt,
     },
-    cta: { text: (t as any)('ctaButton') },
+    cta: { text: t('ctaButton') },
   };
 
   // How to section
   let howtoImageSrc = '/images/docs/translate-improve-arrows.webp';
   let howtoImageAlt = 'How to use Ogham Translator';
   try {
-    const candidate = (t as any)('howto.image');
+    const candidate = t('howto.image');
     if (typeof candidate === 'string' && candidate.trim().length > 0) {
       howtoImageSrc = candidate;
     }
@@ -147,7 +146,7 @@ export default async function OghamTranslatorPage(
     howtoImageSrc = '/images/docs/translate-improve-arrows.webp';
   }
   try {
-    const candidateAlt = (t as any)('howto.imageAlt');
+    const candidateAlt = t('howto.imageAlt');
     if (typeof candidateAlt === 'string' && candidateAlt.trim().length > 0) {
       howtoImageAlt = candidateAlt;
     }
@@ -157,31 +156,31 @@ export default async function OghamTranslatorPage(
 
   const howtoSection = {
     name: 'howto',
-    title: (t as any)('howto.title'),
-    description: (t as any)('howto.description'),
+    title: t('howto.title'),
+    description: t('howto.description'),
     image: {
       src: howtoImageSrc,
       alt: howtoImageAlt,
     },
     items: [
       {
-        title: (t as any)('howto.steps.0.title'),
-        description: (t as any)('howto.steps.0.description'),
+        title: t('howto.steps.0.title'),
+        description: t('howto.steps.0.description'),
         icon: 'FaFileUpload',
       },
       {
-        title: (t as any)('howto.steps.1.title'),
-        description: (t as any)('howto.steps.1.description'),
+        title: t('howto.steps.1.title'),
+        description: t('howto.steps.1.description'),
         icon: 'FaPencilAlt',
       },
       {
-        title: (t as any)('howto.steps.2.title'),
-        description: (t as any)('howto.steps.2.description'),
+        title: t('howto.steps.2.title'),
+        description: t('howto.steps.2.description'),
         icon: 'FaLanguage',
       },
       {
-        title: (t as any)('howto.steps.3.title'),
-        description: (t as any)('howto.steps.3.description'),
+        title: t('howto.steps.3.title'),
+        description: t('howto.steps.3.description'),
         icon: 'FaCheckCircle',
       },
     ],
@@ -193,7 +192,7 @@ export default async function OghamTranslatorPage(
 
   let highlightsDescription = fallbackHighlightDescription;
   try {
-    const desc = (t as any)('highlights.description');
+    const desc = t('highlights.description');
     if (typeof desc === 'string' && desc.trim().length > 0) {
       highlightsDescription = desc;
     }
@@ -210,7 +209,7 @@ export default async function OghamTranslatorPage(
 
   let highlightItems = [];
   try {
-    const rawFeatures = (t as any).raw('highlights.features');
+    const rawFeatures = t.raw('highlights.features');
     if (Array.isArray(rawFeatures)) {
       highlightItems = rawFeatures.slice(0, 4).map((feature, index) => ({
         icon:
@@ -227,14 +226,14 @@ export default async function OghamTranslatorPage(
   if (highlightItems.length === 0) {
     highlightItems = defaultHighlightIcons.map((icon, index) => ({
       icon,
-      title: (t as any)(`highlights.features.${index}.title`),
-      description: (t as any)(`highlights.features.${index}.description`),
+      title: t(`highlights.features.${index}.title`),
+      description: t(`highlights.features.${index}.description`),
     }));
   }
 
   const highlightsSection = {
     name: 'highlights',
-    title: (t as any)('highlights.title'),
+    title: t('highlights.title'),
     description: highlightsDescription,
     items: highlightItems,
   };
@@ -247,7 +246,7 @@ export default async function OghamTranslatorPage(
   }> = [];
 
   try {
-    const rawFunFacts = (t as any).raw('funFacts.items');
+    const rawFunFacts = t.raw('funFacts.items');
     if (Array.isArray(rawFunFacts)) {
       funFactsItems = rawFunFacts.map((item: any) => ({
         title: item?.title || '',
@@ -265,19 +264,19 @@ export default async function OghamTranslatorPage(
   if (funFactsItems.length === 0) {
     funFactsItems = [
       {
-        title: (t as any)('funFacts.items.0.title'),
-        description: (t as any)('funFacts.items.0.description'),
+        title: t('funFacts.items.0.title'),
+        description: t('funFacts.items.0.description'),
         image: {
           src: '/images/docs/ogham-alphabet-trees.webp',
-          alt: (t as any)('funFacts.items.0.title'),
+          alt: t('funFacts.items.0.title'),
         },
       },
       {
-        title: (t as any)('funFacts.items.1.title'),
-        description: (t as any)('funFacts.items.1.description'),
+        title: t('funFacts.items.1.title'),
+        description: t('funFacts.items.1.description'),
         image: {
           src: '/images/docs/unicode-ogham-space.webp',
-          alt: (t as any)('funFacts.items.1.title'),
+          alt: t('funFacts.items.1.title'),
         },
       },
     ];
@@ -285,22 +284,22 @@ export default async function OghamTranslatorPage(
 
   const funFactsSection = {
     name: 'funFacts',
-    title: (t as any)('funFacts.title'),
+    title: t('funFacts.title'),
     items: funFactsItems,
   };
 
   // User Interest section (4 content blocks) - Dynamic image loading from translation files
   const userInterestSection = {
     name: 'userInterest',
-    title: (t as any)('userInterest.title'),
+    title: t('userInterest.title'),
     items: [
       {
-        title: (t as any)('userInterest.items.0.title'),
-        description: (t as any)('userInterest.items.0.description'),
+        title: t('userInterest.items.0.title'),
+        description: t('userInterest.items.0.description'),
         image: (() => {
           let imageSrc = '/images/docs/ogham-translator-interest-1.webp';
           try {
-            const candidate = (t as any)('userInterest.items.0.image');
+            const candidate = t('userInterest.items.0.image');
             if (typeof candidate === 'string' && candidate.trim().length > 0) {
               imageSrc = candidate;
             }
@@ -309,17 +308,17 @@ export default async function OghamTranslatorPage(
           }
           return {
             src: imageSrc,
-            alt: (t as any)('userInterest.items.0.title'),
+            alt: t('userInterest.items.0.title'),
           };
         })(),
       },
       {
-        title: (t as any)('userInterest.items.1.title'),
-        description: (t as any)('userInterest.items.1.description'),
+        title: t('userInterest.items.1.title'),
+        description: t('userInterest.items.1.description'),
         image: (() => {
           let imageSrc = '/images/docs/ogham-translator-interest-2.webp';
           try {
-            const candidate = (t as any)('userInterest.items.1.image');
+            const candidate = t('userInterest.items.1.image');
             if (typeof candidate === 'string' && candidate.trim().length > 0) {
               imageSrc = candidate;
             }
@@ -328,17 +327,17 @@ export default async function OghamTranslatorPage(
           }
           return {
             src: imageSrc,
-            alt: (t as any)('userInterest.items.1.title'),
+            alt: t('userInterest.items.1.title'),
           };
         })(),
       },
       {
-        title: (t as any)('userInterest.items.2.title'),
-        description: (t as any)('userInterest.items.2.description'),
+        title: t('userInterest.items.2.title'),
+        description: t('userInterest.items.2.description'),
         image: (() => {
           let imageSrc = '/images/docs/ogham-translator-interest-3.webp';
           try {
-            const candidate = (t as any)('userInterest.items.2.image');
+            const candidate = t('userInterest.items.2.image');
             if (typeof candidate === 'string' && candidate.trim().length > 0) {
               imageSrc = candidate;
             }
@@ -347,17 +346,17 @@ export default async function OghamTranslatorPage(
           }
           return {
             src: imageSrc,
-            alt: (t as any)('userInterest.items.2.title'),
+            alt: t('userInterest.items.2.title'),
           };
         })(),
       },
       {
-        title: (t as any)('userInterest.items.3.title'),
-        description: (t as any)('userInterest.items.3.description'),
+        title: t('userInterest.items.3.title'),
+        description: t('userInterest.items.3.description'),
         image: (() => {
           let imageSrc = '/images/docs/ogham-translator-interest-4.webp';
           try {
-            const candidate = (t as any)('userInterest.items.3.image');
+            const candidate = t('userInterest.items.3.image');
             if (typeof candidate === 'string' && candidate.trim().length > 0) {
               imageSrc = candidate;
             }
@@ -366,7 +365,7 @@ export default async function OghamTranslatorPage(
           }
           return {
             src: imageSrc,
-            alt: (t as any)('userInterest.items.3.title'),
+            alt: t('userInterest.items.3.title'),
           };
         })(),
       },
@@ -384,10 +383,10 @@ export default async function OghamTranslatorPage(
         <AuroraBackground className="bg-white dark:bg-zinc-900 !pt-12 !h-auto">
           <div className="container max-w-5xl mx-auto px-4 text-center relative z-10 pb-8">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              {(t as any)('hero.title')}
+              {t('hero.title')}
             </h1>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
-              {(t as any)('hero.description')}
+              {t('hero.description')}
             </p>
 
             {/* User Avatars and Rating */}
@@ -422,7 +421,7 @@ export default async function OghamTranslatorPage(
                   ))}
                 </div>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
-                  {(t as any)('hero.userCount')}
+                  {t('hero.userCount')}
                 </p>
               </div>
             </div>
@@ -444,16 +443,10 @@ export default async function OghamTranslatorPage(
         <HowTo section={howtoSection} />
 
         {/* User Interest Blocks */}
-        <UserScenarios
-          section={userInterestSection}
-          ctaText={(t as any)('ctaButton')}
-        />
+        <UserScenarios section={userInterestSection} ctaText={t('ctaButton')} />
 
         {/* Fun Facts */}
-        <UserScenarios
-          section={funFactsSection}
-          ctaText={(t as any)('ctaButton')}
-        />
+        <UserScenarios section={funFactsSection} ctaText={t('ctaButton')} />
 
         {/* Highlights */}
         <WhyChoose section={highlightsSection} />

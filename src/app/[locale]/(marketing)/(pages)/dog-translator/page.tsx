@@ -1,4 +1,3 @@
-// @ts-nocheck - Translation keys type mismatch
 import BeforeAfterSection from '@/components/blocks/Examples';
 import CallToActionSection from '@/components/blocks/calltoaction/calltoaction';
 import ExploreOurAiTools from '@/components/blocks/exploretools';
@@ -34,9 +33,7 @@ export async function generateMetadata({
   const dt = await getTranslations({ locale, namespace: 'DogTranslatorPage' });
 
   return constructMetadata({
-    // @ts-ignore - Translation type mismatch
-    title: `${dt('title')} | ${(t as any)('name')}`,
-    // @ts-ignore - Translation type mismatch
+    title: `${dt('title')} | ${t('name')}`,
     description: dt('description'),
     canonicalUrl: getUrlWithLocale('/dog-translator', locale),
     image: '/images/docs/pet-training-made-fun.webp',
@@ -50,59 +47,58 @@ interface DogTranslatorPageProps {
 export default async function DogTranslatorPage(props: DogTranslatorPageProps) {
   const params = await props.params;
   const { locale } = params;
-  // @ts-ignore - Translation keys are dynamic
   const t = await getTranslations({ locale, namespace: 'DogTranslatorPage' });
 
   // Structured Data for SEO
   const structuredData = buildToolStructuredData({
     name: 'VibeTrans Dog Translator',
-    description: (t as any)('description'),
+    description: t('description'),
   });
 
   // Examples section data
   const examplesData = {
-    title: (t as any)('examples.title'),
-    description: (t as any)('examples.description'),
+    title: t('examples.title'),
+    description: t('examples.description'),
     images: [
       {
         src: '',
-        alt: (t as any)('examples.items.0.alt'),
-        name: (t as any)('examples.items.0.name'),
+        alt: t('examples.items.0.alt'),
+        name: t('examples.items.0.name'),
         audio: '/voice/happy.mp3',
         emotion: 'Happy',
       },
       {
         src: '',
-        alt: (t as any)('examples.items.1.alt'),
-        name: (t as any)('examples.items.1.name'),
+        alt: t('examples.items.1.alt'),
+        name: t('examples.items.1.name'),
         audio: '/voice/happy3.mp3',
         emotion: 'Excited',
       },
       {
         src: '',
-        alt: (t as any)('examples.items.2.alt'),
-        name: (t as any)('examples.items.2.name'),
+        alt: t('examples.items.2.alt'),
+        name: t('examples.items.2.name'),
         audio: '/voice/sad.mp3',
         emotion: 'Sad',
       },
       {
         src: '',
-        alt: (t as any)('examples.items.3.alt'),
-        name: (t as any)('examples.items.3.name'),
+        alt: t('examples.items.3.alt'),
+        name: t('examples.items.3.name'),
         audio: '/voice/angry.mp3',
         emotion: 'Angry',
       },
       {
         src: '',
-        alt: (t as any)('examples.items.4.alt'),
-        name: (t as any)('examples.items.4.name'),
+        alt: t('examples.items.4.alt'),
+        name: t('examples.items.4.name'),
         audio: '/voice/normal.mp3',
         emotion: 'Calm',
       },
       {
         src: '',
-        alt: (t as any)('examples.items.5.alt'),
-        name: (t as any)('examples.items.5.name'),
+        alt: t('examples.items.5.alt'),
+        name: t('examples.items.5.name'),
         audio: '/voice/happy2.mp3',
         emotion: 'Playful',
       },
@@ -112,22 +108,22 @@ export default async function DogTranslatorPage(props: DogTranslatorPageProps) {
   // User scenarios section
   const userScenariosSection = {
     name: 'userscenarios',
-    title: (t as any)('userScenarios.title'),
+    title: t('userScenarios.title'),
     items: [
       {
-        title: (t as any)('userScenarios.items.0.title'),
-        description: (t as any)('userScenarios.items.0.description'),
+        title: t('userScenarios.items.0.title'),
+        description: t('userScenarios.items.0.description'),
         image: {
           src: '/images/docs/family-entertainment.webp',
-          alt: (t as any)('userScenarios.items.0.title'),
+          alt: t('userScenarios.items.0.title'),
         },
       },
       {
-        title: (t as any)('userScenarios.items.1.title'),
-        description: (t as any)('userScenarios.items.1.description'),
+        title: t('userScenarios.items.1.title'),
+        description: t('userScenarios.items.1.description'),
         image: {
           src: '/images/docs/pet-training-made-fun.webp',
-          alt: (t as any)('userScenarios.items.1.title'),
+          alt: t('userScenarios.items.1.title'),
         },
       },
     ],
@@ -136,15 +132,15 @@ export default async function DogTranslatorPage(props: DogTranslatorPageProps) {
   // Fun Facts section (text-focused)
   const funFactsSection = {
     name: 'funFacts',
-    title: (t as any)('funFacts.title'),
+    title: t('funFacts.title'),
     items: [
       {
-        title: (t as any)('funFacts.items.0.title'),
-        description: (t as any)('funFacts.items.0.description'),
+        title: t('funFacts.items.0.title'),
+        description: t('funFacts.items.0.description'),
       },
       {
-        title: (t as any)('funFacts.items.1.title'),
-        description: (t as any)('funFacts.items.1.description'),
+        title: t('funFacts.items.1.title'),
+        description: t('funFacts.items.1.description'),
       },
     ],
   };
@@ -152,28 +148,28 @@ export default async function DogTranslatorPage(props: DogTranslatorPageProps) {
   // Highlights section
   const highlightsSection = {
     name: 'highlights',
-    title: (t as any)('highlights.title'),
-    description: (t as any)('highlights.description'),
+    title: t('highlights.title'),
+    description: t('highlights.description'),
     items: [
       {
         icon: 'FaRocket',
-        title: (t as any)('highlights.items.0.title'),
-        description: (t as any)('highlights.items.0.description'),
+        title: t('highlights.items.0.title'),
+        description: t('highlights.items.0.description'),
       },
       {
         icon: 'FaBrain',
-        title: (t as any)('highlights.items.1.title'),
-        description: (t as any)('highlights.items.1.description'),
+        title: t('highlights.items.1.title'),
+        description: t('highlights.items.1.description'),
       },
       {
         icon: 'FaHeart',
-        title: (t as any)('highlights.items.2.title'),
-        description: (t as any)('highlights.items.2.description'),
+        title: t('highlights.items.2.title'),
+        description: t('highlights.items.2.description'),
       },
       {
         icon: 'FaShieldAlt',
-        title: (t as any)('highlights.items.3.title'),
-        description: (t as any)('highlights.items.3.description'),
+        title: t('highlights.items.3.title'),
+        description: t('highlights.items.3.description'),
       },
     ],
   };
@@ -181,20 +177,20 @@ export default async function DogTranslatorPage(props: DogTranslatorPageProps) {
   // Page data for tool component consumption
   const pageData = {
     tool: {
-      yourWords: (t as any)('tool.yourWords'),
-      doggyVibe: (t as any)('tool.doggyVibe'),
-      inputPlaceholder: (t as any)('tool.inputPlaceholder'),
-      inputLabel: (t as any)('tool.inputLabel'),
-      outputPlaceholder: (t as any)('tool.outputPlaceholder'),
-      outputLabel: (t as any)('tool.outputLabel'),
-      translateButton: (t as any)('tool.translateButton'),
-      playButton: (t as any)('tool.playButton'),
-      playSoundTooltip: (t as any)('tool.playSoundTooltip'),
-      loading: (t as any)('tool.loading'),
-      error: (t as any)('tool.error'),
-      noInput: (t as any)('tool.noInput'),
-      uploadButton: (t as any)('tool.uploadButton'),
-      uploadHint: (t as any)('tool.uploadHint'),
+      yourWords: t('tool.yourWords'),
+      doggyVibe: t('tool.doggyVibe'),
+      inputPlaceholder: t('tool.inputPlaceholder'),
+      inputLabel: t('tool.inputLabel'),
+      outputPlaceholder: t('tool.outputPlaceholder'),
+      outputLabel: t('tool.outputLabel'),
+      translateButton: t('tool.translateButton'),
+      playButton: t('tool.playButton'),
+      playSoundTooltip: t('tool.playSoundTooltip'),
+      loading: t('tool.loading'),
+      error: t('tool.error'),
+      noInput: t('tool.noInput'),
+      uploadButton: t('tool.uploadButton'),
+      uploadHint: t('tool.uploadHint'),
     },
     funFacts: funFactsSection,
     highlights: highlightsSection,
@@ -202,46 +198,46 @@ export default async function DogTranslatorPage(props: DogTranslatorPageProps) {
 
   // What is section
   const whatIsSection = {
-    title: (t as any)('whatIs.title'),
-    description: (t as any)('whatIs.description'),
+    title: t('whatIs.title'),
+    description: t('whatIs.description'),
     features: [],
     image: {
       src: '/images/docs/what-is-dog-translator.webp',
       alt: 'Dog Translator Overview',
     },
     cta: {
-      text: (t as any)('ctaButton'),
+      text: t('ctaButton'),
     },
   };
 
   // How to section
   const howtoSection = {
     name: 'howto',
-    title: (t as any)('howto.title'),
-    description: (t as any)('howto.description'),
+    title: t('howto.title'),
+    description: t('howto.description'),
     image: {
       src: '/images/docs/dog-translator-how-to.webp',
       alt: 'How to Use Dog Translator',
     },
     items: [
       {
-        title: (t as any)('howto.steps.0.title'),
-        description: (t as any)('howto.steps.0.description'),
+        title: t('howto.steps.0.title'),
+        description: t('howto.steps.0.description'),
         icon: 'FaPencilAlt',
       },
       {
-        title: (t as any)('howto.steps.1.title'),
-        description: (t as any)('howto.steps.1.description'),
+        title: t('howto.steps.1.title'),
+        description: t('howto.steps.1.description'),
         icon: 'FaBrain',
       },
       {
-        title: (t as any)('howto.steps.2.title'),
-        description: (t as any)('howto.steps.2.description'),
+        title: t('howto.steps.2.title'),
+        description: t('howto.steps.2.description'),
         icon: 'FaLanguage',
       },
       {
-        title: (t as any)('howto.steps.3.title'),
-        description: (t as any)('howto.steps.3.description'),
+        title: t('howto.steps.3.title'),
+        description: t('howto.steps.3.description'),
         icon: 'FaVolumeUp',
       },
     ],
@@ -250,40 +246,40 @@ export default async function DogTranslatorPage(props: DogTranslatorPageProps) {
   // Unique section
   const uniqueSection = {
     name: 'unique',
-    title: (t as any)('unique.title'),
-    subtitle: (t as any)('unique.subtitle'),
-    description: (t as any)('unique.description'),
+    title: t('unique.title'),
+    subtitle: t('unique.subtitle'),
+    description: t('unique.description'),
     items: [
       {
-        title: (t as any)('unique.items.0.title'),
-        description: (t as any)('unique.items.0.description'),
+        title: t('unique.items.0.title'),
+        description: t('unique.items.0.description'),
         image: {
           src: '/images/docs/ai-emotion-intelligence.webp',
-          alt: (t as any)('unique.items.0.title'),
+          alt: t('unique.items.0.title'),
         },
       },
       {
-        title: (t as any)('unique.items.1.title'),
-        description: (t as any)('unique.items.1.description'),
+        title: t('unique.items.1.title'),
+        description: t('unique.items.1.description'),
         image: {
           src: '/images/docs/authentic-sound-library.webp',
-          alt: (t as any)('unique.items.1.title'),
+          alt: t('unique.items.1.title'),
         },
       },
       {
-        title: (t as any)('unique.items.2.title'),
-        description: (t as any)('unique.items.2.description'),
+        title: t('unique.items.2.title'),
+        description: t('unique.items.2.description'),
         image: {
           src: '/images/docs/speak-dog-in-any-language.webp',
-          alt: (t as any)('unique.items.2.title'),
+          alt: t('unique.items.2.title'),
         },
       },
       {
-        title: (t as any)('unique.items.3.title'),
-        description: (t as any)('unique.items.3.description'),
+        title: t('unique.items.3.title'),
+        description: t('unique.items.3.description'),
         image: {
           src: '/images/docs/personalized-settings.webp',
-          alt: (t as any)('unique.items.3.title'),
+          alt: t('unique.items.3.title'),
         },
       },
     ],
@@ -301,10 +297,10 @@ export default async function DogTranslatorPage(props: DogTranslatorPageProps) {
         <AuroraBackground className="bg-white dark:bg-zinc-900 !pt-12 !h-auto">
           <div className="container max-w-7xl mx-auto px-4 text-center relative z-10 pb-8">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              {(t as any)('hero.title')}
+              {t('hero.title')}
             </h1>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
-              {(t as any)('hero.description')}
+              {t('hero.description')}
             </p>
 
             {/* User Avatars and Rating */}
@@ -385,15 +381,12 @@ export default async function DogTranslatorPage(props: DogTranslatorPageProps) {
         <BeforeAfterSection beforeAfterGallery={examplesData} />
 
         {/* Unique Section */}
-        <UniqueSection
-          section={uniqueSection}
-          ctaText={(t as any)('ctaButton')}
-        />
+        <UniqueSection section={uniqueSection} ctaText={t('ctaButton')} />
 
         {/* User Scenarios */}
         <UserScenarios
           section={userScenariosSection}
-          ctaText={(t as any)('ctaButton')}
+          ctaText={t('ctaButton')}
         />
 
         {/* Highlights/Why Choose */}

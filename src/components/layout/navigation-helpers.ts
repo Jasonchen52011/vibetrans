@@ -1,5 +1,5 @@
-import { useRouter } from 'next/navigation';
 import { LocaleLink } from '@/i18n/navigation';
+import { useRouter } from 'next/navigation';
 
 /**
  * Navigation helper utilities for better performance

@@ -181,5 +181,10 @@
       "primaryButton": "Try Dumb It Down Ai Now"
     },
     "ctaButton": "Try Dumb It Down Ai Now"
+  },
+  "Metadata": {
+    "name": "VibeTrans",
+    "title": "Dumb It Down AI - VibeTrans",
+    "description": "Break language barriers with AI-powered translations. Supports 100+ languages with accurate, context-aware translations."
   }
 }

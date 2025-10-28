@@ -1,4 +1,3 @@
-// @ts-nocheck - Translation keys type mismatch
 import BeforeAfterSection from '@/components/blocks/Examples';
 import CallToActionSection from '@/components/blocks/calltoaction/calltoaction';
 import ExploreOurAiTools from '@/components/blocks/exploretools';
@@ -29,7 +28,7 @@ export async function generateMetadata({
   const gt = await getTranslations({ locale, namespace: 'IvrTranslatorPage' });
 
   return constructMetadata({
-    title: `${gt('title')} | ${(t as any)('name')}`,
+    title: `${gt('title')} | ${t('name')}`,
     description: gt('description'),
     canonicalUrl: getUrlWithLocale('/ivr-translator', locale),
     image: '/images/docs/what-is-ivr-translator.webp',
@@ -48,97 +47,97 @@ export default async function IvrTranslatorPage(props: IvrTranslatorPageProps) {
   // Structured Data for SEO
   const structuredData = buildToolStructuredData({
     name: 'VibeTrans Ivr Translator',
-    description: (t as any)('description'),
+    description: t('description'),
   });
 
   // Page data for the tool
   const pageData = {
     tool: {
-      inputLabel: (t as any)('tool.inputLabel'),
-      outputLabel: (t as any)('tool.outputLabel'),
-      inputPlaceholder: (t as any)('tool.inputPlaceholder'),
-      outputPlaceholder: (t as any)('tool.outputPlaceholder'),
-      translateButton: (t as any)('tool.translateButton'),
-      uploadButton: (t as any)('tool.uploadButton'),
-      uploadHint: (t as any)('tool.uploadHint'),
-      loading: (t as any)('tool.loading'),
-      error: (t as any)('tool.error'),
-      noInput: (t as any)('tool.noInput'),
+      inputLabel: t('tool.inputLabel'),
+      outputLabel: t('tool.outputLabel'),
+      inputPlaceholder: t('tool.inputPlaceholder'),
+      outputPlaceholder: t('tool.outputPlaceholder'),
+      translateButton: t('tool.translateButton'),
+      uploadButton: t('tool.uploadButton'),
+      uploadHint: t('tool.uploadHint'),
+      loading: t('tool.loading'),
+      error: t('tool.error'),
+      noInput: t('tool.noInput'),
     },
   };
 
   // Examples section data
   const examplesData = {
-    title: (t as any)('examples.title'),
-    description: (t as any)('examples.description'),
+    title: t('examples.title'),
+    description: t('examples.description'),
     images: [
       {
-        alt: (t as any)('examples.items.0.alt'),
-        name: (t as any)('examples.items.0.name'),
+        alt: t('examples.items.0.alt'),
+        name: t('examples.items.0.name'),
       },
       {
-        alt: (t as any)('examples.items.1.alt'),
-        name: (t as any)('examples.items.1.name'),
+        alt: t('examples.items.1.alt'),
+        name: t('examples.items.1.name'),
       },
       {
-        alt: (t as any)('examples.items.2.alt'),
-        name: (t as any)('examples.items.2.name'),
+        alt: t('examples.items.2.alt'),
+        name: t('examples.items.2.name'),
       },
       {
-        alt: (t as any)('examples.items.3.alt'),
-        name: (t as any)('examples.items.3.name'),
+        alt: t('examples.items.3.alt'),
+        name: t('examples.items.3.name'),
       },
       {
-        alt: (t as any)('examples.items.4.alt'),
-        name: (t as any)('examples.items.4.name'),
+        alt: t('examples.items.4.alt'),
+        name: t('examples.items.4.name'),
       },
       {
-        alt: (t as any)('examples.items.5.alt'),
-        name: (t as any)('examples.items.5.name'),
+        alt: t('examples.items.5.alt'),
+        name: t('examples.items.5.name'),
       },
     ],
   };
 
   // What is section
   const whatIsSection = {
-    title: (t as any)('whatIs.title'),
-    description: (t as any)('whatIs.description'),
+    title: t('whatIs.title'),
+    description: t('whatIs.description'),
     features: [],
     image: {
       src: '/images/docs/what-is-ivr-translator.webp',
       alt: 'What is Ivr Translator',
     },
-    cta: { text: (t as any)('ctaButton') },
+    cta: { text: t('ctaButton') },
   };
 
   // How to section
   const howtoSection = {
     name: 'howto',
-    title: (t as any)('howto.title'),
-    description: (t as any)('howto.description'),
+    title: t('howto.title'),
+    description: t('howto.description'),
     image: {
       src: '/images/docs/ivr-translator-how-to.webp',
       alt: 'How to use Ivr Translator',
     },
     items: [
       {
-        title: (t as any)('howto.steps.0.title'),
-        description: (t as any)('howto.steps.0.description'),
+        title: t('howto.steps.0.title'),
+        description: t('howto.steps.0.description'),
         icon: 'FaFileUpload',
       },
       {
-        title: (t as any)('howto.steps.1.title'),
-        description: (t as any)('howto.steps.1.description'),
+        title: t('howto.steps.1.title'),
+        description: t('howto.steps.1.description'),
         icon: 'FaPencilAlt',
       },
       {
-        title: (t as any)('howto.steps.2.title'),
-        description: (t as any)('howto.steps.2.description'),
+        title: t('howto.steps.2.title'),
+        description: t('howto.steps.2.description'),
         icon: 'FaLanguage',
       },
       {
-        title: (t as any)('howto.steps.3.title'),
-        description: (t as any)('howto.steps.3.description'),
+        title: t('howto.steps.3.title'),
+        description: t('howto.steps.3.description'),
         icon: 'FaCheckCircle',
       },
     ],
@@ -147,28 +146,28 @@ export default async function IvrTranslatorPage(props: IvrTranslatorPageProps) {
   // Highlights section
   const highlightsSection = {
     name: 'highlights',
-    title: (t as any)('highlights.title'),
-    description: (t as any)('highlights.description'),
+    title: t('highlights.title'),
+    description: t('highlights.description'),
     items: [
       {
         icon: 'FaRocket',
-        title: (t as any)('highlights.items.0.title'),
-        description: (t as any)('highlights.items.0.description'),
+        title: t('highlights.items.0.title'),
+        description: t('highlights.items.0.description'),
       },
       {
         icon: 'FaBrain',
-        title: (t as any)('highlights.items.1.title'),
-        description: (t as any)('highlights.items.1.description'),
+        title: t('highlights.items.1.title'),
+        description: t('highlights.items.1.description'),
       },
       {
         icon: 'FaShieldAlt',
-        title: (t as any)('highlights.items.2.title'),
-        description: (t as any)('highlights.items.2.description'),
+        title: t('highlights.items.2.title'),
+        description: t('highlights.items.2.description'),
       },
       {
         icon: 'FaChartLine',
-        title: (t as any)('highlights.items.3.title'),
-        description: (t as any)('highlights.items.3.description'),
+        title: t('highlights.items.3.title'),
+        description: t('highlights.items.3.description'),
       },
     ],
   };
@@ -176,22 +175,22 @@ export default async function IvrTranslatorPage(props: IvrTranslatorPageProps) {
   // Fun Facts section
   const funFactsSection = {
     name: 'funFacts',
-    title: (t as any)('funFacts.title'),
+    title: t('funFacts.title'),
     items: [
       {
-        title: (t as any)('funFacts.items.0.title'),
-        description: (t as any)('funFacts.items.0.description'),
+        title: t('funFacts.items.0.title'),
+        description: t('funFacts.items.0.description'),
         image: {
           src: '/images/docs/ivr-translator-fact-1.webp',
-          alt: (t as any)('funFacts.items.0.title'),
+          alt: t('funFacts.items.0.title'),
         },
       },
       {
-        title: (t as any)('funFacts.items.1.title'),
-        description: (t as any)('funFacts.items.1.description'),
+        title: t('funFacts.items.1.title'),
+        description: t('funFacts.items.1.description'),
         image: {
           src: '/images/docs/ivr-translator-fact-2.webp',
-          alt: (t as any)('funFacts.items.1.title'),
+          alt: t('funFacts.items.1.title'),
         },
       },
     ],
@@ -200,38 +199,38 @@ export default async function IvrTranslatorPage(props: IvrTranslatorPageProps) {
   // User Interest section (4 content blocks)
   const userInterestSection = {
     name: 'userInterest',
-    title: (t as any)('userInterest.title'),
+    title: t('userInterest.title'),
     items: [
       {
-        title: (t as any)('userInterest.items.0.title'),
-        description: (t as any)('userInterest.items.0.description'),
+        title: t('userInterest.items.0.title'),
+        description: t('userInterest.items.0.description'),
         image: {
           src: '/images/docs/ivr-translator-interest-1.webp',
-          alt: (t as any)('userInterest.items.0.title'),
+          alt: t('userInterest.items.0.title'),
         },
       },
       {
-        title: (t as any)('userInterest.items.1.title'),
-        description: (t as any)('userInterest.items.1.description'),
+        title: t('userInterest.items.1.title'),
+        description: t('userInterest.items.1.description'),
         image: {
           src: '/images/docs/ivr-translator-interest-2.webp',
-          alt: (t as any)('userInterest.items.1.title'),
+          alt: t('userInterest.items.1.title'),
         },
       },
       {
-        title: (t as any)('userInterest.items.2.title'),
-        description: (t as any)('userInterest.items.2.description'),
+        title: t('userInterest.items.2.title'),
+        description: t('userInterest.items.2.description'),
         image: {
           src: '/images/docs/ivr-translator-interest-3.webp',
-          alt: (t as any)('userInterest.items.2.title'),
+          alt: t('userInterest.items.2.title'),
         },
       },
       {
-        title: (t as any)('userInterest.items.3.title'),
-        description: (t as any)('userInterest.items.3.description'),
+        title: t('userInterest.items.3.title'),
+        description: t('userInterest.items.3.description'),
         image: {
           src: '/images/docs/ivr-translator-interest-4.webp',
-          alt: (t as any)('userInterest.items.3.title'),
+          alt: t('userInterest.items.3.title'),
         },
       },
     ],
@@ -248,10 +247,10 @@ export default async function IvrTranslatorPage(props: IvrTranslatorPageProps) {
         <AuroraBackground className="bg-white dark:bg-zinc-900 !pt-12 !h-auto">
           <div className="container max-w-7xl mx-auto px-4 text-center relative z-10 pb-8">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              {(t as any)('hero.title')}
+              {t('hero.title')}
             </h1>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
-              {(t as any)('hero.description')}
+              {t('hero.description')}
             </p>
 
             {/* User Avatars and Rating */}
@@ -306,16 +305,10 @@ export default async function IvrTranslatorPage(props: IvrTranslatorPageProps) {
         <HowTo section={howtoSection} />
 
         {/* User Interest Blocks */}
-        <UserScenarios
-          section={userInterestSection}
-          ctaText={(t as any)('ctaButton')}
-        />
+        <UserScenarios section={userInterestSection} ctaText={t('ctaButton')} />
 
         {/* Fun Facts */}
-        <UserScenarios
-          section={funFactsSection}
-          ctaText={(t as any)('ctaButton')}
-        />
+        <UserScenarios section={funFactsSection} ctaText={t('ctaButton')} />
 
         {/* Highlights */}
         <WhyChoose section={highlightsSection} />

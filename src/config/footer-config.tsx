@@ -48,12 +48,17 @@ const LANGUAGE_FOOTER_LINKS: FooterLink[] = [
   { key: 'aramaicTranslator', route: Routes.AramaicTranslator },
   { key: 'baybayinTranslator', route: Routes.BaybayinTranslator },
   { key: 'cantoneseTranslator', route: Routes.CantoneseTranslator },
-  { key: 'chineseToEnglishTranslator', route: Routes.ChineseToEnglishTranslator },
   { key: 'creoleToEnglishTranslator', route: Routes.CreoleToEnglishTranslator },
   { key: 'cuneiformTranslator', route: Routes.CuneiformTranslator },
-  { key: 'englishToAmharicTranslator', route: Routes.EnglishToAmharicTranslator },
+  {
+    key: 'englishToAmharicTranslator',
+    route: Routes.EnglishToAmharicTranslator,
+  },
   { key: 'englishToPolishTranslator', route: Routes.EnglishToPolishTranslator },
-  { key: 'englishToSwahiliTranslator', route: Routes.EnglishToSwahiliTranslator },
+  {
+    key: 'englishToSwahiliTranslator',
+    route: Routes.EnglishToSwahiliTranslator,
+  },
   { key: 'esperantoTranslator', route: Routes.EsperantoTranslator },
   { key: 'greekTranslator', route: Routes.GreekTranslator },
   { key: 'ivrTranslator', route: Routes.IvrTranslator },
@@ -62,14 +67,14 @@ const LANGUAGE_FOOTER_LINKS: FooterLink[] = [
   { key: 'nahuatlTranslator', route: Routes.NahuatlTranslator },
   { key: 'oghamTranslator', route: Routes.OghamTranslator },
   { key: 'samoanToEnglishTranslator', route: Routes.SamoanToEnglishTranslator },
-  { key: 'swahiliToEnglishTranslator', route: Routes.SwahiliToEnglishTranslator },
+  {
+    key: 'swahiliToEnglishTranslator',
+    route: Routes.SwahiliToEnglishTranslator,
+  },
   { key: 'teluguToEnglishTranslator', route: Routes.TeluguToEnglishTranslator },
 ];
 
-
-const COMPANY_LINKS: FooterLink[] = [
-  { key: 'about', route: Routes.About },
-];
+const COMPANY_LINKS: FooterLink[] = [{ key: 'about', route: Routes.About }];
 
 const LEGAL_LINKS: FooterLink[] = [
   { key: 'privacyPolicy', route: Routes.PrivacyPolicy },

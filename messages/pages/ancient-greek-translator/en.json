@@ -1,5 +1,6 @@
 {
   "AncientGreekTranslatorPage": {
+    "name": "VibeTrans",
     "title": "Ancient Greek Translator - Accurate & AI-powered Translation Tool",
     "description": "Translate Ancient Greek texts with high accuracy using VibeTrans' AI-powered tool. Perfect for academic research, language learning, and cultural exploration.",
     "hero": {
@@ -218,5 +219,10 @@
         }
       ]
     }
+  },
+  "Metadata": {
+    "name": "VibeTrans",
+    "title": "Ancient Greek Translator - VibeTrans",
+    "description": "Break language barriers with AI-powered translations. Supports 100+ languages with accurate, context-aware translations."
   }
 }

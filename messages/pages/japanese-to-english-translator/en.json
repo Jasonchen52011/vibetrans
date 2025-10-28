@@ -28,12 +28,30 @@
       "title": "Translation in Action",
       "description": "Upload a Japanese document, and watch as the tool seamlessly translates kanji and kana into English, preserving context and meaning for technical or literary text.",
       "items": [
-        { "alt": "Example 1", "name": "example-1" },
-        { "alt": "Example 2", "name": "example-2" },
-        { "alt": "Example 3", "name": "example-3" },
-        { "alt": "Example 4", "name": "example-4" },
-        { "alt": "Example 5", "name": "example-5" },
-        { "alt": "Example 6", "name": "example-6" }
+        {
+          "alt": "Example 1",
+          "name": "example-1"
+        },
+        {
+          "alt": "Example 2",
+          "name": "example-2"
+        },
+        {
+          "alt": "Example 3",
+          "name": "example-3"
+        },
+        {
+          "alt": "Example 4",
+          "name": "example-4"
+        },
+        {
+          "alt": "Example 5",
+          "name": "example-5"
+        },
+        {
+          "alt": "Example 6",
+          "name": "example-6"
+        }
       ]
     },
     "howto": {
@@ -196,5 +214,10 @@
       "primaryButton": "Get Started Free",
       "secondaryButton": "Back to Top"
     }
+  },
+  "Metadata": {
+    "name": "VibeTrans",
+    "title": "Japanese to English Translator - VibeTrans",
+    "description": "Break language barriers with AI-powered translations. Supports 100+ languages with accurate, context-aware translations."
   }
 }

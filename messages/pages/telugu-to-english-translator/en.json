@@ -206,5 +206,10 @@
       "description": "Start translating your Telugu text to English now - it only takes seconds!",
       "primaryButton": "Get Started Free"
     }
+  },
+  "Metadata": {
+    "name": "VibeTrans",
+    "title": "Telugu to English Translator - VibeTrans",
+    "description": "Break language barriers with AI-powered translations. Supports 100+ languages with accurate, context-aware translations."
   }
 }

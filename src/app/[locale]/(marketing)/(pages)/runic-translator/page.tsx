@@ -1,4 +1,3 @@
-// @ts-nocheck - Translation keys type mismatch
 import BeforeAfterSection from '@/components/blocks/Examples';
 import CallToActionSection from '@/components/blocks/calltoaction/calltoaction';
 import ExploreOurAiTools from '@/components/blocks/exploretools';
@@ -32,7 +31,7 @@ export async function generateMetadata({
   });
 
   return constructMetadata({
-    title: `${gt('title')} | ${(t as any)('name')}`,
+    title: `${gt('title')} | ${t('name')}`,
     description: gt('description'),
     canonicalUrl: getUrlWithLocale('/runic-translator', locale),
     image: (gt as any)('whatIs.image') || '/images/docs/rune-translation.webp',
@@ -53,109 +52,109 @@ export default async function RunicTranslatorPage(
   // Structured Data for SEO
   const structuredData = buildToolStructuredData({
     name: 'VibeTrans RunicTranslator',
-    description: (t as any)('description'),
+    description: t('description'),
   });
 
   // Page data for the tool
   const pageData = {
     tool: {
-      inputLabel: (t as any)('tool.inputLabel'),
-      outputLabel: (t as any)('tool.outputLabel'),
-      inputPlaceholder: (t as any)('tool.inputPlaceholder'),
-      outputPlaceholder: (t as any)('tool.outputPlaceholder'),
-      translateButton: (t as any)('tool.translateButton'),
-      uploadButton: (t as any)('tool.uploadButton'),
-      uploadHint: (t as any)('tool.uploadHint'),
-      loading: (t as any)('tool.loading'),
-      error: (t as any)('tool.error'),
-      noInput: (t as any)('tool.noInput'),
+      inputLabel: t('tool.inputLabel'),
+      outputLabel: t('tool.outputLabel'),
+      inputPlaceholder: t('tool.inputPlaceholder'),
+      outputPlaceholder: t('tool.outputPlaceholder'),
+      translateButton: t('tool.translateButton'),
+      uploadButton: t('tool.uploadButton'),
+      uploadHint: t('tool.uploadHint'),
+      loading: t('tool.loading'),
+      error: t('tool.error'),
+      noInput: t('tool.noInput'),
     },
   };
 
   // Examples section data
   const examplesData = {
-    title: (t as any)('examples.title'),
-    description: (t as any)('examples.description'),
+    title: t('examples.title'),
+    description: t('examples.description'),
     images: [
       {
-        alt: (t as any)('examples.items.0.title'),
-        name: (t as any)('examples.items.0.description'),
-        image: (t as any)('examples.items.0.image'),
-        imageAlt: (t as any)('examples.items.0.imageAlt'),
+        alt: t('examples.items.0.title'),
+        name: t('examples.items.0.description'),
+        image: t('examples.items.0.image'),
+        imageAlt: t('examples.items.0.imageAlt'),
       },
       {
-        alt: (t as any)('examples.items.1.title'),
-        name: (t as any)('examples.items.1.description'),
-        image: (t as any)('examples.items.1.image'),
-        imageAlt: (t as any)('examples.items.1.imageAlt'),
+        alt: t('examples.items.1.title'),
+        name: t('examples.items.1.description'),
+        image: t('examples.items.1.image'),
+        imageAlt: t('examples.items.1.imageAlt'),
       },
       {
-        alt: (t as any)('examples.items.2.title'),
-        name: (t as any)('examples.items.2.description'),
-        image: (t as any)('examples.items.2.image'),
-        imageAlt: (t as any)('examples.items.2.imageAlt'),
+        alt: t('examples.items.2.title'),
+        name: t('examples.items.2.description'),
+        image: t('examples.items.2.image'),
+        imageAlt: t('examples.items.2.imageAlt'),
       },
       {
-        alt: (t as any)('examples.items.3.title'),
-        name: (t as any)('examples.items.3.description'),
-        image: (t as any)('examples.items.3.image'),
-        imageAlt: (t as any)('examples.items.3.imageAlt'),
+        alt: t('examples.items.3.title'),
+        name: t('examples.items.3.description'),
+        image: t('examples.items.3.image'),
+        imageAlt: t('examples.items.3.imageAlt'),
       },
       {
-        alt: (t as any)('examples.items.4.title'),
-        name: (t as any)('examples.items.4.description'),
-        image: (t as any)('examples.items.4.image'),
-        imageAlt: (t as any)('examples.items.4.imageAlt'),
+        alt: t('examples.items.4.title'),
+        name: t('examples.items.4.description'),
+        image: t('examples.items.4.image'),
+        imageAlt: t('examples.items.4.imageAlt'),
       },
       {
-        alt: (t as any)('examples.items.5.title'),
-        name: (t as any)('examples.items.5.description'),
-        image: (t as any)('examples.items.5.image'),
-        imageAlt: (t as any)('examples.items.5.imageAlt'),
+        alt: t('examples.items.5.title'),
+        name: t('examples.items.5.description'),
+        image: t('examples.items.5.image'),
+        imageAlt: t('examples.items.5.imageAlt'),
       },
     ],
   };
 
   // What is section
   const whatIsSection = {
-    title: (t as any)('whatIs.title'),
-    description: (t as any)('whatIs.description'),
+    title: t('whatIs.title'),
+    description: t('whatIs.description'),
     features: [],
     image: {
-      src: (t as any)('whatIs.image'),
-      alt: (t as any)('whatIs.imageAlt'),
+      src: t('whatIs.image'),
+      alt: t('whatIs.imageAlt'),
     },
-    cta: { text: (t as any)('ctaButton') },
+    cta: { text: t('ctaButton') },
   };
 
   // How to section
   const howtoSection = {
     name: 'howto',
-    title: (t as any)('howto.title'),
-    description: (t as any)('howto.description'),
+    title: t('howto.title'),
+    description: t('howto.description'),
     image: {
-      src: (t as any)('howto.image'),
-      alt: (t as any)('howto.imageAlt'),
+      src: t('howto.image'),
+      alt: t('howto.imageAlt'),
     },
     items: [
       {
-        title: (t as any)('howto.steps.0.title'),
-        description: (t as any)('howto.steps.0.description'),
+        title: t('howto.steps.0.title'),
+        description: t('howto.steps.0.description'),
         icon: 'FaFileUpload',
       },
       {
-        title: (t as any)('howto.steps.1.title'),
-        description: (t as any)('howto.steps.1.description'),
+        title: t('howto.steps.1.title'),
+        description: t('howto.steps.1.description'),
         icon: 'FaPencilAlt',
       },
       {
-        title: (t as any)('howto.steps.2.title'),
-        description: (t as any)('howto.steps.2.description'),
+        title: t('howto.steps.2.title'),
+        description: t('howto.steps.2.description'),
         icon: 'FaLanguage',
       },
       {
-        title: (t as any)('howto.steps.3.title'),
-        description: (t as any)('howto.steps.3.description'),
+        title: t('howto.steps.3.title'),
+        description: t('howto.steps.3.description'),
         icon: 'FaCheckCircle',
       },
     ],
@@ -167,7 +166,7 @@ export default async function RunicTranslatorPage(
 
   let highlightsDescription = fallbackHighlightDescription;
   try {
-    const desc = (t as any)('highlights.description');
+    const desc = t('highlights.description');
     if (typeof desc === 'string' && desc.trim().length > 0) {
       highlightsDescription = desc;
     }
@@ -184,7 +183,7 @@ export default async function RunicTranslatorPage(
 
   let highlightItems = [];
   try {
-    const rawFeatures = (t as any).raw('highlights.features');
+    const rawFeatures = t.raw('highlights.features');
     if (Array.isArray(rawFeatures)) {
       highlightItems = rawFeatures.slice(0, 4).map((feature, index) => ({
         icon:
@@ -205,8 +204,8 @@ export default async function RunicTranslatorPage(
   if (highlightItems.length === 0) {
     highlightItems = defaultHighlightIcons.map((icon, index) => ({
       icon,
-      title: (t as any)(`highlights.features.${index}.title`),
-      description: (t as any)(`highlights.features.${index}.description`),
+      title: t(`highlights.features.${index}.title`),
+      description: t(`highlights.features.${index}.description`),
       tagline: '',
       statLabel: null,
       statValue: null,
@@ -216,7 +215,7 @@ export default async function RunicTranslatorPage(
 
   const highlightsSection = {
     name: 'highlights',
-    title: (t as any)('highlights.title'),
+    title: t('highlights.title'),
     description: highlightsDescription,
     items: highlightItems,
   };
@@ -224,22 +223,22 @@ export default async function RunicTranslatorPage(
   // Fun Facts section
   const funFactsSection = {
     name: 'funFacts',
-    title: (t as any)('funFacts.title'),
+    title: t('funFacts.title'),
     items: [
       {
-        title: (t as any)('funFacts.items.0.title'),
-        description: (t as any)('funFacts.items.0.description'),
+        title: t('funFacts.items.0.title'),
+        description: t('funFacts.items.0.description'),
         image: {
-          src: (t as any)('funFacts.items.0.image'),
-          alt: (t as any)('funFacts.items.0.imageAlt'),
+          src: t('funFacts.items.0.image'),
+          alt: t('funFacts.items.0.imageAlt'),
         },
       },
       {
-        title: (t as any)('funFacts.items.1.title'),
-        description: (t as any)('funFacts.items.1.description'),
+        title: t('funFacts.items.1.title'),
+        description: t('funFacts.items.1.description'),
         image: {
-          src: (t as any)('funFacts.items.1.image'),
-          alt: (t as any)('funFacts.items.1.imageAlt'),
+          src: t('funFacts.items.1.image'),
+          alt: t('funFacts.items.1.imageAlt'),
         },
       },
     ],
@@ -248,42 +247,42 @@ export default async function RunicTranslatorPage(
   // User Interest section (4 content blocks)
   const userInterestSection = {
     name: 'userInterest',
-    title: (t as any)('userInterest.title'),
+    title: t('userInterest.title'),
     items: [
       {
-        title: (t as any)('userInterest.items.0.title'),
-        role: (t as any)('userInterest.items.0.role'),
-        description: (t as any)('userInterest.items.0.description'),
+        title: t('userInterest.items.0.title'),
+        role: t('userInterest.items.0.role'),
+        description: t('userInterest.items.0.description'),
         image: {
-          src: (t as any)('userInterest.items.0.image'),
-          alt: (t as any)('userInterest.items.0.imageAlt'),
+          src: t('userInterest.items.0.image'),
+          alt: t('userInterest.items.0.imageAlt'),
         },
       },
       {
-        title: (t as any)('userInterest.items.1.title'),
-        role: (t as any)('userInterest.items.1.role'),
-        description: (t as any)('userInterest.items.1.description'),
+        title: t('userInterest.items.1.title'),
+        role: t('userInterest.items.1.role'),
+        description: t('userInterest.items.1.description'),
         image: {
-          src: (t as any)('userInterest.items.1.image'),
-          alt: (t as any)('userInterest.items.1.imageAlt'),
+          src: t('userInterest.items.1.image'),
+          alt: t('userInterest.items.1.imageAlt'),
         },
       },
       {
-        title: (t as any)('userInterest.items.2.title'),
-        role: (t as any)('userInterest.items.2.role'),
-        description: (t as any)('userInterest.items.2.description'),
+        title: t('userInterest.items.2.title'),
+        role: t('userInterest.items.2.role'),
+        description: t('userInterest.items.2.description'),
         image: {
-          src: (t as any)('userInterest.items.2.image'),
-          alt: (t as any)('userInterest.items.2.imageAlt'),
+          src: t('userInterest.items.2.image'),
+          alt: t('userInterest.items.2.imageAlt'),
         },
       },
       {
-        title: (t as any)('userInterest.items.3.title'),
-        role: (t as any)('userInterest.items.3.role'),
-        description: (t as any)('userInterest.items.3.description'),
+        title: t('userInterest.items.3.title'),
+        role: t('userInterest.items.3.role'),
+        description: t('userInterest.items.3.description'),
         image: {
-          src: (t as any)('userInterest.items.3.image'),
-          alt: (t as any)('userInterest.items.3.imageAlt'),
+          src: t('userInterest.items.3.image'),
+          alt: t('userInterest.items.3.imageAlt'),
         },
       },
     ],
@@ -300,10 +299,10 @@ export default async function RunicTranslatorPage(
         <AuroraBackground className="bg-white dark:bg-zinc-900 !pt-12 !h-auto">
           <div className="container max-w-5xl mx-auto px-4 text-center relative z-10 pb-8">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              {(t as any)('hero.title')}
+              {t('hero.title')}
             </h1>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
-              {(t as any)('hero.description')}
+              {t('hero.description')}
             </p>
 
             {/* User Avatars and Rating */}
@@ -360,16 +359,10 @@ export default async function RunicTranslatorPage(
         <HowTo section={howtoSection} />
 
         {/* User Interest Blocks */}
-        <UserScenarios
-          section={userInterestSection}
-          ctaText={(t as any)('ctaButton')}
-        />
+        <UserScenarios section={userInterestSection} ctaText={t('ctaButton')} />
 
         {/* Fun Facts */}
-        <UserScenarios
-          section={funFactsSection}
-          ctaText={(t as any)('ctaButton')}
-        />
+        <UserScenarios section={funFactsSection} ctaText={t('ctaButton')} />
 
         {/* Highlights */}
         <WhyChoose section={highlightsSection} />

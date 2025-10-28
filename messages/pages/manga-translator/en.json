@@ -229,5 +229,10 @@
         }
       }
     }
+  },
+  "Metadata": {
+    "name": "VibeTrans",
+    "title": "Manga Translator - VibeTrans",
+    "description": "Break language barriers with AI-powered translations. Supports 100+ languages with accurate, context-aware translations."
   }
 }

@@ -1,4 +1,3 @@
-// @ts-nocheck - Translation keys type mismatch
 import CallToActionSection from '@/components/blocks/calltoaction/calltoaction';
 import ExploreOurAiTools from '@/components/blocks/exploretools';
 import FaqSection from '@/components/blocks/faqs/faqs';
@@ -28,7 +27,7 @@ export async function generateMetadata({
   const gt = await getTranslations({ locale, namespace: 'BabyTranslatorPage' });
 
   return constructMetadata({
-    title: `${gt('title')} | ${(t as any)('name')}`,
+    title: `${gt('title')} | ${t('name')}`,
     description: gt('description'),
     canonicalUrl: getUrlWithLocale('/baby-translator', locale),
     image: '/images/docs/what-is-baby-translator.webp',
@@ -49,50 +48,50 @@ export default async function BabyTranslatorPage(
   // Structured Data for SEO
   const structuredData = buildToolStructuredData({
     name: 'VibeTrans Baby Translator',
-    description: (t as any)('description'),
+    description: t('description'),
   });
 
   // Page data for the tool
   // What is section
   const whatIsSection = {
-    title: (t as any)('whatIs.title'),
-    description: (t as any)('whatIs.description'),
+    title: t('whatIs.title'),
+    description: t('whatIs.description'),
     features: [],
     image: {
       src: '/images/docs/what-is-baby-translator.webp',
       alt: 'What is Baby Translator',
     },
-    cta: { text: (t as any)('ctaButton') },
+    cta: { text: t('ctaButton') },
   };
 
   // How to section
   const howtoSection = {
     name: 'howto',
-    title: (t as any)('howto.title'),
-    description: (t as any)('howto.description'),
+    title: t('howto.title'),
+    description: t('howto.description'),
     image: {
       src: '/images/docs/baby-translator-how-to.webp',
       alt: 'How to use Baby Translator',
     },
     items: [
       {
-        title: (t as any)('howto.steps.0.title'),
-        description: (t as any)('howto.steps.0.description'),
+        title: t('howto.steps.0.title'),
+        description: t('howto.steps.0.description'),
         icon: 'FaFileUpload',
       },
       {
-        title: (t as any)('howto.steps.1.title'),
-        description: (t as any)('howto.steps.1.description'),
+        title: t('howto.steps.1.title'),
+        description: t('howto.steps.1.description'),
         icon: 'FaPencilAlt',
       },
       {
-        title: (t as any)('howto.steps.2.title'),
-        description: (t as any)('howto.steps.2.description'),
+        title: t('howto.steps.2.title'),
+        description: t('howto.steps.2.description'),
         icon: 'FaLanguage',
       },
       {
-        title: (t as any)('howto.steps.3.title'),
-        description: (t as any)('howto.steps.3.description'),
+        title: t('howto.steps.3.title'),
+        description: t('howto.steps.3.description'),
         icon: 'FaCheckCircle',
       },
     ],
@@ -101,28 +100,28 @@ export default async function BabyTranslatorPage(
   // Highlights section
   const highlightsSection = {
     name: 'highlights',
-    title: (t as any)('highlights.title'),
-    description: (t as any)('highlights.description'),
+    title: t('highlights.title'),
+    description: t('highlights.description'),
     items: [
       {
         icon: 'FaRocket',
-        title: (t as any)('highlights.items.0.title'),
-        description: (t as any)('highlights.items.0.description'),
+        title: t('highlights.items.0.title'),
+        description: t('highlights.items.0.description'),
       },
       {
         icon: 'FaBrain',
-        title: (t as any)('highlights.items.1.title'),
-        description: (t as any)('highlights.items.1.description'),
+        title: t('highlights.items.1.title'),
+        description: t('highlights.items.1.description'),
       },
       {
         icon: 'FaShieldAlt',
-        title: (t as any)('highlights.items.2.title'),
-        description: (t as any)('highlights.items.2.description'),
+        title: t('highlights.items.2.title'),
+        description: t('highlights.items.2.description'),
       },
       {
         icon: 'FaChartLine',
-        title: (t as any)('highlights.items.3.title'),
-        description: (t as any)('highlights.items.3.description'),
+        title: t('highlights.items.3.title'),
+        description: t('highlights.items.3.description'),
       },
     ],
   };
@@ -130,22 +129,22 @@ export default async function BabyTranslatorPage(
   // Fun Facts section
   const funFactsSection = {
     name: 'funFacts',
-    title: (t as any)('userScenarios.title'),
+    title: t('userScenarios.title'),
     items: [
       {
-        title: (t as any)('userScenarios.items.0.title'),
-        description: (t as any)('userScenarios.items.0.description'),
+        title: t('userScenarios.items.0.title'),
+        description: t('userScenarios.items.0.description'),
         image: {
           src: '/images/docs/baby-translator-fact-1.webp',
-          alt: (t as any)('userScenarios.items.0.title'),
+          alt: t('userScenarios.items.0.title'),
         },
       },
       {
-        title: (t as any)('userScenarios.items.1.title'),
-        description: (t as any)('userScenarios.items.1.description'),
+        title: t('userScenarios.items.1.title'),
+        description: t('userScenarios.items.1.description'),
         image: {
           src: '/images/docs/baby-translator-fact-2.webp',
-          alt: (t as any)('userScenarios.items.1.title'),
+          alt: t('userScenarios.items.1.title'),
         },
       },
     ],
@@ -154,22 +153,22 @@ export default async function BabyTranslatorPage(
   // Page data shared with the tool component
   const pageData = {
     tool: {
-      inputLabel: (t as any)('tool.inputLabel'),
-      outputLabel: (t as any)('tool.outputLabel'),
-      inputPlaceholder: (t as any)('tool.inputPlaceholder'),
-      outputPlaceholder: (t as any)('tool.outputPlaceholder'),
-      translateButton: (t as any)('tool.translateButton'),
-      uploadButton: (t as any)('tool.uploadButton'),
-      uploadHint: (t as any)('tool.uploadHint'),
-      loading: (t as any)('tool.loading'),
-      error: (t as any)('tool.error'),
-      noInput: (t as any)('tool.noInput'),
-      removeRecordingTooltip: (t as any)('tool.removeRecordingTooltip'),
-      copyTooltip: (t as any)('tool.copyTooltip'),
-      downloadTooltip: (t as any)('tool.downloadTooltip'),
-      resetTooltip: (t as any)('tool.resetTooltip'),
-      copyResultTooltip: (t as any)('tool.copyResultTooltip'),
-      downloadResultTooltip: (t as any)('tool.downloadResultTooltip'),
+      inputLabel: t('tool.inputLabel'),
+      outputLabel: t('tool.outputLabel'),
+      inputPlaceholder: t('tool.inputPlaceholder'),
+      outputPlaceholder: t('tool.outputPlaceholder'),
+      translateButton: t('tool.translateButton'),
+      uploadButton: t('tool.uploadButton'),
+      uploadHint: t('tool.uploadHint'),
+      loading: t('tool.loading'),
+      error: t('tool.error'),
+      noInput: t('tool.noInput'),
+      removeRecordingTooltip: t('tool.removeRecordingTooltip'),
+      copyTooltip: t('tool.copyTooltip'),
+      downloadTooltip: t('tool.downloadTooltip'),
+      resetTooltip: t('tool.resetTooltip'),
+      copyResultTooltip: t('tool.copyResultTooltip'),
+      downloadResultTooltip: t('tool.downloadResultTooltip'),
     },
     funFacts: funFactsSection,
     highlights: highlightsSection,
@@ -178,38 +177,38 @@ export default async function BabyTranslatorPage(
   // User Interest section (4 content blocks)
   const userInterestSection = {
     name: 'userInterest',
-    title: (t as any)('unique.title'),
+    title: t('unique.title'),
     items: [
       {
-        title: (t as any)('unique.items.0.title'),
-        description: (t as any)('unique.items.0.description'),
+        title: t('unique.items.0.title'),
+        description: t('unique.items.0.description'),
         image: {
           src: '/images/docs/baby-translator-interest-1.webp',
-          alt: (t as any)('unique.items.0.title'),
+          alt: t('unique.items.0.title'),
         },
       },
       {
-        title: (t as any)('unique.items.1.title'),
-        description: (t as any)('unique.items.1.description'),
+        title: t('unique.items.1.title'),
+        description: t('unique.items.1.description'),
         image: {
           src: '/images/docs/baby-translator-interest-2.webp',
-          alt: (t as any)('unique.items.1.title'),
+          alt: t('unique.items.1.title'),
         },
       },
       {
-        title: (t as any)('unique.items.2.title'),
-        description: (t as any)('unique.items.2.description'),
+        title: t('unique.items.2.title'),
+        description: t('unique.items.2.description'),
         image: {
           src: '/images/docs/baby-translator-interest-3.webp',
-          alt: (t as any)('unique.items.2.title'),
+          alt: t('unique.items.2.title'),
         },
       },
       {
-        title: (t as any)('unique.items.3.title'),
-        description: (t as any)('unique.items.3.description'),
+        title: t('unique.items.3.title'),
+        description: t('unique.items.3.description'),
         image: {
           src: '/images/docs/baby-translator-interest-4.webp',
-          alt: (t as any)('unique.items.3.title'),
+          alt: t('unique.items.3.title'),
         },
       },
     ],
@@ -226,10 +225,10 @@ export default async function BabyTranslatorPage(
         <AuroraBackground className="bg-white dark:bg-zinc-900 !pt-12 !h-auto">
           <div className="container max-w-7xl mx-auto px-4 text-center relative z-10 pb-8">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              {(t as any)('hero.title')}
+              {t('hero.title')}
             </h1>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
-              {(t as any)('hero.description')}
+              {t('hero.description')}
             </p>
 
             {/* User Avatars and Rating */}
@@ -281,16 +280,10 @@ export default async function BabyTranslatorPage(
         <HowTo section={howtoSection} />
 
         {/* User Interest Blocks */}
-        <UserScenarios
-          section={userInterestSection}
-          ctaText={(t as any)('ctaButton')}
-        />
+        <UserScenarios section={userInterestSection} ctaText={t('ctaButton')} />
 
         {/* Fun Facts */}
-        <UserScenarios
-          section={pageData.funFacts}
-          ctaText={(t as any)('ctaButton')}
-        />
+        <UserScenarios section={pageData.funFacts} ctaText={t('ctaButton')} />
 
         {/* Highlights */}
         <WhyChoose section={pageData.highlights} />

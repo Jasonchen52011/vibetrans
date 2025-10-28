@@ -1,4 +1,3 @@
-// @ts-nocheck - Translation keys type mismatch
 import BeforeAfterSection from '@/components/blocks/Examples';
 import CallToActionSection from '@/components/blocks/calltoaction/calltoaction';
 import ExploreOurAiTools from '@/components/blocks/exploretools';
@@ -27,10 +26,10 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale });
   return constructMetadata({
-    title: `${(t as any)('MandalorianTranslatorPage.title')} | VibeTrans`,
-    description: (t as any)('MandalorianTranslatorPage.description'),
+    title: `${t('MandalorianTranslatorPage.title')} | VibeTrans`,
+    description: t('MandalorianTranslatorPage.description'),
     canonicalUrl: getUrlWithLocale('/mandalorian-translator', locale),
-    image: (t as any)('MandalorianTranslatorPage.whatIs.image'),
+    image: t('MandalorianTranslatorPage.whatIs.image'),
   });
 }
 
@@ -48,79 +47,67 @@ export default async function MandalorianTranslatorPage(
   // Structured Data for SEO
   const structuredData = buildToolStructuredData({
     name: 'VibeTrans Mandalorian Translator',
-    description: (t as any)('MandalorianTranslatorPage.description'),
+    description: t('MandalorianTranslatorPage.description'),
   });
 
   // Page data for the tool
   const pageData = {
     tool: {
-      inputLabel: (t as any)('MandalorianTranslatorPage.tool.inputLabel'),
-      outputLabel: (t as any)('MandalorianTranslatorPage.tool.outputLabel'),
-      inputPlaceholder: (t as any)(
-        'MandalorianTranslatorPage.tool.inputPlaceholder'
-      ),
-      outputPlaceholder: (t as any)(
-        'MandalorianTranslatorPage.tool.outputPlaceholder'
-      ),
-      translateButton: (t as any)(
-        'MandalorianTranslatorPage.tool.translateButton'
-      ),
-      uploadButton: (t as any)('MandalorianTranslatorPage.tool.uploadButton'),
-      uploadHint: (t as any)('MandalorianTranslatorPage.tool.uploadHint'),
-      loading: (t as any)('MandalorianTranslatorPage.tool.loading'),
-      error: (t as any)('MandalorianTranslatorPage.tool.error'),
-      noInput: (t as any)('MandalorianTranslatorPage.tool.noInput'),
+      inputLabel: t('MandalorianTranslatorPage.tool.inputLabel'),
+      outputLabel: t('MandalorianTranslatorPage.tool.outputLabel'),
+      inputPlaceholder: t('MandalorianTranslatorPage.tool.inputPlaceholder'),
+      outputPlaceholder: t('MandalorianTranslatorPage.tool.outputPlaceholder'),
+      translateButton: t('MandalorianTranslatorPage.tool.translateButton'),
+      uploadButton: t('MandalorianTranslatorPage.tool.uploadButton'),
+      uploadHint: t('MandalorianTranslatorPage.tool.uploadHint'),
+      loading: t('MandalorianTranslatorPage.tool.loading'),
+      error: t('MandalorianTranslatorPage.tool.error'),
+      noInput: t('MandalorianTranslatorPage.tool.noInput'),
     },
   };
 
   // Examples section data
   const examplesData = {
-    title: (t as any)('MandalorianTranslatorPage.examples.title'),
-    description: (t as any)('MandalorianTranslatorPage.examples.description'),
+    title: t('MandalorianTranslatorPage.examples.title'),
+    description: t('MandalorianTranslatorPage.examples.description'),
     images: [],
   };
 
   // What is section
   const whatIsSection = {
-    title: (t as any)('MandalorianTranslatorPage.whatIs.title'),
-    description: (t as any)('MandalorianTranslatorPage.whatIs.description'),
+    title: t('MandalorianTranslatorPage.whatIs.title'),
+    description: t('MandalorianTranslatorPage.whatIs.description'),
     features: [],
     image: {
-      src: (t as any)('MandalorianTranslatorPage.whatIs.image'),
+      src: t('MandalorianTranslatorPage.whatIs.image'),
       alt: 'What is Mandalorian Translator',
     },
-    cta: { text: (t as any)('MandalorianTranslatorPage.ctaButton') },
+    cta: { text: t('MandalorianTranslatorPage.ctaButton') },
   };
 
   // How to section
   const howtoSection = {
     name: 'howto',
-    title: (t as any)('MandalorianTranslatorPage.howto.title'),
-    description: (t as any)('MandalorianTranslatorPage.howto.description'),
+    title: t('MandalorianTranslatorPage.howto.title'),
+    description: t('MandalorianTranslatorPage.howto.description'),
     image: {
-      src: (t as any)('MandalorianTranslatorPage.howto.image'),
+      src: t('MandalorianTranslatorPage.howto.image'),
       alt: 'How to use Mandalorian Translator',
     },
     items: [
       {
-        title: (t as any)('MandalorianTranslatorPage.howto.steps.0.title'),
-        description: (t as any)(
-          'MandalorianTranslatorPage.howto.steps.0.description'
-        ),
+        title: t('MandalorianTranslatorPage.howto.steps.0.title'),
+        description: t('MandalorianTranslatorPage.howto.steps.0.description'),
         icon: 'FaFileUpload',
       },
       {
-        title: (t as any)('MandalorianTranslatorPage.howto.steps.1.title'),
-        description: (t as any)(
-          'MandalorianTranslatorPage.howto.steps.1.description'
-        ),
+        title: t('MandalorianTranslatorPage.howto.steps.1.title'),
+        description: t('MandalorianTranslatorPage.howto.steps.1.description'),
         icon: 'FaPencilAlt',
       },
       {
-        title: (t as any)('MandalorianTranslatorPage.howto.steps.2.title'),
-        description: (t as any)(
-          'MandalorianTranslatorPage.howto.steps.2.description'
-        ),
+        title: t('MandalorianTranslatorPage.howto.steps.2.title'),
+        description: t('MandalorianTranslatorPage.howto.steps.2.description'),
         icon: 'FaLanguage',
       },
     ],
@@ -132,7 +119,7 @@ export default async function MandalorianTranslatorPage(
 
   let highlightsDescription = fallbackHighlightDescription;
   try {
-    const desc = (t as any)('MandalorianTranslatorPage.highlights.description');
+    const desc = t('MandalorianTranslatorPage.highlights.description');
     if (typeof desc === 'string' && desc.trim().length > 0) {
       highlightsDescription = desc;
     }
@@ -149,9 +136,7 @@ export default async function MandalorianTranslatorPage(
 
   let highlightItems = [];
   try {
-    const rawItems = (t as any).raw(
-      'MandalorianTranslatorPage.highlights.items'
-    );
+    const rawItems = t.raw('MandalorianTranslatorPage.highlights.items');
     if (Array.isArray(rawItems)) {
       highlightItems = rawItems.slice(0, 4).map((item, index) => ({
         icon:
@@ -172,17 +157,15 @@ export default async function MandalorianTranslatorPage(
   if (highlightItems.length === 0) {
     highlightItems = defaultHighlightIcons.map((icon, index) => ({
       icon,
-      title: (t as any)(
-        `MandalorianTranslatorPage.highlights.items.${index}.title`
-      ),
-      description: (t as any)(
+      title: t(`MandalorianTranslatorPage.highlights.items.${index}.title`),
+      description: t(
         `MandalorianTranslatorPage.highlights.items.${index}.description`
       ),
       tagline: '',
-      statLabel: (t as any)(
+      statLabel: t(
         `MandalorianTranslatorPage.highlights.items.${index}.statLabel`
       ),
-      statValue: (t as any)(
+      statValue: t(
         `MandalorianTranslatorPage.highlights.items.${index}.statValue`
       ),
       microCopy: '',
@@ -191,7 +174,7 @@ export default async function MandalorianTranslatorPage(
 
   const highlightsSection = {
     name: 'highlights',
-    title: (t as any)('MandalorianTranslatorPage.highlights.title'),
+    title: t('MandalorianTranslatorPage.highlights.title'),
     description: highlightsDescription,
     items: highlightItems,
   };
@@ -199,26 +182,26 @@ export default async function MandalorianTranslatorPage(
   // Fun Facts section
   const funFactsSection = {
     name: 'funFacts',
-    title: (t as any)('MandalorianTranslatorPage.funFacts.title'),
+    title: t('MandalorianTranslatorPage.funFacts.title'),
     items: [
       {
-        title: (t as any)('MandalorianTranslatorPage.funFacts.items.0.title'),
-        description: (t as any)(
+        title: t('MandalorianTranslatorPage.funFacts.items.0.title'),
+        description: t(
           'MandalorianTranslatorPage.funFacts.items.0.description'
         ),
         image: {
-          src: (t as any)('MandalorianTranslatorPage.funFacts.items.0.image'),
-          alt: (t as any)('MandalorianTranslatorPage.funFacts.items.0.title'),
+          src: t('MandalorianTranslatorPage.funFacts.items.0.image'),
+          alt: t('MandalorianTranslatorPage.funFacts.items.0.title'),
         },
       },
       {
-        title: (t as any)('MandalorianTranslatorPage.funFacts.items.1.title'),
-        description: (t as any)(
+        title: t('MandalorianTranslatorPage.funFacts.items.1.title'),
+        description: t(
           'MandalorianTranslatorPage.funFacts.items.1.description'
         ),
         image: {
-          src: (t as any)('MandalorianTranslatorPage.funFacts.items.1.image'),
-          alt: (t as any)('MandalorianTranslatorPage.funFacts.items.1.title'),
+          src: t('MandalorianTranslatorPage.funFacts.items.1.image'),
+          alt: t('MandalorianTranslatorPage.funFacts.items.1.title'),
         },
       },
     ],
@@ -227,70 +210,46 @@ export default async function MandalorianTranslatorPage(
   // User Interest section (4 content blocks)
   const userInterestSection = {
     name: 'userInterest',
-    title: (t as any)('MandalorianTranslatorPage.userInterest.title'),
+    title: t('MandalorianTranslatorPage.userInterest.title'),
     items: [
       {
-        title: (t as any)(
-          'MandalorianTranslatorPage.userInterest.items.0.title'
-        ),
-        description: (t as any)(
+        title: t('MandalorianTranslatorPage.userInterest.items.0.title'),
+        description: t(
           'MandalorianTranslatorPage.userInterest.items.0.description'
         ),
         image: {
-          src: (t as any)(
-            'MandalorianTranslatorPage.userInterest.items.0.image'
-          ),
-          alt: (t as any)(
-            'MandalorianTranslatorPage.userInterest.items.0.title'
-          ),
+          src: t('MandalorianTranslatorPage.userInterest.items.0.image'),
+          alt: t('MandalorianTranslatorPage.userInterest.items.0.title'),
         },
       },
       {
-        title: (t as any)(
-          'MandalorianTranslatorPage.userInterest.items.1.title'
-        ),
-        description: (t as any)(
+        title: t('MandalorianTranslatorPage.userInterest.items.1.title'),
+        description: t(
           'MandalorianTranslatorPage.userInterest.items.1.description'
         ),
         image: {
-          src: (t as any)(
-            'MandalorianTranslatorPage.userInterest.items.1.image'
-          ),
-          alt: (t as any)(
-            'MandalorianTranslatorPage.userInterest.items.1.title'
-          ),
+          src: t('MandalorianTranslatorPage.userInterest.items.1.image'),
+          alt: t('MandalorianTranslatorPage.userInterest.items.1.title'),
         },
       },
       {
-        title: (t as any)(
-          'MandalorianTranslatorPage.userInterest.items.2.title'
-        ),
-        description: (t as any)(
+        title: t('MandalorianTranslatorPage.userInterest.items.2.title'),
+        description: t(
           'MandalorianTranslatorPage.userInterest.items.2.description'
         ),
         image: {
-          src: (t as any)(
-            'MandalorianTranslatorPage.userInterest.items.2.image'
-          ),
-          alt: (t as any)(
-            'MandalorianTranslatorPage.userInterest.items.2.title'
-          ),
+          src: t('MandalorianTranslatorPage.userInterest.items.2.image'),
+          alt: t('MandalorianTranslatorPage.userInterest.items.2.title'),
         },
       },
       {
-        title: (t as any)(
-          'MandalorianTranslatorPage.userInterest.items.3.title'
-        ),
-        description: (t as any)(
+        title: t('MandalorianTranslatorPage.userInterest.items.3.title'),
+        description: t(
           'MandalorianTranslatorPage.userInterest.items.3.description'
         ),
         image: {
-          src: (t as any)(
-            'MandalorianTranslatorPage.userInterest.items.3.image'
-          ),
-          alt: (t as any)(
-            'MandalorianTranslatorPage.userInterest.items.3.title'
-          ),
+          src: t('MandalorianTranslatorPage.userInterest.items.3.image'),
+          alt: t('MandalorianTranslatorPage.userInterest.items.3.title'),
         },
       },
     ],
@@ -307,10 +266,10 @@ export default async function MandalorianTranslatorPage(
         <AuroraBackground className="bg-white dark:bg-zinc-900 !pt-12 !h-auto">
           <div className="container max-w-5xl mx-auto px-4 text-center relative z-10 pb-8">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              {(t as any)('MandalorianTranslatorPage.hero.title')}
+              {t('MandalorianTranslatorPage.hero.title')}
             </h1>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
-              {(t as any)('MandalorianTranslatorPage.hero.description')}
+              {t('MandalorianTranslatorPage.hero.description')}
             </p>
 
             {/* User Avatars and Rating */}
@@ -369,13 +328,13 @@ export default async function MandalorianTranslatorPage(
         {/* User Interest Blocks */}
         <UserScenarios
           section={userInterestSection}
-          ctaText={(t as any)('MandalorianTranslatorPage.ctaButton')}
+          ctaText={t('MandalorianTranslatorPage.ctaButton')}
         />
 
         {/* Fun Facts */}
         <UserScenarios
           section={funFactsSection}
-          ctaText={(t as any)('MandalorianTranslatorPage.ctaButton')}
+          ctaText={t('MandalorianTranslatorPage.ctaButton')}
         />
 
         {/* Highlights */}

@@ -1,4 +1,3 @@
-// @ts-nocheck - Translation keys type mismatch
 import BeforeAfterSection from '@/components/blocks/Examples';
 import CallToActionSection from '@/components/blocks/calltoaction/calltoaction';
 import ExploreOurAiTools from '@/components/blocks/exploretools';
@@ -35,9 +34,7 @@ export async function generateMetadata({
   });
 
   return constructMetadata({
-    // @ts-ignore - Translation type mismatch
-    title: `${gt('title')} | ${(t as any)('name')}`,
-    // @ts-ignore - Translation type mismatch
+    title: `${gt('title')} | ${t('name')}`,
     description: gt('description'),
     canonicalUrl: getUrlWithLocale('/ancient-greek-translator', locale),
     image: '/images/docs/what-is-ancient-greek-translator.webp',
@@ -53,7 +50,6 @@ export default async function AncientGreekTranslatorPage(
 ) {
   const params = await props.params;
   const { locale } = params;
-  // @ts-ignore - Translation keys are dynamic
   const t = await getTranslations({
     locale,
     namespace: 'AncientGreekTranslatorPage',
@@ -62,41 +58,41 @@ export default async function AncientGreekTranslatorPage(
   // Structured Data for SEO
   const structuredData = buildToolStructuredData({
     name: 'VibeTrans Ancient Greek Translator',
-    description: (t as any)('description'),
+    description: t('description'),
   });
 
   // Page data for the tool
   const pageData = {
     tool: {
-      inputLabel: (t as any)('tool.inputLabel'),
-      greekLabel: (t as any)('tool.greekLabel'),
-      outputLabel: (t as any)('tool.outputLabel'),
-      inputPlaceholder: (t as any)('tool.inputPlaceholder'),
-      greekPlaceholder: (t as any)('tool.greekPlaceholder'),
-      outputPlaceholder: (t as any)('tool.outputPlaceholder'),
-      translateButton: (t as any)('tool.translateButton'),
-      uploadButton: (t as any)('tool.uploadButton'),
-      uploadHint: (t as any)('tool.uploadHint'),
-      loading: (t as any)('tool.loading'),
-      error: (t as any)('tool.error'),
-      noInput: (t as any)('tool.noInput'),
-      pronunciationLabel: (t as any)('tool.pronunciationLabel'),
-      culturalContextLabel: (t as any)('tool.culturalContextLabel'),
-      dialectLabel: (t as any)('tool.dialectLabel'),
+      inputLabel: t('tool.inputLabel'),
+      greekLabel: t('tool.greekLabel'),
+      outputLabel: t('tool.outputLabel'),
+      inputPlaceholder: t('tool.inputPlaceholder'),
+      greekPlaceholder: t('tool.greekPlaceholder'),
+      outputPlaceholder: t('tool.outputPlaceholder'),
+      translateButton: t('tool.translateButton'),
+      uploadButton: t('tool.uploadButton'),
+      uploadHint: t('tool.uploadHint'),
+      loading: t('tool.loading'),
+      error: t('tool.error'),
+      noInput: t('tool.noInput'),
+      pronunciationLabel: t('tool.pronunciationLabel'),
+      culturalContextLabel: t('tool.culturalContextLabel'),
+      dialectLabel: t('tool.dialectLabel'),
       dialects: {
-        attic: (t as any)('tool.dialects.attic'),
-        ionic: (t as any)('tool.dialects.ionic'),
-        doric: (t as any)('tool.dialects.doric'),
-        aeolic: (t as any)('tool.dialects.aeolic'),
-        koine: (t as any)('tool.dialects.koine'),
+        attic: t('tool.dialects.attic'),
+        ionic: t('tool.dialects.ionic'),
+        doric: t('tool.dialects.doric'),
+        aeolic: t('tool.dialects.aeolic'),
+        koine: t('tool.dialects.koine'),
       },
     },
   };
 
   // Examples section data
   const examplesData = {
-    title: (t as any)('examples.title'),
-    description: (t as any)('examples.description'),
+    title: t('examples.title'),
+    description: t('examples.description'),
     images: [
       {
         alt: 'English: Hello → Greek: χαῖρε (chaíre)',
@@ -128,19 +124,19 @@ export default async function AncientGreekTranslatorPage(
   // User scenarios section (Fun Facts)
   const userScenariosSection = {
     name: 'userscenarios',
-    title: (t as any)('funfacts.title'),
+    title: t('funfacts.title'),
     items: [
       {
-        title: (t as any)('funfacts.items.0.title'),
-        description: (t as any)('funfacts.items.0.description'),
+        title: t('funfacts.items.0.title'),
+        description: t('funfacts.items.0.description'),
         image: {
           src: '/images/docs/ancient-greek-language-influence.webp',
           alt: 'Ancient Greek Influenced Modern Languages',
         },
       },
       {
-        title: (t as any)('funfacts.items.1.title'),
-        description: (t as any)('funfacts.items.1.description'),
+        title: t('funfacts.items.1.title'),
+        description: t('funfacts.items.1.description'),
         image: {
           src: '/images/docs/ancient-greek-dialects.webp',
           alt: 'Ancient Greek Dialects',
@@ -152,74 +148,74 @@ export default async function AncientGreekTranslatorPage(
   // Highlights section
   const highlightsSection = {
     name: 'highlights',
-    title: (t as any)('highlights.title'),
-    description: (t as any)('highlights.description'),
+    title: t('highlights.title'),
+    description: t('highlights.description'),
     items: [
       {
         icon: 'FaRocket',
-        title: (t as any)('highlights.items.0.title'),
-        description: (t as any)('highlights.items.0.description'),
+        title: t('highlights.items.0.title'),
+        description: t('highlights.items.0.description'),
       },
       {
         icon: 'FaBrain',
-        title: (t as any)('highlights.items.1.title'),
-        description: (t as any)('highlights.items.1.description'),
+        title: t('highlights.items.1.title'),
+        description: t('highlights.items.1.description'),
       },
       {
         icon: 'FaShieldAlt',
-        title: (t as any)('highlights.items.2.title'),
-        description: (t as any)('highlights.items.2.description'),
+        title: t('highlights.items.2.title'),
+        description: t('highlights.items.2.description'),
       },
       {
         icon: 'FaChartLine',
-        title: (t as any)('highlights.items.3.title'),
-        description: (t as any)('highlights.items.3.description'),
+        title: t('highlights.items.3.title'),
+        description: t('highlights.items.3.description'),
       },
     ],
   };
 
   // What is section
   const whatIsSection = {
-    title: (t as any)('whatIs.title'),
-    description: (t as any)('whatIs.description'),
+    title: t('whatIs.title'),
+    description: t('whatIs.description'),
     features: [],
     image: {
       src: '/images/docs/what-is-ancient-greek-translator.webp',
       alt: 'What is Ancient Greek Translator - Understanding Classical Greek Language',
     },
     cta: {
-      text: (t as any)('ctaButton'),
+      text: t('ctaButton'),
     },
   };
 
   // How to section
   const howtoSection = {
     name: 'howto',
-    title: (t as any)('howto.title'),
-    description: (t as any)('howto.description'),
+    title: t('howto.title'),
+    description: t('howto.description'),
     image: {
       src: '/images/docs/ancient-greek-translator-how-to.webp',
       alt: 'How to use Ancient Greek Translator step by step guide',
     },
     items: [
       {
-        title: (t as any)('howto.steps.0.title'),
-        description: (t as any)('howto.steps.0.description'),
+        title: t('howto.steps.0.title'),
+        description: t('howto.steps.0.description'),
         icon: 'FaFileUpload',
       },
       {
-        title: (t as any)('howto.steps.1.title'),
-        description: (t as any)('howto.steps.1.description'),
+        title: t('howto.steps.1.title'),
+        description: t('howto.steps.1.description'),
         icon: 'FaPencilAlt',
       },
       {
-        title: (t as any)('howto.steps.2.title'),
-        description: (t as any)('howto.steps.2.description'),
+        title: t('howto.steps.2.title'),
+        description: t('howto.steps.2.description'),
         icon: 'FaLanguage',
       },
       {
-        title: (t as any)('howto.steps.3.title'),
-        description: (t as any)('howto.steps.3.description'),
+        title: t('howto.steps.3.title'),
+        description: t('howto.steps.3.description'),
         icon: 'FaCheckCircle',
       },
     ],
@@ -228,35 +224,35 @@ export default async function AncientGreekTranslatorPage(
   // User Interest section
   const userInterestSection = {
     name: 'userinterest',
-    title: (t as any)('userInterest.title'),
+    title: t('userInterest.title'),
     items: [
       {
-        title: (t as any)('userInterest.items.0.title'),
-        description: (t as any)('userInterest.items.0.description'),
+        title: t('userInterest.items.0.title'),
+        description: t('userInterest.items.0.description'),
         image: {
           src: '/images/docs/accurate-greek-translations.webp',
           alt: 'Accurate Translations of Ancient Greek Texts',
         },
       },
       {
-        title: (t as any)('userInterest.items.1.title'),
-        description: (t as any)('userInterest.items.1.description'),
+        title: t('userInterest.items.1.title'),
+        description: t('userInterest.items.1.description'),
         image: {
           src: '/images/docs/ai-powered-greek-translation.webp',
           alt: 'AI-Powered Ancient Greek Translations',
         },
       },
       {
-        title: (t as any)('userInterest.items.2.title'),
-        description: (t as any)('userInterest.items.2.description'),
+        title: t('userInterest.items.2.title'),
+        description: t('userInterest.items.2.description'),
         image: {
           src: '/images/docs/greek-cultural-insights.webp',
           alt: 'Cultural Insights in Ancient Greek Translations',
         },
       },
       {
-        title: (t as any)('userInterest.items.3.title'),
-        description: (t as any)('userInterest.items.3.description'),
+        title: t('userInterest.items.3.title'),
+        description: t('userInterest.items.3.description'),
         image: {
           src: '/images/docs/learn-ancient-greek.webp',
           alt: 'Learn Ancient Greek with VibeTrans',
@@ -277,10 +273,10 @@ export default async function AncientGreekTranslatorPage(
         <AuroraBackground className="bg-white dark:bg-zinc-900 !pt-12 !h-auto">
           <div className="container max-w-7xl mx-auto px-4 text-center relative z-10 pb-8">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              {(t as any)('hero.title')}
+              {t('hero.title')}
             </h1>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
-              {(t as any)('hero.description')}
+              {t('hero.description')}
             </p>
 
             {/* User Avatars and Rating */}
@@ -361,15 +357,12 @@ export default async function AncientGreekTranslatorPage(
         <HowTo section={howtoSection} />
 
         {/* User Interest Blocks */}
-        <UserScenarios
-          section={userInterestSection}
-          ctaText={(t as any)('ctaButton')}
-        />
+        <UserScenarios section={userInterestSection} ctaText={t('ctaButton')} />
 
         {/* Fun Facts */}
         <UserScenarios
           section={userScenariosSection}
-          ctaText={(t as any)('ctaButton')}
+          ctaText={t('ctaButton')}
         />
 
         {/* Highlights/Why Choose */}

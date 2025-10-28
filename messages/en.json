@@ -1,5 +1,12 @@
 {
   "name": "VibeTrans",
+  "title": "VibeTrans - AI-Powered Translation Platform",
+  "description": "Break language barriers with AI-powered translations. Supports 100+ languages with accurate, context-aware translations.",
+  "Metadata": {
+    "name": "VibeTrans",
+    "title": "VibeTrans - AI-Powered Translation Platform",
+    "description": "Break language barriers with AI-powered translations. Supports 100+ languages with accurate, context-aware translations."
+  },
   "whatIs": {
     "image": "/images/docs/what-is-baybayin-translator.webp"
   }

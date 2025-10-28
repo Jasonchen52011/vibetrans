@@ -14,8 +14,12 @@ export function RoutePreloader() {
 
   useEffect(() => {
     // Prefetch common routes on initial load
-    const commonRoutes = ['/albanian-to-english', '/chinese-to-english-translator', '/english-to-chinese-translator'];
-    commonRoutes.forEach(route => {
+    const commonRoutes = [
+      '/albanian-to-english',
+      '/chinese-to-english-translator',
+      '/english-to-chinese-translator',
+    ];
+    commonRoutes.forEach((route) => {
       if (!prefetchedRoutes.current.has(route)) {
         prefetch(route);
         prefetchedRoutes.current.add(route);

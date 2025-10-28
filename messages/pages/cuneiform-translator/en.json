@@ -252,5 +252,10 @@
       "secondaryButton": "Back to Top"
     },
     "ctaButton": "Try Cuneiform Translator"
+  },
+  "Metadata": {
+    "name": "VibeTrans",
+    "title": "Cuneiform Translator - VibeTrans",
+    "description": "Break language barriers with AI-powered translations. Supports 100+ languages with accurate, context-aware translations."
   }
 }

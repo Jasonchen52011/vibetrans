@@ -232,5 +232,10 @@
       "button": "Get Started Free",
       "primaryButton": "Start Translating Now"
     }
+  },
+  "Metadata": {
+    "name": "VibeTrans",
+    "title": "English to Persian Translator - VibeTrans",
+    "description": "Break language barriers with AI-powered translations. Supports 100+ languages with accurate, context-aware translations."
   }
 }

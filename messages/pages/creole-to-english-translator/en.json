@@ -9,17 +9,19 @@
       "secondaryButton": "Learn More"
     },
     "tool": {
-      "yourWords": "Your Words",
-      "doggyVibe": "Result",
-      "inputLabel": "Creole",
-      "outputLabel": "English",
-      "inputPlaceholder": "Enter your text or upload a file...",
-      "outputPlaceholder": "Translation results will appear here",
+      "creoleLabel": "Creole",
+      "englishLabel": "English",
+      "creolePlaceholder": "Type Creole text here...",
+      "englishPlaceholder": "Type English text here...",
+      "creoleInputHeading": "Creole Text",
+      "englishInputHeading": "English Text",
+      "creoleOutputHeading": "Creole Translation",
+      "englishOutputHeading": "English Translation",
+      "creoleOutputPlaceholder": "Creole translation will appear here",
+      "englishOutputPlaceholder": "English translation will appear here",
       "translateButton": "Translate",
       "uploadButton": "Upload File",
       "uploadHint": "Supports .txt, .docx files",
-      "recordButton": "Record Audio",
-      "playButton": "Play Sound",
       "loading": "Processing...",
       "error": "An error occurred, please try again",
       "noInput": "Please provide input",
@@ -28,17 +30,14 @@
       "copyTooltip": "Copy",
       "downloadTooltip": "Download",
       "resetTooltip": "Reset",
-      "creoleLabel": "Creole",
-      "creolePlaceholder": "Type Creole text here...",
       "removeFileTooltip": "Remove file",
-      "removeRecordingTooltip": "Remove recording",
-      "toggleModeTooltip": "Toggle translation mode",
       "toggleDirectionTooltip": "Toggle translation direction",
       "copyResultTooltip": "Copy result",
       "downloadResultTooltip": "Download result",
       "playSoundTooltip": "Play sound",
-      "englishLabel": "English",
-      "englishPlaceholder": "Type English text here..."
+      "languageWarning": "Please input Creole or English",
+      "toggleToCreole": "Switch to English -> Creole",
+      "toggleToEnglish": "Switch to Creole -> English"
     },
     "whatIs": {
       "title": "What is Creole to English Translator",
@@ -225,15 +224,8 @@
         }
       }
     },
-    "ctaButton": "Try Creole To English Translator Now",
-    "cta": {
-      "title": "Try VibeTrans Creole to English Translator Now",
-      "description": "Experience seamless translations with VibeTrans. Start using our Creole to English translator today and break down language barriers effortlessly.",
-      "primaryButton": "Try Creole To English Translator Now",
-      "secondaryButton": "Back to Top"
-    },
     "funFacts": {
-      "title": "Creole: Your Key to Unlocking Creole Cultures",
+      "title": "Fascinating Language Insights",
       "items": [
         {
           "title": "Creole's French Roots",
@@ -244,6 +236,18 @@
           "description": "Unlike many languages, Creole doesn't use verb conjugations. Instead, it relies on time particles like 'te', 'ap', and 'pral' to express tense, making grammar beautifully simple and consistent."
         }
       ]
+    },
+    "ctaButton": "Try Creole To English Translator Now",
+    "cta": {
+      "title": "Try VibeTrans Creole to English Translator Now",
+      "description": "Experience seamless translations with VibeTrans. Start using our Creole to English translator today and break down language barriers effortlessly.",
+      "primaryButton": "Try Creole To English Translator Now",
+      "secondaryButton": "Back to Top"
     }
+  },
+  "Metadata": {
+    "name": "VibeTrans",
+    "title": "Creole to English Translator - VibeTrans",
+    "description": "Break language barriers with AI-powered translations. Supports 100+ languages with accurate, context-aware translations."
   }
 }
