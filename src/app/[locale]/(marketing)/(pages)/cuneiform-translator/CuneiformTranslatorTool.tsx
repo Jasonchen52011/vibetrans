@@ -4,7 +4,7 @@ import { ToolInfoSections } from '@/components/blocks/tool/tool-info-sections';
 import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
 import type { CuneiformScript } from '@/lib/cuneiform';
 import { ArrowRightIcon } from 'lucide-react';
-import mammoth from 'mammoth';
+// import mammoth from 'mammoth'; // Disabled for Edge Runtime compatibility
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 // 简单的debounce函数实现
@@ -95,7 +95,10 @@ export default function CuneiformTranslatorTool({
     if (fileExtension === 'docx') {
       try {
         const arrayBuffer = await file.arrayBuffer();
-        const result = await mammoth.extractRawText({ arrayBuffer });
+        // mammoth.extractRawText disabled for Edge Runtime
+    const result = {
+      text: 'Word document processing is not available in this environment. Please use plain text input.'
+    };
         if (result.value) {
           return result.value;
         }

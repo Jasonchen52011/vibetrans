@@ -19,6 +19,7 @@ export const config = {
     // Match all pathnames except for
     // - if they start with `/api`, `/_next`, `_vercel` or `/_cloudflare`
     // - if they contain a dot (e.g. `favicon.ico`)
-    '/((?!api|_next|_vercel|_cloudflare|.*\\..*).*)',
+    // - Optimize: exclude static assets and improve performance
+    '/((?!api|_next|_vercel|_cloudflare|.*\\..*|manifest|robots|sitemap).*)',
   ],
 };

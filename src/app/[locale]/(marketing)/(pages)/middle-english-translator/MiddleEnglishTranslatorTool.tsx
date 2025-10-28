@@ -2,7 +2,7 @@
 
 import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
 import { detectLanguage } from '@/lib/language-detection';
-import mammoth from 'mammoth';
+// import mammoth from 'mammoth'; // Disabled for Edge Runtime compatibility
 import { useEffect, useRef, useState } from 'react';
 
 interface MiddleEnglishTranslatorToolProps {
@@ -200,7 +200,10 @@ export default function MiddleEnglishTranslatorTool({
     if (fileExtension === 'docx') {
       try {
         const arrayBuffer = await file.arrayBuffer();
-        const result = await mammoth.extractRawText({ arrayBuffer });
+        // mammoth.extractRawText disabled for Edge Runtime
+    const result = {
+      text: 'Word document processing is not available in this environment. Please use plain text input.'
+    };
         if (result.value) return result.value;
         throw new Error('Failed to extract text from Word document');
       } catch (error) {

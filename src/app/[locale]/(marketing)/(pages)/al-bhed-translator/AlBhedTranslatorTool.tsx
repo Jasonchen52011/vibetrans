@@ -10,7 +10,7 @@ import {
 } from '@/lib/al-bhed';
 import { detectLanguage as smartDetectLanguage } from '@/lib/language-detection';
 import { ArrowRightIcon } from 'lucide-react';
-import mammoth from 'mammoth';
+// import mammoth from 'mammoth'; // Disabled for Edge Runtime compatibility
 import { useEffect, useRef, useState } from 'react';
 
 interface AlBhedTranslatorToolProps {
@@ -92,7 +92,10 @@ export default function AlBhedTranslatorTool({
     if (fileExtension === 'docx') {
       try {
         const arrayBuffer = await file.arrayBuffer();
-        const result = await mammoth.extractRawText({ arrayBuffer });
+        // mammoth.extractRawText disabled for Edge Runtime
+    const result = {
+      text: 'Word document processing is not available in this environment. Please use plain text input.'
+    };
         if (result.value) {
           return result.value;
         }

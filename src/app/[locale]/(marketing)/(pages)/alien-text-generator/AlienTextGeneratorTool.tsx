@@ -7,7 +7,7 @@ import {
   getAlienStyles,
 } from '@/lib/alien-text';
 import { ArrowRightIcon } from 'lucide-react';
-import mammoth from 'mammoth';
+// import mammoth from 'mammoth'; // Disabled for Edge Runtime compatibility
 import { useState } from 'react';
 
 interface AlienTextGeneratorToolProps {
@@ -77,7 +77,10 @@ export default function AlienTextGeneratorTool({
     if (fileExtension === 'docx') {
       try {
         const arrayBuffer = await file.arrayBuffer();
-        const result = await mammoth.extractRawText({ arrayBuffer });
+        // mammoth.extractRawText disabled for Edge Runtime
+    const result = {
+      text: 'Word document processing is not available in this environment. Please use plain text input.'
+    };
         if (result.value) {
           return result.value;
         }

@@ -3,7 +3,7 @@
 import { SpeechToTextButton } from '@/components/ui/speech-to-text-button';
 import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
 import { Mic, Waves } from 'lucide-react';
-import mammoth from 'mammoth';
+// import mammoth from 'mammoth'; // Disabled for Edge Runtime compatibility
 import { useEffect, useRef, useState } from 'react';
 
 interface OghamTranslatorToolProps {
@@ -62,7 +62,10 @@ export default function OghamTranslatorTool({
     if (fileExtension === 'docx') {
       try {
         const arrayBuffer = await file.arrayBuffer();
-        const result = await mammoth.extractRawText({ arrayBuffer });
+        // mammoth.extractRawText disabled for Edge Runtime
+    const result = {
+      text: 'Word document processing is not available in this environment. Please use plain text input.'
+    };
         if (result.value) return result.value;
         throw new Error('Failed to extract text from Word document');
       } catch (error) {

@@ -4,6 +4,7 @@ import Container from '@/components/layout/container';
 import { Logo } from '@/components/layout/logo';
 import { ModeSwitcher } from '@/components/layout/mode-switcher';
 import { NavbarMobile } from '@/components/layout/navbar-mobile';
+import { RoutePreloader } from '@/components/layout/route-preloader';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -47,17 +48,21 @@ export function Navbar({ scroll }: NavBarProps) {
   }, []);
 
   return (
-    <section
-      className={cn(
-        'sticky inset-x-0 top-0 z-40 py-4 transition-all duration-300',
-        scroll
-          ? scrolled
-            ? 'bg-white/80 dark:bg-black/80 backdrop-blur-lg border-b border-gray-200/50 dark:border-gray-700/50 shadow-sm'
+    <>
+      {/* Route preloader for better navigation performance */}
+      <RoutePreloader />
+
+      <section
+        className={cn(
+          'sticky inset-x-0 top-0 z-40 py-4 transition-all duration-300',
+          scroll
+            ? scrolled
+              ? 'bg-white/80 dark:bg-black/80 backdrop-blur-lg border-b border-gray-200/50 dark:border-gray-700/50 shadow-sm'
+              : 'bg-transparent'
             : 'bg-transparent'
-          : 'bg-transparent'
-      )}
-    >
-      <Container className="px-4">
+        )}
+      >
+        <Container className="px-4">
         {/* desktop navbar */}
         <nav className="hidden lg:flex lg:items-center lg:w-full">
           {/* logo and name */}
@@ -224,5 +229,6 @@ export function Navbar({ scroll }: NavBarProps) {
         <NavbarMobile className="lg:hidden" />
       </Container>
     </section>
+    </>
   );
 }
