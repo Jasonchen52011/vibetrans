@@ -143,6 +143,7 @@
     },
     "testimonials": {
       "title": "What Users Say",
+      "subtitle": "Real feedback from users who rely on our translator daily",
       "items": {
         "item-1": {
           "name": "Maria Thompson",
@@ -198,6 +199,10 @@
         "item-7": {
           "question": "How accurate is VibeTrans for Albanian dialects?",
           "answer": "VibeTrans maintains high accuracy for both Gheg and Tosk Albanian dialects, recognizing key linguistic differences while providing standardized translations. Our AI is trained on diverse Albanian sources from different regions, ensuring accurate translation of dialectal expressions, regional vocabulary, and pronunciation variations. Whether you're translating content from northern Albania (Gheg) or southern regions (Tosk), VibeTrans delivers consistent, contextually appropriate English translations that preserve the original meaning while adapting to standard English usage."
+        },
+        "item-8": {
+          "question": "Can VibeTrans handle Albanian names and places?",
+          "answer": "Yes, VibeTrans properly handles Albanian names, place names, and cultural references. Our AI recognizes common Albanian personal names, geographical locations, historical sites, and cultural landmarks, ensuring they are appropriately preserved or explained in translations. Whether translating Albanian literature, news articles, or travel content, VibeTrans maintains the authenticity of Albanian proper nouns while providing clear English context."
         }
       }
     },

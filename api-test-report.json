@@ -1,0 +1,352 @@
+{
+  "timestamp": "2025-10-29T13:57:42.133Z",
+  "summary": {
+    "total": 15,
+    "successful": 15,
+    "failed": 0,
+    "successRate": 100,
+    "totalTime": 25708,
+    "averageResponseTime": "1713"
+  },
+  "results": [
+    {
+      "name": "Chinese-English Translator",
+      "endpoint": "/api/chinese-to-english-translator",
+      "attempt": 1,
+      "success": true,
+      "statusCode": 200,
+      "responseTime": 1831,
+      "timestamp": "2025-10-29T13:57:18.257Z",
+      "data": {
+        "translated": "Hello, world.",
+        "original": "你好世界",
+        "mode": "general",
+        "modeName": "general",
+        "direction": "zh-to-en",
+        "inputType": "text",
+        "message": "Translation successful",
+        "detectedInputLanguage": "chinese",
+        "confidence": 0.8,
+        "autoDetected": true,
+        "languageInfo": {
+          "detected": true,
+          "detectedLanguage": "Chinese",
+          "direction": "Chinese → English",
+          "confidence": 80,
+          "explanation": "Auto-detected Chinese input, translated to English"
+        }
+      },
+      "missingFields": [],
+      "structureValid": true
+    },
+    {
+      "name": "Albanian-English Translator",
+      "endpoint": "/api/albanian-to-english-translator",
+      "attempt": 1,
+      "success": true,
+      "statusCode": 200,
+      "responseTime": 1625,
+      "timestamp": "2025-10-29T13:57:19.884Z",
+      "data": {
+        "translated": "Hello world",
+        "original": "Përshendetje botë",
+        "mode": "general",
+        "modeName": "General Translation",
+        "direction": "sq-to-en",
+        "detectedInputLanguage": "albanian",
+        "confidence": 0.8,
+        "autoDetected": true,
+        "inputType": "text",
+        "message": "Translation successful",
+        "languageInfo": {
+          "detected": true,
+          "detectedLanguage": "Albanian",
+          "direction": "Albanian → English",
+          "confidence": 80,
+          "explanation": "Auto-detected Albanian input, translated to English"
+        }
+      },
+      "missingFields": [],
+      "structureValid": true
+    },
+    {
+      "name": "English-Chinese Translator",
+      "endpoint": "/api/english-to-chinese-translator",
+      "attempt": 1,
+      "success": true,
+      "statusCode": 200,
+      "responseTime": 1893,
+      "timestamp": "2025-10-29T13:57:21.777Z",
+      "data": {
+        "translated": "你好，世界",
+        "detectedSourceLanguage": "English",
+        "detectedTargetLanguage": "Chinese",
+        "backTranslation": "Hello, world"
+      },
+      "missingFields": [],
+      "structureValid": true
+    },
+    {
+      "name": "English-Swahili Translator",
+      "endpoint": "/api/english-to-swahili-translator",
+      "attempt": 1,
+      "success": true,
+      "statusCode": 200,
+      "responseTime": 1741,
+      "timestamp": "2025-10-29T13:57:23.519Z",
+      "data": {
+        "translated": "Habari dunia",
+        "detectedSourceLanguage": "English",
+        "detectedTargetLanguage": "Swahili",
+        "backTranslation": "Hello world"
+      },
+      "missingFields": [],
+      "structureValid": true
+    },
+    {
+      "name": "Japanese-English Translator",
+      "endpoint": "/api/japanese-to-english-translator",
+      "attempt": 1,
+      "success": true,
+      "statusCode": 200,
+      "responseTime": 4238,
+      "timestamp": "2025-10-29T13:57:27.757Z",
+      "data": {
+        "translated": "Okay, here are a few options for translating \"こんにちは世界\" (Konnichiwa Sekai), keeping in mind the cultural context and nuances: **Option 1 (Most Literal, Neutral):** * **\"Hello World\"** * This is the most direct and common translation, especially in a technical context (like a programming example). It's universally understood. **Option 2 (Slightly More Nuanced, Friendly):** * **\"Hello, World!\"** (with the exclamation point) * The exclamation point adds a touch of enthusiasm, which can be closer to the feeling conveyed by \"Konnichiwa\" in Japanese. **Option 3 (More Contextual, Emphasizing Greeting):** * **\"Good day, World!\"** * \"Konnichiwa\" is generally used as a daytime greeting, so \"Good day\" can be a more accurate reflection of its usage. However, it might sound a bit formal depending on the situation. **Why these choices and considerations:** * **\"Konnichiwa\" (こんにちは):** This is a general daytime greeting. It's polite but not overly formal. It's similar in tone to \"Hello\" or \"Good day.\" * **\"Sekai\" (世界):** This means \"world.\" * **Cultural Context:** The phrase \"Hello World\" is extremely common in programming as the first program someone writes in a new language. Therefore, the translation should be clear and easily recognizable in that context. * **Nuances:** Japanese greetings often carry a sense of politeness and goodwill. Adding an exclamation point can help convey some of that warmth in English. **Which option to use depends on the specific situation:** * **Technical context (programming):** \"Hello World\" is the best choice. * **General greeting (e.g., in a story or artwork):** \"Hello, World!\" or \"Good day, World!\" might be more appropriate. I hope this helps! Let me know if you have any other phrases you'd like me to translate.",
+        "original": "こんにちは世界",
+        "direction": "ja-to-en",
+        "mode": "general",
+        "detectedInputLanguage": "japanese",
+        "confidence": 0.8,
+        "autoDetected": true,
+        "message": "Translation successful",
+        "languageInfo": {
+          "detected": true,
+          "detectedLanguage": "Japanese",
+          "direction": "Japanese → English",
+          "confidence": 80,
+          "explanation": "Auto-detected Japanese input, translated to English"
+        },
+        "metadata": {
+          "model": "gemini-2.0-flash",
+          "processingTime": 1761746247756,
+          "mode": "general",
+          "creditCost": 5
+        },
+        "translator": {
+          "name": "Japanese-English Translator",
+          "type": "ai",
+          "bidirectional": true,
+          "supportedModes": [
+            "general",
+            "business",
+            "literary",
+            "technical",
+            "casual"
+          ]
+        }
+      },
+      "missingFields": [],
+      "structureValid": true
+    },
+    {
+      "name": "Greek Translator",
+      "endpoint": "/api/greek-translator",
+      "attempt": 1,
+      "success": true,
+      "statusCode": 200,
+      "responseTime": 844,
+      "timestamp": "2025-10-29T13:57:28.601Z",
+      "data": {
+        "translated": "Hello world.",
+        "original": "Γειά σου κόσμε",
+        "isTranslated": true,
+        "message": "Translation successful",
+        "translator": {
+          "name": "Greek Translator",
+          "type": "bilingual"
+        },
+        "mode": "general",
+        "modeName": "General Translation",
+        "greekType": "modern",
+        "detectedInputLanguage": "greek",
+        "confidence": 0.8,
+        "autoDetected": true,
+        "actualTranslationDirection": "Greek to English",
+        "status": "success",
+        "timestamp": "2025-10-29T13:57:28.600Z",
+        "languageInfo": {
+          "detected": true,
+          "detectedLanguage": "Greek",
+          "greekType": "modern",
+          "direction": "Greek to English",
+          "confidence": 80,
+          "explanation": "Auto-detected modern Greek input, translated to English"
+        }
+      },
+      "missingFields": [],
+      "structureValid": true
+    },
+    {
+      "name": "Al-Bhed Translator",
+      "endpoint": "/api/al-bhed-translator",
+      "attempt": 1,
+      "success": true,
+      "statusCode": 200,
+      "responseTime": 114,
+      "timestamp": "2025-10-29T13:57:28.715Z",
+      "data": {
+        "original": "Hello world",
+        "translated": "Rammu wunmt",
+        "mode": "toAlBhed",
+        "success": true
+      },
+      "missingFields": [],
+      "structureValid": true
+    },
+    {
+      "name": "English-Amharic Translator",
+      "endpoint": "/api/english-to-amharic-translator",
+      "attempt": 1,
+      "success": true,
+      "statusCode": 200,
+      "responseTime": 2067,
+      "timestamp": "2025-10-29T13:57:30.782Z",
+      "data": {
+        "translated": "ሰላም ዓለም",
+        "transliteration": ""
+      },
+      "missingFields": [],
+      "structureValid": true
+    },
+    {
+      "name": "English-Polish Translator",
+      "endpoint": "/api/english-to-polish-translator",
+      "attempt": 1,
+      "success": true,
+      "statusCode": 200,
+      "responseTime": 159,
+      "timestamp": "2025-10-29T13:57:30.942Z",
+      "data": {
+        "translated": "Hello world",
+        "original": "Hello world",
+        "language": "Polish",
+        "direction": "English to Polish",
+        "provider": "Direct",
+        "note": "Translation feature is currently disabled. Showing original text."
+      },
+      "missingFields": [],
+      "structureValid": true
+    },
+    {
+      "name": "English-Persian Translator",
+      "endpoint": "/api/english-to-persian-translator",
+      "attempt": 1,
+      "success": true,
+      "statusCode": 200,
+      "responseTime": 1181,
+      "timestamp": "2025-10-29T13:57:32.123Z",
+      "data": {
+        "translated": "[Persian translation of: \"Hello world\"] - سلام، این یک ترجمه نمونه از انگلیسی به فارسی است",
+        "original": "Hello world",
+        "isTranslated": true,
+        "message": "English to Persian translation successful!",
+        "translator": {
+          "name": "English to Persian Translator",
+          "type": "bilingual"
+        }
+      },
+      "missingFields": [],
+      "structureValid": true
+    },
+    {
+      "name": "Mandalorian Translator",
+      "endpoint": "/api/mandalorian-translator",
+      "attempt": 1,
+      "success": true,
+      "statusCode": 200,
+      "responseTime": 147,
+      "timestamp": "2025-10-29T13:57:32.271Z",
+      "data": {
+        "translated": "Su cuy'gar world",
+        "original": "Hello world",
+        "inputType": "text",
+        "direction": "english-to-mandalorian",
+        "message": "Translation successful",
+        "detectedInputLanguage": "english"
+      },
+      "missingFields": [],
+      "structureValid": true
+    },
+    {
+      "name": "Dumb It Down AI",
+      "endpoint": "/api/dumb-it-down-ai",
+      "attempt": 1,
+      "success": true,
+      "statusCode": 200,
+      "responseTime": 1216,
+      "timestamp": "2025-10-29T13:57:33.487Z",
+      "data": {
+        "original": "The mitochondrion is a double-membrane-bound organelle found in most eukaryotic cells.",
+        "simplified": "A mitochondrion is a structure inside most cells that has two layers of covering around it.\n",
+        "success": true
+      },
+      "missingFields": [],
+      "structureValid": true
+    },
+    {
+      "name": "Verbose Generator",
+      "endpoint": "/api/verbose-generator",
+      "attempt": 1,
+      "success": true,
+      "statusCode": 200,
+      "responseTime": 8238,
+      "timestamp": "2025-10-29T13:57:41.725Z",
+      "data": {
+        "translated": "The seemingly simple assertion, \"The cat sat on the mat,\" belies a wealth of potential interpretations and complexities when subjected to rigorous academic scrutiny. This concise statement, upon deconstruction, offers avenues for exploration within the fields of semiotics, spatial relations, and even socio-cultural interpretations of domesticity (Hall, 1997).\n\nInitially, we must acknowledge the inherent limitations of language itself. The term \"cat,\" while generally understood to refer to a domestic feline ( *Felis catus*), carries with it a multitude of connotative meanings dependent on the reader's individual experiences and cultural background. As Barthes (1972) argues in *Mythologies*, even seemingly neutral signifiers can be imbued with cultural significance, transforming them into potent vehicles of ideology. For example, a \"cat\" might represent independence, aloofness, or even luck, depending on the cultural context. Consequently, the initial interpretation of \"cat\" necessitates a careful consideration of the potential symbolic weight it carries within the broader discursive landscape.\n\nFurthermore, the verb \"sat\" warrants closer examination. While seemingly straightforward, the act of sitting is, in itself, a complex biomechanical process, implying a transition from a standing or moving position to a state of relative repose. From a phenomenological perspective, the act of \"sitting\" can be interpreted as a deliberate act of claiming space and asserting one's presence within the environment (Merleau-Ponty, 1962). Moreover, the temporal dimension is notably absent. We are not informed *when* the cat sat, or for *how long*. This lack of temporal specificity introduces an element of ambiguity, allowing for multiple interpretations of the event's significance.\n\nIn addition, the preposition \"on\" dictates a specific spatial relationship between the \"cat\" and the \"mat.\" This preposition signifies a position of superimposition, where the cat's body is supported by the surface of the mat. The precise configuration of this spatial relationship, however, remains unspecified. Was the cat sitting squarely in the center of the mat, or perched precariously on its edge? The absence of such details highlights the inherent limitations of language in accurately representing spatial arrangements.\n\nFinally, the \"mat\" itself serves as a critical element in this seemingly innocuous scene. A \"mat,\" typically defined as a flat piece of woven or felted material, often serves a functional purpose, such as preventing dirt from being tracked into a dwelling. However, the \"mat\" can also be considered a symbolic object, representing domesticity, comfort, and a sense of place. Goffman's (1959) work on the presentation of self in everyday life suggests that the placement of a mat within a domestic setting serves to delineate boundaries and define specific areas for particular activities. Thus, the cat's decision to sit \"on the mat\" can be interpreted as an implicit acceptance of, or engagement with, the established social order within the household.\n\nIn conclusion, the statement \"The cat sat on the mat,\" while seemingly simple, offers a rich tapestry of potential interpretations when analyzed through the lens of semiotics, phenomenology, and social theory. A more thorough investigation would necessitate a deeper exploration of the specific context in which this statement was uttered or written, allowing for a more nuanced understanding of the underlying cultural and social forces at play. Further research could explore the gender implications of domesticity or even the psychology of cat ownership and interaction to add further layers of complexity to this deceptively straightforward sentence. The simple scenario, therefore, serves as a powerful reminder of the inherent complexity and ambiguity that underlies all forms of communication.\n\n**References**\n\nBarthes, R. (1972). *Mythologies*. Hill and Wang.\n\nGoffman, E. (1959). *The presentation of self in everyday life*. Anchor Books.\n\nHall, S. (1997). *Representation: Cultural representations and signifying practices*. Sage.\n\nMerleau-Ponty, M. (1962). *Phenomenology of perception*. Routledge.",
+        "original": "The cat sat on the mat.",
+        "style": "academic",
+        "styleName": "Academic Style",
+        "message": "Successfully transformed to Academic Style"
+      },
+      "missingFields": [],
+      "structureValid": true
+    },
+    {
+      "name": "Unified Translator",
+      "endpoint": "/api/translate-unified",
+      "attempt": 1,
+      "success": true,
+      "statusCode": 200,
+      "responseTime": 173,
+      "timestamp": "2025-10-29T13:57:41.898Z",
+      "data": {
+        "translated": "🎯 Wingdings Translation:\n\nH \n\n📝 Decoded!",
+        "original": "Hello world",
+        "translator": "wingdings",
+        "mode": "general",
+        "metadata": {
+          "type": "symbolic",
+          "processingTime": "1.0s"
+        },
+        "timestamp": "2025-10-29T13:57:41.898Z"
+      },
+      "missingFields": [],
+      "structureValid": true
+    },
+    {
+      "name": "Ping API",
+      "endpoint": "/api/ping",
+      "attempt": 1,
+      "success": true,
+      "statusCode": 200,
+      "responseTime": 235,
+      "timestamp": "2025-10-29T13:57:42.133Z",
+      "data": {
+        "message": "pong"
+      },
+      "missingFields": [],
+      "structureValid": true
+    }
+  ]
+}
