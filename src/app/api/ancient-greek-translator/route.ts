@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+export const runtime = 'edge';
+
 // Ancient Greek翻译映射
 const ancientGreekTranslations: { [key: string]: string } = {
   // 常用英语到Ancient Greek

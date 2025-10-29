@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+export const runtime = 'edge';
+
 // Elder Futhark符文映射
 const elderFutharkMappings: { [key: string]: string } = {
   // 元音字母

@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+export const runtime = 'edge';
+
 // Mandalorian (Mando'a) 翻译映射
 const mandalorianTranslations: { [key: string]: string } = {
   // 常用英语到Mando'a
