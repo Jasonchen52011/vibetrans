@@ -1,241 +1,133 @@
+import { GoogleGenerativeAI } from '@/lib/ai/gemini';
 import { NextResponse } from 'next/server';
 
 export const runtime = 'edge';
 
-// 曼达洛语词典 - 基于星球大战宇宙中的曼达洛语
-const MANDALORIAN_DICTIONARY: { [key: string]: string } = {
-  // 基础词汇
-  hello: "su cuy'gar",
-  goodbye: 'narudar',
-  yes: "sey'ceyi",
-  no: 'bat',
-  thank: 'cuyir',
-  thanks: 'cuyir',
-  please: 'copad',
-  sorry: 'novoc',
-  friend: 'iberz',
-  family: 'aliit',
-  honor: 'bal',
-  strength: 'beskar',
-  warrior: "ver'verd",
-  battle: 'batir',
-  fight: 'batir',
-  victory: 'partaylir',
-  win: 'partaylir',
-  lose: 'dral',
-  defeat: "dralshy'a",
-  home: "kyr'amur",
-  house: "kyr'am",
-  world: 'verda',
-  life: 'cuyan',
-  death: "kyr'am",
-  love: 'cuyir gar',
-  hate: "shuk'la",
-  peace: 'solus',
-  war: 'vode',
-  weapon: 'kad',
-  armor: "beskar'gam",
-  helmet: "buy'ce",
-  child: 'ad',
-  children: 'ade',
-  father: 'buir',
-  mother: 'buir',
-  parent: 'buir',
-  brother: 'vod',
-  sister: 'vod',
-  sibling: 'vod',
+const MODEL_NAME = 'gemini-2.0-flash';
+const DEFAULT_STYLE: MandalorianStyle = 'traditional';
 
-  // 常用短语
-  'i am': "ni cuy'ir",
-  'you are': "gar cuy'ir",
-  'we are': "mhi cuy'ir",
-  'they are': "val cuy'ir",
-  'this is': "bic cuy'ir",
-  'that is': "tic cuy'ir",
-  'i have': 'ni ibac',
-  'you have': 'gar ibac',
-  'we have': 'mhi ibac',
-  'i want': 'ni nayc',
-  'you want': 'gar nayc',
-  'i need': "ni nayc'l",
-  'you need': "gar nayc'l",
+type MandalorianStyle = 'traditional' | 'minimal';
 
-  // 核心曼达洛词汇
-  mandalorian: "mando'ad",
-  mando: "mando'ad",
-  'the way': 'haatyc',
-  code: 'kaaned',
-  creed: 'kaaned',
-  resolve: 'akan',
-  iron: 'beskar',
-  steel: 'beskar',
-  clan: 'aliit',
-  tribe: 'aliit',
-  mercenary: 'mercenary',
-  bounty: 'bounty',
-  hunter: 'hunter',
-
-  // 动词
-  go: 'briikase',
-  come: 'cum',
-  see: 'copaan',
-  hear: "kar'ta",
-  speak: 'jurai',
-  say: 'jura',
-  tell: 'juraat',
-  know: "kar'taam",
-  think: 'het',
-  believe: "kar'taamir",
-  feel: "getts'ika",
-  fight: 'batir',
-  kill: "kyr'amir",
-  protect: "caa'nora",
-  defend: "caa'nora",
-  attack: 'vhetin',
-  strike: 'vhetin',
-  run: 'jaon',
-  walk: 'jaon',
-  stand: 'jaic',
-  sit: 'jetiise',
-
-  // 形容词
-  strong: 'par',
-  weak: 'weak',
-  brave: 'par',
-  coward: 'aruetii',
-  fast: 'fast',
-  slow: 'slow',
-  big: 'big',
-  small: 'tiny',
-  old: 'old',
-  new: 'new',
-  good: 'jate',
-  bad: 'gar',
-  evil: 'aruetii',
-  holy: "jate'kyr'am",
-  sacred: "jate'kyr'am",
-  mortal: 'mortal',
-  immortal: 'immortal',
-
-  // 数词
-  one: 'tome',
-  two: 'tome',
-  three: 'tome',
-  four: 'tome',
-  five: 'tome',
-  many: 'cuyir',
-  all: "obaani'yc",
-  some: 'some',
-  none: 'bat',
-
-  // 地点
-  here: 'ibic',
-  there: 'ac',
+const STYLE_INSTRUCTIONS: Record<MandalorianStyle, string> = {
+  traditional: `Adopt the proud warrior cadence of Mandalorians (Mando'a). Use authentic vocabulary, contractions with apostrophes, and decisive phrasing. Keep the meaning faithful, but feel free to reorder sentences so they sound like commands or oaths. Do not add explanations, introductions, or annotations—only the translated Mandalorian text.`,
+  minimal: `Translate the text directly into Mandalorian (Mando'a) with minimal embellishment. Preserve the original sentence structure where possible and avoid additional comments, exclamations, or prefixes. Return only the translated Mandalorian wording.`,
 };
 
-// 翻译函数
-function translateToMandalorian(text: string): string {
-  if (!text) return '';
+const genAI = new GoogleGenerativeAI(
+  process.env.GOOGLE_GENERATIVE_AI_API_KEY || ''
+);
 
-  const cleanText = text.toLowerCase().trim();
-  const words = cleanText.split(/\s+/);
-
-  return words
-    .map((word) => {
-      // 移除标点符号
-      const cleanWord = word.replace(/[.,!?;:'"(){}[\]]/g, '');
-      const punctuation = word.match(/[.,!?;:'"(){}[\]]$/)?.[0] || '';
-
-      // 查找翻译
-      let translation = MANDALORIAN_DICTIONARY[cleanWord];
-
-      // 如果没有找到精确匹配，尝试部分匹配
-      if (!translation) {
-        for (const [key, value] of Object.entries(MANDALORIAN_DICTIONARY)) {
-          if (cleanWord.includes(key) || key.includes(cleanWord)) {
-            translation = value;
-            break;
-          }
-        }
-      }
-
-      // 如果还是没有翻译，添加曼达洛语风格后缀
-      if (!translation && cleanWord.length > 2) {
-        const suffixes = ["'ad", "'yc", 'ir', 'gar', 'ba'];
-        const randomSuffix =
-          suffixes[Math.floor(Math.random() * suffixes.length)];
-        translation = cleanWord + randomSuffix;
-      }
-
-      return (translation || word) + punctuation;
-    })
-    .join(' ');
+function normalise(text: string): string {
+  return text.replace(/\s+/g, ' ').trim();
 }
 
-// 处理标点符号和格式
-function formatTranslation(text: string): string {
-  // 添加曼达洛语特有的标点
-  return text
-    .replace(/\!/g, '! •')
-    .replace(/\?/g, '? •')
-    .replace(/\./g, '. •')
-    .replace(/\s+/g, ' ')
-    .trim();
+function resolveStyle(style?: string): MandalorianStyle {
+  if (style === 'minimal') return 'minimal';
+  return DEFAULT_STYLE;
+}
+
+function buildPrompt(text: string, style: MandalorianStyle): string {
+  const instruction = STYLE_INSTRUCTIONS[style];
+
+  return [
+    `You are an expert linguist who translates any input into Mandalorian Mando'a speech.`,
+    instruction,
+    `Always respond with Mandalorian only.`,
+    `Input:\n"""${text}"""`,
+    `Output:`,
+  ].join('\n\n');
+}
+
+async function translateWithGemini(
+  text: string,
+  style: MandalorianStyle
+): Promise<string> {
+  if (!process.env.GOOGLE_GENERATIVE_AI_API_KEY) {
+    throw new Error('Missing Google Generative AI API key');
+  }
+
+  const prompt = buildPrompt(text, style);
+
+  const model = genAI.getGenerativeModel({
+    model: MODEL_NAME,
+  });
+
+  const result = await model.generateContent([
+    {
+      role: 'user',
+      parts: [{ text: prompt }],
+    },
+  ]);
+
+  const responseText = result.response.text().trim();
+
+  if (!responseText) {
+    throw new Error('Empty response received from Gemini');
+  }
+
+  return responseText;
 }
 
 export async function GET() {
   return NextResponse.json({
     status: 'healthy',
-    message: 'Mandalorian Translator API is running',
-    timestamp: new Date().toISOString(),
+    message: 'Mandalorian Translator API (Gemini 2.0 Flash)',
+    provider: 'google-gemini',
+    model: MODEL_NAME,
     methods: ['GET', 'POST'],
+    timestamp: new Date().toISOString(),
   });
 }
 
 export async function POST(request: Request) {
   try {
-    const { text, style = 'traditional' } = await request.json();
+    const { text, style } = (await request.json()) as {
+      text?: string;
+      style?: MandalorianStyle | string;
+    };
 
-    if (!text) {
-      return NextResponse.json({ error: 'No text provided' }, { status: 400 });
+    if (!text || typeof text !== 'string') {
+      return NextResponse.json(
+        { error: 'No valid text provided' },
+        { status: 400 }
+      );
     }
 
-    let translated = translateToMandalorian(text);
+    const resolvedStyle = resolveStyle(style);
+    const translated = await translateWithGemini(text, resolvedStyle);
 
-    // 根据风格调整输出
-    if (style === 'traditional') {
-      translated = formatTranslation(translated);
-    } else if (style === 'minimal') {
-      // 简化版本，减少标点
-      translated = translated.replace(/[•]/g, '');
-    }
-
-    // 检测是否发生了实际翻译
-    const isTranslated = translated !== text;
+    const originalNormalised = normalise(text.toLowerCase());
+    const translatedNormalised = normalise(translated.toLowerCase());
+    const isTranslated = translatedNormalised !== originalNormalised;
 
     return NextResponse.json({
+      success: true,
       translated,
       original: text,
       isTranslated,
       message: isTranslated
         ? 'Translation successful'
-        : 'Minimal changes made - text appears to be in target style',
+        : 'Minimal changes made - input may already match Mandalorian style',
       translator: {
         name: 'Mandalorian Translator',
-        type: 'constructed',
+        type: 'ai-model',
+        provider: 'google-gemini',
+        model: MODEL_NAME,
       },
-      style,
-      language: "Mandalorian (Mando'a)",
-      dialect: 'Traditional Mandalorian',
-      culturalContext: {
-        origin: 'Star Wars Universe',
-        speakers: 'Mandalorian people',
-        characteristics: 'Concise, practical, warrior-focused language',
-        note: 'This is a constructed language based on Star Wars lore',
+      style: resolvedStyle,
+      metadata: {
+        timestamp: new Date().toISOString(),
       },
     });
   } catch (error) {
     console.error('Mandalorian translation error:', error);
-    return NextResponse.json({ error: 'Translation failed' }, { status: 500 });
+    return NextResponse.json(
+      {
+        error: 'Translation failed',
+        details:
+          error instanceof Error ? error.message : 'Unknown error occurred',
+      },
+      { status: 500 }
+    );
   }
 }

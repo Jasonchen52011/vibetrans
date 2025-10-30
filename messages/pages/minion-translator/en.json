@@ -43,28 +43,28 @@
       "description": "See how our Minion translator transforms everyday English into hilarious Minionese. These real translation examples show the fun and authentic results you can get instantly.",
       "items": [
         {
-          "alt": "Daily conversation translated to Minionese",
-          "name": "Daily Conversation"
+          "alt": "Party invitation translated to Minionese with excitement",
+          "name": "Party Invitation"
         },
         {
-          "alt": "Social media post in Minion language",
-          "name": "Social Media Post"
+          "alt": "Food order in Minion language for fun dining",
+          "name": "Restaurant Order"
         },
         {
-          "alt": "Birthday wishes translated to Minionese",
-          "name": "Birthday Wishes"
+          "alt": "Morning greeting translated to cheerful Minionese",
+          "name": "Morning Greeting"
         },
         {
-          "alt": "Work email in Minion language",
-          "name": "Work Email"
+          "alt": "Work meeting translated to playful Minion speak",
+          "name": "Team Meeting"
         },
         {
-          "alt": "Movie quote translated to Minionese",
-          "name": "Famous Movie Quote"
+          "alt": "Love message converted to adorable Minionese",
+          "name": "Love Message"
         },
         {
-          "alt": "Song lyrics in Minion language",
-          "name": "Song Lyrics"
+          "alt": "Bedtime story in cute Minion language",
+          "name": "Bedtime Story"
         }
       ]
     },
