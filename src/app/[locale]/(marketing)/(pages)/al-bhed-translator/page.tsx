@@ -96,19 +96,19 @@ export default async function AlBhedTranslatorPage(
   // User scenarios section (Fun Facts)
   const userScenariosSection = {
     name: 'funFacts',
-    title: t('funfacts.title'),
+    title: t('funFacts.title'),
     items: [
       {
-        title: t('funfacts.items.0.title'),
-        description: t('funfacts.items.0.description'),
+        title: t('funFacts.items.0.title'),
+        description: t('funFacts.items.0.description'),
         image: {
           src: '/images/docs/al-bhed-translator-fun-fact.webp',
           alt: 'Final Fantasy Al Bhed Language',
         },
       },
       {
-        title: t('funfacts.items.1.title'),
-        description: t('funfacts.items.1.description'),
+        title: t('funFacts.items.1.title'),
+        description: t('funFacts.items.1.description'),
         image: {
           src: '/images/docs/albed-primer-secret.webp',
           alt: 'Hidden Primers in FFX',

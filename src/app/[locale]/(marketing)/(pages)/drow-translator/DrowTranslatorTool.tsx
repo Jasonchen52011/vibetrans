@@ -189,18 +189,25 @@ export default function DrowTranslatorTool({
     }
   };
 
-  // Download
-  const handleDownload = () => {
+  // Download - 动态加载
+  const handleDownload = async () => {
     if (!outputText) return;
-    const blob = new Blob([outputText], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `drow-translator-${Date.now()}.txt`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+
+    try {
+      // 动态导入下载功能
+      const { smartDownload } = await import('@/lib/utils/dynamic-download');
+
+      smartDownload(outputText, 'drow-translator', {
+        onSuccess: () => {
+          // 可以添加成功提示
+        },
+        onError: (error) => {
+          console.error('Download failed:', error);
+        }
+      });
+    } catch (error) {
+      console.error('Download function loading failed:', error);
+    }
   };
 
   return (
