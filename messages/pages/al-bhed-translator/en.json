@@ -142,6 +142,7 @@
     },
     "testimonials": {
       "title": "What Our Users Are Saying",
+      "subtitle": "Real feedback from Al Bhed fans",
       "items": {
         "item-1": {
           "name": "Emily Johnson",

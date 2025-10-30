@@ -138,9 +138,9 @@ export default function AlBhedTranslatorTool({
     try {
       // Use smart auto-translate that handles both translation and language queries
       const result = smartAutoTranslate(text);
-      setTranslatedText(result.result);
-      setIsQuery(result.isQuery);
-      setShowExplanation(result.isQuery);
+      setTranslatedText(result.text);
+      setIsQuery(false); // Al Bhed translator doesn't handle queries
+      setShowExplanation(false);
     } catch (err: any) {
       setError(err.message || 'Translation failed');
       setTranslatedText('');
@@ -170,29 +170,48 @@ export default function AlBhedTranslatorTool({
     setShowExplanation(false);
   };
 
-  // Copy result to clipboard
+  // Copy result to clipboard - 动态加载
   const handleCopy = async () => {
     if (!translatedText) return;
+
     try {
-      await navigator.clipboard.writeText(translatedText);
-      // Optional: Show success feedback
-    } catch (err) {
-      console.error('Failed to copy:', err);
+      // 动态导入复制功能
+      const { smartCopyToClipboard } = await import('@/lib/utils/dynamic-copy');
+
+      await smartCopyToClipboard(translatedText, {
+        successMessage: 'Translation copied to clipboard!',
+        errorMessage: 'Failed to copy translation',
+        onSuccess: () => {
+          // 可以添加成功提示
+        },
+        onError: (error) => {
+          console.error('Failed to copy:', error);
+        }
+      });
+    } catch (error) {
+      console.error('Copy function loading failed:', error);
     }
   };
 
-  // Download result as text file
-  const handleDownload = () => {
+  // Download result as text file - 动态加载
+  const handleDownload = async () => {
     if (!translatedText) return;
-    const blob = new Blob([translatedText], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `al-bhed-translated-${Date.now()}.txt`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+
+    try {
+      // 动态导入下载功能
+      const { smartDownload } = await import('@/lib/utils/dynamic-download');
+
+      smartDownload(translatedText, 'al-bhed-translator', {
+        onSuccess: () => {
+          // 可以添加成功提示
+        },
+        onError: (error) => {
+          console.error('Download failed:', error);
+        }
+      });
+    } catch (error) {
+      console.error('Download function loading failed:', error);
+    }
   };
 
   

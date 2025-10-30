@@ -169,28 +169,48 @@ export default function EnglishToPersianTranslatorTool({
     setError(null);
   };
 
-  // Copy
+  // Copy - 动态加载
   const handleCopy = async () => {
     if (!outputText) return;
+
     try {
-      await navigator.clipboard.writeText(outputText);
-    } catch (err) {
-      console.error('Failed to copy:', err);
+      // 动态导入复制功能
+      const { smartCopyToClipboard } = await import('@/lib/utils/dynamic-copy');
+
+      await smartCopyToClipboard(outputText, {
+        successMessage: 'Translation copied to clipboard!',
+        errorMessage: 'Failed to copy translation',
+        onSuccess: () => {
+          // 可以添加成功提示
+        },
+        onError: (error) => {
+          console.error('Failed to copy:', error);
+        }
+      });
+    } catch (error) {
+      console.error('Copy function loading failed:', error);
     }
   };
 
-  // Download
-  const handleDownload = () => {
+  // Download - 动态加载
+  const handleDownload = async () => {
     if (!outputText) return;
-    const blob = new Blob([outputText], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `english-to-persian-translator-${Date.now()}.txt`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+
+    try {
+      // 动态导入下载功能
+      const { smartDownload } = await import('@/lib/utils/dynamic-download');
+
+      smartDownload(outputText, 'english-to-persian-translator', {
+        onSuccess: () => {
+          // 可以添加成功提示
+        },
+        onError: (error) => {
+          console.error('Download failed:', error);
+        }
+      });
+    } catch (error) {
+      console.error('Download function loading failed:', error);
+    }
   };
 
   return (

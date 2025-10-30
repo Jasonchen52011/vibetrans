@@ -166,13 +166,26 @@ export default function DrowTranslatorTool({
     setError(null);
   };
 
-  // Copy
+  // Copy - 动态加载
   const handleCopy = async () => {
     if (!outputText) return;
+
     try {
-      await navigator.clipboard.writeText(outputText);
-    } catch (err) {
-      console.error('Failed to copy:', err);
+      // 动态导入复制功能
+      const { smartCopyToClipboard } = await import('@/lib/utils/dynamic-copy');
+
+      await smartCopyToClipboard(outputText, {
+        successMessage: 'Translation copied to clipboard!',
+        errorMessage: 'Failed to copy translation',
+        onSuccess: () => {
+          // 可以添加成功提示
+        },
+        onError: (error) => {
+          console.error('Failed to copy:', error);
+        }
+      });
+    } catch (error) {
+      console.error('Copy function loading failed:', error);
     }
   };
 
