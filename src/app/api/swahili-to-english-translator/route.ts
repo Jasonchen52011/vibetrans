@@ -105,7 +105,9 @@ Provide accurate translation with cultural context awareness.`;
 
     if (!response.ok) {
       const errorText = await response.text();
-      console.error('OpenAI translation error:', errorText);
+      if (process.env.NODE_ENV === 'development') {
+        console.error('OpenAI translation error:', errorText);
+      }
       return null;
     }
 
@@ -121,7 +123,9 @@ Provide accurate translation with cultural context awareness.`;
 
     return parsed;
   } catch (error) {
-    console.error('Translation API failure:', error);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Translation API failure:', error);
+    }
     return null;
   }
 }
@@ -187,7 +191,9 @@ export async function POST(request: Request) {
     });
 
   } catch (error) {
-    console.error('Swahili to English translation error:', error);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Swahili to English translation error:', error);
+    }
     return NextResponse.json(
       {
         error: 'Translation failed',

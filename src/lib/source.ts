@@ -25,7 +25,9 @@ export const source = loader({
       return createElement(IconComponent);
     }
 
-    console.warn(`Icon not found: ${iconName}`);
+    if (process.env.NODE_ENV === 'development') {
+      console.warn(`Icon not found: ${iconName}`);
+    }
     return undefined;
   },
 });

@@ -4,75 +4,88 @@ export const runtime = 'edge';
 
 type Direction = 'english-to-minion' | 'minion-to-english';
 
-const ENGLISH_TO_MINION: Record<string, string> = {
-  // 基础问候
-  hello: 'bello',
-  hi: 'bello',
-  hey: 'heyooo',
-  goodbye: 'poopaye',
-  bye: 'poopaye',
-  farewell: 'poopaye',
-  welcome: 'bello welcome',
+function getEnglishToMinionDict(): Record<string, string> {
+  return {
+    // 基础问候
+    hello: 'bello',
+    hi: 'bello',
+    hey: 'heyooo',
+    goodbye: 'poopaye',
+    bye: 'poopaye',
+    farewell: 'poopaye',
+    welcome: 'bello welcome',
 
-  // 常用词汇
-  friend: 'poopaye buddy',
-  friends: 'buddies',
-  banana: 'bananaaa',
-  bananas: 'bananaaas',
-  apple: 'papple',
-  potato: 'potatAAAA',
-  ice: 'gelato',
-  cream: 'gelato',
-  love: 'tulaliloo',
-  hate: 'no no',
-  please: 'pwease',
-  sorry: 'bi do',
-  thanks: 'tank yu',
-  'thank you': 'tank yu',
-  yes: 'si si',
-  no: 'nope nope',
-  what: 'po ka',
-  why: 'tulaliloo why',
-  because: 'papoi',
-  awesome: 'bee doo',
-  cute: 'cutee',
-  funny: 'hahaha',
-  happy: 'gelato happy',
-  sad: 'boo hoo',
+    // 常用词汇
+    friend: 'poopaye buddy',
+    friends: 'buddies',
+    banana: 'bananaaa',
+    bananas: 'bananaaas',
+    apple: 'papple',
+    potato: 'potatAAAA',
+    ice: 'gelato',
+    cream: 'gelato',
+    love: 'tulaliloo',
+    hate: 'no no',
+    please: 'pwease',
+    sorry: 'bi do',
+    thanks: 'tank yu',
+    'thank you': 'tank yu',
+    yes: 'si si',
+    no: 'nope nope',
+    what: 'po ka',
+    why: 'tulaliloo why',
+    because: 'papoi',
+    awesome: 'bee doo',
+    cute: 'cutee',
+    funny: 'hahaha',
+    happy: 'gelato happy',
+    sad: 'boo hoo',
 
-  // 复合短语
-  'i love you': 'tulaliloo ti amo',
-  'see you later': 'poopaye later',
-  'good morning': 'bello morning',
-  'good night': 'nighty night',
-  'best friend': 'buddy numero uno',
-  'my friend': 'mi buddy',
-  'let go': 'bee doo',
-  'let us go': 'bee doo bee doo',
-  'thank you very much': 'tank yu tank yu',
+    // 复合短语
+    'i love you': 'tulaliloo ti amo',
+    'see you later': 'poopaye later',
+    'good morning': 'bello morning',
+    'good night': 'nighty night',
+    'best friend': 'buddy numero uno',
+    'my friend': 'mi buddy',
+    'let go': 'bee doo',
+    'let us go': 'bee doo bee doo',
+    'thank you very much': 'tank yu tank yu',
 
-  // 感叹
-  wow: 'wowee',
-  amazing: 'banana wow',
-  great: 'super banana',
-  awesome: 'bee doo',
-};
+    // 感叹
+    wow: 'wowee',
+    amazing: 'banana wow',
+    great: 'super banana',
+  };
+}
 
-const ENGLISH_PHRASE_ENTRIES = Object.entries(ENGLISH_TO_MINION)
-  .filter(([key]) => key.includes(' '))
-  .sort((a, b) => b[0].length - a[0].length);
+function getMinionToEnglishDict(): Record<string, string> {
+  const englishToMinion = getEnglishToMinionDict();
+  const minionToEnglish: Record<string, string> = {};
 
-const MINION_TO_ENGLISH: Record<string, string> = {};
-Object.entries(ENGLISH_TO_MINION).forEach(([english, minion]) => {
-  const existing = MINION_TO_ENGLISH[minion.toLowerCase()];
-  if (!existing || existing.length > english.length) {
-    MINION_TO_ENGLISH[minion.toLowerCase()] = english;
-  }
-});
+  Object.entries(englishToMinion).forEach(([english, minion]) => {
+    const existing = minionToEnglish[minion.toLowerCase()];
+    if (!existing || existing.length > english.length) {
+      minionToEnglish[minion.toLowerCase()] = english;
+    }
+  });
 
-const MINION_PHRASE_ENTRIES = Object.entries(MINION_TO_ENGLISH)
-  .filter(([key]) => key.includes(' '))
-  .sort((a, b) => b[0].length - a[0].length);
+  return minionToEnglish;
+}
+
+function getEnglishPhraseEntries(): Array<[string, string]> {
+  const englishToMinion = getEnglishToMinionDict();
+  return Object.entries(englishToMinion)
+    .filter(([key]) => key.includes(' '))
+    .sort((a, b) => b[0].length - a[0].length);
+}
+
+function getMinionPhraseEntries(): Array<[string, string]> {
+  const minionToEnglish = getMinionToEnglishDict();
+  return Object.entries(minionToEnglish)
+    .filter(([key]) => key.includes(' '))
+    .sort((a, b) => b[0].length - a[0].length);
+}
 
 function escapeRegExp(value: string): string {
   return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -121,11 +134,14 @@ function replacePhrases(
 }
 
 function translateEnglishToMinion(text: string): string {
-  let result = replacePhrases(text, ENGLISH_PHRASE_ENTRIES, true);
+  const englishPhraseEntries = getEnglishPhraseEntries();
+  const englishToMinion = getEnglishToMinionDict();
+
+  let result = replacePhrases(text, englishPhraseEntries, true);
 
   result = result.replace(/\b[\w']+\b/gu, (word) => {
     const lower = word.toLowerCase();
-    const mapped = ENGLISH_TO_MINION[lower];
+    const mapped = englishToMinion[lower];
     if (mapped) {
       return applyCase(word, mapped);
     }
@@ -142,11 +158,14 @@ function translateEnglishToMinion(text: string): string {
 }
 
 function translateMinionToEnglish(text: string): string {
-  let result = replacePhrases(text, MINION_PHRASE_ENTRIES);
+  const minionPhraseEntries = getMinionPhraseEntries();
+  const minionToEnglish = getMinionToEnglishDict();
+
+  let result = replacePhrases(text, minionPhraseEntries);
 
   result = result.replace(/\b[\w']+\b/gu, (word) => {
     const lower = word.toLowerCase();
-    const mapped = MINION_TO_ENGLISH[lower];
+    const mapped = minionToEnglish[lower];
     if (mapped) {
       return applyCase(word, mapped);
     }
@@ -171,12 +190,15 @@ function detectDirection(text: string, direction?: string): Direction {
   let englishScore = 0;
   let minionScore = 0;
 
+  const englishToMinion = getEnglishToMinionDict();
+  const minionToEnglish = getMinionToEnglishDict();
+
   words.forEach((word) => {
     const lower = word.toLowerCase();
-    if (ENGLISH_TO_MINION[lower]) {
+    if (englishToMinion[lower]) {
       englishScore += 1;
     }
-    if (MINION_TO_ENGLISH[lower]) {
+    if (minionToEnglish[lower]) {
       minionScore += 1.5;
     }
     if (/(banana|bello|poopaye|papoi|bee|doo)/.test(lower)) {
@@ -191,7 +213,20 @@ function detectDirection(text: string, direction?: string): Direction {
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
+    let body;
+    try {
+      body = await request.json();
+    } catch (e) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: 'Invalid JSON',
+          suggestion: 'Please provide valid JSON data'
+        },
+        { status: 400 }
+      );
+    }
+
     const { text, direction, tone, inputType = 'text' } = body ?? {};
 
     if (!text || typeof text !== 'string') {
@@ -252,7 +287,9 @@ export async function POST(request: NextRequest) {
       translatedLength: translated.length
     });
   } catch (error) {
-    console.error('Minion translator error:', error);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Minion translator error:', error);
+    }
 
     return NextResponse.json(
       {

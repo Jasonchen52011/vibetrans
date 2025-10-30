@@ -87,7 +87,9 @@ export function getUrlWithLocaleInCallbackUrl(
     return urlObj.toString();
   } catch (error) {
     // If URL parsing fails, return the original URL
-    console.warn('Failed to parse URL for locale insertion:', url, error);
+    if (process.env.NODE_ENV === 'development') {
+      console.warn('Failed to parse URL for locale insertion:', url, error);
+    }
     return url;
   }
 }

@@ -365,7 +365,9 @@ export async function POST(request: NextRequest) {
     });
 
   } catch (error) {
-    console.error('Ancient Greek translator error:', error);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Ancient Greek translator error:', error);
+    }
     return NextResponse.json(
       { error: 'Translation failed', details: error instanceof Error ? error.message : 'Unknown error' },
       { status: 500 }

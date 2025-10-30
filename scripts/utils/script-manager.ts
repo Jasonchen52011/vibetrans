@@ -56,7 +56,9 @@ class ScriptManager {
       try {
         return JSON.parse(readFileSync(this.configPath, 'utf8'));
       } catch (error) {
-        console.log('⚠️ 配置文件损坏，使用默认配置');
+        if (process.env.NODE_ENV === 'development') {
+          console.log('⚠️ 配置文件损坏，使用默认配置');
+        }
       }
     }
 
@@ -341,7 +343,9 @@ class ScriptManager {
       const command = `pnpm tsx ${selectedScript.path} ${args.join(' ')}`;
       execSync(command, { stdio: 'inherit', cwd: this.projectRoot });
     } catch (error) {
-      console.error(`❌ 脚本执行失败: ${error.message}`);
+      if (process.env.NODE_ENV === 'development') {
+        console.error(`❌ 脚本执行失败: ${error.message}`);
+      }
       process.exit(1);
     }
 
@@ -567,7 +571,9 @@ async function main() {
 
     process.exit(0);
   } catch (error) {
-    console.error('❌ 操作失败:', error);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('❌ 操作失败:', error);
+    }
     process.exit(1);
   }
 }

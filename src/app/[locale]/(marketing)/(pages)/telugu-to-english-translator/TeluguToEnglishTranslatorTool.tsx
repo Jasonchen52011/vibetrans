@@ -1,10 +1,9 @@
 'use client';
 
-import { SpeechToTextButton } from '@/components/ui/speech-to-text-button';
 import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
 import { detectLanguage } from '@/lib/language-detection';
 import { readFileContent } from '@/lib/utils/file-utils';
-import { ArrowLeftRight, Waves } from 'lucide-react';
+import { ArrowLeftRight } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 
 interface TeluguToEnglishTranslatorToolProps {
@@ -21,12 +20,10 @@ export default function TeluguToEnglishTranslatorTool({
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [fileName, setFileName] = useState<string | null>(null);
-  const [isTranscribing, setIsTranscribing] = useState<boolean>(false);
   const [translationMode, setTranslationMode] = useState<string>('general');
   const [detectedLanguage, setDetectedLanguage] = useState<string>('unknown');
   const [targetLanguage, setTargetLanguage] = useState<string>('english');
-  const audioInputRef = useRef<HTMLInputElement | null>(null);
-
+  
   // Auto-detect input language when text changes
   useEffect(() => {
     if (inputText.trim()) {
@@ -64,53 +61,7 @@ export default function TeluguToEnglishTranslatorTool({
     }
   };
 
-  // Handle audio upload for transcription
-  const handleAudioUploadClick = () => {
-    audioInputRef.current?.click();
-  };
-
-  const handleAudioSelected = async (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    const audioFile = event.target.files?.[0];
-    if (!audioFile) return;
-
-    setIsTranscribing(true);
-    setError(null);
-
-    try {
-      const formData = new FormData();
-      formData.append('file', audioFile);
-
-      const response = await fetch(
-        '/api/telugu-to-english-translator/transcribe',
-        {
-          method: 'POST',
-          body: formData,
-        }
-      );
-
-      const data = await response.json();
-      if (!response.ok) {
-        throw new Error(data.error || 'Transcription failed');
-      }
-
-      if (data.transcription) {
-        setInputText((prev) =>
-          prev ? `${prev}\n${data.transcription}` : data.transcription
-        );
-      }
-    } catch (err: any) {
-      console.error('Transcription error:', err);
-      setError(err.message || 'Unable to transcribe audio at this time.');
-    } finally {
-      setIsTranscribing(false);
-      if (audioInputRef.current) {
-        audioInputRef.current.value = '';
-      }
-    }
-  };
-
+  
   // Handle translation
   const handleTranslate = async () => {
     if (!inputText.trim()) {
@@ -245,7 +196,7 @@ export default function TeluguToEnglishTranslatorTool({
               aria-label="Input text"
             />
 
-            {/* File Upload and Voice Input */}
+            {/* File Upload */}
             <div className="mt-4 flex items-center gap-3">
               <label
                 htmlFor="file-upload"
@@ -267,27 +218,6 @@ export default function TeluguToEnglishTranslatorTool({
                 {pageData.tool.uploadButton}
               </label>
 
-              {/* Voice Input Button */}
-              <SpeechToTextButton
-                onTranscript={(text) =>
-                  setInputText((prev) => (prev ? `${prev} ${text}` : text))
-                }
-                locale={locale}
-              />
-
-              {/* Audio Upload Button */}
-              <button
-                onClick={handleAudioUploadClick}
-                className={`flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 dark:border-zinc-600 transition-colors ${
-                  isTranscribing
-                    ? 'bg-primary text-white hover:bg-primary/90'
-                    : 'bg-gray-100 dark:bg-zinc-700 hover:bg-gray-200 dark:hover:bg-zinc-600 text-gray-700 dark:text-gray-100'
-                }`}
-                aria-label="Upload audio for transcription"
-              >
-                <Waves className="h-5 w-5" />
-              </button>
-
               <p className="text-xs text-gray-500 dark:text-gray-400">
                 {pageData.tool.uploadHint}
               </p>
@@ -297,13 +227,6 @@ export default function TeluguToEnglishTranslatorTool({
                 accept=".txt,.docx"
                 onChange={handleFileUpload}
                 className="hidden"
-              />
-              <input
-                ref={audioInputRef}
-                type="file"
-                accept="audio/*"
-                className="hidden"
-                onChange={handleAudioSelected}
               />
             </div>
 

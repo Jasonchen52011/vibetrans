@@ -60,7 +60,7 @@ export default function MandalorianTranslatorTool({
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           text: inputText,
-          direction: 'auto' // 使用自动检测
+          direction: 'toMandalorian' // 固定方向，避免智能检测
         }),
       });
 

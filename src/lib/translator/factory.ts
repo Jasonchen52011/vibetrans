@@ -53,7 +53,9 @@ export async function getAvailableTools(): Promise<TranslationTool[]> {
       const tool = await ensureToolMetadata(toolId);
       tools.push(tool);
     } catch (error) {
-      console.error(`Failed to load tool info for ${toolId}:`, error);
+      if (process.env.NODE_ENV === 'development') {
+        console.error(`Failed to load tool info for ${toolId}:`, error);
+      }
     }
   }
   return tools;

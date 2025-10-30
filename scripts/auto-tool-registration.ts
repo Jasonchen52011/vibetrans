@@ -188,7 +188,9 @@ function generateDescription(toolName: string, category: string): string {
  */
 function discoverTools(): ToolMetadata[] {
   if (!fs.existsSync(PAGES_DIR)) {
-    console.error(`Pages directory not found: ${PAGES_DIR}`);
+    if (process.env.NODE_ENV === 'development') {
+      console.error(`Pages directory not found: ${PAGES_DIR}`);
+    }
     return [];
   }
 
@@ -231,9 +233,11 @@ function discoverTools(): ToolMetadata[] {
     };
 
     discoveredTools.push(toolMetadata);
-    console.log(
-      `Discovered new tool: ${toolName} (${toolId}) in category ${category}`
-    );
+    if (process.env.NODE_ENV === 'development') {
+      console.log(
+        `Discovered new tool: ${toolName} (${toolId}) in category ${category}`
+      );
+    }
   });
 
   return discoveredTools;
@@ -279,44 +283,54 @@ function generateMissingTranslations(tools: ToolMetadata[]): void {
     MISSING_TRANSLATIONS_PATH,
     JSON.stringify(missingKeys, null, 2)
   );
-  console.log(`Missing translations written to: ${MISSING_TRANSLATIONS_PATH}`);
+  if (process.env.NODE_ENV === 'development') {
+    console.log(`Missing translations written to: ${MISSING_TRANSLATIONS_PATH}`);
+  }
 }
 
 /**
  * Main execution function
  */
 async function main() {
-  console.log('🔍 Scanning for new tools...');
+  if (process.env.NODE_ENV === 'development') {
+    console.log('🔍 Scanning for new tools...');
+  }
 
   const discoveredTools = discoverTools();
 
   if (discoveredTools.length === 0) {
-    console.log('✅ No new tools found. All tools are already registered.');
+    if (process.env.NODE_ENV === 'development') {
+      console.log('✅ No new tools found. All tools are already registered.');
+    }
     return;
   }
 
-  console.log(`📦 Found ${discoveredTools.length} new tools:`);
-  discoveredTools.forEach((tool) => {
-    console.log(`  - ${tool.title} (${tool.id})`);
-  });
+  if (process.env.NODE_ENV === 'development') {
+    console.log(`📦 Found ${discoveredTools.length} new tools:`);
+    discoveredTools.forEach((tool) => {
+      console.log(`  - ${tool.title} (${tool.id})`);
+    });
+  }
 
   // Generate missing translations
   generateMissingTranslations(discoveredTools);
 
-  console.log('\n📝 Next steps:');
-  console.log(
-    '1. Review the missing translations in missing-translations.json'
-  );
-  console.log(
-    '2. Add the translations to your language files (en.json, zh.json)'
-  );
-  console.log('3. Add the new tools to src/data/tool-catalog.ts');
-  console.log('4. Test the new tools in the navbar');
-  console.log('5. Run pnpm build to verify everything works');
+  if (process.env.NODE_ENV === 'development') {
+    console.log('\n📝 Next steps:');
+    console.log(
+      '1. Review the missing translations in missing-translations.json'
+    );
+    console.log(
+      '2. Add the translations to your language files (en.json, zh.json)'
+    );
+    console.log('3. Add the new tools to src/data/tool-catalog.ts');
+    console.log('4. Test the new tools in the navbar');
+    console.log('5. Run pnpm build to verify everything works');
 
-  console.log(
-    '\n💡 Tip: You can also run this script with --dry-run to only scan without generating files'
-  );
+    console.log(
+      '\n💡 Tip: You can also run this script with --dry-run to only scan without generating files'
+    );
+  }
 }
 
 // CLI interface
@@ -324,19 +338,29 @@ if (require.main === module) {
   const isDryRun = process.argv.includes('--dry-run');
 
   if (isDryRun) {
-    console.log('🔍 Dry run mode - only scanning for new tools...');
+    if (process.env.NODE_ENV === 'development') {
+      console.log('🔍 Dry run mode - only scanning for new tools...');
+    }
     const discoveredTools = discoverTools();
 
     if (discoveredTools.length === 0) {
-      console.log('✅ No new tools found.');
+      if (process.env.NODE_ENV === 'development') {
+        console.log('✅ No new tools found.');
+      }
     } else {
-      console.log(`📦 Would register ${discoveredTools.length} new tools:`);
-      discoveredTools.forEach((tool) => {
-        console.log(`  - ${tool.title} (${tool.id})`);
-      });
+      if (process.env.NODE_ENV === 'development') {
+        console.log(`📦 Would register ${discoveredTools.length} new tools:`);
+        discoveredTools.forEach((tool) => {
+          console.log(`  - ${tool.title} (${tool.id})`);
+        });
+      }
     }
   } else {
-    main().catch(console.error);
+    main().catch((error) => {
+      if (process.env.NODE_ENV === 'development') {
+        console.error(error);
+      }
+    });
   }
 }
 

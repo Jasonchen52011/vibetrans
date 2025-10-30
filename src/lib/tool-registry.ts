@@ -23,7 +23,9 @@ class DynamicToolRegistry implements ToolRegistry {
    */
   register(tool: ToolMetadata): void {
     if (this.tools.has(tool.id)) {
-      console.warn(`Tool ${tool.id} is already registered. Overwriting.`);
+      if (process.env.NODE_ENV === 'development') {
+        console.warn(`Tool ${tool.id} is already registered. Overwriting.`);
+      }
     }
 
     this.tools.set(tool.id, tool);

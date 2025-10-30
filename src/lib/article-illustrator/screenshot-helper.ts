@@ -51,10 +51,12 @@ export async function captureHowToScreenshot(
     `${pageSlug}-how-to.webp`
   );
 
-  console.log(`\n📸 Capturing How-To screenshot from: ${url}`);
-  console.log(
-    `✂️  Crop settings: Left ${cropLeft}px, Right ${cropRight}px, Bottom ${cropBottom}px`
-  );
+  if (process.env.NODE_ENV === 'development') {
+    console.log(`\n📸 Capturing How-To screenshot from: ${url}`);
+    console.log(
+      `✂️  Crop settings: Left ${cropLeft}px, Right ${cropRight}px, Bottom ${cropBottom}px`
+    );
+  }
 
   const browser = await chromium.launch();
   const context = await browser.newContext({
@@ -68,7 +70,9 @@ export async function captureHowToScreenshot(
     await page.waitForTimeout(3000);
 
     // Take screenshot of the top of the page (hero + tool section)
-    console.log('📸 Capturing top section of the page...');
+    if (process.env.NODE_ENV === 'development') {
+      console.log('📸 Capturing top section of the page...');
+    }
     await page.screenshot({
       path: tempPngPath,
       fullPage: false,

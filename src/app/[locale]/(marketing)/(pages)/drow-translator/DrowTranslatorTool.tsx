@@ -1,6 +1,5 @@
 'use client';
 
-import { SpeechToTextButton } from '@/components/ui/speech-to-text-button';
 import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
 import { Mic, Waves } from 'lucide-react';
 // import mammoth from 'mammoth'; // Disabled for Edge Runtime compatibility
@@ -211,13 +210,6 @@ export default function DrowTranslatorTool({
 
             {/* Voice Input */}
             <div className="mt-4 flex items-center gap-3">
-              <SpeechToTextButton
-                onTranscript={(text) =>
-                  setInputText((prev) => (prev ? `${prev} ${text}` : text))
-                }
-                locale={locale}
-              />
-
               {/* Audio Upload Button */}
               <button
                 onClick={handleAudioUploadClick}

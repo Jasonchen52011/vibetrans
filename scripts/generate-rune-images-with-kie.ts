@@ -67,7 +67,9 @@ const colors = {
 };
 
 function log(message: string, color: keyof typeof colors = 'reset') {
-  console.log(`${colors[color]}${message}${colors.reset}`);
+  if (process.env.NODE_ENV === 'development') {
+    console.log(`${colors[color]}${message}${colors.reset}`);
+  }
 }
 
 function logSuccess(message: string) {
@@ -173,7 +175,9 @@ async function main() {
     logError(
       `\n❌ 执行失败: ${error instanceof Error ? error.message : '未知错误'}`
     );
-    console.error(error);
+    if (process.env.NODE_ENV === 'development') {
+      console.error(error);
+    }
     process.exit(1);
   }
 }

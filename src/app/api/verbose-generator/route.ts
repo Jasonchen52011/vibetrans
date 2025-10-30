@@ -144,7 +144,9 @@ export async function POST(request: Request) {
     // Get API key
     const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
     if (!apiKey) {
-      console.error('Missing GOOGLE_GENERATIVE_AI_API_KEY');
+      if (process.env.NODE_ENV === 'development') {
+        console.error('Missing GOOGLE_GENERATIVE_AI_API_KEY');
+      }
       return NextResponse.json(
         { error: 'API configuration error' },
         { status: 500 }
@@ -173,7 +175,9 @@ export async function POST(request: Request) {
       message: `Successfully transformed to ${styleConfig.name}`,
     });
   } catch (error: any) {
-    console.error('Verbose generation error:', error);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Verbose generation error:', error);
+    }
 
     // Handle specific Gemini errors
     if (error?.message?.includes('API key')) {

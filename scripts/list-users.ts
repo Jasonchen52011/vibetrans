@@ -12,12 +12,16 @@ export default async function listUsers() {
     // Extract emails from users
     const emails: string[] = users.map((user) => user.email);
 
-    console.log(`Total users: ${emails.length}`);
+    if (process.env.NODE_ENV === 'development') {
+      console.log(`Total users: ${emails.length}`);
 
-    // Output all emails joined with comma
-    console.log(emails.join(', '));
+      // Output all emails joined with comma
+      console.log(emails.join(', '));
+    }
   } catch (error) {
-    console.error('Error fetching users:', error);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Error fetching users:', error);
+    }
   }
 }
 

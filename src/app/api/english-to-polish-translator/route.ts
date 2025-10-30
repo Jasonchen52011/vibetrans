@@ -20,7 +20,9 @@ export async function POST(request: Request) {
       note: 'Translation feature is currently disabled. Showing original text.',
     });
   } catch (error) {
-    console.error('Translation error:', error);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Translation error:', error);
+    }
     return NextResponse.json(
       { error: 'Translation failed. Please try again.' },
       { status: 500 }

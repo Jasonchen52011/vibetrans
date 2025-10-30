@@ -26,7 +26,9 @@ async function findFilesWithMammoth(): Promise<string[]> {
         filesWithMammoth.push(file);
       }
     } catch (error) {
-      console.error(`Error reading file ${file}:`, error);
+      if (process.env.NODE_ENV === 'development') {
+        console.error(`Error reading file ${file}:`, error);
+      }
     }
   }
 
@@ -72,16 +74,20 @@ function optimizeFile(content: string): string {
 }
 
 async function optimizeMammothImports() {
-  console.log('🔍 Finding files with mammoth imports...');
-
-  const files = await findFilesWithMammoth();
-  console.log(`📁 Found ${files.length} files with mammoth imports:`);
-
-  for (const file of files) {
-    console.log(`  - ${file}`);
+  if (process.env.NODE_ENV === 'development') {
+    console.log('🔍 Finding files with mammoth imports...');
   }
 
-  console.log('\n🔧 Optimizing files...');
+  const files = await findFilesWithMammoth();
+  if (process.env.NODE_ENV === 'development') {
+    console.log(`📁 Found ${files.length} files with mammoth imports:`);
+
+    for (const file of files) {
+      console.log(`  - ${file}`);
+    }
+
+    console.log('\n🔧 Optimizing files...');
+  }
 
   for (const file of files) {
     try {
@@ -90,23 +96,35 @@ async function optimizeMammothImports() {
 
       if (content !== optimizedContent) {
         await writeFile(file, optimizedContent, 'utf-8');
-        console.log(`✅ Optimized: ${file}`);
+        if (process.env.NODE_ENV === 'development') {
+          console.log(`✅ Optimized: ${file}`);
+        }
       } else {
-        console.log(`⚪ No changes needed: ${file}`);
+        if (process.env.NODE_ENV === 'development') {
+          console.log(`⚪ No changes needed: ${file}`);
+        }
       }
     } catch (error) {
-      console.error(`❌ Error optimizing ${file}:`, error);
+      if (process.env.NODE_ENV === 'development') {
+        console.error(`❌ Error optimizing ${file}:`, error);
+      }
     }
   }
 
-  console.log('\n🎉 Optimization complete!');
-  console.log('\n💡 Next steps:');
-  console.log('1. Run `pnpm build` to test the optimized build size');
-  console.log('2. If successful, deploy with `pnpm deploy:cf`');
+  if (process.env.NODE_ENV === 'development') {
+    console.log('\n🎉 Optimization complete!');
+    console.log('\n💡 Next steps:');
+    console.log('1. Run `pnpm build` to test the optimized build size');
+    console.log('2. If successful, deploy with `pnpm deploy:cf`');
+  }
 }
 
 if (require.main === module) {
-  optimizeMammothImports().catch(console.error);
+  optimizeMammothImports().catch((error) => {
+    if (process.env.NODE_ENV === 'development') {
+      console.error(error);
+    }
+  });
 }
 
 export { optimizeMammothImports, findFilesWithMammoth };

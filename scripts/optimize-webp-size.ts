@@ -96,7 +96,9 @@ async function optimizeWebP(
 }
 
 async function main() {
-  console.log('开始优化 WebP 文件大小到 90KB...\n');
+  if (process.env.NODE_ENV === 'development') {
+    console.log('开始优化 WebP 文件大小到 90KB...\n');
+  }
 
   for (const file of filesToOptimize) {
     const { path: filePath, name } = file;
@@ -105,24 +107,34 @@ async function main() {
     const originalStats = fs.statSync(filePath);
     const originalSize = originalStats.size;
 
-    console.log(`处理: ${name}`);
-    console.log(`当前大小: ${(originalSize / 1024).toFixed(2)}KB`);
+    if (process.env.NODE_ENV === 'development') {
+      console.log(`处理: ${name}`);
+      console.log(`当前大小: ${(originalSize / 1024).toFixed(2)}KB`);
+    }
 
     const result = await optimizeWebP(filePath);
 
     if (result.success) {
       const reduction = ((originalSize - result.size) / 1024).toFixed(2);
-      console.log(
-        `✓ 优化成功: ${(originalSize / 1024).toFixed(2)}KB → ${(result.size / 1024).toFixed(2)}KB (减少 ${reduction}KB)`
-      );
+      if (process.env.NODE_ENV === 'development') {
+        console.log(
+          `✓ 优化成功: ${(originalSize / 1024).toFixed(2)}KB → ${(result.size / 1024).toFixed(2)}KB (减少 ${reduction}KB)`
+        );
+      }
     } else {
-      console.log(`✗ 优化失败: ${result.error}`);
+      if (process.env.NODE_ENV === 'development') {
+        console.log(`✗ 优化失败: ${result.error}`);
+      }
     }
 
-    console.log('');
+    if (process.env.NODE_ENV === 'development') {
+      console.log('');
+    }
   }
 
-  console.log('\n优化完成！');
+  if (process.env.NODE_ENV === 'development') {
+    console.log('\n优化完成！');
+  }
 }
 
 main();

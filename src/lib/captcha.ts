@@ -11,12 +11,16 @@ interface TurnstileResponse {
 export async function validateTurnstileToken(token: string) {
   const turnstileEnabled = websiteConfig.features.enableTurnstileCaptcha;
   if (!turnstileEnabled) {
-    console.log('validateTurnstileToken, turnstile is disabled');
+    if (process.env.NODE_ENV === 'development') {
+      console.log('validateTurnstileToken, turnstile is disabled');
+    }
     return false;
   }
 
   if (!process.env.TURNSTILE_SECRET_KEY) {
-    console.error('validateTurnstileToken, TURNSTILE_SECRET_KEY is not set');
+    if (process.env.NODE_ENV === 'development') {
+      console.error('validateTurnstileToken, TURNSTILE_SECRET_KEY is not set');
+    }
     return false;
   }
 

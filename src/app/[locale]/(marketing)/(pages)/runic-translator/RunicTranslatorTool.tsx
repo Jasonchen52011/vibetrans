@@ -1,7 +1,7 @@
 'use client';
 
-import { SpeechToTextButton } from '@/components/ui/speech-to-text-button';
 import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
+import { readFileContent } from '@/lib/utils/file-utils';
 // import mammoth from 'mammoth'; // Disabled for Edge Runtime compatibility
 import { useState } from 'react';
 
@@ -39,44 +39,7 @@ export default function RunicTranslatorTool({
     }
   };
 
-  // Read file content
-  const readFileContent = async (file: File): Promise<string> => {
-    const fileExtension = file.name.split('.').pop()?.toLowerCase();
-
-    if (fileExtension === 'txt') {
-      return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          const content = e.target?.result as string;
-          if (content) resolve(content);
-          else reject(new Error('File is empty'));
-        };
-        reader.onerror = () => reject(new Error('Failed to read file'));
-        reader.readAsText(file);
-      });
-    }
-
-    if (fileExtension === 'docx') {
-      try {
-        const arrayBuffer = await file.arrayBuffer();
-        // mammoth.extractRawText disabled for Edge Runtime
-        const result = {
-          text: 'Word document processing is not available in this environment. Please use plain text input.',
-        };
-        if (result.value) return result.value;
-        throw new Error('Failed to extract text from Word document');
-      } catch (error) {
-        throw new Error(
-          'Failed to read .docx file. Please ensure it is a valid Word document.'
-        );
-      }
-    }
-
-    throw new Error(
-      'Unsupported file format. Please upload .txt or .docx files.'
-    );
-  };
-
+  
   // Handle translation
   const handleTranslate = async () => {
     if (!inputText.trim()) {
@@ -162,45 +125,37 @@ export default function RunicTranslatorTool({
               aria-label="Input text"
             />
 
-            {/* Voice Input */}
+            {/* File Upload */}
             <div className="mt-4 flex items-center gap-3">
-              <SpeechToTextButton
-                onTranscript={(text) => setInputText(text)}
-                locale={locale}
-                className="mb-2"
-              />
-              {/* File Upload */}
-              <div className="flex items-center gap-3">
-                <label
-                  htmlFor="file-upload"
-                  className="inline-flex items-center px-4 py-2 bg-gray-200 dark:bg-zinc-600 hover:bg-gray-300 dark:hover:bg-zinc-500 text-gray-800 dark:text-gray-100 font-medium rounded-lg cursor-pointer transition-colors"
+              <label
+                htmlFor="file-upload"
+                className="inline-flex items-center px-4 py-2 bg-gray-200 dark:bg-zinc-600 hover:bg-gray-300 dark:hover:bg-zinc-500 text-gray-800 dark:text-gray-100 font-medium rounded-lg cursor-pointer transition-colors"
+              >
+                <svg
+                  className="w-5 h-5 mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
                 >
-                  <svg
-                    className="w-5 h-5 mr-2"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
-                    />
-                  </svg>
-                  {pageData.tool.uploadButton}
-                </label>
-                <p className="text-xs text-gray-500 dark:text-gray-400">
-                  {pageData.tool.uploadHint}
-                </p>
-                <input
-                  id="file-upload"
-                  type="file"
-                  accept=".txt,.docx"
-                  onChange={handleFileUpload}
-                  className="hidden"
-                />
-              </div>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+                  />
+                </svg>
+                {pageData.tool.uploadButton}
+              </label>
+              <p className="text-xs text-gray-500 dark:text-gray-400">
+                {pageData.tool.uploadHint}
+              </p>
+              <input
+                id="file-upload"
+                type="file"
+                accept=".txt,.docx"
+                onChange={handleFileUpload}
+                className="hidden"
+              />
             </div>
 
             {/* File Name Display */}

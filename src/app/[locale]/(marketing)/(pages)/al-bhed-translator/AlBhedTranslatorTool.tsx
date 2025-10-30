@@ -1,7 +1,6 @@
 'use client';
 
 import { ToolInfoSections } from '@/components/blocks/tool/tool-info-sections';
-import { SpeechToTextButton } from '@/components/ui/speech-to-text-button';
 import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
 import {
   autoTranslate,
@@ -196,14 +195,7 @@ export default function AlBhedTranslatorTool({
     URL.revokeObjectURL(url);
   };
 
-  // Handle voice input
-  const handleVoiceInput = (transcript: string) => {
-    const newText = inputText + (inputText ? ' ' : '') + transcript;
-    setInputText(newText);
-    // Real-time translation
-    handleTranslateNow(newText);
-  };
-
+  
   return (
     <div className="container max-w-7xl mx-auto px-4 mb-10">
       <main className="w-full bg-white dark:bg-zinc-800 shadow-xl border border-gray-100 dark:border-zinc-700 rounded-lg p-4 md:p-8">
@@ -252,10 +244,6 @@ export default function AlBhedTranslatorTool({
                 </svg>
                 {pageData.tool.uploadButton}
               </label>
-              <SpeechToTextButton
-                onTranscript={handleVoiceInput}
-                locale={locale}
-              />
               <p className="text-xs text-gray-500 dark:text-gray-400">
                 {pageData.tool.uploadHint}
               </p>

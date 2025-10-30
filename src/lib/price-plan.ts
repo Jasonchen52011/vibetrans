@@ -49,7 +49,9 @@ export const findPriceInPlan = (
 ): Price | undefined => {
   const plan = findPlanByPlanId(planId);
   if (!plan) {
-    console.error(`findPriceInPlan, Plan with ID ${planId} not found`);
+    if (process.env.NODE_ENV === 'development') {
+      console.error(`findPriceInPlan, Plan with ID ${planId} not found`);
+    }
     return undefined;
   }
   return plan.prices.find((price) => price.priceId === priceId);

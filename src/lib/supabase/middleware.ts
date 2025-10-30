@@ -17,7 +17,9 @@ export async function updateSession(request: NextRequest) {
     supabaseUrl.includes('placeholder') ||
     supabaseKey.includes('placeholder')
   ) {
-    console.log('[Auth] Supabase not configured, skipping authentication');
+    if (process.env.NODE_ENV === 'development') {
+      console.log('[Auth] Supabase not configured, skipping authentication');
+    }
     return { supabase: null, supabaseResponse, user: null };
   }
 

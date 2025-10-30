@@ -4,150 +4,164 @@ export const runtime = 'edge';
 
 type TranslationDirection = 'english-to-mandalorian' | 'mandalorian-to-english';
 
-const ENGLISH_TO_MANDALORIAN: Record<string, string> = {
-  // 问候语
-  'hello': "su cuy'gar",
-  'hi': "su cuy'gar",
-  'hey': "su cuy'gar",
-  'greetings': "su cuy'gar",
-  'goodbye': "ner jorhaa'i",
-  'bye': "ner jorhaa'i",
-  'farewell': "ner jorhaa'i",
-  'welcome': "su'cuy",
+function getEnglishToMandalorianDict(): Record<string, string> {
+  return {
+    // 问候语
+    'hello': "su cuy'gar",
+    'hi': "su cuy'gar",
+    'hey': "su cuy'gar",
+    'greetings': "su cuy'gar",
+    'goodbye': "ner jorhaa'i",
+    'bye': "ner jorhaa'i",
+    'farewell': "ner jorhaa'i",
+    'welcome': "su'cuy",
 
-  // 基础词汇
-  'warrior': 'verd',
-  'clan': 'aliit',
-  'family': 'aliit',
-  'home': 'briikase',
-  'house': 'briikase',
-  'world': "mhi'jure",
-  'planet': "mhi'jure",
-  'leader': 'alor',
-  'shield': 'bekad',
-  'armor': "beskar'gam",
-  'helmet': "buy'ce",
-  'weapon': 'kad',
-  'blade': 'kad',
-  'sword': 'beskad',
-  'battle': 'strill',
-  'fight': 'strill',
-  'victory': 'kote',
-  'strength': 'beskar',
-  'honor': 'parjai',
-  'brother': 'vod',
-  'sister': 'vod',
-  'friend': "burc'ya",
-  'alliance': 'parjir',
-  'enemy': 'aruetii',
-  'outsider': 'aruetii',
-  'this': 'ibic',
-  'that': 'bic',
-  'truth': 'haat',
-  'heart': "kar'ta",
-  'blood': "ade",
-  'path': "haa'taylir",
-  'way': "haa'taylir",
+    // 基础词汇
+    'warrior': 'verd',
+    'clan': 'aliit',
+    'family': 'aliit',
+    'home': 'briikase',
+    'house': 'briikase',
+    'world': "mhi'jure",
+    'planet': "mhi'jure",
+    'leader': 'alor',
+    'shield': 'bekad',
+    'armor': "beskar'gam",
+    'helmet': "buy'ce",
+    'weapon': 'kad',
+    'blade': 'kad',
+    'sword': 'beskad',
+    'battle': 'strill',
+    'fight': 'strill',
+    'victory': 'kote',
+    'strength': 'beskar',
+    'honor': 'parjai',
+    'brother': 'vod',
+    'sister': 'vod',
+    'friend': "burc'ya",
+    'alliance': 'parjir',
+    'enemy': 'aruetii',
+    'outsider': 'aruetii',
+    'this': 'ibic',
+    'that': 'bic',
+    'truth': 'haat',
+    'heart': "kar'ta",
+    'blood': "ade",
+    'path': "haa'taylir",
+    'way': "haa'taylir",
 
-  // 情绪与状态
-  'strong': 'par',
-  'brave': 'par',
-  'fearless': 'mhi parjir',
-  'loyal': 'ret',
-  'loyalty': 'retla',
-  'glory': 'parjai',
-  'honorable': 'parjaai',
-  'fear': 'jare',
-  'hope': 'atik',
-  'love': 'kar',
-  'together': 'mhi',
-  'always': 'darasuum',
+    // 情绪与状态
+    'strong': 'par',
+    'brave': 'par',
+    'fearless': 'mhi parjir',
+    'loyal': 'ret',
+    'loyalty': 'retla',
+    'glory': 'parjai',
+    'honorable': 'parjaai',
+    'fear': 'jare',
+    'hope': 'atik',
+    'love': 'kar',
+    'together': 'mhi',
+    'always': 'darasuum',
 
-  // 代词
-  'i': 'ni',
-  'me': 'ni',
-  'my': 'ner',
-  'mine': "ner'tra",
-  'you': 'gar',
-  'your': "gar'tra",
-  'yours': "gar'tra",
-  'we': 'mhi',
-  'us': 'mhi',
-  'our': "mhi'tra",
-  'ours': "mhi'tra",
-  'they': 'val',
-  'them': 'val',
-  'their': "val'tra",
+    // 代词
+    'i': 'ni',
+    'me': 'ni',
+    'my': 'ner',
+    'mine': "ner'tra",
+    'you': 'gar',
+    'your': "gar'tra",
+    'yours': "gar'tra",
+    'we': 'mhi',
+    'us': 'mhi',
+    'our': "mhi'tra",
+    'ours': "mhi'tra",
+    'they': 'val',
+    'them': 'val',
+    'their': "val'tra",
 
-  // 常用动词
-  'protect': "ka'ra",
-  'defend': "ka'ra",
-  'attack': 'jate',
-  'go': 'kaan',
-  'come': 'jii',
-  'stay': 'cuyir',
-  'rise': 'oriyc',
-  'fall': 'arpat',
-  'stand': 'oorir',
-  'speak': "jorhaa'duur",
-  'listen': "aani",
-  'learn': 'laroy',
-  'train': 'kutaar',
+    // 常用动词
+    'protect': "ka'ra",
+    'defend': "ka'ra",
+    'attack': 'jate',
+    'go': 'kaan',
+    'come': 'jii',
+    'stay': 'cuyir',
+    'rise': 'oriyc',
+    'fall': 'arpat',
+    'stand': 'oorir',
+    'speak': "jorhaa'duur",
+    'listen': "aani",
+    'learn': 'laroy',
+    'train': 'kutaar',
 
-  // 复合短语
-  'thank you': "cuyir gar",
-  'thanks': "cuyir gar",
-  'excuse me': 'ner copad',
-  'i am': "ni cuyir",
-  'you are': "gar cuyir",
-  'we are': "mhi cuyir",
-  'they are': "val cuyir",
-  'this is the way': "haatyc ori'shya talyc",
-  'this is our way': "ibic cuyir mhi haa'taylir",
-  'for the clan': "par aliit",
-  'for the family': "par aliit",
-  'for honor': 'par parjai',
-  'never yield': "dralshy'a",
-  'no mercy': 'mercy laandur',
-  'into battle': 'gahtir strill',
-  'victory or death': "kote bal kyr'am",
-  'we stand together': 'mhi oorir mhi',
-  'we are mandalorian': "mhi cuyir mando'ade",
-  'this is the way of honor': "ibic haa'taylir par parjai"
-};
+    // 复合短语
+    'thank you': "cuyir gar",
+    'thanks': "cuyir gar",
+    'excuse me': 'ner copad',
+    'i am': "ni cuyir",
+    'you are': "gar cuyir",
+    'we are': "mhi cuyir",
+    'they are': "val cuyir",
+    'this is the way': "haatyc ori'shya talyc",
+    'this is our way': "ibic cuyir mhi haa'taylir",
+    'for the clan': "par aliit",
+    'for the family': "par aliit",
+    'for honor': 'par parjai',
+    'never yield': "dralshy'a",
+    'no mercy': 'mercy laandur',
+    'into battle': 'gahtir strill',
+    'victory or death': "kote bal kyr'am",
+    'we stand together': 'mhi oorir mhi',
+    'we are mandalorian': "mhi cuyir mando'ade",
+    'this is the way of honor': "ibic haa'taylir par parjai"
+  };
+}
 
-const ENGLISH_PHRASE_ENTRIES = Object.entries(ENGLISH_TO_MANDALORIAN)
-  .filter(([key]) => key.includes(' '))
-  .sort((a, b) => b[0].length - a[0].length);
+function getMandalorianToEnglishDict(): Record<string, string> {
+  const englishToMandalorian = getEnglishToMandalorianDict();
+  const mandalorianToEnglish: Record<string, string> = {};
 
-const MANDALORIAN_TO_ENGLISH: Record<string, string> = {};
-Object.entries(ENGLISH_TO_MANDALORIAN).forEach(([english, mando]) => {
-  const key = mando.toLowerCase();
-  const existing = MANDALORIAN_TO_ENGLISH[key];
+  Object.entries(englishToMandalorian).forEach(([english, mando]) => {
+    const key = mando.toLowerCase();
+    const existing = mandalorianToEnglish[key];
 
-  if (!existing) {
-    MANDALORIAN_TO_ENGLISH[key] = english;
-    return;
-  }
-
-  if (existing.length > english.length) {
-    MANDALORIAN_TO_ENGLISH[key] = english;
-    return;
-  }
-
-  if (existing.length === english.length) {
-    const existingIsPhrase = existing.includes(' ');
-    const englishIsPhrase = english.includes(' ');
-
-    if (existingIsPhrase && !englishIsPhrase) {
-      MANDALORIAN_TO_ENGLISH[key] = english;
+    if (!existing) {
+      mandalorianToEnglish[key] = english;
+      return;
     }
-  }
-});
 
-const MANDALORIAN_PHRASE_ENTRIES = Object.entries(MANDALORIAN_TO_ENGLISH)
-  .filter(([key]) => key.includes(' '))
-  .sort((a, b) => b[0].length - a[0].length);
+    if (existing.length > english.length) {
+      mandalorianToEnglish[key] = english;
+      return;
+    }
+
+    if (existing.length === english.length) {
+      const existingIsPhrase = existing.includes(' ');
+      const englishIsPhrase = english.includes(' ');
+
+      if (existingIsPhrase && !englishIsPhrase) {
+        mandalorianToEnglish[key] = english;
+      }
+    }
+  });
+
+  return mandalorianToEnglish;
+}
+
+function getEnglishPhraseEntries(): Array<[string, string]> {
+  const englishToMandalorian = getEnglishToMandalorianDict();
+  return Object.entries(englishToMandalorian)
+    .filter(([key]) => key.includes(' '))
+    .sort((a, b) => b[0].length - a[0].length);
+}
+
+function getMandalorianPhraseEntries(): Array<[string, string]> {
+  const mandalorianToEnglish = getMandalorianToEnglishDict();
+  return Object.entries(mandalorianToEnglish)
+    .filter(([key]) => key.includes(' '))
+    .sort((a, b) => b[0].length - a[0].length);
+}
 
 function escapeRegExp(value: string): string {
   return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -217,19 +231,25 @@ function replacePhrases(
 }
 
 function translateEnglishToMandalorian(text: string): string {
-  const withPhrases = replacePhrases(text, ENGLISH_PHRASE_ENTRIES, true);
+  const englishPhraseEntries = getEnglishPhraseEntries();
+  const englishToMandalorian = getEnglishToMandalorianDict();
+
+  const withPhrases = replacePhrases(text, englishPhraseEntries, true);
 
   return withPhrases.replace(/\b[\w']+\b/gu, (word) => {
-    const translated = ENGLISH_TO_MANDALORIAN[word.toLowerCase()];
+    const translated = englishToMandalorian[word.toLowerCase()];
     return translated ? applyCase(word, translated) : word;
   });
 }
 
 function translateMandalorianToEnglish(text: string): string {
-  const withPhrases = replacePhrases(text, MANDALORIAN_PHRASE_ENTRIES, true);
+  const mandalorianPhraseEntries = getMandalorianPhraseEntries();
+  const mandalorianToEnglish = getMandalorianToEnglishDict();
+
+  const withPhrases = replacePhrases(text, mandalorianPhraseEntries, true);
 
   return withPhrases.replace(/\b[\w']+\b/gu, (word) => {
-    const translated = MANDALORIAN_TO_ENGLISH[word.toLowerCase()];
+    const translated = mandalorianToEnglish[word.toLowerCase()];
     return translated ? applyCase(word, translated) : word;
   });
 }
@@ -252,13 +272,18 @@ function detectDirection(text: string, direction?: string): TranslationDirection
   let englishScore = 0;
   let mandalorianScore = 0;
 
-  ENGLISH_PHRASE_ENTRIES.forEach(([phrase]) => {
+  const englishPhraseEntries = getEnglishPhraseEntries();
+  const mandalorianPhraseEntries = getMandalorianPhraseEntries();
+  const englishToMandalorian = getEnglishToMandalorianDict();
+  const mandalorianToEnglish = getMandalorianToEnglishDict();
+
+  englishPhraseEntries.forEach(([phrase]) => {
     if (lowerText.includes(phrase)) {
       englishScore += 1.5;
     }
   });
 
-  MANDALORIAN_PHRASE_ENTRIES.forEach(([phrase]) => {
+  mandalorianPhraseEntries.forEach(([phrase]) => {
     if (lowerText.includes(phrase)) {
       mandalorianScore += 1.5;
     }
@@ -267,11 +292,11 @@ function detectDirection(text: string, direction?: string): TranslationDirection
   words.forEach((word) => {
     const lower = word.toLowerCase();
 
-    if (ENGLISH_TO_MANDALORIAN[lower]) {
+    if (englishToMandalorian[lower]) {
       englishScore += 1;
     }
 
-    if (MANDALORIAN_TO_ENGLISH[lower]) {
+    if (mandalorianToEnglish[lower]) {
       mandalorianScore += 1.5;
     }
 
@@ -354,7 +379,9 @@ export async function POST(request: NextRequest) {
       }
     });
   } catch (error) {
-    console.error('Mandalorian translator error:', error);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Mandalorian translator error:', error);
+    }
 
     return NextResponse.json(
       {

@@ -216,7 +216,9 @@ export async function POST(request: Request) {
     // 验证 API 密钥
     const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
     if (!apiKey) {
-      console.error('Missing GOOGLE_GENERATIVE_AI_API_KEY');
+      if (process.env.NODE_ENV === 'development') {
+        console.error('Missing GOOGLE_GENERATIVE_AI_API_KEY');
+      }
       return NextResponse.json(
         { error: 'API configuration error' },
         { status: 500 }
@@ -336,7 +338,9 @@ export async function POST(request: Request) {
 
     return NextResponse.json(result);
   } catch (error: any) {
-    console.error('Greek translation error:', error);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Greek translation error:', error);
+    }
 
     // 处理特定的 Gemini 错误
     if (error?.message?.includes('API key')) {

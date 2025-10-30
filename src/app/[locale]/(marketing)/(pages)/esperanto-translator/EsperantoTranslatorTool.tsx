@@ -1,6 +1,5 @@
 'use client';
 
-import { SpeechToTextButton } from '@/components/ui/speech-to-text-button';
 import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
 import { detectLanguage } from '@/lib/language-detection';
 import { ArrowRightIcon } from 'lucide-react';
@@ -243,11 +242,7 @@ export default function EsperantoTranslatorTool({
     URL.revokeObjectURL(url);
   };
 
-  // Handle speech-to-text result
-  const handleSpeechTranscript = (transcript: string) => {
-    setInputText(transcript);
-  };
-
+  
   return (
     <div className="container max-w-7xl mx-auto px-4 mb-10">
       <main className="w-full bg-white dark:bg-zinc-800 shadow-xl border border-gray-100 dark:border-zinc-700 rounded-lg p-4 md:p-8">
@@ -287,10 +282,6 @@ export default function EsperantoTranslatorTool({
                   />
                 </svg>
               </label>
-              <SpeechToTextButton
-                onTranscript={handleSpeechTranscript}
-                locale={locale}
-              />
               <input
                 id="file-upload"
                 type="file"

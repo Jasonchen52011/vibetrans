@@ -43,7 +43,9 @@ async function simplifyText(text: string): Promise<string> {
 
     return simplifiedText;
   } catch (error) {
-    console.error('Error simplifying text:', error);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Error simplifying text:', error);
+    }
     throw new Error('Failed to simplify text');
   }
 }
@@ -85,7 +87,9 @@ export async function POST(request: NextRequest) {
       success: true,
     });
   } catch (error: any) {
-    console.error('Error processing simplification:', error);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Error processing simplification:', error);
+    }
     return NextResponse.json(
       {
         error: error.message || 'Failed to process simplification',
