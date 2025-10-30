@@ -1,7 +1,212 @@
 {
+  "MandalorianTranslatorPage": {
+    "title": "Mandalorian Translator: Real-Time Language Translation",
+    "description": "Experience seamless translations with Mandalorian translator. Convert text into authentic Mando'a language with high accuracy and speed.",
+    "hero": {
+      "title": "Mandalorian Translator Hub forEnglish to Mando'a",
+      "description": "Experience the best Mandalorian translator for text and voice, offering seamless English loMando'a conversions.",
+      "userCount": "from 20,000+ happy users"
+    },
+    "tool": {
+      "inputLabel": "Input Text",
+      "outputLabel": "Translated Text",
+      "inputPlaceholder": "Enter your text here...",
+      "outputPlaceholder": "Translation will appear here...",
+      "translateButton": "Translate",
+      "uploadButton": "Upload File",
+      "uploadHint": "Supports .txt and .docx files",
+      "loading": "Translating...",
+      "error": "Translation failed. Please try again.",
+      "noInput": "Please enter some text to translate."
+    },
+    "whatIs": {
+      "title": "What is Mandalorian Translator",
+      "description": "Mandalorian Translator is a powerful tool designed to convert English text into the authentic Mando'a language used by Mandalorian warriors in the Star Wars universe. By using proper vocabulary and grammar patterns, it creates immersive translations perfect for fans, cosplayers, or creative writing. VibeTrans ensures a seamless experience, allowing users to easily transform ordinary sentences into the warrior's tongue, making communication both epic and culturally rich.",
+      "image": "/images/docs/what-is-mandalorian-translator.webp"
+    },
+    "examples": {
+      "title": "Real-World Translation Examples",
+      "description": "Witness Mandalorian Translator in action: 'Hello, friend' becomes 'Su cuy'gar, burc'ya' in Mando'a. Perfect for adding Star Wars authenticity to your conversations.",
+      "items": [
+        {
+          "alt": "English to Mando'a: This is the way",
+          "name": "This is the way - Ori'buyce, kih'kovid."
+        },
+        {
+          "alt": "English to Mando'a: May the Force be with you",
+          "name": "May the Force be with you - Haar ni malya'ur nuur."
+        },
+        {
+          "alt": "English to Mando'a: I am a Mandalorian",
+          "name": "I am a Mandalorian - Mando'a ni."
+        },
+        {
+          "alt": "English to Mando'a: Never surrender",
+          "name": "Never surrender - Me'mevaani' gar."
+        },
+        {
+          "alt": "English to Mando'a: Love is family",
+          "name": "Love is family - Ori'copaad ni aliit."
+        },
+        {
+          "alt": "English to Mando'a: This is the Republic",
+          "name": "This is the Republic - Jorhaa'ir Mando'ade."
+        }
+      ]
+    },
+    "howto": {
+      "title": "How to Translate Text to Mandalorian",
+      "description": "Easily convert any text into Mandalorian language with these steps.",
+      "image": "/images/docs/mandalorian-translator-how-to.webp",
+      "steps": [
+        {
+          "title": "Enter Text",
+          "description": "Type or paste the English text you want to convert into the Mandalorian Translator input field. Ensure the text is clear and free of errors for the best results."
+        },
+        {
+          "title": "Click Translate",
+          "description": "Click the 'Translate' button to convert your text. The system will automatically transform your sentences into authentic Mando'a language using proper vocabulary."
+        },
+        {
+          "title": "Review Result",
+          "description": "Review your translated text in the output field. The Mandalorian translation will appear instantly, maintaining the meaning while using authentic warrior language."
+        }
+      ]
+    },
+    "funFacts": {
+      "title": "Interesting Facts",
+      "items": [
+        {
+          "title": "Mando'a Language Origins",
+          "description": "Mando'a was created by Karen Traviss for the Star Wars Expanded Universe. It's a complete language with grammar rules and vocabulary, reflecting the Mandalorian warrior culture.",
+          "image": "/images/docs/mandalorian-translator-fact-1.webp"
+        },
+        {
+          "title": "Warrior Philosophy",
+          "description": "The Mandalorian language emphasizes concepts like family (aliit), duty (ru'sec), and honor (cabur). These core values are reflected in the vocabulary and expressions.",
+          "image": "/images/docs/mandalorian-translator-fact-2.webp"
+        }
+      ]
+    },
+    "userInterest": {
+      "title": "Explore More with Mandalorian Translator",
+      "items": [
+        {
+          "title": "Cosplay & Roleplaying",
+          "description": "Perfect for Mandalorian cosplayers and roleplayers who want to add authenticity to their characters. Use VibeTrans to create convincing dialogue that immerses you in the Star Wars universe.",
+          "image": "/images/docs/mandalorian-translator-interest-1.webp"
+        },
+        {
+          "title": "Fan Community",
+          "description": "Join the vibrant Mandalorian fan community and share your translations. Connect with other Star Wars enthusiasts who appreciate the warrior culture and language.",
+          "image": "/images/docs/mandalorian-translator-interest-2.webp"
+        },
+        {
+          "title": "Creative Writing",
+          "description": "Enhance your Star Wars fan fiction and creative writing with authentic Mandalorian dialogue. VibeTrans helps you create immersive stories that resonate with fans.",
+          "image": "/images/docs/mandalorian-translator-interest-3.webp"
+        },
+        {
+          "title": "Cultural Learning",
+          "description": "Learn about Mandalorian culture through their language. Discover how the warrior philosophy is embedded in their vocabulary and expressions, gaining insights into this iconic Star Wars culture.",
+          "image": "/images/docs/mandalorian-translator-interest-4.webp"
+        }
+      ]
+    },
+    "highlights": {
+      "title": "Highlights of Mandalorian Translator",
+      "description": "Discover why Mandalorian Translator is the preferred choice for Star Wars fans.",
+      "items": [
+        {
+          "title": "Authentic Vocabulary",
+          "icon": "FaRocket",
+          "description": "VibeTrans uses authentic Mando'a vocabulary developed for the Star Wars universe, ensuring accurate translations that respect the Mandalorian warrior culture and language.",
+          "statLabel": "Accuracy",
+          "statValue": "95%"
+        },
+        {
+          "title": "Cultural Accuracy",
+          "icon": "FaShieldAlt",
+          "description": "Our translator maintains cultural accuracy by incorporating Mandalorian values and warrior philosophy, providing translations that feel genuine to the Star Wars universe.",
+          "statLabel": "Cultural Score",
+          "statValue": "100%"
+        },
+        {
+          "title": "Fast & Reliable",
+          "icon": "FaBrain",
+          "description": "VibeTrans provides instant translations with high accuracy. Convert any English text to Mandalorian in seconds, making it perfect for real-time conversations and creative work.",
+          "statLabel": "Speed",
+          "statValue": "< 1s"
+        },
+        {
+          "title": "Easy to Use",
+          "icon": "FaChartLine",
+          "description": "With a simple and intuitive interface, anyone can use the Mandalorian Translator. No prior knowledge of Mando'a is required - just type and translate!",
+          "statLabel": "Users",
+          "statValue": "20K+"
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "What Users Say",
+      "subtitle": "Real feedback from real users",
+      "items": {
+        "item-1": {
+          "name": "Jake Mitchell",
+          "role": "Mandalorian Cosplayer",
+          "heading": "Perfect for Cosplay",
+          "content": "Using the Mandalorian Translator for my cosplay events has been incredible. It adds so much authenticity to my character! People are amazed when I speak in actual Mando'a.",
+          "rating": "4.9"
+        },
+        "item-2": {
+          "name": "Sarah Walker",
+          "role": "Star Wars Fan Fiction Writer",
+          "heading": "Essential Writing Tool",
+          "content": "This translator is essential for my fan fiction work. The authentic Mando'a dialogue makes my stories so much more immersive and believable. Highly recommend!",
+          "rating": "4.8"
+        },
+        "item-3": {
+          "name": "Marcus Chen",
+          "role": "Star Wars Enthusiast",
+          "heading": "Amazing Accuracy",
+          "content": "As a huge Star Wars fan, I appreciate the accuracy of this translator. It uses real Mando'a words and grammar, not just random substitutions. This is the real deal!",
+          "rating": "5.0"
+        }
+      }
+    },
+    "faqs": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Have other questions? Feel free to contact us via email.",
+      "items": [
+        {
+          "question": "Is the Mandalorian Translator free to use?",
+          "answer": "Yes, the Mandalorian Translator is completely free to use on the web. You can access all features without any cost. However, it requires an internet connection and is not available as an offline app."
+        },
+        {
+          "question": "Is this the real Mandalorian language?",
+          "answer": "Yes, this translator uses authentic Mando'a vocabulary and grammar that was developed for the Star Wars Expanded Universe by Karen Traviss. It's not just made-up words but a constructed language with rules."
+        },
+        {
+          "question": "Can I use this for my creative projects?",
+          "answer": "Absolutely! The Mandalorian Translator is perfect for fan fiction, cosplay, roleplaying, and other creative projects. We encourage you to use it to add authenticity to your Star Wars inspired content."
+        },
+        {
+          "question": "How accurate is the Mandalorian translation?",
+          "answer": "The Mandalorian Translator provides highly accurate translations using authentic Mando'a vocabulary and grammar patterns developed for the Star Wars universe. While it's based on established linguistic rules, remember that Mando'a is a fictional language created for entertainment purposes."
+        }
+      ]
+    },
+    "ctaButton": "Try Mandalorian Translator Now",
+    "cta": {
+      "title": "Try Mandalorian Translator Today",
+      "description": "Experience the power of authentic Mando'a translation and transform your text into the warrior's language. Start converting now!",
+      "primaryButton": "Try Mandalorian Translator Now",
+      "secondaryButton": "Back to Top"
+    }
+  },
   "Metadata": {
     "name": "VibeTrans",
-    "title": "mandalorian-translator - VibeTrans",
+    "title": "Mandalorian Translator - VibeTrans",
     "description": "Break language barriers with AI-powered translations. Supports 100+ languages with accurate, context-aware translations."
   }
 }

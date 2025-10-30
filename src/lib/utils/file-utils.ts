@@ -25,5 +25,21 @@ export async function readFileContent(file: File): Promise<string> {
     return readTextFile(file);
   }
 
-  throw new Error('Unsupported file format. Please upload .txt files only.');
+  if (fileExtension === 'docx') {
+    try {
+      const arrayBuffer = await file.arrayBuffer();
+      // Dynamically import mammoth for Edge Runtime compatibility
+      const mammoth = await import('mammoth');
+      const result = await mammoth.extractRawText({ arrayBuffer });
+      return result.value || '';
+    } catch (error) {
+      throw new Error(
+        'Failed to read .docx file. Please ensure it is a valid Word document.'
+      );
+    }
+  }
+
+  throw new Error(
+    'Unsupported file format. Please upload .txt or .docx files.'
+  );
 }

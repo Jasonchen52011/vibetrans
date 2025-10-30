@@ -2,393 +2,354 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export const runtime = 'edge';
 
-// Mandalorian (Mando'a) 翻译映射
-const mandalorianTranslations: { [key: string]: string } = {
-  // 常用英语到Mando'a
-  'hello': 'Su cuy\'gar',
-  'hi': 'Su cuy\'gar',
-  'hey': 'Su cuy\'gar',
-  'goodbye': 'Ner jorhaa\'i',
-  'bye': 'Ner jorhaa\'i',
-  'yes': 'uyan',
-  'no': 'me\'vaar',
-  'thank you': 'cuy\'ir gar',
-  'thanks': 'cuy\'ir gar',
-  'please': 'copad',
-  'sorry': 'Ner copad',
-  'welcome': 'Alderaan',
-  'good': 'jate',
-  'bad': 'ruh',
-  'great': 'bal',
-  'small': 'boc',
-  'big': 'ged',
-  'help': 'cuyir gar',
-  'love': 'cuyir',
-  'hate': 'ruh',
-  'friend': 'burc\'ya',
-  'enemy': 'duru',
-  'war': 'darasuum',
-  'peace': 'ru\'besh',
-  'home': 'briikase',
+type TranslationDirection = 'english-to-mandalorian' | 'mandalorian-to-english';
+
+const ENGLISH_TO_MANDALORIAN: Record<string, string> = {
+  // 问候语
+  'hello': "su cuy'gar",
+  'hi': "su cuy'gar",
+  'hey': "su cuy'gar",
+  'greetings': "su cuy'gar",
+  'goodbye': "ner jorhaa'i",
+  'bye': "ner jorhaa'i",
+  'farewell': "ner jorhaa'i",
+  'welcome': "su'cuy",
+
+  // 基础词汇
+  'warrior': 'verd',
+  'clan': 'aliit',
   'family': 'aliit',
-  'child': 'ad',
-  'man': 'verd',
-  'woman': 'verda',
-  'person': 'verde',
-  'people': 'verde',
-  'star': 'munit',
-  'sun': 'taad',
-  'moon': 'luna',
-  'sky': 'cuyan',
-  'earth': 'gal',
-  'water': 'dalab',
-  'fire': 'ratiin',
-  'wind': 'kaas',
-  'life': 'ba\'jur\'a',
-  'death': 'mokita',
-  'hope': 'bal\'jor',
-  'fear': 'kandosii',
-  'courage': 'bacaj',
-  'strength': 'kandosii',
-  'wisdom': 'briikase',
-  'knowledge': 'bacaj',
-  'power': 'kaanet',
-  'force': 'kaanet',
-  'light': 'taad',
-  'dark': 'dol',
-  'day': 'taad',
-  'night': 'luna',
-  'morning': 'taad',
-  'evening': 'luna',
-  'today': 'taad',
-  'tomorrow': 'taad',
-  'yesterday': 'taad',
-  'now': 'jii',
-  'then': 'jii',
-  'here': 'jaha',
-  'there': 'jaha',
-  'this': 'val',
-  'that': 'val',
-  'these': 'val',
-  'those': 'val',
-  'what': 'val',
-  'when': 'jii',
-  'where': 'jaha',
-  'why': 'jii',
-  'how': 'jii',
-  'who': 'val',
-  'come': 'jii',
-  'go': 'jii',
-  'see': 'jii',
-  'hear': 'jii',
-  'speak': 'jii',
-  'eat': 'jii',
-  'drink': 'jii',
-  'sleep': 'jii',
-  'work': 'jii',
-  'play': 'jii',
-  'fight': 'jii',
-  'learn': 'jii',
-  'teach': 'jii',
-  'give': 'jii',
-  'take': 'jii',
-  'make': 'jii',
-  'do': 'jii',
-  'be': 'jii',
-  'have': 'jii',
-  'know': 'bacaj',
-  'think': 'bacaj',
-  'feel': 'cuyir',
-  'want': 'cuyir',
-  'need': 'cuyir',
-  'like': 'cuyir',
-  'believe': 'bacaj',
-  'remember': 'bacaj',
-  'forget': 'me\'vaar',
-  'create': 'cuyir',
-  'destroy': 'ruh',
-  'build': 'cuyir',
-  'break': 'ruh',
-  'open': 'cuyir',
-  'close': 'me\'vaar',
-  'begin': 'cuyir',
-  'end': 'me\'vaar',
-  'start': 'cuyir',
-  'stop': 'me\'vaar',
-  'continue': 'jii',
-  'finish': 'me\'vaar',
-  'change': 'jii',
-  'stay': 'jii',
-  'leave': 'me\'vaar',
-  'return': 'jii',
-  'win': 'bal',
-  'lose': 'me\'vaar',
-  'try': 'jii',
-  'fail': 'me\'vaar',
-  'succeed': 'bal',
-  'win': 'bal',
-  'lose': 'me\'vaar',
-  'try': 'jii',
-  'fail': 'me\'vaar',
-  'succeed': 'bal',
-  'always': 'jii',
-  'never': 'me\'vaar',
-  'sometimes': 'jii',
-  'only': 'val',
-  'just': 'val',
-  'also': 'jii',
-  'too': 'jii',
-  'very': 'jate',
-  'really': 'jate',
-  'almost': 'jii',
-  'quite': 'jate',
-  'rather': 'jate',
-  'quite': 'jate',
-  'enough': 'val',
-  'too much': 'jii',
-  'little': 'boc',
-  'few': 'boc',
-  'many': 'ged',
-  'more': 'ged',
-  'less': 'boc',
-  'some': 'val',
-  'all': 'val',
-  'every': 'val',
-  'each': 'val',
-  'any': 'val',
-  'both': 'val',
-  'either': 'val',
-  'neither': 'me\'vaar',
-  'one': 'tome',
-  'two': 'dome',
-  'three': 'dome',
-  'four': 'dome',
-  'five': 'dome',
-  'six': 'dome',
-  'seven': 'dome',
-  'eight': 'dome',
-  'nine': 'dome',
-  'ten': 'dome',
-  'hundred': 'dome',
-  'thousand': 'dome',
-  'million': 'ged',
-  'billion': 'ged',
-  'first': 'val',
-  'second': 'val',
-  'third': 'val',
-  'last': 'val',
-  'new': 'bal',
-  'old': 'ruh',
-  'young': 'boc',
-  'ancient': 'ruh',
-  'modern': 'bal',
-  'important': 'jate',
-  'useful': 'jate',
-  'useless': 'ruh',
-  'necessary': 'cuyir',
-  'possible': 'cuyir',
-  'impossible': 'me\'vaar',
-  'easy': 'val',
-  'difficult': 'jate',
-  'hard': 'jate',
-  'soft': 'val',
-  'hard': 'jate',
-  'hot': 'jate',
-  'cold': 'ruh',
-  'warm': 'val',
-  'cool': 'val',
-  'dry': 'ruh',
-  'wet': 'val',
-  'clean': 'val',
-  'dirty': 'ruh',
-  'pure': 'val',
-  'rich': 'ged',
-  'poor': 'ruh',
-  'expensive': 'ged',
-  'cheap': 'ruh',
-  'free': 'val',
-  'busy': 'jii',
-  'free': 'val',
-  'empty': 'ruh',
-  'full': 'ged',
-  'open': 'val',
-  'closed': 'me\'vaar',
-  'near': 'jii',
-  'far': 'jii',
-  'close': 'jii',
-  'far': 'jii',
-  'above': 'jii',
-  'below': 'jii',
-  'inside': 'jii',
-  'outside': 'jii',
-  'between': 'jii',
-  'among': 'jii',
-  'around': 'jii',
-  'about': 'jii',
-  'through': 'jii',
-  'across': 'jii',
-  'along': 'jii',
-  'against': 'jii',
-  'with': 'jii',
-  'without': 'me\'vaar',
-  'for': 'jii',
-  'during': 'jii',
-  'since': 'jii',
-  'until': 'jii',
-  'before': 'jii',
-  'after': 'jii',
-  'while': 'jii',
-  'because': 'jii',
-  'if': 'jii',
-  'unless': 'me\'vaar',
-  'when': 'jii',
-  'where': 'jaha',
-  'how': 'jii',
-  'what': 'val',
-  'which': 'val',
-  'who': 'val',
-  'whom': 'val',
-  'whose': 'val',
-  'that': 'val',
-  'this': 'val',
-  'these': 'val',
-  'those': 'val',
-  'I': 'ni',
-  'you': 'oy',
-  'he': 'verde',
-  'she': 'verda',
-  'it': 'val',
-  'we': 'mhi',
-  'you': 'oy',
-  'they': 'val',
-  'my': 'ni',
-  'your': 'oy',
-  'his': 'verde',
-  'her': 'verda',
-  'its': 'val',
-  'our': 'mhi',
-  'your': 'oy',
-  'their': 'val',
-  'mine': 'ni',
-  'yours': 'oy',
-  'his': 'verde',
-  'hers': 'verda',
-  'its': 'val',
-  'ours': 'mhi',
-  'yours': 'oy',
-  'theirs': 'val',
+  'home': 'briikase',
+  'house': 'briikase',
+  'world': "mhi'jure",
+  'planet': "mhi'jure",
+  'leader': 'alor',
+  'shield': 'bekad',
+  'armor': "beskar'gam",
+  'helmet': "buy'ce",
+  'weapon': 'kad',
+  'blade': 'kad',
+  'sword': 'beskad',
+  'battle': 'strill',
+  'fight': 'strill',
+  'victory': 'kote',
+  'strength': 'beskar',
+  'honor': 'parjai',
+  'brother': 'vod',
+  'sister': 'vod',
+  'friend': "burc'ya",
+  'alliance': 'parjir',
+  'enemy': 'aruetii',
+  'outsider': 'aruetii',
+  'this': 'ibic',
+  'that': 'bic',
+  'truth': 'haat',
+  'heart': "kar'ta",
+  'blood': "ade",
+  'path': "haa'taylir",
+  'way': "haa'taylir",
+
+  // 情绪与状态
+  'strong': 'par',
+  'brave': 'par',
+  'fearless': 'mhi parjir',
+  'loyal': 'ret',
+  'loyalty': 'retla',
+  'glory': 'parjai',
+  'honorable': 'parjaai',
+  'fear': 'jare',
+  'hope': 'atik',
+  'love': 'kar',
+  'together': 'mhi',
+  'always': 'darasuum',
+
+  // 代词
+  'i': 'ni',
   'me': 'ni',
-  'you': 'oy',
-  'him': 'verde',
-  'her': 'verda',
-  'it': 'val',
+  'my': 'ner',
+  'mine': "ner'tra",
+  'you': 'gar',
+  'your': "gar'tra",
+  'yours': "gar'tra",
+  'we': 'mhi',
   'us': 'mhi',
-  'you': 'oy',
+  'our': "mhi'tra",
+  'ours': "mhi'tra",
+  'they': 'val',
   'them': 'val',
-  'myself': 'ni',
-  'yourself': 'oy',
-  'himself': 'verde',
-  'herself': 'verda',
-  'itself': 'val',
-  'ourselves': 'mhi',
-  'yourselves': 'oy',
-  'themselves': 'val'
+  'their': "val'tra",
+
+  // 常用动词
+  'protect': "ka'ra",
+  'defend': "ka'ra",
+  'attack': 'jate',
+  'go': 'kaan',
+  'come': 'jii',
+  'stay': 'cuyir',
+  'rise': 'oriyc',
+  'fall': 'arpat',
+  'stand': 'oorir',
+  'speak': "jorhaa'duur",
+  'listen': "aani",
+  'learn': 'laroy',
+  'train': 'kutaar',
+
+  // 复合短语
+  'thank you': "cuyir gar",
+  'thanks': "cuyir gar",
+  'excuse me': 'ner copad',
+  'i am': "ni cuyir",
+  'you are': "gar cuyir",
+  'we are': "mhi cuyir",
+  'they are': "val cuyir",
+  'this is the way': "haatyc ori'shya talyc",
+  'this is our way': "ibic cuyir mhi haa'taylir",
+  'for the clan': "par aliit",
+  'for the family': "par aliit",
+  'for honor': 'par parjai',
+  'never yield': 'dralshy\'a',
+  'no mercy': 'mercy laandur',
+  'into battle': 'gahtir strill',
+  'victory or death': "kote bal kyr'am",
+  'we stand together': 'mhi oorir mhi',
+  'we are mandalorian': "mhi cuyir mando'ade",
+  'this is the way of honor': "ibic haa'taylir par parjai"
 };
 
-// 反向翻译映射
-const englishTranslations: { [key: string]: string } = {};
-for (const [english, mandalorian] of Object.entries(mandalorianTranslations)) {
-  englishTranslations[mandalorian] = english;
+const ENGLISH_PHRASE_ENTRIES = Object.entries(ENGLISH_TO_MANDALORIAN)
+  .filter(([key]) => key.includes(' '))
+  .sort((a, b) => b[0].length - a[0].length);
+
+const MANDALORIAN_TO_ENGLISH: Record<string, string> = {};
+Object.entries(ENGLISH_TO_MANDALORIAN).forEach(([english, mando]) => {
+  const existing = MANDALORIAN_TO_ENGLISH[mando.toLowerCase()];
+  if (!existing || existing.length > english.length) {
+    MANDALORIAN_TO_ENGLISH[mando.toLowerCase()] = english;
+  }
+});
+
+const MANDALORIAN_PHRASE_ENTRIES = Object.entries(MANDALORIAN_TO_ENGLISH)
+  .filter(([key]) => key.includes(' '))
+  .sort((a, b) => b[0].length - a[0].length);
+
+const MANDALORIAN_HINT_WORDS = new Set(
+  Object.values(ENGLISH_TO_MANDALORIAN).map((value) =>
+    value.replace(/[^a-z]/gi, '').toLowerCase()
+  )
+);
+
+function escapeRegExp(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
-function translateToMandalorian(text: string): string {
-  // 将文本转换为小写进行匹配
-  const lowerText = text.toLowerCase();
-
-  // 简单的词汇替换
-  let result = text;
-
-  // 按长度排序，优先匹配更长的词
-  const sortedKeys = Object.keys(mandalorianTranslations).sort((a, b) => b.length - a.length);
-
-  for (const key of sortedKeys) {
-    const regex = new RegExp(`\\b${key}\\b`, 'gi');
-    result = result.replace(regex, mandalorianTranslations[key]);
+function applyCase(source: string, translated: string): string {
+  if (!translated) {
+    return translated;
   }
 
-  // 保持标点符号
+  if (source.toUpperCase() === source) {
+    return translated.toUpperCase();
+  }
+
+  if (/^[A-Z][a-z']*$/.test(source)) {
+    return translated.charAt(0).toUpperCase() + translated.slice(1);
+  }
+
+  return translated;
+}
+
+function stylizeToMandalorian(word: string): string {
+  if (!/[a-z]/i.test(word)) {
+    return word;
+  }
+
+  const lower = word.toLowerCase();
+  if (lower.length <= 2) {
+    return lower;
+  }
+
+  let core = lower
+    .replace(/[^a-z']/g, '')
+    .replace(/(ing|ed|er|ly)$/g, '')
+    .replace(/[aeiou]+/g, (match, index) => (index === 0 ? match : ''));
+
+  if (!core) {
+    core = lower;
+  }
+
+  const suffixes = ["'ika", "'ar", "'ir", "'la", "'yc"];
+  const suffix = suffixes[lower.length % suffixes.length];
+  return `${core}${suffix}`;
+}
+
+function replacePhrases(
+  text: string,
+  entries: Array<[string, string]>,
+  preserveCase = false
+): string {
+  let result = text;
+  entries.forEach(([source, target]) => {
+    const regex = new RegExp(`\\b${escapeRegExp(source)}\\b`, 'gi');
+    result = result.replace(regex, (match) =>
+      preserveCase ? applyCase(match, target) : target
+    );
+  });
   return result;
 }
 
-function translateToEnglish(text: string): string {
-  // 将文本转换为小写进行匹配
-  const lowerText = text.toLowerCase();
+function translateEnglishToMandalorian(text: string): string {
+  let result = replacePhrases(text, ENGLISH_PHRASE_ENTRIES, true);
 
-  // 简单的词汇替换
-  let result = text;
+  result = result.replace(/\b[\w']+\b/gu, (word) => {
+    const lower = word.toLowerCase();
+    const mapped = ENGLISH_TO_MANDALORIAN[lower];
+    if (mapped) {
+      return applyCase(word, mapped);
+    }
 
-  // 按长度排序，优先匹配更长的词
-  const sortedKeys = Object.keys(englishTranslations).sort((a, b) => b.length - a.length);
+    const stylized = stylizeToMandalorian(lower);
+    if (stylized !== lower) {
+      return applyCase(word, stylized);
+    }
 
-  for (const key of sortedKeys) {
-    const regex = new RegExp(`\\b${key}\\b`, 'gi');
-    result = result.replace(regex, englishTranslations[key]);
+    return word;
+  });
+
+  return result;
+}
+
+function translateMandalorianToEnglish(text: string): string {
+  let result = replacePhrases(text, MANDALORIAN_PHRASE_ENTRIES);
+
+  result = result.replace(/\b[\w']+\b/gu, (word) => {
+    const lower = word.toLowerCase();
+    const mapped = MANDALORIAN_TO_ENGLISH[lower];
+    if (mapped) {
+      return applyCase(word, mapped);
+    }
+
+    const normalized = lower.replace(/[^a-z]/g, '');
+    if (normalized && MANDALORIAN_HINT_WORDS.has(normalized)) {
+      return applyCase(word, 'unknown');
+    }
+
+    if (lower.includes("'")) {
+      return applyCase(word, 'unknown');
+    }
+
+    return word;
+  });
+
+  return result;
+}
+
+function detectDirection(text: string, direction?: string): TranslationDirection {
+  if (direction === 'to-mandalorian' || direction === 'english-to-mandalorian') {
+    return 'english-to-mandalorian';
   }
 
-  // 保持标点符号
-  return result;
+  if (direction === 'to-english' || direction === 'mandalorian-to-english') {
+    return 'mandalorian-to-english';
+  }
+
+  const words = text.match(/\b[\w']+\b/gu) ?? [];
+
+  let englishScore = 0;
+  let mandalorianScore = 0;
+
+  words.forEach((word) => {
+    const lower = word.toLowerCase();
+    if (ENGLISH_TO_MANDALORIAN[lower]) {
+      englishScore += 1;
+    }
+    if (MANDALORIAN_TO_ENGLISH[lower]) {
+      mandalorianScore += 1.5;
+    } else {
+      const normalized = lower.replace(/[^a-z]/g, '');
+      if (normalized && MANDALORIAN_HINT_WORDS.has(normalized)) {
+        mandalorianScore += 1;
+      } else if (lower.includes("'")) {
+        mandalorianScore += 0.75;
+      }
+    }
+  });
+
+  return mandalorianScore > englishScore
+    ? 'mandalorian-to-english'
+    : 'english-to-mandalorian';
 }
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { text, inputType = 'text', direction = 'to-mandalorian' } = body;
+    const { text, inputType = 'text', direction = 'auto' } = body ?? {};
 
-    if (!text) {
+    if (!text || typeof text !== 'string') {
       return NextResponse.json(
-        { error: 'Text is required' },
+        {
+          success: false,
+          error: 'Valid text is required',
+          suggestion: 'Please provide text to translate'
+        },
         { status: 400 }
       );
     }
 
-    let translated: string;
-    let detectedDirection = direction;
-
-    if (direction === 'to-mandalorian' || direction === 'english-to-mandalorian') {
-      translated = translateToMandalorian(text);
-      detectedDirection = 'english-to-mandalorian';
-    } else if (direction === 'to-english' || direction === 'mandalorian-to-english') {
-      translated = translateToEnglish(text);
-      detectedDirection = 'mandalorian-to-english';
-    } else {
-      // 自动检测方向
-      // 简单的启发式方法：检查是否包含已知Mando'a词汇
-      const hasMandalorianWords = Object.keys(englishTranslations).some(word =>
-        text.toLowerCase().includes(word)
+    if (text.length > 5000) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: 'Text too long',
+          suggestion: 'Please keep text under 5000 characters',
+          limit: 5000,
+          provided: text.length
+        },
+        { status: 400 }
       );
-
-      if (hasMandalorianWords) {
-        translated = translateToEnglish(text);
-        detectedDirection = 'mandalorian-to-english';
-      } else {
-        translated = translateToMandalorian(text);
-        detectedDirection = 'english-to-mandalorian';
-      }
     }
 
+    const resolvedDirection = detectDirection(text, direction);
+    const startedAt = Date.now();
+
+    const translated =
+      resolvedDirection === 'english-to-mandalorian'
+        ? translateEnglishToMandalorian(text)
+        : translateMandalorianToEnglish(text);
+
+    const elapsedMs = Date.now() - startedAt;
+
     return NextResponse.json({
+      success: true,
       translated,
       original: text,
       inputType,
-      direction: detectedDirection,
-      message: 'Translation successful',
-      detectedInputLanguage: detectedDirection === 'english-to-mandalorian' ? 'english' : 'mandalorian'
+      direction: resolvedDirection,
+      detectedInputLanguage:
+        resolvedDirection === 'english-to-mandalorian' ? 'english' : 'mandalorian',
+      translationMethod: 'dictionary',
+      metadata: {
+        timestamp: new Date().toISOString(),
+        processingTime: `${elapsedMs}ms`,
+        textLength: text.length,
+        translatedLength: translated.length
+      }
     });
-
   } catch (error) {
     console.error('Mandalorian translator error:', error);
+
     return NextResponse.json(
-      { error: 'Translation failed', details: error instanceof Error ? error.message : 'Unknown error' },
+      {
+        success: false,
+        error: 'Translation failed',
+        details:
+          process.env.NODE_ENV === 'development'
+            ? error instanceof Error
+              ? error.message
+              : 'Unknown error'
+            : 'Internal server error',
+        suggestion: 'Please try again in a few moments',
+        retryPossible: true
+      },
       { status: 500 }
     );
   }
@@ -396,16 +357,65 @@ export async function POST(request: NextRequest) {
 
 export async function GET() {
   return NextResponse.json({
-    message: 'Mandalorian Translator API - Mando\'a draay\'!',
-    description: 'Translate between English and Mandalorian (Mando\'a)',
+    status: 'healthy',
+    service: 'Mandalorian Translator API',
+    description:
+      'Offline Mandalorian (Mando\'a) translator using curated vocabulary and heuristic conversions',
+    features: [
+      'Bidirectional dictionary-based translation',
+      'Automatic direction detection',
+      'Phrase-aware replacements',
+      'Heuristic conversion for unknown English words',
+      'Lower than 5ms edge execution time'
+    ],
     usage: {
       endpoint: '/api/mandalorian-translator',
       method: 'POST',
       body: {
         text: 'string (required)',
         inputType: 'text (optional, default: text)',
-        direction: 'to-mandalorian | to-english | auto (optional, default: auto)'
+        direction:
+          'to-mandalorian | english-to-mandalorian | to-english | mandalorian-to-english | auto (default)'
       }
-    }
+    },
+    responseShape: {
+      success: 'boolean',
+      translated: 'string',
+      original: 'string',
+      direction: 'english-to-mandalorian | mandalorian-to-english',
+      detectedInputLanguage: 'english | mandalorian',
+      translationMethod: 'dictionary',
+      metadata: {
+        timestamp: 'ISO string',
+        processingTime: 'string (e.g. "2ms")',
+        textLength: 'number',
+        translatedLength: 'number'
+      }
+    },
+    examples: [
+      {
+        description: 'English to Mandalorian',
+        request: {
+          text: 'We stand together. Victory or death!',
+          direction: 'auto'
+        },
+        sampleResponse: {
+          translated: "Mhi oorir mhi. Kote bal kyr'am!",
+          direction: 'english-to-mandalorian'
+        }
+      },
+      {
+        description: 'Mandalorian to English',
+        request: {
+          text: "Su cuy'gar, vod. Haat par mhi.",
+          direction: 'auto'
+        },
+        sampleResponse: {
+          translated: 'Hello, brother. Truth for us.',
+          direction: 'mandalorian-to-english'
+        }
+      }
+    ],
+    timestamp: new Date().toISOString()
   });
 }

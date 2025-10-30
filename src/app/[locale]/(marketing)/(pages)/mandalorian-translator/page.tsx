@@ -70,7 +70,24 @@ export default async function MandalorianTranslatorPage(
   const examplesData = {
     title: t('MandalorianTranslatorPage.examples.title'),
     description: t('MandalorianTranslatorPage.examples.description'),
-    images: [],
+    images: [
+      {
+        alt: t('MandalorianTranslatorPage.examples.items.0.alt'),
+        name: t('MandalorianTranslatorPage.examples.items.0.name'),
+      },
+      {
+        alt: t('MandalorianTranslatorPage.examples.items.1.alt'),
+        name: t('MandalorianTranslatorPage.examples.items.1.name'),
+      },
+      {
+        alt: t('MandalorianTranslatorPage.examples.items.2.alt'),
+        name: t('MandalorianTranslatorPage.examples.items.2.name'),
+      },
+      {
+        alt: t('MandalorianTranslatorPage.examples.items.3.alt'),
+        name: t('MandalorianTranslatorPage.examples.items.3.name'),
+      },
+    ],
   };
 
   // What is section

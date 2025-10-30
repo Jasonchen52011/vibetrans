@@ -52,29 +52,33 @@ export default function FaqSection({
   }
 
   if (hasItems) {
-    for (let i = 1; i <= 8; i++) {
-      const key = `item-${i}`;
+    const itemsRaw = t.raw('items') as unknown;
 
-      try {
-        // @ts-ignore - Dynamic translation keys with fallback
-        const question = t(`items.${key}.question`, { default: null });
-
-        if (!question || question.includes(`items.${key}.question`)) {
-          break;
-        }
-
-        // @ts-ignore - Dynamic translation keys
-        const answer = t(`items.${key}.answer`);
-
-        faqItems.push({
-          id: key,
-          icon: icons[i - 1] || 'help-circle',
-          question,
-          answer,
-        });
-      } catch {
-        break;
+    const pushItem = (
+      item: any,
+      index: number,
+      key?: string | number
+    ): void => {
+      if (!item || !item.question || !item.answer) {
+        return;
       }
+
+      faqItems.push({
+        id: typeof key === 'string' ? key : `item-${index + 1}`,
+        icon: icons[index] || 'help-circle',
+        question: item.question,
+        answer: item.answer,
+      });
+    };
+
+    if (Array.isArray(itemsRaw)) {
+      itemsRaw.forEach((item, index) => pushItem(item, index));
+    } else if (itemsRaw && typeof itemsRaw === 'object') {
+      Object.entries(itemsRaw)
+        .sort(([a], [b]) =>
+          a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' })
+        )
+        .forEach(([key, item], index) => pushItem(item, index, key));
     }
   }
 
