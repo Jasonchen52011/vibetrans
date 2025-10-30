@@ -76,8 +76,8 @@ export function Navbar({ scroll }: NavBarProps) {
             </div>
 
             {/* menu links */}
-            <div className="flex items-center space-x-2 flex-1">
-              <NavigationMenu className="relative">
+            <div className="flex items-center space-x-2 flex-1 relative z-50">
+              <NavigationMenu className="relative" viewport={false}>
                 <NavigationMenuList className="flex items-center">
                   {menuLinks?.map((item, index) =>
                     item.items ? (

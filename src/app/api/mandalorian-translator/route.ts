@@ -107,7 +107,7 @@ const ENGLISH_TO_MANDALORIAN: Record<string, string> = {
   'for the clan': "par aliit",
   'for the family': "par aliit",
   'for honor': 'par parjai',
-  'never yield': 'dralshy\'a',
+  'never yield': "dralshy'a",
   'no mercy': 'mercy laandur',
   'into battle': 'gahtir strill',
   'victory or death': "kote bal kyr'am",
@@ -122,21 +122,32 @@ const ENGLISH_PHRASE_ENTRIES = Object.entries(ENGLISH_TO_MANDALORIAN)
 
 const MANDALORIAN_TO_ENGLISH: Record<string, string> = {};
 Object.entries(ENGLISH_TO_MANDALORIAN).forEach(([english, mando]) => {
-  const existing = MANDALORIAN_TO_ENGLISH[mando.toLowerCase()];
-  if (!existing || existing.length > english.length) {
-    MANDALORIAN_TO_ENGLISH[mando.toLowerCase()] = english;
+  const key = mando.toLowerCase();
+  const existing = MANDALORIAN_TO_ENGLISH[key];
+
+  if (!existing) {
+    MANDALORIAN_TO_ENGLISH[key] = english;
+    return;
+  }
+
+  if (existing.length > english.length) {
+    MANDALORIAN_TO_ENGLISH[key] = english;
+    return;
+  }
+
+  if (existing.length === english.length) {
+    const existingIsPhrase = existing.includes(' ');
+    const englishIsPhrase = english.includes(' ');
+
+    if (existingIsPhrase && !englishIsPhrase) {
+      MANDALORIAN_TO_ENGLISH[key] = english;
+    }
   }
 });
 
 const MANDALORIAN_PHRASE_ENTRIES = Object.entries(MANDALORIAN_TO_ENGLISH)
   .filter(([key]) => key.includes(' '))
   .sort((a, b) => b[0].length - a[0].length);
-
-const MANDALORIAN_HINT_WORDS = new Set(
-  Object.values(ENGLISH_TO_MANDALORIAN).map((value) =>
-    value.replace(/[^a-z]/gi, '').toLowerCase()
-  )
-);
 
 function escapeRegExp(value: string): string {
   return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -147,8 +158,12 @@ function applyCase(source: string, translated: string): string {
     return translated;
   }
 
-  if (source.toUpperCase() === source) {
+  if (source === source.toUpperCase()) {
     return translated.toUpperCase();
+  }
+
+  if (source === source.toLowerCase()) {
+    return translated;
   }
 
   if (/^[A-Z][a-z']*$/.test(source)) {
@@ -158,89 +173,65 @@ function applyCase(source: string, translated: string): string {
   return translated;
 }
 
-function stylizeToMandalorian(word: string): string {
-  if (!/[a-z]/i.test(word)) {
-    return word;
+function applyPhraseCase(source: string, translated: string): string {
+  if (!translated) {
+    return translated;
   }
 
-  const lower = word.toLowerCase();
-  if (lower.length <= 2) {
-    return lower;
+  if (source === source.toUpperCase()) {
+    return translated.toUpperCase();
   }
 
-  let core = lower
-    .replace(/[^a-z']/g, '')
-    .replace(/(ing|ed|er|ly)$/g, '')
-    .replace(/[aeiou]+/g, (match, index) => (index === 0 ? match : ''));
-
-  if (!core) {
-    core = lower;
+  if (source === source.toLowerCase()) {
+    return translated;
   }
 
-  const suffixes = ["'ika", "'ar", "'ir", "'la", "'yc"];
-  const suffix = suffixes[lower.length % suffixes.length];
-  return `${core}${suffix}`;
+  const words = source.split(/\s+/).filter(Boolean);
+  const isTitleCase = words.every((word) => /^[A-Z][a-z']*$/.test(word));
+
+  if (isTitleCase) {
+    return translated
+      .split(' ')
+      .map((word) =>
+        word ? word.charAt(0).toUpperCase() + word.slice(1) : word
+      )
+      .join(' ');
+  }
+
+  return translated;
 }
 
 function replacePhrases(
   text: string,
   entries: Array<[string, string]>,
-  preserveCase = false
+  preserveCase: boolean
 ): string {
   let result = text;
   entries.forEach(([source, target]) => {
     const regex = new RegExp(`\\b${escapeRegExp(source)}\\b`, 'gi');
     result = result.replace(regex, (match) =>
-      preserveCase ? applyCase(match, target) : target
+      preserveCase ? applyPhraseCase(match, target) : target
     );
   });
   return result;
 }
 
 function translateEnglishToMandalorian(text: string): string {
-  let result = replacePhrases(text, ENGLISH_PHRASE_ENTRIES, true);
+  const withPhrases = replacePhrases(text, ENGLISH_PHRASE_ENTRIES, true);
 
-  result = result.replace(/\b[\w']+\b/gu, (word) => {
-    const lower = word.toLowerCase();
-    const mapped = ENGLISH_TO_MANDALORIAN[lower];
-    if (mapped) {
-      return applyCase(word, mapped);
-    }
-
-    const stylized = stylizeToMandalorian(lower);
-    if (stylized !== lower) {
-      return applyCase(word, stylized);
-    }
-
-    return word;
+  return withPhrases.replace(/\b[\w']+\b/gu, (word) => {
+    const translated = ENGLISH_TO_MANDALORIAN[word.toLowerCase()];
+    return translated ? applyCase(word, translated) : word;
   });
-
-  return result;
 }
 
 function translateMandalorianToEnglish(text: string): string {
-  let result = replacePhrases(text, MANDALORIAN_PHRASE_ENTRIES);
+  const withPhrases = replacePhrases(text, MANDALORIAN_PHRASE_ENTRIES, true);
 
-  result = result.replace(/\b[\w']+\b/gu, (word) => {
-    const lower = word.toLowerCase();
-    const mapped = MANDALORIAN_TO_ENGLISH[lower];
-    if (mapped) {
-      return applyCase(word, mapped);
-    }
-
-    const normalized = lower.replace(/[^a-z]/g, '');
-    if (normalized && MANDALORIAN_HINT_WORDS.has(normalized)) {
-      return applyCase(word, 'unknown');
-    }
-
-    if (lower.includes("'")) {
-      return applyCase(word, 'unknown');
-    }
-
-    return word;
+  return withPhrases.replace(/\b[\w']+\b/gu, (word) => {
+    const translated = MANDALORIAN_TO_ENGLISH[word.toLowerCase()];
+    return translated ? applyCase(word, translated) : word;
   });
-
-  return result;
 }
 
 function detectDirection(text: string, direction?: string): TranslationDirection {
@@ -253,30 +244,56 @@ function detectDirection(text: string, direction?: string): TranslationDirection
   }
 
   const words = text.match(/\b[\w']+\b/gu) ?? [];
+  if (words.length === 0) {
+    return 'english-to-mandalorian';
+  }
 
+  const lowerText = text.toLowerCase();
   let englishScore = 0;
   let mandalorianScore = 0;
 
-  words.forEach((word) => {
-    const lower = word.toLowerCase();
-    if (ENGLISH_TO_MANDALORIAN[lower]) {
-      englishScore += 1;
-    }
-    if (MANDALORIAN_TO_ENGLISH[lower]) {
-      mandalorianScore += 1.5;
-    } else {
-      const normalized = lower.replace(/[^a-z]/g, '');
-      if (normalized && MANDALORIAN_HINT_WORDS.has(normalized)) {
-        mandalorianScore += 1;
-      } else if (lower.includes("'")) {
-        mandalorianScore += 0.75;
-      }
+  ENGLISH_PHRASE_ENTRIES.forEach(([phrase]) => {
+    if (lowerText.includes(phrase)) {
+      englishScore += 1.5;
     }
   });
 
-  return mandalorianScore > englishScore
-    ? 'mandalorian-to-english'
-    : 'english-to-mandalorian';
+  MANDALORIAN_PHRASE_ENTRIES.forEach(([phrase]) => {
+    if (lowerText.includes(phrase)) {
+      mandalorianScore += 1.5;
+    }
+  });
+
+  words.forEach((word) => {
+    const lower = word.toLowerCase();
+
+    if (ENGLISH_TO_MANDALORIAN[lower]) {
+      englishScore += 1;
+    }
+
+    if (MANDALORIAN_TO_ENGLISH[lower]) {
+      mandalorianScore += 1.5;
+    }
+
+    if (lower.includes("'")) {
+      mandalorianScore += 0.5;
+    }
+  });
+
+  const apostrophes = (text.match(/'/g) || []).length;
+  if (apostrophes >= 3) {
+    mandalorianScore += 1;
+  }
+
+  if (mandalorianScore > englishScore) {
+    return 'mandalorian-to-english';
+  }
+
+  if (englishScore > mandalorianScore) {
+    return 'english-to-mandalorian';
+  }
+
+  return apostrophes > 1 ? 'mandalorian-to-english' : 'english-to-mandalorian';
 }
 
 export async function POST(request: NextRequest) {
@@ -317,6 +334,7 @@ export async function POST(request: NextRequest) {
         : translateMandalorianToEnglish(text);
 
     const elapsedMs = Date.now() - startedAt;
+    const hasTranslation = translated !== text;
 
     return NextResponse.json({
       success: true,
@@ -331,7 +349,8 @@ export async function POST(request: NextRequest) {
         timestamp: new Date().toISOString(),
         processingTime: `${elapsedMs}ms`,
         textLength: text.length,
-        translatedLength: translated.length
+        translatedLength: translated.length,
+        hasTranslation
       }
     });
   } catch (error) {
@@ -360,13 +379,13 @@ export async function GET() {
     status: 'healthy',
     service: 'Mandalorian Translator API',
     description:
-      'Offline Mandalorian (Mando\'a) translator using curated vocabulary and heuristic conversions',
+      "Offline Mandalorian (Mando'a) translator using curated vocabulary and direction-aware heuristics",
     features: [
       'Bidirectional dictionary-based translation',
-      'Automatic direction detection',
+      'Automatic direction detection with heuristics',
       'Phrase-aware replacements',
-      'Heuristic conversion for unknown English words',
-      'Lower than 5ms edge execution time'
+      'Graceful fallback for unknown terms',
+      'Optimized for Edge runtime'
     ],
     usage: {
       endpoint: '/api/mandalorian-translator',
@@ -389,7 +408,8 @@ export async function GET() {
         timestamp: 'ISO string',
         processingTime: 'string (e.g. "2ms")',
         textLength: 'number',
-        translatedLength: 'number'
+        translatedLength: 'number',
+        hasTranslation: 'boolean'
       }
     },
     examples: [

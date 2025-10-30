@@ -240,7 +240,7 @@ export default function RuneTranslatorTool({
 
           {/* Output Area */}
           <div className="flex-1">
-            <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center justify-between mb-2">
               <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">
                 {pageData.tool.outputLabel}
               </h2>
@@ -289,7 +289,7 @@ export default function RuneTranslatorTool({
               )}
             </div>
             <div
-              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md bg-gray-50 dark:bg-zinc-700 flex items-center justify-center text-gray-700 dark:text-gray-200 overflow-y-auto"
+              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md bg-gray-50 dark:bg-zinc-700 flex items-start justify-start text-gray-700 dark:text-gray-200 overflow-y-auto"
               aria-live="polite"
             >
               {isLoading ? (

@@ -87,6 +87,14 @@ export default async function MandalorianTranslatorPage(
         alt: t('MandalorianTranslatorPage.examples.items.3.alt'),
         name: t('MandalorianTranslatorPage.examples.items.3.name'),
       },
+      {
+        alt: t('MandalorianTranslatorPage.examples.items.4.alt'),
+        name: t('MandalorianTranslatorPage.examples.items.4.name'),
+      },
+      {
+        alt: t('MandalorianTranslatorPage.examples.items.5.alt'),
+        name: t('MandalorianTranslatorPage.examples.items.5.name'),
+      },
     ],
   };
 

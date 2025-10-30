@@ -298,10 +298,6 @@ export default function MangaTranslatorTool({
               >
                 <Waves className="h-5 w-5" />
               </button>
-
-              <p className="text-xs text-gray-500 dark:text-gray-400">
-                Supports JPG, PNG, GIF, WebP formats
-              </p>
               <input
                 id="file-upload"
                 type="file"

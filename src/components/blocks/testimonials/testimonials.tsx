@@ -75,12 +75,17 @@ export default function TestimonialsSection({
           heading && !heading.includes(`items.${itemKey}`) ? heading : '';
         // @ts-ignore - Dynamic translation keys
         const quote = t(`items.${itemKey}.content`);
+        // Use t.raw for non-string values to avoid INVALID_MESSAGE errors
         // @ts-ignore - Dynamic translation keys
-        const rating = t(`items.${itemKey}.rating`, { default: 5 });
+        const ratingRaw = t.raw(`items.${itemKey}.rating`);
         // @ts-ignore - Dynamic translation keys
-        const date = t(`items.${itemKey}.date`, { default: '' });
+        const dateRaw = t.raw(`items.${itemKey}.date`);
         // @ts-ignore - Dynamic translation keys
-        const verified = t(`items.${itemKey}.verified`, { default: false });
+        const verifiedRaw = t.raw(`items.${itemKey}.verified`);
+
+        const rating = typeof ratingRaw === 'number' ? ratingRaw : parseFloat(ratingRaw) || 5;
+        const date = typeof dateRaw === 'string' ? dateRaw : '';
+        const verified = typeof verifiedRaw === 'boolean' ? verifiedRaw : Boolean(verifiedRaw);
 
         // Use local avatar images to avoid duplicates
         const avatarPool = [
