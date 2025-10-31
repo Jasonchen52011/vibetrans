@@ -52,7 +52,9 @@ export async function GET(request: NextRequest) {
       maxTextLength: 5000,
     });
   } catch (error) {
-    console.error('GET request error:', error);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('GET request error:', error);
+    }
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }
@@ -65,7 +67,9 @@ export async function POST(request: NextRequest) {
     // 验证API密钥
     const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
     if (!apiKey) {
-      console.error('Missing GOOGLE_GENERATIVE_AI_API_KEY');
+      if (process.env.NODE_ENV === 'development') {
+        console.error('Missing GOOGLE_GENERATIVE_AI_API_KEY');
+      }
       return NextResponse.json(
         { error: 'API configuration error' },
         { status: 500 }
@@ -131,7 +135,9 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json(result);
   } catch (error: any) {
-    console.error('Translation error:', error);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Translation error:', error);
+    }
 
     // 处理特定错误类型
     if (error.message.includes('Text is required')) {

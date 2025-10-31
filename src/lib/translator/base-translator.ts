@@ -151,7 +151,9 @@ export abstract class BaseTranslator {
         ),
       };
     } catch (error) {
-      console.error('Language detection failed:', error);
+      if (process.env.NODE_ENV === 'development') {
+        console.error('Language detection failed:', error);
+      }
       return null;
     }
   }
@@ -185,7 +187,9 @@ export abstract class BaseTranslator {
 
       return translatedText.trim();
     } catch (error) {
-      console.error('Translation failed:', error);
+      if (process.env.NODE_ENV === 'development') {
+        console.error('Translation failed:', error);
+      }
       throw new Error('Failed to translate text');
     }
   }

@@ -34,7 +34,9 @@
     },
     "whatIs": {
       "title": "What is Esperanto Translator?",
-      "description": "Esperanto Translator is a powerful tool that allows you to instantly translate Esperanto text, speech, and documents with ease. VibeTrans offers both accuracy and speed, making communication in Esperanto seamless."
+      "description": "Esperanto Translator is a powerful tool that allows you to instantly translate Esperanto text, speech, and documents with ease. VibeTrans offers both accuracy and speed, making communication in Esperanto seamless.",
+      "image": "/images/docs/what-is-esperanto-translator.webp",
+      "imageAlt": "What is Esperanto Translator?"
     },
     "examples": {
       "title": "Example Translations Using Esperanto Translator",
@@ -60,7 +62,9 @@
           "title": "Download or Share the Translation",
           "description": "Once translated, you can download the file or share the result with others directly from VibeTrans."
         }
-      ]
+      ],
+      "image": "/images/docs/esperanto-translator-how-to.webp",
+      "imageAlt": "How to Translate English to Esperanto"
     },
     "userInterest": {
       "title": "Cultural Exchange & International Community Applications",
@@ -69,19 +73,27 @@
       "items": [
         {
           "title": "User-Friendly Design",
-          "description": "VibeTrans's Esperanto Translator is designed for simplicity, making it accessible for everyone, from beginners to language experts. It's the perfect tool for quick translations without a steep learning curve."
+          "description": "VibeTrans's Esperanto Translator is designed for simplicity, making it accessible for everyone, from beginners to language experts. It's the perfect tool for quick translations without a steep learning curve.",
+          "image": "/images/docs/esperanto-user-friendly.webp",
+          "imageAlt": "User-Friendly Design"
         },
         {
           "title": "Instant Translation",
-          "description": "Whether you need to translate a quick message or an entire document, VibeTrans offers instant translation, so you're never kept waiting. No need for long processing times – get results in seconds!"
+          "description": "Whether you need to translate a quick message or an entire document, VibeTrans offers instant translation, so you're never kept waiting. No need for long processing times – get results in seconds!",
+          "image": "/images/docs/esperanto-instant-translation.webp",
+          "imageAlt": "Instant Translation"
         },
         {
           "title": "Multilingual Support",
-          "description": "VibeTrans supports more than just Esperanto. With its wide range of languages and translation options, you'll be able to translate across various platforms with ease, making it ideal for travelers and international businesses."
+          "description": "VibeTrans supports more than just Esperanto. With its wide range of languages and translation options, you'll be able to translate across various platforms with ease, making it ideal for travelers and international businesses.",
+          "image": "/images/docs/esperanto-literature.webp",
+          "imageAlt": "Multilingual Support"
         },
         {
           "title": "Voice Input & Output",
-          "description": "Not only can you translate text, but VibeTrans also supports voice input and output. This makes it easier than ever to speak in Esperanto and hear your translation in real-time, enhancing the learning experience."
+          "description": "Not only can you translate text, but VibeTrans also supports voice input and output. This makes it easier than ever to speak in Esperanto and hear your translation in real-time, enhancing the learning experience.",
+          "image": "/images/docs/esperanto-golden-record.webp",
+          "imageAlt": "Voice Input & Output"
         }
       ]
     },
@@ -91,19 +103,23 @@
       "items": [
         {
           "title": "Simple & Free to Use",
-          "description": "VibeTrans is completely free, allowing you to translate texts, voice, and documents with no hidden fees. Enjoy hassle-free translations anytime!"
+          "description": "VibeTrans is completely free, allowing you to translate texts, voice, and documents with no hidden fees. Enjoy hassle-free translations anytime!",
+          "icon": "FaRocket"
         },
         {
           "title": "Accurate Translations",
-          "description": "Enjoy precise and high-quality translations that capture both meaning and context, ensuring you get the most accurate results for your translations."
+          "description": "Enjoy precise and high-quality translations that capture both meaning and context, ensuring you get the most accurate results for your translations.",
+          "icon": "FaBrain"
         },
         {
           "title": "Data Privacy & Security",
-          "description": "We take your privacy seriously. With VibeTrans, you can rest assured that your data is never stored or shared, ensuring complete security with every translation."
+          "description": "We take your privacy seriously. With VibeTrans, you can rest assured that your data is never stored or shared, ensuring complete security with every translation.",
+          "icon": "FaShieldAlt"
         },
         {
           "title": "AI-Powered Context Understanding",
-          "description": "VibeTrans uses advanced AI to understand the context of your translation, ensuring that nuanced phrases and complex sentences are translated accurately every time."
+          "description": "VibeTrans uses advanced AI to understand the context of your translation, ensuring that nuanced phrases and complex sentences are translated accurately every time.",
+          "icon": "FaEye"
         }
       ]
     },
@@ -183,13 +199,22 @@
       "items": [
         {
           "title": "Esperanto in NASA's Golden Record",
-          "description": "Did you know that Esperanto is included in NASA's Golden Record? It's a symbolic message from humanity to any potential extraterrestrial life. It's amazing how Esperanto is used to bridge worlds beyond Earth!"
+          "description": "Did you know that Esperanto is included in NASA's Golden Record? It's a symbolic message from humanity to any potential extraterrestrial life. It's amazing how Esperanto is used to bridge worlds beyond Earth!",
+          "image": "/images/docs/esperanto-translator-how-to.webp",
+          "imageAlt": "Esperanto in NASA's Golden Record"
         },
         {
           "title": "Esperanto in Literature",
-          "description": "Esperanto is not just a language for communication – it has its place in literature too! Many classic books like 'The Hobbit' have been translated into Esperanto, bringing timeless stories to a global audience."
+          "description": "Esperanto is not just a language for communication – it has its place in literature too! Many classic books like 'The Hobbit' have been translated into Esperanto, bringing timeless stories to a global audience.",
+          "image": "/images/docs/esperanto-voice-features.webp",
+          "imageAlt": "Esperanto in Literature"
         }
       ]
     }
+  },
+  "Metadata": {
+    "name": "VibeTrans",
+    "title": "Esperanto Translator - VibeTrans",
+    "description": "Break language barriers with AI-powered translations. Supports 100+ languages with accurate, context-aware translations."
   }
 }

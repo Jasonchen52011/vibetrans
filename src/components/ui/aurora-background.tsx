@@ -17,12 +17,12 @@ export const AuroraBackground = ({
     <main>
       <div
         className={cn(
-          "relative flex flex-col h-[70vh] items-center justify-start pt-12 text-slate-950 transition-bg",
+          "relative flex flex-col h-[70vh] items-center justify-start pt-12 text-slate-950 transition-bg z-10",
           className
         )}
         {...props}
       >
-        <div className="absolute inset-0 -top-12 overflow-hidden">
+        <div className="absolute inset-0 -top-18 overflow-hidden">
           <div
             //   I'm sorry but this is what peak developer performance looks like // trigger warning
             className={cn(
@@ -40,7 +40,7 @@ export const AuroraBackground = ({
             after:[background-size:200%,_100%]
             after:animate-aurora after:[background-attachment:fixed] after:mix-blend-difference
             pointer-events-none
-            absolute -inset-[10px] opacity-50 will-change-transform`,
+            absolute -inset-[10px] opacity-50 will-change-transform z-0`,
 
               showRadialGradient &&
                 `[mask-image:radial-gradient(ellipse_at_100%_0%,black_10%,var(--transparent)_70%)]`

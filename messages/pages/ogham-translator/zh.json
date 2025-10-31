@@ -93,7 +93,7 @@
         }
       ]
     },
-    "funFacts": {
+    "funfacts": {
       "title": "有趣的事实",
       "items": [
         {
@@ -142,7 +142,7 @@
     "highlights": {
       "title": "欧甘翻译器的主要功能",
       "description": "欧甘翻译器提供无缝文本转换和语音交互的高级功能。",
-      "features": [
+      "items": [
         {
           "icon": "FaVolumeUp",
           "title": "语音输入/输出",

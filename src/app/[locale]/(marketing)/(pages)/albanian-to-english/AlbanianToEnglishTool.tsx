@@ -2,7 +2,7 @@
 
 import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
 import { ArrowRightIcon } from 'lucide-react';
-import mammoth from 'mammoth';
+// import mammoth from 'mammoth'; // Disabled for Edge Runtime compatibility
 import { useState } from 'react';
 
 interface AlbanianToEnglishToolProps {
@@ -64,7 +64,10 @@ export default function AlbanianToEnglishTool({
     if (fileExtension === 'docx') {
       try {
         const arrayBuffer = await file.arrayBuffer();
-        const result = await mammoth.extractRawText({ arrayBuffer });
+        // mammoth.extractRawText disabled for Edge Runtime
+        const result = {
+          text: 'Word document processing is not available in this environment. Please use plain text input.',
+        };
         if (result.value) return result.value;
         throw new Error('Failed to extract text from Word document');
       } catch (error) {
@@ -140,24 +143,30 @@ export default function AlbanianToEnglishTool({
   const handleCopy = async () => {
     if (!outputText) return;
     try {
-      await navigator.clipboard.writeText(outputText);
-    } catch (err) {
-      console.error('Failed to copy:', err);
+      const { smartCopyToClipboard } = await import('@/lib/utils/dynamic-copy');
+      await smartCopyToClipboard(outputText, {
+        successMessage: 'Translation copied to clipboard!',
+        errorMessage: 'Failed to copy translation',
+        onSuccess: () => {},
+        onError: (error) => console.error('Failed to copy:', error),
+      });
+    } catch (error) {
+      console.error('Copy function loading failed:', error);
     }
   };
 
   // Download
-  const handleDownload = () => {
+  const handleDownload = async () => {
     if (!outputText) return;
-    const blob = new Blob([outputText], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `albanian-to-english-${Date.now()}.txt`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+    try {
+      const { smartDownload } = await import('@/lib/utils/dynamic-download');
+      smartDownload(outputText, 'albanian-to-english', {
+        onSuccess: () => {},
+        onError: (error) => console.error('Download failed:', error),
+      });
+    } catch (error) {
+      console.error('Download function loading failed:', error);
+    }
   };
 
   return (
@@ -371,7 +380,9 @@ export default function AlbanianToEnglishTool({
                   {error ? (
                     <p className="text-red-600 dark:text-red-400">{error}</p>
                   ) : outputText ? (
-                    <p className="text-lg whitespace-pre-wrap">{outputText}</p>
+                    <p className="text-lg whitespace-pre-wrap break-words max-w-full">
+                      {outputText}
+                    </p>
                   ) : (
                     <p className="text-gray-500 dark:text-gray-400">
                       {direction === 'al-to-en'

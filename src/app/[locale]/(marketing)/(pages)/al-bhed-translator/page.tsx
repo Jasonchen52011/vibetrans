@@ -1,4 +1,3 @@
-// @ts-nocheck - Translation keys type mismatch
 import BeforeAfterSection from '@/components/blocks/Examples';
 import CallToActionSection from '@/components/blocks/calltoaction/calltoaction';
 import ExploreOurAiTools from '@/components/blocks/exploretools';
@@ -11,6 +10,7 @@ import WhatIsSection from '@/components/blocks/whatis';
 import { AuroraBackground } from '@/components/ui/aurora-background';
 import { constructMetadata } from '@/lib/metadata';
 import { buildToolStructuredData } from '@/lib/seo/structured-data';
+import { buildTranslatorPageContent } from '@/lib/translator-page';
 import { getUrlWithLocale } from '@/lib/urls/urls';
 import type { Metadata } from 'next';
 import type { Locale } from 'next-intl';
@@ -28,19 +28,16 @@ export async function generateMetadata({
   params: Promise<{ locale: Locale }>;
 }): Promise<Metadata | undefined> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'Metadata' });
-  const gt = await getTranslations({
+  const t = await getTranslations({
     locale,
     namespace: 'AlBhedTranslatorPage',
   });
 
   return constructMetadata({
-    // @ts-ignore - Translation type mismatch
-    title: `${gt('title')} | ${(t as any)('name')}`,
-    // @ts-ignore - Translation type mismatch
-    description: gt('description'),
+    title: `${t('title')} | VibeTrans`,
+    description: t('description'),
     canonicalUrl: getUrlWithLocale('/al-bhed-translator', locale),
-    image: '/images/docs/what-is-al-bhed-translator.webp',
+    image: t('whatIs.image'),
   });
 }
 
@@ -53,7 +50,8 @@ export default async function AlBhedTranslatorPage(
 ) {
   const params = await props.params;
   const { locale } = params;
-  // @ts-ignore - Translation keys are dynamic
+
+  // 使用标准 getTranslations 获取翻译
   const t = await getTranslations({
     locale,
     namespace: 'AlBhedTranslatorPage',
@@ -62,200 +60,13 @@ export default async function AlBhedTranslatorPage(
   // Structured Data for SEO
   const structuredData = buildToolStructuredData({
     name: 'VibeTrans Al Bhed Translator',
-    description: (t as any)('description'),
+    description: t('description'),
   });
 
-  // Examples section data
-  const examplesData = {
-    title: (t as any)('examples.title'),
-    description: (t as any)('examples.description'),
-    images: [
-      {
-        alt: 'English: Hello → Al Bhed: Rammu',
-        name: 'Hello → Rammu',
-      },
-      {
-        alt: 'English: Welcome → Al Bhed: Famluna',
-        name: 'Welcome → Famluna',
-      },
-      {
-        alt: 'English: Thank you → Al Bhed: Sryhg oui',
-        name: 'Thank you → Sryhg oui',
-      },
-      {
-        alt: 'English: Goodbye → Al Bhed: Ruutpoa',
-        name: 'Goodbye → Ruutpoa',
-      },
-      {
-        alt: 'English: Friend → Al Bhed: Vieaht',
-        name: 'Friend → Vieaht',
-      },
-      {
-        alt: 'English: Help me → Al Bhed: Ramb na',
-        name: 'Help me → Ramb na',
-      },
-    ],
-  };
-
-  // User scenarios section (Fun Facts)
-  const userScenariosSection = {
-    name: 'funFacts',
-    title: (t as any)('funfacts.title'),
-    items: [
-      {
-        title: (t as any)('funfacts.items.0.title'),
-        description: (t as any)('funfacts.items.0.description'),
-        image: {
-          src: '/images/docs/al-bhed-translator-fun-fact.webp',
-          alt: 'Final Fantasy Al Bhed Language',
-        },
-      },
-      {
-        title: (t as any)('funfacts.items.1.title'),
-        description: (t as any)('funfacts.items.1.description'),
-        image: {
-          src: '/images/docs/albed-primer-secret.webp',
-          alt: 'Hidden Primers in FFX',
-        },
-      },
-    ],
-  };
-
-  // Highlights section
-  const highlightsSection = {
-    name: 'highlights',
-    title: (t as any)('highlights.title'),
-    description: (t as any)('highlights.description'),
-    items: [
-      {
-        icon: 'FaRocket',
-        title: (t as any)('highlights.items.0.title'),
-        description: (t as any)('highlights.items.0.description'),
-      },
-      {
-        icon: 'FaBrain',
-        title: (t as any)('highlights.items.1.title'),
-        description: (t as any)('highlights.items.1.description'),
-      },
-      {
-        icon: 'FaShieldAlt',
-        title: (t as any)('highlights.items.2.title'),
-        description: (t as any)('highlights.items.2.description'),
-      },
-      {
-        icon: 'FaChartLine',
-        title: (t as any)('highlights.items.3.title'),
-        description: (t as any)('highlights.items.3.description'),
-      },
-    ],
-  };
-
-  // Page data for tool component
-  const pageData = {
-    tool: {
-      inputLabel: (t as any)('tool.inputLabel'),
-      alBhedLabel: (t as any)('tool.alBhedLabel'),
-      outputLabel: (t as any)('tool.outputLabel'),
-      inputPlaceholder: (t as any)('tool.inputPlaceholder'),
-      alBhedPlaceholder: (t as any)('tool.alBhedPlaceholder'),
-      outputPlaceholder: (t as any)('tool.outputPlaceholder'),
-      translateButton: (t as any)('tool.translateButton'),
-      uploadButton: (t as any)('tool.uploadButton'),
-      uploadHint: (t as any)('tool.uploadHint'),
-      loading: (t as any)('tool.loading'),
-      error: (t as any)('tool.error'),
-      noInput: (t as any)('tool.noInput'),
-    },
-    funFacts: userScenariosSection,
-    highlights: highlightsSection,
-  };
-
-  // What is section
-  const whatIsSection = {
-    title: (t as any)('whatIs.title'),
-    description: (t as any)('whatIs.description'),
-    features: [],
-    image: {
-      src: '/images/docs/al-bhed-translator-what-is.webp',
-      alt: 'What is Al Bhed Translator - Final Fantasy X Language',
-    },
-    cta: {
-      text: (t as any)('ctaButton'),
-    },
-  };
-
-  // How to section
-  const howtoSection = {
-    name: 'howto',
-    title: (t as any)('howto.title'),
-    description: (t as any)('howto.description'),
-    image: {
-      src: '/images/docs/al-bhed-translator-how-to.webp',
-      alt: 'How to use Al Bhed Translator step by step guide',
-    },
-    items: [
-      {
-        title: (t as any)('howto.steps.0.title'),
-        description: (t as any)('howto.steps.0.description'),
-        icon: 'FaFileUpload',
-      },
-      {
-        title: (t as any)('howto.steps.1.title'),
-        description: (t as any)('howto.steps.1.description'),
-        icon: 'FaPencilAlt',
-      },
-      {
-        title: (t as any)('howto.steps.2.title'),
-        description: (t as any)('howto.steps.2.description'),
-        icon: 'FaLanguage',
-      },
-      {
-        title: (t as any)('howto.steps.3.title'),
-        description: (t as any)('howto.steps.3.description'),
-        icon: 'FaCheckCircle',
-      },
-    ],
-  };
-
-  // User Interest section
-  const userInterestSection = {
-    name: 'userinterest',
-    title: (t as any)('userInterest.title'),
-    items: [
-      {
-        title: (t as any)('userInterest.items.0.title'),
-        description: (t as any)('userInterest.items.0.description'),
-        image: {
-          src: '/images/docs/final-fantasy-fans.webp',
-          alt: 'Final Fantasy Fans Love Al Bhed',
-        },
-      },
-      {
-        title: (t as any)('userInterest.items.1.title'),
-        description: (t as any)('userInterest.items.1.description'),
-        image: {
-          src: '/images/docs/learn-al-bhed-fast.webp',
-          alt: 'Learn Al Bhed Fast',
-        },
-      },
-      {
-        title: (t as any)('userInterest.items.2.title'),
-        description: (t as any)('userInterest.items.2.description'),
-        image: {
-          src: '/images/docs/secret-messages.webp',
-          alt: 'Create Secret Messages',
-        },
-      },
-      {
-        title: (t as any)('userInterest.items.3.title'),
-        description: (t as any)('userInterest.items.3.description'),
-        image: {
-          src: '/images/docs/cosplay-roleplay.webp',
-          alt: 'Perfect for Cosplay and Roleplay',
-        },
-      },
-    ],
-  };
+  // 使用内容构建器生成所有页面内容
+  const translatorContent = buildTranslatorPageContent(t, {
+    howToIcons: ['FaFileUpload', 'FaPencilAlt', 'FaLanguage', 'FaDownload'],
+  });
 
   return (
     <>
@@ -269,10 +80,10 @@ export default async function AlBhedTranslatorPage(
         <AuroraBackground className="bg-white dark:bg-zinc-900 !pt-12 !h-auto">
           <div className="container max-w-7xl mx-auto px-4 text-center relative z-10 pb-8">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              {(t as any)('hero.title')}
+              {t('hero.title')}
             </h1>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
-              {(t as any)('hero.description')}
+              {t('hero.description')}
             </p>
 
             {/* User Avatars and Rating */}
@@ -338,34 +149,37 @@ export default async function AlBhedTranslatorPage(
           </div>
         </AuroraBackground>
 
-        {/* Al Bhed Translator Tool */}
+        {/* Tool Component */}
         <div className="pt-0 pb-12 bg-gradient-to-b from-muted/20 to-background">
-          <AlBhedTranslatorTool pageData={pageData} locale={locale} />
+          <AlBhedTranslatorTool
+            pageData={translatorContent.pageData}
+            locale={locale}
+          />
         </div>
 
         {/* What Is Section */}
-        <WhatIsSection section={whatIsSection} />
+        <WhatIsSection section={translatorContent.whatIs} />
 
         {/* Examples Section */}
-        <BeforeAfterSection beforeAfterGallery={examplesData} />
+        <BeforeAfterSection beforeAfterGallery={translatorContent.examples} />
 
         {/* How to Section */}
-        <HowTo section={howtoSection} />
+        <HowTo section={translatorContent.howTo} />
 
         {/* User Interest Blocks */}
         <UserScenarios
-          section={userInterestSection}
-          ctaText={(t as any)('ctaButton')}
+          section={translatorContent.userInterest}
+          ctaText={t('ctaButton')}
         />
 
         {/* Fun Facts */}
         <UserScenarios
-          section={pageData.funFacts}
-          ctaText={(t as any)('ctaButton')}
+          section={translatorContent.funFacts}
+          ctaText={t('ctaButton')}
         />
 
-        {/* Highlights/Why Choose */}
-        <WhyChoose section={pageData.highlights} />
+        {/* Highlights */}
+        <WhyChoose section={translatorContent.highlights} />
 
         {/* Explore Other Tools */}
         <ExploreOurAiTools
@@ -379,14 +193,16 @@ export default async function AlBhedTranslatorPage(
           ]}
         />
 
-        {/* Testimonials Section */}
-        <TestimonialsThreeColumnSection namespace="AlBhedTranslatorPage.testimonials" />
+        {/* Testimonials */}
+        <TestimonialsThreeColumnSection
+          section={translatorContent.testimonials}
+        />
 
-        {/* FAQ Section */}
-        <FaqSection namespace="AlBhedTranslatorPage.faqs" />
+        {/* FAQ */}
+        <FaqSection section={translatorContent.faqs} />
 
-        {/* Call to Action */}
-        <CallToActionSection namespace="AlBhedTranslatorPage.cta" />
+        {/* CTA */}
+        <CallToActionSection section={translatorContent.cta} />
       </div>
     </>
   );

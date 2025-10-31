@@ -544,7 +544,9 @@ export class GeminiTranslatorBase {
         },
       };
     } catch (error: any) {
-      console.error(`Translation error for ${config.id}:`, error);
+      if (process.env.NODE_ENV === 'development') {
+        console.error(`Translation error for ${config.id}:`, error);
+      }
 
       return {
         success: false,

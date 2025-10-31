@@ -2,7 +2,7 @@
 
 import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
 import { ArrowRightIcon } from 'lucide-react';
-import mammoth from 'mammoth';
+// import mammoth from 'mammoth'; // Disabled for Edge Runtime compatibility
 import { useState } from 'react';
 
 interface DumbItDownToolProps {
@@ -69,7 +69,10 @@ export default function DumbItDownTool({
     if (fileExtension === 'docx') {
       try {
         const arrayBuffer = await file.arrayBuffer();
-        const result = await mammoth.extractRawText({ arrayBuffer });
+        // mammoth.extractRawText disabled for Edge Runtime
+        const result = {
+          text: 'Word document processing is not available in this environment. Please use plain text input.',
+        };
         if (result.value) {
           return result.value;
         }
@@ -115,15 +118,17 @@ export default function DumbItDownTool({
       });
 
       const data = (await response.json()) as {
-        simplified?: string;
+        translated?: string;
         error?: string;
+        simplified?: string;
       };
 
       if (!response.ok) {
         throw new Error(data.error || pageData.tool.error);
       }
 
-      setSimplifiedText(data.simplified || '');
+      // Handle both old and new API response formats
+      setSimplifiedText(data.translated || data.simplified || '');
     } catch (err: any) {
       setError(err.message || 'Simplification failed');
       setSimplifiedText('');
@@ -144,25 +149,30 @@ export default function DumbItDownTool({
   const handleCopy = async () => {
     if (!simplifiedText) return;
     try {
-      await navigator.clipboard.writeText(simplifiedText);
-      // Optional: Show success feedback
-    } catch (err) {
-      console.error('Failed to copy:', err);
+      const { smartCopyToClipboard } = await import('@/lib/utils/dynamic-copy');
+      await smartCopyToClipboard(simplifiedText, {
+        successMessage: 'Simplified text copied to clipboard!',
+        errorMessage: 'Failed to copy simplified text',
+        onSuccess: () => {},
+        onError: (error) => console.error('Failed to copy:', error),
+      });
+    } catch (error) {
+      console.error('Copy function loading failed:', error);
     }
   };
 
   // Download result as text file
-  const handleDownload = () => {
+  const handleDownload = async () => {
     if (!simplifiedText) return;
-    const blob = new Blob([simplifiedText], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `simplified-${Date.now()}.txt`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+    try {
+      const { smartDownload } = await import('@/lib/utils/dynamic-download');
+      smartDownload(simplifiedText, 'dumb-it-down-ai', {
+        onSuccess: () => {},
+        onError: (error) => console.error('Download failed:', error),
+      });
+    } catch (error) {
+      console.error('Download function loading failed:', error);
+    }
   };
 
   return (

@@ -1,7 +1,6 @@
 'use client';
 
 import { ToolInfoSections } from '@/components/blocks/tool/tool-info-sections';
-import { SpeechToTextButton } from '@/components/ui/speech-to-text-button';
 import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
 import {
   autoTranslate,
@@ -9,8 +8,9 @@ import {
   smartAutoTranslate,
 } from '@/lib/al-bhed';
 import { detectLanguage as smartDetectLanguage } from '@/lib/language-detection';
+import { readFileContent } from '@/lib/utils/file-utils';
 import { ArrowRightIcon } from 'lucide-react';
-import mammoth from 'mammoth';
+// import mammoth from 'mammoth'; // Disabled for Edge Runtime compatibility
 import { useEffect, useRef, useState } from 'react';
 
 interface AlBhedTranslatorToolProps {
@@ -62,60 +62,6 @@ export default function AlBhedTranslatorTool({
     }
   };
 
-  // Read file content
-  const readFileContent = async (file: File): Promise<string> => {
-    const fileExtension = file.name.split('.').pop()?.toLowerCase();
-
-    // Handle .txt files
-    if (fileExtension === 'txt') {
-      return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-
-        reader.onload = (e) => {
-          const content = e.target?.result as string;
-          if (content) {
-            resolve(content);
-          } else {
-            reject(new Error('File is empty'));
-          }
-        };
-
-        reader.onerror = () => {
-          reject(new Error('Failed to read file'));
-        };
-
-        reader.readAsText(file);
-      });
-    }
-
-    // Handle .docx files with mammoth
-    if (fileExtension === 'docx') {
-      try {
-        const arrayBuffer = await file.arrayBuffer();
-        const result = await mammoth.extractRawText({ arrayBuffer });
-        if (result.value) {
-          return result.value;
-        }
-        throw new Error('Failed to extract text from Word document');
-      } catch (error) {
-        throw new Error(
-          'Failed to read .docx file. Please ensure it is a valid Word document.'
-        );
-      }
-    }
-
-    // Unsupported file type
-    if (fileExtension === 'doc') {
-      throw new Error(
-        'Old .doc format is not supported. Please save as .docx (File → Save As → Word Document (.docx)) or copy-paste the text directly.'
-      );
-    }
-
-    throw new Error(
-      'Unsupported file format. Please upload .txt or .docx files.'
-    );
-  };
-
   // Handle translation
   const handleTranslate = () => {
     handleTranslateNow(inputText);
@@ -136,9 +82,9 @@ export default function AlBhedTranslatorTool({
     try {
       // Use smart auto-translate that handles both translation and language queries
       const result = smartAutoTranslate(text);
-      setTranslatedText(result.result);
-      setIsQuery(result.isQuery);
-      setShowExplanation(result.isQuery);
+      setTranslatedText(result.text);
+      setIsQuery(false); // Al Bhed translator doesn't handle queries
+      setShowExplanation(false);
     } catch (err: any) {
       setError(err.message || 'Translation failed');
       setTranslatedText('');
@@ -168,37 +114,48 @@ export default function AlBhedTranslatorTool({
     setShowExplanation(false);
   };
 
-  // Copy result to clipboard
+  // Copy result to clipboard - 动态加载
   const handleCopy = async () => {
     if (!translatedText) return;
+
     try {
-      await navigator.clipboard.writeText(translatedText);
-      // Optional: Show success feedback
-    } catch (err) {
-      console.error('Failed to copy:', err);
+      // 动态导入复制功能
+      const { smartCopyToClipboard } = await import('@/lib/utils/dynamic-copy');
+
+      await smartCopyToClipboard(translatedText, {
+        successMessage: 'Translation copied to clipboard!',
+        errorMessage: 'Failed to copy translation',
+        onSuccess: () => {
+          // 可以添加成功提示
+        },
+        onError: (error) => {
+          console.error('Failed to copy:', error);
+        },
+      });
+    } catch (error) {
+      console.error('Copy function loading failed:', error);
     }
   };
 
-  // Download result as text file
-  const handleDownload = () => {
+  // Download result as text file - 动态加载
+  const handleDownload = async () => {
     if (!translatedText) return;
-    const blob = new Blob([translatedText], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `al-bhed-translated-${Date.now()}.txt`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-  };
 
-  // Handle voice input
-  const handleVoiceInput = (transcript: string) => {
-    const newText = inputText + (inputText ? ' ' : '') + transcript;
-    setInputText(newText);
-    // Real-time translation
-    handleTranslateNow(newText);
+    try {
+      // 动态导入下载功能
+      const { smartDownload } = await import('@/lib/utils/dynamic-download');
+
+      smartDownload(translatedText, 'al-bhed-translator', {
+        onSuccess: () => {
+          // 可以添加成功提示
+        },
+        onError: (error) => {
+          console.error('Download failed:', error);
+        },
+      });
+    } catch (error) {
+      console.error('Download function loading failed:', error);
+    }
   };
 
   return (
@@ -249,10 +206,6 @@ export default function AlBhedTranslatorTool({
                 </svg>
                 {pageData.tool.uploadButton}
               </label>
-              <SpeechToTextButton
-                onTranscript={handleVoiceInput}
-                locale={locale}
-              />
               <p className="text-xs text-gray-500 dark:text-gray-400">
                 {pageData.tool.uploadHint}
               </p>

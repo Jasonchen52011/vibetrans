@@ -11,6 +11,7 @@
     },
     "stats": {
       "title": "VibeTrans in Numbers",
+      "subtitle": "Breaking language barriers with accurate translations every day",
       "description": "VibeTrans delivers fast, accurate translations that break language barriers every day",
       "items": {
         "item-1": {
@@ -176,7 +177,9 @@
           "image": "https://randomuser.me/api/portraits/men/1.jpg",
           "heading": "Perfect for Business",
           "content": "I recently used VibeTrans to translate a customer service script for my international clients. It was incredibly accurate and helped us communicate smoothly. Plus, it's super fast—just what I need for daily business!",
-          "rating": 5.0
+          "rating": 5.0,
+          "date": "2024-10-20",
+          "verified": true
         },
         "item-2": {
           "name": "Emily Brown",
@@ -184,7 +187,9 @@
           "image": "https://randomuser.me/api/portraits/women/6.jpg",
           "heading": "Made My Travels Easier",
           "content": "I travel a lot and language barriers can be tough. VibeTrans made my trips easier. I could quickly translate restaurant menus and ask for directions in different countries—made my travels so much smoother!",
-          "rating": 4.8
+          "rating": 4.8,
+          "date": "2024-10-18",
+          "verified": true
         },
         "item-3": {
           "name": "Sarah Williams",
@@ -192,7 +197,9 @@
           "image": "https://randomuser.me/api/portraits/women/7.jpg",
           "heading": "Great Learning Tool",
           "content": "As a language learner, I use VibeTrans to practice new words and phrases. It's not just a translator, but a learning tool. I get context for each word, which really helps me understand the language better.",
-          "rating": 4.6
+          "rating": 4.6,
+          "date": "2024-10-16",
+          "verified": false
         },
         "item-4": {
           "name": "Michael Chen",
@@ -200,7 +207,9 @@
           "image": "https://randomuser.me/api/portraits/men/3.jpg",
           "heading": "Amazing API Integration",
           "content": "I integrated VibeTrans API into my application and the results have been outstanding. The documentation is clear and the translation quality is consistently high. Highly recommend for developers!",
-          "rating": 4.9
+          "rating": 4.9,
+          "date": "2024-10-15",
+          "verified": true
         },
         "item-5": {
           "name": "Lisa Anderson",
@@ -208,7 +217,9 @@
           "image": "https://randomuser.me/api/portraits/women/2.jpg",
           "heading": "Perfect for Content Creation",
           "content": "As a content creator working with international audiences, VibeTrans has been a game-changer. I can now create content in multiple languages while maintaining the original meaning and tone.",
-          "rating": 5.0
+          "rating": 5.0,
+          "date": "2024-10-12",
+          "verified": true
         },
         "item-6": {
           "name": "David Kim",
@@ -216,7 +227,9 @@
           "image": "https://randomuser.me/api/portraits/men/4.jpg",
           "heading": "Essential for Travel",
           "content": "VibeTrans has been my travel companion for months. The ability to quickly translate signs, menus, and conversations in real-time has made my international trips so much more enjoyable and stress-free.",
-          "rating": 4.9
+          "rating": 4.9,
+          "date": "2024-10-08",
+          "verified": true
         }
       }
     },

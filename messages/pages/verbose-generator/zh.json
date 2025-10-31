@@ -50,7 +50,9 @@
     },
     "whatIs": {
       "title": "什么是冗长文本生成器专业版",
-      "description": "冗长文本生成器专业版是一种将简短文本扩展为更长、更详细版本的工具。它支持各种风格和语气，非常适合使用 VibeTrans 的学生、作家和专业人士。"
+      "description": "冗长文本生成器专业版是一种将简短文本扩展为更长、更详细版本的工具。它支持各种风格和语气，非常适合使用 VibeTrans 的学生、作家和专业人士。",
+      "image": "/images/docs/ai-translation-fun.webp",
+      "imageAlt": "什么是冗长文本生成器专业版"
     },
     "examples": {
       "title": "流行的冗长翻译示例",
@@ -106,18 +108,24 @@
           "description": "点击\"生成\"查看您扩展的文本。根据需要审阅和调整。使用 VibeTrans 享受详细内容。",
           "wordCount": 40
         }
-      ]
+      ],
+      "image": "/images/docs/translation-step-by-step-guide.webp",
+      "imageAlt": "如何使用冗长文本生成器"
     },
-    "funFacts": {
+    "funfacts": {
       "title": "趣味事实",
       "items": [
         {
           "title": "意想不到的幽默警报！",
-          "description": "我超爱 VibeTrans 的啰嗦生成器偶尔抛出一些意外的笑话或者 blah blah 之类的台词。简直就是个数字喜剧演员！让你在工作时也能哈哈大笑。谁能想到写作还能这么有趣呢？"
+          "description": "我超爱 VibeTrans 的啰嗦生成器偶尔抛出一些意外的笑话或者 blah blah 之类的台词。简直就是个数字喜剧演员！让你在工作时也能哈哈大笑。谁能想到写作还能这么有趣呢？",
+          "image": "/images/docs/ai-emotion-intelligence.webp",
+          "imageAlt": "意想不到的幽默警报！"
         },
         {
           "title": "复活节彩蛋爱好者",
-          "description": "有人说啰嗦生成器会在文本中藏复活节彩蛋。这就像一场寻宝游戏！发现那些古怪的短语和机智的台词。我觉得这给写作增添了一种奇妙的趣味——纯粹的乐趣！"
+          "description": "有人说啰嗦生成器会在文本中藏复活节彩蛋。这就像一场寻宝游戏！发现那些古怪的短语和机智的台词。我觉得这给写作增添了一种奇妙的趣味——纯粹的乐趣！",
+          "image": "/images/docs/announcement-and-innovation.webp",
+          "imageAlt": "复活节彩蛋爱好者"
         }
       ]
     },
@@ -128,19 +136,27 @@
       "items": [
         {
           "title": "定制你的啰嗦度",
-          "description": "想要更多或更少的啰嗦？调整设置来匹配你的风格！VibeTrans 让你可以调节简洁或啰嗦。我建议试试不同的模板，找到最适合你的风格。"
+          "description": "想要更多或更少的啰嗦？调整设置来匹配你的风格！VibeTrans 让你可以调节简洁或啰嗦。我建议试试不同的模板，找到最适合你的风格。",
+          "image": "/images/docs/business-communication-simplified.webp",
+          "imageAlt": "定制你的啰嗦度"
         },
         {
           "title": "解密科技魔法",
-          "description": "对 VibeTrans 背后的技术好奇吗？这就像揭开魔术师的秘密！了解那些创造啰嗦魔法的算法。我发现了解技术让使用它变得更酷！"
+          "description": "对 VibeTrans 背后的技术好奇吗？这就像揭开魔术师的秘密！了解那些创造啰嗦魔法的算法。我发现了解技术让使用它变得更酷！",
+          "image": "/images/docs/docs-transform.webp",
+          "imageAlt": "解密科技魔法"
         },
         {
           "title": "真实使用案例",
-          "description": "从论文到文档，VibeTrans 都能胜任。看看它在真实场景中的表现！我推荐在学术和开发写作中试试它。它是你写作世界的可靠助手！"
+          "description": "从论文到文档，VibeTrans 都能胜任。看看它在真实场景中的表现！我推荐在学术和开发写作中试试它。它是你写作世界的可靠助手！",
+          "image": "/images/docs/translate-success.webp",
+          "imageAlt": "真实使用案例"
         },
         {
           "title": "SEO 和啰嗦的平衡",
-          "description": "担心 SEO 吗？VibeTrans 找到了平衡点。保持内容丰富又易读。我建议关注关键词密度，以确保你的内容既能排名又好读！"
+          "description": "担心 SEO 吗？VibeTrans 找到了平衡点。保持内容丰富又易读。我建议关注关键词密度，以确保你的内容既能排名又好读！",
+          "image": "/images/docs/ai-learning-system.webp",
+          "imageAlt": "SEO 和啰嗦的平衡"
         }
       ]
     },
@@ -149,18 +165,22 @@
       "description": "发现是什么让我们的工具独一无二",
       "items": [
         {
+          "icon": "FaRocket",
           "title": "简单且免费",
           "description": "使用 VibeTrans 简单且免费。只需上传您的文本，选择设置，您就可以开始创建冗长内容了。"
         },
         {
+          "icon": "FaChartLine",
           "title": "准确的数据",
           "description": "我们的工具确保扩展的文本保留其原始含义。您可以信任每个生成段落的准确性。"
         },
         {
+          "icon": "FaShieldAlt",
           "title": "隐私保证",
           "description": "使用 VibeTrans，您的数据是安全的。我们的本地处理意味着您的信息永远不会离开您的设备。"
         },
         {
+          "icon": "FaMagic",
           "title": "上下文理解",
           "description": "我们的 AI 理解上下文，使您的冗长文本听起来自然。这就像每个句子都有人性化的触感。"
         }

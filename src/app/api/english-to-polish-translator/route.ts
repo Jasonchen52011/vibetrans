@@ -1,29 +1,121 @@
-import { NextResponse } from 'next/server';
+import { type NextRequest, NextResponse } from 'next/server';
 
 export const runtime = 'edge';
 
-export async function POST(request: Request) {
-  try {
-    const { text } = await request.json();
+async function translateWithGemini(text: string): Promise<string> {
+  const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
 
-    if (!text) {
-      return NextResponse.json({ error: 'No text provided' }, { status: 400 });
+  if (!apiKey) {
+    throw new Error('Google Generative AI API key is not configured');
+  }
+
+  const prompt = `Translate the following English text to Polish. Provide only the translation, no explanations or additional text:
+
+${text}`;
+
+  const response = await fetch(
+    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key=${apiKey}`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        contents: [
+          {
+            parts: [
+              {
+                text: prompt,
+              },
+            ],
+          },
+        ],
+        generationConfig: {
+          temperature: 0.3,
+          maxOutputTokens: 2048,
+        },
+      }),
+    }
+  );
+
+  if (!response.ok) {
+    const errorData = await response.json().catch(() => ({}));
+    throw new Error(
+      `Gemini API error: ${response.status} - ${errorData.error?.message || response.statusText}`
+    );
+  }
+
+  const data = await response.json();
+
+  if (!data.candidates?.[0]?.content?.parts?.[0]?.text) {
+    throw new Error('Invalid response from Gemini API');
+  }
+
+  return data.candidates[0].content.parts[0].text.trim();
+}
+
+export async function POST(request: NextRequest) {
+  try {
+    const body = await request.json();
+    const { text, options = {} } = body;
+
+    if (!text || typeof text !== 'string') {
+      return NextResponse.json(
+        { success: false, error: 'Valid text is required' },
+        { status: 400 }
+      );
     }
 
-    // 直接返回原文，让用户能看到输出区域有内容
+    if (text.length > 5000) {
+      return NextResponse.json(
+        { success: false, error: 'Text too long. Maximum 5000 characters.' },
+        { status: 400 }
+      );
+    }
+
+    const startTime = Date.now();
+    const translated = await translateWithGemini(text);
+    const processingTime = `${Date.now() - startTime}ms`;
+
     return NextResponse.json({
-      translated: text,
+      success: true,
+      translated,
       original: text,
-      language: 'Polish',
-      direction: 'English to Polish',
-      provider: 'Direct',
-      note: 'Translation feature is currently disabled. Showing original text.',
+      options,
+      translationMethod: 'gemini-2.0-flash',
+      metadata: {
+        timestamp: new Date().toISOString(),
+        processingTime,
+        textLength: text.length,
+        translatedLength: translated.length,
+      },
     });
   } catch (error) {
     console.error('Translation error:', error);
     return NextResponse.json(
-      { error: 'Translation failed. Please try again.' },
+      {
+        success: false,
+        error: 'Translation failed',
+        suggestion: 'Please try again',
+        details: error instanceof Error ? error.message : 'Unknown error',
+      },
       { status: 500 }
     );
   }
+}
+
+export async function GET() {
+  return NextResponse.json({
+    status: 'healthy',
+    service: 'English to Polish Translator API',
+    description:
+      'Gemini 2.0 Flash powered English to Polish translation service',
+    features: [
+      'AI-powered translation',
+      'Context-aware translation',
+      'Natural language processing',
+      'Real-time processing',
+    ],
+    timestamp: new Date().toISOString(),
+  });
 }

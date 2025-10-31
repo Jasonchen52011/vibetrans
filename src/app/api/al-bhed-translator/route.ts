@@ -127,7 +127,9 @@ export async function POST(request: NextRequest) {
       success: true,
     });
   } catch (error: any) {
-    console.error('Error processing Al Bhed translation:', error);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Error processing Al Bhed translation:', error);
+    }
     return NextResponse.json(
       {
         error: error.message || 'Failed to process translation',

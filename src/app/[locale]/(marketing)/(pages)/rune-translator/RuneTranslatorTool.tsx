@@ -2,7 +2,8 @@
 
 import { ToolInfoSections } from '@/components/blocks/tool/tool-info-sections';
 import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
-import mammoth from 'mammoth';
+import { readFileContent } from '@/lib/utils/file-utils';
+// import mammoth from 'mammoth'; // Disabled for Edge Runtime compatibility
 import { useState } from 'react';
 
 interface RuneTranslatorToolProps {
@@ -37,41 +38,6 @@ export default function RuneTranslatorTool({
       setError(err.message || 'Failed to read file');
       setFileName(null);
     }
-  };
-
-  // Read file content
-  const readFileContent = async (file: File): Promise<string> => {
-    const fileExtension = file.name.split('.').pop()?.toLowerCase();
-
-    if (fileExtension === 'txt') {
-      return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          const content = e.target?.result as string;
-          if (content) resolve(content);
-          else reject(new Error('File is empty'));
-        };
-        reader.onerror = () => reject(new Error('Failed to read file'));
-        reader.readAsText(file);
-      });
-    }
-
-    if (fileExtension === 'docx') {
-      try {
-        const arrayBuffer = await file.arrayBuffer();
-        const result = await mammoth.extractRawText({ arrayBuffer });
-        if (result.value) return result.value;
-        throw new Error('Failed to extract text from Word document');
-      } catch (error) {
-        throw new Error(
-          'Failed to read .docx file. Please ensure it is a valid Word document.'
-        );
-      }
-    }
-
-    throw new Error(
-      'Unsupported file format. Please upload .txt or .docx files.'
-    );
   };
 
   // Handle translation
@@ -117,28 +83,48 @@ export default function RuneTranslatorTool({
     setError(null);
   };
 
-  // Copy
+  // Copy - 动态加载
   const handleCopy = async () => {
     if (!outputText) return;
+
     try {
-      await navigator.clipboard.writeText(outputText);
-    } catch (err) {
-      console.error('Failed to copy:', err);
+      // 动态导入复制功能
+      const { smartCopyToClipboard } = await import('@/lib/utils/dynamic-copy');
+
+      await smartCopyToClipboard(outputText, {
+        successMessage: 'Translation copied to clipboard!',
+        errorMessage: 'Failed to copy translation',
+        onSuccess: () => {
+          // 可以添加成功提示
+        },
+        onError: (error) => {
+          console.error('Failed to copy:', error);
+        },
+      });
+    } catch (error) {
+      console.error('Copy function loading failed:', error);
     }
   };
 
-  // Download
-  const handleDownload = () => {
+  // Download - 动态加载
+  const handleDownload = async () => {
     if (!outputText) return;
-    const blob = new Blob([outputText], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `rune-translator-${Date.now()}.txt`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+
+    try {
+      // 动态导入下载功能
+      const { smartDownload } = await import('@/lib/utils/dynamic-download');
+
+      smartDownload(outputText, 'rune-translator', {
+        onSuccess: () => {
+          // 可以添加成功提示
+        },
+        onError: (error) => {
+          console.error('Download failed:', error);
+        },
+      });
+    } catch (error) {
+      console.error('Download function loading failed:', error);
+    }
   };
 
   return (
@@ -237,7 +223,7 @@ export default function RuneTranslatorTool({
 
           {/* Output Area */}
           <div className="flex-1">
-            <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center justify-between mb-2">
               <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">
                 {pageData.tool.outputLabel}
               </h2>
@@ -286,7 +272,7 @@ export default function RuneTranslatorTool({
               )}
             </div>
             <div
-              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md bg-gray-50 dark:bg-zinc-700 flex items-center justify-center text-gray-700 dark:text-gray-200 overflow-y-auto"
+              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md bg-gray-50 dark:bg-zinc-700 flex items-start justify-start text-gray-700 dark:text-gray-200 overflow-y-auto"
               aria-live="polite"
             >
               {isLoading ? (

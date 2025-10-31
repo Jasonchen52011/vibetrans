@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -361,6 +360,21 @@
 
 body {
   @apply overscroll-none bg-transparent;
+}
+
+/* 防止水平滚动 */
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* 修复长文本导致的水平滚动 */
+.whitespace-pre-line,
+.whitespace-pre-wrap {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 .text-gradient_indigo-purple {

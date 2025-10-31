@@ -11,12 +11,29 @@ type FooterLink = {
 };
 
 const FUN_FOOTER_LINKS: FooterLink[] = [
+  { key: 'alienTextGenerator', route: Routes.AlienTextGenerator },
+  { key: 'babyTranslator', route: Routes.BabyTranslator },
+  { key: 'badTranslator', route: Routes.BadTranslator },
+  { key: 'dogTranslator', route: Routes.DogTranslator },
   { key: 'dumbItDown', route: Routes.DumbItDownAI },
+  { key: 'genAlphaTranslator', route: Routes.GenAlphaTranslator },
+  { key: 'genZTranslator', route: Routes.GenZTranslator },
+  { key: 'gibberishTranslator', route: Routes.GibberishTranslator },
+  { key: 'pigLatinTranslator', route: Routes.PigLatinTranslator },
   { key: 'verboseGenerator', route: Routes.VerboseGenerator },
 ];
 
 const GAME_FOOTER_LINKS: FooterLink[] = [
   { key: 'alBhedTranslator', route: Routes.AlBhedTranslator },
+  { key: 'drowTranslator', route: Routes.DrowTranslator },
+  { key: 'gasterTranslator', route: Routes.GasterTranslator },
+  { key: 'highValyrianTranslator', route: Routes.HighValyrianTranslator },
+  { key: 'mandalorianTranslator', route: Routes.MandalorianTranslator },
+  { key: 'minionTranslator', route: Routes.MinionTranslator },
+  { key: 'runeTranslator', route: Routes.RuneTranslator },
+  { key: 'runicTranslator', route: Routes.RunicTranslator },
+  { key: 'wingdingsTranslator', route: Routes.WingdingsTranslator },
+  { key: 'yodaTranslator', route: Routes.YodaTranslator },
 ];
 
 const HIDDEN_LANGUAGE_FOOTER = new Set([
@@ -26,12 +43,13 @@ const HIDDEN_LANGUAGE_FOOTER = new Set([
 ]);
 
 const LANGUAGE_FOOTER_LINKS: FooterLink[] = [
-  { key: 'greekTranslator', route: Routes.GreekTranslator },
   { key: 'albanianToEnglish', route: Routes.AlbanianToEnglish },
-  {
-    key: 'chineseToEnglishTranslator',
-    route: Routes.ChineseToEnglishTranslator,
-  },
+  { key: 'ancientGreekTranslator', route: Routes.AncientGreekTranslator },
+  { key: 'aramaicTranslator', route: Routes.AramaicTranslator },
+  { key: 'baybayinTranslator', route: Routes.BaybayinTranslator },
+  { key: 'cantoneseTranslator', route: Routes.CantoneseTranslator },
+  { key: 'creoleToEnglishTranslator', route: Routes.CreoleToEnglishTranslator },
+  { key: 'cuneiformTranslator', route: Routes.CuneiformTranslator },
   {
     key: 'englishToAmharicTranslator',
     route: Routes.EnglishToAmharicTranslator,
@@ -41,29 +59,22 @@ const LANGUAGE_FOOTER_LINKS: FooterLink[] = [
     key: 'englishToSwahiliTranslator',
     route: Routes.EnglishToSwahiliTranslator,
   },
+  { key: 'esperantoTranslator', route: Routes.EsperantoTranslator },
+  { key: 'greekTranslator', route: Routes.GreekTranslator },
+  { key: 'ivrTranslator', route: Routes.IvrTranslator },
+  { key: 'mangaTranslator', route: Routes.MangaTranslator },
+  { key: 'middleEnglishTranslator', route: Routes.MiddleEnglishTranslator },
+  { key: 'nahuatlTranslator', route: Routes.NahuatlTranslator },
+  { key: 'oghamTranslator', route: Routes.OghamTranslator },
+  { key: 'samoanToEnglishTranslator', route: Routes.SamoanToEnglishTranslator },
   {
     key: 'swahiliToEnglishTranslator',
     route: Routes.SwahiliToEnglishTranslator,
   },
   { key: 'teluguToEnglishTranslator', route: Routes.TeluguToEnglishTranslator },
-  {
-    key: 'japaneseToEnglishTranslator',
-    route: Routes.JapaneseToEnglishTranslator,
-  },
-  {
-    key: 'englishToChineseTranslator',
-    route: Routes.EnglishToChineseTranslator,
-  },
-  {
-    key: 'englishToPersianTranslator',
-    route: Routes.EnglishToPersianTranslator,
-  },
 ];
 
-
-const COMPANY_LINKS: FooterLink[] = [
-  { key: 'about', route: Routes.About },
-];
+const COMPANY_LINKS: FooterLink[] = [{ key: 'about', route: Routes.About }];
 
 const LEGAL_LINKS: FooterLink[] = [
   { key: 'privacyPolicy', route: Routes.PrivacyPolicy },

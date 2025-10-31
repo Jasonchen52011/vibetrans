@@ -1,4 +1,3 @@
-// @ts-nocheck - Translation keys type mismatch
 import BeforeAfterSection from '@/components/blocks/Examples';
 import CallToActionSection from '@/components/blocks/calltoaction/calltoaction';
 import ExploreOurAiTools from '@/components/blocks/exploretools';
@@ -11,6 +10,7 @@ import WhatIsSection from '@/components/blocks/whatis';
 import { AuroraBackground } from '@/components/ui/aurora-background';
 import { constructMetadata } from '@/lib/metadata';
 import { buildToolStructuredData } from '@/lib/seo/structured-data';
+import { buildTranslatorPageContent } from '@/lib/translator-page';
 import { getUrlWithLocale } from '@/lib/urls/urls';
 import type { Metadata } from 'next';
 import type { Locale } from 'next-intl';
@@ -25,17 +25,15 @@ export async function generateMetadata({
   params: Promise<{ locale: Locale }>;
 }): Promise<Metadata | undefined> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'Metadata' });
-  const gt = await getTranslations({
+  const t = await getTranslations({
     locale,
     namespace: 'GasterTranslatorPage',
   });
-
   return constructMetadata({
-    title: `${gt('title')} | ${(t as any)('name')}`,
-    description: gt('description'),
+    title: `${t('title')} | VibeTrans`,
+    description: t('description'),
     canonicalUrl: getUrlWithLocale('/gaster-translator', locale),
-    image: gt('whatIs.image') || '/images/docs/what-is-gaster-translator.webp',
+    image: t('whatIs.image'),
   });
 }
 
@@ -48,6 +46,8 @@ export default async function GasterTranslatorPage(
 ) {
   const params = await props.params;
   const { locale } = params;
+
+  // 使用标准 getTranslations 获取翻译
   const t = await getTranslations({
     locale,
     namespace: 'GasterTranslatorPage',
@@ -56,256 +56,74 @@ export default async function GasterTranslatorPage(
   // Structured Data for SEO
   const structuredData = buildToolStructuredData({
     name: 'VibeTrans Gaster Translator',
-    description: (t as any)('description'),
+    description: t('description'),
   });
 
-  // Examples section data
-  const examplesData = {
-    title: (t as any)('examples.title'),
-    description: (t as any)('examples.description'),
-    images: [
-      {
-        alt: (t as any)('examples.items.0.alt'),
-        name: (t as any)('examples.items.0.name'),
-      },
-      {
-        alt: (t as any)('examples.items.1.alt'),
-        name: (t as any)('examples.items.1.name'),
-      },
-      {
-        alt: (t as any)('examples.items.2.alt'),
-        name: (t as any)('examples.items.2.name'),
-      },
-      {
-        alt: (t as any)('examples.items.3.alt'),
-        name: (t as any)('examples.items.3.name'),
-      },
-      {
-        alt: (t as any)('examples.items.4.alt'),
-        name: (t as any)('examples.items.4.name'),
-      },
-      {
-        alt: (t as any)('examples.items.5.alt'),
-        name: (t as any)('examples.items.5.name'),
-      },
-    ],
-  };
-
-  // What is section
-  const whatIsSection = {
-    title: (t as any)('whatIs.title'),
-    description: (t as any)('whatIs.description'),
-    features: [],
-    image: {
-      src:
-        (t as any)('whatIs.image') ||
-        '/images/docs/what-is-gaster-translator.webp',
-      alt: (t as any)('whatIs.imageAlt') || 'What is Gaster Translator',
-    },
-    cta: { text: (t as any)('ctaButton') },
-  };
-
-  // How to section
-  const howtoSection = {
-    name: 'howto',
-    title: (t as any)('howto.title'),
-    description: (t as any)('howto.description'),
-    image: {
-      src:
-        (t as any)('howto.image') ||
-        '/images/docs/gaster-translator-how-to.webp',
-      alt: (t as any)('howto.imageAlt') || 'How to use Gaster Translator',
-    },
-    items: [
-      {
-        title: (t as any)('howto.steps.0.name'),
-        description: (t as any)('howto.steps.0.description'),
-        icon: 'FaFileUpload',
-      },
-      {
-        title: (t as any)('howto.steps.1.name'),
-        description: (t as any)('howto.steps.1.description'),
-        icon: 'FaPencilAlt',
-      },
-      {
-        title: (t as any)('howto.steps.2.name'),
-        description: (t as any)('howto.steps.2.description'),
-        icon: 'FaLanguage',
-      },
-      {
-        title: (t as any)('howto.steps.3.name'),
-        description: (t as any)('howto.steps.3.description'),
-        icon: 'FaCheckCircle',
-      },
-    ],
-  };
-
-  // Highlights section
-  const highlightsSection = {
-    name: 'highlights',
-    title: (t as any)('highlights.title'),
-    description: (t as any)('highlights.description'),
-    items: [
-      {
-        icon: 'FaRocket',
-        title: (t as any)('highlights.features.0.title'),
-        description: (t as any)('highlights.features.0.description'),
-      },
-      {
-        icon: 'FaBrain',
-        title: (t as any)('highlights.features.1.title'),
-        description: (t as any)('highlights.features.1.description'),
-      },
-      {
-        icon: 'FaShieldAlt',
-        title: (t as any)('highlights.features.2.title'),
-        description: (t as any)('highlights.features.2.description'),
-      },
-      {
-        icon: 'FaChartLine',
-        title: (t as any)('highlights.features.3.title'),
-        description: (t as any)('highlights.features.3.description'),
-      },
-    ],
-  };
-
-  // Fun Facts section
-  const funFactsSection = {
-    name: 'funFacts',
-    title: (t as any)('funFacts.title'),
-    items: [
-      {
-        title: 'Fun Fact',
-        description: (t as any)('funFacts.items.0.content'),
-        image: {
-          src:
-            (t as any)('funFacts.items.0.image') ||
-            '/images/docs/gaster-fonts-fact.webp',
-          alt: (t as any)('funFacts.items.0.imageAlt') || 'Fun fact 1',
-        },
-      },
-      {
-        title: 'Fun Fact',
-        description: (t as any)('funFacts.items.1.content'),
-        image: {
-          src:
-            (t as any)('funFacts.items.1.image') ||
-            '/images/docs/gaster-wingdings-fun.webp',
-          alt: (t as any)('funFacts.items.1.imageAlt') || 'Fun fact 2',
-        },
-      },
-    ],
-  };
-
-  // Page data for the tool component
-  const pageData = {
-    tool: {
-      inputLabel: (t as any)('tool.inputLabel'),
-      outputLabel: (t as any)('tool.outputLabel'),
-      inputPlaceholder: (t as any)('tool.inputPlaceholder'),
-      outputPlaceholder: (t as any)('tool.outputPlaceholder'),
-      translateButton: (t as any)('tool.translateButton'),
-      uploadButton: (t as any)('tool.uploadButton'),
-      uploadHint: (t as any)('tool.uploadHint'),
-      loading: (t as any)('tool.loading'),
-      error: (t as any)('tool.error'),
-      noInput: (t as any)('tool.noInput'),
-    },
-    funFacts: funFactsSection,
-    highlights: highlightsSection,
-  };
-
-  // User Interest section (4 content blocks)
-  const userInterestSection = {
-    name: 'userInterest',
-    title: (t as any)('userInterest.title'),
-    items: [
-      {
-        title: (t as any)('userInterest.items.0.title'),
-        description: (t as any)('userInterest.items.0.description'),
-        image: {
-          src:
-            (t as any)('userInterest.items.0.image') ||
-            '/images/docs/gaster-translator-interest-1.webp',
-          alt:
-            (t as any)('userInterest.items.0.imageAlt') ||
-            (t as any)('userInterest.items.0.title'),
-        },
-      },
-      {
-        title: (t as any)('userInterest.items.1.title'),
-        description: (t as any)('userInterest.items.1.description'),
-        image: {
-          src:
-            (t as any)('userInterest.items.1.image') ||
-            '/images/docs/gaster-translator-interest-2.webp',
-          alt:
-            (t as any)('userInterest.items.1.imageAlt') ||
-            (t as any)('userInterest.items.1.title'),
-        },
-      },
-      {
-        title: (t as any)('userInterest.items.2.title'),
-        description: (t as any)('userInterest.items.2.description'),
-        image: {
-          src:
-            (t as any)('userInterest.items.2.image') ||
-            '/images/docs/gaster-translator-interest-3.webp',
-          alt:
-            (t as any)('userInterest.items.2.imageAlt') ||
-            (t as any)('userInterest.items.2.title'),
-        },
-      },
-      {
-        title: (t as any)('userInterest.items.3.title'),
-        description: (t as any)('userInterest.items.3.description'),
-        image: {
-          src:
-            (t as any)('userInterest.items.3.image') ||
-            '/images/docs/gaster-translator-interest-4.webp',
-          alt:
-            (t as any)('userInterest.items.3.imageAlt') ||
-            (t as any)('userInterest.items.3.title'),
-        },
-      },
-    ],
-  };
+  // 使用内容构建器生成所有页面内容
+  const translatorContent = buildTranslatorPageContent(t, {
+    howToIcons: ['FaFileUpload', 'FaPencilAlt', 'FaLanguage', 'FaDownload'],
+  });
 
   return (
     <>
       <script
         type="application/ld+json"
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: Required for structured data
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
       <div className="flex flex-col">
-        {/* Hero Section */}
+        {/* Hero Section with Tool */}
         <AuroraBackground className="bg-white dark:bg-zinc-900 !pt-12 !h-auto">
           <div className="container max-w-7xl mx-auto px-4 text-center relative z-10 pb-8">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              {(t as any)('hero.title')}
+              {t('hero.title')}
             </h1>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
-              {(t as any)('hero.description')}
+              {t('hero.description')}
             </p>
 
             {/* User Avatars and Rating */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              {/* Avatar Images */}
               <div className="flex -space-x-3">
-                {['female1', 'male2', 'female2', 'male5', 'female3'].map(
-                  (avatar, i) => (
-                    <div
-                      key={i}
-                      className="relative h-12 w-12 rounded-full border-2 border-white dark:border-zinc-800 overflow-hidden"
-                    >
-                      <img
-                        src={`/images/avatars/${avatar}.webp`}
-                        alt={`User ${i + 1}`}
-                        className="h-full w-full object-cover"
-                      />
-                    </div>
-                  )
-                )}
+                <div className="relative h-12 w-12 rounded-full border-2 border-white dark:border-zinc-800 overflow-hidden">
+                  <img
+                    src="/images/avatars/male4.webp"
+                    alt="User 1"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <div className="relative h-12 w-12 rounded-full border-2 border-white dark:border-zinc-800 overflow-hidden">
+                  <img
+                    src="/images/avatars/female2.webp"
+                    alt="User 2"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <div className="relative h-12 w-12 rounded-full border-2 border-white dark:border-zinc-800 overflow-hidden">
+                  <img
+                    src="/images/avatars/male1.webp"
+                    alt="User 3"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <div className="relative h-12 w-12 rounded-full border-2 border-white dark:border-zinc-800 overflow-hidden">
+                  <img
+                    src="/images/avatars/female3.webp"
+                    alt="User 4"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <div className="relative h-12 w-12 rounded-full border-2 border-white dark:border-zinc-800 overflow-hidden">
+                  <img
+                    src="/images/avatars/male3.webp"
+                    alt="User 5"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
               </div>
+
+              {/* Stars and Text */}
               <div className="flex flex-col items-center sm:items-start gap-1">
                 <div className="flex items-center gap-0.5">
                   {[...Array(5)].map((_, i) => (
@@ -329,32 +147,35 @@ export default async function GasterTranslatorPage(
 
         {/* Tool Component */}
         <div className="pt-0 pb-12 bg-gradient-to-b from-muted/20 to-background">
-          <GasterTranslatorTool pageData={pageData} locale={locale} />
+          <GasterTranslatorTool
+            pageData={translatorContent.pageData}
+            locale={locale}
+          />
         </div>
 
         {/* What Is Section */}
-        <WhatIsSection section={whatIsSection} />
+        <WhatIsSection section={translatorContent.whatIs} />
 
         {/* Examples Section */}
-        <BeforeAfterSection beforeAfterGallery={examplesData} />
+        <BeforeAfterSection beforeAfterGallery={translatorContent.examples} />
 
         {/* How to Section */}
-        <HowTo section={howtoSection} />
+        <HowTo section={translatorContent.howTo} />
 
         {/* User Interest Blocks */}
         <UserScenarios
-          section={userInterestSection}
-          ctaText={(t as any)('ctaButton')}
+          section={translatorContent.userInterest}
+          ctaText={t('ctaButton')}
         />
 
         {/* Fun Facts */}
         <UserScenarios
-          section={pageData.funFacts}
-          ctaText={(t as any)('ctaButton')}
+          section={translatorContent.funFacts}
+          ctaText={t('ctaButton')}
         />
 
         {/* Highlights */}
-        <WhyChoose section={pageData.highlights} />
+        <WhyChoose section={translatorContent.highlights} />
 
         {/* Explore Other Tools */}
         <ExploreOurAiTools
@@ -369,13 +190,15 @@ export default async function GasterTranslatorPage(
         />
 
         {/* Testimonials */}
-        <TestimonialsThreeColumnSection namespace="GasterTranslatorPage.testimonials" />
+        <TestimonialsThreeColumnSection
+          section={translatorContent.testimonials}
+        />
 
         {/* FAQ */}
-        <FaqSection namespace="GasterTranslatorPage.faqs" />
+        <FaqSection section={translatorContent.faqs} />
 
         {/* CTA */}
-        <CallToActionSection namespace="GasterTranslatorPage.cta" />
+        <CallToActionSection section={translatorContent.cta} />
       </div>
     </>
   );

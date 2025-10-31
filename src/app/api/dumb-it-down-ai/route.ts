@@ -1,94 +1,106 @@
-import { google } from '@ai-sdk/google';
-import { generateText } from 'ai';
 import { type NextRequest, NextResponse } from 'next/server';
 
 export const runtime = 'edge';
 
-const SIMPLIFICATION_PROMPT = `You are "Dumb It Down AI", a tool for simplifying complex text into clear, easy-to-understand language.
+async function translateWithGemini(
+  text: string,
+  targetLanguage: string
+): Promise<string> {
+  const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
 
-TASK:
-- Simplify the INPUT text while keeping the meaning intact
-- Use simple, everyday words that anyone can understand
-- Keep the tone neutral and the structure clear (preserve headings, bullet points, etc.)
-- Break down complex sentences into shorter, simpler ones
-- Replace jargon and technical terms with plain language
-- Maintain the original format and structure as much as possible
-
-RULES:
-- Do NOT add extra explanations or commentary
-- Do NOT change the core meaning or facts
-- Keep the same paragraph structure and formatting
-- Use active voice when possible
-- Aim for 6th-8th grade reading level
-
-OUTPUT:
-- Return ONLY the simplified text, nothing else`;
-
-async function simplifyText(text: string): Promise<string> {
-  try {
-    const { text: simplifiedText } = await generateText({
-      model: google('gemini-2.0-flash-exp'),
-      messages: [
-        {
-          role: 'system',
-          content: SIMPLIFICATION_PROMPT,
-        },
-        {
-          role: 'user',
-          content: text,
-        },
-      ],
-      temperature: 0.3,
-    });
-
-    return simplifiedText;
-  } catch (error) {
-    console.error('Error simplifying text:', error);
-    throw new Error('Failed to simplify text');
+  if (!apiKey) {
+    throw new Error('Google Generative AI API key is not configured');
   }
+
+  const prompt = `Translate the following English text to ${targetLanguage}. Provide only the translation, no explanations or additional text:
+
+${text}`;
+
+  const response = await fetch(
+    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key=${apiKey}`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        contents: [
+          {
+            parts: [
+              {
+                text: prompt,
+              },
+            ],
+          },
+        ],
+        generationConfig: {
+          temperature: 0.3,
+          maxOutputTokens: 2048,
+        },
+      }),
+    }
+  );
+
+  if (!response.ok) {
+    const errorData = await response.json().catch(() => ({}));
+    throw new Error(
+      `Gemini API error: ${response.status} - ${errorData.error?.message || response.statusText}`
+    );
+  }
+
+  const data = await response.json();
+
+  if (!data.candidates?.[0]?.content?.parts?.[0]?.text) {
+    throw new Error('Invalid response from Gemini API');
+  }
+
+  return data.candidates[0].content.parts[0].text.trim();
 }
 
 export async function POST(request: NextRequest) {
   try {
-    const body = (await request.json()) as {
-      text?: string;
-    };
-    const { text } = body;
+    const body = await request.json();
+    const { text, options = {} } = body;
 
     if (!text || typeof text !== 'string') {
       return NextResponse.json(
-        { error: 'Invalid input: text is required' },
-        { status: 400 }
-      );
-    }
-
-    if (text.trim().length === 0) {
-      return NextResponse.json(
-        { error: 'Please enter some text' },
+        { success: false, error: 'Valid text is required' },
         { status: 400 }
       );
     }
 
     if (text.length > 5000) {
       return NextResponse.json(
-        { error: 'Text is too long. Maximum 5000 characters allowed.' },
+        { success: false, error: 'Text too long. Maximum 5000 characters.' },
         { status: 400 }
       );
     }
 
-    // Perform simplification
-    const simplified = await simplifyText(text);
+    const startTime = Date.now();
+    const translated = await translateWithGemini(text, 'Simple English');
+    const processingTime = `${Date.now() - startTime}ms`;
 
     return NextResponse.json({
-      original: text,
-      simplified: simplified,
       success: true,
+      translated,
+      original: text,
+      options,
+      translationMethod: 'gemini-2.0-flash',
+      metadata: {
+        timestamp: new Date().toISOString(),
+        processingTime,
+        textLength: text.length,
+        translatedLength: translated.length,
+      },
     });
-  } catch (error: any) {
-    console.error('Error processing simplification:', error);
+  } catch (error) {
+    console.error('Translation error:', error);
     return NextResponse.json(
       {
-        error: error.message || 'Failed to process simplification',
+        success: false,
+        error: 'Translation failed',
+        suggestion: 'Please try again',
+        details: error instanceof Error ? error.message : 'Unknown error',
       },
       { status: 500 }
     );
@@ -96,12 +108,17 @@ export async function POST(request: NextRequest) {
 }
 
 export async function GET() {
-  return NextResponse.json(
-    {
-      message: 'Dumb It Down AI API - Use POST method to simplify text',
-      version: '1.0',
-      maxLength: 5000,
-    },
-    { status: 200 }
-  );
+  return NextResponse.json({
+    status: 'healthy',
+    service: 'Dumb It Down AI API',
+    description:
+      'Gemini 2.0 Flash powered English to Simple English translation service',
+    features: [
+      'AI-powered simplification',
+      'Simple English processing',
+      'Context-aware translation',
+      'Real-time processing',
+    ],
+    timestamp: new Date().toISOString(),
+  });
 }

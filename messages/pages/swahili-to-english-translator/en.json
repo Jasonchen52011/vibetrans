@@ -3,8 +3,8 @@
     "title": "Swahili to English Translator - Free Online Tool",
     "description": "Instantly translate Swahili to English with our free online translator. Accurate translations for text, documents, and voice input. Try it now!",
     "hero": {
-      "title": "Swahili to English Translator",
-      "description": "Perfectly convert your Swahili text to English using our best free online translator. Fast, accurate, and easy-to-use for all your translation needs."
+      "title": "English to Swahili Translator",
+      "description": "Use the best English to Swahili iranslator for cross-border business, travel, and content, Deliver accurate phrases, natural slang, and audio-friendly scripts from one simple dashboard."
     },
     "tool": {
       "inputLabel": "Swahili Text",
@@ -59,24 +59,26 @@
       "description": "Follow these simple steps to translate your Swahili text to English using our best online translator tool.",
       "steps": [
         {
-          "name": "Input or Upload Swahili Text",
+          "title": "Input or Upload Swahili Text",
           "description": "Type your Swahili text directly in the input box or upload a .txt/.docx file containing Swahili content. You can also use voice input for convenience."
         },
         {
-          "name": "Click Translate Button",
+          "title": "Click Translate Button",
           "description": "Press the blue \"Translate\" button to start the translation process. Our advanced AI will analyze your Swahili text and convert it to accurate English."
         },
         {
-          "name": "Review Your Translation",
+          "title": "Review Your Translation",
           "description": "Your English translation will appear instantly in the output box. The translation maintains the original Swahili meaning, context, and cultural nuances."
         },
         {
-          "name": "Copy or Download Results",
+          "title": "Copy or Download Results",
           "description": "Easily copy your English translation to clipboard or download as a .txt file for future use. You can also listen to the pronunciation."
         }
-      ]
+      ],
+      "image": "/images/docs/swahili-to-english-translator-how-to.webp",
+      "imageAlt": "How to Translate Swahili to English"
     },
-    "funFacts": {
+    "funfacts": {
       "title": "Fun Facts About Swahili",
       "items": [
         {
@@ -125,7 +127,7 @@
     "highlights": {
       "title": "Why Choose Our Swahili to English Translator?",
       "description": "The best Swahili to English translation tool with advanced features designed for accuracy, speed, and user convenience.",
-      "features": [
+      "items": [
         {
           "title": "Lightning-Fast Translation",
           "icon": "FaRocket",
@@ -171,38 +173,29 @@
         "item-1": {
           "name": "Sarah Johnson",
           "role": "NGO Worker in Kenya",
-          "heading": "Sarah Johnson's Review",
-          "content": "This Swahili to English translator is essential for my work with local communities. I can quickly translate meeting notes and community feedback. The accuracy is impressive even for cultural expressions and idioms."
+          "heading": "Essential for Community Work",
+          "content": "This Swahili to English translator is essential for my work with local communities. I can quickly translate meeting notes and community feedback. The accuracy is impressive even for cultural expressions and idioms.",
+          "rating": 5,
+          "date": "2024-10-15",
+          "verified": true
         },
         "item-2": {
           "name": "Michael Chen",
           "role": "Business Development Manager",
-          "heading": "Michael Chen's Review",
-          "content": "I use this tool daily for communicating with East African partners. It handles business terminology perfectly and helps me understand contract details. The best translation tool I've found for professional use."
+          "heading": "Perfect for Business Communication",
+          "content": "I use this tool daily for communicating with East African partners. It handles business terminology perfectly and helps me understand contract details. The best translation tool I've found for professional use.",
+          "rating": 5,
+          "date": "2024-10-10",
+          "verified": true
         },
         "item-3": {
           "name": "Emily Rodriguez",
           "role": "Language Student",
-          "heading": "Emily Rodriguez's Review",
-          "content": "As a Swahili learner, this translator helps me understand homework and learning materials. I love how it shows context and helps me learn new vocabulary. My language skills have improved significantly!"
-        },
-        "item-4": {
-          "name": "David Kim",
-          "role": "Travel Blogger",
-          "heading": "David Kim's Review",
-          "content": "Traveling through Tanzania and Kenya, this translator has been my companion. It helps me understand menus, signs, and conversations with locals. Made my travel experience much richer and authentic."
-        },
-        "item-5": {
-          "name": "Lisa Thompson",
-          "role": "Researcher",
-          "heading": "Lisa Thompson's Review",
-          "content": "I translate research documents and interviews from Swahili to English for academic work. The tool maintains academic tone and precision perfectly. Saved me hours of manual translation."
-        },
-        "item-6": {
-          "name": "James Wilson",
-          "role": "Tour Guide",
-          "heading": "James Wilson's Review",
-          "content": "I use this to help tourists understand Swahili phrases and cultural information. The translations are natural and explain cultural context well. My clients love learning the language through this tool."
+          "heading": "Great for Language Learning",
+          "content": "As a Swahili learner, this translator helps me understand homework and learning materials. I love how it shows context and helps me learn new vocabulary. My language skills have improved significantly!",
+          "rating": 4,
+          "date": "2024-10-08",
+          "verified": false
         }
       }
     },
@@ -243,5 +236,10 @@
       "primaryButton": "Get Started Free",
       "secondaryButton": "Back to Top"
     }
+  },
+  "Metadata": {
+    "name": "VibeTrans",
+    "title": "Swahili to English Translator - VibeTrans",
+    "description": "Break language barriers with AI-powered translations. Supports 100+ languages with accurate, context-aware translations."
   }
 }

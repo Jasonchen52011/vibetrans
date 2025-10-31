@@ -132,26 +132,30 @@
     "highlights": {
       "title": "Gaster Translation Engine for Undertale Players",
       "description": "Discover what makes our Gaster Translator exceptional",
-      "features": [
+      "items": [
         {
           "title": "Simple and Free",
-          "description": "VibeTrans provides an easy-to-use and free translation service, ensuring users can convert languages effortlessly without any cost. The intuitive interface design allows anyone to get started quickly without complicated setup, making your communication smoother and more accessible.",
-          "wordCount": 50
+          "description": "VibeTrans provides an easy-to-use and free translation service, ensuring users can convert languages effortlessly without any cost.",
+          "wordCount": 50,
+          "icon": "FaRocket"
         },
         {
           "title": "Accurate Translation",
-          "description": "VibeTrans leverages cutting-edge technology to ensure translation accuracy and consistency. Our system uses advanced algorithms and extensive data sources to provide high-precision translation services suitable for various languages and professional fields, helping users communicate globally without barriers.",
-          "wordCount": 50
+          "description": "VibeTrans leverages cutting-edge technology to ensure translation accuracy and consistency. Our system uses advanced algorithms and extensive data sources.",
+          "wordCount": 50,
+          "icon": "FaBrain"
         },
         {
           "title": "Privacy First",
-          "description": "VibeTrans is committed to protecting user privacy, using advanced encryption technology to ensure your data remains secure throughout the translation process. Our system is fundamentally designed not to store any text information, ensuring your content stays confidential and allowing you to use our translation services with peace of mind.",
-          "wordCount": 50
+          "description": "VibeTrans is committed to protecting user privacy, using advanced encryption technology to ensure your data remains secure throughout the translation process.",
+          "wordCount": 50,
+          "icon": "FaShieldAlt"
         },
         {
           "title": "AI-Powered Conversion",
-          "description": "VibeTrans's AI-powered conversion intelligently analyzes text context to ensure translations are not only accurate but also maintain the original meaning and style. Through deep learning algorithms, it recognizes subtle linguistic nuances, providing users with more natural and contextually appropriate symbol translations.",
-          "wordCount": 50
+          "description": "VibeTrans's AI-powered conversion intelligently analyzes text context to ensure translations are not only accurate but also maintain the original meaning and style.",
+          "wordCount": 50,
+          "icon": "FaEye"
         }
       ]
     },
@@ -222,7 +226,7 @@
       "primaryButton": "Try GasterTranslator Now",
       "secondaryButton": "Back to Top"
     },
-    "funFacts": {
+    "funfacts": {
       "title": "Undertale Fan's Guide to Mastering Gaster",
       "items": [
         {
@@ -239,5 +243,10 @@
         }
       ]
     }
+  },
+  "Metadata": {
+    "name": "VibeTrans",
+    "title": "Gaster Translator - VibeTrans",
+    "description": "Break language barriers with AI-powered translations. Supports 100+ languages with accurate, context-aware translations."
   }
 }

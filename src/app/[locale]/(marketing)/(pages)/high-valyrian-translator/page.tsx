@@ -1,4 +1,3 @@
-// @ts-nocheck - Translation keys type mismatch
 import BeforeAfterSection from '@/components/blocks/Examples';
 import CallToActionSection from '@/components/blocks/calltoaction/calltoaction';
 import ExploreOurAiTools from '@/components/blocks/exploretools';
@@ -11,6 +10,7 @@ import WhatIsSection from '@/components/blocks/whatis';
 import { AuroraBackground } from '@/components/ui/aurora-background';
 import { constructMetadata } from '@/lib/metadata';
 import { buildToolStructuredData } from '@/lib/seo/structured-data';
+import { buildTranslatorPageContent } from '@/lib/translator-page';
 import { getUrlWithLocale } from '@/lib/urls/urls';
 import type { Metadata } from 'next';
 import type { Locale } from 'next-intl';
@@ -25,17 +25,15 @@ export async function generateMetadata({
   params: Promise<{ locale: Locale }>;
 }): Promise<Metadata | undefined> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'Metadata' });
-  const gt = await getTranslations({
+  const t = await getTranslations({
     locale,
     namespace: 'HighValyrianTranslatorPage',
   });
-
   return constructMetadata({
-    title: `${gt('title')} | ${(t as any)('name')}`,
-    description: gt('description'),
+    title: `${t('title')} | VibeTrans`,
+    description: t('description'),
     canonicalUrl: getUrlWithLocale('/high-valyrian-translator', locale),
-    image: '/images/docs/valyrian-translation-tool.webp',
+    image: t('whatIs.image'),
   });
 }
 
@@ -48,6 +46,8 @@ export default async function HighValyrianTranslatorPage(
 ) {
   const params = await props.params;
   const { locale } = params;
+
+  // 使用标准 getTranslations 获取翻译
   const t = await getTranslations({
     locale,
     namespace: 'HighValyrianTranslatorPage',
@@ -56,221 +56,13 @@ export default async function HighValyrianTranslatorPage(
   // Structured Data for SEO
   const structuredData = buildToolStructuredData({
     name: 'VibeTrans High Valyrian Translator',
-    description: (t as any)('description'),
+    description: t('description'),
   });
 
-  // Examples section data
-  const examplesData = {
-    title: (t as any)('examples.title'),
-    description: (t as any)('examples.description'),
-    images: [
-      {
-        alt: (t as any)('examples.items.0.alt'),
-        name: (t as any)('examples.items.0.name'),
-      },
-      {
-        alt: (t as any)('examples.items.1.alt'),
-        name: (t as any)('examples.items.1.name'),
-      },
-      {
-        alt: (t as any)('examples.items.2.alt'),
-        name: (t as any)('examples.items.2.name'),
-      },
-      {
-        alt: (t as any)('examples.items.3.alt'),
-        name: (t as any)('examples.items.3.name'),
-      },
-      {
-        alt: (t as any)('examples.items.4.alt'),
-        name: (t as any)('examples.items.4.name'),
-      },
-      {
-        alt: (t as any)('examples.items.5.alt'),
-        name: (t as any)('examples.items.5.name'),
-      },
-    ],
-  };
-
-  // What is section
-  const whatIsSection = {
-    title: (t as any)('whatIs.title'),
-    description: (t as any)('whatIs.description'),
-    features: [],
-    image: {
-      src:
-        (t as any)('whatIs.image') ||
-        '/images/docs/valyrian-translation-tool.webp',
-      alt: (t as any)('whatIs.imageAlt') || 'What is High Valyrian Translator',
-    },
-    cta: { text: (t as any)('ctaButton') },
-  };
-
-  // How to section
-  const howtoSection = {
-    name: 'howto',
-    title: (t as any)('howto.title'),
-    description: (t as any)('howto.description'),
-    image: {
-      src: '/images/docs/valyrian-translation-tool.webp',
-      alt: 'How to use High Valyrian Translator',
-    },
-    items: [
-      {
-        title: (t as any)('howto.steps.0.title'),
-        description: (t as any)('howto.steps.0.description'),
-        icon: 'FaFileUpload',
-      },
-      {
-        title: (t as any)('howto.steps.1.title'),
-        description: (t as any)('howto.steps.1.description'),
-        icon: 'FaPencilAlt',
-      },
-      {
-        title: (t as any)('howto.steps.2.title'),
-        description: (t as any)('howto.steps.2.description'),
-        icon: 'FaLanguage',
-      },
-      {
-        title: (t as any)('howto.steps.3.title'),
-        description: (t as any)('howto.steps.3.description'),
-        icon: 'FaCheckCircle',
-      },
-    ],
-  };
-
-  // Highlights section
-  const highlightsSection = {
-    name: 'highlights',
-    title: (t as any)('highlights.title'),
-    description: (t as any)('highlights.description'),
-    items: [
-      {
-        icon: 'FaRocket',
-        title: (t as any)('highlights.items.0.title'),
-        description: (t as any)('highlights.items.0.description'),
-      },
-      {
-        icon: 'FaBrain',
-        title: (t as any)('highlights.items.1.title'),
-        description: (t as any)('highlights.items.1.description'),
-      },
-      {
-        icon: 'FaShieldAlt',
-        title: (t as any)('highlights.items.2.title'),
-        description: (t as any)('highlights.items.2.description'),
-      },
-      {
-        icon: 'FaChartLine',
-        title: (t as any)('highlights.items.3.title'),
-        description: (t as any)('highlights.items.3.description'),
-      },
-    ],
-  };
-
-  // Fun Facts section
-  const funFactsSection = {
-    name: 'funFacts',
-    title: (t as any)('funFacts.title'),
-    items: [
-      {
-        title: (t as any)('funFacts.items.0.title'),
-        description: (t as any)('funFacts.items.0.description'),
-        image: {
-          src:
-            (t as any)('funFacts.items.0.image') ||
-            '/images/docs/valyrian-grammar-fun.webp',
-          alt:
-            (t as any)('funFacts.items.0.alt') ||
-            'High Valyrian has four grammatical genders',
-        },
-      },
-      {
-        title: (t as any)('funFacts.items.1.title'),
-        description: (t as any)('funFacts.items.1.description'),
-        image: {
-          src:
-            (t as any)('funFacts.items.1.image') ||
-            '/images/docs/dragon-language-magic.webp',
-          alt:
-            (t as any)('funFacts.items.1.alt') || 'Dracarys means Dragon-fire',
-        },
-      },
-    ],
-  };
-
-  // Page data for the tool component
-  const pageData = {
-    tool: {
-      inputLabel: (t as any)('tool.inputLabel'),
-      outputLabel: (t as any)('tool.outputLabel'),
-      inputPlaceholder: (t as any)('tool.inputPlaceholder'),
-      outputPlaceholder: (t as any)('tool.outputPlaceholder'),
-      translateButton: (t as any)('tool.translateButton'),
-      uploadButton: (t as any)('tool.uploadButton'),
-      uploadHint: (t as any)('tool.uploadHint'),
-      loading: (t as any)('tool.loading'),
-      error: (t as any)('tool.error'),
-      noInput: (t as any)('tool.noInput'),
-    },
-    funFacts: funFactsSection,
-    highlights: highlightsSection,
-  };
-
-  // User Interest section (4 content blocks)
-  const userInterestSection = {
-    name: 'userInterest',
-    title: (t as any)('userInterest.title'),
-    items: [
-      {
-        title: (t as any)('userInterest.items.0.title'),
-        description: (t as any)('userInterest.items.0.description'),
-        image: {
-          src:
-            (t as any)('userInterest.items.0.image') ||
-            '/images/docs/sword-speech-bubbles.webp',
-          alt:
-            (t as any)('userInterest.items.0.alt') ||
-            'Translation accuracy comparison',
-        },
-      },
-      {
-        title: (t as any)('userInterest.items.1.title'),
-        description: (t as any)('userInterest.items.1.description'),
-        image: {
-          src:
-            (t as any)('userInterest.items.1.image') ||
-            '/images/docs/valyrian-vows.webp',
-          alt:
-            (t as any)('userInterest.items.1.alt') ||
-            'Marrying with High Valyrian',
-        },
-      },
-      {
-        title: (t as any)('userInterest.items.2.title'),
-        description: (t as any)('userInterest.items.2.description'),
-        image: {
-          src:
-            (t as any)('userInterest.items.2.image') ||
-            '/images/docs/valyrian-linguistics-journey.webp',
-          alt:
-            (t as any)('userInterest.items.2.alt') ||
-            'Learning different dialects',
-        },
-      },
-      {
-        title: (t as any)('userInterest.items.3.title'),
-        description: (t as any)('userInterest.items.3.description'),
-        image: {
-          src:
-            (t as any)('userInterest.items.3.image') ||
-            '/images/docs/slang-translation.webp',
-          alt:
-            (t as any)('userInterest.items.3.alt') ||
-            'Translate modern slang to High Valyrian',
-        },
-      },
-    ],
-  };
+  // 使用内容构建器生成所有页面内容
+  const translatorContent = buildTranslatorPageContent(t, {
+    howToIcons: ['FaFileUpload', 'FaPencilAlt', 'FaLanguage', 'FaDownload'],
+  });
 
   return (
     <>
@@ -283,10 +75,10 @@ export default async function HighValyrianTranslatorPage(
         <AuroraBackground className="bg-white dark:bg-zinc-900 !pt-12 !h-auto">
           <div className="container max-w-7xl mx-auto px-4 text-center relative z-10 pb-8">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              {(t as any)('hero.title')}
+              {t('hero.title')}
             </h1>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
-              {(t as any)('hero.description')}
+              {t('hero.description')}
             </p>
 
             {/* User Avatars and Rating */}
@@ -330,32 +122,35 @@ export default async function HighValyrianTranslatorPage(
 
         {/* Tool Component */}
         <div className="pt-0 pb-12 bg-gradient-to-b from-muted/20 to-background">
-          <HighValyrianTranslatorTool pageData={pageData} locale={locale} />
+          <HighValyrianTranslatorTool
+            pageData={translatorContent.pageData}
+            locale={locale}
+          />
         </div>
 
         {/* What Is Section */}
-        <WhatIsSection section={whatIsSection} />
+        <WhatIsSection section={translatorContent.whatIs} />
 
         {/* Examples Section */}
-        <BeforeAfterSection beforeAfterGallery={examplesData} />
+        <BeforeAfterSection beforeAfterGallery={translatorContent.examples} />
 
         {/* How to Section */}
-        <HowTo section={howtoSection} />
+        <HowTo section={translatorContent.howTo} />
 
         {/* User Interest Blocks */}
         <UserScenarios
-          section={userInterestSection}
-          ctaText={(t as any)('ctaButton')}
+          section={translatorContent.userInterest}
+          ctaText={t('ctaButton')}
         />
 
         {/* Fun Facts */}
         <UserScenarios
-          section={pageData.funFacts}
-          ctaText={(t as any)('ctaButton')}
+          section={translatorContent.funFacts}
+          ctaText={t('ctaButton')}
         />
 
         {/* Highlights */}
-        <WhyChoose section={pageData.highlights} />
+        <WhyChoose section={translatorContent.highlights} />
 
         {/* Explore Other Tools */}
         <ExploreOurAiTools
@@ -370,13 +165,15 @@ export default async function HighValyrianTranslatorPage(
         />
 
         {/* Testimonials */}
-        <TestimonialsThreeColumnSection namespace="HighValyrianTranslatorPage.testimonials" />
+        <TestimonialsThreeColumnSection
+          section={translatorContent.testimonials}
+        />
 
         {/* FAQ */}
-        <FaqSection namespace="HighValyrianTranslatorPage.faqs" />
+        <FaqSection section={translatorContent.faqs} />
 
         {/* CTA */}
-        <CallToActionSection namespace="HighValyrianTranslatorPage.cta" />
+        <CallToActionSection section={translatorContent.cta} />
       </div>
     </>
   );

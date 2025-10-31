@@ -90,7 +90,7 @@ export function NavbarMobile({
             aria-expanded={open}
             aria-label="Toggle Mobile Menu"
             onClick={handleToggleMobileMenu}
-            className="size-8 flex aspect-square h-fit select-none items-center
+            className="size-8 flex aspect-square h-fit items-center
               justify-center rounded-md border cursor-pointer"
           >
             {open ? (
@@ -128,7 +128,7 @@ function MainMobileMenu({ onLinkClicked }: MainMobileMenuProps) {
 
   return (
     <div
-      className="fixed w-full inset-0 z-50 mt-[64px] overflow-y-auto
+      className="fixed w-full inset-0 z-50 mt-16 overflow-y-auto
       bg-background backdrop-blur-md animate-in fade-in-0"
     >
       <div className="size-full flex flex-col items-start space-y-4">

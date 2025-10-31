@@ -1,19 +1,14 @@
-import { createMDX } from 'fumadocs-mdx/next';
 import type { NextConfig } from 'next';
 import createNextIntlPlugin from 'next-intl/plugin';
 
-// Setup Cloudflare dev platform for local development
-const { setupDevPlatform } = require('@cloudflare/next-on-pages/next-dev');
-if (process.env.NODE_ENV === 'development') {
-  setupDevPlatform().catch(console.error);
-}
+// Note: @cloudflare/next-on-pages handles Cloudflare Pages compatibility
+// Including proper output directory and function routing
 
 /**
  * Configuration for Cloudflare Pages with Functions
  */
 const nextConfig: NextConfig = {
-  // Output for Cloudflare Pages compatibility
-  output: 'standalone',
+  // Output for Cloudflare Pages compatibility - keep default for API routes support
 
   /* config options here */
   devIndicators: false,
@@ -24,53 +19,50 @@ const nextConfig: NextConfig = {
   },
 
   // Exclude Node.js-only packages from Edge Runtime bundles
-  serverExternalPackages: [
-    'fumadocs-mdx',
-    'sharp',
-    'canvas-confetti',
-    'tone',
-    'mammoth',
-  ],
+  serverExternalPackages: ['sharp', 'critters'],
 
   // https://nextjs.org/docs/architecture/nextjs-compiler#remove-console
   // Remove all console.* calls in production only
   compiler: {
-    // removeConsole: process.env.NODE_ENV === 'production',
+    removeConsole: process.env.NODE_ENV === 'production',
   },
 
   // Enable experimental optimizations for Cloudflare
   experimental: {
     optimizePackageImports: [
       '@radix-ui/react-accordion',
-      '@radix-ui/react-alert-dialog',
-      '@radix-ui/react-avatar',
-      '@radix-ui/react-checkbox',
-      '@radix-ui/react-dialog',
+      '@radix-ui/react-collapsible',
       '@radix-ui/react-dropdown-menu',
-      '@radix-ui/react-label',
-      '@radix-ui/react-popover',
-      '@radix-ui/react-progress',
-      '@radix-ui/react-select',
-      '@radix-ui/react-separator',
-      '@radix-ui/react-slider',
+      '@radix-ui/react-navigation-menu',
+      '@radix-ui/react-portal',
       '@radix-ui/react-slot',
-      '@radix-ui/react-switch',
-      '@radix-ui/react-tabs',
-      '@radix-ui/react-toast',
-      '@radix-ui/react-toggle',
       '@radix-ui/react-tooltip',
       'lucide-react',
-      'date-fns',
       'ai',
-      'react-syntax-highlighter',
-      'swiper',
+      'clsx',
+      'tailwind-merge',
+      'sonner',
+      'next-themes',
+      'nuqs',
+      'react-remove-scroll',
+      'next-intl',
+      'class-variance-authority',
     ],
-    // Enable worker threads for better performance
-    workerThreads: false,
     // Optimize CSS
     optimizeCss: true,
-    // Enable large page data optimization
-    largePageDataBytes: 128 * 1000,
+    // Adjust large page data bytes for Cloudflare paid plan
+    largePageDataBytes: 256 * 1000, // 256KB for paid plans
+    // Enable webpack bundle analyzer for optimization
+    webpackBuildWorker: true,
+    // Enable more aggressive compression
+    gzipSize: true,
+    // Optimize chunks
+    optimizeCss: true,
+    // Enable server components HMR
+    serverComponentsHmrCache: true,
+    // Additional optimization for Workers
+    serverMinification: true,
+    serverSourceMaps: false,
   },
 
   // Webpack configuration for Cloudflare Pages Edge Runtime compatibility
@@ -98,6 +90,12 @@ const nextConfig: NextConfig = {
       'node:crypto': false,
       querystring: false,
       vm: false,
+      crypto: false,
+      buffer: false,
+      process: false,
+      util: false,
+      assert: false,
+      events: false,
     };
 
     // Optimize for Cloudflare Workers
@@ -107,41 +105,70 @@ const nextConfig: NextConfig = {
         ...config.optimization,
         usedExports: true,
         sideEffects: false,
+        concatenateModules: true, // Enable module concatenation
       };
 
       // Exclude large dependencies from edge runtime
       config.externals = {
         ...config.externals,
         sharp: 'sharp',
-        mongodb: 'mongodb',
-        mysql2: 'mysql2',
-        pg: 'pg',
-        redis: 'redis',
-        'canvas-confetti': 'canvas-confetti',
-        tone: 'tone',
-        mammoth: 'mammoth',
-        'google-auth-library': 'google-auth-library',
-        '@aws-sdk/client-s3': '@aws-sdk/client-s3',
-        recharts: 'recharts',
-        'react-syntax-highlighter': 'react-syntax-highlighter',
+        'next-intl/middleware': 'next-intl/middleware',
       };
 
-      // Optimize chunk splitting
+      // Add optimization plugins
+      config.plugins.push(
+        new webpack.DefinePlugin({
+          'process.env.NODE_ENV': JSON.stringify('production'),
+        })
+      );
+
+      // Optimize chunk splitting for Cloudflare Pages Functions
       config.optimization.splitChunks = {
         ...config.optimization.splitChunks,
         chunks: 'all',
+        maxSize: 80 * 1024, // 80KB max per chunk - more aggressive for Cloudflare Pro
+        minSize: 5 * 1024, // 5KB min chunk size - create more, smaller chunks
         cacheGroups: {
-          vendor: {
+          default: {
+            enforce: true,
+            priority: -20,
+            reuseExistingChunk: true,
+          },
+          vendors: {
             test: /[\\/]node_modules[\\/]/,
             name: 'vendors',
             chunks: 'all',
             priority: 10,
+            enforce: true,
+            // Much smaller vendor chunks for Pages Functions
+            maxSize: 50 * 1024, // 50KB max for vendor chunks - very aggressive
+            minSize: 5 * 1024,
           },
           common: {
             name: 'common',
             minChunks: 2,
             chunks: 'all',
             priority: 5,
+            maxSize: 60 * 1024, // 60KB max for common chunks (further reduced)
+            minSize: 15 * 1024,
+          },
+          // 新增：分离配置文件到独立chunk
+          config: {
+            test: /[\\/]src[\\/]lib[\\/].*config.*\.ts/,
+            name: 'configs',
+            chunks: 'all',
+            priority: 15,
+            maxSize: 20 * 1024, // 20KB max for config chunks - very aggressive
+            minSize: 3 * 1024,
+          },
+          // 新增：分离工具函数
+          utils: {
+            test: /[\\/]src[\\/]lib[\\/](?!config).*\.ts/,
+            name: 'utils',
+            chunks: 'all',
+            priority: 12,
+            maxSize: 40 * 1024, // 40KB max for utils chunks
+            minSize: 10 * 1024,
           },
         },
       };
@@ -191,6 +218,5 @@ const nextConfig: NextConfig = {
 };
 
 const withNextIntl = createNextIntlPlugin();
-const withMDX = createMDX();
 
-export default withMDX(withNextIntl(nextConfig));
+export default withNextIntl(nextConfig);

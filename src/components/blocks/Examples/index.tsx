@@ -110,7 +110,7 @@ export default function BeforeAfterSection({
                       {item.name}
                     </p>
                   )}
-                  <div className="text-sm text-gray-600 whitespace-pre-line leading-relaxed text-center">
+                  <div className="text-sm text-gray-600 whitespace-pre-line leading-relaxed text-center break-words max-w-full">
                     {item.alt}
                   </div>
                 </div>

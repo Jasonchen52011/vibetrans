@@ -40,11 +40,51 @@
     },
     "whatIs": {
       "title": "What is Bad Translator?",
-      "description": "Bad Translator is a fun online tool that transforms your text into hilarious, absurd translations. Simply choose your language pair and start translating. Perfect for humor, social media, and creative content with VibeTrans."
+      "description": "Bad Translator is a fun online tool that transforms your text into hilarious, absurd translations. Simply choose your language pair and start translating. Perfect for humor, social media, and creative content with VibeTrans.",
+      "image": "/images/docs/what-is-bad-translator.webp",
+      "imageAlt": "What is Bad Translator?"
     },
     "examples": {
       "title": "Funny Translation Examples",
-      "description": "Check out these hilarious examples of how Bad Translator turns ordinary sentences into laugh-worthy translations. Try it out and see what absurd results you can get!"
+      "description": "Check out these hilarious examples of how Bad Translator turns ordinary sentences into laugh-worthy translations. Try it out and see what absurd results you can get!",
+      "items": [
+        {
+          "alt": "Original text example - Hello world",
+          "name": "Original",
+          "text": "Hello world, how are you today?",
+          "description": "Simple everyday greeting"
+        },
+        {
+          "alt": "Bad translation result - Hilarious mistranslation",
+          "name": "Bad Translation",
+          "text": "Greetings planet, what is your current condition of existence?",
+          "description": "Absurd formal translation through multiple languages"
+        },
+        {
+          "alt": "Original text example - I love coffee",
+          "name": "Original",
+          "text": "I love coffee in the morning",
+          "description": "Common morning expression"
+        },
+        {
+          "alt": "Bad translation result - Funny mistranslation",
+          "name": "Bad Translation",
+          "text": "My heart adores the dark liquid during sunrise time",
+          "description": "Poetic and ridiculous translation result"
+        },
+        {
+          "alt": "Original text example - See you later",
+          "name": "Original",
+          "text": "See you later, alligator",
+          "description": "Casual farewell expression"
+        },
+        {
+          "alt": "Bad translation result - Bizarre mistranslation",
+          "name": "Bad Translation",
+          "text": "Observe you subsequently, large reptile creature",
+          "description": "Scientifically absurd translation"
+        }
+      ]
     },
     "howto": {
       "title": "How to Translate English to Bad",
@@ -66,61 +106,79 @@
           "title": "Enjoy the Results",
           "description": "Click \"Translate\" and enjoy the absurd, funny outcome."
         }
-      ]
+      ],
+      "image": "/images/docs/bad-translator-how-to.webp",
+      "imageAlt": "How to Translate English to Bad"
     },
     "highlights": {
       "title": "Professional Bad Translator Engine for Quality Results",
       "description": "",
       "items": [
         {
+          "icon": "FaHeart",
           "title": "Easy & Free to Use",
           "description": "Bad Translator is a free tool that's simple to use. Just input text and enjoy the results with VibeTrans."
         },
         {
-          "title": "Accurate in its Own Way",
-          "description": "While the translations are purposely funny, they're consistently unpredictable. Get the humor you need with each translation."
-        },
-        {
+          "icon": "FaShieldAlt",
           "title": "Secure and Private",
           "description": "Your translations are private. We value your data security at VibeTrans—no worries about your text being stored."
         },
         {
+          "icon": "FaBrain",
+          "title": "AI Context Understanding",
+          "description": "Our AI creates hilarious translations through multiple language loops, offering consistently funny and unexpected results."
+        },
+        {
+          "icon": "FaChartLine",
           "title": "Unlimited Fun",
           "description": "There's no limit to the number of funny translations you can create. Keep experimenting with different languages and styles for endless amusement."
         }
       ]
     },
-    "funFacts": {
+    "funfacts": {
       "title": "Fun Translation Facts",
       "items": [
         {
           "title": "Mistranslation Marvels",
-          "fact": "Did you know? Translating Disney's 'Let It Go' through 35 languages results in 'Give your cow freedom.' Machine translation loops can turn simple text into hilarious chaos!"
+          "description": "Did you know? Translating Disney's 'Let It Go' through 35 languages results in 'Give your cow freedom.' Machine translation loops can turn simple text into hilarious chaos!",
+          "image": "/images/docs/bad-translator-accuracy-concept.webp",
+          "imageAlt": "Mistranslation Marvels"
         },
         {
           "title": "Translation Twists",
-          "fact": "Here's a funny twist: English word 'preservative' translates as 'condom' in French. This leads to amusing packaging mishaps stating, 'This product contains no condoms.'"
+          "description": "Here's a funny twist: English word 'preservative' translates as 'condom' in French. This leads to amusing packaging mishaps stating, 'This product contains no condoms.'",
+          "image": "/images/docs/bad-translator-meme-creators.webp",
+          "imageAlt": "Translation Twists"
         }
       ]
     },
-    "userInterests": {
+    "userInterest": {
       "title": "Discover More",
-      "sections": [
+      "items": [
         {
           "title": "How Accurate is Bad Translator?",
-          "content": "While the translations are intentionally humorous and sometimes absurd, you can expect some fun 'mistakes'! This tool isn't about accuracy—it's all about having a laugh! These translations serve as a great way to spark creativity for memes or social posts."
+          "description": "While the translations are intentionally humorous and sometimes absurd, you can expect some fun 'mistakes'! This tool isn't about accuracy—it's all about having a laugh! These translations serve as a great way to spark creativity for memes or social posts.",
+          "image": "/images/docs/bad-translator-accuracy-concept.webp",
+          "imageAlt": "Bad translator accuracy comparison"
         },
         {
           "title": "Perfect for Social Media Content",
-          "content": "Bad Translator can be a goldmine for funny posts. Use it to generate quirky translations and share them on social media for instant reactions. This tool creates attention-grabbing, shareable content that drives engagement!"
+          "description": "Bad Translator can be a goldmine for funny posts. Use it to generate quirky translations and share them on social media for instant reactions. This tool creates attention-grabbing, shareable content that drives engagement!",
+          "image": "/images/docs/bad-translator-social-media.webp",
+          "imageAlt": "Social media posts created with bad translator"
         },
         {
           "title": "Great for Advertisers",
-          "content": "If you're in advertising, you can use Bad Translator to create playful, out-of-the-box content that will entertain your audience. It's an ideal tool for brainstorming catchy slogans or taglines. Testing different combinations always yields entertaining results!"
+          "description": "If you're in advertising, you can use Bad Translator to create playful, out-of-the-box content that will entertain your audience. It's an ideal tool for brainstorming catchy slogans or taglines. Testing different combinations always yields entertaining results!",
+          "image": "/images/docs/bad-translator-advertising.webp",
+          "imageAlt": "Creative advertising with bad translator"
         },
         {
           "title": "For Meme Creators and Influencers",
-          "content": "Bad Translator can help meme creators generate funny phrases that go viral. The bizarre translations are perfect for creating trending content. The ease of turning any sentence into something absurd makes this tool indispensable for content creators."
+          "description": "Bad Translator can help meme creators generate funny phrases that go viral. The bizarre translations are perfect for creating trending content. The ease of turning any sentence into something absurd makes this tool indispensable for content creators.",
+          "image": "/images/docs/bad-translator-meme-creators.webp",
+          "imageAlt": "Meme creators using bad translator results"
         }
       ]
     },
@@ -195,8 +253,14 @@
     "cta": {
       "title": "Start Creating Hilarious Translations with Bad Translator",
       "description": "Have fun and create absurd translations now with Bad Translator. It's quick, easy, and completely free with VibeTrans!",
-      "primaryButton": "Start Bad Translating"
+      "primaryButton": "Start Bad Translating",
+      "secondaryButton": "Back to Top"
     },
     "ctaButton": "Try Bad Translator Now"
+  },
+  "Metadata": {
+    "name": "VibeTrans",
+    "title": "Bad Translator - VibeTrans",
+    "description": "Break language barriers with AI-powered translations. Supports 100+ languages with accurate, context-aware translations."
   }
 }

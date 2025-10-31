@@ -3,7 +3,7 @@
 import { SpeechToTextButton } from '@/components/ui/speech-to-text-button';
 import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
 import { Mic, Waves } from 'lucide-react';
-import mammoth from 'mammoth';
+// import mammoth from 'mammoth'; // Disabled for Edge Runtime compatibility
 import { useEffect, useRef, useState } from 'react';
 
 interface MangaTranslatorToolProps {
@@ -72,14 +72,11 @@ export default function MangaTranslatorTool({
       const base64 = await convertImageToBase64(file);
 
       // Call API to process image
-      const response = await fetch(
-        '/api/manga-translator/recognize-translate',
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ imageData: base64 }),
-        }
-      );
+      const response = await fetch('/api/manga-translator', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ imageData: base64 }),
+      });
 
       const data = await response.json();
 
@@ -174,16 +171,13 @@ export default function MangaTranslatorTool({
 
     try {
       // Call our unified translation API
-      const response = await fetch(
-        '/api/manga-translator/recognize-translate',
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            text: inputText,
-          }),
-        }
-      );
+      const response = await fetch('/api/manga-translator', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          text: inputText,
+        }),
+      });
 
       const data = await response.json();
 
@@ -210,28 +204,48 @@ export default function MangaTranslatorTool({
     setDetectedLanguage('unknown');
   };
 
-  // Copy
+  // Copy - 动态加载
   const handleCopy = async () => {
     if (!outputText) return;
+
     try {
-      await navigator.clipboard.writeText(outputText);
-    } catch (err) {
-      console.error('Failed to copy:', err);
+      // 动态导入复制功能
+      const { smartCopyToClipboard } = await import('@/lib/utils/dynamic-copy');
+
+      await smartCopyToClipboard(outputText, {
+        successMessage: 'Translation copied to clipboard!',
+        errorMessage: 'Failed to copy translation',
+        onSuccess: () => {
+          // 可以添加成功提示
+        },
+        onError: (error) => {
+          console.error('Failed to copy:', error);
+        },
+      });
+    } catch (error) {
+      console.error('Copy function loading failed:', error);
     }
   };
 
-  // Download
-  const handleDownload = () => {
+  // Download - 动态加载
+  const handleDownload = async () => {
     if (!outputText) return;
-    const blob = new Blob([outputText], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `manga-translator-${Date.now()}.txt`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+
+    try {
+      // 动态导入下载功能
+      const { smartDownload } = await import('@/lib/utils/dynamic-download');
+
+      smartDownload(outputText, 'manga-translator', {
+        onSuccess: () => {
+          // 可以添加成功提示
+        },
+        onError: (error) => {
+          console.error('Download failed:', error);
+        },
+      });
+    } catch (error) {
+      console.error('Download function loading failed:', error);
+    }
   };
 
   return (
@@ -298,10 +312,6 @@ export default function MangaTranslatorTool({
               >
                 <Waves className="h-5 w-5" />
               </button>
-
-              <p className="text-xs text-gray-500 dark:text-gray-400">
-                Supports JPG, PNG, GIF, WebP formats
-              </p>
               <input
                 id="file-upload"
                 type="file"

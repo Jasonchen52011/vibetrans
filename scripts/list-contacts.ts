@@ -16,10 +16,14 @@ export default async function listContacts() {
       emails.push(contact.email);
     }
   } else {
-    console.error('contacts is not iterable');
+    if (process.env.NODE_ENV === 'development') {
+      console.error('contacts is not iterable');
+    }
   }
 
-  console.log(emails.join(', '));
+  if (process.env.NODE_ENV === 'development') {
+    console.log(emails.join(', '));
+  }
 }
 
 listContacts();

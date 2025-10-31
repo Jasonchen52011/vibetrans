@@ -83,7 +83,9 @@ export async function checkPremiumAccess(userId: string): Promise<boolean> {
       return false;
     });
   } catch (error) {
-    console.error('Error checking premium access for user:', error);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Error checking premium access for user:', error);
+    }
     return false;
   }
 }

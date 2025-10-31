@@ -1,0 +1,55 @@
+{
+  "TestApiPage": {
+    "title": "API Testing Tool",
+    "description": "Test all API endpoints for connectivity and response validation",
+    "overview": {
+      "title": "Test Overview",
+      "description": "Test status and performance metrics",
+      "stats": {
+        "success": "Success",
+        "warnings": "Warnings",
+        "errors": "Errors",
+        "total": "Total"
+      }
+    },
+    "categories": {
+      "all": "All APIs",
+      "health": "Health Check",
+      "basic": "Basic Translators",
+      "fantasy": "Fantasy Languages",
+      "ancient": "Ancient Languages",
+      "creative": "Creative APIs",
+      "symbols": "Symbol Translators",
+      "realworld": "Real World Languages",
+      "specialized": "Specialized",
+      "core": "Core APIs"
+    },
+    "actions": {
+      "testAll": "Test All",
+      "testing": "Testing...",
+      "testSingle": "Test",
+      "retry": "Retry"
+    },
+    "status": {
+      "pending": "Pending",
+      "testing": "Testing",
+      "success": "Success",
+      "error": "Error",
+      "warning": "Warning"
+    },
+    "details": {
+      "method": "Method",
+      "path": "Path",
+      "responseTime": "Response Time",
+      "testPayload": "Test Payload",
+      "response": "Response",
+      "error": "Error",
+      "missingFields": "Missing Expected Fields",
+      "missing": "Missing"
+    },
+    "alerts": {
+      "error": "Error occurred while testing API",
+      "missingFields": "Response is missing expected fields"
+    }
+  }
+}

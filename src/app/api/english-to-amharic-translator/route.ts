@@ -90,7 +90,9 @@ ${text}
       headers: { 'Content-Type': 'application/json' },
     });
   } catch (error) {
-    console.error('Translation error:', error);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Translation error:', error);
+    }
     return new Response(JSON.stringify({ error: 'Translation failed' }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' },

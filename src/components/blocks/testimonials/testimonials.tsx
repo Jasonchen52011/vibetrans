@@ -75,6 +75,21 @@ export default function TestimonialsSection({
           heading && !heading.includes(`items.${itemKey}`) ? heading : '';
         // @ts-ignore - Dynamic translation keys
         const quote = t(`items.${itemKey}.content`);
+        // Use t.raw for non-string values to avoid INVALID_MESSAGE errors
+        // @ts-ignore - Dynamic translation keys
+        const ratingRaw = t.raw(`items.${itemKey}.rating`);
+        // @ts-ignore - Dynamic translation keys
+        const dateRaw = t.raw(`items.${itemKey}.date`);
+        // @ts-ignore - Dynamic translation keys
+        const verifiedRaw = t.raw(`items.${itemKey}.verified`);
+
+        const rating =
+          typeof ratingRaw === 'number'
+            ? ratingRaw
+            : Number.parseFloat(ratingRaw) || 5;
+        const date = typeof dateRaw === 'string' ? dateRaw : '';
+        const verified =
+          typeof verifiedRaw === 'boolean' ? verifiedRaw : Boolean(verifiedRaw);
 
         // Use local avatar images to avoid duplicates
         const avatarPool = [
@@ -97,7 +112,10 @@ export default function TestimonialsSection({
           heading: headingValue || undefined,
           quote,
           src: avatarPool[avatarIndex],
-          rating: itemNumber % 2 === 0 ? 4.8 : 5.0,
+          rating:
+            typeof rating === 'number'
+              ? rating
+              : Number.parseFloat(rating) || 5.0,
         });
       } catch (error) {
         // If translation doesn't exist, skip this item and continue
@@ -159,57 +177,31 @@ export default function TestimonialsSection({
 
 function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
   const rating = testimonial.rating || 5.0;
-  const isHalfStar = rating < 5.0;
 
   return (
-    <figure className="rounded-3xl bg-card p-6 shadow-lg border border-border dark:bg-neutral-900">
-      <div className="flex flex-col items-start">
-        {/* Star Rating - 大星星 + 评分 */}
-        <div className="flex items-center gap-2 mb-4">
-          {[...Array(4)].map((_, i) => (
-            <svg
-              key={i}
-              className="w-8 h-8 text-yellow-400"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-            >
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-            </svg>
-          ))}
-          {isHalfStar ? (
-            <svg className="w-8 h-8 text-yellow-400" viewBox="0 0 20 20">
-              <defs>
-                <linearGradient id={`half-${rating}`}>
-                  <stop offset="50%" stopColor="currentColor" />
-                  <stop offset="50%" stopColor="transparent" />
-                </linearGradient>
-              </defs>
-              <path
-                fill={`url(#half-${rating})`}
-                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-              />
-              <path
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1"
-                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-              />
-            </svg>
-          ) : (
-            <svg
-              className="w-8 h-8 text-yellow-400"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-            >
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-            </svg>
-          )}
-          <span className="text-base font-semibold text-foreground ml-1">
-            {rating.toFixed(1)}
-          </span>
+    <figure className="rounded-2xl bg-gradient-to-br from-white to-gray-50 p-6 shadow-xl border border-gray-100 dark:from-neutral-900 dark:to-neutral-800 dark:border-neutral-700 hover:shadow-2xl transition-all duration-300">
+      <div className="flex flex-col h-full">
+        {/* 顶部信息条 */}
+        <div className="flex items-center justify-between mb-4">
+          {/* 左侧：星星评分 */}
+          <div className="flex items-center gap-1">
+            {[...Array(5)].map((_, i) => (
+              <svg
+                key={i}
+                className={`w-5 h-5 ${i < Math.floor(rating) ? 'text-yellow-400' : 'text-gray-300 dark:text-gray-600'}`}
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+            ))}
+            <span className="ml-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+              {rating.toFixed(1)}
+            </span>
+          </div>
         </div>
 
-        {/* 小标题（如果有） */}
+        {/* 标题（如果有） */}
         {testimonial.heading && (
           <h3 className="text-lg font-semibold text-foreground mb-3 before:content-['\201C'] after:content-['\201D']">
             {testimonial.heading}
@@ -217,16 +209,29 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
         )}
 
         {/* 评论内容 */}
-        <p className="text-base text-muted-foreground mb-4">
-          {testimonial.quote}
-        </p>
-
-        {/* 作者信息 - 去掉分隔线 */}
-        <div className="mt-auto pt-3 w-full">
-          <p className="text-sm text-foreground font-medium">
-            {testimonial.name}
+        <blockquote className="flex-grow mb-4">
+          <p className="text-gray-700 dark:text-gray-300 italic leading-relaxed">
+            "{testimonial.quote}"
           </p>
-          <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+        </blockquote>
+
+        {/* 底部作者信息 */}
+        <div className="border-t border-gray-200 dark:border-gray-600 pt-4 mt-auto">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="font-semibold text-gray-900 dark:text-white text-sm">
+                {testimonial.name}
+              </p>
+              <p className="text-xs text-gray-500 dark:text-gray-400">
+                {testimonial.role}
+              </p>
+            </div>
+            <div className="text-right">
+              <p className="text-xs text-gray-400 dark:text-gray-500">
+                Recent Review
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </figure>

@@ -89,9 +89,11 @@
           "description": "播放翻译语音掌握发音，适合学习与口语练习，也可直接下载文本。",
           "wordCount": 40
         }
-      ]
+      ],
+      "image": "/images/docs/ancient-greek-translator-how-to.webp",
+      "imageAlt": "4 步完成希腊语翻译"
     },
-    "funFacts": {
+    "funfacts": {
       "title": "关于希腊语的趣味知识",
       "items": [
         {
@@ -140,7 +142,7 @@
     "highlights": {
       "title": "Greek-Translator Suite 亮点功能",
       "description": "了解这款希腊语翻译工具的核心优势。",
-      "features": [
+      "items": [
         {
           "title": "AI 语境理解",
           "icon": "FaBrain",

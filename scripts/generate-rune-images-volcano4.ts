@@ -73,7 +73,9 @@ async function downloadAndConvertImage(
   url: string,
   outputPath: string
 ): Promise<void> {
-  console.log(`📥 Downloading image from: ${url}`);
+  if (process.env.NODE_ENV === 'development') {
+    console.log(`📥 Downloading image from: ${url}`);
+  }
 
   const response = await fetch(url);
   if (!response.ok) {
@@ -97,15 +99,19 @@ async function downloadAndConvertImage(
     })
     .toFile(outputPath);
 
-  console.log(`✅ Image saved and converted to WebP: ${outputPath}`);
+  if (process.env.NODE_ENV === 'development') {
+    console.log(`✅ Image saved and converted to WebP: ${outputPath}`);
+  }
 }
 
 async function generateAllImages() {
-  console.log(
-    '\n🎨 Starting image generation for Rune Translator (Volcano 4.0 ONLY)...\n'
-  );
-  console.log(`📂 Output directory: ${OUTPUT_DIR}\n`);
-  console.log(`🔧 API: Volcano 4.0 (NO fallback)\n`);
+  if (process.env.NODE_ENV === 'development') {
+    console.log(
+      '\n🎨 Starting image generation for Rune Translator (Volcano 4.0 ONLY)...\n'
+    );
+    console.log(`📂 Output directory: ${OUTPUT_DIR}\n`);
+    console.log(`🔧 API: Volcano 4.0 (NO fallback)\n`);
+  }
 
   // Ensure output directory exists
   await fs.mkdir(OUTPUT_DIR, { recursive: true });
@@ -115,14 +121,18 @@ async function generateAllImages() {
 
   for (let i = 0; i < imageTasks.length; i++) {
     const task = imageTasks[i];
-    console.log(`\n${'='.repeat(80)}`);
-    console.log(`🖼️  Image ${i + 1}/${imageTasks.length}: ${task.filename}`);
-    console.log(`📝 Description: ${task.description}`);
-    console.log(`${'='.repeat(80)}\n`);
+    if (process.env.NODE_ENV === 'development') {
+      console.log(`\n${'='.repeat(80)}`);
+      console.log(`🖼️  Image ${i + 1}/${imageTasks.length}: ${task.filename}`);
+      console.log(`📝 Description: ${task.description}`);
+      console.log(`${'='.repeat(80)}\n`);
+    }
 
     try {
-      console.log(`🌋 [Volcano 4.0] Generating image: ${task.filename}...`);
-      console.log(`📝 Prompt: ${task.prompt.substring(0, 100)}...`);
+      if (process.env.NODE_ENV === 'development') {
+        console.log(`🌋 [Volcano 4.0] Generating image: ${task.filename}...`);
+        console.log(`📝 Prompt: ${task.prompt.substring(0, 100)}...`);
+      }
 
       const result = await generateVolcanoImage({
         prompt: task.prompt,
@@ -132,57 +142,76 @@ async function generateAllImages() {
       });
 
       const imageUrl = result.data[0].url;
-      console.log(`\n🔗 Generated URL: ${imageUrl}`);
-      if (result.data[0].revised_prompt) {
-        console.log(
-          `📄 Revised prompt: ${result.data[0].revised_prompt.substring(0, 100)}...`
-        );
+      if (process.env.NODE_ENV === 'development') {
+        console.log(`\n🔗 Generated URL: ${imageUrl}`);
+        if (result.data[0].revised_prompt) {
+          console.log(
+            `📄 Revised prompt: ${result.data[0].revised_prompt.substring(0, 100)}...`
+          );
+        }
+        console.log(`🤖 Model used: Volcano 4.0`);
       }
-      console.log(`🤖 Model used: Volcano 4.0`);
 
       // Download and convert to WebP
       const outputPath = path.join(OUTPUT_DIR, task.filename);
       await downloadAndConvertImage(imageUrl, outputPath);
 
       successCount++;
-      console.log(`\n✅ Successfully generated: ${task.filename}`);
+      if (process.env.NODE_ENV === 'development') {
+        console.log(`\n✅ Successfully generated: ${task.filename}`);
+      }
     } catch (error: any) {
       failCount++;
-      console.error(`\n❌ Failed to generate ${task.filename}:`, error.message);
+      if (process.env.NODE_ENV === 'development') {
+        console.error(
+          `\n❌ Failed to generate ${task.filename}:`,
+          error.message
+        );
 
-      // Continue with next image instead of stopping
-      console.log(`🔄 Continuing with next image...`);
+        // Continue with next image instead of stopping
+        console.log(`🔄 Continuing with next image...`);
+      }
     }
 
     // Add delay between requests to avoid rate limiting
     if (i < imageTasks.length - 1) {
-      console.log(`⏱️  Waiting 3 seconds before next request...`);
+      if (process.env.NODE_ENV === 'development') {
+        console.log(`⏱️  Waiting 3 seconds before next request...`);
+      }
       await new Promise((resolve) => setTimeout(resolve, 3000));
     }
   }
 
   // Summary
-  console.log(`\n${'='.repeat(80)}`);
-  console.log('📊 GENERATION SUMMARY');
-  console.log(`${'='.repeat(80)}`);
-  console.log(`✅ Success: ${successCount}/${imageTasks.length}`);
-  console.log(`❌ Failed: ${failCount}/${imageTasks.length}`);
-  console.log(`📂 Output directory: ${OUTPUT_DIR}`);
-  console.log(`${'='.repeat(80)}\n`);
+  if (process.env.NODE_ENV === 'development') {
+    console.log(`\n${'='.repeat(80)}`);
+    console.log('📊 GENERATION SUMMARY');
+    console.log(`${'='.repeat(80)}`);
+    console.log(`✅ Success: ${successCount}/${imageTasks.length}`);
+    console.log(`❌ Failed: ${failCount}/${imageTasks.length}`);
+    console.log(`📂 Output directory: ${OUTPUT_DIR}`);
+    console.log(`${'='.repeat(80)}\n`);
+  }
 
   if (failCount > 0) {
-    console.warn(`⚠️  Some images failed to generate. Please retry manually.`);
+    if (process.env.NODE_ENV === 'development') {
+      console.warn(`⚠️  Some images failed to generate. Please retry manually.`);
+    }
     process.exit(1);
   } else {
-    console.log(`🎉 All images generated successfully!`);
-    console.log(
-      `🌐 Visit http://localhost:3001/rune-translator to see the updated images!`
-    );
+    if (process.env.NODE_ENV === 'development') {
+      console.log(`🎉 All images generated successfully!`);
+      console.log(
+        `🌐 Visit http://localhost:3001/rune-translator to see the updated images!`
+      );
+    }
   }
 }
 
 // Run the generator
 generateAllImages().catch((error) => {
-  console.error('\n💥 Fatal error:', error);
+  if (process.env.NODE_ENV === 'development') {
+    console.error('\n💥 Fatal error:', error);
+  }
   process.exit(1);
 });

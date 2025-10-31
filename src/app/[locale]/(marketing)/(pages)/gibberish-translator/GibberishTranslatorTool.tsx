@@ -1,13 +1,9 @@
 'use client';
 
 import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
-import {
-  type GibberishStyle,
-  gibberishToText,
-  textToGibberish,
-} from '@/lib/gibberish';
+import { readFileContent } from '@/lib/utils/file-utils';
 import { ArrowRightIcon } from 'lucide-react';
-import mammoth from 'mammoth';
+// import mammoth from 'mammoth'; // Disabled for Edge Runtime compatibility
 import { useState } from 'react';
 
 interface GibberishTranslatorToolProps {
@@ -24,8 +20,6 @@ export default function GibberishTranslatorTool({
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [mode, setMode] = useState<'toGibberish' | 'toStandard'>('toGibberish');
-  const [gibberishStyle, setGibberishStyle] =
-    useState<GibberishStyle>('syllable');
   const [fileName, setFileName] = useState<string | null>(null);
 
   // Handle file upload
@@ -47,62 +41,8 @@ export default function GibberishTranslatorTool({
     }
   };
 
-  // Read file content
-  const readFileContent = async (file: File): Promise<string> => {
-    const fileExtension = file.name.split('.').pop()?.toLowerCase();
-
-    // Handle .txt files
-    if (fileExtension === 'txt') {
-      return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-
-        reader.onload = (e) => {
-          const content = e.target?.result as string;
-          if (content) {
-            resolve(content);
-          } else {
-            reject(new Error('File is empty'));
-          }
-        };
-
-        reader.onerror = () => {
-          reject(new Error('Failed to read file'));
-        };
-
-        reader.readAsText(file);
-      });
-    }
-
-    // Handle .docx files with mammoth
-    if (fileExtension === 'docx') {
-      try {
-        const arrayBuffer = await file.arrayBuffer();
-        const result = await mammoth.extractRawText({ arrayBuffer });
-        if (result.value) {
-          return result.value;
-        }
-        throw new Error('Failed to extract text from Word document');
-      } catch (error) {
-        throw new Error(
-          'Failed to read .docx file. Please ensure it is a valid Word document.'
-        );
-      }
-    }
-
-    // Unsupported file type
-    if (fileExtension === 'doc') {
-      throw new Error(
-        'Old .doc format is not supported. Please save as .docx (File → Save As → Word Document (.docx)) or copy-paste the text directly.'
-      );
-    }
-
-    throw new Error(
-      'Unsupported file format. Please upload .txt or .docx files.'
-    );
-  };
-
   // Handle translation
-  const handleTranslate = () => {
+  const handleTranslate = async () => {
     if (!inputText.trim()) {
       setError(pageData.tool.noInput);
       setTranslatedText('');
@@ -114,15 +54,26 @@ export default function GibberishTranslatorTool({
     setTranslatedText('');
 
     try {
-      let result: string;
+      const response = await fetch('/api/gibberish-translator', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          text: inputText,
+          options: {
+            mode,
+          },
+        }),
+      });
 
-      if (mode === 'toGibberish') {
-        result = textToGibberish(inputText, gibberishStyle);
-      } else {
-        result = gibberishToText(inputText);
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || pageData.tool.error);
       }
 
-      setTranslatedText(result);
+      setTranslatedText(data.translated || '');
     } catch (err: any) {
       setError(err.message || pageData.tool.error);
       setTranslatedText('');
@@ -154,71 +105,35 @@ export default function GibberishTranslatorTool({
   const handleCopy = async () => {
     if (!translatedText) return;
     try {
-      await navigator.clipboard.writeText(translatedText);
-      // Optional: Show success feedback
-    } catch (err) {
-      console.error('Failed to copy:', err);
+      const { smartCopyToClipboard } = await import('@/lib/utils/dynamic-copy');
+      await smartCopyToClipboard(translatedText, {
+        successMessage: 'Translation copied to clipboard!',
+        errorMessage: 'Failed to copy translation',
+        onSuccess: () => {},
+        onError: (error) => console.error('Failed to copy:', error),
+      });
+    } catch (error) {
+      console.error('Copy function loading failed:', error);
     }
   };
 
   // Download result as text file
-  const handleDownload = () => {
+  const handleDownload = async () => {
     if (!translatedText) return;
-    const blob = new Blob([translatedText], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `gibberish-${mode}-${Date.now()}.txt`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+    try {
+      const { smartDownload } = await import('@/lib/utils/dynamic-download');
+      smartDownload(translatedText, 'gibberish-translator', {
+        onSuccess: () => {},
+        onError: (error) => console.error('Download failed:', error),
+      });
+    } catch (error) {
+      console.error('Download function loading failed:', error);
+    }
   };
 
   return (
     <div className="container max-w-7xl mx-auto px-4 mb-10">
       <main className="w-full bg-white dark:bg-zinc-800 shadow-xl border border-gray-100 dark:border-zinc-700 rounded-lg p-4 md:p-8">
-        {/* Style Selector */}
-        {mode === 'toGibberish' && (
-          <div className="mb-6 flex items-center gap-4">
-            <label className="text-sm font-medium text-gray-700 dark:text-gray-200">
-              {pageData.tool.styleLabel}
-            </label>
-            <div className="flex gap-2">
-              <button
-                onClick={() => setGibberishStyle('syllable')}
-                className={`px-4 py-2 rounded-lg font-medium transition-colors ${
-                  gibberishStyle === 'syllable'
-                    ? 'bg-primary text-white'
-                    : 'bg-gray-200 dark:bg-zinc-600 text-gray-800 dark:text-gray-100 hover:bg-gray-300 dark:hover:bg-zinc-500'
-                }`}
-              >
-                {pageData.tool.styles.syllable}
-              </button>
-              <button
-                onClick={() => setGibberishStyle('random')}
-                className={`px-4 py-2 rounded-lg font-medium transition-colors ${
-                  gibberishStyle === 'random'
-                    ? 'bg-primary text-white'
-                    : 'bg-gray-200 dark:bg-zinc-600 text-gray-800 dark:text-gray-100 hover:bg-gray-300 dark:hover:bg-zinc-500'
-                }`}
-              >
-                {pageData.tool.styles.random}
-              </button>
-              <button
-                onClick={() => setGibberishStyle('reverse')}
-                className={`px-4 py-2 rounded-lg font-medium transition-colors ${
-                  gibberishStyle === 'reverse'
-                    ? 'bg-primary text-white'
-                    : 'bg-gray-200 dark:bg-zinc-600 text-gray-800 dark:text-gray-100 hover:bg-gray-300 dark:hover:bg-zinc-500'
-                }`}
-              >
-                {pageData.tool.styles.reverse}
-              </button>
-            </div>
-          </div>
-        )}
-
         <div className="flex flex-col md:flex-row gap-2 md:gap-3">
           {/* Input Area */}
           <div className="flex-1">

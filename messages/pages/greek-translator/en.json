@@ -85,9 +85,11 @@
           "description": "Listen to your translation with voice output, perfect for learning pronunciation or verifying accuracy.",
           "wordCount": 40
         }
-      ]
+      ],
+      "image": "/images/docs/ancient-greek-translator-how-to.webp",
+      "imageAlt": "How to Translate Greek Text Easily"
     },
-    "funFacts": {
+    "funfacts": {
       "title": "Interesting Facts",
       "items": [
         {
@@ -136,7 +138,7 @@
     "highlights": {
       "title": "Key Features of Greek-Translator Suite",
       "description": "Uncover the power of the Greek-Translator Suite with these standout features.",
-      "features": [
+      "items": [
         {
           "title": "AI Context Understanding",
           "icon": "FaBrain",
@@ -228,5 +230,10 @@
       "primaryButton": "Try GreekTranslator Now",
       "secondaryButton": "Back to Top"
     }
+  },
+  "Metadata": {
+    "name": "VibeTrans",
+    "title": "Greek Translator - VibeTrans",
+    "description": "Break language barriers with AI-powered translations. Supports 100+ languages with accurate, context-aware translations."
   }
 }

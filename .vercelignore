@@ -1,0 +1,5 @@
+# 排除未使用的图片目录
+public/docs2/
+# 临时文件
+*.log
+.DS_Store

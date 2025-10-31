@@ -21,25 +21,43 @@
     "whatIs": {
       "title": "What is Japanese-to-English Translator Pro",
       "description": "Japanese-to-English Translator Pro is an advanced online tool designed to convert Japanese text, speech, and images into English. It supports multiple translation modes and provides cultural context for precise communication.",
-      "image": "/images/docs/placeholder.webp",
+      "image": "/images/docs/ai-translation-fun.webp",
       "imageAlt": "What is Japanese to English Translator"
     },
     "examples": {
       "title": "Translation in Action",
       "description": "Upload a Japanese document, and watch as the tool seamlessly translates kanji and kana into English, preserving context and meaning for technical or literary text.",
       "items": [
-        { "alt": "Example 1", "name": "example-1" },
-        { "alt": "Example 2", "name": "example-2" },
-        { "alt": "Example 3", "name": "example-3" },
-        { "alt": "Example 4", "name": "example-4" },
-        { "alt": "Example 5", "name": "example-5" },
-        { "alt": "Example 6", "name": "example-6" }
+        {
+          "alt": "Example 1",
+          "name": "example-1"
+        },
+        {
+          "alt": "Example 2",
+          "name": "example-2"
+        },
+        {
+          "alt": "Example 3",
+          "name": "example-3"
+        },
+        {
+          "alt": "Example 4",
+          "name": "example-4"
+        },
+        {
+          "alt": "Example 5",
+          "name": "example-5"
+        },
+        {
+          "alt": "Example 6",
+          "name": "example-6"
+        }
       ]
     },
     "howto": {
       "title": "How to Translate Japanese to English",
       "description": "Quick guide to using the translator.",
-      "image": "/images/docs/placeholder.webp",
+      "image": "/images/docs/translation-step-by-step-guide.webp",
       "imageAlt": "How to use Japanese to English Translator",
       "steps": [
         {
@@ -56,19 +74,19 @@
         }
       ]
     },
-    "funFacts": {
+    "funfacts": {
       "title": "Interesting Facts About Japanese Language",
       "items": [
         {
           "title": "Three Writing Systems",
           "description": "Japanese uses three scripts—kanji, hiragana, and katakana—often mixed in a single sentence, challenging translation tools.",
-          "image": "/images/docs/placeholder.webp",
+          "image": "/images/docs/docs-transform.webp",
           "imageAlt": "Japanese writing systems - kanji, hiragana, and katakana"
         },
         {
           "title": "Early Machine Translation",
           "description": "The first machine translation of Japanese was on an IBM 7090 in 1959, showcasing early AI potential.",
-          "image": "/images/docs/placeholder.webp",
+          "image": "/images/docs/translation-simplified.webp",
           "imageAlt": "Historical IBM 7090 computer used for Japanese translation"
         }
       ]
@@ -79,25 +97,25 @@
         {
           "title": "Contextual Translation",
           "description": "Our tool excels in understanding context, ensuring accurate translations even in complex sentences.",
-          "image": "/images/docs/placeholder.webp",
+          "image": "/images/docs/business-communication-simplified.webp",
           "imageAlt": "Contextual Japanese to English translation process"
         },
         {
           "title": "Cultural Insights",
           "description": "Gain valuable cultural insights with every translation, helping you understand nuances and idioms.",
-          "image": "/images/docs/placeholder.webp",
+          "image": "/images/docs/translation-fields.webp",
           "imageAlt": "Cultural insights in Japanese to English translation"
         },
         {
           "title": "AI-Powered Accuracy",
           "description": "Benefit from AI-driven precision, offering over 90% accuracy in language detection and translation.",
-          "image": "/images/docs/placeholder.webp",
+          "image": "/images/docs/translate-success.webp",
           "imageAlt": "AI-powered accuracy in Japanese translation"
         },
         {
           "title": "Multi-modal Support",
           "description": "Translate text, images, and audio effortlessly with our comprehensive multi-modal support.",
-          "image": "/images/docs/placeholder.webp",
+          "image": "/images/docs/ai-learning-system.webp",
           "imageAlt": "Multi-modal support for Japanese translation"
         }
       ]
@@ -105,7 +123,7 @@
     "highlights": {
       "title": "Key Features of Japanese-to-English Translator Pro",
       "description": "Discover what makes our Japanese translator unique with powerful features designed for accuracy and ease of use.",
-      "features": [
+      "items": [
         {
           "icon": "FaRocket",
           "title": "Easy to Use",
@@ -196,5 +214,10 @@
       "primaryButton": "Get Started Free",
       "secondaryButton": "Back to Top"
     }
+  },
+  "Metadata": {
+    "name": "VibeTrans",
+    "title": "Japanese to English Translator - VibeTrans",
+    "description": "Break language barriers with AI-powered translations. Supports 100+ languages with accurate, context-aware translations."
   }
 }

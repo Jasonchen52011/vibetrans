@@ -191,7 +191,9 @@ export async function POST(request: Request) {
       },
     });
   } catch (error: any) {
-    console.error('Translation error:', error);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Translation error:', error);
+    }
 
     return NextResponse.json(
       { error: 'Translation failed. Please try again.' },

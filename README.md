@@ -36,6 +36,10 @@ pnpm dev
 
 Visit `http://localhost:3000` to see the application.
 
+## Deployment
+
+This project is deployed on Cloudflare Pages with automatic deployments from the main branch.
+
 ## Available Scripts
 
 - `pnpm dev` - Start development server

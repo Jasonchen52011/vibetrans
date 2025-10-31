@@ -81,7 +81,7 @@
         }
       ]
     },
-    "funFacts": {
+    "funfacts": {
       "title": "Interesting Facts",
       "items": [
         {
@@ -136,7 +136,7 @@
     "highlights": {
       "title": "Why Choose Our Nahuatl Translator?",
       "description": "Discover what makes our Nahuatl translator unique with powerful features designed for accuracy and ease of use.",
-      "features": [
+      "items": [
         {
           "title": "Easy and Free to Use",
           "icon": "FaRocket",

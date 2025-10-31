@@ -50,13 +50,15 @@ export async function generateVideo(
 
     const model = options.model || VEO_MODELS.STANDARD;
 
-    console.log('Veo generate video request:', {
-      model,
-      prompt: options.prompt,
-      resolution: options.resolution,
-      aspectRatio: options.aspectRatio,
-      hasImage: !!options.imageUrl,
-    });
+    if (process.env.NODE_ENV === 'development') {
+      console.log('Veo generate video request:', {
+        model,
+        prompt: options.prompt,
+        resolution: options.resolution,
+        aspectRatio: options.aspectRatio,
+        hasImage: !!options.imageUrl,
+      });
+    }
 
     // Real API call to Google Veo 3
     const requestBody: any = {
@@ -99,14 +101,18 @@ export async function generateVideo(
       const errorData = (await response.json()) as {
         error?: { message?: string };
       };
-      console.error('Veo API error:', errorData);
+      if (process.env.NODE_ENV === 'development') {
+        console.error('Veo API error:', errorData);
+      }
       throw new Error(
         errorData.error?.message || `API request failed: ${response.status}`
       );
     }
 
     const data = (await response.json()) as { name?: string };
-    console.log('Veo API response:', data);
+    if (process.env.NODE_ENV === 'development') {
+      console.log('Veo API response:', data);
+    }
 
     // Extract operation name (task ID) from response
     const taskId =
@@ -119,7 +125,9 @@ export async function generateVideo(
       message: 'Video generation started',
     };
   } catch (error) {
-    console.error('Veo generate video error:', error);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Veo generate video error:', error);
+    }
     throw error;
   }
 }
@@ -136,7 +144,9 @@ export async function checkVideoStatus(
     throw new Error('GOOGLE_GENERATIVE_AI_API_KEY is not configured');
   }
 
-  console.log('Checking video status for task:', taskId);
+  if (process.env.NODE_ENV === 'development') {
+    console.log('Checking video status for task:', taskId);
+  }
 
   for (let attempt = 1; attempt <= retries; attempt++) {
     try {
@@ -155,7 +165,9 @@ export async function checkVideoStatus(
         const errorData = (await response.json()) as {
           error?: { message?: string };
         };
-        console.error('Veo status check error:', errorData);
+        if (process.env.NODE_ENV === 'development') {
+          console.error('Veo status check error:', errorData);
+        }
         throw new Error(
           errorData.error?.message || `Status check failed: ${response.status}`
         );
@@ -176,7 +188,9 @@ export async function checkVideoStatus(
           };
         };
       };
-      console.log('Veo status response:', data);
+      if (process.env.NODE_ENV === 'development') {
+        console.log('Veo status response:', data);
+      }
 
       // Check if operation is done
       if (data.done) {
@@ -196,7 +210,9 @@ export async function checkVideoStatus(
           generateVideoResponse.raiMediaFilteredCount > 0
         ) {
           const reasons = generateVideoResponse.raiMediaFilteredReasons || [];
-          console.error('Video blocked by safety filters:', reasons);
+          if (process.env.NODE_ENV === 'development') {
+            console.error('Video blocked by safety filters:', reasons);
+          }
 
           // Extract more specific error message if available
           let errorMessage = 'Content blocked by safety filters.';
@@ -222,7 +238,9 @@ export async function checkVideoStatus(
           generateVideoResponse?.generatedSamples?.[0]?.video?.uri;
 
         if (!videoUrl) {
-          console.error('No video URL in response:', data.response);
+          if (process.env.NODE_ENV === 'development') {
+            console.error('No video URL in response:', data.response);
+          }
           return {
             taskId,
             status: 'failed',
@@ -230,7 +248,9 @@ export async function checkVideoStatus(
           };
         }
 
-        console.log('Extracted video URL:', videoUrl);
+        if (process.env.NODE_ENV === 'development') {
+          console.log('Extracted video URL:', videoUrl);
+        }
 
         return {
           taskId,
@@ -245,10 +265,12 @@ export async function checkVideoStatus(
         status: 'processing',
       };
     } catch (error) {
-      console.error(
-        `Veo check status error (attempt ${attempt}/${retries}):`,
-        error
-      );
+      if (process.env.NODE_ENV === 'development') {
+        console.error(
+          `Veo check status error (attempt ${attempt}/${retries}):`,
+          error
+        );
+      }
 
       // If this is the last attempt or a non-network error, return processing status
       if (

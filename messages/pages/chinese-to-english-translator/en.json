@@ -78,7 +78,7 @@
       "description": "Explore these real translation examples to understand how VibeTrans handles Chinese to English text conversion effectively, ensuring precision and clarity in various contexts.",
       "items": [
         {
-          "alt": "你好 → Hello",
+          "alt": "Ni hao → Hello",
           "name": "Greeting Translation"
         },
         {
@@ -123,9 +123,11 @@
           "title": "Download or Copy Results",
           "description": "Once the translation is complete, save the translated text from your browser or copy it directly for your use."
         }
-      ]
+      ],
+      "image": "/images/docs/chinese-to-english-translator-how-to.webp",
+      "imageAlt": "How to Translate Chinese to English"
     },
-    "userScenarios": {
+    "userInterest": {
       "title": "Chinese Language Learning & Cultural Bridge",
       "items": [
         {
@@ -179,24 +181,29 @@
       "items": [
         {
           "title": "Simple and Free to Use",
-          "description": "VibeTrans offers a user-friendly interface that allows you to translate text without any cost, making it accessible to everyone."
+          "description": "VibeTrans offers a user-friendly interface that allows you to translate text without any cost, making it accessible to everyone.",
+          "icon": "FaRocket"
         },
         {
           "title": "Data Accuracy",
-          "description": "Our translations maintain high accuracy, ensuring that your messages are conveyed precisely, without losing the original meaning."
+          "description": "Our translations maintain high accuracy, ensuring that your messages are conveyed precisely, without losing the original meaning.",
+          "icon": "FaBrain"
         },
         {
           "title": "AI Context Understanding",
-          "description": "VibeTrans uses advanced AI to understand context, ensuring translations are not only accurate but also contextually appropriate."
+          "description": "VibeTrans uses advanced AI to understand context, ensuring translations are not only accurate but also contextually appropriate.",
+          "icon": "FaShieldAlt"
         },
         {
           "title": "Data Privacy and Security",
-          "description": "Your data is safe with VibeTrans. We prioritize privacy, ensuring your text remains confidential and secure."
+          "description": "Your data is safe with VibeTrans. We prioritize privacy, ensuring your text remains confidential and secure.",
+          "icon": "FaEye"
         }
       ]
     },
     "testimonials": {
       "title": "What Our Users Are Saying",
+      "subtitle": "Real feedback from our valued users",
       "items": {
         "item-1": {
           "name": "Emily Johnson",
@@ -285,13 +292,22 @@
       "items": [
         {
           "title": "The Most Spoken Language Pair",
-          "description": "Did you know Chinese-English is one of the most translated language pairs globally? With over 1 billion speakers combined, accurate translation between these languages bridges the world's largest economies. VibeTrans handles this massive linguistic challenge daily!"
+          "description": "Did you know Chinese-English is one of the most translated language pairs globally? With over 1 billion speakers combined, accurate translation between these languages bridges the world's largest economies. VibeTrans handles this massive linguistic challenge daily!",
+          "image": "/images/docs/english-to-chinese-translator-fact-1.webp",
+          "imageAlt": "The Most Spoken Language Pair"
         },
         {
           "title": "Characters vs Words Challenge",
-          "description": "Chinese uses characters while English uses words - a single Chinese character can represent a complete concept! VibeTrans expertly navigates this fundamental difference, ensuring meaningful translations that capture the essence of both writing systems."
+          "description": "Chinese uses characters while English uses words - a single Chinese character can represent a complete concept! VibeTrans expertly navigates this fundamental difference, ensuring meaningful translations that capture the essence of both writing systems.",
+          "image": "/images/docs/english-to-chinese-translator-fact-2.webp",
+          "imageAlt": "Characters vs Words Challenge"
         }
       ]
     }
+  },
+  "Metadata": {
+    "name": "VibeTrans",
+    "title": "Chinese to English Translator - VibeTrans",
+    "description": "Break language barriers with AI-powered translations. Supports 100+ languages with accurate, context-aware translations."
   }
 }

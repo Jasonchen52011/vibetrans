@@ -90,7 +90,7 @@
         }
       ]
     },
-    "funFacts": {
+    "funfacts": {
       "title": "Interesting Facts",
       "items": [
         {
@@ -139,7 +139,7 @@
     "highlights": {
       "title": "Highlights of Yoda Translator",
       "description": "Discover why Yoda Translator is the preferred choice for language enthusiasts.",
-      "features": [
+      "items": [
         {
           "title": "Voice Input & Output",
           "icon": "FaRocket",
@@ -192,20 +192,20 @@
     "faqs": {
       "title": "Frequently Asked Questions",
       "subtitle": "Have other questions? Feel free to contact us via email.",
-      "items": [
-        {
+      "items": {
+        "item-1": {
           "question": "Is Yoda Translator free to use?",
           "answer": "Yes, Yoda Translator is completely free to use on the web. You can access all features without any cost. However, note that it is not available as an app and requires an internet connection."
         },
-        {
+        "item-2": {
           "question": "What is the best way to use Yoda Translator for learning?",
           "answer": "Yoda Translator is best used in learning by exploring sentence structures. It allows users to see how standard English sentences transform into Yoda-speak, providing insight into grammar and syntax."
         },
-        {
+        "item-3": {
           "question": "How is my privacy protected with Yoda Translator?",
           "answer": "Yoda Translator ensures your privacy by operating entirely on the frontend. No data is stored on servers, and all translations are processed locally on your device, keeping your information secure."
         }
-      ]
+      }
     },
     "ctaButton": "Try YodaTranslator Now",
     "cta": {
@@ -214,5 +214,10 @@
       "primaryButton": "Try YodaTranslator Now",
       "secondaryButton": "Back to Top"
     }
+  },
+  "Metadata": {
+    "name": "VibeTrans",
+    "title": "Yoda Translator - VibeTrans",
+    "description": "Break language barriers with AI-powered translations. Supports 100+ languages with accurate, context-aware translations."
   }
 }

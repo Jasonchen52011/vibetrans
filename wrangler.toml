@@ -2,6 +2,6 @@ name = "vibetrans"
 compatibility_date = "2025-01-01"
 compatibility_flags = ["nodejs_compat"]
 
-# Cloudflare Pages configuration
-# Use the @cloudflare/next-on-pages adapter output
+# Cloudflare Pages configuration with Functions
+# Output directory will be handled by @cloudflare/next-on-pages
 pages_build_output_dir = ".vercel/output/static"

@@ -1,7 +1,8 @@
 'use client';
 
 import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
-import mammoth from 'mammoth';
+import { readFileContent } from '@/lib/utils/file-utils';
+// import mammoth from 'mammoth'; // Disabled for Edge Runtime compatibility
 import { useState } from 'react';
 
 interface BadTranslatorToolProps {
@@ -40,60 +41,6 @@ export default function BadTranslatorTool({
       setError(err.message || 'Failed to read file');
       setFileName(null);
     }
-  };
-
-  // Read file content
-  const readFileContent = async (file: File): Promise<string> => {
-    const fileExtension = file.name.split('.').pop()?.toLowerCase();
-
-    // Handle .txt files
-    if (fileExtension === 'txt') {
-      return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-
-        reader.onload = (e) => {
-          const content = e.target?.result as string;
-          if (content) {
-            resolve(content);
-          } else {
-            reject(new Error('File is empty'));
-          }
-        };
-
-        reader.onerror = () => {
-          reject(new Error('Failed to read file'));
-        };
-
-        reader.readAsText(file);
-      });
-    }
-
-    // Handle .docx files with mammoth
-    if (fileExtension === 'docx') {
-      try {
-        const arrayBuffer = await file.arrayBuffer();
-        const result = await mammoth.extractRawText({ arrayBuffer });
-        if (result.value) {
-          return result.value;
-        }
-        throw new Error('Failed to extract text from Word document');
-      } catch (error) {
-        throw new Error(
-          'Failed to read .docx file. Please ensure it is a valid Word document.'
-        );
-      }
-    }
-
-    // Unsupported file type
-    if (fileExtension === 'doc') {
-      throw new Error(
-        'Old .doc format is not supported. Please save as .docx (File → Save As → Word Document (.docx)) or copy-paste the text directly.'
-      );
-    }
-
-    throw new Error(
-      'Unsupported file format. Please upload .txt or .docx files.'
-    );
   };
 
   // Handle translation
@@ -147,28 +94,48 @@ export default function BadTranslatorTool({
     setError(null);
   };
 
-  // Copy result to clipboard
+  // Copy result to clipboard - 动态加载
   const handleCopy = async () => {
     if (!outputText) return;
+
     try {
-      await navigator.clipboard.writeText(outputText);
-    } catch (err) {
-      console.error('Failed to copy:', err);
+      // 动态导入复制功能
+      const { smartCopyToClipboard } = await import('@/lib/utils/dynamic-copy');
+
+      await smartCopyToClipboard(outputText, {
+        successMessage: 'Translation copied to clipboard!',
+        errorMessage: 'Failed to copy translation',
+        onSuccess: () => {
+          // 可以添加成功提示
+        },
+        onError: (error) => {
+          console.error('Failed to copy:', error);
+        },
+      });
+    } catch (error) {
+      console.error('Copy function loading failed:', error);
     }
   };
 
-  // Download result as text file
-  const handleDownload = () => {
+  // Download result as text file - 动态加载
+  const handleDownload = async () => {
     if (!outputText) return;
-    const blob = new Blob([outputText], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `bad-translated-${style}-${Date.now()}.txt`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+
+    try {
+      // 动态导入下载功能
+      const { smartDownload } = await import('@/lib/utils/dynamic-download');
+
+      smartDownload(outputText, 'bad-translator', {
+        onSuccess: () => {
+          // 可以添加成功提示
+        },
+        onError: (error) => {
+          console.error('Download failed:', error);
+        },
+      });
+    } catch (error) {
+      console.error('Download function loading failed:', error);
+    }
   };
 
   return (

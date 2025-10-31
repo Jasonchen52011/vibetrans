@@ -13,7 +13,7 @@
       "doggyVibe": "Cantonese Translation",
       "inputLabel": "English or Cantonese Input",
       "outputLabel": "Translation Result",
-      "inputPlaceholder": "Try typing '你好嗎？' or 'How are you?'...",
+      "inputPlaceholder": "Try typing 'Nei hou ma?' or 'How are you?'...",
       "outputPlaceholder": "Your accurate Cantonese translation appears here with tone marks",
       "translateButton": "Translate Now",
       "uploadButton": "Upload Document",
@@ -95,9 +95,11 @@
           "title": "Hear and Copy Your Translation",
           "description": "Listen to the authentic pronunciation or copy the text with one click. Perfect for practicing your Cantonese or sharing with friends!"
         }
-      ]
+      ],
+      "image": "/images/docs/cantonese-translator-how-to.webp",
+      "imageAlt": "How to Translate English to Cantonese"
     },
-    "userScenarios": {
+    "userInterest": {
       "title": "Mind-Blowing Cantonese Facts",
       "items": [
         {
@@ -151,19 +153,23 @@
       "items": [
         {
           "title": "Simple and Free to Use",
-          "description": "CantoTone Translator lets you explore Cantonese without a hitch. Enjoy effortless translations without hidden costs or complicated setups. Dive into a seamless experience right away."
+          "description": "CantoTone Translator lets you explore Cantonese without a hitch. Enjoy effortless translations without hidden costs or complicated setups. Dive into a seamless experience right away.",
+          "icon": "FaRocket"
         },
         {
           "title": "Accurate Data",
-          "description": "Our smart detection ensures over 90% accuracy in identifying languages and translating them. Whether it's text, audio, or images, CantoTone delivers reliable results every time."
+          "description": "Our smart detection ensures over 90% accuracy in identifying languages and translating them. Whether it's text, audio, or images, CantoTone delivers reliable results every time.",
+          "icon": "FaBrain"
         },
         {
           "title": "Data Privacy and Security",
-          "description": "Your data is yours alone. We prioritize privacy by not storing any user data, ensuring your translations remain confidential and secure across all platforms."
+          "description": "Your data is yours alone. We prioritize privacy by not storing any user data, ensuring your translations remain confidential and secure across all platforms.",
+          "icon": "FaShieldAlt"
         },
         {
           "title": "AI Understands Context",
-          "description": "Our AI goes beyond basic translations, grasping context and slang. This means better, more natural translations that respect the nuances of Cantonese language and culture."
+          "description": "Our AI goes beyond basic translations, grasping context and slang. This means better, more natural translations that respect the nuances of Cantonese language and culture.",
+          "icon": "FaEye"
         }
       ]
     },
@@ -190,6 +196,27 @@
           "heading": "Enhanced My Learning",
           "content": "VibeTrans's visual tone feature is a game-changer for my Cantonese studies. Clicking each word to hear its pronunciation helped me grasp the tonal differences better. It's a must-have tool for any serious Cantonese learner.",
           "rating": "4.7"
+        },
+        "item-4": {
+          "name": "Jason Chen",
+          "role": "Business Owner",
+          "heading": "Essential for Business Communication",
+          "content": "Running import-export business between Hong Kong and overseas, I need accurate Cantonese translations daily. VibeTrans handles everything from formal business documents to casual WhatsApp messages with remarkable precision.",
+          "rating": "4.9"
+        },
+        "item-5": {
+          "name": "Amanda Foster",
+          "role": "Food Blogger",
+          "heading": "Perfect for Foodie Adventures",
+          "content": "Exploring Hong Kong's street food scene became so much easier with VibeTrans. I can translate menus, ask vendors about ingredients, and understand local food recommendations. It's like having a local foodie friend in my pocket!",
+          "rating": "5.0"
+        },
+        "item-6": {
+          "name": "Dr. Robert Kim",
+          "role": "Medical Researcher",
+          "heading": "Academic Research Essential",
+          "content": "Conducting interviews with Cantonese-speaking participants for my research study, VibeTrans has been invaluable. The accuracy in handling technical terminology and preserving meaning across languages has saved me countless hours of transcription work.",
+          "rating": "4.8"
         }
       }
     },
@@ -250,11 +277,15 @@
       "items": [
         {
           "title": "Six Tones Challenge",
-          "description": "Did you know Cantonese has six basic tones? Many learners find tone 3 (mid-rising) and tone 4 (falling) the trickiest. Master these tones and you're halfway to fluency! VibeTrans helps visualize these tones for easier learning."
+          "description": "Did you know Cantonese has six basic tones? Many learners find tone 3 (mid-rising) and tone 4 (falling) the trickiest. Master these tones and you're halfway to fluency! VibeTrans helps visualize these tones for easier learning.",
+          "image": "/images/docs/cantonese-translator-how-to.webp",
+          "imageAlt": "Six Tones Challenge"
         },
         {
           "title": "Ancient Chinese Heritage",
-          "description": "Cantonese preserves many ancient Chinese sounds from over 1,000 years ago! This makes it a living time capsule of medieval Chinese pronunciation. When you learn Cantonese, you're essentially speaking history."
+          "description": "Cantonese preserves many ancient Chinese sounds from over 1,000 years ago! This makes it a living time capsule of medieval Chinese pronunciation. When you learn Cantonese, you're essentially speaking history.",
+          "image": "/images/docs/cantonese-romanization-systems.webp",
+          "imageAlt": "Ancient Chinese Heritage"
         }
       ]
     },
@@ -265,5 +296,10 @@
       "primaryButton": "Try Cantonese Translator Now",
       "secondaryButton": "Back to Top"
     }
+  },
+  "Metadata": {
+    "name": "VibeTrans",
+    "title": "Cantonese Translator - VibeTrans",
+    "description": "Break language barriers with AI-powered translations. Supports 100+ languages with accurate, context-aware translations."
   }
 }

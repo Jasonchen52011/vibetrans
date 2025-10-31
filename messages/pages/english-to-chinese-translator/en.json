@@ -90,7 +90,7 @@
         }
       ]
     },
-    "funFacts": {
+    "funfacts": {
       "title": "Chinese Language Insights",
       "items": [
         {
@@ -138,9 +138,8 @@
     },
     "highlights": {
       "title": "Why Teams Choose VibeTrans for English to Chinese",
-      "overview": "AI-powered English ↔ Chinese translation with cultural context, character choice, and tone preservation designed for modern global workflows.",
       "description": "Combine linguistic accuracy with cultural intelligence so business, education, and creative teams can communicate effectively with Chinese audiences.",
-      "features": [
+      "items": [
         {
           "icon": "FaRocket",
           "title": "Cultural Context Awareness",
@@ -166,63 +165,67 @@
     "testimonials": {
       "title": "What Users Say",
       "subtitle": "Stories from Teams Using VibeTrans for English to Chinese Translation",
-      "items": [
-        {
+      "items": {
+        "item-1": {
           "name": "Li Wei",
           "role": "Marketing Director, Shanghai",
           "heading": "Campaign Localization is Now Effortless",
           "content": "We used to spend weeks translating marketing materials. VibeTrans helps us launch bilingual campaigns in days while maintaining brand voice and cultural relevance.",
           "rating": "4.9"
         },
-        {
+        "item-2": {
           "name": "Sarah Johnson",
           "role": "EdTech Founder, Singapore",
           "heading": "Educational Content Reaches Millions",
           "content": "Our learning platform now serves Chinese-speaking students seamlessly. The translations are accurate and culturally appropriate for different age groups.",
           "rating": "4.8"
         },
-        {
+        "item-3": {
           "name": "Zhang Min",
           "role": "International Business Manager",
           "heading": "Negotiations Flow Smoothly",
           "content": "Business proposals and contracts translated with proper formal language help us build stronger relationships with Chinese partners.",
           "rating": "4.7"
         }
-      ]
+      }
     },
     "faqs": {
       "title": "Frequently Asked Questions",
       "subtitle": "Quick answers about English to Chinese translation",
-      "items": [
-        {
+      "items": {
+        "item-1": {
+          "question": "What is the best English to Chinese translator for professional use?",
+          "answer": "VibeTrans is the best English to Chinese translator for professional use because it combines advanced AI with cultural context awareness. Our tool understands business formalities, appropriate character selection (simplified vs traditional), and industry-specific terminology. Unlike basic translators, VibeTrans preserves tone, handles idiomatic expressions naturally, and considers regional preferences, making it ideal for business communications, academic content, and professional documentation."
+        },
+        "item-2": {
           "question": "Does it support both simplified and traditional Chinese?",
           "answer": "Yes. VibeTrans automatically detects the appropriate character set or lets you choose between simplified (Mainland China, Singapore) and traditional (Taiwan, Hong Kong) characters."
         },
-        {
+        "item-3": {
           "question": "Can it handle technical and business terminology?",
           "answer": "Absolutely. The AI is trained on specialized vocabulary for industries like finance, technology, healthcare, and legal sectors."
         },
-        {
+        "item-4": {
           "question": "How accurate are the cultural references?",
           "answer": "VibeTrans considers cultural context and avoids awkward literal translations, ensuring idioms and expressions sound natural to native speakers."
         },
-        {
+        "item-5": {
           "question": "Is there a limit on document size?",
           "answer": "Free users can translate up to 5,000 characters per document. Premium plans offer higher limits and batch processing capabilities."
         },
-        {
+        "item-6": {
           "question": "Can I collaborate with team members on translations?",
           "answer": "Yes. Premium plans include collaboration features where team members can review, comment on, and improve translations together."
         },
-        {
+        "item-7": {
           "question": "How do you handle different Chinese dialects?",
           "answer": "The translator focuses on Standard Mandarin but can adapt vocabulary and phrasing for regional preferences when specified."
         },
-        {
+        "item-8": {
           "question": "Is the translation suitable for legal documents?",
           "answer": "While VibeTrans provides high-quality translations, we recommend having legal documents reviewed by qualified legal professionals familiar with Chinese legal terminology and requirements."
         }
-      ]
+      }
     },
     "ctaButton": "Try English to Chinese Translator",
     "cta": {
@@ -231,5 +234,10 @@
       "primaryButton": "Try English to Chinese Translator Now",
       "secondaryButton": "Back to Top"
     }
+  },
+  "Metadata": {
+    "name": "VibeTrans",
+    "title": "English to Chinese Translator - VibeTrans",
+    "description": "Break language barriers with AI-powered translations. Supports 100+ languages with accurate, context-aware translations."
   }
 }

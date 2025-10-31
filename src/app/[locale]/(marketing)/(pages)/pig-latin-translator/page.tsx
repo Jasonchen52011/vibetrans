@@ -1,4 +1,3 @@
-// @ts-nocheck - Translation keys type mismatch
 import BeforeAfterSection from '@/components/blocks/Examples';
 import CallToActionSection from '@/components/blocks/calltoaction/calltoaction';
 import ExploreOurAiTools from '@/components/blocks/exploretools';
@@ -11,6 +10,7 @@ import WhatIsSection from '@/components/blocks/whatis';
 import { AuroraBackground } from '@/components/ui/aurora-background';
 import { constructMetadata } from '@/lib/metadata';
 import { buildToolStructuredData } from '@/lib/seo/structured-data';
+import { buildTranslatorPageContent } from '@/lib/translator-page';
 import { getUrlWithLocale } from '@/lib/urls/urls';
 import type { Metadata } from 'next';
 import type { Locale } from 'next-intl';
@@ -25,17 +25,15 @@ export async function generateMetadata({
   params: Promise<{ locale: Locale }>;
 }): Promise<Metadata | undefined> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'Metadata' });
-  const gt = await getTranslations({
+  const t = await getTranslations({
     locale,
     namespace: 'PigLatinTranslatorPage',
   });
-
   return constructMetadata({
-    title: `${gt('title')} | ${(t as any)('name')}`,
-    description: gt('description'),
+    title: `${t('title')} | VibeTrans`,
+    description: t('description'),
     canonicalUrl: getUrlWithLocale('/pig-latin-translator', locale),
-    image: '/images/docs/what-is-pig-latin-translator.webp',
+    image: t('whatIs.image'),
   });
 }
 
@@ -56,194 +54,13 @@ export default async function PigLatinTranslatorPage(
   // Structured Data for SEO
   const structuredData = buildToolStructuredData({
     name: 'VibeTrans Pig Latin Translator',
-    description: (t as any)('description'),
+    description: t('description'),
   });
 
-  // Page data for the tool
-  const pageData = {
-    tool: {
-      inputLabel: (t as any)('tool.inputLabel'),
-      outputLabel: (t as any)('tool.outputLabel'),
-      inputPlaceholder: (t as any)('tool.inputPlaceholder'),
-      outputPlaceholder: (t as any)('tool.outputPlaceholder'),
-      translateButton: (t as any)('tool.translateButton'),
-      uploadButton: (t as any)('tool.uploadButton'),
-      uploadHint: (t as any)('tool.uploadHint'),
-      loading: (t as any)('tool.loading'),
-      error: (t as any)('tool.error'),
-      noInput: (t as any)('tool.noInput'),
-    },
-  };
-
-  // Examples section data
-  const examplesData = {
-    title: (t as any)('examples.title'),
-    description: (t as any)('examples.description'),
-    images: [
-      {
-        alt: (t as any)('examples.items.0.alt'),
-        name: (t as any)('examples.items.0.name'),
-      },
-      {
-        alt: (t as any)('examples.items.1.alt'),
-        name: (t as any)('examples.items.1.name'),
-      },
-      {
-        alt: (t as any)('examples.items.2.alt'),
-        name: (t as any)('examples.items.2.name'),
-      },
-      {
-        alt: (t as any)('examples.items.3.alt'),
-        name: (t as any)('examples.items.3.name'),
-      },
-      {
-        alt: (t as any)('examples.items.4.alt'),
-        name: (t as any)('examples.items.4.name'),
-      },
-      {
-        alt: (t as any)('examples.items.5.alt'),
-        name: (t as any)('examples.items.5.name'),
-      },
-    ],
-  };
-
-  // What is section
-  const whatIsSection = {
-    title: (t as any)('whatIs.title'),
-    description: (t as any)('whatIs.description'),
-    features: [],
-    image: {
-      src: (t as any)('whatIs.image'),
-      alt: (t as any)('whatIs.imageAlt'),
-    },
-    cta: { text: (t as any)('ctaButton') },
-  };
-
-  // How to section
-  const howtoSection = {
-    name: 'howto',
-    title: (t as any)('howto.title'),
-    description: (t as any)('howto.description'),
-    image: {
-      src: '/images/docs/pig-latin-translator-how-to.webp',
-      alt: 'How to use Pig Latin Translator',
-    },
-    items: [
-      {
-        title: (t as any)('howto.steps.0.title'),
-        description: (t as any)('howto.steps.0.description'),
-        icon: 'FaFileUpload',
-      },
-      {
-        title: (t as any)('howto.steps.1.title'),
-        description: (t as any)('howto.steps.1.description'),
-        icon: 'FaPencilAlt',
-      },
-      {
-        title: (t as any)('howto.steps.2.title'),
-        description: (t as any)('howto.steps.2.description'),
-        icon: 'FaLanguage',
-      },
-      {
-        title: (t as any)('howto.steps.3.title'),
-        description: (t as any)('howto.steps.3.description'),
-        icon: 'FaCheckCircle',
-      },
-    ],
-  };
-
-  // Highlights section
-  const highlightsSection = {
-    name: 'highlights',
-    title: (t as any)('highlights.title'),
-    description: (t as any)('highlights.description'),
-    items: [
-      {
-        icon: 'FaRocket',
-        title: (t as any)('highlights.items.0.title'),
-        description: (t as any)('highlights.items.0.description'),
-      },
-      {
-        icon: 'FaBrain',
-        title: (t as any)('highlights.items.1.title'),
-        description: (t as any)('highlights.items.1.description'),
-      },
-      {
-        icon: 'FaShieldAlt',
-        title: (t as any)('highlights.items.2.title'),
-        description: (t as any)('highlights.items.2.description'),
-      },
-      {
-        icon: 'FaChartLine',
-        title: (t as any)('highlights.items.3.title'),
-        description: (t as any)('highlights.items.3.description'),
-      },
-    ],
-  };
-
-  // Fun Facts section
-  const funFactsSection = {
-    name: 'funFacts',
-    title: (t as any)('userScenarios.title'),
-    items: [
-      {
-        title: (t as any)('userScenarios.items.0.title'),
-        description: (t as any)('userScenarios.items.0.description'),
-        image: {
-          src: (t as any)('userScenarios.items.0.image'),
-          alt: (t as any)('userScenarios.items.0.imageAlt'),
-        },
-      },
-      {
-        title: (t as any)('userScenarios.items.1.title'),
-        description: (t as any)('userScenarios.items.1.description'),
-        image: {
-          src: (t as any)('userScenarios.items.1.image'),
-          alt: (t as any)('userScenarios.items.1.imageAlt'),
-        },
-      },
-    ],
-  };
-
-  // User Interest section (4 content blocks)
-  const userInterestSection = {
-    name: 'userInterest',
-    title: (t as any)('unique.title'),
-    items: [
-      {
-        title: (t as any)('unique.items.0.title'),
-        description: (t as any)('unique.items.0.content'),
-        image: {
-          src: (t as any)('unique.items.0.image'),
-          alt: (t as any)('unique.items.0.imageAlt'),
-        },
-      },
-      {
-        title: (t as any)('unique.items.1.title'),
-        description: (t as any)('unique.items.1.content'),
-        image: {
-          src: (t as any)('unique.items.1.image'),
-          alt: (t as any)('unique.items.1.imageAlt'),
-        },
-      },
-      {
-        title: (t as any)('unique.items.2.title'),
-        description: (t as any)('unique.items.2.content'),
-        image: {
-          src: (t as any)('unique.items.2.image'),
-          alt: (t as any)('unique.items.2.imageAlt'),
-        },
-      },
-      {
-        title: (t as any)('unique.items.3.title'),
-        description: (t as any)('unique.items.3.content'),
-        image: {
-          src: (t as any)('unique.items.3.image'),
-          alt: (t as any)('unique.items.3.imageAlt'),
-        },
-      },
-    ],
-  };
+  // Build page content using unified function
+  const translatorContent = buildTranslatorPageContent(t, {
+    howToIcons: ['FaFileUpload', 'FaPencilAlt', 'FaLanguage', 'FaCheckCircle'],
+  });
 
   return (
     <>
@@ -256,10 +73,10 @@ export default async function PigLatinTranslatorPage(
         <AuroraBackground className="bg-white dark:bg-zinc-900 !pt-12 !h-auto">
           <div className="container max-w-7xl mx-auto px-4 text-center relative z-10 pb-8">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              {(t as any)('hero.title')}
+              {t('hero.title')}
             </h1>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
-              {(t as any)('hero.description')}
+              {t('hero.description')}
             </p>
 
             {/* User Avatars and Rating */}
@@ -303,32 +120,35 @@ export default async function PigLatinTranslatorPage(
 
         {/* Tool Component */}
         <div className="pt-0 pb-12 bg-gradient-to-b from-muted/20 to-background">
-          <PigLatinTranslatorTool pageData={pageData} locale={locale} />
+          <PigLatinTranslatorTool
+            pageData={translatorContent.pageData}
+            locale={locale}
+          />
         </div>
 
         {/* What Is Section */}
-        <WhatIsSection section={whatIsSection} />
+        <WhatIsSection section={translatorContent.whatIs} />
 
         {/* Examples Section */}
-        <BeforeAfterSection beforeAfterGallery={examplesData} />
+        <BeforeAfterSection beforeAfterGallery={translatorContent.examples} />
 
         {/* How to Section */}
-        <HowTo section={howtoSection} />
+        <HowTo section={translatorContent.howTo} />
 
         {/* User Interest Blocks */}
         <UserScenarios
-          section={userInterestSection}
-          ctaText={(t as any)('ctaButton')}
+          section={translatorContent.userInterest}
+          ctaText={t('ctaButton')}
         />
 
         {/* Fun Facts */}
         <UserScenarios
-          section={funFactsSection}
-          ctaText={(t as any)('ctaButton')}
+          section={translatorContent.funFacts}
+          ctaText={t('ctaButton')}
         />
 
         {/* Highlights */}
-        <WhyChoose section={highlightsSection} />
+        <WhyChoose section={translatorContent.highlights} />
 
         {/* Explore Other Tools */}
         <ExploreOurAiTools
@@ -343,13 +163,15 @@ export default async function PigLatinTranslatorPage(
         />
 
         {/* Testimonials */}
-        <TestimonialsThreeColumnSection namespace="PigLatinTranslatorPage.testimonials" />
+        <TestimonialsThreeColumnSection
+          section={translatorContent.testimonials}
+        />
 
         {/* FAQ */}
-        <FaqSection namespace="PigLatinTranslatorPage.faqs" />
+        <FaqSection section={translatorContent.faqs} />
 
         {/* CTA */}
-        <CallToActionSection namespace="PigLatinTranslatorPage.cta" />
+        <CallToActionSection section={translatorContent.cta} />
       </div>
     </>
   );

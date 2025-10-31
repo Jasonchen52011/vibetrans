@@ -85,7 +85,7 @@
         }
       ]
     },
-    "funFacts": {
+    "funfacts": {
       "title": "Interesting Facts",
       "items": [
         {
@@ -134,7 +134,7 @@
     "highlights": {
       "title": "Key Features",
       "description": "Explore the standout features of our translator tool, ensuring high performance and user satisfaction.",
-      "features": [
+      "items": [
         {
           "title": "Free Polish Translation",
           "icon": "FaRocket",
@@ -206,5 +206,10 @@
       "primaryButton": "Try EnglishToPolishTranslator Now",
       "secondaryButton": "Back to Top"
     }
+  },
+  "Metadata": {
+    "name": "VibeTrans",
+    "title": "English to Polish Translator - VibeTrans",
+    "description": "Break language barriers with AI-powered translations. Supports 100+ languages with accurate, context-aware translations."
   }
 }

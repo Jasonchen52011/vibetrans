@@ -29,7 +29,9 @@ export async function POST(request: Request) {
       },
     });
   } catch (error) {
-    console.error('Translation error:', error);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Translation error:', error);
+    }
     return NextResponse.json({ error: 'Translation failed' }, { status: 500 });
   }
 }
@@ -50,7 +52,9 @@ async function translateEnglishToPersian(text: string): Promise<string> {
 
     return mockTranslation;
   } catch (error) {
-    console.error('Translation service error:', error);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Translation service error:', error);
+    }
     throw new Error('Translation service unavailable');
   }
 }

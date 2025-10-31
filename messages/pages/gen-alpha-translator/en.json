@@ -34,11 +34,35 @@
     },
     "whatIs": {
       "title": "What is Gen Alpha Translator?",
-      "description": "Gen Alpha Translator is a tool designed to help you decode and understand Gen Alpha slang. With VibeTrans, you can easily convert text into Gen Alpha-style language or back to traditional language."
+      "description": "Gen Alpha Translator is a tool designed to help you decode and understand Gen Alpha slang. With VibeTrans, you can easily convert text into Gen Alpha-style language or back to traditional language.",
+      "image": "/images/docs/what-is-gen-alpha-translator.webp",
+      "imageAlt": "What is Gen Alpha Translator?"
     },
     "examples": {
       "title": "Example: Translate Gen Alpha Slang",
-      "description": "See how Gen Alpha Translator can help you convert everyday text into Gen Alpha slang, like turning 'cool' into 'drip' or 'hello' into 'yo'. It's fast and easy!"
+      "description": "See how Gen Alpha Translator can help you convert everyday text into Gen Alpha slang, like turning 'cool' into 'drip' or 'hello' into 'yo'. It's fast and easy!",
+      "items": [
+        {
+          "alt": "Standard greeting translated to Gen Alpha slang",
+          "name": "Hello → Yo fr fr",
+          "text": "Original: Hey everyone, thanks for joining the call. → Gen Alpha: Yo fam, appreciate y'all hopping on."
+        },
+        {
+          "alt": "Compliment rewritten with Gen Alpha vocabulary",
+          "name": "Great job → That was slay",
+          "text": "Original: Your presentation was great! → Gen Alpha: Your deck was absolute slay, no cap."
+        },
+        {
+          "alt": "Expressing excitement with new slang",
+          "name": "So excited → I'm low-key hyped",
+          "text": "Original: I'm so excited for the weekend. → Gen Alpha: Low-key hyped for the weekend rn."
+        },
+        {
+          "alt": "Warning phrase converted to Gen Alpha",
+          "name": "Be careful → Watch out, that's sus",
+          "text": "Original: That link looks suspicious, be careful. → Gen Alpha: That link is mad sus, watch out."
+        }
+      ]
     },
     "howto": {
       "title": "How to Translate English to Gen Alpha",
@@ -60,7 +84,9 @@
           "title": "Review and Share",
           "description": "Check your translation results and easily share them with friends or on social media to show off your Gen Alpha fluency!"
         }
-      ]
+      ],
+      "image": "/images/docs/gen-alpha-translator-how-to.webp",
+      "imageAlt": "How to Translate English to Gen Alpha"
     },
     "userInterest": {
       "title": "Youth Culture Communication & Social Media Applications",
@@ -69,19 +95,27 @@
       "items": [
         {
           "title": "Decode Gen Alpha Language Easily",
-          "description": "With VibeTrans, you don't need to guess what Gen Alpha means. This tool instantly translates slang, so you're always in the loop with their latest phrases."
+          "description": "With VibeTrans, you don't need to guess what Gen Alpha means. Instantly translate new slang and keep up with the latest inside jokes.",
+          "image": "/images/docs/understanding-gen-alpha-language.webp",
+          "imageAlt": "Decode Gen Alpha Language Easily"
         },
         {
           "title": "Stay Ahead of Social Media Trends",
-          "description": "Social media is where Gen Alpha's language thrives. VibeTrans helps you stay updated on their latest slang and keeps your conversations relevant."
+          "description": "Social platforms update too quickly? Use VibeTrans to convert posts and comments into the latest slang, keeping your interactions always on trend.",
+          "image": "/images/docs/multilingual-gen-alpha-support.webp",
+          "imageAlt": "Stay Ahead of Social Media Trends"
         },
         {
           "title": "A Fun Way to Communicate",
-          "description": "Gen Alpha's slang is fun, and with VibeTrans, you'll get to speak their language. It's like being part of an exclusive club!"
+          "description": "Gen Alpha slang is packed with memes. Use the translation tool to chat with them using the most trendy vocabulary and instantly fit in with the group.",
+          "image": "/images/docs/gen-alpha-translator-how-to.webp",
+          "imageAlt": "A Fun Way to Communicate"
         },
         {
           "title": "Perfect for Parents and Educators",
-          "description": "Gen Alpha Translator isn't just for Gen Alpha – it's also a great tool for parents and educators looking to understand this unique generation."
+          "description": "Not just young people - parents, teachers, or marketers can instantly understand new words appearing in classrooms, conversations, or social communities through VibeTrans.",
+          "image": "/images/docs/what-is-gen-alpha-translator.webp",
+          "imageAlt": "Perfect for Parents and Educators"
         }
       ]
     },
@@ -90,18 +124,22 @@
       "description": "Simple, accurate, and secure translation tools for everyone",
       "items": [
         {
+          "icon": "FaRocket",
           "title": "Easy to Use",
           "description": "Simply input your text, and Gen Alpha Translator will instantly give you the translation. It's perfect for anyone, even if you're not tech-savvy."
         },
         {
+          "icon": "FaChartLine",
           "title": "Accurate Translations",
           "description": "Get accurate translations of Gen Alpha slang. VibeTrans ensures that the slang is up-to-date and reflective of their ever-evolving language."
         },
         {
+          "icon": "FaShieldAlt",
           "title": "Privacy and Security",
           "description": "Your data is always secure. VibeTrans respects your privacy, ensuring that your translations remain private and confidential."
         },
         {
+          "icon": "FaMagic",
           "title": "Contextual Understanding",
           "description": "VibeTrans's AI doesn't just translate words – it understands context. This ensures the translation is as accurate and relevant as possible."
         }
@@ -299,13 +337,22 @@
       "items": [
         {
           "title": "Random Words Are Cool",
-          "description": "Did you know that Gen Alpha loves using random words like 'Skibidi' just because they sound cool? It's a fun, meaningless word that's taken over social media – but it's part of their culture!"
+          "description": "Did you know that Gen Alpha loves using random words like 'Skibidi' just because they sound cool? It's a fun, meaningless word that's taken over social media – but it's part of their culture!",
+          "image": "/images/docs/understanding-gen-alpha-language.webp",
+          "imageAlt": "Random Words Are Cool"
         },
         {
           "title": "Sigma Isn't Just Greek",
-          "description": "'Sigma' isn't just a Greek letter – it's how Gen Alpha describes an independent, cool person. Think of it like 'alpha' but with a twist! The way they use this term is absolutely hilarious."
+          "description": "'Sigma' isn't just a Greek letter – it's how Gen Alpha describes an independent, cool person. Think of it like 'alpha' but with a twist! The way they use this term is absolutely hilarious.",
+          "image": "/images/docs/multilingual-gen-alpha-support.webp",
+          "imageAlt": "Sigma Isn't Just Greek"
         }
       ]
     }
+  },
+  "Metadata": {
+    "name": "VibeTrans",
+    "title": "Gen Alpha Translator - VibeTrans",
+    "description": "Break language barriers with AI-powered translations. Supports 100+ languages with accurate, context-aware translations."
   }
 }

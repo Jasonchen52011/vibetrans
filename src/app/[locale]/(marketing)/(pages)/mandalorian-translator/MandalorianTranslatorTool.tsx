@@ -1,9 +1,6 @@
 'use client';
 
-import { SpeechToTextButton } from '@/components/ui/speech-to-text-button';
-import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
-import { Mic, Waves } from 'lucide-react';
-import mammoth from 'mammoth';
+import { readFileContent } from '@/lib/utils/file-utils';
 import { useEffect, useRef, useState } from 'react';
 
 interface MandalorianTranslatorToolProps {
@@ -20,8 +17,7 @@ export default function MandalorianTranslatorTool({
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [fileName, setFileName] = useState<string | null>(null);
-  const [isTranscribing, setIsTranscribing] = useState<boolean>(false);
-  const audioInputRef = useRef<HTMLInputElement | null>(null);
+  const [warning, setWarning] = useState<string | null>(null);
 
   // Handle file upload
   const handleFileUpload = async (
@@ -42,115 +38,44 @@ export default function MandalorianTranslatorTool({
     }
   };
 
-  // Read file content
-  const readFileContent = async (file: File): Promise<string> => {
-    const fileExtension = file.name.split('.').pop()?.toLowerCase();
-
-    if (fileExtension === 'txt') {
-      return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          const content = e.target?.result as string;
-          if (content) resolve(content);
-          else reject(new Error('File is empty'));
-        };
-        reader.onerror = () => reject(new Error('Failed to read file'));
-        reader.readAsText(file);
-      });
-    }
-
-    if (fileExtension === 'docx') {
-      try {
-        const arrayBuffer = await file.arrayBuffer();
-        const result = await mammoth.extractRawText({ arrayBuffer });
-        if (result.value) return result.value;
-        throw new Error('Failed to extract text from Word document');
-      } catch (error) {
-        throw new Error(
-          'Failed to read .docx file. Please ensure it is a valid Word document.'
-        );
-      }
-    }
-
-    throw new Error(
-      'Unsupported file format. Please upload .txt or .docx files.'
-    );
-  };
-
-  // Handle audio upload for transcription
-  const handleAudioUploadClick = () => {
-    audioInputRef.current?.click();
-  };
-
-  const handleAudioSelected = async (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    const audioFile = event.target.files?.[0];
-    if (!audioFile) return;
-
-    setIsTranscribing(true);
-    setError(null);
-
-    try {
-      const formData = new FormData();
-      formData.append('file', audioFile);
-
-      const response = await fetch('/api/speech-to-text', {
-        method: 'POST',
-        body: formData,
-      });
-
-      const data = await response.json();
-      if (!response.ok) {
-        throw new Error(data.error || 'Transcription failed');
-      }
-
-      if (data.transcription) {
-        setInputText((prev) =>
-          prev ? `${prev}\n${data.transcription}` : data.transcription
-        );
-      }
-    } catch (err: any) {
-      console.error('Transcription error:', err);
-      setError(err.message || 'Unable to transcribe audio at this time.');
-    } finally {
-      setIsTranscribing(false);
-      if (audioInputRef.current) {
-        audioInputRef.current.value = '';
-      }
-    }
-  };
-
   // Handle translation
   const handleTranslate = async () => {
     if (!inputText.trim()) {
       setError(pageData.tool.noInput);
       setOutputText('');
+      setWarning(null);
       return;
     }
 
     setIsLoading(true);
     setError(null);
+    setWarning(null);
     setOutputText('');
 
     try {
-      // TODO: 替换为你的 API 端点
       const response = await fetch('/api/mandalorian-translator', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text: inputText }),
+        body: JSON.stringify({
+          text: inputText,
+          direction: 'toMandalorian', // 固定方向，避免智能检测
+        }),
       });
 
       const data = await response.json();
 
-      if (!response.ok) {
+      if (!response.ok || !data.success) {
         throw new Error(data.error || pageData.tool.error);
       }
 
       setOutputText(data.translated || data.result || '');
+      if (data.warning) {
+        setWarning(data.warning);
+      }
     } catch (err: any) {
       setError(err.message || 'Translation failed');
       setOutputText('');
+      setWarning(null);
     } finally {
       setIsLoading(false);
     }
@@ -162,30 +87,51 @@ export default function MandalorianTranslatorTool({
     setOutputText('');
     setFileName(null);
     setError(null);
+    setWarning(null);
   };
 
-  // Copy
+  // Copy - 动态加载
   const handleCopy = async () => {
     if (!outputText) return;
+
     try {
-      await navigator.clipboard.writeText(outputText);
-    } catch (err) {
-      console.error('Failed to copy:', err);
+      // 动态导入复制功能
+      const { smartCopyToClipboard } = await import('@/lib/utils/dynamic-copy');
+
+      await smartCopyToClipboard(outputText, {
+        successMessage: 'Translation copied to clipboard!',
+        errorMessage: 'Failed to copy translation',
+        onSuccess: () => {
+          // 可以添加成功提示
+        },
+        onError: (error) => {
+          console.error('Failed to copy:', error);
+        },
+      });
+    } catch (error) {
+      console.error('Copy function loading failed:', error);
     }
   };
 
-  // Download
-  const handleDownload = () => {
+  // Download - 动态加载
+  const handleDownload = async () => {
     if (!outputText) return;
-    const blob = new Blob([outputText], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `mandalorian-translator-${Date.now()}.txt`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+
+    try {
+      // 动态导入下载功能
+      const { smartDownload } = await import('@/lib/utils/dynamic-download');
+
+      smartDownload(outputText, 'mandalorian-translator', {
+        onSuccess: () => {
+          // 可以添加成功提示
+        },
+        onError: (error) => {
+          console.error('Download failed:', error);
+        },
+      });
+    } catch (error) {
+      console.error('Download function loading failed:', error);
+    }
   };
 
   return (
@@ -206,7 +152,7 @@ export default function MandalorianTranslatorTool({
               aria-label="Input text"
             />
 
-            {/* File Upload and Voice Input */}
+            {/* File Upload */}
             <div className="mt-4 flex items-center gap-3">
               <label
                 htmlFor="file-upload"
@@ -228,27 +174,6 @@ export default function MandalorianTranslatorTool({
                 {pageData.tool.uploadButton}
               </label>
 
-              {/* Voice Input Button */}
-              <SpeechToTextButton
-                onTranscript={(text) =>
-                  setInputText((prev) => (prev ? `${prev} ${text}` : text))
-                }
-                locale={locale}
-              />
-
-              {/* Audio Upload Button */}
-              <button
-                onClick={handleAudioUploadClick}
-                className={`flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 dark:border-zinc-600 transition-colors ${
-                  isTranscribing
-                    ? 'bg-primary text-white hover:bg-primary/90'
-                    : 'bg-gray-100 dark:bg-zinc-700 hover:bg-gray-200 dark:hover:bg-zinc-600 text-gray-700 dark:text-gray-100'
-                }`}
-                aria-label="Upload audio for transcription"
-              >
-                <Waves className="h-5 w-5" />
-              </button>
-
               <p className="text-xs text-gray-500 dark:text-gray-400">
                 {pageData.tool.uploadHint}
               </p>
@@ -258,13 +183,6 @@ export default function MandalorianTranslatorTool({
                 accept=".txt,.docx"
                 onChange={handleFileUpload}
                 className="hidden"
-              />
-              <input
-                ref={audioInputRef}
-                type="file"
-                accept="audio/*"
-                className="hidden"
-                onChange={handleAudioSelected}
               />
             </div>
 
@@ -319,7 +237,6 @@ export default function MandalorianTranslatorTool({
               </h2>
               {outputText && (
                 <div className="flex gap-2">
-                  <TextToSpeechButton text={outputText} locale={locale} />
                   <button
                     onClick={handleCopy}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
@@ -362,7 +279,11 @@ export default function MandalorianTranslatorTool({
               )}
             </div>
             <div
-              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md bg-gray-50 dark:bg-zinc-700 flex items-center justify-center text-gray-700 dark:text-gray-200 overflow-y-auto"
+              className={`w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md bg-gray-50 dark:bg-zinc-700 ${
+                outputText
+                  ? 'flex items-start justify-start'
+                  : 'flex items-center justify-center'
+              } text-gray-700 dark:text-gray-200 overflow-y-auto`}
               aria-live="polite"
             >
               {isLoading ? (
@@ -370,7 +291,14 @@ export default function MandalorianTranslatorTool({
               ) : error ? (
                 <p className="text-red-600 dark:text-red-400">{error}</p>
               ) : outputText ? (
-                <p className="text-lg whitespace-pre-wrap">{outputText}</p>
+                <div className="w-full">
+                  <p className="text-lg whitespace-pre-wrap">{outputText}</p>
+                  {warning && (
+                    <p className="text-xs text-yellow-600 dark:text-yellow-400 mt-2 italic">
+                      ⚠️ {warning}
+                    </p>
+                  )}
+                </div>
               ) : (
                 <p className="text-gray-500 dark:text-gray-400">
                   {pageData.tool.outputPlaceholder}

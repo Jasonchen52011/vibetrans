@@ -1,4 +1,3 @@
-// @ts-nocheck - Translation keys type mismatch
 import BeforeAfterSection from '@/components/blocks/Examples';
 import CallToActionSection from '@/components/blocks/calltoaction/calltoaction';
 import ExploreOurAiTools from '@/components/blocks/exploretools';
@@ -11,6 +10,7 @@ import WhatIsSection from '@/components/blocks/whatis';
 import { AuroraBackground } from '@/components/ui/aurora-background';
 import { constructMetadata } from '@/lib/metadata';
 import { buildToolStructuredData } from '@/lib/seo/structured-data';
+import { buildTranslatorPageContent } from '@/lib/translator-page';
 import { getUrlWithLocale } from '@/lib/urls/urls';
 import type { Metadata } from 'next';
 import type { Locale } from 'next-intl';
@@ -28,19 +28,15 @@ export async function generateMetadata({
   params: Promise<{ locale: Locale }>;
 }): Promise<Metadata | undefined> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'Metadata' });
-  const et = await getTranslations({
+  const t = await getTranslations({
     locale,
     namespace: 'EsperantoTranslatorPage',
   });
-
   return constructMetadata({
-    // @ts-ignore - Translation type mismatch
-    title: `${et('title')} | ${(t as any)('name')}`,
-    // @ts-ignore - Translation type mismatch
-    description: et('description'),
+    title: `${t('title')} | VibeTrans`,
+    description: t('description'),
     canonicalUrl: getUrlWithLocale('/esperanto-translator', locale),
-    image: '/images/docs/what-is-esperanto-translator.webp',
+    image: t('whatIs.image'),
   });
 }
 
@@ -53,7 +49,6 @@ export default async function EsperantoTranslatorPage(
 ) {
   const params = await props.params;
   const { locale } = params;
-  // @ts-ignore - Translation keys are dynamic
   const t = await getTranslations({
     locale,
     namespace: 'EsperantoTranslatorPage',
@@ -62,198 +57,13 @@ export default async function EsperantoTranslatorPage(
   // Structured Data for SEO
   const structuredData = buildToolStructuredData({
     name: 'VibeTrans Esperanto Translator',
-    description: (t as any)('description'),
+    description: t('description'),
   });
 
-  // Page data for the tool
-  const pageData = {
-    tool: {
-      inputLabel: (t as any)('tool.inputLabel'),
-      esperantoLabel: (t as any)('tool.esperantoLabel'),
-      outputLabel: (t as any)('tool.outputLabel'),
-      inputPlaceholder: (t as any)('tool.inputPlaceholder'),
-      esperantoPlaceholder: (t as any)('tool.esperantoPlaceholder'),
-      outputPlaceholder: (t as any)('tool.outputPlaceholder'),
-      translateButton: (t as any)('tool.translateButton'),
-      uploadButton: (t as any)('tool.uploadButton'),
-      uploadHint: (t as any)('tool.uploadHint'),
-      loading: (t as any)('tool.loading'),
-      error: (t as any)('tool.error'),
-      noInput: (t as any)('tool.noInput'),
-    },
-  };
-
-  // Examples section data
-  const examplesData = {
-    title: (t as any)('examples.title'),
-    description: (t as any)('examples.description'),
-    images: [
-      {
-        alt: 'English: Hello → Esperanto: Saluton',
-        name: 'Hello → Saluton',
-      },
-      {
-        alt: 'English: Thank you → Esperanto: Dankon',
-        name: 'Thank you → Dankon',
-      },
-      {
-        alt: 'English: Good morning → Esperanto: Bonan matenon',
-        name: 'Good morning → Bonan matenon',
-      },
-      {
-        alt: 'English: How are you? → Esperanto: Kiel vi fartas?',
-        name: 'How are you? → Kiel vi fartas?',
-      },
-      {
-        alt: 'English: Goodbye → Esperanto: Ĝis revido',
-        name: 'Goodbye → Ĝis revido',
-      },
-      {
-        alt: 'English: Welcome → Esperanto: Bonvenon',
-        name: 'Welcome → Bonvenon',
-      },
-    ],
-  };
-
-  // User scenarios section (Fun Facts)
-  const userScenariosSection = {
-    name: 'userscenarios',
-    title: (t as any)('funfacts.title'),
-    items: [
-      {
-        title: (t as any)('funfacts.items.0.title'),
-        description: (t as any)('funfacts.items.0.description'),
-        image: {
-          src: '/images/docs/esperanto-golden-record.webp',
-          alt: 'Esperanto in NASA Golden Record',
-        },
-      },
-      {
-        title: (t as any)('funfacts.items.1.title'),
-        description: (t as any)('funfacts.items.1.description'),
-        image: {
-          src: '/images/docs/esperanto-literature.webp',
-          alt: 'Esperanto Literature Translations',
-        },
-      },
-    ],
-  };
-
-  // Highlights section
-  const highlightsSection = {
-    name: 'highlights',
-    title: (t as any)('highlights.title'),
-    description: (t as any)('highlights.description'),
-    items: [
-      {
-        icon: 'FaRocket',
-        title: (t as any)('highlights.items.0.title'),
-        description: (t as any)('highlights.items.0.description'),
-      },
-      {
-        icon: 'FaBrain',
-        title: (t as any)('highlights.items.1.title'),
-        description: (t as any)('highlights.items.1.description'),
-      },
-      {
-        icon: 'FaShieldAlt',
-        title: (t as any)('highlights.items.2.title'),
-        description: (t as any)('highlights.items.2.description'),
-      },
-      {
-        icon: 'FaChartLine',
-        title: (t as any)('highlights.items.3.title'),
-        description: (t as any)('highlights.items.3.description'),
-      },
-    ],
-  };
-
-  // What is section
-  const whatIsSection = {
-    title: (t as any)('whatIs.title'),
-    description: (t as any)('whatIs.description'),
-    features: [],
-    image: {
-      src: '/images/docs/what-is-esperanto-translator.webp',
-      alt: 'What is Esperanto Translator - Understanding Esperanto Language',
-    },
-    cta: {
-      text: (t as any)('ctaButton'),
-    },
-  };
-
-  // How to section
-  const howtoSection = {
-    name: 'howto',
-    title: (t as any)('howto.title'),
-    description: (t as any)('howto.description'),
-    image: {
-      src: '/images/docs/esperanto-translator-how-to.webp',
-      alt: 'How to use Esperanto Translator step by step guide',
-    },
-    items: [
-      {
-        title: (t as any)('howto.steps.0.title'),
-        description: (t as any)('howto.steps.0.description'),
-        icon: 'FaFileUpload',
-      },
-      {
-        title: (t as any)('howto.steps.1.title'),
-        description: (t as any)('howto.steps.1.description'),
-        icon: 'FaPencilAlt',
-      },
-      {
-        title: (t as any)('howto.steps.2.title'),
-        description: (t as any)('howto.steps.2.description'),
-        icon: 'FaLanguage',
-      },
-      {
-        title: (t as any)('howto.steps.3.title'),
-        description: (t as any)('howto.steps.3.description'),
-        icon: 'FaCheckCircle',
-      },
-    ],
-  };
-
-  // User Interest section
-  const userInterestSection = {
-    name: 'userinterest',
-    title: (t as any)('userInterest.title'),
-    items: [
-      {
-        title: (t as any)('userInterest.items.0.title'),
-        description: (t as any)('userInterest.items.0.description'),
-        image: {
-          src: '/images/docs/esperanto-user-friendly.webp',
-          alt: 'User-Friendly Design',
-        },
-      },
-      {
-        title: (t as any)('userInterest.items.1.title'),
-        description: (t as any)('userInterest.items.1.description'),
-        image: {
-          src: '/images/docs/esperanto-instant-translation.webp',
-          alt: 'Instant Translation',
-        },
-      },
-      {
-        title: (t as any)('userInterest.items.2.title'),
-        description: (t as any)('userInterest.items.2.description'),
-        image: {
-          src: '/images/docs/esperanto-multilingual-support.webp',
-          alt: 'Multilingual Support',
-        },
-      },
-      {
-        title: (t as any)('userInterest.items.3.title'),
-        description: (t as any)('userInterest.items.3.description'),
-        image: {
-          src: '/images/docs/esperanto-voice-features.webp',
-          alt: 'Voice Input & Output',
-        },
-      },
-    ],
-  };
+  // 使用内容构建器生成所有页面内容
+  const translatorContent = buildTranslatorPageContent(t, {
+    howToIcons: ['FaFileUpload', 'FaPencilAlt', 'FaLanguage', 'FaDownload'],
+  });
 
   return (
     <>
@@ -267,10 +77,10 @@ export default async function EsperantoTranslatorPage(
         <AuroraBackground className="bg-white dark:bg-zinc-900 !pt-12 !h-auto">
           <div className="container max-w-7xl mx-auto px-4 text-center relative z-10 pb-8">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              {(t as any)('hero.title')}
+              {t('hero.title')}
             </h1>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
-              {(t as any)('hero.description')}
+              {t('hero.description')}
             </p>
 
             {/* User Avatars and Rating */}
@@ -338,32 +148,35 @@ export default async function EsperantoTranslatorPage(
 
         {/* Esperanto Translator Tool */}
         <div className="pt-0 pb-12 bg-gradient-to-b from-muted/20 to-background">
-          <EsperantoTranslatorTool pageData={pageData} locale={locale} />
+          <EsperantoTranslatorTool
+            pageData={translatorContent.pageData}
+            locale={locale}
+          />
         </div>
 
         {/* What Is Section */}
-        <WhatIsSection section={whatIsSection} />
+        <WhatIsSection section={translatorContent.whatIs} />
 
         {/* Examples Section */}
-        <BeforeAfterSection beforeAfterGallery={examplesData} />
+        <BeforeAfterSection beforeAfterGallery={translatorContent.examples} />
 
         {/* How to Section */}
-        <HowTo section={howtoSection} />
+        <HowTo section={translatorContent.howTo} />
 
         {/* User Interest Blocks */}
         <UserScenarios
-          section={userInterestSection}
-          ctaText={(t as any)('ctaButton')}
+          section={translatorContent.userInterest}
+          ctaText={t('ctaButton')}
         />
 
         {/* Fun Facts */}
         <UserScenarios
-          section={userScenariosSection}
-          ctaText={(t as any)('ctaButton')}
+          section={translatorContent.funFacts}
+          ctaText={t('ctaButton')}
         />
 
         {/* Highlights/Why Choose */}
-        <WhyChoose section={highlightsSection} />
+        <WhyChoose section={translatorContent.highlights} />
 
         {/* Explore Other Tools */}
         <ExploreOurAiTools
@@ -378,13 +191,15 @@ export default async function EsperantoTranslatorPage(
         />
 
         {/* Testimonials Section */}
-        <TestimonialsThreeColumnSection namespace="EsperantoTranslatorPage.testimonials" />
+        <TestimonialsThreeColumnSection
+          section={translatorContent.testimonials}
+        />
 
         {/* FAQ Section */}
-        <FaqSection namespace="EsperantoTranslatorPage.faqs" />
+        <FaqSection section={translatorContent.faqs} />
 
         {/* Call to Action */}
-        <CallToActionSection namespace="EsperantoTranslatorPage.cta" />
+        <CallToActionSection section={translatorContent.cta} />
       </div>
     </>
   );

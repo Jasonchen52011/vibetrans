@@ -111,5 +111,10 @@
       "title": "Ready to break language barriers?",
       "button": "Try VibeTrans Now"
     }
+  },
+  "Metadata": {
+    "name": "VibeTrans",
+    "title": "About - VibeTrans",
+    "description": "Break language barriers with AI-powered translations. Supports 100+ languages with accurate, context-aware translations."
   }
 }

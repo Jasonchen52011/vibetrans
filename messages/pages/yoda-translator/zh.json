@@ -89,7 +89,7 @@
         }
       ]
     },
-    "funFacts": {
+    "funfacts": {
       "title": "有趣的事实",
       "items": [
         {
@@ -138,46 +138,26 @@
     "highlights": {
       "title": "尤达翻译器亮点",
       "description": "了解为什么尤达翻译器是语言爱好者的首选。",
-      "features": [
+      "items": [
         {
           "title": "语音输入输出",
           "icon": "FaRocket",
-          "tagline": "",
-          "statLabel": null,
-          "statValue": null,
-          "description": "体验VibeTrans的卓越语音输入和输出功能，让您无需打字即可转换和聆听尤达式对话。无论您身在何处，轻松享受全新语音互动，为您的沟通增添乐趣和便捷。",
-          "wordCount": 40,
-          "microCopy": ""
+          "description": "体验VibeTrans的卓越语音输入和输出功能，让您无需打字即可转换和聆听尤达式对话。无论您身在何处，轻松享受全新语音互动，为您的沟通增添乐趣和便捷。"
         },
         {
           "title": "实时翻译",
           "icon": "FaShieldAlt",
-          "tagline": "",
-          "statLabel": null,
-          "statValue": null,
-          "description": "通过VibeTrans，体验无缝的实时翻译，轻松弥合语言障碍。即时将口头或书面单词转换为尤达语，确保沟通自然且引人入胜地流动，通过《星球大战》的魔法增强您的互动。",
-          "wordCount": 40,
-          "microCopy": ""
+          "description": "通过VibeTrans，体验无缝的实时翻译，轻松弥合语言障碍。即时将口头或书面单词转换为尤达语，确保沟通自然且引人入胜地流动，通过《星球大战》的魔法增强您的互动。"
         },
         {
           "title": "数据隐私",
           "icon": "FaBrain",
-          "tagline": "",
-          "statLabel": null,
-          "statValue": null,
-          "description": "VibeTrans致力于保护您的数据隐私。我们采用先进的加密技术，确保所有翻译请求和个人信息的安全。您的数据永不共享，完全保密，让您安心使用我们的服务。",
-          "wordCount": 40,
-          "microCopy": ""
+          "description": "VibeTrans致力于保护您的数据隐私。我们采用先进的加密技术，确保所有翻译请求和个人信息的安全。您的数据永不共享，完全保密，让您安心使用我们的服务。"
         },
         {
           "title": "自定义翻译模式",
           "icon": "FaChartLine",
-          "tagline": "",
-          "statLabel": null,
-          "statValue": null,
-          "description": "VibeTrans提供个性化翻译模式，允许用户根据特定场景自定义翻译风格。无论是专业场合还是非正式对话，用户都能轻松调整，确保翻译适合其需求。",
-          "wordCount": 40,
-          "microCopy": ""
+          "description": "VibeTrans提供个性化翻译模式，允许用户根据特定场景自定义翻译风格。无论是专业场合还是非正式对话，用户都能轻松调整，确保翻译适合其需求。"
         }
       ]
     },

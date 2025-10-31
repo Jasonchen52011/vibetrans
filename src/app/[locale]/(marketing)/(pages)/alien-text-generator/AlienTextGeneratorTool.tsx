@@ -7,7 +7,7 @@ import {
   getAlienStyles,
 } from '@/lib/alien-text';
 import { ArrowRightIcon } from 'lucide-react';
-import mammoth from 'mammoth';
+// import mammoth from 'mammoth'; // Disabled for Edge Runtime compatibility
 import { useState } from 'react';
 
 interface AlienTextGeneratorToolProps {
@@ -77,7 +77,10 @@ export default function AlienTextGeneratorTool({
     if (fileExtension === 'docx') {
       try {
         const arrayBuffer = await file.arrayBuffer();
-        const result = await mammoth.extractRawText({ arrayBuffer });
+        // mammoth.extractRawText disabled for Edge Runtime
+        const result = {
+          text: 'Word document processing is not available in this environment. Please use plain text input.',
+        };
         if (result.value) {
           return result.value;
         }
@@ -138,25 +141,30 @@ export default function AlienTextGeneratorTool({
   const handleCopy = async () => {
     if (!generatedText) return;
     try {
-      await navigator.clipboard.writeText(generatedText);
-      // Optional: Show success feedback
-    } catch (err) {
-      console.error('Failed to copy:', err);
+      const { smartCopyToClipboard } = await import('@/lib/utils/dynamic-copy');
+      await smartCopyToClipboard(generatedText, {
+        successMessage: 'Alien text copied to clipboard!',
+        errorMessage: 'Failed to copy alien text',
+        onSuccess: () => {},
+        onError: (error) => console.error('Failed to copy:', error),
+      });
+    } catch (error) {
+      console.error('Copy function loading failed:', error);
     }
   };
 
   // Download result as text file
-  const handleDownload = () => {
+  const handleDownload = async () => {
     if (!generatedText) return;
-    const blob = new Blob([generatedText], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `alien-text-${selectedStyle}-${Date.now()}.txt`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+    try {
+      const { smartDownload } = await import('@/lib/utils/dynamic-download');
+      smartDownload(generatedText, `alien-text-${selectedStyle}`, {
+        onSuccess: () => {},
+        onError: (error) => console.error('Download failed:', error),
+      });
+    } catch (error) {
+      console.error('Download function loading failed:', error);
+    }
   };
 
   return (

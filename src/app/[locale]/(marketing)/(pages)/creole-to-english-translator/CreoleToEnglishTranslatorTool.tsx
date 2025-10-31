@@ -1,8 +1,9 @@
 'use client';
 
 import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
+import { readFileContent } from '@/lib/utils/file-utils';
 import { ArrowRightIcon } from 'lucide-react';
-import mammoth from 'mammoth';
+// import mammoth from 'mammoth'; // Disabled for Edge Runtime compatibility
 import { useEffect, useState } from 'react';
 
 // 语言检测结果接口
@@ -37,6 +38,90 @@ export default function CreoleToEnglishTranslatorTool({
   >('creole-to-en');
   const [languageWarning, setLanguageWarning] = useState<string>('');
 
+  const toolConfig = pageData?.tool ?? {};
+  const englishLabel =
+    typeof toolConfig.englishLabel === 'string' && toolConfig.englishLabel
+      ? toolConfig.englishLabel
+      : 'English';
+  const creoleLabel =
+    typeof toolConfig.creoleLabel === 'string' && toolConfig.creoleLabel
+      ? toolConfig.creoleLabel
+      : 'Creole';
+  const englishLabelLower = englishLabel.toLowerCase();
+  const creoleLabelLower = creoleLabel.toLowerCase();
+  const languageWarningText =
+    typeof toolConfig.languageWarning === 'string' && toolConfig.languageWarning
+      ? toolConfig.languageWarning
+      : 'Please input Creole or English';
+  const creoleInputHeading =
+    typeof toolConfig.creoleInputHeading === 'string' &&
+    toolConfig.creoleInputHeading
+      ? toolConfig.creoleInputHeading
+      : `${creoleLabel} Text`;
+  const englishInputHeading =
+    typeof toolConfig.englishInputHeading === 'string' &&
+    toolConfig.englishInputHeading
+      ? toolConfig.englishInputHeading
+      : `${englishLabel} Text`;
+  const creoleOutputHeading =
+    typeof toolConfig.creoleOutputHeading === 'string' &&
+    toolConfig.creoleOutputHeading
+      ? toolConfig.creoleOutputHeading
+      : `${creoleLabel} Translation`;
+  const englishOutputHeading =
+    typeof toolConfig.englishOutputHeading === 'string' &&
+    toolConfig.englishOutputHeading
+      ? toolConfig.englishOutputHeading
+      : `${englishLabel} Translation`;
+  const englishPlaceholder =
+    typeof toolConfig.englishPlaceholder === 'string' &&
+    toolConfig.englishPlaceholder
+      ? toolConfig.englishPlaceholder
+      : 'Enter English text or upload a file...';
+  const inputPlaceholder =
+    typeof toolConfig.inputPlaceholder === 'string' &&
+    toolConfig.inputPlaceholder
+      ? toolConfig.inputPlaceholder
+      : 'Enter your text or upload a file...';
+  const englishOutputPlaceholder =
+    typeof toolConfig.englishOutputPlaceholder === 'string' &&
+    toolConfig.englishOutputPlaceholder
+      ? toolConfig.englishOutputPlaceholder
+      : (toolConfig.outputPlaceholder ??
+        'Translation results will appear here');
+  const creoleOutputPlaceholder =
+    typeof toolConfig.creoleOutputPlaceholder === 'string' &&
+    toolConfig.creoleOutputPlaceholder
+      ? toolConfig.creoleOutputPlaceholder
+      : (toolConfig.outputPlaceholder ??
+        'Translation results will appear here');
+  const toggleToCreoleText =
+    typeof toolConfig.toggleToCreole === 'string' && toolConfig.toggleToCreole
+      ? toolConfig.toggleToCreole
+      : 'Switch to English -> Creole';
+  const toggleToEnglishText =
+    typeof toolConfig.toggleToEnglish === 'string' && toolConfig.toggleToEnglish
+      ? toolConfig.toggleToEnglish
+      : 'Switch to Creole -> English';
+  const copyTooltip =
+    typeof toolConfig.copyResultTooltip === 'string' &&
+    toolConfig.copyResultTooltip
+      ? toolConfig.copyResultTooltip
+      : (toolConfig.copyTooltip ?? 'Copy');
+  const downloadTooltip =
+    typeof toolConfig.downloadResultTooltip === 'string' &&
+    toolConfig.downloadResultTooltip
+      ? toolConfig.downloadResultTooltip
+      : (toolConfig.downloadTooltip ?? 'Download');
+  const removeFileTooltip =
+    typeof toolConfig.removeFileTooltip === 'string' &&
+    toolConfig.removeFileTooltip
+      ? toolConfig.removeFileTooltip
+      : 'Remove file';
+  const resetButtonText =
+    typeof toolConfig.resetButton === 'string' && toolConfig.resetButton
+      ? toolConfig.resetButton
+      : 'Reset';
   // 实时语言检测
   useEffect(() => {
     if (!inputText.trim()) {
@@ -64,10 +149,8 @@ export default function CreoleToEnglishTranslatorTool({
           // 自动切换翻译方向
           if (
             data.detectedDirection &&
-            (data.detectedInputLanguage ===
-              pageData.tool.englishLabel.toLowerCase() ||
-              data.detectedInputLanguage ===
-                pageData.tool.creoleLabel.toLowerCase())
+            (data.detectedInputLanguage === englishLabelLower ||
+              data.detectedInputLanguage === creoleLabelLower)
           ) {
             setDirection(data.detectedDirection);
           }
@@ -77,7 +160,7 @@ export default function CreoleToEnglishTranslatorTool({
             data.detectedInputLanguage === 'unknown' &&
             data.confidence < 0.3
           ) {
-            setLanguageWarning('Please input Creole or English');
+            setLanguageWarning(languageWarningText);
           } else {
             setLanguageWarning('');
           }
@@ -89,7 +172,7 @@ export default function CreoleToEnglishTranslatorTool({
     }, 800); // 800ms 防抖
 
     return () => clearTimeout(timeoutId);
-  }, [inputText]);
+  }, [inputText, englishLabelLower, creoleLabelLower, languageWarningText]);
 
   // Handle file upload
   const handleFileUpload = async (
@@ -108,41 +191,6 @@ export default function CreoleToEnglishTranslatorTool({
       setError(err.message || 'Failed to read file');
       setFileName(null);
     }
-  };
-
-  // Read file content
-  const readFileContent = async (file: File): Promise<string> => {
-    const fileExtension = file.name.split('.').pop()?.toLowerCase();
-
-    if (fileExtension === 'txt') {
-      return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          const content = e.target?.result as string;
-          if (content) resolve(content);
-          else reject(new Error('File is empty'));
-        };
-        reader.onerror = () => reject(new Error('Failed to read file'));
-        reader.readAsText(file);
-      });
-    }
-
-    if (fileExtension === 'docx') {
-      try {
-        const arrayBuffer = await file.arrayBuffer();
-        const result = await mammoth.extractRawText({ arrayBuffer });
-        if (result.value) return result.value;
-        throw new Error('Failed to extract text from Word document');
-      } catch (error) {
-        throw new Error(
-          'Failed to read .docx file. Please ensure it is a valid Word document.'
-        );
-      }
-    }
-
-    throw new Error(
-      'Unsupported file format. Please upload .txt or .docx files.'
-    );
   };
 
   // Handle translation with smart detection
@@ -226,24 +274,30 @@ export default function CreoleToEnglishTranslatorTool({
   const handleCopy = async () => {
     if (!outputText) return;
     try {
-      await navigator.clipboard.writeText(outputText);
-    } catch (err) {
-      console.error('Failed to copy:', err);
+      const { smartCopyToClipboard } = await import('@/lib/utils/dynamic-copy');
+      await smartCopyToClipboard(outputText, {
+        successMessage: 'Translation copied to clipboard!',
+        errorMessage: 'Failed to copy translation',
+        onSuccess: () => {},
+        onError: (error) => console.error('Failed to copy:', error),
+      });
+    } catch (error) {
+      console.error('Copy function loading failed:', error);
     }
   };
 
   // Download
-  const handleDownload = () => {
+  const handleDownload = async () => {
     if (!outputText) return;
-    const blob = new Blob([outputText], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `creole-to-english-translator-${Date.now()}.txt`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+    try {
+      const { smartDownload } = await import('@/lib/utils/dynamic-download');
+      smartDownload(outputText, 'creole-to-english-translator', {
+        onSuccess: () => {},
+        onError: (error) => console.error('Download failed:', error),
+      });
+    } catch (error) {
+      console.error('Download function loading failed:', error);
+    }
   };
 
   return (
@@ -254,22 +308,28 @@ export default function CreoleToEnglishTranslatorTool({
           {/* Input Area */}
           <div className="flex-1 relative">
             <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-3">
-              {direction === 'creole-to-en' ? 'Creole Text' : 'English Text'}
+              {direction === 'creole-to-en'
+                ? creoleInputHeading
+                : englishInputHeading}
             </h2>
             <textarea
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
               placeholder={
                 direction === 'creole-to-en'
-                  ? pageData.tool.inputPlaceholder
-                  : 'Enter English text or upload a file...'
+                  ? inputPlaceholder
+                  : englishPlaceholder
               }
               className={`w-full h-48 md:h-64 p-3 border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent resize-none text-gray-700 dark:text-gray-200 dark:bg-zinc-700 ${
                 languageWarning
                   ? 'border-amber-300 dark:border-amber-600 focus:ring-amber-500'
                   : 'border-gray-300 dark:border-zinc-600'
               }`}
-              aria-label={pageData.tool.inputLabel || 'Input text'}
+              aria-label={
+                direction === 'creole-to-en'
+                  ? creoleLabel
+                  : englishLabel || 'Input text'
+              }
             />
 
             {/* File Upload */}
@@ -328,7 +388,7 @@ export default function CreoleToEnglishTranslatorTool({
                     setInputText('');
                   }}
                   className="ml-auto text-gray-500 hover:text-red-500 dark:text-gray-400 dark:hover:text-red-400"
-                  aria-label={pageData.tool.removeFileTooltip || 'Remove file'}
+                  aria-label={removeFileTooltip}
                 >
                   <svg
                     className="w-4 h-4"
@@ -359,12 +419,17 @@ export default function CreoleToEnglishTranslatorTool({
               className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors rotate-0 md:rotate-0"
               title={
                 direction === 'creole-to-en'
-                  ? 'Switch to English → Creole'
-                  : 'Switch to Creole → English'
+                  ? toggleToCreoleText
+                  : toggleToEnglishText
               }
               aria-label={
-                pageData.tool.toggleDirectionTooltip ||
-                'Toggle translation direction'
+                (typeof toolConfig.toggleDirectionTooltip === 'string' &&
+                toolConfig.toggleDirectionTooltip
+                  ? toolConfig.toggleDirectionTooltip
+                  : undefined) ||
+                (direction === 'creole-to-en'
+                  ? toggleToCreoleText
+                  : toggleToEnglishText)
               }
             >
               <svg
@@ -388,8 +453,8 @@ export default function CreoleToEnglishTranslatorTool({
             <div className="flex items-center justify-between mb-3">
               <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">
                 {direction === 'creole-to-en'
-                  ? 'English Translation'
-                  : 'Creole Translation'}
+                  ? englishOutputHeading
+                  : creoleOutputHeading}
               </h2>
               {outputText && (
                 <div className="flex gap-2">
@@ -397,7 +462,7 @@ export default function CreoleToEnglishTranslatorTool({
                   <button
                     onClick={handleCopy}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
-                    title={pageData.tool.copyTooltip || 'Copy'}
+                    title={copyTooltip}
                   >
                     <svg
                       className="w-5 h-5"
@@ -416,7 +481,7 @@ export default function CreoleToEnglishTranslatorTool({
                   <button
                     onClick={handleDownload}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
-                    title={pageData.tool.downloadTooltip || 'Download'}
+                    title={downloadTooltip}
                   >
                     <svg
                       className="w-5 h-5"
@@ -461,8 +526,8 @@ export default function CreoleToEnglishTranslatorTool({
               ) : (
                 <p className="text-gray-500 dark:text-gray-400">
                   {direction === 'creole-to-en'
-                    ? pageData.tool.outputPlaceholder
-                    : 'Creole translation will appear here'}
+                    ? englishOutputPlaceholder
+                    : creoleOutputPlaceholder}
                 </p>
               )}
             </div>
@@ -483,7 +548,7 @@ export default function CreoleToEnglishTranslatorTool({
             onClick={handleReset}
             className="px-6 py-3 bg-gray-200 dark:bg-zinc-600 hover:bg-gray-300 dark:hover:bg-zinc-500 text-gray-800 dark:text-gray-100 font-semibold rounded-lg shadow-md transition-colors"
           >
-            Reset
+            {resetButtonText}
           </button>
         </div>
       </main>

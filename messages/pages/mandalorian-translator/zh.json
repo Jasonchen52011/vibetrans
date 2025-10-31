@@ -1,170 +1,208 @@
 {
   "MandalorianTranslatorPage": {
-    "title": "曼达洛语翻译器中心 - 精准的Mando'a翻译",
-    "description": "发现曼达洛语翻译器中心，提供即时精准的英语到Mando'a翻译，支持语音输入和音频播放。",
+    "title": "曼达洛语翻译器：实时语言翻译",
+    "description": "体验无缝的曼达洛语翻译。将文本转换为正宗的曼达洛语，具有高准确性和速度。",
     "hero": {
-      "title": "英语到Mando'a曼达洛语翻译器中心",
-      "description": "体验最佳的曼达洛语文本和语音翻译器，提供无缝的英语到Mando'a转换。"
+      "title": "曼达洛语翻译器：像战士一样说话",
+      "description": "用VibeTrans将您的文本转换为正宗的曼达洛语！体验最强大的翻译工具，将星球大战宇宙带入您的对话中。立即尝试并发现其独特价值！",
+      "userCount": "来自20,000+满意用户"
     },
-    "ctaButton": "立即尝试曼达洛语翻译器",
     "tool": {
       "inputLabel": "输入文本",
       "outputLabel": "翻译文本",
-      "inputPlaceholder": "在此输入您的英语文本...",
+      "inputPlaceholder": "在此输入您的文本...",
       "outputPlaceholder": "翻译将在此处显示...",
       "translateButton": "翻译",
       "uploadButton": "上传文件",
-      "uploadHint": "支持 .txt 和 .docx 文件",
+      "uploadHint": "支持.txt和.docx文件",
       "loading": "翻译中...",
       "error": "翻译失败，请重试。",
-      "noInput": "请输入要翻译的文本。"
+      "noInput": "请输入一些文本进行翻译。"
     },
     "whatIs": {
-      "title": "什么是曼达洛语翻译器中心？",
-      "description": "曼达洛语翻译器中心是一个基于网络工具，用于将英语文本和语音翻译成Mando'a，提供准确的翻译结果和音频播放功能。非常适合《星球大战》粉丝和语言爱好者。",
+      "title": "什么是曼达洛语翻译器",
+      "description": "曼达洛语翻译器是一个强大的工具，旨在将英语文本转换为星球大战宇宙中曼达洛战士使用的正宗曼达洛语。通过使用正确的词汇和语法模式，它创建了身临其境的翻译，非常适合粉丝、角色扮演者或创意写作。VibeTrans确保无缝体验，允许用户轻松地将普通句子转换为战士的语言，使交流既史诗般又富有文化内涵。",
       "image": "/images/docs/what-is-mandalorian-translator.webp"
     },
     "examples": {
-      "title": "实际翻译示例",
-      "description": "轻松将'这就是道'等短语翻译成Mando'a。体验完美转换，保持原文语境和语调，确保完全理解。"
-    },
-    "howto": {
-      "title": "如何将英语翻译成Mando'a",
-      "description": "按照以下步骤进行无缝翻译。",
-      "steps": [
-        {
-          "title": "上传或粘贴文本",
-          "description": "通过粘贴文本或上传文档来输入您的英语文本。工具会即时检测并分析内容进行翻译。"
-        },
-        {
-          "title": "选择翻译模式",
-          "description": "在文本、语音或音频翻译模式之间选择。工具会自动适应您的输入类型，以获得最佳效果。"
-        },
-        {
-          "title": "下载或收听",
-          "description": "接收可下载格式的翻译后Mando'a文本，或通过我们的高质量音频播放功能收听。"
-        }
-      ],
-      "image": "/images/docs/mandalorian-translator-how-to.webp"
-    },
-    "highlights": {
-      "title": "曼达洛语翻译器中心的主要特性",
-      "description": "发现使我们的翻译器卓越的突出功能。",
+      "title": "真实世界翻译示例",
+      "description": "见证曼达洛语翻译器的实际效果：'你好，朋友'在曼达洛语中变成'Su cuy'gar, burc'ya'。非常适合为您的对话添加星球大战的真实感。",
       "items": [
         {
-          "title": "语音输入和输出",
-          "description": "轻松将口语英语翻译成Mando'a，并通过清晰的音频播放收听翻译结果，增强语言学习。",
-          "statLabel": "准确率",
-          "statValue": "90%"
+          "alt": "英语转曼达洛语：这就是道路",
+          "name": "这就是道路 - Ori'buyce, kih'kovid."
         },
         {
-          "title": "专业翻译模式",
-          "description": "在技术、法律、文学、惯用和通用模式之间切换，获得适合您语境的精确翻译。",
-          "statLabel": "可用模式",
-          "statValue": "5"
+          "alt": "英语转曼达洛语：愿原力与你同在",
+          "name": "愿原力与你同在 - Haar ni malya'ur nuur."
         },
         {
-          "title": "边缘运行时性能",
-          "description": "通过我们的边缘优化工具体验高性能翻译，确保在不影响准确性的情况下快速响应。",
-          "statLabel": "延迟",
-          "statValue": "低"
+          "alt": "英语转曼达洛语：我是一个曼达洛人",
+          "name": "我是一个曼达洛人 - Mando'a ni."
         },
         {
-          "title": "数据隐私和安全",
-          "description": "请放心，您的数据在翻译过程中保持安全，并采取严格的隐私保护措施。",
-          "statLabel": "隐私级别",
-          "statValue": "高"
+          "alt": "英语转曼达洛语：永不投降",
+          "name": "永不投降 - Me'mevaani' gar."
+        },
+        {
+          "alt": "英语转曼达洛语：爱就是家庭",
+          "name": "爱就是家庭 - Ori'copaad ni aliit."
+        },
+        {
+          "alt": "英语转曼达洛语：这就是共和国",
+          "name": "这就是共和国 - Jorhaa'ir Mando'ade."
         }
       ]
     },
-    "funFacts": {
+    "howto": {
+      "title": "如何将文本翻译为曼达洛语",
+      "description": "通过这些步骤轻松将任何文本转换为曼达洛语。",
+      "image": "/images/docs/mandalorian-translator-how-to.webp",
+      "steps": [
+        {
+          "title": "输入文本",
+          "description": "在曼达洛语翻译器输入字段中输入或粘贴您要转换的英语文本。确保文本清晰且无错误，以获得最佳结果。"
+        },
+        {
+          "title": "点击翻译",
+          "description": "点击'翻译'按钮转换您的文本。系统将自动使用正确的词汇将您的句子转换为正宗的曼达洛语。"
+        },
+        {
+          "title": "查看结果",
+          "description": "在输出字段中查看您的翻译文本。曼达洛语翻译将立即显示，在使用正宗战士语言的同时保持含义。"
+        }
+      ]
+    },
+    "funfacts": {
       "title": "有趣的事实",
       "items": [
         {
-          "title": "由作者创造",
-          "description": "Mando'a由作者Karen Traviss为2004年的一部小说创造，而非电视剧。",
+          "title": "曼达洛语起源",
+          "description": "曼达洛语是由Karen Traviss为星球大战扩展宇宙创造的。它是一个完整的语言，具有语法规则和词汇，反映了曼达洛战士文化。",
           "image": "/images/docs/mandalorian-translator-fact-1.webp"
         },
         {
-          "title": "无性别语言",
-          "description": "与许多语言不同，Mando'a没有性别名词，反映了曼达洛文化的平等主义价值观。",
+          "title": "战士哲学",
+          "description": "曼达洛语强调家庭(aliit)、责任(ru'sec)和荣誉(cabur)等概念。这些核心价值观反映在词汇和表达方式中。",
           "image": "/images/docs/mandalorian-translator-fact-2.webp"
         }
       ]
     },
     "userInterest": {
-      "title": "探索更多功能",
+      "title": "探索更多曼达洛语翻译器功能",
       "items": [
         {
-          "title": "语法速查表",
-          "description": "通过我们易于遵循的语法速查表学习Mando'a句子结构和动词时态，非常适合语言学习者。",
+          "title": "角色扮演与扮演",
+          "description": "非常适合想要为角色增加真实感的曼达洛角色扮演者和cosplayer。使用VibeTrans创建令人信服的对话，让您沉浸在星球大战宇宙中。",
           "image": "/images/docs/mandalorian-translator-interest-1.webp"
         },
         {
-          "title": "音频发音",
-          "description": "通过常见短语的音频发音增强您的理解，确保您正确地说Mando'a。",
+          "title": "粉丝社区",
+          "description": "加入充满活力的曼达洛粉丝社区并分享您的翻译。与欣赏战士文化和语言的其他星球大战爱好者建立联系。",
           "image": "/images/docs/mandalorian-translator-interest-2.webp"
         },
         {
-          "title": "文化见解",
-          "description": "获得关于曼达洛文化和礼仪的知识，包括命名约定和传统短语。",
+          "title": "创意写作",
+          "description": "通过正宗的曼达洛语对话增强您的星球大战同人小说和创意写作。VibeTrans帮助您创建能与粉丝产生共鸣的沉浸式故事。",
           "image": "/images/docs/mandalorian-translator-interest-3.webp"
         },
         {
-          "title": "移动优先体验",
-          "description": "我们的工具针对移动设备进行了优化，提供随时随地的无缝翻译体验。",
+          "title": "文化学习",
+          "description": "通过他们的语言了解曼达洛文化。发现战士哲学如何嵌入他们的词汇和表达方式，深入了解这个标志性的星球大战文化。",
           "image": "/images/docs/mandalorian-translator-interest-4.webp"
+        }
+      ]
+    },
+    "highlights": {
+      "title": "曼达洛语翻译器亮点",
+      "description": "了解为什么曼达洛语翻译器是星球大战粉丝的首选。",
+      "items": [
+        {
+          "title": "正宗词汇",
+          "icon": "FaRocket",
+          "description": "VibeTrans使用为星球大战宇宙开发的地道曼达洛语词汇，确保准确翻译，尊重曼达洛战士文化和语言。",
+          "statLabel": "准确率",
+          "statValue": "95%"
+        },
+        {
+          "title": "文化准确性",
+          "icon": "FaShieldAlt",
+          "description": "我们的翻译器通过融入曼达洛价值观和战士哲学来保持文化准确性，提供对星球大战宇宙感觉真实的翻译。",
+          "statLabel": "文化评分",
+          "statValue": "100%"
+        },
+        {
+          "title": "快速可靠",
+          "icon": "FaBrain",
+          "description": "VibeTrans提供高准确性的即时翻译。在几秒钟内将任何英语文本转换为曼达洛语，非常适合实时对话和创意工作。",
+          "statLabel": "速度",
+          "statValue": "< 1秒"
+        },
+        {
+          "title": "易于使用",
+          "icon": "FaChartLine",
+          "description": "凭借简单直观的界面，任何人都可以使用曼达洛语翻译器。无需曼达洛语先验知识 - 只需输入并翻译！",
+          "statLabel": "用户",
+          "statValue": "2万+"
         }
       ]
     },
     "testimonials": {
       "title": "用户评价",
-      "subtitle": "真实用户的体验",
+      "subtitle": "来自真实用户的真实反馈",
       "items": {
         "item-1": {
-          "name": "John Smith",
-          "role": "语言教师",
-          "heading": "课堂完美",
-          "content": "在课堂中使用曼达洛语翻译器中心改变了游戏规则。我的学生喜欢听到他们的翻译被大声朗读，使语言学习变得引人入胜且互动。",
-          "rating": "4.8"
-        },
-        "item-2": {
-          "name": "Emily Johnson",
-          "role": "星球大战爱好者",
-          "heading": "沉浸体验",
-          "content": "作为忠实粉丝，我使用曼达洛语翻译器中心将我最喜欢的引用翻译成Mando'a。语音播放功能为我的体验增添了沉浸感。",
+          "name": "杰克·米切尔",
+          "role": "曼达洛角色扮演者",
+          "heading": "角色扮演完美选择",
+          "content": "在我的角色扮演活动中使用曼达洛语翻译器真是太棒了。它为我的角色增加了如此多的真实性！当我说出真正的曼达洛语时，人们都惊呆了。",
           "rating": "4.9"
         },
+        "item-2": {
+          "name": "莎拉·沃克",
+          "role": "星球大战同人小说作家",
+          "heading": "必备写作工具",
+          "content": "这个翻译器对我的同人小说工作至关重要。正宗的曼达洛语对话让我的故事更加沉浸和可信。强烈推荐！",
+          "rating": "4.8"
+        },
         "item-3": {
-          "name": "Michael Brown",
-          "role": "Web开发人员",
-          "heading": "开发者友好",
-          "content": "曼达洛语翻译器中心的标准化API和边缘运行时功能使其易于集成到我的项目中，每次都能提供快速准确的翻译。",
-          "rating": "4.7"
+          "name": "马库斯·陈",
+          "role": "星球大战爱好者",
+          "heading": "惊人的准确性",
+          "content": "作为一个星球大战超级粉丝，我欣赏这个翻译器的准确性。它使用真正的曼达洛语词汇和语法，而不仅仅是随机替换。这是真正的货色！",
+          "rating": "5.0"
         }
       }
     },
     "faqs": {
       "title": "常见问题",
+      "subtitle": "有其他问题？随时通过电子邮件联系我们。",
       "items": {
         "item-1": {
-          "question": "曼达洛语翻译器中心免费使用吗？",
-          "answer": "是的，曼达洛语翻译器中心在网络上免费使用。不支持应用下载或离线使用。"
+          "question": "曼达洛语翻译器免费使用吗？",
+          "answer": "是的，曼达洛语翻译器在网络上完全免费使用。您可以访问所有功能而无需任何成本。但是，它需要互联网连接，并且不能作为离线应用程序使用。"
         },
         "item-2": {
-          "question": "曼达洛语翻译器中心如何保护我的隐私？",
-          "answer": "曼达洛语翻译器中心通过高级别安全协议确保您的数据隐私，让您的信息保持安全和机密。"
+          "question": "这是真正的曼达洛语吗？",
+          "answer": "是的，这个翻译器使用由Karen Traviss为星球大战扩展宇宙开发的地道曼达洛语词汇和语法。它不仅仅是编造的词汇，而是一个有规则的构建语言。"
         },
         "item-3": {
-          "question": "将英语翻译成Mando'a的最佳工具是什么？",
-          "answer": "曼达洛语翻译器中心是将英语翻译成Mando'a的最佳工具，提供准确的文本和语音翻译。"
+          "question": "我可以在创意项目中使用这个吗？",
+          "answer": "当然！曼达洛语翻译器非常适合同人小说、角色扮演、cosplay和其他创意项目。我们鼓励您使用它为您的星球大战主题内容增加真实性。"
         }
       }
     },
+    "ctaButton": "立即尝试曼达洛语翻译器",
     "cta": {
-      "title": "立即尝试曼达洛语翻译器中心",
-      "description": "今天就用曼达洛语翻译器中心体验无缝的文本和语音翻译！",
-      "primaryButton": "免费开始"
+      "title": "今天尝试曼达洛语翻译器",
+      "description": "体验正宗曼达洛语翻译的力量，将您的文本转换为战士的语言。立即开始转换！",
+      "primaryButton": "立即尝试曼达洛语翻译器",
+      "secondaryButton": "返回顶部"
     }
+  },
+  "Metadata": {
+    "name": "VibeTrans",
+    "title": "曼达洛语翻译器 - VibeTrans",
+    "description": "通过人工智能翻译打破语言障碍。支持100多种语言的准确、上下文感知翻译。"
   }
 }

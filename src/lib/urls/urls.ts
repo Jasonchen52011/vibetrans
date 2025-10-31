@@ -16,7 +16,20 @@ export function getBaseUrl(): string {
  * Check if the locale should be appended to the URL
  */
 export function shouldAppendLocale(locale?: Locale | null): boolean {
-  return !!locale && locale !== routing.defaultLocale && locale !== 'default';
+  if (!locale || locale === 'default') {
+    return false;
+  }
+
+  const localePrefix =
+    typeof routing.localePrefix === 'string'
+      ? routing.localePrefix
+      : routing.localePrefix?.mode;
+
+  if (localePrefix === 'always') {
+    return true;
+  }
+
+  return locale !== routing.defaultLocale;
 }
 
 /**
@@ -74,7 +87,9 @@ export function getUrlWithLocaleInCallbackUrl(
     return urlObj.toString();
   } catch (error) {
     // If URL parsing fails, return the original URL
-    console.warn('Failed to parse URL for locale insertion:', url, error);
+    if (process.env.NODE_ENV === 'development') {
+      console.warn('Failed to parse URL for locale insertion:', url, error);
+    }
     return url;
   }
 }

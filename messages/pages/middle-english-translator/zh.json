@@ -1,0 +1,272 @@
+{
+  "MiddleEnglishTranslatorPage": {
+    "title": "Free Middle English Translator Online Tool",
+    "description": "Discover the free middle english translator by VibeTrans. Easily convert modern English to Middle English from 1150-1500 with voice and file support.",
+    "hero": {
+      "title": "Middle English Translator Tool for Easy Conversion",
+      "description": "Discover the best Middle English translator with VibeTrans! Effortlessly convert modern text to Middle English. From literature to RPG dialogues, enrich your projects with authentic medieval charm. Try it now!",
+      "primaryButton": "Try Now",
+      "secondaryButton": "Learn More"
+    },
+    "tool": {
+      "inputLabel": "Modern English Text",
+      "outputLabel": "Middle English Translation",
+      "inputPlaceholder": "Enter modern English text or upload a file...",
+      "outputPlaceholder": "Middle English translation will appear here",
+      "translateButton": "Translate",
+      "uploadButton": "Upload File",
+      "uploadHint": "Supports .txt, .docx files",
+      "recordButton": "Record Audio",
+      "loading": "Translating...",
+      "error": "Translation failed. Please try again.",
+      "noInput": "Please enter text to translate",
+      "downloadButton": "Download",
+      "resetButton": "Reset",
+      "copyTooltip": "Copy",
+      "downloadTooltip": "Download",
+      "resetTooltip": "Reset",
+      "englishLabel": "English",
+      "middleEnglishLabel": "Middle English",
+      "middleEnglishPlaceholder": "Type Middle English text here...",
+      "removeFileTooltip": "Remove file",
+      "removeRecordingTooltip": "Remove recording",
+      "toggleModeTooltip": "Toggle translation mode",
+      "toggleDirectionTooltip": "Toggle translation direction",
+      "copyResultTooltip": "Copy result",
+      "downloadResultTooltip": "Download result",
+      "playSoundTooltip": "Play sound"
+    },
+    "whatIs": {
+      "title": "What is Middle English Translator Studio",
+      "description": "Middle English Translator Studio is a powerful tool by VibeTrans that converts modern English into Middle English from 1150-1500. It offers dialect options, voice translation, and file uploads, making it ideal for students, researchers, and language enthusiasts.",
+      "image": "/images/docs/middle-english-translator-how-to.webp",
+      "imageAlt": "What is Middle English Translator Studio"
+    },
+    "examples": {
+      "title": "Translation Examples",
+      "description": "See how modern texts transform into Middle English. From legal documents to literary passages, VibeTrans offers accurate translations with dialect and period precision.",
+      "items": [
+        {
+          "alt": "Example 1: Basic greeting translation\n\nModern: 'Hello, how are you today?'\nMiddle English: 'Hail, hou art thou today?'\n\nExplanation: Middle English greetings used 'hail' instead of 'hello', and the verb 'art' (are) with the pronoun 'thou' (you) reflects the period's grammar structure.",
+          "name": "Basic Greeting Translation"
+        },
+        {
+          "alt": "Example 2: Literary passage\n\nModern: 'The knight rode through the forest on his noble steed.'\nMiddle English: 'The knyght rood thurgh the forest on his noble stede.'\n\nExplanation: Note the spelling variations like 'knyght' and 'thurgh', typical of Middle English orthography, where standardized spelling did not yet exist.",
+          "name": "Literary Passage Translation"
+        },
+        {
+          "alt": "Example 3: Religious text\n\nModern: 'May God bless you and keep you safe.'\nMiddle English: 'May God blesse thee and kepe thee sauf.'\n\nExplanation: Religious texts show the use of 'thee' (you) and archaic verb forms like 'kepe' (keep), reflecting Middle English's formal religious register.",
+          "name": "Religious Text Translation"
+        },
+        {
+          "alt": "Example 4: Legal document\n\nModern: 'The agreement between both parties shall be honored.'\nMiddle English: 'The acordaunce bitwene bothe parties schal be honoured.'\n\nExplanation: Legal Middle English used formal vocabulary like 'acordaunce' and 'bitwene', showing the French influence on legal terminology of the period.",
+          "name": "Legal Document Translation"
+        },
+        {
+          "alt": "Example 5: Daily conversation\n\nModern: 'Where are you going this morning?'\nMiddle English: 'Whider goost thou this morwen?'\n\nExplanation: Middle English used 'whider' (whither) for 'where to', and 'morwen' instead of 'morning', demonstrating everyday vocabulary differences.",
+          "name": "Daily Conversation Translation"
+        },
+        {
+          "alt": "Example 6: Scholarly text\n\nModern: 'The study of ancient wisdom brings great knowledge.'\nMiddle English: 'The studie of auncient wisdom bryngeth greet knowleche.'\n\nExplanation: Academic Middle English shows French-influenced vocabulary like 'auncient' and the verb ending '-eth' in 'bryngeth' (brings), typical of third-person singular forms.",
+          "name": "Scholarly Text Translation"
+        }
+      ]
+    },
+    "howto": {
+      "title": "How to Translate English to Middle English",
+      "description": "Follow these simple steps to start translating.",
+      "steps": [
+        {
+          "title": "Upload a File",
+          "description": "Choose a document from your device. VibeTrans supports various formats and ensures your data remains private and secure."
+        },
+        {
+          "title": "Select Dialect and Period",
+          "description": "Choose from dialects like Kentish or Northern, and set the period using our timeline slider for precise translation."
+        },
+        {
+          "title": "Input Text or Voice",
+          "description": "Enter text manually or use the voice input feature. VibeTrans provides instant feedback with real-time translation."
+        },
+        {
+          "title": "Review and Export",
+          "description": "Check the translated text. You can export it in various formats, ready for presentation or further use."
+        }
+      ],
+      "image": "/images/docs/middle-english-translator-how-to.webp",
+      "imageAlt": "How to Translate English to Middle English"
+    },
+    "userInterest": {
+      "title": "Medieval Language Heritage & Literary Evolution",
+      "items": [
+        {
+          "title": "Middle English Spelling Chaos",
+          "description": "In the Middle English era, spelling was a free-for-all. The same word could have over 50 different variations. This lack of standardization makes translating Middle English a real challenge for modern tools.",
+          "image": "/images/docs/text-time-travel.webp",
+          "imageAlt": "Middle English Spelling Chaos"
+        },
+        {
+          "title": "Girls and Boys in Middle English",
+          "description": "Did you know the word ‘girl’ in Middle English didn’t mean what it does today? Back then, it referred to a child of any gender. The current female-only meaning developed much later in the English language.",
+          "image": "/images/docs/business-communication-simplified.webp",
+          "imageAlt": "Girls and Boys in Middle English"
+        }
+      ]
+    },
+    "highlights": {
+      "title": "Academic Grade Middle English Translation: Essential Research Tool",
+      "description": "Discover what makes our tool unique",
+      "items": [
+        {
+          "title": "Simple and Free to Use",
+          "description": "Our tool offers an easy-to-use interface that is completely free. You can convert modern English to Middle English with just a click, without any cost or subscription needed.",
+          "icon": "FaRocket"
+        },
+        {
+          "title": "Data Accuracy You Can Trust",
+          "description": "We ensure high-quality translations by utilizing authoritative sources like the MED dictionary. Our translations are reliable, allowing users to trust the results for academic and creative purposes.",
+          "icon": "FaBrain"
+        },
+        {
+          "title": "Privacy and Data Security",
+          "description": "Your data privacy is our priority. We never store or share your data. All translations are processed securely, ensuring that your information remains confidential and protected at all times.",
+          "icon": "FaShieldAlt"
+        },
+        {
+          "title": "AI Contextual Understanding",
+          "description": "Our AI comprehends context to provide translations that are more than word-for-word. It adjusts translations based on literary, technical, and other contexts, making your Middle English accurate and meaningful.",
+          "icon": "FaEye"
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "What Our Users Are Saying",
+      "items": {
+        "item-1": {
+          "name": "John Smith",
+          "role": "High School Teacher",
+          "heading": "A Classroom Essential",
+          "content": "Using Middle-English Translator Studio has transformed my teaching. My students can instantly translate Shakespearean texts, making lessons more engaging. It's remarkable how the tool captures historical nuances, aiding in both understanding and appreciation. This has made my literature classes more dynamic and interactive.",
+          "rating": "5.0"
+        },
+        "item-2": {
+          "name": "Emily Johnson",
+          "role": "RPG Game Designer",
+          "heading": "Immersive RPG Dialogue",
+          "content": "Middle-English Translator Studio is a game-changer for my RPG scripts. It translates modern dialogue into authentic Middle English, enhancing player immersion. My team loves how accessible and efficient it is, making script adjustments on the fly. Our players have noticed the enriched storytelling, adding depth and authenticity to the gaming experience.",
+          "rating": "4.9"
+        },
+        "item-3": {
+          "name": "Michael Brown",
+          "role": "History Student",
+          "heading": "Perfect for Study and Research",
+          "content": "This translator is indispensable for my medieval studies. It provides accurate translations of Middle English texts, crucial for my research papers. I appreciate its precise dialect options, which help me understand regional variations. The tool's reliability and ease of use enhance my studies, allowing me to focus on analysis rather than translation challenges.",
+          "rating": "4.7"
+        }
+      }
+    },
+    "faqs": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Have other questions? Feel free to contact us via email.",
+      "items": {
+        "item-1": {
+          "question": "What is the best middle english translator for accurate translations?",
+          "answer": "VibeTrans Middle English Translator is the premier choice for accurate translations, featuring advanced AI technology that understands complex grammar, cultural context, and linguistic nuances. Our tool provides bidirectional translation, real-time processing, and high accuracy rates, all completely free. Perfect for language learning, communication, and cultural exploration with reliable, context-aware results."
+        },
+        "item-2": {
+          "question": "Is this Middle English Translator free?",
+          "answer": "Yes, Middle English Translator Studio is free to use. You can translate text, use voice input, and more without any charge."
+        },
+        "item-3": {
+          "question": "How do I ensure my privacy?",
+          "answer": "Your privacy is our priority. VibeTrans handles your data with care, ensuring it remains secure and confidential at all times."
+        },
+        "item-4": {
+          "question": "How does the dialect selection work?",
+          "answer": "Choose your preferred dialect, like Kentish or Northern, from the options menu. This feature helps tailor translations to specific historical contexts."
+        },
+        "item-5": {
+          "question": "Can I convert files other than text?",
+          "answer": "Yes, VibeTrans supports various file formats. Upload your document, and our tool will handle the rest, ensuring accurate translations."
+        },
+        "item-6": {
+          "question": "What is Middle English Translator Studio?",
+          "answer": "Middle English Translator Studio is a tool that converts modern English into Middle English from 1150-1500, offering dialect and period precision."
+        },
+        "item-7": {
+          "question": "How do I use the voice feature?",
+          "answer": "Simply select the voice input option, speak, and VibeTrans will convert your words into Middle English with the chosen dialect and period."
+        }
+      }
+    },
+    "features": {
+      "title": "Core Features",
+      "subtitle": "An intelligent tool crafted for users.",
+      "items": {
+        "item-1": {
+          "title": "Simple and Free to Use",
+          "description": "Our tool offers an easy-to-use interface that is completely free. You can convert modern English to Middle English with just a click, without any cost or subscription needed."
+        },
+        "item-2": {
+          "title": "Data Accuracy You Can Trust",
+          "description": "We ensure high-quality translations by utilizing authoritative sources like the MED dictionary. Our translations are reliable, allowing users to trust the results for academic and creative purposes."
+        },
+        "item-3": {
+          "title": "Privacy and Data Security",
+          "description": "Your data privacy is our priority. We never store or share your data. All translations are processed securely, ensuring that your information remains confidential and protected at all times."
+        },
+        "item-4": {
+          "title": "AI Contextual Understanding",
+          "description": "Our AI comprehends context to provide translations that are more than word-for-word. It adjusts translations based on literary, technical, and other contexts, making your Middle English accurate and meaningful."
+        }
+      }
+    },
+    "ctaButton": "Try Middle English Translator Now",
+    "cta": {
+      "title": "Explore Middle English with VibeTrans",
+      "description": "Start your journey with Middle English Translator Studio. Convert modern text effortlessly and dive into history. Try it today!",
+      "primaryButton": "Try Middle English Translator Now",
+      "secondaryButton": "Back to Top"
+    },
+    "unique": {
+      "title": "Historical Research & Academic Applications",
+      "subtitle": "Tailored Solutions for Users",
+      "description": "Exploring unique features and capabilities",
+      "items": [
+        {
+          "title": "Dive into Dialects",
+          "content": "Ever wondered how Middle English sounded in different regions? With VibeTrans, you can choose between dialects like Northern and Kentish. One finds this feature fascinating because it lets you explore history in a way that feels real. It's like time travel, but for language! Whether you're a history buff or just curious, this tool lets you see just how diverse Middle English was. It's an adventure for your words and imagination."
+        },
+        {
+          "title": "Hear History Come Alive",
+          "content": "VibeTrans doesn't just translate—it's like having a medieval bard at your fingertips. You can hear Middle English with authentic pronunciation. It is clear this is super cool, especially for auditory learners or anyone curious about how things sounded back then. It's not just about reading; it's about experiencing the language. Listening to translations brings a new depth, making history sound as vibrant as it truly was."
+        },
+        {
+          "title": "Translate with Transparency",
+          "content": "Ever worry about where the translations come from? With VibeTrans, transparency is key. This tool shows data sources and translation rules, easing any concerns about accuracy. It is believed knowing the background makes a big difference, especially for serious studies. It's like having a reliable friend who explains their process. Trust in your translator means more confident use, whether you're writing a paper or just exploring."
+        },
+        {
+          "title": "Perfect for Creative Projects",
+          "content": "Are you a D&D player or a writer needing Middle English dialogue? VibeTrans is your go-to tool! With bulk translation options, it makes converting character lines a breeze. Users love how it supports creative minds by providing accurate, era-appropriate language. Imagine enhancing your projects with authentic historical flair. It's like adding a sprinkle of magic to your storytelling, making your work stand out in a crowd."
+        }
+      ]
+    },
+    "funfacts": {
+      "title": "Middle English: Your Key to Unlocking Literary Heritage",
+      "items": [
+        {
+          "title": "Middle English Spelling Chaos",
+          "description": "In the Middle English era, spelling was a free-for-all. The same word could have over 50 different variations. This lack of standardization makes translating Middle English a real challenge for modern tools.",
+          "image": "/images/docs/middle-english-translator-fact-2.webp",
+          "imageAlt": "Middle English Spelling Chaos"
+        },
+        {
+          "title": "Girls and Boys in Middle English",
+          "description": "Did you know the word ‘girl’ in Middle English didn’t mean what it does today? Back then, it referred to a child of any gender. The current female-only meaning developed much later in the English language.",
+          "image": "/images/docs/translation-evolution.webp",
+          "imageAlt": "Girls and Boys in Middle English"
+        }
+      ]
+    }
+  }
+}

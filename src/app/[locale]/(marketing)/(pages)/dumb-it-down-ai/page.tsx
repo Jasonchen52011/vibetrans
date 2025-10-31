@@ -1,4 +1,3 @@
-// @ts-nocheck - Translation keys type mismatch
 import BeforeAfterSection from '@/components/blocks/Examples';
 import CallToActionSection from '@/components/blocks/calltoaction/calltoaction';
 import ExploreOurAiTools from '@/components/blocks/exploretools';
@@ -11,6 +10,7 @@ import WhatIsSection from '@/components/blocks/whatis';
 import { AuroraBackground } from '@/components/ui/aurora-background';
 import { constructMetadata } from '@/lib/metadata';
 import { buildToolStructuredData } from '@/lib/seo/structured-data';
+import { buildTranslatorPageContent } from '@/lib/translator-page';
 import { getUrlWithLocale } from '@/lib/urls/urls';
 import type { Metadata } from 'next';
 import type { Locale } from 'next-intl';
@@ -28,16 +28,14 @@ export async function generateMetadata({
   params: Promise<{ locale: Locale }>;
 }): Promise<Metadata | undefined> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'Metadata' });
-  const dt = await getTranslations({ locale, namespace: 'DumbItDownPage' });
+  const t = await getTranslations({ locale, namespace: 'DumbItDownPage' });
+  const metadataT = await getTranslations({ locale, namespace: 'Metadata' });
 
   return constructMetadata({
-    // @ts-ignore - Translation type mismatch
-    title: `${dt('title')} | ${(t as any)('name')}`,
-    // @ts-ignore - Translation type mismatch
-    description: dt('description'),
+    title: `${t('title')} | ${metadataT('name')}`,
+    description: t('description'),
     canonicalUrl: getUrlWithLocale('/dumb-it-down-ai', locale),
-    image: '/images/docs/academic-simplification.webp',
+    image: t('whatIs.image'),
   });
 }
 
@@ -48,202 +46,18 @@ interface DumbItDownPageProps {
 export default async function DumbItDownPage(props: DumbItDownPageProps) {
   const params = await props.params;
   const { locale } = params;
-  // @ts-ignore - Translation keys are dynamic
   const t = await getTranslations({ locale, namespace: 'DumbItDownPage' });
 
   // Structured Data for SEO
   const structuredData = buildToolStructuredData({
     name: 'Dumb It Down AI',
-    description: (t as any)('description'),
+    description: t('description'),
   });
 
-  // Page data for the tool
-  const pageData = {
-    tool: {
-      inputLabel: (t as any)('tool.inputLabel'),
-      outputLabel: (t as any)('tool.outputLabel'),
-      inputPlaceholder: (t as any)('tool.inputPlaceholder'),
-      outputPlaceholder: (t as any)('tool.outputPlaceholder'),
-      simplifyButton: (t as any)('tool.simplifyButton'),
-      uploadButton: (t as any)('tool.uploadButton'),
-      uploadHint: (t as any)('tool.uploadHint'),
-      loading: (t as any)('tool.loading'),
-      error: (t as any)('tool.error'),
-      noInput: (t as any)('tool.noInput'),
-    },
-  };
-
-  // Examples section data
-  const examplesData = {
-    title: (t as any)('examples.title'),
-    description: (t as any)('examples.description'),
-    images: [
-      {
-        alt: 'Complex: Utilize → Simple: Use',
-        name: 'Utilize → Use',
-      },
-      {
-        alt: 'Complex: Commence → Simple: Start',
-        name: 'Commence → Start',
-      },
-      {
-        alt: 'Complex: Approximately → Simple: About',
-        name: 'Approximately → About',
-      },
-      {
-        alt: 'Complex: Facilitate → Simple: Help',
-        name: 'Facilitate → Help',
-      },
-      {
-        alt: 'Complex: Subsequently → Simple: Then',
-        name: 'Subsequently → Then',
-      },
-      {
-        alt: 'Complex: Endeavor → Simple: Try',
-        name: 'Endeavor → Try',
-      },
-    ],
-  };
-
-  // User scenarios section
-  const userScenariosSection = {
-    name: 'userscenarios',
-    title: (t as any)('funfacts.title'),
-    items: [
-      {
-        title: (t as any)('funfacts.items.0.title'),
-        description: (t as any)('funfacts.items.0.description'),
-        image: {
-          src: '/images/docs/simplify-legal-documents.webp',
-          alt: 'Simplify Legal Documents',
-        },
-      },
-      {
-        title: (t as any)('funfacts.items.1.title'),
-        description: (t as any)('funfacts.items.1.description'),
-        image: {
-          src: '/images/docs/medical-jargon-simplified.webp',
-          alt: 'Medical Jargon Simplified',
-        },
-      },
-    ],
-  };
-
-  // Highlights section
-  const highlightsSection = {
-    name: 'highlights',
-    title: (t as any)('highlights.title'),
-    description: (t as any)('highlights.description'),
-    items: [
-      {
-        icon: 'FaBrain',
-        title: (t as any)('highlights.items.0.title'),
-        description: (t as any)('highlights.items.0.description'),
-      },
-      {
-        icon: 'FaGlobe',
-        title: (t as any)('highlights.items.1.title'),
-        description: (t as any)('highlights.items.1.description'),
-      },
-      {
-        icon: 'FaFileAlt',
-        title: (t as any)('highlights.items.2.title'),
-        description: (t as any)('highlights.items.2.description'),
-      },
-      {
-        icon: 'FaRocket',
-        title: (t as any)('highlights.items.3.title'),
-        description: (t as any)('highlights.items.3.description'),
-      },
-    ],
-  };
-
-  // What is section
-  const whatIsSection = {
-    title: (t as any)('whatIs.title'),
-    description: (t as any)('whatIs.description'),
-    features: [],
-    image: {
-      src: '/images/docs/what-is-dumb-it-down.webp',
-      alt: 'What is Dumb It Down AI - Simplifying Complex Text',
-    },
-    cta: {
-      text: (t as any)('ctaButton'),
-    },
-  };
-
-  // How to section
-  const howtoSection = {
-    name: 'howto',
-    title: (t as any)('howto.title'),
-    description: (t as any)('howto.description'),
-    image: {
-      src: '/images/docs/dumb-it-down-how.webp',
-      alt: 'How to use Dumb It Down AI step by step guide',
-    },
-    items: [
-      {
-        title: (t as any)('howto.steps.0.title'),
-        description: (t as any)('howto.steps.0.description'),
-        icon: 'FaFileUpload',
-      },
-      {
-        title: (t as any)('howto.steps.1.title'),
-        description: (t as any)('howto.steps.1.description'),
-        icon: 'FaPencilAlt',
-      },
-      {
-        title: (t as any)('howto.steps.2.title'),
-        description: (t as any)('howto.steps.2.description'),
-        icon: 'FaBrain',
-      },
-      {
-        title: (t as any)('howto.steps.3.title'),
-        description: (t as any)('howto.steps.3.description'),
-        icon: 'FaCheckCircle',
-      },
-    ],
-  };
-
-  // User Interest section
-  const userInterestSection = {
-    name: 'userinterest',
-    title: (t as any)('userInterest.title'),
-    items: [
-      {
-        title: (t as any)('userInterest.items.0.title'),
-        description: (t as any)('userInterest.items.0.description'),
-        image: {
-          src: '/images/docs/academic-simplification.webp',
-          alt: 'Academic Text Simplification',
-        },
-      },
-      {
-        title: (t as any)('userInterest.items.1.title'),
-        description: (t as any)('userInterest.items.1.description'),
-        image: {
-          src: '/images/docs/business-communication-simplified.webp',
-          alt: 'Business Communication Simplified',
-        },
-      },
-      {
-        title: (t as any)('userInterest.items.2.title'),
-        description: (t as any)('userInterest.items.2.description'),
-        image: {
-          src: '/images/docs/multilingual-simplification.webp',
-          alt: 'Multilingual Text Simplification',
-        },
-      },
-      {
-        title: (t as any)('userInterest.items.3.title'),
-        description: (t as any)('userInterest.items.3.description'),
-        image: {
-          src: '/images/docs/accessibility-for-all.webp',
-          alt: 'Text Accessibility for Everyone',
-        },
-      },
-    ],
-  };
+  // 使用内容构建器生成所有页面内容
+  const translatorContent = buildTranslatorPageContent(t, {
+    howToIcons: ['FaFileUpload', 'FaPencilAlt', 'FaBrain', 'FaCheckCircle'],
+  });
 
   return (
     <>
@@ -257,10 +71,10 @@ export default async function DumbItDownPage(props: DumbItDownPageProps) {
         <AuroraBackground className="bg-white dark:bg-zinc-900 !pt-12 !h-auto">
           <div className="container max-w-7xl mx-auto px-4 text-center relative z-10 pb-8">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              {(t as any)('hero.title')}
+              {t('hero.title')}
             </h1>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
-              {(t as any)('hero.description')}
+              {t('hero.description')}
             </p>
 
             {/* User Avatars and Rating */}
@@ -328,32 +142,35 @@ export default async function DumbItDownPage(props: DumbItDownPageProps) {
 
         {/* Dumb It Down Tool */}
         <div className="pt-0 pb-12 bg-gradient-to-b from-muted/20 to-background">
-          <DumbItDownTool pageData={pageData} locale={locale} />
+          <DumbItDownTool
+            pageData={translatorContent.pageData}
+            locale={locale}
+          />
         </div>
 
         {/* What Is Section */}
-        <WhatIsSection section={whatIsSection} />
+        <WhatIsSection section={translatorContent.whatIs} />
 
         {/* Examples Section */}
-        <BeforeAfterSection beforeAfterGallery={examplesData} />
+        <BeforeAfterSection beforeAfterGallery={translatorContent.examples} />
 
         {/* How to Section */}
-        <HowTo section={howtoSection} />
+        <HowTo section={translatorContent.howTo} />
 
         {/* User Interest Blocks */}
         <UserScenarios
-          section={userInterestSection}
-          ctaText={(t as any)('ctaButton')}
+          section={translatorContent.userInterest}
+          ctaText={t('ctaButton')}
         />
 
         {/* Fun Facts */}
         <UserScenarios
-          section={userScenariosSection}
-          ctaText={(t as any)('ctaButton')}
+          section={translatorContent.funFacts}
+          ctaText={t('ctaButton')}
         />
 
         {/* Highlights/Why Choose */}
-        <WhyChoose section={highlightsSection} />
+        <WhyChoose section={translatorContent.highlights} />
 
         {/* Explore Other Tools */}
         <ExploreOurAiTools
@@ -368,13 +185,15 @@ export default async function DumbItDownPage(props: DumbItDownPageProps) {
         />
 
         {/* Testimonials Section */}
-        <TestimonialsThreeColumnSection namespace="DumbItDownPage.testimonials" />
+        <TestimonialsThreeColumnSection
+          section={translatorContent.testimonials}
+        />
 
         {/* FAQ Section */}
-        <FaqSection namespace="DumbItDownPage.faqs" />
+        <FaqSection section={translatorContent.faqs} />
 
         {/* Call to Action */}
-        <CallToActionSection namespace="DumbItDownPage.cta" />
+        <CallToActionSection section={translatorContent.cta} />
       </div>
     </>
   );

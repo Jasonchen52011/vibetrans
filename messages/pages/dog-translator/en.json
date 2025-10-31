@@ -161,16 +161,32 @@
         }
       ]
     },
-    "userScenarios": {
+    "userInterest": {
       "title": "Canine Communication Science & Pet Behavior Insights",
       "items": [
         {
-          "title": "Dogs Have Unique Breed Vocalizations",
-          "description": "Did you know that dogs have a wide range of vocalizations to express themselves? Each breed has its own unique bark, and VibeTrans can help you understand what your dog is really trying to communicate with those barks!"
+          "title": "Breed-Specific Bark Patterns",
+          "description": "Different breeds express themselves in unique ways. Decode husky chatter or corgi yaps with AI insights tailored to your dog's vocal signature.",
+          "image": "/images/docs/speak-dog-in-any-language.webp",
+          "imageAlt": "Breed-specific dog vocalizations"
         },
         {
-          "title": "Dogs Mimic Human Emotions Through Barks",
-          "description": "Some dogs actually use their barks to mimic human emotions! I was amazed when I learned that. Now, VibeTrans lets me hear how my dog's mood changes with different emotional tones in my voice!"
+          "title": "Behavior Coaching Companion",
+          "description": "Pair bark translation with daily training to get instant prompts about anxiety, excitement, or fatigue, making interactions more targeted.",
+          "image": "/images/docs/pet-training-made-fun.webp",
+          "imageAlt": "Dog training made fun"
+        },
+        {
+          "title": "Multilingual Bark Converter",
+          "description": "Whether you use English, Spanish, or other languages, Dog Translator can output corresponding dog emotion sounds, making it convenient for cross-language families.",
+          "image": "/images/docs/what-is-dog-translator.webp",
+          "imageAlt": "Multilingual dog translation"
+        },
+        {
+          "title": "Strengthen Daily Bonding",
+          "description": "Use translation results during walks, playtime, or comforting moments to record your dog's emotional changes and build a deeper sense of companionship and security.",
+          "image": "/images/docs/dog-translator-how-to.webp",
+          "imageAlt": "Bonding with your dog"
         }
       ]
     },
@@ -179,18 +195,22 @@
       "description": "Discover what makes our Dog Translator unique and user-friendly",
       "items": [
         {
+          "icon": "FaRocket",
           "title": "Easy & Free",
           "description": "VibeTrans is simple to use and completely free to start! You don't need any special setup—just start translating your dog's feelings into sounds right away."
         },
         {
+          "icon": "FaChartLine",
           "title": "Data Accuracy",
           "description": "Using cutting-edge AI, VibeTrans delivers accurate translations of your dog's emotional responses. Trust in the tool to give you clear, real-time feedback."
         },
         {
+          "icon": "FaShieldAlt",
           "title": "Privacy & Security",
           "description": "We take your privacy seriously. All data is encrypted, ensuring that your recordings are safe and used only for translation purposes."
         },
         {
+          "icon": "FaSmileBeam",
           "title": "Interactive & Fun",
           "description": "It's not just functional—it's fun! Using VibeTrans adds a playful twist to your everyday interactions with your dog, making every moment more exciting."
         }
@@ -198,7 +218,9 @@
     },
     "whatIs": {
       "title": "What is Dog Translator?",
-      "description": "Dog Translator is an AI-powered tool that converts your human emotions and intentions into dog barks. Using advanced algorithms, VibeTrans analyzes your tone and sentiment, transforming them into authentic dog sounds. This helps you communicate more effectively with your dog, whether you're praising, comforting, or simply interacting."
+      "description": "Dog Translator is an AI-powered tool that converts your human emotions and intentions into dog barks. Using advanced algorithms, VibeTrans analyzes your tone and sentiment, transforming them into authentic dog sounds. This helps you communicate more effectively with your dog, whether you're praising, comforting, or simply interacting.",
+      "image": "/images/docs/what-is-dog-translator.webp",
+      "imageAlt": "What is Dog Translator?"
     },
     "howto": {
       "title": "How to Translate English to Dog",
@@ -220,43 +242,31 @@
           "title": "Discover Your Dog's Reaction",
           "description": "Play the translated bark to your dog and see how they react. It's fun to observe how your dog connects with the sound, deepening your bond."
         }
-      ]
+      ],
+      "image": "/images/docs/dog-translator-how-to.webp",
+      "imageAlt": "How to Translate English to Dog"
     },
-    "unique": {
-      "title": "Pet Care Training & Animal Bonding Scenarios",
-      "subtitle": "Tailored Solutions for Dog Lovers",
-      "description": "VibeTrans Dog Translator serves diverse needs - from training to bonding",
-      "items": [
-        {
-          "title": "Emotion Recognition: Understanding Your Dog's Feelings",
-          "description": "Emotion recognition utilizes advanced AI algorithms to analyze your dog's barks in real-time, providing instant emotional feedback and labels. The system interprets vocal patterns and behavioral indicators to deliver accurate emotional assessments, helping owners understand their dog's psychological state and respond appropriately to their needs."
-        },
-        {
-          "title": "Behavior Analysis: Decode Your Dog's Actions",
-          "description": "VibeTrans not only translates barks but also provides feedback on your dog's behavior. Whether it's a wagging tail or a nervous paw, this tool interprets their actions for you. This multimodal translation approach combines vocal and visual analysis, giving you comprehensive insights into your dog's communication patterns and emotional state."
-        },
-        {
-          "title": "Multi-Language Support: Speak Dog in Any Language",
-          "description": "VibeTrans supports multiple languages for human-to-dog communication, enabling pet owners worldwide to decode their dog's emotional expressions. The system's multilingual voice output capability ensures consistent communication regardless of geographic location, making it an essential tool for international pet households and professional dog handlers working across different regions."
-        },
-        {
-          "title": "Personalized Settings: Customizing Dog Translations",
-          "description": "Every dog is unique, and VibeTrans allows you to personalize the translations based on your dog's breed, size, and personality. The individualized learning capability ensures accurate recognition of your dog's specific vocal patterns and behavioral traits. This adaptive technology provides increasingly precise translations over time, creating a truly customized communication experience for each pet."
-        }
-      ]
-    },
-    "funFacts": {
+    "funfacts": {
       "title": "Understanding Dog Emotions: A Complete Guide",
       "items": [
         {
           "title": "Dogs Have Complex Emotional Lives",
-          "description": "Did you know dogs experience emotions similar to humans? Research shows they can feel joy, fear, anger, and even jealousy. VibeTrans helps you understand these complex emotions through their vocalizations and body language."
+          "description": "Did you know dogs experience emotions similar to humans? Research shows they can feel joy, fear, anger, and even jealousy. VibeTrans helps you understand these complex emotions through their vocalizations and body language.",
+          "image": "/images/docs/dog-translator-how-to.webp",
+          "imageAlt": "Dogs Have Complex Emotional Lives"
         },
         {
           "title": "Bark Translations Vary by Breed",
-          "description": "Different dog breeds have unique barking patterns! From the high-pitched yaps of Chihuahuas to the deep woofs of German Shepherds, each breed communicates differently. VibeTrans recognizes these breed-specific variations."
+          "description": "Different dog breeds have unique barking patterns! From the high-pitched yaps of Chihuahuas to the deep woofs of German Shepherds, each breed communicates differently. VibeTrans recognizes these breed-specific variations.",
+          "image": "/images/docs/speak-dog-in-any-language.webp",
+          "imageAlt": "Bark Translations Vary by Breed"
         }
       ]
     }
+  },
+  "Metadata": {
+    "name": "VibeTrans",
+    "title": "Dog Translator - VibeTrans",
+    "description": "Break language barriers with AI-powered translations. Supports 100+ languages with accurate, context-aware translations."
   }
 }

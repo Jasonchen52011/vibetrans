@@ -1,5 +1,6 @@
 {
   "AncientGreekTranslatorPage": {
+    "name": "VibeTrans",
     "title": "Ancient Greek Translator - Accurate & AI-powered Translation Tool",
     "description": "Translate Ancient Greek texts with high accuracy using VibeTrans' AI-powered tool. Perfect for academic research, language learning, and cultural exploration.",
     "hero": {
@@ -45,7 +46,9 @@
     },
     "whatIs": {
       "title": "What is Ancient Greek Translator?",
-      "description": "Ancient Greek translator is an AI-powered tool designed to translate Ancient Greek texts with high accuracy. It understands the complexities of dialects, grammar, and cultural context, making it ideal for research, learning, and exploring Greek philosophy and literature."
+      "description": "Ancient Greek translator is an AI-powered tool designed to translate Ancient Greek texts with high accuracy. It understands the complexities of dialects, grammar, and cultural context, making it ideal for research, learning, and exploring Greek philosophy and literature.",
+      "image": "/images/docs/what-is-ancient-greek-translator.webp",
+      "imageAlt": "What is Ancient Greek Translator?"
     },
     "examples": {
       "title": "Example Translations with Ancient Greek Translator",
@@ -71,26 +74,36 @@
           "title": "Download Your Translation",
           "description": "Once satisfied with the translation, download it in your preferred format (PDF, Word, etc.) and use it for research or learning."
         }
-      ]
+      ],
+      "image": "/images/docs/ancient-greek-translator-how-to.webp",
+      "imageAlt": "How to Translate English to Ancient Greek"
     },
     "userInterest": {
       "title": "Who Uses Ancient Greek Translator?",
       "items": [
         {
           "title": "Accurate Translations of Ancient Greek Texts",
-          "description": "Translating Ancient Greek texts can be challenging due to complex grammar and vocabulary. With VibeTrans, you get accurate, AI-powered translations that take these complexities into account. Perfect for researchers and language enthusiasts alike."
+          "description": "Translating Ancient Greek texts can be challenging due to complex grammar and vocabulary. With VibeTrans, you get accurate, AI-powered translations that take these complexities into account. Perfect for researchers and language enthusiasts alike.",
+          "image": "/images/docs/ancient-greek-language-influence.webp",
+          "imageAlt": "Accurate Translations of Ancient Greek Texts"
         },
         {
           "title": "AI-Powered Ancient Greek Translations",
-          "description": "VibeTrans uses advanced AI technology to improve Ancient Greek translations, capturing subtle meanings and providing context-aware results. I've found AI to be a game-changer in overcoming the barriers of language evolution and dialect differences."
+          "description": "VibeTrans uses advanced AI technology to improve Ancient Greek translations, capturing subtle meanings and providing context-aware results. I've found AI to be a game-changer in overcoming the barriers of language evolution and dialect differences.",
+          "image": "/images/docs/ancient-greek-dialects.webp",
+          "imageAlt": "AI-Powered Ancient Greek Translations"
         },
         {
           "title": "Cultural Insights in Ancient Greek Translations",
-          "description": "Ancient Greek isn't just a language; it's a window into ancient culture. VibeTrans adds relevant cultural annotations to your translations, enriching your understanding of Greek literature, philosophy, and history. It's like bringing the past into the present."
+          "description": "Ancient Greek isn't just a language; it's a window into ancient culture. VibeTrans adds relevant cultural annotations to your translations, enriching your understanding of Greek literature, philosophy, and history. It's like bringing the past into the present.",
+          "image": "/images/docs/rune-ancient-carving-mystical.webp",
+          "imageAlt": "Cultural Insights in Ancient Greek Translations"
         },
         {
           "title": "Learn Ancient Greek with VibeTrans",
-          "description": "Want to learn Ancient Greek? VibeTrans makes it easier with accurate translations and grammar analysis, giving you the tools to master the language. It's perfect for students, teachers, or anyone interested in exploring Greek culture."
+          "description": "Want to learn Ancient Greek? VibeTrans makes it easier with accurate translations and grammar analysis, giving you the tools to master the language. It's perfect for students, teachers, or anyone interested in exploring Greek culture.",
+          "image": "/images/docs/ancient-written-law.webp",
+          "imageAlt": "Learn Ancient Greek with VibeTrans"
         }
       ]
     },
@@ -122,19 +135,23 @@
       "items": [
         {
           "title": "Accurate Translations",
-          "description": "VibeTrans provides AI-powered translations that prioritize accuracy and context, making it a reliable tool for academic research and personal learning."
+          "description": "VibeTrans provides AI-powered translations that prioritize accuracy and context, making it a reliable tool for academic research and personal learning.",
+          "icon": "FaRocket"
         },
         {
           "title": "Context-Aware Translations",
-          "description": "Our AI understands the context of Ancient Greek, providing more than just literal translations—it interprets cultural and historical nuances."
+          "description": "Our AI understands the context of Ancient Greek, providing more than just literal translations—it interprets cultural and historical nuances.",
+          "icon": "FaBrain"
         },
         {
           "title": "Free & Easy to Use",
-          "description": "VibeTrans offers a simple and free interface, so you can get started right away with no sign-up required. Perfect for quick translations."
+          "description": "VibeTrans offers a simple and free interface, so you can get started right away with no sign-up required. Perfect for quick translations.",
+          "icon": "FaShieldAlt"
         },
         {
           "title": "Grammar & Syntax Support",
-          "description": "VibeTrans breaks down sentence structures and provides grammar support for better understanding of Ancient Greek texts."
+          "description": "VibeTrans breaks down sentence structures and provides grammar support for better understanding of Ancient Greek texts.",
+          "icon": "FaEye"
         }
       ]
     },
@@ -210,13 +227,22 @@
       "items": [
         {
           "title": "Did you know Ancient Greek influenced many modern languages?",
-          "description": "Some English words like 'democracy' and 'philosophy' come directly from Greek! It's amazing how a language so old still impacts us today."
+          "description": "Some English words like 'democracy' and 'philosophy' come directly from Greek! It's amazing how a language so old still impacts us today.",
+          "image": "/images/docs/ancient-greek-translator-how-to.webp",
+          "imageAlt": "Did you know Ancient Greek influenced many modern languages?"
         },
         {
           "title": "The Ancient Greek language has several dialects",
-          "description": "It's fun to see how translations vary across these dialects, including Homeric and Attic. At VibeTrans, we've got you covered for all of them!"
+          "description": "It's fun to see how translations vary across these dialects, including Homeric and Attic. At VibeTrans, we've got you covered for all of them!",
+          "image": "/images/docs/learn-ancient-greek.webp",
+          "imageAlt": "The Ancient Greek language has several dialects"
         }
       ]
     }
+  },
+  "Metadata": {
+    "name": "VibeTrans",
+    "title": "Ancient Greek Translator - VibeTrans",
+    "description": "Break language barriers with AI-powered translations. Supports 100+ languages with accurate, context-aware translations."
   }
 }

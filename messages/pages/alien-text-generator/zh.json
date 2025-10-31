@@ -30,31 +30,61 @@
     },
     "whatIs": {
       "title": "What is Alien Text Generator?",
-      "description": "Alien Text Generator is a tool that transforms regular text into various extraterrestrial language styles. Whether for creative projects, games, or social media posts, it lets you explore a variety of out-of-this-world text formats. With VibeTrans, unleash your imagination!"
+      "description": "Alien Text Generator is a tool that transforms regular text into various extraterrestrial language styles. Whether for creative projects, games, or social media posts, it lets you explore a variety of out-of-this-world text formats. With VibeTrans, unleash your imagination!",
+      "image": "/images/docs/what-is-alien-text-generator.webp",
+      "imageAlt": "What is Alien Text Generator - Visual explanation"
     },
     "examples": {
       "title": "Example Uses of Alien Text Generator",
-      "description": "Create text in alien languages for your social media profile, design fun memes, or enhance your gaming experience with unique, creative text styles. Perfect for any project!"
+      "description": "Create text in alien languages for your social media profile, design fun memes, or enhance your gaming experience with unique, creative text styles. Perfect for any project!",
+      "items": [
+        {
+          "alt": "Normal: Hello World → Zalgo: H̴e̵l̷l̴o̷ ̵W̴o̸r̷l̴d̵",
+          "name": "Zalgo Text Effect"
+        },
+        {
+          "alt": "Normal: Gaming → Alien Symbols: 🎮👽🎮",
+          "name": "Gaming Username"
+        },
+        {
+          "alt": "Normal: Welcome → Circle Text: ⓦⓔⓛⓒⓞⓜⓔ",
+          "name": "Social Media Bio"
+        },
+        {
+          "alt": "Normal: Party → Futuristic: 🚀PΔЯŦY🚀",
+          "name": "Event Invitation"
+        },
+        {
+          "alt": "Normal: Code → Robot Text: [C][O][D][E]",
+          "name": "Tech Project"
+        },
+        {
+          "alt": "Normal: Fun → Emoji Mix: F🎪U🎭N🎪",
+          "name": "Creative Content"
+        }
+      ]
     },
     "howto": {
-      "title": "How to Use Alien Text Generator",
-      "description": "Follow these simple steps to transform your text into alien language styles with VibeTrans.",
+      "title": "如何使用外星文字生成器",
+      "description": "按照这些简单步骤，使用VibeTrans将您的文本转换成外星语言风格。",
+      "image": "/images/docs/alien-text-generator-how-to.webp",
+      "imageAlt": "如何使用外星文字生成器 - 分步指南",
       "steps": [
         {
-          "title": "Open the Alien Text Generator tool",
-          "description": "Simply go to the VibeTrans website and access the Alien Text Generator tool."
+          "title": "打开外星文字生成器工具",
+          "description": "只需访问VibeTrans网站并进入外星文字生成器工具。"
         },
         {
-          "title": "Enter your text",
-          "description": "Type or paste your desired text into the input box."
+          "title": "输入您的文本",
+          "description": "在输入框中输入或粘贴您想要的文本。"
         },
         {
-          "title": "Choose your alien text style",
-          "description": "Pick from a variety of alien text styles to transform your text."
+          "title": "选择外星文字风格",
+          "description": "从各种外星文字风格中选择，来转换您的文本。"
         },
         {
-          "title": "Copy your transformed text",
-          "description": "Once you're happy with the result, click 'Copy' to use the new alien text."
+          "title": "复制转换后的文本",
+          "description": "当您对结果满意时，点击'复制'来使用新的外星文字。"
         }
       ]
     },
@@ -63,11 +93,15 @@
       "items": [
         {
           "title": "Zalgo Text Origin",
-          "description": "Did you know that the Zalgo text used in memes comes from a 2004 internet horror story? The creepy, jumbled text style has spread all over the web and is now a key part of meme culture. It's hilarious how it still freaks people out!"
+          "description": "Did you know that the Zalgo text used in memes comes from a 2004 internet horror story? The creepy, jumbled text style has spread all over the web and is now a key part of meme culture. It's hilarious how it still freaks people out!",
+          "image": "/images/docs/alien-text-generator-fact-1.webp",
+          "imageAlt": "Zalgo text origin and meme culture history"
         },
         {
           "title": "Unicode Magic",
-          "description": "Alien texts often use Unicode characters like Greek, Cyrillic, and mathematical symbols. It's amazing how combining these can make text look completely out of this world. The tool gets incredibly creative with symbols!"
+          "description": "Alien texts often use Unicode characters like Greek, Cyrillic, and mathematical symbols. It's amazing how combining these can make text look completely out of this world. The tool gets incredibly creative with symbols!",
+          "image": "/images/docs/alien-text-generator-fact-2.webp",
+          "imageAlt": "Unicode symbols used for alien text effects"
         }
       ]
     },
@@ -78,19 +112,27 @@
       "items": [
         {
           "title": "Alien Text for Social Media",
-          "description": "Want your social media posts to stand out? With the Alien Text Generator, you can create text in unique alien styles that grab attention and spark curiosity. Whether it's your bio or a funny post, this tool has you covered!"
+          "description": "Want your social media posts to stand out? With the Alien Text Generator, you can create text in unique alien styles that grab attention and spark curiosity. Whether it's your bio or a funny post, this tool has you covered!",
+          "image": "/images/docs/alien-text-generator-interest-1.webp",
+          "imageAlt": "Alien text styles for social media"
         },
         {
           "title": "Alien Text for Creative Projects",
-          "description": "Working on a creative project? The Alien Text Generator is perfect for designing texts that match your sci-fi themes, giving your work a distinctive edge. Whether it's for a story or game, you can now bring otherworldly vibes to your projects!"
+          "description": "Working on a creative project? The Alien Text Generator is perfect for designing texts that match your sci-fi themes, giving your work a distinctive edge. Whether it's for a story or game, you can now bring otherworldly vibes to your projects!",
+          "image": "/images/docs/alien-text-generator-interest-2.webp",
+          "imageAlt": "Creative projects using alien text generator"
         },
         {
           "title": "Text Styles for Games",
-          "description": "Level up your gaming experience with alien text styles for your username, profile, or game-related content. With the Alien Text Generator, you can make your in-game communication or identity truly stand out!"
+          "description": "Level up your gaming experience with alien text styles for your username, profile, or game-related content. With the Alien Text Generator, you can make your in-game communication or identity truly stand out!",
+          "image": "/images/docs/alien-text-generator-interest-3.webp",
+          "imageAlt": "Gaming use cases for alien text generator"
         },
         {
           "title": "Fun and Meme Creation",
-          "description": "Turn ordinary text into funny or eerie alien text that's perfect for memes. You can easily create strange, intriguing texts that make people laugh or leave them guessing. A fun way to bring more creativity to your online presence!"
+          "description": "Turn ordinary text into funny or eerie alien text that's perfect for memes. You can easily create strange, intriguing texts that make people laugh or leave them guessing. A fun way to bring more creativity to your online presence!",
+          "image": "/images/docs/alien-text-generator-interest-4.webp",
+          "imageAlt": "Meme creation using alien text styles"
         }
       ]
     },
@@ -99,18 +141,22 @@
       "description": "Everything you need to create amazing alien text",
       "items": [
         {
+          "icon": "FaRocket",
           "title": "Easy to Use",
           "description": "Simply input your text, select your alien style, and instantly get unique, creative text!"
         },
         {
+          "icon": "FaChartLine",
           "title": "Accurate Data",
           "description": "Ensure your transformed text maintains its intended look across different platforms."
         },
         {
+          "icon": "FaShieldAlt",
           "title": "Privacy Safe",
           "description": "Your privacy is important to us. The tool doesn't store any user data."
         },
         {
+          "icon": "FaMagic",
           "title": "AI Understanding",
           "description": "Our tool comprehends text nuances to generate realistic alien languages with ease."
         }
@@ -121,64 +167,25 @@
       "subtitle": "What Our Users Are Saying",
       "items": {
         "item-1": {
-          "name": "John Mitchell",
-          "role": "Software Developer",
-          "content": "I used this Alien Text Generator for a sci-fi game project, and it was a huge hit with my team. The text styles really brought our game to life, and the tool is super easy to use."
+          "name": "李安琪",
+          "role": "游戏设计师",
+          "heading": "科幻项目的秘密武器",
+          "content": "我在科幻游戏项目中使用 Alien Text Generator，团队都对这些外星文字爱不释手。操作简单、效果惊艳，瞬间让界面变得独特又有沉浸感。",
+          "rating": "4.9"
         },
         "item-2": {
-          "name": "Amy Johnson",
-          "role": "Social Media Manager",
-          "content": "Users love using this tool for my social media content. The alien text styles make my posts stand out and get more engagement. Definitely recommend for creative minds!"
+          "name": "陈晓彤",
+          "role": "社交媒体经理",
+          "heading": "社媒内容更吸睛",
+          "content": "用这个工具生成的外星文字，让我们的社交账号互动率直线上升。粉丝们都在问这些字体是怎么做的，超级适合创意营销！",
+          "rating": "4.8"
         },
         "item-3": {
-          "name": "David Adams",
-          "role": "Game Designer",
-          "content": "As a game designer, I needed unique text styles for a new sci-fi game I'm working on. The Alien Text Generator was perfect for creating immersive and otherworldly effects. Great tool!"
-        },
-        "item-4": {
-          "name": "Sarah Lee",
-          "role": "Content Creator",
-          "content": "This tool is so much fun! I've been using it for memes, and the results always make people laugh. It's easy to use and gives me lots of creative freedom."
-        },
-        "item-5": {
-          "name": "Tom Walker",
-          "role": "Web Designer",
-          "content": "I've used the Alien Text Generator for some of my website's sci-fi content, and it's worked wonderfully. The different alien styles help create the perfect atmosphere for my visitors."
-        },
-        "item-6": {
-          "name": "Mia Clark",
-          "role": "Freelancer",
-          "content": "As a freelance writer, I'm always looking for new ways to spice up my work. This tool helps me add a unique flair to some of my creative projects. Highly recommended!"
-        },
-        "item-7": {
-          "name": "Chris Martinez",
-          "role": "Streamer",
-          "content": "Perfect for creating unique usernames and chat messages! My viewers love when I use alien text in my streams. It adds that extra creative touch to my brand."
-        },
-        "item-8": {
-          "name": "Emma Davis",
-          "role": "Digital Artist",
-          "content": "The variety of styles is impressive! I use different alien texts for my digital art projects and Instagram posts. It's become an essential part of my creative toolkit."
-        },
-        "item-9": {
-          "name": "Ryan Thompson",
-          "role": "YouTuber",
-          "content": "Great for video titles and thumbnails! The alien text styles really help my content stand out in the crowded YouTube space. My click-through rate has improved significantly."
-        },
-        "item-10": {
-          "name": "Lisa Wang",
-          "role": "Marketing Director",
-          "content": "We use this for our sci-fi themed campaigns. It's perfect for creating eye-catching promotional materials that align with our futuristic brand identity."
-        },
-        "item-11": {
-          "name": "Alex Rivera",
-          "role": "Indie Developer",
-          "content": "Essential tool for my game development! I use it for creating unique in-game text, character names, and UI elements. Saves me tons of time and looks professional."
-        },
-        "item-12": {
-          "name": "Sophie Chen",
-          "role": "Blogger",
-          "content": "My blog posts about sci-fi and fantasy are so much more engaging now! The alien text generator helps me create unique headers and callouts that readers love."
+          "name": "周子涵",
+          "role": "自由创作者",
+          "heading": "灵感源源不断",
+          "content": "无论是写作、排版还是做周边，Alien Text Generator 都能迅速激发灵感。各种风格可以随意搭配，让作品更有辨识度。",
+          "rating": "4.7"
         }
       }
     },

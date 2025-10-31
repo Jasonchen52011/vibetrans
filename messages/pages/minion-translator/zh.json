@@ -38,7 +38,9 @@
     },
     "whatIs": {
       "title": "什么是小黄人翻译器？",
-      "description": "小黄人翻译器是VibeTrans最有趣的翻译工具，可将您的日常文本转换为可爱的小黄人语言。无论您是在为主题派对准备、创建有趣的社交媒体内容，还是只是想用搞笑的小黄人语消息给朋友带来惊喜，这款工具都能让一切变得异常简单。支持三种独特的小黄人语调——可爱、邪恶和兴奋——您可以完美匹配所需信息的小黄人个性。"
+      "description": "小黄人翻译器是VibeTrans最有趣的翻译工具，可将您的日常文本转换为可爱的小黄人语言。无论您是在为主题派对准备、创建有趣的社交媒体内容，还是只是想用搞笑的小黄人语消息给朋友带来惊喜，这款工具都能让一切变得异常简单。翻译器确保您的翻译能捕捉到那种让小黄人如此可爱的混合胡言乱语、食物引用和多语言魅力的特色。",
+      "image": "/images/docs/minion-translation-tool.webp",
+      "imageAlt": "什么是小黄人翻译器 - 可视化说明"
     },
     "examples": {
       "title": "如何翻译成小黄人语：真实示例",
@@ -110,23 +112,60 @@
         }
       ]
     },
+    "userInterest": {
+      "title": "探索更多与 VibeTrans 的功能",
+      "items": [
+        {
+          "title": "音频发音",
+          "content": "想听听小黄人实际怎么说话吗？VibeTrans 的音频发音功能就像一个神奇的机器，能瞬间让你成为小黄人语大师！无论是喜剧派对还是私人聚会，这种可爱的方式会让你成为焦点。我告诉你一个秘密 - 第一次听到时，我笑到肚子疼！现在就试试吧！",
+          "wordCount": 60,
+          "image": "/images/docs/minion-speech-bubble.webp",
+          "imageAlt": "音频发音功能"
+        },
+        {
+          "title": "教育用途",
+          "content": "想让学习变得轻松有趣吗？VibeTrans 为您保驾护航！通过小黄人语言翻译，您的教室瞬间变成欢乐的派对！边玩边学 - 谁说两者不能兼得？试试看，也许下一个语言天才就是您！人生苦短，不要太严肃。让学习变得更疯狂一点吧！",
+          "wordCount": 60,
+          "image": "/images/docs/learning-fun-icons.webp",
+          "imageAlt": "课堂教育用途"
+        },
+        {
+          "title": "隐私和安全",
+          "content": "在 VibeTrans，我们绝不会乱用您的隐私。您的秘密就像小黄人的香蕉 - 绝对碰不得！我们使用顶级加密技术确保所有翻译内容都保持安全。毕竟，没人希望自己的小秘密被偷看，对吧？放心使用，安心聊天 - VibeTrans 支持您！",
+          "wordCount": 60,
+          "image": "/images/docs/privacy-safe-chat.webp",
+          "imageAlt": "隐私安全保护"
+        },
+        {
+          "title": "移动友好",
+          "content": "嘿，VibeTrans 让翻译像刷 TikTok 一样简单！无论您在地铁还是在咖啡店，只需轻点手指就能探索全球语言。谁还需要沉重的字典？一切都能在手机上完成 - 这真是懒人的福音！爱上这个网络工具有充分的理由，对吧？",
+          "wordCount": 60,
+          "image": "/images/docs/global-translation-mobile.webp",
+          "imageAlt": "移动友好翻译工具"
+        }
+      ]
+    },
     "highlights": {
       "title": "小黄人语翻译引擎：为小黄人玩家量身打造",
       "description": "体验准确性、隐私和乐趣的完美结合，体验我们先进的小黄人翻译功能。",
       "items": [
         {
+          "icon": "FaRocket",
           "title": "简单免费使用",
           "description": "使用VibeTrans，翻译成小黄人语轻而易举！只需点击几下即可转换文本或语音，而且完全免费。用户喜爱它让一切都变得如此易用的体验。"
         },
         {
+          "icon": "FaBrain",
           "title": "数据准确性",
           "description": "VibeTrans确保准确翻译，保持小黄人语的精髓。无论是翻译誓言还是恶作剧，您都可以信任输出。我试过了，每次都完全准确！"
         },
         {
+          "icon": "FaShieldAlt",
           "title": "隐私至上",
           "description": "VibeTrans重视您的隐私。我们不存储您的文本，让您可以放心翻译任何内容。人们相信这对于轻松玩耍至关重要，确实如此！安心使用，放心畅聊。"
         },
         {
+          "icon": "FaChartLine",
           "title": "AI上下文理解",
           "description": "VibeTrans中的AI能够理解语境，确保翻译不仅准确，而且有意义。就像耳边有小黄人在低语，完美匹配您所需的语调。"
         }

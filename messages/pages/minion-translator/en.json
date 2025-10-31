@@ -34,7 +34,7 @@
     },
     "whatIs": {
       "title": "What is Minion Translator?",
-      "description": "Minion Translator is VibeTrans's most entertaining translation tool that transforms your everyday text into the adorable Minionese language from Despicable Me. Whether you're planning a themed party, creating fun social media posts, or just want to surprise your friends with hilarious Minion-speak messages, this tool makes it incredibly easy. With support for three unique voice tones—Cute, Evil, and Excited—you can match the perfect Minion personality to your message. The translator uses an authentic Minionese dictionary based on the movies, ensuring your translations capture that signature blend of gibberish, food references, and multilingual charm that makes Minions so lovable.",
+      "description": "Minion Translator is VibeTrans's most entertaining translation tool that transforms your everyday text into the adorable Minionese language from Despicable Me. Whether you're planning a themed party, creating fun social media posts, or just want to surprise your friends with hilarious Minion-speak messages, this tool makes it incredibly easy. The translator ensures your translations capture that signature blend of gibberish, food references, and multilingual charm that makes Minions so lovable.",
       "image": "/images/docs/minion-translation-tool.webp",
       "imageAlt": "What is Minion Translator - Visual explanation"
     },
@@ -43,28 +43,28 @@
       "description": "See how our Minion translator transforms everyday English into hilarious Minionese. These real translation examples show the fun and authentic results you can get instantly.",
       "items": [
         {
-          "alt": "Daily conversation translated to Minionese",
-          "name": "Daily Conversation"
+          "alt": "Party invitation translated to Minionese with excitement",
+          "name": "Party Invitation"
         },
         {
-          "alt": "Social media post in Minion language",
-          "name": "Social Media Post"
+          "alt": "Food order in Minion language for fun dining",
+          "name": "Restaurant Order"
         },
         {
-          "alt": "Birthday wishes translated to Minionese",
-          "name": "Birthday Wishes"
+          "alt": "Morning greeting translated to cheerful Minionese",
+          "name": "Morning Greeting"
         },
         {
-          "alt": "Work email in Minion language",
-          "name": "Work Email"
+          "alt": "Work meeting translated to playful Minion speak",
+          "name": "Team Meeting"
         },
         {
-          "alt": "Movie quote translated to Minionese",
-          "name": "Famous Movie Quote"
+          "alt": "Love message converted to adorable Minionese",
+          "name": "Love Message"
         },
         {
-          "alt": "Song lyrics in Minion language",
-          "name": "Song Lyrics"
+          "alt": "Bedtime story in cute Minion language",
+          "name": "Bedtime Story"
         }
       ]
     },
@@ -129,18 +129,22 @@
       "description": "Experience the perfect blend of accuracy, privacy, and fun with our advanced Minion translation features",
       "items": [
         {
+          "icon": "FaRocket",
           "title": "Simple & Free to Use",
           "description": "With VibeTrans, translating into Minionese is a breeze! You can convert text or voice with just a few clicks, and it's completely free. Users love how it makes everything so accessible for a fun experience."
         },
         {
+          "icon": "FaBrain",
           "title": "Data Accuracy",
           "description": "VibeTrans ensures accurate translations, maintaining the essence of Minionese. Whether you're translating vows or pranks, you can trust the output. I've tried it, and it's spot-on every time!"
         },
         {
+          "icon": "FaShieldAlt",
           "title": "Privacy Matters",
           "description": "VibeTrans values your privacy. It doesn't store your texts, so feel free to translate anything. It is believed this is a crucial feature for peace of mind while having fun with Minionese."
         },
         {
+          "icon": "FaChartLine",
           "title": "AI Context Understanding",
           "description": "The AI in VibeTrans understands context, ensuring translations are not just accurate but meaningful. It's like having a Minion whispering in your ear, perfectly matching the tone you need."
         }
@@ -148,6 +152,7 @@
     },
     "testimonials": {
       "title": "What Our Users Are Saying",
+      "subtitle": "Real feedback from real users",
       "items": {
         "item-1": {
           "name": "Jessica Turner",
@@ -252,5 +257,10 @@
         }
       ]
     }
+  },
+  "Metadata": {
+    "name": "VibeTrans",
+    "title": "Minion Translator - VibeTrans",
+    "description": "Break language barriers with AI-powered translations. Supports 100+ languages with accurate, context-aware translations."
   }
 }

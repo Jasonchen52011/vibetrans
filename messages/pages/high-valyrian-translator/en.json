@@ -92,7 +92,9 @@
           "description": "Check your translated text in the output area. You can copy the result, download it as a file, or use the text-to-speech feature to hear the pronunciation.",
           "icon": "FaCheckCircle"
         }
-      ]
+      ],
+      "image": "/images/docs/translation-step-by-step-guide.webp",
+      "imageAlt": "How to Translate English to High Valyrian"
     },
     "userInterest": {
       "title": "Explore More with VibeTrans",
@@ -129,19 +131,23 @@
       "items": [
         {
           "title": "Simple and Free to Use",
-          "description": "VibeTrans offers simple, easy-to-use, and free High Valyrian translation features. No complex setup or subscriptions required—translate text quickly. The user interface is intuitive and friendly, letting you easily experience the charm of Valyrian language."
+          "description": "VibeTrans offers simple, easy-to-use, and free High Valyrian translation features. No complex setup or subscriptions required—translate text quickly. The user interface is intuitive and friendly, letting you easily experience the charm of Valyrian language.",
+          "icon": "FaRocket"
         },
         {
           "title": "Data Privacy and Security",
-          "description": "VibeTrans uses advanced encryption technology to ensure user data safety and privacy. We strictly follow international data protection standards, guaranteeing your translation history and personal information won't be leaked or misused."
+          "description": "VibeTrans uses advanced encryption technology to ensure user data safety and privacy. We strictly follow international data protection standards, guaranteeing your translation history and personal information won't be leaked or misused.",
+          "icon": "FaBrain"
         },
         {
           "title": "AI Context Understanding",
-          "description": "VibeTrans is equipped with advanced AI context understanding capabilities, accurately capturing and analyzing subtle differences in High Valyrian. Whether complex sentence structures or context-dependent word meanings, VibeTrans provides precise translations."
+          "description": "VibeTrans is equipped with advanced AI context understanding capabilities, accurately capturing and analyzing subtle differences in High Valyrian. Whether complex sentence structures or context-dependent word meanings, VibeTrans provides precise translations.",
+          "icon": "FaShieldAlt"
         },
         {
           "title": "Detailed Explanations",
-          "description": "VibeTrans provides in-depth translation explanations, allowing users to not only understand High Valyrian's literal meaning but also grasp its cultural background and linguistic nuances through detailed analysis."
+          "description": "VibeTrans provides in-depth translation explanations, allowing users to not only understand High Valyrian's literal meaning but also grasp its cultural background and linguistic nuances through detailed analysis.",
+          "icon": "FaEye"
         }
       ]
     },
@@ -212,7 +218,7 @@
       "primaryButton": "Try HighValyrianTranslator Now",
       "secondaryButton": "Back to Top"
     },
-    "funFacts": {
+    "funfacts": {
       "title": "Game of Thrones Fan's Guide to Mastering High Valyrian",
       "items": [
         {
@@ -229,5 +235,10 @@
         }
       ]
     }
+  },
+  "Metadata": {
+    "name": "VibeTrans",
+    "title": "High Valyrian Translator - VibeTrans",
+    "description": "Break language barriers with AI-powered translations. Supports 100+ languages with accurate, context-aware translations."
   }
 }

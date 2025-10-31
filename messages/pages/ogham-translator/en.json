@@ -93,7 +93,7 @@
         }
       ]
     },
-    "funFacts": {
+    "funfacts": {
       "title": "Interesting Facts",
       "items": [
         {
@@ -142,7 +142,7 @@
     "highlights": {
       "title": "Key Features of Ogham Translator",
       "description": "Ogham Translator offers advanced features for seamless text conversion and voice interaction.",
-      "features": [
+      "items": [
         {
           "icon": "FaVolumeUp",
           "title": "Voice Input/Output",
@@ -214,5 +214,10 @@
       "primaryButton": "Try OghamTranslator Now",
       "secondaryButton": "Back to Top"
     }
+  },
+  "Metadata": {
+    "name": "VibeTrans",
+    "title": "Ogham Translator - VibeTrans",
+    "description": "Break language barriers with AI-powered translations. Supports 100+ languages with accurate, context-aware translations."
   }
 }

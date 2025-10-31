@@ -1,6 +1,5 @@
 'use client';
 
-import { PostHogProvider } from '@/analytics/posthog-analytics';
 import { ActiveThemeProvider } from '@/components/layout/active-theme-provider';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { websiteConfig } from '@/config/website';
@@ -13,10 +12,9 @@ interface ProvidersProps {
 }
 
 /**
- * Simplified Providers - removed auth and query providers
+ * Simplified Providers - removed auth and analytics providers
  *
  * Remaining providers:
- * - PostHogProvider: Provides the PostHog analytics to the app
  * - ThemeProvider: Provides the theme to the app
  * - ActiveThemeProvider: Provides the active theme to the app
  * - TooltipProvider: Provides the tooltip to the app
@@ -25,17 +23,15 @@ export function Providers({ children, locale }: ProvidersProps) {
   const defaultMode = websiteConfig.ui.mode?.defaultMode ?? 'system';
 
   return (
-    <PostHogProvider>
-      <ThemeProvider
-        attribute="class"
-        defaultTheme={defaultMode}
-        enableSystem={true}
-        disableTransitionOnChange
-      >
-        <ActiveThemeProvider>
-          <TooltipProvider>{children}</TooltipProvider>
-        </ActiveThemeProvider>
-      </ThemeProvider>
-    </PostHogProvider>
+    <ThemeProvider
+      attribute="class"
+      defaultTheme={defaultMode}
+      enableSystem={true}
+      disableTransitionOnChange
+    >
+      <ActiveThemeProvider>
+        <TooltipProvider>{children}</TooltipProvider>
+      </ActiveThemeProvider>
+    </ThemeProvider>
   );
 }

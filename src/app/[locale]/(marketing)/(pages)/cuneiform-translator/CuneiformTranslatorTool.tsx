@@ -3,8 +3,9 @@
 import { ToolInfoSections } from '@/components/blocks/tool/tool-info-sections';
 import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
 import type { CuneiformScript } from '@/lib/cuneiform';
+import { readFileContent } from '@/lib/utils/file-utils';
 import { ArrowRightIcon } from 'lucide-react';
-import mammoth from 'mammoth';
+// import mammoth from 'mammoth'; // Disabled for Edge Runtime compatibility
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 // 简单的debounce函数实现
@@ -63,60 +64,6 @@ export default function CuneiformTranslatorTool({
       setError(err.message || 'Failed to read file');
       setFileName(null);
     }
-  };
-
-  // Read file content
-  const readFileContent = async (file: File): Promise<string> => {
-    const fileExtension = file.name.split('.').pop()?.toLowerCase();
-
-    // Handle .txt files
-    if (fileExtension === 'txt') {
-      return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-
-        reader.onload = (e) => {
-          const content = e.target?.result as string;
-          if (content) {
-            resolve(content);
-          } else {
-            reject(new Error('File is empty'));
-          }
-        };
-
-        reader.onerror = () => {
-          reject(new Error('Failed to read file'));
-        };
-
-        reader.readAsText(file);
-      });
-    }
-
-    // Handle .docx files with mammoth
-    if (fileExtension === 'docx') {
-      try {
-        const arrayBuffer = await file.arrayBuffer();
-        const result = await mammoth.extractRawText({ arrayBuffer });
-        if (result.value) {
-          return result.value;
-        }
-        throw new Error('Failed to extract text from Word document');
-      } catch (error) {
-        throw new Error(
-          'Failed to read .docx file. Please ensure it is a valid Word document.'
-        );
-      }
-    }
-
-    // Unsupported file type
-    if (fileExtension === 'doc') {
-      throw new Error(
-        'Old .doc format is not supported. Please save as .docx (File → Save As → Word Document (.docx)) or copy-paste the text directly.'
-      );
-    }
-
-    throw new Error(
-      'Unsupported file format. Please upload .txt or .docx files.'
-    );
   };
 
   // Handle translation
@@ -190,25 +137,30 @@ export default function CuneiformTranslatorTool({
   const handleCopy = async () => {
     if (!translatedText) return;
     try {
-      await navigator.clipboard.writeText(translatedText);
-      // Optional: Show success feedback
-    } catch (err) {
-      console.error('Failed to copy:', err);
+      const { smartCopyToClipboard } = await import('@/lib/utils/dynamic-copy');
+      await smartCopyToClipboard(translatedText, {
+        successMessage: 'Cuneiform text copied to clipboard!',
+        errorMessage: 'Failed to copy cuneiform text',
+        onSuccess: () => {},
+        onError: (error) => console.error('Failed to copy:', error),
+      });
+    } catch (error) {
+      console.error('Copy function loading failed:', error);
     }
   };
 
   // Download result as text file
-  const handleDownload = () => {
+  const handleDownload = async () => {
     if (!translatedText) return;
-    const blob = new Blob([translatedText], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `cuneiform-${script}-${direction}-${Date.now()}.txt`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+    try {
+      const { smartDownload } = await import('@/lib/utils/dynamic-download');
+      smartDownload(translatedText, `cuneiform-${script}-${direction}`, {
+        onSuccess: () => {},
+        onError: (error) => console.error('Download failed:', error),
+      });
+    } catch (error) {
+      console.error('Download function loading failed:', error);
+    }
   };
 
   // 获取动态标签

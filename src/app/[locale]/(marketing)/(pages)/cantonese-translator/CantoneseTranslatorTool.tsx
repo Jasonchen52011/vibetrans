@@ -1,8 +1,9 @@
 'use client';
 
 import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
+import { readFileContent } from '@/lib/utils/file-utils';
 import { ArrowRightIcon } from 'lucide-react';
-import mammoth from 'mammoth';
+// import mammoth from 'mammoth'; // Disabled for Edge Runtime compatibility
 import { useState } from 'react';
 
 interface CantoneseTranslatorToolProps {
@@ -25,12 +26,6 @@ export default function CantoneseTranslatorTool({
     'yue-to-en'
   );
 
-  // 语音录制状态
-  const [isRecording, setIsRecording] = useState<boolean>(false);
-  const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder | null>(
-    null
-  );
-
   // Handle file upload
   const handleFileUpload = async (
     event: React.ChangeEvent<HTMLInputElement>
@@ -50,41 +45,6 @@ export default function CantoneseTranslatorTool({
     }
   };
 
-  // Read file content
-  const readFileContent = async (file: File): Promise<string> => {
-    const fileExtension = file.name.split('.').pop()?.toLowerCase();
-
-    if (fileExtension === 'txt') {
-      return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          const content = e.target?.result as string;
-          if (content) resolve(content);
-          else reject(new Error('File is empty'));
-        };
-        reader.onerror = () => reject(new Error('Failed to read file'));
-        reader.readAsText(file);
-      });
-    }
-
-    if (fileExtension === 'docx') {
-      try {
-        const arrayBuffer = await file.arrayBuffer();
-        const result = await mammoth.extractRawText({ arrayBuffer });
-        if (result.value) return result.value;
-        throw new Error('Failed to extract text from Word document');
-      } catch (error) {
-        throw new Error(
-          'Failed to read .docx file. Please ensure it is a valid Word document.'
-        );
-      }
-    }
-
-    throw new Error(
-      'Unsupported file format. Please upload .txt or .docx files.'
-    );
-  };
-
   // Handle translation with smart detection
   const handleTranslate = async () => {
     if (!inputText.trim()) {
@@ -98,11 +58,13 @@ export default function CantoneseTranslatorTool({
     setOutputText('');
 
     try {
-      const response = await fetch('/api/cantonese-translator', {
+      const response = await fetch('/api/translate-unified', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           text: inputText,
+          translator: 'cantonese',
+          mode: 'general',
           direction: direction,
         }),
       });
@@ -159,100 +121,29 @@ export default function CantoneseTranslatorTool({
   const handleCopy = async () => {
     if (!outputText) return;
     try {
-      await navigator.clipboard.writeText(outputText);
-    } catch (err) {
-      console.error('Failed to copy:', err);
+      const { smartCopyToClipboard } = await import('@/lib/utils/dynamic-copy');
+      await smartCopyToClipboard(outputText, {
+        successMessage: 'Translation copied to clipboard!',
+        errorMessage: 'Failed to copy translation',
+        onSuccess: () => {},
+        onError: (error) => console.error('Failed to copy:', error),
+      });
+    } catch (error) {
+      console.error('Copy function loading failed:', error);
     }
   };
 
   // Download
-  const handleDownload = () => {
+  const handleDownload = async () => {
     if (!outputText) return;
-    const blob = new Blob([outputText], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `cantonese-translator-${Date.now()}.txt`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-  };
-
-  // Start recording with real-time speech recognition
-  const startRecording = async () => {
     try {
-      setError(null);
-      setIsLoading(true);
-
-      // Use Web Speech API for real-time transcription
-      const SpeechRecognition =
-        (window as any).SpeechRecognition ||
-        (window as any).webkitSpeechRecognition;
-
-      if (!SpeechRecognition) {
-        throw new Error(
-          'Speech recognition not supported in this browser. Please use Chrome or Edge.'
-        );
-      }
-
-      const recognition = new SpeechRecognition();
-      recognition.lang = direction === 'yue-to-en' ? 'yue-Hant-HK' : 'en-US';
-      recognition.continuous = false;
-      recognition.interimResults = false;
-      recognition.maxAlternatives = 1;
-
-      recognition.onstart = () => {
-        setIsRecording(true);
-        setIsLoading(false);
-      };
-
-      recognition.onresult = (event: any) => {
-        const transcript = event.results[0][0].transcript;
-        setInputText((prev) => prev + ' ' + transcript);
-        setIsRecording(false);
-      };
-
-      recognition.onerror = (event: any) => {
-        console.error('Speech recognition error:', event.error);
-        if (event.error === 'no-speech') {
-          setError('No speech detected. Please try again.');
-        } else if (event.error === 'not-allowed') {
-          setError(
-            'Microphone access denied. Please enable microphone permissions.'
-          );
-        } else {
-          setError('Speech recognition failed: ' + event.error);
-        }
-        setIsRecording(false);
-        setIsLoading(false);
-      };
-
-      recognition.onend = () => {
-        setIsRecording(false);
-        setIsLoading(false);
-      };
-
-      recognition.start();
-      setMediaRecorder(recognition as any); // Store recognition instance
-    } catch (err: any) {
-      setError(err.message || 'Failed to start speech recognition');
-      setIsRecording(false);
-      setIsLoading(false);
-      console.error('Error starting speech recognition:', err);
-    }
-  };
-
-  // Stop recording
-  const stopRecording = () => {
-    if (mediaRecorder && isRecording) {
-      try {
-        (mediaRecorder as any).stop();
-      } catch (err) {
-        console.error('Error stopping recognition:', err);
-      }
-      setIsRecording(false);
-      setMediaRecorder(null);
+      const { smartDownload } = await import('@/lib/utils/dynamic-download');
+      smartDownload(outputText, 'cantonese-translator', {
+        onSuccess: () => {},
+        onError: (error) => console.error('Download failed:', error),
+      });
+    } catch (error) {
+      console.error('Download function loading failed:', error);
     }
   };
 
@@ -278,8 +169,8 @@ export default function CantoneseTranslatorTool({
               aria-label={pageData.tool.inputLabel || 'Input text'}
             />
 
-            {/* File Upload and Voice Recording */}
-            <div className="mt-4 flex items-center gap-3 flex-wrap">
+            {/* File Upload */}
+            <div className="mt-4 flex items-center gap-3">
               <label
                 htmlFor="file-upload"
                 className="inline-flex items-center px-4 py-2 bg-gray-200 dark:bg-zinc-600 hover:bg-gray-300 dark:hover:bg-zinc-500 text-gray-800 dark:text-gray-100 font-medium rounded-lg cursor-pointer transition-colors"
@@ -309,32 +200,6 @@ export default function CantoneseTranslatorTool({
                 onChange={handleFileUpload}
                 className="hidden"
               />
-
-              {/* Voice Recording Button */}
-              <button
-                onClick={isRecording ? stopRecording : startRecording}
-                className={`inline-flex items-center px-4 py-2 font-medium rounded-lg transition-colors ${
-                  isRecording
-                    ? 'bg-red-500 hover:bg-red-600 text-white'
-                    : 'bg-blue-500 hover:bg-blue-600 text-white'
-                }`}
-                disabled={isLoading}
-              >
-                <svg
-                  className="w-5 h-5 mr-2"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"
-                  />
-                </svg>
-                {isRecording ? 'Stop Recording' : 'Record Voice'}
-              </button>
             </div>
 
             {/* File Name Display */}

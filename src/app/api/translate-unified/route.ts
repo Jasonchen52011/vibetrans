@@ -89,6 +89,18 @@ const SYMBOLIC_TRANSLATORS = {
 
 // AI翻译器配置
 const AI_TRANSLATORS = {
+  cantonese: {
+    modes: {
+      general:
+        'You are a professional Cantonese translator. Translate accurately between Cantonese and English, preserving cultural nuances and natural expressions:',
+      simplified:
+        'Provide simple, clear translations between Cantonese and English:',
+      formal:
+        'Translate in a formal, professional style suitable for business contexts:',
+    },
+    targetLanguage: 'cantonese',
+    bidirectional: true,
+  },
   greek: {
     modes: {
       general: 'Translate the following Greek text to English directly:',
@@ -212,7 +224,9 @@ export async function POST(request: Request) {
       timestamp: new Date().toISOString(),
     });
   } catch (error) {
-    console.error('Translation error:', error);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Translation error:', error);
+    }
     return NextResponse.json({ error: 'Translation failed' }, { status: 500 });
   }
 }

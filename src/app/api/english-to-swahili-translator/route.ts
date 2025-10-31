@@ -100,7 +100,9 @@ Provide the translation respecting cultural context, professional tone, and ever
 
     if (!response.ok) {
       const errorText = await response.text();
-      console.error('OpenAI translation error:', errorText);
+      if (process.env.NODE_ENV === 'development') {
+        console.error('OpenAI translation error:', errorText);
+      }
       return null;
     }
 
@@ -116,7 +118,9 @@ Provide the translation respecting cultural context, professional tone, and ever
 
     return parsed;
   } catch (error) {
-    console.error('Translation API failure:', error);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Translation API failure:', error);
+    }
     return null;
   }
 }
@@ -166,7 +170,9 @@ export async function POST(request: Request) {
       warning: 'OpenAI translation unavailable, using fallback translation.',
     });
   } catch (error) {
-    console.error('Translation error:', error);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Translation error:', error);
+    }
     return NextResponse.json({ error: 'Translation failed' }, { status: 500 });
   }
 }

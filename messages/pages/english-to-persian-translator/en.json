@@ -88,7 +88,7 @@
     "highlights": {
       "title": "Why Choose Our English To Persian Translator?",
       "description": "The best features for your English to Persian translation needs",
-      "features": [
+      "items": [
         {
           "title": "High Accuracy",
           "description": "Advanced AI ensures precise and natural Persian translations",
@@ -111,7 +111,7 @@
         }
       ]
     },
-    "funFacts": {
+    "funfacts": {
       "title": "Interesting Facts About Persian Language",
       "items": [
         {
@@ -219,6 +219,10 @@
         "item-5": {
           "question": "Is my data secure when using this translator?",
           "answer": "Absolutely. We use secure encryption for all translations and don't store your text on our servers. Your privacy and data security are our top priorities."
+        },
+        "item-6": {
+          "question": "Can I use this translator for professional documents?",
+          "answer": "Yes, our English to Persian translator is suitable for professional documents including business letters, reports, and academic papers. The AI provides contextually appropriate translations for formal content."
         }
       }
     },
@@ -226,7 +230,13 @@
       "title": "Ready to Translate English to Persian?",
       "description": "Start translating your English text to Persian now - it only takes seconds!",
       "button": "Get Started Free",
-      "primaryButton": "Start Translating Now"
+      "primaryButton": "Start Translating Now",
+      "secondaryButton": "Back to Top"
     }
+  },
+  "Metadata": {
+    "name": "VibeTrans",
+    "title": "English to Persian Translator - VibeTrans",
+    "description": "Break language barriers with AI-powered translations. Supports 100+ languages with accurate, context-aware translations."
   }
 }

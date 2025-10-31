@@ -190,41 +190,46 @@ export default async function HomePage(props: HomePageProps) {
 
   const uniqueSection = {
     name: 'unique',
-    title: 'User Interests',
-    description:
-      'VibeTrans serves diverse needs - from businesses to travelers',
+    // @ts-ignore - Translation keys type mismatch
+    title: t('features3.title'),
+    // @ts-ignore - Translation keys type mismatch
+    description: t('features3.description'),
     items: [
       {
-        title: 'Translation for Multilingual Businesses',
-        description:
-          "What's your business language barrier? If you run a multilingual business, translation can become a huge task. VibeTrans helps break these barriers easily. Whether you need to translate marketing content or customer service communication, our AI tools ensure accurate and context-aware translations that support your global growth. With VibeTrans, it's like having a dedicated translation team at your fingertips.",
+        // @ts-ignore - Translation keys type mismatch
+        title: t('features3.items.item-1.title'),
+        // @ts-ignore - Translation keys type mismatch
+        description: t('features3.items.item-1.description'),
         image: {
           src: '/images/docs/translation-business.webp',
           alt: 'Business Translation',
         },
       },
       {
-        title: 'Translation for Language Learners',
-        description:
-          "Your Personal Language Coach. Learning a new language can be tough, but VibeTrans is here to make it easier! Our tools can translate anything, from simple phrases to complex sentences. You can learn new vocabulary, check grammar, and understand context all in one go. Whether you're a beginner or advanced learner, VibeTrans fits your pace.",
+        // @ts-ignore - Translation keys type mismatch
+        title: t('features3.items.item-2.title'),
+        // @ts-ignore - Translation keys type mismatch
+        description: t('features3.items.item-2.description'),
         image: {
           src: '/images/docs/translation-learning.webp',
           alt: 'Language Learning',
         },
       },
       {
-        title: 'Real-Time Translation for Travelers',
-        description:
-          "Traveling Made Easy. Language barriers can make travel tricky, but VibeTrans takes the stress out of your next adventure. Whether you're asking for directions or ordering food in another language, our real-time translation tools help you communicate with ease. I love how VibeTrans turns any trip into a smooth experience—language should never stop you from exploring the world!",
+        // @ts-ignore - Translation keys type mismatch
+        title: t('features3.items.item-3.title'),
+        // @ts-ignore - Translation keys type mismatch
+        description: t('features3.items.item-3.description'),
         image: {
           src: '/images/docs/translation-travelers.webp',
           alt: 'Travel Translation',
         },
       },
       {
-        title: 'Slang and Fun Language Translations',
-        description:
-          "Break the Ice with Fun Translations. Sometimes you just want to have fun with language. With VibeTrans, you can easily translate slang, memes, or even gibberish into something understandable. It's perfect for adding humor to your conversations or understanding pop culture references in different languages. I think it's a great way to connect with others and lighten the mood!",
+        // @ts-ignore - Translation keys type mismatch
+        title: t('features3.items.item-4.title'),
+        // @ts-ignore - Translation keys type mismatch
+        description: t('features3.items.item-4.description'),
         image: {
           src: '/images/docs/translation-slang.webp',
           alt: 'Fun Translations',
@@ -248,7 +253,25 @@ export default async function HomePage(props: HomePageProps) {
         <WhatIsSection section={whatIsSection} />
 
         {/* 其他工具推荐 - Stats Section */}
-        <StatsSection />
+        <StatsSection
+          title={t('stats.title')}
+          subtitle={t('stats.subtitle')}
+          description={t('stats.description')}
+          items={[
+            {
+              title: t('stats.items.item-1.title'),
+              value: t('stats.items.item-1.value'),
+            },
+            {
+              title: t('stats.items.item-2.title'),
+              value: t('stats.items.item-2.value'),
+            },
+            {
+              title: t('stats.items.item-3.title'),
+              value: t('stats.items.item-3.value'),
+            },
+          ]}
+        />
 
         {/* How to translate XXXX */}
         <HowTo section={howtoSection} />
@@ -267,12 +290,119 @@ export default async function HomePage(props: HomePageProps) {
         <HighlightsSection section={highlightsSection} />
 
         {/* FAQs */}
-        <FaqSection />
+        <FaqSection
+          title={t('faqs.title')}
+          subtitle={t('faqs.subtitle')}
+          items={[
+            {
+              question: t('faqs.items.item-1.question'),
+              answer: t('faqs.items.item-1.answer'),
+            },
+            {
+              question: t('faqs.items.item-2.question'),
+              answer: t('faqs.items.item-2.answer'),
+            },
+            {
+              question: t('faqs.items.item-3.question'),
+              answer: t('faqs.items.item-3.answer'),
+            },
+            {
+              question: t('faqs.items.item-4.question'),
+              answer: t('faqs.items.item-4.answer'),
+            },
+            {
+              question: t('faqs.items.item-5.question'),
+              answer: t('faqs.items.item-5.answer'),
+            },
+            {
+              question: t('faqs.items.item-6.question'),
+              answer: t('faqs.items.item-6.answer'),
+            },
+            {
+              question: t('faqs.items.item-7.question'),
+              answer: t('faqs.items.item-7.answer'),
+            },
+            {
+              question: t('faqs.items.item-8.question'),
+              answer: t('faqs.items.item-8.answer'),
+            },
+          ]}
+        />
 
         {/* 用户评论（用户留言输入框）*/}
-        <TestimonialsSection />
+        <TestimonialsSection
+          title={t('testimonials.title')}
+          subtitle={t('testimonials.subtitle')}
+          items={[
+            {
+              name: t('testimonials.items.item-1.name'),
+              role: t('testimonials.items.item-1.role'),
+              image: t('testimonials.items.item-1.image'),
+              heading: t('testimonials.items.item-1.heading'),
+              content: t('testimonials.items.item-1.content'),
+              rating: Number(t('testimonials.items.item-1.rating')) || 5.0,
+              date: t('testimonials.items.item-1.date'),
+              verified: Boolean(t('testimonials.items.item-1.verified')),
+            },
+            {
+              name: t('testimonials.items.item-2.name'),
+              role: t('testimonials.items.item-2.role'),
+              image: t('testimonials.items.item-2.image'),
+              heading: t('testimonials.items.item-2.heading'),
+              content: t('testimonials.items.item-2.content'),
+              rating: Number(t('testimonials.items.item-2.rating')) || 5.0,
+              date: t('testimonials.items.item-2.date'),
+              verified: Boolean(t('testimonials.items.item-2.verified')),
+            },
+            {
+              name: t('testimonials.items.item-3.name'),
+              role: t('testimonials.items.item-3.role'),
+              image: t('testimonials.items.item-3.image'),
+              heading: t('testimonials.items.item-3.heading'),
+              content: t('testimonials.items.item-3.content'),
+              rating: Number(t('testimonials.items.item-3.rating')) || 5.0,
+              date: t('testimonials.items.item-3.date'),
+              verified: Boolean(t('testimonials.items.item-3.verified')),
+            },
+            {
+              name: t('testimonials.items.item-4.name'),
+              role: t('testimonials.items.item-4.role'),
+              image: t('testimonials.items.item-4.image'),
+              heading: t('testimonials.items.item-4.heading'),
+              content: t('testimonials.items.item-4.content'),
+              rating: Number(t('testimonials.items.item-4.rating')) || 5.0,
+              date: t('testimonials.items.item-4.date'),
+              verified: Boolean(t('testimonials.items.item-4.verified')),
+            },
+            {
+              name: t('testimonials.items.item-5.name'),
+              role: t('testimonials.items.item-5.role'),
+              image: t('testimonials.items.item-5.image'),
+              heading: t('testimonials.items.item-5.heading'),
+              content: t('testimonials.items.item-5.content'),
+              rating: Number(t('testimonials.items.item-5.rating')) || 5.0,
+              date: t('testimonials.items.item-5.date'),
+              verified: Boolean(t('testimonials.items.item-5.verified')),
+            },
+            {
+              name: t('testimonials.items.item-6.name'),
+              role: t('testimonials.items.item-6.role'),
+              image: t('testimonials.items.item-6.image'),
+              heading: t('testimonials.items.item-6.heading'),
+              content: t('testimonials.items.item-6.content'),
+              rating: Number(t('testimonials.items.item-6.rating')) || 5.0,
+              date: t('testimonials.items.item-6.date'),
+              verified: Boolean(t('testimonials.items.item-6.verified')),
+            },
+          ]}
+        />
 
-        <CallToActionSection />
+        <CallToActionSection
+          title={t('calltoaction.title')}
+          description={t('calltoaction.description')}
+          primaryButton={t('calltoaction.primaryButton')}
+          secondaryButton={t('calltoaction.secondaryButton')}
+        />
       </div>
     </>
   );

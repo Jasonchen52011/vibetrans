@@ -1,0 +1,163 @@
+{
+  "TranslatorPage": {
+    "title": "Page Title",
+    "description": "Page description for SEO and meta",
+    "hero": {
+      "title": "Hero Section Title",
+      "description": "Hero section description",
+      "primaryButton": "CTA Button Text",
+      "secondaryButton": "Secondary Button Text"
+    },
+    "tool": {
+      "translationType": "bidirectional", // "unidirectional" or "bidirectional"
+      "sourceLanguage": {
+        "code": "creole", // ISO language code or identifier
+        "name": "Creole", // Display name
+        "inputPlaceholder": "Type Creole text here...",
+        "inputHeading": "Creole Text",
+        "outputHeading": "Creole Translation",
+        "outputPlaceholder": "Creole translation will appear here"
+      },
+      "targetLanguage": {
+        "code": "english",
+        "name": "English",
+        "inputPlaceholder": "Type English text here...",
+        "inputHeading": "English Text",
+        "outputHeading": "English Translation",
+        "outputPlaceholder": "English translation will appear here"
+      },
+      "controls": {
+        "translateButton": "Translate",
+        "uploadButton": "Upload File",
+        "uploadHint": "Supports .txt, .docx files",
+        "resetButton": "Reset",
+        "downloadButton": "Download",
+        "recordButton": "Record Audio", // Optional
+        "playButton": "Play Sound", // Optional
+        "toggleDirection": "Switch to {target} -> {source}",
+        "copyResultTooltip": "Copy result",
+        "downloadResultTooltip": "Download result",
+        "removeFileTooltip": "Remove file",
+        "removeRecordingTooltip": "Remove recording",
+        "playSoundTooltip": "Play sound"
+      },
+      "status": {
+        "loading": "Processing...",
+        "error": "An error occurred, please try again",
+        "noInput": "Please provide input",
+        "languageWarning": "Please input {source} or {target}",
+        "microphonePermission": "Microphone access denied. Please enable microphone permissions."
+      },
+      "features": {
+        "supportsFileUpload": true,
+        "supportsAudioInput": false,
+        "supportsImageInput": false,
+        "supportsBidirectional": true,
+        "autoLanguageDetection": true,
+        "supportedFileTypes": [".txt", ".docx"], // Optional
+        "supportedImageTypes": [".jpg", ".png", ".webp"], // Optional
+        "advancedModes": [ // Optional for complex translators
+          {
+            "id": "general",
+            "name": "General",
+            "description": "Natural, everyday translation"
+          },
+          {
+            "id": "technical",
+            "name": "Technical",
+            "description": "For technical documents and manuals"
+          }
+        ]
+      }
+    },
+    "sections": {
+      "whatIs": {
+        "title": "What is {source} to {target} Translator",
+        "description": "Description of the translator tool"
+      },
+      "examples": {
+        "title": "Real-World {source} to {target} Translation Examples",
+        "description": "Description of examples section",
+        "items": [
+          {
+            "name": "Example Name",
+            "alt": "Example translation description"
+          }
+        ]
+      },
+      "howto": {
+        "title": "How to Translate {source} to {target}",
+        "description": "Step-by-step guide description",
+        "steps": [
+          {
+            "title": "Step Title",
+            "description": "Step description",
+            "icon": "FaFileUpload" // FontAwesome icon name
+          }
+        ]
+      },
+      "highlights": {
+        "title": "Why Choose Our {source} to {target} Translator",
+        "description": "Features highlight description",
+        "items": [
+          {
+            "title": "Feature Title",
+            "description": "Feature description",
+            "icon": "FaRocket"
+          }
+        ]
+      },
+      "funFacts": {
+        "title": "Fascinating {source} Language Insights",
+        "items": [
+          {
+            "title": "Fact Title",
+            "description": "Fact description"
+          }
+        ]
+      },
+      "userInterest": {
+        "title": "Language Learning & Cultural Bridge",
+        "items": [
+          {
+            "title": "Interest Title",
+            "description": "Interest description"
+          }
+        ]
+      },
+      "testimonials": {
+        "title": "What Our Users Are Saying",
+        "items": {
+          "item-1": {
+            "name": "User Name",
+            "role": "User Role",
+            "heading": "Testimonial Heading",
+            "content": "Testimonial content",
+            "rating": "5.0"
+          }
+        }
+      },
+      "faqs": {
+        "title": "Frequently Asked Questions",
+        "subtitle": "Have other questions? Feel free to contact us via email.",
+        "items": {
+          "item-1": {
+            "question": "FAQ Question",
+            "answer": "FAQ Answer"
+          }
+        }
+      },
+      "cta": {
+        "title": "Try {source} to {target} Translator Now",
+        "description": "CTA description",
+        "primaryButton": "Try {source} to {target} Translator Now",
+        "secondaryButton": "Back to Top"
+      }
+    },
+    "ctaButton": "Try {source} To {target} Translator Now",
+    "metadata": {
+      "canonicalUrl": "/{url-path}",
+      "image": "/images/docs/what-is-{url-path}.webp"
+    }
+  }
+}

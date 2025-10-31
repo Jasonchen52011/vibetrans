@@ -60,11 +60,15 @@ async function downloadAndConvertImage(
 }
 
 async function generateRemainingImages() {
-  console.log('🎨 生成剩余的Rune图片...\n');
+  if (process.env.NODE_ENV === 'development') {
+    console.log('🎨 生成剩余的Rune图片...\n');
+  }
 
   for (const task of remainingTasks) {
     try {
-      console.log(`🖼️  生成: ${task.filename}`);
+      if (process.env.NODE_ENV === 'development') {
+        console.log(`🖼️  生成: ${task.filename}`);
+      }
 
       const result = await generateVolcanoImage({
         prompt: task.prompt,
@@ -76,16 +80,26 @@ async function generateRemainingImages() {
       const outputPath = path.join(OUTPUT_DIR, task.filename);
       await downloadAndConvertImage(result.data[0].url, outputPath);
 
-      console.log(`✅ 完成: ${task.filename}\n`);
+      if (process.env.NODE_ENV === 'development') {
+        console.log(`✅ 完成: ${task.filename}\n`);
+      }
 
       // 等待3秒
       await new Promise((resolve) => setTimeout(resolve, 3000));
     } catch (error) {
-      console.error(`❌ 失败: ${task.filename}`, error);
+      if (process.env.NODE_ENV === 'development') {
+        console.error(`❌ 失败: ${task.filename}`, error);
+      }
     }
   }
 
-  console.log('🎉 所有图片生成完成！');
+  if (process.env.NODE_ENV === 'development') {
+    console.log('🎉 所有图片生成完成！');
+  }
 }
 
-generateRemainingImages().catch(console.error);
+generateRemainingImages().catch((error) => {
+  if (process.env.NODE_ENV === 'development') {
+    console.error(error);
+  }
+});

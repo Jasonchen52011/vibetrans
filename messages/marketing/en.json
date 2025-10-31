@@ -151,13 +151,35 @@
             "description": ""
           },
           "swahiliToEnglishTranslator": {
-            "title": "Swahili To English Translator",
+            "title": "English to Swahili Translator",
             "description": ""
           },
           "teluguToEnglishTranslator": {
             "title": "Telugu To English Translator",
             "description": ""
           },
+          "englishToPersianTranslator": {
+            "title": "English To Persian Translator",
+            "description": ""
+          },
+          "englishToPolishTranslator": {
+            "title": "English To Polish Translator",
+            "description": ""
+          },
+          "englishToSwahiliTranslator": {
+            "title": "English To Swahili Translator",
+            "description": ""
+          },
+          "japaneseToEnglishTranslator": {
+            "title": "Japanese To English Translator",
+            "description": ""
+          }
+        }
+      },
+      "gameTranslator": {
+        "title": "Game Translators",
+        "description": "Fantasy & game language translators",
+        "items": {
           "alBhedTranslator": {
             "title": "Al Bhed Translator",
             "description": ""
@@ -196,68 +218,6 @@
           },
           "yodaTranslator": {
             "title": "Yoda Translator",
-            "description": ""
-          },
-          "englishToPersianTranslator": {
-            "title": "English To Persian Translator",
-            "description": ""
-          },
-          "englishToPolishTranslator": {
-            "title": "English To Polish Translator",
-            "description": ""
-          },
-          "englishToSwahiliTranslator": {
-            "title": "English To Swahili Translator",
-            "description": ""
-          },
-          "japaneseToEnglishTranslator": {
-            "title": "Japanese To English Translator",
-            "description": ""
-          }
-        }
-      },
-      "gameTranslator": {
-        "title": "Game Translators",
-        "description": "Fantasy & game language translators",
-        "items": {
-          "alBhedTranslator": {
-            "title": "Albhedtranslator",
-            "description": ""
-          },
-          "drowTranslator": {
-            "title": "Drowtranslator",
-            "description": ""
-          },
-          "gasterTranslator": {
-            "title": "Gastertranslator",
-            "description": ""
-          },
-          "highValyrianTranslator": {
-            "title": "Highvalyriantranslator",
-            "description": ""
-          },
-          "mandalorianTranslator": {
-            "title": "Mandaloriantranslator",
-            "description": ""
-          },
-          "minionTranslator": {
-            "title": "Miniontranslator",
-            "description": ""
-          },
-          "runeTranslator": {
-            "title": "Runetranslator",
-            "description": ""
-          },
-          "runicTranslator": {
-            "title": "Runictranslator",
-            "description": ""
-          },
-          "wingdingsTranslator": {
-            "title": "Wingdingstranslator",
-            "description": ""
-          },
-          "yodaTranslator": {
-            "title": "Yodatranslator",
             "description": ""
           }
         }
@@ -308,7 +268,6 @@
           "creoleToEnglishTranslator": "Creole To English Translator",
           "cantoneseTranslator": "Cantonese Translator",
           "chineseToEnglishTranslator": "Chinese To English Translator",
-          "englishToChineseTranslator": "English To Chinese Translator",
           "middleEnglishTranslator": "Middle English Translator",
           "baybayinTranslator": "Baybayin Translator",
           "oghamTranslator": "Ogham Translator",
@@ -319,9 +278,7 @@
           "swahiliToEnglishTranslator": "Swahili To English Translator",
           "englishToAmharicTranslator": "English To Amharic Translator",
           "englishToPolishTranslator": "English To Polish Translator",
-          "teluguToEnglishTranslator": "Telugu To English Translator",
-          "englishToPersianTranslator": "English To Persian Translator",
-          "japaneseToEnglishTranslator": "Japanese To English Translator"
+          "teluguToEnglishTranslator": "Telugu To English Translator"
         }
       },
       "product": {
