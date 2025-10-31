@@ -21,6 +21,69 @@
       "error": "翻译失败，请重试。",
       "noInput": "请输入要翻译的文本"
     },
-    "ctaButton": "立即试用中文到英语翻译器"
+    "ctaButton": "立即试用中文到英语翻译器",
+    "cta": {
+      "title": "几秒钟内翻译中文到英语 - 100% 永久免费",
+      "description": "使用 VibeTrans 瞬间将中文翻译成英语。获取文档、菜单和聊天的准确翻译。永久免费，无需注册。",
+      "primaryButton": "立即试用中文到英语翻译器",
+      "secondaryButton": "返回顶部"
+    },
+    "faqs": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Have other questions? Feel free to contact us via email.",
+      "items": {
+        "item-1": {
+          "question": "What is the best chinese to english translator for accurate translations?",
+          "answer": "VibeTrans Chinese To English Translator is the premier choice for accurate translations, featuring advanced AI technology that understands complex grammar, cultural context, and linguistic nuances. Our tool provides bidirectional translation, real-time processing, and high accuracy rates, all completely free. Perfect for language learning, communication, and cultural exploration with reliable, context-aware results."
+        },
+        "item-2": {
+          "question": "Is this Chinese to English Translator free?",
+          "answer": "Yes, VibeTrans Chinese to English Translator is completely free with no hidden charges or usage limits. You can translate unlimited text, documents, and images anytime. We believe language should be accessible to everyone, so we provide this professional-grade translation tool at no cost to users worldwide for personal, educational, or business purposes."
+        },
+        "item-3": {
+          "question": "How does VibeTrans handle our privacy?",
+          "answer": "VibeTrans is committed to protecting your privacy. We use advanced encryption to safeguard your data and ensure it remains confidential throughout the translation process. Your translations are processed securely and never stored without your consent, ensuring complete privacy for all your Chinese communications."
+        },
+        "item-4": {
+          "question": "How do I use Chinese to English Translator?",
+          "answer": "Using VibeTrans Chinese to English Translator is simple: Step 1, input your Chinese text by typing, pasting, uploading documents, or uploading images. Step 2, select your translation mode (general, technical, legal, literary, or idioms). Step 3, click the translate button for instant results. Step 4, copy, save from browser, or listen to your English translation. It's that easy!"
+        },
+        "item-5": {
+          "question": "Can I use VibeTrans for professional documents?",
+          "answer": "Absolutely! VibeTrans is designed to handle professional documents including business emails, legal texts, academic papers, and more. Our advanced AI maintains formal tone and technical accuracy."
+        },
+        "item-6": {
+          "question": "What file formats does VibeTrans support?",
+          "answer": "VibeTrans supports multiple file formats including .txt, .docx, .pdf, and more. You can also directly paste text into our interface for instant translation without file upload."
+        }
+      }
+    },
+    "testimonials": {
+      "title": "What Our Users Are Saying",
+      "subtitle": "Real feedback from our valued users",
+      "items": {
+        "item-1": {
+          "name": "Emily Johnson",
+          "role": "University Student",
+          "heading": "Boosted My Language Skills",
+          "content": "Using the Chinese-to-English Smart Translator has significantly improved my translation assignments. Its ability to recognize idioms and offer context-appropriate translations is impressive. Users love the dual translation feature for names; it's a game changer for my language studies and exams.",
+          "rating": "5.0"
+        },
+        "item-2": {
+          "name": "Michael Smith",
+          "role": "Freelance Writer",
+          "heading": "Perfect for Creative Writing",
+          "content": "As a writer, translating character dialogues accurately is crucial. This translator's ability to switch between everyday and novel modes has been invaluable. It captures the nuances of my characters’ voices, making my translated stories more engaging and authentic.",
+          "rating": "4.9"
+        },
+        "item-3": {
+          "name": "Jessica Brown",
+          "role": "Legal Consultant",
+          "heading": "Essential for Legal Documents",
+          "content": "The domain mode switching is a lifesaver for my legal translation needs. It ensures precision which is vital for contracts. The confidence heatmap feature highlights uncertainties, allowing me to double-check critical sections efficiently and avoid potential legal misinterpretations.",
+          "rating": "4.7"
+        }
+      }
+    }
   }
 }

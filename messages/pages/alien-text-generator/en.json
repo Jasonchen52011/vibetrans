@@ -106,7 +106,7 @@
         }
       ]
     },
-    "funFacts": {
+    "funfacts": {
       "title": "Discover Alien Text Generator: Your Complete Guide",
       "items": [
         {
@@ -154,28 +154,32 @@
         }
       ]
     },
-    "highlights": {
-      "title": "Professional Alien Text Generator Engine for Quality Results",
-      "description": "Discover what makes our tool unique",
-      "items": [
-        {
-          "title": "Easy and Free to Use",
-          "description": "Get started with Alien Text Generator without any cost. Simply input your text, and watch it transform into an alien script instantly. No sign-up or payment needed—just pure fun and creativity."
-        },
-        {
-          "title": "Accurate Data Conversion",
-          "description": "Our tool ensures precise conversion of your text into alien scripts, maintaining the integrity and meaning of your original message. Whether inputting simple words or complex phrases, accuracy is our top priority."
-        },
-        {
-          "title": "Data Privacy and Security",
-          "description": "We prioritize your privacy by not storing any user data. Feel secure knowing your text is safe and processed without any traces left behind. Privacy is paramount in our operations."
-        },
-        {
-          "title": "AI Contextual Understanding",
-          "description": "Our AI understands the context of your text, ensuring the alien script generated is not just random symbols, but a coherent and meaningful alien language experience."
-        }
-      ]
-    },
+  "highlights": {
+    "title": "Professional Alien Text Generator Engine for Quality Results",
+    "description": "Discover what makes our tool unique",
+    "items": [
+      {
+        "icon": "FaRocket",
+        "title": "Easy and Free to Use",
+        "description": "Get started with Alien Text Generator without any cost. Simply input your text, and watch it transform into an alien script instantly. No sign-up or payment needed—just pure fun and creativity."
+      },
+      {
+        "icon": "FaChartLine",
+        "title": "Accurate Data Conversion",
+        "description": "Our tool ensures precise conversion of your text into alien scripts, maintaining the integrity and meaning of your original message. Whether inputting simple words or complex phrases, accuracy is our top priority."
+      },
+      {
+        "icon": "FaShieldAlt",
+        "title": "Data Privacy and Security",
+        "description": "We prioritize your privacy by not storing any user data. Feel secure knowing your text is safe and processed without any traces left behind. Privacy is paramount in our operations."
+      },
+      {
+        "icon": "FaMagic",
+        "title": "AI Contextual Understanding",
+        "description": "Our AI understands the context of your text, ensuring the alien script generated is not just random symbols, but a coherent and meaningful alien language experience."
+      }
+    ]
+  },
     "testimonials": {
       "title": "What Our Users Are Saying",
       "items": {

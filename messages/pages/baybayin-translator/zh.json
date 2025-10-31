@@ -36,7 +36,9 @@
     },
     "whatIs": {
       "title": "什么是 Baybayin 维护翻译器？",
-      "description": "Baybayin 维护翻译器是一款专业工具，可将英语翻译成巴图文，一种古老的菲律宾文字系统。它能够实现现代与古老传统之间的文化桥梁。"
+      "description": "Baybayin 维护翻译器是一款专业工具，可将英语翻译成巴图文，一种古老的菲律宾文字系统。它能够实现现代与古老传统之间的文化桥梁。",
+      "image": "/images/docs/what-is-baybayin-translator.webp",
+      "imageAlt": "什么是 Baybayin 维护翻译器？"
     },
     "examples": {
       "title": "Baybayin 翻译示例",
@@ -62,7 +64,9 @@
           "name": "点击翻译按钮",
           "description": "点击翻译按钮，使用巴图文密码即时转换您的文本。"
         }
-      ]
+      ],
+      "image": "/images/docs/baybayin-translator-how-to.webp",
+      "imageAlt": "如何使用 Baybayin 维护翻译器"
     },
     "highlights": {
       "title": "Baybayin 维护翻译器：学术与研究必备工具",

@@ -56,7 +56,7 @@ export default async function BadTranslatorPage(props: BadTranslatorPageProps) {
 
   // 使用内容构建器生成所有页面内容
   const translatorContent = buildTranslatorPageContent(t, {
-    howToIcons: ['FaFileUpload', 'FaCog', 'FaLanguage'],
+    howToIcons: ['FaFileUpload', 'FaCog', 'FaLanguage', 'FaCheckCircle'],
   });
 
   return (

@@ -22,7 +22,9 @@
     },
     "whatIs": {
       "title": "什么是 Al Bhed 翻译器？",
-      "description": "Al Bhed 翻译器是一款专业工具，用于翻译英文与最终幻想 X 中的虚构语言 Al Bhed。它使用简单的替换密码系统，帮助粉丝解码 Al Bhed 信息并创建自己的秘密通信。"
+      "description": "Al Bhed 翻译器是一款专业工具，用于翻译英文与最终幻想 X 中的虚构语言 Al Bhed。它使用简单的替换密码系统，帮助粉丝解码 Al Bhed 信息并创建自己的秘密通信。",
+      "image": "/images/docs/al-bhed-translator-what-is.webp",
+      "imageAlt": "什么是 Al Bhed 翻译器？"
     },
     "examples": {
       "title": "Al Bhed 翻译示例",
@@ -48,18 +50,24 @@
           "title": "点击翻译按钮",
           "description": "点击翻译按钮，使用 Al Bhed 密码即时转换您的文本。"
         }
-      ]
+      ],
+      "image": "/images/docs/al-bhed-translator-how-to.webp",
+      "imageAlt": "如何使用 Al Bhed 翻译器"
     },
-    "funFacts": {
+    "funfacts": {
       "title": "关于 Al Bhed 的趣事",
       "items": [
         {
           "title": "最终幻想 X 的语言",
-          "description": "Al Bhed 是最终幻想 X 中 Al Bhed 民族使用的语言。它为游戏的叙事和世界观增添了神秘感和深度。"
+          "description": "Al Bhed 是最终幻想 X 中 Al Bhed 民族使用的语言。它为游戏的叙事和世界观增添了神秘感和深度。",
+          "image": "/images/docs/al-bhed-translator-fun-fact.webp",
+          "imageAlt": "最终幻想 X 的语言"
         },
         {
           "title": "简单替换密码",
-          "description": "Al Bhed 使用直接的字母替换系统，每个英文字母映射到特定的 Al Bhed 字符，使其成为编码秘密消息的完美密码。"
+          "description": "Al Bhed 使用直接的字母替换系统，每个英文字母映射到特定的 Al Bhed 字符，使其成为编码秘密消息的完美密码。",
+          "image": "/images/docs/alien-text-generator-fact-1.webp",
+          "imageAlt": "简单替换密码"
         }
       ]
     },
@@ -70,19 +78,27 @@
       "items": [
         {
           "title": "最终幻想粉丝",
-          "description": "解码游戏中的 Al Bhed 信息，深入了解最终幻想 X 的丰富传说。通过掌握 Al Bhed 语言，在更深层次上体验游戏。"
+          "description": "解码游戏中的 Al Bhed 信息，深入了解最终幻想 X 的丰富传说。通过掌握 Al Bhed 语言，在更深层次上体验游戏。",
+          "image": "/images/docs/alien-text-generator-interest-1.webp",
+          "imageAlt": "最终幻想粉丝"
         },
         {
           "title": "学习 Al Bhed 语言",
-          "description": "研究 Al Bhed 密码系统，了解替换密码的工作原理。这是理解基础密码学概念的绝佳教育工具。"
+          "description": "研究 Al Bhed 密码系统，了解替换密码的工作原理。这是理解基础密码学概念的绝佳教育工具。",
+          "image": "/images/docs/mandalorian-translator-interest-1.webp",
+          "imageAlt": "学习 Al Bhed 语言"
         },
         {
           "title": "创建秘密消息",
-          "description": "使用 Al Bhed 向朋友发送编码消息。非常适合创建谜题、游戏或为您的通信增添神秘感。"
+          "description": "使用 Al Bhed 向朋友发送编码消息。非常适合创建谜题、游戏或为您的通信增添神秘感。",
+          "image": "/images/docs/mandalorian-translator-interest-2.webp",
+          "imageAlt": "创建秘密消息"
         },
         {
           "title": "Cosplay 和角色扮演",
-          "description": "使用真实的 Al Bhed 对话增强您的最终幻想 Cosplay 或角色扮演。在展会和活动中像真正的 Al Bhed 角色一样说话。"
+          "description": "使用真实的 Al Bhed 对话增强您的最终幻想 Cosplay 或角色扮演。在展会和活动中像真正的 Al Bhed 角色一样说话。",
+          "image": "/images/docs/alien-text-generator-interest-3.webp",
+          "imageAlt": "Cosplay 和角色扮演"
         }
       ]
     },

@@ -37,7 +37,9 @@
     },
     "whatIs": {
       "title": "What is IVR Translator",
-      "description": "IVR Translator is a powerful tool that converts IVR system inputs into text. It supports multiple languages and offers real-time voice translation for seamless communication. Ideal for global businesses, IVR Translator helps improve accessibility and efficiency in automated systems."
+      "description": "IVR Translator is a powerful tool that converts IVR system inputs into text. It supports multiple languages and offers real-time voice translation for seamless communication. Ideal for global businesses, IVR Translator helps improve accessibility and efficiency in automated systems.",
+      "image": "/images/docs/what-is-ivr-translator.webp",
+      "imageAlt": "What is IVR Translator"
     },
     "examples": {
       "title": "Example Use Cases for IVR Translator",
@@ -93,26 +95,36 @@
           "description": "After the conversion, download the text output and integrate it into your IVR system for immediate use.",
           "wordCount": 19
         }
-      ]
+      ],
+      "image": "/images/docs/ivr-translator-how-to.webp",
+      "imageAlt": "How to Translate English to IVR"
     },
     "userInterest": {
       "title": "Business Integration & Customer Service Applications",
       "items": [
         {
           "title": "Global Communication",
-          "description": "With IVR Translator, companies can expand their reach globally. By supporting multiple languages, businesses can communicate with customers from different regions without any hassle."
+          "description": "With IVR Translator, companies can expand their reach globally. By supporting multiple languages, businesses can communicate with customers from different regions without any hassle.",
+          "image": "/images/docs/ivr-translator-interest-1.webp",
+          "imageAlt": "Global Communication"
         },
         {
           "title": "Efficiency Gains",
-          "description": "Speed up customer service operations. Real-time voice translation and accurate text conversion ensure faster response times and improved customer satisfaction."
+          "description": "Speed up customer service operations. Real-time voice translation and accurate text conversion ensure faster response times and improved customer satisfaction.",
+          "image": "/images/docs/ivr-translator-interest-3.webp",
+          "imageAlt": "Efficiency Gains"
         },
         {
           "title": "Increased Accessibility",
-          "description": "IVR Translator makes it easy for companies to cater to non-English-speaking customers. It's an essential tool for inclusivity and better user experience."
+          "description": "IVR Translator makes it easy for companies to cater to non-English-speaking customers. It's an essential tool for inclusivity and better user experience.",
+          "image": "/images/docs/ivr-translator-interest-2.webp",
+          "imageAlt": "Increased Accessibility"
         },
         {
           "title": "Seamless Integration",
-          "description": "VibeTrans' IVR Translator can be easily integrated with your existing systems, making it the perfect solution for businesses looking to enhance their IVR capabilities."
+          "description": "VibeTrans' IVR Translator can be easily integrated with your existing systems, making it the perfect solution for businesses looking to enhance their IVR capabilities.",
+          "image": "/images/docs/ivr-translator-interest-4.webp",
+          "imageAlt": "Seamless Integration"
         }
       ]
     },
@@ -232,11 +244,15 @@
       "items": [
         {
           "title": "The Number Mix-Up",
-          "description": "In some Arabic dialects, the pronunciation of the number '2' sounds similar to English '8'. This often confuses automated voice translators, causing them to misinterpret customers' extension numbers during calls. It's a fascinating quirk in cross-language communication!"
+          "description": "In some Arabic dialects, the pronunciation of the number '2' sounds similar to English '8'. This often confuses automated voice translators, causing them to misinterpret customers' extension numbers during calls. It's a fascinating quirk in cross-language communication!",
+          "image": "/images/docs/ivr-translator-fact-1.webp",
+          "imageAlt": "The Number Mix-Up"
         },
         {
           "title": "French Length Challenge",
-          "description": "Did you know French IVR prompts are, on average, 27% longer than English ones? This means menus often need redesigning after translation. It's not just about language; it's about fitting the message into the same time frame!"
+          "description": "Did you know French IVR prompts are, on average, 27% longer than English ones? This means menus often need redesigning after translation. It's not just about language; it's about fitting the message into the same time frame!",
+          "image": "/images/docs/ivr-translator-fact-2.webp",
+          "imageAlt": "French Length Challenge"
         }
       ]
     }

@@ -292,6 +292,7 @@ const TRANSLATOR_TOOL_TO_ROUTE: Record<string, string> = {
   'ChineseToEnglishTranslatorPage': 'chinese-to-english-translator',
   'CreoleToEnglishTranslatorPage': 'creole-to-english-translator',
   'CuneiformTranslatorPage': 'cuneiform-translator',
+  'DogTranslatorPage': 'dog-translator',
   'DrowTranslatorPage': 'drow-translator',
   'DumbItDownPage': 'dumb-it-down-ai',
   'EnglishToAmharicTranslatorPage': 'english-to-amharic-translator',
@@ -575,13 +576,19 @@ export async function getMessagesForLocale(
     }
 
     // 加载特定翻译器
-    const translatorMessages = await loadTranslatorMessages(locale, translatorKey);
-    parts.push(...translatorMessages);
-
     if (locale !== defaultLocale) {
-      const fallbackTranslatorMessages = await loadTranslatorMessages(defaultLocale, translatorKey);
+      const fallbackTranslatorMessages = await loadTranslatorMessages(
+        defaultLocale,
+        translatorKey
+      );
       parts.push(...fallbackTranslatorMessages);
     }
+
+    const translatorMessages = await loadTranslatorMessages(
+      locale,
+      translatorKey
+    );
+    parts.push(...translatorMessages);
 
     console.log(`✅ [getMessagesForLocale] Loaded ${parts.length} parts for ${translatorKey}`);
   }

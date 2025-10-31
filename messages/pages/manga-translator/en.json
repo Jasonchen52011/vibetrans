@@ -86,9 +86,11 @@
           "wordCount": 23
         }
       ],
-      "totalWordCount": 98
+      "totalWordCount": 98,
+      "image": "/images/docs/manga-translator-how-to.webp",
+      "imageAlt": "How to Translate Manga with Ease"
     },
-    "funFacts": {
+    "funfacts": {
       "title": "Interesting Facts",
       "items": [
         {

@@ -5,7 +5,13 @@
     "hero": {
       "title": "Best Nahuatl Translator for Cultural Heritage and Modern Communication",
       "description": "Experience accurate Nahuatl translation powered by advanced AI. Connect with Mexico's indigenous heritage, support academic research, and preserve linguistic diversity through our comprehensive translation tool.",
-      "userAvatars": ["male3", "female4", "male1", "female3", "male4"],
+      "userAvatars": [
+        "male3",
+        "female4",
+        "male1",
+        "female3",
+        "male4"
+      ],
       "userCount": "from 18,000+ happy users"
     },
     "ctaButton": "Try Nahuatl Translator Now",
@@ -81,7 +87,7 @@
         }
       ]
     },
-    "funFacts": {
+    "funfacts": {
       "title": "Interesting Facts",
       "items": [
         {
@@ -136,7 +142,7 @@
     "highlights": {
       "title": "Why Choose Our Nahuatl Translator?",
       "description": "Discover what makes our Nahuatl translator unique with powerful features designed for accuracy and ease of use.",
-      "features": [
+      "items": [
         {
           "title": "Easy and Free to Use",
           "icon": "FaRocket",

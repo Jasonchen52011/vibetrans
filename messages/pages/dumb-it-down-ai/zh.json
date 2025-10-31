@@ -20,7 +20,9 @@
     },
     "whatIs": {
       "title": "什么是 Dumb It Down AI？",
-      "description": "Dumb It Down AI 是一个强大的文本简化工具，可将复杂的学术、法律、医学和技术语言转换为清晰易懂的文本。使用先进的 AI 技术，它能分解术语和复杂句子，同时保留原始含义。非常适合学生、专业人士以及任何需要快速理解复杂文档的人。"
+      "description": "Dumb It Down AI 是一个强大的文本简化工具，可将复杂的学术、法律、医学和技术语言转换为清晰易懂的文本。使用先进的 AI 技术，它能分解术语和复杂句子，同时保留原始含义。非常适合学生、专业人士以及任何需要快速理解复杂文档的人。",
+      "image": "/images/docs/what-is-dumb-it-down.webp",
+      "imageAlt": "什么是 Dumb It Down AI？"
     },
     "examples": {
       "title": "文本简化示例",
@@ -46,18 +48,24 @@
           "title": "复制或下载",
           "description": "将简化后的文本复制到剪贴板，或下载为 .txt 文件以供日后使用。"
         }
-      ]
+      ],
+      "image": "/images/docs/dumb-it-down-how.webp",
+      "imageAlt": "如何使用 Dumb It Down AI"
     },
     "funfacts": {
       "title": "你知道吗？",
       "items": [
         {
           "title": "简化法律文件",
-          "description": "你知道吗？平均法律合同使用的复杂词汇比日常对话多 90% 以上？Dumb It Down AI 帮助你理解你实际同意的内容！"
+          "description": "你知道吗？平均法律合同使用的复杂词汇比日常对话多 90% 以上？Dumb It Down AI 帮助你理解你实际同意的内容！",
+          "image": "/images/docs/dumb-it-down-how.webp",
+          "imageAlt": "简化法律文件"
         },
         {
           "title": "医学术语变简单",
-          "description": "医疗专业人员使用超过 15,000 个专业术语。我们的 AI 简化医疗报告，让你无需医学学位就能理解健康信息。"
+          "description": "医疗专业人员使用超过 15,000 个专业术语。我们的 AI 简化医疗报告，让你无需医学学位就能理解健康信息。",
+          "image": "/images/docs/docs-transform.webp",
+          "imageAlt": "医学术语变简单"
         }
       ]
     },
@@ -66,19 +74,27 @@
       "items": [
         {
           "title": "学生和研究人员",
-          "description": "简化学术论文、研究文章和教科书，更快地掌握复杂概念，更高效地学习。"
+          "description": "简化学术论文、研究文章和教科书，更快地掌握复杂概念，更高效地学习。",
+          "image": "/images/docs/business-communication-simplified.webp",
+          "imageAlt": "学生和研究人员"
         },
         {
           "title": "商务专业人士",
-          "description": "理解法律合同、技术报告和企业文件，无需花费数小时解码术语。"
+          "description": "理解法律合同、技术报告和企业文件，无需花费数小时解码术语。",
+          "image": "/images/docs/translation-simplified.webp",
+          "imageAlt": "商务专业人士"
         },
         {
           "title": "阅读复杂文档的任何人",
-          "description": "从医疗报告到保险单，将任何困难的文本简化为您能真正理解的语言。"
+          "description": "从医疗报告到保险单，将任何困难的文本简化为您能真正理解的语言。",
+          "image": "/images/docs/ai-learning-system.webp",
+          "imageAlt": "阅读复杂文档的任何人"
         },
         {
           "title": "内容创作者和作家",
-          "description": "通过简化复杂想法而不失去意义，使您的写作对更广泛的受众更易理解。"
+          "description": "通过简化复杂想法而不失去意义，使您的写作对更广泛的受众更易理解。",
+          "image": "/images/docs/simplify-legal-documents.webp",
+          "imageAlt": "内容创作者和作家"
         }
       ]
     },
@@ -172,37 +188,39 @@
     },
     "faqs": {
       "title": "常见问题",
-      "items": [
-        {
+      "items": {
+        "item-1": {
           "question": "Dumb It Down AI 可以简化哪些类型的文本？",
           "answer": "Dumb It Down AI 可以简化任何类型的复杂文本，包括学术论文、法律文件、医疗报告、技术手册、研究文章、合同等。它旨在处理所有领域的专业术语。"
         },
-        {
+        "item-2": {
           "question": "简化会改变原文的含义吗？",
           "answer": "不会！我们的 AI 经过专门训练，在使语言更清晰、更简单的同时保留原始含义。它用更简单的替代词替换复杂词汇，并分解复杂句子，而不改变核心信息。"
         },
-        {
+        "item-3": {
           "question": "支持哪些文件格式？",
           "answer": "您可以上传 .txt 和 .docx（Microsoft Word）文件。您也可以直接将文本复制粘贴到工具中。"
         },
-        {
+        "item-4": {
           "question": "有字符限制吗？",
           "answer": "是的，当前每次简化的限制为 5,000 个字符。对于较长的文档，您可以将其分成较小的部分。"
         },
-        {
+        "item-5": {
           "question": "Dumb It Down AI 免费使用吗？",
           "answer": "是的！基本的文本简化工具完全免费使用，无需注册。"
         },
-        {
+        "item-6": {
           "question": "我可以下载简化后的文本吗？",
           "answer": "当然可以！您可以将简化后的文本复制到剪贴板，或下载为 .txt 文件。"
         }
-      ]
+      }
     },
     "cta": {
       "title": "准备好理解复杂文本了吗？",
       "description": "几秒钟内开始将复杂文档简化为清晰易读的语言。",
-      "button": "立即试用 Dumb It Down AI"
+      "button": "立即试用 Dumb It Down AI",
+      "primaryButton": "立即试用 Dumb It Down AI",
+      "secondaryButton": "返回顶部"
     },
     "ctaButton": "立即试用 Dumb It Down AI"
   }

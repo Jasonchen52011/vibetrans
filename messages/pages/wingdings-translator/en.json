@@ -81,9 +81,11 @@
           "title": "Reverse Translation",
           "description": "To decode Wingdings text back to regular text, simply paste the Wingdings symbols in the input area and translate again."
         }
-      ]
+      ],
+      "image": "/images/docs/wingdings-translator-how-to.webp",
+      "imageAlt": "How to Use Wingdings Translator"
     },
-    "funFacts": {
+    "funfacts": {
       "title": "Interesting Facts About Wingdings",
       "items": [
         {

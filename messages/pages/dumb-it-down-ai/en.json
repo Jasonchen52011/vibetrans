@@ -20,7 +20,9 @@
     },
     "whatIs": {
       "title": "What is Dumb It Down AI",
-      "description": "Dumb It Down AI is a tool that simplifies complex texts into easy-to-understand language. Whether it's academic papers, legal documents, or medical information, this tool makes it accessible to everyone. With VibeTrans, you can simplify any content for better understanding."
+      "description": "Dumb It Down AI is a tool that simplifies complex texts into easy-to-understand language. Whether it's academic papers, legal documents, or medical information, this tool makes it accessible to everyone. With VibeTrans, you can simplify any content for better understanding.",
+      "image": "/images/docs/what-is-dumb-it-down.webp",
+      "imageAlt": "What is Dumb It Down AI"
     },
     "examples": {
       "title": "Example of Simplifying Legal Text with Dumb It Down AI",
@@ -46,18 +48,24 @@
           "title": "Download or Copy",
           "description": "Copy the result directly or download the simplified document for later use."
         }
-      ]
+      ],
+      "image": "/images/docs/dumb-it-down-how.webp",
+      "imageAlt": "How to Simplify Text with Dumb It Down AI"
     },
     "funfacts": {
       "title": "Discover Dumb It Down AI: Your Complete Guide",
       "items": [
         {
           "title": "AI Simplifies Complex Texts Effortlessly",
-          "description": "Did you know? Dumb It Down AI is like having a personal translator and simplifier in one. It makes complex texts understandable, so students and professionals can easily digest information without missing key details!"
+          "description": "Did you know? Dumb It Down AI is like having a personal translator and simplifier in one. It makes complex texts understandable, so students and professionals can easily digest information without missing key details!",
+          "image": "/images/docs/dumb-it-down-how.webp",
+          "imageAlt": "AI Simplifies Complex Texts Effortlessly"
         },
         {
           "title": "No More Decoding Technical Jargon",
-          "description": "Users love how AI simplifies huge legal texts into something we can all understand. No more decoding technical jargon. With VibeTrans, it's like having a dictionary built into your tool!"
+          "description": "Users love how AI simplifies huge legal texts into something we can all understand. No more decoding technical jargon. With VibeTrans, it's like having a dictionary built into your tool!",
+          "image": "/images/docs/docs-transform.webp",
+          "imageAlt": "No More Decoding Technical Jargon"
         }
       ]
     },
@@ -66,19 +74,27 @@
       "items": [
         {
           "title": "Simplify Academic Texts Effortlessly",
-          "description": "Whether you're studying for exams or working on a research paper, Dumb It Down AI helps you simplify complex academic texts. This makes learning much easier and faster, leaving you with clearer, more concise materials to study."
+          "description": "Whether you're studying for exams or working on a research paper, Dumb It Down AI helps you simplify complex academic texts. This makes learning much easier and faster, leaving you with clearer, more concise materials to study.",
+          "image": "/images/docs/business-communication-simplified.webp",
+          "imageAlt": "Simplify Academic Texts Effortlessly"
         },
         {
           "title": "Transform Legal Documents with Ease",
-          "description": "Legal language can be tricky, but Dumb It Down AI is here to help! By simplifying dense legal texts, you can understand contracts, terms, and conditions quickly without all the jargon. It's a lifesaver for lawyers and non-lawyers alike."
+          "description": "Legal language can be tricky, but Dumb It Down AI is here to help! By simplifying dense legal texts, you can understand contracts, terms, and conditions quickly without all the jargon. It's a lifesaver for lawyers and non-lawyers alike.",
+          "image": "/images/docs/translation-simplified.webp",
+          "imageAlt": "Transform Legal Documents with Ease"
         },
         {
           "title": "Translate Complex Medical Terminology",
-          "description": "With VibeTrans' Dumb It Down AI, medical documents are no longer intimidating. Simplify complex medical terms for better patient communication and clearer healthcare documents."
+          "description": "With VibeTrans' Dumb It Down AI, medical documents are no longer intimidating. Simplify complex medical terms for better patient communication and clearer healthcare documents.",
+          "image": "/images/docs/ai-learning-system.webp",
+          "imageAlt": "Translate Complex Medical Terminology"
         },
         {
           "title": "Simplify Technical Documents for Developers",
-          "description": "Dumb It Down AI is also great for developers! It simplifies technical manuals and API documentation into something every developer can use. Make sure your team stays on the same page with clear instructions."
+          "description": "Dumb It Down AI is also great for developers! It simplifies technical manuals and API documentation into something every developer can use. Make sure your team stays on the same page with clear instructions.",
+          "image": "/images/docs/dumb-it-down-how.webp",
+          "imageAlt": "Simplify Technical Documents for Developers"
         }
       ]
     },
@@ -178,7 +194,8 @@
       "title": "Simplify Your Texts Today with VibeTrans",
       "description": "Get started now with Dumb It Down AI. Simplify complex documents for free and improve your communication. Try it today!",
       "button": "Try Dumb It Down Ai Now",
-      "primaryButton": "Try Dumb It Down Ai Now"
+      "primaryButton": "Try Dumb It Down Ai Now",
+      "secondaryButton": "Back to Top"
     },
     "ctaButton": "Try Dumb It Down Ai Now"
   },

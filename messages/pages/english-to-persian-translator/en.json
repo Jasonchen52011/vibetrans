@@ -111,7 +111,7 @@
         }
       ]
     },
-    "funFacts": {
+    "funfacts": {
       "title": "Interesting Facts About Persian Language",
       "items": [
         {
@@ -230,7 +230,8 @@
       "title": "Ready to Translate English to Persian?",
       "description": "Start translating your English text to Persian now - it only takes seconds!",
       "button": "Get Started Free",
-      "primaryButton": "Start Translating Now"
+      "primaryButton": "Start Translating Now",
+      "secondaryButton": "Back to Top"
     }
   },
   "Metadata": {

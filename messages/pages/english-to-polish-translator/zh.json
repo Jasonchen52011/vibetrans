@@ -85,7 +85,7 @@
         }
       ]
     },
-    "funFacts": {
+    "funfacts": {
       "title": "有趣的事实",
       "items": [
         {
@@ -134,7 +134,7 @@
     "highlights": {
       "title": "主要功能",
       "description": "探索我们翻译工具的突出功能，确保高性能和用户满意度。",
-      "features": [
+      "items": [
         {
           "title": "免费波兰语翻译",
           "icon": "FaRocket",

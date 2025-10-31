@@ -78,9 +78,11 @@
           "description": "点击翻译结果页面上的保存按钮存储您的内容，或选择分享图标发送给朋友。确保您的设备已连接到互联网并授予必要的权限，以成功完成保存或分享操作。",
           "wordCount": 40
         }
-      ]
+      ],
+      "image": "/images/docs/samoan-to-english-translator-how-to.webp",
+      "imageAlt": "如何使用萨摩亚语英语翻译器增强版"
     },
-    "funFacts": {
+    "funfacts": {
       "title": "有趣的事实",
       "items": [
         {
@@ -132,7 +134,7 @@
     },
     "highlights": {
       "title": "为什么选择萨摩亚语英语翻译器增强版？",
-      "features": [
+      "items": [
         {
           "title": "简单且免费",
           "description": "VibeTrans 提供简单免费的萨摩亚语到英语翻译服务，用户界面直观，无需复杂操作。无论是旅行、学习还是日常沟通，都能即时获得准确的翻译。VibeTrans 是您可靠的语言助手，帮助您轻松克服语言障碍。",

@@ -34,7 +34,9 @@
     },
     "whatIs": {
       "title": "What is Gen Alpha Translator?",
-      "description": "Gen Alpha Translator is a tool designed to help you decode and understand Gen Alpha slang. With VibeTrans, you can easily convert text into Gen Alpha-style language or back to traditional language."
+      "description": "Gen Alpha Translator is a tool designed to help you decode and understand Gen Alpha slang. With VibeTrans, you can easily convert text into Gen Alpha-style language or back to traditional language.",
+      "image": "/images/docs/what-is-alien-text-generator.webp",
+      "imageAlt": "What is Gen Alpha Translator?"
     },
     "examples": {
       "title": "Example: Translate Gen Alpha Slang",
@@ -60,7 +62,9 @@
           "title": "Review and Share",
           "description": "Check your translation results and easily share them with friends or on social media to show off your Gen Alpha fluency!"
         }
-      ]
+      ],
+      "image": "/images/docs/gen-alpha-translator-how-to.webp",
+      "imageAlt": "How to Translate English to Gen Alpha"
     },
     "userInterest": {
       "title": "Youth Culture Communication & Social Media Applications",
@@ -69,19 +73,27 @@
       "items": [
         {
           "title": "Decode Gen Alpha Language Easily",
-          "description": "With VibeTrans, you don't need to guess what Gen Alpha means. This tool instantly translates slang, so you're always in the loop with their latest phrases."
+          "description": "With VibeTrans, you don't need to guess what Gen Alpha means. This tool instantly translates slang, so you're always in the loop with their latest phrases.",
+          "image": "/images/docs/gen-z-translator-how.webp",
+          "imageAlt": "Decode Gen Alpha Language Easily"
         },
         {
           "title": "Stay Ahead of Social Media Trends",
-          "description": "Social media is where Gen Alpha's language thrives. VibeTrans helps you stay updated on their latest slang and keeps your conversations relevant."
+          "description": "Social media is where Gen Alpha's language thrives. VibeTrans helps you stay updated on their latest slang and keeps your conversations relevant.",
+          "image": "/images/docs/multilingual-gen-z-translator.webp",
+          "imageAlt": "Stay Ahead of Social Media Trends"
         },
         {
           "title": "A Fun Way to Communicate",
-          "description": "Gen Alpha's slang is fun, and with VibeTrans, you'll get to speak their language. It's like being part of an exclusive club!"
+          "description": "Gen Alpha's slang is fun, and with VibeTrans, you'll get to speak their language. It's like being part of an exclusive club!",
+          "image": "/images/docs/what-is-gen-z-translator.webp",
+          "imageAlt": "A Fun Way to Communicate"
         },
         {
           "title": "Perfect for Parents and Educators",
-          "description": "Gen Alpha Translator isn't just for Gen Alpha – it's also a great tool for parents and educators looking to understand this unique generation."
+          "description": "Gen Alpha Translator isn't just for Gen Alpha – it's also a great tool for parents and educators looking to understand this unique generation.",
+          "image": "/images/docs/understanding-gen-alpha-language.webp",
+          "imageAlt": "Perfect for Parents and Educators"
         }
       ]
     },
@@ -299,11 +311,15 @@
       "items": [
         {
           "title": "Random Words Are Cool",
-          "description": "Did you know that Gen Alpha loves using random words like 'Skibidi' just because they sound cool? It's a fun, meaningless word that's taken over social media – but it's part of their culture!"
+          "description": "Did you know that Gen Alpha loves using random words like 'Skibidi' just because they sound cool? It's a fun, meaningless word that's taken over social media – but it's part of their culture!",
+          "image": "/images/docs/gen-alpha-translator-how-to.webp",
+          "imageAlt": "Random Words Are Cool"
         },
         {
           "title": "Sigma Isn't Just Greek",
-          "description": "'Sigma' isn't just a Greek letter – it's how Gen Alpha describes an independent, cool person. Think of it like 'alpha' but with a twist! The way they use this term is absolutely hilarious."
+          "description": "'Sigma' isn't just a Greek letter – it's how Gen Alpha describes an independent, cool person. Think of it like 'alpha' but with a twist! The way they use this term is absolutely hilarious.",
+          "image": "/images/docs/multilingual-gen-alpha-support.webp",
+          "imageAlt": "Sigma Isn't Just Greek"
         }
       ]
     }

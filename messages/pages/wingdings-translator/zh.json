@@ -81,9 +81,11 @@
           "title": "反向翻译",
           "description": "要将Wingdings文本解码回常规文本，只需在输入区域粘贴Wingdings符号并再次翻译即可。"
         }
-      ]
+      ],
+      "image": "/images/docs/wingdings-translator-how-to.webp",
+      "imageAlt": "如何使用Wingdings翻译器"
     },
-    "funFacts": {
+    "funfacts": {
       "title": "关于Wingdings的有趣事实",
       "items": [
         {
@@ -132,7 +134,7 @@
     "highlights": {
       "title": "主要功能",
       "description": "发现使我们的Wingdings翻译器成为符号转换最佳选择的强大功能。",
-      "features": [
+      "items": [
         {
           "title": "即时翻译",
           "icon": "FaRocket",

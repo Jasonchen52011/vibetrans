@@ -95,9 +95,11 @@
           "title": "Hear and Copy Your Translation",
           "description": "Listen to the authentic pronunciation or copy the text with one click. Perfect for practicing your Cantonese or sharing with friends!"
         }
-      ]
+      ],
+      "image": "/images/docs/cantonese-translator-how-to.webp",
+      "imageAlt": "How to Translate English to Cantonese"
     },
-    "userScenarios": {
+    "userInterest": {
       "title": "Mind-Blowing Cantonese Facts",
       "items": [
         {
@@ -250,11 +252,15 @@
       "items": [
         {
           "title": "Six Tones Challenge",
-          "description": "Did you know Cantonese has six basic tones? Many learners find tone 3 (mid-rising) and tone 4 (falling) the trickiest. Master these tones and you're halfway to fluency! VibeTrans helps visualize these tones for easier learning."
+          "description": "Did you know Cantonese has six basic tones? Many learners find tone 3 (mid-rising) and tone 4 (falling) the trickiest. Master these tones and you're halfway to fluency! VibeTrans helps visualize these tones for easier learning.",
+          "image": "/images/docs/cantonese-translator-how-to.webp",
+          "imageAlt": "Six Tones Challenge"
         },
         {
           "title": "Ancient Chinese Heritage",
-          "description": "Cantonese preserves many ancient Chinese sounds from over 1,000 years ago! This makes it a living time capsule of medieval Chinese pronunciation. When you learn Cantonese, you're essentially speaking history."
+          "description": "Cantonese preserves many ancient Chinese sounds from over 1,000 years ago! This makes it a living time capsule of medieval Chinese pronunciation. When you learn Cantonese, you're essentially speaking history.",
+          "image": "/images/docs/cantonese-romanization-systems.webp",
+          "imageAlt": "Ancient Chinese Heritage"
         }
       ]
     },

@@ -132,7 +132,7 @@
     "highlights": {
       "title": "Gaster Translation Engine for Undertale Players",
       "description": "Discover what makes our Gaster Translator exceptional",
-      "features": [
+      "items": [
         {
           "title": "Simple and Free",
           "description": "VibeTrans provides an easy-to-use and free translation service, ensuring users can convert languages effortlessly without any cost. The intuitive interface design allows anyone to get started quickly without complicated setup, making your communication smoother and more accessible.",
@@ -222,7 +222,7 @@
       "primaryButton": "Try GasterTranslator Now",
       "secondaryButton": "Back to Top"
     },
-    "funFacts": {
+    "funfacts": {
       "title": "Undertale Fan's Guide to Mastering Gaster",
       "items": [
         {

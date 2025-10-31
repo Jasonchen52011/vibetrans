@@ -74,9 +74,11 @@
           "title": "Copy or Download Results",
           "description": "Easily copy your English translation to clipboard or download as a .txt file for future use. You can also listen to the pronunciation."
         }
-      ]
+      ],
+      "image": "/images/docs/swahili-to-english-translator-how-to.webp",
+      "imageAlt": "How to Translate Swahili to English"
     },
-    "funFacts": {
+    "funfacts": {
       "title": "Fun Facts About Swahili",
       "items": [
         {

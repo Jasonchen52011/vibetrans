@@ -94,9 +94,11 @@
           "title": "Copy or Download",
           "description": "Easily copy the translated text or save it from your browser as a TXT file. VibeTrans makes sharing your creations quick and easy."
         }
-      ]
+      ],
+      "image": "/images/docs/pig-latin-translator-how-to.webp",
+      "imageAlt": "How to Translate English to Pig Latin"
     },
-    "userScenarios": {
+    "userInterest": {
       "title": "Word Play Linguistics & Language Games",
       "items": [
         {
@@ -260,11 +262,15 @@
       "items": [
         {
           "title": "Pig Latin's Secret Language Origins",
-          "description": "Did you know Pig Latin was originally used as a secret language? Children in 19th-century America created it to communicate without adults understanding. Now VibeTrans makes this playful language accessible to everyone!"
+          "description": "Did you know Pig Latin was originally used as a secret language? Children in 19th-century America created it to communicate without adults understanding. Now VibeTrans makes this playful language accessible to everyone!",
+          "image": "/images/docs/pig-latin-esl-learners.webp",
+          "imageAlt": "Pig Latin's Secret Language Origins"
         },
         {
           "title": "Rules That Make It Work",
-          "description": "Pig Latin follows simple rules: words starting with consonants move the consonant to the end and add 'ay'; words starting with vowels just add 'way' or 'yay'. VibeTrans handles all these rules automatically for perfect translations!"
+          "description": "Pig Latin follows simple rules: words starting with consonants move the consonant to the end and add 'ay'; words starting with vowels just add 'way' or 'yay'. VibeTrans handles all these rules automatically for perfect translations!",
+          "image": "/images/docs/pig-headphones.webp",
+          "imageAlt": "Rules That Make It Work"
         }
       ]
     }

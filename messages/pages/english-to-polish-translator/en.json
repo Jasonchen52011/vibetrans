@@ -85,7 +85,7 @@
         }
       ]
     },
-    "funFacts": {
+    "funfacts": {
       "title": "Interesting Facts",
       "items": [
         {
@@ -134,7 +134,7 @@
     "highlights": {
       "title": "Key Features",
       "description": "Explore the standout features of our translator tool, ensuring high performance and user satisfaction.",
-      "features": [
+      "items": [
         {
           "title": "Free Polish Translation",
           "icon": "FaRocket",

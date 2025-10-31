@@ -73,7 +73,7 @@
         }
       ]
     },
-    "funFacts": {
+    "funfacts": {
       "title": "Interesting Facts",
       "items": [
         {
@@ -177,24 +177,24 @@
     "faqs": {
       "title": "Frequently Asked Questions",
       "subtitle": "Have other questions? Feel free to contact us via email.",
-      "items": [
-        {
+      "items": {
+        "item-1": {
           "question": "Is the Mandalorian Translator free to use?",
           "answer": "Yes, the Mandalorian Translator is completely free to use on the web. You can access all features without any cost. However, it requires an internet connection and is not available as an offline app."
         },
-        {
+        "item-2": {
           "question": "Is this the real Mandalorian language?",
           "answer": "Yes, this translator uses authentic Mando'a vocabulary and grammar that was developed for the Star Wars Expanded Universe by Karen Traviss. It's not just made-up words but a constructed language with rules."
         },
-        {
+        "item-3": {
           "question": "Can I use this for my creative projects?",
           "answer": "Absolutely! The Mandalorian Translator is perfect for fan fiction, cosplay, roleplaying, and other creative projects. We encourage you to use it to add authenticity to your Star Wars inspired content."
         },
-        {
+        "item-4": {
           "question": "How accurate is the Mandalorian translation?",
           "answer": "The Mandalorian Translator provides highly accurate translations using authentic Mando'a vocabulary and grammar patterns developed for the Star Wars universe. While it's based on established linguistic rules, remember that Mando'a is a fictional language created for entertainment purposes."
         }
-      ]
+      }
     },
     "ctaButton": "Try Mandalorian Translator Now",
     "cta": {

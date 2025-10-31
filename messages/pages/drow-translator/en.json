@@ -5,7 +5,13 @@
     "hero": {
       "title": "Best Drow Translator for Fantasy Gaming and Creative Writing",
       "description": "Experience accurate Drow translation powered by advanced AI. Connect with the mysterious Dark Elf language, enhance your D&D campaigns, and explore fantasy linguistics through our comprehensive translation tool.",
-      "userAvatars": ["male3", "female4", "male1", "female3", "male4"],
+      "userAvatars": [
+        "male3",
+        "female4",
+        "male1",
+        "female3",
+        "male4"
+      ],
       "userCount": "from 20,000+ happy users"
     },
     "ctaButton": "Try Drow Translator Now",
@@ -81,7 +87,7 @@
         }
       ]
     },
-    "funFacts": {
+    "funfacts": {
       "title": "Interesting Facts",
       "items": [
         {
@@ -136,7 +142,7 @@
     "highlights": {
       "title": "Why Choose Our Drow Translator?",
       "description": "Discover what makes our Drow translator unique with powerful features designed for fantasy accuracy and creative excellence.",
-      "features": [
+      "items": [
         {
           "title": "Easy and Free to Use",
           "icon": "FaRocket",
@@ -197,8 +203,8 @@
     "testimonials": {
       "title": "What Our Users Are Saying",
       "subtitle": "Real feedback from D&D players and fantasy writers",
-      "items": [
-        {
+      "items": {
+        "item-1": {
           "name": "Sarah Mitchell",
           "role": "Dungeon Master",
           "heading": "Essential D&D Campaign Tool",
@@ -206,7 +212,7 @@
           "text": "Using Drow Translator has transformed my D&D campaigns. My players love the authentic Dark Elf dialogue, and it adds so much depth to our Underdark adventures. The accuracy is impressive!",
           "rating": "4.9"
         },
-        {
+        "item-2": {
           "name": "Marcus Chen",
           "role": "Fantasy Author",
           "heading": "Writer's Creative Companion",
@@ -214,7 +220,7 @@
           "text": "As a fantasy writer, this tool is invaluable for creating authentic Drow characters and dialogue. It captures the essence of Dark Elf language perfectly, making my stories more immersive.",
           "rating": "4.8"
         },
-        {
+        "item-3": {
           "name": "Jennifer Ross",
           "role": "Language Enthusiast",
           "heading": "Fascinating Linguistic Discovery",
@@ -222,7 +228,7 @@
           "text": "I'm amazed by the complexity and beauty of the Drow language. This translator has opened up a whole new world of fantasy linguistics for me. It's both educational and fun!",
           "rating": "4.7"
         },
-        {
+        "item-4": {
           "name": "David Wilson",
           "role": "Game Developer",
           "heading": "Perfect for Game Development",
@@ -230,7 +236,7 @@
           "text": "We're developing a fantasy RPG and this translator has been crucial for creating authentic Drow NPCs and dialogue. The AI understands the cultural context beautifully.",
           "rating": "4.8"
         },
-        {
+        "item-5": {
           "name": "Lisa Thompson",
           "role": "Cosplayer",
           "heading": "Cosplay Character Development",
@@ -238,7 +244,7 @@
           "text": "For creating authentic Drow cosplays, having the right language and phrases is essential. This tool helps me develop my character's personality through language.",
           "rating": "4.6"
         },
-        {
+        "item-6": {
           "name": "Robert Garcia",
           "role": "Linguistics Student",
           "heading": "Academic Research Excellence",
@@ -246,7 +252,7 @@
           "text": "As a linguistics student studying constructed languages, this translator provides amazing insights into Drow grammar and structure. It's helped me understand fantasy linguistics better.",
           "rating": "4.9"
         }
-      ]
+      }
     },
     "faqs": {
       "title": "Frequently Asked Questions",

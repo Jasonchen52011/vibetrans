@@ -96,7 +96,7 @@
         }
       ]
     },
-    "funFacts": {
+    "funfacts": {
       "title": "Fascinating Runic Insights",
       "items": [
         {
@@ -195,20 +195,20 @@
     ],
     "faqs": {
       "title": "Frequently Asked Questions",
-      "items": [
-        {
+      "items": {
+        "item-1": {
           "question": "Is the Runic Translator free to use?",
           "answer": "Yes, our basic runic translation services are free to use for everyone."
         },
-        {
+        "item-2": {
           "question": "Which runic alphabets are supported?",
           "answer": "We support multiple runic systems including Elder Futhark, Younger Futhark, and Anglo-Saxon runes."
         },
-        {
+        "item-3": {
           "question": "Can I use the translations for tattoos?",
           "answer": "Yes, many users use our translations for tattoo designs. We recommend double-checking with a runic expert for important pieces."
         }
-      ]
+      }
     },
     "testimonials": {
       "title": "What Users Say",
@@ -242,7 +242,8 @@
       "description": "Experience our powerful runic translation tool - accurate, fast, and professional.",
       "primaryButton": "Try Runic Translator Now",
       "image": "",
-      "imageAlt": ""
+      "imageAlt": "",
+      "secondaryButton": "Back to Top"
     }
   },
   "Metadata": {

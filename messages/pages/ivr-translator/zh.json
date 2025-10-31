@@ -23,7 +23,9 @@
     },
     "whatIs": {
       "title": "什么是IVR翻译器",
-      "description": "IVR翻译器是VibeTrans推出的无代码工具，可将IVR脚本或音频转换为多语言电话菜单。它支持100多种语言，帮助企业与不同语言的来电者有效沟通。"
+      "description": "IVR翻译器是VibeTrans推出的无代码工具，可将IVR脚本或音频转换为多语言电话菜单。它支持100多种语言，帮助企业与不同语言的来电者有效沟通。",
+      "image": "/images/docs/ivr-translator-how-to.webp",
+      "imageAlt": "什么是IVR翻译器"
     },
     "examples": {
       "title": "IVR翻译器实际应用",
@@ -79,18 +81,24 @@
           "description": "当您满意后，部署新的多语言IVR菜单并进行测试，确保一切运行顺畅。",
           "wordCount": 20
         }
-      ]
+      ],
+      "image": "/images/docs/ivr-translator-how-to.webp",
+      "imageAlt": "如何使用IVR翻译器"
     },
-    "funFacts": {
+    "funfacts": {
       "title": "趣味小知识",
       "items": [
         {
           "title": "你知道吗？1984年的第一个IVR系统只能...",
-          "description": "你知道吗？1984年的第一个IVR系统只能识别10个单词。有了VibeTrans，我们已经走了很远！"
+          "description": "你知道吗？1984年的第一个IVR系统只能识别10个单词。有了VibeTrans，我们已经走了很远！",
+          "image": "/images/docs/ivr-translator-fact-1.webp",
+          "imageAlt": "你知道吗？1984年的第一个IVR系统只能..."
         },
         {
           "title": "约30%的来电者会挂断电话，如果IVR在15秒内没有...",
-          "description": "约30%的来电者会挂断电话，如果IVR在15秒内没有用他们的语言问候他们。VibeTrans帮助您留住他们。"
+          "description": "约30%的来电者会挂断电话，如果IVR在15秒内没有用他们的语言问候他们。VibeTrans帮助您留住他们。",
+          "image": "/images/docs/ivr-translator-fact-2.webp",
+          "imageAlt": "约30%的来电者会挂断电话，如果IVR在15秒内没有..."
         }
       ]
     },
@@ -99,19 +107,27 @@
       "items": [
         {
           "title": "经济实惠的本地化",
-          "description": "使用VibeTrans，您可以在不超预算的情况下本地化您的IVR。拥有100多种语言，无需再聘请配音演员！"
+          "description": "使用VibeTrans，您可以在不超预算的情况下本地化您的IVR。拥有100多种语言，无需再聘请配音演员！",
+          "image": "/images/docs/ivr-translator-interest-1.webp",
+          "imageAlt": "经济实惠的本地化"
         },
         {
           "title": "实时语言切换",
-          "description": "VibeTrans让您实时切换语言，确保您的来电者始终感到被理解。再也不会出现翻译不清的情况！"
+          "description": "VibeTrans让您实时切换语言，确保您的来电者始终感到被理解。再也不会出现翻译不清的情况！",
+          "image": "/images/docs/ivr-translator-interest-3.webp",
+          "imageAlt": "实时语言切换"
         },
         {
           "title": "合规变得简单",
-          "description": "担心数据安全？VibeTrans符合GDPR和HIPAA标准，让您在全球扩展时高枕无忧。"
+          "description": "担心数据安全？VibeTrans符合GDPR和HIPAA标准，让您在全球扩展时高枕无忧。",
+          "image": "/images/docs/ivr-translator-interest-2.webp",
+          "imageAlt": "合规变得简单"
         },
         {
           "title": "提升客户满意度",
-          "description": "满意的客户就是忠诚的客户。使用VibeTrans用他们的母语问候他们，改善他们的体验并提升您的业绩。"
+          "description": "满意的客户就是忠诚的客户。使用VibeTrans用他们的母语问候他们，改善他们的体验并提升您的业绩。",
+          "image": "/images/docs/ivr-translator-interest-4.webp",
+          "imageAlt": "提升客户满意度"
         }
       ]
     },

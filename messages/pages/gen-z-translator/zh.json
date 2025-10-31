@@ -34,7 +34,9 @@
     },
     "whatIs": {
       "title": "What is Gen Z Translator?",
-      "description": "Gen Z Translator is a powerful tool by VibeTrans that converts traditional English into Gen Z slang and vice versa. With multilingual support, it helps bridge generational language gaps, making communication easier and more relatable."
+      "description": "Gen Z Translator is a powerful tool by VibeTrans that converts traditional English into Gen Z slang and vice versa. With multilingual support, it helps bridge generational language gaps, making communication easier and more relatable.",
+      "image": "/images/docs/what-is-alien-text-generator.webp",
+      "imageAlt": "What is Gen Z Translator?"
     },
     "examples": {
       "title": "Example of Gen Z Translator in Action",
@@ -60,7 +62,9 @@
           "title": "Click 'Translate'",
           "description": "Hit the 'Translate' button and see your text transformed into Gen Z slang or traditional English in seconds."
         }
-      ]
+      ],
+      "image": "/images/docs/gen-z-translator-how.webp",
+      "imageAlt": "How to Translate English to Gen Z"
     },
     "userInterest": {
       "title": "Social Media & Youth Culture Applications",
@@ -69,19 +73,27 @@
       "items": [
         {
           "title": "The Need for Gen Z Slang Translation",
-          "description": "Ever wondered what your teen is saying? Gen Z slang can be confusing, but VibeTrans breaks it down. With just a few clicks, you'll be speaking their language!"
+          "description": "Ever wondered what your teen is saying? Gen Z slang can be confusing, but VibeTrans breaks it down. With just a few clicks, you'll be speaking their language!",
+          "image": "/images/docs/what-is-gen-alpha-translator.webp",
+          "imageAlt": "The Need for Gen Z Slang Translation"
         },
         {
           "title": "Multilingual Gen Z Translator",
-          "description": "With VibeTrans, you don't just get English-to-slang translation. You can convert Gen Z slang across multiple languages, helping you bridge language barriers in youth culture."
+          "description": "With VibeTrans, you don't just get English-to-slang translation. You can convert Gen Z slang across multiple languages, helping you bridge language barriers in youth culture.",
+          "image": "/images/docs/gen-alpha-translator-how-to.webp",
+          "imageAlt": "Multilingual Gen Z Translator"
         },
         {
           "title": "Real-time Slang Updates",
-          "description": "Slang changes fast! Gen Z's language evolves quickly, but with VibeTrans, you're always up to date. We keep our slang database fresh to reflect the latest trends."
+          "description": "Slang changes fast! Gen Z's language evolves quickly, but with VibeTrans, you're always up to date. We keep our slang database fresh to reflect the latest trends.",
+          "image": "/images/docs/the-need-for-gen-z-slang-translation.webp",
+          "imageAlt": "Real-time Slang Updates"
         },
         {
           "title": "Why Content Creators Love VibeTrans",
-          "description": "Content creators often use Gen Z slang to stay relevant. With VibeTrans, you can easily create fresh, trendy posts that speak directly to your audience's style."
+          "description": "Content creators often use Gen Z slang to stay relevant. With VibeTrans, you can easily create fresh, trendy posts that speak directly to your audience's style.",
+          "image": "/images/docs/alien-text-generator-how-to.webp",
+          "imageAlt": "Why Content Creators Love VibeTrans"
         }
       ]
     },
@@ -299,11 +311,15 @@
       "items": [
         {
           "title": "Private Slang Dictionaries",
-          "description": "Did you know? Gen Z often creates private slang dictionaries with friends to keep their conversations unique and personal. With VibeTrans, you can decode this secret language easily!"
+          "description": "Did you know? Gen Z often creates private slang dictionaries with friends to keep their conversations unique and personal. With VibeTrans, you can decode this secret language easily!",
+          "image": "/images/docs/gen-z-translator-how.webp",
+          "imageAlt": "Private Slang Dictionaries"
         },
         {
           "title": "Fax, No Printer",
-          "description": "Here's a fun one: 'Fax, No Printer' is a popular Gen Z slang phrase meaning 'I'm serious.' Who would've thought a fax machine could be so hip, right? VibeTrans can help you understand it!"
+          "description": "Here's a fun one: 'Fax, No Printer' is a popular Gen Z slang phrase meaning 'I'm serious.' Who would've thought a fax machine could be so hip, right? VibeTrans can help you understand it!",
+          "image": "/images/docs/multilingual-gen-z-translator.webp",
+          "imageAlt": "Fax, No Printer"
         }
       ]
     }

@@ -96,7 +96,7 @@
         }
       ]
     },
-    "funFacts": {
+    "funfacts": {
       "title": "引人入胜的卢恩见解",
       "items": [
         {
@@ -149,7 +149,7 @@
     "highlights": {
       "title": "工作室功能",
       "description": "人工智能驱动的卢恩翻译，具有为纹身师、游戏开发者和创意专业人士设计的专业功能。",
-      "features": [
+      "items": [
         {
           "icon": "FaRocket",
           "title": "多系统支持",
@@ -195,20 +195,20 @@
     ],
     "faqs": {
       "title": "常见问题",
-      "items": [
-        {
+      "items": {
+        "item-1": {
           "question": "卢恩文字翻译器免费使用吗？",
           "answer": "是的，我们的基本卢恩翻译服务对每个人都免费使用。"
         },
-        {
+        "item-2": {
           "question": "支持哪些卢恩字母表？",
           "answer": "我们支持多种卢恩系统，包括古老符文、年轻符文和盎格鲁-撒克逊卢恩。"
         },
-        {
+        "item-3": {
           "question": "我可以将翻译用于纹身吗？",
           "answer": "是的，许多用户使用我们的翻译进行纹身设计。我们建议对重要作品与卢恩专家再次确认。"
         }
-      ]
+      }
     },
     "testimonials": {
       "title": "用户评价",
@@ -242,7 +242,8 @@
       "description": "体验我们强大的卢恩翻译工具 - 准确、快速和专业。",
       "primaryButton": "立即尝试卢恩文字翻译器",
       "image": "",
-      "imageAlt": ""
+      "imageAlt": "",
+      "secondaryButton": "返回顶部"
     }
   }
 }

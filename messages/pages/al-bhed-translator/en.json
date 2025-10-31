@@ -68,9 +68,11 @@
           "title": "Download or Copy Translation",
           "description": "Copy your translated text or save it from your browser for later use."
         }
-      ]
+      ],
+      "image": "/images/docs/al-bhed-translator-how-to.webp",
+      "imageAlt": "How to Translate English to Al Bhed"
     },
-    "funFacts": {
+    "funfacts": {
       "title": "Final Fantasy X Fan's Guide to Mastering Al Bhed",
       "items": [
         {

@@ -41,7 +41,9 @@
     },
     "whatIs": {
       "title": "What is Creole to English Translator",
-      "description": "A Creole to English Translator is a tool designed to convert Creole languages into English accurately. With VibeTrans, you can easily bridge communication gaps in various contexts, from casual conversations to professional exchanges. Whether you're translating Haitian Creole, Louisiana Creole, or other variants, our advanced AI ensures natural, culturally-aware translations that preserve meaning and context perfectly."
+      "description": "A Creole to English Translator is a tool designed to convert Creole languages into English accurately. With VibeTrans, you can easily bridge communication gaps in various contexts, from casual conversations to professional exchanges. Whether you're translating Haitian Creole, Louisiana Creole, or other variants, our advanced AI ensures natural, culturally-aware translations that preserve meaning and context perfectly.",
+      "image": "/images/docs/what-is-creole-to-english-translator.webp",
+      "imageAlt": "What is Creole to English Translator"
     },
     "examples": {
       "title": "Real-World Creole to English Translation Examples",
@@ -89,26 +91,36 @@
           "title": "Review and Download",
           "description": "Once the translation is complete, review the output for accuracy. You can easily download the translated text in your preferred format."
         }
-      ]
+      ],
+      "image": "/images/docs/creole-to-english-translator-how-to.webp",
+      "imageAlt": "How to Translate Creole to English"
     },
     "userInterest": {
       "title": "Linguistic Features & Cultural Learning",
       "items": [
         {
           "title": "Dialects and Variations",
-          "description": "Explore the fascinating differences among Haitian, Louisiana, and other Creole variants. VibeTrans helps you understand these distinctions effortlessly, recognizing regional vocabulary, pronunciation patterns, and cultural expressions. Whether you're connecting with family, conducting business, or traveling, our translator adapts to each dialect's unique characteristics seamlessly."
+          "description": "Explore the fascinating differences among Haitian, Louisiana, and other Creole variants. VibeTrans helps you understand these distinctions effortlessly, recognizing regional vocabulary, pronunciation patterns, and cultural expressions. Whether you're connecting with family, conducting business, or traveling, our translator adapts to each dialect's unique characteristics seamlessly.",
+          "image": "/images/docs/creole-to-english-translator-interest-1.webp",
+          "imageAlt": "Dialects and Variations"
         },
         {
           "title": "Idioms and Expressions",
-          "description": "Creole idioms can be tricky! With VibeTrans, you can decode phrases like 'm ap boule' and enjoy seamless communication without misunderstandings. Our system recognizes cultural expressions, proverbs, and colloquialisms, providing accurate English equivalents that capture the true meaning. No more awkward literal translations or confusion during conversations."
+          "description": "Creole idioms can be tricky! With VibeTrans, you can decode phrases like 'm ap boule' and enjoy seamless communication without misunderstandings. Our system recognizes cultural expressions, proverbs, and colloquialisms, providing accurate English equivalents that capture the true meaning. No more awkward literal translations or confusion during conversations.",
+          "image": "/images/docs/creole-to-english-translator-interest-4.webp",
+          "imageAlt": "Idioms and Expressions"
         },
         {
           "title": "Learning Mode",
-          "description": "Turn translations into a learning experience. VibeTrans highlights key vocabulary and provides interactive flashcards to boost your skills. Track your progress, practice pronunciation, and build confidence in real conversations. Whether you're a beginner or advancing your fluency, our learning mode transforms every translation into an educational opportunity for growth."
+          "description": "Turn translations into a learning experience. VibeTrans highlights key vocabulary and provides interactive flashcards to boost your skills. Track your progress, practice pronunciation, and build confidence in real conversations. Whether you're a beginner or advancing your fluency, our learning mode transforms every translation into an educational opportunity for growth.",
+          "image": "/images/docs/creole-to-english-translator-interest-3.webp",
+          "imageAlt": "Learning Mode"
         },
         {
           "title": "Cultural Context Integration",
-          "description": "Beyond literal translation, VibeTrans provides crucial cultural context that helps you understand the nuances behind Creole expressions. Learn about cultural traditions, social etiquette, and historical references embedded in the language. This deeper understanding fosters more meaningful connections and prevents potential misunderstandings in cross-cultural communications."
+          "description": "Beyond literal translation, VibeTrans provides crucial cultural context that helps you understand the nuances behind Creole expressions. Learn about cultural traditions, social etiquette, and historical references embedded in the language. This deeper understanding fosters more meaningful connections and prevents potential misunderstandings in cross-cultural communications.",
+          "image": "/images/docs/creole-to-english-translator-interest-2.webp",
+          "imageAlt": "Cultural Context Integration"
         }
       ]
     },
@@ -224,16 +236,20 @@
         }
       }
     },
-    "funFacts": {
+    "funfacts": {
       "title": "Fascinating Language Insights",
       "items": [
         {
           "title": "Creole's French Roots",
-          "description": "Did you know? Over 90% of Haitian Creole words come from French, yet a native French speaker might only understand about a quarter of them due to unique pronunciation and grammar patterns."
+          "description": "Did you know? Over 90% of Haitian Creole words come from French, yet a native French speaker might only understand about a quarter of them due to unique pronunciation and grammar patterns.",
+          "image": "/images/docs/creole-to-english-translator-fact-1.webp",
+          "imageAlt": "Creole's French Roots"
         },
         {
           "title": "Creole's Unique Grammar",
-          "description": "Unlike many languages, Creole doesn't use verb conjugations. Instead, it relies on time particles like 'te', 'ap', and 'pral' to express tense, making grammar beautifully simple and consistent."
+          "description": "Unlike many languages, Creole doesn't use verb conjugations. Instead, it relies on time particles like 'te', 'ap', and 'pral' to express tense, making grammar beautifully simple and consistent.",
+          "image": "/images/docs/creole-to-english-translator-fact-2.webp",
+          "imageAlt": "Creole's Unique Grammar"
         }
       ]
     },

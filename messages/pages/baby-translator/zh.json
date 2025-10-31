@@ -25,7 +25,9 @@
     },
     "whatIs": {
       "title": "What is Baby Translator Pro",
-      "description": "Baby Translator Pro is an innovative tool by VibeTrans that uses AI to interpret baby cries and sounds. It offers real-time analysis and personalized soothing suggestions, helping parents understand their baby's needs better."
+      "description": "Baby Translator Pro is an innovative tool by VibeTrans that uses AI to interpret baby cries and sounds. It offers real-time analysis and personalized soothing suggestions, helping parents understand their baby's needs better.",
+      "image": "/images/docs/what-is-baby-translator.webp",
+      "imageAlt": "Baby Translator Pro - AI-powered baby cry analysis tool"
     },
     "examples": {
       "title": "Example Use of Baby Translator Pro",
@@ -54,6 +56,18 @@
           "name": "Pain",
           "audio": "/audio/baby-cries/pain-cry.m4a",
           "description": "Sharp, intense, and sudden cries"
+        },
+        {
+          "alt": "Playful cry - happy and excited sounds",
+          "name": "Playful",
+          "audio": "/audio/baby-cries/playful-cry.m4a",
+          "description": "Happy, contented and playful vocalizations"
+        },
+        {
+          "alt": "Sleepy cry - drowsy and soft sounds",
+          "name": "Sleepy",
+          "audio": "/audio/baby-cries/sleepy-cry.m4a",
+          "description": "Drowsy, soft and gentle sounds when tired"
         }
       ]
     },
@@ -77,26 +91,36 @@
           "title": "Implement Advice",
           "description": "Try the suggested actions, such as feeding or cuddling, to soothe your baby. Monitor the baby's response for effectiveness."
         }
-      ]
+      ],
+      "image": "/images/docs/baby-translator-how-to.webp",
+      "imageAlt": "How to Use Baby Translator Pro"
     },
-    "userScenarios": {
+    "userInterest": {
       "title": "婴儿语言发展与亲子沟通",
       "items": [
         {
           "title": "Babies Speak Their Own Language",
-          "description": "Did you know that babies as young as three days old can distinguish between different languages? Studies show that newborns recognize rhythms and melodies of their native tongue, highlighting the remarkable adaptability and acuity of their developing brains. It's like having a built-in translator from birth!"
+          "description": "Did you know that babies as young as three days old can distinguish between different languages? Studies show that newborns recognize rhythms and melodies of their native tongue, highlighting the remarkable adaptability and acuity of their developing brains. It's like having a built-in translator from birth!",
+          "image": "/images/docs/baby-translator-interest-1.webp",
+          "imageAlt": "Baby language development research showing newborn language recognition abilities"
         },
         {
           "title": "Crying in Different Cultures",
-          "description": "In some cultures, like those in parts of Africa and the Pacific, it's common to carry babies constantly, responding swiftly to cries. This nurturing approach results in less crying, emphasizing how cultural practices shape infant communication and emotional development."
+          "description": "In some cultures, like those in parts of Africa and the Pacific, it's common to carry babies constantly, responding swiftly to cries. This nurturing approach results in less crying, emphasizing how cultural practices shape infant communication and emotional development.",
+          "image": "/images/docs/baby-translator-interest-2.webp",
+          "imageAlt": "Cross-cultural baby care practices and their impact on infant communication"
         },
         {
           "title": "Decoding Baby Cry Patterns",
-          "description": "Research has revealed that baby cries can often be categorized into specific patterns, indicating needs like hunger, discomfort, or fatigue. These subtle differences are being harnessed by AI tools to help parents understand their little ones better and respond more effectively to their cues."
+          "description": "Research has revealed that baby cries can often be categorized into specific patterns, indicating needs like hunger, discomfort, or fatigue. These subtle differences are being harnessed by AI tools to help parents understand their little ones better and respond more effectively to their cues.",
+          "image": "/images/docs/baby-translator-interest-3.webp",
+          "imageAlt": "AI analysis of baby cry patterns for understanding infant needs"
         },
         {
           "title": "The Science of Baby Laughter",
-          "description": "Around four months, babies start to giggle, often in response to their caregivers. This laughter is more than just cute—it's a vital part of social bonding and communication development, showing that joy and connection are key elements of early human interaction."
+          "description": "Around four months, babies start to giggle, often in response to their caregivers. This laughter is more than just cute—it's a vital part of social bonding and communication development, showing that joy and connection are key elements of early human interaction.",
+          "image": "/images/docs/baby-translator-interest-4.webp",
+          "imageAlt": "Baby laughter and social bonding development in early childhood"
         }
       ]
     },
@@ -136,18 +160,22 @@
       "description": "Discover what makes our Baby Translator unique and user-friendly",
       "items": [
         {
+          "icon": "FaHeart",
           "title": "Easy and Free to Use",
           "description": "VibeTrans Baby Translator Pro is user-friendly and free. Simply upload, analyze, and understand your baby's needs with ease."
         },
         {
+          "icon": "FaShieldAlt",
           "title": "Data Privacy and Security",
           "description": "Your data is safe with VibeTrans. We comply with GDPR and COPPA standards to ensure your family's privacy is protected."
         },
         {
+          "icon": "FaBrain",
           "title": "AI Context Understanding",
           "description": "Our AI precisely identifies different baby cries, offering context-aware solutions. VibeTrans makes parenting easier with its smart insights."
         },
         {
+          "icon": "FaChartLine",
           "title": "Comprehensive Explanations",
           "description": "Dive deeper into cry analysis with detailed explanations. VibeTrans provides a comprehensive understanding of your baby's communication."
         }
@@ -242,6 +270,23 @@
           "description": "GDPR and COPPA compliant. All recordings are encrypted and securely stored for your peace of mind."
         }
       }
+    },
+    "funfacts": {
+      "title": "Understanding Baby Emotions: A Complete Guide",
+      "items": [
+        {
+          "title": "Babies Cry in Different Languages",
+          "description": "Research shows babies' cries adapt to their native language within months! French babies cry with rising melodies, while German babies prefer falling tones. VibeTrans recognizes these cultural patterns in cry analysis.",
+          "image": "/images/docs/baby-translator-fact-1.webp",
+          "imageAlt": "Research showing how baby cries vary across different languages and cultures"
+        },
+        {
+          "title": "Crying is Communication",
+          "description": "Did you know babies cry an average of 2-3 hours per day? This isn't just noise—it's their primary way of communicating needs. VibeTrans helps decode these important signals, reducing parental stress.",
+          "image": "/images/docs/baby-translator-fact-2.webp",
+          "imageAlt": "Baby crying as communication and how AI helps understand infant needs"
+        }
+      ]
     },
     "ctaButton": "Try Baby Translator Now",
     "cta": {

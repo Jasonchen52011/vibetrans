@@ -123,9 +123,11 @@
           "title": "Download or Copy Results",
           "description": "Once the translation is complete, save the translated text from your browser or copy it directly for your use."
         }
-      ]
+      ],
+      "image": "/images/docs/chinese-to-english-translator-how-to.webp",
+      "imageAlt": "How to Translate Chinese to English"
     },
-    "userScenarios": {
+    "userInterest": {
       "title": "Chinese Language Learning & Cultural Bridge",
       "items": [
         {
@@ -225,32 +227,32 @@
     "faqs": {
       "title": "Frequently Asked Questions",
       "subtitle": "Have other questions? Feel free to contact us via email.",
-      "items": [
-        {
+      "items": {
+        "item-1": {
           "question": "What is the best chinese to english translator for accurate translations?",
           "answer": "VibeTrans Chinese To English Translator is the premier choice for accurate translations, featuring advanced AI technology that understands complex grammar, cultural context, and linguistic nuances. Our tool provides bidirectional translation, real-time processing, and high accuracy rates, all completely free. Perfect for language learning, communication, and cultural exploration with reliable, context-aware results."
         },
-        {
+        "item-2": {
           "question": "Is this Chinese to English Translator free?",
           "answer": "Yes, VibeTrans Chinese to English Translator is completely free with no hidden charges or usage limits. You can translate unlimited text, documents, and images anytime. We believe language should be accessible to everyone, so we provide this professional-grade translation tool at no cost to users worldwide for personal, educational, or business purposes."
         },
-        {
+        "item-3": {
           "question": "How does VibeTrans handle our privacy?",
           "answer": "VibeTrans is committed to protecting your privacy. We use advanced encryption to safeguard your data and ensure it remains confidential throughout the translation process. Your translations are processed securely and never stored without your consent, ensuring complete privacy for all your Chinese communications."
         },
-        {
+        "item-4": {
           "question": "How do I use Chinese to English Translator?",
           "answer": "Using VibeTrans Chinese to English Translator is simple: Step 1, input your Chinese text by typing, pasting, uploading documents, or uploading images. Step 2, select your translation mode (general, technical, legal, literary, or idioms). Step 3, click the translate button for instant results. Step 4, copy, save from browser, or listen to your English translation. It's that easy!"
         },
-        {
+        "item-5": {
           "question": "Can I use VibeTrans for professional documents?",
           "answer": "Absolutely! VibeTrans is designed to handle professional documents including business emails, legal texts, academic papers, and more. Our advanced AI maintains formal tone and technical accuracy."
         },
-        {
+        "item-6": {
           "question": "What file formats does VibeTrans support?",
           "answer": "VibeTrans supports multiple file formats including .txt, .docx, .pdf, and more. You can also directly paste text into our interface for instant translation without file upload."
         }
-      ]
+      }
     },
     "features": {
       "title": "Core Features",
@@ -286,11 +288,15 @@
       "items": [
         {
           "title": "The Most Spoken Language Pair",
-          "description": "Did you know Chinese-English is one of the most translated language pairs globally? With over 1 billion speakers combined, accurate translation between these languages bridges the world's largest economies. VibeTrans handles this massive linguistic challenge daily!"
+          "description": "Did you know Chinese-English is one of the most translated language pairs globally? With over 1 billion speakers combined, accurate translation between these languages bridges the world's largest economies. VibeTrans handles this massive linguistic challenge daily!",
+          "image": "/images/docs/english-to-chinese-translator-fact-1.webp",
+          "imageAlt": "The Most Spoken Language Pair"
         },
         {
           "title": "Characters vs Words Challenge",
-          "description": "Chinese uses characters while English uses words - a single Chinese character can represent a complete concept! VibeTrans expertly navigates this fundamental difference, ensuring meaningful translations that capture the essence of both writing systems."
+          "description": "Chinese uses characters while English uses words - a single Chinese character can represent a complete concept! VibeTrans expertly navigates this fundamental difference, ensuring meaningful translations that capture the essence of both writing systems.",
+          "image": "/images/docs/english-to-chinese-translator-fact-2.webp",
+          "imageAlt": "Characters vs Words Challenge"
         }
       ]
     }

@@ -92,7 +92,9 @@
           "description": "Check your translated text in the output area. You can copy the result, download it as a file, or use the text-to-speech feature to hear the pronunciation.",
           "icon": "FaCheckCircle"
         }
-      ]
+      ],
+      "image": "/images/docs/translation-step-by-step-guide.webp",
+      "imageAlt": "How to Translate English to High Valyrian"
     },
     "userInterest": {
       "title": "Explore More with VibeTrans",
@@ -212,7 +214,7 @@
       "primaryButton": "Try HighValyrianTranslator Now",
       "secondaryButton": "Back to Top"
     },
-    "funFacts": {
+    "funfacts": {
       "title": "Game of Thrones Fan's Guide to Mastering High Valyrian",
       "items": [
         {
