@@ -45,6 +45,8 @@ const nextConfig: NextConfig = {
       'next-themes',
       'nuqs',
       'react-remove-scroll',
+      'next-intl',
+      'class-variance-authority',
     ],
     // Optimize CSS
     optimizeCss: true,
@@ -58,6 +60,9 @@ const nextConfig: NextConfig = {
     optimizeCss: true,
     // Enable server components HMR
     serverComponentsHmrCache: true,
+    // Additional optimization for Workers
+    serverMinification: true,
+    serverSourceMaps: false,
   },
 
   // Webpack configuration for Cloudflare Pages Edge Runtime compatibility
@@ -85,6 +90,12 @@ const nextConfig: NextConfig = {
       'node:crypto': false,
       querystring: false,
       vm: false,
+      crypto: false,
+      buffer: false,
+      process: false,
+      util: false,
+      assert: false,
+      events: false,
     };
 
     // Optimize for Cloudflare Workers
@@ -94,20 +105,29 @@ const nextConfig: NextConfig = {
         ...config.optimization,
         usedExports: true,
         sideEffects: false,
+        concatenateModules: true, // Enable module concatenation
       };
 
       // Exclude large dependencies from edge runtime
       config.externals = {
         ...config.externals,
         sharp: 'sharp',
+        'next-intl/middleware': 'next-intl/middleware',
       };
+
+      // Add optimization plugins
+      config.plugins.push(
+        new webpack.DefinePlugin({
+          'process.env.NODE_ENV': JSON.stringify('production'),
+        })
+      );
 
       // Optimize chunk splitting for Cloudflare Pages Functions
       config.optimization.splitChunks = {
         ...config.optimization.splitChunks,
         chunks: 'all',
-        maxSize: 150 * 1024, // 150KB max per chunk (reduced from 200KB)
-        minSize: 10 * 1024, // 10KB min chunk size
+        maxSize: 120 * 1024, // 120KB max per chunk (further reduced)
+        minSize: 15 * 1024, // 15KB min chunk size (increased to reduce chunks)
         cacheGroups: {
           default: {
             enforce: true,
@@ -120,17 +140,17 @@ const nextConfig: NextConfig = {
             chunks: 'all',
             priority: 10,
             enforce: true,
-            // Smaller vendor chunks for Pages Functions
-            maxSize: 100 * 1024, // 100KB max for vendor chunks (reduced from 150KB)
-            minSize: 10 * 1024,
+            // Much smaller vendor chunks for Pages Functions
+            maxSize: 80 * 1024, // 80KB max for vendor chunks (further reduced)
+            minSize: 15 * 1024,
           },
           common: {
             name: 'common',
             minChunks: 2,
             chunks: 'all',
             priority: 5,
-            maxSize: 80 * 1024, // 80KB max for common chunks (reduced from 100KB)
-            minSize: 10 * 1024,
+            maxSize: 60 * 1024, // 60KB max for common chunks (further reduced)
+            minSize: 15 * 1024,
           },
           // 新增：分离配置文件到独立chunk
           config: {
@@ -138,8 +158,17 @@ const nextConfig: NextConfig = {
             name: 'configs',
             chunks: 'all',
             priority: 15,
-            maxSize: 50 * 1024, // 50KB max for config chunks
-            minSize: 5 * 1024,
+            maxSize: 30 * 1024, // 30KB max for config chunks (further reduced)
+            minSize: 10 * 1024,
+          },
+          // 新增：分离工具函数
+          utils: {
+            test: /[\\/]src[\\/]lib[\\/](?!config).*\.ts/,
+            name: 'utils',
+            chunks: 'all',
+            priority: 12,
+            maxSize: 40 * 1024, // 40KB max for utils chunks
+            minSize: 10 * 1024,
           },
         },
       };

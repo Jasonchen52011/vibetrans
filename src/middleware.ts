@@ -1,76 +1,22 @@
 import createMiddleware from 'next-intl/middleware';
-import type { NextRequest } from 'next/server';
 import { routing } from './i18n/routing';
 
 const handleI18nRouting = createMiddleware(routing);
 
-function resolveAppPathname(pathname: string): string {
-  if (!pathname.startsWith('/_next/data/')) {
-    return pathname;
-  }
-
-  const segments = pathname.split('/').filter(Boolean);
-  if (segments.length < 3) {
-    return pathname;
-  }
-
-  // segments[0] === '_next', segments[1] === 'data', segments[2] === buildId
-  const withoutBuildId = segments.slice(3);
-  if (!withoutBuildId.length) {
-    return '/';
-  }
-
-  const last = withoutBuildId[withoutBuildId.length - 1];
-  withoutBuildId[withoutBuildId.length - 1] = last.replace(/\.json$/, '');
-
-  return `/${withoutBuildId.join('/')}`;
-}
-
 /**
- * 优化的中间件：支持 next-intl 国际化路由和路径传递
- * 实现智能路径检测，为按需翻译加载提供路径信息
+ * 优化的中间件：仅处理国际化路由，减少Worker大小
  */
-export default function middleware(req: NextRequest) {
+export default function middleware(req: Request) {
   const response = handleI18nRouting(req);
 
-  const rawPathname = req.nextUrl.pathname;
-  const resolvedPathname = resolveAppPathname(rawPathname);
-  const segments = resolvedPathname.split('/').filter(Boolean);
-  const potentialLocale = segments[0];
-  const hasLocale = routing.locales.includes(potentialLocale as any);
+  // 简化路径检测，减少计算开销
+  const url = new URL(req.url);
+  const pathname = url.pathname;
+  const isTranslatorPage = pathname.includes('-translator') || pathname.includes('-generator') || pathname.includes('-ai');
 
-  const pathWithoutLocale = hasLocale
-    ? '/' + segments.slice(1).join('/')
-    : resolvedPathname;
-
-  const isTranslatorPage =
-    pathWithoutLocale.includes('-translator') ||
-    pathWithoutLocale.includes('-generator') ||
-    pathWithoutLocale.includes('-ai');
-
-  const headerEntries: Array<[string, string]> = [
-    ['x-current-pathname', resolvedPathname],
-    ['x-route-pathname', resolvedPathname],
-    ['x-pathname', resolvedPathname],
-    ['x-path-without-locale', pathWithoutLocale],
-    ['x-is-translator-page', String(isTranslatorPage)],
-  ];
-
-  if (hasLocale) {
-    headerEntries.push(['x-detected-locale', potentialLocale]);
-  }
-
-  headerEntries.forEach(([key, value]) => {
-    response.headers.set(key, value);
-  });
-
-  console.log('🔍 [middleware] Path detection:', {
-    rawPathname,
-    resolvedPathname,
-    locale: hasLocale ? potentialLocale : null,
-    pathWithoutLocale,
-    isTranslatorPage,
-  });
+  // 只设置必要的header
+  response.headers.set('x-pathname', pathname);
+  response.headers.set('x-is-translator-page', String(isTranslatorPage));
 
   return response;
 }
