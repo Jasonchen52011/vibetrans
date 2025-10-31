@@ -20,12 +20,12 @@ import { LocaleLink, useLocalePathname } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
 import { ArrowUpRightIcon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import { useLocale } from 'next-intl';
 import {
   type PointerEvent as ReactPointerEvent,
   useEffect,
   useState,
 } from 'react';
-import { useLocale } from 'next-intl';
 import LocaleSwitcher from './locale-switcher';
 
 // 翻译器页面模式映射表
@@ -152,7 +152,9 @@ export function Navbar({ scroll }: NavBarProps) {
             translatorKey,
             includeCommon: true,
           });
-          console.log(`✅ [Navbar] Preloaded translations for: ${translatorKey}`);
+          console.log(
+            `✅ [Navbar] Preloaded translations for: ${translatorKey}`
+          );
         } catch (error) {
           console.warn(`⚠️ [Navbar] Failed to preload translations:`, error);
         }
@@ -264,13 +266,19 @@ export function Navbar({ scroll }: NavBarProps) {
                         >
                           {item.title}
                         </NavigationMenuTrigger>
-                        <NavigationMenuContent>
+                        <NavigationMenuContent
+                          className={cn(
+                            index === menuLinks.length - 1
+                              ? 'left-auto right-0'
+                              : 'left-0 right-auto'
+                          )}
+                        >
                           <ul
                             className={cn(
                               'grid gap-2 p-3',
                               item.items && item.items.length === 1
-                                ? 'w-[280px] max-w-[calc(100vw-2rem)]'
-                                : 'w-[500px] md:w-[700px] md:grid-cols-3 lg:w-[900px] lg:grid-cols-4 max-w-[calc(100vw-2rem)]'
+                                ? 'w-[280px] max-w-[calc(100vw-4rem)]'
+                                : 'w-[500px] md:w-[700px] md:grid-cols-3 lg:w-[900px] lg:grid-cols-4 max-w-[calc(100vw-4rem)]'
                             )}
                           >
                             {item.items?.map((subItem, subIndex) => {
@@ -387,7 +395,7 @@ export function Navbar({ scroll }: NavBarProps) {
             </div>
 
             {/* navbar right - only theme switcher */}
-            <div className="flex items-center gap-x-4 ml-auto">
+            <div className="flex items-center gap-x-4 ml-8">
               <ModeSwitcher />
               {/* <LocaleSwitcher /> */}
             </div>

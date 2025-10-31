@@ -157,7 +157,9 @@ export default async function OghamTranslatorPage(
         />
 
         {/* Testimonials */}
-        <TestimonialsThreeColumnSection section={translatorContent.testimonials} />
+        <TestimonialsThreeColumnSection
+          section={translatorContent.testimonials}
+        />
 
         {/* FAQ */}
         <FaqSection section={translatorContent.faqs} />

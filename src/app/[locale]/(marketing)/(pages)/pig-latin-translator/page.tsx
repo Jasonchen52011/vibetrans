@@ -163,7 +163,9 @@ export default async function PigLatinTranslatorPage(
         />
 
         {/* Testimonials */}
-        <TestimonialsThreeColumnSection section={translatorContent.testimonials} />
+        <TestimonialsThreeColumnSection
+          section={translatorContent.testimonials}
+        />
 
         {/* FAQ */}
         <FaqSection section={translatorContent.faqs} />

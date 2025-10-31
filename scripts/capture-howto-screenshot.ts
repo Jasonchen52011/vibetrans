@@ -8,7 +8,9 @@ const translatorName = process.argv[2];
 
 if (!translatorName) {
   console.error('❌ 请提供翻译器名称作为参数');
-  console.log('用法: pnpm tsx scripts/capture-howto-screenshot.ts <translator-name>');
+  console.log(
+    '用法: pnpm tsx scripts/capture-howto-screenshot.ts <translator-name>'
+  );
   process.exit(1);
 }
 
@@ -42,7 +44,7 @@ async function captureHowToScreenshot() {
         title: document.title,
         hasContent: document.body.innerText.length > 100,
         contentLength: document.body.innerText.length,
-        bodyHeight: document.body.scrollHeight
+        bodyHeight: document.body.scrollHeight,
       };
     });
 
@@ -109,7 +111,9 @@ async function captureHowToScreenshot() {
 
       screenshot = bestScreenshot;
       currentSize = screenshot.length / 1024;
-      console.log(`✅ 最终文件大小: ${currentSize.toFixed(2)}KB (质量: ${bestQuality})`);
+      console.log(
+        `✅ 最终文件大小: ${currentSize.toFixed(2)}KB (质量: ${bestQuality})`
+      );
     }
 
     // 保存截图

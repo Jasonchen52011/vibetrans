@@ -193,7 +193,9 @@ export default async function AncientGreekTranslatorPage(
         />
 
         {/* Testimonials Section */}
-        <TestimonialsThreeColumnSection section={translatorContent.testimonials} />
+        <TestimonialsThreeColumnSection
+          section={translatorContent.testimonials}
+        />
 
         {/* FAQ Section */}
         <FaqSection section={translatorContent.faqs} />

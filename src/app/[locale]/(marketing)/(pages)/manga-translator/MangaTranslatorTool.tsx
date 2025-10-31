@@ -72,14 +72,11 @@ export default function MangaTranslatorTool({
       const base64 = await convertImageToBase64(file);
 
       // Call API to process image
-      const response = await fetch(
-        '/api/manga-translator',
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ imageData: base64 }),
-        }
-      );
+      const response = await fetch('/api/manga-translator', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ imageData: base64 }),
+      });
 
       const data = await response.json();
 
@@ -174,16 +171,13 @@ export default function MangaTranslatorTool({
 
     try {
       // Call our unified translation API
-      const response = await fetch(
-        '/api/manga-translator',
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            text: inputText,
-          }),
-        }
-      );
+      const response = await fetch('/api/manga-translator', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          text: inputText,
+        }),
+      });
 
       const data = await response.json();
 

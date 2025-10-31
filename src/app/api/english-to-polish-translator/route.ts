@@ -13,27 +13,36 @@ async function translateWithGemini(text: string): Promise<string> {
 
 ${text}`;
 
-  const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key=${apiKey}`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      contents: [{
-        parts: [{
-          text: prompt
-        }]
-      }],
-      generationConfig: {
-        temperature: 0.3,
-        maxOutputTokens: 2048,
-      }
-    }),
-  });
+  const response = await fetch(
+    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key=${apiKey}`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        contents: [
+          {
+            parts: [
+              {
+                text: prompt,
+              },
+            ],
+          },
+        ],
+        generationConfig: {
+          temperature: 0.3,
+          maxOutputTokens: 2048,
+        },
+      }),
+    }
+  );
 
   if (!response.ok) {
     const errorData = await response.json().catch(() => ({}));
-    throw new Error(`Gemini API error: ${response.status} - ${errorData.error?.message || response.statusText}`);
+    throw new Error(
+      `Gemini API error: ${response.status} - ${errorData.error?.message || response.statusText}`
+    );
   }
 
   const data = await response.json();
@@ -99,7 +108,8 @@ export async function GET() {
   return NextResponse.json({
     status: 'healthy',
     service: 'English to Polish Translator API',
-    description: 'Gemini 2.0 Flash powered English to Polish translation service',
+    description:
+      'Gemini 2.0 Flash powered English to Polish translation service',
     features: [
       'AI-powered translation',
       'Context-aware translation',

@@ -35,12 +35,13 @@ export default function CallToActionSection({
             <h2 className="max-w-5xl mx-auto text-center tracking-tight font-medium text-black dark:text-white text-3xl md:text-5xl md:leading-tight">
               {section.title}
             </h2>
-            <p className="mt-4 text-muted-foreground">
-              {section.description}
-            </p>
+            <p className="mt-4 text-muted-foreground">{section.description}</p>
 
             <div className="mt-12 flex justify-center">
-              <Button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} size="lg">
+              <Button
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                size="lg"
+              >
                 <span>{section.primaryButton}</span>
                 <ArrowRightIcon className="ml-2 h-4 w-4" />
               </Button>

@@ -23,7 +23,7 @@ export default function WhatIsSection({ section }: { section: WhatIsSection }) {
   };
 
   return (
-    <section className="py-4 bg-white">
+    <section className="py-4 mt-10 mb-10 bg-white">
       <div className="w-full max-w-6xl mx-auto px-2 sm:px-4 lg:px-6">
         <div className="max-w-full mx-auto">
           <div

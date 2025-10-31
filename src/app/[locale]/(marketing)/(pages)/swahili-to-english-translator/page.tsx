@@ -225,7 +225,9 @@ export default async function SwahiliToEnglishTranslatorPage(
         />
 
         {/* Testimonials */}
-        <TestimonialsThreeColumnSection section={translatorContent.testimonials} />
+        <TestimonialsThreeColumnSection
+          section={translatorContent.testimonials}
+        />
 
         {/* FAQ */}
         <FaqSection section={translatorContent.faqs} />

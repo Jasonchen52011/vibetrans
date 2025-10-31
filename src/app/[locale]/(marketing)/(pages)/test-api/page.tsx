@@ -1,5 +1,5 @@
-import { AuroraBackground } from '@/components/ui/aurora-background';
 import Container from '@/components/layout/container';
+import { AuroraBackground } from '@/components/ui/aurora-background';
 import { constructMetadata } from '@/lib/metadata';
 import { getUrlWithLocale } from '@/lib/urls/urls';
 import type { Metadata } from 'next';

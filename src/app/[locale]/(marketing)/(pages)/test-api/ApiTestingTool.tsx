@@ -1,11 +1,17 @@
 'use client';
 
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
-import { Loader2, CheckCircle, XCircle, AlertCircle, Play } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { AlertCircle, CheckCircle, Loader2, Play, XCircle } from 'lucide-react';
+import { useState } from 'react';
 
 interface ApiTest {
   name: string;
@@ -42,7 +48,7 @@ export default function ApiTestingTool() {
       path: '/api/ping',
       method: 'GET',
       description: 'Basic health check endpoint',
-      expectedFields: ['message']
+      expectedFields: ['message'],
     },
 
     // Translator APIs
@@ -52,15 +58,19 @@ export default function ApiTestingTool() {
       method: 'POST',
       description: 'Analyzes baby cries or text descriptions',
       testPayload: { text: 'My baby is crying' },
-      expectedFields: ['success', 'translated', 'original', 'confidence']
+      expectedFields: ['success', 'translated', 'original', 'confidence'],
     },
     {
       name: 'Bad Translator',
       path: '/api/bad-translator',
       method: 'POST',
       description: 'Intentionally poor translation service',
-      testPayload: { text: 'Hello world', sourceLanguage: 'en', targetLanguage: 'zh' },
-      expectedFields: ['success', 'translated', 'original']
+      testPayload: {
+        text: 'Hello world',
+        sourceLanguage: 'en',
+        targetLanguage: 'zh',
+      },
+      expectedFields: ['success', 'translated', 'original'],
     },
     {
       name: 'Cantonese Translator',
@@ -68,7 +78,7 @@ export default function ApiTestingTool() {
       method: 'POST',
       description: 'Cantonese Chinese translation service',
       testPayload: { text: 'Hello world' },
-      expectedFields: ['success', 'translated', 'original']
+      expectedFields: ['success', 'translated', 'original'],
     },
     {
       name: 'Gen Z Translator',
@@ -76,7 +86,7 @@ export default function ApiTestingTool() {
       method: 'POST',
       description: 'Gen Z slang translation service',
       testPayload: { text: 'This is amazing' },
-      expectedFields: ['success', 'translated', 'original']
+      expectedFields: ['success', 'translated', 'original'],
     },
     {
       name: 'Yoda Translator',
@@ -84,7 +94,7 @@ export default function ApiTestingTool() {
       method: 'POST',
       description: 'Yoda-style speech translator',
       testPayload: { text: 'May the Force be with you' },
-      expectedFields: ['success', 'translated', 'original']
+      expectedFields: ['success', 'translated', 'original'],
     },
     {
       name: 'Pig Latin Translator',
@@ -92,7 +102,7 @@ export default function ApiTestingTool() {
       method: 'POST',
       description: 'Pig Latin language translator',
       testPayload: { text: 'Hello world' },
-      expectedFields: ['success', 'translated', 'original']
+      expectedFields: ['success', 'translated', 'original'],
     },
 
     // Fantasy/Sci-fi Language Translators
@@ -102,7 +112,7 @@ export default function ApiTestingTool() {
       method: 'POST',
       description: 'Final Fantasy Al-Bhed language translator',
       testPayload: { text: 'Hello world' },
-      expectedFields: ['success', 'translated', 'original']
+      expectedFields: ['success', 'translated', 'original'],
     },
     {
       name: 'Drow Translator',
@@ -110,7 +120,7 @@ export default function ApiTestingTool() {
       method: 'POST',
       description: 'Drow fantasy language translator',
       testPayload: { text: 'Hello world' },
-      expectedFields: ['success', 'translated', 'original']
+      expectedFields: ['success', 'translated', 'original'],
     },
     {
       name: 'High Valyrian Translator',
@@ -118,7 +128,7 @@ export default function ApiTestingTool() {
       method: 'POST',
       description: 'Game of Thrones High Valyrian translator',
       testPayload: { text: 'Hello world' },
-      expectedFields: ['success', 'translated', 'original']
+      expectedFields: ['success', 'translated', 'original'],
     },
     {
       name: 'Mandalorian Translator',
@@ -126,7 +136,7 @@ export default function ApiTestingTool() {
       method: 'POST',
       description: 'Star Wars Mandalorian translator',
       testPayload: { text: 'Hello world' },
-      expectedFields: ['success', 'translated', 'original']
+      expectedFields: ['success', 'translated', 'original'],
     },
 
     // Ancient/Historical Languages
@@ -136,7 +146,7 @@ export default function ApiTestingTool() {
       method: 'POST',
       description: 'Ancient Greek language translator',
       testPayload: { text: 'Hello world' },
-      expectedFields: ['success', 'translated', 'original']
+      expectedFields: ['success', 'translated', 'original'],
     },
     {
       name: 'Aramaic Translator',
@@ -144,7 +154,7 @@ export default function ApiTestingTool() {
       method: 'POST',
       description: 'Aramaic language translator',
       testPayload: { text: 'Hello world' },
-      expectedFields: ['success', 'translated', 'original']
+      expectedFields: ['success', 'translated', 'original'],
     },
     {
       name: 'Cuneiform Translator',
@@ -152,7 +162,7 @@ export default function ApiTestingTool() {
       method: 'POST',
       description: 'Ancient cuneiform writing translator',
       testPayload: { text: 'Hello world' },
-      expectedFields: ['success', 'translated', 'original']
+      expectedFields: ['success', 'translated', 'original'],
     },
     {
       name: 'Middle English Translator',
@@ -160,7 +170,7 @@ export default function ApiTestingTool() {
       method: 'POST',
       description: 'Middle English language translator',
       testPayload: { text: 'Hello world' },
-      expectedFields: ['success', 'translated', 'original']
+      expectedFields: ['success', 'translated', 'original'],
     },
     {
       name: 'Nahuatl Translator',
@@ -168,7 +178,7 @@ export default function ApiTestingTool() {
       method: 'POST',
       description: 'Nahuatl language translator',
       testPayload: { text: 'Hello world' },
-      expectedFields: ['success', 'translated', 'original']
+      expectedFields: ['success', 'translated', 'original'],
     },
     {
       name: 'Ogham Translator',
@@ -176,7 +186,7 @@ export default function ApiTestingTool() {
       method: 'POST',
       description: 'Ogham ancient Irish script translator',
       testPayload: { text: 'Hello world' },
-      expectedFields: ['success', 'translated', 'original']
+      expectedFields: ['success', 'translated', 'original'],
     },
 
     // Creative/Generative APIs
@@ -186,7 +196,7 @@ export default function ApiTestingTool() {
       method: 'POST',
       description: 'Generates alien-style text',
       testPayload: { text: 'Hello world' },
-      expectedFields: ['success', 'translated', 'original']
+      expectedFields: ['success', 'translated', 'original'],
     },
     {
       name: 'Gibberish Translator',
@@ -194,7 +204,7 @@ export default function ApiTestingTool() {
       method: 'POST',
       description: 'Converts text to gibberish',
       testPayload: { text: 'Hello world' },
-      expectedFields: ['success', 'translated', 'original']
+      expectedFields: ['success', 'translated', 'original'],
     },
     {
       name: 'Verbose Generator',
@@ -202,15 +212,17 @@ export default function ApiTestingTool() {
       method: 'POST',
       description: 'Makes text more verbose and elaborate',
       testPayload: { text: 'Simple idea' },
-      expectedFields: ['success', 'translated', 'original']
+      expectedFields: ['success', 'translated', 'original'],
     },
     {
       name: 'Dumb It Down AI',
       path: '/api/dumb-it-down-ai',
       method: 'POST',
       description: 'Simplifies complex text',
-      testPayload: { text: 'Quantum mechanics is the study of matter and energy at the molecular, atomic, nuclear, and even smaller microscopic levels.' },
-      expectedFields: ['success', 'translated', 'original']
+      testPayload: {
+        text: 'Quantum mechanics is the study of matter and energy at the molecular, atomic, nuclear, and even smaller microscopic levels.',
+      },
+      expectedFields: ['success', 'translated', 'original'],
     },
 
     // Symbol/Cipher Translators
@@ -220,7 +232,7 @@ export default function ApiTestingTool() {
       method: 'POST',
       description: 'Filipino Baybayin script translator',
       testPayload: { text: 'Hello world' },
-      expectedFields: ['success', 'translated', 'original']
+      expectedFields: ['success', 'translated', 'original'],
     },
     {
       name: 'Gaster Translator',
@@ -228,7 +240,7 @@ export default function ApiTestingTool() {
       method: 'POST',
       description: 'Wingdings-like symbol translator',
       testPayload: { text: 'Hello world' },
-      expectedFields: ['success', 'translated', 'original']
+      expectedFields: ['success', 'translated', 'original'],
     },
     {
       name: 'Rune Translator',
@@ -236,7 +248,7 @@ export default function ApiTestingTool() {
       method: 'POST',
       description: 'Runic symbol translator',
       testPayload: { text: 'Hello world' },
-      expectedFields: ['success', 'translated', 'original']
+      expectedFields: ['success', 'translated', 'original'],
     },
     {
       name: 'Runic Translator',
@@ -244,7 +256,7 @@ export default function ApiTestingTool() {
       method: 'POST',
       description: 'Alternative runic translator',
       testPayload: { text: 'Hello world' },
-      expectedFields: ['success', 'translated', 'original']
+      expectedFields: ['success', 'translated', 'original'],
     },
     {
       name: 'Wingdings Translator',
@@ -252,7 +264,7 @@ export default function ApiTestingTool() {
       method: 'POST',
       description: 'Wingdings font symbol translator',
       testPayload: { text: 'Hello world' },
-      expectedFields: ['success', 'translated', 'original']
+      expectedFields: ['success', 'translated', 'original'],
     },
 
     // Real World Language Translators
@@ -262,7 +274,7 @@ export default function ApiTestingTool() {
       method: 'POST',
       description: 'Albanian to English translation',
       testPayload: { text: 'Përshëndetje botë' },
-      expectedFields: ['success', 'translated', 'original']
+      expectedFields: ['success', 'translated', 'original'],
     },
     {
       name: 'Chinese to English',
@@ -270,7 +282,7 @@ export default function ApiTestingTool() {
       method: 'POST',
       description: 'Chinese to English translation',
       testPayload: { text: '你好世界' },
-      expectedFields: ['success', 'translated', 'original']
+      expectedFields: ['success', 'translated', 'original'],
     },
     {
       name: 'Creole to English',
@@ -278,7 +290,7 @@ export default function ApiTestingTool() {
       method: 'POST',
       description: 'Creole to English translation',
       testPayload: { text: 'Bonjou mond' },
-      expectedFields: ['success', 'translated', 'original']
+      expectedFields: ['success', 'translated', 'original'],
     },
     {
       name: 'Esperanto Translator',
@@ -286,7 +298,7 @@ export default function ApiTestingTool() {
       method: 'POST',
       description: 'Esperanto language translator',
       testPayload: { text: 'Saluton mondo' },
-      expectedFields: ['success', 'translated', 'original']
+      expectedFields: ['success', 'translated', 'original'],
     },
     {
       name: 'Greek Translator',
@@ -294,7 +306,7 @@ export default function ApiTestingTool() {
       method: 'POST',
       description: 'Greek language translator',
       testPayload: { text: 'Γεια σου κόσμε' },
-      expectedFields: ['success', 'translated', 'original']
+      expectedFields: ['success', 'translated', 'original'],
     },
     {
       name: 'Japanese to English',
@@ -302,7 +314,7 @@ export default function ApiTestingTool() {
       method: 'POST',
       description: 'Japanese to English translation',
       testPayload: { text: 'こんにちは世界' },
-      expectedFields: ['success', 'translated', 'original']
+      expectedFields: ['success', 'translated', 'original'],
     },
     {
       name: 'Manga Translator',
@@ -310,7 +322,7 @@ export default function ApiTestingTool() {
       method: 'POST',
       description: 'Manga-style translation',
       testPayload: { text: 'Hello world' },
-      expectedFields: ['success', 'translated', 'original']
+      expectedFields: ['success', 'translated', 'original'],
     },
     {
       name: 'Samoan to English',
@@ -318,7 +330,7 @@ export default function ApiTestingTool() {
       method: 'POST',
       description: 'Samoan to English translation',
       testPayload: { text: 'Malo lelei lalolagi' },
-      expectedFields: ['success', 'translated', 'original']
+      expectedFields: ['success', 'translated', 'original'],
     },
     {
       name: 'Swahili to English',
@@ -326,7 +338,7 @@ export default function ApiTestingTool() {
       method: 'POST',
       description: 'Swahili to English translation',
       testPayload: { text: 'Habari dunia' },
-      expectedFields: ['success', 'translated', 'original']
+      expectedFields: ['success', 'translated', 'original'],
     },
     {
       name: 'Telugu to English',
@@ -334,7 +346,7 @@ export default function ApiTestingTool() {
       method: 'POST',
       description: 'Telugu to English translation',
       testPayload: { text: 'హలో ప్రపంచం' },
-      expectedFields: ['success', 'translated', 'original']
+      expectedFields: ['success', 'translated', 'original'],
     },
 
     // English to Other Languages
@@ -344,7 +356,7 @@ export default function ApiTestingTool() {
       method: 'POST',
       description: 'English to Amharic translation',
       testPayload: { text: 'Hello world' },
-      expectedFields: ['success', 'translated', 'original']
+      expectedFields: ['success', 'translated', 'original'],
     },
     {
       name: 'English to Chinese',
@@ -352,7 +364,7 @@ export default function ApiTestingTool() {
       method: 'POST',
       description: 'English to Chinese translation',
       testPayload: { text: 'Hello world' },
-      expectedFields: ['success', 'translated', 'original']
+      expectedFields: ['success', 'translated', 'original'],
     },
     {
       name: 'English to Persian',
@@ -360,7 +372,7 @@ export default function ApiTestingTool() {
       method: 'POST',
       description: 'English to Persian translation',
       testPayload: { text: 'Hello world' },
-      expectedFields: ['success', 'translated', 'original']
+      expectedFields: ['success', 'translated', 'original'],
     },
     {
       name: 'English to Polish',
@@ -368,7 +380,7 @@ export default function ApiTestingTool() {
       method: 'POST',
       description: 'English to Polish translation',
       testPayload: { text: 'Hello world' },
-      expectedFields: ['success', 'translated', 'original']
+      expectedFields: ['success', 'translated', 'original'],
     },
     {
       name: 'English to Swahili',
@@ -376,7 +388,7 @@ export default function ApiTestingTool() {
       method: 'POST',
       description: 'English to Swahili translation',
       testPayload: { text: 'Hello world' },
-      expectedFields: ['success', 'translated', 'original']
+      expectedFields: ['success', 'translated', 'original'],
     },
 
     // Specialized Translators
@@ -386,7 +398,7 @@ export default function ApiTestingTool() {
       method: 'POST',
       description: 'Dog communication translator',
       testPayload: { text: 'My dog is barking' },
-      expectedFields: ['success', 'translated', 'original']
+      expectedFields: ['success', 'translated', 'original'],
     },
     {
       name: 'Gen Alpha Translator',
@@ -394,7 +406,7 @@ export default function ApiTestingTool() {
       method: 'POST',
       description: 'Gen Alpha slang translator',
       testPayload: { text: 'This is very cool' },
-      expectedFields: ['success', 'translated', 'original']
+      expectedFields: ['success', 'translated', 'original'],
     },
     {
       name: 'IVR Translator',
@@ -402,7 +414,7 @@ export default function ApiTestingTool() {
       method: 'POST',
       description: 'Interactive Voice Response translator',
       testPayload: { text: 'Press 1 for sales' },
-      expectedFields: ['success', 'translated', 'original']
+      expectedFields: ['success', 'translated', 'original'],
     },
     {
       name: 'Minion Translator',
@@ -410,7 +422,7 @@ export default function ApiTestingTool() {
       method: 'POST',
       description: 'Minion language translator',
       testPayload: { text: 'Hello world' },
-      expectedFields: ['success', 'translated', 'original']
+      expectedFields: ['success', 'translated', 'original'],
     },
 
     // Core Translation APIs
@@ -419,16 +431,24 @@ export default function ApiTestingTool() {
       path: '/api/translate',
       method: 'POST',
       description: 'Core translation API',
-      testPayload: { text: 'Hello world', sourceLanguage: 'en', targetLanguage: 'zh' },
-      expectedFields: ['success', 'translated', 'original']
+      testPayload: {
+        text: 'Hello world',
+        sourceLanguage: 'en',
+        targetLanguage: 'zh',
+      },
+      expectedFields: ['success', 'translated', 'original'],
     },
     {
       name: 'Translate Unified',
       path: '/api/translate-unified',
       method: 'POST',
       description: 'Unified translation API',
-      testPayload: { text: 'Hello world', sourceLanguage: 'en', targetLanguage: 'zh' },
-      expectedFields: ['success', 'translated', 'original']
+      testPayload: {
+        text: 'Hello world',
+        sourceLanguage: 'en',
+        targetLanguage: 'zh',
+      },
+      expectedFields: ['success', 'translated', 'original'],
     },
   ];
 
@@ -450,17 +470,70 @@ export default function ApiTestingTool() {
 
     const categoryMap: Record<string, string[]> = {
       health: ['Ping'],
-      basic: ['Baby Translator', 'Bad Translator', 'Cantonese Translator', 'Gen Z Translator', 'Yoda Translator', 'Pig Latin Translator'],
-      fantasy: ['Al-Bhed Translator', 'Drow Translator', 'High Valyrian Translator', 'Mandalorian Translator'],
-      ancient: ['Ancient Greek Translator', 'Aramaic Translator', 'Cuneiform Translator', 'Middle English Translator', 'Nahuatl Translator', 'Ogham Translator'],
-      creative: ['Alien Text Generator', 'Gibberish Translator', 'Verbose Generator', 'Dumb It Down AI'],
-      symbols: ['Baybayin Translator', 'Gaster Translator', 'Rune Translator', 'Runic Translator', 'Wingdings Translator'],
-      realworld: ['Albanian to English', 'Chinese to English', 'Creole to English', 'Esperanto Translator', 'Greek Translator', 'Japanese to English', 'Manga Translator', 'Samoan to English', 'Swahili to English', 'Telugu to English'],
-      specialized: ['English to Amharic', 'English to Chinese', 'English to Persian', 'English to Polish', 'English to Swahili', 'Dog Translator', 'Gen Alpha Translator', 'IVR Translator', 'Minion Translator'],
+      basic: [
+        'Baby Translator',
+        'Bad Translator',
+        'Cantonese Translator',
+        'Gen Z Translator',
+        'Yoda Translator',
+        'Pig Latin Translator',
+      ],
+      fantasy: [
+        'Al-Bhed Translator',
+        'Drow Translator',
+        'High Valyrian Translator',
+        'Mandalorian Translator',
+      ],
+      ancient: [
+        'Ancient Greek Translator',
+        'Aramaic Translator',
+        'Cuneiform Translator',
+        'Middle English Translator',
+        'Nahuatl Translator',
+        'Ogham Translator',
+      ],
+      creative: [
+        'Alien Text Generator',
+        'Gibberish Translator',
+        'Verbose Generator',
+        'Dumb It Down AI',
+      ],
+      symbols: [
+        'Baybayin Translator',
+        'Gaster Translator',
+        'Rune Translator',
+        'Runic Translator',
+        'Wingdings Translator',
+      ],
+      realworld: [
+        'Albanian to English',
+        'Chinese to English',
+        'Creole to English',
+        'Esperanto Translator',
+        'Greek Translator',
+        'Japanese to English',
+        'Manga Translator',
+        'Samoan to English',
+        'Swahili to English',
+        'Telugu to English',
+      ],
+      specialized: [
+        'English to Amharic',
+        'English to Chinese',
+        'English to Persian',
+        'English to Polish',
+        'English to Swahili',
+        'Dog Translator',
+        'Gen Alpha Translator',
+        'IVR Translator',
+        'Minion Translator',
+      ],
       core: ['Translate API', 'Translate Unified'],
     };
 
-    return apiList.filter(api => categoryMap[selectedCategory]?.includes(api.name) || false);
+    return apiList.filter(
+      (api) => categoryMap[selectedCategory]?.includes(api.name) || false
+    );
   };
 
   const testSingleApi = async (api: ApiTest): Promise<TestResult> => {
@@ -479,13 +552,23 @@ export default function ApiTestingTool() {
       const responseData = await response.json();
 
       // Check if response has expected fields
-      const hasExpectedFields = api.expectedFields?.every(field =>
-        typeof responseData === 'object' && responseData !== null && field in responseData
-      ) ?? true;
+      const hasExpectedFields =
+        api.expectedFields?.every(
+          (field) =>
+            typeof responseData === 'object' &&
+            responseData !== null &&
+            field in responseData
+        ) ?? true;
 
-      const missingFields = api.expectedFields?.filter(field =>
-        !(typeof responseData === 'object' && responseData !== null && field in responseData)
-      ) ?? [];
+      const missingFields =
+        api.expectedFields?.filter(
+          (field) =>
+            !(
+              typeof responseData === 'object' &&
+              responseData !== null &&
+              field in responseData
+            )
+        ) ?? [];
 
       return {
         api,
@@ -496,8 +579,8 @@ export default function ApiTestingTool() {
         details: {
           hasExpectedFields,
           missingFields,
-          responseStructure: responseData
-        }
+          responseStructure: responseData,
+        },
       };
     } catch (error) {
       return {
@@ -505,7 +588,7 @@ export default function ApiTestingTool() {
         status: 'error',
         error: error instanceof Error ? error.message : 'Unknown error',
         responseTime: Date.now() - startTime,
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       };
     }
   };
@@ -513,16 +596,16 @@ export default function ApiTestingTool() {
   const testAllApis = async () => {
     setIsTestingAll(true);
     const filteredApis = filterApis();
-    const initialResults = filteredApis.map(api => ({
+    const initialResults = filteredApis.map((api) => ({
       api,
-      status: 'pending' as const
+      status: 'pending' as const,
     }));
     setTestResults(initialResults);
 
     for (let i = 0; i < filteredApis.length; i++) {
       const api = filteredApis[i];
 
-      setTestResults(prev => {
+      setTestResults((prev) => {
         const newResults = [...prev];
         newResults[i] = { ...newResults[i], status: 'testing' };
         return newResults;
@@ -530,14 +613,14 @@ export default function ApiTestingTool() {
 
       const result = await testSingleApi(api);
 
-      setTestResults(prev => {
+      setTestResults((prev) => {
         const newResults = [...prev];
         newResults[i] = result;
         return newResults;
       });
 
       // Small delay to prevent overwhelming the server
-      await new Promise(resolve => setTimeout(resolve, 100));
+      await new Promise((resolve) => setTimeout(resolve, 100));
     }
 
     setIsTestingAll(false);
@@ -559,9 +642,17 @@ export default function ApiTestingTool() {
   const getStatusBadge = (result: TestResult) => {
     if (result.status === 'success') {
       if (result.details?.hasExpectedFields) {
-        return <Badge variant="default" className="bg-green-500">Success</Badge>;
+        return (
+          <Badge variant="default" className="bg-green-500">
+            Success
+          </Badge>
+        );
       } else {
-        return <Badge variant="secondary" className="bg-yellow-500">Warning</Badge>;
+        return (
+          <Badge variant="secondary" className="bg-yellow-500">
+            Warning
+          </Badge>
+        );
       }
     }
 
@@ -569,9 +660,11 @@ export default function ApiTestingTool() {
   };
 
   const filteredApis = filterApis();
-  const successCount = testResults.filter(r => r.status === 'success').length;
-  const warningCount = testResults.filter(r => r.status === 'success' && !r.details?.hasExpectedFields).length;
-  const errorCount = testResults.filter(r => r.status === 'error').length;
+  const successCount = testResults.filter((r) => r.status === 'success').length;
+  const warningCount = testResults.filter(
+    (r) => r.status === 'success' && !r.details?.hasExpectedFields
+  ).length;
+  const errorCount = testResults.filter((r) => r.status === 'error').length;
 
   return (
     <div className="container mx-auto py-8 max-w-7xl">
@@ -589,20 +682,34 @@ export default function ApiTestingTool() {
             <CardDescription>
               {testResults.length > 0 && (
                 <div className="flex gap-4 mt-2">
-                  <span className="text-green-600">Success: {successCount}</span>
-                  <span className="text-yellow-600">Warnings: {warningCount}</span>
+                  <span className="text-green-600">
+                    Success: {successCount}
+                  </span>
+                  <span className="text-yellow-600">
+                    Warnings: {warningCount}
+                  </span>
                   <span className="text-red-600">Errors: {errorCount}</span>
-                  <span className="text-gray-600">Total: {testResults.length}</span>
+                  <span className="text-gray-600">
+                    Total: {testResults.length}
+                  </span>
                 </div>
               )}
             </CardDescription>
           </CardHeader>
           <CardContent>
             <div className="flex gap-4 items-center">
-              <Tabs value={selectedCategory} onValueChange={setSelectedCategory} className="flex-1">
+              <Tabs
+                value={selectedCategory}
+                onValueChange={setSelectedCategory}
+                className="flex-1"
+              >
                 <TabsList className="grid w-full grid-cols-5">
-                  {categories.map(category => (
-                    <TabsTrigger key={category.id} value={category.id} className="text-xs">
+                  {categories.map((category) => (
+                    <TabsTrigger
+                      key={category.id}
+                      value={category.id}
+                      className="text-xs"
+                    >
                       {category.label} ({category.count})
                     </TabsTrigger>
                   ))}
@@ -641,7 +748,9 @@ export default function ApiTestingTool() {
                     {getStatusIcon(result.status)}
                     <div>
                       <h3 className="font-semibold">{result.api.name}</h3>
-                      <p className="text-sm text-muted-foreground">{result.api.description}</p>
+                      <p className="text-sm text-muted-foreground">
+                        {result.api.description}
+                      </p>
                       <div className="flex gap-2 mt-1">
                         <Badge variant="outline">{result.api.method}</Badge>
                         <Badge variant="outline">{result.api.path}</Badge>
@@ -652,9 +761,12 @@ export default function ApiTestingTool() {
 
                   {result.responseTime && (
                     <div className="text-right">
-                      <div className="text-sm font-medium">{result.responseTime}ms</div>
+                      <div className="text-sm font-medium">
+                        {result.responseTime}ms
+                      </div>
                       <div className="text-xs text-muted-foreground">
-                        {result.timestamp && new Date(result.timestamp).toLocaleTimeString()}
+                        {result.timestamp &&
+                          new Date(result.timestamp).toLocaleTimeString()}
                       </div>
                     </div>
                   )}
@@ -662,7 +774,9 @@ export default function ApiTestingTool() {
 
                 {result.api.testPayload && (
                   <div className="mb-3">
-                    <div className="text-sm font-medium mb-1">Test Payload:</div>
+                    <div className="text-sm font-medium mb-1">
+                      Test Payload:
+                    </div>
                     <pre className="text-xs bg-muted p-2 rounded overflow-x-auto">
                       {JSON.stringify(result.api.testPayload, null, 2)}
                     </pre>
@@ -685,7 +799,9 @@ export default function ApiTestingTool() {
                       <div className="p-3 bg-yellow-50 border border-yellow-200 rounded">
                         <div className="flex items-center gap-2 mb-1">
                           <AlertCircle className="w-4 h-4 text-yellow-500" />
-                          <span className="font-medium text-yellow-700">Missing Expected Fields</span>
+                          <span className="font-medium text-yellow-700">
+                            Missing Expected Fields
+                          </span>
                         </div>
                         <div className="text-sm text-yellow-600">
                           Missing: {result.details.missingFields.join(', ')}

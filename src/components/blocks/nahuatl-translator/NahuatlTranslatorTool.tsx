@@ -110,133 +110,111 @@ export default function NahuatlTranslatorTool({
     }
   };
 
-  reader.onerror = () => reject(new Error('Failed to read file'));
-  reader.readAsText(file);
-}
-)
-}
+  // Toggle speech recognition
+  const toggleListening = () => {
+    if (!recognitionRef.current) return;
 
-if (fileExtension === 'docx') {
-  try {
-    const arrayBuffer = await file.arrayBuffer();
-    const result = await mammoth.extractRawText({ arrayBuffer });
-    if (result.value) return result.value;
-    throw new Error('Failed to extract text from Word document');
-  } catch (error) {
-    throw new Error(
-      'Failed to read .docx file. Please ensure it is a valid Word document.'
-    );
-  }
-}
+    if (isListening) {
+      recognitionRef.current.stop();
+      setIsListening(false);
+    } else {
+      recognitionRef.current.start();
+      setIsListening(true);
+    }
+  };
 
-throw new Error('Unsupported file format. Please upload .txt or .docx files.');
-}
-
-// Toggle speech recognition
-const toggleListening = () => {
-  if (!recognitionRef.current) return;
-
-  if (isListening) {
-    recognitionRef.current.stop();
-    setIsListening(false);
-  } else {
-    recognitionRef.current.start();
-    setIsListening(true);
-  }
-};
-
-// Handle smart translation
-const handleTranslate = async () => {
-  if (!inputText.trim()) {
-    setError(pageData.tool?.noInput || 'Please enter some text to translate');
-    setOutputText('');
-    return;
-  }
-
-  setIsLoading(true);
-  setError(null);
-  setOutputText('');
-  setDetectedLanguage('');
-
-  try {
-    const response = await fetch('/api/nahuatl-translator', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        text: inputText,
-        targetLanguage: targetLanguage,
-        context: contextNotes,
-        sourceLanguage: 'auto', // Auto-detect source language
-      }),
-    });
-
-    const data = await response.json();
-
-    if (!response.ok) {
-      throw new Error(
-        data.error || pageData.tool?.error || 'Translation failed'
-      );
+  // Handle smart translation
+  const handleTranslate = async () => {
+    if (!inputText.trim()) {
+      setError(pageData.tool?.noInput || 'Please enter some text to translate');
+      setOutputText('');
+      return;
     }
 
-    setOutputText(data.translated || data.result || '');
-    setDetectedLanguage(data.detectedLanguage || '');
-
-    // Update context if provided
-    if (data.contextNotes) {
-      setContextNotes(data.contextNotes);
-    }
-  } catch (err: any) {
-    setError(err.message || 'Translation failed');
+    setIsLoading(true);
+    setError(null);
     setOutputText('');
-  } finally {
-    setIsLoading(false);
-  }
-};
+    setDetectedLanguage('');
 
-// Reset
-const handleReset = () => {
-  setInputText('');
-  setOutputText('');
-  setFileName(null);
-  setError(null);
-  setDetectedLanguage('');
-  setContextNotes('');
-  if (isListening && recognitionRef.current) {
-    recognitionRef.current.stop();
-  }
-};
+    try {
+      const response = await fetch('/api/nahuatl-translator', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          text: inputText,
+          targetLanguage: targetLanguage,
+          context: contextNotes,
+          sourceLanguage: 'auto', // Auto-detect source language
+        }),
+      });
 
-// Copy
-const handleCopy = async () => {
-  if (!outputText) return;
-  try {
-    const { smartCopyToClipboard } = await import('@/lib/utils/dynamic-copy');
-    await smartCopyToClipboard(outputText, {
-      successMessage: 'Translation copied to clipboard!',
-      errorMessage: 'Failed to copy translation',
-      onSuccess: () => {},
-      onError: (error) => console.error('Failed to copy:', error),
-    });
-  } catch (error) {
-    console.error('Copy function loading failed:', error);
-  }
-};
+      const data = await response.json();
 
-// Download
-const handleDownload = async () => {
-  if (!outputText) return;
-  try {
-    const { smartDownload } = await import('@/lib/utils/dynamic-download');
-    smartDownload(outputText, 'nahuatl-translator', {
-      onSuccess: () => {},
-      onError: (error) => console.error('Download failed:', error),
-    });
-  } catch (error) {
-    console.error('Download function loading failed:', error);
-  }
-};
+      if (!response.ok) {
+        throw new Error(
+          data.error || pageData.tool?.error || 'Translation failed'
+        );
+      }
 
-return (
+      setOutputText(data.translated || data.result || '');
+      setDetectedLanguage(data.detectedLanguage || '');
+
+      // Update context if provided
+      if (data.contextNotes) {
+        setContextNotes(data.contextNotes);
+      }
+    } catch (err: any) {
+      setError(err.message || 'Translation failed');
+      setOutputText('');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // Reset
+  const handleReset = () => {
+    setInputText('');
+    setOutputText('');
+    setFileName(null);
+    setError(null);
+    setDetectedLanguage('');
+    setContextNotes('');
+    if (isListening && recognitionRef.current) {
+      recognitionRef.current.stop();
+    }
+  };
+
+  // Copy
+  const handleCopy = async () => {
+    if (!outputText) return;
+    try {
+      const { smartCopyToClipboard } = await import('@/lib/utils/dynamic-copy');
+      await smartCopyToClipboard(outputText, {
+        successMessage: 'Translation copied to clipboard!',
+        errorMessage: 'Failed to copy translation',
+        onSuccess: () => {},
+        onError: (error) => console.error('Failed to copy:', error),
+      });
+    } catch (error) {
+      console.error('Copy function loading failed:', error);
+    }
+  };
+
+  // Download
+  const handleDownload = async () => {
+    if (!outputText) return;
+    try {
+      const { smartDownload } = await import('@/lib/utils/dynamic-download');
+      smartDownload(outputText, 'nahuatl-translator', {
+        onSuccess: () => {},
+        onError: (error) => console.error('Download failed:', error),
+      });
+    } catch (error) {
+      console.error('Download function loading failed:', error);
+    }
+  };
+
+  return (
     <div className="container max-w-6xl mx-auto px-4 mb-10">
       <main className="w-full bg-white dark:bg-zinc-800 shadow-xl border border-gray-100 dark:border-zinc-700 rounded-lg p-4 md:p-8">
         {/* Language Settings and Context */}

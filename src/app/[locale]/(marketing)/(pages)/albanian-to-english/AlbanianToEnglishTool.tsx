@@ -380,7 +380,9 @@ export default function AlbanianToEnglishTool({
                   {error ? (
                     <p className="text-red-600 dark:text-red-400">{error}</p>
                   ) : outputText ? (
-                    <p className="text-lg whitespace-pre-wrap">{outputText}</p>
+                    <p className="text-lg whitespace-pre-wrap break-words max-w-full">
+                      {outputText}
+                    </p>
                   ) : (
                     <p className="text-gray-500 dark:text-gray-400">
                       {direction === 'al-to-en'

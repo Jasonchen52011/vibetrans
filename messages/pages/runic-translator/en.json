@@ -29,46 +29,28 @@
       "description": "Explore real-world applications and professional translations using our advanced runic systems",
       "items": [
         {
-          "title": "Viking Warrior Memorial",
-          "role": "Tattoo Design",
-          "description": "ᚠᚢᚦᚨᚱᚲ ᛋᛏᚱᛖᚾᚷᚦ - 'STRENGTH' in Elder Futhark, perfect for powerful tattoo statements with historical accuracy.",
-          "image": "/images/docs/rune-warrior-campfire-reading.webp",
-          "imageAlt": "Viking warrior memorial tattoo design in Elder Futhark runes"
+          "alt": "Viking Warrior Memorial\n\nᚠᚢᚦᚨᚱᚲ ᛋᛏᚱᛖᚾᚷᚦ - 'STRENGTH' in Elder Futhark, perfect for powerful tattoo statements with historical accuracy.\n\nTattoo Design",
+          "name": "Viking Warrior Memorial"
         },
         {
-          "title": "Tabletop Game Magic System",
-          "role": "Game Development",
-          "description": "ᚷᚨᛗᛖ ᛗᚨᚷᛁᚲ - Custom spell system using Anglo-Saxon runes for immersive fantasy gaming experiences.",
-          "image": "/images/docs/rune-tabletop-gaming-friends.webp",
-          "imageAlt": "Tabletop gaming magic system with Anglo-Saxon runic spells"
+          "alt": "Tabletop Game Magic System\n\nᚷᚨᛗᛖ ᛗᚨᚷᛁᚲ - Custom spell system using Anglo-Saxon runes for immersive fantasy gaming experiences.\n\nGame Development",
+          "name": "Tabletop Game Magic System"
         },
         {
-          "title": "Nordic Jewelry Engraving",
-          "role": "Handcrafting",
-          "description": "ᛚᚢᚠᛖ ᛖᛏᛖᚱᚾᛁᛏᛁ - 'LOVE ETERNAL' in Younger Futhark, optimized for precise jewelry engraving.",
-          "image": "/images/docs/rune-streamer-professional-setup.webp",
-          "imageAlt": "Nordic jewelry with LOVE ETERNAL engraving in Younger Futhark"
+          "alt": "Nordic Jewelry Engraving\n\nᛚᚢᚠᛖ ᛖᛏᛖᚱᚾᛁᛏᛁ - 'LOVE ETERNAL' in Younger Futhark, optimized for precise jewelry engraving.\n\nHandcrafting",
+          "name": "Nordic Jewelry Engraving"
         },
         {
-          "title": "Educational Classroom Display",
-          "role": "Teaching Materials",
-          "description": "ᚺᛁᛋᛏᛟᚱᛁᚲᚨᛚ ᚱᚢᚾᛖᛋ - Complete medieval rune chart with pronunciation guides for students.",
-          "image": "/images/docs/rune-ancient-carving-mystical.webp",
-          "imageAlt": "Educational medieval rune chart with pronunciation guides"
+          "alt": "Educational Classroom Display\n\nᚺᛁᛋᛏᛟᚱᛁᚲᚨᛚ ᚱᚢᚾᛖᛋ - Complete medieval rune chart with pronunciation guides for students.\n\nTeaching Materials",
+          "name": "Educational Classroom Display"
         },
         {
-          "title": "Cosplay Weapon Prop",
-          "role": "Cosplay Design",
-          "description": "ᚦᛟᚱ ᚨᛊᚷᚨᚱᛞ ᛋᚹᛟᚱᛞ - 'THOR GUARDIAN SWORD' with authentic runes for realistic Viking cosplay.",
-          "image": "/images/docs/rune-adventure-portal.webp",
-          "imageAlt": "Thor guardian sword cosplay prop with authentic runic inscriptions"
+          "alt": "Cosplay Weapon Prop\n\nᚦᛟᚱ ᚨᛊᚷᚨᚱᛞ ᛋᚹᚱᛞ - 'THOR GUARDIAN SWORD' with authentic runes for realistic Viking cosplay.\n\nCosplay Design",
+          "name": "Cosplay Weapon Prop"
         },
         {
-          "title": "Personal Brand Logo",
-          "role": "Commercial Design",
-          "description": "ᛏᛖᚲ ᛗᚨᛋᛏᛖᚱ - 'TECH MASTER' in mixed runic systems for modern tech brand identity.",
-          "image": "/images/docs/rune-transformation.webp",
-          "imageAlt": "Modern tech brand logo using mixed runic systems"
+          "alt": "Personal Brand Logo\n\nᛏᛖᚲ ᛗᚨᛋᛏᛖᚱ - 'TECH MASTER' in mixed runic systems for modern tech brand identity.\n\nCommercial Design",
+          "name": "Personal Brand Logo"
         }
       ]
     },

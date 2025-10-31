@@ -16,7 +16,11 @@ function detectLanguage(text: string): 'japanese' | 'english' | 'unknown' {
   return 'unknown';
 }
 
-async function translateWithGemini(text: string, sourceLanguage: string, targetLanguage: string): Promise<string> {
+async function translateWithGemini(
+  text: string,
+  sourceLanguage: string,
+  targetLanguage: string
+): Promise<string> {
   const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
 
   if (!apiKey) {
@@ -39,27 +43,36 @@ ${text}`;
 ${text}`;
   }
 
-  const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key=${apiKey}`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      contents: [{
-        parts: [{
-          text: prompt
-        }]
-      }],
-      generationConfig: {
-        temperature: 0.3,
-        maxOutputTokens: 2048,
-      }
-    }),
-  });
+  const response = await fetch(
+    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key=${apiKey}`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        contents: [
+          {
+            parts: [
+              {
+                text: prompt,
+              },
+            ],
+          },
+        ],
+        generationConfig: {
+          temperature: 0.3,
+          maxOutputTokens: 2048,
+        },
+      }),
+    }
+  );
 
   if (!response.ok) {
     const errorData = await response.json().catch(() => ({}));
-    throw new Error(`Gemini API error: ${response.status} - ${errorData.error?.message || response.statusText}`);
+    throw new Error(
+      `Gemini API error: ${response.status} - ${errorData.error?.message || response.statusText}`
+    );
   }
 
   const data = await response.json();
@@ -96,7 +109,11 @@ export async function POST(request: NextRequest) {
         targetLanguage = 'japanese';
       }
 
-      const translated = await translateWithGemini(text, detectedLanguage, targetLanguage);
+      const translated = await translateWithGemini(
+        text,
+        detectedLanguage,
+        targetLanguage
+      );
       const processingTime = `${Date.now() - startTime}ms`;
 
       return NextResponse.json({
@@ -145,7 +162,8 @@ export async function GET() {
   return NextResponse.json({
     status: 'healthy',
     service: 'Manga Translator API',
-    description: 'Gemini 2.0 Flash powered English to Manga Style translation service',
+    description:
+      'Gemini 2.0 Flash powered English to Manga Style translation service',
     features: [
       'AI-powered translation',
       'Manga style processing',

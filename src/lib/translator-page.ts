@@ -108,7 +108,11 @@ function normalizeImage(
 }
 
 function mapSectionItems(
-  items: Array<Record<string, unknown>> | Record<string, unknown> | null | undefined,
+  items:
+    | Array<Record<string, unknown>>
+    | Record<string, unknown>
+    | null
+    | undefined,
   icons: string[] = []
 ): Section['items'] {
   // Handle both array format and object format with item-1, item-2, etc.
@@ -128,29 +132,31 @@ function mapSectionItems(
     items = itemArray;
   }
 
-  return ensureArray(items as Array<Record<string, unknown>>).map((item, index) => {
-    const title =
-      (item.title as string | undefined) ||
-      (item.name as string | undefined) ||
-      (item.question as string | undefined) ||
-      '';
-    return {
-      title,
-      description:
-        (item.description as string | undefined) ||
-        (item.content as string | undefined) ||
-        (item.answer as string | undefined),
-      icon: (item.icon as string | undefined) || icons[index] || undefined,
-      image: normalizeImage(
-        item.image,
-        (item.imageAlt as string | undefined) ??
-          (item.alt as string | undefined),
-        title || undefined
-      ),
-      // Preserve original data for testimonials
-      _originalData: item,
-    };
-  });
+  return ensureArray(items as Array<Record<string, unknown>>).map(
+    (item, index) => {
+      const title =
+        (item.title as string | undefined) ||
+        (item.name as string | undefined) ||
+        (item.question as string | undefined) ||
+        '';
+      return {
+        title,
+        description:
+          (item.description as string | undefined) ||
+          (item.content as string | undefined) ||
+          (item.answer as string | undefined),
+        icon: (item.icon as string | undefined) || icons[index] || undefined,
+        image: normalizeImage(
+          item.image,
+          (item.imageAlt as string | undefined) ??
+            (item.alt as string | undefined),
+          title || undefined
+        ),
+        // Preserve original data for testimonials
+        _originalData: item,
+      };
+    }
+  );
 }
 
 function buildSection(
@@ -213,12 +219,14 @@ export function buildTranslatorPageContent(
   const testimonials = (
     typeof t.raw === 'function' ? t.raw('testimonials') : null
   ) as Record<string, unknown> | null;
-  const faqs = (
-    typeof t.raw === 'function' ? t.raw('faqs') : null
-  ) as Record<string, unknown> | null;
-  const cta = (
-    typeof t.raw === 'function' ? t.raw('cta') : null
-  ) as Record<string, unknown> | null;
+  const faqs = (typeof t.raw === 'function' ? t.raw('faqs') : null) as Record<
+    string,
+    unknown
+  > | null;
+  const cta = (typeof t.raw === 'function' ? t.raw('cta') : null) as Record<
+    string,
+    unknown
+  > | null;
 
   const beforeAfterGallery: BeforeAfterGallery = {
     title: (examples?.title as string) ?? '',

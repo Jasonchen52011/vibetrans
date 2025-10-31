@@ -118,8 +118,8 @@ export default function GibberishTranslatorTool({
         body: JSON.stringify({
           text: inputText,
           options: {
-            mode
-          }
+            mode,
+          },
         }),
       });
 
@@ -190,7 +190,6 @@ export default function GibberishTranslatorTool({
   return (
     <div className="container max-w-7xl mx-auto px-4 mb-10">
       <main className="w-full bg-white dark:bg-zinc-800 shadow-xl border border-gray-100 dark:border-zinc-700 rounded-lg p-4 md:p-8">
-
         <div className="flex flex-col md:flex-row gap-2 md:gap-3">
           {/* Input Area */}
           <div className="flex-1">

@@ -74,6 +74,7 @@
     "howto": {
       "title": "How to Translate Albanian to English",
       "description": "Translate Albanian to English in four simple steps. Get instant, accurate results.",
+      "image": "/images/docs/albanian-to-english-how-to.webp",
       "steps": [
         {
           "title": "Enter Albanian Text",
@@ -128,7 +129,7 @@
         },
         {
           "image": {
-            "src": "/images/docs/albanian-to-english-how-to.webp",
+            "src": "/images/docs/business-communication-simplified.webp",
             "alt": "Albanian Business Communication"
           },
           "title": "Albanian Business Communication",
@@ -186,27 +187,6 @@
           "heading": "Great for Academic Work",
           "content": "As an Albanian immigrant studying in the US, VibeTrans helps me translate research papers and stay connected with Albanian academic resources. It accurately handles technical vocabulary and complex sentence structures.",
           "rating": "4.7"
-        },
-        "item-4": {
-          "name": "Dr. Peter Wilson",
-          "role": "Linguistics Professor",
-          "heading": "Academic Research Excellence",
-          "content": "I specialize in Balkan languages and use VibeTrans extensively for comparative linguistic studies. The tool handles Albanian's complex grammar structures remarkably well, preserving nuances that many other translators miss. Essential for serious academic work.",
-          "rating": "4.9"
-        },
-        "item-5": {
-          "name": "Elena Petrović",
-          "role": "Diplomatic Officer",
-          "heading": "Professional Diplomatic Communication",
-          "content": "Working at the embassy requires precise diplomatic communication. VibeTrans has been invaluable for translating official documents, press releases, and diplomatic correspondence between Albanian and English. The accuracy and formal tone preservation are exceptional.",
-          "rating": "5.0"
-        },
-        "item-6": {
-          "name": "Mark Johnson",
-          "role": "NGO Coordinator",
-          "heading": "Humanitarian Work Essential",
-          "content": "Our NGO works with Albanian communities in the Balkans. VibeTrans helps us communicate effectively with local partners, translate educational materials, and understand cultural contexts. It's more than a translator—it's a bridge between communities.",
-          "rating": "4.8"
         }
       }
     },

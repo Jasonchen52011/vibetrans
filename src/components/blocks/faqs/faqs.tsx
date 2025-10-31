@@ -97,7 +97,8 @@ export default function FaqSection({
                         if (hasSteps) {
                           // Split by step markers and render as a list
                           const parts = item.answer.split(/(Step \d+[,:.])/gi);
-                          const steps: { label: string; content: string }[] = [];
+                          const steps: { label: string; content: string }[] =
+                            [];
 
                           for (let i = 0; i < parts.length; i++) {
                             if (/Step \d+[,:.]/.test(parts[i])) {
@@ -109,7 +110,8 @@ export default function FaqSection({
                           }
 
                           // Find intro text (before first step)
-                          const introMatch = item.answer.match(/^(.*?)Step \d+/i);
+                          const introMatch =
+                            item.answer.match(/^(.*?)Step \d+/i);
                           const intro = introMatch ? introMatch[1].trim() : '';
 
                           return (

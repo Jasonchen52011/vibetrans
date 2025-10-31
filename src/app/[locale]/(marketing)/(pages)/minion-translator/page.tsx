@@ -170,7 +170,9 @@ export default async function MinionTranslatorPage(
         />
 
         {/* Testimonials */}
-        <TestimonialsThreeColumnSection section={translatorContent.testimonials} />
+        <TestimonialsThreeColumnSection
+          section={translatorContent.testimonials}
+        />
 
         {/* FAQ */}
         <FaqSection section={translatorContent.faqs} />

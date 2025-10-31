@@ -2,9 +2,9 @@
 
 import { HeaderSection } from '@/components/layout/header-section';
 import { Card, CardContent } from '@/components/ui/card';
+import type { Section } from '@/types/blocks/section';
 import { useLocale, useTranslations } from 'next-intl';
 import { useMemo } from 'react';
-import type { Section } from '@/types/blocks/section';
 
 type TestimonialItem = {
   id: string;
@@ -28,21 +28,26 @@ export default function TestimonialsThreeColumnSection({
 
   // If section data is provided, use it directly
   if (section) {
-    const testimonialItems: TestimonialItem[] = section.items.map((item, index) => {
-      // Extract data from the section item structure
-      // The data has been processed by mapSectionItems, so we need to access it differently
-      const originalItem = (item as any)._originalData || {};
+    const testimonialItems: TestimonialItem[] = section.items.map(
+      (item, index) => {
+        // Extract data from the section item structure
+        // The data has been processed by mapSectionItems, so we need to access it differently
+        const originalItem = (item as any)._originalData || {};
 
-      return {
-        id: `item-${index + 1}`,
-        name: originalItem.name || item.title || 'Anonymous User',
-        role: originalItem.role || 'Happy Customer',
-        heading: originalItem.heading || item.title || 'Great Experience',
-        content: originalItem.content || item.description || 'Excellent service!',
-        rating: typeof originalItem.rating === 'number' ? originalItem.rating :
-                 Number.parseFloat(originalItem.rating) || 5,
-      };
-    });
+        return {
+          id: `item-${index + 1}`,
+          name: originalItem.name || item.title || 'Anonymous User',
+          role: originalItem.role || 'Happy Customer',
+          heading: originalItem.heading || item.title || 'Great Experience',
+          content:
+            originalItem.content || item.description || 'Excellent service!',
+          rating:
+            typeof originalItem.rating === 'number'
+              ? originalItem.rating
+              : Number.parseFloat(originalItem.rating) || 5,
+        };
+      }
+    );
 
     // If no testimonial items found, don't render the section
     if (testimonialItems.length === 0) {
