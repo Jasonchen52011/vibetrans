@@ -19,12 +19,12 @@ const nextConfig: NextConfig = {
   },
 
   // Exclude Node.js-only packages from Edge Runtime bundles
-  serverExternalPackages: ['sharp'],
+  serverExternalPackages: ['sharp', 'critters'],
 
   // https://nextjs.org/docs/architecture/nextjs-compiler#remove-console
   // Remove all console.* calls in production only
   compiler: {
-    // removeConsole: process.env.NODE_ENV === 'production',
+    removeConsole: process.env.NODE_ENV === 'production',
   },
 
   // Enable experimental optimizations for Cloudflare
@@ -44,8 +44,10 @@ const nextConfig: NextConfig = {
     ],
     // Optimize CSS
     optimizeCss: true,
-    // Enable large page data optimization
-    largePageDataBytes: 128 * 1000,
+    // Reduce large page data bytes for Cloudflare Workers
+    largePageDataBytes: 64 * 1000,
+    // Enable webpack bundle analyzer for optimization
+    webpackBuildWorker: true,
   },
 
   // Webpack configuration for Cloudflare Pages Edge Runtime compatibility
@@ -90,22 +92,33 @@ const nextConfig: NextConfig = {
         sharp: 'sharp',
       };
 
-      // Optimize chunk splitting
+      // Optimize chunk splitting for Cloudflare Workers size limits
       config.optimization.splitChunks = {
         ...config.optimization.splitChunks,
         chunks: 'all',
+        maxSize: 244 * 1024, // 244KB max per chunk for Cloudflare Workers
+        minSize: 20 * 1024, // 20KB min chunk size
         cacheGroups: {
-          vendor: {
+          default: {
+            enforce: true,
+            priority: -20,
+            reuseExistingChunk: true,
+          },
+          vendors: {
             test: /[\\/]node_modules[\\/]/,
             name: 'vendors',
             chunks: 'all',
             priority: 10,
+            enforce: true,
+            // Split vendor chunks further
+            maxSize: 150 * 1024, // 150KB max for vendor chunks
           },
           common: {
             name: 'common',
             minChunks: 2,
             chunks: 'all',
             priority: 5,
+            maxSize: 100 * 1024, // 100KB max for common chunks
           },
         },
       };
