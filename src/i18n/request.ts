@@ -136,10 +136,8 @@ export default getRequestConfig(async ({ requestLocale }) => {
   // 标准的 locale 处理
   let locale = await requestLocale;
 
-  // Smart locale mapping
-  if (['zh-CN', 'zh-TW', 'zh-HK', 'zh-MO'].includes(locale)) {
-    locale = 'zh';
-  }
+  // Smart locale mapping - now only English supported
+  // Removed Chinese locale mapping
 
   // 确保 locale 有效
   if (!hasLocale(routing.locales, locale)) {
