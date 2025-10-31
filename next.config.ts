@@ -126,8 +126,8 @@ const nextConfig: NextConfig = {
       config.optimization.splitChunks = {
         ...config.optimization.splitChunks,
         chunks: 'all',
-        maxSize: 120 * 1024, // 120KB max per chunk (further reduced)
-        minSize: 15 * 1024, // 15KB min chunk size (increased to reduce chunks)
+        maxSize: 80 * 1024, // 80KB max per chunk - more aggressive for Cloudflare Pro
+        minSize: 5 * 1024, // 5KB min chunk size - create more, smaller chunks
         cacheGroups: {
           default: {
             enforce: true,
@@ -141,8 +141,8 @@ const nextConfig: NextConfig = {
             priority: 10,
             enforce: true,
             // Much smaller vendor chunks for Pages Functions
-            maxSize: 80 * 1024, // 80KB max for vendor chunks (further reduced)
-            minSize: 15 * 1024,
+            maxSize: 50 * 1024, // 50KB max for vendor chunks - very aggressive
+            minSize: 5 * 1024,
           },
           common: {
             name: 'common',
@@ -158,8 +158,8 @@ const nextConfig: NextConfig = {
             name: 'configs',
             chunks: 'all',
             priority: 15,
-            maxSize: 30 * 1024, // 30KB max for config chunks (further reduced)
-            minSize: 10 * 1024,
+            maxSize: 20 * 1024, // 20KB max for config chunks - very aggressive
+            minSize: 3 * 1024,
           },
           // 新增：分离工具函数
           utils: {

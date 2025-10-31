@@ -4,19 +4,23 @@ import { routing } from './i18n/routing';
 const handleI18nRouting = createMiddleware(routing);
 
 /**
- * 优化的中间件：仅处理国际化路由，减少Worker大小
+ * 极简中间件：最小化Worker大小，避免3MB限制
  */
 export default function middleware(req: Request) {
   const response = handleI18nRouting(req);
 
-  // 简化路径检测，减少计算开销
+  // 最小化路径检测 - 只检测关键路径
   const url = new URL(req.url);
   const pathname = url.pathname;
-  const isTranslatorPage = pathname.includes('-translator') || pathname.includes('-generator') || pathname.includes('-ai');
 
-  // 只设置必要的header
-  response.headers.set('x-pathname', pathname);
-  response.headers.set('x-is-translator-page', String(isTranslatorPage));
+  // 使用更简单的检测逻辑，减少字符串操作
+  const isTranslator = pathname.indexOf('translator') > -1 || pathname.indexOf('generator') > -1;
+
+  // 只设置绝对必要的header
+  response.headers.set('x-path', pathname);
+  if (isTranslator) {
+    response.headers.set('x-type', 'translator');
+  }
 
   return response;
 }
