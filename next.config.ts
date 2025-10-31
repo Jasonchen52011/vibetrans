@@ -92,12 +92,12 @@ const nextConfig: NextConfig = {
         sharp: 'sharp',
       };
 
-      // Optimize chunk splitting for Cloudflare paid plan
+      // Optimize chunk splitting for Cloudflare Pages Functions
       config.optimization.splitChunks = {
         ...config.optimization.splitChunks,
         chunks: 'all',
-        maxSize: 512 * 1024, // 512KB max per chunk for paid plans
-        minSize: 20 * 1024, // 20KB min chunk size
+        maxSize: 200 * 1024, // 200KB max per chunk for Pages Functions
+        minSize: 10 * 1024, // 10KB min chunk size
         cacheGroups: {
           default: {
             enforce: true,
@@ -110,15 +110,17 @@ const nextConfig: NextConfig = {
             chunks: 'all',
             priority: 10,
             enforce: true,
-            // Allow larger vendor chunks for paid plans
-            maxSize: 400 * 1024, // 400KB max for vendor chunks
+            // Smaller vendor chunks for Pages Functions
+            maxSize: 150 * 1024, // 150KB max for vendor chunks
+            minSize: 10 * 1024,
           },
           common: {
             name: 'common',
             minChunks: 2,
             chunks: 'all',
             priority: 5,
-            maxSize: 200 * 1024, // 200KB max for common chunks
+            maxSize: 100 * 1024, // 100KB max for common chunks
+            minSize: 10 * 1024,
           },
         },
       };
