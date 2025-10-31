@@ -189,37 +189,43 @@
           "name": "Sarah Johnson",
           "role": "First-Time Mom",
           "heading": "\"A Lifesaver for New Parents\"",
-          "content": "As a new mom, VibeTrans has been a lifesaver! It accurately identifies my baby's 'hungry' and 'tired' cries, helping me respond quickly and confidently. It's like having a parenting assistant!"
+          "content": "As a new mom, VibeTrans has been a lifesaver! It accurately identifies my baby's 'hungry' and 'tired' cries, helping me respond quickly and confidently. It's like having a parenting assistant!",
+          "rating": "5.0"
         },
         "item-2": {
           "name": "Michael Smith",
           "role": "Pediatric Nurse",
           "heading": "\"Invaluable Tool for Healthcare\"",
-          "content": "Working in pediatrics, VibeTrans proves invaluable. It helps parents understand their baby's needs, reducing stress and improving care. It's a must-have for every family!"
+          "content": "Working in pediatrics, VibeTrans proves invaluable. It helps parents understand their baby's needs, reducing stress and improving care. It's a must-have for every family!",
+          "rating": "4.9"
         },
         "item-3": {
           "name": "Jessica Lee",
           "role": "Stay-at-Home Parent",
           "heading": "\"Transformed My Parenting Experience\"",
-          "content": "VibeTrans has transformed the parenting experience. It decodes baby's cries, making it easier to meet their needs. Parents feel more connected and less overwhelmed!"
+          "content": "VibeTrans has transformed the parenting experience. It decodes baby's cries, making it easier to meet their needs. Parents feel more connected and less overwhelmed!",
+          "rating": "4.8"
         },
         "item-4": {
           "name": "David Brown",
           "role": "Tech-Savvy Dad",
           "heading": "\"Perfect Smart Home Integration\"",
-          "content": "VibeTrans is awesome! It integrates with my smart home setup, giving me instant insights. Now, I can manage work and parenting without missing a beat."
+          "content": "VibeTrans is awesome! It integrates with my smart home setup, giving me instant insights. Now, I can manage work and parenting without missing a beat.",
+          "rating": "4.7"
         },
         "item-5": {
           "name": "Emily Davis",
           "role": "Early Childhood Educator",
           "heading": "\"A Game-Changer for Education\"",
-          "content": "I recommend VibeTrans to all parents. It provides valuable insights into a baby's needs, making caregiving more effective. It's a game-changer in early childhood education."
+          "content": "I recommend VibeTrans to all parents. It provides valuable insights into a baby's needs, making caregiving more effective. It's a game-changer in early childhood education.",
+          "rating": "4.7"
         },
         "item-6": {
           "name": "Tom Wilson",
           "role": "Part-Time Caregiver",
           "heading": "\"Makes Babysitting Effortless\"",
-          "content": "VibeTrans has made babysitting a breeze. I can quickly understand what the baby needs, ensuring they're comfortable and happy. It's an incredible tool for anyone caring for infants!"
+          "content": "VibeTrans has made babysitting a breeze. I can quickly understand what the baby needs, ensuring they're comfortable and happy. It's an incredible tool for anyone caring for infants!",
+          "rating": "4.6"
         }
       }
     },
