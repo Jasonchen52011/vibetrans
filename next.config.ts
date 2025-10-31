@@ -44,8 +44,8 @@ const nextConfig: NextConfig = {
     ],
     // Optimize CSS
     optimizeCss: true,
-    // Reduce large page data bytes for Cloudflare Workers
-    largePageDataBytes: 64 * 1000,
+    // Adjust large page data bytes for Cloudflare paid plan
+    largePageDataBytes: 256 * 1000, // 256KB for paid plans
     // Enable webpack bundle analyzer for optimization
     webpackBuildWorker: true,
   },
@@ -92,11 +92,11 @@ const nextConfig: NextConfig = {
         sharp: 'sharp',
       };
 
-      // Optimize chunk splitting for Cloudflare Workers size limits
+      // Optimize chunk splitting for Cloudflare paid plan
       config.optimization.splitChunks = {
         ...config.optimization.splitChunks,
         chunks: 'all',
-        maxSize: 244 * 1024, // 244KB max per chunk for Cloudflare Workers
+        maxSize: 512 * 1024, // 512KB max per chunk for paid plans
         minSize: 20 * 1024, // 20KB min chunk size
         cacheGroups: {
           default: {
@@ -110,15 +110,15 @@ const nextConfig: NextConfig = {
             chunks: 'all',
             priority: 10,
             enforce: true,
-            // Split vendor chunks further
-            maxSize: 150 * 1024, // 150KB max for vendor chunks
+            // Allow larger vendor chunks for paid plans
+            maxSize: 400 * 1024, // 400KB max for vendor chunks
           },
           common: {
             name: 'common',
             minChunks: 2,
             chunks: 'all',
             priority: 5,
-            maxSize: 100 * 1024, // 100KB max for common chunks
+            maxSize: 200 * 1024, // 200KB max for common chunks
           },
         },
       };
