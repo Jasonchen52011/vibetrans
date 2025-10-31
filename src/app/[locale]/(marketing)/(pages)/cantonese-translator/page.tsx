@@ -8,6 +8,7 @@ import HowTo from '@/components/blocks/how-to';
 import TestimonialsThreeColumnSection from '@/components/blocks/testimonials/testimonials-three-column';
 import WhatIsSection from '@/components/blocks/whatis';
 import { AuroraBackground } from '@/components/ui/aurora-background';
+import { buildTranslatorPageContent } from '@/lib/translator-page';
 import { constructMetadata } from '@/lib/metadata';
 import { buildToolStructuredData } from '@/lib/seo/structured-data';
 import { getUrlWithLocale } from '@/lib/urls/urls';
@@ -24,17 +25,14 @@ export async function generateMetadata({
   params: Promise<{ locale: Locale }>;
 }): Promise<Metadata | undefined> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'Metadata' });
-  const gt = await getTranslations({
-    locale,
-    namespace: 'CantoneseTranslatorPage',
-  });
+  const t = await getTranslations({ locale, namespace: 'CantoneseTranslatorPage' });
+  const metadataT = await getTranslations({ locale, namespace: 'Metadata' });
 
   return constructMetadata({
-    title: `${gt('title')} | ${t('name')}`,
-    description: gt('description'),
+    title: `${t('title')} | ${metadataT('name')}`,
+    description: t('description'),
     canonicalUrl: getUrlWithLocale('/cantonese-translator', locale),
-    image: '/images/docs/cantonese-translation-technology-ai.webp',
+    image: t('whatIs.image'),
   });
 }
 
@@ -58,188 +56,19 @@ export default async function CantoneseTranslatorPage(
     description: t('description'),
   });
 
-  // Page data for the tool
+  // 使用内容构建器生成所有页面内容
+  const translatorContent = buildTranslatorPageContent(t, {
+    howToIcons: ['FaFileUpload', 'FaPencilAlt', 'FaLanguage', 'FaCheckCircle'],
+  });
+
+  // 合并特殊的工具配置
   const pageData = {
+    ...translatorContent.pageData,
     tool: {
-      inputLabel: t('tool.inputLabel'),
-      outputLabel: t('tool.outputLabel'),
-      inputPlaceholder: t('tool.inputPlaceholder'),
-      outputPlaceholder: t('tool.outputPlaceholder'),
-      translateButton: t('tool.translateButton'),
-      uploadButton: t('tool.uploadButton'),
-      uploadHint: t('tool.uploadHint'),
-      loading: t('tool.loading'),
-      error: t('tool.error'),
-      noInput: t('tool.noInput'),
+      ...translatorContent.pageData.tool,
       cantoneseLabel: t('tool.cantoneseLabel'),
       englishLabel: 'English',
-      removeFileTooltip: t('tool.removeFileTooltip'),
-      toggleDirectionTooltip: t('tool.toggleDirectionTooltip'),
-      copyTooltip: t('tool.copyTooltip'),
-      downloadTooltip: t('tool.downloadTooltip'),
     },
-  };
-
-  // Examples section data
-  const examplesData = {
-    title: t('examples.title'),
-    description: t('examples.description'),
-    images: [
-      {
-        alt: t('examples.items.0.alt'),
-        name: t('examples.items.0.name'),
-      },
-      {
-        alt: t('examples.items.1.alt'),
-        name: t('examples.items.1.name'),
-      },
-      {
-        alt: t('examples.items.2.alt'),
-        name: t('examples.items.2.name'),
-      },
-      {
-        alt: t('examples.items.3.alt'),
-        name: t('examples.items.3.name'),
-      },
-      {
-        alt: t('examples.items.4.alt'),
-        name: t('examples.items.4.name'),
-      },
-      {
-        alt: t('examples.items.5.alt'),
-        name: t('examples.items.5.name'),
-      },
-    ],
-  };
-
-  // What is section
-  const whatIsSection = {
-    title: t('whatIs.title'),
-    description: t('whatIs.description'),
-    features: [],
-    image: {
-      src: '/images/docs/cantonese-translation-technology-ai.webp',
-      alt: 'AI-powered Cantonese translation technology with Hong Kong cityscape',
-    },
-    cta: { text: t('ctaButton') },
-  };
-
-  // How to section
-  const howtoSection = {
-    name: 'howto',
-    title: t('howto.title'),
-    description: t('howto.description'),
-    image: {
-      src: '/images/docs/translation-step-by-step-guide.webp',
-      alt: 'Step-by-step guide for Cantonese translation process',
-    },
-    items: [
-      {
-        title: t('howto.steps.0.title'),
-        description: t('howto.steps.0.description'),
-        icon: 'FaFileUpload',
-      },
-      {
-        title: t('howto.steps.1.title'),
-        description: t('howto.steps.1.description'),
-        icon: 'FaPencilAlt',
-      },
-      {
-        title: t('howto.steps.2.title'),
-        description: t('howto.steps.2.description'),
-        icon: 'FaLanguage',
-      },
-      {
-        title: t('howto.steps.3.title'),
-        description: t('howto.steps.3.description'),
-        icon: 'FaCheckCircle',
-      },
-    ],
-  };
-
-  // Highlights section
-  const highlightsSection = {
-    name: 'highlights',
-    title: t('highlights.title'),
-    description: t('highlights.description'),
-    items: [
-      {
-        icon: 'FaRocket',
-        title: t('highlights.items.0.title'),
-        description: t('highlights.items.0.description'),
-      },
-      {
-        icon: 'FaBrain',
-        title: t('highlights.items.1.title'),
-        description: t('highlights.items.1.description'),
-      },
-      {
-        icon: 'FaShieldAlt',
-        title: t('highlights.items.2.title'),
-        description: t('highlights.items.2.description'),
-      },
-      {
-        icon: 'FaChartLine',
-        title: t('highlights.items.3.title'),
-        description: t('highlights.items.3.description'),
-      },
-    ],
-  };
-
-  // Fun Facts section
-  const funFactsSection = {
-    name: 'userScenarios',
-    title: t('userScenarios.title'),
-    items: [
-      {
-        title: t('userScenarios.items.0.title'),
-        description: t('userScenarios.items.0.description'),
-        image: {
-          src: '/images/docs/cantonese-tones-musical-system.webp',
-          alt: 'Cantonese tones musical system with 6-9 tone levels',
-        },
-      },
-      {
-        title: t('userScenarios.items.1.title'),
-        description: t('userScenarios.items.1.description'),
-        image: {
-          src: '/images/docs/english-cantonese-loanwords.webp',
-          alt: 'English to Cantonese loanwords like taxi to 的士',
-        },
-      },
-    ],
-  };
-
-  // User Interest section (3 content blocks)
-  const userInterestSection = {
-    name: 'unique',
-    title: t('unique.title'),
-    items: [
-      {
-        title: t('unique.items.0.title'),
-        description: t('unique.items.0.content'),
-        image: {
-          src: '/images/docs/tone-ladder-rise.webp',
-          alt: 'AI mentor teaching Cantonese tone mastery with interactive charts',
-        },
-      },
-      {
-        title: t('unique.items.1.title'),
-        description: t('unique.items.1.content'),
-        image: {
-          src: '/images/docs/hongkong-street-slang-culture.webp',
-          alt: 'Hong Kong street culture and Cantonese slang translation',
-        },
-      },
-      {
-        title: t('unique.items.2.title'),
-        description: t('unique.items.2.content'),
-        image: {
-          src: '/images/docs/chat-app-flow.webp',
-          alt: 'WhatsApp and WeChat integration for seamless translation',
-        },
-      },
-    ],
   };
 
   return (
@@ -304,22 +133,22 @@ export default async function CantoneseTranslatorPage(
         </div>
 
         {/* What Is Section */}
-        <WhatIsSection section={whatIsSection} />
+        <WhatIsSection section={translatorContent.whatIs} />
 
         {/* Examples Section */}
-        <BeforeAfterSection beforeAfterGallery={examplesData} />
+        <BeforeAfterSection beforeAfterGallery={translatorContent.examples} />
 
         {/* How to Section */}
-        <HowTo section={howtoSection} />
+        <HowTo section={translatorContent.howTo} />
 
         {/* User Interest Blocks */}
-        <UserScenarios section={userInterestSection} ctaText={t('ctaButton')} />
+        <UserScenarios section={translatorContent.userInterest} ctaText={t('ctaButton')} />
 
         {/* Fun Facts */}
-        <UserScenarios section={funFactsSection} ctaText={t('ctaButton')} />
+        <UserScenarios section={translatorContent.funFacts} ctaText={t('ctaButton')} />
 
         {/* Highlights */}
-        <WhyChoose section={highlightsSection} />
+        <WhyChoose section={translatorContent.highlights} />
 
         {/* Explore Other Tools */}
         <ExploreOurAiTools
@@ -334,13 +163,13 @@ export default async function CantoneseTranslatorPage(
         />
 
         {/* Testimonials */}
-        <TestimonialsThreeColumnSection namespace="CantoneseTranslatorPage.testimonials" />
+        <TestimonialsThreeColumnSection namespace="CantoneseTranslatorPage" subNamespace="testimonials" />
 
         {/* FAQ */}
-        <FaqSection namespace="CantoneseTranslatorPage.faqs" />
+        <FaqSection namespace="CantoneseTranslatorPage" subNamespace="faqs" />
 
         {/* CTA */}
-        <CallToActionSection namespace="CantoneseTranslatorPage.cta" />
+        <CallToActionSection namespace="CantoneseTranslatorPage" subNamespace="cta" />
       </div>
     </>
   );

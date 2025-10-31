@@ -23,7 +23,7 @@ export default function TeluguToEnglishTranslatorTool({
   const [translationMode, setTranslationMode] = useState<string>('general');
   const [detectedLanguage, setDetectedLanguage] = useState<string>('unknown');
   const [targetLanguage, setTargetLanguage] = useState<string>('english');
-  
+
   // Auto-detect input language when text changes
   useEffect(() => {
     if (inputText.trim()) {
@@ -61,7 +61,6 @@ export default function TeluguToEnglishTranslatorTool({
     }
   };
 
-  
   // Handle translation
   const handleTranslate = async () => {
     if (!inputText.trim()) {
@@ -127,7 +126,7 @@ export default function TeluguToEnglishTranslatorTool({
         },
         onError: (error) => {
           console.error('Failed to copy:', error);
-        }
+        },
       });
     } catch (error) {
       console.error('Copy function loading failed:', error);
@@ -148,7 +147,7 @@ export default function TeluguToEnglishTranslatorTool({
         },
         onError: (error) => {
           console.error('Download failed:', error);
-        }
+        },
       });
     } catch (error) {
       console.error('Download function loading failed:', error);

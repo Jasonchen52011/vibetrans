@@ -23,13 +23,15 @@ export function dynamicDownload(
     filename = `download-${Date.now()}.txt`,
     mimeType = 'text/plain',
     onSuccess,
-    onError
+    onError,
   } = options;
 
   try {
     // 检查是否在浏览器环境
     if (typeof window === 'undefined') {
-      throw new Error('Download functionality is only available in browser environment');
+      throw new Error(
+        'Download functionality is only available in browser environment'
+      );
     }
 
     // 检查内容是否为空
@@ -84,7 +86,7 @@ export function dynamicDownload(
  */
 export function generateDownloadFilename(
   toolName: string,
-  fileExtension: string = 'txt'
+  fileExtension = 'txt'
 ): string {
   // 清理工具名称，移除特殊字符和空格
   const cleanToolName = toolName
@@ -110,7 +112,7 @@ export function smartDownload(
 
   return dynamicDownload(content, {
     ...options,
-    filename
+    filename,
   });
 }
 

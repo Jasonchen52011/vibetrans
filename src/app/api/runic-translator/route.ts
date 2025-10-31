@@ -1,47 +1,47 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { type NextRequest, NextResponse } from 'next/server';
 
 export const runtime = 'edge';
 
 // Elder Futhark符文映射
 const elderFutharkMappings: { [key: string]: string } = {
   // 元音字母
-  'a': 'ᚨ',  // Ansuz
-  'á': 'ᚨ',
-  'æ': 'ᚯ',  // Æsc
-  'ǽ': 'ᚯ',
-  'e': 'ᛖ',  // Ehwaz
-  'é': 'ᛖ',
-  'ê': 'ᛖ',
-  'i': 'ᛁ',  // Isa
-  'í': 'ᛁ',
-  'î': 'ᛁ',
-  'j': 'ᛃ',  // Jeran
-  'j': 'ᛄ',  // Jeran
-  'o': 'ᛟ',  // Othala
-  'ó': 'ᛟ',
-  'ô': 'ᛟ',
-  'p': 'ᛈ',  // Perþo
-  'q': 'ᛩ',  // *- (不常用)
-  'r': 'ᚱ',  // Raidho
-  's': 'ᛋ',  // Sowilo
-  't': 'ᛏ',  // Tiwaz
-  'u': 'ᚢ',  // Uruz
-  'ú': 'ᚢ',
-  'û': 'ᚢ',
-  'v': 'ᚡ',  // Wunjo
-  'w': 'ᚹ',  // Wynn
-  'y': 'ᛇ',  // *- (不常用)
-  'z': 'ᛎ',  // *- (不常用)
-  'x': 'ᛉ',  // *- (不常用)
+  a: 'ᚨ', // Ansuz
+  á: 'ᚨ',
+  æ: 'ᚯ', // Æsc
+  ǽ: 'ᚯ',
+  e: 'ᛖ', // Ehwaz
+  é: 'ᛖ',
+  ê: 'ᛖ',
+  i: 'ᛁ', // Isa
+  í: 'ᛁ',
+  î: 'ᛁ',
+  j: 'ᛃ', // Jeran
+  j: 'ᛄ', // Jeran
+  o: 'ᛟ', // Othala
+  ó: 'ᛟ',
+  ô: 'ᛟ',
+  p: 'ᛈ', // Perþo
+  q: 'ᛩ', // *- (不常用)
+  r: 'ᚱ', // Raidho
+  s: 'ᛋ', // Sowilo
+  t: 'ᛏ', // Tiwaz
+  u: 'ᚢ', // Uruz
+  ú: 'ᚢ',
+  û: 'ᚢ',
+  v: 'ᚡ', // Wunjo
+  w: 'ᚹ', // Wynn
+  y: 'ᛇ', // *- (不常用)
+  z: 'ᛎ', // *- (不常用)
+  x: 'ᛉ', // *- (不常用)
 
   // 双元音和特殊字符
-  'th': 'ᚦ',  // Thurisaz
-  'ng': 'ᛜ',  // Ingwaz
-  'eo': 'ᛠ',  // Eolh
-  'ia': 'ᛁ',  // 可能的组合
-  'ea': 'ᛠ',  // 可能的组合
-  'ao': 'ᛟ',  // 可能的组合
-  'ei': 'ᛁ',  // 可能的组合
+  th: 'ᚦ', // Thurisaz
+  ng: 'ᛜ', // Ingwaz
+  eo: 'ᛠ', // Eolh
+  ia: 'ᛁ', // 可能的组合
+  ea: 'ᛠ', // 可能的组合
+  ao: 'ᛟ', // 可能的组合
+  ei: 'ᛁ', // 可能的组合
 
   // 标点符号和空格
   ' ': ' ',
@@ -117,7 +117,7 @@ function translateToEnglish(text: string): string {
 function detectDirection(text: string): 'to-runic' | 'to-english' {
   // 更准确的启发式方法：检查是否包含Futhark字符
   const futharkChars = Object.keys(englishMappings);
-  const hasFutharkChars = futharkChars.some(char => text.includes(char));
+  const hasFutharkChars = futharkChars.some((char) => text.includes(char));
 
   // 也检查是否有拉丁字母（英文）
   const hasLatinChars = /[a-zA-Z]/.test(text);
@@ -145,10 +145,7 @@ export async function POST(request: NextRequest) {
     const { text, inputType = 'text', direction } = body;
 
     if (!text) {
-      return NextResponse.json(
-        { error: 'Text is required' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Text is required' }, { status: 400 });
     }
 
     let translated: string;
@@ -176,17 +173,20 @@ export async function POST(request: NextRequest) {
       inputType,
       direction: detectedDirection,
       message: 'Translation successful',
-      detectedInputLanguage: detectedDirection === 'english-to-runic' ? 'english' : 'runic',
+      detectedInputLanguage:
+        detectedDirection === 'english-to-runic' ? 'english' : 'runic',
       script: 'elder-futhark',
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     });
-
   } catch (error) {
     if (process.env.NODE_ENV === 'development') {
       console.error('Runic translator error:', error);
     }
     return NextResponse.json(
-      { error: 'Translation failed', details: error instanceof Error ? error.message : 'Unknown error' },
+      {
+        error: 'Translation failed',
+        details: error instanceof Error ? error.message : 'Unknown error',
+      },
       { status: 500 }
     );
   }
@@ -202,16 +202,16 @@ export async function GET() {
       body: {
         text: 'string (required)',
         inputType: 'text (optional, default: text)',
-        direction: 'to-runic | to-english | auto (optional, default: auto)'
-      }
+        direction: 'to-runic | to-english | auto (optional, default: auto)',
+      },
     },
     availableFeatures: [
       'Elder Futhark rune translation',
       'Automatic direction detection',
       'Bidirectional translation',
-      'Punctuation preservation'
+      'Punctuation preservation',
     ],
     script: 'elder-futhark',
-    timestamp: new Date().toISOString()
+    timestamp: new Date().toISOString(),
   });
 }

@@ -59,6 +59,10 @@ export const websiteConfig: WebsiteConfig = {
         flag: '🇺🇸',
         name: 'English',
       },
+      zh: {
+        flag: '🇨🇳',
+        name: '中文',
+      },
     },
   },
   blog: {

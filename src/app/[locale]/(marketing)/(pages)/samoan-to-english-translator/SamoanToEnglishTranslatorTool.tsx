@@ -168,7 +168,7 @@ export default function SamoanToEnglishTranslatorTool({
         successMessage: 'Translation copied to clipboard!',
         errorMessage: 'Failed to copy translation',
         onSuccess: () => {},
-        onError: (error) => console.error('Failed to copy:', error)
+        onError: (error) => console.error('Failed to copy:', error),
       });
     } catch (error) {
       console.error('Copy function loading failed:', error);
@@ -182,7 +182,7 @@ export default function SamoanToEnglishTranslatorTool({
       const { smartDownload } = await import('@/lib/utils/dynamic-download');
       smartDownload(outputText, 'samoan-to-english-translator', {
         onSuccess: () => {},
-        onError: (error) => console.error('Download failed:', error)
+        onError: (error) => console.error('Download failed:', error),
       });
     } catch (error) {
       console.error('Download function loading failed:', error);

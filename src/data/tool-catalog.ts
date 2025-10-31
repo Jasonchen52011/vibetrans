@@ -373,7 +373,7 @@ export const TOOL_CATALOG: ToolMetadata[] = [
   {
     id: 'swahiliToEnglishTranslator',
     category: 'languageTranslator',
-    title: 'Best English to Swahili Translatorfor Real Conversations',
+    title: 'English to Swahili Translator',
     description: 'Translate Swahili to English with AI-powered accuracy',
     route: 'SwahiliToEnglishTranslator',
     icon: 'LanguagesIcon',

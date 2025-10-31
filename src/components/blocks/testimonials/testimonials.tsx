@@ -83,9 +83,13 @@ export default function TestimonialsSection({
         // @ts-ignore - Dynamic translation keys
         const verifiedRaw = t.raw(`items.${itemKey}.verified`);
 
-        const rating = typeof ratingRaw === 'number' ? ratingRaw : parseFloat(ratingRaw) || 5;
+        const rating =
+          typeof ratingRaw === 'number'
+            ? ratingRaw
+            : Number.parseFloat(ratingRaw) || 5;
         const date = typeof dateRaw === 'string' ? dateRaw : '';
-        const verified = typeof verifiedRaw === 'boolean' ? verifiedRaw : Boolean(verifiedRaw);
+        const verified =
+          typeof verifiedRaw === 'boolean' ? verifiedRaw : Boolean(verifiedRaw);
 
         // Use local avatar images to avoid duplicates
         const avatarPool = [
@@ -108,7 +112,10 @@ export default function TestimonialsSection({
           heading: headingValue || undefined,
           quote,
           src: avatarPool[avatarIndex],
-          rating: typeof rating === 'number' ? rating : parseFloat(rating) || 5.0,
+          rating:
+            typeof rating === 'number'
+              ? rating
+              : Number.parseFloat(rating) || 5.0,
         });
       } catch (error) {
         // If translation doesn't exist, skip this item and continue
@@ -191,14 +198,6 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
             <span className="ml-2 text-sm font-medium text-gray-700 dark:text-gray-300">
               {rating.toFixed(1)}
             </span>
-          </div>
-
-          {/* 右侧：验证徽章 */}
-          <div className="flex items-center gap-1">
-            <svg className="w-4 h-4 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-            </svg>
-            <span className="text-xs font-medium text-blue-600 dark:text-blue-400">Verified</span>
           </div>
         </div>
 

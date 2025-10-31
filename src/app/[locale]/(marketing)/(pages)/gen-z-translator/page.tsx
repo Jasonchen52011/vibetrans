@@ -9,6 +9,7 @@ import TestimonialsThreeColumnSection from '@/components/blocks/testimonials/tes
 import WhatIsSection from '@/components/blocks/whatis';
 import { AuroraBackground } from '@/components/ui/aurora-background';
 import { constructMetadata } from '@/lib/metadata';
+import { buildTranslatorPageContent } from '@/lib/translator-page';
 import { buildToolStructuredData } from '@/lib/seo/structured-data';
 import { getUrlWithLocale } from '@/lib/urls/urls';
 import type { Metadata } from 'next';
@@ -27,14 +28,12 @@ export async function generateMetadata({
   params: Promise<{ locale: Locale }>;
 }): Promise<Metadata | undefined> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'Metadata' });
-  const gt = await getTranslations({ locale, namespace: 'GenZTranslatorPage' });
-
+  const t = await getTranslations({ locale, namespace: 'GenZTranslatorPage' });
   return constructMetadata({
-    title: `${gt('title')} | ${t('name')}`,
-    description: gt('description'),
+    title: `${t('title')} | VibeTrans`,
+    description: t('description'),
     canonicalUrl: getUrlWithLocale('/gen-z-translator', locale),
-    image: '/images/docs/what-is-gen-z-translator.webp',
+    image: t('whatIs.image'),
   });
 }
 
@@ -47,6 +46,8 @@ export default async function GenZTranslatorPage(
 ) {
   const params = await props.params;
   const { locale } = params;
+
+  // 使用标准 getTranslations 获取翻译
   const t = await getTranslations({ locale, namespace: 'GenZTranslatorPage' });
 
   // Structured Data for SEO
@@ -55,195 +56,10 @@ export default async function GenZTranslatorPage(
     description: t('description'),
   });
 
-  // Page data for the tool
-  const pageData = {
-    tool: {
-      inputLabel: t('tool.inputLabel'),
-      genZLabel: t('tool.genZLabel'),
-      outputLabel: t('tool.outputLabel'),
-      inputPlaceholder: t('tool.inputPlaceholder'),
-      genZPlaceholder: t('tool.genZPlaceholder'),
-      outputPlaceholder: t('tool.outputPlaceholder'),
-      translateButton: t('tool.translateButton'),
-      uploadButton: t('tool.uploadButton'),
-      uploadHint: t('tool.uploadHint'),
-      loading: t('tool.loading'),
-      error: t('tool.error'),
-      noInput: t('tool.noInput'),
-    },
-  };
-
-  // Examples section data
-  const examplesData = {
-    title: t('examples.title'),
-    description: t('examples.description'),
-    images: [
-      {
-        alt: 'Standard: For real → Gen Z: No cap',
-        name: 'For real → No cap',
-      },
-      {
-        alt: 'Standard: Really good → Gen Z: Bussin',
-        name: 'Really good → Bussin',
-      },
-      {
-        alt: 'Standard: Amazing → Gen Z: Fire',
-        name: 'Amazing → Fire',
-      },
-      {
-        alt: 'Standard: Stylish → Gen Z: Drip',
-        name: 'Stylish → Drip',
-      },
-      {
-        alt: 'Standard: Suspicious → Gen Z: Sus',
-        name: 'Suspicious → Sus',
-      },
-      {
-        alt: 'Standard: Impressive → Gen Z: Slaps',
-        name: 'Impressive → Slaps',
-      },
-    ],
-  };
-
-  // User scenarios section (Fun Facts)
-  const userScenariosSection = {
-    name: 'userscenarios',
-    title: t('funfacts.title'),
-    items: [
-      {
-        title: t('funfacts.items.0.title'),
-        description: t('funfacts.items.0.description'),
-        image: {
-          src: '/images/docs/private-slang-dictionaries.webp',
-          alt: 'Private Slang Dictionaries',
-        },
-      },
-      {
-        title: t('funfacts.items.1.title'),
-        description: t('funfacts.items.1.description'),
-        image: {
-          src: '/images/docs/fax,-no-printer.webp',
-          alt: 'Fax, No Printer - Gen Z Slang',
-        },
-      },
-    ],
-  };
-
-  // Highlights section
-  const highlightsSection = {
-    name: 'highlights',
-    title: t('highlights.title'),
-    description: t('highlights.description'),
-    items: [
-      {
-        icon: 'FaRocket',
-        title: t('highlights.items.0.title'),
-        description: t('highlights.items.0.description'),
-      },
-      {
-        icon: 'FaBrain',
-        title: t('highlights.items.1.title'),
-        description: t('highlights.items.1.description'),
-      },
-      {
-        icon: 'FaShieldAlt',
-        title: t('highlights.items.2.title'),
-        description: t('highlights.items.2.description'),
-      },
-      {
-        icon: 'FaChartLine',
-        title: t('highlights.items.3.title'),
-        description: t('highlights.items.3.description'),
-      },
-    ],
-  };
-
-  // What is section
-  const whatIsSection = {
-    title: t('whatIs.title'),
-    description: t('whatIs.description'),
-    features: [],
-    image: {
-      src: '/images/docs/what-is-gen-z-translator.webp',
-      alt: 'What is Gen Z Translator - Understanding Gen Z Language',
-    },
-    cta: {
-      text: t('ctaButton'),
-    },
-  };
-
-  // How to section
-  const howtoSection = {
-    name: 'howto',
-    title: t('howto.title'),
-    description: t('howto.description'),
-    image: {
-      src: '/images/docs/gen-z-translator-how.webp',
-      alt: 'How to use Gen Z Translator step by step guide',
-    },
-    items: [
-      {
-        title: t('howto.steps.0.title'),
-        description: t('howto.steps.0.description'),
-        icon: 'FaFileUpload',
-      },
-      {
-        title: t('howto.steps.1.title'),
-        description: t('howto.steps.1.description'),
-        icon: 'FaPencilAlt',
-      },
-      {
-        title: t('howto.steps.2.title'),
-        description: t('howto.steps.2.description'),
-        icon: 'FaLanguage',
-      },
-      {
-        title: t('howto.steps.3.title'),
-        description: t('howto.steps.3.description'),
-        icon: 'FaCheckCircle',
-      },
-    ],
-  };
-
-  // User Interest section
-  const userInterestSection = {
-    name: 'userinterest',
-    title: t('userInterest.title'),
-    items: [
-      {
-        title: t('userInterest.items.0.title'),
-        description: t('userInterest.items.0.description'),
-        image: {
-          src: '/images/docs/the-need-for-gen-z-slang-translation.webp',
-          alt: 'The Need for Gen Z Slang Translation',
-        },
-      },
-      {
-        title: t('userInterest.items.1.title'),
-        description: t('userInterest.items.1.description'),
-        image: {
-          src: '/images/docs/multilingual-gen-z-translator.webp',
-          alt: 'Multilingual Gen Z Translator',
-        },
-      },
-      {
-        title: t('userInterest.items.2.title'),
-        description: t('userInterest.items.2.description'),
-        image: {
-          src: '/images/docs/real-time-slang-updates.webp',
-          alt: 'Real-time Slang Updates',
-        },
-      },
-      {
-        title: t('userInterest.items.3.title'),
-        description: t('userInterest.items.3.description'),
-        image: {
-          src: '/images/docs/why-content-creators-love-vibetrans.webp',
-          alt: 'Why Content Creators Love VibeTrans',
-        },
-      },
-    ],
-  };
+  // 使用内容构建器生成所有页面内容
+  const translatorContent = buildTranslatorPageContent(t, {
+    howToIcons: ['FaFileUpload', 'FaPencilAlt', 'FaLanguage'],
+  });
 
   return (
     <>
@@ -328,29 +144,26 @@ export default async function GenZTranslatorPage(
 
         {/* Gen Z Translator Tool */}
         <div className="pt-0 pb-12 bg-gradient-to-b from-muted/20 to-background">
-          <GenZTranslatorTool pageData={pageData} locale={locale} />
+          <GenZTranslatorTool pageData={translatorContent.pageData} locale={locale} />
         </div>
 
         {/* What Is Section */}
-        <WhatIsSection section={whatIsSection} />
+        <WhatIsSection section={translatorContent.whatIs} />
 
         {/* Examples Section */}
-        <BeforeAfterSection beforeAfterGallery={examplesData} />
+        <BeforeAfterSection beforeAfterGallery={translatorContent.examples} />
 
         {/* How to Section */}
-        <HowTo section={howtoSection} />
+        <HowTo section={translatorContent.howTo} />
 
         {/* User Interest Blocks */}
-        <UserScenarios section={userInterestSection} ctaText={t('ctaButton')} />
+        <UserScenarios section={translatorContent.userInterest} ctaText={t('ctaButton')} />
 
         {/* Fun Facts */}
-        <UserScenarios
-          section={userScenariosSection}
-          ctaText={t('ctaButton')}
-        />
+        <UserScenarios section={translatorContent.funFacts} ctaText={t('ctaButton')} />
 
         {/* Highlights/Why Choose */}
-        <WhyChoose section={highlightsSection} />
+        <WhyChoose section={translatorContent.highlights} />
 
         {/* Explore Other Tools */}
         <ExploreOurAiTools
@@ -365,13 +178,13 @@ export default async function GenZTranslatorPage(
         />
 
         {/* Testimonials Section */}
-        <TestimonialsThreeColumnSection namespace="GenZTranslatorPage.testimonials" />
+        <TestimonialsThreeColumnSection namespace="GenZTranslatorPage" subNamespace="testimonials" />
 
         {/* FAQ Section */}
-        <FaqSection namespace="GenZTranslatorPage.faqs" />
+        <FaqSection namespace="GenZTranslatorPage" subNamespace="faqs" />
 
         {/* Call to Action */}
-        <CallToActionSection namespace="GenZTranslatorPage.cta" />
+        <CallToActionSection namespace="GenZTranslatorPage" subNamespace="cta" />
       </div>
     </>
   );

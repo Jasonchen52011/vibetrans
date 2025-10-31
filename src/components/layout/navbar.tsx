@@ -123,7 +123,7 @@ export function Navbar({ scroll }: NavBarProps) {
                                           : undefined
                                       }
                                       className={cn(
-                                        'group flex select-none flex-row items-center gap-3 rounded-md',
+                                        'group flex flex-row items-center gap-3 rounded-md',
                                         'p-1.5 leading-none no-underline outline-hidden transition-colors',
                                         'hover:bg-accent hover:text-accent-foreground',
                                         'focus:bg-accent focus:text-accent-foreground',

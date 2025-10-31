@@ -9,6 +9,7 @@ import TestimonialsThreeColumnSection from '@/components/blocks/testimonials/tes
 import WhatIsSection from '@/components/blocks/whatis';
 import { AuroraBackground } from '@/components/ui/aurora-background';
 import { constructMetadata } from '@/lib/metadata';
+import { buildTranslatorPageContent } from '@/lib/translator-page';
 import { buildToolStructuredData } from '@/lib/seo/structured-data';
 import { getUrlWithLocale } from '@/lib/urls/urls';
 import type { Metadata } from 'next';
@@ -27,17 +28,12 @@ export async function generateMetadata({
   params: Promise<{ locale: Locale }>;
 }): Promise<Metadata | undefined> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'Metadata' });
-  const gt = await getTranslations({
-    locale,
-    namespace: 'AncientGreekTranslatorPage',
-  });
-
+  const t = await getTranslations({ locale, namespace: 'AncientGreekTranslatorPage' });
   return constructMetadata({
-    title: `${gt('title')} | ${t('name')}`,
-    description: gt('description'),
+    title: `${t('title')} | VibeTrans`,
+    description: t('description'),
     canonicalUrl: getUrlWithLocale('/ancient-greek-translator', locale),
-    image: '/images/docs/what-is-ancient-greek-translator.webp',
+    image: t('whatIs.image'),
   });
 }
 
@@ -50,10 +46,9 @@ export default async function AncientGreekTranslatorPage(
 ) {
   const params = await props.params;
   const { locale } = params;
-  const t = await getTranslations({
-    locale,
-    namespace: 'AncientGreekTranslatorPage',
-  });
+
+  // 使用标准 getTranslations 获取翻译
+  const t = await getTranslations({ locale, namespace: 'AncientGreekTranslatorPage' });
 
   // Structured Data for SEO
   const structuredData = buildToolStructuredData({
@@ -61,205 +56,10 @@ export default async function AncientGreekTranslatorPage(
     description: t('description'),
   });
 
-  // Page data for the tool
-  const pageData = {
-    tool: {
-      inputLabel: t('tool.inputLabel'),
-      greekLabel: t('tool.greekLabel'),
-      outputLabel: t('tool.outputLabel'),
-      inputPlaceholder: t('tool.inputPlaceholder'),
-      greekPlaceholder: t('tool.greekPlaceholder'),
-      outputPlaceholder: t('tool.outputPlaceholder'),
-      translateButton: t('tool.translateButton'),
-      uploadButton: t('tool.uploadButton'),
-      uploadHint: t('tool.uploadHint'),
-      loading: t('tool.loading'),
-      error: t('tool.error'),
-      noInput: t('tool.noInput'),
-      pronunciationLabel: t('tool.pronunciationLabel'),
-      culturalContextLabel: t('tool.culturalContextLabel'),
-      dialectLabel: t('tool.dialectLabel'),
-      dialects: {
-        attic: t('tool.dialects.attic'),
-        ionic: t('tool.dialects.ionic'),
-        doric: t('tool.dialects.doric'),
-        aeolic: t('tool.dialects.aeolic'),
-        koine: t('tool.dialects.koine'),
-      },
-    },
-  };
-
-  // Examples section data
-  const examplesData = {
-    title: t('examples.title'),
-    description: t('examples.description'),
-    images: [
-      {
-        alt: 'English: Hello → Greek: χαῖρε (chaíre)',
-        name: 'Hello → χαῖρε',
-      },
-      {
-        alt: 'English: Love → Greek: ἀγάπη (agápē)',
-        name: 'Love → ἀγάπη',
-      },
-      {
-        alt: 'English: Wisdom → Greek: σοφία (sophía)',
-        name: 'Wisdom → σοφία',
-      },
-      {
-        alt: 'English: Truth → Greek: ἀλήθεια (alḗtheia)',
-        name: 'Truth → ἀλήθεια',
-      },
-      {
-        alt: 'English: Beauty → Greek: κάλλος (kállos)',
-        name: 'Beauty → κάλλος',
-      },
-      {
-        alt: 'English: Philosophy → Greek: φιλοσοφία (philosophía)',
-        name: 'Philosophy → φιλοσοφία',
-      },
-    ],
-  };
-
-  // User scenarios section (Fun Facts)
-  const userScenariosSection = {
-    name: 'userscenarios',
-    title: t('funfacts.title'),
-    items: [
-      {
-        title: t('funfacts.items.0.title'),
-        description: t('funfacts.items.0.description'),
-        image: {
-          src: '/images/docs/ancient-greek-language-influence.webp',
-          alt: 'Ancient Greek Influenced Modern Languages',
-        },
-      },
-      {
-        title: t('funfacts.items.1.title'),
-        description: t('funfacts.items.1.description'),
-        image: {
-          src: '/images/docs/ancient-greek-dialects.webp',
-          alt: 'Ancient Greek Dialects',
-        },
-      },
-    ],
-  };
-
-  // Highlights section
-  const highlightsSection = {
-    name: 'highlights',
-    title: t('highlights.title'),
-    description: t('highlights.description'),
-    items: [
-      {
-        icon: 'FaRocket',
-        title: t('highlights.items.0.title'),
-        description: t('highlights.items.0.description'),
-      },
-      {
-        icon: 'FaBrain',
-        title: t('highlights.items.1.title'),
-        description: t('highlights.items.1.description'),
-      },
-      {
-        icon: 'FaShieldAlt',
-        title: t('highlights.items.2.title'),
-        description: t('highlights.items.2.description'),
-      },
-      {
-        icon: 'FaChartLine',
-        title: t('highlights.items.3.title'),
-        description: t('highlights.items.3.description'),
-      },
-    ],
-  };
-
-  // What is section
-  const whatIsSection = {
-    title: t('whatIs.title'),
-    description: t('whatIs.description'),
-    features: [],
-    image: {
-      src: '/images/docs/what-is-ancient-greek-translator.webp',
-      alt: 'What is Ancient Greek Translator - Understanding Classical Greek Language',
-    },
-    cta: {
-      text: t('ctaButton'),
-    },
-  };
-
-  // How to section
-  const howtoSection = {
-    name: 'howto',
-    title: t('howto.title'),
-    description: t('howto.description'),
-    image: {
-      src: '/images/docs/ancient-greek-translator-how-to.webp',
-      alt: 'How to use Ancient Greek Translator step by step guide',
-    },
-    items: [
-      {
-        title: t('howto.steps.0.title'),
-        description: t('howto.steps.0.description'),
-        icon: 'FaFileUpload',
-      },
-      {
-        title: t('howto.steps.1.title'),
-        description: t('howto.steps.1.description'),
-        icon: 'FaPencilAlt',
-      },
-      {
-        title: t('howto.steps.2.title'),
-        description: t('howto.steps.2.description'),
-        icon: 'FaLanguage',
-      },
-      {
-        title: t('howto.steps.3.title'),
-        description: t('howto.steps.3.description'),
-        icon: 'FaCheckCircle',
-      },
-    ],
-  };
-
-  // User Interest section
-  const userInterestSection = {
-    name: 'userinterest',
-    title: t('userInterest.title'),
-    items: [
-      {
-        title: t('userInterest.items.0.title'),
-        description: t('userInterest.items.0.description'),
-        image: {
-          src: '/images/docs/accurate-greek-translations.webp',
-          alt: 'Accurate Translations of Ancient Greek Texts',
-        },
-      },
-      {
-        title: t('userInterest.items.1.title'),
-        description: t('userInterest.items.1.description'),
-        image: {
-          src: '/images/docs/ai-powered-greek-translation.webp',
-          alt: 'AI-Powered Ancient Greek Translations',
-        },
-      },
-      {
-        title: t('userInterest.items.2.title'),
-        description: t('userInterest.items.2.description'),
-        image: {
-          src: '/images/docs/greek-cultural-insights.webp',
-          alt: 'Cultural Insights in Ancient Greek Translations',
-        },
-      },
-      {
-        title: t('userInterest.items.3.title'),
-        description: t('userInterest.items.3.description'),
-        image: {
-          src: '/images/docs/learn-ancient-greek.webp',
-          alt: 'Learn Ancient Greek with VibeTrans',
-        },
-      },
-    ],
-  };
+  // 使用内容构建器生成所有页面内容
+  const translatorContent = buildTranslatorPageContent(t, {
+    howToIcons: ['FaFileUpload', 'FaPencilAlt', 'FaLanguage'],
+  });
 
   return (
     <>
@@ -344,29 +144,26 @@ export default async function AncientGreekTranslatorPage(
 
         {/* Ancient Greek Translator Tool */}
         <div className="pt-0 pb-12 bg-gradient-to-b from-muted/20 to-background">
-          <AncientGreekTranslatorTool pageData={pageData} locale={locale} />
+          <AncientGreekTranslatorTool pageData={translatorContent.pageData} locale={locale} />
         </div>
 
         {/* What Is Section */}
-        <WhatIsSection section={whatIsSection} />
+        <WhatIsSection section={translatorContent.whatIs} />
 
         {/* Examples Section */}
-        <BeforeAfterSection beforeAfterGallery={examplesData} />
+        <BeforeAfterSection beforeAfterGallery={translatorContent.examples} />
 
         {/* How to Section */}
-        <HowTo section={howtoSection} />
+        <HowTo section={translatorContent.howTo} />
 
         {/* User Interest Blocks */}
-        <UserScenarios section={userInterestSection} ctaText={t('ctaButton')} />
+        <UserScenarios section={translatorContent.userInterest} ctaText={t('ctaButton')} />
 
         {/* Fun Facts */}
-        <UserScenarios
-          section={userScenariosSection}
-          ctaText={t('ctaButton')}
-        />
+        <UserScenarios section={translatorContent.funFacts} ctaText={t('ctaButton')} />
 
         {/* Highlights/Why Choose */}
-        <WhyChoose section={highlightsSection} />
+        <WhyChoose section={translatorContent.highlights} />
 
         {/* Explore Other Tools */}
         <ExploreOurAiTools
@@ -381,13 +178,13 @@ export default async function AncientGreekTranslatorPage(
         />
 
         {/* Testimonials Section */}
-        <TestimonialsThreeColumnSection namespace="AncientGreekTranslatorPage.testimonials" />
+        <TestimonialsThreeColumnSection namespace="AncientGreekTranslatorPage" subNamespace="testimonials" />
 
         {/* FAQ Section */}
-        <FaqSection namespace="AncientGreekTranslatorPage.faqs" />
+        <FaqSection namespace="AncientGreekTranslatorPage" subNamespace="faqs" />
 
         {/* Call to Action */}
-        <CallToActionSection namespace="AncientGreekTranslatorPage.cta" />
+        <CallToActionSection namespace="AncientGreekTranslatorPage" subNamespace="cta" />
       </div>
     </>
   );

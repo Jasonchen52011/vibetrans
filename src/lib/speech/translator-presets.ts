@@ -19,7 +19,7 @@ export enum TranslatorType {
   ANCIENT = 'ancient',
   MYTHICAL = 'mythical',
   FUNNY = 'funny',
-  CREATIVE = 'creative'
+  CREATIVE = 'creative',
 }
 
 // 语音预设配置
@@ -30,7 +30,7 @@ const TRANSLATOR_PRESETS: Record<TranslatorType, SpeechOptions> = {
     pitch: 1.4,
     rate: 0.9,
     emotion: 'excited',
-    volume: 0.9
+    volume: 0.9,
   },
 
   // Mandalorian - 低沉、缓慢、平静
@@ -39,7 +39,7 @@ const TRANSLATOR_PRESETS: Record<TranslatorType, SpeechOptions> = {
     pitch: 0.7,
     rate: 0.8,
     emotion: 'calm',
-    volume: 0.8
+    volume: 0.8,
   },
 
   // Baby - 高音调、可爱
@@ -48,7 +48,7 @@ const TRANSLATOR_PRESETS: Record<TranslatorType, SpeechOptions> = {
     pitch: 1.6,
     rate: 0.8,
     emotion: 'happy',
-    volume: 0.8
+    volume: 0.8,
   },
 
   // Dog - 中等音调、快速
@@ -57,7 +57,7 @@ const TRANSLATOR_PRESETS: Record<TranslatorType, SpeechOptions> = {
     pitch: 1.1,
     rate: 1.1,
     emotion: 'happy',
-    volume: 0.9
+    volume: 0.9,
   },
 
   // Yoda - 低音调、缓慢、智慧
@@ -66,7 +66,7 @@ const TRANSLATOR_PRESETS: Record<TranslatorType, SpeechOptions> = {
     pitch: 0.6,
     rate: 0.6,
     emotion: 'calm',
-    volume: 0.9
+    volume: 0.9,
   },
 
   // Evil - 低沉、威胁
@@ -75,7 +75,7 @@ const TRANSLATOR_PRESETS: Record<TranslatorType, SpeechOptions> = {
     pitch: 0.3,
     rate: 0.7,
     emotion: 'calm',
-    volume: 0.7
+    volume: 0.7,
   },
 
   // Alien - 特殊音调
@@ -84,7 +84,7 @@ const TRANSLATOR_PRESETS: Record<TranslatorType, SpeechOptions> = {
     pitch: 1.2,
     rate: 1.0,
     emotion: 'neutral',
-    volume: 0.8
+    volume: 0.8,
   },
 
   // Robot - 机械音调
@@ -93,7 +93,7 @@ const TRANSLATOR_PRESETS: Record<TranslatorType, SpeechOptions> = {
     pitch: 1.0,
     rate: 0.9,
     emotion: 'neutral',
-    volume: 0.8
+    volume: 0.8,
   },
 
   // Normal - 标准语音
@@ -102,7 +102,7 @@ const TRANSLATOR_PRESETS: Record<TranslatorType, SpeechOptions> = {
     pitch: 1.0,
     rate: 1.0,
     emotion: 'neutral',
-    volume: 1.0
+    volume: 1.0,
   },
 
   // Ancient - 庄重、缓慢
@@ -111,7 +111,7 @@ const TRANSLATOR_PRESETS: Record<TranslatorType, SpeechOptions> = {
     pitch: 0.8,
     rate: 0.7,
     emotion: 'calm',
-    volume: 0.9
+    volume: 0.9,
   },
 
   // Mythical - 神秘、中等音调
@@ -120,7 +120,7 @@ const TRANSLATOR_PRESETS: Record<TranslatorType, SpeechOptions> = {
     pitch: 0.9,
     rate: 0.8,
     emotion: 'calm',
-    volume: 0.9
+    volume: 0.9,
   },
 
   // Funny - 轻快、高音调
@@ -129,7 +129,7 @@ const TRANSLATOR_PRESETS: Record<TranslatorType, SpeechOptions> = {
     pitch: 1.3,
     rate: 1.1,
     emotion: 'happy',
-    volume: 0.9
+    volume: 0.9,
   },
 
   // Creative - 富有表现力
@@ -138,56 +138,56 @@ const TRANSLATOR_PRESETS: Record<TranslatorType, SpeechOptions> = {
     pitch: 1.1,
     rate: 1.0,
     emotion: 'excited',
-    volume: 0.9
-  }
+    volume: 0.9,
+  },
 };
 
 // 文件路径到翻译器类型的映射
 const FILENAME_PATTERNS: Record<string, TranslatorType> = {
-  'minion': TranslatorType.MINION,
-  'mandalorian': TranslatorType.MANDALORIAN,
-  'baby': TranslatorType.BABY,
-  'dog': TranslatorType.DOG,
-  'yoda': TranslatorType.YODA,
-  'evil': TranslatorType.EVIL,
-  'alien': TranslatorType.ALIEN,
-  'robot': TranslatorType.ROBOT,
-  'ancient': TranslatorType.ANCIENT,
-  'greek': TranslatorType.ANCIENT,
-  'rune': TranslatorType.MYTHICAL,
-  'runic': TranslatorType.MYTHICAL,
-  'ogham': TranslatorType.ANCIENT,
-  'cuneiform': TranslatorType.ANCIENT,
-  'hieroglyph': TranslatorType.ANCIENT,
-  'gibberish': TranslatorType.FUNNY,
+  minion: TranslatorType.MINION,
+  mandalorian: TranslatorType.MANDALORIAN,
+  baby: TranslatorType.BABY,
+  dog: TranslatorType.DOG,
+  yoda: TranslatorType.YODA,
+  evil: TranslatorType.EVIL,
+  alien: TranslatorType.ALIEN,
+  robot: TranslatorType.ROBOT,
+  ancient: TranslatorType.ANCIENT,
+  greek: TranslatorType.ANCIENT,
+  rune: TranslatorType.MYTHICAL,
+  runic: TranslatorType.MYTHICAL,
+  ogham: TranslatorType.ANCIENT,
+  cuneiform: TranslatorType.ANCIENT,
+  hieroglyph: TranslatorType.ANCIENT,
+  gibberish: TranslatorType.FUNNY,
   'pig-latin': TranslatorType.FUNNY,
   'gen-z': TranslatorType.FUNNY,
   'gen-alpha': TranslatorType.FUNNY,
-  'bad': TranslatorType.EVIL,
-  'verbose': TranslatorType.CREATIVE,
-  'dumb': TranslatorType.NORMAL,
-  'cantonese': TranslatorType.NORMAL,
-  'chinese': TranslatorType.NORMAL,
-  'japanese': TranslatorType.NORMAL,
-  'swahili': TranslatorType.NORMAL,
-  'telugu': TranslatorType.NORMAL,
-  'polish': TranslatorType.NORMAL,
-  'persian': TranslatorType.NORMAL,
-  'amharic': TranslatorType.NORMAL,
-  'albanian': TranslatorType.NORMAL,
-  'creole': TranslatorType.NORMAL,
-  'esperanto': TranslatorType.NORMAL,
-  'manga': TranslatorType.FUNNY,
+  bad: TranslatorType.EVIL,
+  verbose: TranslatorType.CREATIVE,
+  dumb: TranslatorType.NORMAL,
+  cantonese: TranslatorType.NORMAL,
+  chinese: TranslatorType.NORMAL,
+  japanese: TranslatorType.NORMAL,
+  swahili: TranslatorType.NORMAL,
+  telugu: TranslatorType.NORMAL,
+  polish: TranslatorType.NORMAL,
+  persian: TranslatorType.NORMAL,
+  amharic: TranslatorType.NORMAL,
+  albanian: TranslatorType.NORMAL,
+  creole: TranslatorType.NORMAL,
+  esperanto: TranslatorType.NORMAL,
+  manga: TranslatorType.FUNNY,
   'middle-english': TranslatorType.ANCIENT,
-  'baybayin': TranslatorType.MYTHICAL,
-  'nahuatl': TranslatorType.ANCIENT,
-  'samoan': TranslatorType.NORMAL,
-  'drow': TranslatorType.EVIL,
-  'gaster': TranslatorType.EVIL,
+  baybayin: TranslatorType.MYTHICAL,
+  nahuatl: TranslatorType.ANCIENT,
+  samoan: TranslatorType.NORMAL,
+  drow: TranslatorType.EVIL,
+  gaster: TranslatorType.EVIL,
   'high-valyrian': TranslatorType.MYTHICAL,
-  'ivr': TranslatorType.ROBOT,
-  'wingdings': TranslatorType.ROBOT,
-  'cuneiform': TranslatorType.ANCIENT
+  ivr: TranslatorType.ROBOT,
+  wingdings: TranslatorType.ROBOT,
+  cuneiform: TranslatorType.ANCIENT,
 };
 
 /**
@@ -210,31 +210,43 @@ export function detectTranslatorType(filePath: string): TranslatorType {
 /**
  * 根据翻译器类型获取语音预设
  */
-export function getSpeechPreset(translatorType: TranslatorType, locale: string = 'en'): SpeechOptions {
+export function getSpeechPreset(
+  translatorType: TranslatorType,
+  locale = 'en'
+): SpeechOptions {
   const preset = TRANSLATOR_PRESETS[translatorType];
 
   // 根据locale调整语言
-  const langCode = locale === 'zh' ? 'zh-CN' :
-                   locale === 'es' ? 'es-ES' :
-                   locale === 'fr' ? 'fr-FR' :
-                   locale === 'de' ? 'de-DE' :
-                   locale === 'ja' ? 'ja-JP' :
-                   'en-US';
+  const langCode =
+    locale === 'zh'
+      ? 'zh-CN'
+      : locale === 'es'
+        ? 'es-ES'
+        : locale === 'fr'
+          ? 'fr-FR'
+          : locale === 'de'
+            ? 'de-DE'
+            : locale === 'ja'
+              ? 'ja-JP'
+              : 'en-US';
 
   return {
     ...preset,
-    lang: langCode
+    lang: langCode,
   };
 }
 
 /**
  * 从组件名称或文件路径获取语音预设
  */
-export function getSpeechPresetFromContext(context: {
-  filePath?: string;
-  componentName?: string;
-  tone?: string;
-}, locale: string = 'en'): SpeechOptions {
+export function getSpeechPresetFromContext(
+  context: {
+    filePath?: string;
+    componentName?: string;
+    tone?: string;
+  },
+  locale = 'en'
+): SpeechOptions {
   // 优先级：tone参数 > 文件路径检测 > 默认
 
   // 1. 检查tone参数（向后兼容）
@@ -282,7 +294,7 @@ export function getTranslatorDescription(type: TranslatorType): string {
     [TranslatorType.ANCIENT]: '庄重、缓慢的古老语音',
     [TranslatorType.MYTHICAL]: '神秘、中等音调的神话语音',
     [TranslatorType.FUNNY]: '轻快、高音调的有趣语音',
-    [TranslatorType.CREATIVE]: '富有表现力的创意语音'
+    [TranslatorType.CREATIVE]: '富有表现力的创意语音',
   };
 
   return descriptions[type] || descriptions[TranslatorType.NORMAL];
@@ -291,14 +303,17 @@ export function getTranslatorDescription(type: TranslatorType): string {
 /**
  * 动态调整语音参数
  */
-export function adjustSpeechOptions(baseOptions: SpeechOptions, adjustments: {
-  pitch?: number;
-  rate?: number;
-  volume?: number;
-  emotion?: SpeechOptions['emotion'];
-}): SpeechOptions {
+export function adjustSpeechOptions(
+  baseOptions: SpeechOptions,
+  adjustments: {
+    pitch?: number;
+    rate?: number;
+    volume?: number;
+    emotion?: SpeechOptions['emotion'];
+  }
+): SpeechOptions {
   return {
     ...baseOptions,
-    ...adjustments
+    ...adjustments,
   };
 }

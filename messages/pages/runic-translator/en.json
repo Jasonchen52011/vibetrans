@@ -149,7 +149,7 @@
     "highlights": {
       "title": "Studio Features",
       "description": "AI-powered runic translation with professional features for tattoo artists, game developers, and creative professionals.",
-      "features": [
+      "items": [
         {
           "icon": "FaRocket",
           "title": "Multi-System Support",

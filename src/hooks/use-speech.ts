@@ -5,8 +5,8 @@
 
 'use client';
 
-import { useState, useEffect, useCallback, useRef } from 'react';
 import type { SpeechOptions, SpeechResult } from '@/lib/speech/speech-manager';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 interface UseSpeechOptions {
   autoStart?: boolean;
@@ -30,7 +30,7 @@ export function useSpeech(options: UseSpeechOptions = {}) {
     isPaused: false,
     isLoading: false,
     error: null,
-    progress: 0
+    progress: 0,
   });
 
   const speechManagerRef = useRef<any>(null);
@@ -49,11 +49,11 @@ export function useSpeech(options: UseSpeechOptions = {}) {
       // 监听语音状态变化
       const updateStatus = () => {
         const status = speechManager.getStatus();
-        setState(prev => ({
+        setState((prev) => ({
           ...prev,
           isPlaying: status.isPlaying,
           isPaused: status.isPaused,
-          isLoading: status.isLoading
+          isLoading: status.isLoading,
         }));
       };
 
@@ -64,10 +64,12 @@ export function useSpeech(options: UseSpeechOptions = {}) {
       return () => {
         clearInterval(statusInterval);
       };
-
     } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : 'Failed to load speech manager';
-      setState(prev => ({ ...prev, error: errorMessage }));
+      const errorMessage =
+        error instanceof Error
+          ? error.message
+          : 'Failed to load speech manager';
+      setState((prev) => ({ ...prev, error: errorMessage }));
       options.onError?.(errorMessage);
       return null;
     }
@@ -78,9 +80,9 @@ export function useSpeech(options: UseSpeechOptions = {}) {
     let cleanup: (() => void) | null = null;
 
     const init = async () => {
-      setState(prev => ({ ...prev, isLoading: true }));
+      setState((prev) => ({ ...prev, isLoading: true }));
       cleanup = await loadSpeechManager();
-      setState(prev => ({ ...prev, isLoading: false }));
+      setState((prev) => ({ ...prev, isLoading: false }));
     };
 
     init();
@@ -101,7 +103,7 @@ export function useSpeech(options: UseSpeechOptions = {}) {
       const elapsed = Date.now() - startTimeRef.current;
       const progress = Math.min((elapsed / (duration * 1000)) * 100, 100);
 
-      setState(prev => ({ ...prev, progress }));
+      setState((prev) => ({ ...prev, progress }));
 
       if (progress >= 100) {
         if (progressIntervalRef.current) {
@@ -118,89 +120,92 @@ export function useSpeech(options: UseSpeechOptions = {}) {
       clearInterval(progressIntervalRef.current);
       progressIntervalRef.current = null;
     }
-    setState(prev => ({ ...prev, progress: 0 }));
+    setState((prev) => ({ ...prev, progress: 0 }));
   }, []);
 
   // 播放语音
-  const speak = useCallback(async (text: string, speechOptions?: SpeechOptions) => {
-    if (!text.trim()) {
-      const error = 'Text is empty';
-      setState(prev => ({ ...prev, error }));
-      options.onError?.(error);
-      return { success: false, error, isPlaying: false };
-    }
-
-    setState(prev => ({ ...prev, isLoading: true, error: null }));
-
-    try {
-      const manager = await loadSpeechManager();
-      if (!manager) {
-        throw new Error('Speech manager not available');
+  const speak = useCallback(
+    async (text: string, speechOptions?: SpeechOptions) => {
+      if (!text.trim()) {
+        const error = 'Text is empty';
+        setState((prev) => ({ ...prev, error }));
+        options.onError?.(error);
+        return { success: false, error, isPlaying: false };
       }
 
-      options.onStart?.();
+      setState((prev) => ({ ...prev, isLoading: true, error: null }));
 
-      const result: SpeechResult = await manager.speak(text, speechOptions);
-
-      if (result.success) {
-        setState(prev => ({
-          ...prev,
-          isPlaying: result.isPlaying,
-          isLoading: false,
-          error: null,
-          duration: result.duration
-        }));
-
-        // 开始进度跟踪
-        if (result.duration) {
-          startProgressTracking(result.duration);
+      try {
+        const manager = await loadSpeechManager();
+        if (!manager) {
+          throw new Error('Speech manager not available');
         }
 
-        // 监听播放结束
-        const checkEnd = setInterval(() => {
-          const status = manager.getStatus();
-          if (!status.isPlaying) {
-            clearInterval(checkEnd);
-            stopProgressTracking();
-            setState(prev => ({
-              ...prev,
-              isPlaying: false,
-              isPaused: false,
-              progress: 0
-            }));
-            options.onEnd?.();
-          }
-        }, 100);
+        options.onStart?.();
 
-        return result;
-      } else {
-        setState(prev => ({
+        const result: SpeechResult = await manager.speak(text, speechOptions);
+
+        if (result.success) {
+          setState((prev) => ({
+            ...prev,
+            isPlaying: result.isPlaying,
+            isLoading: false,
+            error: null,
+            duration: result.duration,
+          }));
+
+          // 开始进度跟踪
+          if (result.duration) {
+            startProgressTracking(result.duration);
+          }
+
+          // 监听播放结束
+          const checkEnd = setInterval(() => {
+            const status = manager.getStatus();
+            if (!status.isPlaying) {
+              clearInterval(checkEnd);
+              stopProgressTracking();
+              setState((prev) => ({
+                ...prev,
+                isPlaying: false,
+                isPaused: false,
+                progress: 0,
+              }));
+              options.onEnd?.();
+            }
+          }, 100);
+
+          return result;
+        } else {
+          setState((prev) => ({
+            ...prev,
+            isPlaying: false,
+            isLoading: false,
+            error: result.error || 'Unknown error',
+          }));
+          options.onError?.(result.error || 'Unknown error');
+          return result;
+        }
+      } catch (error) {
+        const errorMessage =
+          error instanceof Error ? error.message : 'Unknown error';
+        setState((prev) => ({
           ...prev,
           isPlaying: false,
           isLoading: false,
-          error: result.error || 'Unknown error'
+          error: errorMessage,
         }));
-        options.onError?.(result.error || 'Unknown error');
-        return result;
+        stopProgressTracking();
+        options.onError?.(errorMessage);
+        return {
+          success: false,
+          error: errorMessage,
+          isPlaying: false,
+        };
       }
-
-    } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-      setState(prev => ({
-        ...prev,
-        isPlaying: false,
-        isLoading: false,
-        error: errorMessage
-      }));
-      stopProgressTracking();
-      options.onError?.(errorMessage);
-      return {
-        success: false,
-        error: errorMessage,
-        isPlaying: false
-      };
-    }
-  }, [loadSpeechManager, options, startProgressTracking, stopProgressTracking]);
+    },
+    [loadSpeechManager, options, startProgressTracking, stopProgressTracking]
+  );
 
   // 停止播放
   const stop = useCallback(() => {
@@ -208,11 +213,11 @@ export function useSpeech(options: UseSpeechOptions = {}) {
       speechManagerRef.current.stop();
     }
     stopProgressTracking();
-    setState(prev => ({
+    setState((prev) => ({
       ...prev,
       isPlaying: false,
       isPaused: false,
-      progress: 0
+      progress: 0,
     }));
   }, [stopProgressTracking]);
 
@@ -220,7 +225,7 @@ export function useSpeech(options: UseSpeechOptions = {}) {
   const pause = useCallback(() => {
     if (speechManagerRef.current) {
       speechManagerRef.current.pause();
-      setState(prev => ({ ...prev, isPaused: true }));
+      setState((prev) => ({ ...prev, isPaused: true }));
     }
   }, []);
 
@@ -228,18 +233,18 @@ export function useSpeech(options: UseSpeechOptions = {}) {
   const resume = useCallback(() => {
     if (speechManagerRef.current) {
       speechManagerRef.current.resume();
-      setState(prev => ({ ...prev, isPaused: false }));
+      setState((prev) => ({ ...prev, isPaused: false }));
     }
   }, []);
 
   // 重置状态
   const reset = useCallback(() => {
     stop();
-    setState(prev => ({
+    setState((prev) => ({
       ...prev,
       error: null,
       duration: undefined,
-      progress: 0
+      progress: 0,
     }));
   }, [stop]);
 
@@ -263,6 +268,6 @@ export function useSpeech(options: UseSpeechOptions = {}) {
     progress: state.progress,
 
     // 检查是否支持语音功能
-    isSupported: typeof window !== 'undefined' && 'speechSynthesis' in window
+    isSupported: typeof window !== 'undefined' && 'speechSynthesis' in window,
   };
 }

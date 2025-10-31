@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { type NextRequest, NextResponse } from 'next/server';
 
 export const runtime = 'edge';
 
@@ -7,106 +7,106 @@ type TranslationDirection = 'english-to-mandalorian' | 'mandalorian-to-english';
 function getEnglishToMandalorianDict(): Record<string, string> {
   return {
     // 问候语
-    'hello': "su cuy'gar",
-    'hi': "su cuy'gar",
-    'hey': "su cuy'gar",
-    'greetings': "su cuy'gar",
-    'goodbye': "ner jorhaa'i",
-    'bye': "ner jorhaa'i",
-    'farewell': "ner jorhaa'i",
-    'welcome': "su'cuy",
+    hello: "su cuy'gar",
+    hi: "su cuy'gar",
+    hey: "su cuy'gar",
+    greetings: "su cuy'gar",
+    goodbye: "ner jorhaa'i",
+    bye: "ner jorhaa'i",
+    farewell: "ner jorhaa'i",
+    welcome: "su'cuy",
 
     // 基础词汇
-    'warrior': 'verd',
-    'clan': 'aliit',
-    'family': 'aliit',
-    'home': 'briikase',
-    'house': 'briikase',
-    'world': "mhi'jure",
-    'planet': "mhi'jure",
-    'leader': 'alor',
-    'shield': 'bekad',
-    'armor': "beskar'gam",
-    'helmet': "buy'ce",
-    'weapon': 'kad',
-    'blade': 'kad',
-    'sword': 'beskad',
-    'battle': 'strill',
-    'fight': 'strill',
-    'victory': 'kote',
-    'strength': 'beskar',
-    'honor': 'parjai',
-    'brother': 'vod',
-    'sister': 'vod',
-    'friend': "burc'ya",
-    'alliance': 'parjir',
-    'enemy': 'aruetii',
-    'outsider': 'aruetii',
-    'this': 'ibic',
-    'that': 'bic',
-    'truth': 'haat',
-    'heart': "kar'ta",
-    'blood': "ade",
-    'path': "haa'taylir",
-    'way': "haa'taylir",
+    warrior: 'verd',
+    clan: 'aliit',
+    family: 'aliit',
+    home: 'briikase',
+    house: 'briikase',
+    world: "mhi'jure",
+    planet: "mhi'jure",
+    leader: 'alor',
+    shield: 'bekad',
+    armor: "beskar'gam",
+    helmet: "buy'ce",
+    weapon: 'kad',
+    blade: 'kad',
+    sword: 'beskad',
+    battle: 'strill',
+    fight: 'strill',
+    victory: 'kote',
+    strength: 'beskar',
+    honor: 'parjai',
+    brother: 'vod',
+    sister: 'vod',
+    friend: "burc'ya",
+    alliance: 'parjir',
+    enemy: 'aruetii',
+    outsider: 'aruetii',
+    this: 'ibic',
+    that: 'bic',
+    truth: 'haat',
+    heart: "kar'ta",
+    blood: 'ade',
+    path: "haa'taylir",
+    way: "haa'taylir",
 
     // 情绪与状态
-    'strong': 'par',
-    'brave': 'par',
-    'fearless': 'mhi parjir',
-    'loyal': 'ret',
-    'loyalty': 'retla',
-    'glory': 'parjai',
-    'honorable': 'parjaai',
-    'fear': 'jare',
-    'hope': 'atik',
-    'love': 'kar',
-    'together': 'mhi',
-    'always': 'darasuum',
+    strong: 'par',
+    brave: 'par',
+    fearless: 'mhi parjir',
+    loyal: 'ret',
+    loyalty: 'retla',
+    glory: 'parjai',
+    honorable: 'parjaai',
+    fear: 'jare',
+    hope: 'atik',
+    love: 'kar',
+    together: 'mhi',
+    always: 'darasuum',
 
     // 代词
-    'i': 'ni',
-    'me': 'ni',
-    'my': 'ner',
-    'mine': "ner'tra",
-    'you': 'gar',
-    'your': "gar'tra",
-    'yours': "gar'tra",
-    'we': 'mhi',
-    'us': 'mhi',
-    'our': "mhi'tra",
-    'ours': "mhi'tra",
-    'they': 'val',
-    'them': 'val',
-    'their': "val'tra",
+    i: 'ni',
+    me: 'ni',
+    my: 'ner',
+    mine: "ner'tra",
+    you: 'gar',
+    your: "gar'tra",
+    yours: "gar'tra",
+    we: 'mhi',
+    us: 'mhi',
+    our: "mhi'tra",
+    ours: "mhi'tra",
+    they: 'val',
+    them: 'val',
+    their: "val'tra",
 
     // 常用动词
-    'protect': "ka'ra",
-    'defend': "ka'ra",
-    'attack': 'jate',
-    'go': 'kaan',
-    'come': 'jii',
-    'stay': 'cuyir',
-    'rise': 'oriyc',
-    'fall': 'arpat',
-    'stand': 'oorir',
-    'speak': "jorhaa'duur",
-    'listen': "aani",
-    'learn': 'laroy',
-    'train': 'kutaar',
+    protect: "ka'ra",
+    defend: "ka'ra",
+    attack: 'jate',
+    go: 'kaan',
+    come: 'jii',
+    stay: 'cuyir',
+    rise: 'oriyc',
+    fall: 'arpat',
+    stand: 'oorir',
+    speak: "jorhaa'duur",
+    listen: 'aani',
+    learn: 'laroy',
+    train: 'kutaar',
 
     // 复合短语
-    'thank you': "cuyir gar",
-    'thanks': "cuyir gar",
+    'thank you': 'cuyir gar',
+    thanks: 'cuyir gar',
     'excuse me': 'ner copad',
-    'i am': "ni cuyir",
-    'you are': "gar cuyir",
-    'we are': "mhi cuyir",
-    'they are': "val cuyir",
+    'i am': 'ni cuyir',
+    'you are': 'gar cuyir',
+    'we are': 'mhi cuyir',
+    'they are': 'val cuyir',
     'this is the way': "haatyc ori'shya talyc",
     'this is our way': "ibic cuyir mhi haa'taylir",
-    'for the clan': "par aliit",
-    'for the family': "par aliit",
+    'for the clan': 'par aliit',
+    'for the family': 'par aliit',
     'for honor': 'par parjai',
     'never yield': "dralshy'a",
     'no mercy': 'mercy laandur',
@@ -114,7 +114,7 @@ function getEnglishToMandalorianDict(): Record<string, string> {
     'victory or death': "kote bal kyr'am",
     'we stand together': 'mhi oorir mhi',
     'we are mandalorian': "mhi cuyir mando'ade",
-    'this is the way of honor': "ibic haa'taylir par parjai"
+    'this is the way of honor': "ibic haa'taylir par parjai",
   };
 }
 
@@ -254,8 +254,14 @@ function translateMandalorianToEnglish(text: string): string {
   });
 }
 
-function detectDirection(text: string, direction?: string): TranslationDirection {
-  if (direction === 'to-mandalorian' || direction === 'english-to-mandalorian') {
+function detectDirection(
+  text: string,
+  direction?: string
+): TranslationDirection {
+  if (
+    direction === 'to-mandalorian' ||
+    direction === 'english-to-mandalorian'
+  ) {
     return 'english-to-mandalorian';
   }
 
@@ -331,7 +337,7 @@ export async function POST(request: NextRequest) {
         {
           success: false,
           error: 'Valid text is required',
-          suggestion: 'Please provide text to translate'
+          suggestion: 'Please provide text to translate',
         },
         { status: 400 }
       );
@@ -344,7 +350,7 @@ export async function POST(request: NextRequest) {
           error: 'Text too long',
           suggestion: 'Please keep text under 5000 characters',
           limit: 5000,
-          provided: text.length
+          provided: text.length,
         },
         { status: 400 }
       );
@@ -368,15 +374,17 @@ export async function POST(request: NextRequest) {
       inputType,
       direction: resolvedDirection,
       detectedInputLanguage:
-        resolvedDirection === 'english-to-mandalorian' ? 'english' : 'mandalorian',
+        resolvedDirection === 'english-to-mandalorian'
+          ? 'english'
+          : 'mandalorian',
       translationMethod: 'dictionary',
       metadata: {
         timestamp: new Date().toISOString(),
         processingTime: `${elapsedMs}ms`,
         textLength: text.length,
         translatedLength: translated.length,
-        hasTranslation
-      }
+        hasTranslation,
+      },
     });
   } catch (error) {
     if (process.env.NODE_ENV === 'development') {
@@ -394,7 +402,7 @@ export async function POST(request: NextRequest) {
               : 'Unknown error'
             : 'Internal server error',
         suggestion: 'Please try again in a few moments',
-        retryPossible: true
+        retryPossible: true,
       },
       { status: 500 }
     );
@@ -412,7 +420,7 @@ export async function GET() {
       'Automatic direction detection with heuristics',
       'Phrase-aware replacements',
       'Graceful fallback for unknown terms',
-      'Optimized for Edge runtime'
+      'Optimized for Edge runtime',
     ],
     usage: {
       endpoint: '/api/mandalorian-translator',
@@ -421,8 +429,8 @@ export async function GET() {
         text: 'string (required)',
         inputType: 'text (optional, default: text)',
         direction:
-          'to-mandalorian | english-to-mandalorian | to-english | mandalorian-to-english | auto (default)'
-      }
+          'to-mandalorian | english-to-mandalorian | to-english | mandalorian-to-english | auto (default)',
+      },
     },
     responseShape: {
       success: 'boolean',
@@ -436,33 +444,33 @@ export async function GET() {
         processingTime: 'string (e.g. "2ms")',
         textLength: 'number',
         translatedLength: 'number',
-        hasTranslation: 'boolean'
-      }
+        hasTranslation: 'boolean',
+      },
     },
     examples: [
       {
         description: 'English to Mandalorian',
         request: {
           text: 'We stand together. Victory or death!',
-          direction: 'auto'
+          direction: 'auto',
         },
         sampleResponse: {
           translated: "Mhi oorir mhi. Kote bal kyr'am!",
-          direction: 'english-to-mandalorian'
-        }
+          direction: 'english-to-mandalorian',
+        },
       },
       {
         description: 'Mandalorian to English',
         request: {
           text: "Su cuy'gar, vod. Haat par mhi.",
-          direction: 'auto'
+          direction: 'auto',
         },
         sampleResponse: {
           translated: 'Hello, brother. Truth for us.',
-          direction: 'mandalorian-to-english'
-        }
-      }
+          direction: 'mandalorian-to-english',
+        },
+      },
     ],
-    timestamp: new Date().toISOString()
+    timestamp: new Date().toISOString(),
   });
 }

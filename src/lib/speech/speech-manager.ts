@@ -47,7 +47,9 @@ class SpeechManager {
     this.initPromise = new Promise((resolve, reject) => {
       // 确保在浏览器环境中运行
       if (typeof window === 'undefined') {
-        reject(new Error('Speech synthesis is only available in browser environment'));
+        reject(
+          new Error('Speech synthesis is only available in browser environment')
+        );
         return;
       }
 
@@ -96,19 +98,19 @@ class SpeechManager {
   /**
    * 根据语言获取最佳语音
    */
-  private getBestVoice(lang: string = 'en-US'): SpeechSynthesisVoice | null {
+  private getBestVoice(lang = 'en-US'): SpeechSynthesisVoice | null {
     // 精确匹配
-    let voice = this.voices.find(v => v.lang === lang);
+    let voice = this.voices.find((v) => v.lang === lang);
 
     if (!voice) {
       // 尝试匹配语言前缀
       const langPrefix = lang.split('-')[0];
-      voice = this.voices.find(v => v.lang.startsWith(langPrefix));
+      voice = this.voices.find((v) => v.lang.startsWith(langPrefix));
     }
 
     if (!voice) {
       // 尝试英语语音
-      voice = this.voices.find(v => v.lang.startsWith('en'));
+      voice = this.voices.find((v) => v.lang.startsWith('en'));
     }
 
     if (!voice && this.voices.length > 0) {
@@ -140,7 +142,7 @@ class SpeechManager {
         adjustedOptions.rate = Math.min((options.rate || 1) + 0.3, 2);
         break;
       case 'calm':
-        adjustedOptions.pitch = (options.pitch || 1);
+        adjustedOptions.pitch = options.pitch || 1;
         adjustedOptions.rate = Math.max((options.rate || 1) - 0.1, 0.5);
         break;
       default:
@@ -154,7 +156,10 @@ class SpeechManager {
   /**
    * 播放语音
    */
-  async speak(text: string, options: SpeechOptions = {}): Promise<SpeechResult> {
+  async speak(
+    text: string,
+    options: SpeechOptions = {}
+  ): Promise<SpeechResult> {
     try {
       // 停止当前播放
       this.stop();
@@ -195,14 +200,13 @@ class SpeechManager {
       return {
         success: true,
         isPlaying: true,
-        duration: this.estimateDuration(cleanText, adjustedOptions.rate || 1)
+        duration: this.estimateDuration(cleanText, adjustedOptions.rate || 1),
       };
-
     } catch (error) {
       return {
         success: false,
         error: error instanceof Error ? error.message : 'Unknown error',
-        isPlaying: false
+        isPlaying: false,
       };
     }
   }
@@ -210,7 +214,7 @@ class SpeechManager {
   /**
    * 估算播放时长
    */
-  private estimateDuration(text: string, rate: number = 1): number {
+  private estimateDuration(text: string, rate = 1): number {
     // 平均每分钟阅读的单词数
     const wordsPerMinute = 150;
     const wordCount = text.split(/\s+/).length;
@@ -257,7 +261,7 @@ class SpeechManager {
     return {
       isPlaying: this.synth?.speaking || false,
       isPaused: this.synth?.paused || false,
-      isLoading: this.isLoading
+      isLoading: this.isLoading,
     };
   }
 }

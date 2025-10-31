@@ -9,6 +9,7 @@ import TestimonialsThreeColumnSection from '@/components/blocks/testimonials/tes
 import WhatIsSection from '@/components/blocks/whatis';
 import { AuroraBackground } from '@/components/ui/aurora-background';
 import { constructMetadata } from '@/lib/metadata';
+import { buildTranslatorPageContent } from '@/lib/translator-page';
 import { buildToolStructuredData } from '@/lib/seo/structured-data';
 import { getUrlWithLocale } from '@/lib/urls/urls';
 import type { Metadata } from 'next';
@@ -24,17 +25,14 @@ export async function generateMetadata({
   params: Promise<{ locale: Locale }>;
 }): Promise<Metadata | undefined> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'Metadata' });
-  const gt = await getTranslations({
-    locale,
-    namespace: 'SamoanToEnglishTranslatorPage',
-  });
+  const t = await getTranslations({ locale, namespace: 'samoanToEnglishTranslatorPage' });
+  const metadataT = await getTranslations({ locale, namespace: 'Metadata' });
 
   return constructMetadata({
-    title: `${gt('title')} | ${t('name')}`,
-    description: gt('description'),
+    title: `${t('title')} | ${metadataT('name')}`,
+    description: t('description'),
     canonicalUrl: getUrlWithLocale('/samoan-to-english-translator', locale),
-    image: '/images/docs/what-is-samoan-to-english-translator.webp',
+    image: t('whatIs.image'),
   });
 }
 
@@ -58,101 +56,10 @@ export default async function SamoanToEnglishTranslatorPage(
     description: t('description'),
   });
 
-  // Page data for the tool
-  const pageData = {
-    tool: {
-      inputLabel: t('tool.inputLabel'),
-      outputLabel: t('tool.outputLabel'),
-      inputPlaceholder: t('tool.inputPlaceholder'),
-      outputPlaceholder: t('tool.outputPlaceholder'),
-      translateButton: t('tool.translateButton'),
-      uploadButton: t('tool.uploadButton'),
-      uploadHint: t('tool.uploadHint'),
-      loading: t('tool.loading'),
-      error: t('tool.error'),
-      noInput: t('tool.noInput'),
-    },
-  };
-
-  // Examples section data
-  const examplesData = {
-    title: t('examples.title'),
-    description: t('examples.description'),
-    images: [
-      {
-        alt: t('examples.items.0.alt'),
-        name: t('examples.items.0.name'),
-      },
-      {
-        alt: t('examples.items.1.alt'),
-        name: t('examples.items.1.name'),
-      },
-      {
-        alt: t('examples.items.2.alt'),
-        name: t('examples.items.2.name'),
-      },
-      {
-        alt: t('examples.items.3.alt'),
-        name: t('examples.items.3.name'),
-      },
-      {
-        alt: t('examples.items.4.alt'),
-        name: t('examples.items.4.name'),
-      },
-      {
-        alt: t('examples.items.5.alt'),
-        name: t('examples.items.5.name'),
-      },
-    ],
-  };
-
-  // What is section
-  const whatIsSection = {
-    title: t('whatIs.title'),
-    description: t('whatIs.description'),
-    features: [],
-    image: {
-      src: t('whatIs.image') || '/images/docs/translate-samoa-english.webp',
-      alt: t('whatIs.imageAlt') || 'What is Samoan To English Translator',
-    },
-    cta: { text: t('ctaButton') },
-  };
-
-  // How to section
-  const howtoSection = {
-    name: 'howto',
-    title: t('howto.title'),
-    description: t('howto.description'),
-    image: {
-      src:
-        t('howto.image') ||
-        '/images/docs/samoan-to-english-translator-how-to.webp',
-      alt:
-        t('howto.imageAlt') || 'How to use Samoan-to-English Translator Plus',
-    },
-    items: [
-      {
-        title: t('howto.steps.0.title'),
-        description: t('howto.steps.0.description'),
-        icon: 'FaFileUpload',
-      },
-      {
-        title: t('howto.steps.1.title'),
-        description: t('howto.steps.1.description'),
-        icon: 'FaPencilAlt',
-      },
-      {
-        title: t('howto.steps.2.title'),
-        description: t('howto.steps.2.description'),
-        icon: 'FaLanguage',
-      },
-      {
-        title: t('howto.steps.3.title'),
-        description: t('howto.steps.3.description'),
-        icon: 'FaCheckCircle',
-      },
-    ],
-  };
+  // 使用内容构建器生成所有页面内容
+  const translatorContent = buildTranslatorPageContent(t, {
+    howToIcons: ['FaFileUpload', 'FaPencilAlt', 'FaLanguage'],
+  });
 
   // Highlights section
   const highlightsSection = {
@@ -183,81 +90,7 @@ export default async function SamoanToEnglishTranslatorPage(
     ],
   };
 
-  // Fun Facts section
-  const funFactsSection = {
-    name: 'funFacts',
-    title: t('funFacts.title'),
-    items: [
-      {
-        title: 'Samoan Alphabet Facts', // 根据内容生成合适的标题
-        description: t('funFacts.items.0.content'),
-        image: {
-          src:
-            t('funFacts.items.0.image') || '/images/docs/alphabet-island.webp',
-          alt: t('funFacts.items.0.imageAlt') || 'Fun fact 1',
-        },
-      },
-      {
-        title: 'Samoan Word Order', // 根据内容生成合适的标题
-        description: t('funFacts.items.1.content'),
-        image: {
-          src:
-            t('funFacts.items.1.image') ||
-            '/images/docs/word-order-arrows.webp',
-          alt: t('funFacts.items.1.imageAlt') || 'Fun fact 2',
-        },
-      },
-    ],
-  };
-
-  // User Interest section (4 content blocks)
-  const userInterestSection = {
-    name: 'userInterest',
-    title: t('userInterest.title'),
-    items: [
-      {
-        title: t('userInterest.items.0.title'),
-        description: t('userInterest.items.0.description'),
-        image: {
-          src:
-            t('userInterest.items.0.image') ||
-            '/images/docs/culture-bridge.webp',
-          alt: t('userInterest.items.0.imageAlt') || 'Cultural Context Matters',
-        },
-      },
-      {
-        title: t('userInterest.items.1.title'),
-        description: t('userInterest.items.1.description'),
-        image: {
-          src:
-            t('userInterest.items.1.image') ||
-            '/images/docs/globe-speech-bubbles.webp',
-          alt: t('userInterest.items.1.imageAlt') || 'Pronunciation Prowess',
-        },
-      },
-      {
-        title: t('userInterest.items.2.title'),
-        description: t('userInterest.items.2.description'),
-        image: {
-          src:
-            t('userInterest.items.2.image') ||
-            '/images/docs/text-wave-translation.webp',
-          alt:
-            t('userInterest.items.2.imageAlt') || 'Bulk Translation Made Easy',
-        },
-      },
-      {
-        title: t('userInterest.items.3.title'),
-        description: t('userInterest.items.3.description'),
-        image: {
-          src:
-            t('userInterest.items.3.image') ||
-            '/images/docs/owl-safe-privacy.webp',
-          alt: t('userInterest.items.3.imageAlt') || 'Privacy You Can Trust',
-        },
-      },
-    ],
-  };
+  
 
   return (
     <>
@@ -317,23 +150,23 @@ export default async function SamoanToEnglishTranslatorPage(
 
         {/* Tool Component */}
         <div className="pt-0 pb-12 bg-gradient-to-b from-muted/20 to-background">
-          <SamoanToEnglishTranslatorTool pageData={pageData} locale={locale} />
+          <SamoanToEnglishTranslatorTool pageData={translatorContent.pageData} locale={locale} />
         </div>
 
         {/* What Is Section */}
-        <WhatIsSection section={whatIsSection} />
+        <WhatIsSection section={translatorContent.whatIs} />
 
         {/* Examples Section */}
-        <BeforeAfterSection beforeAfterGallery={examplesData} />
+        <BeforeAfterSection beforeAfterGallery={translatorContent.examples} />
 
         {/* How to Section */}
-        <HowTo section={howtoSection} />
+        <HowTo section={translatorContent.howTo} />
 
         {/* User Interest Blocks */}
-        <UserScenarios section={userInterestSection} ctaText={t('ctaButton')} />
+        <UserScenarios section={translatorContent.userInterest} ctaText={t('ctaButton')} />
 
         {/* Fun Facts */}
-        <UserScenarios section={funFactsSection} ctaText={t('ctaButton')} />
+        <UserScenarios section={translatorContent.funFacts} ctaText={t('ctaButton')} />
 
         {/* Highlights */}
         <WhyChoose section={highlightsSection} />
@@ -351,13 +184,13 @@ export default async function SamoanToEnglishTranslatorPage(
         />
 
         {/* Testimonials */}
-        <TestimonialsThreeColumnSection namespace="SamoanToEnglishTranslatorPage.testimonials" />
+        <TestimonialsThreeColumnSection namespace="samoanToEnglishTranslatorPage" subNamespace="testimonials" />
 
         {/* FAQ */}
-        <FaqSection namespace="SamoanToEnglishTranslatorPage.faqs" />
+        <FaqSection namespace="samoanToEnglishTranslatorPage" subNamespace="faqs" />
 
         {/* CTA */}
-        <CallToActionSection namespace="SamoanToEnglishTranslatorPage.cta" />
+        <CallToActionSection namespace="samoanToEnglishTranslatorPage" subNamespace="cta" />
       </div>
     </>
   );

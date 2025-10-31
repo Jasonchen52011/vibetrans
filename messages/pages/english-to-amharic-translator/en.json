@@ -137,9 +137,8 @@
     },
     "highlights": {
       "title": "Why Ethiopian teams choose VibeTrans",
-      "overview": "AI-powered English ↔ Amharic translation with transliteration support, review safeguards, and export automations designed for modern Ethiopian workflows.",
       "description": "Blend Ge'ez script mastery with business-ready tooling so legal, support, and marketing teams can deliver polished Amharic copy without chasing freelancers or juggling spreadsheets.",
-      "features": [
+      "items": [
         {
           "icon": "FaRocket",
           "title": "Context-Aware Drafts",

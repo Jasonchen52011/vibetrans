@@ -163,7 +163,10 @@ async function generateAllImages() {
     } catch (error: any) {
       failCount++;
       if (process.env.NODE_ENV === 'development') {
-        console.error(`\n❌ Failed to generate ${task.filename}:`, error.message);
+        console.error(
+          `\n❌ Failed to generate ${task.filename}:`,
+          error.message
+        );
 
         // Continue with next image instead of stopping
         console.log(`🔄 Continuing with next image...`);

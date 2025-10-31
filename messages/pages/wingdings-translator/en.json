@@ -132,46 +132,26 @@
     "highlights": {
       "title": "Key Features",
       "description": "Discover the powerful features that make our Wingdings translator the best choice for symbol conversion.",
-      "features": [
+      "items": [
         {
           "title": "Instant Translation",
           "icon": "FaRocket",
-          "tagline": "Lightning-fast conversion",
-          "statLabel": null,
-          "statValue": null,
-          "description": "Convert text to Wingdings symbols instantly with our advanced translation engine. No waiting, no delays.",
-          "wordCount": 20,
-          "microCopy": "Fast and reliable"
+          "description": "Convert text to Wingdings symbols instantly with our advanced translation engine. No waiting, no delays."
         },
         {
           "title": "Perfect Accuracy",
           "icon": "FaBrain",
-          "tagline": "100% accurate mapping",
-          "statLabel": null,
-          "statValue": null,
-          "description": "Our translator uses the official Wingdings character mapping to ensure perfect accuracy every time.",
-          "wordCount": 20,
-          "microCopy": "Always accurate"
+          "description": "Our translator uses the official Wingdings character mapping to ensure perfect accuracy every time."
         },
         {
           "title": "Free to Use",
           "icon": "FaShieldAlt",
-          "tagline": "Completely free",
-          "statLabel": null,
-          "statValue": null,
-          "description": "No registration, no fees, no limits. Use our Wingdings translator as much as you need, completely free.",
-          "wordCount": 20,
-          "microCopy": "Always free"
+          "description": "No registration, no fees, no limits. Use our Wingdings translator as much as you need, completely free."
         },
         {
           "title": "Cross-Platform",
           "icon": "FaChartLine",
-          "tagline": "Works everywhere",
-          "statLabel": null,
-          "statValue": null,
-          "description": "Our translator works on all devices and browsers, ensuring you can convert text anywhere.",
-          "wordCount": 20,
-          "microCopy": "Universal access"
+          "description": "Our translator works on all devices and browsers, ensuring you can convert text anywhere."
         }
       ]
     },

@@ -9,6 +9,7 @@ import TestimonialsThreeColumnSection from '@/components/blocks/testimonials/tes
 import WhatIsSection from '@/components/blocks/whatis';
 import { AuroraBackground } from '@/components/ui/aurora-background';
 import { constructMetadata } from '@/lib/metadata';
+import { buildTranslatorPageContent } from '@/lib/translator-page';
 import { buildToolStructuredData } from '@/lib/seo/structured-data';
 import { getUrlWithLocale } from '@/lib/urls/urls';
 import type { Metadata } from 'next';
@@ -27,18 +28,12 @@ export async function generateMetadata({
   params: Promise<{ locale: Locale }>;
 }): Promise<Metadata | undefined> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'Metadata' });
-  const gt = await getTranslations({
-    locale,
-    namespace: 'CuneiformTranslatorPage',
-  });
-
+  const t = await getTranslations({ locale, namespace: 'CuneiformTranslatorPage' });
   return constructMetadata({
-    title: `${gt('title')} | ${t('name')}`,
-    description: gt('description'),
+    title: `${t('title')} | VibeTrans`,
+    description: t('description'),
     canonicalUrl: getUrlWithLocale('/cuneiform-translator', locale),
-    image:
-      (gt as any)('whatIs.image') || '/images/docs/cuneiform-translator.webp',
+    image: t('whatIs.image'),
   });
 }
 
@@ -51,10 +46,9 @@ export default async function CuneiformTranslatorPage(
 ) {
   const params = await props.params;
   const { locale } = params;
-  const t = await getTranslations({
-    locale,
-    namespace: 'CuneiformTranslatorPage',
-  });
+
+  // 使用标准 getTranslations 获取翻译
+  const t = await getTranslations({ locale, namespace: 'CuneiformTranslatorPage' });
 
   // Structured Data for SEO
   const structuredData = buildToolStructuredData({
@@ -62,230 +56,10 @@ export default async function CuneiformTranslatorPage(
     description: t('description'),
   });
 
-  // Examples section data
-  const examplesData = {
-    title: t('examples.title'),
-    description: t('examples.description'),
-    images: [
-      {
-        alt: t('examples.items.0.alt'),
-        name: t('examples.items.0.name'),
-      },
-      {
-        alt: t('examples.items.1.alt'),
-        name: t('examples.items.1.name'),
-      },
-      {
-        alt: t('examples.items.2.alt'),
-        name: t('examples.items.2.name'),
-      },
-      {
-        alt: t('examples.items.3.alt'),
-        name: t('examples.items.3.name'),
-      },
-      {
-        alt: t('examples.items.4.alt'),
-        name: t('examples.items.4.name'),
-      },
-      {
-        alt: t('examples.items.5.alt'),
-        name: t('examples.items.5.name'),
-      },
-    ],
-  };
-
-  // Fun Facts section
-  const funFactsSection = {
-    name: 'funFacts',
-    title: t('funFacts.title'),
-    items: [
-      {
-        title: t('funFacts.items.0.title'),
-        description: t('funFacts.items.0.description'),
-        image: {
-          src:
-            t('funFacts.items.0.image') ||
-            '/images/docs/ancient-written-law.webp',
-          alt: t('funFacts.items.0.imageAlt') || 'Ancient Written Law',
-        },
-      },
-      {
-        title: t('funFacts.items.1.title'),
-        description: t('funFacts.items.1.description'),
-        image: {
-          src:
-            t('funFacts.items.1.image') ||
-            '/images/docs/multi-purpose-script.webp',
-          alt:
-            t('funFacts.items.1.imageAlt') || 'Multi-Purpose Cuneiform Script',
-        },
-      },
-    ],
-  };
-
-  // Highlights section
-  const highlightsSection = {
-    name: 'highlights',
-    title: t('highlights.title'),
-    description: '',
-    items: [
-      {
-        icon: 'FaCheckCircle',
-        title: t('highlights.items.0.title'),
-        description: t('highlights.items.0.description'),
-      },
-      {
-        icon: 'FaKeyboard',
-        title: t('highlights.items.1.title'),
-        description: t('highlights.items.1.description'),
-      },
-      {
-        icon: 'FaBrain',
-        title: t('highlights.items.2.title'),
-        description: t('highlights.items.2.description'),
-      },
-      {
-        icon: 'FaGlobe',
-        title: t('highlights.items.3.title'),
-        description: t('highlights.items.3.description'),
-      },
-    ],
-  };
-
-  // Page data for the tool
-  const pageData = {
-    tool: {
-      inputLabel: t('tool.inputLabel'),
-      cuneiformLabel: t('tool.cuneiformLabel'),
-      outputLabel: t('tool.outputLabel'),
-      inputPlaceholder: t('tool.inputPlaceholder'),
-      cuneiformPlaceholder: t('tool.cuneiformPlaceholder'),
-      outputPlaceholder: t('tool.outputPlaceholder'),
-      translateButton: t('tool.translateButton'),
-      uploadButton: t('tool.uploadButton'),
-      uploadHint: t('tool.uploadHint'),
-      scriptLabel: t('tool.scriptLabel'),
-      scripts: {
-        sumerian: t('tool.scripts.sumerian'),
-        akkadian: t('tool.scripts.akkadian'),
-        babylonian: t('tool.scripts.babylonian'),
-        hittite: t('tool.scripts.hittite'),
-        elamite: t('tool.scripts.elamite'),
-        'old-persian': t('tool.scripts.old-persian'),
-        ugaritic: t('tool.scripts.ugaritic'),
-      },
-      loading: t('tool.loading'),
-      error: t('tool.error'),
-      noInput: t('tool.noInput'),
-    },
-    funFacts: funFactsSection,
-    highlights: highlightsSection,
-  };
-
-  // What is section
-  const whatIsSection = {
-    title: t('whatIs.title'),
-    description: t('whatIs.description'),
-    features: [],
-    image: {
-      src:
-        t('whatIs.image') || '/images/docs/what-is-cuneiform-translator.webp',
-      alt:
-        t('whatIs.imageAlt') ||
-        'What is Cuneiform Translator - Ancient Script Translation',
-    },
-    cta: {
-      text: t('ctaButton'),
-    },
-  };
-
-  // How to section
-  const howtoSection = {
-    name: 'howto',
-    title: t('howto.title'),
-    description: t('howto.description'),
-    image: {
-      src: t('howto.image') || '/images/docs/cuneiform-translator-how.webp',
-      alt:
-        t('howto.imageAlt') ||
-        'How to use Cuneiform Translator step by step guide',
-    },
-    items: [
-      {
-        title: t('howto.steps.0.title'),
-        description: t('howto.steps.0.description'),
-        icon: 'FaFileUpload',
-      },
-      {
-        title: t('howto.steps.1.title'),
-        description: t('howto.steps.1.description'),
-        icon: 'FaGlobe',
-      },
-      {
-        title: t('howto.steps.2.title'),
-        description: t('howto.steps.2.description'),
-        icon: 'FaLanguage',
-      },
-      {
-        title: t('howto.steps.3.title'),
-        description: t('howto.steps.3.description'),
-        icon: 'FaDownload',
-      },
-    ],
-  };
-
-  // User Interest section
-  const userInterestSection = {
-    name: 'userinterest',
-    title: t('userInterest.title'),
-    items: [
-      {
-        title: t('userInterest.items.0.title'),
-        description: t('userInterest.items.0.description'),
-        image: {
-          src:
-            t('userInterest.items.0.image') ||
-            '/images/docs/cuneiform-texts-research.webp',
-          alt:
-            t('userInterest.items.0.imageAlt') ||
-            'Cuneiform Texts in Modern Research',
-        },
-      },
-      {
-        title: t('userInterest.items.1.title'),
-        description: t('userInterest.items.1.description'),
-        image: {
-          src:
-            t('userInterest.items.1.image') ||
-            '/images/docs/cultural-heritage-preservation.webp',
-          alt:
-            t('userInterest.items.1.imageAlt') ||
-            'Cultural Heritage and Preservation',
-        },
-      },
-      {
-        title: t('userInterest.items.2.title'),
-        description: t('userInterest.items.2.description'),
-        image: {
-          src:
-            t('userInterest.items.2.image') ||
-            '/images/docs/cuneiform-ai-technology.webp',
-          alt:
-            t('userInterest.items.2.imageAlt') || 'Cuneiform and AI Technology',
-        },
-      },
-      {
-        title: t('userInterest.items.3.title'),
-        description: t('userInterest.items.3.description'),
-        image: {
-          src:
-            t('userInterest.items.3.image') ||
-            '/images/docs/why-learn-cuneiform.webp',
-          alt: t('userInterest.items.3.imageAlt') || 'Why Learn Cuneiform',
-        },
-      },
-    ],
-  };
+  // 使用内容构建器生成所有页面内容
+  const translatorContent = buildTranslatorPageContent(t, {
+    howToIcons: ['FaFileUpload', 'FaPencilAlt', 'FaLanguage'],
+  });
 
   return (
     <>
@@ -370,26 +144,26 @@ export default async function CuneiformTranslatorPage(
 
         {/* Cuneiform Translator Tool */}
         <div className="pt-0 pb-12 bg-gradient-to-b from-muted/20 to-background">
-          <CuneiformTranslatorTool pageData={pageData} locale={locale} />
+          <CuneiformTranslatorTool pageData={translatorContent.pageData} locale={locale} />
         </div>
 
         {/* What Is Section */}
-        <WhatIsSection section={whatIsSection} />
+        <WhatIsSection section={translatorContent.whatIs} />
 
         {/* Examples Section */}
-        <BeforeAfterSection beforeAfterGallery={examplesData} />
+        <BeforeAfterSection beforeAfterGallery={translatorContent.examples} />
 
         {/* How to Section */}
-        <HowTo section={howtoSection} />
+        <HowTo section={translatorContent.howTo} />
 
         {/* User Interest Blocks */}
-        <UserScenarios section={userInterestSection} ctaText={t('ctaButton')} />
+        <UserScenarios section={translatorContent.userInterest} ctaText={t('ctaButton')} />
 
         {/* Fun Facts */}
-        <UserScenarios section={pageData.funFacts} ctaText={t('ctaButton')} />
+        <UserScenarios section={translatorContent.funFacts} ctaText={t('ctaButton')} />
 
         {/* Highlights/Why Choose */}
-        <WhyChoose section={pageData.highlights} />
+        <WhyChoose section={translatorContent.highlights} />
 
         {/* Explore Other Tools */}
         <ExploreOurAiTools
@@ -404,13 +178,13 @@ export default async function CuneiformTranslatorPage(
         />
 
         {/* Testimonials Section */}
-        <TestimonialsThreeColumnSection namespace="CuneiformTranslatorPage.testimonials" />
+        <TestimonialsThreeColumnSection namespace="CuneiformTranslatorPage" subNamespace="testimonials" />
 
         {/* FAQ Section */}
-        <FaqSection namespace="CuneiformTranslatorPage.faqs" />
+        <FaqSection namespace="CuneiformTranslatorPage" subNamespace="faqs" />
 
         {/* Call to Action */}
-        <CallToActionSection namespace="CuneiformTranslatorPage.cta" />
+        <CallToActionSection namespace="CuneiformTranslatorPage" subNamespace="cta" />
       </div>
     </>
   );

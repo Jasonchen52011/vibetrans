@@ -5,10 +5,11 @@ import FaqSection from '@/components/blocks/faqs/faqs';
 import UserScenarios from '@/components/blocks/funfacts';
 import WhyChoose from '@/components/blocks/highlights';
 import HowTo from '@/components/blocks/how-to';
-import TestimonialsSection from '@/components/blocks/testimonials/testimonials-three-column';
+import TestimonialsThreeColumnSection from '@/components/blocks/testimonials/testimonials-three-column';
 import WhatIsSection from '@/components/blocks/whatis';
 import { AuroraBackground } from '@/components/ui/aurora-background';
 import { constructMetadata } from '@/lib/metadata';
+import { buildTranslatorPageContent } from '@/lib/translator-page';
 import { buildToolStructuredData } from '@/lib/seo/structured-data';
 import { getUrlWithLocale } from '@/lib/urls/urls';
 import type { Metadata } from 'next';
@@ -24,17 +25,14 @@ export async function generateMetadata({
   params: Promise<{ locale: Locale }>;
 }): Promise<Metadata | undefined> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'Metadata' });
-  const gt = await getTranslations({
-    locale,
-    namespace: 'TeluguToEnglishTranslatorPage',
-  });
+  const t = await getTranslations({ locale, namespace: 'teluguToEnglishTranslatorPage' });
+  const metadataT = await getTranslations({ locale, namespace: 'Metadata' });
 
   return constructMetadata({
-    title: `${gt('title')} | ${t('name')}`,
-    description: gt('description'),
+    title: `${t('title')} | ${metadataT('name')}`,
+    description: t('description'),
     canonicalUrl: getUrlWithLocale('/telugu-to-english-translator', locale),
-    image: '/images/docs/telugu-to-english-translator-what-is.webp',
+    image: t('whatIs.image'),
   });
 }
 
@@ -58,98 +56,10 @@ export default async function TeluguToEnglishTranslatorPage(
     description: t('description'),
   });
 
-  // Page data for the tool
-  const pageData = {
-    tool: {
-      inputLabel: t('tool.inputLabel'),
-      outputLabel: t('tool.outputLabel'),
-      inputPlaceholder: t('tool.inputPlaceholder'),
-      outputPlaceholder: t('tool.outputPlaceholder'),
-      translateButton: t('tool.translateButton'),
-      uploadButton: t('tool.uploadButton'),
-      uploadHint: t('tool.uploadHint'),
-      loading: t('tool.loading'),
-      error: t('tool.error'),
-      noInput: t('tool.noInput'),
-    },
-  };
-
-  // Examples section data - translation examples without images
-  const examplesData = {
-    title: t('examples.title'),
-    description: t('examples.description'),
-    images: [
-      {
-        alt: t('examples.items.0.alt'),
-        name: t('examples.items.0.name'),
-      },
-      {
-        alt: t('examples.items.1.alt'),
-        name: t('examples.items.1.name'),
-      },
-      {
-        alt: t('examples.items.2.alt'),
-        name: t('examples.items.2.name'),
-      },
-      {
-        alt: t('examples.items.3.alt'),
-        name: t('examples.items.3.name'),
-      },
-      {
-        alt: t('examples.items.4.alt'),
-        name: t('examples.items.4.name'),
-      },
-      {
-        alt: t('examples.items.5.alt'),
-        name: t('examples.items.5.name'),
-      },
-    ],
-  };
-
-  // What is section
-  const whatIsSection = {
-    title: t('whatIs.title'),
-    description: t('whatIs.description'),
-    features: [],
-    image: {
-      src: t('whatIs.image'),
-      alt: t('whatIs.imageAlt'),
-    },
-    cta: { text: t('ctaButton') },
-  };
-
-  // How to section
-  const howtoSection = {
-    name: 'howto',
-    title: t('howto.title'),
-    description: t('howto.description'),
-    image: {
-      src: t('howto.image'),
-      alt: t('howto.imageAlt'),
-    },
-    items: [
-      {
-        title: t('howto.steps.0.title'),
-        description: t('howto.steps.0.description'),
-        icon: 'FaFileUpload',
-      },
-      {
-        title: t('howto.steps.1.title'),
-        description: t('howto.steps.1.description'),
-        icon: 'FaPencilAlt',
-      },
-      {
-        title: t('howto.steps.2.title'),
-        description: t('howto.steps.2.description'),
-        icon: 'FaLanguage',
-      },
-      {
-        title: t('howto.steps.3.title'),
-        description: t('howto.steps.3.description'),
-        icon: 'FaCheckCircle',
-      },
-    ],
-  };
+  // 使用内容构建器生成所有页面内容
+  const translatorContent = buildTranslatorPageContent(t, {
+    howToIcons: ['FaFileUpload', 'FaPencilAlt', 'FaLanguage'],
+  });
 
   // Highlights section
   const fallbackHighlightDescription =
@@ -211,69 +121,7 @@ export default async function TeluguToEnglishTranslatorPage(
     items: highlightItems,
   };
 
-  // Fun Facts section
-  const funFactsSection = {
-    name: 'funFacts',
-    title: t('funFacts.title'),
-    items: [
-      {
-        title: t('funFacts.items.0.title'),
-        description: t('funFacts.items.0.description'),
-        image: {
-          src: t('funFacts.items.0.image'),
-          alt: t('funFacts.items.0.imageAlt'),
-        },
-      },
-      {
-        title: t('funFacts.items.1.title'),
-        description: t('funFacts.items.1.description'),
-        image: {
-          src: t('funFacts.items.1.image'),
-          alt: t('funFacts.items.1.imageAlt'),
-        },
-      },
-    ],
-  };
-
-  // User Interest section (4 content blocks)
-  const userInterestSection = {
-    name: 'userInterest',
-    title: t('userInterest.title'),
-    items: [
-      {
-        title: t('userInterest.items.0.title'),
-        description: t('userInterest.items.0.description'),
-        image: {
-          src: t('userInterest.items.0.image'),
-          alt: t('userInterest.items.0.imageAlt'),
-        },
-      },
-      {
-        title: t('userInterest.items.1.title'),
-        description: t('userInterest.items.1.description'),
-        image: {
-          src: t('userInterest.items.1.image'),
-          alt: t('userInterest.items.1.imageAlt'),
-        },
-      },
-      {
-        title: t('userInterest.items.2.title'),
-        description: t('userInterest.items.2.description'),
-        image: {
-          src: t('userInterest.items.2.image'),
-          alt: t('userInterest.items.2.imageAlt'),
-        },
-      },
-      {
-        title: t('userInterest.items.3.title'),
-        description: t('userInterest.items.3.description'),
-        image: {
-          src: t('userInterest.items.3.image'),
-          alt: t('userInterest.items.3.imageAlt'),
-        },
-      },
-    ],
-  };
+  
 
   return (
     <>
@@ -333,23 +181,23 @@ export default async function TeluguToEnglishTranslatorPage(
 
         {/* Tool Component */}
         <div className="pt-0 pb-12 bg-gradient-to-b from-muted/20 to-background">
-          <TeluguToEnglishTranslatorTool pageData={pageData} locale={locale} />
+          <TeluguToEnglishTranslatorTool pageData={translatorContent.pageData} locale={locale} />
         </div>
 
         {/* What Is Section */}
-        <WhatIsSection section={whatIsSection} />
+        <WhatIsSection section={translatorContent.whatIs} />
 
         {/* Examples Section */}
-        <BeforeAfterSection beforeAfterGallery={examplesData} />
+        <BeforeAfterSection beforeAfterGallery={translatorContent.examples} />
 
         {/* How to Section */}
-        <HowTo section={howtoSection} />
+        <HowTo section={translatorContent.howTo} />
 
         {/* User Interest Blocks */}
-        <UserScenarios section={userInterestSection} ctaText={t('ctaButton')} />
+        <UserScenarios section={translatorContent.userInterest} ctaText={t('ctaButton')} />
 
         {/* Fun Facts */}
-        <UserScenarios section={funFactsSection} ctaText={t('ctaButton')} />
+        <UserScenarios section={translatorContent.funFacts} ctaText={t('ctaButton')} />
 
         {/* Highlights */}
         <WhyChoose section={highlightsSection} />
@@ -367,13 +215,15 @@ export default async function TeluguToEnglishTranslatorPage(
         />
 
         {/* Testimonials */}
-        <TestimonialsSection namespace="TeluguToEnglishTranslatorPage.testimonials" />
+        <TestimonialsThreeColumnSection namespace="teluguToEnglishTranslatorPage" subNamespace="testimonials" />
 
         {/* FAQ */}
-        <FaqSection namespace="TeluguToEnglishTranslatorPage.faqs" />
+
+
+        <FaqSection namespace="teluguToEnglishTranslatorPage" subNamespace="faqs" />
 
         {/* CTA */}
-        <CallToActionSection namespace="TeluguToEnglishTranslatorPage.cta" />
+        <CallToActionSection namespace="teluguToEnglishTranslatorPage" subNamespace="cta" />
       </div>
     </>
   );

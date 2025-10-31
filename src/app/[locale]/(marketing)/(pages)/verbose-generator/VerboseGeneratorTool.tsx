@@ -167,7 +167,7 @@ export default function VerboseGeneratorTool({
         successMessage: 'Verbose text copied to clipboard!',
         errorMessage: 'Failed to copy verbose text',
         onSuccess: () => {},
-        onError: (error) => console.error('Failed to copy:', error)
+        onError: (error) => console.error('Failed to copy:', error),
       });
     } catch (error) {
       console.error('Copy function loading failed:', error);
@@ -181,7 +181,7 @@ export default function VerboseGeneratorTool({
       const { smartDownload } = await import('@/lib/utils/dynamic-download');
       smartDownload(outputText, 'verbose-generator', {
         onSuccess: () => {},
-        onError: (error) => console.error('Download failed:', error)
+        onError: (error) => console.error('Download failed:', error),
       });
     } catch (error) {
       console.error('Download function loading failed:', error);

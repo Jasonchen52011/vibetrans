@@ -5,10 +5,11 @@ import FaqSection from '@/components/blocks/faqs/faqs';
 import UserScenarios from '@/components/blocks/funfacts';
 import WhyChoose from '@/components/blocks/highlights';
 import HowTo from '@/components/blocks/how-to';
-import TestimonialsSection from '@/components/blocks/testimonials/testimonials-three-column';
+import TestimonialsThreeColumnSection from '@/components/blocks/testimonials/testimonials-three-column';
 import WhatIsSection from '@/components/blocks/whatis';
 import { AuroraBackground } from '@/components/ui/aurora-background';
 import { constructMetadata } from '@/lib/metadata';
+import { buildTranslatorPageContent } from '@/lib/translator-page';
 import { buildToolStructuredData } from '@/lib/seo/structured-data';
 import { getUrlWithLocale } from '@/lib/urls/urls';
 import type { Metadata } from 'next';
@@ -24,17 +25,14 @@ export async function generateMetadata({
   params: Promise<{ locale: Locale }>;
 }): Promise<Metadata | undefined> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'Metadata' });
-  const gt = await getTranslations({
-    locale,
-    namespace: 'EnglishToPersianTranslatorPage',
-  });
+  const t = await getTranslations({ locale, namespace: 'EnglishToPersianTranslatorPage' });
+  const metadataT = await getTranslations({ locale, namespace: 'Metadata' });
 
   return constructMetadata({
-    title: `${gt('title')} | ${t('name')}`,
-    description: gt('description'),
+    title: `${t('title')} | ${metadataT('name')}`,
+    description: t('description'),
     canonicalUrl: getUrlWithLocale('/english-to-persian-translator', locale),
-    image: '/images/docs/what-is-english-to-persian-translator.webp',
+    image: t('whatIs.image'),
   });
 }
 
@@ -58,23 +56,12 @@ export default async function EnglishToPersianTranslatorPage(
     description: t('description'),
   });
 
-  // Page data for the tool
-  const pageData = {
-    tool: {
-      inputLabel: t('tool.inputLabel'),
-      outputLabel: t('tool.outputLabel'),
-      inputPlaceholder: t('tool.inputPlaceholder'),
-      outputPlaceholder: t('tool.outputPlaceholder'),
-      translateButton: t('tool.translateButton'),
-      uploadButton: t('tool.uploadButton'),
-      uploadHint: t('tool.uploadHint'),
-      loading: t('tool.loading'),
-      error: t('tool.error'),
-      noInput: t('tool.noInput'),
-    },
-  };
+  // 使用内容构建器生成所有页面内容
+  const translatorContent = buildTranslatorPageContent(t, {
+    howToIcons: ['FaFileUpload', 'FaPencilAlt', 'FaLanguage', 'FaCheckCircle'],
+  });
 
-  // Examples section data
+  // 构建示例数据（该页面使用特殊的格式）
   const examplesData = {
     title: t('examples.title'),
     description: t('examples.description'),
@@ -108,51 +95,6 @@ export default async function EnglishToPersianTranslatorPage(
         before: t('examples.items.5.before'),
         after: t('examples.items.5.after'),
         alt: t('examples.items.5.alt'),
-      },
-    ],
-  };
-
-  // What is section
-  const whatIsSection = {
-    title: t('whatIs.title'),
-    description: t('whatIs.description'),
-    features: [],
-    image: {
-      src: '/images/docs/what-is-english-to-persian-translator.webp',
-      alt: 'What is English To Persian Translator',
-    },
-    cta: { text: t('ctaButton') },
-  };
-
-  // How to section
-  const howtoSection = {
-    name: 'howto',
-    title: t('howto.title'),
-    description: t('howto.description'),
-    image: {
-      src: '/images/docs/english-to-persian-translator-how-to.webp',
-      alt: 'How to use English To Persian Translator',
-    },
-    items: [
-      {
-        title: t('howto.steps.0.title'),
-        description: t('howto.steps.0.description'),
-        icon: 'FaFileUpload',
-      },
-      {
-        title: t('howto.steps.1.title'),
-        description: t('howto.steps.1.description'),
-        icon: 'FaPencilAlt',
-      },
-      {
-        title: t('howto.steps.2.title'),
-        description: t('howto.steps.2.description'),
-        icon: 'FaLanguage',
-      },
-      {
-        title: t('howto.steps.3.title'),
-        description: t('howto.steps.3.description'),
-        icon: 'FaCheckCircle',
       },
     ],
   };
@@ -217,52 +159,7 @@ export default async function EnglishToPersianTranslatorPage(
     items: highlightItems,
   };
 
-  // Fun Facts section
-  const funFactsSection = {
-    name: 'funFacts',
-    title: t('funFacts.title'),
-    items: [
-      {
-        title: t('funFacts.items.0.title'),
-        description: t('funFacts.items.0.description'),
-        image: t('funFacts.items.0.image.src'),
-      },
-      {
-        title: t('funFacts.items.1.title'),
-        description: t('funFacts.items.1.description'),
-        image: t('funFacts.items.1.image.src'),
-      },
-    ],
-  };
-
-  // User Interest section (4 content blocks)
-  const userInterestSection = {
-    name: 'userInterest',
-    title: t('userInterest.title'),
-    items: [
-      {
-        title: t('userInterest.items.0.title'),
-        description: t('userInterest.items.0.description'),
-        image: t('userInterest.items.0.image.src'),
-      },
-      {
-        title: t('userInterest.items.1.title'),
-        description: t('userInterest.items.1.description'),
-        image: t('userInterest.items.1.image.src'),
-      },
-      {
-        title: t('userInterest.items.2.title'),
-        description: t('userInterest.items.2.description'),
-        image: t('userInterest.items.2.image.src'),
-      },
-      {
-        title: t('userInterest.items.3.title'),
-        description: t('userInterest.items.3.description'),
-        image: t('userInterest.items.3.image.src'),
-      },
-    ],
-  };
-
+  
   return (
     <>
       <script
@@ -321,23 +218,23 @@ export default async function EnglishToPersianTranslatorPage(
 
         {/* Tool Component */}
         <div className="pt-0 pb-12 bg-gradient-to-b from-muted/20 to-background">
-          <EnglishToPersianTranslatorTool pageData={pageData} locale={locale} />
+          <EnglishToPersianTranslatorTool pageData={translatorContent.pageData} locale={locale} />
         </div>
 
         {/* What Is Section */}
-        <WhatIsSection section={whatIsSection} />
+        <WhatIsSection section={translatorContent.whatIs} />
 
         {/* Examples Section */}
         <BeforeAfterSection beforeAfterGallery={examplesData} />
 
         {/* How to Section */}
-        <HowTo section={howtoSection} />
+        <HowTo section={translatorContent.howTo} />
 
         {/* User Interest Blocks */}
-        <UserScenarios section={userInterestSection} ctaText={t('ctaButton')} />
+        <UserScenarios section={translatorContent.userInterest} ctaText={t('ctaButton')} />
 
         {/* Fun Facts */}
-        <UserScenarios section={funFactsSection} ctaText={t('ctaButton')} />
+        <UserScenarios section={translatorContent.funFacts} ctaText={t('ctaButton')} />
 
         {/* Highlights */}
         <WhyChoose section={highlightsSection} />
@@ -355,13 +252,15 @@ export default async function EnglishToPersianTranslatorPage(
         />
 
         {/* Testimonials */}
-        <TestimonialsSection namespace="EnglishToPersianTranslatorPage.testimonials" />
+        <TestimonialsThreeColumnSection namespace="EnglishToPersianTranslatorPage" subNamespace="testimonials" />
 
         {/* FAQ */}
-        <FaqSection namespace="EnglishToPersianTranslatorPage.faqs" />
+
+
+        <FaqSection namespace="EnglishToPersianTranslatorPage" subNamespace="faqs" />
 
         {/* CTA */}
-        <CallToActionSection namespace="EnglishToPersianTranslatorPage.cta" />
+        <CallToActionSection namespace="EnglishToPersianTranslatorPage" subNamespace="cta" />
       </div>
     </>
   );

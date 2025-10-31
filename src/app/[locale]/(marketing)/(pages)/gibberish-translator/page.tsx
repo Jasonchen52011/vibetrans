@@ -9,6 +9,7 @@ import TestimonialsThreeColumnSection from '@/components/blocks/testimonials/tes
 import WhatIsSection from '@/components/blocks/whatis';
 import { AuroraBackground } from '@/components/ui/aurora-background';
 import { constructMetadata } from '@/lib/metadata';
+import { buildTranslatorPageContent } from '@/lib/translator-page';
 import { buildToolStructuredData } from '@/lib/seo/structured-data';
 import { getUrlWithLocale } from '@/lib/urls/urls';
 import type { Metadata } from 'next';
@@ -27,17 +28,12 @@ export async function generateMetadata({
   params: Promise<{ locale: Locale }>;
 }): Promise<Metadata | undefined> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'Metadata' });
-  const gt = await getTranslations({
-    locale,
-    namespace: 'GibberishTranslatorPage',
-  });
-
+  const t = await getTranslations({ locale, namespace: 'GibberishTranslatorPage' });
   return constructMetadata({
-    title: `${gt('title')} | ${t('name')}`,
-    description: gt('description'),
+    title: `${t('title')} | VibeTrans`,
+    description: t('description'),
     canonicalUrl: getUrlWithLocale('/gibberish-translator', locale),
-    image: '/images/docs/what-is-gibberish-translator.webp',
+    image: t('whatIs.image'),
   });
 }
 
@@ -45,15 +41,12 @@ interface GibberishTranslatorPageProps {
   params: Promise<{ locale: Locale }>;
 }
 
-export default async function GibberishTranslatorPage(
-  props: GibberishTranslatorPageProps
-) {
+export default async function GibberishTranslatorPage(props: GibberishTranslatorPageProps) {
   const params = await props.params;
   const { locale } = params;
-  const t = await getTranslations({
-    locale,
-    namespace: 'GibberishTranslatorPage',
-  });
+
+  // 使用标准 getTranslations 获取翻译
+  const t = await getTranslations({ locale, namespace: 'GibberishTranslatorPage' });
 
   // Structured Data for SEO
   const structuredData = buildToolStructuredData({
@@ -61,198 +54,10 @@ export default async function GibberishTranslatorPage(
     description: t('description'),
   });
 
-  // Page data for the tool
-  const pageData = {
-    tool: {
-      inputLabel: t('tool.inputLabel'),
-      gibberishLabel: t('tool.gibberishLabel'),
-      outputLabel: t('tool.outputLabel'),
-      inputPlaceholder: t('tool.inputPlaceholder'),
-      gibberishPlaceholder: t('tool.gibberishPlaceholder'),
-      outputPlaceholder: t('tool.outputPlaceholder'),
-      translateButton: t('tool.translateButton'),
-      uploadButton: t('tool.uploadButton'),
-      uploadHint: t('tool.uploadHint'),
-      styleLabel: t('tool.styleLabel'),
-      styles: {
-        random: t('tool.styles.random'),
-        syllable: t('tool.styles.syllable'),
-        reverse: t('tool.styles.reverse'),
-      },
-      loading: t('tool.loading'),
-      error: t('tool.error'),
-      noInput: t('tool.noInput'),
-    },
-  };
-
-  // Examples section data
-  const examplesData = {
-    title: t('examples.title'),
-    description: t('examples.description'),
-    images: [
-      {
-        alt: 'Hello → Heliblo',
-        name: 'Hello → Heliblo',
-      },
-      {
-        alt: 'Welcome → Welicomiber',
-        name: 'Welcome → Welicomiber',
-      },
-      {
-        alt: 'Thank you → Thaniber youbi',
-        name: 'Thank you → Thaniber youbi',
-      },
-      {
-        alt: 'Goodbye → Goodibbye',
-        name: 'Goodbye → Goodibbye',
-      },
-      {
-        alt: 'Friend → Friebiend',
-        name: 'Friend → Friebiend',
-      },
-      {
-        alt: 'Help me → Helpib mebe',
-        name: 'Help me → Helpib mebe',
-      },
-    ],
-  };
-
-  // Fun Facts section
-  const funFactsSection = {
-    name: 'funfacts',
-    title: t('funfacts.title'),
-    items: [
-      {
-        title: t('funfacts.items.0.title'),
-        description: t('funfacts.items.0.description'),
-        image: {
-          src: '/images/docs/gibberish-origin-word.webp',
-          alt: 'The Origin of the Word',
-        },
-      },
-      {
-        title: t('funfacts.items.1.title'),
-        description: t('funfacts.items.1.description'),
-        image: {
-          src: '/images/docs/gibberish-educational.webp',
-          alt: 'Gibberish Can Be Educational',
-        },
-      },
-    ],
-  };
-
-  // User Interest section
-  const userInterestSection = {
-    name: 'userinterest',
-    title: t('userInterest.title'),
-    items: [
-      {
-        title: t('userInterest.items.0.title'),
-        description: t('userInterest.items.0.description'),
-        image: {
-          src: '/images/docs/gibberish-secret-codes.webp',
-          alt: 'Language Games and Secret Codes',
-        },
-      },
-      {
-        title: t('userInterest.items.1.title'),
-        description: t('userInterest.items.1.description'),
-        image: {
-          src: '/images/docs/gibberish-education-purpose.webp',
-          alt: 'Educational Purposes',
-        },
-      },
-      {
-        title: t('userInterest.items.2.title'),
-        description: t('userInterest.items.2.description'),
-        image: {
-          src: '/images/docs/gibberish-content-creators.webp',
-          alt: 'Content Creators and Entertainers',
-        },
-      },
-      {
-        title: t('userInterest.items.3.title'),
-        description: t('userInterest.items.3.description'),
-        image: {
-          src: '/images/docs/gibberish-privacy-fun.webp',
-          alt: 'Privacy and Fun Communication',
-        },
-      },
-    ],
-  };
-
-  // Highlights section
-  const highlightsSection = {
-    name: 'highlights',
-    title: t('highlights.title'),
-    description: '',
-    items: [
-      {
-        icon: 'FaPalette',
-        title: t('highlights.items.0.title'),
-        description: t('highlights.items.0.description'),
-      },
-      {
-        icon: 'FaBolt',
-        title: t('highlights.items.1.title'),
-        description: t('highlights.items.1.description'),
-      },
-      {
-        icon: 'FaFileAlt',
-        title: t('highlights.items.2.title'),
-        description: t('highlights.items.2.description'),
-      },
-      {
-        icon: 'FaVolumeUp',
-        title: t('highlights.items.3.title'),
-        description: t('highlights.items.3.description'),
-      },
-    ],
-  };
-
-  // What is section
-  const whatIsSection = {
-    title: t('whatIs.title'),
-    description: t('whatIs.description'),
-    features: [],
-    image: {
-      src: '/images/docs/what-is-gibberish-translator.webp',
-      alt: 'What is Gibberish Translator - Understanding Playful Language',
-    },
-  };
-
-  // How to section
-  const howtoSection = {
-    name: 'howto',
-    title: t('howto.title'),
-    description: t('howto.description'),
-    image: {
-      src: '/images/docs/gibberish-translator-how-to.webp',
-      alt: 'How to use Gibberish Translator step by step guide',
-    },
-    items: [
-      {
-        title: t('howto.steps.0.title'),
-        description: t('howto.steps.0.description'),
-        icon: 'FaFileUpload',
-      },
-      {
-        title: t('howto.steps.1.title'),
-        description: t('howto.steps.1.description'),
-        icon: 'FaPalette',
-      },
-      {
-        title: t('howto.steps.2.title'),
-        description: t('howto.steps.2.description'),
-        icon: 'FaMagic',
-      },
-      {
-        title: t('howto.steps.3.title'),
-        description: t('howto.steps.3.description'),
-        icon: 'FaShare',
-      },
-    ],
-  };
+  // 使用内容构建器生成所有页面内容
+  const translatorContent = buildTranslatorPageContent(t, {
+    howToIcons: ['FaFileUpload', 'FaPencilAlt', 'FaLanguage'],
+  });
 
   return (
     <>
@@ -337,26 +142,26 @@ export default async function GibberishTranslatorPage(
 
         {/* Gibberish Translator Tool */}
         <div className="pt-0 pb-12 bg-gradient-to-b from-muted/20 to-background">
-          <GibberishTranslatorTool pageData={pageData} locale={locale} />
+          <GibberishTranslatorTool pageData={translatorContent.pageData} locale={locale} />
         </div>
 
         {/* What Is Section */}
-        <WhatIsSection section={whatIsSection} />
+        <WhatIsSection section={translatorContent.whatIs} />
 
         {/* Examples Section */}
-        <BeforeAfterSection beforeAfterGallery={examplesData} />
+        <BeforeAfterSection beforeAfterGallery={translatorContent.examples} />
 
         {/* How to Section */}
-        <HowTo section={howtoSection} />
+        <HowTo section={translatorContent.howTo} />
 
-        {/* User Interest Blocks */}
-        <UserScenarios section={userInterestSection} />
+        {/* Fun Facts Section */}
+        <UserScenarios section={translatorContent.funFacts} ctaText={t('ctaButton')} />
 
-        {/* Fun Facts */}
-        <UserScenarios section={funFactsSection} />
+        {/* User Interest Section */}
+        <UserScenarios section={translatorContent.userInterest} ctaText={t('ctaButton')} />
 
         {/* Highlights/Why Choose */}
-        <WhyChoose section={highlightsSection} />
+        <WhyChoose section={translatorContent.highlights} />
 
         {/* Explore Other Tools */}
         <ExploreOurAiTools
@@ -371,13 +176,13 @@ export default async function GibberishTranslatorPage(
         />
 
         {/* Testimonials Section */}
-        <TestimonialsThreeColumnSection namespace="GibberishTranslatorPage.testimonials" />
+        <TestimonialsThreeColumnSection namespace="GibberishTranslatorPage" subNamespace="testimonials" />
 
         {/* FAQ Section */}
-        <FaqSection namespace="GibberishTranslatorPage.faqs" />
+        <FaqSection namespace="GibberishTranslatorPage" subNamespace="faqs" />
 
         {/* Call to Action */}
-        <CallToActionSection namespace="GibberishTranslatorPage.cta" />
+        <CallToActionSection namespace="GibberishTranslatorPage" subNamespace="cta" />
       </div>
     </>
   );

@@ -48,15 +48,45 @@
     },
     "whatIs": {
       "title": "What is Alien Text Generator?",
-      "description": "Alien Text Generator is a tool that transforms regular text into various extraterrestrial language styles. Whether for creative projects, games, or social media posts, it lets you explore a variety of out-of-this-world text formats. With VibeTrans, unleash your imagination!"
+      "description": "Alien Text Generator is a tool that transforms regular text into various extraterrestrial language styles. Whether for creative projects, games, or social media posts, it lets you explore a variety of out-of-this-world text formats. With VibeTrans, unleash your imagination!",
+      "image": "/images/docs/what-is-alien-text-generator.webp",
+      "imageAlt": "What is Alien Text Generator - Visual explanation"
     },
     "examples": {
       "title": "Example Uses of Alien Text Generator",
-      "description": "Create text in alien languages for your social media profile, design fun memes, or enhance your gaming experience with unique, creative text styles. Perfect for any project!"
+      "description": "Create text in alien languages for your social media profile, design fun memes, or enhance your gaming experience with unique, creative text styles. Perfect for any project!",
+      "items": [
+        {
+          "alt": "Normal: Hello World → Zalgo: H̴e̵l̷l̴o̷ ̵W̴o̸r̷l̴d̵",
+          "name": "Zalgo Text Effect"
+        },
+        {
+          "alt": "Normal: Gaming → Alien Symbols: 🎮👽🎮",
+          "name": "Gaming Username"
+        },
+        {
+          "alt": "Normal: Welcome → Circle Text: ⓦⓔⓛⓒⓞⓜⓔ",
+          "name": "Social Media Bio"
+        },
+        {
+          "alt": "Normal: Party → Futuristic: 🚀PΔЯŦY🚀",
+          "name": "Event Invitation"
+        },
+        {
+          "alt": "Normal: Code → Robot Text: [C][O][D][E]",
+          "name": "Tech Project"
+        },
+        {
+          "alt": "Normal: Fun → Emoji Mix: F🎪U🎭N🎪",
+          "name": "Creative Content"
+        }
+      ]
     },
     "howto": {
       "title": "How to Translate English to Alien Text",
       "description": "Follow these simple steps to transform your text into alien language styles with VibeTrans.",
+      "image": "/images/docs/alien-text-generator-how-to.webp",
+      "imageAlt": "How to use Alien Text Generator - Step by step guide",
       "steps": [
         {
           "title": "Open the Alien Text Generator tool",
@@ -81,11 +111,15 @@
       "items": [
         {
           "title": "Zalgo Text Origin",
-          "description": "Did you know that the Zalgo text used in memes comes from a 2004 internet horror story? The creepy, jumbled text style has spread all over the web and is now a key part of meme culture. It's amazing how this text effect continues to surprise and unsettle people even years later!"
+          "description": "Did you know that the Zalgo text used in memes comes from a 2004 internet horror story? The creepy, jumbled text style has spread all over the web and is now a key part of meme culture. It's amazing how this text effect continues to surprise and unsettle people even years later!",
+          "image": "/images/docs/alien-text-generator-fact-1.webp",
+          "imageAlt": "Zalgo text origin and meme culture history"
         },
         {
           "title": "Unicode Magic",
-          "description": "Alien texts often use Unicode characters like Greek, Cyrillic, and mathematical symbols. It's fascinating how combining these can make text look completely out of this world. This tool demonstrates incredible creativity by transforming ordinary text into something truly otherworldly!"
+          "description": "Alien texts often use Unicode characters like Greek, Cyrillic, and mathematical symbols. It's fascinating how combining these can make text look completely out of this world. This tool demonstrates incredible creativity by transforming ordinary text into something truly otherworldly!",
+          "image": "/images/docs/alien-text-generator-fact-2.webp",
+          "imageAlt": "Unicode characters and alien text transformation"
         }
       ]
     },
@@ -96,19 +130,27 @@
       "items": [
         {
           "title": "Seamless Language Detection",
-          "description": "VibeTrans boasts over 90% accuracy in real-time language detection. You won't need to select the input language manually. Just type or paste your text, and let VibeTrans do the magic. It's a feature that saves time and ensures precision."
+          "description": "VibeTrans boasts over 90% accuracy in real-time language detection. You won't need to select the input language manually. Just type or paste your text, and let VibeTrans do the magic. It's a feature that saves time and ensures precision.",
+          "image": "/images/docs/alien-text-generator-interest-1.webp",
+          "imageAlt": "Language detection for alien text generation"
         },
         {
           "title": "Multi-Modal Support",
-          "description": "Experience the flexibility of text, image OCR, and audio transcription with VibeTrans. Whether you're converting written text or spoken words, VibeTrans handles it all. This multi-modal support makes it a versatile tool for diverse translation needs."
+          "description": "Experience the flexibility of text, image OCR, and audio transcription with VibeTrans. Whether you're converting written text or spoken words, VibeTrans handles it all. This multi-modal support makes it a versatile tool for diverse translation needs.",
+          "image": "/images/docs/alien-text-generator-interest-2.webp",
+          "imageAlt": "Multi-modal alien text transformation features"
         },
         {
           "title": "Professional Translation Modes",
-          "description": "VibeTrans offers specialized translation modes tailored for different fields, including technical, legal, literary, idiomatic, and general categories. This ensures that your translations are accurate and contextually appropriate, no matter the subject."
+          "description": "VibeTrans offers specialized translation modes tailored for different fields, including technical, legal, literary, idiomatic, and general categories. This ensures that your translations are accurate and contextually appropriate, no matter the subject.",
+          "image": "/images/docs/alien-text-generator-interest-3.webp",
+          "imageAlt": "Professional alien text generation modes"
         },
         {
           "title": "Edge Runtime Efficiency",
-          "description": "With high-performance edge runtime optimization, VibeTrans delivers translations swiftly. This means reduced latency and enhanced speed, providing users with quick and efficient results, perfect for fast-paced environments."
+          "description": "With high-performance edge runtime optimization, VibeTrans delivers translations swiftly. This means reduced latency and enhanced speed, providing users with quick and efficient results, perfect for fast-paced environments.",
+          "image": "/images/docs/alien-text-generator-interest-4.webp",
+          "imageAlt": "High-performance alien text generation"
         }
       ]
     },

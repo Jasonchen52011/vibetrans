@@ -29,7 +29,7 @@ class SpeechCache {
     this.options = {
       maxEntries: options.maxEntries || 50,
       maxAge: options.maxAge || 24 * 60 * 60 * 1000, // 24小时
-      maxStorageSize: options.maxStorageSize || 10 * 1024 * 1024 // 10MB
+      maxStorageSize: options.maxStorageSize || 10 * 1024 * 1024, // 10MB
     };
 
     // 初始化时从localStorage恢复缓存元数据
@@ -46,7 +46,7 @@ class SpeechCache {
       pitch: options.pitch || 1,
       rate: options.rate || 1,
       volume: options.volume || 1,
-      emotion: options.emotion || 'neutral'
+      emotion: options.emotion || 'neutral',
     };
 
     return btoa(JSON.stringify(keyData));
@@ -63,7 +63,7 @@ class SpeechCache {
         accessCount: entry.accessCount,
         lastAccessed: entry.lastAccessed,
         duration: entry.duration,
-        hasBlob: !!entry.blob
+        hasBlob: !!entry.blob,
       }));
 
       localStorage.setItem(this.storageKey, JSON.stringify(metadata));
@@ -94,7 +94,7 @@ class SpeechCache {
           timestamp: item.timestamp,
           accessCount: item.accessCount,
           lastAccessed: item.lastAccessed,
-          duration: item.duration
+          duration: item.duration,
           // 注意：blob数据不存储在localStorage中，只存储元数据
         });
       }
@@ -116,7 +116,7 @@ class SpeechCache {
       }
     }
 
-    keysToDelete.forEach(key => this.cache.delete(key));
+    keysToDelete.forEach((key) => this.cache.delete(key));
 
     if (keysToDelete.length > 0) {
       this.saveCacheMetadata();
@@ -192,7 +192,7 @@ class SpeechCache {
       timestamp: Date.now(),
       accessCount: 1,
       lastAccessed: Date.now(),
-      ...data
+      ...data,
     };
 
     this.cache.set(key, entry);
@@ -239,7 +239,7 @@ class SpeechCache {
         size: 0,
         totalAccesses: 0,
         oldestEntry: 0,
-        newestEntry: 0
+        newestEntry: 0,
       };
     }
 
@@ -257,17 +257,24 @@ class SpeechCache {
       size: this.cache.size,
       totalAccesses,
       oldestEntry: oldestTime,
-      newestEntry: newestTime
+      newestEntry: newestTime,
     };
   }
 
   /**
    * 预热缓存 - 批量添加常用文本
    */
-  async warmUp(commonTexts: string[], options: SpeechOptions = {}): Promise<void> {
+  async warmUp(
+    commonTexts: string[],
+    options: SpeechOptions = {}
+  ): Promise<void> {
     // 这里可以添加逻辑来预先生成常用文本的语音
     // 由于Web Speech API的限制，这里只是示例
-    console.log('Speech cache warm-up initiated for', commonTexts.length, 'texts');
+    console.log(
+      'Speech cache warm-up initiated for',
+      commonTexts.length,
+      'texts'
+    );
   }
 }
 
@@ -275,7 +282,7 @@ class SpeechCache {
 export const speechCache = new SpeechCache({
   maxEntries: 30,
   maxAge: 12 * 60 * 60 * 1000, // 12小时
-  maxStorageSize: 5 * 1024 * 1024 // 5MB
+  maxStorageSize: 5 * 1024 * 1024, // 5MB
 });
 
 // 错误处理工具
@@ -287,11 +294,14 @@ export class SpeechErrorHandler {
   /**
    * 处理语音播放错误
    */
-  async handleError(error: Error, context: {
-    text: string;
-    options: SpeechOptions;
-    retryAttempt?: number;
-  }): Promise<{
+  async handleError(
+    error: Error,
+    context: {
+      text: string;
+      options: SpeechOptions;
+      retryAttempt?: number;
+    }
+  ): Promise<{
     shouldRetry: boolean;
     delay?: number;
     fallbackAction?: 'useDefaultVoice' | 'useSimplifiedText' | 'skip';
@@ -307,28 +317,28 @@ export class SpeechErrorHandler {
     if (error.name === 'NetworkError') {
       return {
         shouldRetry: retryAttempt < this.maxRetries,
-        delay: this.retryDelay * Math.pow(2, retryAttempt) // 指数退避
+        delay: this.retryDelay * Math.pow(2, retryAttempt), // 指数退避
       };
     }
 
     if (error.message.includes('voice not found')) {
       return {
         shouldRetry: false,
-        fallbackAction: 'useDefaultVoice'
+        fallbackAction: 'useDefaultVoice',
       };
     }
 
     if (error.message.includes('text too long')) {
       return {
         shouldRetry: false,
-        fallbackAction: 'useSimplifiedText'
+        fallbackAction: 'useSimplifiedText',
       };
     }
 
     // 默认策略：重试一次
     return {
       shouldRetry: retryAttempt === 0,
-      delay: 500
+      delay: 500,
     };
   }
 

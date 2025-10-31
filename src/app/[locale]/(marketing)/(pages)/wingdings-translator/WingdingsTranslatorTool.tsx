@@ -181,7 +181,7 @@ export default function WingdingsTranslatorTool({
         },
         onError: (error) => {
           console.error('Failed to copy:', error);
-        }
+        },
       });
     } catch (error) {
       console.error('Copy function loading failed:', error);
@@ -202,7 +202,7 @@ export default function WingdingsTranslatorTool({
         },
         onError: (error) => {
           console.error('Download failed:', error);
-        }
+        },
       });
     } catch (error) {
       console.error('Download function loading failed:', error);

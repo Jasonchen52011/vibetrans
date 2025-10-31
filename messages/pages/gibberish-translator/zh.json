@@ -51,10 +51,7 @@
       "badge": "About Gibberish",
       "title": "What is Gibberish Translator?",
       "description": "A Gibberish Translator is an innovative tool that transforms your regular text into nonsensical, playful language—also known as gibberish! Whether you're looking to create secret codes, teach language concepts, or just have fun, VibeTrans' Gibberish Translator makes it incredibly easy. With just a few clicks, you can turn any sentence into a hilarious mishmash of sounds. It's perfect for educators, content creators, or anyone who wants to add a unique twist to their communication!",
-      "image": {
-        "src": "/images/docs/what-is-gibberish-translator.webp",
-        "alt": "What is Gibberish Translator - Illustration showing text transformation"
-      }
+      "image": "/images/docs/what-is-gibberish-translator.webp"
     },
     "examples": {
       "title": "Example of Gibberish Translation",
@@ -63,34 +60,35 @@
       "afterTitle": "Gibberish Translation",
       "items": [
         {
-          "before": "Hello",
-          "after": "Heliblo"
+          "alt": "Hello → Heliblo",
+          "name": "Hello → Heliblo"
         },
         {
-          "before": "Welcome",
-          "after": "Welicomiber"
+          "alt": "Welcome → Welicomiber",
+          "name": "Welcome → Welicomiber"
         },
         {
-          "before": "Thank you",
-          "after": "Thaniber youbi"
+          "alt": "Thank you → Thaniber youbi",
+          "name": "Thank you → Thaniber youbi"
         },
         {
-          "before": "Goodbye",
-          "after": "Goodibbye"
+          "alt": "Goodbye → Goodibbye",
+          "name": "Goodbye → Goodibbye"
         },
         {
-          "before": "Friend",
-          "after": "Friebiend"
+          "alt": "Friend → Friebiend",
+          "name": "Friend → Friebiend"
         },
         {
-          "before": "Help me",
-          "after": "Helpib mebe"
+          "alt": "Help me → Helpib mebe",
+          "name": "Help me → Helpib mebe"
         }
       ]
     },
     "howto": {
       "title": "How to Translate English to Gibberish",
       "description": "Follow these easy steps to start translating your text into gibberish!",
+      "image": "/images/docs/gibberish-translator-how-to.webp",
       "steps": [
         {
           "title": "Enter Your Text",
@@ -114,24 +112,24 @@
       "title": "Who Uses Gibberish Translator?",
       "items": [
         {
-          "icon": "gamepad",
           "title": "Language Games and Secret Codes",
-          "description": "Whether you're a kid wanting to create a secret language with friends or an adult looking for fun communication tricks, VibeTrans' Gibberish Translator is a perfect tool. It's playful, easy to use, and endlessly entertaining. Users love it because it brings out the kid in everyone!"
+          "description": "Whether you're a kid wanting to create a secret language with friends or an adult looking for fun communication tricks, VibeTrans' Gibberish Translator is a perfect tool. It's playful, easy to use, and endlessly entertaining. Users love it because it brings out the kid in everyone!",
+          "image": "/images/docs/gibberish-secret-codes.webp"
         },
         {
-          "icon": "graduation-cap",
           "title": "Educational Purposes",
-          "description": "Teachers and educators can use this tool to make language learning more interactive. By transforming text into gibberish, you help students understand phonetics, syllables, and sound patterns in a fun way. It's a great way to engage learners and make lessons memorable!"
+          "description": "Teachers and educators can use this tool to make language learning more interactive. By transforming text into gibberish, you help students understand phonetics, syllables, and sound patterns in a fun way. It's a great way to engage learners and make lessons memorable!",
+          "image": "/images/docs/gibberish-education-purpose.webp"
         },
         {
-          "icon": "users",
           "title": "Content Creators and Entertainers",
-          "description": "Content creators love using gibberish translators for comedy, social media posts, and video content. It adds a quirky element to your work that can make it more shareable and memorable. I've seen influencers use gibberish to add humor to their posts, and it works like a charm!"
+          "description": "Content creators love using gibberish translators for comedy, social media posts, and video content. It adds a quirky element to your work that can make it more shareable and memorable. I've seen influencers use gibberish to add humor to their posts, and it works like a charm!",
+          "image": "/images/docs/gibberish-content-creators.webp"
         },
         {
-          "icon": "shield",
           "title": "Privacy and Fun Communication",
-          "description": "Want to send a message that only you and your friends understand? Gibberish is like a secret code! Use the translator to create playful messages that are tough to decipher. It's privacy with a fun twist—who knew privacy could be this entertaining?"
+          "description": "Want to send a message that only you and your friends understand? Gibberish is like a secret code! Use the translator to create playful messages that are tough to decipher. It's privacy with a fun twist—who knew privacy could be this entertaining?",
+          "image": "/images/docs/gibberish-privacy-fun.webp"
         }
       ]
     },
@@ -139,22 +137,18 @@
       "title": "Professional Gibberish Translator Engine for Quality Results",
       "items": [
         {
-          "icon": "palette",
           "title": "Customizable Gibberish Styles",
           "description": "Choose from multiple gibberish styles to match your mood or need. Whether you want random gibberish or syllable-based translations, VibeTrans gives you the flexibility to customize your output. It's your gibberish, your way!"
         },
         {
-          "icon": "zap",
           "title": "Instant Translation",
           "description": "No waiting, no hassle. VibeTrans provides real-time gibberish translation so you can see results instantly. Type, click, and boom—gibberish is ready to go! I appreciate tools that don't make me wait, and VibeTrans delivers on that front."
         },
         {
-          "icon": "file-text",
           "title": "Supports Multiple Formats",
           "description": "Upload .txt or .docx files directly into the translator. VibeTrans handles bulk translations effortlessly, making it perfect for larger projects. Whether it's a single sentence or an entire document, we've got you covered!"
         },
         {
-          "icon": "volume-2",
           "title": "Voice Input & Output",
           "description": "Speak your text and hear it back in gibberish! VibeTrans supports speech input and text-to-speech output, making the experience even more interactive. It is clear this feature is fantastic for accessibility and adds a new dimension to the fun!"
         }
@@ -233,14 +227,14 @@
       "title": "Discover Gibberish Translator: Your Complete Guide",
       "items": [
         {
-          "icon": "sparkles",
           "title": "The Origin of the Word",
-          "description": "Did you know that 'Gibberish' might have originated from an ancient alchemist's name? Jabir ibn Hayyan's cryptic writings are believed to have inspired the term! Isn't that cool? With VibeTrans, you can turn any text into this timeless language."
+          "description": "Did you know that 'Gibberish' might have originated from an ancient alchemist's name? Jabir ibn Hayyan's cryptic writings are believed to have inspired the term! Isn't that cool? With VibeTrans, you can turn any text into this timeless language.",
+          "image": "/images/docs/gibberish-origin-word.webp"
         },
         {
-          "icon": "brain",
           "title": "Gibberish Can Be Educational",
-          "description": "Believe it or not, gibberish isn't just for fun—it's also used in education! Teachers use gibberish to teach students about phonetics and language patterns. Plus, it's a great way to encourage creativity. Now that's what I call learning with a twist!"
+          "description": "Believe it or not, gibberish isn't just for fun—it's also used in education! Teachers use gibberish to teach students about phonetics and language patterns. Plus, it's a great way to encourage creativity. Now that's what I call learning with a twist!",
+          "image": "/images/docs/gibberish-educational.webp"
         }
       ]
     }

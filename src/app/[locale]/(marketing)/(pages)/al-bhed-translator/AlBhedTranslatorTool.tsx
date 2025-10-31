@@ -186,7 +186,7 @@ export default function AlBhedTranslatorTool({
         },
         onError: (error) => {
           console.error('Failed to copy:', error);
-        }
+        },
       });
     } catch (error) {
       console.error('Copy function loading failed:', error);
@@ -207,14 +207,13 @@ export default function AlBhedTranslatorTool({
         },
         onError: (error) => {
           console.error('Download failed:', error);
-        }
+        },
       });
     } catch (error) {
       console.error('Download function loading failed:', error);
     }
   };
 
-  
   return (
     <div className="container max-w-7xl mx-auto px-4 mb-10">
       <main className="w-full bg-white dark:bg-zinc-800 shadow-xl border border-gray-100 dark:border-zinc-700 rounded-lg p-4 md:p-8">

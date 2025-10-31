@@ -142,7 +142,7 @@
     "highlights": {
       "title": "Key Features of Ogham Translator",
       "description": "Ogham Translator offers advanced features for seamless text conversion and voice interaction.",
-      "features": [
+      "items": [
         {
           "icon": "FaVolumeUp",
           "title": "Voice Input/Output",

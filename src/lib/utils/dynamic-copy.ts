@@ -23,7 +23,7 @@ export async function dynamicCopyToClipboard(
     successMessage = 'Text copied to clipboard!',
     errorMessage = 'Failed to copy text',
     onSuccess,
-    onError
+    onError,
   } = options;
 
   try {
@@ -116,7 +116,9 @@ export async function smartCopyToClipboard(
     if (success) {
       options.onSuccess?.();
     } else {
-      options.onError?.(error instanceof Error ? error : new Error('All copy methods failed'));
+      options.onError?.(
+        error instanceof Error ? error : new Error('All copy methods failed')
+      );
     }
 
     return success;

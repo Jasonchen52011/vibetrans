@@ -19,10 +19,40 @@ type FAQItem = {
 
 export default function FaqSection({
   namespace = 'HomePage.faqs',
-}: { namespace?: string } = {}) {
+  subNamespace,
+}: { namespace?: string; subNamespace?: string } = {}) {
   const locale = useLocale();
-  // @ts-ignore - Dynamic namespace support
-  const t = useTranslations(namespace as any);
+
+  // Build the actual namespace based on whether subNamespace is provided
+  const actualNamespace = subNamespace ? `${namespace}.${subNamespace}` : namespace;
+
+  // Safe translation access with fallback
+  let t: any;
+  try {
+    // @ts-ignore - Dynamic namespace support
+    t = useTranslations(actualNamespace as any);
+  } catch (error) {
+    console.warn(`Failed to load translations for namespace: ${actualNamespace}`, error);
+    // Return null to not render the section if translations are not available
+    return null;
+  }
+
+  // Helper function to access nested translation keys
+  const getNestedTranslation = (key: string, fallback?: any) => {
+    try {
+      const result = t(key, fallback);
+
+      // If the result is the key itself, it means translation failed
+      if (typeof result === 'string' && result === key) {
+        return fallback || '';
+      }
+
+      return result;
+    } catch (e) {
+      console.warn(`Translation access failed for ${key}:`, e);
+      return fallback || '';
+    }
+  };
 
   // Dynamically build FAQ items based on available translations
   const faqItems: FAQItem[] = [];
@@ -44,41 +74,50 @@ export default function FaqSection({
   // Only attempt to load FAQs if the namespace has items
   let hasItems = false;
   try {
-    // @ts-ignore
-    const testCheck = t.raw('items');
-    hasItems = testCheck && typeof testCheck === 'object';
+    // Check if we can access item-1 directly
+    const firstItemQuestion = t(`items.item-1.question`, { default: null });
+    hasItems = firstItemQuestion && !firstItemQuestion.includes(`items.item-1.question`);
   } catch {
     hasItems = false;
   }
 
   if (hasItems) {
-    const itemsRaw = t.raw('items') as unknown;
 
     const pushItem = (
-      item: any,
+      question: string,
+      answer: string,
       index: number,
       key?: string | number
     ): void => {
-      if (!item || !item.question || !item.answer) {
+      if (!question || !answer) {
         return;
       }
 
       faqItems.push({
-        id: typeof key === 'string' ? key : `item-${index + 1}`,
+        id: typeof key === 'string' ? key : `item-${index}`,
         icon: icons[index] || 'help-circle',
-        question: item.question,
-        answer: item.answer,
+        question,
+        answer,
       });
     };
 
-    if (Array.isArray(itemsRaw)) {
-      itemsRaw.forEach((item, index) => pushItem(item, index));
-    } else if (itemsRaw && typeof itemsRaw === 'object') {
-      Object.entries(itemsRaw)
-        .sort(([a], [b]) =>
-          a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' })
-        )
-        .forEach(([key, item], index) => pushItem(item, index, key));
+    // Try to load up to 7 FAQ items (item-1 format)
+    for (let i = 1; i <= 7; i++) {
+      const key = `item-${i}`;
+
+      try {
+        const question = t(`items.${key}.question`, { default: null });
+
+        if (!question || question.includes(`items.${key}.question`)) {
+          break;
+        }
+
+        const answer = t(`items.${key}.answer`);
+
+        pushItem(question, answer, i - 1, key);
+      } catch {
+        break;
+      }
     }
   }
 
@@ -96,7 +135,7 @@ export default function FaqSection({
       <div className="mx-auto max-w-4xl">
         <HeaderSection
           // @ts-ignore - Dynamic translation keys
-          title={t('title')}
+          title={getNestedTranslation('title')}
         />
 
         <div className="mx-auto max-w-4xl mt-12">

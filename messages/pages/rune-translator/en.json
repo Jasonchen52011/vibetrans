@@ -128,6 +128,32 @@
         }
       ]
     },
+    "highlights": {
+      "title": "Key Features",
+      "description": "Discover why our rune translator is the best choice for gamers and enthusiasts.",
+      "items": [
+        {
+          "title": "Free to Use",
+          "icon": "FaRocket",
+          "description": "Completely free rune translator with no hidden costs or registration required. Translate unlimited text instantly."
+        },
+        {
+          "title": "Historically Accurate",
+          "icon": "FaBrain",
+          "description": "Based on extensive research of ancient runic alphabets, providing authentic translations you can trust."
+        },
+        {
+          "title": "Privacy Protected",
+          "icon": "FaShieldAlt",
+          "description": "Your translations are processed securely with industry-standard encryption. We never store your data without consent."
+        },
+        {
+          "title": "Multi-Format Support",
+          "icon": "FaChartLine",
+          "description": "Supports text input, file uploads, and voice input with multiple export options for your convenience."
+        }
+      ]
+    },
     "testimonials": {
       "title": "What Users Say",
       "subtitle": "Real feedback from real users",

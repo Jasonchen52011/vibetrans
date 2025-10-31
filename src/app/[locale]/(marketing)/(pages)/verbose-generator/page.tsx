@@ -9,6 +9,7 @@ import TestimonialsThreeColumnSection from '@/components/blocks/testimonials/tes
 import WhatIsSection from '@/components/blocks/whatis';
 import { AuroraBackground } from '@/components/ui/aurora-background';
 import { constructMetadata } from '@/lib/metadata';
+import { buildTranslatorPageContent } from '@/lib/translator-page';
 import { buildToolStructuredData } from '@/lib/seo/structured-data';
 import { getUrlWithLocale } from '@/lib/urls/urls';
 import type { Metadata } from 'next';
@@ -24,17 +25,14 @@ export async function generateMetadata({
   params: Promise<{ locale: Locale }>;
 }): Promise<Metadata | undefined> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'Metadata' });
-  const gt = await getTranslations({
-    locale,
-    namespace: 'VerboseGeneratorPage',
-  });
+  const t = await getTranslations({ locale, namespace: 'verboseGeneratorPage' });
+  const metadataT = await getTranslations({ locale, namespace: 'Metadata' });
 
   return constructMetadata({
-    title: `${gt('title')} | ${t('name')}`,
-    description: gt('description'),
+    title: `${t('title')} | ${metadataT('name')}`,
+    description: t('description'),
     canonicalUrl: getUrlWithLocale('/verbose-generator', locale),
-    image: '/images/docs/what-is-verbose-generator.webp',
+    image: t('whatIs.image'),
   });
 }
 
@@ -58,125 +56,10 @@ export default async function VerboseGeneratorPage(
     description: t('description'),
   });
 
-  // Page data for the tool
-  const pageData = {
-    tool: {
-      inputLabel: t('tool.inputLabel'),
-      outputLabel: t('tool.outputLabel'),
-      inputPlaceholder: t('tool.inputPlaceholder'),
-      outputPlaceholder: t('tool.outputPlaceholder'),
-      translateButton: t('tool.translateButton'),
-      uploadButton: t('tool.uploadButton'),
-      uploadHint: t('tool.uploadHint'),
-      loading: t('tool.loading'),
-      error: t('tool.error'),
-      noInput: t('tool.noInput'),
-      styleLabel: t('tool.styleLabel'),
-      styles: {
-        academic: {
-          label: t('tool.styles.academic.label'),
-          description: t('tool.styles.academic.description'),
-        },
-        creative: {
-          label: t('tool.styles.creative.label'),
-          description: t('tool.styles.creative.description'),
-        },
-        humorous: {
-          label: t('tool.styles.humorous.label'),
-          description: t('tool.styles.humorous.description'),
-        },
-        technical: {
-          label: t('tool.styles.technical.label'),
-          description: t('tool.styles.technical.description'),
-        },
-        narrative: {
-          label: t('tool.styles.narrative.label'),
-          description: t('tool.styles.narrative.description'),
-        },
-        business: {
-          label: t('tool.styles.business.label'),
-          description: t('tool.styles.business.description'),
-        },
-      },
-    },
-  };
-
-  // Examples section data
-  const examplesData = {
-    title: t('examples.title'),
-    description: t('examples.description'),
-    images: [
-      {
-        alt: t('examples.items.0.alt'),
-        name: t('examples.items.0.name'),
-      },
-      {
-        alt: t('examples.items.1.alt'),
-        name: t('examples.items.1.name'),
-      },
-      {
-        alt: t('examples.items.2.alt'),
-        name: t('examples.items.2.name'),
-      },
-      {
-        alt: t('examples.items.3.alt'),
-        name: t('examples.items.3.name'),
-      },
-      {
-        alt: t('examples.items.4.alt'),
-        name: t('examples.items.4.name'),
-      },
-      {
-        alt: t('examples.items.5.alt'),
-        name: t('examples.items.5.name'),
-      },
-    ],
-  };
-
-  // What is section
-  const whatIsSection = {
-    title: t('whatIs.title'),
-    description: t('whatIs.description'),
-    features: [],
-    image: {
-      src: '/images/docs/what-is-verbose-generator.webp',
-      alt: 'What is Verbose Generator',
-    },
-    cta: { text: t('ctaButton') },
-  };
-
-  // How to section
-  const howtoSection = {
-    name: 'howto',
-    title: t('howto.title'),
-    description: t('howto.description'),
-    image: {
-      src: '/images/docs/verbose-generator-how-to.webp',
-      alt: 'How to use Verbose Generator',
-    },
-    items: [
-      {
-        title: t('howto.steps.0.title'),
-        description: t('howto.steps.0.description'),
-        icon: 'FaFileUpload',
-      },
-      {
-        title: t('howto.steps.1.title'),
-        description: t('howto.steps.1.description'),
-        icon: 'FaPencilAlt',
-      },
-      {
-        title: t('howto.steps.2.title'),
-        description: t('howto.steps.2.description'),
-        icon: 'FaLanguage',
-      },
-      {
-        title: t('howto.steps.3.title'),
-        description: t('howto.steps.3.description'),
-        icon: 'FaCheckCircle',
-      },
-    ],
-  };
+  // 使用内容构建器生成所有页面内容
+  const translatorContent = buildTranslatorPageContent(t, {
+    howToIcons: ['FaFileUpload', 'FaPencilAlt', 'FaLanguage'],
+  });
 
   // Highlights section
   const highlightsSection = {
@@ -207,69 +90,7 @@ export default async function VerboseGeneratorPage(
     ],
   };
 
-  // Fun Facts section
-  const funFactsSection = {
-    name: 'funFacts',
-    title: t('funfacts.title'),
-    items: [
-      {
-        title: t('funfacts.items.0.title'),
-        description: t('funfacts.items.0.description'),
-        image: {
-          src: '/images/docs/verbose-generator-fact-1.webp',
-          alt: t('funfacts.items.0.title'),
-        },
-      },
-      {
-        title: t('funfacts.items.1.title'),
-        description: t('funfacts.items.1.description'),
-        image: {
-          src: '/images/docs/verbose-generator-fact-2.webp',
-          alt: t('funfacts.items.1.title'),
-        },
-      },
-    ],
-  };
-
-  // User Interest section (4 content blocks)
-  const userInterestSection = {
-    name: 'userInterest',
-    title: t('userInterest.title'),
-    items: [
-      {
-        title: t('userInterest.items.0.title'),
-        description: t('userInterest.items.0.description'),
-        image: {
-          src: '/images/docs/verbose-generator-interest-1.webp',
-          alt: t('userInterest.items.0.title'),
-        },
-      },
-      {
-        title: t('userInterest.items.1.title'),
-        description: t('userInterest.items.1.description'),
-        image: {
-          src: '/images/docs/verbose-generator-interest-2.webp',
-          alt: t('userInterest.items.1.title'),
-        },
-      },
-      {
-        title: t('userInterest.items.2.title'),
-        description: t('userInterest.items.2.description'),
-        image: {
-          src: '/images/docs/verbose-generator-interest-3.webp',
-          alt: t('userInterest.items.2.title'),
-        },
-      },
-      {
-        title: t('userInterest.items.3.title'),
-        description: t('userInterest.items.3.description'),
-        image: {
-          src: '/images/docs/verbose-generator-interest-4.webp',
-          alt: t('userInterest.items.3.title'),
-        },
-      },
-    ],
-  };
+  
 
   return (
     <>
@@ -327,23 +148,23 @@ export default async function VerboseGeneratorPage(
 
         {/* Tool Component */}
         <div className="pt-0 pb-12 bg-gradient-to-b from-muted/20 to-background">
-          <VerboseGeneratorTool pageData={pageData} locale={locale} />
+          <VerboseGeneratorTool pageData={translatorContent.pageData} locale={locale} />
         </div>
 
         {/* What Is Section */}
-        <WhatIsSection section={whatIsSection} />
+        <WhatIsSection section={translatorContent.whatIs} />
 
         {/* Examples Section */}
-        <BeforeAfterSection beforeAfterGallery={examplesData} />
+        <BeforeAfterSection beforeAfterGallery={translatorContent.examples} />
 
         {/* How to Section */}
-        <HowTo section={howtoSection} />
+        <HowTo section={translatorContent.howTo} />
 
         {/* User Interest Blocks */}
-        <UserScenarios section={userInterestSection} ctaText={t('ctaButton')} />
+        <UserScenarios section={translatorContent.userInterest} ctaText={t('ctaButton')} />
 
         {/* Fun Facts */}
-        <UserScenarios section={funFactsSection} ctaText={t('ctaButton')} />
+        <UserScenarios section={translatorContent.funFacts} ctaText={t('ctaButton')} />
 
         {/* Highlights */}
         <WhyChoose section={highlightsSection} />
@@ -361,13 +182,13 @@ export default async function VerboseGeneratorPage(
         />
 
         {/* Testimonials */}
-        <TestimonialsThreeColumnSection namespace="VerboseGeneratorPage.testimonials" />
+        <TestimonialsThreeColumnSection namespace="VerboseGeneratorPage" subNamespace="testimonials" />
 
         {/* FAQ */}
-        <FaqSection namespace="VerboseGeneratorPage.faqs" />
+        <FaqSection namespace="VerboseGeneratorPage" subNamespace="faqs" />
 
         {/* CTA */}
-        <CallToActionSection namespace="VerboseGeneratorPage.cta" />
+        <CallToActionSection namespace="VerboseGeneratorPage" subNamespace="cta" />
       </div>
     </>
   );

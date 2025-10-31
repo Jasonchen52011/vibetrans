@@ -20,19 +20,79 @@ const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 // Language detection configuration
 const LANGUAGE_HINTS = {
   swahili: [
-    'hujambo', 'jambo', 'habari', 'asante', 'karibu', 'mambo', 'sijambo',
-    'rafiki', 'tafadhali', 'pole', 'samahani', 'nzuri', 'kwaheri',
-    'kwa', 'na', 'wa', 'ya', 'la', 'za', ' cha', 'vya', 'ya', 'me', 'li',
-    'ni', 'tu', 'wa', 'wa', 'ku', 'mu', 'ki', 'vi', 'zi',
-    'mimi', 'wewe', 'yeye', 'sisi', 'ninyi', 'wao',
-    'hapa', 'pale', 'huko', 'humu', 'mahali',
-    'leo', 'kesho', 'jana', 'sasa', 'bado',
-    'ndiyo', 'hapana', 'labda', 'kama', 'ila', 'kwa sababu'
+    'hujambo',
+    'jambo',
+    'habari',
+    'asante',
+    'karibu',
+    'mambo',
+    'sijambo',
+    'rafiki',
+    'tafadhali',
+    'pole',
+    'samahani',
+    'nzuri',
+    'kwaheri',
+    'kwa',
+    'na',
+    'wa',
+    'ya',
+    'la',
+    'za',
+    ' cha',
+    'vya',
+    'ya',
+    'me',
+    'li',
+    'ni',
+    'tu',
+    'wa',
+    'wa',
+    'ku',
+    'mu',
+    'ki',
+    'vi',
+    'zi',
+    'mimi',
+    'wewe',
+    'yeye',
+    'sisi',
+    'ninyi',
+    'wao',
+    'hapa',
+    'pale',
+    'huko',
+    'humu',
+    'mahali',
+    'leo',
+    'kesho',
+    'jana',
+    'sasa',
+    'bado',
+    'ndiyo',
+    'hapana',
+    'labda',
+    'kama',
+    'ila',
+    'kwa sababu',
   ],
-  english: ['the', 'and', 'you', 'with', 'that', 'from', 'this', 'not', 'are', 'but'],
+  english: [
+    'the',
+    'and',
+    'you',
+    'with',
+    'that',
+    'from',
+    'this',
+    'not',
+    'are',
+    'but',
+  ],
 } as const;
 
-function detectLanguageLocally(text: string): 'Swahili' | 'English' | 'Unknown' {
+function detectLanguageLocally(
+  text: string
+): 'Swahili' | 'English' | 'Unknown' {
   const swahiliHints = LANGUAGE_HINTS.swahili;
   const englishHints = LANGUAGE_HINTS.english;
 
@@ -52,8 +112,8 @@ function detectLanguageLocally(text: string): 'Swahili' | 'English' | 'Unknown' 
 
 async function callOpenAIForTranslation(
   text: string,
-  sourceLanguage: string = 'Swahili',
-  targetLanguage: string = 'English'
+  sourceLanguage = 'Swahili',
+  targetLanguage = 'English'
 ): Promise<TranslationResult | null> {
   if (!OPENAI_API_KEY) {
     return null;
@@ -132,8 +192,11 @@ Provide accurate translation with cultural context awareness.`;
 
 export async function POST(request: Request) {
   try {
-    const { text, inputType = 'text', direction = 'auto' }: TranslationRequest =
-      await request.json();
+    const {
+      text,
+      inputType = 'text',
+      direction = 'auto',
+    }: TranslationRequest = await request.json();
 
     if (!text || typeof text !== 'string') {
       return NextResponse.json(
@@ -153,7 +216,11 @@ export async function POST(request: Request) {
     const detectedLanguage = detectLanguageLocally(text);
 
     // Try AI translation first
-    const aiResult = await callOpenAIForTranslation(text, detectedLanguage, 'English');
+    const aiResult = await callOpenAIForTranslation(
+      text,
+      detectedLanguage,
+      'English'
+    );
 
     if (aiResult) {
       return NextResponse.json({
@@ -166,7 +233,7 @@ export async function POST(request: Request) {
         detectedTargetLanguage: aiResult.detectedTargetLanguage.toLowerCase(),
         backTranslation: aiResult.backTranslation,
         confidence: aiResult.detectedSourceLanguage === 'Swahili' ? 0.9 : 0.8,
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       });
     }
 
@@ -187,9 +254,8 @@ export async function POST(request: Request) {
       backTranslation: null,
       confidence: 0.5,
       warning: 'AI translation unavailable, using demo mode.',
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     });
-
   } catch (error) {
     if (process.env.NODE_ENV === 'development') {
       console.error('Swahili to English translation error:', error);
@@ -197,7 +263,7 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         error: 'Translation failed',
-        details: error instanceof Error ? error.message : 'Unknown error'
+        details: error instanceof Error ? error.message : 'Unknown error',
       },
       { status: 500 }
     );
@@ -207,15 +273,16 @@ export async function POST(request: Request) {
 export async function GET() {
   return NextResponse.json({
     message: 'Swahili to English Translator API',
-    description: 'Translate between Swahili and English with AI-powered accuracy',
+    description:
+      'Translate between Swahili and English with AI-powered accuracy',
     usage: {
       endpoint: '/api/swahili-to-english-translator',
       method: 'POST',
       body: {
         text: 'string (required)',
         inputType: 'text (optional, default: text)',
-        direction: 'auto (optional, default: auto)'
-      }
+        direction: 'auto (optional, default: auto)',
+      },
     },
     features: [
       'Bidirectional Swahili-English translation',
@@ -223,10 +290,10 @@ export async function GET() {
       'Cultural context awareness',
       'Swahili noun class system handling',
       'Back-translation verification',
-      'Up to 5000 characters per request'
+      'Up to 5000 characters per request',
     ],
     supportedLanguages: ['Swahili', 'English'],
     maxTextLength: 5000,
-    timestamp: new Date().toISOString()
+    timestamp: new Date().toISOString(),
   });
 }

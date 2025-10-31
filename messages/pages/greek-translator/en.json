@@ -136,7 +136,7 @@
     "highlights": {
       "title": "Key Features of Greek-Translator Suite",
       "description": "Uncover the power of the Greek-Translator Suite with these standout features.",
-      "features": [
+      "items": [
         {
           "title": "AI Context Understanding",
           "icon": "FaBrain",

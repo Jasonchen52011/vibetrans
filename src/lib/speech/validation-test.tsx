@@ -5,10 +5,14 @@
 
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
 import { SpeechButton } from '@/components/ui/speech-button';
-import { getSpeechPresetFromContext, detectTranslatorType, TranslatorType } from '@/lib/speech/translator-presets';
+import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
+import {
+  TranslatorType,
+  detectTranslatorType,
+  getSpeechPresetFromContext,
+} from '@/lib/speech/translator-presets';
+import React, { useState, useEffect } from 'react';
 
 interface TestResult {
   translatorType: string;
@@ -29,77 +33,88 @@ export function SpeechValidationTest() {
     {
       type: 'minion-translator',
       text: 'Banana! Hello! Apple! Potato!',
-      expectedType: TranslatorType.MINION
+      expectedType: TranslatorType.MINION,
     },
     {
       type: 'mandalorian-translator',
-      text: 'This is the way. Su cuy\'gar.',
-      expectedType: TranslatorType.MANDALORIAN
+      text: "This is the way. Su cuy'gar.",
+      expectedType: TranslatorType.MANDALORIAN,
     },
     {
       type: 'baby-translator',
       text: 'Goo goo ga ga! Baby wants milk!',
-      expectedType: TranslatorType.BABY
+      expectedType: TranslatorType.BABY,
     },
     {
       type: 'dog-translator',
       text: 'Woof woof! Bark bark! Good boy!',
-      expectedType: TranslatorType.DOG
+      expectedType: TranslatorType.DOG,
     },
     {
       type: 'yoda-translator',
       text: 'The force is strong with you, hmmm.',
-      expectedType: TranslatorType.YODA
+      expectedType: TranslatorType.YODA,
     },
     {
       type: 'ancient-greek-translator',
       text: 'Ancient wisdom speaks through time.',
-      expectedType: TranslatorType.ANCIENT
+      expectedType: TranslatorType.ANCIENT,
     },
     {
       type: 'gibberish-translator',
       text: 'Gobbledygook nonsense funny words!',
-      expectedType: TranslatorType.FUNNY
+      expectedType: TranslatorType.FUNNY,
     },
     {
       type: 'normal-translator',
       text: 'This is a normal translation test.',
-      expectedType: TranslatorType.NORMAL
-    }
+      expectedType: TranslatorType.NORMAL,
+    },
   ];
 
   // 测试翻译器类型检测
-  const testTranslatorDetection = (filePath: string, expectedType: TranslatorType) => {
+  const testTranslatorDetection = (
+    filePath: string,
+    expectedType: TranslatorType
+  ) => {
     const detectedType = detectTranslatorType(`/pages/${filePath}/Tool.tsx`);
     return {
       detected: detectedType,
       expected: expectedType,
-      correct: detectedType === expectedType
+      correct: detectedType === expectedType,
     };
   };
 
   // 测试语音预设获取
-  const testPresetGeneration = (filePath: string, locale: string = 'en') => {
+  const testPresetGeneration = (filePath: string, locale = 'en') => {
     try {
-      const preset = getSpeechPresetFromContext({
-        filePath: `/pages/${filePath}/Tool.tsx`
-      }, locale);
+      const preset = getSpeechPresetFromContext(
+        {
+          filePath: `/pages/${filePath}/Tool.tsx`,
+        },
+        locale
+      );
 
       return {
         success: true,
         preset,
-        hasRequiredFields: preset.lang && preset.pitch !== undefined && preset.rate !== undefined
+        hasRequiredFields:
+          preset.lang &&
+          preset.pitch !== undefined &&
+          preset.rate !== undefined,
       };
     } catch (error) {
       return {
         success: false,
-        error: error instanceof Error ? error.message : 'Unknown error'
+        error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
   };
 
   // 运行单个测试
-  const runSingleTest = async (testCase: typeof testCases[0]): Promise<TestResult> => {
+  const runSingleTest = async (
+    testCase: (typeof testCases)[0]
+  ): Promise<TestResult> => {
     setCurrentTest(`Testing ${testCase.type}...`);
 
     const result: TestResult = {
@@ -108,12 +123,15 @@ export function SpeechValidationTest() {
       oldComponentWorking: false,
       newComponentWorking: false,
       presetApplied: null,
-      error: undefined
+      error: undefined,
     };
 
     try {
       // 测试翻译器类型检测
-      const detectionResult = testTranslatorDetection(testCase.type, testCase.expectedType);
+      const detectionResult = testTranslatorDetection(
+        testCase.type,
+        testCase.expectedType
+      );
 
       // 测试预设生成
       const presetResult = testPresetGeneration(testCase.type);
@@ -138,9 +156,9 @@ export function SpeechValidationTest() {
       } catch (error) {
         result.error = `New component error: ${error}`;
       }
-
     } catch (error) {
-      result.error = error instanceof Error ? error.message : 'Unknown test error';
+      result.error =
+        error instanceof Error ? error.message : 'Unknown test error';
     }
 
     return result;
@@ -156,7 +174,7 @@ export function SpeechValidationTest() {
       results.push(result);
 
       // 添加延迟避免浏览器语音API冲突
-      await new Promise(resolve => setTimeout(resolve, 500));
+      await new Promise((resolve) => setTimeout(resolve, 500));
     }
 
     setTestResults(results);
@@ -167,10 +185,10 @@ export function SpeechValidationTest() {
   // 生成测试报告
   const generateReport = () => {
     const totalTests = testResults.length;
-    const passedOld = testResults.filter(r => r.oldComponentWorking).length;
-    const passedNew = testResults.filter(r => r.newComponentWorking).length;
-    const correctDetection = testResults.filter(r =>
-      r.presetApplied?.success && r.presetApplied?.hasRequiredFields
+    const passedOld = testResults.filter((r) => r.oldComponentWorking).length;
+    const passedNew = testResults.filter((r) => r.newComponentWorking).length;
+    const correctDetection = testResults.filter(
+      (r) => r.presetApplied?.success && r.presetApplied?.hasRequiredFields
     ).length;
 
     return {
@@ -180,7 +198,7 @@ export function SpeechValidationTest() {
       detectionSuccess: correctDetection,
       oldSuccessRate: Math.round((passedOld / totalTests) * 100),
       newSuccessRate: Math.round((passedNew / totalTests) * 100),
-      detectionSuccessRate: Math.round((correctDetection / totalTests) * 100)
+      detectionSuccessRate: Math.round((correctDetection / totalTests) * 100),
     };
   };
 
@@ -188,7 +206,9 @@ export function SpeechValidationTest() {
 
   return (
     <div className="p-6 bg-white dark:bg-zinc-800 rounded-lg shadow-lg max-w-4xl mx-auto">
-      <h2 className="text-2xl font-bold mb-6 text-center">🔊 语音功能替换验证测试</h2>
+      <h2 className="text-2xl font-bold mb-6 text-center">
+        🔊 语音功能替换验证测试
+      </h2>
 
       {/* 测试控制 */}
       <div className="text-center mb-8">
@@ -214,19 +234,27 @@ export function SpeechValidationTest() {
           <h3 className="font-semibold mb-3">📊 测试报告</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
             <div className="text-center">
-              <div className="text-2xl font-bold text-blue-600">{report.totalTests}</div>
+              <div className="text-2xl font-bold text-blue-600">
+                {report.totalTests}
+              </div>
               <div className="text-gray-600">总测试数</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-green-600">{report.oldSuccessRate}%</div>
+              <div className="text-2xl font-bold text-green-600">
+                {report.oldSuccessRate}%
+              </div>
               <div className="text-gray-600">旧组件成功率</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-green-600">{report.newSuccessRate}%</div>
+              <div className="text-2xl font-bold text-green-600">
+                {report.newSuccessRate}%
+              </div>
               <div className="text-gray-600">新组件成功率</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-purple-600">{report.detectionSuccessRate}%</div>
+              <div className="text-2xl font-bold text-purple-600">
+                {report.detectionSuccessRate}%
+              </div>
               <div className="text-gray-600">检测准确率</div>
             </div>
           </div>
@@ -242,25 +270,31 @@ export function SpeechValidationTest() {
               <div className="flex items-center justify-between mb-2">
                 <h4 className="font-medium">{result.translatorType}</h4>
                 <div className="flex gap-2">
-                  <span className={`px-2 py-1 text-xs rounded ${
-                    result.oldComponentWorking
-                      ? 'bg-green-100 text-green-800'
-                      : 'bg-red-100 text-red-800'
-                  }`}>
+                  <span
+                    className={`px-2 py-1 text-xs rounded ${
+                      result.oldComponentWorking
+                        ? 'bg-green-100 text-green-800'
+                        : 'bg-red-100 text-red-800'
+                    }`}
+                  >
                     旧组件: {result.oldComponentWorking ? '✅' : '❌'}
                   </span>
-                  <span className={`px-2 py-1 text-xs rounded ${
-                    result.newComponentWorking
-                      ? 'bg-green-100 text-green-800'
-                      : 'bg-red-100 text-red-800'
-                  }`}>
+                  <span
+                    className={`px-2 py-1 text-xs rounded ${
+                      result.newComponentWorking
+                        ? 'bg-green-100 text-green-800'
+                        : 'bg-red-100 text-red-800'
+                    }`}
+                  >
                     新组件: {result.newComponentWorking ? '✅' : '❌'}
                   </span>
-                  <span className={`px-2 py-1 text-xs rounded ${
-                    result.presetApplied?.success
-                      ? 'bg-purple-100 text-purple-800'
-                      : 'bg-gray-100 text-gray-800'
-                  }`}>
+                  <span
+                    className={`px-2 py-1 text-xs rounded ${
+                      result.presetApplied?.success
+                        ? 'bg-purple-100 text-purple-800'
+                        : 'bg-gray-100 text-gray-800'
+                    }`}
+                  >
                     检测: {result.presetApplied?.success ? '✅' : '⚠️'}
                   </span>
                 </div>
@@ -272,7 +306,8 @@ export function SpeechValidationTest() {
 
               {result.presetApplied?.preset && (
                 <div className="text-xs bg-gray-100 dark:bg-zinc-700 p-2 rounded mb-2">
-                  <strong>语音预设:</strong> {JSON.stringify(result.presetApplied.preset, null, 2)}
+                  <strong>语音预设:</strong>{' '}
+                  {JSON.stringify(result.presetApplied.preset, null, 2)}
                 </div>
               )}
 

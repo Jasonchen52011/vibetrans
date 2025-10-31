@@ -34,11 +34,12 @@ const filesToUpdate = [
   'src/app/[locale]/(marketing)/(pages)/aramaic-translator/AramaicTranslatorTool.tsx',
   'src/app/[locale]/(marketing)/(pages)/ancient-greek-translator/AncientGreekTranslatorTool.tsx',
   'src/app/[locale]/(marketing)/(pages)/alien-text-generator/AlienTextGeneratorTool.tsx',
-  'src/app/[locale]/(marketing)/(pages)/albanian-to-english/AlbanianToEnglishTool.tsx'
+  'src/app/[locale]/(marketing)/(pages)/albanian-to-english/AlbanianToEnglishTool.tsx',
 ];
 
 // 复制函数的旧模式
-const copyOldPattern = /\/\/ Copy[^]*?const handleCopy = async \(\) => \{[^]*?try \{[^]*?await navigator\.clipboard\.writeText\([^)]+\);[^]*?\} catch \(err\) \{[^]*?console\.error\('Failed to copy:', err\);[^]*?\}[^]*?\};/gs;
+const copyOldPattern =
+  /\/\/ Copy[^]*?const handleCopy = async \(\) => \{[^]*?try \{[^]*?await navigator\.clipboard\.writeText\([^)]+\);[^]*?\} catch \(err\) \{[^]*?console\.error\('Failed to copy:', err\);[^]*?\}[^]*?\};/gs;
 
 // 复制函数的新模式
 const copyNewPattern = `// Copy - 动态加载
@@ -66,7 +67,8 @@ const copyNewPattern = `// Copy - 动态加载
   };`;
 
 // 下载函数的旧模式
-const downloadOldPattern = /\/\/ Download[^]*?const handleDownload = \(\) => \{[^]*?if \(!outputText[^)]*\) return;[^]*?const blob = new Blob\(\[outputText\], \{ type: 'text\/plain' \}\);[^]*?const url = URL\.createObjectURL\(blob\);[^]*?const a = document\.createElement\('a'\);[^]*?a\.href = url;[^]*?a\.download = `[^`]+`;\[^]*?document\.body\.appendChild\(a\);[^]*?a\.click\(\);[^]*?document\.body\.removeChild\(a\);[^]*?URL\.revokeObjectURL\(url\);[^]*?\};/gs;
+const downloadOldPattern =
+  /\/\/ Download[^]*?const handleDownload = \(\) => \{[^]*?if \(!outputText[^)]*\) return;[^]*?const blob = new Blob\(\[outputText\], \{ type: 'text\/plain' \}\);[^]*?const url = URL\.createObjectURL\(blob\);[^]*?const a = document\.createElement\('a'\);[^]*?a\.href = url;[^]*?a\.download = `[^`]+`;\[^]*?document\.body\.appendChild\(a\);[^]*?a\.click\(\);[^]*?document\.body\.removeChild\(a\);[^]*?URL\.revokeObjectURL\(url\);[^]*?\};/gs;
 
 // 下载函数的新模式
 const downloadNewPattern = `// Download - 动态加载
@@ -120,7 +122,7 @@ console.log('Starting batch update of copy and download functions...\n');
 let successCount = 0;
 let failCount = 0;
 
-filesToUpdate.forEach(filePath => {
+filesToUpdate.forEach((filePath) => {
   if (updateFile(filePath)) {
     successCount++;
   } else {

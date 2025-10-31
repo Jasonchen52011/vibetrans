@@ -2,15 +2,14 @@ import BeforeAfterSection from '@/components/blocks/Examples';
 import CallToActionSection from '@/components/blocks/calltoaction/calltoaction';
 import ExploreOurAiTools from '@/components/blocks/exploretools';
 import FaqSection from '@/components/blocks/faqs/faqs';
-import FeaturesSection from '@/components/blocks/features/features';
 import UserScenarios from '@/components/blocks/funfacts';
 import WhyChoose from '@/components/blocks/highlights';
 import HowTo from '@/components/blocks/how-to';
 import TestimonialsThreeColumnSection from '@/components/blocks/testimonials/testimonials-three-column';
-import UniqueSection from '@/components/blocks/unique';
 import WhatIsSection from '@/components/blocks/whatis';
 import { AuroraBackground } from '@/components/ui/aurora-background';
 import { constructMetadata } from '@/lib/metadata';
+import { buildTranslatorPageContent } from '@/lib/translator-page';
 import { buildToolStructuredData } from '@/lib/seo/structured-data';
 import { getUrlWithLocale } from '@/lib/urls/urls';
 import type { Metadata } from 'next';
@@ -29,14 +28,12 @@ export async function generateMetadata({
   params: Promise<{ locale: Locale }>;
 }): Promise<Metadata | undefined> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'Metadata' });
-  const dt = await getTranslations({ locale, namespace: 'DogTranslatorPage' });
-
+  const t = await getTranslations({ locale, namespace: 'DogTranslatorPage' });
   return constructMetadata({
-    title: `${dt('title')} | ${t('name')}`,
-    description: dt('description'),
+    title: `${t('title')} | VibeTrans`,
+    description: t('description'),
     canonicalUrl: getUrlWithLocale('/dog-translator', locale),
-    image: '/images/docs/pet-training-made-fun.webp',
+    image: t('whatIs.image'),
   });
 }
 
@@ -47,6 +44,8 @@ interface DogTranslatorPageProps {
 export default async function DogTranslatorPage(props: DogTranslatorPageProps) {
   const params = await props.params;
   const { locale } = params;
+
+  // 使用标准 getTranslations 获取翻译
   const t = await getTranslations({ locale, namespace: 'DogTranslatorPage' });
 
   // Structured Data for SEO
@@ -55,245 +54,19 @@ export default async function DogTranslatorPage(props: DogTranslatorPageProps) {
     description: t('description'),
   });
 
-  // Examples section data
-  const examplesData = {
-    title: t('examples.title'),
-    description: t('examples.description'),
-    images: [
-      {
-        src: '',
-        alt: t('examples.items.0.alt'),
-        name: t('examples.items.0.name'),
-        audio: '/voice/happy.mp3',
-        emotion: 'Happy',
-      },
-      {
-        src: '',
-        alt: t('examples.items.1.alt'),
-        name: t('examples.items.1.name'),
-        audio: '/voice/happy3.mp3',
-        emotion: 'Excited',
-      },
-      {
-        src: '',
-        alt: t('examples.items.2.alt'),
-        name: t('examples.items.2.name'),
-        audio: '/voice/sad.mp3',
-        emotion: 'Sad',
-      },
-      {
-        src: '',
-        alt: t('examples.items.3.alt'),
-        name: t('examples.items.3.name'),
-        audio: '/voice/angry.mp3',
-        emotion: 'Angry',
-      },
-      {
-        src: '',
-        alt: t('examples.items.4.alt'),
-        name: t('examples.items.4.name'),
-        audio: '/voice/normal.mp3',
-        emotion: 'Calm',
-      },
-      {
-        src: '',
-        alt: t('examples.items.5.alt'),
-        name: t('examples.items.5.name'),
-        audio: '/voice/happy2.mp3',
-        emotion: 'Playful',
-      },
-    ],
-  };
-
-  // User scenarios section
-  const userScenariosSection = {
-    name: 'userscenarios',
-    title: t('userScenarios.title'),
-    items: [
-      {
-        title: t('userScenarios.items.0.title'),
-        description: t('userScenarios.items.0.description'),
-        image: {
-          src: '/images/docs/family-entertainment.webp',
-          alt: t('userScenarios.items.0.title'),
-        },
-      },
-      {
-        title: t('userScenarios.items.1.title'),
-        description: t('userScenarios.items.1.description'),
-        image: {
-          src: '/images/docs/pet-training-made-fun.webp',
-          alt: t('userScenarios.items.1.title'),
-        },
-      },
-    ],
-  };
-
-  // Fun Facts section (text-focused)
-  const funFactsSection = {
-    name: 'funFacts',
-    title: t('funFacts.title'),
-    items: [
-      {
-        title: t('funFacts.items.0.title'),
-        description: t('funFacts.items.0.description'),
-      },
-      {
-        title: t('funFacts.items.1.title'),
-        description: t('funFacts.items.1.description'),
-      },
-    ],
-  };
-
-  // Highlights section
-  const highlightsSection = {
-    name: 'highlights',
-    title: t('highlights.title'),
-    description: t('highlights.description'),
-    items: [
-      {
-        icon: 'FaRocket',
-        title: t('highlights.items.0.title'),
-        description: t('highlights.items.0.description'),
-      },
-      {
-        icon: 'FaBrain',
-        title: t('highlights.items.1.title'),
-        description: t('highlights.items.1.description'),
-      },
-      {
-        icon: 'FaHeart',
-        title: t('highlights.items.2.title'),
-        description: t('highlights.items.2.description'),
-      },
-      {
-        icon: 'FaShieldAlt',
-        title: t('highlights.items.3.title'),
-        description: t('highlights.items.3.description'),
-      },
-    ],
-  };
-
-  // Page data for tool component consumption
-  const pageData = {
-    tool: {
-      yourWords: t('tool.yourWords'),
-      doggyVibe: t('tool.doggyVibe'),
-      inputPlaceholder: t('tool.inputPlaceholder'),
-      inputLabel: t('tool.inputLabel'),
-      outputPlaceholder: t('tool.outputPlaceholder'),
-      outputLabel: t('tool.outputLabel'),
-      translateButton: t('tool.translateButton'),
-      playButton: t('tool.playButton'),
-      playSoundTooltip: t('tool.playSoundTooltip'),
-      loading: t('tool.loading'),
-      error: t('tool.error'),
-      noInput: t('tool.noInput'),
-      uploadButton: t('tool.uploadButton'),
-      uploadHint: t('tool.uploadHint'),
-    },
-    funFacts: funFactsSection,
-    highlights: highlightsSection,
-  };
-
-  // What is section
-  const whatIsSection = {
-    title: t('whatIs.title'),
-    description: t('whatIs.description'),
-    features: [],
-    image: {
-      src: '/images/docs/what-is-dog-translator.webp',
-      alt: 'Dog Translator Overview',
-    },
-    cta: {
-      text: t('ctaButton'),
-    },
-  };
-
-  // How to section
-  const howtoSection = {
-    name: 'howto',
-    title: t('howto.title'),
-    description: t('howto.description'),
-    image: {
-      src: '/images/docs/dog-translator-how-to.webp',
-      alt: 'How to Use Dog Translator',
-    },
-    items: [
-      {
-        title: t('howto.steps.0.title'),
-        description: t('howto.steps.0.description'),
-        icon: 'FaPencilAlt',
-      },
-      {
-        title: t('howto.steps.1.title'),
-        description: t('howto.steps.1.description'),
-        icon: 'FaBrain',
-      },
-      {
-        title: t('howto.steps.2.title'),
-        description: t('howto.steps.2.description'),
-        icon: 'FaLanguage',
-      },
-      {
-        title: t('howto.steps.3.title'),
-        description: t('howto.steps.3.description'),
-        icon: 'FaVolumeUp',
-      },
-    ],
-  };
-
-  // Unique section
-  const uniqueSection = {
-    name: 'unique',
-    title: t('unique.title'),
-    subtitle: t('unique.subtitle'),
-    description: t('unique.description'),
-    items: [
-      {
-        title: t('unique.items.0.title'),
-        description: t('unique.items.0.description'),
-        image: {
-          src: '/images/docs/ai-emotion-intelligence.webp',
-          alt: t('unique.items.0.title'),
-        },
-      },
-      {
-        title: t('unique.items.1.title'),
-        description: t('unique.items.1.description'),
-        image: {
-          src: '/images/docs/authentic-sound-library.webp',
-          alt: t('unique.items.1.title'),
-        },
-      },
-      {
-        title: t('unique.items.2.title'),
-        description: t('unique.items.2.description'),
-        image: {
-          src: '/images/docs/speak-dog-in-any-language.webp',
-          alt: t('unique.items.2.title'),
-        },
-      },
-      {
-        title: t('unique.items.3.title'),
-        description: t('unique.items.3.description'),
-        image: {
-          src: '/images/docs/personalized-settings.webp',
-          alt: t('unique.items.3.title'),
-        },
-      },
-    ],
-  };
+  // 使用内容构建器生成所有页面内容
+  const translatorContent = buildTranslatorPageContent(t, {
+    howToIcons: ['FaFileUpload', 'FaPencilAlt', 'FaLanguage'],
+  });
 
   return (
     <>
       <script
         type="application/ld+json"
-        // biome-ignore lint/security/noDangerouslySetInnerHtml: Required for structured data
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
       <div className="flex flex-col">
-        {/* Hero Section with Tool */}
+        {/* Hero Section */}
         <AuroraBackground className="bg-white dark:bg-zinc-900 !pt-12 !h-auto">
           <div className="container max-w-7xl mx-auto px-4 text-center relative z-10 pb-8">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
@@ -305,46 +78,22 @@ export default async function DogTranslatorPage(props: DogTranslatorPageProps) {
 
             {/* User Avatars and Rating */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              {/* Avatar Images */}
               <div className="flex -space-x-3">
-                <div className="relative h-12 w-12 rounded-full border-2 border-white dark:border-zinc-800 overflow-hidden">
-                  <img
-                    src="/images/avatars/male1.webp"
-                    alt="User 1"
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                <div className="relative h-12 w-12 rounded-full border-2 border-white dark:border-zinc-800 overflow-hidden">
-                  <img
-                    src="/images/avatars/female2.webp"
-                    alt="User 2"
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                <div className="relative h-12 w-12 rounded-full border-2 border-white dark:border-zinc-800 overflow-hidden">
-                  <img
-                    src="/images/avatars/male3.webp"
-                    alt="User 3"
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                <div className="relative h-12 w-12 rounded-full border-2 border-white dark:border-zinc-800 overflow-hidden">
-                  <img
-                    src="/images/avatars/female4.webp"
-                    alt="User 4"
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                <div className="relative h-12 w-12 rounded-full border-2 border-white dark:border-zinc-800 overflow-hidden">
-                  <img
-                    src="/images/avatars/male2.webp"
-                    alt="User 5"
-                    className="h-full w-full object-cover"
-                  />
-                </div>
+                {['male1', 'female2', 'male3', 'female4', 'male2'].map(
+                  (avatar, i) => (
+                    <div
+                      key={i}
+                      className="relative h-12 w-12 rounded-full border-2 border-white dark:border-zinc-800 overflow-hidden"
+                    >
+                      <img
+                        src={`/images/avatars/${avatar}.webp`}
+                        alt={`User ${i + 1}`}
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
+                  )
+                )}
               </div>
-
-              {/* Stars and Text */}
               <div className="flex flex-col items-center sm:items-start gap-1">
                 <div className="flex items-center gap-0.5">
                   {[...Array(5)].map((_, i) => (
@@ -366,36 +115,33 @@ export default async function DogTranslatorPage(props: DogTranslatorPageProps) {
           </div>
         </AuroraBackground>
 
-        {/* Dog Translator Tool */}
+        {/* Tool Component */}
         <div className="pt-0 pb-12 bg-gradient-to-b from-muted/20 to-background">
-          <DogTranslatorTool pageData={pageData} locale={locale} />
+          <DogTranslatorTool pageData={translatorContent.pageData} locale={locale} />
         </div>
 
         {/* What Is Section */}
-        <WhatIsSection section={whatIsSection} />
-
-        {/* How to Section */}
-        <HowTo section={howtoSection} />
+        <WhatIsSection section={translatorContent.whatIs} />
 
         {/* Examples Section */}
-        <BeforeAfterSection beforeAfterGallery={examplesData} />
+        <BeforeAfterSection beforeAfterGallery={translatorContent.examples} />
 
-        {/* Unique Section */}
-        <UniqueSection section={uniqueSection} ctaText={t('ctaButton')} />
+        {/* How to Section */}
+        <HowTo section={translatorContent.howTo} />
 
-        {/* User Scenarios */}
-        <UserScenarios
-          section={userScenariosSection}
-          ctaText={t('ctaButton')}
-        />
+        {/* User Interest Blocks */}
+        <UserScenarios section={translatorContent.userInterest} ctaText={t('ctaButton')} />
 
-        {/* Highlights/Why Choose */}
-        <WhyChoose section={highlightsSection} />
+        {/* Fun Facts */}
+        <UserScenarios section={translatorContent.funFacts} ctaText={t('ctaButton')} />
+
+        {/* Highlights */}
+        <WhyChoose section={translatorContent.highlights} />
 
         {/* Explore Other Tools */}
         <ExploreOurAiTools
           toolKeys={[
-            'Dog Translator',
+            'Minion Translator',
             'Gen Z Translator',
             'Gibberish Translator',
             'Bad Translator',
@@ -404,14 +150,14 @@ export default async function DogTranslatorPage(props: DogTranslatorPageProps) {
           ]}
         />
 
-        {/* FAQ Section */}
-        <FaqSection namespace="DogTranslatorPage.faqs" />
+        {/* Testimonials */}
+        <TestimonialsThreeColumnSection namespace="DogTranslatorPage" subNamespace="testimonials" />
 
-        {/* Testimonials Section */}
-        <TestimonialsThreeColumnSection namespace="DogTranslatorPage.testimonials" />
+        {/* FAQ */}
+        <FaqSection namespace="DogTranslatorPage" subNamespace="faqs" />
 
-        {/* Call to Action */}
-        <CallToActionSection namespace="DogTranslatorPage.cta" />
+        {/* CTA */}
+        <CallToActionSection namespace="DogTranslatorPage" subNamespace="cta" />
       </div>
     </>
   );

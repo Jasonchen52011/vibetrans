@@ -9,6 +9,7 @@ import TestimonialsThreeColumnSection from '@/components/blocks/testimonials/tes
 import WhatIsSection from '@/components/blocks/whatis';
 import { AuroraBackground } from '@/components/ui/aurora-background';
 import { constructMetadata } from '@/lib/metadata';
+import { buildTranslatorPageContent } from '@/lib/translator-page';
 import { buildToolStructuredData } from '@/lib/seo/structured-data';
 import { getUrlWithLocale } from '@/lib/urls/urls';
 import type { Metadata } from 'next';
@@ -27,17 +28,12 @@ export async function generateMetadata({
   params: Promise<{ locale: Locale }>;
 }): Promise<Metadata | undefined> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'Metadata' });
-  const gt = await getTranslations({
-    locale,
-    namespace: 'GenAlphaTranslatorPage',
-  });
-
+  const t = await getTranslations({ locale, namespace: 'GenAlphaTranslatorPage' });
   return constructMetadata({
-    title: `${gt('title')} | ${t('name')}`,
-    description: gt('description'),
+    title: `${t('title')} | VibeTrans`,
+    description: t('description'),
     canonicalUrl: getUrlWithLocale('/gen-alpha-translator', locale),
-    image: '/images/docs/what-is-gen-alpha-translator.webp',
+    image: t('whatIs.image'),
   });
 }
 
@@ -50,10 +46,9 @@ export default async function GenAlphaTranslatorPage(
 ) {
   const params = await props.params;
   const { locale } = params;
-  const t = await getTranslations({
-    locale,
-    namespace: 'GenAlphaTranslatorPage',
-  });
+
+  // 使用标准 getTranslations 获取翻译
+  const t = await getTranslations({ locale, namespace: 'GenAlphaTranslatorPage' });
 
   // Structured Data for SEO
   const structuredData = buildToolStructuredData({
@@ -61,195 +56,10 @@ export default async function GenAlphaTranslatorPage(
     description: t('description'),
   });
 
-  // Page data for the tool
-  const pageData = {
-    tool: {
-      inputLabel: t('tool.inputLabel'),
-      genAlphaLabel: t('tool.genAlphaLabel'),
-      outputLabel: t('tool.outputLabel'),
-      inputPlaceholder: t('tool.inputPlaceholder'),
-      genAlphaPlaceholder: t('tool.genAlphaPlaceholder'),
-      outputPlaceholder: t('tool.outputPlaceholder'),
-      translateButton: t('tool.translateButton'),
-      uploadButton: t('tool.uploadButton'),
-      uploadHint: t('tool.uploadHint'),
-      loading: t('tool.loading'),
-      error: t('tool.error'),
-      noInput: t('tool.noInput'),
-    },
-  };
-
-  // Examples section data
-  const examplesData = {
-    title: t('examples.title'),
-    description: t('examples.description'),
-    images: [
-      {
-        alt: 'Standard: Charisma → Gen Alpha: Rizz',
-        name: 'Charisma → Rizz',
-      },
-      {
-        alt: 'Standard: Random → Gen Alpha: Skibidi',
-        name: 'Random → Skibidi',
-      },
-      {
-        alt: 'Standard: Impressive → Gen Alpha: Gyat',
-        name: 'Impressive → Gyat',
-      },
-      {
-        alt: 'Standard: Independent → Gen Alpha: Sigma',
-        name: 'Independent → Sigma',
-      },
-      {
-        alt: 'Standard: Strange → Gen Alpha: Ohio',
-        name: 'Strange → Ohio',
-      },
-      {
-        alt: 'Standard: Really good → Gen Alpha: Bussin',
-        name: 'Really good → Bussin',
-      },
-    ],
-  };
-
-  // User scenarios section (Fun Facts)
-  const userScenariosSection = {
-    name: 'userscenarios',
-    title: t('funfacts.title'),
-    items: [
-      {
-        title: t('funfacts.items.0.title'),
-        description: t('funfacts.items.0.description'),
-        image: {
-          src: '/images/docs/skibidi-phenomenon.webp',
-          alt: 'Skibidi Phenomenon',
-        },
-      },
-      {
-        title: t('funfacts.items.1.title'),
-        description: t('funfacts.items.1.description'),
-        image: {
-          src: '/images/docs/rizz-charisma.webp',
-          alt: 'Rizz = Charisma',
-        },
-      },
-    ],
-  };
-
-  // Highlights section
-  const highlightsSection = {
-    name: 'highlights',
-    title: t('highlights.title'),
-    description: t('highlights.description'),
-    items: [
-      {
-        icon: 'FaRocket',
-        title: t('highlights.items.0.title'),
-        description: t('highlights.items.0.description'),
-      },
-      {
-        icon: 'FaBrain',
-        title: t('highlights.items.1.title'),
-        description: t('highlights.items.1.description'),
-      },
-      {
-        icon: 'FaShieldAlt',
-        title: t('highlights.items.2.title'),
-        description: t('highlights.items.2.description'),
-      },
-      {
-        icon: 'FaChartLine',
-        title: t('highlights.items.3.title'),
-        description: t('highlights.items.3.description'),
-      },
-    ],
-  };
-
-  // What is section
-  const whatIsSection = {
-    title: t('whatIs.title'),
-    description: t('whatIs.description'),
-    features: [],
-    image: {
-      src: '/images/docs/what-is-gen-alpha-translator.webp',
-      alt: 'What is Gen Alpha Translator - Understanding Gen Alpha Language',
-    },
-    cta: {
-      text: t('ctaButton'),
-    },
-  };
-
-  // How to section
-  const howtoSection = {
-    name: 'howto',
-    title: t('howto.title'),
-    description: t('howto.description'),
-    image: {
-      src: '/images/docs/gen-alpha-translator-how-to.webp',
-      alt: 'How to use Gen Alpha Translator step by step guide',
-    },
-    items: [
-      {
-        title: t('howto.steps.0.title'),
-        description: t('howto.steps.0.description'),
-        icon: 'FaFileUpload',
-      },
-      {
-        title: t('howto.steps.1.title'),
-        description: t('howto.steps.1.description'),
-        icon: 'FaPencilAlt',
-      },
-      {
-        title: t('howto.steps.2.title'),
-        description: t('howto.steps.2.description'),
-        icon: 'FaLanguage',
-      },
-      {
-        title: t('howto.steps.3.title'),
-        description: t('howto.steps.3.description'),
-        icon: 'FaCheckCircle',
-      },
-    ],
-  };
-
-  // User Interest section
-  const userInterestSection = {
-    name: 'userinterest',
-    title: t('userInterest.title'),
-    items: [
-      {
-        title: t('userInterest.items.0.title'),
-        description: t('userInterest.items.0.description'),
-        image: {
-          src: '/images/docs/understanding-gen-alpha-language.webp',
-          alt: 'Understanding Gen Alpha Language',
-        },
-      },
-      {
-        title: t('userInterest.items.1.title'),
-        description: t('userInterest.items.1.description'),
-        image: {
-          src: '/images/docs/multilingual-gen-alpha-support.webp',
-          alt: 'Multilingual Gen Alpha Support',
-        },
-      },
-      {
-        title: t('userInterest.items.2.title'),
-        description: t('userInterest.items.2.description'),
-        image: {
-          src: '/images/docs/stay-updated-with-trends.webp',
-          alt: 'Stay Updated with Trends',
-        },
-      },
-      {
-        title: t('userInterest.items.3.title'),
-        description: t('userInterest.items.3.description'),
-        image: {
-          src: '/images/docs/perfect-for-content-creators.webp',
-          alt: 'Perfect for Content Creators',
-        },
-      },
-    ],
-  };
+  // 使用内容构建器生成所有页面内容
+  const translatorContent = buildTranslatorPageContent(t, {
+    howToIcons: ['FaFileUpload', 'FaPencilAlt', 'FaLanguage'],
+  });
 
   return (
     <>
@@ -334,29 +144,26 @@ export default async function GenAlphaTranslatorPage(
 
         {/* Gen Alpha Translator Tool */}
         <div className="pt-0 pb-12 bg-gradient-to-b from-muted/20 to-background">
-          <GenAlphaTranslatorTool pageData={pageData} locale={locale} />
+          <GenAlphaTranslatorTool pageData={translatorContent.pageData} locale={locale} />
         </div>
 
         {/* What Is Section */}
-        <WhatIsSection section={whatIsSection} />
+        <WhatIsSection section={translatorContent.whatIs} />
 
         {/* Examples Section */}
-        <BeforeAfterSection beforeAfterGallery={examplesData} />
+        <BeforeAfterSection beforeAfterGallery={translatorContent.examples} />
 
         {/* How to Section */}
-        <HowTo section={howtoSection} />
+        <HowTo section={translatorContent.howTo} />
 
-        {/* User Interest Blocks */}
-        <UserScenarios section={userInterestSection} ctaText={t('ctaButton')} />
+        {/* Fun Facts Section */}
+        <UserScenarios section={translatorContent.funFacts} ctaText={t('ctaButton')} />
 
-        {/* Fun Facts */}
-        <UserScenarios
-          section={userScenariosSection}
-          ctaText={t('ctaButton')}
-        />
+        {/* User Interest Section */}
+        <UserScenarios section={translatorContent.userInterest} ctaText={t('ctaButton')} />
 
         {/* Highlights/Why Choose */}
-        <WhyChoose section={highlightsSection} />
+        <WhyChoose section={translatorContent.highlights} />
 
         {/* Explore Other Tools */}
         <ExploreOurAiTools
@@ -371,13 +178,13 @@ export default async function GenAlphaTranslatorPage(
         />
 
         {/* Testimonials Section */}
-        <TestimonialsThreeColumnSection namespace="GenAlphaTranslatorPage.testimonials" />
+        <TestimonialsThreeColumnSection namespace="GenAlphaTranslatorPage" subNamespace="testimonials" />
 
         {/* FAQ Section */}
-        <FaqSection namespace="GenAlphaTranslatorPage.faqs" />
+        <FaqSection namespace="GenAlphaTranslatorPage" subNamespace="faqs" />
 
         {/* Call to Action */}
-        <CallToActionSection namespace="GenAlphaTranslatorPage.cta" />
+        <CallToActionSection namespace="GenAlphaTranslatorPage" subNamespace="cta" />
       </div>
     </>
   );

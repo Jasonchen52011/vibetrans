@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { type NextRequest, NextResponse } from 'next/server';
 
 export const runtime = 'edge';
 
@@ -206,9 +206,7 @@ function detectDirection(text: string, direction?: string): Direction {
     }
   });
 
-  return minionScore > englishScore
-    ? 'minion-to-english'
-    : 'english-to-minion';
+  return minionScore > englishScore ? 'minion-to-english' : 'english-to-minion';
 }
 
 export async function POST(request: NextRequest) {
@@ -221,7 +219,7 @@ export async function POST(request: NextRequest) {
         {
           success: false,
           error: 'Invalid JSON',
-          suggestion: 'Please provide valid JSON data'
+          suggestion: 'Please provide valid JSON data',
         },
         { status: 400 }
       );
@@ -234,7 +232,7 @@ export async function POST(request: NextRequest) {
         {
           success: false,
           error: 'Valid text is required',
-          suggestion: 'Please provide text to translate'
+          suggestion: 'Please provide text to translate',
         },
         { status: 400 }
       );
@@ -247,7 +245,7 @@ export async function POST(request: NextRequest) {
           error: 'Text too long',
           suggestion: 'Please keep text under 5000 characters',
           limit: 5000,
-          provided: text.length
+          provided: text.length,
         },
         { status: 400 }
       );
@@ -281,10 +279,10 @@ export async function POST(request: NextRequest) {
         timestamp: new Date().toISOString(),
         processingTime: `${elapsedMs}ms`,
         textLength: text.length,
-        translatedLength: translated.length
+        translatedLength: translated.length,
       },
       originalLength: text.length,
-      translatedLength: translated.length
+      translatedLength: translated.length,
     });
   } catch (error) {
     if (process.env.NODE_ENV === 'development') {
@@ -302,7 +300,7 @@ export async function POST(request: NextRequest) {
               : 'Unknown error'
             : 'Internal server error',
         suggestion: 'Please try again in a few moments',
-        retryPossible: true
+        retryPossible: true,
       },
       { status: 500 }
     );
@@ -312,7 +310,7 @@ export async function POST(request: NextRequest) {
 const MINION_TONE_WRAPPERS = {
   cute: (text: string) => `${text}! 💛🍌`,
   evil: (text: string) => `MUAHAHA ${text.toUpperCase()}!!`,
-  excited: (text: string) => `${text}!!! 🍌🍌🍌`
+  excited: (text: string) => `${text}!!! 🍌🍌🍌`,
 } as const;
 
 type MinionTone = keyof typeof MINION_TONE_WRAPPERS;
@@ -334,7 +332,7 @@ export async function GET() {
       'Automatic language detection',
       'Phrase-aware replacements',
       'Heuristic stylization for unknown words',
-      'Tone presets: cute, evil, excited'
+      'Tone presets: cute, evil, excited',
     ],
     usage: {
       endpoint: '/api/minion-translator',
@@ -343,8 +341,8 @@ export async function GET() {
         text: 'string (required)',
         direction:
           'toMinion | english-to-minion | toEnglish | minion-to-english | auto',
-        tone: 'cute | evil | excited | normal (optional, only for Minion output)'
-      }
+        tone: 'cute | evil | excited | normal (optional, only for Minion output)',
+      },
     },
     responseShape: {
       success: 'boolean',
@@ -358,8 +356,8 @@ export async function GET() {
         timestamp: 'ISO string',
         processingTime: 'string',
         textLength: 'number',
-        translatedLength: 'number'
-      }
+        translatedLength: 'number',
+      },
     },
     examples: [
       {
@@ -367,25 +365,25 @@ export async function GET() {
         request: {
           text: 'Hello friend, bananas for everyone!',
           direction: 'auto',
-          tone: 'excited'
+          tone: 'excited',
         },
         sampleResponse: {
           translated: 'Bello buddy numero uno, bananaaa for everyone!!! 🍌🍌🍌',
-          direction: 'english-to-minion'
-        }
+          direction: 'english-to-minion',
+        },
       },
       {
         description: 'Minion to English',
         request: {
           text: 'Bello! Tulaliloo ti amo!',
-          direction: 'auto'
+          direction: 'auto',
         },
         sampleResponse: {
           translated: 'Hello! I love you!',
-          direction: 'minion-to-english'
-        }
-      }
+          direction: 'minion-to-english',
+        },
+      },
     ],
-    timestamp: new Date().toISOString()
+    timestamp: new Date().toISOString(),
   });
 }

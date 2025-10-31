@@ -284,7 +284,9 @@ function generateMissingTranslations(tools: ToolMetadata[]): void {
     JSON.stringify(missingKeys, null, 2)
   );
   if (process.env.NODE_ENV === 'development') {
-    console.log(`Missing translations written to: ${MISSING_TRANSLATIONS_PATH}`);
+    console.log(
+      `Missing translations written to: ${MISSING_TRANSLATIONS_PATH}`
+    );
   }
 }
 

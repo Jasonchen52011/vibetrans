@@ -138,9 +138,8 @@
     },
     "highlights": {
       "title": "Why Teams Choose VibeTrans for English to Chinese",
-      "overview": "AI-powered English ↔ Chinese translation with cultural context, character choice, and tone preservation designed for modern global workflows.",
       "description": "Combine linguistic accuracy with cultural intelligence so business, education, and creative teams can communicate effectively with Chinese audiences.",
-      "features": [
+      "items": [
         {
           "icon": "FaRocket",
           "title": "Cultural Context Awareness",

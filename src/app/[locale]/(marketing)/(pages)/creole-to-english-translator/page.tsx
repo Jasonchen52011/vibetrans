@@ -9,6 +9,7 @@ import TestimonialsThreeColumnSection from '@/components/blocks/testimonials/tes
 import WhatIsSection from '@/components/blocks/whatis';
 import { AuroraBackground } from '@/components/ui/aurora-background';
 import { constructMetadata } from '@/lib/metadata';
+import { buildTranslatorPageContent } from '@/lib/translator-page';
 import { buildToolStructuredData } from '@/lib/seo/structured-data';
 import { getUrlWithLocale } from '@/lib/urls/urls';
 import type { Metadata } from 'next';
@@ -24,17 +25,14 @@ export async function generateMetadata({
   params: Promise<{ locale: Locale }>;
 }): Promise<Metadata | undefined> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'Metadata' });
-  const gt = await getTranslations({
-    locale,
-    namespace: 'CreoleToEnglishTranslatorPage',
-  });
+  const t = await getTranslations({ locale, namespace: 'CreoleToEnglishTranslatorPage' });
+  const metadataT = await getTranslations({ locale, namespace: 'Metadata' });
 
   return constructMetadata({
-    title: `${gt('title')} | ${t('name')}`,
-    description: gt('description'),
+    title: `${t('title')} | ${metadataT('name')}`,
+    description: t('description'),
     canonicalUrl: getUrlWithLocale('/creole-to-english-translator', locale),
-    image: '/images/docs/what-is-creole-to-english-translator.webp',
+    image: t('whatIs.image'),
   });
 }
 
@@ -47,10 +45,7 @@ export default async function CreoleToEnglishPage(
 ) {
   const params = await props.params;
   const { locale } = params;
-  const t = await getTranslations({
-    locale,
-    namespace: 'CreoleToEnglishTranslatorPage',
-  });
+  const t = await getTranslations({ locale, namespace: 'CreoleToEnglishTranslatorPage' });
 
   // Structured Data for SEO
   const structuredData = buildToolStructuredData({
@@ -58,205 +53,10 @@ export default async function CreoleToEnglishPage(
     description: t('description'),
   });
 
-  // Page data for the tool
-  const pageData = {
-    tool: {
-      creoleLabel: t('tool.creoleLabel'),
-      englishLabel: t('tool.englishLabel'),
-      creolePlaceholder: t('tool.creolePlaceholder'),
-      englishPlaceholder: t('tool.englishPlaceholder'),
-      creoleInputHeading: t('tool.creoleInputHeading'),
-      englishInputHeading: t('tool.englishInputHeading'),
-      creoleOutputHeading: t('tool.creoleOutputHeading'),
-      englishOutputHeading: t('tool.englishOutputHeading'),
-      creoleOutputPlaceholder: t('tool.creoleOutputPlaceholder'),
-      englishOutputPlaceholder: t('tool.englishOutputPlaceholder'),
-      translateButton: t('tool.translateButton'),
-      uploadButton: t('tool.uploadButton'),
-      uploadHint: t('tool.uploadHint'),
-      loading: t('tool.loading'),
-      error: t('tool.error'),
-      noInput: t('tool.noInput'),
-      downloadButton: t('tool.downloadButton'),
-      resetButton: t('tool.resetButton'),
-      copyTooltip: t('tool.copyTooltip'),
-      downloadTooltip: t('tool.downloadTooltip'),
-      resetTooltip: t('tool.resetTooltip'),
-      removeFileTooltip: t('tool.removeFileTooltip'),
-      toggleDirectionTooltip: t('tool.toggleDirectionTooltip'),
-      copyResultTooltip: t('tool.copyResultTooltip'),
-      downloadResultTooltip: t('tool.downloadResultTooltip'),
-      playSoundTooltip: t('tool.playSoundTooltip'),
-      languageWarning: t('tool.languageWarning'),
-      toggleToCreole: t('tool.toggleToCreole'),
-      toggleToEnglish: t('tool.toggleToEnglish'),
-    },
-  };
-
-  // Examples section data
-  const examplesData = {
-    title: t('examples.title'),
-    description: t('examples.description'),
-    images: [
-      {
-        alt: t('examples.items.0.alt'),
-        name: t('examples.items.0.name'),
-      },
-      {
-        alt: t('examples.items.1.alt'),
-        name: t('examples.items.1.name'),
-      },
-      {
-        alt: t('examples.items.2.alt'),
-        name: t('examples.items.2.name'),
-      },
-      {
-        alt: t('examples.items.3.alt'),
-        name: t('examples.items.3.name'),
-      },
-      {
-        alt: t('examples.items.4.alt'),
-        name: t('examples.items.4.name'),
-      },
-      {
-        alt: t('examples.items.5.alt'),
-        name: t('examples.items.5.name'),
-      },
-    ],
-  };
-
-  // What is section
-  const whatIsSection = {
-    title: t('whatIs.title'),
-    description: t('whatIs.description'),
-    features: [],
-    image: {
-      src: '/images/docs/what-is-creole-to-english-translator.webp',
-      alt: 'What is Creole to English Translator',
-    },
-    cta: { text: t('ctaButton') },
-  };
-
-  // How to section
-  const howtoSection = {
-    name: 'howto',
-    title: t('howto.title'),
-    description: t('howto.description'),
-    image: {
-      src: '/images/docs/creole-to-english-translator-how-to.webp',
-      alt: 'How to use Creole to English Translator',
-    },
-    items: [
-      {
-        title: t('howto.steps.0.title'),
-        description: t('howto.steps.0.description'),
-        icon: 'FaFileUpload',
-      },
-      {
-        title: t('howto.steps.1.title'),
-        description: t('howto.steps.1.description'),
-        icon: 'FaPencilAlt',
-      },
-      {
-        title: t('howto.steps.2.title'),
-        description: t('howto.steps.2.description'),
-        icon: 'FaLanguage',
-      },
-    ],
-  };
-
-  // Highlights section
-  const highlightsSection = {
-    name: 'highlights',
-    title: t('highlights.title'),
-    description: t('highlights.description'),
-    items: [
-      {
-        icon: 'FaRocket',
-        title: t('highlights.items.0.title'),
-        description: t('highlights.items.0.description'),
-      },
-      {
-        icon: 'FaBrain',
-        title: t('highlights.items.1.title'),
-        description: t('highlights.items.1.description'),
-      },
-      {
-        icon: 'FaShieldAlt',
-        title: t('highlights.items.2.title'),
-        description: t('highlights.items.2.description'),
-      },
-      {
-        icon: 'FaChartLine',
-        title: t('highlights.items.3.title'),
-        description: t('highlights.items.3.description'),
-      },
-    ],
-  };
-
-  // Fun Facts section
-  const funFactsSection = {
-    name: 'funFacts',
-    title: t('funFacts.title'),
-    items: [
-      {
-        title: t('funFacts.items.0.title'),
-        description: t('funFacts.items.0.description'),
-        image: {
-          src: '/images/docs/creole-to-english-translator-fact-1.webp',
-          alt: t('funFacts.items.0.title'),
-        },
-      },
-      {
-        title: t('funFacts.items.1.title'),
-        description: t('funFacts.items.1.description'),
-        image: {
-          src: '/images/docs/creole-to-english-translator-fact-2.webp',
-          alt: t('funFacts.items.1.title'),
-        },
-      },
-    ],
-  };
-
-  // User Interest section (4 content blocks)
-  const userInterestSection = {
-    name: 'userInterest',
-    title: t('userInterest.title'),
-    items: [
-      {
-        title: t('userInterest.items.0.title'),
-        description: t('userInterest.items.0.description'),
-        image: {
-          src: '/images/docs/creole-to-english-translator-interest-1.webp',
-          alt: t('userInterest.items.0.title'),
-        },
-      },
-      {
-        title: t('userInterest.items.1.title'),
-        description: t('userInterest.items.1.description'),
-        image: {
-          src: '/images/docs/creole-to-english-translator-interest-2.webp',
-          alt: t('userInterest.items.1.title'),
-        },
-      },
-      {
-        title: t('userInterest.items.2.title'),
-        description: t('userInterest.items.2.description'),
-        image: {
-          src: '/images/docs/creole-to-english-translator-interest-3.webp',
-          alt: t('userInterest.items.2.title'),
-        },
-      },
-      {
-        title: t('userInterest.items.3.title'),
-        description: t('userInterest.items.3.description'),
-        image: {
-          src: '/images/docs/creole-to-english-translator-interest-4.webp',
-          alt: t('userInterest.items.3.title'),
-        },
-      },
-    ],
-  };
+  // 使用内容构建器生成所有页面内容
+  const translatorContent = buildTranslatorPageContent(t, {
+    howToIcons: ['FaFileUpload', 'FaPencilAlt', 'FaLanguage'],
+  });
 
   return (
     <>
@@ -316,26 +116,26 @@ export default async function CreoleToEnglishPage(
 
         {/* Tool Component */}
         <div className="pt-0 pb-12 bg-gradient-to-b from-muted/20 to-background">
-          <CreoleToEnglishTranslatorTool pageData={pageData} locale={locale} />
+          <CreoleToEnglishTranslatorTool pageData={translatorContent.pageData} locale={locale} />
         </div>
 
         {/* What Is Section */}
-        <WhatIsSection section={whatIsSection} />
+        <WhatIsSection section={translatorContent.whatIs} />
 
         {/* Examples Section */}
-        <BeforeAfterSection beforeAfterGallery={examplesData} />
+        <BeforeAfterSection beforeAfterGallery={translatorContent.examples} />
 
         {/* How to Section */}
-        <HowTo section={howtoSection} />
+        <HowTo section={translatorContent.howTo} />
 
         {/* User Interest Blocks */}
-        <UserScenarios section={userInterestSection} ctaText={t('ctaButton')} />
+        <UserScenarios section={translatorContent.userInterest} ctaText={t('ctaButton')} />
 
         {/* Fun Facts */}
-        <UserScenarios section={funFactsSection} ctaText={t('ctaButton')} />
+        <UserScenarios section={translatorContent.funFacts} ctaText={t('ctaButton')} />
 
         {/* Highlights */}
-        <WhyChoose section={highlightsSection} />
+        <WhyChoose section={translatorContent.highlights} />
 
         {/* Explore Other Tools */}
         <ExploreOurAiTools
@@ -350,13 +150,13 @@ export default async function CreoleToEnglishPage(
         />
 
         {/* Testimonials */}
-        <TestimonialsThreeColumnSection namespace="CreoleToEnglishTranslatorPage.testimonials" />
+        <TestimonialsThreeColumnSection namespace="CreoleToEnglishTranslatorPage" subNamespace="testimonials" />
 
         {/* FAQ */}
-        <FaqSection namespace="CreoleToEnglishTranslatorPage.faqs" />
+        <FaqSection namespace="CreoleToEnglishTranslatorPage" subNamespace="faqs" />
 
         {/* CTA */}
-        <CallToActionSection namespace="CreoleToEnglishTranslatorPage.cta" />
+        <CallToActionSection namespace="CreoleToEnglishTranslatorPage" subNamespace="cta" />
       </div>
     </>
   );

@@ -16,10 +16,40 @@ type TestimonialItem = {
 
 export default function TestimonialsThreeColumnSection({
   namespace = 'HomePage.testimonials',
-}: { namespace?: string } = {}) {
+  subNamespace,
+}: { namespace?: string; subNamespace?: string } = {}) {
   const locale = useLocale();
-  // @ts-ignore - Dynamic namespace support
-  const t = useTranslations(namespace as any);
+
+  // Build the actual namespace based on whether subNamespace is provided
+  const actualNamespace = subNamespace ? `${namespace}.${subNamespace}` : namespace;
+
+  // Safe translation access with fallback
+  let t: any;
+  try {
+    // @ts-ignore - Dynamic namespace support
+    t = useTranslations(actualNamespace as any);
+  } catch (error) {
+    console.warn(`Failed to load translations for namespace: ${actualNamespace}`, error);
+    // Return null to not render the section if translations are not available
+    return null;
+  }
+
+  // Helper function to access nested translation keys
+  const getNestedTranslation = (key: string, fallback?: any) => {
+    try {
+      const result = t(key, fallback);
+
+      // If the result is the key itself, it means translation failed
+      if (typeof result === 'string' && result === key) {
+        return fallback || '';
+      }
+
+      return result;
+    } catch (e) {
+      console.warn(`Translation access failed for ${key}:`, e);
+      return fallback || '';
+    }
+  };
 
   // Use useMemo to build testimonial items and check title/subtitle
   const testimonialData = useMemo(() => {
@@ -29,8 +59,8 @@ export default function TestimonialsThreeColumnSection({
     let titleValid = false;
     let subtitleValid = false;
     try {
-      const titleValue = t('title', { default: '' });
-      const subtitleValue = t('subtitle', { default: '' });
+      const titleValue = getNestedTranslation('title', '');
+      const subtitleValue = getNestedTranslation('subtitle', '');
       // Check if the value looks like a translation key (invalid) vs actual title text (valid)
       const isTranslationKey = (value: string) => {
         // Translation keys usually contain dots or look like "testimonials.title"
@@ -58,41 +88,15 @@ export default function TestimonialsThreeColumnSection({
 
     // Only attempt to load testimonials if the namespace has items
     let hasItems = false;
-    let useArrayFormat = false;
-
     try {
-      // First try to check if array format exists (items.0.name)
-      const rawItems = t.raw('items');
-      if (Array.isArray(rawItems) && rawItems.length > 0) {
-        hasItems = true;
-        useArrayFormat = true;
-      } else {
-        // Fallback to item-1 format check
-        const firstItemName = t('items.item-1.name', { default: null });
-        hasItems =
-          firstItemName && !firstItemName.includes('items.item-1.name');
-      }
+      // Check if we can access item-1 directly
+      const firstItemName = t(`items.item-1.name`, { default: null });
+      hasItems = firstItemName && !firstItemName.includes(`items.item-1.name`);
     } catch (error) {
       hasItems = false;
     }
 
-    if (hasItems && useArrayFormat) {
-      // Load from array format (items.0, items.1, etc.)
-      const rawItems = t.raw('items') as any[];
-      for (let i = 0; i < Math.min(3, rawItems.length); i++) {
-        const item = rawItems[i];
-        if (item && item.name) {
-          items.push({
-            id: `item-${i}`,
-            name: item.name,
-            role: item.role || '',
-            heading: item.heading || '',
-            content: item.content || '',
-            rating: Number.parseFloat(item.rating) || 5,
-          });
-        }
-      }
-    } else if (hasItems) {
+    if (hasItems) {
       // Try to load up to 3 testimonials (item-1 format)
       for (let i = 1; i <= 3; i++) {
         const key = `item-${i}`;
@@ -138,7 +142,7 @@ export default function TestimonialsThreeColumnSection({
       hasValidTitle: titleValid,
       hasValidSubtitle: subtitleValid,
     };
-  }, [t, namespace]);
+  }, [t, actualNamespace]);
 
   // If no testimonial items found, don't render the section
   if (testimonialData.testimonialItems.length === 0) {
@@ -153,9 +157,9 @@ export default function TestimonialsThreeColumnSection({
       <div className="mx-auto max-w-6xl">
         <HeaderSection
           // @ts-ignore - Dynamic translation keys
-          title={testimonialData.hasValidTitle ? t('title') : undefined}
+          title={testimonialData.hasValidTitle ? getNestedTranslation('title') : undefined}
           subtitle={
-            testimonialData.hasValidSubtitle ? t('subtitle') : undefined
+            testimonialData.hasValidSubtitle ? getNestedTranslation('subtitle') : undefined
           }
           subtitleAs="h2"
         />

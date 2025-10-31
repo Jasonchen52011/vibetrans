@@ -5,10 +5,11 @@ import FaqSection from '@/components/blocks/faqs/faqs';
 import UserScenarios from '@/components/blocks/funfacts';
 import WhyChoose from '@/components/blocks/highlights';
 import HowTo from '@/components/blocks/how-to';
-import TestimonialsSection from '@/components/blocks/testimonials/testimonials-three-column';
+import TestimonialsThreeColumnSection from '@/components/blocks/testimonials/testimonials-three-column';
 import WhatIsSection from '@/components/blocks/whatis';
 import { AuroraBackground } from '@/components/ui/aurora-background';
 import { constructMetadata } from '@/lib/metadata';
+import { buildTranslatorPageContent } from '@/lib/translator-page';
 import { buildToolStructuredData } from '@/lib/seo/structured-data';
 import { getUrlWithLocale } from '@/lib/urls/urls';
 import type { Metadata } from 'next';
@@ -24,27 +25,14 @@ export async function generateMetadata({
   params: Promise<{ locale: Locale }>;
 }): Promise<Metadata | undefined> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'Metadata' });
-  const gt = await getTranslations({
-    locale,
-    namespace: 'EnglishToAmharicTranslatorPage',
-  });
-
-  let ogImage = '/images/docs/english-amharic-translate.webp';
-  try {
-    const candidate = gt('whatIs.image');
-    if (typeof candidate === 'string' && candidate.trim().length > 0) {
-      ogImage = candidate;
-    }
-  } catch {
-    ogImage = '/images/docs/english-amharic-translate.webp';
-  }
+  const t = await getTranslations({ locale, namespace: 'EnglishToAmharicTranslatorPage' });
+  const metadataT = await getTranslations({ locale, namespace: 'Metadata' });
 
   return constructMetadata({
-    title: `${gt('title')} | ${t('name')}`,
-    description: gt('description'),
+    title: `${t('title')} | ${metadataT('name')}`,
+    description: t('description'),
     canonicalUrl: getUrlWithLocale('/english-to-amharic-translator', locale),
-    image: ogImage,
+    image: t('whatIs.image'),
   });
 }
 
@@ -57,10 +45,7 @@ export default async function EnglishToAmharicTranslatorPage(
 ) {
   const params = await props.params;
   const { locale } = params;
-  const t = await getTranslations({
-    locale,
-    namespace: 'EnglishToAmharicTranslatorPage',
-  });
+  const t = await getTranslations({ locale, namespace: 'EnglishToAmharicTranslatorPage' });
 
   // Structured Data for SEO
   const structuredData = buildToolStructuredData({
@@ -68,316 +53,10 @@ export default async function EnglishToAmharicTranslatorPage(
     description: t('description'),
   });
 
-  // Page data for the tool
-  const pageData = {
-    tool: {
-      inputLabel: t('tool.inputLabel'),
-      outputLabel: t('tool.outputLabel'),
-      inputPlaceholder: t('tool.inputPlaceholder'),
-      outputPlaceholder: t('tool.outputPlaceholder'),
-      translateButton: t('tool.translateButton'),
-      uploadButton: t('tool.uploadButton'),
-      uploadHint: t('tool.uploadHint'),
-      loading: t('tool.loading'),
-      error: t('tool.error'),
-      noInput: t('tool.noInput'),
-    },
-  };
-
-  // Examples section data
-  const examplesData = {
-    title: t('examples.title'),
-    description: t('examples.description'),
-    images: [
-      {
-        alt: t('examples.items.0.alt'),
-        name: t('examples.items.0.name'),
-      },
-      {
-        alt: t('examples.items.1.alt'),
-        name: t('examples.items.1.name'),
-      },
-      {
-        alt: t('examples.items.2.alt'),
-        name: t('examples.items.2.name'),
-      },
-      {
-        alt: t('examples.items.3.alt'),
-        name: t('examples.items.3.name'),
-      },
-      {
-        alt: t('examples.items.4.alt'),
-        name: t('examples.items.4.name'),
-      },
-      {
-        alt: t('examples.items.5.alt'),
-        name: t('examples.items.5.name'),
-      },
-    ],
-  };
-
-  // What is section
-  let whatIsImageSrc = '/images/docs/english-amharic-translate.webp';
-  let whatIsImageAlt = 'What is English to Amharic Translator';
-  try {
-    const candidate = t('whatIs.image');
-    if (typeof candidate === 'string' && candidate.trim().length > 0) {
-      whatIsImageSrc = candidate;
-    }
-  } catch {
-    whatIsImageSrc = '/images/docs/english-amharic-translate.webp';
-  }
-  try {
-    const candidateAlt = t('whatIs.imageAlt');
-    if (typeof candidateAlt === 'string' && candidateAlt.trim().length > 0) {
-      whatIsImageAlt = candidateAlt;
-    }
-  } catch {
-    whatIsImageAlt = 'What is English to Amharic Translator';
-  }
-
-  const whatIsSection = {
-    title: t('whatIs.title'),
-    description: t('whatIs.description'),
-    features: [],
-    image: {
-      src: whatIsImageSrc,
-      alt: whatIsImageAlt,
-    },
-    cta: { text: t('ctaButton') },
-  };
-
-  // How to section
-  let howtoImageSrc = '/images/docs/translate-improve-arrows.webp';
-  let howtoImageAlt = 'How to use English to Amharic Translator';
-  try {
-    const candidate = t('howto.image');
-    if (typeof candidate === 'string' && candidate.trim().length > 0) {
-      howtoImageSrc = candidate;
-    }
-  } catch {
-    howtoImageSrc = '/images/docs/translate-improve-arrows.webp';
-  }
-  try {
-    const candidateAlt = t('howto.imageAlt');
-    if (typeof candidateAlt === 'string' && candidateAlt.trim().length > 0) {
-      howtoImageAlt = candidateAlt;
-    }
-  } catch {
-    howtoImageAlt = 'How to use English to Amharic Translator';
-  }
-
-  const howtoSection = {
-    name: 'howto',
-    title: t('howto.title'),
-    description: t('howto.description'),
-    image: {
-      src: howtoImageSrc,
-      alt: howtoImageAlt,
-    },
-    items: [
-      {
-        title: t('howto.steps.0.title'),
-        description: t('howto.steps.0.description'),
-        icon: 'FaFileUpload',
-      },
-      {
-        title: t('howto.steps.1.title'),
-        description: t('howto.steps.1.description'),
-        icon: 'FaPencilAlt',
-      },
-      {
-        title: t('howto.steps.2.title'),
-        description: t('howto.steps.2.description'),
-        icon: 'FaLanguage',
-      },
-      {
-        title: t('howto.steps.3.title'),
-        description: t('howto.steps.3.description'),
-        icon: 'FaCheckCircle',
-      },
-    ],
-  };
-
-  // Highlights section
-  const fallbackHighlightDescription =
-    'VibeTrans offers the best translation experience with powerful features and accurate results.';
-
-  const highlightOverview = t('highlights.overview', { default: '' }) || '';
-  const highlightDescription =
-    t('highlights.description', { default: '' }) || '';
-
-  const highlightsDescription =
-    highlightOverview.trim().length > 0
-      ? highlightOverview
-      : highlightDescription.trim().length > 0
-        ? highlightDescription
-        : fallbackHighlightDescription;
-
-  const defaultHighlightIcons = [
-    'FaRocket',
-    'FaBrain',
-    'FaShieldAlt',
-    'FaChartLine',
-  ];
-
-  let highlightItems = [];
-  try {
-    const rawFeatures = t.raw('highlights.features');
-    if (Array.isArray(rawFeatures)) {
-      highlightItems = rawFeatures.slice(0, 4).map((feature, index) => ({
-        icon:
-          feature?.icon ||
-          defaultHighlightIcons[index % defaultHighlightIcons.length],
-        title: feature?.title || '',
-        description: feature?.description || '',
-        tagline: feature?.tagline || '',
-        statLabel: feature?.statLabel || null,
-        statValue: feature?.statValue || null,
-        microCopy: feature?.microCopy || '',
-      }));
-    }
-  } catch {
-    highlightItems = [];
-  }
-
-  if (highlightItems.length === 0) {
-    highlightItems = defaultHighlightIcons.map((icon, index) => ({
-      icon,
-      title: t(`highlights.features.${index}.title`),
-      description: t(`highlights.features.${index}.description`),
-      tagline: '',
-      statLabel: null,
-      statValue: null,
-      microCopy: '',
-    }));
-  }
-
-  const highlightsSection = {
-    name: 'highlights',
-    title: t('highlights.title'),
-    description: highlightsDescription,
-    items: highlightItems,
-  };
-
-  // Fun Facts section
-  let funFactsItems: Array<{
-    title: string;
-    description: string;
-    image: { src: string; alt: string };
-  }> = [];
-
-  try {
-    const rawFunFacts = t.raw('funFacts.items');
-    if (Array.isArray(rawFunFacts)) {
-      funFactsItems = rawFunFacts.map((item: any) => ({
-        title: item?.title || '',
-        description: item?.description || '',
-        image: {
-          src: item?.image || '/images/docs/amharic-alphabet-fun.webp',
-          alt: item?.imageAlt || item?.title || 'Amharic insight',
-        },
-      }));
-    }
-  } catch {
-    funFactsItems = [];
-  }
-
-  if (funFactsItems.length === 0) {
-    funFactsItems = [
-      {
-        title: t('funFacts.items.0.title'),
-        description: t('funFacts.items.0.description'),
-        image: {
-          src: '/images/docs/amharic-alphabet-fun.webp',
-          alt: t('funFacts.items.0.title'),
-        },
-      },
-      {
-        title: t('funFacts.items.1.title'),
-        description: t('funFacts.items.1.description'),
-        image: {
-          src: '/images/docs/global-communication.webp',
-          alt: t('funFacts.items.1.title'),
-        },
-      },
-    ];
-  }
-
-  const funFactsSection = {
-    name: 'funFacts',
-    title: t('funFacts.title'),
-    items: funFactsItems,
-  };
-
-  // User Interest section (4 content blocks)
-  let userInterestItems: Array<{
-    title: string;
-    description: string;
-    image: { src: string; alt: string };
-  }> = [];
-
-  try {
-    const rawUserInterest = t.raw('userInterest.items');
-    if (Array.isArray(rawUserInterest)) {
-      userInterestItems = rawUserInterest.map((item: any) => ({
-        title: item?.title || '',
-        description: item?.description || '',
-        image: {
-          src: item?.image || '/images/docs/global-business-tools.webp',
-          alt:
-            item?.imageAlt ||
-            item?.title ||
-            'English to Amharic translation use case',
-        },
-      }));
-    }
-  } catch {
-    userInterestItems = [];
-  }
-
-  if (userInterestItems.length === 0) {
-    userInterestItems = [
-      {
-        title: t('userInterest.items.0.title'),
-        description: t('userInterest.items.0.description'),
-        image: {
-          src: '/images/docs/global-business-tools.webp',
-          alt: t('userInterest.items.0.title'),
-        },
-      },
-      {
-        title: t('userInterest.items.1.title'),
-        description: t('userInterest.items.1.description'),
-        image: {
-          src: '/images/docs/global-communication.webp',
-          alt: t('userInterest.items.1.title'),
-        },
-      },
-      {
-        title: t('userInterest.items.2.title'),
-        description: t('userInterest.items.2.description'),
-        image: {
-          src: '/images/docs/learning-translation-tools.webp',
-          alt: t('userInterest.items.2.title'),
-        },
-      },
-      {
-        title: t('userInterest.items.3.title'),
-        description: t('userInterest.items.3.description'),
-        image: {
-          src: '/images/docs/culture-bridge-tools.webp',
-          alt: t('userInterest.items.3.title'),
-        },
-      },
-    ];
-  }
-
-  const userInterestSection = {
-    name: 'userInterest',
-    title: t('userInterest.title'),
-    items: userInterestItems,
-  };
+  // 使用内容构建器生成所有页面内容
+  const translatorContent = buildTranslatorPageContent(t, {
+    howToIcons: ['FaFileUpload', 'FaPencilAlt', 'FaLanguage'],
+  });
 
   return (
     <>
@@ -437,26 +116,26 @@ export default async function EnglishToAmharicTranslatorPage(
 
         {/* Tool Component */}
         <div className="pt-0 pb-12 bg-gradient-to-b from-muted/20 to-background">
-          <EnglishToAmharicTranslatorTool pageData={pageData} locale={locale} />
+          <EnglishToAmharicTranslatorTool pageData={translatorContent.pageData} locale={locale} />
         </div>
 
         {/* What Is Section */}
-        <WhatIsSection section={whatIsSection} />
+        <WhatIsSection section={translatorContent.whatIs} />
 
         {/* Examples Section */}
-        <BeforeAfterSection beforeAfterGallery={examplesData} />
+        <BeforeAfterSection beforeAfterGallery={translatorContent.examples} />
 
         {/* How to Section */}
-        <HowTo section={howtoSection} />
+        <HowTo section={translatorContent.howTo} />
 
         {/* User Interest Blocks */}
-        <UserScenarios section={userInterestSection} ctaText={t('ctaButton')} />
+        <UserScenarios section={translatorContent.userInterest} ctaText={t('ctaButton')} />
 
         {/* Fun Facts */}
-        <UserScenarios section={funFactsSection} ctaText={t('ctaButton')} />
+        <UserScenarios section={translatorContent.funFacts} ctaText={t('ctaButton')} />
 
         {/* Highlights */}
-        <WhyChoose section={highlightsSection} />
+        <WhyChoose section={translatorContent.highlights} />
 
         {/* Explore Other Tools */}
         <ExploreOurAiTools
@@ -471,13 +150,15 @@ export default async function EnglishToAmharicTranslatorPage(
         />
 
         {/* Testimonials */}
-        <TestimonialsSection namespace="EnglishToAmharicTranslatorPage.testimonials" />
+        <TestimonialsThreeColumnSection namespace="EnglishToAmharicTranslatorPage" subNamespace="testimonials" />
 
         {/* FAQ */}
-        <FaqSection namespace="EnglishToAmharicTranslatorPage.faqs" />
+
+
+        <FaqSection namespace="EnglishToAmharicTranslatorPage" subNamespace="faqs" />
 
         {/* CTA */}
-        <CallToActionSection namespace="EnglishToAmharicTranslatorPage.cta" />
+        <CallToActionSection namespace="EnglishToAmharicTranslatorPage" subNamespace="cta" />
       </div>
     </>
   );

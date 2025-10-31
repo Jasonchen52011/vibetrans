@@ -18,7 +18,7 @@ export default function MandalorianTranslatorTool({
   const [error, setError] = useState<string | null>(null);
   const [fileName, setFileName] = useState<string | null>(null);
   const [warning, setWarning] = useState<string | null>(null);
-  
+
   // Handle file upload
   const handleFileUpload = async (
     event: React.ChangeEvent<HTMLInputElement>
@@ -38,8 +38,6 @@ export default function MandalorianTranslatorTool({
     }
   };
 
-  
-  
   // Handle translation
   const handleTranslate = async () => {
     if (!inputText.trim()) {
@@ -60,7 +58,7 @@ export default function MandalorianTranslatorTool({
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           text: inputText,
-          direction: 'toMandalorian' // 固定方向，避免智能检测
+          direction: 'toMandalorian', // 固定方向，避免智能检测
         }),
       });
 
@@ -108,7 +106,7 @@ export default function MandalorianTranslatorTool({
         },
         onError: (error) => {
           console.error('Failed to copy:', error);
-        }
+        },
       });
     } catch (error) {
       console.error('Copy function loading failed:', error);
@@ -129,7 +127,7 @@ export default function MandalorianTranslatorTool({
         },
         onError: (error) => {
           console.error('Download failed:', error);
-        }
+        },
       });
     } catch (error) {
       console.error('Download function loading failed:', error);
@@ -282,7 +280,9 @@ export default function MandalorianTranslatorTool({
             </div>
             <div
               className={`w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md bg-gray-50 dark:bg-zinc-700 ${
-                outputText ? 'flex items-start justify-start' : 'flex items-center justify-center'
+                outputText
+                  ? 'flex items-start justify-start'
+                  : 'flex items-center justify-center'
               } text-gray-700 dark:text-gray-200 overflow-y-auto`}
               aria-live="polite"
             >

@@ -90,7 +90,7 @@ export function NavbarMobile({
             aria-expanded={open}
             aria-label="Toggle Mobile Menu"
             onClick={handleToggleMobileMenu}
-            className="size-8 flex aspect-square h-fit select-none items-center
+            className="size-8 flex aspect-square h-fit items-center
               justify-center rounded-md border cursor-pointer"
           >
             {open ? (
