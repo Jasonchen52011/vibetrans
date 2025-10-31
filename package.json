@@ -60,6 +60,7 @@
     "ai": "^5.0.84",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "critters": "^0.0.25",
     "lucide-react": "^0.552.0",
     "mammoth": "^1.11.0",
     "next": "15.2.1",
