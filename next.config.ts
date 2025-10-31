@@ -19,13 +19,7 @@ const nextConfig: NextConfig = {
   },
 
   // Exclude Node.js-only packages from Edge Runtime bundles
-  serverExternalPackages: [
-    'fumadocs-mdx',
-    'sharp',
-    'canvas-confetti',
-    'tone',
-    'mammoth',
-  ],
+  serverExternalPackages: ['sharp'],
 
   // https://nextjs.org/docs/architecture/nextjs-compiler#remove-console
   // Remove all console.* calls in production only
@@ -37,31 +31,17 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: [
       '@radix-ui/react-accordion',
-      '@radix-ui/react-alert-dialog',
-      '@radix-ui/react-avatar',
-      '@radix-ui/react-checkbox',
-      '@radix-ui/react-dialog',
+      '@radix-ui/react-collapsible',
       '@radix-ui/react-dropdown-menu',
-      '@radix-ui/react-label',
-      '@radix-ui/react-popover',
-      '@radix-ui/react-progress',
-      '@radix-ui/react-select',
-      '@radix-ui/react-separator',
-      '@radix-ui/react-slider',
+      '@radix-ui/react-navigation-menu',
+      '@radix-ui/react-portal',
       '@radix-ui/react-slot',
-      '@radix-ui/react-switch',
-      '@radix-ui/react-tabs',
-      '@radix-ui/react-toast',
-      '@radix-ui/react-toggle',
       '@radix-ui/react-tooltip',
       'lucide-react',
-      'date-fns',
       'ai',
-      'react-syntax-highlighter',
-      'swiper',
+      'clsx',
+      'tailwind-merge',
     ],
-    // Enable worker threads for better performance
-    workerThreads: false,
     // Optimize CSS
     optimizeCss: true,
     // Enable large page data optimization
@@ -108,17 +88,6 @@ const nextConfig: NextConfig = {
       config.externals = {
         ...config.externals,
         sharp: 'sharp',
-        mongodb: 'mongodb',
-        mysql2: 'mysql2',
-        pg: 'pg',
-        redis: 'redis',
-        'canvas-confetti': 'canvas-confetti',
-        tone: 'tone',
-        mammoth: 'mammoth',
-        'google-auth-library': 'google-auth-library',
-        '@aws-sdk/client-s3': '@aws-sdk/client-s3',
-        recharts: 'recharts',
-        'react-syntax-highlighter': 'react-syntax-highlighter',
       };
 
       // Optimize chunk splitting

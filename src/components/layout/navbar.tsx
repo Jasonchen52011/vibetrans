@@ -127,7 +127,7 @@ const customNavigationMenuTriggerStyle = cn(
 export function Navbar({ scroll }: NavBarProps) {
   const t = useTranslations();
   const locale = useLocale();
-  const scrolled = useScroll(50);
+  const { isScrolled, isScrollingUp, hideNavbar, scrollY } = useScroll(50);
   const menuLinks = useNavbarLinks();
   const localePathname = useLocalePathname();
   const [activeMenu, setActiveMenu] = useState<string | undefined>();
@@ -210,17 +210,34 @@ export function Navbar({ scroll }: NavBarProps) {
 
       <section
         className={cn(
-          'sticky inset-x-0 top-0 z-40 py-4 transition-all duration-300',
+          'fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-in-out',
+          // 磁吸效果 - 根据滚动状态调整transform
+          hideNavbar
+            ? '-translate-y-full' // 隐藏navbar
+            : scrollY > 100
+              ? 'translate-y-0' // 磁吸在顶部
+              : 'translate-y-0', // 初始位置
+
+          // 背景和边框效果
           scroll
-            ? scrolled
-              ? 'bg-white/80 dark:bg-black/80 backdrop-blur-lg border-b border-gray-200/50 dark:border-gray-700/50 shadow-sm'
-              : 'bg-transparent'
-            : 'bg-transparent'
+            ? isScrolled
+              ? 'bg-white/95 dark:bg-black/95 backdrop-blur-xl border-b border-gray-200/50 dark:border-gray-700/50 shadow-lg'
+              : 'bg-white/90 dark:bg-black/90 backdrop-blur-md border-b border-gray-100/30 dark:border-gray-800/30'
+            : 'bg-transparent',
+
+          // 滚动时的特殊效果
+          isScrollingUp && !hideNavbar && 'shadow-2xl'
         )}
+        style={{
+          // 平滑过渡效果
+          transitionProperty: 'transform, background-color, backdrop-filter, border-color, box-shadow',
+          transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
+          transitionDuration: hideNavbar ? '300ms' : '500ms'
+        }}
       >
-        <Container className="px-4">
+        <Container className="px-4 h-16">
           {/* desktop navbar */}
-          <nav className="hidden lg:flex lg:items-center lg:w-full">
+          <nav className="hidden lg:flex lg:items-center lg:w-full h-full">
             {/* logo and name */}
             <div className="flex items-center mr-8">
               <LocaleLink href="/" className="flex items-center space-x-2">
