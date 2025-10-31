@@ -143,43 +143,34 @@
         }
       ]
     },
-    "unique": {
-      "title": "坏翻译器的特别之处？",
-      "subtitle": "发现独特功能",
-      "description": "坏翻译器提供独特的功能，使其非常适合创造娱乐内容。",
-      "items": [
-        {
-          "title": "AI驱动的误译",
-          "description": "我们的先进算法通过多种语言故意创造搞笑的翻译链，确保每个结果都具有最大的娱乐价值。"
-        },
-        {
-          "title": "社交媒体就绪",
-          "description": "即时生成值得分享的内容。非常适合创建病毒式帖子、搞笑表情包和引人入胜的社交媒体内容。"
-        },
-        {
-          "title": "创意营销工具",
-          "description": "头脑风暴独特的口号和标语。坏翻译器帮助广告商用意想不到的、引人注目的翻译跳出思维定式。"
-        },
-        {
-          "title": "无尽娱乐",
-          "description": "从聚会游戏到创意写作灵感，坏翻译器以其不可预测的结果为任何场合带来欢乐和笑声。"
-        }
-      ]
-    },
     "userInterest": {
       "title": "适合每个场合",
+      "subtitle": "Bad Translator 带来无限创意",
+      "description": "探索坏翻译器在不同场景下的妙用",
       "items": [
         {
           "title": "社交媒体内容创作",
-          "description": "创建病毒式帖子和表情包，让你的粉丝发笑。坏翻译器帮助你生成独特、可分享的内容，在任何社交媒体信息流中脱颖而出。",
-          "image": "/images/docs/bad-translator-advertising.webp",
+          "description": "生成一键爆梗的翻译结果，制作表情包、Reels 或短视频脚本。每一次循环翻译都可能成为下一条爆款贴文。",
+          "image": "/images/docs/bad-translator-social-media.webp",
           "imageAlt": "社交媒体内容创作"
         },
         {
-          "title": "创意乐趣与娱乐",
-          "description": "为聚会、聚会或与朋友的休闲乐趣带来笑声。使用坏翻译器创建搞笑短语，挑战他人猜测原始含义。",
-          "image": "/images/docs/bad-translator-accuracy-concept.webp",
-          "imageAlt": "创意乐趣与娱乐"
+          "title": "创意营销灵感",
+          "description": "需要脑暴广告语或跨文化活动点子？让坏翻译器不断“翻车”，意想不到的误译能激发团队全新的创意方向。",
+          "image": "/images/docs/bad-translator-advertising.webp",
+          "imageAlt": "创意营销灵感"
+        },
+        {
+          "title": "聚会和团队活动",
+          "description": "把普通句子投入坏翻译器，猜猜最终会变成什么鬼话。无论聚会还是团队破冰，都能迅速点燃气氛。",
+          "image": "/images/docs/bad-translator-celebration.webp",
+          "imageAlt": "聚会和团队活动"
+        },
+        {
+          "title": "内容创作者武器库",
+          "description": "对博主、播客或直播主而言，这是源源不断的段子库。荒诞翻译让观众既惊讶又上头，互动率自然飙升。",
+          "image": "/images/docs/bad-translator-meme-creators.webp",
+          "imageAlt": "内容创作者武器库"
         }
       ]
     },
