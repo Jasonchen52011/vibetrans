@@ -5,13 +5,7 @@
     "hero": {
       "title": "Best Drow Translator for Fantasy Gaming and Creative Writing",
       "description": "Experience accurate Drow translation powered by advanced AI. Connect with the mysterious Dark Elf language, enhance your D&D campaigns, and explore fantasy linguistics through our comprehensive translation tool.",
-      "userAvatars": [
-        "male3",
-        "female4",
-        "male1",
-        "female3",
-        "male4"
-      ],
+      "userAvatars": ["male3", "female4", "male1", "female3", "male4"],
       "userCount": "from 20,000+ happy users"
     },
     "ctaButton": "Try Drow Translator Now",

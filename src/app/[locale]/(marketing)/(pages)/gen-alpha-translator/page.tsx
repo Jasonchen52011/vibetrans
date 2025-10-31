@@ -9,8 +9,8 @@ import TestimonialsThreeColumnSection from '@/components/blocks/testimonials/tes
 import WhatIsSection from '@/components/blocks/whatis';
 import { AuroraBackground } from '@/components/ui/aurora-background';
 import { constructMetadata } from '@/lib/metadata';
-import { buildTranslatorPageContent } from '@/lib/translator-page';
 import { buildToolStructuredData } from '@/lib/seo/structured-data';
+import { buildTranslatorPageContent } from '@/lib/translator-page';
 import { getUrlWithLocale } from '@/lib/urls/urls';
 import type { Metadata } from 'next';
 import type { Locale } from 'next-intl';
@@ -28,7 +28,10 @@ export async function generateMetadata({
   params: Promise<{ locale: Locale }>;
 }): Promise<Metadata | undefined> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'GenAlphaTranslatorPage' });
+  const t = await getTranslations({
+    locale,
+    namespace: 'GenAlphaTranslatorPage',
+  });
   return constructMetadata({
     title: `${t('title')} | VibeTrans`,
     description: t('description'),
@@ -48,7 +51,10 @@ export default async function GenAlphaTranslatorPage(
   const { locale } = params;
 
   // 使用标准 getTranslations 获取翻译
-  const t = await getTranslations({ locale, namespace: 'GenAlphaTranslatorPage' });
+  const t = await getTranslations({
+    locale,
+    namespace: 'GenAlphaTranslatorPage',
+  });
 
   // Structured Data for SEO
   const structuredData = buildToolStructuredData({
@@ -58,7 +64,7 @@ export default async function GenAlphaTranslatorPage(
 
   // 使用内容构建器生成所有页面内容
   const translatorContent = buildTranslatorPageContent(t, {
-    howToIcons: ['FaFileUpload', 'FaPencilAlt', 'FaLanguage'],
+    howToIcons: ['FaFileUpload', 'FaPencilAlt', 'FaLanguage', 'FaShare'],
   });
 
   return (
@@ -144,7 +150,10 @@ export default async function GenAlphaTranslatorPage(
 
         {/* Gen Alpha Translator Tool */}
         <div className="pt-0 pb-12 bg-gradient-to-b from-muted/20 to-background">
-          <GenAlphaTranslatorTool pageData={translatorContent.pageData} locale={locale} />
+          <GenAlphaTranslatorTool
+            pageData={translatorContent.pageData}
+            locale={locale}
+          />
         </div>
 
         {/* What Is Section */}
@@ -157,10 +166,16 @@ export default async function GenAlphaTranslatorPage(
         <HowTo section={translatorContent.howTo} />
 
         {/* Fun Facts Section */}
-        <UserScenarios section={translatorContent.funFacts} ctaText={t('ctaButton')} />
+        <UserScenarios
+          section={translatorContent.funFacts}
+          ctaText={t('ctaButton')}
+        />
 
         {/* User Interest Section */}
-        <UserScenarios section={translatorContent.userInterest} ctaText={t('ctaButton')} />
+        <UserScenarios
+          section={translatorContent.userInterest}
+          ctaText={t('ctaButton')}
+        />
 
         {/* Highlights/Why Choose */}
         <WhyChoose section={translatorContent.highlights} />
@@ -178,13 +193,13 @@ export default async function GenAlphaTranslatorPage(
         />
 
         {/* Testimonials Section */}
-        <TestimonialsThreeColumnSection namespace="GenAlphaTranslatorPage" subNamespace="testimonials" />
+        <TestimonialsThreeColumnSection section={translatorContent.testimonials} />
 
         {/* FAQ Section */}
-        <FaqSection namespace="GenAlphaTranslatorPage" subNamespace="faqs" />
+        <FaqSection section={translatorContent.faqs} />
 
         {/* Call to Action */}
-        <CallToActionSection namespace="GenAlphaTranslatorPage" subNamespace="cta" />
+        <CallToActionSection section={translatorContent.cta} />
       </div>
     </>
   );

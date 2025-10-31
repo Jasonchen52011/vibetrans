@@ -10,12 +10,51 @@ interface CallToActionSectionProps {
   subNamespace?: string;
 }
 
+interface CallToActionSectionProps {
+  namespace?: string;
+  subNamespace?: string;
+  section?: {
+    title: string;
+    description: string;
+    primaryButton: string;
+    secondaryButton: string;
+  };
+}
+
 export default function CallToActionSection({
   namespace = 'HomePage.calltoaction',
   subNamespace,
+  section,
 }: CallToActionSectionProps = {}) {
+  // If section data is provided, use it directly
+  if (section) {
+    return (
+      <section id="call-to-action" className="px-4 py-24 bg-muted/50">
+        <div className="mx-auto max-w-5xl px-6">
+          <div className="text-center">
+            <h2 className="max-w-5xl mx-auto text-center tracking-tight font-medium text-black dark:text-white text-3xl md:text-5xl md:leading-tight">
+              {section.title}
+            </h2>
+            <p className="mt-4 text-muted-foreground">
+              {section.description}
+            </p>
+
+            <div className="mt-12 flex justify-center">
+              <Button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} size="lg">
+                <span>{section.primaryButton}</span>
+                <ArrowRightIcon className="ml-2 h-4 w-4" />
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   // Build the actual namespace based on whether subNamespace is provided
-  const actualNamespace = subNamespace ? `${namespace}.${subNamespace}` : namespace;
+  const actualNamespace = subNamespace
+    ? `${namespace}.${subNamespace}`
+    : namespace;
 
   // Safe translation access with fallback
   let t: any;
@@ -23,7 +62,10 @@ export default function CallToActionSection({
     // @ts-ignore - Translation keys type mismatch
     t = useTranslations(actualNamespace);
   } catch (error) {
-    console.warn(`Failed to load translations for namespace: ${actualNamespace}`, error);
+    console.warn(
+      `Failed to load translations for namespace: ${actualNamespace}`,
+      error
+    );
     // Return null to not render the section if translations are not available
     return null;
   }
@@ -59,7 +101,9 @@ export default function CallToActionSection({
           <h2 className="max-w-5xl mx-auto text-center tracking-tight font-medium text-black dark:text-white text-3xl md:text-5xl md:leading-tight">
             {getNestedTranslation('title')}
           </h2>
-          <p className="mt-4 text-muted-foreground">{getNestedTranslation('description')}</p>
+          <p className="mt-4 text-muted-foreground">
+            {getNestedTranslation('description')}
+          </p>
 
           <div className="mt-12 flex justify-center">
             <Button onClick={scrollToTop} size="lg">

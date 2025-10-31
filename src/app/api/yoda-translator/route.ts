@@ -1,4 +1,3 @@
-
 import { type NextRequest, NextResponse } from 'next/server';
 
 export const runtime = 'edge';
@@ -7,10 +6,16 @@ export const runtime = 'edge';
 const transformationRules = [
   // 句子结构重组：将动词移到句末
   // "I will go" -> "Go, I will"
-  [/(\\bI\\s+(will|shall|can|should|must|have|has|had|is|am|are|was|were)\\s+)(\\w+)/gi, '$3, $1$2'],
+  [
+    /(\\bI\\s+(will|shall|can|should|must|have|has|had|is|am|are|was|were)\\s+)(\\w+)/gi,
+    '$3, $1$2',
+  ],
 
   // "You are" -> "Are you"
-  [/(\\bYou\\s+(are|is|am|was|were|will|can|should|must|have|has|had)\\s+)(\\w+)/gi, '$2 you, $3'],
+  [
+    /(\\bYou\\s+(are|is|am|was|were|will|can|should|must|have|has|had)\\s+)(\\w+)/gi,
+    '$2 you, $3',
+  ],
 
   // 添加Yoda特有的词汇
   [/\\byes\\b/gi, 'Yes, yes'],
@@ -83,7 +88,7 @@ export async function POST(request: NextRequest) {
       {
         success: false,
         error: 'Transformation failed',
-        suggestion: 'Please try again'
+        suggestion: 'Please try again',
       },
       { status: 500 }
     );

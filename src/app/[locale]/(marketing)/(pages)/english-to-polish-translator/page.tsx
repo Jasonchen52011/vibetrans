@@ -9,8 +9,8 @@ import TestimonialsThreeColumnSection from '@/components/blocks/testimonials/tes
 import WhatIsSection from '@/components/blocks/whatis';
 import { AuroraBackground } from '@/components/ui/aurora-background';
 import { constructMetadata } from '@/lib/metadata';
-import { buildTranslatorPageContent } from '@/lib/translator-page';
 import { buildToolStructuredData } from '@/lib/seo/structured-data';
+import { buildTranslatorPageContent } from '@/lib/translator-page';
 import { getUrlWithLocale } from '@/lib/urls/urls';
 import type { Metadata } from 'next';
 import type { Locale } from 'next-intl';
@@ -25,7 +25,10 @@ export async function generateMetadata({
   params: Promise<{ locale: Locale }>;
 }): Promise<Metadata | undefined> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'EnglishToPolishTranslatorPage' });
+  const t = await getTranslations({
+    locale,
+    namespace: 'EnglishToPolishTranslatorPage',
+  });
   const metadataT = await getTranslations({ locale, namespace: 'Metadata' });
 
   return constructMetadata({
@@ -113,7 +116,6 @@ export default async function EnglishToPolishTranslatorPage(
     items: highlightItems,
   };
 
-  
   return (
     <>
       <script
@@ -172,7 +174,10 @@ export default async function EnglishToPolishTranslatorPage(
 
         {/* Tool Component */}
         <div className="pt-0 pb-12 bg-gradient-to-b from-muted/20 to-background">
-          <EnglishToPolishTranslatorTool pageData={translatorContent.pageData} locale={locale} />
+          <EnglishToPolishTranslatorTool
+            pageData={translatorContent.pageData}
+            locale={locale}
+          />
         </div>
 
         {/* What Is Section */}
@@ -185,10 +190,16 @@ export default async function EnglishToPolishTranslatorPage(
         <HowTo section={translatorContent.howTo} />
 
         {/* User Interest Blocks */}
-        <UserScenarios section={translatorContent.userInterest} ctaText={t('ctaButton')} />
+        <UserScenarios
+          section={translatorContent.userInterest}
+          ctaText={t('ctaButton')}
+        />
 
         {/* Fun Facts */}
-        <UserScenarios section={translatorContent.funFacts} ctaText={t('ctaButton')} />
+        <UserScenarios
+          section={translatorContent.funFacts}
+          ctaText={t('ctaButton')}
+        />
 
         {/* Highlights */}
         <WhyChoose section={highlightsSection} />
@@ -206,15 +217,23 @@ export default async function EnglishToPolishTranslatorPage(
         />
 
         {/* Testimonials */}
-        <TestimonialsThreeColumnSection namespace="EnglishToPolishTranslatorPage" subNamespace="testimonials" />
+        <TestimonialsThreeColumnSection
+          namespace="EnglishToPolishTranslatorPage"
+          subNamespace="testimonials"
+        />
 
         {/* FAQ */}
 
-
-        <FaqSection namespace="EnglishToPolishTranslatorPage" subNamespace="faqs" />
+        <FaqSection
+          namespace="EnglishToPolishTranslatorPage"
+          subNamespace="faqs"
+        />
 
         {/* CTA */}
-        <CallToActionSection namespace="EnglishToPolishTranslatorPage" subNamespace="cta" />
+        <CallToActionSection
+          namespace="EnglishToPolishTranslatorPage"
+          subNamespace="cta"
+        />
       </div>
     </>
   );

@@ -118,15 +118,17 @@ export default function DumbItDownTool({
       });
 
       const data = (await response.json()) as {
-        simplified?: string;
+        translated?: string;
         error?: string;
+        simplified?: string;
       };
 
       if (!response.ok) {
         throw new Error(data.error || pageData.tool.error);
       }
 
-      setSimplifiedText(data.simplified || '');
+      // Handle both old and new API response formats
+      setSimplifiedText(data.translated || data.simplified || '');
     } catch (err: any) {
       setError(err.message || 'Simplification failed');
       setSimplifiedText('');

@@ -9,8 +9,8 @@ import TestimonialsThreeColumnSection from '@/components/blocks/testimonials/tes
 import WhatIsSection from '@/components/blocks/whatis';
 import { AuroraBackground } from '@/components/ui/aurora-background';
 import { constructMetadata } from '@/lib/metadata';
-import { buildTranslatorPageContent } from '@/lib/translator-page';
 import { buildToolStructuredData } from '@/lib/seo/structured-data';
+import { buildTranslatorPageContent } from '@/lib/translator-page';
 import { getUrlWithLocale } from '@/lib/urls/urls';
 import type { Metadata } from 'next';
 import type { Locale } from 'next-intl';
@@ -28,7 +28,10 @@ export async function generateMetadata({
   params: Promise<{ locale: Locale }>;
 }): Promise<Metadata | undefined> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'GibberishTranslatorPage' });
+  const t = await getTranslations({
+    locale,
+    namespace: 'GibberishTranslatorPage',
+  });
   return constructMetadata({
     title: `${t('title')} | VibeTrans`,
     description: t('description'),
@@ -41,12 +44,17 @@ interface GibberishTranslatorPageProps {
   params: Promise<{ locale: Locale }>;
 }
 
-export default async function GibberishTranslatorPage(props: GibberishTranslatorPageProps) {
+export default async function GibberishTranslatorPage(
+  props: GibberishTranslatorPageProps
+) {
   const params = await props.params;
   const { locale } = params;
 
   // 使用标准 getTranslations 获取翻译
-  const t = await getTranslations({ locale, namespace: 'GibberishTranslatorPage' });
+  const t = await getTranslations({
+    locale,
+    namespace: 'GibberishTranslatorPage',
+  });
 
   // Structured Data for SEO
   const structuredData = buildToolStructuredData({
@@ -56,7 +64,7 @@ export default async function GibberishTranslatorPage(props: GibberishTranslator
 
   // 使用内容构建器生成所有页面内容
   const translatorContent = buildTranslatorPageContent(t, {
-    howToIcons: ['FaFileUpload', 'FaPencilAlt', 'FaLanguage'],
+    howToIcons: ['FaFileUpload', 'FaPencilAlt', 'FaLanguage', 'FaShare'],
   });
 
   return (
@@ -142,7 +150,10 @@ export default async function GibberishTranslatorPage(props: GibberishTranslator
 
         {/* Gibberish Translator Tool */}
         <div className="pt-0 pb-12 bg-gradient-to-b from-muted/20 to-background">
-          <GibberishTranslatorTool pageData={translatorContent.pageData} locale={locale} />
+          <GibberishTranslatorTool
+            pageData={translatorContent.pageData}
+            locale={locale}
+          />
         </div>
 
         {/* What Is Section */}
@@ -155,10 +166,16 @@ export default async function GibberishTranslatorPage(props: GibberishTranslator
         <HowTo section={translatorContent.howTo} />
 
         {/* Fun Facts Section */}
-        <UserScenarios section={translatorContent.funFacts} ctaText={t('ctaButton')} />
+        <UserScenarios
+          section={translatorContent.funFacts}
+          ctaText={t('ctaButton')}
+        />
 
         {/* User Interest Section */}
-        <UserScenarios section={translatorContent.userInterest} ctaText={t('ctaButton')} />
+        <UserScenarios
+          section={translatorContent.userInterest}
+          ctaText={t('ctaButton')}
+        />
 
         {/* Highlights/Why Choose */}
         <WhyChoose section={translatorContent.highlights} />
@@ -176,13 +193,13 @@ export default async function GibberishTranslatorPage(props: GibberishTranslator
         />
 
         {/* Testimonials Section */}
-        <TestimonialsThreeColumnSection namespace="GibberishTranslatorPage" subNamespace="testimonials" />
+        <TestimonialsThreeColumnSection section={translatorContent.testimonials} />
 
         {/* FAQ Section */}
-        <FaqSection namespace="GibberishTranslatorPage" subNamespace="faqs" />
+        <FaqSection section={translatorContent.faqs} />
 
         {/* Call to Action */}
-        <CallToActionSection namespace="GibberishTranslatorPage" subNamespace="cta" />
+        <CallToActionSection section={translatorContent.cta} />
       </div>
     </>
   );

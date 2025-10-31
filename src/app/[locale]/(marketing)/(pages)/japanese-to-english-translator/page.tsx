@@ -9,8 +9,8 @@ import TestimonialsSection from '@/components/blocks/testimonials/testimonials';
 import WhatIsSection from '@/components/blocks/whatis';
 import { AuroraBackground } from '@/components/ui/aurora-background';
 import { constructMetadata } from '@/lib/metadata';
-import { buildTranslatorPageContent } from '@/lib/translator-page';
 import { buildToolStructuredData } from '@/lib/seo/structured-data';
+import { buildTranslatorPageContent } from '@/lib/translator-page';
 import { getUrlWithLocale } from '@/lib/urls/urls';
 import type { Metadata } from 'next';
 import type { Locale } from 'next-intl';
@@ -25,7 +25,10 @@ export async function generateMetadata({
   params: Promise<{ locale: Locale }>;
 }): Promise<Metadata | undefined> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'japaneseToEnglishTranslatorPage' });
+  const t = await getTranslations({
+    locale,
+    namespace: 'japaneseToEnglishTranslatorPage',
+  });
   const metadataT = await getTranslations({ locale, namespace: 'Metadata' });
 
   return constructMetadata({
@@ -58,7 +61,7 @@ export default async function JapaneseToEnglishTranslatorPage(
 
   // 使用内容构建器生成所有页面内容
   const translatorContent = buildTranslatorPageContent(t, {
-    howToIcons: ['FaFileUpload', 'FaPencilAlt', 'FaLanguage'],
+    howToIcons: ['FaFileUpload', 'FaPencilAlt', 'FaLanguage', 'FaDownload'],
   });
 
   // Highlights section
@@ -89,8 +92,6 @@ export default async function JapaneseToEnglishTranslatorPage(
       },
     ],
   };
-
-  
 
   return (
     <>
@@ -166,10 +167,16 @@ export default async function JapaneseToEnglishTranslatorPage(
         <HowTo section={translatorContent.howTo} />
 
         {/* User Interest Blocks */}
-        <UserScenarios section={translatorContent.userInterest} ctaText={t('ctaButton')} />
+        <UserScenarios
+          section={translatorContent.userInterest}
+          ctaText={t('ctaButton')}
+        />
 
         {/* Fun Facts */}
-        <UserScenarios section={translatorContent.funFacts} ctaText={t('ctaButton')} />
+        <UserScenarios
+          section={translatorContent.funFacts}
+          ctaText={t('ctaButton')}
+        />
 
         {/* Highlights */}
         <WhyChoose section={highlightsSection} />
@@ -187,15 +194,23 @@ export default async function JapaneseToEnglishTranslatorPage(
         />
 
         {/* Testimonials */}
-        <TestimonialsThreeColumnSection namespace="japaneseToEnglishTranslatorPage" subNamespace="testimonials" />
+        <TestimonialsThreeColumnSection
+          namespace="japaneseToEnglishTranslatorPage"
+          subNamespace="testimonials"
+        />
 
         {/* FAQ */}
 
-
-        <FaqSection namespace="japaneseToEnglishTranslatorPage" subNamespace="faqs" />
+        <FaqSection
+          namespace="japaneseToEnglishTranslatorPage"
+          subNamespace="faqs"
+        />
 
         {/* CTA */}
-        <CallToActionSection namespace="japaneseToEnglishTranslatorPage" subNamespace="cta" />
+        <CallToActionSection
+          namespace="japaneseToEnglishTranslatorPage"
+          subNamespace="cta"
+        />
       </div>
     </>
   );

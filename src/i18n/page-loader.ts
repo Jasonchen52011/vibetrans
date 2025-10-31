@@ -1,8 +1,8 @@
-import { headers } from 'next/headers';
 import type { Locale, Messages } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
-import { routing } from './routing';
+import { headers } from 'next/headers';
 import { getMessagesForLocale } from './messages';
+import { routing } from './routing';
 
 /**
  * 页面级按需翻译加载器
@@ -16,9 +16,12 @@ export async function getPageTranslations(
     fallbackLocale?: Locale;
   } = {}
 ): Promise<{ t: any; messages: Messages }> {
-  const { includeCommon = true, fallbackLocale = routing.defaultLocale } = options;
+  const { includeCommon = true, fallbackLocale = routing.defaultLocale } =
+    options;
 
-  console.log(`🎯 [getPageTranslations] Loading translations for page: ${pageKey} (${locale})`);
+  console.log(
+    `🎯 [getPageTranslations] Loading translations for page: ${pageKey} (${locale})`
+  );
 
   try {
     // 直接获取页面翻译，不通过 messages
@@ -38,11 +41,17 @@ export async function getPageTranslations(
     console.log(`✅ [getPageTranslations] Successfully loaded: ${pageKey}`);
     return { t, messages: {} };
   } catch (error) {
-    console.warn(`⚠️ [getPageTranslations] Failed to load ${pageKey}, using fallback:`, error);
+    console.warn(
+      `⚠️ [getPageTranslations] Failed to load ${pageKey}, using fallback:`,
+      error
+    );
 
     // 回退到默认语言
     try {
-      const fallbackTranslations = await getTranslations({ locale: fallbackLocale, namespace: pageKey });
+      const fallbackTranslations = await getTranslations({
+        locale: fallbackLocale,
+        namespace: pageKey,
+      });
 
       const t = (key: string) => {
         return fallbackTranslations(key);
@@ -50,7 +59,10 @@ export async function getPageTranslations(
 
       return { t, messages: {} };
     } catch (fallbackError) {
-      console.error(`❌ [getPageTranslations] Fallback also failed for ${pageKey}:`, fallbackError);
+      console.error(
+        `❌ [getPageTranslations] Fallback also failed for ${pageKey}:`,
+        fallbackError
+      );
 
       // 最后的回退：返回空的翻译对象
       const t = () => '';
@@ -73,7 +85,8 @@ export async function getCurrentPathInfo(): Promise<{
   const pathname = headersList.get('x-current-pathname') || '/';
   const pathWithoutLocale = headersList.get('x-path-without-locale') || '/';
   const isTranslatorPage = headersList.get('x-is-translator-page') === 'true';
-  const detectedLocale = headersList.get('x-detected-locale') || routing.defaultLocale;
+  const detectedLocale =
+    headersList.get('x-detected-locale') || routing.defaultLocale;
 
   return {
     pathname,
@@ -123,10 +136,11 @@ export function detectTranslatorKeyFromPath(pathname: string): string | null {
 
     if (lastSegment) {
       // 转换为 PascalCase 格式的键名
-      const keyName = lastSegment
-        .split('-')
-        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-        .join('') + 'Page';
+      const keyName =
+        lastSegment
+          .split('-')
+          .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+          .join('') + 'Page';
 
       return keyName;
     }
@@ -153,7 +167,10 @@ export async function getTranslatorPageTranslations(
     const detectedKey = detectTranslatorKeyFromPath(pathInfo.pathWithoutLocale);
 
     if (!detectedKey) {
-      console.warn('⚠️ [getTranslatorPageTranslations] Could not detect translator key from path:', pathInfo.pathWithoutLocale);
+      console.warn(
+        '⚠️ [getTranslatorPageTranslations] Could not detect translator key from path:',
+        pathInfo.pathWithoutLocale
+      );
       return { t: (key: string) => '', messages: {} };
     }
 

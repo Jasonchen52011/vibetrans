@@ -165,18 +165,22 @@
       "description": "发现是什么让我们的工具独一无二",
       "items": [
         {
+          "icon": "FaRocket",
           "title": "简单且免费",
           "description": "使用 VibeTrans 简单且免费。只需上传您的文本，选择设置，您就可以开始创建冗长内容了。"
         },
         {
+          "icon": "FaChartLine",
           "title": "准确的数据",
           "description": "我们的工具确保扩展的文本保留其原始含义。您可以信任每个生成段落的准确性。"
         },
         {
+          "icon": "FaShieldAlt",
           "title": "隐私保证",
           "description": "使用 VibeTrans，您的数据是安全的。我们的本地处理意味着您的信息永远不会离开您的设备。"
         },
         {
+          "icon": "FaMagic",
           "title": "上下文理解",
           "description": "我们的 AI 理解上下文，使您的冗长文本听起来自然。这就像每个句子都有人性化的触感。"
         }

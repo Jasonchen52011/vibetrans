@@ -25,7 +25,10 @@ export async function generateMetadata({
   params: Promise<{ locale: Locale }>;
 }): Promise<Metadata | undefined> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'PigLatinTranslatorPage' });
+  const t = await getTranslations({
+    locale,
+    namespace: 'PigLatinTranslatorPage',
+  });
   return constructMetadata({
     title: `${t('title')} | VibeTrans`,
     description: t('description'),
@@ -55,7 +58,9 @@ export default async function PigLatinTranslatorPage(
   });
 
   // Build page content using unified function
-  const translatorContent = buildTranslatorPageContent(t, { howToIcons: ['FaFileUpload', 'FaPencilAlt', 'FaLanguage'] });
+  const translatorContent = buildTranslatorPageContent(t, {
+    howToIcons: ['FaFileUpload', 'FaPencilAlt', 'FaLanguage', 'FaCheckCircle'],
+  });
 
   return (
     <>
@@ -115,7 +120,10 @@ export default async function PigLatinTranslatorPage(
 
         {/* Tool Component */}
         <div className="pt-0 pb-12 bg-gradient-to-b from-muted/20 to-background">
-          <PigLatinTranslatorTool pageData={translatorContent.pageData} locale={locale} />
+          <PigLatinTranslatorTool
+            pageData={translatorContent.pageData}
+            locale={locale}
+          />
         </div>
 
         {/* What Is Section */}
@@ -128,10 +136,16 @@ export default async function PigLatinTranslatorPage(
         <HowTo section={translatorContent.howTo} />
 
         {/* User Interest Blocks */}
-        <UserScenarios section={translatorContent.userInterest} ctaText={t('ctaButton')} />
+        <UserScenarios
+          section={translatorContent.userInterest}
+          ctaText={t('ctaButton')}
+        />
 
         {/* Fun Facts */}
-        <UserScenarios section={translatorContent.funFacts} ctaText={t('ctaButton')} />
+        <UserScenarios
+          section={translatorContent.funFacts}
+          ctaText={t('ctaButton')}
+        />
 
         {/* Highlights */}
         <WhyChoose section={translatorContent.highlights} />
@@ -149,13 +163,13 @@ export default async function PigLatinTranslatorPage(
         />
 
         {/* Testimonials */}
-        <TestimonialsThreeColumnSection namespace="PigLatinTranslatorPage" subNamespace="testimonials" />
+        <TestimonialsThreeColumnSection section={translatorContent.testimonials} />
 
         {/* FAQ */}
-        <FaqSection namespace="PigLatinTranslatorPage" subNamespace="faqs" />
+        <FaqSection section={translatorContent.faqs} />
 
         {/* CTA */}
-        <CallToActionSection namespace="PigLatinTranslatorPage" subNamespace="cta" />
+        <CallToActionSection section={translatorContent.cta} />
       </div>
     </>
   );

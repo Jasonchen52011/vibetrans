@@ -9,8 +9,8 @@ import TestimonialsThreeColumnSection from '@/components/blocks/testimonials/tes
 import WhatIsSection from '@/components/blocks/whatis';
 import { AuroraBackground } from '@/components/ui/aurora-background';
 import { constructMetadata } from '@/lib/metadata';
-import { buildTranslatorPageContent } from '@/lib/translator-page';
 import { buildToolStructuredData } from '@/lib/seo/structured-data';
+import { buildTranslatorPageContent } from '@/lib/translator-page';
 import { getUrlWithLocale } from '@/lib/urls/urls';
 import type { Metadata } from 'next';
 import type { Locale } from 'next-intl';
@@ -41,7 +41,9 @@ interface BabyTranslatorPageProps {
   params: Promise<{ locale: Locale }>;
 }
 
-export default async function BabyTranslatorPage(props: BabyTranslatorPageProps) {
+export default async function BabyTranslatorPage(
+  props: BabyTranslatorPageProps
+) {
   const params = await props.params;
   const { locale } = params;
 
@@ -115,7 +117,10 @@ export default async function BabyTranslatorPage(props: BabyTranslatorPageProps)
 
         {/* Tool Component */}
         <div className="pt-0 pb-12 bg-gradient-to-b from-muted/20 to-background">
-          <BabyTranslatorTool pageData={translatorContent.pageData} locale={locale} />
+          <BabyTranslatorTool
+            pageData={translatorContent.pageData}
+            locale={locale}
+          />
         </div>
 
         {/* What Is Section */}
@@ -128,10 +133,16 @@ export default async function BabyTranslatorPage(props: BabyTranslatorPageProps)
         <HowTo section={translatorContent.howTo} />
 
         {/* User Interest Blocks */}
-        <UserScenarios section={translatorContent.userInterest} ctaText={t('ctaButton')} />
+        <UserScenarios
+          section={translatorContent.userInterest}
+          ctaText={t('ctaButton')}
+        />
 
         {/* Fun Facts */}
-        <UserScenarios section={translatorContent.funFacts} ctaText={t('ctaButton')} />
+        <UserScenarios
+          section={translatorContent.funFacts}
+          ctaText={t('ctaButton')}
+        />
 
         {/* Highlights */}
         <WhyChoose section={translatorContent.highlights} />
@@ -149,13 +160,13 @@ export default async function BabyTranslatorPage(props: BabyTranslatorPageProps)
         />
 
         {/* Testimonials */}
-        <TestimonialsThreeColumnSection namespace="BabyTranslatorPage" subNamespace="testimonials" />
+        <TestimonialsThreeColumnSection section={translatorContent.testimonials} />
 
         {/* FAQ */}
-        <FaqSection namespace="BabyTranslatorPage" subNamespace="faqs" />
+        <FaqSection section={translatorContent.faqs} />
 
         {/* CTA */}
-        <CallToActionSection namespace="BabyTranslatorPage" subNamespace="cta" />
+        <CallToActionSection section={translatorContent.cta} />
       </div>
     </>
   );

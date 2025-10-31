@@ -9,8 +9,8 @@ import TestimonialsThreeColumnSection from '@/components/blocks/testimonials/tes
 import WhatIsSection from '@/components/blocks/whatis';
 import { AuroraBackground } from '@/components/ui/aurora-background';
 import { constructMetadata } from '@/lib/metadata';
-import { buildTranslatorPageContent } from '@/lib/translator-page';
 import { buildToolStructuredData } from '@/lib/seo/structured-data';
+import { buildTranslatorPageContent } from '@/lib/translator-page';
 import { getUrlWithLocale } from '@/lib/urls/urls';
 import type { Metadata } from 'next';
 import type { Locale } from 'next-intl';
@@ -28,7 +28,10 @@ export async function generateMetadata({
   params: Promise<{ locale: Locale }>;
 }): Promise<Metadata | undefined> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'EsperantoTranslatorPage' });
+  const t = await getTranslations({
+    locale,
+    namespace: 'EsperantoTranslatorPage',
+  });
   return constructMetadata({
     title: `${t('title')} | VibeTrans`,
     description: t('description'),
@@ -59,7 +62,7 @@ export default async function EsperantoTranslatorPage(
 
   // 使用内容构建器生成所有页面内容
   const translatorContent = buildTranslatorPageContent(t, {
-    howToIcons: ['FaFileUpload', 'FaPencilAlt', 'FaLanguage']
+    howToIcons: ['FaFileUpload', 'FaPencilAlt', 'FaLanguage', 'FaDownload'],
   });
 
   return (
@@ -145,7 +148,10 @@ export default async function EsperantoTranslatorPage(
 
         {/* Esperanto Translator Tool */}
         <div className="pt-0 pb-12 bg-gradient-to-b from-muted/20 to-background">
-          <EsperantoTranslatorTool pageData={translatorContent.pageData} locale={locale} />
+          <EsperantoTranslatorTool
+            pageData={translatorContent.pageData}
+            locale={locale}
+          />
         </div>
 
         {/* What Is Section */}
@@ -158,10 +164,16 @@ export default async function EsperantoTranslatorPage(
         <HowTo section={translatorContent.howTo} />
 
         {/* User Interest Blocks */}
-        <UserScenarios section={translatorContent.userInterest} ctaText={t('ctaButton')} />
+        <UserScenarios
+          section={translatorContent.userInterest}
+          ctaText={t('ctaButton')}
+        />
 
         {/* Fun Facts */}
-        <UserScenarios section={translatorContent.funFacts} ctaText={t('ctaButton')} />
+        <UserScenarios
+          section={translatorContent.funFacts}
+          ctaText={t('ctaButton')}
+        />
 
         {/* Highlights/Why Choose */}
         <WhyChoose section={translatorContent.highlights} />
@@ -179,13 +191,13 @@ export default async function EsperantoTranslatorPage(
         />
 
         {/* Testimonials Section */}
-        <TestimonialsThreeColumnSection namespace="EsperantoTranslatorPage" subNamespace="testimonials" />
+        <TestimonialsThreeColumnSection section={translatorContent.testimonials} />
 
         {/* FAQ Section */}
-        <FaqSection namespace="EsperantoTranslatorPage" subNamespace="faqs" />
+        <FaqSection section={translatorContent.faqs} />
 
         {/* Call to Action */}
-        <CallToActionSection namespace="EsperantoTranslatorPage" subNamespace="cta" />
+        <CallToActionSection section={translatorContent.cta} />
       </div>
     </>
   );

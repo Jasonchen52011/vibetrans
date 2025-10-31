@@ -5,13 +5,7 @@
     "hero": {
       "title": "最佳卓精灵语翻译器，专为奇幻游戏和创意写作设计",
       "description": "体验由先进AI驱动的精准卓精灵语翻译。与神秘的卓精灵语言建立联系，提升您的D&D战役，通过我们全面的翻译工具探索奇幻语言学的丰富内涵。",
-      "userAvatars": [
-        "male3",
-        "female4",
-        "male1",
-        "female3",
-        "male4"
-      ],
+      "userAvatars": ["male3", "female4", "male1", "female3", "male4"],
       "userCount": "来自 25,000+ 满意用户"
     },
     "ctaButton": "立即尝试卓精灵语翻译器",

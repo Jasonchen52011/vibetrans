@@ -137,19 +137,23 @@
       "items": [
         {
           "title": "易于使用",
-          "description": "VibeTrans无需编码技能。只需上传您的脚本，让工具处理其余部分。它用户友好且直观。"
+          "description": "VibeTrans无需编码技能。只需上传您的脚本，让工具处理其余部分。它用户友好且直观。",
+          "icon": "FaRocket"
         },
         {
           "title": "精准的语言翻译",
-          "description": "准确性至关重要。VibeTrans确保精准翻译，使您的信息在任何语言中都清晰专业。"
+          "description": "准确性至关重要。VibeTrans确保精准翻译，使您的信息在任何语言中都清晰专业。",
+          "icon": "FaBrain"
         },
         {
           "title": "隐私优先",
-          "description": "您的数据在我们这里是安全的。VibeTrans符合GDPR和HIPAA法规，确保您的信息保持安全。"
+          "description": "您的数据在我们这里是安全的。VibeTrans符合GDPR和HIPAA法规，确保您的信息保持安全。",
+          "icon": "FaShieldAlt"
         },
         {
           "title": "AI驱动的上下文理解",
-          "description": "我们的AI理解上下文，提供听起来自然的翻译，传达正确的语气和意图。"
+          "description": "我们的AI理解上下文，提供听起来自然的翻译，传达正确的语气和意图。",
+          "icon": "FaEye"
         }
       ]
     },

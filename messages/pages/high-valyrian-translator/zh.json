@@ -138,22 +138,26 @@
         {
           "title": "简单免费使用",
           "description": "VibeTrans 提供简单易用且免费的 High Valyrian 翻译功能。无需复杂的设置或订阅,即可快速翻译文本。用户界面直观友好,让您轻松体验 Valyrian 语言的魅力。立即使用 VibeTrans,畅享无障碍语言交流。",
-          "wordCount": 50
+          "wordCount": 50,
+          "icon": "FaRocket"
         },
         {
           "title": "数据隐私和安全",
           "description": "VibeTrans 采用先进的加密技术,确保用户数据的安全和私密性。我们严格遵循国际数据保护标准,保证您的翻译历史和个人信息不会被泄露或滥用,让您使用 High Valyrian Translator 时更加安心。",
-          "wordCount": 50
+          "wordCount": 50,
+          "icon": "FaBrain"
         },
         {
           "title": "AI 语境理解",
           "description": "VibeTrans 配备先进的 AI 语境理解能力,能够准确捕捉和分析高等瓦雷利亚语中的细微差别。无论是复杂的句子结构还是语境依赖的词义,VibeTrans 都能提供精准的翻译,确保用户获得最贴切的语言体验。",
-          "wordCount": 50
+          "wordCount": 50,
+          "icon": "FaShieldAlt"
         },
         {
           "title": "更多解释",
           "description": "VibeTrans 提供深入的翻译解释,让用户不仅理解 High Valyrian 的字面意思,还能掌握其文化背景和语言细微差异。通过详细的语法解析和上下文说明,VibeTrans 助您全面领略这门神秘语言的魅力。",
-          "wordCount": 50
+          "wordCount": 50,
+          "icon": "FaEye"
         }
       ]
     },

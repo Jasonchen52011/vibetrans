@@ -154,34 +154,35 @@
         }
       ]
     },
-  "highlights": {
-    "title": "Professional Alien Text Generator Engine for Quality Results",
-    "description": "Discover what makes our tool unique",
-    "items": [
-      {
-        "icon": "FaRocket",
-        "title": "Easy and Free to Use",
-        "description": "Get started with Alien Text Generator without any cost. Simply input your text, and watch it transform into an alien script instantly. No sign-up or payment needed—just pure fun and creativity."
-      },
-      {
-        "icon": "FaChartLine",
-        "title": "Accurate Data Conversion",
-        "description": "Our tool ensures precise conversion of your text into alien scripts, maintaining the integrity and meaning of your original message. Whether inputting simple words or complex phrases, accuracy is our top priority."
-      },
-      {
-        "icon": "FaShieldAlt",
-        "title": "Data Privacy and Security",
-        "description": "We prioritize your privacy by not storing any user data. Feel secure knowing your text is safe and processed without any traces left behind. Privacy is paramount in our operations."
-      },
-      {
-        "icon": "FaMagic",
-        "title": "AI Contextual Understanding",
-        "description": "Our AI understands the context of your text, ensuring the alien script generated is not just random symbols, but a coherent and meaningful alien language experience."
-      }
-    ]
-  },
+    "highlights": {
+      "title": "Professional Alien Text Generator Engine for Quality Results",
+      "description": "Discover what makes our tool unique",
+      "items": [
+        {
+          "icon": "FaRocket",
+          "title": "Easy and Free to Use",
+          "description": "Get started with Alien Text Generator without any cost. Simply input your text, and watch it transform into an alien script instantly. No sign-up or payment needed—just pure fun and creativity."
+        },
+        {
+          "icon": "FaChartLine",
+          "title": "Accurate Data Conversion",
+          "description": "Our tool ensures precise conversion of your text into alien scripts, maintaining the integrity and meaning of your original message. Whether inputting simple words or complex phrases, accuracy is our top priority."
+        },
+        {
+          "icon": "FaShieldAlt",
+          "title": "Data Privacy and Security",
+          "description": "We prioritize your privacy by not storing any user data. Feel secure knowing your text is safe and processed without any traces left behind. Privacy is paramount in our operations."
+        },
+        {
+          "icon": "FaMagic",
+          "title": "AI Contextual Understanding",
+          "description": "Our AI understands the context of your text, ensuring the alien script generated is not just random symbols, but a coherent and meaningful alien language experience."
+        }
+      ]
+    },
     "testimonials": {
       "title": "What Our Users Are Saying",
+      "subtitle": "Real experiences from our creative community",
       "items": {
         "item-1": {
           "name": "John Smith",
@@ -194,14 +195,14 @@
           "name": "Emily Johnson",
           "role": "Graphic Designer",
           "heading": "Perfect for Creative Projects",
-          "content": "Alien Text Generator helped me design a standout poster. The range of fonts and styles available made it easy to match the aesthetic I needed. It’s user-friendly, and the results are always visually striking.",
+          "content": "Alien Text Generator helped me design a standout poster. The range of fonts and styles available made it easy to match the aesthetic I needed. It's user-friendly, and the results are always visually striking.",
           "rating": "4.9"
         },
         "item-3": {
           "name": "Michael Brown",
           "role": "Educator",
           "heading": "Engaging Classroom Tool",
-          "content": "I used Alien Text Generator in my classroom to create fun secret codes for my students. It made learning more interactive, and they loved decoding messages. This tool is a fantastic addition to any educator’s toolkit.",
+          "content": "I used Alien Text Generator in my classroom to create fun secret codes for my students. It made learning more interactive, and they loved decoding messages. This tool is a fantastic addition to any educator's toolkit.",
           "rating": "4.7"
         }
       }

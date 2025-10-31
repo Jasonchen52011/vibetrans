@@ -1,4 +1,3 @@
-
 import { type NextRequest, NextResponse } from 'next/server';
 
 export const runtime = 'edge';
@@ -44,7 +43,7 @@ export async function POST(request: NextRequest) {
       {
         success: false,
         error: 'Translation failed',
-        suggestion: 'Please try again'
+        suggestion: 'Please try again',
       },
       { status: 500 }
     );
@@ -56,11 +55,7 @@ export async function GET() {
     status: 'healthy',
     service: 'Verbose Generator API',
     description: 'Simple translation response service',
-    features: [
-      'Basic text processing',
-      'Real-time response',
-      'Error handling',
-    ],
+    features: ['Basic text processing', 'Real-time response', 'Error handling'],
     timestamp: new Date().toISOString(),
   });
 }

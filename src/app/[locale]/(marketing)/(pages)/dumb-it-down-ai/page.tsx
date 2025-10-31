@@ -9,8 +9,8 @@ import TestimonialsThreeColumnSection from '@/components/blocks/testimonials/tes
 import WhatIsSection from '@/components/blocks/whatis';
 import { AuroraBackground } from '@/components/ui/aurora-background';
 import { constructMetadata } from '@/lib/metadata';
-import { buildTranslatorPageContent } from '@/lib/translator-page';
 import { buildToolStructuredData } from '@/lib/seo/structured-data';
+import { buildTranslatorPageContent } from '@/lib/translator-page';
 import { getUrlWithLocale } from '@/lib/urls/urls';
 import type { Metadata } from 'next';
 import type { Locale } from 'next-intl';
@@ -56,7 +56,7 @@ export default async function DumbItDownPage(props: DumbItDownPageProps) {
 
   // 使用内容构建器生成所有页面内容
   const translatorContent = buildTranslatorPageContent(t, {
-    howToIcons: ['FaFileUpload', 'FaPencilAlt', 'FaBrain'],
+    howToIcons: ['FaFileUpload', 'FaPencilAlt', 'FaBrain', 'FaCheckCircle'],
   });
 
   return (
@@ -142,7 +142,10 @@ export default async function DumbItDownPage(props: DumbItDownPageProps) {
 
         {/* Dumb It Down Tool */}
         <div className="pt-0 pb-12 bg-gradient-to-b from-muted/20 to-background">
-          <DumbItDownTool pageData={translatorContent.pageData} locale={locale} />
+          <DumbItDownTool
+            pageData={translatorContent.pageData}
+            locale={locale}
+          />
         </div>
 
         {/* What Is Section */}
@@ -155,10 +158,16 @@ export default async function DumbItDownPage(props: DumbItDownPageProps) {
         <HowTo section={translatorContent.howTo} />
 
         {/* User Interest Blocks */}
-        <UserScenarios section={translatorContent.userInterest} ctaText={t('ctaButton')} />
+        <UserScenarios
+          section={translatorContent.userInterest}
+          ctaText={t('ctaButton')}
+        />
 
         {/* Fun Facts */}
-        <UserScenarios section={translatorContent.funFacts} ctaText={t('ctaButton')} />
+        <UserScenarios
+          section={translatorContent.funFacts}
+          ctaText={t('ctaButton')}
+        />
 
         {/* Highlights/Why Choose */}
         <WhyChoose section={translatorContent.highlights} />
@@ -176,13 +185,13 @@ export default async function DumbItDownPage(props: DumbItDownPageProps) {
         />
 
         {/* Testimonials Section */}
-        <TestimonialsThreeColumnSection namespace="DumbItDownPage" subNamespace="testimonials" />
+        <TestimonialsThreeColumnSection section={translatorContent.testimonials} />
 
         {/* FAQ Section */}
-        <FaqSection namespace="DumbItDownPage" subNamespace="faqs" />
+        <FaqSection section={translatorContent.faqs} />
 
         {/* Call to Action */}
-        <CallToActionSection namespace="DumbItDownPage" subNamespace="cta" />
+        <CallToActionSection section={translatorContent.cta} />
       </div>
     </>
   );

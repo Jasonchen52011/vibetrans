@@ -144,19 +144,23 @@
       "items": [
         {
           "title": "Simple and Free to Use",
-          "description": "VibeTrans provides a worry-free translation experience. With just a few simple steps, you can get precise Aramaic translations. No complex settings or hidden fees—VibeTrans enables every user to easily access the language support they need."
+          "description": "VibeTrans provides a worry-free translation experience. With just a few simple steps, you can get precise Aramaic translations. No complex settings or hidden fees—VibeTrans enables every user to easily access the language support they need.",
+          "icon": "FaRocket"
         },
         {
           "title": "Data Accuracy",
-          "description": "VibeTrans ensures excellent data accuracy through advanced machine learning algorithms and expert verification for seamless Aramaic translation. Our platform combines real-time updates with precise language processing."
+          "description": "VibeTrans ensures excellent data accuracy through advanced machine learning algorithms and expert verification for seamless Aramaic translation. Our platform combines real-time updates with precise language processing.",
+          "icon": "FaBrain"
         },
         {
           "title": "AI Context Understanding",
-          "description": "VibeTrans' AI context understanding feature accurately captures text background and subtle nuances, ensuring translations precisely match the original meaning. Whether for daily conversations or complex literature."
+          "description": "VibeTrans' AI context understanding feature accurately captures text background and subtle nuances, ensuring translations precisely match the original meaning. Whether for daily conversations or complex literature.",
+          "icon": "FaEye"
         },
         {
           "title": "Data Privacy and Security",
-          "description": "VibeTrans is committed to ensuring user data privacy and security. We use advanced encryption technology to protect information confidentiality and strictly comply with data protection regulations."
+          "description": "VibeTrans is committed to ensuring user data privacy and security. We use advanced encryption technology to protect information confidentiality and strictly comply with data protection regulations.",
+          "icon": "FaShieldAlt"
         }
       ],
       "description": "Discover the powerful features that make our Aramaic translator the best choice for scholars, students, and language enthusiasts"
@@ -184,6 +188,27 @@
           "heading": "Reliable for Tattoo Scripts",
           "content": "I often get requests for Aramaic tattoos, and Aramaic-Translator-Pro ensures I get it right every time. The verification feature is a relief, preventing embarrassing mistakes. My clients trust me more, knowing their tattoos are accurate and meaningful.",
           "rating": "4.7"
+        },
+        "item-4": {
+          "name": "David Martinez",
+          "role": "History Professor",
+          "heading": "Essential for Academic Research",
+          "content": "As a history professor focusing on ancient Near Eastern cultures, this tool has revolutionized my research workflow. The dialect-specific translations and historical context accuracy are remarkable. My students also find it incredibly helpful for their biblical studies projects.",
+          "rating": "5.0"
+        },
+        "item-5": {
+          "name": "Rachel Green",
+          "role": "Documentary Filmmaker",
+          "heading": "Perfect for Historical Projects",
+          "content": "While working on a documentary about ancient civilizations, I needed authentic Aramaic translations for historical accuracy. This tool delivered beyond expectations, providing nuanced translations that added credibility to our film. The pronunciation guides were invaluable for our voice actors.",
+          "rating": "4.8"
+        },
+        "item-6": {
+          "name": "James Anderson",
+          "role": "Archaeologist",
+          "heading": "Invaluable for Field Research",
+          "content": "During excavations in the Middle East, we often encounter Aramaic inscriptions on artifacts. This translator helps us quickly understand the meaning and context of these findings, accelerating our research process significantly. It's become an essential tool in our archaeological toolkit.",
+          "rating": "4.9"
         }
       }
     },

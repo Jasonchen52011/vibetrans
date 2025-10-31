@@ -13,7 +13,7 @@
       "badge": "Free Translation Tool",
       "title": "Gibberish Translator – Turn Your Text into Playful Gibberish",
       "subtitle": "Transform your words into hilarious gibberish with just a few clicks",
-      "description": "Ever wanted to speak in gibberish? With VibeTrans' best Gibberish Translator, you can instantly transform any text into playful gibberish with multiple style options! Perfect for secret conversations, learning language patterns, or simply adding a fun twist to your communication."
+      "description": "Ever wanted to speak in gibberish? With VibeTrans' best Gibberish Translator, you can instantly transform any text into playful gibberish with multiple style options!"
     },
     "tool": {
       "inputLabel": "English",
@@ -137,18 +137,22 @@
       "title": "Professional Gibberish Translator Engine for Quality Results",
       "items": [
         {
+          "icon": "FaMagic",
           "title": "Customizable Gibberish Styles",
           "description": "Choose from multiple gibberish styles to match your mood or need. Whether you want random gibberish or syllable-based translations, VibeTrans gives you the flexibility to customize your output. It's your gibberish, your way!"
         },
         {
+          "icon": "FaBolt",
           "title": "Instant Translation",
           "description": "No waiting, no hassle. VibeTrans provides real-time gibberish translation so you can see results instantly. Type, click, and boom—gibberish is ready to go! I appreciate tools that don't make me wait, and VibeTrans delivers on that front."
         },
         {
+          "icon": "FaUpload",
           "title": "Supports Multiple Formats",
           "description": "Upload .txt or .docx files directly into the translator. VibeTrans handles bulk translations effortlessly, making it perfect for larger projects. Whether it's a single sentence or an entire document, we've got you covered!"
         },
         {
+          "icon": "FaMicrophone",
           "title": "Voice Input & Output",
           "description": "Speak your text and hear it back in gibberish! VibeTrans supports speech input and text-to-speech output, making the experience even more interactive. It is clear this feature is fantastic for accessibility and adds a new dimension to the fun!"
         }
@@ -229,12 +233,14 @@
         {
           "title": "The Origin of the Word",
           "description": "Did you know that 'Gibberish' might have originated from an ancient alchemist's name? Jabir ibn Hayyan's cryptic writings are believed to have inspired the term! Isn't that cool? With VibeTrans, you can turn any text into this timeless language.",
-          "image": "/images/docs/gibberish-origin-word.webp"
+          "image": "/images/docs/gibberish-origin-word.webp",
+          "imageAlt": "Origin of the word gibberish"
         },
         {
           "title": "Gibberish Can Be Educational",
           "description": "Believe it or not, gibberish isn't just for fun—it's also used in education! Teachers use gibberish to teach students about phonetics and language patterns. Plus, it's a great way to encourage creativity. Now that's what I call learning with a twist!",
-          "image": "/images/docs/gibberish-educational.webp"
+          "image": "/images/docs/gibberish-educational.webp",
+          "imageAlt": "Educational uses for gibberish"
         }
       ]
     }

@@ -1,6 +1,6 @@
+import { getBaseUrl } from '@/lib/urls/urls';
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
-import { getBaseUrl } from '@/lib/urls/urls';
 
 export const runtime = 'edge';
 

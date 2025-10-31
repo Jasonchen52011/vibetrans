@@ -51,7 +51,7 @@ export default async function IvrTranslatorPage(props: IvrTranslatorPageProps) {
 
   // Build translator page content using unified function
   const translatorContent = buildTranslatorPageContent(t, {
-    howToIcons: ['FaFileUpload', 'FaPencilAlt', 'FaLanguage'],
+    howToIcons: ['FaFileUpload', 'FaPencilAlt', 'FaLanguage', 'FaDownload'],
   });
 
   return (
@@ -110,7 +110,10 @@ export default async function IvrTranslatorPage(props: IvrTranslatorPageProps) {
 
         {/* Tool Component */}
         <div className="pt-0 pb-12 bg-gradient-to-b from-muted/20 to-background">
-          <IvrTranslatorTool pageData={translatorContent.pageData} locale={locale} />
+          <IvrTranslatorTool
+            pageData={translatorContent.pageData}
+            locale={locale}
+          />
         </div>
 
         {/* What Is Section */}
@@ -123,10 +126,16 @@ export default async function IvrTranslatorPage(props: IvrTranslatorPageProps) {
         <HowTo section={translatorContent.howTo} />
 
         {/* User Interest Blocks */}
-        <UserScenarios section={translatorContent.userInterest} ctaText={t('ctaButton')} />
+        <UserScenarios
+          section={translatorContent.userInterest}
+          ctaText={t('ctaButton')}
+        />
 
         {/* Fun Facts */}
-        <UserScenarios section={translatorContent.funFacts} ctaText={t('ctaButton')} />
+        <UserScenarios
+          section={translatorContent.funFacts}
+          ctaText={t('ctaButton')}
+        />
 
         {/* Highlights */}
         <WhyChoose section={translatorContent.highlights} />
@@ -144,13 +153,16 @@ export default async function IvrTranslatorPage(props: IvrTranslatorPageProps) {
         />
 
         {/* Testimonials */}
-        <TestimonialsThreeColumnSection namespace="IvrTranslatorPage" subNamespace="testimonials" />
+        <TestimonialsThreeColumnSection
+          namespace="IvrTranslatorPage"
+          subNamespace="testimonials"
+        />
 
         {/* FAQ */}
-        <FaqSection namespace="IvrTranslatorPage" subNamespace="faqs" />
+        <FaqSection section={translatorContent.faqs} />
 
         {/* CTA */}
-        <CallToActionSection namespace="IvrTranslatorPage" subNamespace="cta" />
+        <CallToActionSection section={translatorContent.cta} />
       </div>
     </>
   );

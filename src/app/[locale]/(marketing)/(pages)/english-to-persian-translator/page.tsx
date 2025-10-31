@@ -9,8 +9,8 @@ import TestimonialsThreeColumnSection from '@/components/blocks/testimonials/tes
 import WhatIsSection from '@/components/blocks/whatis';
 import { AuroraBackground } from '@/components/ui/aurora-background';
 import { constructMetadata } from '@/lib/metadata';
-import { buildTranslatorPageContent } from '@/lib/translator-page';
 import { buildToolStructuredData } from '@/lib/seo/structured-data';
+import { buildTranslatorPageContent } from '@/lib/translator-page';
 import { getUrlWithLocale } from '@/lib/urls/urls';
 import type { Metadata } from 'next';
 import type { Locale } from 'next-intl';
@@ -25,7 +25,10 @@ export async function generateMetadata({
   params: Promise<{ locale: Locale }>;
 }): Promise<Metadata | undefined> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'EnglishToPersianTranslatorPage' });
+  const t = await getTranslations({
+    locale,
+    namespace: 'EnglishToPersianTranslatorPage',
+  });
   const metadataT = await getTranslations({ locale, namespace: 'Metadata' });
 
   return constructMetadata({
@@ -159,7 +162,6 @@ export default async function EnglishToPersianTranslatorPage(
     items: highlightItems,
   };
 
-  
   return (
     <>
       <script
@@ -218,7 +220,10 @@ export default async function EnglishToPersianTranslatorPage(
 
         {/* Tool Component */}
         <div className="pt-0 pb-12 bg-gradient-to-b from-muted/20 to-background">
-          <EnglishToPersianTranslatorTool pageData={translatorContent.pageData} locale={locale} />
+          <EnglishToPersianTranslatorTool
+            pageData={translatorContent.pageData}
+            locale={locale}
+          />
         </div>
 
         {/* What Is Section */}
@@ -231,10 +236,16 @@ export default async function EnglishToPersianTranslatorPage(
         <HowTo section={translatorContent.howTo} />
 
         {/* User Interest Blocks */}
-        <UserScenarios section={translatorContent.userInterest} ctaText={t('ctaButton')} />
+        <UserScenarios
+          section={translatorContent.userInterest}
+          ctaText={t('ctaButton')}
+        />
 
         {/* Fun Facts */}
-        <UserScenarios section={translatorContent.funFacts} ctaText={t('ctaButton')} />
+        <UserScenarios
+          section={translatorContent.funFacts}
+          ctaText={t('ctaButton')}
+        />
 
         {/* Highlights */}
         <WhyChoose section={highlightsSection} />
@@ -252,15 +263,23 @@ export default async function EnglishToPersianTranslatorPage(
         />
 
         {/* Testimonials */}
-        <TestimonialsThreeColumnSection namespace="EnglishToPersianTranslatorPage" subNamespace="testimonials" />
+        <TestimonialsThreeColumnSection
+          namespace="EnglishToPersianTranslatorPage"
+          subNamespace="testimonials"
+        />
 
         {/* FAQ */}
 
-
-        <FaqSection namespace="EnglishToPersianTranslatorPage" subNamespace="faqs" />
+        <FaqSection
+          namespace="EnglishToPersianTranslatorPage"
+          subNamespace="faqs"
+        />
 
         {/* CTA */}
-        <CallToActionSection namespace="EnglishToPersianTranslatorPage" subNamespace="cta" />
+        <CallToActionSection
+          namespace="EnglishToPersianTranslatorPage"
+          subNamespace="cta"
+        />
       </div>
     </>
   );

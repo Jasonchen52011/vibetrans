@@ -164,19 +164,23 @@
       "items": [
         {
           "title": "Advanced AI Trained on Historical Corpus",
-          "description": "VibeTrans uses machine learning trained on verified cuneiform texts from CDLI and academic databases. Our AI delivers scholarly-accurate translations of Sumerian, Akkadian, and Babylonian texts."
+          "description": "VibeTrans uses machine learning trained on verified cuneiform texts from CDLI and academic databases. Our AI delivers scholarly-accurate translations of Sumerian, Akkadian, and Babylonian texts.",
+          "icon": "FaRocket"
         },
         {
           "title": "Multi-Script Support with Dialect Recognition",
-          "description": "Recognizes distinctions between Old Akkadian, Middle Babylonian, Neo-Assyrian, and other variants. VibeTrans applies period-specific grammar and vocabulary for accurate historical translations."
+          "description": "Recognizes distinctions between Old Akkadian, Middle Babylonian, Neo-Assyrian, and other variants. VibeTrans applies period-specific grammar and vocabulary for accurate historical translations.",
+          "icon": "FaBrain"
         },
         {
           "title": "Contextual Understanding Beyond Literal Translation",
-          "description": "VibeTrans interprets cultural context and conventional usage in ancient Mesopotamian society. Get meaningful translations that capture intended meaning, not just word-by-word conversion."
+          "description": "VibeTrans interprets cultural context and conventional usage in ancient Mesopotamian society. Get meaningful translations that capture intended meaning, not just word-by-word conversion.",
+          "icon": "FaShieldAlt"
         },
         {
           "title": "Free Access for Academic and Educational Use",
-          "description": "Basic cuneiform translation is completely free for students, educators, and researchers. VibeTrans democratizes access to humanity's earliest written heritage for everyone."
+          "description": "Basic cuneiform translation is completely free for students, educators, and researchers. VibeTrans democratizes access to humanity's earliest written heritage for everyone.",
+          "icon": "FaEye"
         }
       ]
     },

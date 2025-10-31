@@ -103,19 +103,23 @@
       "items": [
         {
           "title": "Simple & Free to Use",
-          "description": "VibeTrans is completely free, allowing you to translate texts, voice, and documents with no hidden fees. Enjoy hassle-free translations anytime!"
+          "description": "VibeTrans is completely free, allowing you to translate texts, voice, and documents with no hidden fees. Enjoy hassle-free translations anytime!",
+          "icon": "FaRocket"
         },
         {
           "title": "Accurate Translations",
-          "description": "Enjoy precise and high-quality translations that capture both meaning and context, ensuring you get the most accurate results for your translations."
+          "description": "Enjoy precise and high-quality translations that capture both meaning and context, ensuring you get the most accurate results for your translations.",
+          "icon": "FaBrain"
         },
         {
           "title": "Data Privacy & Security",
-          "description": "We take your privacy seriously. With VibeTrans, you can rest assured that your data is never stored or shared, ensuring complete security with every translation."
+          "description": "We take your privacy seriously. With VibeTrans, you can rest assured that your data is never stored or shared, ensuring complete security with every translation.",
+          "icon": "FaShieldAlt"
         },
         {
           "title": "AI-Powered Context Understanding",
-          "description": "VibeTrans uses advanced AI to understand the context of your translation, ensuring that nuanced phrases and complex sentences are translated accurately every time."
+          "description": "VibeTrans uses advanced AI to understand the context of your translation, ensuring that nuanced phrases and complex sentences are translated accurately every time.",
+          "icon": "FaEye"
         }
       ]
     },

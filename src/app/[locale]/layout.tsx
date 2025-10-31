@@ -17,6 +17,24 @@ import { Providers } from './providers';
 
 import '@/styles/globals.css';
 
+function normalizePathname(pathname: string | null | undefined): string {
+  if (!pathname) {
+    return '/';
+  }
+
+  const trimmed = pathname.split('?')[0]?.split('#')[0] ?? '/';
+  const withoutRouteGroups = trimmed.replace(/\/\([^/]+\)/g, '/');
+  const collapsed = withoutRouteGroups.replace(/\/+/g, '/');
+
+  if (!collapsed || collapsed === '') {
+    return '/';
+  }
+
+  return collapsed !== '/' && collapsed.endsWith('/')
+    ? collapsed.slice(0, -1)
+    : collapsed;
+}
+
 // 翻译器页面模式映射表
 const TRANSLATOR_PAGE_PATTERNS = {
   '/minion-translator': 'MinionTranslatorPage',
@@ -28,9 +46,11 @@ const TRANSLATOR_PAGE_PATTERNS = {
   '/baby-translator': 'BabyTranslatorPage',
   '/bad-translator': 'BadTranslatorPage',
   '/baybayin-translator': 'BaybayinTranslatorPage',
+  '/cantonese-translator': 'CantoneseTranslatorPage',
   '/chinese-to-english-translator': 'ChineseToEnglishTranslatorPage',
   '/creole-to-english-translator': 'CreoleToEnglishTranslatorPage',
   '/cuneiform-translator': 'CuneiformTranslatorPage',
+  '/dog-translator': 'DogTranslatorPage',
   '/drow-translator': 'DrowTranslatorPage',
   '/dumb-it-down-ai': 'DumbItDownPage',
   '/english-to-amharic-translator': 'EnglishToAmharicTranslatorPage',
@@ -67,23 +87,38 @@ const TRANSLATOR_PAGE_PATTERNS = {
  * 检测当前路径是否为翻译器页面并返回对应的翻译键名
  */
 function detectTranslatorPage(pathname: string): string | null {
-  if (!pathname || pathname === '/') return null;
+  const normalized = normalizePathname(pathname);
+  if (!normalized || normalized === '/') return null;
 
   // 过滤掉静态资源路径，确保图片URL不会被误认为是页面路径
-  if (pathname.startsWith('/images/') ||
-      pathname.startsWith('/assets/') ||
-      pathname.includes('.') &&
-      (pathname.endsWith('.webp') || pathname.endsWith('.jpg') || pathname.endsWith('.jpeg') ||
-       pathname.endsWith('.png') || pathname.endsWith('.gif') || pathname.endsWith('.svg') ||
-       pathname.endsWith('.css') || pathname.endsWith('.js'))) {
+  if (
+    normalized.startsWith('/images/') ||
+    normalized.startsWith('/assets/') ||
+    (normalized.includes('.') &&
+      (normalized.endsWith('.webp') ||
+        normalized.endsWith('.jpg') ||
+        normalized.endsWith('.jpeg') ||
+        normalized.endsWith('.png') ||
+        normalized.endsWith('.gif') ||
+        normalized.endsWith('.svg') ||
+        normalized.endsWith('.css') ||
+        normalized.endsWith('.js')))
+  ) {
     return null;
   }
 
   // 移除locale前缀和查询参数
-  const pathWithoutLocale = pathname.replace(/^\/zh\//, '/').replace(/^\/([a-z]{2})\//, '/').split('?')[0];
+  const pathWithoutLocale = normalized
+    .replace(/^\/zh\//, '/')
+    .replace(/^\/([a-z]{2})\//, '/')
+    .split('?')[0];
 
   // 直接匹配翻译器页面
-  return TRANSLATOR_PAGE_PATTERNS[pathWithoutLocale as keyof typeof TRANSLATOR_PAGE_PATTERNS] || null;
+  return (
+    TRANSLATOR_PAGE_PATTERNS[
+      pathWithoutLocale as keyof typeof TRANSLATOR_PAGE_PATTERNS
+    ] || null
+  );
 }
 
 interface LocaleLayoutProps {
@@ -108,10 +143,10 @@ export default async function LocaleLayout({
   let pathname = '/';
   try {
     const incomingHeaders = await headers();
-    const headerPathname = incomingHeaders.get('x-current-pathname') || incomingHeaders.get('x-route-pathname');
-    if (headerPathname) {
-      pathname = headerPathname;
-    }
+    pathname = normalizePathname(
+      incomingHeaders.get('x-current-pathname') ||
+        incomingHeaders.get('x-route-pathname')
+    );
   } catch (error) {
     console.warn('Could not access headers, using default pathname');
   }
@@ -122,7 +157,7 @@ export default async function LocaleLayout({
   console.log('🎯 [LocaleLayout] Detected page:', {
     pathname,
     translatorKey,
-    locale
+    locale,
   });
 
   // 精确加载策略：只加载需要的命名空间
@@ -131,7 +166,7 @@ export default async function LocaleLayout({
     translatorKey,
     includeCommon: true,
     // 明确指定不要加载热门翻译器，避免命名空间冲突
-    includePopularTranslators: false
+    includePopularTranslators: false,
   });
 
   // Ensure that the incoming `locale` is valid

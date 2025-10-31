@@ -46,7 +46,33 @@
     },
     "examples": {
       "title": "Example Translations with Al Bhed Translator",
-      "description": "Want to see how Al Bhed Translator works? Here's an example: \"I am your friend\" translates to \"E yn oui vieaht.\" Try it out yourself and experience the ease of translation with Vibetrans!"
+      "description": "Want to see how Al Bhed Translator works? Here's an example: \"I am your friend\" translates to \"E yn oui vieaht.\" Try it out yourself and experience the ease of translation with Vibetrans!",
+      "items": [
+        {
+          "alt": "Hello → E byyn",
+          "name": "Greetings"
+        },
+        {
+          "alt": "Thank you → Bnyhh oui",
+          "name": "Expressions"
+        },
+        {
+          "alt": "Final Fantasy → Fyndat Ldmmaba",
+          "name": "Game Titles"
+        },
+        {
+          "alt": "I love you → E luvr oui",
+          "name": "Emotions"
+        },
+        {
+          "alt": "Welcome to Zanarkand → Yhuna cu Zanarcand",
+          "name": "Locations"
+        },
+        {
+          "alt": "The Al Bhed are amazing → Ce al bhed yna ammzenc",
+          "name": "Full Sentences"
+        }
+      ]
     },
     "howto": {
       "title": "How to Translate English to Al Bhed",
@@ -126,19 +152,23 @@
       "items": [
         {
           "title": "Simple and Free to Use",
-          "description": "Enjoy seamless translation experiences without any costs. Al Bhed Converter Pro offers a user-friendly interface and easy navigation, making it accessible to everyone who loves Final Fantasy X."
+          "description": "Enjoy seamless translation experiences without any costs. Al Bhed Converter Pro offers a user-friendly interface and easy navigation, making it accessible to everyone who loves Final Fantasy X.",
+          "icon": "FaRocket"
         },
         {
           "title": "Accurate Data Translation",
-          "description": "Our tool ensures over 90% accuracy in language detection and translation. It automatically switches translation directions, offering precise results for your Al Bhed to English or vice versa needs."
+          "description": "Our tool ensures over 90% accuracy in language detection and translation. It automatically switches translation directions, offering precise results for your Al Bhed to English or vice versa needs.",
+          "icon": "FaBrain"
         },
         {
           "title": "AI Understanding of Context",
-          "description": "Harness the power of AI to grasp the context better. Al Bhed Converter Pro uses advanced AI to provide translations that understand the subtleties and nuances of both Al Bhed and English languages."
+          "description": "Harness the power of AI to grasp the context better. Al Bhed Converter Pro uses advanced AI to provide translations that understand the subtleties and nuances of both Al Bhed and English languages.",
+          "icon": "FaShieldAlt"
         },
         {
           "title": "Data Privacy and Safety",
-          "description": "We prioritize your privacy. Al Bhed Converter Pro does not store user data, ensuring that your translations and personal information remain secure and confidential at all times."
+          "description": "We prioritize your privacy. Al Bhed Converter Pro does not store user data, ensuring that your translations and personal information remain secure and confidential at all times.",
+          "icon": "FaEye"
         }
       ]
     },

@@ -130,19 +130,23 @@
       "items": [
         {
           "title": "Easy and Free to Use",
-          "description": "With VibeTrans, translating Creole to English is hassle-free and completely free. Just upload your text and get results in seconds."
+          "description": "With VibeTrans, translating Creole to English is hassle-free and completely free. Just upload your text and get results in seconds.",
+          "icon": "FaRocket"
         },
         {
           "title": "Accurate Translations",
-          "description": "Powered by advanced algorithms, VibeTrans delivers precise translations that maintain the original meaning and context of your text."
+          "description": "Powered by advanced algorithms, VibeTrans delivers precise translations that maintain the original meaning and context of your text.",
+          "icon": "FaBrain"
         },
         {
           "title": "Data Privacy and Security",
-          "description": "Your privacy matters. VibeTrans ensures that your data is never stored or shared, complying with GDPR and CCPA standards."
+          "description": "Your privacy matters. VibeTrans ensures that your data is never stored or shared, complying with GDPR and CCPA standards.",
+          "icon": "FaShieldAlt"
         },
         {
           "title": "AI Context Understanding",
-          "description": "Our AI understands context, providing translations that make sense in every situation, whether formal or informal."
+          "description": "Our AI understands context, providing translations that make sense in every situation, whether formal or informal.",
+          "icon": "FaEye"
         }
       ]
     },

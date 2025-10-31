@@ -9,8 +9,8 @@ import TestimonialsSection from '@/components/blocks/testimonials/testimonials';
 import WhatIsSection from '@/components/blocks/whatis';
 import { AuroraBackground } from '@/components/ui/aurora-background';
 import { constructMetadata } from '@/lib/metadata';
-import { buildTranslatorPageContent } from '@/lib/translator-page';
 import { buildToolStructuredData } from '@/lib/seo/structured-data';
+import { buildTranslatorPageContent } from '@/lib/translator-page';
 import { getUrlWithLocale } from '@/lib/urls/urls';
 import type { Metadata } from 'next';
 import type { Locale } from 'next-intl';
@@ -25,7 +25,10 @@ export async function generateMetadata({
   params: Promise<{ locale: Locale }>;
 }): Promise<Metadata | undefined> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'EnglishToChineseTranslatorPage' });
+  const t = await getTranslations({
+    locale,
+    namespace: 'EnglishToChineseTranslatorPage',
+  });
   const metadataT = await getTranslations({ locale, namespace: 'Metadata' });
 
   return constructMetadata({
@@ -45,7 +48,10 @@ export default async function EnglishToChineseTranslatorPage(
 ) {
   const params = await props.params;
   const { locale } = params;
-  const t = await getTranslations({ locale, namespace: 'EnglishToChineseTranslatorPage' });
+  const t = await getTranslations({
+    locale,
+    namespace: 'EnglishToChineseTranslatorPage',
+  });
 
   // Structured Data for SEO
   const structuredData = buildToolStructuredData({
@@ -55,7 +61,7 @@ export default async function EnglishToChineseTranslatorPage(
 
   // 使用内容构建器生成所有页面内容
   const translatorContent = buildTranslatorPageContent(t, {
-    howToIcons: ['FaFileUpload', 'FaPencilAlt', 'FaLanguage'],
+    howToIcons: ['FaFileUpload', 'FaPencilAlt', 'FaLanguage', 'FaDownload'],
   });
 
   return (
@@ -116,7 +122,10 @@ export default async function EnglishToChineseTranslatorPage(
 
         {/* Tool Component */}
         <div className="pt-0 pb-12 bg-gradient-to-b from-muted/20 to-background">
-          <EnglishToChineseTranslatorTool pageData={translatorContent.pageData} locale={locale} />
+          <EnglishToChineseTranslatorTool
+            pageData={translatorContent.pageData}
+            locale={locale}
+          />
         </div>
 
         {/* What Is Section */}
@@ -129,10 +138,16 @@ export default async function EnglishToChineseTranslatorPage(
         <HowTo section={translatorContent.howTo} />
 
         {/* User Interest Blocks */}
-        <UserScenarios section={translatorContent.userInterest} ctaText={t('ctaButton')} />
+        <UserScenarios
+          section={translatorContent.userInterest}
+          ctaText={t('ctaButton')}
+        />
 
         {/* Fun Facts */}
-        <UserScenarios section={translatorContent.funFacts} ctaText={t('ctaButton')} />
+        <UserScenarios
+          section={translatorContent.funFacts}
+          ctaText={t('ctaButton')}
+        />
 
         {/* Highlights */}
         <WhyChoose section={translatorContent.highlights} />
@@ -150,15 +165,23 @@ export default async function EnglishToChineseTranslatorPage(
         />
 
         {/* Testimonials */}
-        <TestimonialsThreeColumnSection namespace="EnglishToChineseTranslatorPage" subNamespace="testimonials" />
+        <TestimonialsThreeColumnSection
+          namespace="EnglishToChineseTranslatorPage"
+          subNamespace="testimonials"
+        />
 
         {/* FAQ */}
 
-
-        <FaqSection namespace="EnglishToChineseTranslatorPage" subNamespace="faqs" />
+        <FaqSection
+          namespace="EnglishToChineseTranslatorPage"
+          subNamespace="faqs"
+        />
 
         {/* CTA */}
-        <CallToActionSection namespace="EnglishToChineseTranslatorPage" subNamespace="cta" />
+        <CallToActionSection
+          namespace="EnglishToChineseTranslatorPage"
+          subNamespace="cta"
+        />
       </div>
     </>
   );

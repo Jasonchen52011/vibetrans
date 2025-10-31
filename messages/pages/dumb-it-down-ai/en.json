@@ -26,7 +26,29 @@
     },
     "examples": {
       "title": "Example of Simplifying Legal Text with Dumb It Down AI",
-      "description": "See how Dumb It Down AI can take a complex legal document and make it easy to understand. Upload your file and watch the magic happen."
+      "description": "See how Dumb It Down AI can take a complex legal document and make it easy to understand. Upload your file and watch the magic happen.",
+      "items": [
+        {
+          "alt": "Original clause rewritten in plain language",
+          "name": "Legal Contract",
+          "text": "Original: The lessee shall indemnify the lessor for any and all liabilities... → Simplified: If something happens, you agree to cover the landlord's costs."
+        },
+        {
+          "alt": "Technical report converted into bullet summary",
+          "name": "Technical Report",
+          "text": "Original: The deployment pipeline leverages container orchestration... → Simplified: We use containers so every update runs the same everywhere."
+        },
+        {
+          "alt": "Academic paragraph summarized for students",
+          "name": "Academic Article",
+          "text": "Original: The study delineates cross-modal neuroplasticity... → Simplified: The study shows how the brain adapts when one sense is missing."
+        },
+        {
+          "alt": "Medical jargon explained for patients",
+          "name": "Medical Summary",
+          "text": "Original: Patient exhibits idiopathic hypertension... → Simplified: Your blood pressure is high and we’re still finding the cause."
+        }
+      ]
     },
     "howto": {
       "title": "How to Simplify Text with Dumb It Down AI",
@@ -58,7 +80,7 @@
         {
           "title": "AI Simplifies Complex Texts Effortlessly",
           "description": "Did you know? Dumb It Down AI is like having a personal translator and simplifier in one. It makes complex texts understandable, so students and professionals can easily digest information without missing key details!",
-          "image": "/images/docs/dumb-it-down-how.webp",
+          "image": "/images/docs/dumb-it-down-how-new.webp",
           "imageAlt": "AI Simplifies Complex Texts Effortlessly"
         },
         {
@@ -131,18 +153,21 @@
         "item-1": {
           "name": "Jake Anderson",
           "role": "Student",
+          "heading": "Academic Papers Made Simple",
           "content": "I needed to simplify some academic papers for my class. Dumb It Down AI helped me get clear, readable results. It's fast and reliable!",
           "rating": "5.0"
         },
         "item-2": {
           "name": "Sarah Collins",
           "role": "Lawyer",
+          "heading": "Legal Documents Understood",
           "content": "Legal documents can be so complicated! I used Dumb It Down AI to simplify contracts, and it made everything much easier to understand. Great tool!",
           "rating": "5.0"
         },
         "item-3": {
           "name": "Emily Roberts",
           "role": "Medical Professional",
+          "heading": "Patient Communication Improved",
           "content": "Medical jargon can be hard to explain to patients. Dumb It Down AI made it so much easier to simplify complex terms for better patient communication. Highly recommend!",
           "rating": "5.0"
         }

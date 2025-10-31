@@ -1,6 +1,6 @@
-import { headers } from 'next/headers';
 import { hasLocale } from 'next-intl';
 import { getRequestConfig } from 'next-intl/server';
+import { headers } from 'next/headers';
 import { getMessagesForLocale } from './messages';
 import { routing } from './routing';
 
@@ -60,12 +60,66 @@ const PATH_TO_TRANSLATOR_KEY: Record<string, string> = {
 async function detectTranslatorKeyFromHeaders(): Promise<string | null> {
   try {
     const headersList = await headers();
-    const pathname = headersList.get('x-current-pathname') || '/';
-    const pathWithoutLocale = headersList.get('x-path-without-locale') || '/';
+    const rawPathname = headersList.get('x-current-pathname') || '/';
+    const rawPathWithoutLocale = headersList.get('x-path-without-locale');
     const isTranslatorPage = headersList.get('x-is-translator-page') === 'true';
+    const routePathname = headersList.get('x-route-pathname');
+    const matchedPath = headersList.get('x-matched-path');
 
-    if (isTranslatorPage && PATH_TO_TRANSLATOR_KEY[pathWithoutLocale]) {
-      return PATH_TO_TRANSLATOR_KEY[pathWithoutLocale];
+    const sanitize = (value: string | null | undefined): string => {
+      if (!value) return '/';
+      const path = value.split('?')[0]?.split('#')[0] ?? '/';
+      return path.endsWith('/') && path !== '/' ? path.slice(0, -1) : path;
+    };
+
+    const removeLocale = (value: string): string => {
+      const path = sanitize(value);
+      const segments = path.split('/').filter(Boolean);
+      if (segments.length === 0) {
+        return '/';
+      }
+
+      const locale = segments[0];
+      if ((routing.locales as string[]).includes(locale)) {
+        segments.shift();
+      }
+
+      return segments.length ? `/${segments.join('/')}` : '/';
+    };
+
+    const currentPath = removeLocale(rawPathname);
+    const candidatePaths = new Set<string>([currentPath]);
+    if (rawPathWithoutLocale) {
+      candidatePaths.add(removeLocale(rawPathWithoutLocale));
+    }
+    if (routePathname) {
+      candidatePaths.add(removeLocale(routePathname));
+    }
+    if (matchedPath) {
+      candidatePaths.add(removeLocale(matchedPath));
+    }
+
+    const expandedCandidates = new Set<string>();
+    for (const candidate of candidatePaths) {
+      expandedCandidates.add(candidate);
+      if (candidate.includes('(')) {
+        const cleaned = candidate.replace(/\/\([^/]+\)/g, '');
+        expandedCandidates.add(cleaned || '/');
+      }
+    }
+
+    for (const candidate of expandedCandidates) {
+      if (candidate !== '/' && PATH_TO_TRANSLATOR_KEY[candidate]) {
+        return PATH_TO_TRANSLATOR_KEY[candidate];
+      }
+    }
+
+    if (isTranslatorPage) {
+      // Fallback: try the unsanitized path in case headers already stripped locale upstream.
+      const fallbackPath = sanitize(rawPathname);
+      if (fallbackPath !== '/' && PATH_TO_TRANSLATOR_KEY[fallbackPath]) {
+        return PATH_TO_TRANSLATOR_KEY[fallbackPath];
+      }
     }
 
     return null;
@@ -83,8 +137,8 @@ export default getRequestConfig(async ({ requestLocale }) => {
   let locale = await requestLocale;
 
   // Smart locale mapping
-  if (["zh-CN", "zh-TW", "zh-HK", "zh-MO"].includes(locale)) {
-    locale = "zh";
+  if (['zh-CN', 'zh-TW', 'zh-HK', 'zh-MO'].includes(locale)) {
+    locale = 'zh';
   }
 
   // 确保 locale 有效
@@ -95,10 +149,20 @@ export default getRequestConfig(async ({ requestLocale }) => {
   // 尝试检测翻译器页面
   const translatorKey = await detectTranslatorKeyFromHeaders();
 
+  // 获取当前路径信息用于首页翻译加载
+  let pathname: string | undefined;
+  try {
+    const headersList = await headers();
+    pathname = headersList.get('x-pathname') || '/';
+  } catch (error) {
+    pathname = '/';
+  }
+
   // 根据检测结果加载翻译
   const messages = await getMessagesForLocale(locale, {
     includeCommon: true,
     translatorKey, // 如果检测到翻译器页面，则按需加载
+    pathname, // 确保首页能正确加载home翻译文件
     includePopularTranslators: false, // 不在中间件预加载翻译器
   });
 

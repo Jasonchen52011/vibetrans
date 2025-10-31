@@ -1,4 +1,3 @@
-
 import { type NextRequest, NextResponse } from 'next/server';
 
 export const runtime = 'edge';
@@ -13,7 +12,7 @@ function analyzeBabyCry(audioData?: any, text?: string): string {
       'Discomfort: Your baby appears uncomfortable - distressed crying with body tension',
       'Pain: Your baby may be in pain - sharp, intense crying with sudden onset',
       'Sleepy: Your baby seems sleepy - soft whimpers with eye rubbing',
-      'Playful: Your baby appears playful - happy sounds with laughter'
+      'Playful: Your baby appears playful - happy sounds with laughter',
     ];
 
     // 简单随机选择（在实际应用中应该是真实的音频分析）
@@ -49,10 +48,10 @@ export async function POST(request: NextRequest) {
         inputType: audioFile ? 'audio' : 'text',
         translationMethod: 'baby-cry-analysis',
         suggestions: [
-          'Observe your baby\'s body language',
+          "Observe your baby's body language",
           'Check the time since last feeding',
           'Consider if diaper change is needed',
-          'Look for signs of sleepiness'
+          'Look for signs of sleepiness',
         ],
         confidence: Math.floor(Math.random() * 20) + 80, // 80-99%
         metadata: {
@@ -83,10 +82,10 @@ export async function POST(request: NextRequest) {
         options,
         translationMethod: 'baby-cry-analysis',
         suggestions: [
-          'Try to identify patterns in your baby\'s cries',
+          "Try to identify patterns in your baby's cries",
           'Keep a log of feeding and sleeping times',
           'Pay attention to body language cues',
-          'Consult with your pediatrician if concerned'
+          'Consult with your pediatrician if concerned',
         ],
         confidence: Math.floor(Math.random() * 15) + 75, // 75-89%
         metadata: {
@@ -102,7 +101,7 @@ export async function POST(request: NextRequest) {
       {
         success: false,
         error: 'Analysis failed',
-        suggestion: 'Please try again or check if the audio file is valid'
+        suggestion: 'Please try again or check if the audio file is valid',
       },
       { status: 500 }
     );
@@ -114,11 +113,7 @@ export async function GET() {
     status: 'healthy',
     service: 'Baby Translator API',
     description: 'Simple translation response service',
-    features: [
-      'Basic text processing',
-      'Real-time response',
-      'Error handling',
-    ],
+    features: ['Basic text processing', 'Real-time response', 'Error handling'],
     timestamp: new Date().toISOString(),
   });
 }

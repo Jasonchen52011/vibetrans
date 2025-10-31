@@ -112,6 +112,18 @@
           "description": "Apple's early Mac OS X had a quirky surprise—Pig Latin text-to-speech! Hidden within the system, it delighted users who stumbled upon it, showcasing Apple's flair for playful and unexpected features in its operating systems.",
           "image": "/images/docs/phone-chat.webp",
           "imageAlt": "Abstract figures chatting via phone"
+        },
+        {
+          "title": "Language Learning Made Playful",
+          "description": "Educators use Pig Latin to teach phonetics and syllable awareness. With VibeTrans, classrooms can turn lessons into games that keep students engaged.",
+          "image": "/images/docs/pig-latin-esl-learners.webp",
+          "imageAlt": "Students learning pig latin"
+        },
+        {
+          "title": "Create Your Own Secret Code",
+          "description": "Friends can establish exclusive secret codes using Pig Latin. Quickly generate ciphers through the translator to make chats more interesting and private.",
+          "image": "/images/docs/what-is-pig-latin-translator.webp",
+          "imageAlt": "Secret code using pig latin"
         }
       ]
     },
@@ -151,18 +163,22 @@
       "description": "Discover what makes our tool unique",
       "items": [
         {
+          "icon": "FaRocket",
           "title": "Simple and Free to Use",
           "description": "VibeTrans offers an easy-to-use interface, perfect for quick and free translations. No need to sign up, just type and translate!"
         },
         {
+          "icon": "FaChartLine",
           "title": "Accurate Translations",
           "description": "Enjoy precise translations with VibeTrans. Our tool ensures your text is converted accurately into Pig Latin."
         },
         {
+          "icon": "FaShieldAlt",
           "title": "Data Privacy and Security",
           "description": "Your data is safe with VibeTrans. We prioritize privacy, ensuring your translations are secure and never stored."
         },
         {
+          "icon": "FaMagic",
           "title": "Contextual AI Understanding",
           "description": "VibeTrans uses AI to understand context, providing translations that make sense and preserve meaning."
         }

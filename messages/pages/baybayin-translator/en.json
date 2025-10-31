@@ -136,22 +136,26 @@
         {
           "title": "Simple and Free",
           "description": "VibeTrans offers a simple and easy-to-use baybayin translation tool, available at no cost. Just input text to quickly get accurate baybayin translation results. Our platform features clean design and smooth user experience, ensuring every user can easily enjoy efficient translation services.",
-          "wordCount": 50
+          "wordCount": 50,
+          "icon": "FaRocket"
         },
         {
           "title": "Accurate Translations",
           "description": "VibeTrans provides precise Baybayin translation services, ensuring every character accurately conveys the original message. Our advanced algorithms combined with deep linguistic knowledge effectively handle complex texts, allowing users to experience the most authentic language conversion suitable for any occasion.",
-          "wordCount": 50
+          "wordCount": 50,
+          "icon": "FaBrain"
         },
         {
           "title": "Privacy Secured",
           "description": "VibeTrans prioritizes user privacy, ensuring your Baybayin translation data remains completely secure. We use advanced encryption technology to guarantee your information is never leaked or accessed, providing a trustworthy translation experience that lets you use our services with peace of mind.",
-          "wordCount": 50
+          "wordCount": 50,
+          "icon": "FaShieldAlt"
         },
         {
           "title": "AI Context Understanding",
           "description": "VibeTrans's AI Context Understanding feature intelligently identifies and translates baybayin characters by analyzing text context. This advanced algorithm ensures translation accuracy and coherence, enabling users to easily understand and use baybayin script, providing a more natural and fluent translation experience.",
-          "wordCount": 50
+          "wordCount": 50,
+          "icon": "FaEye"
         }
       ]
     },

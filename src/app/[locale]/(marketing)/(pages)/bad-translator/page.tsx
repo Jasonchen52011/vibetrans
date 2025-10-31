@@ -9,8 +9,8 @@ import TestimonialsThreeColumnSection from '@/components/blocks/testimonials/tes
 import WhatIsSection from '@/components/blocks/whatis';
 import { AuroraBackground } from '@/components/ui/aurora-background';
 import { constructMetadata } from '@/lib/metadata';
-import { buildTranslatorPageContent } from '@/lib/translator-page';
 import { buildToolStructuredData } from '@/lib/seo/structured-data';
+import { buildTranslatorPageContent } from '@/lib/translator-page';
 import { getUrlWithLocale } from '@/lib/urls/urls';
 import type { Metadata } from 'next';
 import type { Locale } from 'next-intl';
@@ -142,7 +142,10 @@ export default async function BadTranslatorPage(props: BadTranslatorPageProps) {
 
         {/* Bad Translator Tool */}
         <div className="pt-0 pb-12 bg-gradient-to-b from-muted/20 to-background">
-          <BadTranslatorTool pageData={translatorContent.pageData} locale={locale} />
+          <BadTranslatorTool
+            pageData={translatorContent.pageData}
+            locale={locale}
+          />
         </div>
 
         {/* What Is Section */}
@@ -155,10 +158,16 @@ export default async function BadTranslatorPage(props: BadTranslatorPageProps) {
         <HowTo section={translatorContent.howTo} />
 
         {/* Fun Facts Section */}
-        <UserScenarios section={translatorContent.funFacts} ctaText={t('ctaButton')} />
+        <UserScenarios
+          section={translatorContent.funFacts}
+          ctaText={t('ctaButton')}
+        />
 
         {/* User Interest Section */}
-        <UserScenarios section={translatorContent.userInterest} ctaText={t('ctaButton')} />
+        <UserScenarios
+          section={translatorContent.userInterest}
+          ctaText={t('ctaButton')}
+        />
 
         {/* Highlights/Why Choose */}
         <WhyChoose section={translatorContent.highlights} />
@@ -176,7 +185,10 @@ export default async function BadTranslatorPage(props: BadTranslatorPageProps) {
         />
 
         {/* Testimonials Section */}
-        <TestimonialsThreeColumnSection namespace="BadTranslatorPage" subNamespace="testimonials" />
+        <TestimonialsThreeColumnSection
+          namespace="BadTranslatorPage"
+          subNamespace="testimonials"
+        />
 
         {/* FAQ Section */}
         <FaqSection namespace="BadTranslatorPage" subNamespace="faqs" />

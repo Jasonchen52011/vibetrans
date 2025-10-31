@@ -54,7 +54,7 @@
           "name": "E-commerce: Order management"
         },
         {
-          "alt": "Banking customer speaks '我想查询账户余额' in Mandarin → IVR converts to 'I want to check account balance' in English text → System retrieves and reads balance information",
+          "alt": "Banking customer speaks 'Wo xiang chaxun zhanghu yue' in Mandarin → IVR converts to 'I want to check account balance' in English text → System retrieves and reads balance information",
           "name": "Banking: Account balance inquiry"
         },
         {
@@ -134,19 +134,23 @@
       "items": [
         {
           "title": "Multi-Language Support",
-          "description": "Supports a wide range of languages, allowing businesses to communicate with customers from across the world."
+          "description": "Supports a wide range of languages, allowing businesses to communicate with customers from across the world.",
+          "icon": "FaRocket"
         },
         {
           "title": "Real-Time Voice Translation",
-          "description": "Converts voice inputs into text instantly, streamlining communication and improving service delivery."
+          "description": "Converts voice inputs into text instantly, streamlining communication and improving service delivery.",
+          "icon": "FaBrain"
         },
         {
           "title": "Accurate Data Conversion",
-          "description": "Ensures reliable and precise conversion of IVR inputs into text, minimizing errors."
+          "description": "Ensures reliable and precise conversion of IVR inputs into text, minimizing errors.",
+          "icon": "FaShieldAlt"
         },
         {
           "title": "Secure Data Privacy",
-          "description": "All data processed through VibeTrans is protected with top-tier security measures, ensuring complete privacy."
+          "description": "All data processed through VibeTrans is protected with top-tier security measures, ensuring complete privacy.",
+          "icon": "FaEye"
         }
       ]
     },

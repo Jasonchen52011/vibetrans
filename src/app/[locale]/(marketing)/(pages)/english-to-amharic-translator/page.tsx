@@ -9,8 +9,8 @@ import TestimonialsThreeColumnSection from '@/components/blocks/testimonials/tes
 import WhatIsSection from '@/components/blocks/whatis';
 import { AuroraBackground } from '@/components/ui/aurora-background';
 import { constructMetadata } from '@/lib/metadata';
-import { buildTranslatorPageContent } from '@/lib/translator-page';
 import { buildToolStructuredData } from '@/lib/seo/structured-data';
+import { buildTranslatorPageContent } from '@/lib/translator-page';
 import { getUrlWithLocale } from '@/lib/urls/urls';
 import type { Metadata } from 'next';
 import type { Locale } from 'next-intl';
@@ -25,7 +25,10 @@ export async function generateMetadata({
   params: Promise<{ locale: Locale }>;
 }): Promise<Metadata | undefined> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'EnglishToAmharicTranslatorPage' });
+  const t = await getTranslations({
+    locale,
+    namespace: 'EnglishToAmharicTranslatorPage',
+  });
   const metadataT = await getTranslations({ locale, namespace: 'Metadata' });
 
   return constructMetadata({
@@ -45,7 +48,10 @@ export default async function EnglishToAmharicTranslatorPage(
 ) {
   const params = await props.params;
   const { locale } = params;
-  const t = await getTranslations({ locale, namespace: 'EnglishToAmharicTranslatorPage' });
+  const t = await getTranslations({
+    locale,
+    namespace: 'EnglishToAmharicTranslatorPage',
+  });
 
   // Structured Data for SEO
   const structuredData = buildToolStructuredData({
@@ -55,7 +61,7 @@ export default async function EnglishToAmharicTranslatorPage(
 
   // 使用内容构建器生成所有页面内容
   const translatorContent = buildTranslatorPageContent(t, {
-    howToIcons: ['FaFileUpload', 'FaPencilAlt', 'FaLanguage'],
+    howToIcons: ['FaFileUpload', 'FaPencilAlt', 'FaLanguage', 'FaDownload'],
   });
 
   return (
@@ -116,7 +122,10 @@ export default async function EnglishToAmharicTranslatorPage(
 
         {/* Tool Component */}
         <div className="pt-0 pb-12 bg-gradient-to-b from-muted/20 to-background">
-          <EnglishToAmharicTranslatorTool pageData={translatorContent.pageData} locale={locale} />
+          <EnglishToAmharicTranslatorTool
+            pageData={translatorContent.pageData}
+            locale={locale}
+          />
         </div>
 
         {/* What Is Section */}
@@ -129,10 +138,16 @@ export default async function EnglishToAmharicTranslatorPage(
         <HowTo section={translatorContent.howTo} />
 
         {/* User Interest Blocks */}
-        <UserScenarios section={translatorContent.userInterest} ctaText={t('ctaButton')} />
+        <UserScenarios
+          section={translatorContent.userInterest}
+          ctaText={t('ctaButton')}
+        />
 
         {/* Fun Facts */}
-        <UserScenarios section={translatorContent.funFacts} ctaText={t('ctaButton')} />
+        <UserScenarios
+          section={translatorContent.funFacts}
+          ctaText={t('ctaButton')}
+        />
 
         {/* Highlights */}
         <WhyChoose section={translatorContent.highlights} />
@@ -150,15 +165,23 @@ export default async function EnglishToAmharicTranslatorPage(
         />
 
         {/* Testimonials */}
-        <TestimonialsThreeColumnSection namespace="EnglishToAmharicTranslatorPage" subNamespace="testimonials" />
+        <TestimonialsThreeColumnSection
+          namespace="EnglishToAmharicTranslatorPage"
+          subNamespace="testimonials"
+        />
 
         {/* FAQ */}
 
-
-        <FaqSection namespace="EnglishToAmharicTranslatorPage" subNamespace="faqs" />
+        <FaqSection
+          namespace="EnglishToAmharicTranslatorPage"
+          subNamespace="faqs"
+        />
 
         {/* CTA */}
-        <CallToActionSection namespace="EnglishToAmharicTranslatorPage" subNamespace="cta" />
+        <CallToActionSection
+          namespace="EnglishToAmharicTranslatorPage"
+          subNamespace="cta"
+        />
       </div>
     </>
   );

@@ -131,19 +131,23 @@
       "items": [
         {
           "title": "Simple and Free to Use",
-          "description": "VibeTrans offers simple, easy-to-use, and free High Valyrian translation features. No complex setup or subscriptions required—translate text quickly. The user interface is intuitive and friendly, letting you easily experience the charm of Valyrian language."
+          "description": "VibeTrans offers simple, easy-to-use, and free High Valyrian translation features. No complex setup or subscriptions required—translate text quickly. The user interface is intuitive and friendly, letting you easily experience the charm of Valyrian language.",
+          "icon": "FaRocket"
         },
         {
           "title": "Data Privacy and Security",
-          "description": "VibeTrans uses advanced encryption technology to ensure user data safety and privacy. We strictly follow international data protection standards, guaranteeing your translation history and personal information won't be leaked or misused."
+          "description": "VibeTrans uses advanced encryption technology to ensure user data safety and privacy. We strictly follow international data protection standards, guaranteeing your translation history and personal information won't be leaked or misused.",
+          "icon": "FaBrain"
         },
         {
           "title": "AI Context Understanding",
-          "description": "VibeTrans is equipped with advanced AI context understanding capabilities, accurately capturing and analyzing subtle differences in High Valyrian. Whether complex sentence structures or context-dependent word meanings, VibeTrans provides precise translations."
+          "description": "VibeTrans is equipped with advanced AI context understanding capabilities, accurately capturing and analyzing subtle differences in High Valyrian. Whether complex sentence structures or context-dependent word meanings, VibeTrans provides precise translations.",
+          "icon": "FaShieldAlt"
         },
         {
           "title": "Detailed Explanations",
-          "description": "VibeTrans provides in-depth translation explanations, allowing users to not only understand High Valyrian's literal meaning but also grasp its cultural background and linguistic nuances through detailed analysis."
+          "description": "VibeTrans provides in-depth translation explanations, allowing users to not only understand High Valyrian's literal meaning but also grasp its cultural background and linguistic nuances through detailed analysis.",
+          "icon": "FaEye"
         }
       ]
     },

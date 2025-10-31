@@ -1,11 +1,6 @@
 'use client';
 
 import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
-import {
-  type GibberishStyle,
-  gibberishToText,
-  textToGibberish,
-} from '@/lib/gibberish';
 import { ArrowRightIcon } from 'lucide-react';
 // import mammoth from 'mammoth'; // Disabled for Edge Runtime compatibility
 import { useState } from 'react';
@@ -24,8 +19,6 @@ export default function GibberishTranslatorTool({
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [mode, setMode] = useState<'toGibberish' | 'toStandard'>('toGibberish');
-  const [gibberishStyle, setGibberishStyle] =
-    useState<GibberishStyle>('syllable');
   const [fileName, setFileName] = useState<string | null>(null);
 
   // Handle file upload
@@ -105,7 +98,7 @@ export default function GibberishTranslatorTool({
   };
 
   // Handle translation
-  const handleTranslate = () => {
+  const handleTranslate = async () => {
     if (!inputText.trim()) {
       setError(pageData.tool.noInput);
       setTranslatedText('');
@@ -117,15 +110,26 @@ export default function GibberishTranslatorTool({
     setTranslatedText('');
 
     try {
-      let result: string;
+      const response = await fetch('/api/gibberish-translator', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          text: inputText,
+          options: {
+            mode
+          }
+        }),
+      });
 
-      if (mode === 'toGibberish') {
-        result = textToGibberish(inputText, gibberishStyle);
-      } else {
-        result = gibberishToText(inputText);
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || pageData.tool.error);
       }
 
-      setTranslatedText(result);
+      setTranslatedText(data.translated || '');
     } catch (err: any) {
       setError(err.message || pageData.tool.error);
       setTranslatedText('');
@@ -186,46 +190,6 @@ export default function GibberishTranslatorTool({
   return (
     <div className="container max-w-7xl mx-auto px-4 mb-10">
       <main className="w-full bg-white dark:bg-zinc-800 shadow-xl border border-gray-100 dark:border-zinc-700 rounded-lg p-4 md:p-8">
-        {/* Style Selector */}
-        {mode === 'toGibberish' && (
-          <div className="mb-6 flex items-center gap-4">
-            <label className="text-sm font-medium text-gray-700 dark:text-gray-200">
-              {pageData.tool.styleLabel}
-            </label>
-            <div className="flex gap-2">
-              <button
-                onClick={() => setGibberishStyle('syllable')}
-                className={`px-4 py-2 rounded-lg font-medium transition-colors ${
-                  gibberishStyle === 'syllable'
-                    ? 'bg-primary text-white'
-                    : 'bg-gray-200 dark:bg-zinc-600 text-gray-800 dark:text-gray-100 hover:bg-gray-300 dark:hover:bg-zinc-500'
-                }`}
-              >
-                {pageData.tool.styles.syllable}
-              </button>
-              <button
-                onClick={() => setGibberishStyle('random')}
-                className={`px-4 py-2 rounded-lg font-medium transition-colors ${
-                  gibberishStyle === 'random'
-                    ? 'bg-primary text-white'
-                    : 'bg-gray-200 dark:bg-zinc-600 text-gray-800 dark:text-gray-100 hover:bg-gray-300 dark:hover:bg-zinc-500'
-                }`}
-              >
-                {pageData.tool.styles.random}
-              </button>
-              <button
-                onClick={() => setGibberishStyle('reverse')}
-                className={`px-4 py-2 rounded-lg font-medium transition-colors ${
-                  gibberishStyle === 'reverse'
-                    ? 'bg-primary text-white'
-                    : 'bg-gray-200 dark:bg-zinc-600 text-gray-800 dark:text-gray-100 hover:bg-gray-300 dark:hover:bg-zinc-500'
-                }`}
-              >
-                {pageData.tool.styles.reverse}
-              </button>
-            </div>
-          </div>
-        )}
 
         <div className="flex flex-col md:flex-row gap-2 md:gap-3">
           {/* Input Area */}

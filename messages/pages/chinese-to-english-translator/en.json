@@ -78,7 +78,7 @@
       "description": "Explore these real translation examples to understand how VibeTrans handles Chinese to English text conversion effectively, ensuring precision and clarity in various contexts.",
       "items": [
         {
-          "alt": "你好 → Hello",
+          "alt": "Ni hao → Hello",
           "name": "Greeting Translation"
         },
         {
@@ -181,19 +181,23 @@
       "items": [
         {
           "title": "Simple and Free to Use",
-          "description": "VibeTrans offers a user-friendly interface that allows you to translate text without any cost, making it accessible to everyone."
+          "description": "VibeTrans offers a user-friendly interface that allows you to translate text without any cost, making it accessible to everyone.",
+          "icon": "FaRocket"
         },
         {
           "title": "Data Accuracy",
-          "description": "Our translations maintain high accuracy, ensuring that your messages are conveyed precisely, without losing the original meaning."
+          "description": "Our translations maintain high accuracy, ensuring that your messages are conveyed precisely, without losing the original meaning.",
+          "icon": "FaBrain"
         },
         {
           "title": "AI Context Understanding",
-          "description": "VibeTrans uses advanced AI to understand context, ensuring translations are not only accurate but also contextually appropriate."
+          "description": "VibeTrans uses advanced AI to understand context, ensuring translations are not only accurate but also contextually appropriate.",
+          "icon": "FaShieldAlt"
         },
         {
           "title": "Data Privacy and Security",
-          "description": "Your data is safe with VibeTrans. We prioritize privacy, ensuring your text remains confidential and secure."
+          "description": "Your data is safe with VibeTrans. We prioritize privacy, ensuring your text remains confidential and secure.",
+          "icon": "FaEye"
         }
       ]
     },

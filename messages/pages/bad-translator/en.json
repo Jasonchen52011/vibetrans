@@ -139,49 +139,49 @@
     "funfacts": {
       "title": "Fun Translation Facts",
       "items": [
-      {
-        "title": "Mistranslation Marvels",
-        "description": "Did you know? Translating Disney's 'Let It Go' through 35 languages results in 'Give your cow freedom.' Machine translation loops can turn simple text into hilarious chaos!",
-        "image": "/images/docs/bad-translator-accuracy-concept.webp",
-        "imageAlt": "Mistranslation Marvels"
-      },
-      {
-        "title": "Translation Twists",
-        "description": "Here's a funny twist: English word 'preservative' translates as 'condom' in French. This leads to amusing packaging mishaps stating, 'This product contains no condoms.'",
-        "image": "/images/docs/bad-translator-meme-creators.webp",
-        "imageAlt": "Translation Twists"
-      }
-    ]
-  },
-  "userInterest": {
-    "title": "Discover More",
-    "items": [
-      {
-        "title": "How Accurate is Bad Translator?",
-        "description": "While the translations are intentionally humorous and sometimes absurd, you can expect some fun 'mistakes'! This tool isn't about accuracy—it's all about having a laugh! These translations serve as a great way to spark creativity for memes or social posts.",
-        "image": "/images/docs/bad-translator-accuracy-concept.webp",
-        "imageAlt": "Bad translator accuracy comparison"
-      },
-      {
-        "title": "Perfect for Social Media Content",
-        "description": "Bad Translator can be a goldmine for funny posts. Use it to generate quirky translations and share them on social media for instant reactions. This tool creates attention-grabbing, shareable content that drives engagement!",
-        "image": "/images/docs/bad-translator-social-media.webp",
-        "imageAlt": "Social media posts created with bad translator"
-      },
-      {
-        "title": "Great for Advertisers",
-        "description": "If you're in advertising, you can use Bad Translator to create playful, out-of-the-box content that will entertain your audience. It's an ideal tool for brainstorming catchy slogans or taglines. Testing different combinations always yields entertaining results!",
-        "image": "/images/docs/bad-translator-advertising.webp",
-        "imageAlt": "Creative advertising with bad translator"
-      },
-      {
-        "title": "For Meme Creators and Influencers",
-        "description": "Bad Translator can help meme creators generate funny phrases that go viral. The bizarre translations are perfect for creating trending content. The ease of turning any sentence into something absurd makes this tool indispensable for content creators.",
-        "image": "/images/docs/bad-translator-meme-creators.webp",
-        "imageAlt": "Meme creators using bad translator results"
-      }
-    ]
-  },
+        {
+          "title": "Mistranslation Marvels",
+          "description": "Did you know? Translating Disney's 'Let It Go' through 35 languages results in 'Give your cow freedom.' Machine translation loops can turn simple text into hilarious chaos!",
+          "image": "/images/docs/bad-translator-accuracy-concept.webp",
+          "imageAlt": "Mistranslation Marvels"
+        },
+        {
+          "title": "Translation Twists",
+          "description": "Here's a funny twist: English word 'preservative' translates as 'condom' in French. This leads to amusing packaging mishaps stating, 'This product contains no condoms.'",
+          "image": "/images/docs/bad-translator-meme-creators.webp",
+          "imageAlt": "Translation Twists"
+        }
+      ]
+    },
+    "userInterest": {
+      "title": "Discover More",
+      "items": [
+        {
+          "title": "How Accurate is Bad Translator?",
+          "description": "While the translations are intentionally humorous and sometimes absurd, you can expect some fun 'mistakes'! This tool isn't about accuracy—it's all about having a laugh! These translations serve as a great way to spark creativity for memes or social posts.",
+          "image": "/images/docs/bad-translator-accuracy-concept.webp",
+          "imageAlt": "Bad translator accuracy comparison"
+        },
+        {
+          "title": "Perfect for Social Media Content",
+          "description": "Bad Translator can be a goldmine for funny posts. Use it to generate quirky translations and share them on social media for instant reactions. This tool creates attention-grabbing, shareable content that drives engagement!",
+          "image": "/images/docs/bad-translator-social-media.webp",
+          "imageAlt": "Social media posts created with bad translator"
+        },
+        {
+          "title": "Great for Advertisers",
+          "description": "If you're in advertising, you can use Bad Translator to create playful, out-of-the-box content that will entertain your audience. It's an ideal tool for brainstorming catchy slogans or taglines. Testing different combinations always yields entertaining results!",
+          "image": "/images/docs/bad-translator-advertising.webp",
+          "imageAlt": "Creative advertising with bad translator"
+        },
+        {
+          "title": "For Meme Creators and Influencers",
+          "description": "Bad Translator can help meme creators generate funny phrases that go viral. The bizarre translations are perfect for creating trending content. The ease of turning any sentence into something absurd makes this tool indispensable for content creators.",
+          "image": "/images/docs/bad-translator-meme-creators.webp",
+          "imageAlt": "Meme creators using bad translator results"
+        }
+      ]
+    },
     "testimonials": {
       "title": "What Our Users Are Saying",
       "items": {

@@ -376,8 +376,7 @@ export default function BabyTranslatorTool({
             Reset
           </button>
         </div>
-
-        </main>
+      </main>
     </div>
   );
 }

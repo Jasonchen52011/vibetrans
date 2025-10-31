@@ -9,8 +9,8 @@ interface GetMessagesOptions {
   pathname?: string;
   modules?: string[];
   includeCommon?: boolean;
-  translatorKey?: string;        // 特定翻译器页面的键名
-  includePopularTranslators?: boolean;  // 是否包含热门翻译器页面
+  translatorKey?: string; // 特定翻译器页面的键名
+  includePopularTranslators?: boolean; // 是否包含热门翻译器页面
 }
 
 function isModuleNotFoundError(error: unknown): boolean {
@@ -281,50 +281,50 @@ const ROUTE_ALIASES: Record<string, keyof typeof ROUTE_LOADERS> = {
 
 // 翻译器页面工具名称到路由键的映射表
 const TRANSLATOR_TOOL_TO_ROUTE: Record<string, string> = {
-  'AlBhedTranslatorPage': 'al-bhed-translator',
-  'AlbanianToEnglishPage': 'albanian-to-english',
-  'AlienTextGeneratorPage': 'alien-text-generator',
-  'AncientGreekTranslatorPage': 'ancient-greek-translator',
-  'AramaicTranslatorPage': 'aramaic-translator',
-  'BabyTranslatorPage': 'baby-translator',
-  'BadTranslatorPage': 'bad-translator',
-  'BaybayinTranslatorPage': 'baybayin-translator',
-  'ChineseToEnglishTranslatorPage': 'chinese-to-english-translator',
-  'CreoleToEnglishTranslatorPage': 'creole-to-english-translator',
-  'CuneiformTranslatorPage': 'cuneiform-translator',
-  'DogTranslatorPage': 'dog-translator',
-  'DrowTranslatorPage': 'drow-translator',
-  'DumbItDownPage': 'dumb-it-down-ai',
-  'EnglishToAmharicTranslatorPage': 'english-to-amharic-translator',
-  'EnglishToChineseTranslatorPage': 'english-to-chinese-translator',
-  'EnglishToPersianTranslatorPage': 'english-to-persian-translator',
-  'EnglishToPolishTranslatorPage': 'english-to-polish-translator',
-  'EnglishToSwahiliTranslatorPage': 'english-to-swahili-translator',
-  'EsperantoTranslatorPage': 'esperanto-translator',
-  'GasterTranslatorPage': 'gaster-translator',
-  'GenAlphaTranslatorPage': 'gen-alpha-translator',
-  'GenZTranslatorPage': 'gen-z-translator',
-  'GibberishTranslatorPage': 'gibberish-translator',
-  'GreekTranslatorPage': 'greek-translator',
-  'HighValyrianTranslatorPage': 'high-valyrian-translator',
-  'IvrTranslatorPage': 'ivr-translator',
-  'JapaneseToEnglishTranslatorPage': 'japanese-to-english-translator',
-  'MandalorianTranslatorPage': 'mandalorian-translator',
-  'MangaTranslatorPage': 'manga-translator',
-  'MiddleEnglishTranslatorPage': 'middle-english-translator',
-  'MinionTranslatorPage': 'minion-translator',
-  'NahuatlTranslatorPage': 'nahuatl-translator',
-  'OghamTranslatorPage': 'ogham-translator',
-  'PigLatinTranslatorPage': 'pig-latin-translator',
-  'RuneTranslatorPage': 'rune-translator',
-  'RunicTranslatorPage': 'runic-translator',
-  'SamoanToEnglishTranslatorPage': 'samoan-to-english-translator',
-  'SwahiliToEnglishTranslatorPage': 'swahili-to-english-translator',
-  'TeluguToEnglishTranslatorPage': 'telugu-to-english-translator',
-  'VerboseGeneratorPage': 'verbose-generator',
-  'WingdingsTranslatorPage': 'wingdings-translator',
-  'YodaTranslatorPage': 'yoda-translator',
-  'CantoneseTranslatorPage': 'cantonese-translator',
+  AlBhedTranslatorPage: 'al-bhed-translator',
+  AlbanianToEnglishPage: 'albanian-to-english',
+  AlienTextGeneratorPage: 'alien-text-generator',
+  AncientGreekTranslatorPage: 'ancient-greek-translator',
+  AramaicTranslatorPage: 'aramaic-translator',
+  BabyTranslatorPage: 'baby-translator',
+  BadTranslatorPage: 'bad-translator',
+  BaybayinTranslatorPage: 'baybayin-translator',
+  ChineseToEnglishTranslatorPage: 'chinese-to-english-translator',
+  CreoleToEnglishTranslatorPage: 'creole-to-english-translator',
+  CuneiformTranslatorPage: 'cuneiform-translator',
+  DogTranslatorPage: 'dog-translator',
+  DrowTranslatorPage: 'drow-translator',
+  DumbItDownPage: 'dumb-it-down-ai',
+  EnglishToAmharicTranslatorPage: 'english-to-amharic-translator',
+  EnglishToChineseTranslatorPage: 'english-to-chinese-translator',
+  EnglishToPersianTranslatorPage: 'english-to-persian-translator',
+  EnglishToPolishTranslatorPage: 'english-to-polish-translator',
+  EnglishToSwahiliTranslatorPage: 'english-to-swahili-translator',
+  EsperantoTranslatorPage: 'esperanto-translator',
+  GasterTranslatorPage: 'gaster-translator',
+  GenAlphaTranslatorPage: 'gen-alpha-translator',
+  GenZTranslatorPage: 'gen-z-translator',
+  GibberishTranslatorPage: 'gibberish-translator',
+  GreekTranslatorPage: 'greek-translator',
+  HighValyrianTranslatorPage: 'high-valyrian-translator',
+  IvrTranslatorPage: 'ivr-translator',
+  JapaneseToEnglishTranslatorPage: 'japanese-to-english-translator',
+  MandalorianTranslatorPage: 'mandalorian-translator',
+  MangaTranslatorPage: 'manga-translator',
+  MiddleEnglishTranslatorPage: 'middle-english-translator',
+  MinionTranslatorPage: 'minion-translator',
+  NahuatlTranslatorPage: 'nahuatl-translator',
+  OghamTranslatorPage: 'ogham-translator',
+  PigLatinTranslatorPage: 'pig-latin-translator',
+  RuneTranslatorPage: 'rune-translator',
+  RunicTranslatorPage: 'runic-translator',
+  SamoanToEnglishTranslatorPage: 'samoan-to-english-translator',
+  SwahiliToEnglishTranslatorPage: 'swahili-to-english-translator',
+  TeluguToEnglishTranslatorPage: 'telugu-to-english-translator',
+  VerboseGeneratorPage: 'verbose-generator',
+  WingdingsTranslatorPage: 'wingdings-translator',
+  YodaTranslatorPage: 'yoda-translator',
+  CantoneseTranslatorPage: 'cantonese-translator',
 };
 
 /**
@@ -343,7 +343,7 @@ const POPULAR_TRANSLATORS = [
   'ancient-greek-translator',
   'chinese-to-english-translator',
   'english-to-chinese-translator',
-  'cantonese-translator'
+  'cantonese-translator',
 ];
 
 function loadBaseForLocale(locale: Locale): Promise<MessageModule[]> {
@@ -399,19 +399,26 @@ async function loadTranslatorMessages(
   }
 
   if (!targetRouteKey || !ROUTE_LOADERS[targetRouteKey]) {
-    console.warn(`⚠️ [loadTranslatorMessages] No route loader found for translator: ${translatorKey || routeKey}`);
+    console.warn(
+      `⚠️ [loadTranslatorMessages] No route loader found for translator: ${translatorKey || routeKey}`
+    );
     return [];
   }
 
   try {
     const messages = await ROUTE_LOADERS[targetRouteKey](locale);
     if (messages) {
-      console.log(`✅ [loadTranslatorMessages] Loaded translator: ${targetRouteKey}`);
+      console.log(
+        `✅ [loadTranslatorMessages] Loaded translator: ${targetRouteKey}`
+      );
       return [messages];
     }
     return [];
   } catch (error) {
-    console.warn(`⚠️ [loadTranslatorMessages] Failed to load translator ${targetRouteKey}:`, error);
+    console.warn(
+      `⚠️ [loadTranslatorMessages] Failed to load translator ${targetRouteKey}:`,
+      error
+    );
     return [];
   }
 }
@@ -419,25 +426,36 @@ async function loadTranslatorMessages(
 /**
  * 加载热门翻译器消息（并发加载以提高性能）
  */
-async function loadPopularTranslatorMessages(locale: Locale): Promise<MessageModule[]> {
-  console.log('🔥 [loadPopularTranslatorMessages] Loading popular translators...');
+async function loadPopularTranslatorMessages(
+  locale: Locale
+): Promise<MessageModule[]> {
+  console.log(
+    '🔥 [loadPopularTranslatorMessages] Loading popular translators...'
+  );
 
   const translatorPromises = POPULAR_TRANSLATORS.map(async (routeKey) => {
     try {
       const messages = await ROUTE_LOADERS[routeKey]?.(locale);
       if (messages) {
-        console.log(`✅ [loadPopularTranslatorMessages] Popular translator loaded: ${routeKey}`);
+        console.log(
+          `✅ [loadPopularTranslatorMessages] Popular translator loaded: ${routeKey}`
+        );
         return messages;
       }
       return null;
     } catch (error) {
-      console.warn(`⚠️ [loadPopularTranslatorMessages] Failed to load popular translator ${routeKey}:`, error);
+      console.warn(
+        `⚠️ [loadPopularTranslatorMessages] Failed to load popular translator ${routeKey}:`,
+        error
+      );
       return null;
     }
   });
 
   const loadedTranslators = await Promise.all(translatorPromises);
-  return loadedTranslators.filter((module): module is MessageModule => Boolean(module));
+  return loadedTranslators.filter((module): module is MessageModule =>
+    Boolean(module)
+  );
 }
 
 function normalizeRouteKey(value: string): string | null {
@@ -545,21 +563,30 @@ export async function getMessagesForLocale(
   locale: Locale,
   options: GetMessagesOptions = {}
 ): Promise<Messages> {
-  const { includeCommon = true, translatorKey, includePopularTranslators = false } = options;
+  const {
+    includeCommon = true,
+    translatorKey,
+    includePopularTranslators = false,
+  } = options;
   const defaultLocale = routing.defaultLocale;
 
-  console.log('🔍 [getMessagesForLocale] Starting optimized loading with options:', {
-    locale,
-    translatorKey,
-    includePopularTranslators,
-    pathname: options.pathname
-  });
+  console.log(
+    '🔍 [getMessagesForLocale] Starting optimized loading with options:',
+    {
+      locale,
+      translatorKey,
+      includePopularTranslators,
+      pathname: options.pathname,
+    }
+  );
 
   const parts: MessageModule[] = [];
 
   // 策略1: 特定翻译器页面按需加载（最高优先级）
   if (translatorKey) {
-    console.log(`🎯 [getMessagesForLocale] Loading specific translator: ${translatorKey}`);
+    console.log(
+      `🎯 [getMessagesForLocale] Loading specific translator: ${translatorKey}`
+    );
 
     // 加载基础翻译
     if (locale !== defaultLocale) {
@@ -573,6 +600,22 @@ export async function getMessagesForLocale(
         parts.push(...(await loadCommonForLocale(defaultLocale)));
       }
       parts.push(...(await loadCommonForLocale(locale)));
+    }
+
+    // 加载可能需要的其它模块（通过 pathname 或 modules 指定）
+    const translatorRouteKeys = resolveRouteKeys(locale, options);
+    if (translatorRouteKeys.length) {
+      if (locale !== defaultLocale) {
+        parts.push(
+          ...(await loadRouteModulesForLocale(
+            defaultLocale,
+            translatorRouteKeys
+          ))
+        );
+      }
+      parts.push(
+        ...(await loadRouteModulesForLocale(locale, translatorRouteKeys))
+      );
     }
 
     // 加载特定翻译器
@@ -590,7 +633,9 @@ export async function getMessagesForLocale(
     );
     parts.push(...translatorMessages);
 
-    console.log(`✅ [getMessagesForLocale] Loaded ${parts.length} parts for ${translatorKey}`);
+    console.log(
+      `✅ [getMessagesForLocale] Loaded ${parts.length} parts for ${translatorKey}`
+    );
   }
   // 策略2: 基础加载（不包含翻译器，用于首页和非工具页面）
   else {
@@ -610,24 +655,41 @@ export async function getMessagesForLocale(
       parts.push(...(await loadCommonForLocale(locale)));
     }
 
+    // 根据 pathname/modules 加载对应页面命名空间
+    const routeKeys = resolveRouteKeys(locale, options);
+    if (routeKeys.length) {
+      if (locale !== defaultLocale) {
+        parts.push(
+          ...(await loadRouteModulesForLocale(defaultLocale, routeKeys))
+        );
+      }
+      parts.push(...(await loadRouteModulesForLocale(locale, routeKeys)));
+    }
+
     // 可选：热门翻译器预加载（已默认关闭，提高性能）
-    if (includePopularTranslators && !options.pathname?.includes('-translator')) {
+    if (
+      includePopularTranslators &&
+      !options.pathname?.includes('-translator')
+    ) {
       const popularTranslators = await loadPopularTranslatorMessages(locale);
       parts.push(...popularTranslators);
 
       if (locale !== defaultLocale) {
-        const fallbackPopularTranslators = await loadPopularTranslatorMessages(defaultLocale);
+        const fallbackPopularTranslators =
+          await loadPopularTranslatorMessages(defaultLocale);
         parts.push(...fallbackPopularTranslators);
       }
 
-      console.log(`🔥 [getMessagesForLocale] Added ${popularTranslators.length} popular translators`);
+      console.log(
+        `🔥 [getMessagesForLocale] Added ${popularTranslators.length} popular translators`
+      );
     }
 
     console.log(`✅ [getMessagesForLocale] Loaded ${parts.length} base parts`);
   }
 
   // 简单的对象合并
-  const validParts = parts.filter(part => part && typeof part === 'object');
+  const validParts = parts.filter((part) => part && typeof part === 'object');
   if (!validParts.length) {
     console.warn('⚠️ [getMessagesForLocale] No valid parts loaded');
     return {} as Messages;
@@ -638,8 +700,12 @@ export async function getMessagesForLocale(
     Object.assign(result, part);
   }
 
-  const loadedKeys = Object.keys(result).filter(k => k.includes('Translator') || k.includes('Page'));
-  console.log(`✅ [getMessagesForLocale] Final result: ${loadedKeys.length} translation keys loaded`);
+  const loadedKeys = Object.keys(result).filter(
+    (k) => k.includes('Translator') || k.includes('Page')
+  );
+  console.log(
+    `✅ [getMessagesForLocale] Final result: ${loadedKeys.length} translation keys loaded`
+  );
 
   return result;
 }

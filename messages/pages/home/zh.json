@@ -4,10 +4,152 @@
     "description": "AI驱动的翻译和本地化平台",
     "hero": {
       "title": "VibeTrans 翻译器 - 使用AI实现无缝语言转换",
-      "description": "Get the best results with our home translator powered by VibeTrans. 探索VibeTrans翻译器如何提供最佳的快速、准确和上下文感知翻译工具，支持各种语言和方言。立即简化您的沟通。",
+      "description": "探索VibeTrans翻译器如何提供最佳的快速、准确和上下文感知翻译工具，支持各种语言和方言。立即简化您的沟通。",
       "introduction": "介绍VibeTrans",
       "primary": "立即试用VibeTrans翻译器！",
       "secondary": "查看演示"
+    },
+    "stats": {
+      "title": "VibeTrans数据一览",
+      "subtitle": "每天通过准确翻译打破语言障碍",
+      "description": "VibeTrans每天提供快速、准确的翻译，帮助打破语言障碍",
+      "items": {
+        "item-1": {
+          "title": "支持语言",
+          "value": "100+"
+        },
+        "item-2": {
+          "title": "日翻译量",
+          "value": "50K+"
+        },
+        "item-3": {
+          "title": "翻译准确率",
+          "value": "98%"
+        }
+      }
+    },
+    "features": {
+      "title": "功能特色",
+      "subtitle": "产品功能特点",
+      "description": "在这里写下您的产品描述",
+      "items": {
+        "item-1": {
+          "title": "产品功能一",
+          "description": "请在这里详细描述功能一，使其尽可能详细，更具吸引力"
+        },
+        "item-2": {
+          "title": "产品功能二",
+          "description": "请在这里详细描述功能二，使其尽可能详细，更具吸引力"
+        },
+        "item-3": {
+          "title": "产品功能三",
+          "description": "请在这里详细描述功能三，使其尽可能详细，更具吸引力"
+        },
+        "item-4": {
+          "title": "产品功能四",
+          "description": "请在这里详细描述功能四，使其尽可能详细，更具吸引力"
+        }
+      }
+    },
+    "features3": {
+      "title": "用户兴趣",
+      "subtitle": "为每个人量身定制的解决方案",
+      "description": "VibeTrans满足多样化需求 - 从企业到旅行者",
+      "items": {
+        "item-1": {
+          "title": "多语言企业翻译",
+          "description": "您的企业语言障碍是什么？如果您经营多语言企业，翻译可能成为一项艰巨任务。VibeTrans帮助轻松打破这些障碍。无论您需要翻译营销内容还是客户服务沟通，我们的AI工具确保准确和上下文感知的翻译，支持您的全球增长。使用VibeTrans，就像拥有专门的翻译团队随时待命。"
+        },
+        "item-2": {
+          "title": "语言学习者翻译",
+          "description": "您的个人语言教练。学习新语言可能很困难，但VibeTrans让学习变得更容易！我们的工具可以翻译任何内容，从简单短语到复杂句子。您可以学习新词汇、检查语法，并一次性理解上下文。无论您是初学者还是高级学习者，VibeTrans都适合您的节奏。"
+        },
+        "item-3": {
+          "title": "旅行者实时翻译",
+          "description": "让旅行变得轻松。语言障碍可能让旅行变得棘手，但VibeTrans为您的下一次冒险消除压力。无论您是用另一种语言问路还是点餐，我们的实时翻译工具帮助您轻松沟通。VibeTrans让任何旅程都变成顺畅的体验 - 语言永远不应该阻止您探索世界！"
+        },
+        "item-4": {
+          "title": "俚语和趣味语言翻译",
+          "description": "用趣味翻译打破僵局。有时您只是想用语言找点乐子。使用VibeTrans，您可以轻松翻译俚语、表情包甚至胡言乱语变成可理解的内容。这非常适合为您的对话增添幽默感或理解不同语言的流行文化引用。这是与他人联系和缓和气氛的好方法！"
+        }
+      }
+    },
+    "testimonials": {
+      "title": "用户评价",
+      "subtitle": "用户在说什么",
+      "items": {
+        "item-1": {
+          "name": "Jake Mitchell",
+          "role": "营销经理",
+          "image": "https://randomuser.me/api/portraits/men/1.jpg",
+          "heading": "完美的商务工具",
+          "content": "我最近使用VibeTrans为国际客户翻译客户服务脚本。它非常准确，帮助我们顺利沟通。而且，它超级快 - 正是我日常业务所需要的！",
+          "rating": 5.0,
+          "date": "2024-10-20",
+          "verified": true
+        },
+        "item-2": {
+          "name": "Emily Brown",
+          "role": "旅行博主",
+          "image": "https://randomuser.me/api/portraits/women/6.jpg",
+          "heading": "让我的旅行更轻松",
+          "content": "我经常旅行，语言障碍可能很困难。VibeTrans让我的旅行更轻松。我可以快速翻译餐厅菜单，在不同国家问路 - 让我的旅行顺畅多了！",
+          "rating": 4.8,
+          "date": "2024-10-18",
+          "verified": true
+        },
+        "item-3": {
+          "name": "Sarah Williams",
+          "role": "语言学生",
+          "image": "https://randomuser.me/api/portraits/women/7.jpg",
+          "heading": "很棒的学习工具",
+          "content": "作为一名语言学习者，我使用VibeTrans练习新单词和短语。它不仅仅是翻译器，更是学习工具。我得到每个单词的上下文，这真的帮助我更好地理解语言。",
+          "rating": 4.6,
+          "date": "2024-10-16",
+          "verified": false
+        }
+      }
+    },
+    "faqs": {
+      "title": "常见问题",
+      "subtitle": "常见问题",
+      "items": {
+        "item-1": {
+          "question": "如何使用VibeTrans翻译俚语",
+          "answer": "第1步：从列表中选择'Gen Z翻译器'工具。\n第2步：在输入框中输入或粘贴您的俚语短语。\n第3步：点击'翻译'获得即时转换为标准语言。\n第4步：检查并根据需要调整。VibeTrans捕捉现代俚语的精髓。"
+        },
+        "item-2": {
+          "question": "如何使用VibeTrans进行实时翻译",
+          "answer": "第1步：在您的设备上打开VibeTrans平台。\n第2步：选择所需的翻译工具。\n第3步：输入您的文本或使用语音转文字进行即时翻译。\n第4步：点击'翻译'获得实时结果，实现顺畅沟通。"
+        },
+        "item-3": {
+          "question": "如何同时翻译多种语言",
+          "answer": "第1步：在VibeTrans上选择多语言翻译工具。\n第2步：选择源语言和您需要的所有目标语言。\n第3步：输入文本并点击'翻译'。\n第4步：检查每种语言的翻译。VibeTrans确保所有语言对的高质量结果。"
+        },
+        "item-4": {
+          "question": "VibeTrans免费使用吗？",
+          "answer": "是的，VibeTrans提供翻译工具的免费版本，让您无需任何费用即可访问基本翻译功能。您可以享受快速准确的个人使用翻译，我们还为需要高级功能的用户提供高级功能。"
+        }
+      }
+    },
+    "whatIs": {
+      "title": "什么是VibeTrans？",
+      "description": "VibeTrans是一个AI驱动的平台，提供先进的翻译工具，实现无缝沟通。无论您是在翻译日常文本、俚语，甚至是古代语言，VibeTrans帮助快速准确地打破语言障碍。凭借实时翻译和多功能语言支持，它简化了专业和休闲沟通。",
+      "ctaButton": "立即试用VibeTrans翻译器！"
+    },
+    "funfacts": {
+      "title": "有趣的事实",
+      "items": [
+        {
+          "title": "全球7000多种语言",
+          "description": "您知道全球有超过7000种语言吗？然而，大多数翻译工具只支持其中的一小部分。VibeTrans涵盖了广泛的语言，包括像猪拉丁语和古希腊语这样的罕见和创意语言！"
+        },
+        {
+          "title": "带情感上下文的AI",
+          "description": "有趣的是，AI翻译工具开始在其翻译中包含情感上下文。这有助于使翻译不仅准确，而且对语气和意图更敏感 - 这将改善全球沟通。"
+        }
+      ],
+      "ctaButton": "立即试用VibeTrans翻译器！"
     },
     "howto": {
       "title": "如何使用 VibeTrans",
@@ -28,6 +170,32 @@
         {
           "title": "调整设置",
           "description": "如需要，可以调整翻译设置以满足您的需求。您可以更改语言、使用语音输入或修改输出以获得更好的准确性。"
+        }
+      ]
+    },
+    "highlights": {
+      "title": "为什么选择VibeTrans？",
+      "description": "简单、准确、安全的翻译工具，适合每个人",
+      "items": [
+        {
+          "icon": "FaRocket",
+          "title": "简单免费使用",
+          "description": "随时随地访问。VibeTrans免费且易于使用。只需选择您的工具，输入您的文本，即可在几秒钟内获得翻译。没有复杂的设置或隐藏费用，只有您需要时的直接服务。"
+        },
+        {
+          "icon": "FaShieldAlt",
+          "title": "准确且上下文感知",
+          "description": "理解您的翻译。VibeTrans使用先进的AI确保您的翻译不仅仅是字面的 - 它们在上下文中是准确的。它帮助您获得正确的含义，即使是习语、俚语和地区表达。"
+        },
+        {
+          "icon": "FaUsers",
+          "title": "可靠的数据隐私",
+          "description": "您的数据对我们是安全的。我们认真对待您的隐私。您的数据永远不会被共享或存储。每次翻译都经过安全处理，确保您的信息使用VibeTrans保持私密。"
+        },
+        {
+          "icon": "FaChartLine",
+          "title": "多语言支持",
+          "description": "打破语言障碍。VibeTrans支持100多种语言，包括方言和罕见语言。无论您需要为商务、旅行还是娱乐进行翻译，VibeTrans都能满足您的需求。"
         }
       ]
     },

@@ -1,7 +1,49 @@
-
 import { type NextRequest, NextResponse } from 'next/server';
 
 export const runtime = 'edge';
+
+async function translateWithGemini(text: string, targetLanguage: string): Promise<string> {
+  const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
+
+  if (!apiKey) {
+    throw new Error('Google Generative AI API key is not configured');
+  }
+
+  const prompt = `Translate the following English text to ${targetLanguage}. Provide only the translation, no explanations or additional text:
+
+${text}`;
+
+  const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key=${apiKey}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      contents: [{
+        parts: [{
+          text: prompt
+        }]
+      }],
+      generationConfig: {
+        temperature: 0.3,
+        maxOutputTokens: 2048,
+      }
+    }),
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json().catch(() => ({}));
+    throw new Error(`Gemini API error: ${response.status} - ${errorData.error?.message || response.statusText}`);
+  }
+
+  const data = await response.json();
+
+  if (!data.candidates?.[0]?.content?.parts?.[0]?.text) {
+    throw new Error('Invalid response from Gemini API');
+  }
+
+  return data.candidates[0].content.parts[0].text.trim();
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -22,18 +64,19 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // 简单的响应逻辑 - 这里可以根据具体页面定制
-    const translated = `[Cuneiform Translator Result] ${text}`;
+    const startTime = Date.now();
+    const translated = await translateWithGemini(text, 'Cuneiform');
+    const processingTime = `${Date.now() - startTime}ms`;
 
     return NextResponse.json({
       success: true,
       translated,
       original: text,
       options,
-      translationMethod: 'simple-response',
+      translationMethod: 'gemini-2.0-flash',
       metadata: {
         timestamp: new Date().toISOString(),
-        processingTime: '< 10ms',
+        processingTime,
         textLength: text.length,
         translatedLength: translated.length,
       },
@@ -44,7 +87,8 @@ export async function POST(request: NextRequest) {
       {
         success: false,
         error: 'Translation failed',
-        suggestion: 'Please try again'
+        suggestion: 'Please try again',
+        details: error instanceof Error ? error.message : 'Unknown error',
       },
       { status: 500 }
     );
@@ -55,11 +99,12 @@ export async function GET() {
   return NextResponse.json({
     status: 'healthy',
     service: 'Cuneiform Translator API',
-    description: 'Simple translation response service',
+    description: 'Gemini 2.0 Flash powered English to Cuneiform translation service',
     features: [
-      'Basic text processing',
-      'Real-time response',
-      'Error handling',
+      'AI-powered translation',
+      'Ancient script processing',
+      'Context-aware translation',
+      'Real-time processing',
     ],
     timestamp: new Date().toISOString(),
   });

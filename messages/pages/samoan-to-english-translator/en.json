@@ -135,28 +135,28 @@
     "highlights": {
       "title": "Academic Grade Samoan Translation: Essential Research Tool",
       "description": "Discover the powerful features that make our Samoan to English translator the best choice for language learners, travelers, and professionals.",
-      "items": {
-        "0": {
+      "items": [
+        {
           "title": "Simple & Free",
           "description": "VibeTrans provides simple and free Samoan to English translation services with an intuitive user interface that requires no complex operations. Get accurate translations instantly whether for travel, learning, or daily communication.",
-          "wordCount": 50
+          "icon": "FaRocket"
         },
-        "1": {
+        {
           "title": "Cultural Accuracy",
           "description": "VibeTrans ensures translations are not only linguistically accurate but also culturally sensitive, respecting Samoan traditions and nuances. Our translators deeply understand both cultures, providing contextually appropriate translations that honor cultural heritage.",
-          "wordCount": 50
+          "icon": "FaBrain"
         },
-        "2": {
+        {
           "title": "Secure & Private",
           "description": "VibeTrans ensures your translations remain confidential and secure with advanced encryption protocols. Our commitment to privacy guarantees that your data is never shared or stored.",
-          "wordCount": 50
+          "icon": "FaShieldAlt"
         },
-        "3": {
+        {
           "title": "Advanced AI Understanding",
           "description": "VibeTrans' advanced AI technology accurately captures subtle semantic nuances and cultural contexts in Samoan language. Through deep learning algorithms, our translation tool ensures every conversion maintains high accuracy and fluency.",
-          "wordCount": 50
+          "icon": "FaEye"
         }
-      }
+      ]
     },
     "testimonials": {
       "title": "What Users Say",

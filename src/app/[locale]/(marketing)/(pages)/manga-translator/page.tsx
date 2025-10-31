@@ -9,8 +9,8 @@ import TestimonialsSection from '@/components/blocks/testimonials/testimonials-t
 import WhatIsSection from '@/components/blocks/whatis';
 import { AuroraBackground } from '@/components/ui/aurora-background';
 import { constructMetadata } from '@/lib/metadata';
-import { buildTranslatorPageContent } from '@/lib/translator-page';
 import { buildToolStructuredData } from '@/lib/seo/structured-data';
+import { buildTranslatorPageContent } from '@/lib/translator-page';
 import { getUrlWithLocale } from '@/lib/urls/urls';
 import type { Metadata } from 'next';
 import type { Locale } from 'next-intl';
@@ -25,7 +25,7 @@ export async function generateMetadata({
   params: Promise<{ locale: Locale }>;
 }): Promise<Metadata | undefined> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'mangaTranslatorPage' });
+  const t = await getTranslations({ locale, namespace: 'MangaTranslatorPage' });
   const metadataT = await getTranslations({ locale, namespace: 'Metadata' });
 
   return constructMetadata({
@@ -55,7 +55,7 @@ export default async function MangaTranslatorPage(
 
   // 使用内容构建器生成所有页面内容
   const translatorContent = buildTranslatorPageContent(t, {
-    howToIcons: ['FaFileUpload', 'FaPencilAlt', 'FaLanguage'],
+    howToIcons: ['FaFileUpload', 'FaPencilAlt', 'FaLanguage', 'FaDownload'],
   });
 
   // Highlights section
@@ -81,7 +81,7 @@ export default async function MangaTranslatorPage(
 
   let highlightItems = [];
   try {
-    const rawFeatures = t.raw('highlights.features');
+    const rawFeatures = t.raw('highlights.items');
     if (Array.isArray(rawFeatures)) {
       highlightItems = rawFeatures.slice(0, 4).map((feature, index) => ({
         icon:
@@ -102,8 +102,8 @@ export default async function MangaTranslatorPage(
   if (highlightItems.length === 0) {
     highlightItems = defaultHighlightIcons.map((icon, index) => ({
       icon,
-      title: t(`highlights.features.${index}.title`),
-      description: t(`highlights.features.${index}.description`),
+      title: t(`highlights.items.${index}.title`),
+      description: t(`highlights.items.${index}.description`),
       tagline: '',
       statLabel: null,
       statValue: null,
@@ -117,8 +117,6 @@ export default async function MangaTranslatorPage(
     description: highlightsDescription,
     items: highlightItems,
   };
-
-  
 
   return (
     <>
@@ -178,7 +176,10 @@ export default async function MangaTranslatorPage(
 
         {/* Tool Component */}
         <div className="pt-0 pb-12 bg-gradient-to-b from-muted/20 to-background">
-          <MangaTranslatorTool pageData={translatorContent.pageData} locale={locale} />
+          <MangaTranslatorTool
+            pageData={translatorContent.pageData}
+            locale={locale}
+          />
         </div>
 
         {/* What Is Section */}
@@ -191,10 +192,16 @@ export default async function MangaTranslatorPage(
         <HowTo section={translatorContent.howTo} />
 
         {/* User Interest Blocks */}
-        <UserScenarios section={translatorContent.userInterest} ctaText={t('ctaButton')} />
+        <UserScenarios
+          section={translatorContent.userInterest}
+          ctaText={t('ctaButton')}
+        />
 
         {/* Fun Facts */}
-        <UserScenarios section={translatorContent.funFacts} ctaText={t('ctaButton')} />
+        <UserScenarios
+          section={translatorContent.funFacts}
+          ctaText={t('ctaButton')}
+        />
 
         {/* Highlights */}
         <WhyChoose section={highlightsSection} />
@@ -212,13 +219,13 @@ export default async function MangaTranslatorPage(
         />
 
         {/* Testimonials */}
-        <TestimonialsSection namespace="mangaTranslatorPage" subNamespace="testimonials" />
+        <TestimonialsSection section={translatorContent.testimonials} />
 
         {/* FAQ */}
-        <FaqSection namespace="mangaTranslatorPage" subNamespace="faqs" />
+        <FaqSection section={translatorContent.faqs} />
 
         {/* CTA */}
-        <CallToActionSection namespace="mangaTranslatorPage" subNamespace="cta" />
+        <CallToActionSection section={translatorContent.cta} />
       </div>
     </>
   );

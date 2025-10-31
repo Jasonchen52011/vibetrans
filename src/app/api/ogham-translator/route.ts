@@ -1,4 +1,3 @@
-
 import { type NextRequest, NextResponse } from 'next/server';
 
 export const runtime = 'edge';
@@ -58,7 +57,7 @@ export async function POST(request: NextRequest) {
       {
         success: false,
         error: 'Translation failed',
-        suggestion: 'Please try again'
+        suggestion: 'Please try again',
       },
       { status: 500 }
     );

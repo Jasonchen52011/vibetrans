@@ -135,19 +135,23 @@
       "items": [
         {
           "title": "Accurate Translations",
-          "description": "VibeTrans provides AI-powered translations that prioritize accuracy and context, making it a reliable tool for academic research and personal learning."
+          "description": "VibeTrans provides AI-powered translations that prioritize accuracy and context, making it a reliable tool for academic research and personal learning.",
+          "icon": "FaRocket"
         },
         {
           "title": "Context-Aware Translations",
-          "description": "Our AI understands the context of Ancient Greek, providing more than just literal translations—it interprets cultural and historical nuances."
+          "description": "Our AI understands the context of Ancient Greek, providing more than just literal translations—it interprets cultural and historical nuances.",
+          "icon": "FaBrain"
         },
         {
           "title": "Free & Easy to Use",
-          "description": "VibeTrans offers a simple and free interface, so you can get started right away with no sign-up required. Perfect for quick translations."
+          "description": "VibeTrans offers a simple and free interface, so you can get started right away with no sign-up required. Perfect for quick translations.",
+          "icon": "FaShieldAlt"
         },
         {
           "title": "Grammar & Syntax Support",
-          "description": "VibeTrans breaks down sentence structures and provides grammar support for better understanding of Ancient Greek texts."
+          "description": "VibeTrans breaks down sentence structures and provides grammar support for better understanding of Ancient Greek texts.",
+          "icon": "FaEye"
         }
       ]
     },

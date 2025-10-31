@@ -73,7 +73,7 @@ export default function MangaTranslatorTool({
 
       // Call API to process image
       const response = await fetch(
-        '/api/manga-translator/recognize-translate',
+        '/api/manga-translator',
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -175,7 +175,7 @@ export default function MangaTranslatorTool({
     try {
       // Call our unified translation API
       const response = await fetch(
-        '/api/manga-translator/recognize-translate',
+        '/api/manga-translator',
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },

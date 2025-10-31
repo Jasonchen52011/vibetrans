@@ -35,12 +35,34 @@
     "whatIs": {
       "title": "What is Gen Z Translator?",
       "description": "Gen Z Translator is a powerful tool by VibeTrans that converts traditional English into Gen Z slang and vice versa. With multilingual support, it helps bridge generational language gaps, making communication easier and more relatable.",
-      "image": "/images/docs/what-is-alien-text-generator.webp",
+      "image": "/images/docs/what-is-gen-z-translator.webp",
       "imageAlt": "What is Gen Z Translator?"
     },
     "examples": {
       "title": "Example of Gen Z Translator in Action",
-      "description": "Need to convert a professional email to Gen Z slang? Or decode that tricky meme? VibeTrans can help with both! Just enter your text and see the magic happen."
+      "description": "Need to convert a professional email to Gen Z slang? Or decode that tricky meme? VibeTrans can help with both! Just enter your text and see the magic happen.",
+      "items": [
+        {
+          "alt": "正式问候转为 Gen Z 用语",
+          "name": "Hello → Hey bestie",
+          "text": "原文：Hello team, hope you're doing well. → Gen Z：Hey besties, hope y'all vibing."
+        },
+        {
+          "alt": "表达感谢的潮流说法",
+          "name": "Thank you → Appreciate the drip",
+          "text": "原文：Thank you for the help today. → Gen Z：Appreciate the assist, that help was fire."
+        },
+        {
+          "alt": "提醒语句转换",
+          "name": "Be careful → That's sus",
+          "text": "原文：That message feels suspicious, be careful. → Gen Z：That DM is super sus, stay woke."
+        },
+        {
+          "alt": "表达兴奋的句子",
+          "name": "Great news → This is bussin",
+          "text": "原文：This news is fantastic! → Gen Z：This update is bussin, no cap."
+        }
+      ]
     },
     "howto": {
       "title": "How to Translate English to Gen Z",
@@ -74,25 +96,25 @@
         {
           "title": "The Need for Gen Z Slang Translation",
           "description": "Ever wondered what your teen is saying? Gen Z slang can be confusing, but VibeTrans breaks it down. With just a few clicks, you'll be speaking their language!",
-          "image": "/images/docs/what-is-gen-alpha-translator.webp",
+          "image": "/images/docs/the-need-for-gen-z-slang-translation.webp",
           "imageAlt": "The Need for Gen Z Slang Translation"
         },
         {
           "title": "Multilingual Gen Z Translator",
           "description": "With VibeTrans, you don't just get English-to-slang translation. You can convert Gen Z slang across multiple languages, helping you bridge language barriers in youth culture.",
-          "image": "/images/docs/gen-alpha-translator-how-to.webp",
+          "image": "/images/docs/multilingual-gen-z-translator.webp",
           "imageAlt": "Multilingual Gen Z Translator"
         },
         {
           "title": "Real-time Slang Updates",
           "description": "Slang changes fast! Gen Z's language evolves quickly, but with VibeTrans, you're always up to date. We keep our slang database fresh to reflect the latest trends.",
-          "image": "/images/docs/the-need-for-gen-z-slang-translation.webp",
+          "image": "/images/docs/gen-z-translator-how.webp",
           "imageAlt": "Real-time Slang Updates"
         },
         {
           "title": "Why Content Creators Love VibeTrans",
           "description": "Content creators often use Gen Z slang to stay relevant. With VibeTrans, you can easily create fresh, trendy posts that speak directly to your audience's style.",
-          "image": "/images/docs/alien-text-generator-how-to.webp",
+          "image": "/images/docs/what-is-gen-z-translator.webp",
           "imageAlt": "Why Content Creators Love VibeTrans"
         }
       ]
@@ -102,18 +124,22 @@
       "description": "Simple, accurate, and secure translation tools for everyone",
       "items": [
         {
+          "icon": "FaRocket",
           "title": "Simple & Free to Use",
           "description": "VibeTrans is easy to use with no sign-up required. Simply enter your text and let us handle the rest."
         },
         {
+          "icon": "FaChartLine",
           "title": "Accurate Translations",
           "description": "We deliver precise translations, capturing the true meaning of Gen Z slang. Say goodbye to confusion!"
         },
         {
+          "icon": "FaShieldAlt",
           "title": "Data Privacy & Security",
           "description": "Your data stays private with VibeTrans. We prioritize your confidentiality, ensuring that your information is safe at all times."
         },
         {
+          "icon": "FaBolt",
           "title": "Fast & Reliable",
           "description": "VibeTrans quickly processes your translation, making sure you don't have to wait long to get your results."
         }

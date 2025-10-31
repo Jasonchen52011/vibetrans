@@ -1,21 +1,48 @@
-
 import { type NextRequest, NextResponse } from 'next/server';
 
 export const runtime = 'edge';
 
-// 转换规则
-const transformationRules = [
-  // 这里添加具体的转换规则
-];
+async function translateWithGemini(text: string, targetLanguage: string): Promise<string> {
+  const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
 
-function transformText(text: string): string {
-  let result = text;
+  if (!apiKey) {
+    throw new Error('Google Generative AI API key is not configured');
+  }
 
-  transformationRules.forEach(([pattern, replacement]) => {
-    result = result.replace(new RegExp(pattern, 'gi'), replacement);
+  const prompt = `Translate the following English text to ${targetLanguage}. Provide only the translation, no explanations or additional text:
+
+${text}`;
+
+  const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key=${apiKey}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      contents: [{
+        parts: [{
+          text: prompt
+        }]
+      }],
+      generationConfig: {
+        temperature: 0.3,
+        maxOutputTokens: 2048,
+      }
+    }),
   });
 
-  return result;
+  if (!response.ok) {
+    const errorData = await response.json().catch(() => ({}));
+    throw new Error(`Gemini API error: ${response.status} - ${errorData.error?.message || response.statusText}`);
+  }
+
+  const data = await response.json();
+
+  if (!data.candidates?.[0]?.content?.parts?.[0]?.text) {
+    throw new Error('Invalid response from Gemini API');
+  }
+
+  return data.candidates[0].content.parts[0].text.trim();
 }
 
 export async function POST(request: NextRequest) {
@@ -37,28 +64,31 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const transformed = transformText(text);
+    const startTime = Date.now();
+    const translated = await translateWithGemini(text, 'Gibberish');
+    const processingTime = `${Date.now() - startTime}ms`;
 
     return NextResponse.json({
       success: true,
-      translated: transformed,
+      translated,
       original: text,
       options,
-      translationMethod: 'text-transformation',
+      translationMethod: 'gemini-2.0-flash',
       metadata: {
         timestamp: new Date().toISOString(),
-        processingTime: '< 100ms',
+        processingTime,
         textLength: text.length,
-        transformedLength: transformed.length,
+        translatedLength: translated.length,
       },
     });
   } catch (error) {
-    console.error('Transformation error:', error);
+    console.error('Translation error:', error);
     return NextResponse.json(
       {
         success: false,
-        error: 'Transformation failed',
-        suggestion: 'Please try again'
+        error: 'Translation failed',
+        suggestion: 'Please try again',
+        details: error instanceof Error ? error.message : 'Unknown error',
       },
       { status: 500 }
     );
@@ -69,10 +99,11 @@ export async function GET() {
   return NextResponse.json({
     status: 'healthy',
     service: 'Gibberish Translator API',
-    description: 'Text transformation service',
+    description: 'Gemini 2.0 Flash powered English to Gibberish translation service',
     features: [
-      'Rule-based text transformation',
-      'Customizable options',
+      'AI-powered translation',
+      'Gibberish language processing',
+      'Context-aware translation',
       'Real-time processing',
     ],
     timestamp: new Date().toISOString(),

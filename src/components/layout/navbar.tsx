@@ -20,8 +20,96 @@ import { LocaleLink, useLocalePathname } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
 import { ArrowUpRightIcon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { useEffect, useState } from 'react';
+import {
+  type PointerEvent as ReactPointerEvent,
+  useEffect,
+  useState,
+} from 'react';
+import { useLocale } from 'next-intl';
 import LocaleSwitcher from './locale-switcher';
+
+// 翻译器页面模式映射表
+const TRANSLATOR_PAGE_PATTERNS = {
+  '/minion-translator': 'MinionTranslatorPage',
+  '/al-bhed-translator': 'AlBhedTranslatorPage',
+  '/albanian-to-english': 'AlbanianToEnglishPage',
+  '/alien-text-generator': 'AlienTextGeneratorPage',
+  '/ancient-greek-translator': 'AncientGreekTranslatorPage',
+  '/aramaic-translator': 'AramaicTranslatorPage',
+  '/baby-translator': 'BabyTranslatorPage',
+  '/bad-translator': 'BadTranslatorPage',
+  '/baybayin-translator': 'BaybayinTranslatorPage',
+  '/chinese-to-english-translator': 'ChineseToEnglishTranslatorPage',
+  '/creole-to-english-translator': 'CreoleToEnglishTranslatorPage',
+  '/cuneiform-translator': 'CuneiformTranslatorPage',
+  '/drow-translator': 'DrowTranslatorPage',
+  '/dumb-it-down-ai': 'DumbItDownPage',
+  '/english-to-amharic-translator': 'EnglishToAmharicTranslatorPage',
+  '/english-to-chinese-translator': 'EnglishToChineseTranslatorPage',
+  '/english-to-persian-translator': 'EnglishToPersianTranslatorPage',
+  '/english-to-polish-translator': 'EnglishToPolishTranslatorPage',
+  '/english-to-swahili-translator': 'EnglishToSwahiliTranslatorPage',
+  '/esperanto-translator': 'EsperantoTranslatorPage',
+  '/gaster-translator': 'GasterTranslatorPage',
+  '/gen-alpha-translator': 'GenAlphaTranslatorPage',
+  '/gen-z-translator': 'GenZTranslatorPage',
+  '/gibberish-translator': 'GibberishTranslatorPage',
+  '/greek-translator': 'GreekTranslatorPage',
+  '/high-valyrian-translator': 'HighValyrianTranslatorPage',
+  '/ivr-translator': 'IvrTranslatorPage',
+  '/japanese-to-english-translator': 'JapaneseToEnglishTranslatorPage',
+  '/mandalorian-translator': 'MandalorianTranslatorPage',
+  '/manga-translator': 'MangaTranslatorPage',
+  '/middle-english-translator': 'MiddleEnglishTranslatorPage',
+  '/nahuatl-translator': 'NahuatlTranslatorPage',
+  '/ogham-translator': 'OghamTranslatorPage',
+  '/pig-latin-translator': 'PigLatinTranslatorPage',
+  '/rune-translator': 'RuneTranslatorPage',
+  '/runic-translator': 'RunicTranslatorPage',
+  '/samoan-to-english-translator': 'SamoanToEnglishTranslatorPage',
+  '/swahili-to-english-translator': 'SwahiliToEnglishTranslatorPage',
+  '/telugu-to-english-translator': 'TeluguToEnglishTranslatorPage',
+  '/verbose-generator': 'VerboseGeneratorPage',
+  '/wingdings-translator': 'WingdingsTranslatorPage',
+  '/yoda-translator': 'YodaTranslatorPage',
+};
+
+/**
+ * 检测当前路径是否为翻译器页面并返回对应的翻译键名
+ */
+function detectTranslatorPage(pathname: string): string | null {
+  if (!pathname || pathname === '/') return null;
+
+  // 过滤掉静态资源路径，确保图片URL不会被误认为是页面路径
+  if (
+    pathname.startsWith('/images/') ||
+    pathname.startsWith('/assets/') ||
+    (pathname.includes('.') &&
+      (pathname.endsWith('.webp') ||
+        pathname.endsWith('.jpg') ||
+        pathname.endsWith('.jpeg') ||
+        pathname.endsWith('.png') ||
+        pathname.endsWith('.gif') ||
+        pathname.endsWith('.svg') ||
+        pathname.endsWith('.css') ||
+        pathname.endsWith('.js')))
+  ) {
+    return null;
+  }
+
+  // 移除locale前缀和查询参数
+  const pathWithoutLocale = pathname
+    .replace(/^\/zh\//, '/')
+    .replace(/^\/([a-z]{2})\//, '/')
+    .split('?')[0];
+
+  // 直接匹配翻译器页面
+  return (
+    TRANSLATOR_PAGE_PATTERNS[
+      pathWithoutLocale as keyof typeof TRANSLATOR_PAGE_PATTERNS
+    ] || null
+  );
+}
 
 interface NavBarProps {
   scroll?: boolean;
@@ -38,14 +126,80 @@ const customNavigationMenuTriggerStyle = cn(
 
 export function Navbar({ scroll }: NavBarProps) {
   const t = useTranslations();
+  const locale = useLocale();
   const scrolled = useScroll(50);
   const menuLinks = useNavbarLinks();
   const localePathname = useLocalePathname();
+  const [activeMenu, setActiveMenu] = useState<string | undefined>();
   const [mounted, setMounted] = useState(false);
+  const [closeTimeout, setCloseTimeout] = useState<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     setMounted(true);
-  }, []);
+
+    // 新增：翻译预加载逻辑
+    const preloadTranslations = async () => {
+      // 检测当前路由是否为翻译器页面
+      const currentPath = localePathname.replace(/^\/[a-z]{2}\//, '/');
+      const translatorKey = detectTranslatorPage(currentPath);
+
+      if (translatorKey) {
+        try {
+          // 动态导入并预加载翻译文件
+          const { getMessagesForLocale } = await import('@/i18n/messages');
+          await getMessagesForLocale(locale, {
+            pathname: currentPath,
+            translatorKey,
+            includeCommon: true,
+          });
+          console.log(`✅ [Navbar] Preloaded translations for: ${translatorKey}`);
+        } catch (error) {
+          console.warn(`⚠️ [Navbar] Failed to preload translations:`, error);
+        }
+      }
+    };
+
+    // 延迟执行预加载，避免影响导航性能
+    const timeoutId = setTimeout(preloadTranslations, 100);
+
+    // Cleanup timeout on unmount
+    return () => {
+      if (closeTimeout) {
+        clearTimeout(closeTimeout);
+      }
+      clearTimeout(timeoutId);
+    };
+  }, [closeTimeout, localePathname, locale]);
+
+  const getPointerOpenHandler = (value: string) => {
+    return (event: ReactPointerEvent<HTMLDivElement>) => {
+      if (event.pointerType === 'touch') {
+        return;
+      }
+      // Clear any existing close timeout when opening a menu
+      if (closeTimeout) {
+        clearTimeout(closeTimeout);
+        setCloseTimeout(null);
+      }
+      setActiveMenu(value);
+    };
+  };
+
+  const handlePointerClose = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if (event.pointerType === 'touch') {
+      return;
+    }
+    // Clear any existing timeout
+    if (closeTimeout) {
+      clearTimeout(closeTimeout);
+    }
+    // Add small delay to prevent accidental closing when moving between menu items
+    const timeout = setTimeout(() => {
+      setActiveMenu(undefined);
+      setCloseTimeout(null);
+    }, 150);
+    setCloseTimeout(timeout);
+  };
 
   return (
     <>
@@ -76,12 +230,26 @@ export function Navbar({ scroll }: NavBarProps) {
             </div>
 
             {/* menu links */}
-            <div className="flex items-center space-x-2 flex-1 relative z-50">
-              <NavigationMenu className="relative" viewport={false}>
+            <div
+              className="flex items-center space-x-2 flex-1 relative z-50"
+              onPointerLeave={handlePointerClose}
+            >
+              <NavigationMenu
+                className="relative"
+                viewport={false}
+                value={activeMenu}
+              >
                 <NavigationMenuList className="flex items-center">
                   {menuLinks?.map((item, index) =>
                     item.items ? (
-                      <NavigationMenuItem key={index} className="relative">
+                      <NavigationMenuItem
+                        key={index}
+                        className="relative"
+                        value={`menu-${index}`}
+                        onPointerEnter={getPointerOpenHandler(`menu-${index}`)}
+                        onPointerMove={getPointerOpenHandler(`menu-${index}`)}
+                        onPointerLeave={handlePointerClose}
+                      >
                         <NavigationMenuTrigger
                           data-active={
                             item.items.some((subItem) =>
@@ -101,8 +269,8 @@ export function Navbar({ scroll }: NavBarProps) {
                             className={cn(
                               'grid gap-2 p-3',
                               item.items && item.items.length === 1
-                                ? 'w-[280px]'
-                                : 'w-[500px] md:w-[700px] md:grid-cols-3 lg:w-[900px] lg:grid-cols-4'
+                                ? 'w-[280px] max-w-[calc(100vw-2rem)]'
+                                : 'w-[500px] md:w-[700px] md:grid-cols-3 lg:w-[900px] lg:grid-cols-4 max-w-[calc(100vw-2rem)]'
                             )}
                           >
                             {item.items?.map((subItem, subIndex) => {

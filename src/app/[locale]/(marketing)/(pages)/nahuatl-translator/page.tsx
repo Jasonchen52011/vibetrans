@@ -25,7 +25,10 @@ export async function generateMetadata({
   params: Promise<{ locale: Locale }>;
 }): Promise<Metadata | undefined> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'NahuatlTranslatorPage' });
+  const t = await getTranslations({
+    locale,
+    namespace: 'NahuatlTranslatorPage',
+  });
   return constructMetadata({
     title: `${t('title')} | VibeTrans`,
     description: t('description'),
@@ -55,7 +58,9 @@ export default async function NahuatlTranslatorPage(
   });
 
   // Build page content using unified function
-  const translatorContent = buildTranslatorPageContent(t, { howToIcons: ['FaFileUpload', 'FaPencilAlt', 'FaLanguage'] });
+  const translatorContent = buildTranslatorPageContent(t, {
+    howToIcons: ['FaFileUpload', 'FaPencilAlt', 'FaLanguage', 'FaDownload'],
+  });
 
   return (
     <>
@@ -119,7 +124,10 @@ export default async function NahuatlTranslatorPage(
 
         {/* Tool Component */}
         <div className="pt-0 pb-12 bg-gradient-to-b from-muted/20 to-background">
-          <NahuatlTranslatorTool pageData={translatorContent.pageData} locale={locale} />
+          <NahuatlTranslatorTool
+            pageData={translatorContent.pageData}
+            locale={locale}
+          />
         </div>
 
         {/* What Is Section */}
@@ -132,10 +140,16 @@ export default async function NahuatlTranslatorPage(
         <HowTo section={translatorContent.howTo} />
 
         {/* User Interest Blocks */}
-        <UserScenarios section={translatorContent.userInterest} ctaText={t('ctaButton')} />
+        <UserScenarios
+          section={translatorContent.userInterest}
+          ctaText={t('ctaButton')}
+        />
 
         {/* Fun Facts */}
-        <UserScenarios section={translatorContent.funFacts} ctaText={t('ctaButton')} />
+        <UserScenarios
+          section={translatorContent.funFacts}
+          ctaText={t('ctaButton')}
+        />
 
         {/* Highlights */}
         <WhyChoose section={translatorContent.highlights} />
@@ -151,13 +165,13 @@ export default async function NahuatlTranslatorPage(
         />
 
         {/* Testimonials */}
-        <TestimonialsThreeColumnSection namespace="NahuatlTranslatorPage" subNamespace="testimonials" translatorContent={translatorContent.testimonials} />
+        <TestimonialsThreeColumnSection section={translatorContent.testimonials} />
 
         {/* FAQ */}
-        <FaqSection namespace="NahuatlTranslatorPage" subNamespace="faqs" translatorContent={translatorContent.faqs} />
+        <FaqSection section={translatorContent.faqs} />
 
         {/* CTA */}
-        <CallToActionSection namespace="NahuatlTranslatorPage" subNamespace="cta" translatorContent={translatorContent.cta} />
+        <CallToActionSection section={translatorContent.cta} />
       </div>
     </>
   );

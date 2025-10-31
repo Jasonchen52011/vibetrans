@@ -119,19 +119,23 @@
       "items": [
         {
           "title": "Simple and Free to Use",
-          "description": "Our tool offers an easy-to-use interface that is completely free. You can convert modern English to Middle English with just a click, without any cost or subscription needed."
+          "description": "Our tool offers an easy-to-use interface that is completely free. You can convert modern English to Middle English with just a click, without any cost or subscription needed.",
+          "icon": "FaRocket"
         },
         {
           "title": "Data Accuracy You Can Trust",
-          "description": "We ensure high-quality translations by utilizing authoritative sources like the MED dictionary. Our translations are reliable, allowing users to trust the results for academic and creative purposes."
+          "description": "We ensure high-quality translations by utilizing authoritative sources like the MED dictionary. Our translations are reliable, allowing users to trust the results for academic and creative purposes.",
+          "icon": "FaBrain"
         },
         {
           "title": "Privacy and Data Security",
-          "description": "Your data privacy is our priority. We never store or share your data. All translations are processed securely, ensuring that your information remains confidential and protected at all times."
+          "description": "Your data privacy is our priority. We never store or share your data. All translations are processed securely, ensuring that your information remains confidential and protected at all times.",
+          "icon": "FaShieldAlt"
         },
         {
           "title": "AI Contextual Understanding",
-          "description": "Our AI comprehends context to provide translations that are more than word-for-word. It adjusts translations based on literary, technical, and other contexts, making your Middle English accurate and meaningful."
+          "description": "Our AI comprehends context to provide translations that are more than word-for-word. It adjusts translations based on literary, technical, and other contexts, making your Middle English accurate and meaningful.",
+          "icon": "FaEye"
         }
       ]
     },

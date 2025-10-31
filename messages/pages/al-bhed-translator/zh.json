@@ -28,7 +28,33 @@
     },
     "examples": {
       "title": "Al Bhed 翻译示例",
-      "description": "看看英文单词如何转换成神秘的 Al Bhed 语言。非常适合最终幻想粉丝和密码爱好者！"
+      "description": "看看英文单词如何转换成神秘的 Al Bhed 语言。非常适合最终幻想粉丝和密码爱好者！",
+      "items": [
+        {
+          "alt": "Hello → E byyn",
+          "name": "问候语"
+        },
+        {
+          "alt": "Thank you → Bnyhh oui",
+          "name": "感谢语"
+        },
+        {
+          "alt": "Final Fantasy → Fyndat Ldmmaba",
+          "name": "游戏标题"
+        },
+        {
+          "alt": "I love you → E luvr oui",
+          "name": "表达情感"
+        },
+        {
+          "alt": "Welcome to Zanarkand → Yhuna cu Zanarcand",
+          "name": "地点名称"
+        },
+        {
+          "alt": "The Al Bhed are amazing → Ce al bhed yna ammzenc",
+          "name": "完整句子"
+        }
+      ]
     },
     "howto": {
       "title": "如何使用 Al Bhed 翻译器",
@@ -108,19 +134,23 @@
       "items": [
         {
           "title": "即时翻译",
-          "description": "使用最终幻想 X 的真实密码系统即时获得 Al Bhed 翻译。无需等待，无延迟。"
+          "description": "使用最终幻想 X 的真实密码系统即时获得 Al Bhed 翻译。无需等待，无延迟。",
+          "icon": "FaRocket"
         },
         {
           "title": "100% 准确",
-          "description": "使用最终幻想 X 的官方 Al Bhed 替换密码，每次都能实现完美的翻译准确性。"
+          "description": "使用最终幻想 X 的官方 Al Bhed 替换密码，每次都能实现完美的翻译准确性。",
+          "icon": "FaBrain"
         },
         {
           "title": "免费且无需注册",
-          "description": "完全免费使用，无需注册。无障碍即刻开始翻译。"
+          "description": "完全免费使用，无需注册。无障碍即刻开始翻译。",
+          "icon": "FaShieldAlt"
         },
         {
           "title": "文件支持",
-          "description": "上传 .txt 和 .docx 文件进行批量翻译。非常适合翻译较长的文档或游戏对话。"
+          "description": "上传 .txt 和 .docx 文件进行批量翻译。非常适合翻译较长的文档或游戏对话。",
+          "icon": "FaEye"
         }
       ]
     },

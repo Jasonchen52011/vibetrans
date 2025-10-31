@@ -112,6 +112,18 @@
           "description": "Apple's early Mac OS X had a quirky surprise—Pig Latin text-to-speech! Hidden within the system, it delighted users who stumbled upon it, showcasing Apple's flair for playful and unexpected features in its operating systems.",
           "image": "/images/docs/phone-chat.webp",
           "imageAlt": "Abstract figures chatting via phone"
+        },
+        {
+          "title": "课堂上的趣味语言练习",
+          "description": "老师会用 Pig Latin 训练学生的拼读与音节感。透过 VibeTrans，课堂活动瞬间变成语言小游戏。",
+          "image": "/images/docs/pig-latin-esl-learners.webp",
+          "imageAlt": "课堂上的 Pig Latin 学习"
+        },
+        {
+          "title": "打造属于自己的密语",
+          "description": "和朋友想要秘密对话？用翻译器一秒生成 Pig Latin 暗号，让聊天既私密又好玩。",
+          "image": "/images/docs/what-is-pig-latin-translator.webp",
+          "imageAlt": "Pig Latin 密语"
         }
       ]
     },
@@ -151,18 +163,22 @@
       "description": "Discover what makes our tool unique",
       "items": [
         {
+          "icon": "FaRocket",
           "title": "Simple and Free to Use",
           "description": "VibeTrans offers an easy-to-use interface, perfect for quick and free translations. No need to sign up, just type and translate!"
         },
         {
+          "icon": "FaChartLine",
           "title": "Accurate Translations",
           "description": "Enjoy precise translations with VibeTrans. Our tool ensures your text is converted accurately into Pig Latin."
         },
         {
+          "icon": "FaShieldAlt",
           "title": "Data Privacy and Security",
           "description": "Your data is safe with VibeTrans. We prioritize privacy, ensuring your translations are secure and never stored."
         },
         {
+          "icon": "FaMagic",
           "title": "Contextual AI Understanding",
           "description": "VibeTrans uses AI to understand context, providing translations that make sense and preserve meaning."
         }

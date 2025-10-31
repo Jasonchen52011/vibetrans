@@ -59,6 +59,14 @@ interface TranslatorPageContent {
   highlights: Section;
   funFacts: Section;
   userInterest: Section;
+  testimonials: Section;
+  faqs: Section;
+  cta: {
+    title: string;
+    description: string;
+    primaryButton: string;
+    secondaryButton: string;
+  };
 }
 
 function ensureArray<T>(value: T[] | null | undefined): T[] {
@@ -100,29 +108,47 @@ function normalizeImage(
 }
 
 function mapSectionItems(
-  items: Array<Record<string, unknown>> | null | undefined,
+  items: Array<Record<string, unknown>> | Record<string, unknown> | null | undefined,
   icons: string[] = []
 ): Section['items'] {
-  return ensureArray(items).map((item, index) => {
+  // Handle both array format and object format with item-1, item-2, etc.
+  if (items && typeof items === 'object' && !Array.isArray(items)) {
+    // Convert object format to array
+    const itemArray = [];
+    let index = 1;
+    while (true) {
+      const key = `item-${index}`;
+      if (key in items) {
+        itemArray.push((items as Record<string, unknown>)[key]);
+        index++;
+      } else {
+        break;
+      }
+    }
+    items = itemArray;
+  }
+
+  return ensureArray(items as Array<Record<string, unknown>>).map((item, index) => {
     const title =
       (item.title as string | undefined) ||
       (item.name as string | undefined) ||
+      (item.question as string | undefined) ||
       '';
     return {
       title,
       description:
         (item.description as string | undefined) ||
-        (item.content as string | undefined),
-      icon:
-        (item.icon as string | undefined) ||
-        icons[index] ||
-        undefined,
+        (item.content as string | undefined) ||
+        (item.answer as string | undefined),
+      icon: (item.icon as string | undefined) || icons[index] || undefined,
       image: normalizeImage(
         item.image,
         (item.imageAlt as string | undefined) ??
           (item.alt as string | undefined),
         title || undefined
       ),
+      // Preserve original data for testimonials
+      _originalData: item,
     };
   });
 }
@@ -147,8 +173,7 @@ function buildSection(
   return {
     name: (base?.name as string | undefined) || defaults.name,
     title,
-    subtitle:
-      (base?.subtitle as string | undefined) || defaults.subtitle,
+    subtitle: (base?.subtitle as string | undefined) || defaults.subtitle,
     description:
       (base?.description as string | undefined) || defaults.description,
     image,
@@ -163,27 +188,37 @@ export function buildTranslatorPageContent(
   t: TranslationGetter,
   options: TranslatorPageContentOptions = {}
 ): TranslatorPageContent {
-  const tool = (typeof t.raw === 'function' ? t.raw('tool') : null) as
-    | ToolCopy
-    | null;
-  const examples = (typeof t.raw === 'function'
-    ? t.raw('examples')
-    : null) as Record<string, unknown> | null;
-  const whatIs = (typeof t.raw === 'function'
-    ? t.raw('whatIs')
-    : null) as Record<string, unknown> | null;
-  const howto = (typeof t.raw === 'function' ? t.raw('howto') : null) as
-    | Record<string, unknown>
-    | null;
-  const highlights = (typeof t.raw === 'function'
-    ? t.raw('highlights')
-    : null) as Record<string, unknown> | null;
-  const funfacts = (typeof t.raw === 'function'
-    ? t.raw('funfacts')
-    : null) as Record<string, unknown> | null;
-  const userInterest = (typeof t.raw === 'function'
-    ? t.raw('userInterest')
-    : null) as Record<string, unknown> | null;
+  const tool = (
+    typeof t.raw === 'function' ? t.raw('tool') : null
+  ) as ToolCopy | null;
+  const examples = (
+    typeof t.raw === 'function' ? t.raw('examples') : null
+  ) as Record<string, unknown> | null;
+  const whatIs = (
+    typeof t.raw === 'function' ? t.raw('whatIs') : null
+  ) as Record<string, unknown> | null;
+  const howto = (typeof t.raw === 'function' ? t.raw('howto') : null) as Record<
+    string,
+    unknown
+  > | null;
+  const highlights = (
+    typeof t.raw === 'function' ? t.raw('highlights') : null
+  ) as Record<string, unknown> | null;
+  const funfacts = (
+    typeof t.raw === 'function' ? t.raw('funfacts') : null
+  ) as Record<string, unknown> | null;
+  const userInterest = (
+    typeof t.raw === 'function' ? t.raw('userInterest') : null
+  ) as Record<string, unknown> | null;
+  const testimonials = (
+    typeof t.raw === 'function' ? t.raw('testimonials') : null
+  ) as Record<string, unknown> | null;
+  const faqs = (
+    typeof t.raw === 'function' ? t.raw('faqs') : null
+  ) as Record<string, unknown> | null;
+  const cta = (
+    typeof t.raw === 'function' ? t.raw('cta') : null
+  ) as Record<string, unknown> | null;
 
   const beforeAfterGallery: BeforeAfterGallery = {
     title: (examples?.title as string) ?? '',
@@ -265,6 +300,14 @@ export function buildTranslatorPageContent(
     ),
     funFacts: buildSection(funfacts, { name: 'funfacts' }),
     userInterest: buildSection(userInterest, { name: 'userInterest' }),
+    testimonials: buildSection(testimonials, { name: 'testimonials' }),
+    faqs: buildSection(faqs, { name: 'faqs' }),
+    cta: {
+      title: (cta?.title as string) || '',
+      description: (cta?.description as string) || '',
+      primaryButton: (cta?.primaryButton as string) || '',
+      secondaryButton: (cta?.secondaryButton as string) || '',
+    },
   };
 }
 

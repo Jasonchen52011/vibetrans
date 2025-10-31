@@ -144,19 +144,23 @@
       "items": [
         {
           "title": "Simple and Free",
-          "description": "VibeTrans offers a user-friendly interface and free access, making it easy for anyone to translate manga without hassle. Enjoy professional-grade translations without worrying about costs."
+          "description": "VibeTrans offers a user-friendly interface and free access, making it easy for anyone to translate manga without hassle. Enjoy professional-grade translations without worrying about costs.",
+          "icon": "FaRocket"
         },
         {
           "title": "Data Privacy Ensured",
-          "description": "Your scans and translations are safe with us. VibeTrans doesn't store your data, ensuring your privacy and compliance with copyright laws. Translate with peace of mind."
+          "description": "Your scans and translations are safe with us. VibeTrans doesn't store your data, ensuring your privacy and compliance with copyright laws. Translate with peace of mind.",
+          "icon": "FaBrain"
         },
         {
           "title": "Contextual AI Understanding",
-          "description": "Our AI deeply understands context, ensuring translations are accurate and meaningful. Enjoy translations that capture the essence of the original manga, making your reading experience more enjoyable."
+          "description": "Our AI deeply understands context, ensuring translations are accurate and meaningful. Enjoy translations that capture the essence of the original manga, making your reading experience more enjoyable.",
+          "icon": "FaShieldAlt"
         },
         {
           "title": "More Explanations",
-          "description": "Need clarity? VibeTrans provides detailed explanations for complex translations, helping you understand nuanced expressions and cultural references. Make your manga reading experience richer and more informative."
+          "description": "Need clarity? VibeTrans provides detailed explanations for complex translations, helping you understand nuanced expressions and cultural references. Make your manga reading experience richer and more informative.",
+          "icon": "FaEye"
         }
       ]
     },
