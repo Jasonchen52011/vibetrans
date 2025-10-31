@@ -33,3 +33,6 @@ coverage/
 # Misc
 .DS_Store
 *.pem
+
+# Exclude unused images directory (185 images, ~11MB)
+public/docs2/
