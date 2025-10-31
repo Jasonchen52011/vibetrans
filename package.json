@@ -45,7 +45,9 @@
     "test:unit": "pnpm test",
     "test:integration": "pnpm api:test",
     "test:e2e": "echo 'E2E tests not implemented yet'",
-    "build:check": "pnpm lint && pnpm build && pnpm test:all"
+    "build:check": "pnpm lint && pnpm build && pnpm test:all",
+    "optimize": "node scripts/optimize-configs.js",
+    "build:optimized": "pnpm optimize && pnpm build"
   },
   "dependencies": {
     "@ai-sdk/google": "^2.0.25",

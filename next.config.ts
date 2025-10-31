@@ -41,6 +41,10 @@ const nextConfig: NextConfig = {
       'ai',
       'clsx',
       'tailwind-merge',
+      'sonner',
+      'next-themes',
+      'nuqs',
+      'react-remove-scroll',
     ],
     // Optimize CSS
     optimizeCss: true,
@@ -48,6 +52,12 @@ const nextConfig: NextConfig = {
     largePageDataBytes: 256 * 1000, // 256KB for paid plans
     // Enable webpack bundle analyzer for optimization
     webpackBuildWorker: true,
+    // Enable more aggressive compression
+    gzipSize: true,
+    // Optimize chunks
+    optimizeCss: true,
+    // Enable server components HMR
+    serverComponentsHmrCache: true,
   },
 
   // Webpack configuration for Cloudflare Pages Edge Runtime compatibility
@@ -96,7 +106,7 @@ const nextConfig: NextConfig = {
       config.optimization.splitChunks = {
         ...config.optimization.splitChunks,
         chunks: 'all',
-        maxSize: 200 * 1024, // 200KB max per chunk for Pages Functions
+        maxSize: 150 * 1024, // 150KB max per chunk (reduced from 200KB)
         minSize: 10 * 1024, // 10KB min chunk size
         cacheGroups: {
           default: {
@@ -111,7 +121,7 @@ const nextConfig: NextConfig = {
             priority: 10,
             enforce: true,
             // Smaller vendor chunks for Pages Functions
-            maxSize: 150 * 1024, // 150KB max for vendor chunks
+            maxSize: 100 * 1024, // 100KB max for vendor chunks (reduced from 150KB)
             minSize: 10 * 1024,
           },
           common: {
@@ -119,8 +129,17 @@ const nextConfig: NextConfig = {
             minChunks: 2,
             chunks: 'all',
             priority: 5,
-            maxSize: 100 * 1024, // 100KB max for common chunks
+            maxSize: 80 * 1024, // 80KB max for common chunks (reduced from 100KB)
             minSize: 10 * 1024,
+          },
+          // 新增：分离配置文件到独立chunk
+          config: {
+            test: /[\\/]src[\\/]lib[\\/].*config.*\.ts/,
+            name: 'configs',
+            chunks: 'all',
+            priority: 15,
+            maxSize: 50 * 1024, // 50KB max for config chunks
+            minSize: 5 * 1024,
           },
         },
       };

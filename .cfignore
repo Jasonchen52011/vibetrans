@@ -36,3 +36,13 @@ coverage/
 
 # Exclude unused images directory (185 images, ~11MB)
 public/docs2/
+
+# Exclude unused functionality components and files
+docs3/
+src/components/blog/
+src/components/auth/
+src/components/payment/
+src/components/settings/billing/
+messages/pages/blog/
+messages/pages/auth/
+public/images/blog/
