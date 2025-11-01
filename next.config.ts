@@ -98,6 +98,7 @@ const nextConfig: NextConfig = {
       events: false,
     };
 
+    
     // Optimize for Cloudflare Workers
     if (!dev && !isServer) {
       // Enable tree shaking and minification

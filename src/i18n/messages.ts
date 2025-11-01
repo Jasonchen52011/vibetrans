@@ -380,7 +380,7 @@ async function loadFromLoaders(
 }
 
 /**
- * 智能翻译器加载器：根据工具名称或路由键加载对应的翻译文件
+ * 优化的翻译器加载器：使用轻量级核心翻译，减少bundle大小
  */
 async function loadTranslatorMessages(
   locale: Locale,
@@ -406,12 +406,31 @@ async function loadTranslatorMessages(
   }
 
   try {
-    const messages = await ROUTE_LOADERS[targetRouteKey](locale);
-    if (messages) {
+    // 生产环境使用轻量级翻译，开发环境使用完整翻译
+    if (process.env.NODE_ENV === 'production') {
+      // 使用轻量级核心翻译，大幅减少bundle大小
+      const { createOptimizedTranslationLoader } = await import('../lib/translation-split');
+      const routeKeyForTranslator = translatorKey?.replace('Page', '').toLowerCase() || targetRouteKey;
+      const coreTranslation = createOptimizedTranslationLoader(routeKeyForTranslator);
+
+      // 构建轻量级翻译对象
+      const lightweightTranslation = {
+        [`${translatorKey}`]: coreTranslation,
+      };
+
       console.log(
-        `✅ [loadTranslatorMessages] Loaded translator: ${targetRouteKey}`
+        `🚀 [loadTranslatorMessages] Loaded lightweight translator: ${targetRouteKey}`
       );
-      return [messages];
+      return [lightweightTranslation];
+    } else {
+      // 开发环境保持原有逻辑
+      const messages = await ROUTE_LOADERS[targetRouteKey](locale);
+      if (messages) {
+        console.log(
+          `✅ [loadTranslatorMessages] Dev - Loaded translator: ${targetRouteKey}`
+        );
+        return [messages];
+      }
     }
     return [];
   } catch (error) {
