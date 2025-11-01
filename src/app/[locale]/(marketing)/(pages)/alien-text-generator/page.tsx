@@ -82,7 +82,26 @@ export default async function AlienTextGeneratorPage(
 
   // 构建轻量级页面数据
   const pageData = {
-    tool: coreTranslation.tool,
+    tool: {
+      ...coreTranslation.tool,
+      alienLabel: 'Alien Text',
+      selectStyle: 'Select Alien Style',
+      styles: {
+        symbols: 'Symbols & Runes',
+        zalgo: 'Zalgo Text',
+        binary: 'Binary Code',
+        leet: 'Leet Speak',
+        glitch: 'Glitch Text',
+        cipher: 'Cipher Code',
+        reversed: 'Reversed Text',
+        morse: 'Morse Code',
+        braille: 'Braille',
+        runes: 'Ancient Runes',
+        matrix: 'Matrix Code',
+      },
+      generateButton: 'Generate Alien Text',
+      resetTooltip: 'Clear all content',
+    },
   };
 
   // 默认SEO内容
