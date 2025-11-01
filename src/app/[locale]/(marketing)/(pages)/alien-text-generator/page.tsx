@@ -1,21 +1,16 @@
-import BeforeAfterSection from '@/components/blocks/Examples';
 import CallToActionSection from '@/components/blocks/calltoaction/calltoaction';
 import ExploreOurAiTools from '@/components/blocks/exploretools';
-import FaqSection from '@/components/blocks/faqs/faqs';
-import UserScenarios from '@/components/blocks/funfacts';
-import WhyChoose from '@/components/blocks/highlights';
-import HowTo from '@/components/blocks/how-to';
-import TestimonialsThreeColumnSection from '@/components/blocks/testimonials/testimonials-three-column';
-import WhatIsSection from '@/components/blocks/whatis';
+import SEOContentLoader, { SEOContentRenderer } from '@/components/blocks/seo-content-loader';
 import { AuroraBackground } from '@/components/ui/aurora-background';
 import { constructMetadata } from '@/lib/metadata';
 import { buildToolStructuredData } from '@/lib/seo/structured-data';
-import { buildTranslatorPageContent } from '@/lib/translator-page';
+import { extractCoreTranslation } from '@/lib/translation-split';
 import { getUrlWithLocale } from '@/lib/urls/urls';
 import type { Metadata } from 'next';
 import type { Locale } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import AlienTextGeneratorTool from './AlienTextGeneratorTool';
+import './types'; // 导入类型声明
 
 export const runtime = 'edge';
 
@@ -49,21 +44,46 @@ export default async function AlienTextGeneratorPage(
 ) {
   const params = await props.params;
   const { locale } = params;
+
+  // 使用优化的翻译获取 - 仅加载核心翻译内容
   const t = await getTranslations({
     locale,
     namespace: 'AlienTextGeneratorPage',
   });
 
+  // 提取核心翻译内容，避免加载SEO内容到bundle
+  const coreTranslation = extractCoreTranslation({
+    AlienTextGeneratorPage: {
+      title: t('title'),
+      description: t('description'),
+      hero: {
+        title: t('hero.title'),
+        description: t('hero.description'),
+      },
+      tool: {
+        inputLabel: t('tool.inputLabel'),
+        outputLabel: t('tool.outputLabel'),
+        inputPlaceholder: t('tool.inputPlaceholder'),
+        outputPlaceholder: t('tool.outputPlaceholder'),
+        translateButton: t('tool.translateButton'),
+        uploadButton: t('tool.uploadButton'),
+        loading: t('tool.loading'),
+        error: t('tool.error'),
+      },
+      ctaButton: t('ctaButton'),
+    }
+  });
+
   // Structured Data for SEO
   const structuredData = buildToolStructuredData({
     name: 'VibeTrans Alien Text Generator',
-    description: t('description'),
+    description: coreTranslation.description,
   });
 
-  // Build translator page content using unified function
-  const translatorContent = buildTranslatorPageContent(t, {
-    howToIcons: ['FaFileUpload', 'FaPencilAlt', 'FaLanguage', 'FaDownload'],
-  });
+  // 构建轻量级页面数据
+  const pageData = {
+    tool: coreTranslation.tool,
+  };
 
   return (
     <>
@@ -73,58 +93,34 @@ export default async function AlienTextGeneratorPage(
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
       <div className="flex flex-col">
-        {/* Hero Section with Tool */}
+        {/* Hero Section */}
         <AuroraBackground className="bg-white dark:bg-zinc-900 !pt-12 !h-auto">
           <div className="container max-w-7xl mx-auto px-4 text-center relative z-10 pb-8">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              {t('hero.title')}
+              {coreTranslation.hero.title}
             </h1>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
-              {t('hero.description')}
+              {coreTranslation.hero.description}
             </p>
 
             {/* User Avatars and Rating */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              {/* Avatar Images */}
               <div className="flex -space-x-3">
-                <div className="relative h-12 w-12 rounded-full border-2 border-white dark:border-zinc-800 overflow-hidden">
-                  <img
-                    src="/images/avatars/female3.webp"
-                    alt="User 1"
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                <div className="relative h-12 w-12 rounded-full border-2 border-white dark:border-zinc-800 overflow-hidden">
-                  <img
-                    src="/images/avatars/male1.webp"
-                    alt="User 2"
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                <div className="relative h-12 w-12 rounded-full border-2 border-white dark:border-zinc-800 overflow-hidden">
-                  <img
-                    src="/images/avatars/female4.webp"
-                    alt="User 3"
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                <div className="relative h-12 w-12 rounded-full border-2 border-white dark:border-zinc-800 overflow-hidden">
-                  <img
-                    src="/images/avatars/male2.webp"
-                    alt="User 4"
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                <div className="relative h-12 w-12 rounded-full border-2 border-white dark:border-zinc-800 overflow-hidden">
-                  <img
-                    src="/images/avatars/female1.webp"
-                    alt="User 5"
-                    className="h-full w-full object-cover"
-                  />
-                </div>
+                {['female3', 'male1', 'female4', 'male2', 'female1'].map(
+                  (avatar, i) => (
+                    <div
+                      key={i}
+                      className="relative h-12 w-12 rounded-full border-2 border-white dark:border-zinc-800 overflow-hidden"
+                    >
+                      <img
+                        src={`/images/avatars/${avatar}.webp`}
+                        alt={`User ${i + 1}`}
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
+                  )
+                )}
               </div>
-
-              {/* Stars and Text */}
               <div className="flex flex-col items-center sm:items-start gap-1">
                 <div className="flex items-center gap-0.5">
                   {[...Array(5)].map((_, i) => (
@@ -146,37 +142,18 @@ export default async function AlienTextGeneratorPage(
           </div>
         </AuroraBackground>
 
-        {/* Alien Text Generator Tool */}
+        {/* Tool Component */}
         <div className="pt-0 pb-12 bg-gradient-to-b from-muted/20 to-background">
           <AlienTextGeneratorTool
-            pageData={translatorContent.pageData}
+            pageData={pageData}
             locale={locale}
           />
         </div>
 
-        {/* What Is Section */}
-        <WhatIsSection section={translatorContent.whatIs} />
-
-        {/* Examples Section */}
-        <BeforeAfterSection beforeAfterGallery={translatorContent.examples} />
-
-        {/* How to Section */}
-        <HowTo section={translatorContent.howTo} />
-
-        {/* User Interest Blocks */}
-        <UserScenarios
-          section={translatorContent.userInterest}
-          ctaText={t('ctaButton')}
-        />
-
-        {/* Fun Facts */}
-        <UserScenarios
-          section={translatorContent.funFacts}
-          ctaText={t('ctaButton')}
-        />
-
-        {/* Highlights/Why Choose */}
-        <WhyChoose section={translatorContent.highlights} />
+        {/* SEO Content - 异步加载，不包含在服务器bundle中 */}
+        <SEOContentLoader translatorKey="alien-text-generator" locale={locale}>
+          {(seoContent) => <SEOContentRenderer content={seoContent} />}
+        </SEOContentLoader>
 
         {/* Explore Other Tools */}
         <ExploreOurAiTools
@@ -189,17 +166,6 @@ export default async function AlienTextGeneratorPage(
             'Gen Z Translator',
           ]}
         />
-
-        {/* Testimonials Section */}
-        <TestimonialsThreeColumnSection
-          section={translatorContent.testimonials}
-        />
-
-        {/* FAQ Section */}
-        <FaqSection section={translatorContent.faqs} />
-
-        {/* Call to Action */}
-        <CallToActionSection section={translatorContent.cta} />
       </div>
     </>
   );

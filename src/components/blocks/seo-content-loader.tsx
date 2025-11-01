@@ -49,21 +49,24 @@ export default function SEOContentLoader({
   // 默认SEO内容（根据翻译器类型定制）
   function getDefaultSEOContent(): SEOContent {
     const isMinionTranslator = translatorKey === 'minion-translator';
+    const isAlienTextGenerator = translatorKey === 'alien-text-generator';
 
     return {
       whatIs: {
-        title: isMinionTranslator ? 'What is Minion Translator?' : 'Professional AI Translation Tool',
+        title: isMinionTranslator ? 'What is Minion Translator?' : isAlienTextGenerator ? 'What is Alien Text Generator?' : 'Professional AI Translation Tool',
         description: isMinionTranslator
           ? 'Minion Translator is a fun AI-powered tool that converts your regular text into the hilarious banana language spoken by Minions from Despicable Me. Perfect for creating funny social media posts, memes, or just having a good time with friends!'
+          : isAlienTextGenerator
+          ? 'Alien Text Generator is a creative AI tool that transforms your text into fascinating extraterrestrial languages. Perfect for sci-fi fans, game developers, and creative writers looking to add authentic alien flavor to their content!'
           : 'Advanced AI-powered translation tool that provides accurate, context-aware translations for various languages and dialects.',
         image: {
-          src: isMinionTranslator ? '/images/docs/minion-translator-hero.webp' : '/images/docs/translation-tool-hero.webp',
-          alt: isMinionTranslator ? 'Minion language translation illustration' : 'AI translation tool illustration',
+          src: isMinionTranslator ? '/images/docs/minion-translator-hero.webp' : isAlienTextGenerator ? '/images/docs/alien-text-generator-hero.webp' : '/images/docs/translation-tool-hero.webp',
+          alt: isMinionTranslator ? 'Minion language translation illustration' : isAlienTextGenerator ? 'Alien text generation illustration' : 'AI translation tool illustration',
         },
       },
       examples: {
-        title: 'Translation Examples',
-        description: `See how our ${isMinionTranslator ? 'Minion' : 'translation'} tool works with real examples.`,
+        title: 'Generation Examples',
+        description: `See how our ${isMinionTranslator ? 'Minion' : isAlienTextGenerator ? 'alien text' : 'translation'} tool works with real examples.`,
         items: isMinionTranslator ? [
           {
             alt: 'Normal: Hello friend → Minion: Bello fiend!',
@@ -76,6 +79,19 @@ export default function SEOContentLoader({
           {
             alt: 'Normal: Let\'s play! → Minion: Le\'s pray!',
             name: 'Play Time',
+          },
+        ] : isAlienTextGenerator ? [
+          {
+            alt: 'Normal: Hello Earthlings → Alien: *Zorp glorp bleep*',
+            name: 'First Contact',
+          },
+          {
+            alt: 'Normal: We come in peace → Alien: *Vortex harmonics engage*',
+            name: 'Peace Message',
+          },
+          {
+            alt: 'Normal: Take me to your leader → Alien: *Quantum signal transmit*',
+            name: 'Diplomatic Request',
           },
         ] : [
           {
@@ -92,19 +108,19 @@ export default function SEOContentLoader({
         name: 'howto',
         title: 'How to Use',
         subtitle: 'Simple steps to get started',
-        description: `Follow these easy steps to ${isMinionTranslator ? 'translate to Minion language' : 'translate your text'}.`,
+        description: `Follow these easy steps to ${isMinionTranslator ? 'translate to Minion language' : isAlienTextGenerator ? 'generate alien text' : 'translate your text'}.`,
         items: [
           {
             title: 'Enter Your Text',
-            description: `Type or paste your ${isMinionTranslator ? 'regular text' : 'text'} in the input field.`,
+            description: `Type or paste your ${isMinionTranslator ? 'regular text' : isAlienTextGenerator ? 'message' : 'text'} in the input field.`,
           },
           {
-            title: 'Click Translate',
-            description: `Press the ${isMinionTranslator ? 'Translate to Minion' : 'Translate'} button to process your text.`,
+            title: 'Generate',
+            description: `Press the ${isMinionTranslator ? 'Translate to Minion' : isAlienTextGenerator ? 'Generate Alien Text' : 'Translate'} button to process your text.`,
           },
           {
             title: 'Get Results',
-            description: `Your ${isMinionTranslator ? 'Minion language' : 'translated text'} will appear instantly.`,
+            description: `Your ${isMinionTranslator ? 'Minion language' : isAlienTextGenerator ? 'alien language' : 'translated text'} will appear instantly.`,
           },
           {
             title: 'Copy & Share',
