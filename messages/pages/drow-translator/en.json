@@ -215,36 +215,12 @@
           "rating": "4.8"
         },
         "item-3": {
-          "name": "Jennifer Ross",
-          "role": "Language Enthusiast",
-          "heading": "Fascinating Linguistic Discovery",
-          "content": "I'm amazed by the complexity and beauty of the Drow language. This translator has opened up a whole new world of fantasy linguistics for me. It's both educational and fun!",
-          "text": "I'm amazed by the complexity and beauty of the Drow language. This translator has opened up a whole new world of fantasy linguistics for me. It's both educational and fun!",
-          "rating": "4.7"
-        },
-        "item-4": {
           "name": "David Wilson",
           "role": "Game Developer",
           "heading": "Perfect for Game Development",
           "content": "We're developing a fantasy RPG and this translator has been crucial for creating authentic Drow NPCs and dialogue. The AI understands the cultural context beautifully.",
           "text": "We're developing a fantasy RPG and this translator has been crucial for creating authentic Drow NPCs and dialogue. The AI understands the cultural context beautifully.",
           "rating": "4.8"
-        },
-        "item-5": {
-          "name": "Lisa Thompson",
-          "role": "Cosplayer",
-          "heading": "Cosplay Character Development",
-          "content": "For creating authentic Drow cosplays, having the right language and phrases is essential. This tool helps me develop my character's personality through language.",
-          "text": "For creating authentic Drow cosplays, having the right language and phrases is essential. This tool helps me develop my character's personality through language.",
-          "rating": "4.6"
-        },
-        "item-6": {
-          "name": "Robert Garcia",
-          "role": "Linguistics Student",
-          "heading": "Academic Research Excellence",
-          "content": "As a linguistics student studying constructed languages, this translator provides amazing insights into Drow grammar and structure. It's helped me understand fantasy linguistics better.",
-          "text": "As a linguistics student studying constructed languages, this translator provides amazing insights into Drow grammar and structure. It's helped me understand fantasy linguistics better.",
-          "rating": "4.9"
         }
       }
     },
