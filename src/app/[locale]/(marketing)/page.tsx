@@ -46,15 +46,8 @@ interface HomePageProps {
 export default async function HomePage(props: HomePageProps) {
   const params = await props.params;
   const { locale } = params;
-  // 注释掉翻译调用以避免命名空间不存在的问题
   // @ts-ignore - Translation keys type mismatch
-  // const t = await getTranslations('HomePage');
-
-  // 创建一个安全的翻译函数，返回键名作为默认值
-  const t = (key: string) => {
-    // 返回键名帮助调试，同时让默认值逻辑生效
-    return key;
-  };
+  const t = await getTranslations('HomePage');
 
   // 创建安全的翻译函数
   const safeT = (key: string, defaultValue: string = '') => {
