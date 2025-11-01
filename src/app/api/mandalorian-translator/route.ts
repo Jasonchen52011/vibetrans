@@ -4,254 +4,63 @@ export const runtime = 'edge';
 
 type TranslationDirection = 'english-to-mandalorian' | 'mandalorian-to-english';
 
-function getEnglishToMandalorianDict(): Record<string, string> {
-  return {
-    // 问候语
-    hello: "su cuy'gar",
-    hi: "su cuy'gar",
-    hey: "su cuy'gar",
-    greetings: "su cuy'gar",
-    goodbye: "ner jorhaa'i",
-    bye: "ner jorhaa'i",
-    farewell: "ner jorhaa'i",
-    welcome: "su'cuy",
-
-    // 基础词汇
-    warrior: 'verd',
-    clan: 'aliit',
-    family: 'aliit',
-    home: 'briikase',
-    house: 'briikase',
-    world: "mhi'jure",
-    planet: "mhi'jure",
-    leader: 'alor',
-    shield: 'bekad',
-    armor: "beskar'gam",
-    helmet: "buy'ce",
-    weapon: 'kad',
-    blade: 'kad',
-    sword: 'beskad',
-    battle: 'strill',
-    fight: 'strill',
-    victory: 'kote',
-    strength: 'beskar',
-    honor: 'parjai',
-    brother: 'vod',
-    sister: 'vod',
-    friend: "burc'ya",
-    alliance: 'parjir',
-    enemy: 'aruetii',
-    outsider: 'aruetii',
-    this: 'ibic',
-    that: 'bic',
-    truth: 'haat',
-    heart: "kar'ta",
-    blood: 'ade',
-    path: "haa'taylir",
-    way: "haa'taylir",
-
-    // 情绪与状态
-    strong: 'par',
-    brave: 'par',
-    fearless: 'mhi parjir',
-    loyal: 'ret',
-    loyalty: 'retla',
-    glory: 'parjai',
-    honorable: 'parjaai',
-    fear: 'jare',
-    hope: 'atik',
-    love: 'kar',
-    together: 'mhi',
-    always: 'darasuum',
-
-    // 代词
-    i: 'ni',
-    me: 'ni',
-    my: 'ner',
-    mine: "ner'tra",
-    you: 'gar',
-    your: "gar'tra",
-    yours: "gar'tra",
-    we: 'mhi',
-    us: 'mhi',
-    our: "mhi'tra",
-    ours: "mhi'tra",
-    they: 'val',
-    them: 'val',
-    their: "val'tra",
-
-    // 常用动词
-    protect: "ka'ra",
-    defend: "ka'ra",
-    attack: 'jate',
-    go: 'kaan',
-    come: 'jii',
-    stay: 'cuyir',
-    rise: 'oriyc',
-    fall: 'arpat',
-    stand: 'oorir',
-    speak: "jorhaa'duur",
-    listen: 'aani',
-    learn: 'laroy',
-    train: 'kutaar',
-
-    // 复合短语
-    'thank you': 'cuyir gar',
-    thanks: 'cuyir gar',
-    'excuse me': 'ner copad',
-    'i am': 'ni cuyir',
-    'you are': 'gar cuyir',
-    'we are': 'mhi cuyir',
-    'they are': 'val cuyir',
-    'this is the way': "haatyc ori'shya talyc",
-    'this is our way': "ibic cuyir mhi haa'taylir",
-    'for the clan': 'par aliit',
-    'for the family': 'par aliit',
-    'for honor': 'par parjai',
-    'never yield': "dralshy'a",
-    'no mercy': 'mercy laandur',
-    'into battle': 'gahtir strill',
-    'victory or death': "kote bal kyr'am",
-    'we stand together': 'mhi oorir mhi',
-    'we are mandalorian': "mhi cuyir mando'ade",
-    'this is the way of honor': "ibic haa'taylir par parjai",
-  };
-}
-
-function getMandalorianToEnglishDict(): Record<string, string> {
-  const englishToMandalorian = getEnglishToMandalorianDict();
-  const mandalorianToEnglish: Record<string, string> = {};
-
-  Object.entries(englishToMandalorian).forEach(([english, mando]) => {
-    const key = mando.toLowerCase();
-    const existing = mandalorianToEnglish[key];
-
-    if (!existing) {
-      mandalorianToEnglish[key] = english;
-      return;
-    }
-
-    if (existing.length > english.length) {
-      mandalorianToEnglish[key] = english;
-      return;
-    }
-
-    if (existing.length === english.length) {
-      const existingIsPhrase = existing.includes(' ');
-      const englishIsPhrase = english.includes(' ');
-
-      if (existingIsPhrase && !englishIsPhrase) {
-        mandalorianToEnglish[key] = english;
-      }
-    }
-  });
-
-  return mandalorianToEnglish;
-}
-
-function getEnglishPhraseEntries(): Array<[string, string]> {
-  const englishToMandalorian = getEnglishToMandalorianDict();
-  return Object.entries(englishToMandalorian)
-    .filter(([key]) => key.includes(' '))
-    .sort((a, b) => b[0].length - a[0].length);
-}
-
-function getMandalorianPhraseEntries(): Array<[string, string]> {
-  const mandalorianToEnglish = getMandalorianToEnglishDict();
-  return Object.entries(mandalorianToEnglish)
-    .filter(([key]) => key.includes(' '))
-    .sort((a, b) => b[0].length - a[0].length);
-}
-
-function escapeRegExp(value: string): string {
-  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-}
-
-function applyCase(source: string, translated: string): string {
-  if (!translated) {
-    return translated;
-  }
-
-  if (source === source.toUpperCase()) {
-    return translated.toUpperCase();
-  }
-
-  if (source === source.toLowerCase()) {
-    return translated;
-  }
-
-  if (/^[A-Z][a-z']*$/.test(source)) {
-    return translated.charAt(0).toUpperCase() + translated.slice(1);
-  }
-
-  return translated;
-}
-
-function applyPhraseCase(source: string, translated: string): string {
-  if (!translated) {
-    return translated;
-  }
-
-  if (source === source.toUpperCase()) {
-    return translated.toUpperCase();
-  }
-
-  if (source === source.toLowerCase()) {
-    return translated;
-  }
-
-  const words = source.split(/\s+/).filter(Boolean);
-  const isTitleCase = words.every((word) => /^[A-Z][a-z']*$/.test(word));
-
-  if (isTitleCase) {
-    return translated
-      .split(' ')
-      .map((word) =>
-        word ? word.charAt(0).toUpperCase() + word.slice(1) : word
-      )
-      .join(' ');
-  }
-
-  return translated;
-}
-
-function replacePhrases(
+async function translateWithGemini(
   text: string,
-  entries: Array<[string, string]>,
-  preserveCase: boolean
-): string {
-  let result = text;
-  entries.forEach(([source, target]) => {
-    const regex = new RegExp(`\\b${escapeRegExp(source)}\\b`, 'gi');
-    result = result.replace(regex, (match) =>
-      preserveCase ? applyPhraseCase(match, target) : target
+  direction: TranslationDirection
+): Promise<string> {
+  const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
+
+  if (!apiKey) {
+    throw new Error('Google Generative AI API key is not configured');
+  }
+
+  const prompt = direction === 'english-to-mandalorian'
+    ? `Translate the following English text to Mandalorian (Mando'a). Use authentic Mandalorian vocabulary and grammar from Star Wars lore. Include apostrophes and Mandalorian linguistic patterns. Provide only the translation, no explanations or additional text:
+
+${text}`
+    : `Translate the following Mandalorian (Mando'a) text to English. The Mandalorian language contains apostrophes and unique linguistic patterns from Star Wars lore. Provide only the translation, no explanations or additional text:
+
+${text}`;
+
+  const response = await fetch(
+    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key=${apiKey}`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        contents: [
+          {
+            parts: [
+              {
+                text: prompt,
+              },
+            ],
+          },
+        ],
+        generationConfig: {
+          temperature: 0.4,
+          maxOutputTokens: 2048,
+        },
+      }),
+    }
+  );
+
+  if (!response.ok) {
+    const errorData = await response.json().catch(() => ({}));
+    throw new Error(
+      `Gemini API error: ${response.status} - ${errorData.error?.message || response.statusText}`
     );
-  });
-  return result;
-}
+  }
 
-function translateEnglishToMandalorian(text: string): string {
-  const englishPhraseEntries = getEnglishPhraseEntries();
-  const englishToMandalorian = getEnglishToMandalorianDict();
+  const data = await response.json();
 
-  const withPhrases = replacePhrases(text, englishPhraseEntries, true);
+  if (!data.candidates?.[0]?.content?.parts?.[0]?.text) {
+    throw new Error('Invalid response from Gemini API');
+  }
 
-  return withPhrases.replace(/\b[\w']+\b/gu, (word) => {
-    const translated = englishToMandalorian[word.toLowerCase()];
-    return translated ? applyCase(word, translated) : word;
-  });
-}
-
-function translateMandalorianToEnglish(text: string): string {
-  const mandalorianPhraseEntries = getMandalorianPhraseEntries();
-  const mandalorianToEnglish = getMandalorianToEnglishDict();
-
-  const withPhrases = replacePhrases(text, mandalorianPhraseEntries, true);
-
-  return withPhrases.replace(/\b[\w']+\b/gu, (word) => {
-    const translated = mandalorianToEnglish[word.toLowerCase()];
-    return translated ? applyCase(word, translated) : word;
-  });
+  return data.candidates[0].content.parts[0].text.trim();
 }
 
 function detectDirection(
@@ -269,62 +78,11 @@ function detectDirection(
     return 'mandalorian-to-english';
   }
 
-  const words = text.match(/\b[\w']+\b/gu) ?? [];
-  if (words.length === 0) {
-    return 'english-to-mandalorian';
-  }
+  // Auto-detect based on content
+  const hasMandalorianPatterns = /[\u0027\u2019\u02BC]/.test(text) || // apostrophes
+    /\b(su\s+cuy|cuyir|verd|aliit|beskar|kote|vod|aruetii|ibic|bic|haat|parjai|darasuum)\b/i.test(text);
 
-  const lowerText = text.toLowerCase();
-  let englishScore = 0;
-  let mandalorianScore = 0;
-
-  const englishPhraseEntries = getEnglishPhraseEntries();
-  const mandalorianPhraseEntries = getMandalorianPhraseEntries();
-  const englishToMandalorian = getEnglishToMandalorianDict();
-  const mandalorianToEnglish = getMandalorianToEnglishDict();
-
-  englishPhraseEntries.forEach(([phrase]) => {
-    if (lowerText.includes(phrase)) {
-      englishScore += 1.5;
-    }
-  });
-
-  mandalorianPhraseEntries.forEach(([phrase]) => {
-    if (lowerText.includes(phrase)) {
-      mandalorianScore += 1.5;
-    }
-  });
-
-  words.forEach((word) => {
-    const lower = word.toLowerCase();
-
-    if (englishToMandalorian[lower]) {
-      englishScore += 1;
-    }
-
-    if (mandalorianToEnglish[lower]) {
-      mandalorianScore += 1.5;
-    }
-
-    if (lower.includes("'")) {
-      mandalorianScore += 0.5;
-    }
-  });
-
-  const apostrophes = (text.match(/'/g) || []).length;
-  if (apostrophes >= 3) {
-    mandalorianScore += 1;
-  }
-
-  if (mandalorianScore > englishScore) {
-    return 'mandalorian-to-english';
-  }
-
-  if (englishScore > mandalorianScore) {
-    return 'english-to-mandalorian';
-  }
-
-  return apostrophes > 1 ? 'mandalorian-to-english' : 'english-to-mandalorian';
+  return hasMandalorianPatterns ? 'mandalorian-to-english' : 'english-to-mandalorian';
 }
 
 export async function POST(request: NextRequest) {
@@ -359,11 +117,7 @@ export async function POST(request: NextRequest) {
     const resolvedDirection = detectDirection(text, direction);
     const startedAt = Date.now();
 
-    const translated =
-      resolvedDirection === 'english-to-mandalorian'
-        ? translateEnglishToMandalorian(text)
-        : translateMandalorianToEnglish(text);
-
+    const translated = await translateWithGemini(text, resolvedDirection);
     const elapsedMs = Date.now() - startedAt;
     const hasTranslation = translated !== text;
 
@@ -377,7 +131,7 @@ export async function POST(request: NextRequest) {
         resolvedDirection === 'english-to-mandalorian'
           ? 'english'
           : 'mandalorian',
-      translationMethod: 'dictionary',
+      translationMethod: 'gemini-2.0-flash',
       metadata: {
         timestamp: new Date().toISOString(),
         processingTime: `${elapsedMs}ms`,
@@ -414,12 +168,13 @@ export async function GET() {
     status: 'healthy',
     service: 'Mandalorian Translator API',
     description:
-      "Offline Mandalorian (Mando'a) translator using curated vocabulary and direction-aware heuristics",
+      "AI-powered Mandalorian (Mando'a) translator using Google Gemini 2.0 Flash for authentic translation",
     features: [
-      'Bidirectional dictionary-based translation',
-      'Automatic direction detection with heuristics',
-      'Phrase-aware replacements',
-      'Graceful fallback for unknown terms',
+      'AI-powered bidirectional translation',
+      'Automatic direction detection with pattern recognition',
+      'Authentic Mandalorian vocabulary and grammar',
+      'Context-aware translation',
+      'Powered by Google Gemini 2.0 Flash',
       'Optimized for Edge runtime',
     ],
     usage: {
@@ -438,10 +193,10 @@ export async function GET() {
       original: 'string',
       direction: 'english-to-mandalorian | mandalorian-to-english',
       detectedInputLanguage: 'english | mandalorian',
-      translationMethod: 'dictionary',
+      translationMethod: 'gemini-2.0-flash',
       metadata: {
         timestamp: 'ISO string',
-        processingTime: 'string (e.g. "2ms")',
+        processingTime: 'string (e.g. "200ms")',
         textLength: 'number',
         translatedLength: 'number',
         hasTranslation: 'boolean',
@@ -451,22 +206,22 @@ export async function GET() {
       {
         description: 'English to Mandalorian',
         request: {
-          text: 'We stand together. Victory or death!',
+          text: 'We stand together. This is the way.',
           direction: 'auto',
         },
         sampleResponse: {
-          translated: "Mhi oorir mhi. Kote bal kyr'am!",
+          translated: "Mhi oorir mhi. Haatyc ori'shya talyc.",
           direction: 'english-to-mandalorian',
         },
       },
       {
         description: 'Mandalorian to English',
         request: {
-          text: "Su cuy'gar, vod. Haat par mhi.",
+          text: "Su cuy'gar, vod. Kote bal kyr'am!",
           direction: 'auto',
         },
         sampleResponse: {
-          translated: 'Hello, brother. Truth for us.',
+          translated: 'Hello, brother. Victory or death!',
           direction: 'mandalorian-to-english',
         },
       },

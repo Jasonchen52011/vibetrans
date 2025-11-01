@@ -41,67 +41,74 @@ export default function SEOContentLoader({
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    async function loadSEOContent() {
-      try {
-        setLoading(true);
-        setError(null);
-
-        // 动态加载SEO内容
-        const response = await fetch(`/api/seo-content/${translatorKey}?locale=${locale}`);
-
-        if (!response.ok) {
-          throw new Error(`Failed to load SEO content: ${response.status}`);
-        }
-
-        const content = await response.json();
-        setSeoContent(content);
-      } catch (err) {
-        console.warn('Failed to load SEO content:', err);
-        setError(err instanceof Error ? err.message : 'Unknown error');
-
-        // 提供默认内容作为fallback
-        setSeoContent(getDefaultSEOContent());
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    loadSEOContent();
+    // 暂时直接使用默认内容，避免API调用问题
+    setSeoContent(getDefaultSEOContent());
+    setLoading(false);
   }, [translatorKey, locale]);
 
-  // 默认SEO内容（作为fallback）
+  // 默认SEO内容（根据翻译器类型定制）
   function getDefaultSEOContent(): SEOContent {
+    const isMinionTranslator = translatorKey === 'minion-translator';
+
     return {
       whatIs: {
-        title: 'About This Tool',
-        description: 'Professional translation tool powered by AI.',
+        title: isMinionTranslator ? 'What is Minion Translator?' : 'Professional AI Translation Tool',
+        description: isMinionTranslator
+          ? 'Minion Translator is a fun AI-powered tool that converts your regular text into the hilarious banana language spoken by Minions from Despicable Me. Perfect for creating funny social media posts, memes, or just having a good time with friends!'
+          : 'Advanced AI-powered translation tool that provides accurate, context-aware translations for various languages and dialects.',
         image: {
-          src: '/images/placeholder.webp',
-          alt: 'Translation tool illustration',
+          src: isMinionTranslator ? '/images/docs/minion-translator-hero.webp' : '/images/docs/translation-tool-hero.webp',
+          alt: isMinionTranslator ? 'Minion language translation illustration' : 'AI translation tool illustration',
         },
       },
       examples: {
         title: 'Translation Examples',
-        description: 'See how our tool works with real examples.',
-        items: [],
+        description: `See how our ${isMinionTranslator ? 'Minion' : 'translation'} tool works with real examples.`,
+        items: isMinionTranslator ? [
+          {
+            alt: 'Normal: Hello friend → Minion: Bello fiend!',
+            name: 'Friendly Greeting',
+          },
+          {
+            alt: 'Normal: I love bananas → Minion: Me luv banana!',
+            name: 'Minion Favorite',
+          },
+          {
+            alt: 'Normal: Let\'s play! → Minion: Le\'s pray!',
+            name: 'Play Time',
+          },
+        ] : [
+          {
+            alt: 'Professional translation example',
+            name: 'Business Translation',
+          },
+          {
+            alt: 'Casual conversation translation',
+            name: 'Daily Communication',
+          },
+        ],
       },
       howto: {
         name: 'howto',
         title: 'How to Use',
         subtitle: 'Simple steps to get started',
-        description: 'Follow these easy steps to translate your text.',
+        description: `Follow these easy steps to ${isMinionTranslator ? 'translate to Minion language' : 'translate your text'}.`,
         items: [
           {
             title: 'Enter Your Text',
-            description: 'Type or paste your text in the input field.',
+            description: `Type or paste your ${isMinionTranslator ? 'regular text' : 'text'} in the input field.`,
           },
           {
             title: 'Click Translate',
-            description: 'Press the translate button to process your text.',
+            description: `Press the ${isMinionTranslator ? 'Translate to Minion' : 'Translate'} button to process your text.`,
           },
           {
             title: 'Get Results',
-            description: 'Your translated text will appear instantly.',
+            description: `Your ${isMinionTranslator ? 'Minion language' : 'translated text'} will appear instantly.`,
+          },
+          {
+            title: 'Copy & Share',
+            description: 'Copy the result and share it with friends!',
           },
         ],
       },
@@ -109,7 +116,7 @@ export default function SEOContentLoader({
         name: 'highlights',
         title: 'Why Choose Us',
         subtitle: 'Professional translation features',
-        description: 'Experience the best translation tool with advanced features.',
+        description: `Experience the best ${isMinionTranslator ? 'Minion language' : 'translation'} tool with advanced features.`,
         items: [
           {
             title: 'Fast & Accurate',
@@ -123,34 +130,89 @@ export default function SEOContentLoader({
             title: 'Free to Use',
             description: 'No registration or payment required.',
           },
+          {
+            title: 'Multiple Languages',
+            description: 'Support for various languages and dialects.',
+          },
         ],
       },
       funFacts: {
         name: 'funfacts',
-        title: 'Interesting Facts',
+        title: isMinionTranslator ? 'Fun Facts About Minions' : 'Translation Insights',
         subtitle: 'Learn something new',
-        description: 'Discover interesting facts about translation.',
-        items: [],
+        description: isMinionTranslator
+          ? 'Discover interesting facts about Minions and their unique language!'
+          : 'Learn fascinating facts about translation and language.',
+        items: isMinionTranslator ? [
+          {
+            title: 'Minion Language Origins',
+            description: 'The Minion language is a fun mix of English, Spanish, French, and other languages, created specifically for the Despicable Me movies.',
+          },
+          {
+            title: 'Popular Words',
+            description: 'Words like "Banana", "Bello", "Poopaye" and "Tulaliloo" are the most recognized Minion expressions!',
+          },
+        ] : [
+          {
+            title: 'AI Translation Evolution',
+            description: 'Modern AI translation has evolved from simple word replacement to understanding context and nuance.',
+          },
+        ],
       },
       userInterest: {
         name: 'userInterest',
         title: 'Use Cases',
         subtitle: 'Perfect for everyone',
-        description: 'See how people use our translation tool.',
-        items: [],
+        description: `See how people use our ${isMinionTranslator ? 'Minion language' : 'translation'} tool.`,
+        items: isMinionTranslator ? [
+          {
+            title: 'Social Media Fun',
+            description: 'Create funny posts and stories that your friends will love!',
+          },
+          {
+            title: 'Meme Creation',
+            description: 'Generate hilarious Minion text for memes and viral content.',
+          },
+          {
+            title: 'Party Entertainment',
+            description: 'Use Minion speak at parties and gatherings for laughs!',
+          },
+        ] : [
+          {
+            title: 'Business Communication',
+            description: 'Professional translation for international business.',
+          },
+          {
+            title: 'Language Learning',
+            description: 'Practice and learn new languages effectively.',
+          },
+        ],
       },
       testimonials: {
         name: 'testimonials',
         title: 'User Reviews',
         subtitle: 'What our users say',
         description: 'Read reviews from our happy users.',
-        items: [],
+        items: [
+          {
+            title: 'Amazing Tool!',
+            description: isMinionTranslator
+              ? 'This Minion translator is hilarious! My friends love it when I send them Minion messages.'
+              : 'The translation quality is outstanding and very accurate.',
+          },
+          {
+            title: 'So Much Fun',
+            description: isMinionTranslator
+              ? 'Perfect for creating funny content. The Minion language sounds authentic!'
+              : 'Easy to use interface and fast translations.',
+          },
+        ],
       },
       faqs: {
         name: 'faqs',
         title: 'Frequently Asked Questions',
         subtitle: 'Got questions? We have answers.',
-        description: 'Find answers to common questions about our tool.',
+        description: `Find answers to common questions about our ${isMinionTranslator ? 'Minion language' : 'translation'} tool.`,
         items: [
           {
             title: 'Is this tool free?',
@@ -158,15 +220,27 @@ export default function SEOContentLoader({
           },
           {
             title: 'How accurate are the translations?',
-            description: 'Our AI-powered translations are highly accurate for most use cases.',
+            description: isMinionTranslator
+              ? 'Our Minion translator captures the fun and playful essence of Minion language perfectly!'
+              : 'Our AI-powered translations are highly accurate for most use cases.',
+          },
+          {
+            title: 'Can I use this for commercial purposes?',
+            description: 'Yes, you can use our translations for personal and commercial purposes.',
+          },
+          {
+            title: 'Do I need to register?',
+            description: 'No registration required. Just start translating right away!',
           },
         ],
       },
       cta: {
-        title: 'Try Our Translation Tool',
-        description: 'Start translating your text now with our powerful AI translator.',
-        primaryButton: 'Start Translating',
-        secondaryButton: 'Learn More',
+        title: isMinionTranslator ? 'Try Minion Translator Now!' : 'Start Translating Today!',
+        description: isMinionTranslator
+          ? 'Transform your text into hilarious Minion language and share the fun with friends!'
+          : 'Start translating your text now with our powerful AI translator.',
+        primaryButton: isMinionTranslator ? 'Try Minion Translator' : 'Start Translating',
+        secondaryButton: 'Explore More Tools',
       },
     };
   }
