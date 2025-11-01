@@ -9,48 +9,10 @@
       "NEXT_PUBLIC_VERCEL_ENV": "production"
     }
   },
-  "domains": [
-    {
-      "domain": "vibetrans.com",
-      "dns": {
-        "a": {
-          "value": "1.2.3.4",
-          "type": "A"
-        },
-        "cname": {
-          "value": "vibetrans.pages.dev",
-          "type": "CNAME"
-        }
-      }
-    },
-    {
-      "domain": "www.vibetrans.com",
-      "dns": {
-        "a": {
-          "value": "1.2.3.4",
-          "type": "A"
-        },
-        "cname": {
-          "value": "vibetrans.pages.dev",
-          "type": "CNAME"
-        }
-      }
-    }
-  ],
   "framework": "nextjs",
   "buildCommand": "pnpm build",
   "outputDirectory": ".next",
   "installCommand": "pnpm install",
   "devCommand": "pnpm dev",
-  "regions": ["sin1"],
-  "provisioning": {
-    "domains": [
-      {
-        "domain": "vibetrans.com"
-      },
-      {
-        "domain": "www.vibetrans.com"
-      }
-    ]
-  }
+  "regions": ["sin1"]
 }
