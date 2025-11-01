@@ -170,7 +170,7 @@ export default async function LocaleLayout({
   }
 
   return (
-    <html suppressHydrationWarning>
+    <>
       <head>
         <meta name="msvalidate.01" content="518A1A066EA7B7ED31AA7B89CDC8BC86" />
         <AffonsoScript />
@@ -189,6 +189,6 @@ export default async function LocaleLayout({
           </NextIntlClientProvider>
         </NuqsAdapter>
       </body>
-    </html>
+    </>
   );
 }

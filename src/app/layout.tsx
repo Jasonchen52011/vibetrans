@@ -15,11 +15,13 @@ interface Props {
  */
 export default function RootLayout({ children }: Props) {
   return (
-    <body
-      suppressHydrationWarning
-      className={`size-full antialiased ${fontSatoshi.className}`}
-    >
-      {children}
-    </body>
+    <html suppressHydrationWarning>
+      <body
+        suppressHydrationWarning
+        className={`size-full antialiased ${fontSatoshi.className}`}
+      >
+        {children}
+      </body>
+    </html>
   );
 }
