@@ -1,6 +1,6 @@
 import { Logo } from '@/components/layout/logo';
 
-// export const runtime = 'edge';
+export const runtime = 'edge';
 import { Button } from '@/components/ui/button';
 import { LocaleLink } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';

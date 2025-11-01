@@ -1,5 +1,4 @@
-// 暂时注释掉 edge runtime 来解决构建问题
-// export const runtime = 'edge';
+export const runtime = 'edge';
 import BackToTop from '@/components/layout/back-to-top';
 import { Footer } from '@/components/layout/footer';
 import { Navbar } from '@/components/layout/navbar';

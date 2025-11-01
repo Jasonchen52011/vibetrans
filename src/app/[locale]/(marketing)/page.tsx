@@ -1,7 +1,6 @@
 import CallToActionSection from '@/components/blocks/calltoaction/calltoaction';
 
-// 暂时注释掉 edge runtime 来解决构建问题
-// export const runtime = 'edge';
+export const runtime = 'edge';
 import FaqSection from '@/components/blocks/faqs/faqs';
 import UserScenarios from '@/components/blocks/funfacts';
 import HeroSection from '@/components/blocks/hero/hero';
