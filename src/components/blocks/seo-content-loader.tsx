@@ -13,7 +13,7 @@ import type { Section } from '@/types/blocks/section';
 interface SEOContentLoaderProps {
   translatorKey: string;
   locale: string;
-  children: (content: any) => React.ReactNode;
+  children: React.ReactNode;
 }
 
 interface SEOContent {
@@ -280,7 +280,7 @@ export default function SEOContentLoader({
     return <div>No content available</div>;
   }
 
-  return <>{children(seoContent)}</>;
+  return <>{children}</>;
 }
 
 /**

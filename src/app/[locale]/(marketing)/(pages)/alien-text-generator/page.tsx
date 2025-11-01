@@ -85,6 +85,160 @@ export default async function AlienTextGeneratorPage(
     tool: coreTranslation.tool,
   };
 
+  // 默认SEO内容
+  function getDefaultSEOContent() {
+    return {
+      whatIs: {
+        title: 'What is Alien Text Generator?',
+        description: 'Alien Text Generator is a creative AI tool that transforms your text into fascinating extraterrestrial languages. Perfect for sci-fi fans, game developers, and creative writers looking to add authentic alien flavor to their content!',
+        image: {
+          src: '/images/docs/alien-text-generator-hero.webp',
+          alt: 'Alien text generation illustration',
+        },
+      },
+      examples: {
+        title: 'Generation Examples',
+        description: 'See how our alien text tool works with real examples.',
+        items: [
+          {
+            alt: 'Normal: Hello Earthlings → Alien: *Zorp glorp bleep*',
+            name: 'First Contact',
+          },
+          {
+            alt: 'Normal: We come in peace → Alien: *Vortex harmonics engage*',
+            name: 'Peace Message',
+          },
+          {
+            alt: 'Normal: Take me to your leader → Alien: *Quantum signal transmit*',
+            name: 'Diplomatic Request',
+          },
+        ],
+      },
+      howto: {
+        name: 'howto',
+        title: 'How to Use',
+        subtitle: 'Simple steps to get started',
+        description: 'Follow these easy steps to generate alien text.',
+        items: [
+          {
+            title: 'Enter Your Text',
+            description: 'Type or paste your message in the input field.',
+          },
+          {
+            title: 'Generate',
+            description: 'Press the Generate Alien Text button to process your text.',
+          },
+          {
+            title: 'Get Results',
+            description: 'Your alien language will appear instantly.',
+          },
+          {
+            title: 'Copy & Share',
+            description: 'Copy the result and share it with friends!',
+          },
+        ],
+      },
+      highlights: {
+        name: 'highlights',
+        title: 'Why Choose Us',
+        subtitle: 'Professional translation features',
+        description: 'Experience the best alien text tool with advanced features.',
+        items: [
+          {
+            title: 'Fast & Accurate',
+            description: 'Get instant translations with high accuracy.',
+          },
+          {
+            title: 'Easy to Use',
+            description: 'Simple interface designed for everyone.',
+          },
+          {
+            title: 'Free to Use',
+            description: 'No registration or payment required.',
+          },
+          {
+            title: 'Multiple Languages',
+            description: 'Support for various languages and dialects.',
+          },
+        ],
+      },
+      funFacts: {
+        name: 'funfacts',
+        title: 'Translation Insights',
+        subtitle: 'Learn something new',
+        description: 'Learn fascinating facts about translation and language.',
+        items: [
+          {
+            title: 'AI Translation Evolution',
+            description: 'Modern AI translation has evolved from simple word replacement to understanding context and nuance.',
+          },
+        ],
+      },
+      userInterest: {
+        name: 'userInterest',
+        title: 'Use Cases',
+        subtitle: 'Perfect for everyone',
+        description: 'See how people use our translation tool.',
+        items: [
+          {
+            title: 'Business Communication',
+            description: 'Professional translation for international business.',
+          },
+          {
+            title: 'Language Learning',
+            description: 'Practice and learn new languages effectively.',
+          },
+        ],
+      },
+      testimonials: {
+        name: 'testimonials',
+        title: 'User Reviews',
+        subtitle: 'What our users say',
+        description: 'Read reviews from our happy users.',
+        items: [
+          {
+            title: 'Amazing Tool!',
+            description: 'The translation quality is outstanding and very accurate.',
+          },
+          {
+            title: 'So Much Fun',
+            description: 'Easy to use interface and fast translations.',
+          },
+        ],
+      },
+      faqs: {
+        name: 'faqs',
+        title: 'Frequently Asked Questions',
+        subtitle: 'Got questions? We have answers.',
+        description: 'Find answers to common questions about our translation tool.',
+        items: [
+          {
+            title: 'Is this tool free?',
+            description: 'Yes, our translation tool is completely free to use.',
+          },
+          {
+            title: 'How accurate are the translations?',
+            description: 'Our AI-powered translations are highly accurate for most use cases.',
+          },
+          {
+            title: 'Can I use this for commercial purposes?',
+            description: 'Yes, you can use our translations for personal and commercial purposes.',
+          },
+          {
+            title: 'Do I need to register?',
+            description: 'No registration required. Just start translating right away!',
+          },
+        ],
+      },
+      cta: {
+        title: 'Start Translating Today!',
+        description: 'Start translating your text now with our powerful AI translator.',
+        primaryButton: 'Start Translating',
+        secondaryButton: 'Explore More Tools',
+      },
+    };
+  }
+
   return (
     <>
       <script
@@ -152,7 +306,7 @@ export default async function AlienTextGeneratorPage(
 
         {/* SEO Content - 异步加载，不包含在服务器bundle中 */}
         <SEOContentLoader translatorKey="alien-text-generator" locale={locale}>
-          {(seoContent) => <SEOContentRenderer content={seoContent} />}
+          <SEOContentRenderer content={getDefaultSEOContent()} />
         </SEOContentLoader>
 
         {/* Explore Other Tools */}
