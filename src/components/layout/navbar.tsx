@@ -284,7 +284,7 @@ export function Navbar({ scroll }: NavBarProps) {
                           {item.title}
                         </NavigationMenuTrigger>
                         <NavigationMenuContent
-                          className="left-0 min-w-[600px] origin-top-left"
+                          className="left-1/3 -translate-x-1/3 min-w-[600px] origin-top-left"
                         >
                           <ul
                             className={cn(
