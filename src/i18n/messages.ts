@@ -406,31 +406,13 @@ async function loadTranslatorMessages(
   }
 
   try {
-    // 生产环境使用轻量级翻译，开发环境使用完整翻译
-    if (process.env.NODE_ENV === 'production') {
-      // 使用轻量级核心翻译，大幅减少bundle大小
-      const { createOptimizedTranslationLoader } = await import('../lib/translation-split');
-      const routeKeyForTranslator = translatorKey?.replace('Page', '').toLowerCase() || targetRouteKey;
-      const coreTranslation = createOptimizedTranslationLoader(routeKeyForTranslator);
-
-      // 构建轻量级翻译对象
-      const lightweightTranslation = {
-        [`${translatorKey}`]: coreTranslation,
-      };
-
+    // 修复：生产环境也加载完整翻译，确保所有sections正常显示
+    const messages = await ROUTE_LOADERS[targetRouteKey](locale);
+    if (messages) {
       console.log(
-        `🚀 [loadTranslatorMessages] Loaded lightweight translator: ${targetRouteKey}`
+        `✅ [loadTranslatorMessages] Loaded full translator: ${targetRouteKey} (${process.env.NODE_ENV})`
       );
-      return [lightweightTranslation];
-    } else {
-      // 开发环境保持原有逻辑
-      const messages = await ROUTE_LOADERS[targetRouteKey](locale);
-      if (messages) {
-        console.log(
-          `✅ [loadTranslatorMessages] Dev - Loaded translator: ${targetRouteKey}`
-        );
-        return [messages];
-      }
+      return [messages];
     }
     return [];
   } catch (error) {
