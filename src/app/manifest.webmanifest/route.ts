@@ -18,6 +18,13 @@ export const runtime = 'edge';
  * @returns {NextResponse} The manifest configuration as JSON
  */
 export async function GET(request: NextRequest) {
+  // Add CORS headers for cross-origin requests
+  const corsHeaders = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type',
+  };
+
   const defaultMessages = await getDefaultMessages();
 
   const manifest = {
@@ -44,11 +51,26 @@ export async function GET(request: NextRequest) {
     ],
   };
 
-  // Return the manifest with correct content type
+  // Return the manifest with correct content type and CORS headers
   return new NextResponse(JSON.stringify(manifest, null, 2), {
     headers: {
       'Content-Type': 'application/manifest+json',
       'Cache-Control': 'public, max-age=86400, immutable',
+      ...corsHeaders,
+    },
+  });
+}
+
+/**
+ * Handle OPTIONS preflight requests for CORS
+ */
+export async function OPTIONS() {
+  return new NextResponse(null, {
+    status: 200,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type',
     },
   });
 }

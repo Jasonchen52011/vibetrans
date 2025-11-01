@@ -58,7 +58,7 @@ export default function MandalorianTranslatorTool({
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           text: inputText,
-          direction: 'toMandalorian', // 固定方向，避免智能检测
+          direction: 'english-to-mandalorian', // 修正为 API 期望的格式
         }),
       });
 

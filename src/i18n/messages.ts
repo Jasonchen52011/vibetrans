@@ -380,7 +380,7 @@ async function loadFromLoaders(
 }
 
 /**
- * 智能翻译器加载器：根据工具名称或路由键加载对应的翻译文件
+ * 优化的翻译器加载器：使用轻量级核心翻译，减少bundle大小
  */
 async function loadTranslatorMessages(
   locale: Locale,

@@ -1,16 +1,10 @@
-import BeforeAfterSection from '@/components/blocks/Examples';
 import CallToActionSection from '@/components/blocks/calltoaction/calltoaction';
 import ExploreOurAiTools from '@/components/blocks/exploretools';
-import FaqSection from '@/components/blocks/faqs/faqs';
-import UserScenarios from '@/components/blocks/funfacts';
-import WhyChoose from '@/components/blocks/highlights';
-import HowTo from '@/components/blocks/how-to';
-import TestimonialsThreeColumnSection from '@/components/blocks/testimonials/testimonials-three-column';
-import WhatIsSection from '@/components/blocks/whatis';
+import SEOContentLoader, { SEOContentRenderer } from '@/components/blocks/seo-content-loader';
 import { AuroraBackground } from '@/components/ui/aurora-background';
 import { constructMetadata } from '@/lib/metadata';
 import { buildToolStructuredData } from '@/lib/seo/structured-data';
-import { buildTranslatorPageContent } from '@/lib/translator-page';
+import { extractCoreTranslation } from '@/lib/translation-split';
 import { getUrlWithLocale } from '@/lib/urls/urls';
 import type { Metadata } from 'next';
 import type { Locale } from 'next-intl';
@@ -52,22 +46,45 @@ export default async function MinionTranslatorPage(
   const params = await props.params;
   const { locale } = params;
 
-  // 使用标准 getTranslations 获取翻译
+  // 使用优化的翻译获取 - 仅加载核心翻译内容
   const t = await getTranslations({
     locale,
     namespace: 'MinionTranslatorPage',
   });
 
+  // 提取核心翻译内容，避免加载SEO内容到bundle
+  const coreTranslation = extractCoreTranslation({
+    MinionTranslatorPage: {
+      title: t('title'),
+      description: t('description'),
+      hero: {
+        title: t('hero.title'),
+        description: t('hero.description'),
+      },
+      tool: {
+        inputLabel: t('tool.inputLabel'),
+        outputLabel: t('tool.outputLabel'),
+        inputPlaceholder: t('tool.inputPlaceholder'),
+        outputPlaceholder: t('tool.outputPlaceholder'),
+        translateButton: t('tool.translateButton'),
+        uploadButton: t('tool.uploadButton'),
+        loading: t('tool.loading'),
+        error: t('tool.error'),
+      },
+      ctaButton: t('ctaButton'),
+    }
+  });
+
   // Structured Data for SEO
   const structuredData = buildToolStructuredData({
     name: 'VibeTrans Minion Translator',
-    description: t('description'),
+    description: coreTranslation.description,
   });
 
-  // 使用内容构建器生成所有页面内容
-  const translatorContent = buildTranslatorPageContent(t, {
-    howToIcons: ['FaFileUpload', 'FaPencilAlt', 'FaLanguage', 'FaCheckCircle'],
-  });
+  // 构建轻量级页面数据
+  const pageData = {
+    tool: coreTranslation.tool,
+  };
 
   return (
     <>
@@ -80,10 +97,10 @@ export default async function MinionTranslatorPage(
         <AuroraBackground className="bg-white dark:bg-zinc-900 !pt-12 !h-auto">
           <div className="container max-w-7xl mx-auto px-4 text-center relative z-10 pb-8">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              {t('hero.title')}
+              {coreTranslation.hero.title}
             </h1>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
-              {t('hero.description')}
+              {coreTranslation.hero.description}
             </p>
 
             {/* User Avatars and Rating */}
@@ -128,34 +145,15 @@ export default async function MinionTranslatorPage(
         {/* Tool Component */}
         <div className="pt-0 pb-12 bg-gradient-to-b from-muted/20 to-background">
           <MinionTranslatorTool
-            pageData={translatorContent.pageData}
+            pageData={pageData}
             locale={locale}
           />
         </div>
 
-        {/* What Is Section */}
-        <WhatIsSection section={translatorContent.whatIs} />
-
-        {/* Examples Section */}
-        <BeforeAfterSection beforeAfterGallery={translatorContent.examples} />
-
-        {/* How to Section */}
-        <HowTo section={translatorContent.howTo} />
-
-        {/* User Interest Blocks */}
-        <UserScenarios
-          section={translatorContent.userInterest}
-          ctaText={t('ctaButton')}
-        />
-
-        {/* Fun Facts */}
-        <UserScenarios
-          section={translatorContent.funFacts}
-          ctaText={t('ctaButton')}
-        />
-
-        {/* Highlights */}
-        <WhyChoose section={translatorContent.highlights} />
+        {/* SEO Content - 异步加载，不包含在服务器bundle中 */}
+        <SEOContentLoader translatorKey="minion-translator" locale={locale}>
+          {(seoContent) => <SEOContentRenderer content={seoContent} />}
+        </SEOContentLoader>
 
         {/* Explore Other Tools */}
         <ExploreOurAiTools
@@ -168,17 +166,6 @@ export default async function MinionTranslatorPage(
             'Esperanto Translator',
           ]}
         />
-
-        {/* Testimonials */}
-        <TestimonialsThreeColumnSection
-          section={translatorContent.testimonials}
-        />
-
-        {/* FAQ */}
-        <FaqSection section={translatorContent.faqs} />
-
-        {/* CTA */}
-        <CallToActionSection section={translatorContent.cta} />
       </div>
     </>
   );
