@@ -168,18 +168,16 @@ export default async function LocaleLayout({
   }
 
   return (
-    <>
-      <NuqsAdapter>
-        <NextIntlClientProvider locale={locale} messages={messages}>
-          <Providers locale={locale}>
-            {children}
+    <NuqsAdapter>
+      <NextIntlClientProvider locale={locale} messages={messages}>
+        <Providers locale={locale}>
+          {children}
 
-            <Toaster richColors position="top-right" offset={64} />
-            <TailwindIndicator />
-            <Analytics />
-          </Providers>
-        </NextIntlClientProvider>
-      </NuqsAdapter>
-    </>
+          <Toaster richColors position="top-right" offset={64} />
+          <TailwindIndicator />
+          <Analytics />
+        </Providers>
+      </NextIntlClientProvider>
+    </NuqsAdapter>
   );
 }
