@@ -16,10 +16,17 @@ export default function middleware(req: Request) {
   // 使用更简单的检测逻辑，减少字符串操作
   const isTranslator = pathname.indexOf('translator') > -1 || pathname.indexOf('generator') > -1;
 
-  // 只设置绝对必要的header
-  response.headers.set('x-path', pathname);
+  // 设置翻译检测所需的headers
+  response.headers.set('x-pathname', pathname);
+  response.headers.set('x-current-pathname', pathname);
+
+  // 移除locale前缀的路径
+  const pathWithoutLocale = pathname.replace(/^\/[a-z]{2}\//, '/') || '/';
+  response.headers.set('x-path-without-locale', pathWithoutLocale);
+  response.headers.set('x-route-pathname', pathWithoutLocale);
+
   if (isTranslator) {
-    response.headers.set('x-type', 'translator');
+    response.headers.set('x-is-translator-page', 'true');
   }
 
   return response;
