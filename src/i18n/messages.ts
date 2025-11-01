@@ -406,10 +406,11 @@ async function loadTranslatorMessages(
   }
 
   try {
+    // 修复：生产环境也加载完整翻译，确保所有sections正常显示
     const messages = await ROUTE_LOADERS[targetRouteKey](locale);
     if (messages) {
       console.log(
-        `✅ [loadTranslatorMessages] Loaded translator: ${targetRouteKey}`
+        `✅ [loadTranslatorMessages] Loaded full translator: ${targetRouteKey} (${process.env.NODE_ENV})`
       );
       return [messages];
     }
