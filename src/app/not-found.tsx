@@ -1,5 +1,5 @@
 /**
- * Catching non-localized requests
+ * Global not found page
  */
 export default function GlobalNotFound() {
   return (
