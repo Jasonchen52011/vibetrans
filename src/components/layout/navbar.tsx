@@ -267,18 +267,14 @@ export function Navbar({ scroll }: NavBarProps) {
                           {item.title}
                         </NavigationMenuTrigger>
                         <NavigationMenuContent
-                          className={cn(
-                            index === menuLinks.length - 1
-                              ? 'left-auto right-0'
-                              : 'left-0 right-auto'
-                          )}
+                          className="left-1/3 -translate-x-1/3 min-w-[600px] origin-top-left"
                         >
                           <ul
                             className={cn(
-                              'grid gap-2 p-3',
+                              'grid gap-2 p-3 grid-cols-3',
                               item.items && item.items.length === 1
                                 ? 'w-[280px] max-w-[calc(100vw-4rem)]'
-                                : 'w-[500px] md:w-[700px] md:grid-cols-3 lg:w-[900px] lg:grid-cols-4 max-w-[calc(100vw-4rem)]'
+                                : 'w-[600px] lg:w-[800px] max-w-[calc(100vw-4rem)]'
                             )}
                           >
                             {item.items?.map((subItem, subIndex) => {

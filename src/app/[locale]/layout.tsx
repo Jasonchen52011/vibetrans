@@ -1,12 +1,7 @@
-export const runtime = 'edge';
 import { Analytics } from '@/analytics/analytics';
-import { fontSatoshi } from '@/assets/fonts';
-import AffonsoScript from '@/components/affiliate/affonso';
-import PromotekitScript from '@/components/affiliate/promotekit';
 import { TailwindIndicator } from '@/components/layout/tailwind-indicator';
 import { getMessagesForLocale } from '@/i18n/messages';
 import { routing } from '@/i18n/routing';
-import { cn } from '@/lib/utils';
 import { type Locale, NextIntlClientProvider, hasLocale } from 'next-intl';
 import { headers } from 'next/headers';
 import { notFound } from 'next/navigation';
@@ -14,8 +9,6 @@ import { NuqsAdapter } from 'nuqs/adapters/next/app';
 import type { ReactNode } from 'react';
 import { Toaster } from 'sonner';
 import { Providers } from './providers';
-
-import '@/styles/globals.css';
 
 function normalizePathname(pathname: string | null | undefined): string {
   if (!pathname) {
@@ -175,28 +168,18 @@ export default async function LocaleLayout({
   }
 
   return (
-    <html suppressHydrationWarning lang={locale}>
-      <head>
-        <meta name="msvalidate.01" content="518A1A066EA7B7ED31AA7B89CDC8BC86" />
-        <AffonsoScript />
-        <PromotekitScript />
-      </head>
-      <body
-        suppressHydrationWarning
-        className={cn('size-full antialiased', fontSatoshi.className)}
-      >
-        <NuqsAdapter>
-          <NextIntlClientProvider locale={locale} messages={messages}>
-            <Providers locale={locale}>
-              {children}
+    <>
+      <NuqsAdapter>
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          <Providers locale={locale}>
+            {children}
 
-              <Toaster richColors position="top-right" offset={64} />
-              <TailwindIndicator />
-              <Analytics />
-            </Providers>
-          </NextIntlClientProvider>
-        </NuqsAdapter>
-      </body>
-    </html>
+            <Toaster richColors position="top-right" offset={64} />
+            <TailwindIndicator />
+            <Analytics />
+          </Providers>
+        </NextIntlClientProvider>
+      </NuqsAdapter>
+    </>
   );
 }
