@@ -9,24 +9,17 @@ interface Props {
 }
 
 /**
- * Root layout with HTML structure for next-intl routing
+ * Root layout for next-intl routing
  *
  * https://next-intl.dev/docs/environments/error-files#catching-non-localized-requests
  */
 export default function RootLayout({ children }: Props) {
   return (
-    <html suppressHydrationWarning>
-      <head>
-        <meta name="msvalidate.01" content="518A1A066EA7B7ED31AA7B89CDC8BC86" />
-        <AffonsoScript />
-        <PromotekitScript />
-      </head>
-      <body
-        suppressHydrationWarning
-        className={`size-full antialiased ${fontSatoshi.className}`}
-      >
-        {children}
-      </body>
-    </html>
+    <body
+      suppressHydrationWarning
+      className={`size-full antialiased ${fontSatoshi.className}`}
+    >
+      {children}
+    </body>
   );
 }

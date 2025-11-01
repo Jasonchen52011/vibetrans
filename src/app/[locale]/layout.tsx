@@ -1,4 +1,6 @@
 import { Analytics } from '@/analytics/analytics';
+import AffonsoScript from '@/components/affiliate/affonso';
+import PromotekitScript from '@/components/affiliate/promotekit';
 import { TailwindIndicator } from '@/components/layout/tailwind-indicator';
 import { getMessagesForLocale } from '@/i18n/messages';
 import { routing } from '@/i18n/routing';
@@ -168,18 +170,25 @@ export default async function LocaleLayout({
   }
 
   return (
-    <>
-      <NuqsAdapter>
-        <NextIntlClientProvider locale={locale} messages={messages}>
-          <Providers locale={locale}>
-            {children}
+    <html suppressHydrationWarning>
+      <head>
+        <meta name="msvalidate.01" content="518A1A066EA7B7ED31AA7B89CDC8BC86" />
+        <AffonsoScript />
+        <PromotekitScript />
+      </head>
+      <body>
+        <NuqsAdapter>
+          <NextIntlClientProvider locale={locale} messages={messages}>
+            <Providers locale={locale}>
+              {children}
 
-            <Toaster richColors position="top-right" offset={64} />
-            <TailwindIndicator />
-            <Analytics />
-          </Providers>
-        </NextIntlClientProvider>
-      </NuqsAdapter>
-    </>
+              <Toaster richColors position="top-right" offset={64} />
+              <TailwindIndicator />
+              <Analytics />
+            </Providers>
+          </NextIntlClientProvider>
+        </NuqsAdapter>
+      </body>
+    </html>
   );
 }
