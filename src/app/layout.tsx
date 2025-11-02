@@ -15,13 +15,18 @@ interface Props {
  */
 export default function RootLayout({ children }: Props) {
   return (
-    <body
-      suppressHydrationWarning
-      className={`size-full antialiased ${fontSatoshi.className}`}
-    >
-      {children}
-      <AffonsoScript />
-      <PromotekitScript />
-    </body>
+    <html suppressHydrationWarning>
+      <head>
+        <meta name="msvalidate.01" content="518A1A066EA7B7ED31AA7B89CDC8BC86" />
+      </head>
+      <body
+        suppressHydrationWarning
+        className={`size-full antialiased ${fontSatoshi.className}`}
+      >
+        {children}
+        <AffonsoScript />
+        <PromotekitScript />
+      </body>
+    </html>
   );
 }
