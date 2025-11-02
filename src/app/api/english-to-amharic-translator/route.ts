@@ -73,8 +73,19 @@ export async function POST(request: Request) {
   } catch (error: any) {
     console.error('Translation error:', error);
 
+    // 提供更详细的错误信息用于调试
+    const errorMessage = error?.message || 'Unknown error occurred';
+    const errorDetails = process.env.NODE_ENV === 'development'
+      ? { fullError: error.toString(), stack: error.stack }
+      : {};
+
     return Response.json(
-      { error: 'Translation failed. Please try again.' },
+      {
+        error: 'Translation failed. Please try again.',
+        details: errorMessage,
+        debug: errorDetails,
+        timestamp: new Date().toISOString()
+      },
       { status: 500 }
     );
   }
