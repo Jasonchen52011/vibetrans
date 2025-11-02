@@ -15,8 +15,7 @@ type TranslationResult = {
   backTranslation?: string;
 };
 
-const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
-
+// Gemini API配置
 const LANGUAGE_MAP: Record<
   'en-sw' | 'sw-en',
   { source: string; target: string }
@@ -25,98 +24,145 @@ const LANGUAGE_MAP: Record<
   'sw-en': { source: 'Swahili', target: 'English' },
 };
 
+// 翻译模式定义
+const TRANSLATION_MODES = {
+  general: {
+    name: 'General Translation',
+    enToSwPrompt: `Translate the following English text to Swahili. Provide accurate and natural-sounding translation:`,
+    swToEnPrompt: `Translate the following Swahili text to English. Provide accurate and natural-sounding translation:`,
+  },
+  formal: {
+    name: 'Formal Translation',
+    enToSwPrompt: `Translate the following English text to formal Swahili. Use appropriate formal language:`,
+    swToEnPrompt: `Translate the following Swahili text to formal English. Use appropriate formal language:`,
+  },
+  colloquial: {
+    name: 'Colloquial Translation',
+    enToSwPrompt: `Translate the following English text to colloquial Swahili. Use natural, everyday language:`,
+    swToEnPrompt: `Translate the following Swahili text to colloquial English. Use natural, everyday language:`,
+  },
+};
+
 // Language detection configuration
 const LANGUAGE_HINTS = {
   swahili: [
-    'hujambo',
-    'asante',
-    'karibu',
-    'mambo',
-    'rafiki',
-    'habari',
-    'tafadhali',
+    'hujambo', 'asante', 'karibu', 'mambo', 'rafiki', 'habari', 'tafadhali', 'nzuri', 'sana', 'bado', 'kweli', 'kwa', 'la', 'ya', 'na'
   ],
-  english: ['the', 'and', 'you', 'with', 'that', 'from', 'this'],
+  english: ['the', 'and', 'you', 'with', 'that', 'from', 'this', 'for', 'are', 'but', 'not', 'they', 'were', 'been'],
 } as const;
 
-function detectLanguageLocally(text: string) {
-  const swahiliHints = LANGUAGE_HINTS.swahili;
-  const englishHints = LANGUAGE_HINTS.english;
+type TranslationMode = keyof typeof TRANSLATION_MODES;
 
-  const normalized = text.toLowerCase();
-  const swHits = swahiliHints.filter((hint) =>
-    normalized.includes(hint)
+// 智能语言检测
+function detectLanguageLocally(text: string): 'swahili' | 'english' | 'unknown' {
+  const cleanText = text.toLowerCase().trim();
+
+  const swahiliHits = LANGUAGE_HINTS.swahili.filter((hint) =>
+    cleanText.includes(hint)
   ).length;
-  const enHits = englishHints.filter((hint) =>
-    normalized.includes(hint)
+  const enHits = LANGUAGE_HINTS.english.filter((hint) =>
+    cleanText.includes(hint)
   ).length;
 
-  if (swHits === enHits) {
-    return 'Auto';
+  if (swahiliHits > enHits) {
+    return 'swahili';
+  } else if (enHits > swahiliHits) {
+    return 'english';
   }
-  return swHits > enHits ? 'Swahili' : 'English';
+
+  return 'unknown';
 }
 
-async function callOpenAIForTranslation(
-  payload: TranslationRequest
+// 构建翻译提示
+function buildPrompt(text: string, mode: TranslationMode, direction: string, enableDualTranslation: boolean = false): string {
+  const modeConfig = TRANSLATION_MODES[mode];
+  let prompt = '';
+
+  if (direction === 'en-sw') {
+    prompt = `${modeConfig.enToSwPrompt}\n\n"${text}"`;
+  } else {
+    prompt = `${modeConfig.swToEnPrompt}\n\n"${text}"`;
+  }
+
+  // 如果启用双向翻译，添加回译要求
+  if (enableDualTranslation) {
+    prompt += '\n\nAlso provide a back translation of your result to verify accuracy in the format: BackTranslation: [back translated text]';
+  }
+
+  return prompt;
+}
+
+// 使用Gemini进行翻译
+async function callGeminiForTranslation(
+  payload: TranslationRequest & { mode?: TranslationMode }
 ): Promise<TranslationResult | null> {
-  if (!OPENAI_API_KEY) {
+  const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
+  if (!apiKey) {
     return null;
   }
 
   const direction = payload.direction || 'en-sw';
+  const mode = payload.mode || 'general';
   const { source, target } = LANGUAGE_MAP[direction];
 
-  const systemPrompt = `You are a bilingual translator for English and Swahili. Detect the source language, translate the text, and return a concise JSON response with the translation data. Use this JSON schema:
-{
-  "translatedText": "string",
-  "detectedSourceLanguage": "string",
-  "detectedTargetLanguage": "string",
-  "backTranslation": "string"
-}
-Always respond with valid JSON only. If back translation is not required, return null.`;
-
-  const userPrompt = `Source language hint: ${source}
-Target language: ${target}
-Text: """${payload.text}"""
-Provide the translation respecting cultural context, professional tone, and everyday slang when appropriate.`;
+  // 构建翻译提示
+  const prompt = buildPrompt(payload.text, mode, direction, payload.enableDualTranslation);
 
   try {
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${OPENAI_API_KEY}`,
       },
       body: JSON.stringify({
-        model: process.env.CONTENT_MODEL || 'gpt-4o-mini',
-        messages: [
-          { role: 'system', content: systemPrompt },
-          { role: 'user', content: userPrompt },
-        ],
-        temperature: 0.4,
-      }),
+        contents: [{
+          parts: [{
+            text: prompt
+          }]
+        }],
+        generationConfig: {
+          temperature: mode === 'formal' ? 0.2 : mode === 'colloquial' ? 0.4 : 0.3,
+          maxOutputTokens: 2048,
+        }
+      })
     });
 
     if (!response.ok) {
       const errorText = await response.text();
       if (process.env.NODE_ENV === 'development') {
-        console.error('OpenAI translation error:', errorText);
+        console.error('Gemini translation error:', errorText);
       }
       return null;
     }
 
     const data = await response.json();
-    const message: string = data.choices?.[0]?.message?.content || '';
-    const jsonMatch = message.match(/```json\n([\s\S]*?)\n```/);
-    const jsonContent = jsonMatch ? jsonMatch[1] : message;
-    const parsed = JSON.parse(jsonContent) as TranslationResult;
+    let translatedText = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
 
-    if (!parsed.translatedText) {
+    if (!translatedText) {
       return null;
     }
 
-    return parsed;
+    // 处理回译提取
+    let backTranslation = '';
+    if (payload.enableDualTranslation) {
+      const backTranslationMatch = translatedText.match(/BackTranslation:\s*([^\n]+)/i);
+      if (backTranslationMatch) {
+        backTranslation = backTranslationMatch[1].trim();
+        // 移除回译部分，只保留翻译
+        translatedText = translatedText.replace(/BackTranslation:\s*[^\n]+/i, '').trim();
+      }
+    }
+
+    // 智能检测源语言
+    const detectedSourceLanguage = detectLanguageLocally(payload.text);
+
+    return {
+      translatedText,
+      detectedSourceLanguage: detectedSourceLanguage === 'english' ? 'English' :
+                           detectedSourceLanguage === 'swahili' ? 'Swahili' : 'Auto',
+      detectedTargetLanguage: target,
+      backTranslation: backTranslation || undefined,
+    };
   } catch (error) {
     if (process.env.NODE_ENV === 'development') {
       console.error('Translation API failure:', error);
@@ -125,14 +171,40 @@ Provide the translation respecting cultural context, professional tone, and ever
   }
 }
 
+// Handle GET method for health checks
+export async function GET() {
+  return Response.json({
+    status: 'healthy',
+    message: 'English to Swahili Translator API (Gemini Flash 2.0) is running',
+    timestamp: new Date().toISOString(),
+    methods: ['GET', 'POST', 'OPTIONS'],
+    modes: Object.keys(TRANSLATION_MODES),
+    languages: ['English', 'Swahili'],
+    directions: ['en-sw', 'sw-en'],
+  });
+}
+
 export async function POST(request: Request) {
   try {
-    const { text, direction = 'en-sw' }: TranslationRequest =
-      await request.json();
+    const body = await request.json();
+    const {
+      text,
+      direction = 'en-sw',
+      mode = 'general',
+      enableDualTranslation = false
+    }: TranslationRequest & { mode?: TranslationMode } = body;
 
     if (!text || typeof text !== 'string') {
-      return NextResponse.json(
+      return Response.json(
         { error: 'Text is required for translation' },
+        { status: 400 }
+      );
+    }
+
+    // 验证翻译模式
+    if (!TRANSLATION_MODES[mode]) {
+      return Response.json(
+        { error: `Invalid mode. Available modes: ${Object.keys(TRANSLATION_MODES).join(', ')}` },
         { status: 400 }
       );
     }
@@ -140,18 +212,25 @@ export async function POST(request: Request) {
     const normalizedDirection: 'en-sw' | 'sw-en' =
       direction === 'sw-en' ? 'sw-en' : 'en-sw';
 
-    const aiResult = await callOpenAIForTranslation({
+    const aiResult = await callGeminiForTranslation({
       text,
       direction: normalizedDirection,
-      enableDualTranslation: true,
+      mode,
+      enableDualTranslation,
     });
 
     if (aiResult) {
-      return NextResponse.json({
+      return Response.json({
         translated: aiResult.translatedText,
         detectedSourceLanguage: aiResult.detectedSourceLanguage,
         detectedTargetLanguage: aiResult.detectedTargetLanguage,
         backTranslation: aiResult.backTranslation,
+        direction: normalizedDirection,
+        mode,
+        modeName: TRANSLATION_MODES[mode].name,
+        confidence: 0.85,
+        autoDetected: !direction,
+        message: 'Translation successful',
       });
     }
 
@@ -161,18 +240,33 @@ export async function POST(request: Request) {
         ? `${text} (translated to Swahili - demo mode)`
         : `${text} (translated to English - demo mode)`;
 
-    return NextResponse.json({
+    return Response.json({
       translated: fallbackTranslation,
-      detectedSourceLanguage: localDetection,
+      detectedSourceLanguage: localDetection === 'english' ? 'English' :
+                             localDetection === 'swahili' ? 'Swahili' : 'Auto',
       detectedTargetLanguage:
         normalizedDirection === 'en-sw' ? 'Swahili' : 'English',
       backTranslation: null,
-      warning: 'OpenAI translation unavailable, using fallback translation.',
+      warning: 'Gemini translation unavailable, using fallback translation.',
     });
-  } catch (error) {
-    if (process.env.NODE_ENV === 'development') {
-      console.error('Translation error:', error);
+  } catch (error: any) {
+    console.error('Translation error:', error);
+
+    // 处理特定的 Gemini 错误
+    if (error?.message?.includes('API key')) {
+      return Response.json(
+        { error: 'Invalid API key configuration' },
+        { status: 500 }
+      );
     }
-    return NextResponse.json({ error: 'Translation failed' }, { status: 500 });
+
+    if (error?.message?.includes('quota')) {
+      return Response.json(
+        { error: 'API quota exceeded. Please try again later.' },
+        { status: 429 }
+      );
+    }
+
+    return Response.json({ error: 'Translation failed' }, { status: 500 });
   }
 }

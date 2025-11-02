@@ -2,8 +2,15 @@ import { type NextRequest, NextResponse } from 'next/server';
 
 export const runtime = 'edge';
 
+function detectLanguage(text: string): 'telugu' | 'english' {
+  // Simple language detection based on Telugu script range
+  const teluguRegex = /[\u0C00-\u0C7F]/;
+  return teluguRegex.test(text) ? 'telugu' : 'english';
+}
+
 async function translateWithGemini(
   text: string,
+  sourceLanguage: string,
   targetLanguage: string
 ): Promise<string> {
   const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
@@ -12,7 +19,7 @@ async function translateWithGemini(
     throw new Error('Google Generative AI API key is not configured');
   }
 
-  const prompt = `Translate the following English text to ${targetLanguage}. Provide only the translation, no explanations or additional text:
+  const prompt = `Translate the following ${sourceLanguage} text to ${targetLanguage}. Provide only the translation, no explanations or additional text:
 
 ${text}`;
 
@@ -60,7 +67,7 @@ ${text}`;
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { text, options = {} } = body;
+    const { text } = body;
 
     if (!text || typeof text !== 'string') {
       return NextResponse.json(
@@ -76,22 +83,15 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const startTime = Date.now();
-    const translated = await translateWithGemini(text, 'English');
-    const processingTime = `${Date.now() - startTime}ms`;
+    const detectedLanguage = detectLanguage(text);
+    const sourceLanguage = detectedLanguage === 'telugu' ? 'Telugu' : 'English';
+    const targetLanguage = detectedLanguage === 'telugu' ? 'English' : 'Telugu';
+
+    const translated = await translateWithGemini(text, sourceLanguage, targetLanguage);
 
     return NextResponse.json({
       success: true,
       translated,
-      original: text,
-      options,
-      translationMethod: 'gemini-2.0-flash',
-      metadata: {
-        timestamp: new Date().toISOString(),
-        processingTime,
-        textLength: text.length,
-        translatedLength: translated.length,
-      },
     });
   } catch (error) {
     console.error('Translation error:', error);
@@ -99,7 +99,6 @@ export async function POST(request: NextRequest) {
       {
         success: false,
         error: 'Translation failed',
-        suggestion: 'Please try again',
         details: error instanceof Error ? error.message : 'Unknown error',
       },
       { status: 500 }
@@ -110,12 +109,13 @@ export async function POST(request: NextRequest) {
 export async function GET() {
   return NextResponse.json({
     status: 'healthy',
-    service: 'Telugu To English Translator API',
+    service: 'Telugu-English Bidirectional Translator API',
     description:
-      'Gemini 2.0 Flash powered Telugu to English translation service',
+      'Gemini 2.0 Flash powered bidirectional translation service between Telugu and English',
     features: [
-      'AI-powered translation',
-      'Telugu language processing',
+      'AI-powered bidirectional translation',
+      'Automatic language detection',
+      'Telugu ↔ English translation',
       'Context-aware translation',
       'Real-time processing',
     ],

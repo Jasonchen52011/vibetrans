@@ -5,7 +5,7 @@ export const runtime = 'edge';
 type TranslationRequest = {
   text: string;
   inputType?: string;
-  direction?: 'sw-en' | 'auto';
+  direction?: 'sm-en' | 'auto';
   mode?: 'general' | 'formal' | 'colloquial';
 };
 
@@ -16,12 +16,8 @@ async function callGeminiDirectly(text: string, mode: string = 'general'): Promi
     return null;
   }
 
-  // 构建简单的翻译提示
-  const prompt = `Translate the following text between Swahili and English. Detect the source language automatically and provide an accurate translation:
-
-${text}
-
-Provide only the direct translation without explanations or additional text.`;
+  // 构建最直接翻译提示，只要结果
+  const prompt = `Translate between Samoan and English. Output only the translation: "${text}"`;
 
   try {
     const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
@@ -94,7 +90,7 @@ export async function POST(request: Request) {
         translated: translatedText,
         original: text,
         inputType,
-        direction: 'swahili-to-english',
+        direction: 'sm-to-en',
         mode,
         message: 'Translation successful',
         timestamp: new Date().toISOString(),
@@ -107,7 +103,7 @@ export async function POST(request: Request) {
       { status: 500 }
     );
   } catch (error: any) {
-    console.error('Swahili to english translation error:', error);
+    console.error('Samoan to english translation error:', error);
 
     // 处理特定的 Gemini 错误
     if (error?.message?.includes('API key')) {
@@ -137,12 +133,12 @@ export async function POST(request: Request) {
 export async function GET() {
   return Response.json({
     status: 'healthy',
-    message: 'Swahili to english translator API (Direct Gemini) is running',
-    description: 'Direct translation between Swahili and english using Gemini',
+    message: 'Samoan to english translator API (Direct Gemini) is running',
+    description: 'Direct translation between Samoan and english using Gemini',
     timestamp: new Date().toISOString(),
     methods: ['GET', 'POST', 'OPTIONS'],
     usage: {
-      endpoint: '/api/swahili-to-english-translator',
+      endpoint: '/api/samoan-to-english-translator',
       method: 'POST',
       body: {
         text: 'string (required)',
@@ -157,7 +153,7 @@ export async function GET() {
       'Simple and fast',
       'Up to 5000 characters per request',
     ],
-    supportedLanguages: ['Swahili', 'english'],
+    supportedLanguages: ['Samoan', 'english'],
     maxTextLength: 5000,
   });
 }
