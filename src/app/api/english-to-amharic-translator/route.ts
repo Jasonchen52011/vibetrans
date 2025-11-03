@@ -1,5 +1,5 @@
 /**
- * English to Amharic Translator API - Gemini Flash 2.5版本
+ * English to Amharic Translator API - Gemini Flash 2.0版本
  */
 
 export const runtime = 'edge';
@@ -8,7 +8,7 @@ export const runtime = 'edge';
 export async function GET() {
   return Response.json({
     status: 'healthy',
-    message: 'English to Amharic Translator API (Gemini Flash 2.5) is running',
+    message: 'English to Amharic Translator API (Gemini Flash 2.0) is running',
     timestamp: new Date().toISOString(),
     methods: ['GET', 'POST', 'OPTIONS'],
   });
@@ -32,15 +32,11 @@ export async function POST(request: Request) {
       );
     }
 
-    // 构建优化的翻译提示，适配Gemini 2.5 Flash
-    const prompt = `You are a professional English to Amharic translator. Translate the following English text into natural, accurate Amharic. Consider cultural context and appropriate formality. Return ONLY the Amharic translation, no explanations or additional text.
+    // 构建简单的翻译提示
+    const prompt = `Translate this English text to Amharic, return only the translation without explanation: "${text}"`;
 
-English text: "${text}"
-
-Amharic translation:`;
-
-    // 调用 Gemini 2.5 Flash API
-    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`, {
+    // 调用 Gemini 2.0 Flash API
+    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -52,10 +48,8 @@ Amharic translation:`;
           }]
         }],
         generationConfig: {
-          temperature: 0.2,
-          maxOutputTokens: 4096,
-          topP: 0.95,
-          topK: 40,
+          temperature: 0.3,
+          maxOutputTokens: 2048,
         }
       })
     });
