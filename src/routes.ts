@@ -52,5 +52,6 @@ export const Routes = {
   // Static pages
   Home: '/',
   About: '/about',
+  Privacy: '/privacy',
   Terms: '/terms',
 } as const;

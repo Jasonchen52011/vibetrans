@@ -302,6 +302,8 @@
         "title": "Company",
         "items": {
           "about": "About",
+          "privacyPolicy": "Privacy Policy",
+          "termsOfService": "Terms of Service",
           "contact": "Contact",
           "waitlist": "Waitlist"
         }
@@ -309,9 +311,7 @@
       "legal": {
         "title": "Legal",
         "items": {
-          "cookiePolicy": "Cookie Policy",
-          "privacyPolicy": "Privacy Policy",
-          "termsOfService": "Terms of Service"
+          "cookiePolicy": "Cookie Policy"
         }
       }
     }

@@ -74,12 +74,13 @@ const LANGUAGE_FOOTER_LINKS: FooterLink[] = [
   { key: 'teluguToEnglishTranslator', route: Routes.TeluguToEnglishTranslator },
 ];
 
-const COMPANY_LINKS: FooterLink[] = [{ key: 'about', route: Routes.About }];
-
-const LEGAL_LINKS: FooterLink[] = [
-  { key: 'privacyPolicy', route: Routes.PrivacyPolicy },
-  { key: 'termsOfService', route: Routes.TermsOfService },
+const COMPANY_LINKS: FooterLink[] = [
+  { key: 'about', route: Routes.About },
+  { key: 'privacyPolicy', route: Routes.Privacy },
+  { key: 'termsOfService', route: Routes.Terms },
 ];
+
+const LEGAL_LINKS: FooterLink[] = [];
 
 function mapFooterItems(
   t: ReturnType<typeof useTranslations>,
@@ -99,7 +100,7 @@ function mapFooterItems(
 export function useFooterLinks(): NestedMenuItem[] {
   const t = useTranslations('Marketing.footer');
 
-  return [
+  const footerSections = [
     {
       title: t('funTranslate.title'),
       items: mapFooterItems(t, 'funTranslate', FUN_FOOTER_LINKS),
@@ -121,9 +122,15 @@ export function useFooterLinks(): NestedMenuItem[] {
       title: t('company.title'),
       items: mapFooterItems(t, 'company', COMPANY_LINKS),
     },
-    {
+  ];
+
+  // 只有当LEGAL_LINKS有内容时才添加Legal section
+  if (LEGAL_LINKS.length > 0) {
+    footerSections.push({
       title: t('legal.title'),
       items: mapFooterItems(t, 'legal', LEGAL_LINKS),
-    },
-  ];
+    });
+  }
+
+  return footerSections;
 }

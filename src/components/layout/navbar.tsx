@@ -26,6 +26,7 @@ import {
   useEffect,
   useState,
 } from 'react';
+import type { PointerEventHandler } from 'react';
 import LocaleSwitcher from './locale-switcher';
 
 // 翻译器页面模式映射表
@@ -195,11 +196,11 @@ export function Navbar({ scroll }: NavBarProps) {
     if (closeTimeout) {
       clearTimeout(closeTimeout);
     }
-    // Add small delay to prevent accidental closing when moving between menu items
+    // Small delay to prevent accidental closing when moving between menu items
     const timeout = setTimeout(() => {
       setActiveMenu(undefined);
       setCloseTimeout(null);
-    }, 150);
+    }, 100);
     setCloseTimeout(timeout);
   };
 
@@ -249,14 +250,13 @@ export function Navbar({ scroll }: NavBarProps) {
             </div>
 
             {/* menu links */}
-            <div
-              className="flex items-center space-x-2 flex-1 relative z-50"
-              onPointerLeave={handlePointerClose}
-            >
+            <div className="flex items-center space-x-2 flex-1 relative z-50">
               <NavigationMenu
                 className="relative"
                 viewport={false}
                 value={activeMenu}
+                onValueChange={setActiveMenu}
+                onPointerLeave={handlePointerClose}
               >
                 <NavigationMenuList className="flex items-center">
                   {menuLinks?.map((item, index) =>
@@ -265,9 +265,8 @@ export function Navbar({ scroll }: NavBarProps) {
                         key={index}
                         className="relative"
                         value={`menu-${index}`}
-                        onPointerEnter={getPointerOpenHandler(`menu-${index}`)}
-                        onPointerMove={getPointerOpenHandler(`menu-${index}`)}
-                        onPointerLeave={handlePointerClose}
+                        onPointerEnter={getPointerOpenHandler(`menu-${index}`) as any}
+                        onPointerMove={getPointerOpenHandler(`menu-${index}`) as any}
                       >
                         <NavigationMenuTrigger
                           data-active={
@@ -285,6 +284,9 @@ export function Navbar({ scroll }: NavBarProps) {
                         </NavigationMenuTrigger>
                         <NavigationMenuContent
                           className="left-1/3 -translate-x-1/3 min-w-[600px] origin-top-left"
+                          onPointerEnter={getPointerOpenHandler(`menu-${index}`)}
+                          onPointerMove={getPointerOpenHandler(`menu-${index}`)}
+                          onPointerLeave={handlePointerClose}
                         >
                           <ul
                             className={cn(
@@ -293,6 +295,8 @@ export function Navbar({ scroll }: NavBarProps) {
                                 ? 'w-[280px] max-w-[calc(100vw-4rem)]'
                                 : 'w-[600px] lg:w-[800px] max-w-[calc(100vw-4rem)]'
                             )}
+                            onPointerEnter={getPointerOpenHandler(`menu-${index}`) as any}
+                            onPointerMove={getPointerOpenHandler(`menu-${index}`) as any}
                           >
                             {item.items?.map((subItem, subIndex) => {
                               const isSubItemActive =
