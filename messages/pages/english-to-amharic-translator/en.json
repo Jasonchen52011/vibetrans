@@ -64,7 +64,7 @@
     "howto": {
       "title": "How to translate English to Amharic",
       "description": "Follow these guided steps to turn English drafts into accurate Amharic copy that is ready to publish or send.",
-      "image": "/images/docs/translate-improve-arrows.webp",
+      "image": "/images/docs/english-to-amharic-translator-how-to.webp",
       "imageAlt": "How to translate English to Amharic steps",
       "steps": [
         {
@@ -203,10 +203,6 @@
         "item-3": {
           "question": "How do we collaborate on large documents?",
           "answer": "Upload .docx files, add reviewers, and track inline comments. Approvals sync back to your CMS or cloud drive automatically."
-        },
-        "item-4": {
-          "question": "Is there an API for existing platforms?",
-          "answer": "Absolutely. Use the REST API or webhook triggers to push translations into help centers, CRM automations, or SMS campaigns without manual copy-paste."
         },
         "item-5": {
           "question": "How is our data protected?",

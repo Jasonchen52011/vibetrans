@@ -60,14 +60,14 @@ export default function SEOContentLoader({
           ? 'Alien Text Generator is a creative AI tool that transforms your text into fascinating extraterrestrial languages. Perfect for sci-fi fans, game developers, and creative writers looking to add authentic alien flavor to their content!'
           : 'Advanced AI-powered translation tool that provides accurate, context-aware translations for various languages and dialects.',
         image: {
-          src: isMinionTranslator ? '/images/docs/minion-translator-hero.webp' : isAlienTextGenerator ? '/images/docs/alien-text-generator-hero.webp' : '/images/docs/translation-tool-hero.webp',
+          src: isMinionTranslator ? '/images/docs/minion-translator-hero.webp' : isAlienTextGenerator ? '/images/docs/what-is-alien-text-generator.webp' : '/images/docs/translation-tool-hero.webp',
           alt: isMinionTranslator ? 'Minion language translation illustration' : isAlienTextGenerator ? 'Alien text generation illustration' : 'AI translation tool illustration',
         },
       },
       examples: {
         title: 'Generation Examples',
         description: `See how our ${isMinionTranslator ? 'Minion' : isAlienTextGenerator ? 'alien text' : 'translation'} tool works with real examples.`,
-        items: isMinionTranslator ? [
+        images: isMinionTranslator ? [
           {
             alt: 'Normal: Hello friend → Minion: Bello fiend!',
             name: 'Friendly Greeting',
@@ -280,7 +280,7 @@ export default function SEOContentLoader({
     return <div>No content available</div>;
   }
 
-  return <>{children}</>;
+  return <SEOContentRenderer content={seoContent} />;
 }
 
 /**

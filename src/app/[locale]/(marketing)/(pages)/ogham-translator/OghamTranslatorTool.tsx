@@ -334,17 +334,17 @@ export default function OghamTranslatorTool({
               )}
             </div>
             <div
-              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md bg-gray-50 dark:bg-zinc-700 flex items-center justify-center text-gray-700 dark:text-gray-200 overflow-y-auto"
+              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md bg-gray-50 dark:bg-zinc-700 flex items-start justify-start text-gray-700 dark:text-gray-200 overflow-y-auto"
               aria-live="polite"
             >
               {isLoading ? (
-                <p>{pageData.tool.loading}</p>
+                <p className="w-full text-center">{pageData.tool.loading}</p>
               ) : error ? (
-                <p className="text-red-600 dark:text-red-400">{error}</p>
+                <p className="w-full text-red-600 dark:text-red-400">{error}</p>
               ) : outputText ? (
-                <p className="text-lg whitespace-pre-wrap">{outputText}</p>
+                <p className="text-lg whitespace-pre-wrap w-full text-start">{outputText}</p>
               ) : (
-                <p className="text-gray-500 dark:text-gray-400">
+                <p className="w-full text-gray-500 dark:text-gray-400 text-start">
                   {pageData.tool.outputPlaceholder}
                 </p>
               )}
