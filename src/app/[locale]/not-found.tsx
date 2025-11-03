@@ -1,9 +1,7 @@
 import { Logo } from '@/components/layout/logo';
 
-export const runtime = 'edge';
 import { Button } from '@/components/ui/button';
 import { LocaleLink } from '@/i18n/navigation';
-import { useTranslations } from 'next-intl';
 
 /**
  * Note that `app/[locale]/[...rest]/page.tsx`
@@ -13,20 +11,18 @@ import { useTranslations } from 'next-intl';
  * https://next-intl.dev/docs/environments/error-files#catching-non-localized-requests
  */
 export default function NotFound() {
-  const t = useTranslations('NotFoundPage');
-
   return (
     <div className="flex min-h-screen flex-col items-center justify-center gap-8">
       <Logo className="size-12" />
 
-      <h1 className="text-4xl font-bold">{t('title' as const)}</h1>
+      <h1 className="text-4xl font-bold">404</h1>
 
       <p className="text-balance text-center text-xl font-medium px-4">
-        {t('message')}
+        Page not found
       </p>
 
       <Button asChild size="lg" variant="default" className="cursor-pointer">
-        <LocaleLink href="/">{t('backToHome')}</LocaleLink>
+        <LocaleLink href="/">Back to Home</LocaleLink>
       </Button>
     </div>
   );
