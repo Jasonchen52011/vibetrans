@@ -12,9 +12,7 @@ async function translateWithGemini(
     throw new Error('Google Generative AI API key is not configured');
   }
 
-  const prompt = `Translate the following English text to ${targetLanguage}. Provide only the translation, no explanations or additional text:
-
-${text}`;
+  const prompt = `Translate to ${targetLanguage}: ${text}`;
 
   const response = await fetch(
     `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key=${apiKey}`,
@@ -59,49 +57,25 @@ ${text}`;
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
-    const { text, options = {} } = body;
+    const { text } = await request.json();
 
     if (!text || typeof text !== 'string') {
-      return NextResponse.json(
-        { success: false, error: 'Valid text is required' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Valid text is required' }, { status: 400 });
     }
 
     if (text.length > 5000) {
-      return NextResponse.json(
-        { success: false, error: 'Text too long. Maximum 5000 characters.' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Text too long. Maximum 5000 characters.' }, { status: 400 });
     }
 
-    const startTime = Date.now();
     const translated = await translateWithGemini(text, 'Cantonese');
-    const processingTime = `${Date.now() - startTime}ms`;
 
     return NextResponse.json({
-      success: true,
       translated,
-      original: text,
-      options,
-      translationMethod: 'gemini-2.0-flash',
-      metadata: {
-        timestamp: new Date().toISOString(),
-        processingTime,
-        textLength: text.length,
-        translatedLength: translated.length,
-      },
     });
   } catch (error) {
     console.error('Translation error:', error);
     return NextResponse.json(
-      {
-        success: false,
-        error: 'Translation failed',
-        suggestion: 'Please try again',
-        details: error instanceof Error ? error.message : 'Unknown error',
-      },
+      { error: 'Translation failed' },
       { status: 500 }
     );
   }
@@ -109,16 +83,7 @@ export async function POST(request: NextRequest) {
 
 export async function GET() {
   return NextResponse.json({
-    status: 'healthy',
     service: 'Cantonese Translator API',
-    description:
-      'Gemini 2.0 Flash powered English to Cantonese translation service',
-    features: [
-      'AI-powered translation',
-      'Chinese dialect processing',
-      'Context-aware translation',
-      'Real-time processing',
-    ],
-    timestamp: new Date().toISOString(),
+    status: 'active',
   });
 }
