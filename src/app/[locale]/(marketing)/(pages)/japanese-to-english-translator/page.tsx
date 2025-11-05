@@ -194,23 +194,13 @@ export default async function JapaneseToEnglishTranslatorPage(
         />
 
         {/* Testimonials */}
-        <TestimonialsThreeColumnSection
-          namespace="japaneseToEnglishTranslatorPage"
-          subNamespace="testimonials"
-        />
+        <TestimonialsSection section={translatorContent.testimonials} />
 
         {/* FAQ */}
-
-        <FaqSection
-          namespace="japaneseToEnglishTranslatorPage"
-          subNamespace="faqs"
-        />
+        <FaqSection section={translatorContent.faqs} />
 
         {/* CTA */}
-        <CallToActionSection
-          namespace="japaneseToEnglishTranslatorPage"
-          subNamespace="cta"
-        />
+        <CallToActionSection section={translatorContent.cta} />
       </div>
     </>
   );

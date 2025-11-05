@@ -13,13 +13,17 @@ const nextConfig: NextConfig = {
   /* config options here */
   devIndicators: false,
 
+  // Temporary fix for build issues - disabled trailingSlash to fix Html import issue
+  // trailingSlash: true,
+  // skipTrailingSlashRedirect: true,
+
   // Skip type checking during build
   typescript: {
     ignoreBuildErrors: true,
   },
 
   // Exclude Node.js-only packages from Edge Runtime bundles
-  serverExternalPackages: ['sharp', 'critters'],
+  serverExternalPackages: ['sharp', 'critters', '@clerk/nextjs'],
 
   // https://nextjs.org/docs/architecture/nextjs-compiler#remove-console
   // Remove all console.* calls in production only
@@ -29,24 +33,25 @@ const nextConfig: NextConfig = {
 
   // Enable experimental optimizations for Cloudflare
   experimental: {
+    // Re-enabled optimizePackageImports to fix Html import build issue
     optimizePackageImports: [
-      '@radix-ui/react-accordion',
-      '@radix-ui/react-collapsible',
-      '@radix-ui/react-dropdown-menu',
-      '@radix-ui/react-navigation-menu',
-      '@radix-ui/react-portal',
-      '@radix-ui/react-slot',
-      '@radix-ui/react-tooltip',
-      'lucide-react',
-      'ai',
-      'clsx',
-      'tailwind-merge',
-      'sonner',
-      'next-themes',
-      'nuqs',
-      'react-remove-scroll',
-      'next-intl',
-      'class-variance-authority',
+    //   '@radix-ui/react-accordion',
+    //   '@radix-ui/react-collapsible',
+    //   '@radix-ui/react-dropdown-menu',
+    //   '@radix-ui/react-navigation-menu',
+    //   '@radix-ui/react-portal',
+    //   '@radix-ui/react-slot',
+    //   '@radix-ui/react-tooltip',
+    //   'lucide-react',
+    //   'ai',
+    //   'clsx',
+    //   'tailwind-merge',
+    //   'sonner',
+    //   'next-themes',
+    //   'nuqs',
+    //   'react-remove-scroll',
+    //   'next-intl',
+        'class-variance-authority',
     ],
     // Optimize CSS
     optimizeCss: true,
@@ -56,14 +61,12 @@ const nextConfig: NextConfig = {
     webpackBuildWorker: true,
     // Enable more aggressive compression
     gzipSize: true,
-    // Optimize chunks
-    optimizeCss: true,
     // Enable server components HMR
     serverComponentsHmrCache: true,
     // Additional optimization for Workers
     serverMinification: true,
     serverSourceMaps: false,
-  },
+    },
 
   // Webpack configuration for Cloudflare Pages Edge Runtime compatibility
   webpack: (config, { webpack, isServer, dev }) => {

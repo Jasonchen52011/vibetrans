@@ -1,4 +1,7 @@
 import { Analytics } from '@/analytics/analytics';
+import { fontSatoshi } from '@/assets/fonts';
+import AffonsoScript from '@/components/affiliate/affonso';
+import PromotekitScript from '@/components/affiliate/promotekit';
 import { TailwindIndicator } from '@/components/layout/tailwind-indicator';
 import { getMessagesForLocale } from '@/i18n/messages';
 import { routing } from '@/i18n/routing';
@@ -168,16 +171,20 @@ export default async function LocaleLayout({
   }
 
   return (
-    <NuqsAdapter>
-      <NextIntlClientProvider locale={locale} messages={messages}>
-        <Providers locale={locale}>
-          {children}
+    <div className={`${fontSatoshi.className}`}>
+      <NuqsAdapter>
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          <Providers locale={locale}>
+            {children}
 
-          <Toaster richColors position="top-right" offset={64} />
-          <TailwindIndicator />
-          <Analytics />
-        </Providers>
-      </NextIntlClientProvider>
-    </NuqsAdapter>
+            <Toaster richColors position="top-right" offset={64} />
+            <TailwindIndicator />
+            <Analytics />
+            <AffonsoScript />
+            <PromotekitScript />
+          </Providers>
+        </NextIntlClientProvider>
+      </NuqsAdapter>
+    </div>
   );
 }

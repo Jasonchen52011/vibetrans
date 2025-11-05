@@ -185,16 +185,13 @@ export default async function BadTranslatorPage(props: BadTranslatorPageProps) {
         />
 
         {/* Testimonials Section */}
-        <TestimonialsThreeColumnSection
-          namespace="BadTranslatorPage"
-          subNamespace="testimonials"
-        />
+        <TestimonialsThreeColumnSection section={translatorContent.testimonials} />
 
         {/* FAQ Section */}
-        <FaqSection namespace="BadTranslatorPage" subNamespace="faqs" />
+        <FaqSection section={translatorContent.faqs} />
 
         {/* Call to Action */}
-        <CallToActionSection namespace="BadTranslatorPage" subNamespace="cta" />
+        <CallToActionSection section={translatorContent.cta} />
       </div>
     </>
   );

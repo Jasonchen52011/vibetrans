@@ -218,23 +218,13 @@ export default async function EnglishToPolishTranslatorPage(
         />
 
         {/* Testimonials */}
-        <TestimonialsThreeColumnSection
-          namespace="EnglishToPolishTranslatorPage"
-          subNamespace="testimonials"
-        />
+        <TestimonialsThreeColumnSection section={translatorContent.testimonials} />
 
         {/* FAQ */}
-
-        <FaqSection
-          namespace="EnglishToPolishTranslatorPage"
-          subNamespace="faqs"
-        />
+        <FaqSection section={translatorContent.faqs} />
 
         {/* CTA */}
-        <CallToActionSection
-          namespace="EnglishToPolishTranslatorPage"
-          subNamespace="cta"
-        />
+        <CallToActionSection section={translatorContent.cta} />
       </div>
     </>
   );

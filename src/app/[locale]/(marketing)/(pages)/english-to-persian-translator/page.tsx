@@ -263,23 +263,13 @@ export default async function EnglishToPersianTranslatorPage(
         />
 
         {/* Testimonials */}
-        <TestimonialsThreeColumnSection
-          namespace="EnglishToPersianTranslatorPage"
-          subNamespace="testimonials"
-        />
+        <TestimonialsThreeColumnSection section={translatorContent.testimonials} />
 
         {/* FAQ */}
-
-        <FaqSection
-          namespace="EnglishToPersianTranslatorPage"
-          subNamespace="faqs"
-        />
+        <FaqSection section={translatorContent.faqs} />
 
         {/* CTA */}
-        <CallToActionSection
-          namespace="EnglishToPersianTranslatorPage"
-          subNamespace="cta"
-        />
+        <CallToActionSection section={translatorContent.cta} />
       </div>
     </>
   );

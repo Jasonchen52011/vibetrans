@@ -165,23 +165,13 @@ export default async function EnglishToChineseTranslatorPage(
         />
 
         {/* Testimonials */}
-        <TestimonialsThreeColumnSection
-          namespace="EnglishToChineseTranslatorPage"
-          subNamespace="testimonials"
-        />
+        <TestimonialsThreeColumnSection section={translatorContent.testimonials} />
 
         {/* FAQ */}
-
-        <FaqSection
-          namespace="EnglishToChineseTranslatorPage"
-          subNamespace="faqs"
-        />
+        <FaqSection section={translatorContent.faqs} />
 
         {/* CTA */}
-        <CallToActionSection
-          namespace="EnglishToChineseTranslatorPage"
-          subNamespace="cta"
-        />
+        <CallToActionSection section={translatorContent.cta} />
       </div>
     </>
   );

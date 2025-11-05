@@ -191,19 +191,13 @@ export default async function AlienTextGeneratorPage(
         />
 
         {/* Testimonials Section */}
-        <TestimonialsThreeColumnSection
-          namespace="AlienTextGeneratorPage"
-          subNamespace="testimonials"
-        />
+        <TestimonialsThreeColumnSection section={translatorContent.testimonials} />
 
         {/* FAQ Section */}
-        <FaqSection namespace="AlienTextGeneratorPage" subNamespace="faqs" />
+        <FaqSection section={translatorContent.faqs} />
 
         {/* Call to Action */}
-        <CallToActionSection
-          namespace="AlienTextGeneratorPage"
-          subNamespace="cta"
-        />
+        <CallToActionSection section={translatorContent.cta} />
       </div>
     </>
   );
