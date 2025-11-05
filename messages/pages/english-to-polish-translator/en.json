@@ -28,7 +28,7 @@
     "whatIs": {
       "title": "What is English to Polish Translator",
       "description": "An English to Polish translator is a sophisticated tool designed to bridge language gaps seamlessly. Powered by VibeTrans, it offers real-time translations with high accuracy, catering to both casual users and professionals. Whether you're traveling, working on international projects, or learning Polish, this tool ensures effective communication. VibeTrans stands out by providing contextual translations and user-friendly features, making it an essential companion for global interactions.",
-      "image": "/images/docs/translation-bridge.webp",
+      "image": "/images/docs/what-is-english-to-polish-translator.webp",
       "imageAlt": "What is english-to-polish-translator - Visual explanation"
     },
     "examples": {
@@ -64,7 +64,7 @@
     "howto": {
       "title": "How to translate English to Polish",
       "description": "Translate English to Polish easily with these steps:",
-      "image": "/images/docs/translate-success.webp",
+      "image": "/images/docs/english-to-polish-translator-how-to.webp",
       "imageAlt": "How to use english-to-polish-translator",
       "steps": [
         {
@@ -91,13 +91,13 @@
         {
           "title": "Grammar Complexity",
           "description": "VibeTrans faces challenges when translating English to Polish due to Polish's seven grammatical cases and fifteen gender-number combinations. Polish also has nine special characters with diacritical marks, making translation more complex.",
-          "image": "/images/docs/polish-translation-puzzle.webp",
+          "image": "/images/docs/polish-translation-grammar.webp",
           "imageAlt": "Grammar Complexity"
         },
         {
           "title": "Longest Words",
           "description": "VibeTrans encounters the challenge of Polish's complex seven grammatical cases and fifteen gender-number combinations, making translation interesting. Polish is filled with long words like 'konstantynopolitańczykowianeczka' that challenge the limits of machine translation!",
-          "image": "/images/docs/polish-word-challenge.webp",
+          "image": "/images/docs/polish-translation-challenge.webp",
           "imageAlt": "Longest Words"
         }
       ]
@@ -108,25 +108,25 @@
         {
           "title": "Grammar Insights",
           "description": "VibeTrans reveals the grammar myths between English and Polish: 'I am reading' in English might simply be 'Czytam' in Polish. Polish tenses are more concise, often amazing English learners! With VibeTrans's help, grammar is no longer a barrier, but an interesting journey to explore the beauty of language.",
-          "image": "/images/docs/grammar-translation-shapes.webp",
+          "image": "/images/docs/polish-grammar-insights.webp",
           "imageAlt": "Grammar Insights"
         },
         {
           "title": "Contextual Examples",
           "description": "Navigating the nuances between English and Polish? VibeTrans has your back. Consider 'break a leg'—it's 'połamania nóg' in Polish, capturing the same encouraging spirit. Dive into unique phrases and bridge conversational gaps effortlessly with VibeTrans, your linguistic sidekick.",
-          "image": "/images/docs/translation-bridge.webp",
+          "image": "/images/docs/polish-contextual-examples.webp",
           "imageAlt": "Contextual Examples"
         },
         {
           "title": "Professional Modes",
           "description": "VibeTrans's professional modes allow translation to switch as freely as a transformer. Whether for business meetings or romantic letters, it can impress with unique Polish style. Want a different translation experience? VibeTrans makes every word have its rhythm.",
-          "image": "/images/docs/transformer-translation-modes.webp",
+          "image": "/images/docs/polish-professional-modes.webp",
           "imageAlt": "Professional Modes"
         },
         {
           "title": "Voice Input/Output",
           "description": "VibeTrans's voice input/output functionality adds cool tech appeal to translation. Speak your needs, hear your answers, as if in a sci-fi movie. No typing needed, making translation smoother and faster. VibeTrans makes translation no longer a monotonous task.",
-          "image": "/images/docs/voice-translator.webp",
+          "image": "/images/docs/polish-voice-translator.webp",
           "imageAlt": "Voice Input/Output"
         }
       ]

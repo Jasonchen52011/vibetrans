@@ -8,6 +8,7 @@ import {
   CheckCircle,
   Cog,
   Download,
+  Eye,
   FileText,
   FileUp,
   Globe,
@@ -58,6 +59,7 @@ const iconMap: Record<string, LucideIcon> = {
   FaShare: Share2,
   FaBolt: Zap,
   FaKeyboard: FileText,
+  FaEye: Eye,
 };
 
 interface IconProps {

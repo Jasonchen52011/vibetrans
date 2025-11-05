@@ -226,9 +226,15 @@ export default function TestimonialsThreeColumnSection({
     let hasItems = false;
     try {
       // Check if we can access item-1 directly
-      const firstItemName = t(`items.item-1.name`, { default: null });
-      hasItems = firstItemName && !firstItemName.includes(`items.item-1.name`);
+      const firstItemName = t(`items.item-1.name`);
+      hasItems =
+        firstItemName &&
+        !firstItemName.includes(`items.item-1.name`) &&
+        firstItemName !== 'items.item-1.name' &&
+        typeof firstItemName === 'string' &&
+        firstItemName.trim().length > 0;
     } catch (error) {
+      console.warn('Failed to check testimonials items:', error);
       hasItems = false;
     }
 

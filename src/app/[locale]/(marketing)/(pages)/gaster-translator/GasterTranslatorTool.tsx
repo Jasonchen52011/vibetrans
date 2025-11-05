@@ -1,7 +1,6 @@
 'use client';
 
 import { ToolInfoSections } from '@/components/blocks/tool/tool-info-sections';
-import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
 import { readFileContent } from '@/lib/utils/file-utils';
 import { ArrowRightIcon } from 'lucide-react';
 // import mammoth from 'mammoth'; // Disabled for Edge Runtime compatibility
@@ -228,7 +227,6 @@ export default function GasterTranslatorTool({
               </h2>
               {outputText && (
                 <div className="flex gap-2">
-                  <TextToSpeechButton text={outputText} locale={locale} />
                   <button
                     onClick={handleCopy}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"

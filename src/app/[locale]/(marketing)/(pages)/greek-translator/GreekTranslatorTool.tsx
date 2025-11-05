@@ -1,6 +1,5 @@
 'use client';
 
-import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
 import { readFileContent } from '@/lib/utils/file-utils';
 import { Mic, Waves } from 'lucide-react';
 // import mammoth from 'mammoth'; // Disabled for Edge Runtime compatibility
@@ -57,24 +56,28 @@ export default function GreekTranslatorTool({
     setError(null);
 
     try {
-      const formData = new FormData();
-      formData.append('file', audioFile);
+      // 暂时禁用音频转录功能，因为对应的API端点不存在
+      // TODO: 实现 /api/greek-translator/transcribe 端点
+      throw new Error('Audio transcription is temporarily unavailable');
 
-      const response = await fetch('/api/greek-translator/transcribe', {
-        method: 'POST',
-        body: formData,
-      });
+      // const formData = new FormData();
+      // formData.append('file', audioFile);
 
-      const data = await response.json();
-      if (!response.ok) {
-        throw new Error(data.error || 'Transcription failed');
-      }
+      // const response = await fetch('/api/greek-translator/transcribe', {
+      //   method: 'POST',
+      //   body: formData,
+      // });
 
-      if (data.transcription) {
-        setInputText((prev) =>
-          prev ? `${prev}\n${data.transcription}` : data.transcription
-        );
-      }
+      // const data = await response.json();
+      // if (!response.ok) {
+      //   throw new Error(data.error || 'Transcription failed');
+      // }
+
+      // if (data.transcription) {
+      //   setInputText((prev) =>
+      //     prev ? `${prev}\n${data.transcription}` : data.transcription
+      //   );
+      // }
     } catch (err: any) {
       console.error('Transcription error:', err);
       setError(err.message || 'Unable to transcribe audio at this time.');
@@ -296,7 +299,6 @@ export default function GreekTranslatorTool({
               </h2>
               {outputText && (
                 <div className="flex gap-2">
-                  <TextToSpeechButton text={outputText} locale={locale} />
                   <button
                     onClick={handleCopy}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"

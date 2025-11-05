@@ -12,13 +12,10 @@ console.log('🔧 开始优化中间件和工具...\n');
 
 // 1. 检查中间件大小
 console.log('1️⃣ 检查中间件文件...');
-const middlewareFiles = [
-  'middleware.ts',
-  'src/middleware.ts'
-];
+const middlewareFiles = ['middleware.ts', 'src/middleware.ts'];
 
 let middlewareSize = 0;
-let middlewareIssues = [];
+const middlewareIssues = [];
 
 for (const file of middlewareFiles) {
   if (fs.existsSync(file)) {
@@ -38,7 +35,9 @@ for (const file of middlewareFiles) {
     }
 
     // 检查是否有复杂的逻辑
-    const lines = content.split('\n').filter(line => line.trim() && !line.trim().startsWith('//'));
+    const lines = content
+      .split('\n')
+      .filter((line) => line.trim() && !line.trim().startsWith('//'));
     if (lines.length > 50) {
       middlewareIssues.push(`${file} 代码行数过多 (${lines.length} 行)`);
     }
@@ -46,33 +45,32 @@ for (const file of middlewareFiles) {
     // 检查是否有大型常量或配置
     const largeStrings = content.match(/`[^`]{100,}`/g) || [];
     if (largeStrings.length > 0) {
-      middlewareIssues.push(`${file} 包含大型字符串常量 (${largeStrings.length} 个)`);
+      middlewareIssues.push(
+        `${file} 包含大型字符串常量 (${largeStrings.length} 个)`
+      );
     }
   }
 }
 
 if (middlewareIssues.length > 0) {
   console.log('   ⚠️  发现中间件问题:');
-  middlewareIssues.forEach(issue => console.log(`     - ${issue}`));
+  middlewareIssues.forEach((issue) => console.log(`     - ${issue}`));
 } else {
   console.log('   ✅ 中间件文件正常');
 }
 
 // 2. 检查工具文件大小
 console.log('\n2️⃣ 检查工具和库文件...');
-const toolDirs = [
-  'src/lib',
-  'src/utils',
-  'src/helpers',
-  'src/tools'
-];
+const toolDirs = ['src/lib', 'src/utils', 'src/helpers', 'src/tools'];
 
-let largeToolFiles = [];
+const largeToolFiles = [];
 let totalToolSize = 0;
 
 for (const dir of toolDirs) {
   if (fs.existsSync(dir)) {
-    const files = fs.readdirSync(dir, { recursive: true }).filter(f => f.endsWith('.ts') || f.endsWith('.js'));
+    const files = fs
+      .readdirSync(dir, { recursive: true })
+      .filter((f) => f.endsWith('.ts') || f.endsWith('.js'));
 
     for (const file of files) {
       const filePath = path.join(dir, file);
@@ -80,7 +78,8 @@ for (const dir of toolDirs) {
       const sizeKB = stats.size / 1024;
       totalToolSize += sizeKB;
 
-      if (sizeKB > 50) { // 大于50KB的工具文件
+      if (sizeKB > 50) {
+        // 大于50KB的工具文件
         largeToolFiles.push({ file: path.join(dir, file), size: sizeKB });
       }
     }
@@ -103,10 +102,10 @@ const configFiles = [
   'tailwind.config.ts',
   'tsconfig.json',
   'package.json',
-  'wrangler.toml'
+  'wrangler.toml',
 ];
 
-let configIssues = [];
+const configIssues = [];
 
 for (const file of configFiles) {
   if (fs.existsSync(file)) {
@@ -202,7 +201,10 @@ module.exports = {
 };
 `;
 
-fs.writeFileSync(path.join(__dirname, 'webpack.optimize.js'), optimizedWebpackConfig);
+fs.writeFileSync(
+  path.join(__dirname, 'webpack.optimize.js'),
+  optimizedWebpackConfig
+);
 console.log('   ✅ 创建优化webpack配置: scripts/webpack.optimize.js');
 
 // 5. 生成优化建议
@@ -211,33 +213,38 @@ const optimizationReport = {
   middleware: {
     totalSizeKB: middlewareSize,
     issues: middlewareIssues,
-    recommendations: middlewareIssues.length > 0 ? [
-      '简化中间件逻辑',
-      '减少不必要的导入',
-      '移除大型常量',
-      '使用更轻量级的条件判断'
-    ] : ['中间件已优化']
+    recommendations:
+      middlewareIssues.length > 0
+        ? [
+            '简化中间件逻辑',
+            '减少不必要的导入',
+            '移除大型常量',
+            '使用更轻量级的条件判断',
+          ]
+        : ['中间件已优化'],
   },
 
   tools: {
     totalSizeKB: totalToolSize,
     largeFiles: largeToolFiles,
-    recommendations: largeToolFiles.length > 0 ? [
-      '拆分大型工具文件',
-      '使用动态导入',
-      '移除未使用的函数',
-      '压缩配置数据'
-    ] : ['工具文件大小合理']
+    recommendations:
+      largeToolFiles.length > 0
+        ? [
+            '拆分大型工具文件',
+            '使用动态导入',
+            '移除未使用的函数',
+            '压缩配置数据',
+          ]
+        : ['工具文件大小合理'],
   },
 
   config: {
     issues: configIssues,
-    recommendations: configIssues.length > 0 ? [
-      '简化配置文件',
-      '移除注释和空行',
-      '使用外部配置'
-    ] : ['配置文件正常']
-  }
+    recommendations:
+      configIssues.length > 0
+        ? ['简化配置文件', '移除注释和空行', '使用外部配置']
+        : ['配置文件正常'],
+  },
 };
 
 fs.writeFileSync(
@@ -284,7 +291,9 @@ console.log('\n🎉 中间件和工具优化完成！');
 console.log('\n📊 优化摘要:');
 console.log(`   中间件总大小: ${middlewareSize.toFixed(2)}KB`);
 console.log(`   工具文件总大小: ${totalToolSize.toFixed(2)}KB`);
-console.log(`   发现问题: ${middlewareIssues.length + largeToolFiles.length + configIssues.length} 个`);
+console.log(
+  `   发现问题: ${middlewareIssues.length + largeToolFiles.length + configIssues.length} 个`
+);
 
 console.log('\n🚀 下一步操作：');
 console.log('1. 运行自动修复: ./scripts/auto-fix.sh');

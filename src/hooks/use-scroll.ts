@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export function useScroll(threshold: number = 10) {
+export function useScroll(threshold = 10) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isScrollingUp, setIsScrollingUp] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -48,6 +48,6 @@ export function useScroll(threshold: number = 10) {
     isScrolled,
     isScrollingUp,
     hideNavbar,
-    scrollY: lastScrollY
+    scrollY: lastScrollY,
   };
 }

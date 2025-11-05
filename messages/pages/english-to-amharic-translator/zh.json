@@ -162,6 +162,25 @@
         }
       ]
     },
+    "unique": {
+      "title": "埃塞俄比亚企业和文化协作功能",
+      "subtitle": "为埃塞俄比亚团队量身定制的解决方案",
+      "description": "探索英语-阿姆哈拉语翻译的独特功能和能力",
+      "items": [
+        {
+          "title": "吉兹文字保护",
+          "content": "VibeTrans在翻译时保持地道的吉兹文字格式，确保正确的字形渲染和元音标记完整性。这保留了视觉美感和语言准确性，对埃塞俄比亚机构的官方文件、文化材料和专业交流至关重要。",
+          "image": "/images/docs/amharic-alphabet-fun.webp",
+          "imageAlt": "正确格式的吉兹文字字符"
+        },
+        {
+          "title": "敬称智能",
+          "content": "自动检测并应用适当的埃塞俄比亚敬称和正式称呼系统。AI理解文化背景，使用正确的头衔如'Ato'或'Woizero'，确保翻译尊重社会等级和商务礼仪，这对政府和企业交流至关重要。",
+          "image": "/images/docs/global-business-tools.webp",
+          "imageAlt": "专业埃塞俄比亚商务交流界面"
+        }
+      ]
+    },
     "testimonials": {
       "title": "用户评价",
       "subtitle": "每天使用VibeTrans连接英语和阿姆哈拉语的团队故事",

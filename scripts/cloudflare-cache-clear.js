@@ -17,23 +17,23 @@ const cleanSteps = [
   {
     name: '清理Next.js缓存',
     command: 'rm -rf .next',
-    description: '删除.next构建目录'
+    description: '删除.next构建目录',
   },
   {
     name: '清理Node.js缓存',
     command: 'npm cache clean --force || pnpm store prune || yarn cache clean',
-    description: '清理包管理器缓存'
+    description: '清理包管理器缓存',
   },
   {
     name: '清理Turbo缓存',
     command: 'rm -rf .turbo || true',
-    description: '删除Turbo构建缓存'
+    description: '删除Turbo构建缓存',
   },
   {
     name: '清理临时文件',
     command: 'find . -name "*.tmp" -delete 2>/dev/null || true',
-    description: '删除临时文件'
-  }
+    description: '删除临时文件',
+  },
 ];
 
 for (const step of cleanSteps) {
@@ -49,19 +49,23 @@ for (const step of cleanSteps) {
 // 2. 检查和优化环境变量
 console.log('\n2️⃣ 检查环境变量配置...');
 const envFiles = ['.env.local', '.env', '.env.production'];
-let envIssues = [];
+const envIssues = [];
 
 for (const envFile of envFiles) {
   if (fs.existsSync(envFile)) {
     const content = fs.readFileSync(envFile, 'utf8');
-    const lines = content.split('\n').filter(line => line.trim() && !line.startsWith('#'));
+    const lines = content
+      .split('\n')
+      .filter((line) => line.trim() && !line.startsWith('#'));
 
     console.log(`   📁 ${envFile}: ${lines.length} 个配置项`);
 
     // 检查是否有大型配置
     lines.forEach((line, index) => {
       if (line.length > 1000) {
-        envIssues.push(`${envFile} 第${index + 1}行配置过大 (${line.length} 字符)`);
+        envIssues.push(
+          `${envFile} 第${index + 1}行配置过大 (${line.length} 字符)`
+        );
       }
     });
   }
@@ -69,7 +73,7 @@ for (const envFile of envFiles) {
 
 if (envIssues.length > 0) {
   console.log('   ⚠️  发现环境变量问题:');
-  envIssues.forEach(issue => console.log(`     - ${issue}`));
+  envIssues.forEach((issue) => console.log(`     - ${issue}`));
 } else {
   console.log('   ✅ 环境变量配置正常');
 }
@@ -142,7 +146,10 @@ echo "请手动执行: wrangler cache purge --url=https://your-domain.com/*"
 echo "✅ 部署完成！"
 `;
 
-fs.writeFileSync(path.join(__dirname, 'deploy-optimized.sh'), optimizedDeployScript);
+fs.writeFileSync(
+  path.join(__dirname, 'deploy-optimized.sh'),
+  optimizedDeployScript
+);
 fs.chmodSync(path.join(__dirname, 'deploy-optimized.sh'), '755');
 
 console.log('   ✅ 创建了优化的部署脚本: scripts/deploy-optimized.sh');
@@ -198,12 +205,17 @@ WRANGLER_LOG=debug pnpm deploy:cf
 3. 分阶段部署功能
 `;
 
-fs.writeFileSync(path.join(__dirname, 'TROUBLESHOOTING.md'), troubleshootingGuide);
+fs.writeFileSync(
+  path.join(__dirname, 'TROUBLESHOOTING.md'),
+  troubleshootingGuide
+);
 
 console.log('   ✅ 创建故障排除指南: scripts/TROUBLESHOOTING.md');
 
 console.log('\n🎉 Cloudflare缓存清理完成！');
 console.log('\n📋 下一步操作：');
 console.log('1. 运行优化部署: ./scripts/deploy-optimized.sh');
-console.log('2. 手动清理缓存: wrangler cache purge --url=https://your-domain.com/*');
+console.log(
+  '2. 手动清理缓存: wrangler cache purge --url=https://your-domain.com/*'
+);
 console.log('3. 查看故障排除: cat scripts/TROUBLESHOOTING.md');

@@ -14,11 +14,12 @@ async function translateWithGemini(
     throw new Error('Google Generative AI API key is not configured');
   }
 
-  const prompt = direction === 'english-to-mandalorian'
-    ? `Translate the following English text to Mandalorian (Mando'a). Use authentic Mandalorian vocabulary and grammar from Star Wars lore. Include apostrophes and Mandalorian linguistic patterns. Provide only the translation, no explanations or additional text:
+  const prompt =
+    direction === 'english-to-mandalorian'
+      ? `Translate the following English text to Mandalorian (Mando'a). Use authentic Mandalorian vocabulary and grammar from Star Wars lore. Include apostrophes and Mandalorian linguistic patterns. Provide only the translation, no explanations or additional text:
 
 ${text}`
-    : `Translate the following Mandalorian (Mando'a) text to English. The Mandalorian language contains apostrophes and unique linguistic patterns from Star Wars lore. Provide only the translation, no explanations or additional text:
+      : `Translate the following Mandalorian (Mando'a) text to English. The Mandalorian language contains apostrophes and unique linguistic patterns from Star Wars lore. Provide only the translation, no explanations or additional text:
 
 ${text}`;
 
@@ -79,10 +80,15 @@ function detectDirection(
   }
 
   // Auto-detect based on content
-  const hasMandalorianPatterns = /[\u0027\u2019\u02BC]/.test(text) || // apostrophes
-    /\b(su\s+cuy|cuyir|verd|aliit|beskar|kote|vod|aruetii|ibic|bic|haat|parjai|darasuum)\b/i.test(text);
+  const hasMandalorianPatterns =
+    /[\u0027\u2019\u02BC]/.test(text) || // apostrophes
+    /\b(su\s+cuy|cuyir|verd|aliit|beskar|kote|vod|aruetii|ibic|bic|haat|parjai|darasuum)\b/i.test(
+      text
+    );
 
-  return hasMandalorianPatterns ? 'mandalorian-to-english' : 'english-to-mandalorian';
+  return hasMandalorianPatterns
+    ? 'mandalorian-to-english'
+    : 'english-to-mandalorian';
 }
 
 export async function POST(request: NextRequest) {

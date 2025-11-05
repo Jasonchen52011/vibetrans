@@ -64,65 +64,8 @@ export default async function SwahiliToEnglishTranslatorPage(
     howToIcons: ['FaFileUpload', 'FaPencilAlt', 'FaLanguage', 'FaDownload'],
   });
 
-  // Highlights section
-  const fallbackHighlightDescription =
-    'VibeTrans offers the best translation experience with powerful features and accurate results.';
-
-  let highlightsDescription = fallbackHighlightDescription;
-  try {
-    const desc = t('highlights.description');
-    if (typeof desc === 'string' && desc.trim().length > 0) {
-      highlightsDescription = desc;
-    }
-  } catch {
-    highlightsDescription = fallbackHighlightDescription;
-  }
-
-  const defaultHighlightIcons = [
-    'FaRocket',
-    'FaBrain',
-    'FaShieldAlt',
-    'FaChartLine',
-  ];
-
-  let highlightItems = [];
-  try {
-    const rawFeatures = t.raw('highlights.features');
-    if (Array.isArray(rawFeatures)) {
-      highlightItems = rawFeatures.slice(0, 4).map((feature, index) => ({
-        icon:
-          feature?.icon ||
-          defaultHighlightIcons[index % defaultHighlightIcons.length],
-        title: feature?.title || '',
-        description: feature?.description || '',
-        tagline: feature?.tagline || '',
-        statLabel: feature?.statLabel || null,
-        statValue: feature?.statValue || null,
-        microCopy: feature?.microCopy || '',
-      }));
-    }
-  } catch {
-    highlightItems = [];
-  }
-
-  if (highlightItems.length === 0) {
-    highlightItems = defaultHighlightIcons.map((icon, index) => ({
-      icon,
-      title: t(`highlights.features.${index}.title`),
-      description: t(`highlights.features.${index}.description`),
-      tagline: '',
-      statLabel: null,
-      statValue: null,
-      microCopy: '',
-    }));
-  }
-
-  const highlightsSection = {
-    name: 'highlights',
-    title: t('highlights.title'),
-    description: highlightsDescription,
-    items: highlightItems,
-  };
+  // Highlights section - 使用标准化流程
+  const highlightsSection = translatorContent.highlights;
 
   return (
     <>

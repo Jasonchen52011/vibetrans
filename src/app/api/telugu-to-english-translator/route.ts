@@ -87,7 +87,11 @@ export async function POST(request: NextRequest) {
     const sourceLanguage = detectedLanguage === 'telugu' ? 'Telugu' : 'English';
     const targetLanguage = detectedLanguage === 'telugu' ? 'English' : 'Telugu';
 
-    const translated = await translateWithGemini(text, sourceLanguage, targetLanguage);
+    const translated = await translateWithGemini(
+      text,
+      sourceLanguage,
+      targetLanguage
+    );
 
     return NextResponse.json({
       success: true,

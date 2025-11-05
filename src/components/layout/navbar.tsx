@@ -231,9 +231,10 @@ export function Navbar({ scroll }: NavBarProps) {
         )}
         style={{
           // 平滑过渡效果
-          transitionProperty: 'transform, background-color, backdrop-filter, border-color, box-shadow',
+          transitionProperty:
+            'transform, background-color, backdrop-filter, border-color, box-shadow',
           transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
-          transitionDuration: hideNavbar ? '300ms' : '500ms'
+          transitionDuration: hideNavbar ? '300ms' : '500ms',
         }}
       >
         <Container className="px-4 h-16">
@@ -254,7 +255,7 @@ export function Navbar({ scroll }: NavBarProps) {
               <NavigationMenu
                 className="relative"
                 viewport={false}
-                value={activeMenu}
+                value={activeMenu || ''}
                 onValueChange={setActiveMenu}
                 onPointerLeave={handlePointerClose}
               >
@@ -265,8 +266,12 @@ export function Navbar({ scroll }: NavBarProps) {
                         key={index}
                         className="relative"
                         value={`menu-${index}`}
-                        onPointerEnter={getPointerOpenHandler(`menu-${index}`) as any}
-                        onPointerMove={getPointerOpenHandler(`menu-${index}`) as any}
+                        onPointerEnter={
+                          getPointerOpenHandler(`menu-${index}`) as any
+                        }
+                        onPointerMove={
+                          getPointerOpenHandler(`menu-${index}`) as any
+                        }
                       >
                         <NavigationMenuTrigger
                           data-active={
@@ -284,7 +289,9 @@ export function Navbar({ scroll }: NavBarProps) {
                         </NavigationMenuTrigger>
                         <NavigationMenuContent
                           className="left-1/3 -translate-x-1/3 min-w-[600px] origin-top-left"
-                          onPointerEnter={getPointerOpenHandler(`menu-${index}`)}
+                          onPointerEnter={getPointerOpenHandler(
+                            `menu-${index}`
+                          )}
                           onPointerMove={getPointerOpenHandler(`menu-${index}`)}
                           onPointerLeave={handlePointerClose}
                         >
@@ -295,8 +302,12 @@ export function Navbar({ scroll }: NavBarProps) {
                                 ? 'w-[280px] max-w-[calc(100vw-4rem)]'
                                 : 'w-[600px] lg:w-[800px] max-w-[calc(100vw-4rem)]'
                             )}
-                            onPointerEnter={getPointerOpenHandler(`menu-${index}`) as any}
-                            onPointerMove={getPointerOpenHandler(`menu-${index}`) as any}
+                            onPointerEnter={
+                              getPointerOpenHandler(`menu-${index}`) as any
+                            }
+                            onPointerMove={
+                              getPointerOpenHandler(`menu-${index}`) as any
+                            }
                           >
                             {item.items?.map((subItem, subIndex) => {
                               const isSubItemActive =

@@ -39,7 +39,7 @@
     "whatIs": {
       "title": "What is Middle English Translator Studio",
       "description": "Middle English Translator Studio is a powerful tool by VibeTrans that converts modern English into Middle English from 1150-1500. It offers dialect options, voice translation, and file uploads, making it ideal for students, researchers, and language enthusiasts.",
-      "image": "/images/docs/middle-english-translator-how-to.webp",
+      "image": "/images/docs/middle-english-translator-studio.webp",
       "imageAlt": "What is Middle English Translator Studio"
     },
     "examples": {
@@ -102,13 +102,13 @@
         {
           "title": "Middle English Spelling Chaos",
           "description": "In the Middle English era, spelling was a free-for-all. The same word could have over 50 different variations. This lack of standardization makes translating Middle English a real challenge for modern tools.",
-          "image": "/images/docs/translation-evolution.webp",
+          "image": "/images/docs/middle-english-translator-fact-1.webp",
           "imageAlt": "Middle English Spelling Chaos"
         },
         {
           "title": "Girls and Boys in Middle English",
-          "description": "Did you know the word ‘girl’ in Middle English didn’t mean what it does today? Back then, it referred to a child of any gender. The current female-only meaning developed much later in the English language.",
-          "image": "/images/docs/text-time-travel.webp",
+          "description": "Did you know the word 'girl' in Middle English didn't mean what it does today? Back then, it referred to a child of any gender. The current female-only meaning developed much later in the English language.",
+          "image": "/images/docs/middle-english-translator-fact-2.webp",
           "imageAlt": "Girls and Boys in Middle English"
         }
       ]
@@ -248,23 +248,6 @@
         {
           "title": "Perfect for Creative Projects",
           "content": "Are you a D&D player or a writer needing Middle English dialogue? VibeTrans is your go-to tool! With bulk translation options, it makes converting character lines a breeze. Users love how it supports creative minds by providing accurate, era-appropriate language. Imagine enhancing your projects with authentic historical flair. It's like adding a sprinkle of magic to your storytelling, making your work stand out in a crowd."
-        }
-      ]
-    },
-    "funfacts": {
-      "title": "Middle English: Your Key to Unlocking Literary Heritage",
-      "items": [
-        {
-          "title": "Middle English Spelling Chaos",
-          "description": "In the Middle English era, spelling was a free-for-all. The same word could have over 50 different variations. This lack of standardization makes translating Middle English a real challenge for modern tools.",
-          "image": "/images/docs/middle-english-translator-fact-2.webp",
-          "imageAlt": "Middle English Spelling Chaos"
-        },
-        {
-          "title": "Girls and Boys in Middle English",
-          "description": "Did you know the word ‘girl’ in Middle English didn’t mean what it does today? Back then, it referred to a child of any gender. The current female-only meaning developed much later in the English language.",
-          "image": "/images/docs/middle-english-translator-fact-2.webp",
-          "imageAlt": "Girls and Boys in Middle English"
         }
       ]
     }

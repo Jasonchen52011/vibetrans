@@ -15,11 +15,15 @@ export interface TranslationAPIConfig {
 }
 
 class TranslationCache {
-  private cache = new Map<string, { data: TranslationData; timestamp: number }>();
+  private cache = new Map<
+    string,
+    { data: TranslationData; timestamp: number }
+  >();
   private maxSize: number;
   private maxAge: number;
 
-  constructor(maxSize: number = 100, maxAge: number = 300000) { // 5分钟缓存
+  constructor(maxSize = 100, maxAge = 300000) {
+    // 5分钟缓存
     this.maxSize = maxSize;
     this.maxAge = maxAge;
   }
@@ -89,7 +93,7 @@ export class TranslationAPIClient {
    */
   private async fetchWithRetry(
     url: string,
-    attempts: number = 0
+    attempts = 0
   ): Promise<TranslationData> {
     try {
       const response = await fetch(url, {
@@ -105,7 +109,9 @@ export class TranslationAPIClient {
       return await response.json();
     } catch (error) {
       if (attempts < this.config.retryAttempts) {
-        await new Promise(resolve => setTimeout(resolve, this.config.retryDelay));
+        await new Promise((resolve) =>
+          setTimeout(resolve, this.config.retryDelay)
+        );
         return this.fetchWithRetry(url, attempts + 1);
       }
       throw error;
@@ -117,7 +123,7 @@ export class TranslationAPIClient {
    */
   async getTranslation(
     namespace: string,
-    locale: string = 'en'
+    locale = 'en'
   ): Promise<TranslationData> {
     const cacheKey = this.getCacheKey(namespace, locale);
 
@@ -136,15 +142,18 @@ export class TranslationAPIClient {
     // 3. 发起新请求
     const url = `${this.config.baseUrl}/${namespace}/${locale}`;
     const request = this.fetchWithRetry(url)
-      .then(data => {
+      .then((data) => {
         // 缓存结果
         this.cache.set(cacheKey, data);
         this.pendingRequests.delete(cacheKey);
         return data;
       })
-      .catch(error => {
+      .catch((error) => {
         this.pendingRequests.delete(cacheKey);
-        console.error(`Failed to load translation for ${namespace}/${locale}:`, error);
+        console.error(
+          `Failed to load translation for ${namespace}/${locale}:`,
+          error
+        );
         return this.getFallbackTranslation(namespace);
       });
 
@@ -158,7 +167,7 @@ export class TranslationAPIClient {
   private getFallbackTranslation(namespace: string): TranslationData {
     // 提供最基本的回退翻译
     const fallbacks: Record<string, TranslationData> = {
-      'MinionTranslatorPage': {
+      MinionTranslatorPage: {
         title: 'Minion Translator',
         description: 'Translate your text to Minion banana language',
         hero: {
@@ -173,7 +182,7 @@ export class TranslationAPIClient {
           outputPlaceholder: 'Translation...',
         },
       },
-      'DrowTranslatorPage': {
+      DrowTranslatorPage: {
         title: 'Drow Translator',
         description: 'Translate between Drow and other languages',
         hero: {
@@ -190,21 +199,23 @@ export class TranslationAPIClient {
       },
     };
 
-    return fallbacks[namespace] || {
-      title: 'Translation Tool',
-      description: 'Professional translation service',
-      hero: {
-        title: 'AI Translation',
-        description: 'Advanced AI-powered translation',
-      },
-      tool: {
-        inputLabel: 'Input Text',
-        outputLabel: 'Translation',
-        translateButton: 'Translate',
-        inputPlaceholder: 'Enter text...',
-        outputPlaceholder: 'Translation...',
-      },
-    };
+    return (
+      fallbacks[namespace] || {
+        title: 'Translation Tool',
+        description: 'Professional translation service',
+        hero: {
+          title: 'AI Translation',
+          description: 'Advanced AI-powered translation',
+        },
+        tool: {
+          inputLabel: 'Input Text',
+          outputLabel: 'Translation',
+          translateButton: 'Translate',
+          inputPlaceholder: 'Enter text...',
+          outputPlaceholder: 'Translation...',
+        },
+      }
+    );
   }
 
   /**
@@ -225,10 +236,15 @@ export class TranslationAPIClient {
 
     const results = await Promise.allSettled(preloadPromises);
     const validResults = results
-      .filter((result): result is PromiseFulfilledResult<{ key: string; data: TranslationData }> =>
-        result.status === 'fulfilled' && result.value !== null
+      .filter(
+        (
+          result
+        ): result is PromiseFulfilledResult<{
+          key: string;
+          data: TranslationData;
+        }> => result.status === 'fulfilled' && result.value !== null
       )
-      .map(result => result.value);
+      .map((result) => result.value);
 
     this.cache.preload(validResults);
   }
@@ -262,7 +278,7 @@ export const translationAPI = new TranslationAPIClient();
  */
 export async function getTranslation(
   namespace: string,
-  locale: string = 'en'
+  locale = 'en'
 ): Promise<TranslationData> {
   return translationAPI.getTranslation(namespace, locale);
 }
@@ -276,13 +292,14 @@ export function createTranslationAccessor<T extends TranslationData>(
   <K extends keyof T>(key: K, params?: Record<string, any>): T[K];
   raw<K extends keyof T>(key: K): T[K];
 } {
-  return function <K extends keyof T>(key: K, params?: Record<string, any>) {
+  return (<K extends keyof T>(key: K, params?: Record<string, any>) => {
     const value = data[key];
     if (typeof value === 'string' && params) {
-      return value.replace(/\{\{(\w+)\}\}/g, (match, param) =>
-        params[param]?.toString() || match
+      return value.replace(
+        /\{\{(\w+)\}\}/g,
+        (match, param) => params[param]?.toString() || match
       ) as T[K];
     }
     return value;
-  } as any;
+  }) as any;
 }

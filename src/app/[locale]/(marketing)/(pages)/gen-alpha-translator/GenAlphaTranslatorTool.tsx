@@ -1,6 +1,5 @@
 'use client';
 
-import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
 import { readFileContent } from '@/lib/utils/file-utils';
 import { ArrowRightIcon } from 'lucide-react';
 // import mammoth from 'mammoth'; // Disabled for Edge Runtime compatibility
@@ -269,11 +268,6 @@ export default function GenAlphaTranslatorTool({
                   : pageData.tool.outputLabel}
               </h2>
               <div className="flex items-center gap-2">
-                {/* TTS Button */}
-                {translatedText && (
-                  <TextToSpeechButton text={translatedText} locale={locale} />
-                )}
-
                 {/* Copy and Download buttons */}
                 {translatedText && (
                   <>

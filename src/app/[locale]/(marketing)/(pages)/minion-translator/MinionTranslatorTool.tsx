@@ -1,6 +1,5 @@
 'use client';
 
-import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
 import { readFileContent } from '@/lib/utils/file-utils';
 import { ArrowRightIcon } from 'lucide-react';
 // import mammoth from 'mammoth'; // Disabled for Edge Runtime compatibility
@@ -234,15 +233,10 @@ export default function MinionTranslatorTool({
               </h2>
               {outputText && (
                 <div className="flex gap-2">
-                  <TextToSpeechButton
-                    text={outputText}
-                    locale={locale}
-                    tone={selectedTone}
-                  />
                   <button
                     onClick={handleCopy}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
-                    title={pageData.tool.copyTooltip || 'Copy'}
+                    title="Copy"
                   >
                     <svg
                       className="w-5 h-5"
@@ -261,7 +255,7 @@ export default function MinionTranslatorTool({
                   <button
                     onClick={handleDownload}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
-                    title={pageData.tool.downloadTooltip || 'Download'}
+                    title="Download"
                   >
                     <svg
                       className="w-5 h-5"
@@ -281,7 +275,7 @@ export default function MinionTranslatorTool({
               )}
             </div>
             <div
-              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md bg-gray-50 dark:bg-zinc-700 flex items-start justify-start text-gray-700 dark:text-gray-200 overflow-y-auto"
+              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md bg-gray-50 dark:bg-zinc-700 flex items-center justify-center text-gray-700 dark:text-gray-200 overflow-y-auto"
               aria-live="polite"
             >
               {isLoading ? (
@@ -304,7 +298,7 @@ export default function MinionTranslatorTool({
           <button
             onClick={handleTranslate}
             disabled={isLoading}
-            className="inline-flex items-center px-8 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="px-8 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isLoading ? pageData.tool.loading : pageData.tool.translateButton}
             <ArrowRightIcon className="ml-2 h-4 w-4" />

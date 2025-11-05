@@ -61,6 +61,16 @@
           "alt": "提醒语句变成 slang",
           "name": "Be careful → Watch out, that's sus",
           "text": "原文：That link looks suspicious, be careful. → Gen Alpha：That link is mad sus, watch out."
+        },
+        {
+          "alt": "同意语句的 Gen Alpha 表达",
+          "name": "Okay, sounds good → Bet",
+          "text": "原文：Okay, I'll meet you at 5 PM. → Gen Alpha：Bet, catch you at 5."
+        },
+        {
+          "alt": "赞美穿搭的潮语翻译",
+          "name": "Nice outfit → Your drip is clean",
+          "text": "原文：I love your new shoes and jacket. → Gen Alpha：Your drip is absolutely fire, fr fr."
         }
       ]
     },

@@ -1,0 +1,1325 @@
+
+> vibetrans@0.1.0 dev /Users/jason-chen/Downloads/project/vibetrans
+> next dev
+
+   ▲ Next.js 15.2.1
+   - Local:        http://localhost:3000
+   - Network:      http://172.16.178.85:3000
+   - Environments: .env.local
+   - Experiments (use with caution):
+     ✓ optimizeCss
+     · largePageDataBytes: 256000
+     ✓ webpackBuildWorker
+
+ ✓ Starting...
+ ✓ Ready in 1805ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 647ms (719 modules)
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ GET /_next/static/webpack/2377a87ed6d9af07.webpack.hot-update.json 404 in 816ms
+ ✓ Compiled in 152ms (313 modules)
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ GET /_next/static/webpack/2377a87ed6d9af07.webpack.hot-update.json 404 in 112ms
+ ✓ Compiled /middleware in 187ms (179 modules)
+ ○ Compiling /[locale]/runic-translator ...
+ ✓ Compiled /[locale]/runic-translator in 1803ms (3025 modules)
+ GET /runic-translator 200 in 2113ms
+🎯 [LocaleLayout] Detected page: {
+  pathname: '/runic-translator',
+  translatorKey: 'RunicTranslatorPage',
+  locale: 'en'
+}
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'RunicTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/runic-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: RunicTranslatorPage
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'RunicTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/runic-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: RunicTranslatorPage
+✅ [loadTranslatorMessages] Loaded full translator: runic-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for RunicTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+✅ [loadTranslatorMessages] Loaded full translator: runic-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for RunicTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'RunicTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/runic-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: RunicTranslatorPage
+✅ [loadTranslatorMessages] Loaded full translator: runic-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for RunicTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+🎯 [LocaleLayout] Detected page: {
+  pathname: '/runic-translator',
+  translatorKey: 'RunicTranslatorPage',
+  locale: 'en'
+}
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'RunicTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/runic-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: RunicTranslatorPage
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'RunicTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/runic-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: RunicTranslatorPage
+✅ [loadTranslatorMessages] Loaded full translator: runic-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for RunicTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+✅ [loadTranslatorMessages] Loaded full translator: runic-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for RunicTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'RunicTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/runic-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: RunicTranslatorPage
+✅ [loadTranslatorMessages] Loaded full translator: runic-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for RunicTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+ GET /_next/static/webpack/2377a87ed6d9af07.webpack.hot-update.json 404 in 79ms
+🎯 [LocaleLayout] Detected page: {
+  pathname: '/runic-translator',
+  translatorKey: 'RunicTranslatorPage',
+  locale: 'en'
+}
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'RunicTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/runic-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: RunicTranslatorPage
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'RunicTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/runic-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: RunicTranslatorPage
+✅ [loadTranslatorMessages] Loaded full translator: runic-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for RunicTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+✅ [loadTranslatorMessages] Loaded full translator: runic-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for RunicTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'RunicTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/runic-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: RunicTranslatorPage
+✅ [loadTranslatorMessages] Loaded full translator: runic-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for RunicTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+ GET /runic-translator 200 in 62ms
+ ○ Compiling /[locale]/english-to-chinese-translator ...
+ ✓ Compiled /[locale]/english-to-chinese-translator in 2.5s (3052 modules)
+🎯 [LocaleLayout] Detected page: {
+  pathname: '/english-to-chinese-translator',
+  translatorKey: 'EnglishToChineseTranslatorPage',
+  locale: 'en'
+}
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'EnglishToChineseTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/english-to-chinese-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: EnglishToChineseTranslatorPage
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'EnglishToChineseTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/english-to-chinese-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: EnglishToChineseTranslatorPage
+✅ [loadTranslatorMessages] Loaded full translator: english-to-chinese-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for EnglishToChineseTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+✅ [loadTranslatorMessages] Loaded full translator: english-to-chinese-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for EnglishToChineseTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+🎯 [LocaleLayout] Detected page: {
+  pathname: '/albanian-to-english',
+  translatorKey: 'AlbanianToEnglishPage',
+  locale: 'en'
+}
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'AlbanianToEnglishPage',
+  includePopularTranslators: false,
+  pathname: '/albanian-to-english'
+}
+🎯 [getMessagesForLocale] Loading specific translator: AlbanianToEnglishPage
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'AlbanianToEnglishPage',
+  includePopularTranslators: false,
+  pathname: '/albanian-to-english'
+}
+🎯 [getMessagesForLocale] Loading specific translator: AlbanianToEnglishPage
+✅ [loadTranslatorMessages] Loaded full translator: albanian-to-english (development)
+✅ [getMessagesForLocale] Loaded 10 parts for AlbanianToEnglishPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+✅ [loadTranslatorMessages] Loaded full translator: albanian-to-english (development)
+✅ [getMessagesForLocale] Loaded 10 parts for AlbanianToEnglishPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+Error: MISSING_MESSAGE: Could not resolve `AlbanianToEnglishPage.funfacts` in messages for locale `en`.
+    at buildTranslatorPageContent (src/lib/translator-page.ts:214:36)
+    at AlbanianToEnglishPage (src/app/[locale]/(marketing)/(pages)/albanian-to-english/page.tsx:63:55)
+  212 |   ) as Record<string, unknown> | null;
+  213 |   const funfacts = (
+> 214 |     typeof t.raw === 'function' ? t.raw('funfacts') : null
+      |                                    ^
+  215 |   ) as Record<string, unknown> | null;
+  216 |   const userInterest = (
+  217 |     typeof t.raw === 'function' ? t.raw('userInterest') : null {
+  code: 'MISSING_MESSAGE',
+  originalMessage: 'Could not resolve `AlbanianToEnglishPage.funfacts` in messages for locale `en`.'
+}
+🎯 [LocaleLayout] Detected page: {
+  pathname: '/chinese-to-english-translator',
+  translatorKey: 'ChineseToEnglishTranslatorPage',
+  locale: 'en'
+}
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'ChineseToEnglishTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/chinese-to-english-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: ChineseToEnglishTranslatorPage
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'ChineseToEnglishTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/chinese-to-english-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: ChineseToEnglishTranslatorPage
+✅ [loadTranslatorMessages] Loaded full translator: chinese-to-english-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for ChineseToEnglishTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+✅ [loadTranslatorMessages] Loaded full translator: chinese-to-english-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for ChineseToEnglishTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'EnglishToChineseTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/english-to-chinese-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: EnglishToChineseTranslatorPage
+✅ [loadTranslatorMessages] Loaded full translator: english-to-chinese-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for EnglishToChineseTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'AlbanianToEnglishPage',
+  includePopularTranslators: false,
+  pathname: '/albanian-to-english'
+}
+🎯 [getMessagesForLocale] Loading specific translator: AlbanianToEnglishPage
+✅ [loadTranslatorMessages] Loaded full translator: albanian-to-english (development)
+✅ [getMessagesForLocale] Loaded 10 parts for AlbanianToEnglishPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'ChineseToEnglishTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/chinese-to-english-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: ChineseToEnglishTranslatorPage
+✅ [loadTranslatorMessages] Loaded full translator: chinese-to-english-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for ChineseToEnglishTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+Icon "FaEye" not found in icon map
+ GET /english-to-chinese-translator 200 in 4112ms
+ GET /albanian-to-english 200 in 4115ms
+ GET /chinese-to-english-translator 200 in 4119ms
+ ✓ Compiled /[locale]/high-valyrian-translator in 457ms (3063 modules)
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'HighValyrianTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/high-valyrian-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: HighValyrianTranslatorPage
+✅ [loadTranslatorMessages] Loaded full translator: high-valyrian-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for HighValyrianTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+ GET /high-valyrian-translator 200 in 784ms
+ ✓ Compiled /[locale] in 493ms (3087 modules)
+🎯 [LocaleLayout] Detected page: { pathname: '/', translatorKey: null, locale: 'en' }
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: null,
+  includePopularTranslators: false,
+  pathname: '/'
+}
+📁 [getMessagesForLocale] Loading base messages only
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: null,
+  includePopularTranslators: false,
+  pathname: '/'
+}
+📁 [getMessagesForLocale] Loading base messages only
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: null,
+  includePopularTranslators: false,
+  pathname: '/'
+}
+📁 [getMessagesForLocale] Loading base messages only
+✅ [getMessagesForLocale] Loaded 9 base parts
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+✅ [getMessagesForLocale] Loaded 9 base parts
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+✅ [getMessagesForLocale] Loaded 9 base parts
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+Error: INVALID_MESSAGE: The message `testimonials.items.item-1.rating` in namespace `HomePage` didn't resolve to a string. If you want to format rich text, use `t.rich` instead.
+    at safeT (src/app/[locale]/(marketing)/page.tsx:55:16)
+    at eval (src/app/[locale]/(marketing)/page.tsx:351:41)
+    at HomePage (src/app/[locale]/(marketing)/page.tsx:351:146)
+  53 |   const safeT = (key: string, defaultValue: string = '') => {
+  54 |     try {
+> 55 |       const v = t(key);
+     |                ^
+  56 |       if (typeof v === 'string' && !v.includes(key)) {
+  57 |         return v;
+  58 |       } {
+  code: 'INVALID_MESSAGE',
+  originalMessage: 'The message `testimonials.items.item-1.rating` in namespace `HomePage` didn\'t resolve to a string. If you want to format rich text, use `t.rich` instead.'
+}
+Error: INVALID_MESSAGE: The message `testimonials.items.item-1.verified` in namespace `HomePage` didn't resolve to a string. If you want to format rich text, use `t.rich` instead.
+    at safeT (src/app/[locale]/(marketing)/page.tsx:55:16)
+    at HomePage (src/app/[locale]/(marketing)/page.tsx:353:24)
+  53 |   const safeT = (key: string, defaultValue: string = '') => {
+  54 |     try {
+> 55 |       const v = t(key);
+     |                ^
+  56 |       if (typeof v === 'string' && !v.includes(key)) {
+  57 |         return v;
+  58 |       } {
+  code: 'INVALID_MESSAGE',
+  originalMessage: 'The message `testimonials.items.item-1.verified` in namespace `HomePage` didn\'t resolve to a string. If you want to format rich text, use `t.rich` instead.'
+}
+Error: INVALID_MESSAGE: The message `testimonials.items.item-2.rating` in namespace `HomePage` didn't resolve to a string. If you want to format rich text, use `t.rich` instead.
+    at safeT (src/app/[locale]/(marketing)/page.tsx:55:16)
+    at eval (src/app/[locale]/(marketing)/page.tsx:361:41)
+    at HomePage (src/app/[locale]/(marketing)/page.tsx:361:146)
+  53 |   const safeT = (key: string, defaultValue: string = '') => {
+  54 |     try {
+> 55 |       const v = t(key);
+     |                ^
+  56 |       if (typeof v === 'string' && !v.includes(key)) {
+  57 |         return v;
+  58 |       } {
+  code: 'INVALID_MESSAGE',
+  originalMessage: 'The message `testimonials.items.item-2.rating` in namespace `HomePage` didn\'t resolve to a string. If you want to format rich text, use `t.rich` instead.'
+}
+Error: INVALID_MESSAGE: The message `testimonials.items.item-2.verified` in namespace `HomePage` didn't resolve to a string. If you want to format rich text, use `t.rich` instead.
+    at safeT (src/app/[locale]/(marketing)/page.tsx:55:16)
+    at HomePage (src/app/[locale]/(marketing)/page.tsx:363:24)
+  53 |   const safeT = (key: string, defaultValue: string = '') => {
+  54 |     try {
+> 55 |       const v = t(key);
+     |                ^
+  56 |       if (typeof v === 'string' && !v.includes(key)) {
+  57 |         return v;
+  58 |       } {
+  code: 'INVALID_MESSAGE',
+  originalMessage: 'The message `testimonials.items.item-2.verified` in namespace `HomePage` didn\'t resolve to a string. If you want to format rich text, use `t.rich` instead.'
+}
+Error: INVALID_MESSAGE: The message `testimonials.items.item-3.rating` in namespace `HomePage` didn't resolve to a string. If you want to format rich text, use `t.rich` instead.
+    at safeT (src/app/[locale]/(marketing)/page.tsx:55:16)
+    at eval (src/app/[locale]/(marketing)/page.tsx:371:41)
+    at HomePage (src/app/[locale]/(marketing)/page.tsx:371:146)
+  53 |   const safeT = (key: string, defaultValue: string = '') => {
+  54 |     try {
+> 55 |       const v = t(key);
+     |                ^
+  56 |       if (typeof v === 'string' && !v.includes(key)) {
+  57 |         return v;
+  58 |       } {
+  code: 'INVALID_MESSAGE',
+  originalMessage: 'The message `testimonials.items.item-3.rating` in namespace `HomePage` didn\'t resolve to a string. If you want to format rich text, use `t.rich` instead.'
+}
+Error: INVALID_MESSAGE: A message must be provided as a String or AST.
+    at safeT (src/app/[locale]/(marketing)/page.tsx:55:16)
+    at HomePage (src/app/[locale]/(marketing)/page.tsx:373:24)
+  53 |   const safeT = (key: string, defaultValue: string = '') => {
+  54 |     try {
+> 55 |       const v = t(key);
+     |                ^
+  56 |       if (typeof v === 'string' && !v.includes(key)) {
+  57 |         return v;
+  58 |       } {
+  code: 'INVALID_MESSAGE',
+  originalMessage: 'A message must be provided as a String or AST.'
+}
+Error: INVALID_MESSAGE: The message `testimonials.items.item-4.rating` in namespace `HomePage` didn't resolve to a string. If you want to format rich text, use `t.rich` instead.
+    at safeT (src/app/[locale]/(marketing)/page.tsx:55:16)
+    at eval (src/app/[locale]/(marketing)/page.tsx:381:41)
+    at HomePage (src/app/[locale]/(marketing)/page.tsx:381:146)
+  53 |   const safeT = (key: string, defaultValue: string = '') => {
+  54 |     try {
+> 55 |       const v = t(key);
+     |                ^
+  56 |       if (typeof v === 'string' && !v.includes(key)) {
+  57 |         return v;
+  58 |       } {
+  code: 'INVALID_MESSAGE',
+  originalMessage: 'The message `testimonials.items.item-4.rating` in namespace `HomePage` didn\'t resolve to a string. If you want to format rich text, use `t.rich` instead.'
+}
+Error: INVALID_MESSAGE: The message `testimonials.items.item-4.verified` in namespace `HomePage` didn't resolve to a string. If you want to format rich text, use `t.rich` instead.
+    at safeT (src/app/[locale]/(marketing)/page.tsx:55:16)
+    at HomePage (src/app/[locale]/(marketing)/page.tsx:383:24)
+  53 |   const safeT = (key: string, defaultValue: string = '') => {
+  54 |     try {
+> 55 |       const v = t(key);
+     |                ^
+  56 |       if (typeof v === 'string' && !v.includes(key)) {
+  57 |         return v;
+  58 |       } {
+  code: 'INVALID_MESSAGE',
+  originalMessage: 'The message `testimonials.items.item-4.verified` in namespace `HomePage` didn\'t resolve to a string. If you want to format rich text, use `t.rich` instead.'
+}
+Error: INVALID_MESSAGE: The message `testimonials.items.item-5.rating` in namespace `HomePage` didn't resolve to a string. If you want to format rich text, use `t.rich` instead.
+    at safeT (src/app/[locale]/(marketing)/page.tsx:55:16)
+    at eval (src/app/[locale]/(marketing)/page.tsx:391:41)
+    at HomePage (src/app/[locale]/(marketing)/page.tsx:391:146)
+  53 |   const safeT = (key: string, defaultValue: string = '') => {
+  54 |     try {
+> 55 |       const v = t(key);
+     |                ^
+  56 |       if (typeof v === 'string' && !v.includes(key)) {
+  57 |         return v;
+  58 |       } {
+  code: 'INVALID_MESSAGE',
+  originalMessage: 'The message `testimonials.items.item-5.rating` in namespace `HomePage` didn\'t resolve to a string. If you want to format rich text, use `t.rich` instead.'
+}
+Error: INVALID_MESSAGE: The message `testimonials.items.item-5.verified` in namespace `HomePage` didn't resolve to a string. If you want to format rich text, use `t.rich` instead.
+    at safeT (src/app/[locale]/(marketing)/page.tsx:55:16)
+    at HomePage (src/app/[locale]/(marketing)/page.tsx:393:24)
+  53 |   const safeT = (key: string, defaultValue: string = '') => {
+  54 |     try {
+> 55 |       const v = t(key);
+     |                ^
+  56 |       if (typeof v === 'string' && !v.includes(key)) {
+  57 |         return v;
+  58 |       } {
+  code: 'INVALID_MESSAGE',
+  originalMessage: 'The message `testimonials.items.item-5.verified` in namespace `HomePage` didn\'t resolve to a string. If you want to format rich text, use `t.rich` instead.'
+}
+Error: INVALID_MESSAGE: The message `testimonials.items.item-6.rating` in namespace `HomePage` didn't resolve to a string. If you want to format rich text, use `t.rich` instead.
+    at safeT (src/app/[locale]/(marketing)/page.tsx:55:16)
+    at eval (src/app/[locale]/(marketing)/page.tsx:401:41)
+    at HomePage (src/app/[locale]/(marketing)/page.tsx:401:146)
+  53 |   const safeT = (key: string, defaultValue: string = '') => {
+  54 |     try {
+> 55 |       const v = t(key);
+     |                ^
+  56 |       if (typeof v === 'string' && !v.includes(key)) {
+  57 |         return v;
+  58 |       } {
+  code: 'INVALID_MESSAGE',
+  originalMessage: 'The message `testimonials.items.item-6.rating` in namespace `HomePage` didn\'t resolve to a string. If you want to format rich text, use `t.rich` instead.'
+}
+Error: INVALID_MESSAGE: The message `testimonials.items.item-6.verified` in namespace `HomePage` didn't resolve to a string. If you want to format rich text, use `t.rich` instead.
+    at safeT (src/app/[locale]/(marketing)/page.tsx:55:16)
+    at HomePage (src/app/[locale]/(marketing)/page.tsx:403:24)
+  53 |   const safeT = (key: string, defaultValue: string = '') => {
+  54 |     try {
+> 55 |       const v = t(key);
+     |                ^
+  56 |       if (typeof v === 'string' && !v.includes(key)) {
+  57 |         return v;
+  58 |       } {
+  code: 'INVALID_MESSAGE',
+  originalMessage: 'The message `testimonials.items.item-6.verified` in namespace `HomePage` didn\'t resolve to a string. If you want to format rich text, use `t.rich` instead.'
+}
+ GET / 200 in 999ms
+ ○ Compiling /[locale]/alien-text-generator ...
+ ✓ Compiled /[locale]/alien-text-generator in 537ms (3098 modules)
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'AlienTextGeneratorPage',
+  includePopularTranslators: false,
+  pathname: '/alien-text-generator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: AlienTextGeneratorPage
+✅ [loadTranslatorMessages] Loaded full translator: alien-text-generator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for AlienTextGeneratorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+ GET /alien-text-generator 200 in 856ms
+ ✓ Compiled /[locale]/bad-translator in 391ms (3107 modules)
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'BadTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/bad-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: BadTranslatorPage
+✅ [loadTranslatorMessages] Loaded full translator: bad-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for BadTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+ GET /bad-translator 200 in 766ms
+ ○ Compiling /[locale]/dog-translator ...
+ ✓ Compiled /[locale]/dog-translator in 615ms (3077 modules)
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'DogTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/dog-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: DogTranslatorPage
+✅ [loadTranslatorMessages] Loaded full translator: dog-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for DogTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+ GET /dog-translator 200 in 928ms
+ ✓ Compiled /[locale]/dumb-it-down-ai in 330ms (3086 modules)
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'DumbItDownPage',
+  includePopularTranslators: false,
+  pathname: '/dumb-it-down-ai'
+}
+🎯 [getMessagesForLocale] Loading specific translator: DumbItDownPage
+✅ [loadTranslatorMessages] Loaded full translator: dumb-it-down-ai (development)
+✅ [getMessagesForLocale] Loaded 10 parts for DumbItDownPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+ GET /dumb-it-down-ai 200 in 642ms
+ ✓ Compiled /[locale]/gen-alpha-translator in 311ms (3088 modules)
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'GenAlphaTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/gen-alpha-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: GenAlphaTranslatorPage
+✅ [loadTranslatorMessages] Loaded full translator: gen-alpha-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for GenAlphaTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+ GET /gen-alpha-translator 200 in 623ms
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'BadTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/bad-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: BadTranslatorPage
+✅ [loadTranslatorMessages] Loaded full translator: bad-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for BadTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+ GET /bad-translator 200 in 316ms
+ ✓ Compiled in 614ms (1101 modules)
+🎯 [LocaleLayout] Detected page: {
+  pathname: '/bad-translator',
+  translatorKey: 'BadTranslatorPage',
+  locale: 'en'
+}
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'BadTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/bad-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: BadTranslatorPage
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'BadTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/bad-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: BadTranslatorPage
+✅ [loadTranslatorMessages] Loaded full translator: bad-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for BadTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+✅ [loadTranslatorMessages] Loaded full translator: bad-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for BadTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'BadTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/bad-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: BadTranslatorPage
+✅ [loadTranslatorMessages] Loaded full translator: bad-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for BadTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+ GET /bad-translator 200 in 387ms
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'GenAlphaTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/gen-alpha-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: GenAlphaTranslatorPage
+✅ [loadTranslatorMessages] Loaded full translator: gen-alpha-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for GenAlphaTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+ GET /gen-alpha-translator 200 in 332ms
+ ✓ Compiled in 214ms (1101 modules)
+🎯 [LocaleLayout] Detected page: {
+  pathname: '/gen-alpha-translator',
+  translatorKey: 'GenAlphaTranslatorPage',
+  locale: 'en'
+}
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'GenAlphaTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/gen-alpha-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: GenAlphaTranslatorPage
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'GenAlphaTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/gen-alpha-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: GenAlphaTranslatorPage
+✅ [loadTranslatorMessages] Loaded full translator: gen-alpha-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for GenAlphaTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+✅ [loadTranslatorMessages] Loaded full translator: gen-alpha-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for GenAlphaTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'GenAlphaTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/gen-alpha-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: GenAlphaTranslatorPage
+✅ [loadTranslatorMessages] Loaded full translator: gen-alpha-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for GenAlphaTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+ GET /gen-alpha-translator 200 in 245ms
+ ✓ Compiled in 136ms (1101 modules)
+🎯 [LocaleLayout] Detected page: {
+  pathname: '/gen-alpha-translator',
+  translatorKey: 'GenAlphaTranslatorPage',
+  locale: 'en'
+}
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'GenAlphaTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/gen-alpha-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: GenAlphaTranslatorPage
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'GenAlphaTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/gen-alpha-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: GenAlphaTranslatorPage
+✅ [loadTranslatorMessages] Loaded full translator: gen-alpha-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for GenAlphaTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+✅ [loadTranslatorMessages] Loaded full translator: gen-alpha-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for GenAlphaTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'GenAlphaTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/gen-alpha-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: GenAlphaTranslatorPage
+✅ [loadTranslatorMessages] Loaded full translator: gen-alpha-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for GenAlphaTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+ GET /gen-alpha-translator 200 in 190ms
+ ✓ Compiled in 327ms (1101 modules)
+🎯 [LocaleLayout] Detected page: {
+  pathname: '/gen-alpha-translator',
+  translatorKey: 'GenAlphaTranslatorPage',
+  locale: 'en'
+}
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'GenAlphaTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/gen-alpha-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: GenAlphaTranslatorPage
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'GenAlphaTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/gen-alpha-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: GenAlphaTranslatorPage
+✅ [loadTranslatorMessages] Loaded full translator: gen-alpha-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for GenAlphaTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+✅ [loadTranslatorMessages] Loaded full translator: gen-alpha-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for GenAlphaTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'GenAlphaTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/gen-alpha-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: GenAlphaTranslatorPage
+✅ [loadTranslatorMessages] Loaded full translator: gen-alpha-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for GenAlphaTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+ GET /gen-alpha-translator 200 in 182ms
+ ✓ Compiled in 127ms (1101 modules)
+🎯 [LocaleLayout] Detected page: {
+  pathname: '/gen-alpha-translator',
+  translatorKey: 'GenAlphaTranslatorPage',
+  locale: 'en'
+}
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'GenAlphaTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/gen-alpha-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: GenAlphaTranslatorPage
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'GenAlphaTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/gen-alpha-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: GenAlphaTranslatorPage
+✅ [loadTranslatorMessages] Loaded full translator: gen-alpha-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for GenAlphaTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+✅ [loadTranslatorMessages] Loaded full translator: gen-alpha-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for GenAlphaTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'GenAlphaTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/gen-alpha-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: GenAlphaTranslatorPage
+✅ [loadTranslatorMessages] Loaded full translator: gen-alpha-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for GenAlphaTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+ GET /gen-alpha-translator 200 in 248ms
+ ✓ Compiled in 313ms (1101 modules)
+🎯 [LocaleLayout] Detected page: {
+  pathname: '/gen-alpha-translator',
+  translatorKey: 'GenAlphaTranslatorPage',
+  locale: 'en'
+}
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'GenAlphaTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/gen-alpha-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: GenAlphaTranslatorPage
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'GenAlphaTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/gen-alpha-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: GenAlphaTranslatorPage
+✅ [loadTranslatorMessages] Loaded full translator: gen-alpha-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for GenAlphaTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+✅ [loadTranslatorMessages] Loaded full translator: gen-alpha-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for GenAlphaTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'GenAlphaTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/gen-alpha-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: GenAlphaTranslatorPage
+✅ [loadTranslatorMessages] Loaded full translator: gen-alpha-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for GenAlphaTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+ GET /gen-alpha-translator 200 in 190ms
+ ✓ Compiled in 123ms (1101 modules)
+🎯 [LocaleLayout] Detected page: {
+  pathname: '/gen-alpha-translator',
+  translatorKey: 'GenAlphaTranslatorPage',
+  locale: 'en'
+}
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'GenAlphaTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/gen-alpha-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: GenAlphaTranslatorPage
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'GenAlphaTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/gen-alpha-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: GenAlphaTranslatorPage
+✅ [loadTranslatorMessages] Loaded full translator: gen-alpha-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for GenAlphaTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+✅ [loadTranslatorMessages] Loaded full translator: gen-alpha-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for GenAlphaTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'GenAlphaTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/gen-alpha-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: GenAlphaTranslatorPage
+✅ [loadTranslatorMessages] Loaded full translator: gen-alpha-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for GenAlphaTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+ GET /gen-alpha-translator 200 in 183ms
+ ✓ Compiled in 142ms (1101 modules)
+🎯 [LocaleLayout] Detected page: {
+  pathname: '/gen-alpha-translator',
+  translatorKey: 'GenAlphaTranslatorPage',
+  locale: 'en'
+}
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'GenAlphaTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/gen-alpha-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: GenAlphaTranslatorPage
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'GenAlphaTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/gen-alpha-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: GenAlphaTranslatorPage
+✅ [loadTranslatorMessages] Loaded full translator: gen-alpha-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for GenAlphaTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+✅ [loadTranslatorMessages] Loaded full translator: gen-alpha-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for GenAlphaTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'GenAlphaTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/gen-alpha-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: GenAlphaTranslatorPage
+✅ [loadTranslatorMessages] Loaded full translator: gen-alpha-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for GenAlphaTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+ GET /gen-alpha-translator 200 in 169ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ ✓ Compiled in 739ms (3104 modules)
+🎯 [LocaleLayout] Detected page: {
+  pathname: '/gen-alpha-translator',
+  translatorKey: 'GenAlphaTranslatorPage',
+  locale: 'en'
+}
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'GenAlphaTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/gen-alpha-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: GenAlphaTranslatorPage
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'GenAlphaTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/gen-alpha-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: GenAlphaTranslatorPage
+✅ [loadTranslatorMessages] Loaded full translator: gen-alpha-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for GenAlphaTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+✅ [loadTranslatorMessages] Loaded full translator: gen-alpha-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for GenAlphaTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+🎯 [LocaleLayout] Detected page: {
+  pathname: '/gen-alpha-translator',
+  translatorKey: 'GenAlphaTranslatorPage',
+  locale: 'en'
+}
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'GenAlphaTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/gen-alpha-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: GenAlphaTranslatorPage
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'GenAlphaTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/gen-alpha-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: GenAlphaTranslatorPage
+✅ [loadTranslatorMessages] Loaded full translator: gen-alpha-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for GenAlphaTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+✅ [loadTranslatorMessages] Loaded full translator: gen-alpha-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for GenAlphaTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'GenAlphaTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/gen-alpha-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: GenAlphaTranslatorPage
+✅ [loadTranslatorMessages] Loaded full translator: gen-alpha-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for GenAlphaTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'GenAlphaTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/gen-alpha-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: GenAlphaTranslatorPage
+✅ [loadTranslatorMessages] Loaded full translator: gen-alpha-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for GenAlphaTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+ GET /gen-alpha-translator 200 in 174ms
+ GET /gen-alpha-translator 200 in 289ms
+ ○ Compiling /[locale]/english-to-chinese-translator ...
+ ✓ Compiled /[locale]/english-to-chinese-translator in 1020ms (2001 modules)
+ ✓ Compiled (2015 modules)
+🎯 [LocaleLayout] Detected page: {
+  pathname: '/albanian-to-english',
+  translatorKey: 'AlbanianToEnglishPage',
+  locale: 'en'
+}
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'AlbanianToEnglishPage',
+  includePopularTranslators: false,
+  pathname: '/albanian-to-english'
+}
+🎯 [getMessagesForLocale] Loading specific translator: AlbanianToEnglishPage
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'AlbanianToEnglishPage',
+  includePopularTranslators: false,
+  pathname: '/albanian-to-english'
+}
+🎯 [getMessagesForLocale] Loading specific translator: AlbanianToEnglishPage
+✅ [loadTranslatorMessages] Loaded full translator: albanian-to-english (development)
+✅ [getMessagesForLocale] Loaded 10 parts for AlbanianToEnglishPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+✅ [loadTranslatorMessages] Loaded full translator: albanian-to-english (development)
+✅ [getMessagesForLocale] Loaded 10 parts for AlbanianToEnglishPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+Error: MISSING_MESSAGE: Could not resolve `AlbanianToEnglishPage.funfacts` in messages for locale `en`.
+    at buildTranslatorPageContent (src/lib/translator-page.ts:214:36)
+    at AlbanianToEnglishPage (src/app/[locale]/(marketing)/(pages)/albanian-to-english/page.tsx:63:55)
+  212 |   ) as Record<string, unknown> | null;
+  213 |   const funfacts = (
+> 214 |     typeof t.raw === 'function' ? t.raw('funfacts') : null
+      |                                    ^
+  215 |   ) as Record<string, unknown> | null;
+  216 |   const userInterest = (
+  217 |     typeof t.raw === 'function' ? t.raw('userInterest') : null {
+  code: 'MISSING_MESSAGE',
+  originalMessage: 'Could not resolve `AlbanianToEnglishPage.funfacts` in messages for locale `en`.'
+}
+🎯 [LocaleLayout] Detected page: {
+  pathname: '/english-to-chinese-translator',
+  translatorKey: 'EnglishToChineseTranslatorPage',
+  locale: 'en'
+}
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'EnglishToChineseTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/english-to-chinese-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: EnglishToChineseTranslatorPage
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'EnglishToChineseTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/english-to-chinese-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: EnglishToChineseTranslatorPage
+✅ [loadTranslatorMessages] Loaded full translator: english-to-chinese-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for EnglishToChineseTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+✅ [loadTranslatorMessages] Loaded full translator: english-to-chinese-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for EnglishToChineseTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+🎯 [LocaleLayout] Detected page: {
+  pathname: '/chinese-to-english-translator',
+  translatorKey: 'ChineseToEnglishTranslatorPage',
+  locale: 'en'
+}
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'ChineseToEnglishTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/chinese-to-english-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: ChineseToEnglishTranslatorPage
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'ChineseToEnglishTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/chinese-to-english-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: ChineseToEnglishTranslatorPage
+✅ [loadTranslatorMessages] Loaded full translator: chinese-to-english-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for ChineseToEnglishTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+✅ [loadTranslatorMessages] Loaded full translator: chinese-to-english-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for ChineseToEnglishTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'AlbanianToEnglishPage',
+  includePopularTranslators: false,
+  pathname: '/albanian-to-english'
+}
+🎯 [getMessagesForLocale] Loading specific translator: AlbanianToEnglishPage
+✅ [loadTranslatorMessages] Loaded full translator: albanian-to-english (development)
+✅ [getMessagesForLocale] Loaded 10 parts for AlbanianToEnglishPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'EnglishToChineseTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/english-to-chinese-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: EnglishToChineseTranslatorPage
+✅ [loadTranslatorMessages] Loaded full translator: english-to-chinese-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for EnglishToChineseTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'ChineseToEnglishTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/chinese-to-english-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: ChineseToEnglishTranslatorPage
+✅ [loadTranslatorMessages] Loaded full translator: chinese-to-english-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for ChineseToEnglishTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+Icon "FaEye" not found in icon map
+ GET /albanian-to-english 200 in 3009ms
+ GET /english-to-chinese-translator 200 in 3011ms
+ GET /chinese-to-english-translator 200 in 3014ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ ✓ Compiled in 513ms (3125 modules)
+🎯 [LocaleLayout] Detected page: {
+  pathname: '/gen-alpha-translator',
+  translatorKey: 'GenAlphaTranslatorPage',
+  locale: 'en'
+}
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'GenAlphaTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/gen-alpha-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: GenAlphaTranslatorPage
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'GenAlphaTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/gen-alpha-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: GenAlphaTranslatorPage
+✅ [loadTranslatorMessages] Loaded full translator: gen-alpha-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for GenAlphaTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+✅ [loadTranslatorMessages] Loaded full translator: gen-alpha-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for GenAlphaTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+🎯 [LocaleLayout] Detected page: {
+  pathname: '/gen-alpha-translator',
+  translatorKey: 'GenAlphaTranslatorPage',
+  locale: 'en'
+}
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'GenAlphaTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/gen-alpha-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: GenAlphaTranslatorPage
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'GenAlphaTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/gen-alpha-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: GenAlphaTranslatorPage
+✅ [loadTranslatorMessages] Loaded full translator: gen-alpha-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for GenAlphaTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+✅ [loadTranslatorMessages] Loaded full translator: gen-alpha-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for GenAlphaTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'GenAlphaTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/gen-alpha-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: GenAlphaTranslatorPage
+✅ [loadTranslatorMessages] Loaded full translator: gen-alpha-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for GenAlphaTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'GenAlphaTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/gen-alpha-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: GenAlphaTranslatorPage
+✅ [loadTranslatorMessages] Loaded full translator: gen-alpha-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for GenAlphaTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+ GET /gen-alpha-translator 200 in 158ms
+ GET /gen-alpha-translator 200 in 251ms
+🎯 [LocaleLayout] Detected page: {
+  pathname: '/albanian-to-english',
+  translatorKey: 'AlbanianToEnglishPage',
+  locale: 'en'
+}
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'AlbanianToEnglishPage',
+  includePopularTranslators: false,
+  pathname: '/albanian-to-english'
+}
+🎯 [getMessagesForLocale] Loading specific translator: AlbanianToEnglishPage
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'AlbanianToEnglishPage',
+  includePopularTranslators: false,
+  pathname: '/albanian-to-english'
+}
+🎯 [getMessagesForLocale] Loading specific translator: AlbanianToEnglishPage
+✅ [loadTranslatorMessages] Loaded full translator: albanian-to-english (development)
+✅ [getMessagesForLocale] Loaded 10 parts for AlbanianToEnglishPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+✅ [loadTranslatorMessages] Loaded full translator: albanian-to-english (development)
+✅ [getMessagesForLocale] Loaded 10 parts for AlbanianToEnglishPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+Error: MISSING_MESSAGE: Could not resolve `AlbanianToEnglishPage.funfacts` in messages for locale `en`.
+    at buildTranslatorPageContent (src/lib/translator-page.ts:214:36)
+    at AlbanianToEnglishPage (src/app/[locale]/(marketing)/(pages)/albanian-to-english/page.tsx:63:55)
+  212 |   ) as Record<string, unknown> | null;
+  213 |   const funfacts = (
+> 214 |     typeof t.raw === 'function' ? t.raw('funfacts') : null
+      |                                    ^
+  215 |   ) as Record<string, unknown> | null;
+  216 |   const userInterest = (
+  217 |     typeof t.raw === 'function' ? t.raw('userInterest') : null {
+  code: 'MISSING_MESSAGE',
+  originalMessage: 'Could not resolve `AlbanianToEnglishPage.funfacts` in messages for locale `en`.'
+}
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'AlbanianToEnglishPage',
+  includePopularTranslators: false,
+  pathname: '/albanian-to-english'
+}
+🎯 [getMessagesForLocale] Loading specific translator: AlbanianToEnglishPage
+✅ [loadTranslatorMessages] Loaded full translator: albanian-to-english (development)
+✅ [getMessagesForLocale] Loaded 10 parts for AlbanianToEnglishPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+🎯 [LocaleLayout] Detected page: {
+  pathname: '/chinese-to-english-translator',
+  translatorKey: 'ChineseToEnglishTranslatorPage',
+  locale: 'en'
+}
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'ChineseToEnglishTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/chinese-to-english-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: ChineseToEnglishTranslatorPage
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'ChineseToEnglishTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/chinese-to-english-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: ChineseToEnglishTranslatorPage
+✅ [loadTranslatorMessages] Loaded full translator: chinese-to-english-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for ChineseToEnglishTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+✅ [loadTranslatorMessages] Loaded full translator: chinese-to-english-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for ChineseToEnglishTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+ GET /albanian-to-english 200 in 1027ms
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'ChineseToEnglishTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/chinese-to-english-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: ChineseToEnglishTranslatorPage
+✅ [loadTranslatorMessages] Loaded full translator: chinese-to-english-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for ChineseToEnglishTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+Icon "FaEye" not found in icon map
+🎯 [LocaleLayout] Detected page: {
+  pathname: '/english-to-chinese-translator',
+  translatorKey: 'EnglishToChineseTranslatorPage',
+  locale: 'en'
+}
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'EnglishToChineseTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/english-to-chinese-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: EnglishToChineseTranslatorPage
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'EnglishToChineseTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/english-to-chinese-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: EnglishToChineseTranslatorPage
+✅ [loadTranslatorMessages] Loaded full translator: english-to-chinese-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for EnglishToChineseTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+✅ [loadTranslatorMessages] Loaded full translator: english-to-chinese-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for EnglishToChineseTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+ GET /chinese-to-english-translator 200 in 1527ms
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'EnglishToChineseTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/english-to-chinese-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: EnglishToChineseTranslatorPage
+✅ [loadTranslatorMessages] Loaded full translator: english-to-chinese-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for EnglishToChineseTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+ GET /english-to-chinese-translator 200 in 1649ms
+🔍 [getMessagesForLocale] Starting optimized loading with options: {
+  locale: 'en',
+  translatorKey: 'BadTranslatorPage',
+  includePopularTranslators: false,
+  pathname: '/bad-translator'
+}
+🎯 [getMessagesForLocale] Loading specific translator: BadTranslatorPage
+✅ [loadTranslatorMessages] Loaded full translator: bad-translator (development)
+✅ [getMessagesForLocale] Loaded 10 parts for BadTranslatorPage
+✅ [getMessagesForLocale] Final result: 3 translation keys loaded
+ GET /bad-translator 200 in 272ms
+ ✓ Compiled in 1254ms (3095 modules)
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/jason-chen/Downloads/project/vibetrans/.next/server/middleware.js']
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 542ms (1522 modules)
+Time 2ms
+ GET /bad-translator 404 in 13ms
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/jason-chen/Downloads/project/vibetrans/.next/server/middleware.js']
+ ✓ Compiled /_not-found in 312ms (1918 modules)
+Time 0ms
+ GET /bad-translator 404 in 0ms
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/jason-chen/Downloads/project/vibetrans/.next/server/middleware.js']
+Time 0ms
+ GET /bad-translator 404 in 0ms
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/jason-chen/Downloads/project/vibetrans/.next/server/middleware.js']
+Time 0ms
+ GET /bad-translator 404 in 0ms
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/jason-chen/Downloads/project/vibetrans/.next/server/middleware.js']
+Time 1ms
+ GET /bad-translator 404 in 1ms
+ ✓ Compiled in 900ms (3912 modules)
+ ✓ Compiled in 142ms (1345 modules)
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/jason-chen/Downloads/project/vibetrans/.next/server/middleware.js']
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/jason-chen/Downloads/project/vibetrans/.next/server/middleware.js']
+Time 0ms
+Time 1ms
+ GET /bad-translator 404 in 0ms
+ ✓ Compiled in 501ms (3340 modules)
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/jason-chen/Downloads/project/vibetrans/.next/server/middleware.js']
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/jason-chen/Downloads/project/vibetrans/.next/server/middleware.js']
+Time 0ms
+Time 0ms
+ GET /bad-translator 404 in 0ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 359ms (3340 modules)
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/jason-chen/Downloads/project/vibetrans/.next/server/middleware.js']
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/jason-chen/Downloads/project/vibetrans/.next/server/middleware.js']
+Time 0ms
+Time 0ms
+ GET /bad-translator 404 in 1ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 805ms (3340 modules)
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/jason-chen/Downloads/project/vibetrans/.next/server/middleware.js']
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/jason-chen/Downloads/project/vibetrans/.next/server/middleware.js']
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/jason-chen/Downloads/project/vibetrans/.next/server/middleware.js']
+Time 0ms
+Time 0ms
+Time 0ms
+ GET /bad-translator 404 in 1ms
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/jason-chen/Downloads/project/vibetrans/.next/server/middleware.js']
+Time 0ms
+ GET /bad-translator 404 in 1ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 753ms (3340 modules)
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/jason-chen/Downloads/project/vibetrans/.next/server/middleware.js']
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/jason-chen/Downloads/project/vibetrans/.next/server/middleware.js']
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/jason-chen/Downloads/project/vibetrans/.next/server/middleware.js']
+Time 0ms
+Time 1ms
+Time 1ms
+ GET /bad-translator 404 in 2ms
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/jason-chen/Downloads/project/vibetrans/.next/server/middleware.js']
+Time 0ms
+ GET /bad-translator 404 in 1ms
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/jason-chen/Downloads/project/vibetrans/.next/server/middleware.js']
+Time 0ms
+ GET /bad-translator 404 in 0ms
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/jason-chen/Downloads/project/vibetrans/.next/server/middleware.js']
+Time 0ms
+ GET /bad-translator 404 in 1ms
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/jason-chen/Downloads/project/vibetrans/.next/server/middleware.js']
+Time 1ms
+ GET /bad-translator 404 in 1ms
+[?25h

@@ -79,24 +79,30 @@ export function createAdvancedToolPageData(
         ...((t as any)('tool.styles.reverse') && {
           reverse: (t as any)('tool.styles.reverse'),
         }),
-        ...((t as any)('tool.styles.zalgo') && {
-          zalgo: (t as any)('tool.styles.zalgo'),
-        }),
-        ...((t as any)('tool.styles.symbols') && {
-          symbols: (t as any)('tool.styles.symbols'),
-        }),
-        ...((t as any)('tool.styles.circle') && {
-          circle: (t as any)('tool.styles.circle'),
-        }),
-        ...((t as any)('tool.styles.square') && {
-          square: (t as any)('tool.styles.square'),
-        }),
-        ...((t as any)('tool.styles.futuristic') && {
-          futuristic: (t as any)('tool.styles.futuristic'),
-        }),
-        ...((t as any)('tool.styles.cursive') && {
-          cursive: (t as any)('tool.styles.cursive'),
-        }),
+        ...((t as any)('tool.styles.zalgo') &&
+          typeof (t as any)('tool.styles.zalgo') === 'string' && {
+            zalgo: (t as any)('tool.styles.zalgo'),
+          }),
+        ...((t as any)('tool.styles.symbols') &&
+          typeof (t as any)('tool.styles.symbols') === 'string' && {
+            symbols: (t as any)('tool.styles.symbols'),
+          }),
+        ...((t as any)('tool.styles.circle') &&
+          typeof (t as any)('tool.styles.circle') === 'string' && {
+            circle: (t as any)('tool.styles.circle'),
+          }),
+        ...((t as any)('tool.styles.square') &&
+          typeof (t as any)('tool.styles.square') === 'string' && {
+            square: (t as any)('tool.styles.square'),
+          }),
+        ...((t as any)('tool.styles.futuristic') &&
+          typeof (t as any)('tool.styles.futuristic') === 'string' && {
+            futuristic: (t as any)('tool.styles.futuristic'),
+          }),
+        ...((t as any)('tool.styles.cursive') &&
+          typeof (t as any)('tool.styles.cursive') === 'string' && {
+            cursive: (t as any)('tool.styles.cursive'),
+          }),
       },
     }),
     ...(hasDialects && {

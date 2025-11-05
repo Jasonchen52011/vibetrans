@@ -1,6 +1,5 @@
 'use client';
 
-import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
 import { ArrowRightIcon } from 'lucide-react';
 import { useRef, useState } from 'react';
 
@@ -293,7 +292,6 @@ export default function BabyTranslatorTool({
               </h2>
               {outputText && (
                 <div className="flex gap-2">
-                  <TextToSpeechButton text={outputText} locale={locale} />
                   <button
                     type="button"
                     onClick={handleCopy}

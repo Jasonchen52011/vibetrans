@@ -6,6 +6,7 @@ import UserScenarios from '@/components/blocks/funfacts';
 import WhyChoose from '@/components/blocks/highlights';
 import HowTo from '@/components/blocks/how-to';
 import TestimonialsThreeColumnSection from '@/components/blocks/testimonials/testimonials-three-column';
+import UniqueSection from '@/components/blocks/unique';
 import WhatIsSection from '@/components/blocks/whatis';
 import { AuroraBackground } from '@/components/ui/aurora-background';
 import { constructMetadata } from '@/lib/metadata';
@@ -143,6 +144,12 @@ export default async function CantoneseTranslatorPage(
 
         {/* How to Section */}
         <HowTo section={translatorContent.howTo} />
+
+        {/* Unique Section - Discover More with VibeTrans */}
+        <UniqueSection
+          section={translatorContent.unique}
+          ctaText={t('ctaButton')}
+        />
 
         {/* User Interest Blocks */}
         <UserScenarios

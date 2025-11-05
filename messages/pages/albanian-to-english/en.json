@@ -46,27 +46,27 @@
       "description": "Explore practical translation examples with detailed explanations. See how VibeTrans accurately translates Albanian phrases while preserving meaning and context.",
       "items": [
         {
-          "alt": "Albanian: 'Tavë kosi është një nga pjatat më të njohura tradicionale shqiptare'\n\nEnglish: 'Tavë kosi is one of the most famous traditional Albanian dishes'\n\nExplanation: This translation demonstrates proper handling of Albanian articles and superlatives. The definite article 'të' before 'njohura' (famous) is correctly rendered. The phrase 'pjatat tradicionale shqiptare' follows Albanian's adjective-after-noun structure, which we naturally reorder to English's adjective-before-noun pattern.",
+          "alt": "Albanian: 'Tavë kosi është një nga pjatat më të njohura tradicionale shqiptare'\n\nEnglish: 'Tavë kosi is one of the most famous traditional Albanian dishes'",
           "name": "Restaurant Menu Translation"
         },
         {
-          "alt": "Albanian: 'Jemi të nderuar të bashkëpunojmë me kompaninë tuaj dhe shpresojmë në një partneritet të suksesshëm afatgjatë'\n\nEnglish: 'We are honored to cooperate with your company and hope for a successful long-term partnership'\n\nExplanation: This formal business phrase requires capturing the respectful tone. 'Të nderuar' (honored) uses the Albanian passive participle construction. The phrase 'partneritet të suksesshëm afatgjatë' demonstrates Albanian's postpositive definite article and compound adjective structure, which we preserve as 'successful long-term partnership' in English.",
+          "alt": "Albanian: 'Jemi të nderuar të bashkëpunojmë me kompaninë tuaj dhe shpresojmë në një partneritet të suksesshëm afatgjatë'\n\nEnglish: 'We are honored to cooperate with your company and hope for a successful long-term partnership'",
           "name": "Business Email Translation"
         },
         {
-          "alt": "Albanian: 'Gjuha shqipe është një gjuhë e veçantë indoeuropiane me histori të pasur që shtrihet për mijëra vjet'\n\nEnglish: 'The Albanian language is a unique Indo-European language with a rich history spanning thousands of years'\n\nExplanation: This academic sentence contains complex grammatical structures. 'E veçantë' (unique) uses the feminine singular agreement marker 'e'. The relative clause 'që shtrihet për mijëra vjet' (that spans thousands of years) is correctly translated with the present tense verb form, maintaining the continuous aspect of Albanian.",
+          "alt": "Albanian: 'Gjuha shqipe është një gjuhë e veçantë indoeuropiane me histori të pasur që shtrihet për mijëra vjet'\n\nEnglish: 'The Albanian language is a unique Indo-European language with a rich history spanning thousands of years'",
           "name": "Academic Text Translation"
         },
         {
-          "alt": "Albanian: 'Kthehuni majtas te kryqëzimi, pastaj vazhdoni drejt për 200 metra dhe do ta gjeni muzeun në krahun e djathtë'\n\nEnglish: 'Turn left at the intersection, then continue straight for 200 meters and you will find the museum on the right side'\n\nExplanation: This directional phrase uses Albanian's imperative mood. 'Kthehuni' is the reflexive imperative form (turn yourself). The future construction 'do ta gjeni' combines the future particle 'do' with the clitic pronoun 'ta' and verb 'gjeni', translated as 'you will find'. Note how 'krahun e djathtë' (right side) uses the definite accusative case.",
+          "alt": "Albanian: 'Kthehuni majtas te kryqëzimi, pastaj vazhdoni drejt për 200 metra dhe do ta gjeni muzeun në krahun e djathtë'\n\nEnglish: 'Turn left at the intersection, then continue straight for 200 meters and you will find the museum on the right side'",
           "name": "Street Direction Translation"
         },
         {
-          "alt": "Albanian: 'Na mungoni shumë dhe shpresojmë të vini së shpejti për të vizituar familjen. Gjithmonë jeni në mendimet dhe zemrat tona'\n\nEnglish: 'We miss you very much and hope you come soon to visit the family. You are always in our thoughts and hearts'\n\nExplanation: This emotional family message demonstrates Albanian's dative pronoun usage. 'Na mungoni' literally means 'you are lacking to us' but translates naturally as 'we miss you'. The subjunctive 'të vini' (that you come) after 'shpresojmë' (we hope) shows Albanian's subjunctive mood. The possessive 'tona' (our) agrees with the plural nouns 'mendimet dhe zemrat' (thoughts and hearts).",
+          "alt": "Albanian: 'Na mungoni shumë dhe shpresojmë të vini së shpejti për të vizituar familjen. Gjithmonë jeni në mendimet dhe zemrat tona'\n\nEnglish: 'We miss you very much and hope you come soon to visit the family. You are always in our thoughts and hearts'",
           "name": "Family Message Translation"
         },
         {
-          "alt": "Albanian: 'Shqipëria ka një trashëgimi kulturore të pasur që përfshin ndikime ilire, romake, bizantine dhe osmane, duke krijuar një identitet unik ballkanik'\n\nEnglish: 'Albania has a rich cultural heritage that includes Illyrian, Roman, Byzantine and Ottoman influences, creating a unique Balkan identity'\n\nExplanation: This historical text uses the gerund construction 'duke krijuar' (creating), which expresses simultaneous action. The phrase 'trashëgimi kulturore të pasur' shows Albanian's postpositive adjective placement with definite article 'të'. The list of influences 'ilire, romake, bizantine dhe osmane' maintains parallel structure with Albanian's adjectival endings agreeing with the feminine plural 'ndikime' (influences).",
+          "alt": "Albanian: 'Shqipëria ka një trashëgimi kulturore të pasur që përfshin ndikime ilire, romake, bizantine dhe osmane, duke krijuar një identitet unik ballkanik'\n\nEnglish: 'Albania has a rich cultural heritage that includes Illyrian, Roman, Byzantine and Ottoman influences, creating a unique Balkan identity'",
           "name": "Historical Document Translation"
         }
       ]

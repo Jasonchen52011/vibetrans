@@ -49,8 +49,10 @@ export function extractCoreTranslation(fullTranslation: any): CoreTranslation {
     tool: {
       inputLabel: fullTranslation.tool?.inputLabel || 'Input Text',
       outputLabel: fullTranslation.tool?.outputLabel || 'Output Text',
-      inputPlaceholder: fullTranslation.tool?.inputPlaceholder || 'Enter text...',
-      outputPlaceholder: fullTranslation.tool?.outputPlaceholder || 'Translation...',
+      inputPlaceholder:
+        fullTranslation.tool?.inputPlaceholder || 'Enter text...',
+      outputPlaceholder:
+        fullTranslation.tool?.outputPlaceholder || 'Translation...',
       translateButton: fullTranslation.tool?.translateButton || 'Translate',
       uploadButton: fullTranslation.tool?.uploadButton,
       loading: fullTranslation.tool?.loading,
@@ -65,11 +67,13 @@ export function extractCoreTranslation(fullTranslation: any): CoreTranslation {
  */
 export async function loadExtendedTranslation(
   translatorKey: string,
-  locale: string = 'en'
+  locale = 'en'
 ): Promise<Partial<ExtendedTranslation>> {
   try {
     // 这里可以改为API调用或动态导入
-    const module = await import(`../../messages/pages/${translatorKey}/${locale}.json`);
+    const module = await import(
+      `../../messages/pages/${translatorKey}/${locale}.json`
+    );
     const fullTranslation = module.default || module;
 
     // 只返回SEO相关内容
@@ -85,7 +89,10 @@ export async function loadExtendedTranslation(
       cta: fullTranslation.cta,
     };
   } catch (error) {
-    console.warn(`Failed to load extended translation for ${translatorKey}:`, error);
+    console.warn(
+      `Failed to load extended translation for ${translatorKey}:`,
+      error
+    );
     return {};
   }
 }
@@ -98,10 +105,12 @@ export function createOptimizedTranslationLoader(translatorKey: string) {
   const coreTranslations: Record<string, CoreTranslation> = {
     'minion-translator': {
       title: 'Minion Translator - Translate to Banana Language',
-      description: 'Translate your text to Minion banana language with AI-powered precision.',
+      description:
+        'Translate your text to Minion banana language with AI-powered precision.',
       hero: {
         title: 'Best Minion Translator for Banana Language Fun',
-        description: 'Transform your text into hilarious Minion banana language instantly.',
+        description:
+          'Transform your text into hilarious Minion banana language instantly.',
       },
       tool: {
         inputLabel: 'Normal Text',
@@ -117,10 +126,12 @@ export function createOptimizedTranslationLoader(translatorKey: string) {
     },
     'drow-translator': {
       title: 'Drow Translator - AI-Powered Dark Elf Language',
-      description: 'Translate between Drow and 100+ languages with AI-powered precision.',
+      description:
+        'Translate between Drow and 100+ languages with AI-powered precision.',
       hero: {
         title: 'Best Drow Translator for Fantasy Gaming',
-        description: 'Experience accurate Drow translation powered by advanced AI.',
+        description:
+          'Experience accurate Drow translation powered by advanced AI.',
       },
       tool: {
         inputLabel: 'Input Text',
@@ -136,5 +147,7 @@ export function createOptimizedTranslationLoader(translatorKey: string) {
     },
   };
 
-  return coreTranslations[translatorKey] || coreTranslations['minion-translator'];
+  return (
+    coreTranslations[translatorKey] || coreTranslations['minion-translator']
+  );
 }

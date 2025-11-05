@@ -14,7 +14,8 @@ export default function middleware(req: Request) {
   const pathname = url.pathname;
 
   // 使用更简单的检测逻辑，减少字符串操作
-  const isTranslator = pathname.indexOf('translator') > -1 || pathname.indexOf('generator') > -1;
+  const isTranslator =
+    pathname.indexOf('translator') > -1 || pathname.indexOf('generator') > -1;
 
   // 设置翻译检测所需的headers
   response.headers.set('x-pathname', pathname);

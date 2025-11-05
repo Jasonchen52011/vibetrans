@@ -131,38 +131,22 @@
         {
           "title": "Lightning-Fast Translation",
           "icon": "FaRocket",
-          "tagline": "Get instant results in seconds",
-          "statLabel": "Average Speed",
-          "statValue": "2.3 seconds",
-          "description": "Experience rapid Swahili to English translation with our optimized AI technology. Process text paragraphs instantly without waiting.",
-          "microCopy": "No loading time delays"
+          "description": "Experience rapid Swahili to English translation with our optimized AI technology. Process text paragraphs instantly without waiting."
         },
         {
           "title": "High Accuracy Rate",
           "icon": "FaBrain",
-          "tagline": "Professional-grade translation quality",
-          "statLabel": "Accuracy Rate",
-          "statValue": "97%",
-          "description": "Our advanced neural network ensures precise translation, capturing nuances, idioms, and cultural context from Swahili to English.",
-          "microCopy": "Context-aware translation"
+          "description": "Our advanced neural network ensures precise translation, capturing nuances, idioms, and cultural context from Swahili to English."
         },
         {
           "title": "Complete Data Privacy",
           "icon": "FaShieldAlt",
-          "tagline": "Your information stays secure",
-          "statLabel": "Data Protection",
-          "statValue": "100%",
-          "description": "All translations are processed securely with end-to-end encryption. Your Swahili text and English translations are never stored on servers.",
-          "microCopy": "Privacy-first approach"
+          "description": "All translations are processed securely with end-to-end encryption. Your Swahili text and English translations are never stored on servers."
         },
         {
           "title": "Always Free to Use",
           "icon": "FaHeart",
-          "tagline": "No hidden fees or subscriptions",
-          "statLabel": "Cost",
-          "statValue": "Free",
-          "description": "Enjoy unlimited Swahili to English translation without registration, payments, or premium limits. Translate as much as you need.",
-          "microCopy": "Translation without boundaries"
+          "description": "Enjoy unlimited Swahili to English translation without registration, payments, or premium limits. Translate as much as you need."
         }
       ]
     },

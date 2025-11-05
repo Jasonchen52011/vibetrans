@@ -59,6 +59,7 @@ interface TranslatorPageContent {
   highlights: Section;
   funFacts: Section;
   userInterest: Section;
+  unique: Section;
   testimonials: Section;
   faqs: Section;
   cta: {
@@ -115,10 +116,12 @@ function mapSectionItems(
     | undefined,
   icons: string[] = []
 ): Section['items'] {
-  // Handle both array format and object format with item-1, item-2, etc.
+  // Handle both array format and object format with item-1, item-2, etc. or numeric indices
   if (items && typeof items === 'object' && !Array.isArray(items)) {
     // Convert object format to array
     const itemArray = [];
+
+    // First try item-1, item-2 format
     let index = 1;
     while (true) {
       const key = `item-${index}`;
@@ -129,6 +132,21 @@ function mapSectionItems(
         break;
       }
     }
+
+    // If no items found with item-1 format, try numeric indices 0, 1, 2...
+    if (itemArray.length === 0) {
+      index = 0;
+      while (true) {
+        const key = index.toString();
+        if (key in items) {
+          itemArray.push((items as Record<string, unknown>)[key]);
+          index++;
+        } else {
+          break;
+        }
+      }
+    }
+
     items = itemArray;
   }
 
@@ -190,6 +208,15 @@ function buildSection(
   };
 }
 
+// Empty section for sections that don't have data
+const emptySection: Section = {
+  name: '',
+  title: '',
+  subtitle: '',
+  description: '',
+  items: [],
+};
+
 export function buildTranslatorPageContent(
   t: TranslationGetter,
   options: TranslatorPageContentOptions = {}
@@ -210,12 +237,28 @@ export function buildTranslatorPageContent(
   const highlights = (
     typeof t.raw === 'function' ? t.raw('highlights') : null
   ) as Record<string, unknown> | null;
-  const funfacts = (
-    typeof t.raw === 'function' ? t.raw('funfacts') : null
-  ) as Record<string, unknown> | null;
+  let funfacts = null;
+  // Safely check if funfacts section exists without throwing an error
+  try {
+    const funfactsRaw =
+      typeof t.raw === 'function' ? t.raw('funfacts') : undefined;
+    funfacts = funfactsRaw as Record<string, unknown> | null;
+  } catch (error) {
+    // funfacts section not found, will remain null
+    funfacts = null;
+  }
   const userInterest = (
     typeof t.raw === 'function' ? t.raw('userInterest') : null
   ) as Record<string, unknown> | null;
+  let unique = null;
+  // Safely check if unique section exists without throwing an error
+  try {
+    const uniqueRaw = typeof t.raw === 'function' ? t.raw('unique') : undefined;
+    unique = uniqueRaw as Record<string, unknown> | null;
+  } catch (error) {
+    // unique section not found, will remain null
+    unique = null;
+  }
   const testimonials = (
     typeof t.raw === 'function' ? t.raw('testimonials') : null
   ) as Record<string, unknown> | null;
@@ -281,19 +324,16 @@ export function buildTranslatorPageContent(
     },
     howTo: {
       ...howToSection,
-      items: ensureArray(howto?.steps as Array<Record<string, unknown>>).map(
-        (step, index) => ({
-          title:
-            (step.title as string | undefined) ||
-            (step.name as string | undefined) ||
-            '',
-          description: step.description as string | undefined,
-          icon:
-            (step.icon as string | undefined) ||
-            options.howToIcons?.[index] ||
-            undefined,
-        })
-      ),
+      title: (howto?.title as string) || howToSection.title,
+      description: (howto?.description as string) || howToSection.description,
+      items:
+        howto?.steps && typeof howto.steps === 'object'
+          ? Object.values(howto.steps).map((step: any, index: number) => ({
+              title: step.title || '',
+              description: step.description,
+              icon: options.howToIcons?.[index] || undefined,
+            }))
+          : [],
       image:
         normalizeImage(
           howto?.image,
@@ -306,8 +346,13 @@ export function buildTranslatorPageContent(
       { name: 'highlights' },
       options.highlightIcons
     ),
-    funFacts: buildSection(funfacts, { name: 'funfacts' }),
+    funFacts: funfacts
+      ? buildSection(funfacts, { name: 'funfacts' })
+      : { ...emptySection, name: 'funfacts' },
     userInterest: buildSection(userInterest, { name: 'userInterest' }),
+    unique: unique
+      ? buildSection(unique, { name: 'unique' })
+      : { ...emptySection, name: 'unique' },
     testimonials: buildSection(testimonials, { name: 'testimonials' }),
     faqs: buildSection(faqs, { name: 'faqs' }),
     cta: {

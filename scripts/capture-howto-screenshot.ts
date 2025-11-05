@@ -76,13 +76,21 @@ async function captureHowToScreenshot(config: ScreenshotConfig) {
   try {
     // Step 1: Navigate to page
     console.log('🌐 Loading page...');
-    await page.goto(url, { waitUntil: 'networkidle', timeout: 30000 });
+    await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
 
     // Step 2: Wait for content to load
-    console.log('⏳ Waiting for content (5s)...');
-    await page.waitForTimeout(5000);
+    console.log('⏳ Waiting for content (10s)...');
+    await page.waitForTimeout(10000);
 
-    // Step 3: Take screenshot
+    // Step 3: Wait for any dynamic content to load
+    console.log('⏳ Waiting for dynamic content...');
+    try {
+      await page.waitForLoadState('networkidle', { timeout: 10000 });
+    } catch (e) {
+      console.log('   Networkidle timeout, continuing...');
+    }
+
+    // Step 4: Take screenshot
     console.log('📸 Capturing screenshot...');
     await page.screenshot({
       path: tempPngPath,
@@ -91,7 +99,7 @@ async function captureHowToScreenshot(config: ScreenshotConfig) {
 
     console.log('✅ Screenshot captured\n');
 
-    // Step 4: Crop and convert to WebP
+    // Step 5: Crop and convert to WebP
     console.log('✂️  Cropping image...');
     const finalWidth = viewportWidth - cropLeft - cropRight;
     const finalHeight = viewportHeight - cropBottom;
@@ -99,7 +107,7 @@ async function captureHowToScreenshot(config: ScreenshotConfig) {
     console.log(`   Original: ${viewportWidth}x${viewportHeight}`);
     console.log(`   Cropped: ${finalWidth}x${finalHeight}\n`);
 
-    // Step 5: Smart compression to < targetSizeKB
+    // Step 6: Smart compression to < targetSizeKB
     console.log('📦 Converting to WebP with smart compression...');
     let quality = 85;
     let attempt = 1;
@@ -149,11 +157,11 @@ async function captureHowToScreenshot(config: ScreenshotConfig) {
       await fs.unlink(finalWebpPath);
     }
 
-    // Step 6: Cleanup temp file
+    // Step 7: Cleanup temp file
     console.log('🗑️  Cleaning up temp files...');
     await unlink(tempPngPath);
 
-    // Step 7: Final summary
+    // Step 8: Final summary
     const fs = await import('fs/promises');
     const finalStats = await fs.stat(finalWebpPath);
     const finalSize = finalStats.size / 1024;

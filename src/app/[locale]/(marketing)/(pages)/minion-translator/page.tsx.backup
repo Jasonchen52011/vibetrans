@@ -1,0 +1,172 @@
+import CallToActionSection from '@/components/blocks/calltoaction/calltoaction';
+import ExploreOurAiTools from '@/components/blocks/exploretools';
+import SEOContentLoader, { SEOContentRenderer } from '@/components/blocks/seo-content-loader';
+import { AuroraBackground } from '@/components/ui/aurora-background';
+import { constructMetadata } from '@/lib/metadata';
+import { buildToolStructuredData } from '@/lib/seo/structured-data';
+import { extractCoreTranslation } from '@/lib/translation-split';
+import { getUrlWithLocale } from '@/lib/urls/urls';
+import type { Metadata } from 'next';
+import type { Locale } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
+import MinionTranslatorTool from './MinionTranslatorTool';
+import './types'; // 导入类型声明
+
+export const runtime = 'edge';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}): Promise<Metadata | undefined> {
+  const { locale } = await params;
+
+  // 使用标准 getTranslations 获取翻译
+  const t = await getTranslations({
+    locale,
+    namespace: 'MinionTranslatorPage',
+  });
+  const metadataT = await getTranslations({ locale, namespace: 'Metadata' });
+
+  return constructMetadata({
+    title: `${t('title')} | ${metadataT('name')}`,
+    description: t('description'),
+    canonicalUrl: getUrlWithLocale('/minion-translator', locale),
+    image: t('whatIs.image'),
+  });
+}
+
+interface MinionTranslatorPageProps {
+  params: Promise<{ locale: Locale }>;
+}
+
+export default async function MinionTranslatorPage(
+  props: MinionTranslatorPageProps
+) {
+  const params = await props.params;
+  const { locale } = params;
+
+  // 使用优化的翻译获取 - 仅加载核心翻译内容
+  const t = await getTranslations({
+    locale,
+    namespace: 'MinionTranslatorPage',
+  });
+
+  // 提取核心翻译内容，避免加载SEO内容到bundle
+  const coreTranslation = extractCoreTranslation({
+    MinionTranslatorPage: {
+      title: t('title'),
+      description: t('description'),
+      hero: {
+        title: t('hero.title'),
+        description: t('hero.description'),
+      },
+      tool: {
+        inputLabel: t('tool.inputLabel'),
+        outputLabel: t('tool.outputLabel'),
+        inputPlaceholder: t('tool.inputPlaceholder'),
+        outputPlaceholder: t('tool.outputPlaceholder'),
+        translateButton: t('tool.translateButton'),
+        uploadButton: t('tool.uploadButton'),
+        loading: t('tool.loading'),
+        error: t('tool.error'),
+      },
+      ctaButton: t('ctaButton'),
+    }
+  });
+
+  // Structured Data for SEO
+  const structuredData = buildToolStructuredData({
+    name: 'VibeTrans Minion Translator',
+    description: coreTranslation.description,
+  });
+
+  // 构建轻量级页面数据
+  const pageData = {
+    tool: coreTranslation.tool,
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <div className="flex flex-col">
+        {/* Hero Section */}
+        <AuroraBackground className="bg-white dark:bg-zinc-900 !pt-12 !h-auto">
+          <div className="container max-w-7xl mx-auto px-4 text-center relative z-10 pb-8">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+              {coreTranslation.hero.title}
+            </h1>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
+              {coreTranslation.hero.description}
+            </p>
+
+            {/* User Avatars and Rating */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <div className="flex -space-x-3">
+                {['female3', 'male1', 'female4', 'male2', 'female1'].map(
+                  (avatar, i) => (
+                    <div
+                      key={i}
+                      className="relative h-12 w-12 rounded-full border-2 border-white dark:border-zinc-800 overflow-hidden"
+                    >
+                      <img
+                        src={`/images/avatars/${avatar}.webp`}
+                        alt={`User ${i + 1}`}
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
+                  )
+                )}
+              </div>
+              <div className="flex flex-col items-center sm:items-start gap-1">
+                <div className="flex items-center gap-0.5">
+                  {[...Array(5)].map((_, i) => (
+                    <svg
+                      key={i}
+                      className="w-6 h-6 text-yellow-400"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  from 20,000+ happy users
+                </p>
+              </div>
+            </div>
+          </div>
+        </AuroraBackground>
+
+        {/* Tool Component */}
+        <div className="pt-0 pb-12 bg-gradient-to-b from-muted/20 to-background">
+          <MinionTranslatorTool
+            pageData={pageData}
+            locale={locale}
+          />
+        </div>
+
+        {/* SEO Content - 异步加载，不包含在服务器bundle中 */}
+        <SEOContentLoader translatorKey="minion-translator" locale={locale}>
+          {(seoContent) => <SEOContentRenderer content={seoContent} />}
+        </SEOContentLoader>
+
+        {/* Explore Other Tools */}
+        <ExploreOurAiTools
+          toolKeys={[
+            'Gen Z Translator',
+            'Dog Translator',
+            'Bad Translator',
+            'Ancient Greek Translator',
+            'Gibberish Translator',
+            'Esperanto Translator',
+          ]}
+        />
+      </div>
+    </>
+  );
+}

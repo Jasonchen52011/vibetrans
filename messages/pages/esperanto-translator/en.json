@@ -40,7 +40,33 @@
     },
     "examples": {
       "title": "Example Translations Using Esperanto Translator",
-      "description": "Try translating Esperanto texts, documents, and even voice messages with VibeTrans. Experience quick, accurate translations that help you understand and communicate effortlessly in Esperanto. Perfect for learners and professionals alike!"
+      "description": "Try translating Esperanto texts, documents, and even voice messages with VibeTrans. Experience quick, accurate translations that help you understand and communicate effortlessly in Esperanto. Perfect for learners and professionals alike!",
+      "items": [
+        {
+          "alt": "Hello, my friend! How are you today? → Saluton, mia amiko! Kiel vi fartas hodiaŭ?",
+          "name": "Everyday Greeting"
+        },
+        {
+          "alt": "I love learning new languages → Mi amas lerni novajn lingvojn",
+          "name": "Language Learning"
+        },
+        {
+          "alt": "The weather is beautiful today → La vetero estas bela hodiaŭ",
+          "name": "Weather Conversation"
+        },
+        {
+          "alt": "Where is the train station? → Kie estas la trajnstacidomo?",
+          "name": "Travel Inquiry"
+        },
+        {
+          "alt": "Thank you very much for your help → Dankon tre multe por via helpo",
+          "name": "Expression of Gratitude"
+        },
+        {
+          "alt": "Peace and love to everyone → Paco kaj amo al ĉiuj",
+          "name": "Universal Message"
+        }
+      ]
     },
     "howto": {
       "title": "How to Translate English to Esperanto",
@@ -200,7 +226,7 @@
         {
           "title": "Esperanto in NASA's Golden Record",
           "description": "Did you know that Esperanto is included in NASA's Golden Record? It's a symbolic message from humanity to any potential extraterrestrial life. It's amazing how Esperanto is used to bridge worlds beyond Earth!",
-          "image": "/images/docs/esperanto-translator-how-to.webp",
+          "image": "/images/docs/esperanto-nasa-golden-record.webp",
           "imageAlt": "Esperanto in NASA's Golden Record"
         },
         {

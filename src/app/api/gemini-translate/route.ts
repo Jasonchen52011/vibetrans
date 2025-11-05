@@ -1,5 +1,5 @@
 import { GoogleGenerativeAI } from '@/lib/ai/gemini';
-import { NextRequest, NextResponse } from 'next/server';
+import { type NextRequest, NextResponse } from 'next/server';
 
 export const runtime = 'edge';
 
@@ -65,7 +65,6 @@ export async function POST(request: NextRequest) {
         candidatesTokens: result.response.usageMetadata?.candidatesTokenCount,
       },
     });
-
   } catch (error: any) {
     console.error('Gemini translation error:', error);
 
@@ -77,7 +76,10 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    if (error.message.includes('quota') || error.message.includes('rate limit')) {
+    if (
+      error.message.includes('quota') ||
+      error.message.includes('rate limit')
+    ) {
       return NextResponse.json(
         { error: 'API quota exceeded. Please try again later.' },
         { status: 429 }
@@ -94,7 +96,8 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(
       {
         error: 'Translation failed',
-        details: process.env.NODE_ENV === 'development' ? error.message : undefined,
+        details:
+          process.env.NODE_ENV === 'development' ? error.message : undefined,
       },
       { status: 500 }
     );
@@ -111,7 +114,7 @@ export async function GET() {
       return NextResponse.json(
         {
           status: 'error',
-          message: 'Missing API key configuration'
+          message: 'Missing API key configuration',
         },
         { status: 500 }
       );
@@ -129,13 +132,16 @@ export async function GET() {
       model: 'gemini-2.0-flash',
       timestamp: new Date().toISOString(),
     });
-
   } catch (error: any) {
-    return NextResponse.json({
-      status: 'error',
-      message: 'Gemini API is not accessible',
-      error: process.env.NODE_ENV === 'development' ? error.message : undefined,
-    }, { status: 500 });
+    return NextResponse.json(
+      {
+        status: 'error',
+        message: 'Gemini API is not accessible',
+        error:
+          process.env.NODE_ENV === 'development' ? error.message : undefined,
+      },
+      { status: 500 }
+    );
   }
 }
 

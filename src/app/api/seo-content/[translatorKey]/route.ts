@@ -1,5 +1,5 @@
-import { NextRequest, NextResponse } from 'next/server';
 import { loadExtendedTranslation } from '@/lib/translation-split';
+import { type NextRequest, NextResponse } from 'next/server';
 
 export const runtime = 'edge';
 
@@ -73,18 +73,21 @@ export async function GET(
     // 验证locale
     const validLocales = ['en', 'zh'];
     if (!validLocales.includes(locale)) {
-      return NextResponse.json(
-        { error: 'Invalid locale' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Invalid locale' }, { status: 400 });
     }
 
     // 加载扩展翻译内容
-    const extendedContent = await loadExtendedTranslation(translatorKey, locale);
+    const extendedContent = await loadExtendedTranslation(
+      translatorKey,
+      locale
+    );
 
     // 设置缓存头
     const response = NextResponse.json(extendedContent);
-    response.headers.set('Cache-Control', 'public, max-age=3600, s-maxage=3600');
+    response.headers.set(
+      'Cache-Control',
+      'public, max-age=3600, s-maxage=3600'
+    );
     response.headers.set('CDN-Cache-Control', 'public, max-age=3600');
 
     return response;
@@ -94,7 +97,7 @@ export async function GET(
     return NextResponse.json(
       {
         error: 'Failed to load SEO content',
-        message: error instanceof Error ? error.message : 'Unknown error'
+        message: error instanceof Error ? error.message : 'Unknown error',
       },
       { status: 500 }
     );

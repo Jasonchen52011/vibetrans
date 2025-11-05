@@ -36,23 +36,30 @@ export async function POST(request: Request) {
     const prompt = `Translate this English text to Amharic, return only the translation without explanation: "${text}"`;
 
     // 调用 Gemini 2.0 Flash API
-    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        contents: [{
-          parts: [{
-            text: prompt
-          }]
-        }],
-        generationConfig: {
-          temperature: 0.3,
-          maxOutputTokens: 2048,
-        }
-      })
-    });
+    const response = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          contents: [
+            {
+              parts: [
+                {
+                  text: prompt,
+                },
+              ],
+            },
+          ],
+          generationConfig: {
+            temperature: 0.3,
+            maxOutputTokens: 2048,
+          },
+        }),
+      }
+    );
 
     if (!response.ok) {
       const errorBody = await response.text();
@@ -75,16 +82,17 @@ export async function POST(request: Request) {
 
     // 提供更详细的错误信息用于调试
     const errorMessage = error?.message || 'Unknown error occurred';
-    const errorDetails = process.env.NODE_ENV === 'development'
-      ? { fullError: error.toString(), stack: error.stack }
-      : {};
+    const errorDetails =
+      process.env.NODE_ENV === 'development'
+        ? { fullError: error.toString(), stack: error.stack }
+        : {};
 
     return Response.json(
       {
         error: 'Translation failed. Please try again.',
         details: errorMessage,
         debug: errorDetails,
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       },
       { status: 500 }
     );

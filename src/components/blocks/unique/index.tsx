@@ -14,7 +14,7 @@ export default function UniqueSection({
   section,
   ctaText = 'Try VibeTrans Translator Now!',
 }: UniqueSectionProps) {
-  if (section.disabled) {
+  if (section.disabled || !section.items || section.items.length === 0) {
     return null;
   }
 

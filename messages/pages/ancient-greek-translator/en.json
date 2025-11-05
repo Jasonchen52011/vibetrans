@@ -52,7 +52,33 @@
     },
     "examples": {
       "title": "Example Translations with Ancient Greek Translator",
-      "description": "See how VibeTrans can translate complex Ancient Greek texts accurately. Whether you're translating philosophical works or historical documents, experience AI-powered precision and context awareness in action."
+      "description": "See how VibeTrans can translate complex Ancient Greek texts accurately. Whether you're translating philosophical works or historical documents, experience AI-powered precision and context awareness in action.",
+      "items": [
+        {
+          "alt": "English: The unexamined life is not worth living.\n\nAncient Greek: ὁ ἄνθρωπος τὸν βίον ἀνεξέταston οὐ ζῇ\n\nContext: Socrates' famous dict emphasizing the importance of self-reflection and philosophical inquiry in Ancient Greek culture.",
+          "name": "Philosophy Translation"
+        },
+        {
+          "alt": "Ancient Greek: ἡ ἀρετὴ εὐδαιμονία\n\nEnglish: Virtue is happiness\n\nContext: Aristotle's ethical philosophy connecting moral excellence with human flourishing in Nicomachean Ethics.",
+          "name": "Aristotle Translation"
+        },
+        {
+          "alt": "English: The battle of Marathon changed history forever.\n\nAncient Greek: ἡ μάχη τοῦ Μαραθῶνος τὴν ἱστορίαν ἀεὶ ἀλλαγὰν ποίησεν\n\nContext: The pivotal 490 BCE battle where Athenians defeated Persian invaders, preserving Greek independence and democracy.",
+          "name": "Historical Translation"
+        },
+        {
+          "alt": "Ancient Greek: μῆνιν ἄειδε θεὰ Πηληϊάδεω Ἀχιλῆος\n\nEnglish: Sing, O goddess, the anger of Achilles\n\nContext: The opening line of Homer's Iliad, introducing the central theme of wrath and its consequences in the Trojan War.",
+          "name": "Homer Translation"
+        },
+        {
+          "alt": "English: The ratio of circumference to diameter equals pi.\n\nAncient Greek: ὁ λόγος τῆς περιμετρίας πρὸς τὴν διάμετρον ἴσος ἐστὶ τῷ π\n\nContext: Pythagorean and Euclidean mathematical concepts that formed the foundation of Greek geometry and mathematical reasoning.",
+          "name": "Mathematics Translation"
+        },
+        {
+          "alt": "Ancient Greek: ὁ ἄνθρωπος τὸν βίον ἐξετάζειν ὀφείλει\n\nEnglish: Man must examine his life\n\nContext: Socratic method emphasizing critical self-examination as the foundation of wisdom and virtuous living in Ancient Greek philosophy.",
+          "name": "Socratic Translation"
+        }
+      ]
     },
     "howto": {
       "title": "How to Translate English to Ancient Greek",
@@ -96,7 +122,7 @@
         {
           "title": "Cultural Insights in Ancient Greek Translations",
           "description": "Ancient Greek isn't just a language; it's a window into ancient culture. VibeTrans adds relevant cultural annotations to your translations, enriching your understanding of Greek literature, philosophy, and history. It's like bringing the past into the present.",
-          "image": "/images/docs/rune-ancient-carving-mystical.webp",
+          "image": "/images/docs/ancient-greek-cultural-insights.webp",
           "imageAlt": "Cultural Insights in Ancient Greek Translations"
         },
         {
@@ -228,7 +254,7 @@
         {
           "title": "Did you know Ancient Greek influenced many modern languages?",
           "description": "Some English words like 'democracy' and 'philosophy' come directly from Greek! It's amazing how a language so old still impacts us today.",
-          "image": "/images/docs/ancient-greek-translator-how-to.webp",
+          "image": "/images/docs/ancient-greek-modern-influence.webp",
           "imageAlt": "Did you know Ancient Greek influenced many modern languages?"
         },
         {

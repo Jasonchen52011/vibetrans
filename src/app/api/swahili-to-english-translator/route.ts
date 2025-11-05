@@ -10,7 +10,10 @@ type TranslationRequest = {
 };
 
 // 使用Gemini直接翻译
-async function callGeminiDirectly(text: string, mode: string = 'general'): Promise<string | null> {
+async function callGeminiDirectly(
+  text: string,
+  mode = 'general'
+): Promise<string | null> {
   const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
   if (!apiKey) {
     return null;
@@ -24,23 +27,30 @@ ${text}
 Provide only the direct translation without explanations or additional text.`;
 
   try {
-    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        contents: [{
-          parts: [{
-            text: prompt
-          }]
-        }],
-        generationConfig: {
-          temperature: 0.3,
-          maxOutputTokens: 2048,
-        }
-      })
-    });
+    const response = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          contents: [
+            {
+              parts: [
+                {
+                  text: prompt,
+                },
+              ],
+            },
+          ],
+          generationConfig: {
+            temperature: 0.3,
+            maxOutputTokens: 2048,
+          },
+        }),
+      }
+    );
 
     if (!response.ok) {
       const errorText = await response.text();
@@ -51,7 +61,8 @@ Provide only the direct translation without explanations or additional text.`;
     }
 
     const data = await response.json();
-    const translatedText = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
+    const translatedText =
+      data.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
 
     return translatedText || null;
   } catch (error) {
@@ -69,7 +80,7 @@ export async function POST(request: Request) {
       text,
       inputType = 'text',
       direction = 'auto',
-      mode = 'general'
+      mode = 'general',
     }: TranslationRequest = body;
 
     if (!text || typeof text !== 'string') {

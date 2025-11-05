@@ -64,7 +64,7 @@ export default async function EnglishToPolishTranslatorPage(
     howToIcons: ['FaFileUpload', 'FaPencilAlt', 'FaLanguage', 'FaCheckCircle'],
   });
 
-  // Highlights section
+  // Highlights section - 使用JSON中定义的结构
   const fallbackHighlightDescription =
     'VibeTrans offers the best translation experience with powerful features and accurate results.';
 
@@ -87,25 +87,26 @@ export default async function EnglishToPolishTranslatorPage(
 
   let highlightItems = [];
   try {
-    const rawFeatures = t.raw('highlights.features');
-    if (Array.isArray(rawFeatures)) {
-      highlightItems = rawFeatures.slice(0, 4).map((feature, index) => ({
+    const rawItems = t.raw('highlights.items');
+    if (Array.isArray(rawItems)) {
+      highlightItems = rawItems.slice(0, 4).map((item, index) => ({
         icon:
-          feature?.icon ||
+          item?.icon ||
           defaultHighlightIcons[index % defaultHighlightIcons.length],
-        title: feature?.title || '',
-        description: feature?.description || '',
+        title: item?.title || '',
+        description: item?.description || '',
       }));
     }
   } catch {
     highlightItems = [];
   }
 
+  // 如果JSON中没有定义items，则使用fallback
   if (highlightItems.length === 0) {
     highlightItems = defaultHighlightIcons.map((icon, index) => ({
       icon,
-      title: t(`highlights.features.${index}.title`),
-      description: t(`highlights.features.${index}.description`),
+      title: t(`highlights.items.${index}.title`),
+      description: t(`highlights.items.${index}.description`),
     }));
   }
 

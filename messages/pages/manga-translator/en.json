@@ -66,27 +66,22 @@
       "description": "Learn to translate manga effortlessly in just a few steps.",
       "steps": [
         {
-          "name": "Upload Your Manga",
-          "description": "Start by uploading your manga pages to our platform. Ensure images are clear for optimal bubble detection and text recognition.",
-          "wordCount": 27
+          "title": "Upload Your Manga",
+          "description": "Start by uploading your manga pages to our platform. Ensure images are clear for optimal bubble detection and text recognition."
         },
         {
-          "name": "Choose Translation Mode",
-          "description": "Select from our professional translation modes that suit your needs, whether it's technical or literary style.",
-          "wordCount": 24
+          "title": "Choose Translation Mode",
+          "description": "Select from our professional translation modes that suit your needs, whether it's technical or literary style."
         },
         {
-          "name": "Review and Edit",
-          "description": "Review translated content. Utilize our AI tools to edit and refine translations, ensuring they meet your quality standards.",
-          "wordCount": 24
+          "title": "Review and Edit",
+          "description": "Review translated content. Utilize our AI tools to edit and refine translations, ensuring they meet your quality standards."
         },
         {
-          "name": "Download and Share",
-          "description": "Once satisfied, download your translated manga in your preferred format, ready to share with your audience.",
-          "wordCount": 23
+          "title": "Download and Share",
+          "description": "Once satisfied, download your translated manga in your preferred format, ready to share with your audience."
         }
       ],
-      "totalWordCount": 98,
       "image": "/images/docs/manga-translator-how-to.webp",
       "imageAlt": "How to Translate Manga with Ease"
     },

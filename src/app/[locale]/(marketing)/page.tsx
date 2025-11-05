@@ -50,7 +50,7 @@ export default async function HomePage(props: HomePageProps) {
   const t = await getTranslations('HomePage');
 
   // 创建安全的翻译函数
-  const safeT = (key: string, defaultValue: string = '') => {
+  const safeT = (key: string, defaultValue = '') => {
     try {
       const v = t(key);
       if (typeof v === 'string' && !v.includes(key)) {
@@ -79,7 +79,10 @@ export default async function HomePage(props: HomePageProps) {
     items: [
       {
         title: safeT('funfacts.items.0.title', 'Global Language Support'),
-        description: safeT('funfacts.items.0.description', 'Our platform supports over 100 languages, from major world languages to regional dialects and even fictional languages.'),
+        description: safeT(
+          'funfacts.items.0.description',
+          'Our platform supports over 100 languages, from major world languages to regional dialects and even fictional languages.'
+        ),
         image: {
           src: '/images/docs/funfact-languages.webp',
           alt: 'Language Diversity',
@@ -87,7 +90,10 @@ export default async function HomePage(props: HomePageProps) {
       },
       {
         title: safeT('funfacts.items.1.title', 'AI-Powered Context'),
-        description: safeT('funfacts.items.1.description', 'Our advanced AI understands context, emotions, and cultural nuances to provide translations that feel natural and appropriate.'),
+        description: safeT(
+          'funfacts.items.1.description',
+          'Our advanced AI understands context, emotions, and cultural nuances to provide translations that feel natural and appropriate.'
+        ),
         image: {
           src: '/images/docs/funfact-ai-emotional.webp',
           alt: 'Emotional AI Translation',
@@ -340,76 +346,178 @@ export default async function HomePage(props: HomePageProps) {
         {/* 用户评论（用户留言输入框）*/}
         <TestimonialsSection
           title={safeT('testimonials.title', 'Customer Reviews')}
-          subtitle={safeT('testimonials.subtitle', 'What our users are saying about VibeTrans')}
+          subtitle={safeT(
+            'testimonials.subtitle',
+            'What our users are saying about VibeTrans'
+          )}
           items={[
             {
               name: safeT('testimonials.items.item-1.name', 'John Doe'),
               role: safeT('testimonials.items.item-1.role', 'Verified User'),
-              image: safeT('testimonials.items.item-1.image', '/images/testimonials/default-avatar.webp'),
-              heading: safeT('testimonials.items.item-1.heading', 'Great Translation Service'),
-              content: safeT('testimonials.items.item-1.content', 'This translation service helped me communicate effectively across languages.'),
-              rating: (() => { const v = safeT('testimonials.items.item-1.rating', '5.0'); const n = Number(v); return Number.isNaN(n) ? 5.0 : n; })(),
+              image: safeT(
+                'testimonials.items.item-1.image',
+                '/images/testimonials/default-avatar.webp'
+              ),
+              heading: safeT(
+                'testimonials.items.item-1.heading',
+                'Great Translation Service'
+              ),
+              content: safeT(
+                'testimonials.items.item-1.content',
+                'This translation service helped me communicate effectively across languages.'
+              ),
+              rating: (() => {
+                const v = safeT('testimonials.items.item-1.rating', '5.0');
+                const n = Number(v);
+                return Number.isNaN(n) ? 5.0 : n;
+              })(),
               date: safeT('testimonials.items.item-1.date', '2024-01-01'),
-              verified: safeT('testimonials.items.item-1.verified', 'true') === 'true',
+              verified:
+                safeT('testimonials.items.item-1.verified', 'true') === 'true',
             },
             {
               name: safeT('testimonials.items.item-2.name', 'Jane Smith'),
-              role: safeT('testimonials.items.item-2.role', 'Language Enthusiast'),
-              image: safeT('testimonials.items.item-2.image', '/images/testimonials/default-avatar.webp'),
-              heading: safeT('testimonials.items.item-2.heading', 'Accurate and Fast'),
-              content: safeT('testimonials.items.item-2.content', 'The translations are incredibly accurate and the response time is amazing.'),
-              rating: (() => { const v = safeT('testimonials.items.item-2.rating', '5.0'); const n = Number(v); return Number.isNaN(n) ? 5.0 : n; })(),
+              role: safeT(
+                'testimonials.items.item-2.role',
+                'Language Enthusiast'
+              ),
+              image: safeT(
+                'testimonials.items.item-2.image',
+                '/images/testimonials/default-avatar.webp'
+              ),
+              heading: safeT(
+                'testimonials.items.item-2.heading',
+                'Accurate and Fast'
+              ),
+              content: safeT(
+                'testimonials.items.item-2.content',
+                'The translations are incredibly accurate and the response time is amazing.'
+              ),
+              rating: (() => {
+                const v = safeT('testimonials.items.item-2.rating', '5.0');
+                const n = Number(v);
+                return Number.isNaN(n) ? 5.0 : n;
+              })(),
               date: safeT('testimonials.items.item-2.date', '2024-01-01'),
-              verified: safeT('testimonials.items.item-2.verified', 'true') === 'true',
+              verified:
+                safeT('testimonials.items.item-2.verified', 'true') === 'true',
             },
             {
               name: safeT('testimonials.items.item-3.name', 'Mike Johnson'),
-              role: safeT('testimonials.items.item-3.role', 'Business Professional'),
-              image: safeT('testimonials.items.item-3.image', '/images/testimonials/default-avatar.webp'),
-              heading: safeT('testimonials.items.item-3.heading', 'Essential Business Tool'),
-              content: safeT('testimonials.items.item-3.content', 'This tool has become essential for our international business communications.'),
-              rating: (() => { const v = safeT('testimonials.items.item-3.rating', '5.0'); const n = Number(v); return Number.isNaN(n) ? 5.0 : n; })(),
+              role: safeT(
+                'testimonials.items.item-3.role',
+                'Business Professional'
+              ),
+              image: safeT(
+                'testimonials.items.item-3.image',
+                '/images/testimonials/default-avatar.webp'
+              ),
+              heading: safeT(
+                'testimonials.items.item-3.heading',
+                'Essential Business Tool'
+              ),
+              content: safeT(
+                'testimonials.items.item-3.content',
+                'This tool has become essential for our international business communications.'
+              ),
+              rating: (() => {
+                const v = safeT('testimonials.items.item-3.rating', '5.0');
+                const n = Number(v);
+                return Number.isNaN(n) ? 5.0 : n;
+              })(),
               date: safeT('testimonials.items.item-3.date', '2024-01-01'),
-              verified: safeT('testimonials.items.item-3.verified', 'true') === 'true',
+              verified:
+                safeT('testimonials.items.item-3.verified', 'true') === 'true',
             },
             {
               name: safeT('testimonials.items.item-4.name', 'Sarah Lee'),
               role: safeT('testimonials.items.item-4.role', 'Language Student'),
-              image: safeT('testimonials.items.item-4.image', '/images/testimonials/default-avatar.webp'),
-              heading: safeT('testimonials.items.item-4.heading', 'Perfect for Learning'),
-              content: safeT('testimonials.items.item-4.content', 'As a language student, this tool helps me understand nuances and context better.'),
-              rating: (() => { const v = safeT('testimonials.items.item-4.rating', '5.0'); const n = Number(v); return Number.isNaN(n) ? 5.0 : n; })(),
+              image: safeT(
+                'testimonials.items.item-4.image',
+                '/images/testimonials/default-avatar.webp'
+              ),
+              heading: safeT(
+                'testimonials.items.item-4.heading',
+                'Perfect for Learning'
+              ),
+              content: safeT(
+                'testimonials.items.item-4.content',
+                'As a language student, this tool helps me understand nuances and context better.'
+              ),
+              rating: (() => {
+                const v = safeT('testimonials.items.item-4.rating', '5.0');
+                const n = Number(v);
+                return Number.isNaN(n) ? 5.0 : n;
+              })(),
               date: safeT('testimonials.items.item-4.date', '2024-01-01'),
-              verified: safeT('testimonials.items.item-4.verified', 'true') === 'true',
+              verified:
+                safeT('testimonials.items.item-4.verified', 'true') === 'true',
             },
             {
               name: safeT('testimonials.items.item-5.name', 'David Brown'),
               role: safeT('testimonials.items.item-5.role', 'Travel Blogger'),
-              image: safeT('testimonials.items.item-5.image', '/images/testimonials/default-avatar.webp'),
-              heading: safeT('testimonials.items.item-5.heading', 'Travel Companion'),
-              content: safeT('testimonials.items.item-5.content', 'I use this daily for my travel blog. It captures the perfect tone every time.'),
-              rating: (() => { const v = safeT('testimonials.items.item-5.rating', '5.0'); const n = Number(v); return Number.isNaN(n) ? 5.0 : n; })(),
+              image: safeT(
+                'testimonials.items.item-5.image',
+                '/images/testimonials/default-avatar.webp'
+              ),
+              heading: safeT(
+                'testimonials.items.item-5.heading',
+                'Travel Companion'
+              ),
+              content: safeT(
+                'testimonials.items.item-5.content',
+                'I use this daily for my travel blog. It captures the perfect tone every time.'
+              ),
+              rating: (() => {
+                const v = safeT('testimonials.items.item-5.rating', '5.0');
+                const n = Number(v);
+                return Number.isNaN(n) ? 5.0 : n;
+              })(),
               date: safeT('testimonials.items.item-5.date', '2024-01-01'),
-              verified: safeT('testimonials.items.item-5.verified', 'true') === 'true',
+              verified:
+                safeT('testimonials.items.item-5.verified', 'true') === 'true',
             },
             {
               name: safeT('testimonials.items.item-6.name', 'Emily Wilson'),
               role: safeT('testimonials.items.item-6.role', 'Content Creator'),
-              image: safeT('testimonials.items.item-6.image', '/images/testimonials/default-avatar.webp'),
-              heading: safeT('testimonials.items.item-6.heading', 'Content Creation Essential'),
-              content: safeT('testimonials.items.item-6.content', 'Perfect for creating multilingual content that feels natural and engaging.'),
-              rating: (() => { const v = safeT('testimonials.items.item-6.rating', '5.0'); const n = Number(v); return Number.isNaN(n) ? 5.0 : n; })(),
+              image: safeT(
+                'testimonials.items.item-6.image',
+                '/images/testimonials/default-avatar.webp'
+              ),
+              heading: safeT(
+                'testimonials.items.item-6.heading',
+                'Content Creation Essential'
+              ),
+              content: safeT(
+                'testimonials.items.item-6.content',
+                'Perfect for creating multilingual content that feels natural and engaging.'
+              ),
+              rating: (() => {
+                const v = safeT('testimonials.items.item-6.rating', '5.0');
+                const n = Number(v);
+                return Number.isNaN(n) ? 5.0 : n;
+              })(),
               date: safeT('testimonials.items.item-6.date', '2024-01-01'),
-              verified: safeT('testimonials.items.item-6.verified', 'true') === 'true',
+              verified:
+                safeT('testimonials.items.item-6.verified', 'true') === 'true',
             },
           ]}
         />
 
         <CallToActionSection
           title={safeT('calltoaction.title', 'Start Translating Today')}
-          description={safeT('calltoaction.description', 'Join millions of users who trust VibeTrans for accurate, fast, and reliable translations. Break language barriers with confidence.')}
-          primaryButton={safeT('calltoaction.primaryButton', 'Get Started Free')}
-          secondaryButton={safeT('calltoaction.secondaryButton', 'View Pricing')}
+          description={safeT(
+            'calltoaction.description',
+            'Join millions of users who trust VibeTrans for accurate, fast, and reliable translations. Break language barriers with confidence.'
+          )}
+          primaryButton={safeT(
+            'calltoaction.primaryButton',
+            'Get Started Free'
+          )}
+          secondaryButton={safeT(
+            'calltoaction.secondaryButton',
+            'View Pricing'
+          )}
         />
       </div>
     </>

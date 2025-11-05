@@ -196,27 +196,6 @@
           "heading": "Enhanced My Learning",
           "content": "VibeTrans's visual tone feature is a game-changer for my Cantonese studies. Clicking each word to hear its pronunciation helped me grasp the tonal differences better. It's a must-have tool for any serious Cantonese learner.",
           "rating": "4.7"
-        },
-        "item-4": {
-          "name": "陈志强",
-          "role": "企业主",
-          "heading": "商务沟通必备",
-          "content": "经营香港与海外的进出口贸易业务，我每天都需要准确的粤语翻译。VibeTrans处理从正式商业文件到休闲WhatsApp消息的所有内容，精度令人惊叹。",
-          "rating": "4.9"
-        },
-        "item-5": {
-          "name": "阿曼达·福斯特",
-          "role": "美食博主",
-          "heading": "美食探险完美伴侣",
-          "content": "有了VibeTrans，探索香港街头美食文化变得轻松多了。我可以翻译菜单、向小贩询问食材、理解当地美食推荐。就像口袋里装着一个本地美食朋友！",
-          "rating": "5.0"
-        },
-        "item-6": {
-          "name": "罗伯特·金博士",
-          "role": "医学研究员",
-          "heading": "学术研究必备工具",
-          "content": "在进行粤语受访者的研究访谈时，VibeTrans非常宝贵。它在处理专业术语和保持跨语言意义方面的准确性，为我节省了无数小时的转录工作。",
-          "rating": "4.8"
         }
       }
     },
@@ -278,7 +257,7 @@
         {
           "title": "Six Tones Challenge",
           "description": "Did you know Cantonese has six basic tones? Many learners find tone 3 (mid-rising) and tone 4 (falling) the trickiest. Master these tones and you're halfway to fluency! VibeTrans helps visualize these tones for easier learning.",
-          "image": "/images/docs/cantonese-translation-technology-ai.webp",
+          "image": "/images/docs/cantonese-six-tones-challenge.webp",
           "imageAlt": "Six Tones Challenge"
         },
         {

@@ -1,6 +1,6 @@
 /**
- * Regenerate Telugu to English Translator images for specific sections
- * With smart prompt comparison before generation using Volcano 4.0 API
+ * Regenerate "Girls and Boys in Middle English" image for Middle English Translator
+ * With smart prompt generation using Volcano 4.0 API and 4:3 aspect ratio
  */
 
 import fs from 'node:fs/promises';
@@ -55,7 +55,7 @@ async function downloadAndConvertImage(
   // 确保输出目录存在
   await fs.mkdir(path.dirname(outputPath), { recursive: true });
 
-  // Convert to WebP with optimization for 90kb target
+  // Convert to WebP with optimization and strict 4:3 aspect ratio
   await sharp(buffer)
     .webp({
       quality: 75,
@@ -63,8 +63,8 @@ async function downloadAndConvertImage(
       method: 6,
       smartSubsample: true,
     })
-    .resize(1200, 900, {
-      fit: 'inside',
+    .resize(1600, 1200, {
+      fit: 'fill',
       withoutEnlargement: true,
     })
     .toFile(outputPath);
@@ -72,22 +72,12 @@ async function downloadAndConvertImage(
   console.log(`✅ Image saved and converted to WebP: ${outputPath}`);
 }
 
-// 三个部分的内容配置 - Wingdings Translator
+// "Medieval Language Heritage & Literary Evolution" 内容配置
 const SECTIONS = [
   {
-    title: 'Design Applications',
-    content: `Discover creative ways to use Wingdings symbols in graphic design, presentations, and digital art projects. From logos to infographics, Wingdings adds a unique visual element that captures attention and conveys meaning through symbolic representation.`,
-    filename: 'wingdings-translator-interest-3',
-  },
-  {
-    title: "Microsoft's Creation",
-    content: `Wingdings was created by Microsoft in 1990 as part of the Windows 3.1 operating system. It was designed to include a variety of useful symbols for documents, becoming one of the most recognizable symbolic fonts in digital history.`,
-    filename: 'wingdings-translator-fact-1',
-  },
-  {
-    title: 'Hidden Easter Eggs',
-    content: `Wingdings contains several Easter eggs. For example, typing NYC displays symbols that some people interpreted as anti-Semitic, leading to controversy in the 1990s. These hidden messages have made Wingdings a subject of cultural fascination.`,
-    filename: 'wingdings-translator-fact-2',
+    title: 'Medieval Language Heritage & Literary Evolution',
+    content: `Discover the rich heritage of Middle English literature and its evolution from 1150-1500. This period witnessed remarkable linguistic changes, from the Norman Conquest's influence to the emergence of early modern English, preserving countless literary treasures.`,
+    filename: 'medieval-language-heritage',
   },
 ];
 
@@ -170,9 +160,11 @@ Now evaluate:`;
   }
 }
 
-async function regenerateWingdingsTranslatorImages() {
+async function regenerateMedievalHeritageImage() {
   console.log('\n' + '='.repeat(70));
-  console.log('🎨 Regenerating Wingdings Translator Section Images');
+  console.log(
+    '🎨 Regenerating "Medieval Language Heritage & Literary Evolution" Image (4:3 Aspect Ratio)'
+  );
   console.log('='.repeat(70) + '\n');
 
   const OUTPUT_DIR = path.join(process.cwd(), 'public', 'images', 'docs');
@@ -188,7 +180,7 @@ async function regenerateWingdingsTranslatorImages() {
       // Step 1: 使用 Gemini 生成新 prompt
       console.log('📋 Step 1: Generating new prompt with Gemini...');
       const { prompt: newPrompt } = await testGeneratePrompt(
-        `Telugu to English Translator - ${section.title}`,
+        `Middle English Medieval Heritage - ${section.title}`,
         section.content
       );
       console.log(`✅ Generated new prompt (${newPrompt.length} chars)`);
@@ -227,4 +219,4 @@ async function regenerateWingdingsTranslatorImages() {
   console.log('='.repeat(70) + '\n');
 }
 
-regenerateWingdingsTranslatorImages().catch(console.error);
+regenerateMedievalHeritageImage().catch(console.error);

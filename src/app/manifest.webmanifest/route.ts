@@ -31,7 +31,7 @@ export async function GET(request: NextRequest) {
     name: (defaultMessages as any).Metadata.name,
     short_name: (defaultMessages as any).Metadata.name,
     description: (defaultMessages as any).Metadata.description,
-    start_url: '/',
+    start_url: './',
     display: 'standalone' as const,
     background_color: '#ffffff',
     theme_color: '#ffffff',

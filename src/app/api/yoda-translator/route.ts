@@ -4,45 +4,74 @@ export const runtime = 'edge';
 
 // Yoda说话风格的转换规则
 const transformationRules = [
-  // 句子结构重组：将动词移到句末
+  // 基础倒装：主语动词倒置 (更加精确的匹配)
   // "I will go" -> "Go, I will"
+  [/^(\w+)\s+(will|shall|can|should|must)\s+(\w+)(.*)$/gim, '$3, $1 $2$4'],
+
+  // "I am going" -> "Going, I am"
+  [/^(\w+)\s+(am|is|are)\s+(\w+ing)(.*)$/gim, '$3, $1 $2$4'],
+
+  // "You are [形容词]" -> "[形容词], you are"
+  [/(\bYou\s+are\s+)(\w+)(.*)$/gim, '$2, you are$3'],
+
+  // Yoda特有的词汇替换
+  [/\byes\b/gi, 'Yes, yes'],
+  [/\bno\b/gi, 'No, no'],
+  [/\bhello\b/gi, 'Hello, young padawan'],
+  [/\bgoodbye\b/gi, 'Goodbye, may the Force be with you'],
+  [/\bthank you\b/gi, 'Thank you, I do'],
+  [/\bplease\b/gi, 'Please, you must'],
+
+  // 思考动词倒装
+  [/\bI (think|believe|feel|know|want|need|hope|wish)\b/gi, '$1 I'],
+  [/\bWe (think|believe|feel|know|want|need|hope|wish)\b/gi, '$1 we'],
+
+  // Yoda经典短语
+  [/\bVery good\b/gi, 'Good, very good'],
+  [/\bVery strong\b/gi, 'Strong, very strong'],
+  [/\bVery powerful\b/gi, 'Powerful, very powerful'],
+  [/\bThe force is strong with you\b/gi, 'Strong with the Force, you are'],
+  [/\bStrong\b/gi, 'Strong with the Force'],
+  [/\bPowerful\b/gi, 'Powerful, you are'],
+  [/\bWise\b/gi, 'Wise, you have become'],
+
+  // 学习相关短语
+  [/\bLearn you must\b/gi, 'Learn, you must'],
+  [/\bPractice you should\b/gi, 'Practice, you should'],
+  [/\bPatience you must have\b/gi, 'Patience, you must have'],
+
+  // 句末语气词 (添加的概率较低，避免过度使用)
   [
-    /(\\bI\\s+(will|shall|can|should|must|have|has|had|is|am|are|was|were)\\s+)(\\w+)/gi,
-    '$3, $1$2',
+    /([.!?])\s*$/gim,
+    (match) => {
+      if (Math.random() < 0.3) {
+        // 30%概率添加语气词
+        const randomEndings = [', hmm.', ', yes.', ', you see.', ', mmm.'];
+        const randomEnding =
+          randomEndings[Math.floor(Math.random() * randomEndings.length)];
+        return randomEnding;
+      }
+      return match;
+    },
   ],
 
-  // "You are" -> "Are you"
-  [
-    /(\\bYou\\s+(are|is|am|was|were|will|can|should|must|have|has|had)\\s+)(\\w+)/gi,
-    '$2 you, $3',
-  ],
+  // 特殊句式转换 - 简单倒装
+  [/\bThis is (\w+)\b/gi, '$1, this is'],
+  [/\bThat is (\w+)\b/gi, '$1, that is'],
 
-  // 添加Yoda特有的词汇
-  [/\\byes\\b/gi, 'Yes, yes'],
-  [/\\bno\\b/gi, 'No, no'],
-  [/\\bIndeed\\b/gi, 'Indeed, yes'],
+  // 否定句处理
+  [/\bI (do not|don't|cannot|can't)\s+(\w+)\b/gi, '$2 I cannot'],
+  [/\bYou (do not|don't|cannot|can't)\s+(\w+)\b/gi, '$2 you cannot'],
 
-  // 句末添加 "hmm" 或 "yes"
-  [/([.!?])\\s*$/gim, '$1, hmm.'],
-
-  // 简单的倒装句
-  [/(\\bThe\\s+)(\\w+\\s+)(\\w+\\s+)(is|are|was|were)/gi, '$2$1$4'],
-
-  // 一些Yoda常用短语
-  [/\\bI think\\b/gi, 'Think I'],
-  [/\\bI believe\\b/gi, 'Believe I'],
-  [/\\bI feel\\b/gi, 'Feel I'],
-  [/\\bI know\\b/gi, 'Know I'],
-  [/\\bVery good\\b/gi, 'Good, very good'],
-  [/\\bStrong\\b/gi, 'Strong with the Force'],
-  [/\\bPowerful\\b/gi, 'Powerful, you are'],
+  // 添加Yoda风格的开头词
+  [/^(Hmmm|Yes|No|Indeed)/gim, '$1, yes'],
 ];
 
 function transformText(text: string): string {
   let result = text;
 
   transformationRules.forEach(([pattern, replacement]) => {
-    result = result.replace(new RegExp(pattern, 'gi'), replacement);
+    result = result.replace(pattern, replacement);
   });
 
   return result;

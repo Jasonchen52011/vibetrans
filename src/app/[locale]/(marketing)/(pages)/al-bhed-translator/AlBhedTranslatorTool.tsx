@@ -1,7 +1,6 @@
 'use client';
 
 import { ToolInfoSections } from '@/components/blocks/tool/tool-info-sections';
-import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
 import {
   autoTranslate,
   detectLanguage,
@@ -307,9 +306,6 @@ export default function AlBhedTranslatorTool({
               {/* TTS and action buttons */}
               {translatedText && (
                 <div className="flex gap-2">
-                  {!isQuery && (
-                    <TextToSpeechButton text={translatedText} locale={locale} />
-                  )}
                   <button
                     onClick={handleCopy}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
@@ -332,30 +328,28 @@ export default function AlBhedTranslatorTool({
                       />
                     </svg>
                   </button>
-                  {!isQuery && (
-                    <button
-                      onClick={handleDownload}
-                      className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
-                      title={pageData.tool.downloadTooltip || 'Download'}
-                      aria-label={
-                        pageData.tool.downloadResultTooltip || 'Download result'
-                      }
+                  <button
+                    onClick={handleDownload}
+                    className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
+                    title={pageData.tool.downloadTooltip || 'Download'}
+                    aria-label={
+                      pageData.tool.downloadResultTooltip || 'Download result'
+                    }
+                  >
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
                     >
-                      <svg
-                        className="w-5 h-5"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-                        />
-                      </svg>
-                    </button>
-                  )}
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                      />
+                    </svg>
+                  </button>
                 </div>
               )}
             </div>

@@ -181,6 +181,25 @@
         }
       ]
     },
+    "unique": {
+      "title": "Ancient & Modern Greek Mastery",
+      "subtitle": "Tailored Solutions for Greek Language Enthusiasts",
+      "description": "Exploring unique features and capabilities for Greek translation excellence",
+      "items": [
+        {
+          "title": "Diachronic Greek Translation",
+          "content": "VibeTrans uniquely bridges the gap between Ancient Greek (Classical, Koine, Medieval) and Modern Greek. Our AI understands linguistic evolution across 3,000 years, translating philosophical texts, biblical passages, and historical documents while preserving their original cultural context and grammatical nuances that standard translators miss.",
+          "image": "/images/docs/ancient-greek-cultural-insights.webp",
+          "imageAlt": "Ancient to Modern Greek linguistic evolution"
+        },
+        {
+          "title": "Greek Script Intelligence",
+          "content": "Advanced recognition of Greek polytonic orthography with breathings, accents, and iota subscripts. Perfect for academic work with classical texts, ensuring accurate rendering of diacritical marks essential for proper pronunciation and grammatical meaning in both scholarly and religious contexts.",
+          "image": "/images/docs/ancient-greek-dialects.webp",
+          "imageAlt": "Greek polytonic script with diacritical marks"
+        }
+      ]
+    },
     "testimonials": {
       "title": "What Users Say",
       "subtitle": "Real feedback from real users",

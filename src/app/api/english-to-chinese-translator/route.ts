@@ -57,19 +57,75 @@ const TRANSLATION_MODES = {
 // 语言检测配置
 const LANGUAGE_HINTS = {
   chinese: [
-    '的', '是', '在', '有', '和', '了', '不', '人', '我', '你', '他', '她', '它', '们', '这', '那', '个', '一', '二', '三',
-    '们', '吗', '呢', '吧', '啊', '哦', '嗯', '哈', '呀', '哟'
+    '的',
+    '是',
+    '在',
+    '有',
+    '和',
+    '了',
+    '不',
+    '人',
+    '我',
+    '你',
+    '他',
+    '她',
+    '它',
+    '们',
+    '这',
+    '那',
+    '个',
+    '一',
+    '二',
+    '三',
+    '们',
+    '吗',
+    '呢',
+    '吧',
+    '啊',
+    '哦',
+    '嗯',
+    '哈',
+    '呀',
+    '哟',
   ],
   english: [
-    'the', 'and', 'you', 'with', 'that', 'from', 'this', 'for', 'are', 'but', 'not', 'they', 'were', 'been', 'have', 'has', 'had', 'what',
-    'will', 'would', 'could', 'should', 'may', 'might', 'can', 'could', 'shall', 'must'
+    'the',
+    'and',
+    'you',
+    'with',
+    'that',
+    'from',
+    'this',
+    'for',
+    'are',
+    'but',
+    'not',
+    'they',
+    'were',
+    'been',
+    'have',
+    'has',
+    'had',
+    'what',
+    'will',
+    'would',
+    'could',
+    'should',
+    'may',
+    'might',
+    'can',
+    'could',
+    'shall',
+    'must',
   ],
 } as const;
 
 type TranslationMode = keyof typeof TRANSLATION_MODES;
 
 // 智能语言检测
-function detectLanguageLocally(text: string): 'chinese' | 'english' | 'unknown' {
+function detectLanguageLocally(
+  text: string
+): 'chinese' | 'english' | 'unknown' {
   const cleanText = text.toLowerCase().trim();
 
   // 检查中文字符
@@ -95,7 +151,12 @@ function detectLanguageLocally(text: string): 'chinese' | 'english' | 'unknown' 
 }
 
 // 构建翻译提示
-function buildPrompt(text: string, mode: TranslationMode, direction: string, enableDualTranslation: boolean = false): string {
+function buildPrompt(
+  text: string,
+  mode: TranslationMode,
+  direction: string,
+  enableDualTranslation = false
+): string {
   const modeConfig = TRANSLATION_MODES[mode];
   let prompt = '';
 
@@ -107,7 +168,8 @@ function buildPrompt(text: string, mode: TranslationMode, direction: string, ena
 
   // 如果启用双向翻译，添加回译要求
   if (enableDualTranslation) {
-    prompt += '\n\nAlso provide a back translation of your result to verify accuracy in the format: BackTranslation: [back translated text]';
+    prompt +=
+      '\n\nAlso provide a back translation of your result to verify accuracy in the format: BackTranslation: [back translated text]';
   }
 
   return prompt;
@@ -134,7 +196,7 @@ export async function POST(request: Request) {
       direction = 'en-zh',
       mode = 'general',
       enableDualTranslation = false,
-      detectOnly = false
+      detectOnly = false,
     }: TranslationRequest = body;
 
     if (!text || typeof text !== 'string') {
@@ -147,7 +209,9 @@ export async function POST(request: Request) {
     // 验证翻译模式
     if (!TRANSLATION_MODES[mode]) {
       return Response.json(
-        { error: `Invalid mode. Available modes: ${Object.keys(TRANSLATION_MODES).join(', ')}` },
+        {
+          error: `Invalid mode. Available modes: ${Object.keys(TRANSLATION_MODES).join(', ')}`,
+        },
         { status: 400 }
       );
     }
@@ -188,37 +252,61 @@ export async function POST(request: Request) {
         autoDetected: true,
         languageInfo: {
           detected: true,
-          detectedLanguage: detectedLanguage === 'english' ? 'English' :
-                           detectedLanguage === 'chinese' ? 'Chinese' : 'Unknown',
-          direction: finalDirection === 'en-zh' ? 'English → Chinese' : 'Chinese → English',
+          detectedLanguage:
+            detectedLanguage === 'english'
+              ? 'English'
+              : detectedLanguage === 'chinese'
+                ? 'Chinese'
+                : 'Unknown',
+          direction:
+            finalDirection === 'en-zh'
+              ? 'English → Chinese'
+              : 'Chinese → English',
           confidence: 90,
-          explanation: detectedLanguage === 'english' ? 'Detected English input' :
-                        detectedLanguage === 'chinese' ? 'Detected Chinese input' : 'Language detection uncertain',
+          explanation:
+            detectedLanguage === 'english'
+              ? 'Detected English input'
+              : detectedLanguage === 'chinese'
+                ? 'Detected Chinese input'
+                : 'Language detection uncertain',
         },
       });
     }
 
     // 构建翻译提示
-    const prompt = buildPrompt(text, mode, finalDirection, enableDualTranslation);
+    const prompt = buildPrompt(
+      text,
+      mode,
+      finalDirection,
+      enableDualTranslation
+    );
 
     // 调用 Gemini API
-    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        contents: [{
-          parts: [{
-            text: prompt
-          }]
-        }],
-        generationConfig: {
-          temperature: mode === 'formal' ? 0.2 : mode === 'colloquial' ? 0.4 : 0.3,
-          maxOutputTokens: 2048,
-        }
-      })
-    });
+    const response = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          contents: [
+            {
+              parts: [
+                {
+                  text: prompt,
+                },
+              ],
+            },
+          ],
+          generationConfig: {
+            temperature:
+              mode === 'formal' ? 0.2 : mode === 'colloquial' ? 0.4 : 0.3,
+            maxOutputTokens: 2048,
+          },
+        }),
+      }
+    );
 
     if (!response.ok) {
       const errorBody = await response.text();
@@ -226,7 +314,8 @@ export async function POST(request: Request) {
     }
 
     const data = await response.json();
-    let translatedText = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
+    let translatedText =
+      data.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
 
     if (!translatedText) {
       throw new Error('No translation received');
@@ -235,21 +324,30 @@ export async function POST(request: Request) {
     // 处理回译提取
     let backTranslation = '';
     if (enableDualTranslation) {
-      const backTranslationMatch = translatedText.match(/BackTranslation:\s*([^\n]+)/i);
+      const backTranslationMatch = translatedText.match(
+        /BackTranslation:\s*([^\n]+)/i
+      );
       if (backTranslationMatch) {
         backTranslation = backTranslationMatch[1].trim();
         // 移除回译部分，只保留翻译
-        translatedText = translatedText.replace(/BackTranslation:\s*[^\n]+/i, '').trim();
+        translatedText = translatedText
+          .replace(/BackTranslation:\s*[^\n]+/i, '')
+          .trim();
       }
     }
 
-    const { source, target } = LANGUAGE_MAP[finalDirection as 'en-zh' | 'zh-en'];
+    const { source, target } =
+      LANGUAGE_MAP[finalDirection as 'en-zh' | 'zh-en'];
 
     // 构建响应
     const result = {
       translated: translatedText,
-      detectedSourceLanguage: detectedLanguage === 'english' ? 'English' :
-                           detectedLanguage === 'chinese' ? 'Chinese' : 'Auto',
+      detectedSourceLanguage:
+        detectedLanguage === 'english'
+          ? 'English'
+          : detectedLanguage === 'chinese'
+            ? 'Chinese'
+            : 'Auto',
       detectedTargetLanguage: target,
       backTranslation: backTranslation || undefined,
       direction: finalDirection,
@@ -260,9 +358,16 @@ export async function POST(request: Request) {
       message: 'Translation successful',
       languageInfo: {
         detected: true,
-        detectedLanguage: detectedLanguage === 'english' ? 'English' :
-                         detectedLanguage === 'chinese' ? 'Chinese' : 'Unknown',
-        direction: finalDirection === 'en-zh' ? 'English → Chinese' : 'Chinese → English',
+        detectedLanguage:
+          detectedLanguage === 'english'
+            ? 'English'
+            : detectedLanguage === 'chinese'
+              ? 'Chinese'
+              : 'Unknown',
+        direction:
+          finalDirection === 'en-zh'
+            ? 'English → Chinese'
+            : 'Chinese → English',
         confidence: 90,
         explanation: autoDetected
           ? `Auto-detected ${detectedLanguage === 'english' ? 'English' : 'Chinese'} input, translated to ${target}`
@@ -298,8 +403,12 @@ export async function POST(request: Request) {
 
     return Response.json({
       translated: fallbackTranslation,
-      detectedSourceLanguage: localDetection === 'english' ? 'English' :
-                             localDetection === 'chinese' ? 'Chinese' : 'Auto',
+      detectedSourceLanguage:
+        localDetection === 'english'
+          ? 'English'
+          : localDetection === 'chinese'
+            ? 'Chinese'
+            : 'Auto',
       detectedTargetLanguage: direction === 'en-zh' ? 'Chinese' : 'English',
       backTranslation: null,
       warning: 'Gemini translation unavailable, using fallback translation.',

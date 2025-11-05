@@ -206,10 +206,15 @@ export default function FaqSection({
   let hasItems = false;
   try {
     // Check if we can access item-1 directly
-    const firstItemQuestion = t(`items.item-1.question`, { default: null });
+    const firstItemQuestion = t(`items.item-1.question`);
     hasItems =
-      firstItemQuestion && !firstItemQuestion.includes(`items.item-1.question`);
-  } catch {
+      firstItemQuestion &&
+      !firstItemQuestion.includes(`items.item-1.question`) &&
+      firstItemQuestion !== 'items.item-1.question' &&
+      typeof firstItemQuestion === 'string' &&
+      firstItemQuestion.trim().length > 0;
+  } catch (error) {
+    console.warn('Failed to check FAQ items:', error);
     hasItems = false;
   }
 

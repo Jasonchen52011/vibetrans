@@ -1,161 +1,161 @@
 {
   "NahuatlTranslatorPage": {
-    "title": "VibeTrans: Nahuatl Translator - AI-Powered Language Translation",
-    "description": "Translate between Nahuatl and 100+ languages with AI-powered precision. Perfect for researchers, students, and cultural preservation projects.",
+    "title": "VibeTrans: 纳瓦特尔语翻译器 - AI驱动的语言翻译",
+    "description": "通过AI驱动的精准翻译，在纳瓦特尔语和100多种语言之间进行翻译。完美适用于研究人员、学生和文化保护项目。",
     "hero": {
-      "title": "Best Nahuatl Translator for Cultural Heritage and Modern Communication",
-      "description": "Experience accurate Nahuatl translation powered by advanced AI. Connect with Mexico's indigenous heritage, support academic research, and preserve linguistic diversity through our comprehensive translation tool.",
+      "title": "最佳纳瓦特尔语翻译器，用于文化遗产与现代交流",
+      "description": "体验由先进AI驱动的精准纳瓦特尔语翻译。连接墨西哥的土著遗产，支持学术研究，通过我们全面的翻译工具保护语言多样性。",
       "userAvatars": ["male3", "female4", "male1", "female3", "male4"],
-      "userCount": "from 18,000+ happy users"
+      "userCount": "来自18,000+满意用户"
     },
-    "ctaButton": "Try Nahuatl Translator Now",
+    "ctaButton": "立即尝试纳瓦特尔语翻译器",
     "tool": {
-      "inputLabel": "Input Text",
-      "outputLabel": "Translated Text",
-      "inputPlaceholder": "Enter text to translate (Nahuatl, English, or any supported language)...",
-      "outputPlaceholder": "Your accurate translation will appear here...",
-      "translateButton": "Translate",
-      "uploadButton": "Upload File",
-      "uploadHint": "Supports .txt and .docx files",
-      "loading": "Translating with cultural context awareness...",
-      "error": "Translation failed. Please try again.",
-      "noInput": "Please enter some text to translate."
+      "inputLabel": "输入文本",
+      "outputLabel": "翻译结果",
+      "inputPlaceholder": "输入要翻译的文本（纳瓦特尔语、英语或任何支持的语言）...",
+      "outputPlaceholder": "您的精准翻译将显示在这里...",
+      "translateButton": "翻译",
+      "uploadButton": "上传文件",
+      "uploadHint": "支持.txt和.docx文件",
+      "loading": "正在翻译，具有文化语境意识...",
+      "error": "翻译失败，请重试。",
+      "noInput": "请输入一些文本进行翻译。"
     },
     "whatIs": {
-      "title": "What is the VibeTrans Nahuatl Translator?",
-      "description": "The VibeTrans Nahuatl Translator is an advanced AI-powered tool specifically designed to handle the unique linguistic characteristics of Nahuatl, one of Mexico's most important indigenous languages. Our system understands dialectal variations, cultural context, and historical significance to provide translations that honor both traditional usage and modern communication needs. Researchers, educators, cultural activists, and language learners rely on our translator to bridge communication gaps while preserving linguistic heritage that spans over 500 years of documented history.",
+      "title": "什么是VibeTrans纳瓦特尔语翻译器？",
+      "description": "VibeTrans纳瓦特尔语翻译器是一个先进的AI驱动工具，专门设计用于处理纳瓦特尔语这一墨西哥最重要的土著语言之一的独特语言特征。我们的系统理解方言变化、文化语境和历史意义，提供既尊重传统使用又满足现代交流需求的翻译。研究人员、教育工作者、文化活跃分子和语言学习者依靠我们的翻译器来弥合沟通差距，同时保护跨越500多年有记载历史的语言遗产。",
       "image": "/images/docs/what-is-nahuatl-translator.webp",
-      "imageAlt": "Nahuatl language and cultural heritage visualization"
+      "imageAlt": "纳瓦特尔语和文化遗产可视化"
     },
     "examples": {
-      "title": "Nahuatl Translation Examples",
-      "description": "See how VibeTrans handles diverse translation scenarios, from everyday conversations to academic content, with cultural accuracy and linguistic precision.",
+      "title": "纳瓦特尔语翻译示例",
+      "description": "查看VibeTrans如何处理多样化的翻译场景，从日常对话到学术内容，具有文化准确性和语言精准性。",
       "items": [
         {
-          "alt": "Original: Hello, how are you? → Nahuatl: Niltze, ¿cēmōc yāuhqui?",
+          "alt": "原文：Hello, how are you? → 纳瓦特尔语：Niltze, ¿cēmōc yāuhqui?",
           "name": "Hello, how are you? → Niltze, ¿cēmōc yāuhqui?"
         },
         {
-          "alt": "Original: Thank you very much → Nahuatl: Tlazohcamati nepapan",
+          "alt": "原文：Thank you very much → 纳瓦特尔语：Tlazohcamati nepapan",
           "name": "Thank you very much → Tlazohcamati nepapan"
         },
         {
-          "alt": "Original: The beautiful flowers bloom → Nahuatl: In xōchipīltin in cuīcani",
+          "alt": "原文：The beautiful flowers bloom → 纳瓦特尔语：In xōchipīltin in cuīcani",
           "name": "The beautiful flowers bloom → In xōchipīltin in cuīcani"
         },
         {
-          "alt": "Original: I study ancient culture → Nahuatl: Niquīzquīz in tlahtōllōtl tlen momāhti",
+          "alt": "原文：I study ancient culture → 纳瓦特尔语：Niquīzquīz in tlahtōllōtl tlen momāhti",
           "name": "I study ancient culture → Niquīzquīz in tlahtōllōtl tlen momāhti"
         },
         {
-          "alt": "Original: The corn is growing well → Nahuatl: In cintli quipiya in tzopelic",
+          "alt": "原文：The corn is growing well → 纳瓦特尔语：In cintli quipiya in tzopelic",
           "name": "The corn is growing well → In cintli quipiya in tzopelic"
         },
         {
-          "alt": "Original: We respect Mother Earth → Nahuatl: Tehwān techtlazohtla in Tlalticpac",
+          "alt": "原文：We respect Mother Earth → 纳瓦特尔语：Tehwān techtlazohtla in Tlalticpac",
           "name": "We respect Mother Earth → Tehwān techtlazohtla in Tlalticpac"
         }
       ]
     },
     "howto": {
-      "title": "How to Translate Nahuatl",
-      "description": "Simple steps to get started with our nahuatl translator.",
+      "title": "如何翻译纳瓦特尔语",
+      "description": "使用我们纳瓦特尔语翻译器的简单步骤。",
       "image": "/images/docs/nahuatl-translator-how-to.webp",
-      "imageAlt": "How to use Nahuatl Translator - Step by step guide",
+      "imageAlt": "如何使用纳瓦特尔语翻译器 - 分步指南",
       "steps": [
         {
-          "title": "Upload Your Document",
-          "description": "Start by uploading a text file in txt or docx format. Ensure the file is clear and legible for better accuracy."
+          "title": "上传您的文档",
+          "description": "首先上传txt或docx格式的文本文件。确保文件清晰易读以获得更好的准确性。"
         },
         {
-          "title": "Select Translation Mode",
-          "description": "Choose between technical, legal, literature, idioms, or general mode to fit your specific needs."
+          "title": "选择翻译模式",
+          "description": "在技术、法律、文学、习语或通用模式之间选择以适合您的特定需求。"
         },
         {
-          "title": "Translate and Review",
-          "description": "Click the 'Translate' button. Review the translation and use the audio feature for pronunciation."
+          "title": "翻译和审阅",
+          "description": "点击'翻译'按钮。审阅翻译并使用音频功能进行发音。"
         },
         {
-          "title": "Download or Copy Results",
-          "description": "Download the translated text or copy it directly. Use it in your applications or share with others."
+          "title": "下载或复制结果",
+          "description": "下载翻译文本或直接复制。在您的应用程序中使用或与他人分享。"
         }
       ]
     },
     "funfacts": {
-      "title": "Interesting Facts",
+      "title": "有趣事实",
       "items": [
         {
-          "title": "Nahuatl's Influence on English",
-          "description": "Did you know that many English words like chocolate, tomato, and avocado come from Nahuatl? These words have traveled through time, bringing a taste of Nahuatl culture to everyday language.",
+          "title": "纳瓦特尔语对英语的影响",
+          "description": "您知道许多英语单词如chocolate、tomato和avocado来自纳瓦特尔语吗？这些词语穿越了时间，将纳瓦特尔语文化的味道带到日常语言中。",
           "image": "/images/docs/nahuatl-translator-fact-1.webp",
-          "imageAlt": "Nahuatl's Influence on English - Language history visualization"
+          "imageAlt": "纳瓦特尔语对英语的影响 - 语言历史可视化"
         },
         {
-          "title": "Unique Nahuatl Language Features",
-          "description": "Nahuatl is a fascinating agglutinative language where a single verb can contain over 20 morphemes, expressing entire sentences in one word. This complexity makes it both challenging and intriguing to study.",
+          "title": "独特的纳瓦特尔语特征",
+          "description": "纳瓦特尔语是一种迷人的粘着语，其中单个动词可以包含超过20个语素，在一个词中表达整个句子。这种复杂性使其既具有挑战性又引人入胜。",
           "image": "/images/docs/nahuatl-translator-fact-2.webp",
-          "imageAlt": "Unique Nahuatl Language Features - Linguistic structure visualization"
+          "imageAlt": "独特的纳瓦特尔语特征 - 语言结构可视化"
         }
       ]
     },
     "exploreMoreTranslator": {
-      "title": "Explore More Translator",
+      "title": "探索更多翻译器",
       "items": [
         {
-          "title": "Quick Translation",
+          "title": "快速翻译",
           "icon": "FaRocket",
-          "description": "Get instant translations with our easy-to-use interface"
+          "description": "使用我们易于使用的界面获得即时翻译"
         },
         {
-          "title": "Accurate Results",
+          "title": "准确结果",
           "icon": "FaBrain",
-          "description": "Experience over 90% accuracy with AI-powered technology"
+          "description": "通过AI驱动技术体验超过90%的准确性"
         },
         {
-          "title": "Privacy First",
+          "title": "隐私优先",
           "icon": "FaShieldAlt",
-          "description": "Your data is always protected with our secure translation system"
+          "description": "您的数据始终受到我们安全翻译系统的保护"
         },
         {
-          "title": "Smart Context",
+          "title": "智能语境",
           "icon": "FaMagic",
-          "description": "Advanced AI understands cultural context and nuances"
+          "description": "先进AI理解文化语境和细微差别"
         },
         {
-          "title": "Voice Support",
+          "title": "语音支持",
           "icon": "FaMicrophone",
-          "description": "Use voice input for hands-free translation experience"
+          "description": "使用语音输入进行免提翻译体验"
         },
         {
-          "title": "File Upload",
+          "title": "文件上传",
           "icon": "FaFileUpload",
-          "description": "Upload documents for batch translation processing"
+          "description": "上传文档进行批量翻译处理"
         }
       ]
     },
     "highlights": {
-      "title": "Why Choose Our Nahuatl Translator?",
-      "description": "Discover what makes our Nahuatl translator unique with powerful features designed for accuracy and ease of use.",
+      "title": "为什么选择我们的纳瓦特尔语翻译器？",
+      "description": "发现我们的纳瓦特尔语翻译器的独特之处，具有为准确性和易用性设计的强大功能。",
       "items": [
         {
-          "title": "Easy and Free to Use",
+          "title": "易于使用且免费",
           "icon": "FaRocket",
-          "description": "Our tool is completely free and user-friendly, designed for quick translations without any cost. Perfect for students and hobbyists."
+          "description": "我们的工具完全免费且用户友好，专为快速翻译而设计，无需任何费用。完美适用于学生和爱好者。"
         },
         {
-          "title": "Data Accuracy",
+          "title": "数据准确性",
           "icon": "FaBrain",
-          "description": "Experience translations with over 90% accuracy, thanks to our advanced AI technology that ensures precise language detection and contextual understanding."
+          "description": "通过我们先进的AI技术体验超过90%准确性的翻译，确保精确的语言检测和语境理解。"
         },
         {
-          "title": "Data Privacy Security",
+          "title": "数据隐私安全",
           "icon": "FaShieldAlt",
-          "description": "Your data is safe with us. We do not store any user data, ensuring complete privacy and security during your translation sessions."
+          "description": "您的数据在我们这里是安全的。我们不存储任何用户数据，确保翻译会话期间的完全隐私和安全。"
         },
         {
-          "title": "AI Contextual Understanding",
+          "title": "AI语境理解",
           "icon": "FaMagic",
-          "description": "Our AI's advanced understanding of context provides translations with human-level clarity, capturing the nuances of language and culture effectively."
+          "description": "我们AI的先进语境理解提供人类清晰度的翻译，有效捕捉语言和文化的细微差别。"
         }
       ]
     },
@@ -198,12 +198,12 @@
       ]
     },
     "testimonials": {
-      "title": "What Our Users Are Saying",
-      "subtitle": "Real feedback from real users",
+      "title": "用户评价",
+      "subtitle": "来自真实用户的真实反馈",
       "items": {
         "item-1": {
           "name": "Susan Miller",
-          "role": "Linguist",
+          "role": "语言学家",
           "heading": "变革性语言学习工具",
           "content": "在我的课堂中使用纳瓦特尔语翻译套件具有变革性。学生们赞赏其准确性和易用性。它弥合了古典文本与现代语言之间的差距，使学习变得引人入胜且有效。音频发音功能对于掌握难发音特别有帮助。",
           "text": "在我的课堂中使用纳瓦特尔语翻译套件具有变革性。学生们赞赏其准确性和易用性。它弥合了古典文本与现代语言之间的差距，使学习变得引人入胜且有效。音频发音功能对于掌握难发音特别有帮助。",
@@ -211,7 +211,7 @@
         },
         "item-2": {
           "name": "Tom Jackson",
-          "role": "Travel Blogger",
+          "role": "旅行博主",
           "heading": "必不可少的旅行伴侣",
           "content": "作为一名探索墨西哥的旅行博主，纳瓦特尔语翻译套件已成为我的首选工具。它使向当地人提问和理解文化细微差别变得如此容易。切换方言的能力非常宝贵，免费访问对像我这样的频繁旅行者来说是一个绝佳的奖励。",
           "text": "作为一名探索墨西哥的旅行博主，纳瓦特尔语翻译套件已成为我的首选工具。它使向当地人提问和理解文化细微差别变得如此容易。切换方言的能力非常宝贵，免费访问对像我这样的频繁旅行者来说是一个绝佳的奖励。",
@@ -219,41 +219,17 @@
         },
         "item-3": {
           "name": "Emily Ross",
-          "role": "History Professor",
+          "role": "历史教授",
           "heading": "真实文化资源",
           "content": "我已将纳瓦特尔语翻译套件纳入我的课程中，学生的反应非常积极。它用户友好，提供纳瓦特尔文化和语言的真实一瞥。免费访问确保我所有的学生都能从这个神奇资源中受益。",
           "text": "我已将纳瓦特尔语翻译套件纳入我的课程中，学生的反应非常积极。它用户友好，提供纳瓦特尔文化和语言的真实一瞥。免费访问确保我所有的学生都能从这个神奇资源中受益。",
           "rating": "4.9"
-        },
-        "item-4": {
-          "name": "Michael Lee",
-          "role": "Game Developer",
-          "heading": "真实游戏开发资源",
-          "content": "在发现这个翻译器之前，将真实的纳瓦特尔语名称和短语融入我的游戏一直很具挑战性。它极其准确，提供必要的文化背景。切换拼写法的能力为角色发展增加深度，确保玩家的沉浸式体验。",
-          "text": "在发现这个翻译器之前，将真实的纳瓦特尔语名称和短语融入我的游戏一直很具挑战性。它极其准确，提供必要的文化背景。切换拼写法的能力为角色发展增加深度，确保玩家的沉浸式体验。",
-          "rating": "4.5"
-        },
-        "item-5": {
-          "name": "Jessica Brown",
-          "role": "Documentary Filmmaker",
-          "heading": "不可或缺的媒体工具",
-          "content": "纳瓦特尔语翻译套件在我的电影制作过程中是关键工具。它确保字幕和配音的准确翻译，保护土著故事的真实性。用户友好的界面和免费访问使其成为媒体行业任何人的不可或缺资源。",
-          "text": "纳瓦特尔语翻译套件在我的电影制作过程中是关键工具。它确保字幕和配音的准确翻译，保护土著故事的真实性。用户友好的界面和免费访问使其成为媒体行业任何人的不可或缺资源。",
-          "rating": "4.7"
-        },
-        "item-6": {
-          "name": "Daniel White",
-          "role": "Content Creator",
-          "heading": "文化尊重创作者",
-          "content": "创建尊重并准确代表土著文化的内容对我来说很重要。纳瓦特尔语翻译套件正是提供这一点。其准确的翻译和音频功能帮助我制作既具教育性又具尊重性的内容，提升观众的文化欣赏。",
-          "text": "创建尊重并准确代表土著文化的内容对我来说很重要。纳瓦特尔语翻译套件正是提供这一点。其准确的翻译和音频功能帮助我制作既具教育性又具尊重性的内容，提升观众的文化欣赏。",
-          "rating": "4.4"
         }
       }
     },
     "faqs": {
-      "title": "Frequently Asked Questions",
-      "subtitle": "Have other questions? Feel free to contact us via email.",
+      "title": "常见问题",
+      "subtitle": "有其他问题？请随时通过电子邮件联系我们。",
       "items": {
         "item-1": {
           "question": "纳瓦特尔语翻译套件是免费的吗？",
@@ -278,10 +254,15 @@
       }
     },
     "cta": {
-      "title": "Try VibeTrans Nahuatl Translator Now",
-      "description": "Experience seamless translations with VibeTrans Nahuatl Translator and explore the Nahuatl language and culture today!",
-      "primaryButton": "Try NahuatlTranslator Now",
-      "secondaryButton": "Back to Top"
+      "title": "立即尝试VibeTrans纳瓦特尔语翻译器",
+      "description": "体验VibeTrans纳瓦特尔语翻译器的无缝翻译，今天就开始探索纳瓦特尔语和文化！",
+      "primaryButton": "立即尝试纳瓦特尔语翻译器",
+      "secondaryButton": "返回顶部"
     }
+  },
+  "Metadata": {
+    "name": "VibeTrans",
+    "title": "纳瓦特尔语翻译器 - VibeTrans",
+    "description": "通过AI驱动的翻译打破语言障碍。支持100多种语言，具有准确、有语境意识的翻译。"
   }
 }

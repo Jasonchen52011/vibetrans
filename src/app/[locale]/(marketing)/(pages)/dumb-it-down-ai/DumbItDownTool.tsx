@@ -1,6 +1,5 @@
 'use client';
 
-import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
 import { ArrowRightIcon } from 'lucide-react';
 // import mammoth from 'mammoth'; // Disabled for Edge Runtime compatibility
 import { useState } from 'react';
@@ -277,7 +276,6 @@ export default function DumbItDownTool({
               {/* TTS, Copy and Download buttons */}
               {simplifiedText && (
                 <div className="flex gap-2">
-                  <TextToSpeechButton text={simplifiedText} locale={locale} />
                   <button
                     onClick={handleCopy}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"

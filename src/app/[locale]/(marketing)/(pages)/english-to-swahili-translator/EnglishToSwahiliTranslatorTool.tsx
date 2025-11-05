@@ -1,6 +1,5 @@
 'use client';
 
-import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
 import { readFileContent } from '@/lib/utils/file-utils';
 import { ArrowLeftRight, Mic, RefreshCw, Waves } from 'lucide-react';
 // import mammoth from 'mammoth'; // Disabled for Edge Runtime compatibility
@@ -397,10 +396,6 @@ export default function EnglishToSwahiliTranslatorTool({
               </h2>
               {outputText && (
                 <div className="flex gap-2">
-                  <TextToSpeechButton
-                    text={outputText}
-                    locale={isEnglishToSwahili ? 'sw' : 'en'}
-                  />
                   <button
                     onClick={handleCopy}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
@@ -448,33 +443,29 @@ export default function EnglishToSwahiliTranslatorTool({
             >
               {isLoading ? (
                 <p>{pageData.tool.loading}</p>
-              ) : error && !outputText ? (
+              ) : error ? (
                 <p className="text-red-600 dark:text-red-400">{error}</p>
               ) : outputText ? (
                 <p className="text-lg whitespace-pre-wrap">{outputText}</p>
               ) : (
                 <p className="text-gray-500 dark:text-gray-400">
-                  {pageData.tool.outputPlaceholder}
+                  {isEnglishToSwahili
+                    ? 'Swahili translation will appear here…'
+                    : 'English translation will appear here…'}
                 </p>
               )}
             </div>
           </div>
         </div>
 
-        <div className="mt-6 flex justify-center gap-1">
+        {/* Action Buttons */}
+        <div className="mt-6 flex justify-center gap-4">
           <button
             onClick={handleTranslate}
             disabled={isLoading}
             className="px-8 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {isLoading ? (
-              <span className="flex items-center gap-2">
-                <RefreshCw className="h-5 w-5 animate-spin" />
-                {pageData.tool.loading}
-              </span>
-            ) : (
-              pageData.tool.translateButton
-            )}
+            {isLoading ? pageData.tool.loading : pageData.tool.translateButton}
           </button>
           <button
             onClick={handleReset}
@@ -483,12 +474,6 @@ export default function EnglishToSwahiliTranslatorTool({
             Reset
           </button>
         </div>
-
-        {error && outputText && (
-          <div className="mt-4 flex justify-center text-sm text-yellow-600 dark:text-yellow-400">
-            {error}
-          </div>
-        )}
       </main>
     </div>
   );

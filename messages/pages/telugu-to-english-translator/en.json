@@ -82,27 +82,27 @@
     },
     "highlights": {
       "title": "Why Choose Our Telugu to English Translator?",
-      "description": "Experience the best Telugu to English translation with advanced features",
+      "description": "Specialized features designed specifically for Telugu to English translation needs",
       "items": [
         {
-          "title": "Lightning Fast",
-          "description": "Get instant Telugu to English translations in seconds, powered by advanced AI technology ensuring rapid response times. No more waiting for high-quality translation results that boost your productivity.",
-          "icon": "FaRocket"
+          "title": "Telugu Script Recognition",
+          "description": "Advanced Telugu script recognition that accurately reads Devanagari and Romanized Telugu text. Perfect for transliterating 'నమస్కారం' to 'Namaste' or handling complex conjunct consonants unique to Telugu.",
+          "icon": "FaLanguage"
         },
         {
-          "title": "High Accuracy",
-          "description": "AI-powered translations with 95%+ accuracy, utilizing deep learning algorithms to understand Telugu grammar structure and context. Ensures both accuracy and naturalness in translation results.",
-          "icon": "FaBrain"
+          "title": "Cultural Context Awareness",
+          "description": "Understands Telugu cultural nuances like festivals (Sankranti), traditions, and regional expressions. Translates 'పొంగల్' as 'Pongal' with appropriate cultural context rather than literal translation.",
+          "icon": "FaGlobeAsia"
         },
         {
-          "title": "Secure & Private",
-          "description": "Your data is encrypted and never stored, using end-to-end encryption technology to protect your privacy. All translations are processed locally, ensuring your sensitive information remains confidential.",
-          "icon": "FaShieldAlt"
+          "title": "Academic & Professional Support",
+          "description": "Specialized vocabulary for Telugu academic fields, technical documents, and business communication. Handles complex Telugu terminology from education, medicine, and IT sectors accurately.",
+          "icon": "FaGraduationCap"
         },
         {
-          "title": "Completely Free",
-          "description": "No registration or payment required, with unlimited usage of our translation service. No hidden fees or usage limits, making high-quality translation accessible to everyone.",
-          "icon": "FaGift"
+          "title": "Dual Script Input",
+          "description": "Accepts both native Telugu script (తెలుగు) and Romanized Telugu input. Type 'mee peru emi?' or 'మీ పేరు ఎమి?' and get the same accurate English translation.",
+          "icon": "FaKeyboard"
         }
       ]
     },

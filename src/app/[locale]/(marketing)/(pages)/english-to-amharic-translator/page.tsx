@@ -8,7 +8,11 @@ import HowTo from '@/components/blocks/how-to';
 import TestimonialsThreeColumnSection from '@/components/blocks/testimonials/testimonials-three-column';
 import WhatIsSection from '@/components/blocks/whatis';
 import { AuroraBackground } from '@/components/ui/aurora-background';
-import { ContentSectionSkeleton, HeroSkeleton, ToolSkeleton } from '@/components/ui/page-skeleton';
+import {
+  ContentSectionSkeleton,
+  HeroSkeleton,
+  ToolSkeleton,
+} from '@/components/ui/page-skeleton';
 import { constructMetadata } from '@/lib/metadata';
 import { buildToolStructuredData } from '@/lib/seo/structured-data';
 import { buildTranslatorPageContent } from '@/lib/translator-page';
@@ -154,21 +158,14 @@ async function TranslatorContent({ locale }: { locale: string }) {
 
       {/* Testimonials */}
       <TestimonialsThreeColumnSection
-        namespace="EnglishToAmharicTranslatorPage"
-        subNamespace="testimonials"
+        section={translatorContent.testimonials}
       />
 
       {/* FAQ */}
-      <FaqSection
-        namespace="EnglishToAmharicTranslatorPage"
-        subNamespace="faqs"
-      />
+      <FaqSection section={translatorContent.faqs} />
 
       {/* CTA */}
-      <CallToActionSection
-        namespace="EnglishToAmharicTranslatorPage"
-        subNamespace="cta"
-      />
+      <CallToActionSection section={translatorContent.cta} />
     </>
   );
 }

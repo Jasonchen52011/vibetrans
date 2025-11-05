@@ -8,9 +8,13 @@ export const runtime = 'edge';
 // 简单的阿尔巴尼亚语字符检测
 function isAlbanian(text: string): boolean {
   // 检查阿尔巴尼亚语特有字符
-  return /[ëç]/.test(text) ||
-         // 常见阿尔巴尼亚语词汇
-         /\b(përshëndetje|mirë|faleminderit|tungjatjeta|po|jo|ju lutem|shqip|tirana|durrës|unë|ti|ai|ajo)\b/i.test(text);
+  return (
+    /[ëç]/.test(text) ||
+    // 常见阿尔巴尼亚语词汇
+    /\b(përshëndetje|mirë|faleminderit|tungjatjeta|po|jo|ju lutem|shqip|tirana|durrës|unë|ti|ai|ajo)\b/i.test(
+      text
+    )
+  );
 }
 
 // 简单的语言检测
@@ -18,7 +22,11 @@ function detectLanguage(text: string): 'albanian' | 'english' | 'unknown' {
   const cleanText = text.toLowerCase().trim();
 
   // 优先检查英语特征 - 增强检测
-  if (/\b(the|and|is|are|you|i|we|they|he|she|it|a|an|to|of|in|on|at|by|for|with|from|hello|hi|goodbye|thank|please|yes|no|this|that|these|those|what|where|when|why|how|who|which|whose|there|here|where|now|then|today|tomorrow|yesterday)\b/i.test(cleanText)) {
+  if (
+    /\b(the|and|is|are|you|i|we|they|he|she|it|a|an|to|of|in|on|at|by|for|with|from|hello|hi|goodbye|thank|please|yes|no|this|that|these|those|what|where|when|why|how|who|which|whose|there|here|where|now|then|today|tomorrow|yesterday)\b/i.test(
+      cleanText
+    )
+  ) {
     return 'english';
   }
 
@@ -57,7 +65,11 @@ const TRANSLATION_MODES = {
 type TranslationMode = keyof typeof TRANSLATION_MODES;
 
 // 构建翻译提示
-function buildPrompt(text: string, mode: TranslationMode, direction: string): string {
+function buildPrompt(
+  text: string,
+  mode: TranslationMode,
+  direction: string
+): string {
   const modeConfig = TRANSLATION_MODES[mode];
 
   if (direction === 'sq-to-en') {
@@ -81,12 +93,7 @@ export async function GET() {
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const {
-      text,
-      mode = 'general',
-      direction,
-      detectOnly = false
-    } = body;
+    const { text, mode = 'general', direction, detectOnly = false } = body;
 
     if (!text) {
       return Response.json({ error: 'No text provided' }, { status: 400 });
@@ -95,7 +102,9 @@ export async function POST(request: Request) {
     // 验证翻译模式
     if (!TRANSLATION_MODES[mode]) {
       return Response.json(
-        { error: `Invalid mode. Available modes: ${Object.keys(TRANSLATION_MODES).join(', ')}` },
+        {
+          error: `Invalid mode. Available modes: ${Object.keys(TRANSLATION_MODES).join(', ')}`,
+        },
         { status: 400 }
       );
     }
@@ -134,12 +143,23 @@ export async function POST(request: Request) {
         autoDetected: true,
         languageInfo: {
           detected: true,
-          detectedLanguage: detectedLanguage === 'english' ? 'English' :
-                           detectedLanguage === 'albanian' ? 'Albanian' : 'Unknown',
-          direction: finalDirection === 'sq-to-en' ? 'Albanian → English' : 'English → Albanian',
+          detectedLanguage:
+            detectedLanguage === 'english'
+              ? 'English'
+              : detectedLanguage === 'albanian'
+                ? 'Albanian'
+                : 'Unknown',
+          direction:
+            finalDirection === 'sq-to-en'
+              ? 'Albanian → English'
+              : 'English → Albanian',
           confidence: 80,
-          explanation: detectedLanguage === 'english' ? 'Detected English input' :
-                        detectedLanguage === 'albanian' ? 'Detected Albanian input' : 'Language detection uncertain',
+          explanation:
+            detectedLanguage === 'english'
+              ? 'Detected English input'
+              : detectedLanguage === 'albanian'
+                ? 'Detected Albanian input'
+                : 'Language detection uncertain',
         },
       });
     }
@@ -148,23 +168,31 @@ export async function POST(request: Request) {
     const prompt = buildPrompt(text, mode, finalDirection);
 
     // 调用 Gemini API
-    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        contents: [{
-          parts: [{
-            text: prompt
-          }]
-        }],
-        generationConfig: {
-          temperature: mode === 'legal' ? 0.2 : mode === 'technical' ? 0.1 : 0.3,
-          maxOutputTokens: 2048,
-        }
-      })
-    });
+    const response = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          contents: [
+            {
+              parts: [
+                {
+                  text: prompt,
+                },
+              ],
+            },
+          ],
+          generationConfig: {
+            temperature:
+              mode === 'legal' ? 0.2 : mode === 'technical' ? 0.1 : 0.3,
+            maxOutputTokens: 2048,
+          },
+        }),
+      }
+    );
 
     if (!response.ok) {
       throw new Error('Translation API error');
@@ -190,9 +218,16 @@ export async function POST(request: Request) {
       message: 'Translation successful',
       languageInfo: {
         detected: true,
-        detectedLanguage: detectedLanguage === 'english' ? 'English' :
-                         detectedLanguage === 'albanian' ? 'Albanian' : 'Unknown',
-        direction: finalDirection === 'sq-to-en' ? 'Albanian → English' : 'English → Albanian',
+        detectedLanguage:
+          detectedLanguage === 'english'
+            ? 'English'
+            : detectedLanguage === 'albanian'
+              ? 'Albanian'
+              : 'Unknown',
+        direction:
+          finalDirection === 'sq-to-en'
+            ? 'Albanian → English'
+            : 'English → Albanian',
         confidence: 80,
         explanation: direction
           ? `Manual translation: ${finalDirection === 'sq-to-en' ? 'Albanian → English' : 'English → Albanian'}`

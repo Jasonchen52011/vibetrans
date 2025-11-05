@@ -1,7 +1,5 @@
 'use client';
 
-import { SpeechToTextButton } from '@/components/ui/speech-to-text-button';
-import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
 import { readFileContent } from '@/lib/utils/file-utils';
 import { Mic, Waves } from 'lucide-react';
 // import mammoth from 'mammoth'; // Disabled for Edge Runtime compatibility
@@ -204,15 +202,6 @@ export default function EnglishToPolishTranslatorTool({
                 {pageData.tool.uploadButton}
               </label>
 
-              {/* Voice Input Button */}
-              <SpeechToTextButton
-                onTranscript={(text) =>
-                  setInputText((prev) => (prev ? `${prev} ${text}` : text))
-                }
-                locale={locale}
-              />
-
-              {/* Audio Upload Button */}
               <button
                 onClick={handleAudioUploadClick}
                 className={`flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 dark:border-zinc-600 transition-colors ${
@@ -295,7 +284,6 @@ export default function EnglishToPolishTranslatorTool({
               </h2>
               {outputText && (
                 <div className="flex gap-2">
-                  <TextToSpeechButton text={outputText} locale={locale} />
                   <button
                     onClick={handleCopy}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"
@@ -338,7 +326,7 @@ export default function EnglishToPolishTranslatorTool({
               )}
             </div>
             <div
-              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md bg-gray-50 dark:bg-zinc-700 text-gray-700 dark:text-gray-200 overflow-y-auto"
+              className="w-full h-48 md:h-64 p-3 border border-gray-300 dark:border-zinc-600 rounded-md bg-gray-50 dark:bg-zinc-700 flex items-center justify-center text-gray-700 dark:text-gray-200 overflow-y-auto"
               aria-live="polite"
             >
               {isLoading ? (

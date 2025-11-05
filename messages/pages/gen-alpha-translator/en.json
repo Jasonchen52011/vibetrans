@@ -61,6 +61,16 @@
           "alt": "Warning phrase converted to Gen Alpha",
           "name": "Be careful → Watch out, that's sus",
           "text": "Original: That link looks suspicious, be careful. → Gen Alpha: That link is mad sus, watch out."
+        },
+        {
+          "alt": "Agreement phrase in Gen Alpha slang",
+          "name": "Okay, sounds good → Bet",
+          "text": "Original: Okay, I'll meet you at 5 PM. → Gen Alpha: Bet, catch you at 5."
+        },
+        {
+          "alt": "Compliment about style translated to Gen Alpha",
+          "name": "Nice outfit → Your drip is clean",
+          "text": "Original: I love your new shoes and jacket. → Gen Alpha: Your drip is absolutely fire, fr fr."
         }
       ]
     },

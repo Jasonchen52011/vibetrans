@@ -185,6 +185,25 @@
         }
       ]
     },
+    "unique": {
+      "title": "古今希腊语精通翻译",
+      "subtitle": "为希腊语爱好者量身定制的专业解决方案",
+      "description": "探索希腊语翻译卓越功能的独特能力和解决方案",
+      "items": [
+        {
+          "title": "历时希腊语翻译",
+          "content": "VibeTrans 独特地连接了古希腊语（古典、通用、中世纪）和现代希腊语之间的鸿沟。我们的 AI 理解跨越 3000 年的语言演变，翻译哲学文本、圣经经文和历史文献，同时保留其原始文化背景和语法细微差别，这是标准翻译器所忽略的。",
+          "image": "/images/docs/ancient-greek-cultural-insights.webp",
+          "imageAlt": "古希腊到现代希腊语的演变"
+        },
+        {
+          "title": "希腊语文字智能识别",
+          "content": "高级希腊语多音节正字法识别，包括气息符号、重音符号和下标 iota。非常适合处理古典文本的学术工作，确保正确渲染在学术和宗教语境中对正确发音和语法意义至关重要的变音符号。",
+          "image": "/images/docs/ancient-greek-dialects.webp",
+          "imageAlt": "希腊语多音节文字与变音符号"
+        }
+      ]
+    },
     "testimonials": {
       "title": "用户怎么说",
       "subtitle": "来自真实用户的评价",

@@ -1,6 +1,5 @@
 'use client';
 
-import { TextToSpeechButton } from '@/components/ui/text-to-speech-button';
 import { detectLanguage } from '@/lib/language-detection';
 import { readFileContent } from '@/lib/utils/file-utils';
 import { ArrowRightIcon } from 'lucide-react';
@@ -337,7 +336,6 @@ export default function EsperantoTranslatorTool({
               {/* TTS and action buttons */}
               {translatedText && (
                 <div className="flex gap-2">
-                  <TextToSpeechButton text={translatedText} locale={locale} />
                   <button
                     onClick={handleCopy}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors"

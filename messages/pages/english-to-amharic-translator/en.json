@@ -161,6 +161,25 @@
         }
       ]
     },
+    "unique": {
+      "title": "Ethiopian Enterprise & Cultural Collaboration Features",
+      "subtitle": "Tailored Solutions for Ethiopian Teams",
+      "description": "Exploring unique features and capabilities for English-Amharic translation",
+      "items": [
+        {
+          "title": "Ge'ez Script Preservation",
+          "content": "VibeTrans maintains authentic Ge'ez script formatting while translating, ensuring proper glyph rendering and vowel marking integrity. This preserves the visual beauty and linguistic accuracy essential for official documents, cultural materials, and professional communications across Ethiopian institutions.",
+          "image": "/images/docs/amharic-alphabet-fun.webp",
+          "imageAlt": "Ge'ez script characters with proper formatting"
+        },
+        {
+          "title": "Honorific Intelligence",
+          "content": "Automatically detects and applies appropriate Ethiopian honorifics and formal address systems. The AI understands cultural context to use proper titles like 'Ato' or 'Woizero', ensuring translations respect social hierarchies and business etiquette essential for government and enterprise communications.",
+          "image": "/images/docs/global-business-tools.webp",
+          "imageAlt": "Professional Ethiopian business communication interface"
+        }
+      ]
+    },
     "testimonials": {
       "title": "What Users Say",
       "subtitle": "Stories from Teams Using VibeTrans to Bridge English and Amharic Every Day",

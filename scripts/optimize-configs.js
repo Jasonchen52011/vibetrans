@@ -8,7 +8,10 @@
 const fs = require('fs');
 const path = require('path');
 
-const configPath = path.join(__dirname, '../src/lib/ai-base/translator-configs.ts');
+const configPath = path.join(
+  __dirname,
+  '../src/lib/ai-base/translator-configs.ts'
+);
 
 // 备份原文件
 const backupPath = configPath + '.backup';
@@ -18,7 +21,7 @@ if (!fs.existsSync(backupPath)) {
 }
 
 // 读取配置文件
-let content = fs.readFileSync(configPath, 'utf8');
+const content = fs.readFileSync(configPath, 'utf8');
 
 // 简单的优化：移除多余的空行和注释
 const optimizations = [
@@ -30,7 +33,7 @@ const optimizations = [
   { pattern: /\n\nimport/g, replacement: '\nimport' },
 ];
 
-let originalSize = Buffer.byteLength(content, 'utf8');
+const originalSize = Buffer.byteLength(content, 'utf8');
 let optimizedContent = content;
 
 optimizations.forEach(({ pattern, replacement }) => {
@@ -38,16 +41,13 @@ optimizations.forEach(({ pattern, replacement }) => {
 });
 
 // 添加更激进的优化：压缩长prompt字符串
-optimizedContent = optimizedContent.replace(
-  /(`[^`]{50,}`)/g,
-  (match) => {
-    // 简单压缩：将多个空格变为单个空格
-    return match.replace(/\s+/g, ' ').trim();
-  }
-);
+optimizedContent = optimizedContent.replace(/(`[^`]{50,}`)/g, (match) => {
+  // 简单压缩：将多个空格变为单个空格
+  return match.replace(/\s+/g, ' ').trim();
+});
 
-let optimizedSize = Buffer.byteLength(optimizedContent, 'utf8');
-let savings = originalSize - optimizedSize;
+const optimizedSize = Buffer.byteLength(optimizedContent, 'utf8');
+const savings = originalSize - optimizedSize;
 
 // 写入优化后的文件
 fs.writeFileSync(configPath, optimizedContent);
@@ -55,7 +55,9 @@ fs.writeFileSync(configPath, optimizedContent);
 console.log(`📊 配置文件优化结果:`);
 console.log(`   原始大小: ${(originalSize / 1024).toFixed(2)} KB`);
 console.log(`   优化后: ${(optimizedSize / 1024).toFixed(2)} KB`);
-console.log(`   节省: ${(savings / 1024).toFixed(2)} KB (${((savings / originalSize) * 100).toFixed(1)}%)`);
+console.log(
+  `   节省: ${(savings / 1024).toFixed(2)} KB (${((savings / originalSize) * 100).toFixed(1)}%)`
+);
 
 if (savings > 0) {
   console.log('✅ 优化完成！');

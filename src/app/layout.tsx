@@ -1,7 +1,7 @@
-import type { ReactNode } from 'react';
 import { fontSatoshi } from '@/assets/fonts';
 import AffonsoScript from '@/components/affiliate/affonso';
 import PromotekitScript from '@/components/affiliate/promotekit';
+import type { ReactNode } from 'react';
 import '@/styles/globals.css';
 
 interface Props {
