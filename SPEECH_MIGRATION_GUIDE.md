@@ -93,7 +93,7 @@ src/app/[locale]/(marketing)/(pages)/
 2. **使用测试组件**:
    ```tsx
    // 在任何页面中临时添加
-   import { SpeechValidationTest } from '@/lib/speech/validation-test';
+   // import { SpeechValidationTest } from '@/lib/speech/validation-test'; // 已移除语音模块
 
    <SpeechValidationTest />
    ```
@@ -176,7 +176,7 @@ src/app/[locale]/(marketing)/(pages)/
 
 ```tsx
 // 查看详细日志
-import { speechCache, speechErrorHandler } from '@/lib/speech/speech-cache';
+// import { speechCache, speechErrorHandler } from '@/lib/speech/speech-cache'; // 已移除语音模块
 
 console.log('缓存统计:', speechCache.getStats());
 console.log('错误统计:', speechErrorHandler.getErrorStats());
