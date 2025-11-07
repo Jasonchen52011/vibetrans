@@ -67,7 +67,7 @@ export default async function DogTranslatorPage(props: DogTranslatorPageProps) {
       />
       <div className="flex flex-col">
         {/* Hero Section */}
-        <AuroraBackground className="bg-white dark:bg-zinc-900 !pt-12 !h-auto">
+        <AuroraBackground className="bg-white dark:bg-zinc-900 !h-auto -mt-16 pt-16">
           <div className="container max-w-7xl mx-auto px-4 text-center relative z-10 pb-8">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               {t('hero.title')}

@@ -1,5 +1,3 @@
-'use client';
-
 import { BlueskyIcon } from '@/components/icons/bluesky';
 import { DiscordIcon } from '@/components/icons/discord';
 import { FacebookIcon } from '@/components/icons/facebook';
@@ -18,11 +16,9 @@ import { websiteConfig } from './website';
 /**
  * Get social config
  *
- * NOTICE: used in client components only
- *
  * @returns The social config
  */
-export function useSocialLinks(): MenuItem[] {
+export function getSocialLinks(t: any): MenuItem[] {
   const socialLinks: MenuItem[] = [];
 
   if (websiteConfig.metadata.social?.twitter) {

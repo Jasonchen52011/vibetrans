@@ -1,18 +1,21 @@
-'use client';
-
 import Container from '@/components/layout/container';
 import { Logo } from '@/components/layout/logo';
-import { useFooterLinks } from '@/config/footer-config';
-import { useSocialLinks } from '@/config/social-config';
+import { getFooterLinks } from '@/config/footer-config';
+import { getSocialLinks } from '@/config/social-config';
 import { LocaleLink } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import type React from 'react';
 
-export function Footer({ className }: React.HTMLAttributes<HTMLElement>) {
-  const t = useTranslations();
-  const footerLinks = useFooterLinks();
-  const socialLinks = useSocialLinks();
+interface FooterProps extends React.HTMLAttributes<HTMLElement> {
+  locale: string;
+}
+
+export async function Footer({ className, locale }: FooterProps) {
+  const t = await getTranslations({ locale, namespace: 'Marketing.footer' });
+  const tRoot = await getTranslations({ locale });
+  const footerLinks = getFooterLinks(t);
+  const socialLinks = getSocialLinks(t);
 
   return (
     <footer className={cn('bg-gray-900', className)}>
@@ -24,19 +27,19 @@ export function Footer({ className }: React.HTMLAttributes<HTMLElement>) {
               <div className="items-center space-x-2 flex">
                 <Logo />
                 <span className="text-xl font-semibold text-gray-50">
-                  {t('Metadata.name')}
+                  {tRoot('name')}
                 </span>
               </div>
 
               {/* tagline */}
               <p className="text-gray-300 text-base py-2">
-                {t('Marketing.footer.tagline')}
+                {t('tagline')}
               </p>
             </div>
           </div>
 
           {/* footer links */}
-          <div className="flex flex-wrap gap-8 md:gap-16 md:flex-1 md:justify-end">
+          <div className="flex flex-wrap gap-8 md:gap-12 md:flex-1 md:justify-end">
             {footerLinks?.map((section) => (
               <div key={section.title} className="flex flex-col items-start">
                 <span className="text-sm font-semibold uppercase text-gray-50">
@@ -101,7 +104,7 @@ export function Footer({ className }: React.HTMLAttributes<HTMLElement>) {
       <div className="border-t border-gray-700 py-8">
         <Container className="px-4 flex items-center justify-center gap-x-4">
           <span className="text-gray-300 text-sm text-center">
-            &copy; {new Date().getFullYear()} {t('Metadata.name')} All Rights
+            &copy; {new Date().getFullYear()} {tRoot('name')} All Rights
             Reserved.
           </span>
         </Container>

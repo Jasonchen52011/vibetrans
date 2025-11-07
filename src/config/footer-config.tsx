@@ -1,8 +1,5 @@
-'use client';
-
 import { Routes } from '@/routes';
 import type { NestedMenuItem } from '@/types';
-import { useTranslations } from 'next-intl';
 
 type FooterLink = {
   key: string;
@@ -83,7 +80,7 @@ const COMPANY_LINKS: FooterLink[] = [
 const LEGAL_LINKS: FooterLink[] = [];
 
 function mapFooterItems(
-  t: ReturnType<typeof useTranslations>,
+  t: any,
   section: string,
   links: FooterLink[],
   hidden: Set<string> = new Set()
@@ -97,9 +94,7 @@ function mapFooterItems(
     }));
 }
 
-export function useFooterLinks(): NestedMenuItem[] {
-  const t = useTranslations('Marketing.footer');
-
+export function getFooterLinks(t: any): NestedMenuItem[] {
   const footerSections = [
     {
       title: t('funTranslate.title'),
