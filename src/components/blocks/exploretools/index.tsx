@@ -72,7 +72,7 @@ export default function ExploreOurAiTools({
     },
     'Minion Translator': {
       link: '/minion-translator',
-      image: '/images/docs/what-is-minion-translator.webp',
+      image: '/images/docs/minion-translation-tool.webp',
     },
     // Dog Tools
     'Dog Name Generator': {
