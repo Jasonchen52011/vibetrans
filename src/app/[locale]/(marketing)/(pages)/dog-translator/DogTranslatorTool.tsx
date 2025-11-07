@@ -8,20 +8,26 @@ import { useEffect, useRef, useState } from 'react';
 // Define emotion types and sound mapping
 type Emotion = 'happy' | 'sad' | 'angry' | 'normal';
 
-// Sound file mapping table - use direct static file paths
+// Helper function to get audio URL using API route
+const getAudioUrl = (filename: string) => {
+  const file = filename.split('/').pop();
+  return `/api/voice/${file}`;
+};
+
+// Sound file mapping table - use API routes with Edge Runtime
 const soundMap: Record<Emotion, string[]> = {
-  happy: ['/voice/happy.mp3', '/voice/happy3.mp3'],
-  sad: ['/voice/sad.mp3'],
-  angry: ['/voice/angry.mp3'],
-  normal: ['/voice/normal.mp3'],
+  happy: ['/voice/happy.mp3', '/voice/happy3.mp3'].map(getAudioUrl),
+  sad: ['/voice/sad.mp3'].map(getAudioUrl),
+  angry: ['/voice/angry.mp3'].map(getAudioUrl),
+  normal: ['/voice/normal.mp3'].map(getAudioUrl),
 };
 
 // Fallback audio files (used when primary files fail to load)
 const fallbackSounds: Record<Emotion, string> = {
-  happy: '/voice/happy.mp3',
-  sad: '/voice/sad.mp3',
-  angry: '/voice/angry.mp3',
-  normal: '/voice/normal.mp3',
+  happy: getAudioUrl('/voice/happy.mp3'),
+  sad: getAudioUrl('/voice/sad.mp3'),
+  angry: getAudioUrl('/voice/angry.mp3'),
+  normal: getAudioUrl('/voice/normal.mp3'),
 };
 
 // Helper function: randomly select an element from array (kept but now directly using index in new logic)
