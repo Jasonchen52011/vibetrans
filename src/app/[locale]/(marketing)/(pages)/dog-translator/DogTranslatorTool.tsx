@@ -8,30 +8,29 @@ import { useEffect, useRef, useState } from 'react';
 // Define emotion types and sound mapping
 type Emotion = 'happy' | 'sad' | 'angry' | 'normal';
 
-// Sound file mapping table - use direct public paths with base path support
+// Helper function to get audio URL using API route
+const getAudioUrl = (filename: string) => {
+  // Extract just the filename from the path
+  const file = filename.split('/').pop();
+  // Use API route for better compatibility
+  return `/api/voice/${file}`;
+};
+
+// Sound file mapping table - use API routes like dogbreed project
 const soundMap: Record<Emotion, string[]> = {
-  happy: ['/voice/happy.mp3', '/voice/happy3.mp3'],
-  sad: ['/voice/sad.mp3'],
-  angry: ['/voice/angry.mp3'],
-  normal: ['/voice/normal.mp3'],
+  happy: ['/voice/happy.mp3', '/voice/happy3.mp3'].map(getAudioUrl),
+  sad: ['/voice/sad.mp3'].map(getAudioUrl),
+  angry: ['/voice/angry.mp3'].map(getAudioUrl),
+  normal: ['/voice/normal.mp3'].map(getAudioUrl),
 };
 
 // Fallback audio files (used when primary files fail to load)
 const fallbackSounds: Record<Emotion, string> = {
-  happy: '/voice/happy.mp3',
-  sad: '/voice/sad.mp3',
-  angry: '/voice/angry.mp3',
-  normal: '/voice/normal.mp3',
+  happy: getAudioUrl('/voice/happy.mp3'),
+  sad: getAudioUrl('/voice/sad.mp3'),
+  angry: getAudioUrl('/voice/angry.mp3'),
+  normal: getAudioUrl('/voice/normal.mp3'),
 };
-
-// Helper function to get correct static path
-function getStaticPath(path: string): string {
-  // For production deployment, ensure path starts with /
-  if (!path.startsWith('/')) {
-    path = '/' + path;
-  }
-  return path;
-}
 
 // Helper function: randomly select an element from array (kept but now directly using index in new logic)
 
@@ -223,7 +222,7 @@ export default function DogTranslatorTool({
       const soundFiles = soundMap[detectedEmotion];
       if (soundFiles && soundFiles.length > 0) {
         const randomIndex = Math.floor(Math.random() * soundFiles.length);
-        const selectedFile = getStaticPath(soundFiles[randomIndex]);
+        const selectedFile = soundFiles[randomIndex];
         setSelectedAudioFile(selectedFile);
         console.log(
           `Selected audio file for emotion "${detectedEmotion}":`,
@@ -234,7 +233,7 @@ export default function DogTranslatorTool({
         return;
       } else {
         // If soundFiles is invalid, use fallback audio
-        const fallbackFile = getStaticPath(fallbackSounds[detectedEmotion]);
+        const fallbackFile = fallbackSounds[detectedEmotion];
         console.warn(`soundFiles invalid, using fallback audio:`, fallbackFile);
         setSelectedAudioFile(fallbackFile);
         loadAndPlayAudio(fallbackFile);
@@ -326,9 +325,9 @@ export default function DogTranslatorTool({
         // Try fallback audio if available
         if (
           detectedEmotion &&
-          soundToPlay !== getStaticPath(fallbackSounds[detectedEmotion])
+          soundToPlay !== fallbackSounds[detectedEmotion]
         ) {
-          const fallbackFile = getStaticPath(fallbackSounds[detectedEmotion]);
+          const fallbackFile = fallbackSounds[detectedEmotion];
           console.log(`Trying fallback audio: ${fallbackFile}`);
           setSelectedAudioFile(fallbackFile);
           setIsLoadingAudio(false);
@@ -363,9 +362,9 @@ export default function DogTranslatorTool({
             // Try fallback on play error
             if (
               detectedEmotion &&
-              soundToPlay !== getStaticPath(fallbackSounds[detectedEmotion])
+              soundToPlay !== fallbackSounds[detectedEmotion]
             ) {
-              const fallbackFile = getStaticPath(fallbackSounds[detectedEmotion]);
+              const fallbackFile = fallbackSounds[detectedEmotion];
               console.log(`Play failed, trying fallback: ${fallbackFile}`);
               setSelectedAudioFile(fallbackFile);
               cleanupAudio();
@@ -396,9 +395,9 @@ export default function DogTranslatorTool({
           // Try fallback on timeout
           if (
             detectedEmotion &&
-            soundToPlay !== getStaticPath(fallbackSounds[detectedEmotion])
+            soundToPlay !== fallbackSounds[detectedEmotion]
           ) {
-            const fallbackFile = getStaticPath(fallbackSounds[detectedEmotion]);
+            const fallbackFile = fallbackSounds[detectedEmotion];
             setSelectedAudioFile(fallbackFile);
             cleanupAudio();
             setTimeout(() => loadAndPlayAudio(fallbackFile), 100);
@@ -415,8 +414,8 @@ export default function DogTranslatorTool({
       console.error('Failed to load audio:', error);
 
       // Try fallback on fetch error
-      if (detectedEmotion && soundToPlay !== getStaticPath(fallbackSounds[detectedEmotion])) {
-        const fallbackFile = getStaticPath(fallbackSounds[detectedEmotion]);
+      if (detectedEmotion && soundToPlay !== fallbackSounds[detectedEmotion]) {
+        const fallbackFile = fallbackSounds[detectedEmotion];
         console.log(`Fetch failed, trying fallback: ${fallbackFile}`);
         setSelectedAudioFile(fallbackFile);
         setTimeout(() => loadAndPlayAudio(fallbackFile), 100);
