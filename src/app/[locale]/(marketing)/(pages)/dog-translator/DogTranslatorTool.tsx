@@ -14,7 +14,7 @@ const getAudioUrl = (filename: string) => {
   return `/api/voice/${file}`;
 };
 
-// Sound file mapping table - use API routes with Edge Runtime
+// Sound file mapping table - use API routes
 const soundMap: Record<Emotion, string[]> = {
   happy: ['/voice/happy.mp3', '/voice/happy3.mp3'].map(getAudioUrl),
   sad: ['/voice/sad.mp3'].map(getAudioUrl),

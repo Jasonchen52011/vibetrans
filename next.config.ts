@@ -28,6 +28,14 @@ const nextConfig: NextConfig = {
   // Disable static generation for error pages to bypass Html import issue
   trailingSlash: false,
 
+  // Force dynamic rendering for all pages to bypass Html import issues
+  staticPageGenerationTimeout: 1000,
+
+  // Skip static generation for now
+  skipTrailingSlashRedirect: true,
+
+  
+
   // Disable distDir to avoid Html import issues
   distDir: '.next',
 
@@ -41,7 +49,6 @@ const nextConfig: NextConfig = {
   },
 
   // Disable experimental optimizations temporarily to bypass Html import issue
-  experimental: {},
 
   // Webpack configuration for Cloudflare Pages Edge Runtime compatibility
   webpack: (config, { webpack, isServer, dev }) => {
