@@ -262,6 +262,20 @@
           "imageAlt": "Bark Translations Vary by Breed"
         }
       ]
+    },
+    "unique": {
+      "title": "What Makes Our Dog Translator Special",
+      "description": "Discover the unique features that set our dog translator apart",
+      "items": [
+        {
+          "title": "Real-time Emotion Detection",
+          "description": "Our AI analyzes your text instantly to detect subtle emotional cues, ensuring accurate bark translations that match your intended mood."
+        },
+        {
+          "title": "Breed-specific Sound Library",
+          "description": "Access authentic dog sounds recorded from various breeds, giving you more realistic and emotionally appropriate translations."
+        }
+      ]
     }
   },
   "Metadata": {

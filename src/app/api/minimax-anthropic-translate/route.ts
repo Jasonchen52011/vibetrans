@@ -37,10 +37,7 @@ export async function POST(request: NextRequest) {
     });
 
     if (!response.success) {
-      return NextResponse.json(
-        { error: response.error },
-        { status: 500 }
-      );
+      return NextResponse.json({ error: response.error }, { status: 500 });
     }
 
     return NextResponse.json(response);
@@ -63,8 +60,12 @@ export async function POST(request: NextRequest) {
     } else if (error.message?.includes('content')) {
       errorMessage = 'Content policy violation. Please modify your input.';
       statusCode = 400;
-    } else if (error.message?.includes('network') || error.message?.includes('fetch')) {
-      errorMessage = 'Network error. Please check your connection and try again.';
+    } else if (
+      error.message?.includes('network') ||
+      error.message?.includes('fetch')
+    ) {
+      errorMessage =
+        'Network error. Please check your connection and try again.';
       statusCode = 503;
     }
 
@@ -90,7 +91,9 @@ export async function GET() {
           status: 'error',
           message: 'Minimax Anthropic client not configured',
           config: {
-            baseUrl: process.env.MINIMAX_ANTHROPIC_BASE_URL || 'https://api.minimax.io/anthropic',
+            baseUrl:
+              process.env.MINIMAX_ANTHROPIC_BASE_URL ||
+              'https://api.minimax.io/anthropic',
             model: process.env.MINIMAX_ANTHROPIC_MODEL || 'MiniMax-M2',
             hasApiKey: !!process.env.MINIMAX_ANTHROPIC_API_KEY,
           },
@@ -138,7 +141,9 @@ export async function GET() {
         error:
           process.env.NODE_ENV === 'development' ? error.message : undefined,
         config: {
-          baseUrl: process.env.MINIMAX_ANTHROPIC_BASE_URL || 'https://api.minimax.io/anthropic',
+          baseUrl:
+            process.env.MINIMAX_ANTHROPIC_BASE_URL ||
+            'https://api.minimax.io/anthropic',
           model: process.env.MINIMAX_ANTHROPIC_MODEL || 'MiniMax-M2',
           hasApiKey: !!process.env.MINIMAX_ANTHROPIC_API_KEY,
         },

@@ -5,9 +5,9 @@
  * 在命令行中直接使用 MiniMax-M2 API
  */
 
-import { config } from 'dotenv';
-import { program } from 'commander';
 import chalk from 'chalk';
+import { program } from 'commander';
+import { config } from 'dotenv';
 import ora from 'ora';
 
 // 加载环境变量
@@ -33,8 +33,12 @@ function checkConfig(): boolean {
   const model = process.env.MINIMAX_ANTHROPIC_MODEL;
 
   if (!apiKey) {
-    console.error(chalk.red('❌ 错误: MINIMAX_ANTHROPIC_API_KEY 环境变量未设置'));
-    console.log(chalk.yellow('💡 请在 .env.local 文件中设置 MINIMAX_ANTHROPIC_API_KEY'));
+    console.error(
+      chalk.red('❌ 错误: MINIMAX_ANTHROPIC_API_KEY 环境变量未设置')
+    );
+    console.log(
+      chalk.yellow('💡 请在 .env.local 文件中设置 MINIMAX_ANTHROPIC_API_KEY')
+    );
     return false;
   }
 
@@ -52,7 +56,7 @@ async function callMiniMaxAPI(options: CLIOptions): Promise<any> {
     temperature = 0.7,
     maxTokens = 2048,
     model = process.env.MINIMAX_ANTHROPIC_MODEL || 'MiniMax-M2',
-    verbose = false
+    verbose = false,
   } = options;
 
   if (!text && !prompt) {
@@ -81,25 +85,28 @@ async function callMiniMaxAPI(options: CLIOptions): Promise<any> {
     console.log('');
   }
 
-  const response = await fetch(`${process.env.MINIMAX_ANTHROPIC_BASE_URL}/v1/messages`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'x-api-key': process.env.MINIMAX_ANTHROPIC_API_KEY!,
-      'anthropic-version': '2023-06-01',
-    },
-    body: JSON.stringify({
-      model,
-      max_tokens: maxTokens,
-      temperature,
-      messages: [
-        {
-          role: 'user',
-          content: fullPrompt,
-        },
-      ],
-    }),
-  });
+  const response = await fetch(
+    `${process.env.MINIMAX_ANTHROPIC_BASE_URL}/v1/messages`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': process.env.MINIMAX_ANTHROPIC_API_KEY!,
+        'anthropic-version': '2023-06-01',
+      },
+      body: JSON.stringify({
+        model,
+        max_tokens: maxTokens,
+        temperature,
+        messages: [
+          {
+            role: 'user',
+            content: fullPrompt,
+          },
+        ],
+      }),
+    }
+  );
 
   const data = await response.json();
 
@@ -120,7 +127,9 @@ function formatOutput(data: any, options: CLIOptions): void {
   }
 
   const textContent = data.content?.find((item: any) => item.type === 'text');
-  const thinkingContent = data.content?.find((item: any) => item.type === 'thinking');
+  const thinkingContent = data.content?.find(
+    (item: any) => item.type === 'thinking'
+  );
 
   console.log(chalk.green('✅ 请求成功!'));
   console.log('');
@@ -141,7 +150,9 @@ function formatOutput(data: any, options: CLIOptions): void {
     console.log(chalk.blue('📊 使用统计:'));
     console.log(`   - 输入令牌: ${data.usage.input_tokens}`);
     console.log(`   - 输出令牌: ${data.usage.output_tokens}`);
-    console.log(`   - 总计令牌: ${data.usage.input_tokens + data.usage.output_tokens}`);
+    console.log(
+      `   - 总计令牌: ${data.usage.input_tokens + data.usage.output_tokens}`
+    );
     console.log('');
   }
 
@@ -187,8 +198,8 @@ program
   .option('-t, --text <text>', '输入文本')
   .option('-p, --prompt <prompt>', '提示词')
   .option('-s, --system <system>', '系统指令')
-  .option('--temperature <temp>', '温度参数 (0.0-1.0)', parseFloat)
-  .option('--max-tokens <tokens>', '最大令牌数', parseInt)
+  .option('--temperature <temp>', '温度参数 (0.0-1.0)', Number.parseFloat)
+  .option('--max-tokens <tokens>', '最大令牌数', Number.parseInt)
   .option('--model <model>', '模型名称', 'MiniMax-M2')
   .option('-v, --verbose', '详细输出')
   .option('--json', 'JSON 格式输出')
@@ -199,7 +210,11 @@ program
   .description('翻译文本')
   .option('-t, --text <text>', '要翻译的文本')
   .option('-p, --prompt <prompt>', '翻译提示，例如：请将英文翻译成中文')
-  .option('-s, --system <system>', '系统指令，默认为专业翻译助手', '你是一个专业的翻译助手，请提供准确流畅的翻译')
+  .option(
+    '-s, --system <system>',
+    '系统指令，默认为专业翻译助手',
+    '你是一个专业的翻译助手，请提供准确流畅的翻译'
+  )
   .option('--temperature <temp>', '温度参数', '0.3')
   .option('--max-tokens <tokens>', '最大令牌数', '1024')
   .option('-v, --verbose', '详细输出')
@@ -211,7 +226,11 @@ program
   .description('文本摘要')
   .option('-t, --text <text>', '要摘要的文本')
   .option('-p, --prompt <prompt>', '摘要提示，例如：请总结成一句话')
-  .option('-s, --system <system>', '系统指令，默认为专业摘要助手', '你是一个专业的摘要助手，请提炼核心信息')
+  .option(
+    '-s, --system <system>',
+    '系统指令，默认为专业摘要助手',
+    '你是一个专业的摘要助手，请提炼核心信息'
+  )
   .option('--temperature <temp>', '温度参数', '0.5')
   .option('--max-tokens <tokens>', '最大令牌数', '512')
   .option('-v, --verbose', '详细输出')
@@ -223,11 +242,21 @@ program
   .description('显示当前配置')
   .action(() => {
     console.log(chalk.blue('📋 当前配置:'));
-    console.log(`   - API Key: ${process.env.MINIMAX_ANTHROPIC_API_KEY ? '✅ 已设置' : '❌ 未设置'}`);
-    console.log(`   - Base URL: ${process.env.MINIMAX_ANTHROPIC_BASE_URL || 'https://api.minimax.io/anthropic'}`);
-    console.log(`   - Model: ${process.env.MINIMAX_ANTHROPIC_MODEL || 'MiniMax-M2'}`);
-    console.log(`   - Max Tokens: ${process.env.MINIMAX_ANTHROPIC_MAX_TOKENS || '2048'}`);
-    console.log(`   - Temperature: ${process.env.MINIMAX_ANTHROPIC_TEMPERATURE || '0.7'}`);
+    console.log(
+      `   - API Key: ${process.env.MINIMAX_ANTHROPIC_API_KEY ? '✅ 已设置' : '❌ 未设置'}`
+    );
+    console.log(
+      `   - Base URL: ${process.env.MINIMAX_ANTHROPIC_BASE_URL || 'https://api.minimax.io/anthropic'}`
+    );
+    console.log(
+      `   - Model: ${process.env.MINIMAX_ANTHROPIC_MODEL || 'MiniMax-M2'}`
+    );
+    console.log(
+      `   - Max Tokens: ${process.env.MINIMAX_ANTHROPIC_MAX_TOKENS || '2048'}`
+    );
+    console.log(
+      `   - Temperature: ${process.env.MINIMAX_ANTHROPIC_TEMPERATURE || '0.7'}`
+    );
     console.log('');
     console.log(chalk.yellow('💡 配置文件位置: .env.local'));
   });

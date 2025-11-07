@@ -374,8 +374,7 @@ export default function CuneiformTranslatorTool({
               aria-live="polite"
             >
               {isLoading ? (
-                  <p>{pageData.tool.loading || 'Translating...'}</p>
-
+                <p>{pageData.tool.loading || 'Translating...'}</p>
               ) : error ? (
                 <p className="text-red-600 dark:text-red-400">{error}</p>
               ) : translatedText ? (

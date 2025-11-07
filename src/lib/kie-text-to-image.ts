@@ -4,8 +4,7 @@
  */
 
 const KIE_API_BASE = 'https://api.kie.ai/api/v1';
-const KIE_API_KEY =
-  process.env.KIE_API_KEY || 'edd26a45e54629eb013d550bbcb8cef2';
+const KIE_API_KEY = process.env.KIE_API_KEY!;
 
 export interface KieTextToImageInput {
   prompt: string;

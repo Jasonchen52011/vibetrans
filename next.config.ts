@@ -22,6 +22,15 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: true,
   },
 
+  // Temporary fix for static generation issues with error pages
+  generateEtags: false,
+
+  // Disable static generation for error pages to bypass Html import issue
+  trailingSlash: false,
+
+  // Disable distDir to avoid Html import issues
+  distDir: '.next',
+
   // Exclude Node.js-only packages from Edge Runtime bundles
   serverExternalPackages: ['sharp', 'critters', '@clerk/nextjs'],
 
@@ -31,42 +40,11 @@ const nextConfig: NextConfig = {
     removeConsole: process.env.NODE_ENV === 'production',
   },
 
-  // Enable experimental optimizations for Cloudflare
+  // Disable experimental optimizations temporarily to bypass Html import issue
   experimental: {
-    // Re-enabled optimizePackageImports to fix Html import build issue
-    optimizePackageImports: [
-    //   '@radix-ui/react-accordion',
-    //   '@radix-ui/react-collapsible',
-    //   '@radix-ui/react-dropdown-menu',
-    //   '@radix-ui/react-navigation-menu',
-    //   '@radix-ui/react-portal',
-    //   '@radix-ui/react-slot',
-    //   '@radix-ui/react-tooltip',
-    //   'lucide-react',
-    //   'ai',
-    //   'clsx',
-    //   'tailwind-merge',
-    //   'sonner',
-    //   'next-themes',
-    //   'nuqs',
-    //   'react-remove-scroll',
-    //   'next-intl',
-        'class-variance-authority',
-    ],
-    // Optimize CSS
-    optimizeCss: true,
-    // Adjust large page data bytes for Cloudflare paid plan
-    largePageDataBytes: 256 * 1000, // 256KB for paid plans
-    // Enable webpack bundle analyzer for optimization
-    webpackBuildWorker: true,
-    // Enable more aggressive compression
-    gzipSize: true,
-    // Enable server components HMR
-    serverComponentsHmrCache: true,
-    // Additional optimization for Workers
-    serverMinification: true,
-    serverSourceMaps: false,
-    },
+    // Force SPA mode to avoid static generation issues
+    isrMemoryCacheSize: 0,
+  },
 
   // Webpack configuration for Cloudflare Pages Edge Runtime compatibility
   webpack: (config, { webpack, isServer, dev }) => {

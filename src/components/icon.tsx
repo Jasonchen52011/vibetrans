@@ -53,6 +53,7 @@ const iconMap: Record<string, LucideIcon> = {
   FaGlobe: Globe,
   FaFileAlt: FileText,
   FaLaughBeam: Laugh,
+  FaSmileBeam: Laugh,
   FaRandom: Shuffle,
   FaPalette: Palette,
   FaMagic: Sparkles,

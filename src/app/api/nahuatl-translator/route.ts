@@ -4,14 +4,14 @@ export const runtime = 'edge';
 
 // Language mapping for better translation prompts
 const languageMap: { [key: string]: string } = {
-  'en': 'English',
-  'es': 'Spanish',
-  'nah': 'Classical Nahuatl',
-  'zh': 'Chinese (Simplified)',
-  'fr': 'French',
-  'de': 'German',
-  'pt': 'Portuguese',
-  'auto': 'appropriate language based on context'
+  en: 'English',
+  es: 'Spanish',
+  nah: 'Classical Nahuatl',
+  zh: 'Chinese (Simplified)',
+  fr: 'French',
+  de: 'German',
+  pt: 'Portuguese',
+  auto: 'appropriate language based on context',
 };
 
 async function detectLanguage(text: string): Promise<string> {
@@ -29,22 +29,34 @@ async function detectLanguage(text: string): Promise<string> {
   const lowerText = text.toLowerCase();
 
   // French indicators
-  if (frenchRegex.test(text) || /\b(le|la|les|un|une|et|est|dans|pour|avec)\b/.test(lowerText)) {
+  if (
+    frenchRegex.test(text) ||
+    /\b(le|la|les|un|une|et|est|dans|pour|avec)\b/.test(lowerText)
+  ) {
     return 'fr';
   }
 
   // Spanish indicators
-  if (spanishRegex.test(text) || /\b(el|la|los|las|un|una|y|es|en|para|con)\b/.test(lowerText)) {
+  if (
+    spanishRegex.test(text) ||
+    /\b(el|la|los|las|un|una|y|es|en|para|con)\b/.test(lowerText)
+  ) {
     return 'es';
   }
 
   // German indicators
-  if (germanRegex.test(text) || /\b(der|die|das|ein|eine|und|ist|in|für|mit)\b/.test(lowerText)) {
+  if (
+    germanRegex.test(text) ||
+    /\b(der|die|das|ein|eine|und|ist|in|für|mit)\b/.test(lowerText)
+  ) {
     return 'de';
   }
 
   // Portuguese indicators
-  if (portugueseRegex.test(text) || /\b(o|a|os|as|um|uma|e|é|em|para|com)\b/.test(lowerText)) {
+  if (
+    portugueseRegex.test(text) ||
+    /\b(o|a|os|as|um|uma|e|é|em|para|com)\b/.test(lowerText)
+  ) {
     return 'pt';
   }
 
@@ -54,7 +66,7 @@ async function detectLanguage(text: string): Promise<string> {
 async function translateWithGemini(
   text: string,
   targetLanguage: string,
-  sourceLanguage: string = 'auto'
+  sourceLanguage = 'auto'
 ): Promise<{ translation: string; detectedLanguage: string }> {
   const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
 
@@ -63,7 +75,8 @@ async function translateWithGemini(
   }
 
   // Detect source language if auto
-  const detectedSourceLang = sourceLanguage === 'auto' ? await detectLanguage(text) : sourceLanguage;
+  const detectedSourceLang =
+    sourceLanguage === 'auto' ? await detectLanguage(text) : sourceLanguage;
   const sourceLangName = languageMap[detectedSourceLang] || detectedSourceLang;
   const targetLangName = languageMap[targetLanguage] || targetLanguage;
 
@@ -129,14 +142,20 @@ Original text: ${text}`;
 
   return {
     translation,
-    detectedLanguage: sourceLangName
+    detectedLanguage: sourceLangName,
   };
 }
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { text, targetLanguage = 'nah', sourceLanguage = 'auto', context = '', options = {} } = body;
+    const {
+      text,
+      targetLanguage = 'nah',
+      sourceLanguage = 'auto',
+      context = '',
+      options = {},
+    } = body;
 
     if (!text || typeof text !== 'string') {
       return NextResponse.json(
@@ -153,7 +172,11 @@ export async function POST(request: NextRequest) {
     }
 
     const startTime = Date.now();
-    const result = await translateWithGemini(text, targetLanguage, sourceLanguage);
+    const result = await translateWithGemini(
+      text,
+      targetLanguage,
+      sourceLanguage
+    );
     const processingTime = `${Date.now() - startTime}ms`;
 
     // Return response in format expected by frontend
@@ -162,7 +185,10 @@ export async function POST(request: NextRequest) {
       result: result.translation, // Alternative field name that frontend checks
       detectedLanguage: result.detectedLanguage,
       original: text,
-      targetLanguage: targetLanguage === 'auto' ? 'Auto-determined' : languageMap[targetLanguage] || targetLanguage,
+      targetLanguage:
+        targetLanguage === 'auto'
+          ? 'Auto-determined'
+          : languageMap[targetLanguage] || targetLanguage,
       contextNotes: context, // Echo back context if provided
       translationMethod: 'gemini-2.0-flash',
       metadata: {

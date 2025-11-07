@@ -60,11 +60,17 @@ export async function POST(request: NextRequest) {
     const { text } = await request.json();
 
     if (!text || typeof text !== 'string') {
-      return NextResponse.json({ error: 'Valid text is required' }, { status: 400 });
+      return NextResponse.json(
+        { error: 'Valid text is required' },
+        { status: 400 }
+      );
     }
 
     if (text.length > 5000) {
-      return NextResponse.json({ error: 'Text too long. Maximum 5000 characters.' }, { status: 400 });
+      return NextResponse.json(
+        { error: 'Text too long. Maximum 5000 characters.' },
+        { status: 400 }
+      );
     }
 
     const translated = await translateWithGemini(text, 'Cantonese');
@@ -74,10 +80,7 @@ export async function POST(request: NextRequest) {
     });
   } catch (error) {
     console.error('Translation error:', error);
-    return NextResponse.json(
-      { error: 'Translation failed' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Translation failed' }, { status: 500 });
   }
 }
 

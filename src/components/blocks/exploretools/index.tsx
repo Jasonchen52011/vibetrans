@@ -70,6 +70,10 @@ export default function ExploreOurAiTools({
       link: '/alien-text-generator',
       image: '/images/docs/what-is-alien-text-generator.webp',
     },
+    'Minion Translator': {
+      link: '/minion-translator',
+      image: '/images/docs/what-is-minion-translator.webp',
+    },
     // Dog Tools
     'Dog Name Generator': {
       link: '/dog-name-generator',

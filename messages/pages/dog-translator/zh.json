@@ -147,7 +147,7 @@
       "items": [
         {
           "title": "品种声线差异",
-          "description": "不同品种的狗狗有截然不同的吠叫方式。利用 AI 分析了解哈士奇的“碎碎念”或柯基的短促叫声背后真正的情绪含义。",
+          "description": "不同品种的狗狗有截然不同的吠叫方式。利用 AI 分析了解哈士奇的\"碎碎念\"或柯基的短促叫声背后真正的情绪含义。",
           "image": "/images/docs/speak-dog-in-any-language.webp",
           "imageAlt": "不同犬种的吠叫差异"
         },
@@ -175,7 +175,7 @@
       "title": "狗狗情绪小知识",
       "items": [
         {
-          "title": "狗狗也会“读心”",
+          "title": "狗狗也会\"读心\"",
           "description": "研究显示，狗能够分辨主人的喜怒哀乐。透过语气与声调的细微变化，它们会表现出相应的行为反应。",
           "image": "/images/docs/dog-translator-how-to.webp",
           "imageAlt": "狗狗读取人类情绪"
@@ -185,6 +185,20 @@
           "description": "警戒吠叫通常短促而有力，要求关注的吠叫则更为持续。观察模式差异能帮助你更精准回应狗狗需求。",
           "image": "/images/docs/speak-dog-in-any-language.webp",
           "imageAlt": "不同场景的狗吠差异"
+        }
+      ]
+    },
+    "unique": {
+      "title": "我们的狗语翻译器独特之处",
+      "description": "发现让我们的狗语翻译器与众不同的独特功能",
+      "items": [
+        {
+          "title": "实时情绪检测",
+          "description": "我们的AI即时分析您的文本，检测细微的情感线索，确保匹配您预期情绪的准确吠叫翻译。"
+        },
+        {
+          "title": "品种特定声音库",
+          "description": "访问从各种品种录制的真实狗声音，为您提供更真实和情感上更合适的翻译。"
         }
       ]
     },

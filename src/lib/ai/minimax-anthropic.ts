@@ -60,9 +60,12 @@ export class MinimaxAnthropicClient {
   /**
    * 执行翻译任务
    */
-  async translate(request: MinimaxTranslationRequest): Promise<MinimaxTranslationResponse> {
+  async translate(
+    request: MinimaxTranslationRequest
+  ): Promise<MinimaxTranslationResponse> {
     try {
-      const { text, prompt, systemInstruction, temperature, maxTokens } = request;
+      const { text, prompt, systemInstruction, temperature, maxTokens } =
+        request;
 
       if (!text && !prompt) {
         return {
@@ -114,7 +117,8 @@ export class MinimaxAnthropicClient {
         usage: {
           inputTokens: response.usage.input_tokens,
           outputTokens: response.usage.output_tokens,
-          totalTokens: response.usage.input_tokens + response.usage.output_tokens,
+          totalTokens:
+            response.usage.input_tokens + response.usage.output_tokens,
         },
       };
     } catch (error: any) {
@@ -124,7 +128,11 @@ export class MinimaxAnthropicClient {
 
       if (error.message?.includes('API key') || error.status === 401) {
         errorMessage = 'Invalid API key configuration';
-      } else if (error.message?.includes('quota') || error.message?.includes('rate limit') || error.status === 429) {
+      } else if (
+        error.message?.includes('quota') ||
+        error.message?.includes('rate limit') ||
+        error.status === 429
+      ) {
         errorMessage = 'API quota exceeded. Please try again later.';
       } else if (error.message?.includes('content') || error.status === 400) {
         errorMessage = 'Content policy violation. Please modify your input.';
@@ -146,7 +154,11 @@ export class MinimaxAnthropicClient {
   /**
    * 健康检查
    */
-  async healthCheck(): Promise<{ status: 'healthy' | 'error'; message: string; model?: string }> {
+  async healthCheck(): Promise<{
+    status: 'healthy' | 'error';
+    message: string;
+    model?: string;
+  }> {
     try {
       const response = await this.client.messages.create({
         model: this.config.model!,
@@ -200,10 +212,16 @@ export function createMinimaxAnthropicClient(): MinimaxAnthropicClient | null {
 
   return new MinimaxAnthropicClient({
     apiKey,
-    baseUrl: process.env.MINIMAX_ANTHROPIC_BASE_URL || 'https://api.minimax.io/anthropic',
+    baseUrl:
+      process.env.MINIMAX_ANTHROPIC_BASE_URL ||
+      'https://api.minimax.io/anthropic',
     model: process.env.MINIMAX_ANTHROPIC_MODEL || 'MiniMax-M2',
-    maxTokens: parseInt(process.env.MINIMAX_ANTHROPIC_MAX_TOKENS || '2048'),
-    temperature: parseFloat(process.env.MINIMAX_ANTHROPIC_TEMPERATURE || '0.7'),
+    maxTokens: Number.parseInt(
+      process.env.MINIMAX_ANTHROPIC_MAX_TOKENS || '2048'
+    ),
+    temperature: Number.parseFloat(
+      process.env.MINIMAX_ANTHROPIC_TEMPERATURE || '0.7'
+    ),
   });
 }
 

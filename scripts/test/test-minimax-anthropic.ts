@@ -35,7 +35,8 @@ const testCases: TestCase[] = [
   },
   {
     name: '长文本处理测试',
-    input: 'The quick brown fox jumps over the lazy dog. This is a pangram that contains all letters of the English alphabet.',
+    input:
+      'The quick brown fox jumps over the lazy dog. This is a pangram that contains all letters of the English alphabet.',
     prompt: '请将以下英文翻译成中文，并保持原意',
     systemInstruction: '你是一个专业的翻译专家，请确保翻译的准确性和流畅性',
   },
@@ -49,7 +50,9 @@ const testCases: TestCase[] = [
 /**
  * 执行单个测试用例
  */
-async function runTest(testCase: TestCase): Promise<{ success: boolean; result: any; error?: string }> {
+async function runTest(
+  testCase: TestCase
+): Promise<{ success: boolean; result: any; error?: string }> {
   try {
     console.log(`\n🧪 测试用例: ${testCase.name}`);
     console.log(`📝 输入: ${testCase.input}`);
@@ -60,7 +63,8 @@ async function runTest(testCase: TestCase): Promise<{ success: boolean; result: 
       return {
         success: false,
         result: null,
-        error: 'Minimax Anthropic 客户端未配置，请检查环境变量 MINIMAX_ANTHROPIC_API_KEY',
+        error:
+          'Minimax Anthropic 客户端未配置，请检查环境变量 MINIMAX_ANTHROPIC_API_KEY',
       };
     }
 
@@ -87,7 +91,10 @@ async function runTest(testCase: TestCase): Promise<{ success: boolean; result: 
     console.log(`📊 Token使用: ${response.usage?.totalTokens || 'N/A'}`);
 
     // 验证输出是否符合预期模式
-    if (testCase.expectedPattern && !new RegExp(testCase.expectedPattern).test(response.output)) {
+    if (
+      testCase.expectedPattern &&
+      !new RegExp(testCase.expectedPattern).test(response.output)
+    ) {
       console.log(`⚠️  警告: 输出不符合预期模式 '${testCase.expectedPattern}'`);
     }
 
@@ -170,7 +177,7 @@ async function main() {
   console.log('-' * 60);
 
   let successCount = 0;
-  let totalCount = testCases.length;
+  const totalCount = testCases.length;
 
   for (const testCase of testCases) {
     const testResult = await runTest(testCase);
@@ -179,7 +186,7 @@ async function main() {
     }
 
     // 测试间隔，避免频率限制
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
   }
 
   // 4. 测试结果汇总

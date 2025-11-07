@@ -8,23 +8,20 @@ import { useEffect, useRef, useState } from 'react';
 // Define emotion types and sound mapping
 type Emotion = 'happy' | 'sad' | 'angry' | 'normal';
 
-// Sound file mapping table
-// You need to ensure these sound files exist in the /public/voice/ directory
-// Each emotion can have 1-3 sound files, one will be randomly selected during playback
-// Primary audio file list (prioritize files with good compatibility)
+// Sound file mapping table - use API routes instead of direct file paths
 const soundMap: Record<Emotion, string[]> = {
-  happy: ['/voice/happy.mp3', '/voice/happy2.mp3', '/voice/happy3.mp3'],
-  sad: ['/voice/sad.mp3', '/voice/sad2.mp3'],
-  angry: ['/voice/angry.mp3', '/voice/angry2.mp3'],
-  normal: ['/voice/normal.mp3', '/voice/normal2.mp3', '/voice/normal3.mp3'],
+  happy: ['/api/voice/happy.mp3', '/api/voice/happy3.mp3'],
+  sad: ['/api/voice/sad.mp3'],
+  angry: ['/api/voice/angry.mp3'],
+  normal: ['/api/voice/normal.mp3'],
 };
 
 // Fallback audio files (used when primary files fail to load)
 const fallbackSounds: Record<Emotion, string> = {
-  happy: '/voice/happy.mp3',
-  sad: '/voice/sad.mp3',
-  angry: '/voice/angry.mp3',
-  normal: '/voice/normal.mp3', // Ensure this file is compatible
+  happy: '/api/voice/happy.mp3',
+  sad: '/api/voice/sad.mp3',
+  angry: '/api/voice/angry.mp3',
+  normal: '/api/voice/normal.mp3',
 };
 
 // Helper function: randomly select an element from array (kept but now directly using index in new logic)
@@ -181,11 +178,23 @@ export default function DogTranslatorTool({
     }
   };
 
-  // Function to clean up audio and timeout
+  // Function to clean up audio and timeout with enhanced cleanup
   const cleanupAudio = () => {
     if (audioRef.current) {
-      audioRef.current.pause();
-      audioRef.current.currentTime = 0;
+      // Remove all event listeners to prevent memory leaks
+      const audio = audioRef.current;
+      audio.onplay = null;
+      audio.onended = null;
+      audio.onerror = null;
+      audio.oncanplaythrough = null;
+      audio.onloadeddata = null;
+
+      // Stop playback and reset
+      if (!audio.paused) {
+        audio.pause();
+      }
+      audio.currentTime = 0;
+      audio.src = ''; // Clear the source to release resources
       audioRef.current = null;
     }
     if (playTimeoutRef.current) {
@@ -250,123 +259,180 @@ export default function DogTranslatorTool({
     loadAndPlayAudio(selectedAudioFile);
   };
 
-  // Function to load and play audio
-  const loadAndPlayAudio = (audioFile?: string) => {
+  // Function to load and play audio with enhanced error handling
+  const loadAndPlayAudio = async (audioFile?: string) => {
     const soundToPlay = audioFile || selectedAudioFile;
     if (!soundToPlay) return;
 
     // Clean up previous audio
     cleanupAudio();
     setIsLoadingAudio(true);
+    setAudioError(null);
 
-    console.log('Loading audio file for first time:', soundToPlay);
+    console.log('Loading audio via API:', soundToPlay);
 
-    const audio = new Audio();
-    audioRef.current = audio;
-
-    // Set audio properties
-    audio.preload = 'auto';
-    audio.volume = 0.8;
-    audio.crossOrigin = 'anonymous';
-
-    let hasStartedPlaying = false;
-
-    // Play start event
-    audio.onplay = () => {
-      hasStartedPlaying = true;
-      setIsLoadingAudio(false);
-      setIsPlaying(true);
-      setAudioError(null); // Clear error message when playback succeeds
-      console.log('Audio started playing:', soundToPlay);
-    };
-
-    // Play end event
-    audio.onended = () => {
-      console.log('Audio playback ended');
-      setIsPlaying(false);
-      setIsLoadingAudio(false);
-      // Don't clean up audio object, keep for reuse
-    };
-
-    // Error handling
-    audio.onerror = (e) => {
-      console.error(`Audio loading failed: ${soundToPlay}`, e);
-      console.error('Audio error details:', {
-        error: e,
-        audioSrc: audio.src,
-        audioReadyState: audio.readyState,
-        audioNetworkState: audio.networkState,
-        audioError: audio.error,
-        eventDetails:
-          e instanceof Event
-            ? {
-                isTrusted: e.isTrusted,
-                type: e.type,
-                eventPhase: e.eventPhase,
-                timeStamp: e.timeStamp,
-              }
-            : 'Non-event error',
-      });
-
-      // Check if it's a specific problematic file (non-standard sample rate)
-      const problematicFiles = ['/voice/normal2.mp3', '/voice/normal3.mp3'];
-      const isProblematicFile = problematicFiles.includes(soundToPlay);
-
-      if (isProblematicFile) {
-        console.warn(
-          `Detected problematic file ${soundToPlay}, sample rate incompatible, switching to fallback audio`
-        );
-        setAudioError(`Audio format incompatible, switched to fallback audio`);
+    try {
+      // Pre-flight check to verify audio file exists
+      const response = await fetch(soundToPlay, { method: 'HEAD' });
+      if (!response.ok) {
+        throw new Error(`Audio file not accessible: ${response.status}`);
       }
 
-      // If current audio loading failed, try using fallback audio
-      if (detectedEmotion && soundToPlay !== fallbackSounds[detectedEmotion]) {
-        console.log(
-          `Trying fallback audio: ${fallbackSounds[detectedEmotion]}`
-        );
-        setSelectedAudioFile(fallbackSounds[detectedEmotion]);
-        // Don't retry immediately, let user manually click play button
+      const audio = new Audio();
+      audioRef.current = audio;
+
+      // Set audio properties for API-served files
+      audio.preload = 'auto';
+      audio.volume = 0.8;
+      // Don't set crossOrigin for API-served files from same origin
+
+      let hasStartedPlaying = false;
+      let isLoadingTimeout = false;
+
+      // Play start event
+      audio.onplay = () => {
+        hasStartedPlaying = true;
         setIsLoadingAudio(false);
+        setIsPlaying(true);
+        setAudioError(null);
+        console.log('Audio started playing:', soundToPlay);
+      };
+
+      // Play end event
+      audio.onended = () => {
+        console.log('Audio playback ended');
         setIsPlaying(false);
-        cleanupAudio();
-        return;
-      }
+        setIsLoadingAudio(false);
+      };
 
-      setAudioError(`Audio loading failed, please try again`);
-      setIsLoadingAudio(false);
-      setIsPlaying(false);
-      cleanupAudio();
-    };
+      // Enhanced error handling
+      audio.onerror = (e) => {
+        console.error(`Audio loading failed: ${soundToPlay}`, e);
+        console.error('Audio error details:', {
+          error: audio.error,
+          readyState: audio.readyState,
+          networkState: audio.networkState,
+        });
 
-    // When audio can be played
-    audio.oncanplaythrough = () => {
-      console.log('Audio can be played:', soundToPlay);
-      audio
-        .play()
-        .then(() => {
-          console.log('Audio playback successful:', soundToPlay);
-        })
-        .catch((playError) => {
-          console.warn(`Audio playback failed: ${soundToPlay}`, playError);
+        // Try fallback audio if available
+        if (
+          detectedEmotion &&
+          soundToPlay !== fallbackSounds[detectedEmotion]
+        ) {
+          console.log(
+            `Trying fallback audio: ${fallbackSounds[detectedEmotion]}`
+          );
+          setSelectedAudioFile(fallbackSounds[detectedEmotion]);
           setIsLoadingAudio(false);
           setIsPlaying(false);
           cleanupAudio();
-        });
-    };
+          // Retry with fallback after a short delay
+          setTimeout(
+            () => loadAndPlayAudio(fallbackSounds[detectedEmotion]),
+            100
+          );
+          return;
+        }
 
-    // Set audio source and start loading
-    audio.src = soundToPlay;
-    audio.load();
-
-    // Safety timeout - ensure state doesn't get stuck permanently
-    playTimeoutRef.current = setTimeout(() => {
-      if (!hasStartedPlaying && audioRef.current === audio) {
-        console.warn('Audio loading timeout, resetting state');
+        const errorMessage =
+          audio.error?.message || 'Audio loading failed, please try again';
+        setAudioError(errorMessage);
         setIsLoadingAudio(false);
         setIsPlaying(false);
         cleanupAudio();
+      };
+
+      // When audio can be played
+      audio.oncanplaythrough = () => {
+        if (isLoadingTimeout) return; // Don't play if timeout already occurred
+
+        console.log('Audio can be played:', soundToPlay);
+        audio
+          .play()
+          .then(() => {
+            console.log('Audio playback successful:', soundToPlay);
+          })
+          .catch((playError) => {
+            console.warn(`Audio playback failed: ${soundToPlay}`, playError);
+
+            // Try fallback on play error
+            if (
+              detectedEmotion &&
+              soundToPlay !== fallbackSounds[detectedEmotion]
+            ) {
+              console.log(
+                `Play failed, trying fallback: ${fallbackSounds[detectedEmotion]}`
+              );
+              setSelectedAudioFile(fallbackSounds[detectedEmotion]);
+              cleanupAudio();
+              setTimeout(
+                () => loadAndPlayAudio(fallbackSounds[detectedEmotion]),
+                100
+              );
+              return;
+            }
+
+            setIsLoadingAudio(false);
+            setIsPlaying(false);
+            cleanupAudio();
+          });
+      };
+
+      // Set audio source and start loading
+      audio.src = soundToPlay;
+      audio.load();
+
+      // Safety timeout with enhanced handling
+      playTimeoutRef.current = setTimeout(() => {
+        if (
+          !hasStartedPlaying &&
+          audioRef.current === audio &&
+          !isLoadingTimeout
+        ) {
+          isLoadingTimeout = true;
+          console.warn('Audio loading timeout, trying fallback');
+
+          // Try fallback on timeout
+          if (
+            detectedEmotion &&
+            soundToPlay !== fallbackSounds[detectedEmotion]
+          ) {
+            setSelectedAudioFile(fallbackSounds[detectedEmotion]);
+            cleanupAudio();
+            setTimeout(
+              () => loadAndPlayAudio(fallbackSounds[detectedEmotion]),
+              100
+            );
+            return;
+          }
+
+          setIsLoadingAudio(false);
+          setIsPlaying(false);
+          setAudioError('Audio loading timeout, please try again');
+          cleanupAudio();
+        }
+      }, 8000); // Increased timeout to 8 seconds
+    } catch (error) {
+      console.error('Failed to load audio:', error);
+
+      // Try fallback on fetch error
+      if (detectedEmotion && soundToPlay !== fallbackSounds[detectedEmotion]) {
+        console.log(
+          `Fetch failed, trying fallback: ${fallbackSounds[detectedEmotion]}`
+        );
+        setSelectedAudioFile(fallbackSounds[detectedEmotion]);
+        setTimeout(
+          () => loadAndPlayAudio(fallbackSounds[detectedEmotion]),
+          100
+        );
+        return;
       }
-    }, 5000); // 5 second timeout
+
+      setAudioError('Failed to load audio, please try again');
+      setIsLoadingAudio(false);
+      setIsPlaying(false);
+      cleanupAudio();
+    }
   };
 
   // Clean up resources when component unmounts

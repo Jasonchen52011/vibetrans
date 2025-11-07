@@ -16,9 +16,7 @@ export const runtime = 'edge';
 export default function RootLayout({ children }: Props) {
   return (
     <html suppressHydrationWarning>
-      <body className={fontSatoshi.className}>
-        {children}
-      </body>
+      <body className={fontSatoshi.className}>{children}</body>
     </html>
   );
 }
