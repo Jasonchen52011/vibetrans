@@ -41,10 +41,7 @@ const nextConfig: NextConfig = {
   },
 
   // Disable experimental optimizations temporarily to bypass Html import issue
-  experimental: {
-    // Force SPA mode to avoid static generation issues
-    isrMemoryCacheSize: 0,
-  },
+  experimental: {},
 
   // Webpack configuration for Cloudflare Pages Edge Runtime compatibility
   webpack: (config, { webpack, isServer, dev }) => {
