@@ -129,10 +129,11 @@ export default function DogTranslatorTool({
           setDetectedEmotion(emotion);
           // Don't pre-select audio file, let user decide when to play
 
+          // Simple message - don't include the full input text
           const message =
             locale === 'ja'
-              ? `「${inputText}」を犬語で表現すると...`
-              : `Translating "${inputText}" into dog language...`;
+              ? '犬語に翻訳中...'
+              : 'Translating to dog language...';
           setDogResponseMessage(message);
 
           // If it's a quota error, show friendly message
@@ -157,12 +158,15 @@ export default function DogTranslatorTool({
           setDetectedEmotion(emotion);
           // Don't pre-select audio file, let user decide when to play
 
-          // Set more friendly user message based on emotion
-          const friendlyMessage =
-            locale === 'ja'
-              ? `「${inputText}」を犬語で表現すると...`
-              : `Translating "${inputText}" into dog language...`;
-          setDogResponseMessage(friendlyMessage);
+          // Simple message based on detected emotion
+          const emotionMessages = {
+            happy: locale === 'ja' ? 'わんわん！😊' : 'Woof woof! 😊',
+            sad: locale === 'ja' ? 'くん… 😢' : 'Whimper... 😢',
+            angry: locale === 'ja' ? 'ガルル！😠' : 'Grrrr! 😠',
+            normal: locale === 'ja' ? 'わん！🐕' : 'Woof! 🐕'
+          };
+
+          setDogResponseMessage(emotionMessages[emotion] || emotionMessages.normal);
         } else {
           // If API returned unexpected emotion (shouldn't happen in theory, since prompt restricts it)
           console.warn(
