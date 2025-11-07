@@ -8,20 +8,20 @@ import { useEffect, useRef, useState } from 'react';
 // Define emotion types and sound mapping
 type Emotion = 'happy' | 'sad' | 'angry' | 'normal';
 
-// Sound file mapping table - use API routes instead of direct file paths
+// Sound file mapping table - use direct public paths
 const soundMap: Record<Emotion, string[]> = {
-  happy: ['/api/voice/happy.mp3', '/api/voice/happy3.mp3'],
-  sad: ['/api/voice/sad.mp3'],
-  angry: ['/api/voice/angry.mp3'],
-  normal: ['/api/voice/normal.mp3'],
+  happy: ['/voice/happy.mp3', '/voice/happy3.mp3'],
+  sad: ['/voice/sad.mp3'],
+  angry: ['/voice/angry.mp3'],
+  normal: ['/voice/normal.mp3'],
 };
 
 // Fallback audio files (used when primary files fail to load)
 const fallbackSounds: Record<Emotion, string> = {
-  happy: '/api/voice/happy.mp3',
-  sad: '/api/voice/sad.mp3',
-  angry: '/api/voice/angry.mp3',
-  normal: '/api/voice/normal.mp3',
+  happy: '/voice/happy.mp3',
+  sad: '/voice/sad.mp3',
+  angry: '/voice/angry.mp3',
+  normal: '/voice/normal.mp3',
 };
 
 // Helper function: randomly select an element from array (kept but now directly using index in new logic)
