@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { readFile } from 'fs/promises';
-import { join } from 'path';
 
-export const runtime = 'nodejs';
+export const runtime = 'edge';
 
 export async function GET(
   request: NextRequest,
@@ -19,24 +17,14 @@ export async function GET(
       );
     }
 
-    const filePath = join(process.cwd(), 'public', 'voice', filename);
+    // For Edge Runtime, we'll redirect to the static file
+    const baseUrl = request.headers.get('host') ?
+      `https://${request.headers.get('host')}` :
+      'https://vibetrans.com';
 
-    try {
-      const fileBuffer = await readFile(filePath);
+    const audioUrl = `${baseUrl}/voice/${filename}`;
 
-      return new NextResponse(fileBuffer, {
-        headers: {
-          'Content-Type': 'audio/mpeg',
-          'Cache-Control': 'public, max-age=31536000', // Cache for 1 year
-        },
-      });
-    } catch (fileError) {
-      console.error(`File not found: ${filePath}`, fileError);
-      return NextResponse.json(
-        { error: 'Audio file not found' },
-        { status: 404 }
-      );
-    }
+    return NextResponse.redirect(audioUrl);
   } catch (error) {
     console.error('Voice API error:', error);
     return NextResponse.json(
