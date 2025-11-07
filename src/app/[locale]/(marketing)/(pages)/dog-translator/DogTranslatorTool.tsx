@@ -8,12 +8,13 @@ import { useEffect, useRef, useState } from 'react';
 // Define emotion types and sound mapping
 type Emotion = 'happy' | 'sad' | 'angry' | 'normal';
 
-// Helper function to get audio URL using direct static path
+// Helper function to get audio URL using API route
 const getAudioUrl = (filename: string) => {
-  return filename;
+  const file = filename.split('/').pop();
+  return `/api/voice/${file}`;
 };
 
-// Sound file mapping table - use direct static file paths
+// Sound file mapping table - use API routes
 const soundMap: Record<Emotion, string[]> = {
   happy: ['/voice/happy.mp3', '/voice/happy3.mp3'].map(getAudioUrl),
   sad: ['/voice/sad.mp3'].map(getAudioUrl),
@@ -278,15 +279,22 @@ export default function DogTranslatorTool({
     setIsLoadingAudio(true);
     setAudioError(null);
 
-    console.log('Loading audio file:', soundToPlay);
+    console.log('Loading audio via API:', soundToPlay);
 
     try {
+      // Pre-flight check to verify audio file exists
+      const response = await fetch(soundToPlay, { method: 'HEAD' });
+      if (!response.ok) {
+        throw new Error(`Audio file not accessible: ${response.status}`);
+      }
+
       const audio = new Audio();
       audioRef.current = audio;
 
-      // Set audio properties
+      // Set audio properties for API-served files
       audio.preload = 'auto';
       audio.volume = 0.8;
+      // Don't set crossOrigin for API-served files from same origin
 
       let hasStartedPlaying = false;
       let isLoadingTimeout = false;
