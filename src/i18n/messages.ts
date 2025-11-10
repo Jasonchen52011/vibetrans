@@ -174,6 +174,12 @@ const ROUTE_LOADERS: Record<string, MessageLoader> = {
         `../../messages/pages/english-to-swahili-translator/${locale}.json`
       )
   ),
+  'english-to-turkish-translator': createLocaleLoader(
+    (locale) =>
+      import(
+        `../../messages/pages/english-to-turkish-translator/${locale}.json`
+      )
+  ),
   'esperanto-translator': createLocaleLoader(
     (locale) =>
       import(`../../messages/pages/esperanto-translator/${locale}.json`)
@@ -194,6 +200,10 @@ const ROUTE_LOADERS: Record<string, MessageLoader> = {
   ),
   'greek-translator': createLocaleLoader(
     (locale) => import(`../../messages/pages/greek-translator/${locale}.json`)
+  ),
+  'haitian-creole-translator': createLocaleLoader(
+    (locale) =>
+      import(`../../messages/pages/haitian-creole-translator/${locale}.json`)
   ),
   'high-valyrian-translator': createLocaleLoader(
     (locale) =>
@@ -300,12 +310,14 @@ const TRANSLATOR_TOOL_TO_ROUTE: Record<string, string> = {
   EnglishToPersianTranslatorPage: 'english-to-persian-translator',
   EnglishToPolishTranslatorPage: 'english-to-polish-translator',
   EnglishToSwahiliTranslatorPage: 'english-to-swahili-translator',
+  EnglishToTurkishTranslatorPage: 'english-to-turkish-translator',
   EsperantoTranslatorPage: 'esperanto-translator',
   GasterTranslatorPage: 'gaster-translator',
   GenAlphaTranslatorPage: 'gen-alpha-translator',
   GenZTranslatorPage: 'gen-z-translator',
   GibberishTranslatorPage: 'gibberish-translator',
   GreekTranslatorPage: 'greek-translator',
+  HaitianCreoleTranslatorPage: 'haitian-creole-translator',
   HighValyrianTranslatorPage: 'high-valyrian-translator',
   IvrTranslatorPage: 'ivr-translator',
   JapaneseToEnglishTranslatorPage: 'japanese-to-english-translator',

@@ -58,6 +58,7 @@ const LANGUAGE_FOOTER_LINKS: FooterLink[] = [
   },
   { key: 'esperantoTranslator', route: Routes.EsperantoTranslator },
   { key: 'greekTranslator', route: Routes.GreekTranslator },
+  { key: 'haitianCreoleTranslator', route: Routes.HaitianCreoleTranslator },
   { key: 'ivrTranslator', route: Routes.IvrTranslator },
   { key: 'mangaTranslator', route: Routes.MangaTranslator },
   { key: 'middleEnglishTranslator', route: Routes.MiddleEnglishTranslator },

@@ -1,0 +1,219 @@
+{
+  "EnglishToTurkishTranslatorPage": {
+    "title": "",
+    "description": "",
+    "hero": {
+      "title": "",
+      "description": ""
+    },
+    "tool": {
+      "inputLabel": "",
+      "outputLabel": "",
+      "inputPlaceholder": "",
+      "outputPlaceholder": "",
+      "translateButton": "",
+      "uploadButton": "",
+      "uploadHint": "",
+      "loading": "",
+      "error": "",
+      "noInput": ""
+    },
+    "whatIs": {
+      "title": "",
+      "description": "",
+      "image": "",
+      "imageAlt": ""
+    },
+    "examples": {
+      "title": "",
+      "description": "",
+      "items": [
+        {
+          "alt": "",
+          "name": ""
+        },
+        {
+          "alt": "",
+          "name": ""
+        },
+        {
+          "alt": "",
+          "name": ""
+        },
+        {
+          "alt": "",
+          "name": ""
+        },
+        {
+          "alt": "",
+          "name": ""
+        },
+        {
+          "alt": "",
+          "name": ""
+        }
+      ]
+    },
+    "howto": {
+      "title": "",
+      "description": "",
+      "steps": [
+        {
+          "name": "",
+          "description": "",
+          "wordCount": 40
+        },
+        {
+          "name": "",
+          "description": "",
+          "wordCount": 40
+        },
+        {
+          "name": "",
+          "description": "",
+          "wordCount": 40
+        }
+      ]
+    },
+    "funFacts": {
+      "title": "",
+      "items": [
+        {
+          "title": "",
+          "description": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "title": "",
+          "description": "",
+          "image": "",
+          "imageAlt": ""
+        }
+      ]
+    },
+    "userInterest": {
+      "title": "",
+      "items": [
+        {
+          "title": "",
+          "description": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "title": "",
+          "description": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "title": "",
+          "description": "",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "title": "",
+          "description": "",
+          "image": "",
+          "imageAlt": ""
+        }
+      ]
+    },
+    "highlights": {
+      "title": "",
+      "description": "",
+      "items": [
+        {
+          "icon": "",
+          "title": "",
+          "description": "",
+          "tagline": "",
+          "statLabel": null,
+          "statValue": null,
+          "microCopy": ""
+        },
+        {
+          "icon": "",
+          "title": "",
+          "description": "",
+          "tagline": "",
+          "statLabel": null,
+          "statValue": null,
+          "microCopy": ""
+        },
+        {
+          "icon": "",
+          "title": "",
+          "description": "",
+          "tagline": "",
+          "statLabel": null,
+          "statValue": null,
+          "microCopy": ""
+        },
+        {
+          "icon": "",
+          "title": "",
+          "description": "",
+          "tagline": "",
+          "statLabel": null,
+          "statValue": null,
+          "microCopy": ""
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "",
+      "subtitle": "",
+      "items": {
+        "item-1": {
+          "name": "",
+          "role": "",
+          "heading": "",
+          "content": "",
+          "rating": ""
+        },
+        "item-2": {
+          "name": "",
+          "role": "",
+          "heading": "",
+          "content": "",
+          "rating": ""
+        },
+        "item-3": {
+          "name": "",
+          "role": "",
+          "heading": "",
+          "content": "",
+          "rating": ""
+        }
+      }
+    },
+    "faqs": {
+      "title": "",
+      "subtitle": "",
+      "items": {
+        "item-1": {
+          "question": "",
+          "answer": ""
+        },
+        "item-2": {
+          "question": "",
+          "answer": ""
+        },
+        "item-3": {
+          "question": "",
+          "answer": ""
+        }
+      }
+    },
+    "ctaButton": "",
+    "cta": {
+      "title": "",
+      "description": "",
+      "primaryButton": "",
+      "secondaryButton": ""
+    }
+  }
+}

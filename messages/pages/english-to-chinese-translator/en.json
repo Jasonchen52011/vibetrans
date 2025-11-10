@@ -32,33 +32,65 @@
       "image": "/images/docs/english-amharic-translate.webp",
       "imageAlt": "English to Chinese translation workflow illustration"
     },
-    "examples": {
-      "title": "English to Chinese Translation Examples",
-      "description": "See how VibeTrans preserves meaning, tone, and cultural context when translating from English to Chinese.",
+    "unique": {
+      "title": "Why Choose Our English to Chinese Translator?",
+      "description": "Experience the best translation service with cutting-edge features designed for accuracy and convenience.",
       "items": [
         {
-          "alt": "English: Welcome to our Beijing office → Chinese: 欢迎来到我们的北京办公室",
-          "name": "Welcome to our Beijing office → 欢迎来到我们的北京办公室"
+          "title": "AI-Powered Accuracy",
+          "description": "Advanced neural networks ensure precise translations that capture context and cultural nuances.",
+          "icon": "FaBrain"
         },
         {
-          "alt": "English: Please review the quarterly report → Chinese: 请审阅季度报告",
-          "name": "Please review the quarterly report → 请审阅季度报告"
+          "title": "Lightning Fast",
+          "description": "Get instant translations in real-time, perfect for conversations and quick communication.",
+          "icon": "FaBolt"
         },
         {
-          "alt": "English: Where can I find vegetarian options? → Chinese: 在哪里可以找到素食选择？",
-          "name": "Where can I find vegetarian options? → 在哪里可以找到素食选择？"
+          "title": "Multiple Formats",
+          "description": "Translate text, documents, and conversations with support for various file formats.",
+          "icon": "FaFileAlt"
         },
         {
-          "alt": "English: The meeting starts at 9 AM → Chinese: 会议上午9点开始",
-          "name": "The meeting starts at 9 AM → 会议上午9点开始"
+          "title": "Privacy First",
+          "description": "Your translations are secure and private with end-to-end encryption.",
+          "icon": "FaShieldAlt"
+        }
+      ]
+    },
+    "examples": {
+      "title": "English to Chinese Translation Examples",
+      "description": "Explore accurate English to Chinese translations for various real-world scenarios and contexts.",
+      "items": [
+        {
+          "before": "Good morning! I hope you have a wonderful day.",
+          "after": "早上好！希望你今天过得愉快。",
+          "alt": "Morning greeting and well wishes"
         },
         {
-          "alt": "English: Let's celebrate the Spring Festival together → Chinese: 让我们一起庆祝春节",
-          "name": "Let's celebrate the Spring Festival together → 让我们一起庆祝春节"
+          "before": "I would like to schedule a business meeting for next Tuesday at 3 PM.",
+          "after": "我想安排下周二下午3点的商务会议。",
+          "alt": "Business meeting scheduling"
         },
         {
-          "alt": "English: Share the partnership agreement today → Chinese: 今天分享合作协议",
-          "name": "Share the partnership agreement today → 今天分享合作协议"
+          "before": "The restaurant serves delicious traditional Chinese cuisine.",
+          "after": "这家餐厅提供美味的中国传统菜肴。",
+          "alt": "Food and restaurant description"
+        },
+        {
+          "before": "Could you please provide directions to the nearest subway station?",
+          "after": "请问您能告诉我最近的地铁站怎么走吗？",
+          "alt": "Asking for directions"
+        },
+        {
+          "before": "Thank you for your excellent presentation on renewable energy.",
+          "after": "感谢您关于可再生能源的精彩演讲。",
+          "alt": "Professional compliment and feedback"
+        },
+        {
+          "before": "I would like to learn more about Chinese history and culture.",
+          "after": "我想了解更多关于中国历史和文化的知识。",
+          "alt": "Cultural and educational interest"
         }
       ]
     },
@@ -159,6 +191,28 @@
           "icon": "FaChartLine",
           "title": "Workflow Integration",
           "description": "API integrations and export options connect seamlessly with your existing tools and content management systems."
+        }
+      ],
+      "features": [
+        {
+          "title": "AI-Powered Accuracy",
+          "description": "Advanced neural networks ensure precise translations that capture context and cultural nuances.",
+          "icon": "FaBrain"
+        },
+        {
+          "title": "Lightning Fast",
+          "description": "Get instant translations in real-time, perfect for conversations and quick communication.",
+          "icon": "FaBolt"
+        },
+        {
+          "title": "Multiple Formats",
+          "description": "Translate text, documents, and conversations with support for various file formats.",
+          "icon": "FaFileAlt"
+        },
+        {
+          "title": "Privacy First",
+          "description": "Your translations are secure and private with end-to-end encryption.",
+          "icon": "FaShieldAlt"
         }
       ]
     },

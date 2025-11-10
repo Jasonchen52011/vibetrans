@@ -47,6 +47,12 @@ const staticRoutes = [
   '/greek-translator',
   '/manga-translator',
   '/telugu-to-english-translator',
+  '/haitian-creole-translator',
+  '/english-to-turkish-translator',
+  '/english-to-persian-translator',
+  '/english-to-chinese-translator',
+  '/japanese-to-english-translator',
+  '/chinese-to-english-translator',
   '/privacy',
   '/terms',
 ];

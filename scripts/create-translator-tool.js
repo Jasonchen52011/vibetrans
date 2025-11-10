@@ -515,11 +515,14 @@ export default function ${componentName}({ pageData, locale = 'en' }: ${componen
     setOutputText('');
 
     try {
-      // TODO: 替换为你的 API 端点
-      const response = await fetch('/api/${toolSlug}', {
+      // Call universal Gemini API
+      const response = await fetch('/api/gemini', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text: inputText }),
+        body: JSON.stringify({
+          text: inputText,
+          context: \`You are a professional ${toolName}. Please accurately translate the user's input text to the target language, maintaining the original tone and style.\`
+        }),
       });
 
       const data = await response.json();
@@ -528,7 +531,7 @@ export default function ${componentName}({ pageData, locale = 'en' }: ${componen
         throw new Error(data.error || pageData.tool.error);
       }
 
-      setOutputText(data.translated || data.result || '');
+      setOutputText(data.result || data.translated || '');
     } catch (err: any) {
       setError(err.message || 'Translation failed');
       setOutputText('');

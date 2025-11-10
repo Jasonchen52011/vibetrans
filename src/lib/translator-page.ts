@@ -16,6 +16,8 @@ interface BeforeAfterGalleryItem {
   src?: string;
   audio?: string;
   emotion?: string;
+  before?: string;
+  after?: string;
 }
 
 interface BeforeAfterGallery {
@@ -217,59 +219,47 @@ const emptySection: Section = {
   items: [],
 };
 
+// Helper function to safely get raw translation without throwing errors
+function safeRaw(
+  t: TranslationGetter,
+  key: string
+): Record<string, unknown> | null {
+  if (typeof t.raw !== 'function') {
+    return null;
+  }
+
+  try {
+    return t.raw(key) as Record<string, unknown>;
+  } catch (error) {
+    // Silently handle missing keys - these are optional sections
+    if (
+      error &&
+      typeof error === 'object' &&
+      'code' in error &&
+      error.code === 'MISSING_MESSAGE'
+    ) {
+      return null;
+    }
+    // Re-throw other errors
+    throw error;
+  }
+}
+
 export function buildTranslatorPageContent(
   t: TranslationGetter,
   options: TranslatorPageContentOptions = {}
 ): TranslatorPageContent {
-  const tool = (
-    typeof t.raw === 'function' ? t.raw('tool') : null
-  ) as ToolCopy | null;
-  const examples = (
-    typeof t.raw === 'function' ? t.raw('examples') : null
-  ) as Record<string, unknown> | null;
-  const whatIs = (
-    typeof t.raw === 'function' ? t.raw('whatIs') : null
-  ) as Record<string, unknown> | null;
-  const howto = (typeof t.raw === 'function' ? t.raw('howto') : null) as Record<
-    string,
-    unknown
-  > | null;
-  const highlights = (
-    typeof t.raw === 'function' ? t.raw('highlights') : null
-  ) as Record<string, unknown> | null;
-  let funfacts = null;
-  // Safely check if funfacts section exists without throwing an error
-  try {
-    const funfactsRaw =
-      typeof t.raw === 'function' ? t.raw('funfacts') : undefined;
-    funfacts = funfactsRaw as Record<string, unknown> | null;
-  } catch (error) {
-    // funfacts section not found, will remain null
-    funfacts = null;
-  }
-  const userInterest = (
-    typeof t.raw === 'function' ? t.raw('userInterest') : null
-  ) as Record<string, unknown> | null;
-  let unique = null;
-  // Safely check if unique section exists without throwing an error
-  try {
-    const uniqueRaw = typeof t.raw === 'function' ? t.raw('unique') : undefined;
-    unique = uniqueRaw as Record<string, unknown> | null;
-  } catch (error) {
-    // unique section not found, will remain null
-    unique = null;
-  }
-  const testimonials = (
-    typeof t.raw === 'function' ? t.raw('testimonials') : null
-  ) as Record<string, unknown> | null;
-  const faqs = (typeof t.raw === 'function' ? t.raw('faqs') : null) as Record<
-    string,
-    unknown
-  > | null;
-  const cta = (typeof t.raw === 'function' ? t.raw('cta') : null) as Record<
-    string,
-    unknown
-  > | null;
+  const tool = safeRaw(t, 'tool') as ToolCopy | null;
+  const examples = safeRaw(t, 'examples');
+  const whatIs = safeRaw(t, 'whatIs');
+  const howto = safeRaw(t, 'howto');
+  const highlights = safeRaw(t, 'highlights');
+  const funfacts = safeRaw(t, 'funfacts');
+  const userInterest = safeRaw(t, 'userInterest');
+  const unique = safeRaw(t, 'unique');
+  const testimonials = safeRaw(t, 'testimonials');
+  const faqs = safeRaw(t, 'faqs');
+  const cta = safeRaw(t, 'cta');
 
   const beforeAfterGallery: BeforeAfterGallery = {
     title: (examples?.title as string) ?? '',
@@ -282,6 +272,8 @@ export function buildTranslatorPageContent(
       src: item.src,
       audio: item.audio,
       emotion: item.emotion,
+      before: item.before,
+      after: item.after,
     })),
   };
 
@@ -329,7 +321,7 @@ export function buildTranslatorPageContent(
       items:
         howto?.steps && typeof howto.steps === 'object'
           ? Object.values(howto.steps).map((step: any, index: number) => ({
-              title: step.title || '',
+              title: step.title || step.name || '',
               description: step.description,
               icon: options.howToIcons?.[index] || undefined,
             }))

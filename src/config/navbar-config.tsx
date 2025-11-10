@@ -164,6 +164,11 @@ const NAV_CATEGORY_CONFIG: {
       icon: <LanguagesIcon className="size-4 shrink-0" />,
     },
     {
+      key: 'englishToChineseTranslator',
+      route: Routes.EnglishToChineseTranslator,
+      icon: <LanguagesIcon className="size-4 shrink-0" />,
+    },
+    {
       key: 'creoleToEnglishTranslator',
       route: Routes.CreoleToEnglishTranslator,
       icon: <GlobeIcon className="size-4 shrink-0" />,
@@ -179,6 +184,11 @@ const NAV_CATEGORY_CONFIG: {
       icon: <GlobeIcon className="size-4 shrink-0" />,
     },
     {
+      key: 'englishToPersianTranslator',
+      route: Routes.EnglishToPersianTranslator,
+      icon: <GlobeIcon className="size-4 shrink-0" />,
+    },
+    {
       key: 'englishToPolishTranslator',
       route: Routes.EnglishToPolishTranslator,
       icon: <LanguagesIcon className="size-4 shrink-0" />,
@@ -186,6 +196,11 @@ const NAV_CATEGORY_CONFIG: {
     {
       key: 'englishToSwahiliTranslator',
       route: Routes.EnglishToSwahiliTranslator,
+      icon: <LanguagesIcon className="size-4 shrink-0" />,
+    },
+    {
+      key: 'englishToTurkishTranslator',
+      route: Routes.EnglishToTurkishTranslator,
       icon: <LanguagesIcon className="size-4 shrink-0" />,
     },
     {
@@ -199,9 +214,19 @@ const NAV_CATEGORY_CONFIG: {
       icon: <BookIcon className="size-4 shrink-0" />,
     },
     {
+      key: 'haitianCreoleTranslator',
+      route: Routes.HaitianCreoleTranslator,
+      icon: <GlobeIcon className="size-4 shrink-0" />,
+    },
+    {
       key: 'ivrTranslator',
       route: Routes.IvrTranslator,
       icon: <AudioLinesIcon className="size-4 shrink-0" />,
+    },
+    {
+      key: 'japaneseToEnglishTranslator',
+      route: Routes.JapaneseToEnglishTranslator,
+      icon: <LanguagesIcon className="size-4 shrink-0" />,
     },
     {
       key: 'mangaTranslator',
@@ -242,9 +267,7 @@ const NAV_CATEGORY_CONFIG: {
 };
 
 const HIDDEN_LANGUAGE_KEYS = new Set([
-  'englishToChineseTranslator',
-  'englishToPersianTranslator',
-  'japaneseToEnglishTranslator',
+  // 'japaneseToEnglishTranslator', // 移到可见列表
 ]);
 
 function buildItems(

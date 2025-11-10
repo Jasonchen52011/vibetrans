@@ -9,5 +9,321 @@
   },
   "whatIs": {
     "image": "/images/docs/what-is-baybayin-translator.webp"
+  },
+  "AlienTextGeneratorPage": {
+    "unique": ""
+  },
+  "EnglishToChineseTranslatorPage": {
+    "unique": {
+      "title": "Why Choose Our English to Chinese Translator?",
+      "description": "Experience the best translation service with cutting-edge features designed for accuracy and convenience.",
+      "items": [
+        {
+          "title": "AI-Powered Accuracy",
+          "description": "Advanced neural networks ensure precise translations that capture context and cultural nuances.",
+          "icon": "FaBrain"
+        },
+        {
+          "title": "Lightning Fast",
+          "description": "Get instant translations in real-time, perfect for conversations and quick communication.",
+          "icon": "FaBolt"
+        },
+        {
+          "title": "Multiple Formats",
+          "description": "Translate text, documents, and conversations with support for various file formats.",
+          "icon": "FaFileAlt"
+        },
+        {
+          "title": "Privacy First",
+          "description": "Your translations are secure and private with end-to-end encryption.",
+          "icon": "FaShieldAlt"
+        }
+      ]
+    },
+    "examples": {
+      "title": "English to Chinese Translation Examples",
+      "description": "Explore accurate English to Chinese translations for various real-world scenarios and contexts.",
+      "items": [
+        {
+          "before": "Good morning! I hope you have a wonderful day.",
+          "after": "早上好！希望你今天过得愉快。",
+          "alt": "Morning greeting and well wishes"
+        },
+        {
+          "before": "I would like to schedule a business meeting for next Tuesday at 3 PM.",
+          "after": "我想安排下周二下午3点的商务会议。",
+          "alt": "Business meeting scheduling"
+        },
+        {
+          "before": "The restaurant serves delicious traditional Chinese cuisine.",
+          "after": "这家餐厅提供美味的中国传统菜肴。",
+          "alt": "Food and restaurant description"
+        },
+        {
+          "before": "Could you please provide directions to the nearest subway station?",
+          "after": "请问您能告诉我最近的地铁站怎么走吗？",
+          "alt": "Asking for directions"
+        },
+        {
+          "before": "Thank you for your excellent presentation on renewable energy.",
+          "after": "感谢您关于可再生能源的精彩演讲。",
+          "alt": "Professional compliment and feedback"
+        },
+        {
+          "before": "I would like to learn more about Chinese history and culture.",
+          "after": "我想了解更多关于中国历史和文化的知识。",
+          "alt": "Cultural and educational interest"
+        }
+      ]
+    },
+    "highlights": {
+      "features": [
+        {
+          "title": "AI-Powered Accuracy",
+          "description": "Advanced neural networks ensure precise translations that capture context and cultural nuances.",
+          "icon": "FaBrain"
+        },
+        {
+          "title": "Lightning Fast",
+          "description": "Get instant translations in real-time, perfect for conversations and quick communication.",
+          "icon": "FaBolt"
+        },
+        {
+          "title": "Multiple Formats",
+          "description": "Translate text, documents, and conversations with support for various file formats.",
+          "icon": "FaFileAlt"
+        },
+        {
+          "title": "Privacy First",
+          "description": "Your translations are secure and private with end-to-end encryption.",
+          "icon": "FaShieldAlt"
+        }
+      ]
+    }
+  },
+  "EnglishToPersianTranslatorPage": {
+    "title": "English to Persian Translator - Accurate AI Translation",
+    "description": "Translate English to Persian with advanced AI technology. Get accurate, context-aware translations for texts, documents, and conversations.",
+    "hero": {
+      "title": "English to Persian Translator",
+      "description": "Break language barriers with our advanced AI-powered English to Persian translator. Get accurate, natural-sounding translations instantly."
+    },
+    "whatIs": {
+      "title": "What is English to Persian Translation?",
+      "description": "English to Persian translation is the process of converting text from English language to Persian (Farsi), the official language of Iran. Our AI-powered tool ensures accurate translations that preserve meaning, context, and cultural nuances.",
+      "image": "/images/docs/what-is-english-to-persian-translator.webp"
+    },
+    "unique": {
+      "title": "Why Choose Our English to Persian Translator?",
+      "description": "Experience the best translation service with cutting-edge features designed for accuracy and convenience.",
+      "items": [
+        {
+          "title": "AI-Powered Accuracy",
+          "description": "Advanced neural networks ensure precise translations that capture context and cultural nuances.",
+          "icon": "FaBrain"
+        },
+        {
+          "title": "Lightning Fast",
+          "description": "Get instant translations in real-time, perfect for conversations and quick communication.",
+          "icon": "FaBolt"
+        },
+        {
+          "title": "Multiple Formats",
+          "description": "Translate text, documents, and conversations with support for various file formats.",
+          "icon": "FaFileAlt"
+        },
+        {
+          "title": "Privacy First",
+          "description": "Your translations are secure and private with end-to-end encryption.",
+          "icon": "FaShieldAlt"
+        }
+      ]
+    },
+    "highlights": {
+      "title": "Key Features",
+      "description": "Discover what makes our English to Persian translator the best choice for your translation needs.",
+      "features": [
+        {
+          "title": "AI-Powered Translation",
+          "description": "Advanced neural network technology ensures accurate and natural-sounding translations."
+        },
+        {
+          "title": "Real-Time Processing",
+          "description": "Get instant translations without delays, perfect for live conversations."
+        },
+        {
+          "title": "Context Understanding",
+          "description": "Our AI understands cultural context and idioms for more accurate translations."
+        },
+        {
+          "title": "Multi-Format Support",
+          "description": "Translate text, documents, and conversations in various formats seamlessly."
+        }
+      ]
+    },
+    "funfacts": {
+      "title": "Fun Facts About Persian Language",
+      "description": "Discover fascinating facts about Persian, one of the world's oldest and most beautiful languages.",
+      "items": [
+        {
+          "title": "Ancient Heritage",
+          "content": "Persian (Farsi) has over 2,500 years of written history, making it one of the world's oldest living languages."
+        },
+        {
+          "title": "Poetic Language",
+          "content": "Persian literature has produced world-renowned poets like Rumi, Hafez, and Ferdowsi, influencing literature globally."
+        },
+        {
+          "title": "Modern Evolution",
+          "content": "While preserving its ancient roots, modern Persian incorporates many loanwords from French, English, and Turkish."
+        }
+      ]
+    },
+    "userInterest": {
+      "title": "Who Uses Our English to Persian Translator?",
+      "description": "Our translator serves diverse needs across various fields and purposes.",
+      "items": [
+        {
+          "title": "Language Learners",
+          "content": "Students learning Persian can practice and understand the language better with accurate translations."
+        },
+        {
+          "title": "Business Professionals",
+          "content": "Communicate effectively with Persian-speaking clients and partners in international business."
+        },
+        {
+          "title": "Travelers",
+          "content": "Navigate Iran and Persian-speaking regions with confidence in your translations."
+        },
+        {
+          "title": "Researchers",
+          "content": "Access Persian academic materials and research papers with reliable translations."
+        }
+      ]
+    },
+    "examples": {
+      "title": "English to Persian Translation Examples",
+      "description": "Explore accurate English to Persian translations for various real-world scenarios and contexts.",
+      "items": [
+        {
+          "before": "Good morning! I hope you have a wonderful day.",
+          "after": "صبح بخیر! امیدوارم روز فوق‌العاده‌ای داشته باشید.",
+          "alt": "Morning greeting and well wishes"
+        },
+        {
+          "before": "I need to schedule a business meeting for next Tuesday at 3 PM.",
+          "after": "من باید یک جلسه کاری برای سه بعد از ظهر سه‌شنبه هفته آینده تنظیم کنم.",
+          "alt": "Business meeting scheduling"
+        },
+        {
+          "before": "The restaurant serves delicious traditional Persian cuisine.",
+          "after": "این رستوران غذاهای سنتی و خوشمزه ایرانی سرو می‌کند.",
+          "alt": "Food and restaurant description"
+        },
+        {
+          "before": "Could you please provide directions to the nearest subway station?",
+          "after": "میشه لطفاً مسیر ایستگاه متروی نزدیک رو به من بگید؟",
+          "alt": "Asking for directions"
+        },
+        {
+          "before": "Thank you for your excellent presentation on renewable energy.",
+          "after": "از ارائه عالی شما در مورد انرژی‌های تجدیدپذیر متشکرم.",
+          "alt": "Professional compliment and feedback"
+        },
+        {
+          "before": "I would like to learn more about Iranian history and culture.",
+          "after": "من می‌خواهم درباره تاریخ و فرهنگ ایران بیشتر یاد بگیرم.",
+          "alt": "Cultural and educational interest"
+        }
+      ]
+    },
+    "howto": {
+      "title": "How to Use Our English to Persian Translator",
+      "description": "Get accurate translations in three simple steps with our intuitive interface.",
+      "image": "/images/docs/english-to-persian-translator-how-to.webp",
+      "steps": [
+        {
+          "title": "Input Your Text",
+          "description": "Type or paste your English text in the input field, or upload a document for translation."
+        },
+        {
+          "title": "Choose Preferences",
+          "description": "Select translation options like formal/informal tone and specific domain if needed."
+        },
+        {
+          "title": "Get Translation",
+          "description": "Receive instant Persian translation with the option to edit, copy, or download the result."
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "What Our Users Say",
+      "description": "Join thousands of satisfied users who trust our English to Persian translator daily.",
+      "items": [
+        {
+          "name": "Sarah Johnson",
+          "role": "Language Student",
+          "content": "This translator has been invaluable for learning Persian. The translations are accurate and help me understand the nuances of the language.",
+          "avatar": "female1"
+        },
+        {
+          "name": "Mohammad Rezaei",
+          "role": "Business Owner",
+          "content": "I use this tool daily for communicating with international clients. It's fast, reliable, and maintains professionalism.",
+          "avatar": "male2"
+        },
+        {
+          "name": "Emily Chen",
+          "role": "Travel Blogger",
+          "content": "Perfect for my travels in Iran! The translations are natural and locals understand me perfectly.",
+          "avatar": "female3"
+        }
+      ]
+    },
+    "faqs": {
+      "title": "Frequently Asked Questions",
+      "description": "Get answers to common questions about English to Persian translation.",
+      "items": [
+        {
+          "question": "How accurate is the English to Persian translation?",
+          "answer": "Our AI-powered translator provides over 95% accuracy for general content, with even higher precision for common phrases and sentences."
+        },
+        {
+          "question": "Can I translate entire documents?",
+          "answer": "Yes, you can upload various document formats including PDF, Word, and text files for translation."
+        },
+        {
+          "question": "Is the service free to use?",
+          "answer": "We offer both free and premium plans. The free version has daily limits, while premium plans offer unlimited translations."
+        },
+        {
+          "question": "How do you handle formal and informal Persian?",
+          "answer": "Our translator can handle both formal and informal Persian, automatically detecting context or allowing you to choose the appropriate tone."
+        },
+        {
+          "question": "Can I use this for professional translations?",
+          "answer": "While our tool is highly accurate, for legal or official documents, we recommend professional human translation services."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Start Translating English to Persian Now",
+      "description": "Join thousands of users who trust our translator for accurate and reliable English to Persian translations.",
+      "primaryButton": "Start Translating",
+      "secondaryButton": "View Pricing Plans"
+    },
+    "tool": {
+      "inputLabel": "English Text",
+      "outputLabel": "Persian Translation",
+      "inputPlaceholder": "Enter English text to translate...",
+      "outputPlaceholder": "Persian translation will appear here...",
+      "translateButton": "Translate",
+      "uploadButton": "Upload File",
+      "uploadHint": "Supports .txt, .docx files",
+      "loading": "Translating...",
+      "error": "Translation failed. Please try again.",
+      "noInput": "Please enter some text to translate."
+    },
+    "ctaButton": "Try Now"
   }
 }

@@ -68,7 +68,7 @@ export default async function EnglishToPersianTranslatorPage(
   const examplesData = {
     title: t('examples.title'),
     description: t('examples.description'),
-    examples: [
+    images: [
       {
         before: t('examples.items.0.before'),
         after: t('examples.items.0.after'),
@@ -246,6 +246,9 @@ export default async function EnglishToPersianTranslatorPage(
           section={translatorContent.funFacts}
           ctaText={t('ctaButton')}
         />
+
+        {/* Unique Features */}
+        <WhyChoose section={translatorContent.unique} />
 
         {/* Highlights */}
         <WhyChoose section={highlightsSection} />

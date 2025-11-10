@@ -149,6 +149,9 @@ export default async function EnglishToChineseTranslatorPage(
           ctaText={t('ctaButton')}
         />
 
+        {/* Unique Features */}
+        <WhyChoose section={translatorContent.unique} />
+
         {/* Highlights */}
         <WhyChoose section={translatorContent.highlights} />
 

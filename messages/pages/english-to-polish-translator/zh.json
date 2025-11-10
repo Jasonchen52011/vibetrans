@@ -1,10 +1,10 @@
 {
   "EnglishToPolishTranslatorPage": {
     "title": "准确的英语波兰语在线翻译器",
-    "description": "发现最佳的英语到波兰语翻译器，提供实时准确的翻译，支持语音输入输出和专业模式。",
+    "description": "发现最佳的英语到波兰语翻译器，提供实时准确的翻译，支持专业模式。",
     "hero": {
       "title": "英语波兰语翻译工具",
-      "description": "体验最佳的英语到波兰语翻译器，提供准确、上下文感知的翻译功能，支持语音输入和输出。"
+      "description": "体验最佳的英语到波兰语翻译器，提供准确、上下文感知的翻译功能。"
     },
     "tool": {
       "inputLabel": "输入文本",
@@ -14,14 +14,7 @@
       "translateButton": "翻译",
       "uploadButton": "上传文件",
       "uploadHint": "支持 .txt 和 .docx 文件",
-      "voiceInputButton": "语音输入",
-      "voiceInputHint": "点击开始语音输入",
-      "audioUploadButton": "上传音频",
-      "audioUploadHint": "上传音频文件进行转录",
-      "voiceOutputButton": "播放音频",
-      "voiceOutputHint": "收听翻译",
       "loading": "翻译中...",
-      "transcribing": "转录音频中...",
       "error": "翻译失败，请重试。",
       "noInput": "请输入要翻译的文本。"
     },
@@ -69,7 +62,7 @@
       "steps": [
         {
           "title": "输入文本",
-          "description": "在输入字段中输入或粘贴您的英语文本。您也可以上传.txt或.docx文件，或使用语音输入以便捷操作。"
+          "description": "在输入字段中输入或粘贴您的英语文本。您也可以上传.txt或.docx文件以便捷操作。"
         },
         {
           "title": "点击翻译",
@@ -77,7 +70,7 @@
         },
         {
           "title": "获取结果",
-          "description": "立即收到您的波兰语翻译。收听音频发音，复制或根据需要下载翻译文本。"
+          "description": "立即收到您的波兰语翻译。复制或根据需要下载翻译文本。"
         },
         {
           "title": "使用翻译",
@@ -122,12 +115,6 @@
           "description": "VibeTrans的专业模式让翻译像变形金刚一样自由切换。无论是商务会议还是情书，都能以独特的波兰风格给人留下深刻印象。想要不同的翻译体验？VibeTrans让每个词都有自己的节奏。",
           "image": "/images/docs/transformer-translation-modes.webp",
           "imageAlt": "专业模式"
-        },
-        {
-          "title": "语音输入/输出",
-          "description": "VibeTrans的语音输入/输出功能为翻译增添了酷炫的科技感。说出您的需求，听到您的答案，就像科幻电影中一样。无需打字，让翻译更流畅、更快速。VibeTrans让翻译不再是单调的任务。",
-          "image": "/images/docs/voice-translator.webp",
-          "imageAlt": "语音输入/输出"
         }
       ]
     },
@@ -139,11 +126,6 @@
           "title": "免费波兰语翻译",
           "icon": "FaRocket",
           "description": "免费将英语翻译成波兰语。无需注册 - 只需输入或粘贴文本即可在几秒钟内获得准确结果。"
-        },
-        {
-          "title": "语音翻译",
-          "icon": "FaShieldAlt",
-          "description": "说英语，立即听到波兰语翻译。我们的语音输入和输出功能让沟通变得轻松自然。"
         },
         {
           "title": "安全私密",

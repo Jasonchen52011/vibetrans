@@ -1,0 +1,232 @@
+{
+  "EnglishToTurkishTranslatorPage": {
+    "title": "Best English to Turkish Translator Online",
+    "description": "Discover the best English to Turkish translator with smart detection, automatic direction switch, and multi-modal support for accurate translations.",
+    "hero": {
+      "title": "English to Turkish Translator Tool",
+      "description": "Experience the best English to Turkish translator, offering smart, real-time language conversion with exceptional accuracy and versatility.",
+      "userCount": "from 15,000+ happy users"
+    },
+    "tool": {
+      "inputLabel": "Input Text",
+      "outputLabel": "Translated Text",
+      "inputPlaceholder": "Enter your text here...",
+      "outputPlaceholder": "Translation will appear here...",
+      "translateButton": "Translate",
+      "uploadButton": "Upload File",
+      "uploadHint": "Supports .txt and .docx files",
+      "loading": "Translating...",
+      "error": "Translation failed. Please try again.",
+      "noInput": "Please enter some text to translate."
+    },
+    "whatIs": {
+      "title": "What is English-to-Turkish Turbo Translator?",
+      "description": "English-to-Turkish Turbo Translator is a powerful web-based tool designed to instantly convert English into Turkish with high accuracy. It supports text, voice, and image inputs, making it ideal for diverse translation needs.",
+      "image": "/images/docs/translator-turbo-web.webp",
+      "imageAlt": "What is english-to-turkish-translator - Visual explanation"
+    },
+    "examples": {
+      "title": "Real-Life Translation Examples",
+      "description": "Explore accurate English to Turkish translations for various real-world scenarios and contexts.",
+      "items": [
+        {
+          "before": "Good morning! How are you doing today?",
+          "after": "Günaydın! Bugün nasılsınız?",
+          "alt": "Daily greeting and well wishes"
+        },
+        {
+          "before": "I would like to schedule a business meeting for next Tuesday at 3 PM.",
+          "after": "Gelecek Salı saat 15:00'te bir iş toplantısı planlamak istiyorum.",
+          "alt": "Business meeting scheduling"
+        },
+        {
+          "before": "Excuse me, how can I get to the Grand Bazaar from here?",
+          "after": "Affedersiniz, buradan Kapalıçarşı'ya nasıl gidebilirim?",
+          "alt": "Asking for directions"
+        },
+        {
+          "before": "I would like to order grilled sea bass with salad, please.",
+          "after": "Lütfen ızgara levrek ve salata sipariş etmek istiyorum.",
+          "alt": "Restaurant order"
+        },
+        {
+          "before": "Thank you for your excellent presentation on digital marketing strategies.",
+          "after": "Dijital pazarlama stratejileri hakkındaki mükemmel sunumunuz için teşekkür ederim.",
+          "alt": "Professional compliment and feedback"
+        },
+        {
+          "before": "Welcome to our home! Please make yourself comfortable.",
+          "after": "Evimize hoş geldiniz! Lütfen rahat edin.",
+          "alt": "Cultural hospitality and welcome"
+        }
+      ]
+    },
+    "howto": {
+      "title": "How to Translate English to Turkish",
+      "description": "Easily translate English to Turkish in a few steps.",
+      "steps": [
+        {
+          "name": "Enter Text",
+          "description": "Type or paste your English text into the input box. The tool automatically detects the language with over 90% accuracy.",
+          "wordCount": 40
+        },
+        {
+          "name": "Select Mode",
+          "description": "Choose from professional modes like technical, legal, or literary to suit your translation needs for more accurate results.",
+          "wordCount": 40
+        },
+        {
+          "name": "Review Output",
+          "description": "The translated Turkish text appears instantly. Adjust settings if needed, and enjoy high-quality, context-rich translations.",
+          "wordCount": 40
+        }
+      ],
+      "image": "/images/docs/english-to-turkish-translator-how-to.webp",
+      "imageAlt": "How to use english-to-turkish-translator"
+    },
+    "funfacts": {
+      "title": "Interesting Facts",
+      "items": [
+        {
+          "title": "Fun Fact",
+          "description": "Did you know? Turkish has over 1,700 English loanwords, yet requires phonetic mapping for accurate translation. [Learn more](https://en.wikipedia.org/wiki/Turkish_language)",
+          "image": "/images/docs/language-exchange-puzzle.webp",
+          "imageAlt": "Fun Fact"
+        },
+        {
+          "title": "Fun Fact",
+          "description": "Intriguingly, Turkish uses a Subject-Object-Verb order, requiring MT engines to reorder sentences entirely for accuracy. [Discover more](https://en.wikipedia.org/wiki/Turkish_grammar)",
+          "image": "/images/docs/turkish-reorder.webp",
+          "imageAlt": "Fun Fact"
+        }
+      ]
+    },
+    "unique": {
+      "title": "",
+      "items": []
+    },
+    "userInterest": {
+      "title": "Explore More Features",
+      "items": [
+        {
+          "title": "Handling Turkish Dialects",
+          "description": "Our tool effectively distinguishes between Istanbul and Anatolian dialects, ensuring precise translations no matter the regional variations.",
+          "image": "/images/docs/dialect-bridge.webp",
+          "imageAlt": "Handling Turkish Dialects"
+        },
+        {
+          "title": "Formality and Politeness Levels",
+          "description": "Switch between 'Sen' and 'Siz' forms for accurate formal or informal translations, preserving cultural etiquette in communication.",
+          "image": "/images/docs/politeness-switcher.webp",
+          "imageAlt": "Formality and Politeness Levels"
+        },
+        {
+          "title": "Idioms & Slang Cheat-Sheet",
+          "description": "Gain access to a comprehensive guide on common idioms and slang, helping you understand and use them effectively in translations.",
+          "image": "/images/docs/slang-dictionary-guide.webp",
+          "imageAlt": "Idioms & Slang Cheat-Sheet"
+        },
+        {
+          "title": "Privacy & GDPR Compliance",
+          "description": "Our translations are GDPR-safe, ensuring no data retention or privacy breaches, giving you peace of mind.",
+          "image": "/images/docs/data-shield.webp",
+          "imageAlt": "Privacy & GDPR Compliance"
+        }
+      ]
+    },
+    "highlights": {
+      "title": "Key Features of English-to-Turkish Turbo Translator",
+      "description": "The best features for your translation needs",
+      "items": [
+        {
+          "icon": "FaRocket",
+          "title": "Simple & Free to Use",
+          "description": "Our online tool is user-friendly and completely free, making high-quality translations accessible to everyone.",
+          "tagline": "",
+          "statLabel": null,
+          "statValue": null,
+          "microCopy": ""
+        },
+        {
+          "icon": "FaBrain",
+          "title": "Data Accuracy",
+          "description": "Experience precise translations thanks to advanced neural networks that consider context and sentence structure.",
+          "tagline": "",
+          "statLabel": null,
+          "statValue": null,
+          "microCopy": ""
+        },
+        {
+          "icon": "FaShieldAlt",
+          "title": "Data Privacy & Security",
+          "description": "Your data is safe with us. We ensure no information is stored or shared, aligning with privacy standards.",
+          "tagline": "",
+          "statLabel": null,
+          "statValue": null,
+          "microCopy": ""
+        },
+        {
+          "icon": "FaChartLine",
+          "title": "AI Context Understanding",
+          "description": "Our AI understands context, providing translations that are not only accurate but also culturally relevant.",
+          "tagline": "",
+          "statLabel": null,
+          "statValue": null,
+          "microCopy": ""
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "What Our Users Say",
+      "subtitle": "Stories from Teams Using VibeTrans for Translation",
+      "items": {
+        "item-1": {
+          "name": "John Smith",
+          "role": "Business Consultant",
+          "heading": "Review from John Smith",
+          "content": "Using the English-to-Turkish Turbo Translator has transformed my business communications. The tool's ability to distinguish between formal and informal language has helped maintain professionalism.",
+          "rating": "4.8"
+        },
+        "item-2": {
+          "name": "Emily Johnson",
+          "role": "Student",
+          "heading": "Review from Emily Johnson",
+          "content": "This translator is a lifesaver for my language studies. The suffix highlighting feature makes learning Turkish grammar easier than ever!",
+          "rating": "4.8"
+        },
+        "item-3": {
+          "name": "Michael Brown",
+          "role": "Freelance Writer",
+          "heading": "Review from Michael Brown",
+          "content": "Translating idioms was always tricky until I found this tool. Now, my cultural articles maintain their original flavor and context.",
+          "rating": "4.8"
+        }
+      }
+    },
+    "faqs": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Have other questions? Feel free to contact us via email.",
+      "items": {
+        "item-1": {
+          "question": "Which is the best English to Turkish translator?",
+          "answer": "The best English to Turkish translator is one that offers high accuracy, context understanding, and a wide range of modes. Our tool excels in these areas, providing top-notch translations."
+        },
+        "item-2": {
+          "question": "Is this translator free?",
+          "answer": "Yes, this English to Turkish translator is completely free to use. You can translate unlimited text without any cost or subscription. Enjoy seamless and instant translation services at no charge, making it convenient for all your language needs."
+        },
+        "item-3": {
+          "question": "How is my privacy protected?",
+          "answer": "The English-to-Turkish Turbo Translator is GDPR-compliant and ensures your data is not stored or shared, providing a safe translation experience."
+        }
+      }
+    },
+    "ctaButton": "Try EnglishToTurkishTranslator Now",
+    "cta": {
+      "title": "Try VibeTrans English to Turkish Translator Now",
+      "description": "Experience seamless, accurate translations with VibeTrans. Start using the English to Turkish translator today!",
+      "primaryButton": "Try EnglishToTurkishTranslator Now",
+      "secondaryButton": "Back to Top"
+    }
+  }
+}

@@ -70,7 +70,7 @@ const CONFIG = {
     process.env.ENABLE_WORD_COUNT_VALIDATION !== 'false', // 默认开启
   enablePageErrorCheck: process.env.ENABLE_PAGE_ERROR_CHECK !== 'false', // 默认开启
   enableSkipChineseTranslation:
-    process.env.ENABLE_SKIP_CHINESE_TRANSLATION === 'true', // 默认关闭
+    process.env.ENABLE_SKIP_CHINESE_TRANSLATION !== 'false', // 默认开启（跳过中文）
   devServerPort: process.env.DEV_SERVER_PORT || 3000,
   maxWordCountRetries: 2, // 字数验证最多重试次数
   pageCheckTimeout: 30000, // 页面检查超时时间（毫秒）
@@ -440,6 +440,25 @@ async function phase3_generateCode(keyword, researchData) {
 
   logInfo(`生成工具: ${slug} (${title})`);
 
+  // 检查目录是否已存在
+  const toolDir = path.join(
+    CONFIG.srcDir,
+    'app',
+    '[locale]',
+    '(marketing)',
+    '(pages)',
+    slug
+  );
+
+  try {
+    await fs.access(toolDir);
+    logWarning(`目录已存在，跳过代码生成: ${toolDir}`);
+    logInfo('继续执行后续步骤...');
+    return { slug, title };
+  } catch {
+    // 目录不存在，继续生成
+  }
+
   // 调用现有的 CLI 工具
   try {
     execSync(`node scripts/create-translator-tool.js ${slug} "${title}"`, {
@@ -493,7 +512,9 @@ async function phase4_generateContent(
 - 高频词汇：${contentResearchData.highFrequencyWords?.map((w) => w.word).join(', ') || ''}
 `;
 
-  const prompt = `你现在是一个英文 SEO 文案写手，参考这个调研。帮我为「${keyword}」写英文落地页文案，不要给我emoji或者icon，要求如下：
+  const prompt = `You are an English SEO copywriter. Write landing page copy in ENGLISH ONLY for "${keyword}". Reference the research below.
+
+⚠️ CRITICAL REQUIREMENT: ALL CONTENT MUST BE IN ENGLISH. DO NOT USE CHINESE OR ANY OTHER LANGUAGE.
 
 ${intelligentTranslationRequirements}
 
@@ -519,9 +540,14 @@ ${intelligentTranslationRequirements}
    * 正文以 "XXXX is …" 开头，正面回答问题
    * 扩展解释功能和应用场景，长度约 60 单词
 
-5. 请帮我写Example板块的 title 和 description，40-50个单词左右，让工具能达到的效果更清晰，更有说服力。
-   * 参考图片：example.png
-   * 如果遇到符号翻译要有案例展示和推导过程，如果遇到语言翻译则是展示翻译案例，场景解释。
+5. 请帮我写Example板块的 title、description 和 6个实际翻译案例
+   * title 和 description：40-50个单词左右，让工具能达到的效果更清晰，更有说服力
+   * items 数组：必须包含6个翻译案例，每个案例包含：
+     - before: 英文原文（10-20个单词）
+     - after: 目标语言译文（准确翻译）
+     - alt: 场景描述（如 "Daily greeting and well wishes"）
+   * 6个案例应涵盖不同场景：日常问候、商务沟通、旅游/问路、餐厅点餐、学术/正式表达、文化礼仪等
+   * 确保翻译准确、自然、符合目标语言习惯
 
 6. 写 "How to XXXX" 板块
    * 标题模式：
@@ -546,32 +572,48 @@ ${intelligentTranslationRequirements}
    * 是否需要制作并插入相关对照表section，例如：symbols.png
 
 
-9. 根据上面调研，请帮我写Highlight板块的文案，包含:
+9. 根据上面调研，请帮我写两个板块的文案：
+
+   **第一个是 Unique 板块**：
+   * 板块的标题
+   * 4个独特特点的文案，突出翻译工具的差异化优势
+   * 为每个特点写一个简短的标题
+   * 写40单词左右的说明
+   * 保持客观中性的写作风格，避免使用个人化表达
+
+   **第二个是 Highlight 板块**：
    * 板块的标题
    * 4个产品特点的文案，5选4（简单免费使用、数据准确性、数据隐私安全、AI的对上下文的理解、更多解释）
    * 为每个特点写一个简短的标题
    * 写40单词左右的说明
    * 保持客观中性的写作风格，避免使用个人化表达（如"I think", "I love", "I believe"等）
 
-10. 根据上面调研，请帮我写6个用户评价，每个评价需要有:
-    * 用户姓名：听起来像美国人的姓名
-    * 角色：和使用产品的人群匹配的职业角色
-    * 评价内容：2-3句话。要求：50-60个单词之间，像真人、有具体的产品使用细节！引入真实用户使用场景故事，包含前后的情感叙述。
+10. Write user testimonials (3-6 testimonials based on content richness):
+    * Determine the optimal number based on:
+      - How many unique use cases and user scenarios were discovered in research
+      - The diversity of pain points and benefits identified
+      - Aim for 3-6 testimonials that cover different user profiles
+    * User name: American-sounding names
+    * Role: Professional roles matching the product users
+    * Content: 2-3 sentences, 50-60 words, authentic details about product usage, including emotional narrative about before/after experience.
 
-11. 根据上面调研，请帮我写 3 个 FAQ（问题 + 答案）
-    * 要求：
-      1. 每个答案 30–80 词
-      2. What is 问题必须以 "XXXX is …" 开头
-      3. 不出现 What is [关键词] 问题
-      4. How to 问题必须用 step-by-step 形式回答
-      5. 语言直接、正面、清晰
-      6. 必须包含一个问题：What is best xxx 或 Which is best xxx（选择其中一个模式）
-      7. 不出现品牌相关的问题（如：关于VibeTrans、品牌名相关问题）
-      8. 默认有的问题：这个xxx（软件名称）免费吗？我们的隐私如何？
-      9. 必须说明：只支持web端使用，不支持app，不支持离线使用
-      10. 调研报告展示的用户关心和高频提到的问题，都写成faq。
+11. Write FAQs based on social media research (dynamic count):
+    * Number of FAQs: Based on the number of social topics discovered in research
+      - If many social topics (5+): Write 5-6 FAQs
+      - If moderate social topics (3-4): Write 3-4 FAQs
+      - If few social topics (1-2): Write 3 FAQs minimum
+    * FAQ content should directly address the social topics and content gaps identified
+    * Requirements:
+      1. Each answer: 30-80 words
+      2. "What is" questions must start with "XXXX is..."
+      3. Must include one question: "What is best xxx" OR "Which is best xxx"
+      4. No brand-related questions (no VibeTrans mentions in questions)
+      5. Must include: "Is this xxx free?" and "How is my privacy protected?"
+      6. Must mention: web-only, no app, no offline use
+      7. Direct, clear language
+      8. Address the specific questions/topics found in social media research
 
-12. 请帮我写页面底部的CTA，包含标题和一句话描述，要求标题和内容都包含关键词和品牌词
+12. Write the CTA section with title and description, both must include the keyword and brand name "VibeTrans"
 
 最后整体的要求：
 1. 必要名词增加链接到 Wikipedia, YouTube 等权威网站
@@ -618,7 +660,15 @@ ${contentResearchSummary}
   "example": {
     "title": "标题",
     "description": "描述",
-    "wordCount": 45
+    "wordCount": 45,
+    "items": [
+      {
+        "before": "English text example",
+        "after": "Translated text example",
+        "alt": "Scenario description",
+        "wordCount": 15
+      }
+    ]
   },
   "howTo": {
     "title": "How to XXX",
@@ -719,8 +769,8 @@ ${contentResearchSummary}
     });
   }
 
-  if (contentData.highlights?.features) {
-    contentData.highlights.features.forEach((feature, index) => {
+  if (contentData.highlights?.items) {
+    contentData.highlights.items.forEach((feature, index) => {
       const issues = validatePersonalExpressions(
         feature.description,
         `highlights[${index}]`
@@ -861,9 +911,9 @@ function validateWordCounts(contentData) {
     });
   }
 
-  // 验证 highlights.features
-  if (contentData.highlights?.features) {
-    contentData.highlights.features.forEach((feature, index) => {
+  // 验证 highlights.items
+  if (contentData.highlights?.items) {
+    contentData.highlights.items.forEach((feature, index) => {
       if (feature.wordCount < 35 || feature.wordCount > 45) {
         invalidSections.push({
           section: 'highlights',
@@ -936,7 +986,9 @@ async function regenerateSection(
   // 根据不同 section 构建不同的 prompt
   switch (section) {
     case 'h1':
-      prompt = `请为「${keyword}」重新写一个 SEO 友好的 H1 标题。
+      prompt = `⚠️ WRITE IN ENGLISH ONLY. 不要使用中文。
+
+请为「${keyword}」重新写一个 SEO 友好的 H1 标题。
 要求：
 - 5-7 个单词
 - 直接点明工具名称和主要用途
@@ -953,7 +1005,9 @@ async function regenerateSection(
       break;
 
     case 'heroDescription':
-      prompt = `请为「${keyword}」重新写 H1 下的描述。
+      prompt = `⚠️ WRITE IN ENGLISH ONLY. 不要使用中文。
+
+请为「${keyword}」重新写 H1 下的描述。
 要求：
 - 30-40 个单词（严格控制在 25-45 之间）
 - 简要说明工具功能和使用价值
@@ -971,7 +1025,9 @@ async function regenerateSection(
       break;
 
     case 'whatIs':
-      prompt = `请为「${keyword}」重新写 "What is XXXX" 板块。
+      prompt = `⚠️ WRITE IN ENGLISH ONLY. 不要使用中文。
+
+请为「${keyword}」重新写 "What is XXXX" 板块。
 要求：
 - 约 70 单词（严格控制在 65-75 之间）
 - 以 "XXXX is …" 开头，正面回答问题
@@ -989,7 +1045,9 @@ async function regenerateSection(
       break;
 
     case 'example':
-      prompt = `请为「${keyword}」重新写 Example 板块的 title 和 description。
+      prompt = `⚠️ WRITE IN ENGLISH ONLY. 不要使用中文。
+
+请为「${keyword}」重新写 Example 板块的 title 和 description。
 要求：
 - 40-50 个单词（严格控制在 35-55 之间）
 
@@ -1006,7 +1064,9 @@ async function regenerateSection(
     case 'howTo':
       if (sectionInfo.stepIndex !== undefined) {
         const step = contentData.howTo.steps[sectionInfo.stepIndex];
-        prompt = `请为「${keyword}」重新写 How To 步骤「${step.name}」的描述。
+        prompt = `⚠️ WRITE IN ENGLISH ONLY. 不要使用中文。
+
+请为「${keyword}」重新写 How To 步骤「${step.name}」的描述。
 要求：
 - 约 40 词左右（严格控制在 35-45 之间）
 - 强调操作细节
@@ -1025,7 +1085,9 @@ async function regenerateSection(
 
     case 'funFacts':
       if (sectionInfo.factIndex !== undefined) {
-        prompt = `请为「${keyword}」重新写一个 Fun Fact。
+        prompt = `⚠️ WRITE IN ENGLISH ONLY. 不要使用中文。
+
+请为「${keyword}」重新写一个 Fun Fact。
 要求：
 - 约 30 单词（严格控制在 25-35 之间）
 - 内容有趣、易懂
@@ -1050,7 +1112,9 @@ ${contentResearchData.funFacts?.join('\n') || ''}
       if (sectionInfo.sectionIndex !== undefined) {
         const originalSection =
           contentData.interestingSections.sections[sectionInfo.sectionIndex];
-        prompt = `请为「${keyword}」重新写趣味板块「${originalSection.title}」。
+        prompt = `⚠️ WRITE IN ENGLISH ONLY. 不要使用中文。
+
+请为「${keyword}」重新写趣味板块「${originalSection.title}」。
 要求：
 - 约 50 单词（严格控制在 45-55 之间）
 - 保持客观中性的写作风格，避免使用个人化表达（如"I think", "I love", "I believe"等）
@@ -1072,8 +1136,10 @@ ${contentResearchData.funFacts?.join('\n') || ''}
     case 'highlights':
       if (sectionInfo.featureIndex !== undefined) {
         const feature =
-          contentData.highlights.features[sectionInfo.featureIndex];
-        prompt = `请为「${keyword}」重新写亮点功能「${feature.title}」的描述。
+          contentData.highlights.items[sectionInfo.featureIndex];
+        prompt = `⚠️ WRITE IN ENGLISH ONLY. 不要使用中文。
+
+请为「${keyword}」重新写亮点功能「${feature.title}」的描述。
 要求：
 - 约 40 单词（严格控制在 35-45 之间）
 - 展示品牌词：VibeTrans
@@ -1091,7 +1157,9 @@ ${contentResearchData.funFacts?.join('\n') || ''}
 
     case 'testimonials':
       if (sectionInfo.testimonialIndex !== undefined) {
-        prompt = `请为「${keyword}」重新写一个用户评价。
+        prompt = `⚠️ WRITE IN ENGLISH ONLY. 不要使用中文。
+
+请为「${keyword}」重新写一个用户评价。
 要求：
 - 50-60 个单词（严格控制在 45-65 之间）
 - 2-3 句话
@@ -1114,7 +1182,9 @@ ${contentResearchData.funFacts?.join('\n') || ''}
     case 'faqs':
       if (sectionInfo.faqIndex !== undefined) {
         const faq = contentData.faqs[sectionInfo.faqIndex];
-        prompt = `请为「${keyword}」重新写 FAQ「${faq.question}」的答案。
+        prompt = `⚠️ WRITE IN ENGLISH ONLY. 不要使用中文。
+
+请为「${keyword}」重新写 FAQ「${faq.question}」的答案。
 要求：
 - 30-80 词
 - 语言直接、正面、清晰
@@ -1196,7 +1266,7 @@ function updateContentData(contentData, sectionInfo, newData) {
       break;
     case 'highlights':
       if (sectionInfo.featureIndex !== undefined) {
-        contentData.highlights.features[sectionInfo.featureIndex] = newData;
+        contentData.highlights.items[sectionInfo.featureIndex] = newData;
       }
       break;
     case 'testimonials':
@@ -1344,21 +1414,27 @@ async function phase5_generateTranslations(keyword, contentData) {
       examples: {
         title: contentData.example.title,
         description: contentData.example.description,
-        items: [
-          { alt: 'Example 1 placeholder', name: 'Example 1' },
-          { alt: 'Example 2 placeholder', name: 'Example 2' },
-          { alt: 'Example 3 placeholder', name: 'Example 3' },
-          { alt: 'Example 4 placeholder', name: 'Example 4' },
-          { alt: 'Example 5 placeholder', name: 'Example 5' },
-          { alt: 'Example 6 placeholder', name: 'Example 6' },
-        ],
+        items: contentData.example.items
+          ? contentData.example.items.map((item) => ({
+              before: item.before,
+              after: item.after,
+              alt: item.alt,
+            }))
+          : [
+              { alt: 'Example 1 placeholder', name: 'Example 1' },
+              { alt: 'Example 2 placeholder', name: 'Example 2' },
+              { alt: 'Example 3 placeholder', name: 'Example 3' },
+              { alt: 'Example 4 placeholder', name: 'Example 4' },
+              { alt: 'Example 5 placeholder', name: 'Example 5' },
+              { alt: 'Example 6 placeholder', name: 'Example 6' },
+            ],
       },
       howto: {
         title: contentData.howTo.title,
         description: contentData.howTo.description,
         steps: contentData.howTo.steps,
       },
-      funFacts: {
+      funfacts: {
         title: 'Interesting Facts',
         items: contentData.funFacts.map((fact) => ({
           title: fact.title || 'Fun Fact',
@@ -1381,7 +1457,7 @@ async function phase5_generateTranslations(keyword, contentData) {
         description:
           contentData.highlights.description ||
           'The best features for your translation needs',
-        features: contentData.highlights.features.map((feature, index) => ({
+        items: contentData.highlights.items.map((feature, index) => ({
           icon:
             feature.icon ||
             ['FaRocket', 'FaBrain', 'FaShieldAlt', 'FaChartLine'][index % 4],
@@ -1417,6 +1493,10 @@ async function phase5_generateTranslations(keyword, contentData) {
           };
           return acc;
         }, {}),
+      },
+      unique: {
+        title: '',
+        items: [],
       },
       ctaButton: `Try ${pageName} Now`,
       cta: {
@@ -1883,9 +1963,9 @@ async function phase5_5_validateJsonCodeMatch(keyword, translationData) {
     'userInterest.items.0.imageAlt',
     'highlights.title',
     'highlights.description',
-    'highlights.features.0.icon',
-    'highlights.features.0.title',
-    'highlights.features.0.description',
+    'highlights.items.0.icon',
+    'highlights.items.0.title',
+    'highlights.items.0.description',
     'testimonials.title',
     'testimonials.subtitle',
     'testimonials.items.item-1.name',
@@ -2768,8 +2848,8 @@ async function main() {
     // Phase 8.5: 页面错误自动检查
     const pageCheckResult = await phase8_5_checkPageErrors(keyword);
 
-    // Phase 9: 图片路径一致性验证和更新
-    await phase9_validateImagePaths(keyword, translationData, imageData);
+    // Phase 9: 图片路径一致性验证和更新 (跳过 - 功能未实现)
+    // await phase9_validateImagePaths(keyword, translationData, imageData);
 
     // Phase 10: 翻译文件国际化系统检查
     const translationSystemResult = await phase10_checkTranslationSystem(

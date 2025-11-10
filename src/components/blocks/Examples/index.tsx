@@ -8,6 +8,8 @@ interface AudioItem {
   name?: string;
   audio?: string;
   emotion?: string;
+  before?: string;
+  after?: string;
 }
 
 interface BeforeAfterSectionProps {
@@ -99,6 +101,35 @@ export default function BeforeAfterSection({
                       </p>
                     </div>
                   )}
+                </div>
+              ) : item.before && item.after ? (
+                <div
+                  onClick={scrollToTop}
+                  className="cursor-pointer p-6 flex flex-col gap-4"
+                >
+                  <div className="space-y-3">
+                    <div className="border-b pb-3">
+                      <p className="text-xs font-medium text-gray-500 uppercase tracking-wide mb-2">
+                        English
+                      </p>
+                      <p className="text-base text-gray-800 leading-relaxed">
+                        {item.before}
+                      </p>
+                    </div>
+                    <div className="border-b pb-3">
+                      <p className="text-xs font-medium text-gray-500 uppercase tracking-wide mb-2">
+                        Translation
+                      </p>
+                      <p className="text-base text-gray-800 leading-relaxed">
+                        {item.after}
+                      </p>
+                    </div>
+                    <div className="pt-1">
+                      <p className="text-xs text-gray-500 text-center italic">
+                        {item.alt}
+                      </p>
+                    </div>
+                  </div>
                 </div>
               ) : (
                 <div

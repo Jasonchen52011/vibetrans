@@ -173,6 +173,14 @@
           "japaneseToEnglishTranslator": {
             "title": "Japanese To English Translator",
             "description": ""
+          },
+          "englishToTurkishTranslator": {
+            "title": "English To Turkish Translator",
+            "description": "Translate english to turkish translator"
+          },
+          "haitianCreoleTranslator": {
+            "title": "Haitian Creole Translator",
+            "description": "Translate haitian creole translator"
           }
         }
       },
@@ -260,6 +268,7 @@
         "items": {
           "ancientGreekTranslator": "Ancient Greek Translator",
           "greekTranslator": "Greek Translator",
+          "haitianCreoleTranslator": "Haitian Creole Translator",
           "mangaTranslator": "Manga Translator",
           "esperantoTranslator": "Esperanto Translator",
           "cuneiformTranslator": "Cuneiform Translator",

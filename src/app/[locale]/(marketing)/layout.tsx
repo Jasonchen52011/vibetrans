@@ -18,7 +18,7 @@ export default async function MarketingLayout({
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar scroll={true} />
-      <main className="flex-1 pt-16">{children}</main>
+      <main className="flex-1">{children}</main>
       <Footer locale={locale} />
       <BackToTop />
     </div>

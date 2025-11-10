@@ -25,39 +25,65 @@
       "image": "/images/docs/what-is-english-to-persian-translator.webp",
       "imageAlt": "What is English to Persian Translator"
     },
-    "examples": {
-      "title": "Translation Examples",
-      "description": "See how our translator works with real examples",
+    "unique": {
+      "title": "Why Choose Our English to Persian Translator?",
+      "description": "Experience the best translation service with cutting-edge features designed for accuracy and convenience.",
       "items": [
         {
-          "before": "Hello, how are you today?",
-          "after": "سلام، امروز حال شما چطور است؟",
-          "alt": "English to Persian greeting example"
+          "title": "AI-Powered Accuracy",
+          "description": "Advanced neural networks ensure precise translations that capture context and cultural nuances.",
+          "icon": "FaBrain"
         },
         {
-          "before": "I would like to schedule a business meeting for next week.",
-          "after": "می‌خواهم برای هفته آینده یک جلسه کاری ترتیب دهم.",
-          "alt": "English to Persian business example"
+          "title": "Lightning Fast",
+          "description": "Get instant translations in real-time, perfect for conversations and quick communication.",
+          "icon": "FaBolt"
         },
         {
-          "before": "The research demonstrates significant findings in this field.",
-          "after": "تحقیقات نتایج قابل توجهی را در این زمینه نشان می‌دهد.",
-          "alt": "English to Persian academic example"
+          "title": "Multiple Formats",
+          "description": "Translate text, documents, and conversations with support for various file formats.",
+          "icon": "FaFileAlt"
         },
         {
-          "before": "Thank you for your wonderful hospitality!",
-          "after": "از مهمان‌نوازی فوق‌العاده شما متشکرم!",
-          "alt": "English to Persian casual example"
+          "title": "Privacy First",
+          "description": "Your translations are secure and private with end-to-end encryption.",
+          "icon": "FaShieldAlt"
+        }
+      ]
+    },
+    "examples": {
+      "title": "English to Persian Translation Examples",
+      "description": "Explore accurate English to Persian translations for various real-world scenarios and contexts.",
+      "items": [
+        {
+          "before": "Good morning! I hope you have a wonderful day.",
+          "after": "صبح بخیر! امیدوارم روز فوق‌العاده‌ای داشته باشید.",
+          "alt": "Morning greeting and well wishes"
         },
         {
-          "before": "The artificial intelligence algorithm processes data efficiently.",
-          "after": "الگوریتم هوش مصنوعی داده‌ها را به طور کارآمد پردازش می‌کند.",
-          "alt": "English to Persian technical example"
+          "before": "I need to schedule a business meeting for next Tuesday at 3 PM.",
+          "after": "من باید یک جلسه کاری برای سه بعد از ظهر سه‌شنبه هفته آینده تنظیم کنم.",
+          "alt": "Business meeting scheduling"
         },
         {
-          "before": "Poetry is the rhythmical creation of beauty in words.",
-          "after": "شعر آفرینش ریتمیک زیبایی در کلمات است.",
-          "alt": "English to Persian literary example"
+          "before": "The restaurant serves delicious traditional Persian cuisine.",
+          "after": "این رستوران غذاهای سنتی و خوشمزه ایرانی سرو می‌کند.",
+          "alt": "Food and restaurant description"
+        },
+        {
+          "before": "Could you please provide directions to the nearest subway station?",
+          "after": "میشه لطفاً مسیر ایستگاه متروی نزدیک رو به من بگید؟",
+          "alt": "Asking for directions"
+        },
+        {
+          "before": "Thank you for your excellent presentation on renewable energy.",
+          "after": "از ارائه عالی شما در مورد انرژی‌های تجدیدپذیر متشکرم.",
+          "alt": "Professional compliment and feedback"
+        },
+        {
+          "before": "I would like to learn more about Iranian history and culture.",
+          "after": "من می‌خواهم درباره تاریخ و فرهنگ ایران بیشتر یاد بگیرم.",
+          "alt": "Cultural and educational interest"
         }
       ]
     },
@@ -108,6 +134,28 @@
           "title": "Completely Free",
           "description": "No registration or payment required - translate freely",
           "icon": "FaHeart"
+        }
+      ],
+      "features": [
+        {
+          "title": "AI-Powered Accuracy",
+          "description": "Advanced neural networks ensure precise translations that capture context and cultural nuances.",
+          "icon": "FaBrain"
+        },
+        {
+          "title": "Lightning Fast",
+          "description": "Get instant translations in real-time, perfect for conversations and quick communication.",
+          "icon": "FaBolt"
+        },
+        {
+          "title": "Multiple Formats",
+          "description": "Translate text, documents, and conversations with support for various file formats.",
+          "icon": "FaFileAlt"
+        },
+        {
+          "title": "Privacy First",
+          "description": "Your translations are secure and private with end-to-end encryption.",
+          "icon": "FaShieldAlt"
         }
       ]
     },

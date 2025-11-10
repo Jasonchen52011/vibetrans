@@ -1,10 +1,10 @@
 {
   "EnglishToPolishTranslatorPage": {
     "title": "Accurate English to Polish Translator Online",
-    "description": "Discover the best English to Polish translator for real-time, accurate translations with voice input and output, and professional modes.",
+    "description": "Discover the best English to Polish translator for real-time, accurate translations with professional modes.",
     "hero": {
       "title": "English to Polish Translator Tool",
-      "description": "Experience the best English to Polish translator for accurate, context-aware translations with voice input and output capabilities."
+      "description": "Experience the best English to Polish translator for accurate, context-aware translations."
     },
     "tool": {
       "inputLabel": "Input Text",
@@ -14,14 +14,7 @@
       "translateButton": "Translate",
       "uploadButton": "Upload File",
       "uploadHint": "Supports .txt and .docx files",
-      "voiceInputButton": "Voice Input",
-      "voiceInputHint": "Click to start voice input",
-      "audioUploadButton": "Upload Audio",
-      "audioUploadHint": "Upload audio file for transcription",
-      "voiceOutputButton": "Play Audio",
-      "voiceOutputHint": "Listen to translation",
       "loading": "Translating...",
-      "transcribing": "Transcribing audio...",
       "error": "Translation failed. Please try again.",
       "noInput": "Please enter some text to translate."
     },
@@ -69,7 +62,7 @@
       "steps": [
         {
           "title": "Enter Text",
-          "description": "Type or paste your English text into the input field. You can also upload .txt or .docx files, or use voice input for convenience."
+          "description": "Type or paste your English text into the input field. You can also upload .txt or .docx files for convenience."
         },
         {
           "title": "Click Translate",
@@ -77,7 +70,7 @@
         },
         {
           "title": "Get Results",
-          "description": "Receive your Polish translation immediately. Listen to the audio pronunciation, copy, or download the translated text as needed."
+          "description": "Receive your Polish translation immediately. Copy or download the translated text as needed."
         },
         {
           "title": "Use Translation",
@@ -122,12 +115,6 @@
           "description": "VibeTrans's professional modes allow translation to switch as freely as a transformer. Whether for business meetings or romantic letters, it can impress with unique Polish style. Want a different translation experience? VibeTrans makes every word have its rhythm.",
           "image": "/images/docs/polish-professional-modes.webp",
           "imageAlt": "Professional Modes"
-        },
-        {
-          "title": "Voice Input/Output",
-          "description": "VibeTrans's voice input/output functionality adds cool tech appeal to translation. Speak your needs, hear your answers, as if in a sci-fi movie. No typing needed, making translation smoother and faster. VibeTrans makes translation no longer a monotonous task.",
-          "image": "/images/docs/polish-voice-translator.webp",
-          "imageAlt": "Voice Input/Output"
         }
       ]
     },
@@ -140,12 +127,7 @@
           "icon": "FaRocket",
           "description": "Translate English to Polish instantly without any cost. No registration required - just type or paste your text and get accurate results in seconds."
         },
-        {
-          "title": "Voice Translation",
-          "icon": "FaShieldAlt",
-          "description": "Speak English and hear Polish translations instantly. Our voice input and output features make communication effortless and natural."
-        },
-        {
+          {
           "title": "Secure & Private",
           "icon": "FaBrain",
           "description": "Your translations are completely private. We use advanced encryption to protect your data and never store your personal information."

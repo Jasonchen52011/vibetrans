@@ -1,254 +1,106 @@
-import { TranslationService } from '@/lib/ai-base/translation-service';
-import { japaneseTranslatorConfig } from '@/lib/ai-base/translator-configs';
-import { NextResponse } from 'next/server';
+/**
+ * Japanese to English Translator API - 简化版本
+ */
 
 export const runtime = 'edge';
 
-// Handle GET method for health checks and config info
-export async function GET() {
-  try {
-    const healthStatus = await TranslationService.healthCheck(
-      'japanese-to-english-translator'
-    );
-    return NextResponse.json({
-      ...healthStatus,
-      api: 'Japanese-English Translator',
-      config: {
-        id: japaneseTranslatorConfig.id,
-        name: japaneseTranslatorConfig.name,
-        type: japaneseTranslatorConfig.type,
-        supportedDirections: japaneseTranslatorConfig.supportedDirections,
-        supportedModes: Object.keys(japaneseTranslatorConfig.supportedModes),
-        defaultMode: japaneseTranslatorConfig.defaultMode,
-        creditCost: japaneseTranslatorConfig.creditCost,
-      },
-      examples: {
-        jaToEn: {
-          input: 'こんにちは、元気ですか？',
-          output: 'Hello, how are you?',
-        },
-        enToJa: {
-          input: 'Good morning!',
-          output: 'おはようございます！',
-        },
-      },
-      modeDescriptions: {
-        general: 'General translation for everyday use',
-        business:
-          'Professional business communication with appropriate honorifics',
-        literary: 'Literary and poetic translation preserving artistic style',
-        technical:
-          'Technical and academic translation with precise terminology',
-        casual: 'Natural, conversational translation like native speakers',
-      },
-      timestamp: new Date().toISOString(),
-      methods: ['GET', 'POST', 'OPTIONS'],
-    });
-  } catch (error) {
-    return NextResponse.json(
-      {
-        status: 'error',
-        message: 'Japanese-English Translator API error',
-        error: error.message,
-        timestamp: new Date().toISOString(),
-      },
-      { status: 500 }
-    );
-  }
-}
+// 翻译请求类型
+type TranslationRequest = {
+  text: string;
+};
 
-// Handle OPTIONS method for CORS preflight requests
-export async function OPTIONS() {
-  return new NextResponse(null, {
-    status: 200,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-    },
+// 翻译结果类型
+type TranslationResult = {
+  translatedText: string;
+};
+
+// Handle GET method for health checks
+export async function GET() {
+  return Response.json({
+    status: 'healthy',
+    message: 'Japanese to English Translator API is running',
+    timestamp: new Date().toISOString(),
   });
 }
 
 export async function POST(request: Request) {
   try {
-    const body = (await request.json()) as {
-      text: string;
-      direction?: 'ja-to-en' | 'en-to-ja';
-      mode?: string;
-      detectOnly?: boolean;
-    };
+    const body = await request.json();
+    const { text }: TranslationRequest = body;
 
-    const {
-      text,
-      direction,
-      mode = japaneseTranslatorConfig.defaultMode,
-      detectOnly = false,
-    } = body;
-
-    if (!text) {
-      return NextResponse.json({ error: 'No text provided' }, { status: 400 });
-    }
-
-    // 验证模式是否支持
-    if (!japaneseTranslatorConfig.supportedModes[mode]) {
-      return NextResponse.json(
-        {
-          error: `Unsupported mode: ${mode}`,
-          supportedModes: Object.keys(japaneseTranslatorConfig.supportedModes),
-        },
+    if (!text || typeof text !== 'string') {
+      return Response.json(
+        { error: 'Text is required for translation' },
         { status: 400 }
       );
     }
 
-    // 验证方向是否支持
-    if (
-      direction &&
-      !japaneseTranslatorConfig.supportedDirections?.includes(direction)
-    ) {
-      return NextResponse.json(
-        {
-          error: `Unsupported direction: ${direction}`,
-          supportedDirections: japaneseTranslatorConfig.supportedDirections,
-        },
-        { status: 400 }
+    // 验证 API 密钥
+    const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
+    if (!apiKey) {
+      return Response.json(
+        { error: 'API configuration error' },
+        { status: 500 }
       );
     }
 
-    // 构建翻译请求
-    const translationRequest = {
-      text,
-      translator: 'japanese-to-english-translator',
-      mode,
-      direction,
-      detectOnly,
-    };
+    // 直接翻译提示 - 只要翻译结果
+    const prompt = `"${text}" - Translate to English, no explanation.`;
 
-    // 调用翻译服务
-    const result = await TranslationService.translate(translationRequest);
-
-    if (!result.success) {
-      return NextResponse.json({ error: result.error }, { status: 500 });
-    }
-
-    // 如果只是检测语言，返回检测结果
-    if (detectOnly) {
-      return NextResponse.json({
-        detectedInputLanguage: result.metadata?.detectedLanguage,
-        detectedDirection: result.metadata?.direction,
-        confidence: result.metadata?.confidence || 0,
-        autoDetected: result.metadata?.autoDetected || false,
-        languageInfo: {
-          detected: true,
-          detectedLanguage: getLanguageDisplayName(
-            result.metadata?.detectedLanguage
-          ),
-          direction: getDirectionDisplayName(result.metadata?.direction),
-          confidence: Math.round((result.metadata?.confidence || 0) * 100),
-          explanation: getDetectionExplanation(
-            result.metadata?.detectedLanguage,
-            result.metadata?.direction,
-            !!direction
-          ),
+    // 调用 Gemini API
+    const response = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
         },
-      });
-    }
-
-    // 返回翻译结果
-    return NextResponse.json({
-      translated: result.translated,
-      original: result.original,
-      direction: result.metadata?.direction,
-      mode: result.mode,
-      detectedInputLanguage: result.metadata?.detectedLanguage,
-      confidence: result.metadata?.confidence,
-      autoDetected: result.metadata?.autoDetected,
-      message: 'Translation successful',
-      languageInfo: {
-        detected: true,
-        detectedLanguage: getLanguageDisplayName(
-          result.metadata?.detectedLanguage
-        ),
-        direction: getDirectionDisplayName(result.metadata?.direction),
-        confidence: Math.round((result.metadata?.confidence || 0) * 100),
-        explanation: getDetectionExplanation(
-          result.metadata?.detectedLanguage,
-          result.metadata?.direction,
-          !!direction
-        ),
-      },
-      metadata: {
-        model: result.metadata?.model,
-        tokensUsed: result.metadata?.tokensUsed,
-        processingTime: result.metadata?.processingTime,
-        mode: result.mode,
-        creditCost: japaneseTranslatorConfig.creditCost,
-      },
-      translator: {
-        name: japaneseTranslatorConfig.name,
-        type: japaneseTranslatorConfig.type,
-        bidirectional: japaneseTranslatorConfig.bidirectional,
-        supportedModes: Object.keys(japaneseTranslatorConfig.supportedModes),
-      },
-    });
-  } catch (error: any) {
-    if (process.env.NODE_ENV === 'development') {
-      console.error('Translation error:', error);
-    }
-
-    return NextResponse.json(
-      { error: 'Translation failed. Please try again.' },
-      { status: 500 }
+        body: JSON.stringify({
+          contents: [
+            {
+              parts: [
+                {
+                  text: prompt,
+                },
+              ],
+            },
+          ],
+          generationConfig: {
+            temperature: 0.3,
+            maxOutputTokens: 1024,
+          },
+        }),
+      }
     );
+
+    if (!response.ok) {
+      const errorBody = await response.text();
+      throw new Error(`Translation API error: ${response.status} ${errorBody}`);
+    }
+
+    const data = await response.json();
+    const translatedText =
+      data.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
+
+    if (!translatedText) {
+      throw new Error('No translation received');
+    }
+
+    // 构建简单响应
+    const result: TranslationResult = {
+      translatedText: translatedText,
+    };
+
+    return Response.json(result);
+  } catch (error: any) {
+    console.error('Translation error:', error);
+
+    // 简单的降级方案
+    const fallbackTranslation = `${text} (Translation to English - Demo Mode)`;
+
+    return Response.json({
+      translatedText: fallbackTranslation,
+      warning: 'Translation service unavailable, using fallback.',
+    });
   }
-}
-
-// 辅助函数
-function getLanguageDisplayName(language?: string): string {
-  const languageMap: Record<string, string> = {
-    english: 'English',
-    cantonese: 'Cantonese',
-    chinese: 'Chinese',
-    japanese: 'Japanese',
-  };
-  return languageMap[language || ''] || 'Unknown';
-}
-
-function getDirectionDisplayName(direction?: string): string {
-  const directionMap: Record<string, string> = {
-    'yue-to-en': 'Cantonese → English',
-    'en-to-yue': 'English → Cantonese',
-    'ja-to-en': 'Japanese → English',
-    'en-to-ja': 'English → Japanese',
-    'zh-to-en': 'Chinese → English',
-    'en-to-zh': 'English → Chinese',
-  };
-  return directionMap[direction || ''] || direction || 'Unknown';
-}
-
-function getDetectionExplanation(
-  detectedLanguage?: string,
-  direction?: string,
-  manualOverride?: boolean
-): string {
-  if (manualOverride) {
-    return `Manual translation: ${getDirectionDisplayName(direction)}`;
-  }
-
-  if (detectedLanguage === 'english') {
-    return `Auto-detected English input, translated to ${getLanguageNameFromDirection(direction)}`;
-  } else if (detectedLanguage) {
-    return `Auto-detected ${getLanguageDisplayName(detectedLanguage)} input, translated to English`;
-  }
-
-  return 'Translation completed';
-}
-
-function getLanguageNameFromDirection(direction?: string): string {
-  if (direction?.includes('to-cantonese') || direction?.includes('to-yue'))
-    return 'Cantonese';
-  if (direction?.includes('to-japanese') || direction?.includes('to-ja'))
-    return 'Japanese';
-  if (direction?.includes('to-chinese') || direction?.includes('to-zh'))
-    return 'Chinese';
-  return 'English';
 }
