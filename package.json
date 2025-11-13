@@ -25,6 +25,7 @@
     "knip": "knip",
     "tool:create": "node scripts/create-translator-tool.js",
     "tool:auto": "node -r dotenv/config scripts/auto-tool-generator.js",
+    "tool:auto-v2": "node -r dotenv/config scripts/auto-tool-generator-v2.js",
     "tool:test": "node scripts/test-auto-tool-generator.js",
     "api:test": "tsx scripts/test/test-all-apis.ts",
     "api:test:quick": "tsx scripts/test/quick-api-test.ts",

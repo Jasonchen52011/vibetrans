@@ -11,6 +11,7 @@ import {
   FeatherIcon,
   FlameIcon,
   GlobeIcon,
+  Hash,
   KeyIcon,
   LanguagesIcon,
   MessageCircleIcon,
@@ -68,6 +69,11 @@ const NAV_CATEGORY_CONFIG: {
       key: 'gibberishTranslator',
       route: Routes.GibberishTranslator,
       icon: <SparklesIcon className="size-4 shrink-0" />,
+    },
+    {
+      key: 'numbersToLetters',
+      route: Routes.NumbersToLetters,
+      icon: <Hash className="size-4 shrink-0" />,
     },
     {
       key: 'pigLatinTranslator',
@@ -152,6 +158,11 @@ const NAV_CATEGORY_CONFIG: {
       key: 'baybayinTranslator',
       route: Routes.BaybayinTranslator,
       icon: <FeatherIcon className="size-4 shrink-0" />,
+    },
+    {
+      key: 'brailleTranslator',
+      route: Routes.BrailleTranslator,
+      icon: <EyeIcon className="size-4 shrink-0" />,
     },
     {
       key: 'cantoneseTranslator',
@@ -261,6 +272,11 @@ const NAV_CATEGORY_CONFIG: {
     {
       key: 'teluguToEnglishTranslator',
       route: Routes.TeluguToEnglishTranslator,
+      icon: <LanguagesIcon className="size-4 shrink-0" />,
+    },
+    {
+      key: 'jamaicanTranslator',
+      route: Routes.JamaicanTranslator,
       icon: <LanguagesIcon className="size-4 shrink-0" />,
     },
   ],

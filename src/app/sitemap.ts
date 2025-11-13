@@ -55,6 +55,9 @@ const staticRoutes = [
   '/chinese-to-english-translator',
   '/privacy',
   '/terms',
+  '/jamaican-translator',
+  '/numbers-to-letters',
+  '/braille-translator',
 ];
 
 /**

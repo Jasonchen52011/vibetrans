@@ -63,6 +63,10 @@
             "title": "Gibberish Translator",
             "description": ""
           },
+          "numbersToLetters": {
+            "title": "Numbers To Letters",
+            "description": ""
+          },
           "pigLatinTranslator": {
             "title": "Pig Latin Translator",
             "description": ""
@@ -181,6 +185,14 @@
           "haitianCreoleTranslator": {
             "title": "Haitian Creole Translator",
             "description": "Translate haitian creole translator"
+          },
+          "jamaicanTranslator": {
+            "title": "Jamaican Translator",
+            "description": "Translate jamaican translator"
+          },
+          "brailleTranslator": {
+            "title": "Braille Translator",
+            "description": "Translate braille translator"
           }
         }
       },
@@ -243,6 +255,7 @@
           "badTranslator": "Bad Translator",
           "babyTranslator": "Baby Translator",
           "gibberishTranslator": "Gibberish Translator",
+          "numbersToLetters": "Numbers To Letters",
           "alienTextGenerator": "Alien Text Generator",
           "verboseGenerator": "Verbose Generator",
           "pigLatinTranslator": "Pig Latin Translator"
@@ -279,9 +292,11 @@
           "chineseToEnglishTranslator": "Chinese To English Translator",
           "middleEnglishTranslator": "Middle English Translator",
           "baybayinTranslator": "Baybayin Translator",
+          "brailleTranslator": "Braille Translator",
           "oghamTranslator": "Ogham Translator",
           "samoanToEnglishTranslator": "Samoan To English Translator",
           "aramaicTranslator": "Aramaic Translator",
+          "jamaicanTranslator": "Jamaican Translator",
           "nahuatlTranslator": "Nahuatl Translator",
           "englishToSwahiliTranslator": "English To Swahili Translator",
           "swahiliToEnglishTranslator": "Swahili To English Translator",

@@ -51,6 +51,9 @@ export const Routes = {
   SamoanToEnglishTranslator: '/samoan-to-english-translator',
   SwahiliToEnglishTranslator: '/swahili-to-english-translator',
   TeluguToEnglishTranslator: '/telugu-to-english-translator',
+  JamaicanTranslator: '/jamaican-translator',
+  NumbersToLetters: '/numbers-to-letters',
+  BrailleTranslator: '/braille-translator',
 
   // Static pages
   Home: '/',

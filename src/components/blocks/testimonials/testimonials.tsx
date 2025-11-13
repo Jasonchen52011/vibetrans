@@ -17,28 +17,68 @@ type Testimonial = {
 
 interface TestimonialsSectionProps {
   namespace?: string;
+  section?: import('@/types/blocks/section').Section;
 }
 
 export default function TestimonialsSection({
   namespace = 'HomePage.testimonials',
+  section,
 }: TestimonialsSectionProps = {}) {
-  // @ts-ignore - Dynamic namespace support
-  const t = useTranslations(namespace as any);
-
   // Dynamically build testimonials array based on available items
   const testimonials: Testimonial[] = [];
 
-  // Only attempt to load testimonials if the namespace has items
-  let hasItems = false;
-  try {
-    // @ts-ignore
-    const testCheck = t.raw('items');
-    hasItems = testCheck && typeof testCheck === 'object';
-  } catch {
-    hasItems = false;
-  }
+  // If section data is provided, use it directly
+  if (section) {
+    const avatarPool = [
+      '/images/avatars/male1.webp',
+      '/images/avatars/female1.webp',
+      '/images/avatars/male2.webp',
+      '/images/avatars/female2.webp',
+      '/images/avatars/male3.webp',
+      '/images/avatars/female3.webp',
+      '/images/avatars/male4.webp',
+      '/images/avatars/female4.webp',
+      '/images/avatars/male5.webp',
+    ];
 
-  if (hasItems) {
+    section.items.forEach((item, index) => {
+      const originalItem = (item as any)._originalData || {};
+      const name = originalItem.name || item.title || 'Anonymous User';
+      const role = originalItem.role || 'Happy Customer';
+      const heading = originalItem.heading || item.title || '';
+      const quote = originalItem.content || item.description || 'Excellent service!';
+      const rating =
+        typeof originalItem.rating === 'number'
+          ? originalItem.rating
+          : Number.parseFloat(originalItem.rating) || 5;
+
+      const avatarIndex = index % avatarPool.length;
+
+      testimonials.push({
+        name,
+        role,
+        heading: heading || undefined,
+        quote,
+        src: avatarPool[avatarIndex],
+        rating,
+      });
+    });
+  } else {
+    // Fallback to namespace-based loading
+    // @ts-ignore - Dynamic namespace support
+    const t = useTranslations(namespace as any);
+
+    // Only attempt to load testimonials if the namespace has items
+    let hasItems = false;
+    try {
+      // @ts-ignore
+      const testCheck = t.raw('items');
+      hasItems = testCheck && typeof testCheck === 'object';
+    } catch {
+      hasItems = false;
+    }
+
+    if (hasItems) {
     // Get all available items to check how many exist
     // @ts-ignore - Dynamic namespace support
     const items = t.raw('items') as Record<string, any>;
@@ -121,6 +161,7 @@ export default function TestimonialsSection({
         // If translation doesn't exist, skip this item and continue
         continue;
       }
+    }
     }
   }
 

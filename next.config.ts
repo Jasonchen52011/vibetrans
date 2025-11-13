@@ -49,6 +49,10 @@ const nextConfig: NextConfig = {
   },
 
   // Disable experimental optimizations temporarily to bypass Html import issue
+  experimental: {
+    // Skip prerendering for error pages to bypass Html import issue with edge runtime
+    skipMiddlewareUrlNormalize: true,
+  },
 
   // Webpack configuration for Cloudflare Pages Edge Runtime compatibility
   webpack: (config, { webpack, isServer, dev }) => {

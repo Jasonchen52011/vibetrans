@@ -73,6 +73,8 @@ const TRANSLATOR_PAGE_PATTERNS = {
   '/verbose-generator': 'VerboseGeneratorPage',
   '/wingdings-translator': 'WingdingsTranslatorPage',
   '/yoda-translator': 'YodaTranslatorPage',
+  '/braille-translator': 'BrailleTranslatorPage',
+  '/numbers-to-letters': 'NumbersToLettersPage',
 };
 
 /**

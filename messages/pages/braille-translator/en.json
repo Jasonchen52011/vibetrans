@@ -1,0 +1,246 @@
+{
+  "BrailleTranslatorPage": {
+    "title": "Effortless Braille Translator Online",
+    "description": "Discover the best braille translator online for converting text, files, and voice into Braille seamlessly.",
+    "hero": {
+      "title": "Braille Translator for Seamless Conversion",
+      "description": "Discover the best way to translate text to Braille with VibeTrans. Enhance accessibility effortlessly and connect with everyone. Experience seamless, reliable translations that make communication inclusive for all."
+    },
+    "tool": {
+      "inputLabel": "Input Text",
+      "outputLabel": "Translated Text",
+      "inputPlaceholder": "Enter your text here...",
+      "outputPlaceholder": "Translation will appear here...",
+      "translateButton": "Translate",
+      "uploadButton": "Upload File",
+      "uploadHint": "Supports .txt and .docx files",
+      "loading": "Translating...",
+      "error": "Translation failed. Please try again.",
+      "noInput": "Please enter some text to translate."
+    },
+    "whatIs": {
+      "title": "What is Braille Translator",
+      "description": "A Braille Translator is a tool that converts text into braille, making written content accessible to visually impaired individuals. VibeTrans uses advanced algorithms to ensure accurate translation, supporting multiple languages and formats. It is ideal for educational settings, personal use, and organizations aiming to promote inclusivity. With VibeTrans, users can easily translate books, documents, and digital content, enhancing communication and learning opportunities for the blind community.",
+      "image": "/images/docs/braille-translation-tool.webp",
+      "imageAlt": "What is braille-translator - Visual explanation"
+    },
+    "examples": {
+      "title": "Sample Usage",
+      "description": "Explore how the Braille Translator efficiently converts text into Braille. This tool is perfect for educational purposes, ensuring accessibility for visually impaired students, or for anyone interested in learning Braille. Discover its capabilities through practical examples and simple demonstrations.",
+      "items": [
+        {
+          "before": "Hello World",
+          "after": "⠓⠑⠇⠇⠕ ⠺⠕⠗⠇⠙",
+          "alt": "Hello World in Braille",
+          "name": "Basic Greeting"
+        },
+        {
+          "before": "I love reading books",
+          "after": "⠊ ⠇⠕⠧⠑ ⠗⠑⠁⠙⠊⠝⠛ ⠃⠕⠕⠅⠎",
+          "alt": "Reading books sentence in Braille",
+          "name": "Simple Sentence"
+        },
+        {
+          "before": "Mathematics: 2 + 2 = 4",
+          "after": "⠍⠁⠞⠓⠑⠍⠁⠞⠊⠉⠎⠒ ⠼⠃ ⠖ ⠼⠃ ⠶ ⠼⠙",
+          "alt": "Math equation in Braille",
+          "name": "Math Equation"
+        },
+        {
+          "before": "Thank you for your help!",
+          "after": "⠞⠓⠁⠝⠅ ⠽⠕⠥ ⠋⠕⠗ ⠽⠕⠥⠗ ⠓⠑⠇⠏⠖",
+          "alt": "Thank you message in Braille",
+          "name": "Gratitude Expression"
+        },
+        {
+          "before": "Welcome to our school",
+          "after": "⠺⠑⠇⠉⠕⠍⠑ ⠞⠕ ⠕⠥⠗ ⠎⠉⠓⠕⠕⠇",
+          "alt": "Welcome message in Braille",
+          "name": "Welcome Message"
+        },
+        {
+          "before": "The quick brown fox jumps",
+          "after": "⠞⠓⠑ ⠟⠥⠊⠉⠅ ⠃⠗⠕⠺⠝ ⠋⠕⠭ ⠚⠥⠍⠏⠎",
+          "alt": "Pangram phrase in Braille",
+          "name": "Common Phrase"
+        }
+      ]
+    },
+    "howto": {
+      "title": "How to Translate English to Braille",
+      "description": "Follow these steps to convert your English text into Braille easily.",
+      "steps": [
+        {
+          "name": "Enter Text",
+          "description": "Type or paste the English text you want to convert into the input field provided. Ensure the text is clear and contains no special characters.",
+          "wordCount": 40
+        },
+        {
+          "name": "Select Conversion Mode",
+          "description": "Choose the appropriate conversion mode based on your needs, such as six-dot or eight-dot Braille. This ensures accurate translation.",
+          "wordCount": 40
+        },
+        {
+          "name": "Click Convert",
+          "description": "Press the 'Convert' button to initiate the translation process. The tool will automatically display the Braille equivalent.",
+          "wordCount": 40
+        },
+        {
+          "name": "Download Output",
+          "description": "Download the translated Braille text in your preferred format, such as SVG or PDF, for easy printing or sharing.",
+          "wordCount": 40
+        }
+      ],
+      "image": "/images/docs/braille-translator-how-to.webp",
+      "imageAlt": "How to use braille-translator"
+    },
+    "funfacts": {
+      "title": "Interesting Facts",
+      "items": [
+        {
+          "title": "Braille on Mars: NASA's Curiosity Rover",
+          "description": "Did you know NASA's Mars rover Curiosity has its name spelled in Braille on its wheels? VibeTrans celebrates such ingenuity by making Braille translation accessible to over 135 languages worldwide.",
+          "image": "/images/docs/mars-braille-accessibility.webp",
+          "imageAlt": "NASA Mars rover with Braille accessibility"
+        },
+        {
+          "title": "Braille Beyond Earth: A Universal Language",
+          "description": "Did you know that NASA's Mars rover Curiosity has its name spelled in Braille on its wheels? This unique touch highlights Braille's adaptability, as seen with VibeTrans tools.",
+          "image": "/images/docs/mars-braille-fact.webp",
+          "imageAlt": "Mars rover Braille fact"
+        }
+      ]
+    },
+    "userInterest": {
+      "title": "Explore More About Braille",
+      "items": [
+        {
+          "title": "Understanding Braille Grades",
+          "description": "Braille isn't just dots; it's a whole vibe! VibeTrans deciphers the mystery with its user-friendly guide. From Grade 1's simple alphabet to Grade 3's shorthand wizardry, each level opens new doors for communication. Dive into the world of tactile reading and vibe with VibeTrans!",
+          "image": "/images/docs/braille-levels-up.webp",
+          "imageAlt": "Understanding Braille Grades"
+        },
+        {
+          "title": "Braille Printing Techniques",
+          "description": "Exploring braille printing techniques reveals a fascinating journey from old-school embossers to today’s high-tech solutions. VibeTrans leads the pack with innovative methods, ensuring crisp dots every time. Whether for education or leisure, these cutting-edge tools make braille more accessible and user-friendly than ever.",
+          "image": "/images/docs/braille-print-tech.webp",
+          "imageAlt": "Braille Printing Techniques"
+        },
+        {
+          "title": "API for Developers",
+          "description": "Unlock the power of VibeTrans with our developer API, perfect for those diving into Braille tech. Seamlessly convert text to Braille in a jiffy and integrate with ease. Whether you're coding a new app or enhancing accessibility, VibeTrans has your back.",
+          "image": "/images/docs/code-braille-api.webp",
+          "imageAlt": "API for Developers"
+        },
+        {
+          "title": "Multilingual Braille Support",
+          "description": "VibeTrans takes your Braille game to the next level with seamless multilingual support. Whether you're diving into French, Spanish, or Mandarin Braille, this tool has your back. Say goodbye to language barriers and hello to a world of tactile communication. Unlock global vibes with VibeTrans!",
+          "image": "/images/docs/braille-world-connect.webp",
+          "imageAlt": "Multilingual Braille Support"
+        }
+      ]
+    },
+    "highlights": {
+      "title": "Key Features of Our Braille Translator",
+      "description": "The best features for your translation needs",
+      "items": [
+        {
+          "icon": "FaRocket",
+          "title": "User-Friendly Interface",
+          "description": "Our tool offers an intuitive interface designed to be accessible and easy to navigate for everyone.",
+          "tagline": "",
+          "statLabel": null,
+          "statValue": null,
+          "microCopy": ""
+        },
+        {
+          "icon": "FaBrain",
+          "title": "High Translation Accuracy",
+          "description": "Experience precise Braille translations with our advanced algorithms, ensuring perfect conversion every time.",
+          "tagline": "",
+          "statLabel": null,
+          "statValue": null,
+          "microCopy": ""
+        },
+        {
+          "icon": "FaShieldAlt",
+          "title": "Secure and Private",
+          "description": "Your data is secure with us. We prioritize privacy and ensure all translations are confidential.",
+          "tagline": "",
+          "statLabel": null,
+          "statValue": null,
+          "microCopy": ""
+        },
+        {
+          "icon": "FaChartLine",
+          "title": "Real-Time Voice Input",
+          "description": "Convert spoken language into Braille instantly with our real-time voice input feature for seamless communication.",
+          "tagline": "",
+          "statLabel": null,
+          "statValue": null,
+          "microCopy": ""
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "What Our Users Say",
+      "subtitle": "Stories from Teams Using VibeTrans for Translation",
+      "items": {
+        "item-1": {
+          "name": "John Smith",
+          "role": "Teacher",
+          "heading": "Review from John Smith",
+          "content": "As a teacher for visually impaired students, the Braille Translator app has been a game-changer. It quickly converts text to Braille, making lesson preparation seamless and efficient. Initially, I was skeptical, but seeing my students engage with materials independently brought immense joy. This tool is indispensable in our classroom.",
+          "rating": "4.8"
+        },
+        "item-2": {
+          "name": "John Smith",
+          "role": "Teacher",
+          "heading": "Review from John Smith",
+          "content": "As a teacher, I used the braille translator to create accessible materials for my visually impaired students. Initially, I was concerned about accuracy, but the tool exceeded my expectations. It swiftly converted text and diagrams, making classroom activities more inclusive. This tool truly transformed my teaching experience.",
+          "rating": "4.8"
+        },
+        "item-3": {
+          "name": "John Smith",
+          "role": "Teacher",
+          "heading": "Review from John Smith",
+          "content": "Using the braille translator has truly transformed my classroom experience. One of my visually impaired students, Emily, can now follow along with texts in real-time. This tool has made inclusivity seamless and efficient, providing her with the independence she deserves. I highly recommend it for educators looking to create an inclusive environment.",
+          "rating": "4.8"
+        }
+      }
+    },
+    "faqs": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Have other questions? Feel free to contact us via email.",
+      "items": {
+        "item-1": {
+          "question": "What is the best free Braille translator?",
+          "answer": "BrailleBlaster is a popular free Braille translator. It is designed to convert text into Braille efficiently and is supported by the American Printing House for the Blind. Its user-friendly interface and wide range of features make it highly recommended."
+        },
+        "item-2": {
+          "question": "Is this Braille translator free?",
+          "answer": "This Braille translator is completely free to use. You can access all its features without any cost or subscription. Simply enter the text you want to translate into Braille, and the tool will provide the translation instantly at no charge."
+        },
+        "item-3": {
+          "question": "How is my privacy protected?",
+          "answer": "Your privacy is our priority. We use encryption to safeguard your data. We do not store or share your personal information with third parties. Regular audits ensure compliance with privacy standards, and secure servers prevent unauthorized access."
+        },
+        "item-4": {
+          "question": "Can I use this translator offline?",
+          "answer": "Using the Braille translator offline is not possible. It requires a stable internet connection to function. Ensure you are connected to the internet to access all features and accurate translations. Offline functionality is not supported at this time."
+        }
+      }
+    },
+    "unique": {
+      "title": "",
+      "items": []
+    },
+    "ctaButton": "Try BrailleTranslator Now",
+    "cta": {
+      "title": "Try VibeTrans Braille Translator Now",
+      "description": "Unlock seamless Braille conversion with VibeTrans. Start translating today and enhance accessibility.",
+      "primaryButton": "Try BrailleTranslator Now",
+      "secondaryButton": "Back to Top"
+    }
+  }
+}

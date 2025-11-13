@@ -16,6 +16,7 @@ const FUN_FOOTER_LINKS: FooterLink[] = [
   { key: 'genAlphaTranslator', route: Routes.GenAlphaTranslator },
   { key: 'genZTranslator', route: Routes.GenZTranslator },
   { key: 'gibberishTranslator', route: Routes.GibberishTranslator },
+  { key: 'numbersToLetters', route: Routes.NumbersToLetters },
   { key: 'pigLatinTranslator', route: Routes.PigLatinTranslator },
   { key: 'verboseGenerator', route: Routes.VerboseGenerator },
 ];
@@ -44,6 +45,7 @@ const LANGUAGE_FOOTER_LINKS: FooterLink[] = [
   { key: 'ancientGreekTranslator', route: Routes.AncientGreekTranslator },
   { key: 'aramaicTranslator', route: Routes.AramaicTranslator },
   { key: 'baybayinTranslator', route: Routes.BaybayinTranslator },
+  { key: 'brailleTranslator', route: Routes.BrailleTranslator },
   { key: 'cantoneseTranslator', route: Routes.CantoneseTranslator },
   { key: 'creoleToEnglishTranslator', route: Routes.CreoleToEnglishTranslator },
   { key: 'cuneiformTranslator', route: Routes.CuneiformTranslator },
@@ -70,6 +72,7 @@ const LANGUAGE_FOOTER_LINKS: FooterLink[] = [
     route: Routes.SwahiliToEnglishTranslator,
   },
   { key: 'teluguToEnglishTranslator', route: Routes.TeluguToEnglishTranslator },
+  { key: 'jamaicanTranslator', route: Routes.JamaicanTranslator },
 ];
 
 const COMPANY_LINKS: FooterLink[] = [

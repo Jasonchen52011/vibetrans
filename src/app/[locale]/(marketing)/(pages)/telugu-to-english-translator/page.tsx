@@ -87,7 +87,7 @@ export default async function TeluguToEnglishTranslatorPage(
 
   let highlightItems = [];
   try {
-    const rawFeatures = t.raw('highlights.features');
+    const rawFeatures = t.raw('highlights.items');
     if (Array.isArray(rawFeatures)) {
       highlightItems = rawFeatures.slice(0, 4).map((feature, index) => ({
         icon:
@@ -108,8 +108,8 @@ export default async function TeluguToEnglishTranslatorPage(
   if (highlightItems.length === 0) {
     highlightItems = defaultHighlightIcons.map((icon, index) => ({
       icon,
-      title: t(`highlights.features.${index}.title`),
-      description: t(`highlights.features.${index}.description`),
+      title: t(`highlights.items.${index}.title`),
+      description: t(`highlights.items.${index}.description`),
       tagline: '',
       statLabel: null,
       statValue: null,

@@ -38,12 +38,14 @@ const PATH_TO_TRANSLATOR_KEY: Record<string, string> = {
   '/haitian-creole-translator': 'HaitianCreoleTranslatorPage',
   '/high-valyrian-translator': 'HighValyrianTranslatorPage',
   '/ivr-translator': 'IvrTranslatorPage',
+  '/jamaican-translator': 'JamaicanTranslatorPage',
   '/japanese-to-english-translator': 'JapaneseToEnglishTranslatorPage',
   '/mandalorian-translator': 'MandalorianTranslatorPage',
   '/manga-translator': 'MangaTranslatorPage',
   '/middle-english-translator': 'MiddleEnglishTranslatorPage',
   '/minion-translator': 'MinionTranslatorPage',
   '/nahuatl-translator': 'NahuatlTranslatorPage',
+  '/numbers-to-letters': 'NumbersToLettersPage',
   '/ogham-translator': 'OghamTranslatorPage',
   '/pig-latin-translator': 'PigLatinTranslatorPage',
   '/rune-translator': 'RuneTranslatorPage',
@@ -100,6 +102,7 @@ async function detectTranslatorKeyFromHeaders(): Promise<string | null> {
     if (matchedPath) {
       candidatePaths.add(removeLocale(matchedPath));
     }
+
 
     const expandedCandidates = new Set<string>();
     for (const candidate of candidatePaths) {

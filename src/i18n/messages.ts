@@ -116,6 +116,9 @@ const ROUTE_LOADERS: Record<string, MessageLoader> = {
   blog: createLocaleLoader(
     (locale) => import(`../../messages/pages/blog/${locale}.json`)
   ),
+  'braille-translator': createLocaleLoader(
+    (locale) => import(`../../messages/pages/braille-translator/${locale}.json`)
+  ),
   'cantonese-translator': createLocaleLoader(
     (locale) =>
       import(`../../messages/pages/cantonese-translator/${locale}.json`)
@@ -238,6 +241,9 @@ const ROUTE_LOADERS: Record<string, MessageLoader> = {
   'nahuatl-translator': createLocaleLoader(
     (locale) => import(`../../messages/pages/nahuatl-translator/${locale}.json`)
   ),
+  'numbers-to-letters': createLocaleLoader(
+    (locale) => import(`../../messages/pages/numbers-to-letters/${locale}.json`)
+  ),
   'ogham-translator': createLocaleLoader(
     (locale) => import(`../../messages/pages/ogham-translator/${locale}.json`)
   ),
@@ -267,6 +273,9 @@ const ROUTE_LOADERS: Record<string, MessageLoader> = {
   'telugu-to-english-translator': createLocaleLoader(
     (locale) =>
       import(`../../messages/pages/telugu-to-english-translator/${locale}.json`)
+  ),
+  'jamaican-translator': createLocaleLoader(
+    (locale) => import(`../../messages/pages/jamaican-translator/${locale}.json`)
   ),
   'verbose-generator': createLocaleLoader(
     (locale) => import(`../../messages/pages/verbose-generator/${locale}.json`)
@@ -299,6 +308,7 @@ const TRANSLATOR_TOOL_TO_ROUTE: Record<string, string> = {
   BabyTranslatorPage: 'baby-translator',
   BadTranslatorPage: 'bad-translator',
   BaybayinTranslatorPage: 'baybayin-translator',
+  BrailleTranslatorPage: 'braille-translator',
   ChineseToEnglishTranslatorPage: 'chinese-to-english-translator',
   CreoleToEnglishTranslatorPage: 'creole-to-english-translator',
   CuneiformTranslatorPage: 'cuneiform-translator',
@@ -320,12 +330,14 @@ const TRANSLATOR_TOOL_TO_ROUTE: Record<string, string> = {
   HaitianCreoleTranslatorPage: 'haitian-creole-translator',
   HighValyrianTranslatorPage: 'high-valyrian-translator',
   IvrTranslatorPage: 'ivr-translator',
+  JamaicanTranslatorPage: 'jamaican-translator',
   JapaneseToEnglishTranslatorPage: 'japanese-to-english-translator',
   MandalorianTranslatorPage: 'mandalorian-translator',
   MangaTranslatorPage: 'manga-translator',
   MiddleEnglishTranslatorPage: 'middle-english-translator',
   MinionTranslatorPage: 'minion-translator',
   NahuatlTranslatorPage: 'nahuatl-translator',
+  NumbersToLettersPage: 'numbers-to-letters',
   OghamTranslatorPage: 'ogham-translator',
   PigLatinTranslatorPage: 'pig-latin-translator',
   RuneTranslatorPage: 'rune-translator',
@@ -719,6 +731,19 @@ export async function getMessagesForLocale(
   console.log(
     `✅ [getMessagesForLocale] Final result: ${loadedKeys.length} translation keys loaded`
   );
+
+  // DEBUG: Check if JamaicanTranslatorPage is in result
+  if (translatorKey === 'JamaicanTranslatorPage') {
+    console.log('[DEBUG messages.ts] JamaicanTranslatorPage in result?', 'JamaicanTranslatorPage' in result);
+    if ('JamaicanTranslatorPage' in result) {
+      const keys = Object.keys((result as any).JamaicanTranslatorPage);
+      console.log('[DEBUG messages.ts] JamaicanTranslatorPage has', keys.length, 'keys');
+      console.log('[DEBUG messages.ts] Keys include faqs?', keys.includes('faqs'));
+      console.log('[DEBUG messages.ts] Keys include testimonials?', keys.includes('testimonials'));
+      console.log('[DEBUG messages.ts] Keys include cta?', keys.includes('cta'));
+      console.log('[DEBUG messages.ts] All keys:', keys.join(', '));
+    }
+  }
 
   return result;
 }
