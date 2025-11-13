@@ -1,0 +1,246 @@
+{
+  "ShakespeareanTranslatorPage": {
+    "title": "Shakespearean English Translator - Transform Modern Text into Elizabethan Prose",
+    "description": "Convert modern English to authentic Shakespearean language with our AI-powered translator. Experience the eloquence of Early Modern English with thou, thee, and poetic expressions.",
+    "hero": {
+      "title": "Shakespearean Translator - Speak Like the Bard",
+      "description": "Transform your modern English into the eloquent language of Shakespeare. Experience authentic Elizabethan expressions, archaic pronouns, and poetic flourishes that bring the Renaissance era to life."
+    },
+    "tool": {
+      "inputLabel": "Modern English",
+      "outputLabel": "Shakespearean English",
+      "inputPlaceholder": "Enter your modern text here...",
+      "outputPlaceholder": "Thy translation shall appear here...",
+      "translateButton": "Transform to Shakespeare",
+      "uploadButton": "Upload File",
+      "uploadHint": "Supports .txt and .docx files",
+      "loading": "Transforming thy words...",
+      "error": "Alas! Translation hath failed. Pray try again.",
+      "noInput": "Prithee, enter some text to translate."
+    },
+    "whatIs": {
+      "title": "What is a Shakespearean Translator",
+      "description": "A Shakespearean translator converts modern English into Early Modern English, the language used by William Shakespeare in the 16th and 17th centuries. This includes archaic pronouns like 'thou' and 'thee', verb forms like 'doth' and 'hath', and poetic expressions characteristic of Elizabethan literature. VibeTrans offers an authentic translation experience that captures the essence of Shakespeare's linguistic style, perfect for creative writing, theatrical performances, educational purposes, or simply experiencing the beauty of Renaissance English.",
+      "image": "/images/docs/translate-symbols.webp",
+      "imageAlt": "What is Shakespearean translator - Visual explanation"
+    },
+    "examples": {
+      "title": "Shakespearean Translation Examples",
+      "description": "Discover how modern English transforms into the eloquent language of Shakespeare. See practical examples of archaic pronouns, poetic expressions, and Elizabethan sentence structures.",
+      "items": [
+        {
+          "before": "Hello, how are you today?",
+          "after": "Good morrow, how farest thou this day?",
+          "alt": "Daily greeting in Shakespearean style",
+          "name": "Daily Greeting"
+        },
+        {
+          "before": "I love you with all my heart.",
+          "after": "I do love thee with all mine heart and soul.",
+          "alt": "Romantic expression in Early Modern English",
+          "name": "Love Declaration"
+        },
+        {
+          "before": "Where are you going? I need to talk to you.",
+          "after": "Whither goest thou? I must have words with thee.",
+          "alt": "Question and request in Shakespearean form",
+          "name": "Inquiry"
+        },
+        {
+          "before": "You are very kind. Thank you for your help.",
+          "after": "Thou art most gracious. I thank thee for thy assistance.",
+          "alt": "Expressing gratitude in archaic English",
+          "name": "Gratitude"
+        },
+        {
+          "before": "I don't understand what you're saying.",
+          "after": "I comprehend not what thou speakest.",
+          "alt": "Confusion expressed in Elizabethan style",
+          "name": "Confusion"
+        },
+        {
+          "before": "This is a beautiful night with bright stars.",
+          "after": "This is a fair eve, graced with bright celestial fires.",
+          "alt": "Poetic description in Shakespeare's language",
+          "name": "Description"
+        }
+      ]
+    },
+    "howto": {
+      "title": "How to Use the Shakespearean Translator",
+      "description": "Learn how to effortlessly transform modern English into authentic Shakespearean prose with our intuitive tool.",
+      "steps": [
+        {
+          "name": "Enter Text",
+          "description": "Click the text box and type or paste your modern English text. You can enter anything from simple phrases to entire paragraphs. Ensure your text is clear before proceeding to translation.",
+          "wordCount": 40
+        },
+        {
+          "name": "Transform",
+          "description": "Click the 'Transform to Shakespeare' button to convert your text. Our AI analyzes your input and applies authentic Elizabethan language patterns, archaic pronouns, and poetic expressions to create an accurate Shakespearean translation.",
+          "wordCount": 40
+        },
+        {
+          "name": "Review Translation",
+          "description": "Review the translated text in the output box. Notice the archaic pronouns (thou, thee, thy), verb forms (doth, hath), and poetic expressions. Make note of any particularly eloquent phrases you'd like to use.",
+          "wordCount": 40
+        },
+        {
+          "name": "Copy or Download",
+          "description": "Copy the Shakespearean text to your clipboard with one click, or download it as a text file. Share your Elizabethan prose with friends, use it in creative projects, or save it for later reference.",
+          "wordCount": 40
+        }
+      ],
+      "image": "/images/docs/haitian-creole-translator-how-to.webp",
+      "imageAlt": "How to use Shakespearean translator"
+    },
+    "funfacts": {
+      "title": "Interesting Facts About Shakespearean English",
+      "items": [
+        {
+          "title": "Shakespeare Invented 1,700+ Words",
+          "description": "William Shakespeare coined over 1,700 words that we still use today, including 'assassination', 'lonely', and 'eyeball'. His creative use of language expanded English vocabulary dramatically. VibeTrans captures this linguistic creativity in every translation.",
+          "image": "/images/docs/creole-translation.webp",
+          "imageAlt": "Shakespeare's word inventions"
+        },
+        {
+          "title": "Thou vs. You: The Lost Distinction",
+          "description": "In Shakespeare's time, 'thou' was informal (like French 'tu') while 'you' was formal (like 'vous'). This distinction has completely disappeared from modern English. Our translator restores these nuances, adding depth to your text.",
+          "image": "/images/docs/creole-phonetics.webp",
+          "imageAlt": "Archaic pronouns explained"
+        }
+      ]
+    },
+    "userInterest": {
+      "title": "Explore More",
+      "items": [
+        {
+          "title": "Perfect for Creative Writing",
+          "description": "Enhance your creative projects with authentic Elizabethan language. Whether you're writing historical fiction, period drama scripts, or poetry, VibeTrans helps you craft genuine Shakespearean dialogue that resonates with literary authenticity and Renaissance charm.",
+          "image": "/images/docs/haiti-culture.webp",
+          "imageAlt": "Creative writing applications"
+        },
+        {
+          "title": "Educational Tool",
+          "description": "VibeTrans is an invaluable resource for students and educators studying Shakespeare. Understand how modern concepts translate to Early Modern English, deepen comprehension of classical texts, and make learning Shakespeare more engaging and accessible.",
+          "image": "/images/docs/creole-deal.webp",
+          "imageAlt": "Educational benefits"
+        },
+        {
+          "title": "Social Media Fun",
+          "description": "Add a touch of Renaissance flair to your social media posts. Impress your followers with eloquent Shakespearean expressions, create unique content that stands out, and bring the Bard's timeless wit to modern digital conversations.",
+          "image": "/images/docs/offline-translation.webp",
+          "imageAlt": "Social media enhancement"
+        },
+        {
+          "title": "Theater and Performance",
+          "description": "Perfect for actors, directors, and theater enthusiasts. Practice Shakespearean dialogue, understand archaic language patterns, and develop authentic period speech. VibeTrans helps bring classical performances to life with linguistic accuracy.",
+          "image": "/images/docs/smooth-translation.webp",
+          "imageAlt": "Theater applications"
+        }
+      ]
+    },
+    "highlights": {
+      "title": "Key Features",
+      "description": "Experience the best features for Shakespearean translation",
+      "items": [
+        {
+          "icon": "FaFeatherAlt",
+          "title": "Authentic Language",
+          "description": "Our AI captures genuine Shakespearean expressions, archaic pronouns, and Elizabethan grammar patterns.",
+          "tagline": "",
+          "statLabel": null,
+          "statValue": null,
+          "microCopy": ""
+        },
+        {
+          "icon": "FaTheaterMasks",
+          "title": "Poetic Expression",
+          "description": "Transforms modern text into eloquent prose with the poetic flair characteristic of Shakespeare's works.",
+          "tagline": "",
+          "statLabel": null,
+          "statValue": null,
+          "microCopy": ""
+        },
+        {
+          "icon": "FaBook",
+          "title": "Educational Value",
+          "description": "Learn Early Modern English patterns while translating, perfect for students and Shakespeare enthusiasts.",
+          "tagline": "",
+          "statLabel": null,
+          "statValue": null,
+          "microCopy": ""
+        },
+        {
+          "icon": "FaMagic",
+          "title": "Instant Results",
+          "description": "Get immediate Shakespearean translations powered by advanced AI understanding of Renaissance English.",
+          "tagline": "",
+          "statLabel": null,
+          "statValue": null,
+          "microCopy": ""
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "What Our Users Say",
+      "subtitle": "Stories from People Using VibeTrans Shakespearean Translator",
+      "items": {
+        "item-1": {
+          "name": "Emma Thompson",
+          "role": "English Literature Teacher",
+          "heading": "Review from Emma Thompson",
+          "content": "As an English teacher, I use VibeTrans to help my students understand Shakespeare better. The translator bridges modern and Early Modern English beautifully. My students now engage with Shakespeare's works more confidently, and they love experimenting with their own Shakespearean expressions!",
+          "rating": "4.9"
+        },
+        "item-2": {
+          "name": "Marcus Reynolds",
+          "role": "Historical Fiction Writer",
+          "heading": "Review from Marcus Reynolds",
+          "content": "Writing a novel set in Elizabethan England, I needed authentic dialogue. VibeTrans became my secret weapon. The translations capture the essence of Shakespeare's language perfectly. It's saved me countless hours of research and added genuine period flavor to my characters' speech.",
+          "rating": "4.8"
+        },
+        "item-3": {
+          "name": "Sophie Chen",
+          "role": "Theater Director",
+          "heading": "Review from Sophie Chen",
+          "content": "Our theater company uses VibeTrans during rehearsals to help actors understand Shakespearean dialogue patterns. It's phenomenal for comparing modern meanings with period language. The tool has become essential in our production process, making Shakespeare accessible without losing authenticity.",
+          "rating": "5.0"
+        }
+      }
+    },
+    "faqs": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Have other questions? Feel free to contact us via email.",
+      "items": {
+        "item-1": {
+          "question": "Is the Shakespearean translator historically accurate?",
+          "answer": "Yes, our translator uses authentic Early Modern English patterns, archaic pronouns, and linguistic structures from Shakespeare's era (1564-1616). While no modern tool can perfectly replicate the Bard's genius, we strive for historical accuracy and linguistic authenticity in every translation."
+        },
+        "item-2": {
+          "question": "Can I use this for homework or theater scripts?",
+          "answer": "Absolutely! VibeTrans is perfect for educational purposes, creative writing, and theater productions. Use it to understand Shakespeare better, create period-appropriate dialogue, or add authentic Elizabethan flair to your projects. It's a learning tool that enhances your understanding of Renaissance English."
+        },
+        "item-3": {
+          "question": "What's the difference between 'thou' and 'you'?",
+          "answer": "In Shakespeare's time, 'thou' (thee, thy, thine) was informal and singular, used with friends and family. 'You' (ye, your, yours) was formal or plural. This is similar to French 'tu' vs. 'vous'. Our translator automatically applies these distinctions for authentic results."
+        },
+        "item-4": {
+          "question": "Is the Shakespearean translator free to use?",
+          "answer": "Yes, VibeTrans Shakespearean translator is completely free. You can translate unlimited text between modern and Shakespearean English without any charges. Perfect for students, writers, actors, and anyone fascinated by the beauty of Early Modern English."
+        }
+      }
+    },
+    "unique": {
+      "title": "",
+      "items": []
+    },
+    "ctaButton": "Try Shakespearean Translator Now",
+    "cta": {
+      "title": "Transform Your Words into Shakespeare's Language!",
+      "description": "Experience the eloquence of Elizabethan English. Start translating with VibeTrans Shakespearean translator today.",
+      "primaryButton": "Try Shakespearean Translator Now",
+      "secondaryButton": "Back to Top"
+    }
+  }
+}

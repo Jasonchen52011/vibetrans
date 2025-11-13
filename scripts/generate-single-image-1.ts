@@ -1,20 +1,21 @@
 #!/usr/bin/env node
-import { generateArticleIllustrations } from '../src/lib/article-illustrator/workflow';
 import type { ArticleSections } from '../src/lib/article-illustrator/types';
+import { generateArticleIllustrations } from '../src/lib/article-illustrator/workflow';
 
 const sections: ArticleSections = {
-  "toolName": "haitian-creole-translator",
-  "whatIs": {
-    "title": "Placeholder",
-    "content": "Placeholder"
+  toolName: 'haitian-creole-translator',
+  whatIs: {
+    title: 'Placeholder',
+    content: 'Placeholder',
   },
-  "funFacts": [
+  funFacts: [
     {
-      "title": "Fun Fact",
-      "content": "Did you know? VibeTrans offers translation for Haitian Creole, a language with no verb conjugations! Spoken by 12 million people, it's the world's most popular French-based creole."
-    }
+      title: 'Fun Fact',
+      content:
+        "Did you know? VibeTrans offers translation for Haitian Creole, a language with no verb conjugations! Spoken by 12 million people, it's the world's most popular French-based creole.",
+    },
   ],
-  "userInterests": []
+  userInterests: [],
 };
 
 async function main() {

@@ -39,10 +39,13 @@ export async function POST(request: Request) {
 async function translateWithGemini(text: string): Promise<string> {
   const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
   if (!apiKey) {
-    throw new Error('GOOGLE_GENERATIVE_AI_API_KEY environment variable not set');
+    throw new Error(
+      'GOOGLE_GENERATIVE_AI_API_KEY environment variable not set'
+    );
   }
 
-  const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent';
+  const GEMINI_API_URL =
+    'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent';
 
   const requestText = `You are a professional English to Persian translator. Please translate the following English text to Persian. Return ONLY the Persian translation, no prefixes or explanations:
 
@@ -55,17 +58,21 @@ ${text}`;
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        contents: [{
-          parts: [{
-            text: requestText
-          }]
-        }],
+        contents: [
+          {
+            parts: [
+              {
+                text: requestText,
+              },
+            ],
+          },
+        ],
         generationConfig: {
           temperature: 0.3,
           topK: 40,
           topP: 0.95,
           maxOutputTokens: 2048,
-        }
+        },
       }),
     });
 
@@ -93,13 +100,15 @@ ${text}`;
       /^\w+ translation:\s*/i,
     ];
 
-    prefixPatterns.forEach(pattern => {
+    prefixPatterns.forEach((pattern) => {
       result = result.replace(pattern, '');
     });
 
     // Remove surrounding quotes if present
-    if ((result.startsWith('"') && result.endsWith('"')) ||
-        (result.startsWith("'") && result.endsWith("'"))) {
+    if (
+      (result.startsWith('"') && result.endsWith('"')) ||
+      (result.startsWith("'") && result.endsWith("'"))
+    ) {
       result = result.slice(1, -1);
     }
 

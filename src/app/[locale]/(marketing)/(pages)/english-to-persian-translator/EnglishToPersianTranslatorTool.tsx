@@ -38,7 +38,6 @@ export default function EnglishToPersianTranslatorTool({
     }
   };
 
-  
   // Handle translation
   const handleTranslate = async () => {
     if (!inputText.trim()) {
@@ -166,7 +165,6 @@ export default function EnglishToPersianTranslatorTool({
                 {pageData.tool.uploadButton}
               </label>
 
-              
               <p className="text-xs text-gray-500 dark:text-gray-400">
                 {pageData.tool.uploadHint}
               </p>

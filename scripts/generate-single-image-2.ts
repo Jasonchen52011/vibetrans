@@ -1,20 +1,21 @@
 #!/usr/bin/env node
-import { generateArticleIllustrations } from '../src/lib/article-illustrator/workflow';
 import type { ArticleSections } from '../src/lib/article-illustrator/types';
+import { generateArticleIllustrations } from '../src/lib/article-illustrator/workflow';
 
 const sections: ArticleSections = {
-  "toolName": "haitian-creole-translator",
-  "whatIs": {
-    "title": "Placeholder",
-    "content": "Placeholder"
+  toolName: 'haitian-creole-translator',
+  whatIs: {
+    title: 'Placeholder',
+    content: 'Placeholder',
   },
-  "funFacts": [],
-  "userInterests": [
+  funFacts: [],
+  userInterests: [
     {
-      "title": "Translation Accuracy",
-      "content": "VibeTrans ensures spot-on Haitian Creole translations, capturing nuances like a local. Forget awkward phrasing—our algorithms are as sharp as a tack. Whether translating for business or casual chats, trust VibeTrans to keep the conversation flowing smoothly, no hiccups or lost meanings."
-    }
-  ]
+      title: 'Translation Accuracy',
+      content:
+        'VibeTrans ensures spot-on Haitian Creole translations, capturing nuances like a local. Forget awkward phrasing—our algorithms are as sharp as a tack. Whether translating for business or casual chats, trust VibeTrans to keep the conversation flowing smoothly, no hiccups or lost meanings.',
+    },
+  ],
 };
 
 async function main() {

@@ -214,7 +214,9 @@ export function Navbar({ scroll }: NavBarProps) {
       <section
         className={cn(
           'sticky inset-x-0 top-0 z-40 py-4 transition-all duration-300 bg-transparent',
-          scrolled && scroll && 'bg-white/80 dark:bg-black/80 backdrop-blur-lg border-b border-gray-200/50 dark:border-gray-700/50 shadow-sm'
+          scrolled &&
+            scroll &&
+            'bg-white/80 dark:bg-black/80 backdrop-blur-lg border-b border-gray-200/50 dark:border-gray-700/50 shadow-sm'
         )}
       >
         <Container className="px-4">

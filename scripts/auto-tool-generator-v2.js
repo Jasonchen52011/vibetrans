@@ -453,10 +453,11 @@ async function phase3_generateCode(keyword, researchData) {
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ');
 
-  const pageName = slug
-    .split('-')
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join('') + 'Page';
+  const pageName =
+    slug
+      .split('-')
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join('') + 'Page';
 
   logInfo(`✅ 工具 slug: ${slug}`);
   logInfo(`✅ 工具标题: ${title}`);
@@ -1179,8 +1180,7 @@ ${contentResearchData.funFacts?.join('\n') || ''}
 
     case 'highlights':
       if (sectionInfo.featureIndex !== undefined) {
-        const feature =
-          contentData.highlights.items[sectionInfo.featureIndex];
+        const feature = contentData.highlights.items[sectionInfo.featureIndex];
         prompt = `⚠️ WRITE IN ENGLISH ONLY. 不要使用中文。
 
 请为「${keyword}」重新写亮点功能「${feature.title}」的描述。
@@ -1501,7 +1501,11 @@ async function phase5_generateTranslations(keyword, contentData) {
         description:
           contentData.highlights.description ||
           'The best features for your translation needs',
-        items: (contentData.highlights.items || contentData.highlights.features || []).map((feature, index) => ({
+        items: (
+          contentData.highlights.items ||
+          contentData.highlights.features ||
+          []
+        ).map((feature, index) => ({
           icon:
             feature.icon ||
             ['FaRocket', 'FaBrain', 'FaShieldAlt', 'FaChartLine'][index % 4],
@@ -1971,7 +1975,10 @@ async function phase5_5_validateJsonCodeMatch(keyword, translationData) {
 
   for (const arrayField of arrayFields) {
     checkedCount++;
-    const value = getNestedValue(enJsonContent, `${pageName}.${arrayField.path}`);
+    const value = getNestedValue(
+      enJsonContent,
+      `${pageName}.${arrayField.path}`
+    );
     if (!Array.isArray(value) || value.length < arrayField.minLength) {
       issues.push({
         type: 'empty_array',
@@ -2267,13 +2274,13 @@ async function phase7_configureSEO(keyword, translationData) {
   if (!routesContent.includes(`${routeEnumName}:`)) {
     // 找到 Language Translator routes 部分的最后一个条目
     const languageTranslatorMatch = routesContent.match(
-      /\/\/ Language Translator routes([\s\S]*?)(?=\n  \/\/ |$)/
+      /\/\/ Language Translator routes([\s\S]*?)(?=\n {2}\/\/ |$)/
     );
 
     if (languageTranslatorMatch) {
       const sectionContent = languageTranslatorMatch[1];
       // 找到最后一个路由条目
-      const lastRouteMatch = sectionContent.match(/  \w+: '([^']+)',\n/g);
+      const lastRouteMatch = sectionContent.match(/ {2}\w+: '([^']+)',\n/g);
 
       if (lastRouteMatch) {
         const lastRoute = lastRouteMatch[lastRouteMatch.length - 1];
@@ -2382,7 +2389,7 @@ async function phase7_configureSEO(keyword, translationData) {
     if (staticRoutesMatch) {
       const routesContent = staticRoutesMatch[1];
       // 在最后一个路由后添加新路由（保留缩进）
-      const lastRouteMatch = routesContent.match(/  '([^']+)',\n/g);
+      const lastRouteMatch = routesContent.match(/ {2}'([^']+)',\n/g);
       if (lastRouteMatch) {
         const lastRoute = lastRouteMatch[lastRouteMatch.length - 1];
         const newRoute = `  '/${slug}',\n`;

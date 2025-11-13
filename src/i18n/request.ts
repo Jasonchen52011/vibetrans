@@ -103,7 +103,6 @@ async function detectTranslatorKeyFromHeaders(): Promise<string | null> {
       candidatePaths.add(removeLocale(matchedPath));
     }
 
-
     const expandedCandidates = new Set<string>();
     for (const candidate of candidatePaths) {
       expandedCandidates.add(candidate);

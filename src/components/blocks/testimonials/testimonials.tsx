@@ -46,7 +46,8 @@ export default function TestimonialsSection({
       const name = originalItem.name || item.title || 'Anonymous User';
       const role = originalItem.role || 'Happy Customer';
       const heading = originalItem.heading || item.title || '';
-      const quote = originalItem.content || item.description || 'Excellent service!';
+      const quote =
+        originalItem.content || item.description || 'Excellent service!';
       const rating =
         typeof originalItem.rating === 'number'
           ? originalItem.rating
@@ -79,89 +80,91 @@ export default function TestimonialsSection({
     }
 
     if (hasItems) {
-    // Get all available items to check how many exist
-    // @ts-ignore - Dynamic namespace support
-    const items = t.raw('items') as Record<string, any>;
-    const availableKeys = Object.keys(items).filter((key) =>
-      key.startsWith('item-')
-    );
+      // Get all available items to check how many exist
+      // @ts-ignore - Dynamic namespace support
+      const items = t.raw('items') as Record<string, any>;
+      const availableKeys = Object.keys(items).filter((key) =>
+        key.startsWith('item-')
+      );
 
-    // Sort keys numerically (item-1, item-2, etc.)
-    availableKeys.sort((a, b) => {
-      const numA = Number.parseInt(a.split('-')[1]);
-      const numB = Number.parseInt(b.split('-')[1]);
-      return numA - numB;
-    });
+      // Sort keys numerically (item-1, item-2, etc.)
+      availableKeys.sort((a, b) => {
+        const numA = Number.parseInt(a.split('-')[1]);
+        const numB = Number.parseInt(b.split('-')[1]);
+        return numA - numB;
+      });
 
-    for (const itemKey of availableKeys) {
-      try {
-        // @ts-ignore - Dynamic translation keys
-        const nameCheck = t(`items.${itemKey}.name`, { default: '' });
+      for (const itemKey of availableKeys) {
+        try {
+          // @ts-ignore - Dynamic translation keys
+          const nameCheck = t(`items.${itemKey}.name`, { default: '' });
 
-        // If the translation doesn't exist, skip it
-        if (!nameCheck || nameCheck === '') {
+          // If the translation doesn't exist, skip it
+          if (!nameCheck || nameCheck === '') {
+            continue;
+          }
+
+          // Now safely get all values
+          // @ts-ignore - Dynamic translation keys
+          const name = nameCheck;
+          // @ts-ignore - Dynamic translation keys
+          const role = t(`items.${itemKey}.role`);
+          // @ts-ignore - Dynamic translation keys
+          const heading = t(`items.${itemKey}.heading`, { default: '' });
+          // Filter out translation keys that weren't found
+          const headingValue =
+            heading && !heading.includes(`items.${itemKey}`) ? heading : '';
+          // @ts-ignore - Dynamic translation keys
+          const quote = t(`items.${itemKey}.content`);
+          // Use t.raw for non-string values to avoid INVALID_MESSAGE errors
+          // @ts-ignore - Dynamic translation keys
+          const ratingRaw = t.raw(`items.${itemKey}.rating`);
+          // @ts-ignore - Dynamic translation keys
+          const dateRaw = t.raw(`items.${itemKey}.date`);
+          // @ts-ignore - Dynamic translation keys
+          const verifiedRaw = t.raw(`items.${itemKey}.verified`);
+
+          const rating =
+            typeof ratingRaw === 'number'
+              ? ratingRaw
+              : Number.parseFloat(ratingRaw) || 5;
+          const date = typeof dateRaw === 'string' ? dateRaw : '';
+          const verified =
+            typeof verifiedRaw === 'boolean'
+              ? verifiedRaw
+              : Boolean(verifiedRaw);
+
+          // Use local avatar images to avoid duplicates
+          const avatarPool = [
+            '/images/avatars/male1.webp',
+            '/images/avatars/female1.webp',
+            '/images/avatars/male2.webp',
+            '/images/avatars/female2.webp',
+            '/images/avatars/male3.webp',
+            '/images/avatars/female3.webp',
+            '/images/avatars/male4.webp',
+            '/images/avatars/female4.webp',
+            '/images/avatars/male5.webp',
+          ];
+          const itemNumber = Number.parseInt(itemKey.split('-')[1]);
+          const avatarIndex = (itemNumber - 1) % avatarPool.length;
+
+          testimonials.push({
+            name,
+            role,
+            heading: headingValue || undefined,
+            quote,
+            src: avatarPool[avatarIndex],
+            rating:
+              typeof rating === 'number'
+                ? rating
+                : Number.parseFloat(rating) || 5.0,
+          });
+        } catch (error) {
+          // If translation doesn't exist, skip this item and continue
           continue;
         }
-
-        // Now safely get all values
-        // @ts-ignore - Dynamic translation keys
-        const name = nameCheck;
-        // @ts-ignore - Dynamic translation keys
-        const role = t(`items.${itemKey}.role`);
-        // @ts-ignore - Dynamic translation keys
-        const heading = t(`items.${itemKey}.heading`, { default: '' });
-        // Filter out translation keys that weren't found
-        const headingValue =
-          heading && !heading.includes(`items.${itemKey}`) ? heading : '';
-        // @ts-ignore - Dynamic translation keys
-        const quote = t(`items.${itemKey}.content`);
-        // Use t.raw for non-string values to avoid INVALID_MESSAGE errors
-        // @ts-ignore - Dynamic translation keys
-        const ratingRaw = t.raw(`items.${itemKey}.rating`);
-        // @ts-ignore - Dynamic translation keys
-        const dateRaw = t.raw(`items.${itemKey}.date`);
-        // @ts-ignore - Dynamic translation keys
-        const verifiedRaw = t.raw(`items.${itemKey}.verified`);
-
-        const rating =
-          typeof ratingRaw === 'number'
-            ? ratingRaw
-            : Number.parseFloat(ratingRaw) || 5;
-        const date = typeof dateRaw === 'string' ? dateRaw : '';
-        const verified =
-          typeof verifiedRaw === 'boolean' ? verifiedRaw : Boolean(verifiedRaw);
-
-        // Use local avatar images to avoid duplicates
-        const avatarPool = [
-          '/images/avatars/male1.webp',
-          '/images/avatars/female1.webp',
-          '/images/avatars/male2.webp',
-          '/images/avatars/female2.webp',
-          '/images/avatars/male3.webp',
-          '/images/avatars/female3.webp',
-          '/images/avatars/male4.webp',
-          '/images/avatars/female4.webp',
-          '/images/avatars/male5.webp',
-        ];
-        const itemNumber = Number.parseInt(itemKey.split('-')[1]);
-        const avatarIndex = (itemNumber - 1) % avatarPool.length;
-
-        testimonials.push({
-          name,
-          role,
-          heading: headingValue || undefined,
-          quote,
-          src: avatarPool[avatarIndex],
-          rating:
-            typeof rating === 'number'
-              ? rating
-              : Number.parseFloat(rating) || 5.0,
-        });
-      } catch (error) {
-        // If translation doesn't exist, skip this item and continue
-        continue;
       }
-    }
     }
   }
 

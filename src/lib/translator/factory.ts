@@ -104,6 +104,10 @@ export function initializeTranslators(): void {
     async () =>
       (await import('./translators/english-polish')).EnglishPolishTranslator
   );
+  registerTranslator(
+    'morse-code',
+    async () => (await import('./translators/morse-code')).MorseCodeTranslator
+  );
 }
 
 export async function getToolsByCategory(): Promise<

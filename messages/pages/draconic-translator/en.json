@@ -1,0 +1,238 @@
+{
+  "DraconicTranslatorPage": {
+    "title": "Draconic Translator Pro: Best Fantasy Language Tool",
+    "description": "Discover Draconic Translator Pro, the best tool for translating English to Draconic languages with ease and precision.",
+    "hero": {
+      "title": "Draconic Translator for Fantasy Languages",
+      "description": "Unlock the best fantasy language translations with Draconic Translator, your ultimate tool for precise and quick conversions."
+    },
+    "tool": {
+      "inputLabel": "Input Text",
+      "outputLabel": "Translated Text",
+      "inputPlaceholder": "Enter your text here...",
+      "outputPlaceholder": "Translation will appear here...",
+      "translateButton": "Translate",
+      "uploadButton": "Upload File",
+      "uploadHint": "Supports .txt and .docx files",
+      "loading": "Translating...",
+      "error": "Translation failed. Please try again.",
+      "noInput": "Please enter some text to translate."
+    },
+    "whatIs": {
+      "title": "What is Draconic Translator",
+      "description": "Draconic Translator is an online tool that converts English into various Draconic dialects. Ideal for fantasy role-players, it supports text, speech, and image translations, ensuring seamless integration with your gaming needs.",
+      "image": "/images/docs/dragon-speech-bubble.webp",
+      "imageAlt": "What is draconic-translator - Visual explanation"
+    },
+    "examples": {
+      "title": "Translation Examples",
+      "description": "Explore practical examples of the draconic translator in action, showcasing its ability to accurately convert complex texts. This section highlights the versatility of the tool, demonstrating its potential for both casual users and professional translators.",
+      "items": [
+        {
+          "alt": "Example 1 placeholder",
+          "name": "Example 1"
+        },
+        {
+          "alt": "Example 2 placeholder",
+          "name": "Example 2"
+        },
+        {
+          "alt": "Example 3 placeholder",
+          "name": "Example 3"
+        },
+        {
+          "alt": "Example 4 placeholder",
+          "name": "Example 4"
+        },
+        {
+          "alt": "Example 5 placeholder",
+          "name": "Example 5"
+        },
+        {
+          "alt": "Example 6 placeholder",
+          "name": "Example 6"
+        }
+      ]
+    },
+    "howto": {
+      "title": "How to Translate English to Draconic",
+      "description": "Follow these steps to effortlessly translate texts.",
+      "steps": [
+        {
+          "name": "Upload a File",
+          "description": "Begin by uploading your text file to the Draconic Translator. Ensure the file is in a readable format like .txt or .doc.",
+          "wordCount": 40
+        },
+        {
+          "name": "Select Translation Mode",
+          "description": "Choose the appropriate mode for your translation: technical, literary, or general, to suit your content needs.",
+          "wordCount": 40
+        },
+        {
+          "name": "Preview and Adjust",
+          "description": "Preview your translated text and make any necessary adjustments. Utilize grammar checks and tense suggestions for accuracy.",
+          "wordCount": 40
+        },
+        {
+          "name": "Download Results",
+          "description": "Once satisfied, download your translated document in the desired format, ensuring it’s ready for your next campaign or project.",
+          "wordCount": 40
+        }
+      ],
+      "image": "/images/docs/draconic-translator-how-to.webp",
+      "imageAlt": "How to use draconic-translator"
+    },
+    "funfacts": {
+      "title": "Interesting Facts",
+      "items": [
+        {
+          "title": "Ancient Language Origins",
+          "description": "Draconic is considered one of the oldest languages, with dragons believing other languages are its derivatives. [Learn more](https://en.wikipedia.org/wiki/Draconic_language)",
+          "image": "",
+          "imageAlt": ""
+        },
+        {
+          "title": "Draconic and Abyssal Scripts",
+          "description": "In D&D 4e, Abyssal was written using the Iokharic alphabet, the same as Draconic, creating amusing fan theories. [Explore further](https://dnd.wizards.com/)",
+          "image": "",
+          "imageAlt": ""
+        }
+      ]
+    },
+    "userInterest": {
+      "title": "Explore More Features",
+      "items": [
+        {
+          "title": "Custom Dictionary Imports",
+          "description": "VibeTrans elevates your experience with Custom Dictionary Imports. Tailor your translations by uploading bespoke word lists, ensuring your content vibes with your audience. Whether you’re dealing with industry jargon or quirky slang, seamlessly integrate them to keep your communication top-notch and relevant.",
+          "image": "/images/docs/dictionary-import-cloud.webp",
+          "imageAlt": "Custom Dictionary Imports"
+        },
+        {
+          "title": "Immersive Mode Feature",
+          "description": "Unleash the power of VibeTrans with the Immersive Mode. Dive headfirst into the language and culture, getting the lowdown like a local. This feature offers real-world scenarios and slang, making your translations as fresh as a daisy and on point.",
+          "image": "/images/docs/culture-immersion.webp",
+          "imageAlt": "Immersive Mode Feature"
+        },
+        {
+          "title": "Batch Document Translation",
+          "description": "Tired of translating documents one by one? VibeTrans turns the grind into a breeze with Batch Document Translation. Seamlessly translate multiple files at once, ensuring consistency and saving time. Perfect for busy bees needing swift, reliable translations without breaking a sweat.",
+          "image": "/images/docs/document-batch-process.webp",
+          "imageAlt": "Batch Document Translation"
+        },
+        {
+          "title": "Diverse Dialect Support",
+          "description": "VibeTrans takes dialect diversity seriously, embracing every twist and turn of language quirks. Whether it's Southern drawls or Cockney rhymes, we've got your back. Our translator turns linguistic chaos into seamless clarity, ensuring no phrase gets lost in translation. Dive into dialects without breaking a sweat!",
+          "image": "/images/docs/dialect-diversity-support.webp",
+          "imageAlt": "Diverse Dialect Support"
+        }
+      ]
+    },
+    "highlights": {
+      "title": "Draconic Translator Highlights",
+      "description": "The best features for your translation needs",
+      "items": [
+        {
+          "icon": "FaRocket",
+          "title": "Simple and Free to Use",
+          "description": "Draconic Translator Pro is easy to navigate and free for all users, making it accessible for hobbyists and professionals alike.",
+          "tagline": "",
+          "statLabel": null,
+          "statValue": null,
+          "microCopy": ""
+        },
+        {
+          "icon": "FaBrain",
+          "title": "Data Accuracy",
+          "description": "Our tool ensures high data accuracy, providing reliable translations and supporting multiple dialects for an authentic experience.",
+          "tagline": "",
+          "statLabel": null,
+          "statValue": null,
+          "microCopy": ""
+        },
+        {
+          "icon": "FaShieldAlt",
+          "title": "AI Context Understanding",
+          "description": "The AI-powered translator understands context, delivering translations that retain the meaning and nuance of the original text.",
+          "tagline": "",
+          "statLabel": null,
+          "statValue": null,
+          "microCopy": ""
+        },
+        {
+          "icon": "FaChartLine",
+          "title": "Data Privacy and Security",
+          "description": "We prioritize your data privacy and security, ensuring your information remains confidential and protected at all times.",
+          "tagline": "",
+          "statLabel": null,
+          "statValue": null,
+          "microCopy": ""
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "What Our Users Say",
+      "subtitle": "Stories from Teams Using VibeTrans for Translation",
+      "items": {
+        "item-1": {
+          "name": "John Smith",
+          "role": "Fantasy Novelist",
+          "heading": "Review from John Smith",
+          "content": "Initially skeptical, I found Draconic Translator invaluable for my latest dragon-themed series. It seamlessly translated complex dragon dialects, adding depth to my characters. One rainy evening, it helped me craft an intense dialogue between dragon clans, bringing my story to life. Truly, it transformed my writing experience.",
+          "rating": "4.8"
+        },
+        "item-2": {
+          "name": "John Smith",
+          "role": "Software Developer",
+          "heading": "Review from John Smith",
+          "content": "Feeling initially skeptical about Draconic Translator, I gave it a try during a project needing quick, accurate translations. The tool seamlessly handled complex technical jargon, enhancing our team's efficiency. Now, I can't imagine managing international projects without it. The initial doubt has turned into absolute reliance.",
+          "rating": "4.8"
+        },
+        "item-3": {
+          "name": "John Smith",
+          "role": "Fantasy Author",
+          "heading": "Review from John Smith",
+          "content": "Initially skeptical, I tried Draconic Translator to decode ancient dragon scripts for my upcoming novel. It not only translated the texts accurately but also provided insightful context, enhancing my storyline. Now, I can't imagine writing without it. It's an indispensable tool for any fantasy writer.",
+          "rating": "4.8"
+        }
+      }
+    },
+    "faqs": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Have other questions? Feel free to contact us via email.",
+      "items": {
+        "item-1": {
+          "question": "What is Draconic Translator?",
+          "answer": "Draconic Translator is a web-based tool that translates English into multiple fantasy Draconic dialects, ideal for role-playing games and language enthusiasts."
+        },
+        "item-2": {
+          "question": "Is this translator free?",
+          "answer": "Draconic Translator offers a free basic version with limited features. For advanced functionalities and unlimited translations, a subscription is required. Experience quality translations without a cost, and upgrade anytime to unlock premium features and enhance your translating experience."
+        },
+        "item-3": {
+          "question": "How is my privacy protected?",
+          "answer": "Your privacy is our top priority. We use end-to-end encryption to secure your data. Additionally, we never store any of your translations on our servers. Regular security audits are conducted to ensure your information remains safe."
+        },
+        "item-4": {
+          "question": "Which is the best Draconic translator?",
+          "answer": "The best Draconic translator is one that provides accurate translations while being user-friendly and efficient. Look for features like real-time updates, a comprehensive dictionary, and positive user reviews. Prioritize platforms that offer additional learning resources for a better experience."
+        },
+        "item-5": {
+          "question": "Can I use this offline?",
+          "answer": "Yes, the draconic translator is available offline. To use it, first download the language pack from the settings menu. Once downloaded, activate offline mode by toggling the switch in the app. Enjoy seamless translations without an internet connection."
+        }
+      }
+    },
+    "unique": {
+      "title": "",
+      "items": []
+    },
+    "ctaButton": "Try DraconicTranslator Now",
+    "cta": {
+      "title": "Try VibeTrans Draconic Translator Now!",
+      "description": "Experience the best in fantasy language translation with VibeTrans. Start using Draconic Translator Pro today and transform your gaming sessions!",
+      "primaryButton": "Try DraconicTranslator Now",
+      "secondaryButton": "Back to Top"
+    }
+  }
+}

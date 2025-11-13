@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { type NextRequest, NextResponse } from 'next/server';
 
 export const runtime = 'edge';
 
@@ -8,7 +8,7 @@ const audioFiles: Record<string, string> = {
   'happy3.mp3': 'audio/mpeg',
   'sad.mp3': 'audio/mpeg',
   'angry.mp3': 'audio/mpeg',
-  'normal.mp3': 'audio/mpeg'
+  'normal.mp3': 'audio/mpeg',
 };
 
 export async function GET(

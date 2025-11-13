@@ -64,7 +64,9 @@ export default function EnglishToChineseTranslatorTool({
         throw new Error(data.error || pageData.tool.error);
       }
 
-      setOutputText(data.translatedText || data.translated || data.result || '');
+      setOutputText(
+        data.translatedText || data.translated || data.result || ''
+      );
     } catch (err: any) {
       setError(err.message || 'Translation failed');
       setOutputText('');

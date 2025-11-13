@@ -58,6 +58,8 @@ const staticRoutes = [
   '/jamaican-translator',
   '/numbers-to-letters',
   '/braille-translator',
+  '/draconic-translator',
+  '/morse-code-translator',
 ];
 
 /**

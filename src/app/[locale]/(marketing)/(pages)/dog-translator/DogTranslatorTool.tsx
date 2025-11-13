@@ -161,10 +161,12 @@ export default function DogTranslatorTool({
             happy: locale === 'ja' ? 'わんわん！😊' : 'Woof woof! 😊',
             sad: locale === 'ja' ? 'くん… 😢' : 'Whimper... 😢',
             angry: locale === 'ja' ? 'ガルル！😠' : 'Grrrr! 😠',
-            normal: locale === 'ja' ? 'わん！🐕' : 'Woof! 🐕'
+            normal: locale === 'ja' ? 'わん！🐕' : 'Woof! 🐕',
           };
 
-          setDogResponseMessage(emotionMessages[emotion] || emotionMessages.normal);
+          setDogResponseMessage(
+            emotionMessages[emotion] || emotionMessages.normal
+          );
         } else {
           // If API returned unexpected emotion (shouldn't happen in theory, since prompt restricts it)
           console.warn(

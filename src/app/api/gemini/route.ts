@@ -1,10 +1,11 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { type NextRequest, NextResponse } from 'next/server';
 
 export const runtime = 'edge';
 
 // Gemini API configuration
 // Use gemini-2.0-flash-exp for best performance and quality
-const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent';
+const GEMINI_API_URL =
+  'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent';
 
 export async function POST(request: NextRequest) {
   try {
@@ -20,7 +21,9 @@ export async function POST(request: NextRequest) {
 
     const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
     if (!apiKey) {
-      console.error('GOOGLE_GENERATIVE_AI_API_KEY environment variable not set');
+      console.error(
+        'GOOGLE_GENERATIVE_AI_API_KEY environment variable not set'
+      );
       return NextResponse.json(
         { error: 'Server configuration error' },
         { status: 500 }
@@ -40,7 +43,9 @@ export async function POST(request: NextRequest) {
       requestText = `Please accurately translate the following text, maintaining the original tone and style. Return ONLY the translation result, no prefixes like "Translation:" or explanations:\n\n${text}`;
     }
 
-    console.log(`[Gemini API] Request content: ${requestText.substring(0, 100)}...`);
+    console.log(
+      `[Gemini API] Request content: ${requestText.substring(0, 100)}...`
+    );
 
     // Call Gemini API
     const response = await fetch(`${GEMINI_API_URL}?key=${apiKey}`, {
@@ -49,17 +54,21 @@ export async function POST(request: NextRequest) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        contents: [{
-          parts: [{
-            text: requestText
-          }]
-        }],
+        contents: [
+          {
+            parts: [
+              {
+                text: requestText,
+              },
+            ],
+          },
+        ],
         generationConfig: {
           temperature: 0.7,
           topK: 40,
           topP: 0.95,
           maxOutputTokens: 8192,
-        }
+        },
       }),
     });
 
@@ -75,7 +84,9 @@ export async function POST(request: NextRequest) {
     const data = await response.json();
 
     if (!data.candidates || data.candidates.length === 0) {
-      console.error(`[Gemini API] No candidate response: ${JSON.stringify(data)}`);
+      console.error(
+        `[Gemini API] No candidate response: ${JSON.stringify(data)}`
+      );
       return NextResponse.json(
         { error: 'Translation failed, please try again later' },
         { status: 500 }
@@ -83,7 +94,9 @@ export async function POST(request: NextRequest) {
     }
 
     let result = data.candidates[0].content.parts[0].text;
-    console.log(`[Gemini API] Success response: ${result.substring(0, 100)}...`);
+    console.log(
+      `[Gemini API] Success response: ${result.substring(0, 100)}...`
+    );
 
     // Clean up response - remove prefixes like "Persian translation of:" or similar patterns
     result = result.trim();
@@ -99,13 +112,15 @@ export async function POST(request: NextRequest) {
       /^\w+ translation:\s*/i,
     ];
 
-    prefixPatterns.forEach(pattern => {
+    prefixPatterns.forEach((pattern) => {
       result = result.replace(pattern, '');
     });
 
     // Remove surrounding quotes if present
-    if ((result.startsWith('"') && result.endsWith('"')) ||
-        (result.startsWith("'") && result.endsWith("'"))) {
+    if (
+      (result.startsWith('"') && result.endsWith('"')) ||
+      (result.startsWith("'") && result.endsWith("'"))
+    ) {
       result = result.slice(1, -1);
     }
 
@@ -114,7 +129,6 @@ export async function POST(request: NextRequest) {
       result: result.trim(),
       translated: result.trim(),
     });
-
   } catch (error) {
     console.error(`[Gemini API] Server error:`, error);
     return NextResponse.json(

@@ -152,7 +152,6 @@ export default function EnglishToPolishTranslatorTool({
                 {pageData.tool.uploadButton}
               </label>
 
-  
               <p className="text-xs text-gray-500 dark:text-gray-400">
                 {pageData.tool.uploadHint}
               </p>

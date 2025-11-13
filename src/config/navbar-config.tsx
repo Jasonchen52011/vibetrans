@@ -165,6 +165,11 @@ const NAV_CATEGORY_CONFIG: {
       icon: <EyeIcon className="size-4 shrink-0" />,
     },
     {
+      key: 'morseCodeTranslator',
+      route: Routes.MorseCodeTranslator,
+      icon: <AudioLinesIcon className="size-4 shrink-0" />,
+    },
+    {
       key: 'cantoneseTranslator',
       route: Routes.CantoneseTranslator,
       icon: <MessageSquareIcon className="size-4 shrink-0" />,

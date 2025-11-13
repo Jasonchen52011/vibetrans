@@ -86,7 +86,9 @@ export type LanguageDirection =
   | 'amharic-en'
   | 'en-amharic'
   | 'polish-en'
-  | 'en-polish';
+  | 'en-polish'
+  | 'morse-text'
+  | 'text-morse';
 
 export type TranslationModeType =
   | 'general'

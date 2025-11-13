@@ -10,7 +10,7 @@ import type {
   TranslatorConfig,
 } from './types';
 
-interface DetectionResult {
+export interface DetectionResult {
   detectedLanguage: string;
   confidence: number;
   suggestedDirection?: string;

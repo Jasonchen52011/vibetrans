@@ -34,8 +34,6 @@ const nextConfig: NextConfig = {
   // Skip static generation for now
   skipTrailingSlashRedirect: true,
 
-  
-
   // Disable distDir to avoid Html import issues
   distDir: '.next',
 

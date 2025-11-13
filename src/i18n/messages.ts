@@ -275,7 +275,8 @@ const ROUTE_LOADERS: Record<string, MessageLoader> = {
       import(`../../messages/pages/telugu-to-english-translator/${locale}.json`)
   ),
   'jamaican-translator': createLocaleLoader(
-    (locale) => import(`../../messages/pages/jamaican-translator/${locale}.json`)
+    (locale) =>
+      import(`../../messages/pages/jamaican-translator/${locale}.json`)
   ),
   'verbose-generator': createLocaleLoader(
     (locale) => import(`../../messages/pages/verbose-generator/${locale}.json`)
@@ -734,13 +735,29 @@ export async function getMessagesForLocale(
 
   // DEBUG: Check if JamaicanTranslatorPage is in result
   if (translatorKey === 'JamaicanTranslatorPage') {
-    console.log('[DEBUG messages.ts] JamaicanTranslatorPage in result?', 'JamaicanTranslatorPage' in result);
+    console.log(
+      '[DEBUG messages.ts] JamaicanTranslatorPage in result?',
+      'JamaicanTranslatorPage' in result
+    );
     if ('JamaicanTranslatorPage' in result) {
       const keys = Object.keys((result as any).JamaicanTranslatorPage);
-      console.log('[DEBUG messages.ts] JamaicanTranslatorPage has', keys.length, 'keys');
-      console.log('[DEBUG messages.ts] Keys include faqs?', keys.includes('faqs'));
-      console.log('[DEBUG messages.ts] Keys include testimonials?', keys.includes('testimonials'));
-      console.log('[DEBUG messages.ts] Keys include cta?', keys.includes('cta'));
+      console.log(
+        '[DEBUG messages.ts] JamaicanTranslatorPage has',
+        keys.length,
+        'keys'
+      );
+      console.log(
+        '[DEBUG messages.ts] Keys include faqs?',
+        keys.includes('faqs')
+      );
+      console.log(
+        '[DEBUG messages.ts] Keys include testimonials?',
+        keys.includes('testimonials')
+      );
+      console.log(
+        '[DEBUG messages.ts] Keys include cta?',
+        keys.includes('cta')
+      );
       console.log('[DEBUG messages.ts] All keys:', keys.join(', '));
     }
   }

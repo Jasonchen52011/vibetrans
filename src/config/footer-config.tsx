@@ -47,6 +47,7 @@ const LANGUAGE_FOOTER_LINKS: FooterLink[] = [
   { key: 'baybayinTranslator', route: Routes.BaybayinTranslator },
   { key: 'brailleTranslator', route: Routes.BrailleTranslator },
   { key: 'cantoneseTranslator', route: Routes.CantoneseTranslator },
+  { key: 'morseCodeTranslator', route: Routes.MorseCodeTranslator },
   { key: 'creoleToEnglishTranslator', route: Routes.CreoleToEnglishTranslator },
   { key: 'cuneiformTranslator', route: Routes.CuneiformTranslator },
   {

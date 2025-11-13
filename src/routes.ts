@@ -54,6 +54,8 @@ export const Routes = {
   JamaicanTranslator: '/jamaican-translator',
   NumbersToLetters: '/numbers-to-letters',
   BrailleTranslator: '/braille-translator',
+  DraconicTranslator: '/draconic-translator',
+  MorseCodeTranslator: '/morse-code-translator',
 
   // Static pages
   Home: '/',

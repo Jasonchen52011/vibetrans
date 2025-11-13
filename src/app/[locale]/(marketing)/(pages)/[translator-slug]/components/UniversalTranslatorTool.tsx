@@ -102,15 +102,27 @@ export default function UniversalTranslatorTool({
   const getTranslationContext = () => {
     // Special contexts for specific translators
     const contexts: Record<string, string> = {
-      'jamaican-translator': 'You are a professional Jamaican Patois translator. Translate English text into authentic Jamaican Patois (Jamaican Creole). Use natural Jamaican expressions, slang, and dialect patterns. Examples: "Hello" → "Wah gwaan", "Thank you" → "Big up yuhself", "How are you" → "How yuh duh". Maintain the vibrant, rhythmic nature of Jamaican speech.',
+      'jamaican-translator':
+        'You are a professional Jamaican Patois translator. Translate English text into authentic Jamaican Patois (Jamaican Creole). Use natural Jamaican expressions, slang, and dialect patterns. Examples: "Hello" → "Wah gwaan", "Thank you" → "Big up yuhself", "How are you" → "How yuh duh". Maintain the vibrant, rhythmic nature of Jamaican speech.',
 
-      'braille-translator': 'You are a professional Braille translator. Convert regular text into Braille using Unicode Braille patterns (⠀-⣿). Use Grade 1 Braille (letter-by-letter). Examples: "Hello" → "⠓⠑⠇⠇⠕", "World" → "⠺⠕⠗⠇⠙". Ensure accurate character-to-Braille mapping for accessibility.',
+      'braille-translator':
+        'You are a professional Braille translator. Convert regular text into Braille using Unicode Braille patterns (⠀-⣿). Use Grade 1 Braille (letter-by-letter). Examples: "Hello" → "⠓⠑⠇⠇⠕", "World" → "⠺⠕⠗⠇⠙". Ensure accurate character-to-Braille mapping for accessibility.',
 
-      'numbers-to-letters': 'You are an A1Z26 cipher encoder/decoder. Convert between numbers and letters where A=1, B=2, C=3... Z=26. For numbers input like "8 5 12 12 15", output the corresponding letters "H E L L O". For text input, convert to numbers. Examples: "1 2 3" → "A B C", "HELLO" → "8 5 12 12 15".',
+      'numbers-to-letters':
+        'You are an A1Z26 cipher encoder/decoder. Convert between numbers and letters where A=1, B=2, C=3... Z=26. For numbers input like "8 5 12 12 15", output the corresponding letters "H E L L O". For text input, convert to numbers. Examples: "1 2 3" → "A B C", "HELLO" → "8 5 12 12 15".',
+
+      'draconic-translator':
+        'You are a professional Draconic language translator for D&D and fantasy role-playing games. Translate English text into Draconic, the ancient language of dragons. Use harsh, guttural sounds and draconic script conventions. Examples: "Hello" → "Ghik", "Friend" → "Arux", "Fire" → "Darastrix". Maintain the mystical and powerful tone of dragon speech.',
+
+      'shakespearean-translator':
+        'You are a professional Early Modern English translator specializing in Shakespearean language. Translate modern English into authentic Shakespearean/Elizabethan English (1564-1616 era). Use archaic pronouns: "thou/thee/thy/thine" (informal singular), "you/ye/your/yours" (formal/plural). Use verb forms: "doth" (does), "hath" (has), "art" (are), "wilt" (will), "-est" endings (e.g., "speakest"). Use archaic words: "prithee" (please), "whither" (where to), "wherefore" (why), "verily" (truly), "methinks" (I think), "'tis" (it is), "oft" (often). Examples: "Hello, how are you?" → "Good morrow, how farest thou?", "I don\'t understand" → "I comprehend not", "Where are you going?" → "Whither goest thou?", "Thank you very much" → "I thank thee heartily". Maintain poetic, eloquent style characteristic of Shakespeare\'s plays and sonnets.',
     };
 
     // Return specific context or fallback to generic
-    return contexts[slug] || `You are a professional ${toolName}. Please accurately translate the user's input text to the target language, maintaining the original tone and style.`;
+    return (
+      contexts[slug] ||
+      `You are a professional ${toolName}. Please accurately translate the user's input text to the target language, maintaining the original tone and style.`
+    );
   };
 
   // Handle translation using universal Gemini API

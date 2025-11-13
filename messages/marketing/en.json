@@ -193,6 +193,10 @@
           "brailleTranslator": {
             "title": "Braille Translator",
             "description": "Translate braille translator"
+          },
+          "draconicTranslator": {
+            "title": "Draconic Translator",
+            "description": "Translate draconic translator"
           }
         }
       },

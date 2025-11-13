@@ -1135,8 +1135,7 @@ ${contentResearchData.funFacts?.join('\n') || ''}
 
     case 'highlights':
       if (sectionInfo.featureIndex !== undefined) {
-        const feature =
-          contentData.highlights.items[sectionInfo.featureIndex];
+        const feature = contentData.highlights.items[sectionInfo.featureIndex];
         prompt = `⚠️ WRITE IN ENGLISH ONLY. 不要使用中文。
 
 请为「${keyword}」重新写亮点功能「${feature.title}」的描述。

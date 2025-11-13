@@ -32,9 +32,7 @@ export async function Footer({ className, locale }: FooterProps) {
               </div>
 
               {/* tagline */}
-              <p className="text-gray-300 text-base py-2">
-                {t('tagline')}
-              </p>
+              <p className="text-gray-300 text-base py-2">{t('tagline')}</p>
             </div>
           </div>
 

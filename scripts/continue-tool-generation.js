@@ -58,13 +58,14 @@ async function main() {
     // 继续执行后续 phases（这里需要手动调用，因为无法直接导入私有函数）
     console.log('\n⚠️  请手动运行剩余的 phases');
     console.log('由于脚本架构限制，请使用以下方式：');
-    console.log('\n1. 直接修改 auto-tool-generator.js，在 Phase 3 添加跳过逻辑');
+    console.log(
+      '\n1. 直接修改 auto-tool-generator.js，在 Phase 3 添加跳过逻辑'
+    );
     console.log('2. 或者分别运行 Phase 4-10 的独立脚本');
 
     console.log('\n📋 调研数据位置：');
     console.log(`   ${researchPath}`);
     console.log(`   ${contentResearchPath}`);
-
   } catch (error) {
     console.error('❌ 错误:', error.message);
     process.exit(1);

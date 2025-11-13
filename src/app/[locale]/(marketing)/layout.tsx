@@ -11,7 +11,7 @@ interface MarketingLayoutProps {
 
 export default async function MarketingLayout({
   children,
-  params
+  params,
 }: MarketingLayoutProps) {
   const { locale } = await params;
 

@@ -240,14 +240,10 @@ export default async function UniversalTranslatorPage(
         )}
 
         {/* FAQ */}
-        {content.faqs.items.length > 0 && (
-          <FaqSection section={content.faqs} />
-        )}
+        {content.faqs.items.length > 0 && <FaqSection section={content.faqs} />}
 
         {/* CTA */}
-        {content.cta.title && (
-          <CallToActionSection section={content.cta} />
-        )}
+        {content.cta.title && <CallToActionSection section={content.cta} />}
       </div>
     </>
   );

@@ -170,9 +170,8 @@ async function captureHowToScreenshot(config: ScreenshotConfig) {
       success: true,
       file: finalWebpPath,
       size: finalSize,
-      dimensions: { width: finalWidth, height: finalHeight }
+      dimensions: { width: finalWidth, height: finalHeight },
     };
-
   } catch (error: any) {
     console.error('\n❌ Error:', error.message);
     throw error;
@@ -182,7 +181,10 @@ async function captureHowToScreenshot(config: ScreenshotConfig) {
 }
 
 // Export the main function for use as a skill
-export async function generateHowToScreenshot(pageSlug: string, options?: Partial<ScreenshotConfig>) {
+export async function generateHowToScreenshot(
+  pageSlug: string,
+  options?: Partial<ScreenshotConfig>
+) {
   if (!pageSlug) {
     throw new Error('Page slug is required');
   }
@@ -197,11 +199,19 @@ async function main() {
   if (!pageSlug) {
     console.error('❌ Error: Missing page slug argument\n');
     console.log('Usage:');
-    console.log('  pnpm tsx skills/howto-screenshot-generator.ts <page-slug>\n');
+    console.log(
+      '  pnpm tsx skills/howto-screenshot-generator.ts <page-slug>\n'
+    );
     console.log('Examples:');
-    console.log('  pnpm tsx skills/howto-screenshot-generator.ts albanian-to-english');
-    console.log('  pnpm tsx skills/howto-screenshot-generator.ts baby-translator');
-    console.log('  pnpm tsx skills/howto-screenshot-generator.ts verbose-generator\n');
+    console.log(
+      '  pnpm tsx skills/howto-screenshot-generator.ts albanian-to-english'
+    );
+    console.log(
+      '  pnpm tsx skills/howto-screenshot-generator.ts baby-translator'
+    );
+    console.log(
+      '  pnpm tsx skills/howto-screenshot-generator.ts verbose-generator\n'
+    );
     process.exit(1);
   }
 
