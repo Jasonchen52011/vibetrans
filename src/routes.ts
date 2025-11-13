@@ -10,6 +10,8 @@ export const Routes = {
   GenZTranslator: '/gen-z-translator',
   GibberishTranslator: '/gibberish-translator',
   PigLatinTranslator: '/pig-latin-translator',
+  PirateTranslator: '/pirate-translator',
+  ShakespeareanTranslator: '/shakespearean-translator',
   VerboseGenerator: '/verbose-generator',
 
   // Game Translator routes
@@ -56,6 +58,7 @@ export const Routes = {
   BrailleTranslator: '/braille-translator',
   DraconicTranslator: '/draconic-translator',
   MorseCodeTranslator: '/morse-code-translator',
+  DragonLanguageTranslator: '/dragon-language-translator',
 
   // Static pages
   Home: '/',

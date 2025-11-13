@@ -81,6 +81,16 @@ const NAV_CATEGORY_CONFIG: {
       icon: <SmileIcon className="size-4 shrink-0" />,
     },
     {
+      key: 'pirateTranslator',
+      route: Routes.PirateTranslator,
+      icon: <SmileIcon className="size-4 shrink-0" />,
+    },
+    {
+      key: 'shakespeareanTranslator',
+      route: Routes.ShakespeareanTranslator,
+      icon: <FeatherIcon className="size-4 shrink-0" />,
+    },
+    {
       key: 'verboseGenerator',
       route: Routes.VerboseGenerator,
       icon: <WandSparklesIcon className="size-4 shrink-0" />,
@@ -96,6 +106,16 @@ const NAV_CATEGORY_CONFIG: {
       key: 'drowTranslator',
       route: Routes.DrowTranslator,
       icon: <CrownIcon className="size-4 shrink-0" />,
+    },
+    {
+      key: 'dragonLanguageTranslator',
+      route: Routes.DragonLanguageTranslator,
+      icon: <FlameIcon className="size-4 shrink-0" />,
+    },
+    {
+      key: 'draconicTranslator',
+      route: Routes.DraconicTranslator,
+      icon: <FlameIcon className="size-4 shrink-0" />,
     },
     {
       key: 'gasterTranslator',

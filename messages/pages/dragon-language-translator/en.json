@@ -1,0 +1,234 @@
+{
+  "DragonLanguageTranslatorPage": {
+    "title": "Dragon Language Translator - Accurate Dovahzul Translation",
+    "description": "Explore the best dragon language translator for Dovahzul-to-English and vice-versa, ensuring accuracy and ease of use.",
+    "hero": {
+      "title": "Dragon Language Translator for Dovahzul",
+      "description": "Looking for the best way to translate dragon language? VibeTrans is your go-to tool! Effortlessly convert mysterious scripts into clear text and unlock ancient secrets with ease. Try it now and experience the magic!"
+    },
+    "tool": {
+      "inputLabel": "Input Text",
+      "outputLabel": "Translated Text",
+      "inputPlaceholder": "Enter your text here...",
+      "outputPlaceholder": "Translation will appear here...",
+      "translateButton": "Translate",
+      "uploadButton": "Upload File",
+      "uploadHint": "Supports .txt and .docx files",
+      "loading": "Translating...",
+      "error": "Translation failed. Please try again.",
+      "noInput": "Please enter some text to translate."
+    },
+    "whatIs": {
+      "title": "What is Dragon Language Translator",
+      "description": "Dragon Language Translator is a specialized tool designed to convert Dovahzul—the ancient dragon tongue from The Elder Scrolls universe—into English and vice versa. Built on the canonical 34-rune alphabet and expanded community lexicon of 700+ words, this translator decodes draconic scripts with linguistic precision. Whether you're a Skyrim fan crafting immersive roleplay dialogues, a fantasy writer seeking authentic dragon speech, or a lore enthusiast exploring Thu'um shouts, Dragon Language Translator bridges the gap between mortal and draconic communication.",
+      "image": "/images/docs/dragon-translate-tool.webp",
+      "imageAlt": "What is dragon-language-translator - Visual explanation"
+    },
+    "examples": {
+      "title": "Sample Translations in Dragon Language",
+      "description": "Discover authentic Dovahzul translations from The Elder Scrolls lore. These examples showcase iconic Thu'um shouts, common dragon phrases, and essential vocabulary used by the Dov. Each translation follows canonical grammar rules and demonstrates how dragons communicate power, wisdom, and ancient knowledge through their distinctive linguistic patterns.",
+      "items": [
+        {
+          "alt": "Fus Ro Dah - Unrelenting Force shout translation showing Force Balance Push in English",
+          "name": "Fus Ro Dah → Force Balance Push"
+        },
+        {
+          "alt": "Zu'u los dovahkiin - I am dragonborn translation demonstrating first-person dragon grammar",
+          "name": "Zu'u los dovahkiin → I am dragonborn"
+        },
+        {
+          "alt": "Lok Vah Koor - Sky Spring Summer showing Clear Sky shout word-by-word translation",
+          "name": "Lok Vah Koor → Sky Spring Summer (Clear Sky)"
+        },
+        {
+          "alt": "Pruzah wundun - Good journey farewell phrase translation in dragon language etiquette",
+          "name": "Pruzah wundun → Good journey (Farewell)"
+        },
+        {
+          "alt": "Dovahkiin fen kos bonaar - Dragonborn will be humble prophecy translation showing future tense",
+          "name": "Dovahkiin fen kos bonaar → Dragonborn will be humble"
+        },
+        {
+          "alt": "Yol Toor Shul - Fire Inferno Sun showing Fire Breath shout with Thu'um power words",
+          "name": "Yol Toor Shul → Fire Inferno Sun (Fire Breath)"
+        }
+      ]
+    },
+    "howto": {
+      "title": "How to Translate Dovahzul to English",
+      "description": "Follow these simple steps to translate Dovahzul using our efficient tool.",
+      "steps": [
+        {
+          "name": "Input Text",
+          "description": "Carefully type the text you want to translate into the input field. Double-check for spelling accuracy to ensure precise translation. Avoid special characters and use plain language. Confirm your entry before proceeding to the next step.",
+          "wordCount": 40
+        },
+        {
+          "name": "Detect Language",
+          "description": "Begin by analyzing the text's structure and vocabulary. Identify unique characters, words, or patterns specific to the dragon language. Compare these elements with known language data to determine if the text matches dragon language features accurately.",
+          "wordCount": 40
+        },
+        {
+          "name": "Choose Mode",
+          "description": "Select your preferred translation mode by clicking on the dropdown menu. Choose between 'Basic' for simple phrases or 'Advanced' for complex sentences. Ensure your selection matches your translation needs before proceeding to the next step.",
+          "wordCount": 40
+        },
+        {
+          "name": "Receive Translation",
+          "description": "After submitting your text for translation, wait for the system to process. The translated content will appear in the designated output area. Ensure your internet connection is stable to receive the translation promptly without interruptions.",
+          "wordCount": 40
+        }
+      ],
+      "image": "/images/docs/dragon-language-translator-how-to.webp",
+      "imageAlt": "How to use dragon language translator"
+    },
+    "funfacts": {
+      "title": "Interesting Facts",
+      "items": [
+        {
+          "title": "Community-Expanded Dragon Lexicon",
+          "description": "VibeTrans captures the magic of dragon language, originally crafted with only 34 runes and no punctuation. Community creativity added over 700 non-canon words, expanding the dragon lexicon even further.",
+          "image": "/images/docs/dragon-language-expansion.webp",
+          "imageAlt": "Dragon Language Expansion"
+        },
+        {
+          "title": "The 34 Sacred Runes of Dovahzul",
+          "description": "Bethesda's dragon language uses just 34 unique runes and no punctuation, with community expansion adding over 700 unofficial words, making VibeTrans the perfect tool for decoding draconic dialogues.",
+          "image": "/images/docs/dragon-rune-decode.webp",
+          "imageAlt": "Dragon Rune Decode"
+        }
+      ]
+    },
+    "userInterest": {
+      "title": "Explore More",
+      "items": [
+        {
+          "title": "Learning Pathways",
+          "description": "Unlock the mystical world of dragons with VibeTrans. Our unique pathways guide you from novice to master, blending ancient lore with modern tech. Whether you're decoding scrolls or just curious, seize the chance to transform your learning journey into an epic saga.",
+          "image": "/images/docs/dragon-pathways.webp",
+          "imageAlt": "Learning Pathways"
+        },
+        {
+          "title": "Community Contributions",
+          "description": "Dive into the vibrant world of VibeTrans, where every user can leave their mark. Whether you're decoding ancient dragon scripts or creating quirky dialects, your input fuels our growth. Join forces with fellow enthusiasts and watch as your translations transform the way we communicate.",
+          "image": "/images/docs/vibrant-translation-hub.webp",
+          "imageAlt": "Community Contributions"
+        },
+        {
+          "title": "Downloadable Resources",
+          "description": "Explore VibeTrans's cache of downloadable goodies, from intricate dragon scripts to quirky language cheat sheets. Tailored for the curious linguist, these resources offer a treasure trove of insights. Dive in and give your dragon language skills a boost with just a click. Discover the magic today!",
+          "image": "/images/docs/dragon-scroll-download.webp",
+          "imageAlt": "Downloadable Resources"
+        },
+        {
+          "title": "Grammar Insights",
+          "description": "Ever wondered if dragons use slang or if their verbs breathe fire? VibeTrans cracks the code of dragon syntax, revealing quirky twists like 'scalespeak' and 'winged whispers.' Dive into linguistic lore and discover the rhythm behind each fiery roar. It's grammar with a mythical twist!",
+          "image": "/images/docs/dragon-grammar-code.webp",
+          "imageAlt": "Grammar Insights"
+        }
+      ]
+    },
+    "highlights": {
+      "title": "Unique Features",
+      "description": "The best features for your translation needs",
+      "items": [
+        {
+          "icon": "FaRocket",
+          "title": "Interactive Pronunciation",
+          "description": "Hear each word pronounced correctly with interactive audio, ensuring accurate communication.",
+          "tagline": "",
+          "statLabel": null,
+          "statValue": null,
+          "microCopy": ""
+        },
+        {
+          "icon": "FaBrain",
+          "title": "Context-Aware Adjustments",
+          "description": "Our tool adapts translations based on sentence type for natural and accurate results.",
+          "tagline": "",
+          "statLabel": null,
+          "statValue": null,
+          "microCopy": ""
+        },
+        {
+          "icon": "FaShieldAlt",
+          "title": "Downloadable Fonts",
+          "description": "Access unique dragon script fonts for personal or educational use.",
+          "tagline": "",
+          "statLabel": null,
+          "statValue": null,
+          "microCopy": ""
+        },
+        {
+          "icon": "FaChartLine",
+          "title": "Real-Time Feedback",
+          "description": "Receive real-time confidence and language detection feedback for transparency.",
+          "tagline": "",
+          "statLabel": null,
+          "statValue": null,
+          "microCopy": ""
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "What Our Users Say",
+      "subtitle": "Stories from Teams Using VibeTrans for Translation",
+      "items": {
+        "item-1": {
+          "name": "John Smith",
+          "role": "Fantasy Writer",
+          "heading": "Review from John Smith",
+          "content": "I was thrilled to discover the Dragon Language Translator. While crafting my latest fantasy novel, it helped me create authentic dialogues for my dragon characters. Initially skeptical, the accurate translations captured the mystical essence I needed. It's now an indispensable tool for my writing adventures.",
+          "rating": "4.8"
+        },
+        "item-2": {
+          "name": "John Smith",
+          "role": "Fantasy Author",
+          "heading": "Review from John Smith",
+          "content": "I was thrilled to use the Dragon Language Translator for my latest novel. The app's seamless translation and intuitive interface made crafting dialogues between dragon characters a breeze. Initially skeptical, I found it indispensable for adding authenticity, transforming my writing process into a more creative and enjoyable experience.",
+          "rating": "4.8"
+        },
+        "item-3": {
+          "name": "John Smith",
+          "role": "Fantasy Writer",
+          "heading": "Review from John Smith",
+          "content": "I was skeptical at first, but the Dragon Language Translator exceeded my expectations. While crafting my latest novel, it effortlessly translated complex phrases, adding authenticity to my dragon dialogue. The intuitive interface and seamless integration into my writing workflow transformed potential frustration into creative excitement.",
+          "rating": "4.8"
+        }
+      }
+    },
+    "faqs": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Have other questions? Feel free to contact us via email.",
+      "items": {
+        "item-1": {
+          "question": "Is this dragon language translator free?",
+          "answer": "The dragon language translator is completely free to use. You can access all features without any cost or hidden fees. Simply visit the website, enter your text, and receive instant translations without any financial commitment."
+        },
+        "item-2": {
+          "question": "How is my privacy protected?",
+          "answer": "Your privacy is safeguarded through encryption and strict data policies. We ensure that all personal data is encrypted during transmission and storage. Access to data is limited to authorized personnel only, and regular audits are conducted to maintain security standards."
+        },
+        "item-3": {
+          "question": "What is the best dragon language translator?",
+          "answer": "XXXX is a highly-rated dragon language translator known for its accuracy and user-friendly interface. It offers comprehensive translations, making it a top choice for enthusiasts and scholars seeking to understand dragon languages effectively."
+        },
+        "item-4": {
+          "question": "What is Dragon Language Translator?",
+          "answer": "Dragon Language Translator is a tool designed to convert text between human languages and the fictional dragon language. It allows enthusiasts to explore and understand dragon dialects by inputting phrases and receiving translations, enhancing their fantasy language experience."
+        }
+      }
+    },
+    "unique": {
+      "title": "",
+      "items": []
+    },
+    "ctaButton": "Try DragonLanguageTranslator Now",
+    "cta": {
+      "title": "Experience VibeTrans with Dragon Language Translator",
+      "description": "Dive into the world of Dovahzul with VibeTrans. Use our dragon language translator for free today!",
+      "primaryButton": "Try DragonLanguageTranslator Now",
+      "secondaryButton": "Back to Top"
+    }
+  }
+}

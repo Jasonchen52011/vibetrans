@@ -14,7 +14,7 @@ interface FooterProps extends React.HTMLAttributes<HTMLElement> {
 export async function Footer({ className, locale }: FooterProps) {
   const t = await getTranslations({ locale, namespace: 'Marketing.footer' });
   const tRoot = await getTranslations({ locale });
-  const footerLinks = getFooterLinks(t);
+  const footerLinks = await getFooterLinks(t, tRoot, locale);
   const socialLinks = getSocialLinks(t);
 
   return (

@@ -1,0 +1,246 @@
+{
+  "PirateTranslatorPage": {
+    "title": "海盗翻译器 - 免费在线海盗语言转换工具",
+    "description": "使用我们的AI驱动海盗翻译器将文本转换为正宗的海盗语言。啊哈！立即将现代英语转换为充满冒险精神的海盗用语。",
+    "hero": {
+      "title": "海盗翻译器 - 像海盗一样说话",
+      "description": "啊哈，伙计！将你的普通说话方式转换为正宗的海盗行话。体验公海冒险，包括arrr、ahoy和会让黑胡子自豪的海盗表达。"
+    },
+    "tool": {
+      "inputLabel": "普通英语",
+      "outputLabel": "海盗语言",
+      "inputPlaceholder": "在此输入您的文本，伙计...",
+      "outputPlaceholder": "您的海盗翻译将在此显示，啊哈...",
+      "translateButton": "转换为海盗语言",
+      "uploadButton": "上传文件",
+      "uploadHint": "支持 .txt 和 .docx 文件",
+      "loading": "正在转换为海盗语言...",
+      "error": "天啊！翻译失败，请重试。",
+      "noInput": "等等！请输入一些要翻译的文本。"
+    },
+    "whatIs": {
+      "title": "什么是海盗翻译器",
+      "description": "海盗翻译器将现代英语转换为海盗语言，这是海盗黄金时代（1650年代至1730年代）使用的丰富多彩的航海俚语。这包括经典的海盗表达，如'arrr'、'ahoy'、'matey'、'ye'和'yer'，以及航海术语和充满冒险精神的短语。VibeTrans提供正宗的海盗语言体验，捕捉航海海盗的冒险、幽默和叛逆精神。非常适合「像海盗一样说话日」（9月19日）、创意写作、游戏、派对，或者只是和朋友一起玩乐！",
+      "image": "/images/docs/translate-symbols.webp",
+      "imageAlt": "什么是海盗翻译器 - 可视化解释"
+    },
+    "examples": {
+      "title": "海盗翻译示例",
+      "description": "了解现代英语如何转换为正宗的海盗语言。发现使海盗语言如此有趣的丰富多彩的表达、航海术语和充满冒险精神的短语。",
+      "items": [
+        {
+          "before": "Hello, how are you today?",
+          "after": "Ahoy, matey! How be ye farin' this fine day?",
+          "alt": "海盗问候",
+          "name": "海盗问候"
+        },
+        {
+          "before": "I'm looking for treasure and adventure.",
+          "after": "I be searchin' fer buried treasure and high seas adventure, arrr!",
+          "alt": "海盗语言中的寻宝",
+          "name": "寻宝"
+        },
+        {
+          "before": "Let's go to the bar and get some drinks.",
+          "after": "Let's sail to the tavern and get some grog, ye scurvy dog!",
+          "alt": "海盗语言中的酒馆访问",
+          "name": "酒馆访问"
+        },
+        {
+          "before": "You are a great friend. Thank you for helping me.",
+          "after": "Ye be a fine shipmate, arrr! I thank ye fer helpin' this old sea dog.",
+          "alt": "海盗语言中的感谢",
+          "name": "海盗感谢"
+        },
+        {
+          "before": "That's amazing! I can't believe it!",
+          "after": "Shiver me timbers! I can't believe me eyes, by Davy Jones' locker!",
+          "alt": "海盗语言中的惊讶",
+          "name": "惊讶"
+        },
+        {
+          "before": "Get out of here right now or there will be trouble!",
+          "after": "Avast, ye scallywag! Get off me ship or ye'll walk the plank, arrr!",
+          "alt": "海盗语言中的威胁",
+          "name": "海盗威胁"
+        }
+      ]
+    },
+    "howto": {
+      "title": "如何使用海盗翻译器",
+      "description": "学习如何使用我们的海盗翻译工具将您的普通英语转换为正宗的海盗语言。",
+      "steps": [
+        {
+          "name": "输入文本",
+          "description": "在输入框中输入或粘贴您的现代英语文本。您可以翻译从简单问候到完整故事的任何内容。您提供的文本越多，您将获得越多的海盗魔法！",
+          "wordCount": 40
+        },
+        {
+          "name": "翻译",
+          "description": "点击「转换为海盗语言」按钮，观看我们的AI将您的文本转换为正宗的海盗语言。翻译包括arrr、ahoy、航海术语和捕捉公海精神的冒险短语。",
+          "wordCount": 40
+        },
+        {
+          "name": "查看翻译",
+          "description": "阅读您的海盗翻译并享受丰富多彩的语言。注意经典的海盗表达、航海俚语和有趣的短语。调整原始文本并重新翻译，如果您想要不同的海盗语言变体。",
+          "wordCount": 40
+        },
+        {
+          "name": "分享战利品",
+          "description": "将您的海盗文本复制到剪贴板或下载为文件。在社交媒体上与您的船员分享，用于「像海盗一样说话日」，添加到您的游戏角色，或发送给朋友以获得欢笑！",
+          "wordCount": 40
+        }
+      ],
+      "image": "/images/docs/haitian-creole-translator-how-to.webp",
+      "imageAlt": "如何使用海盗翻译器"
+    },
+    "funfacts": {
+      "title": "有趣的海盗事实",
+      "items": [
+        {
+          "title": "海盗说多种语言",
+          "description": "真正的海盗是多国船员，说英语、法语、西班牙语、荷兰语和葡萄牙语。我们今天所知的刻板「海盗口音」来自罗伯特·牛顿在1950年电影《金银岛》中对长约翰·西尔弗的刻画。VibeTrans捕捉了这种标志性的电影海盗语言。",
+          "image": "/images/docs/creole-translation.webp",
+          "imageAlt": "海盗语言起源"
+        },
+        {
+          "title": "「像海盗一样说话日」是真实的",
+          "description": "9月19日是国际「像海盗一样说话日」，由约翰·鲍尔和马克·萨默斯于1995年创建。在幽默专栏作家戴夫·巴里于2002年撰写相关文章后，它在全球流行。现在数百万人每年都用我们的海盗翻译器庆祝！",
+          "image": "/images/docs/creole-phonetics.webp",
+          "imageAlt": "像海盗一样说话日"
+        }
+      ]
+    },
+    "userInterest": {
+      "title": "了解更多",
+      "items": [
+        {
+          "title": "「像海盗一样说话日」",
+          "description": "用正宗的海盗语言庆祝9月19日！VibeTrans帮助您准备完美的海盗问候、笑话和消息来庆祝这个有趣的节日。将电子邮件、社交媒体帖子和消息转换为充满冒险的海盗语言。啊哈，伙计！",
+          "image": "/images/docs/haiti-culture.webp",
+          "imageAlt": "像海盗一样说话日庆祝"
+        },
+        {
+          "title": "游戏和角色扮演",
+          "description": "非常适合海盗主题游戏、D&D战役、《盗贼之海》、《刺客信条：黑旗》和角色扮演。创建正宗的海盗角色对话、游戏内消息和沉浸式故事讲述。用真正的海盗行话让您的海盗角色栩栩如生！",
+          "image": "/images/docs/creole-deal.webp",
+          "imageAlt": "游戏应用"
+        },
+        {
+          "title": "创意写作和故事",
+          "description": "为您的海盗故事、小说、剧本或儿童读物增添正宗的风味。VibeTrans帮助作家创作真正的海盗对话，无需研究。非常适合冒险故事、历史小说或幽默的海盗主题内容。",
+          "image": "/images/docs/offline-translation.webp",
+          "imageAlt": "创意写作"
+        },
+        {
+          "title": "派对和娱乐",
+          "description": "让您的海盗主题派对难忘！使用真正的海盗语言创建正宗的邀请函、寻宝线索、派对游戏和装饰。非常适合生日、万圣节、化装派对，或任何需要一剂公海冒险的聚会！",
+          "image": "/images/docs/smooth-translation.webp",
+          "imageAlt": "派对娱乐"
+        }
+      ]
+    },
+    "highlights": {
+      "title": "主要功能",
+      "description": "体验海盗翻译的最佳功能",
+      "items": [
+        {
+          "icon": "FaAnchor",
+          "title": "正宗海盗语言",
+          "description": "捕捉真正的海盗表达、航海术语和海盗黄金时代的冒险精神。",
+          "tagline": "",
+          "statLabel": null,
+          "statValue": null,
+          "microCopy": ""
+        },
+        {
+          "icon": "FaSkull",
+          "title": "经典表达",
+          "description": "包括arrr、ahoy、matey、shiver me timbers、avast和数十种其他标志性海盗短语。",
+          "tagline": "",
+          "statLabel": null,
+          "statValue": null,
+          "microCopy": ""
+        },
+        {
+          "icon": "FaShip",
+          "title": "航海词汇",
+          "description": "使用正宗的海事术语，如grog、scallywag、landlubber、bilge rat和航海俚语。",
+          "tagline": "",
+          "statLabel": null,
+          "statValue": null,
+          "microCopy": ""
+        },
+        {
+          "icon": "FaGem",
+          "title": "即时翻译",
+          "description": "AI驱动的翻译在几秒钟内提供正宗的海盗语言，适合任何场合。",
+          "tagline": "",
+          "statLabel": null,
+          "statValue": null,
+          "microCopy": ""
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "用户评价",
+      "subtitle": "使用VibeTrans的海盗爱好者的故事",
+      "items": {
+        "item-1": {
+          "name": "杰克·雷诺兹船长",
+          "role": "游戏主持人",
+          "heading": "杰克·雷诺兹船长的评价",
+          "content": "运行海盗主题的D&D战役，我需要为我的NPC海盗准备正宗的对话。VibeTrans是海盗语言的宝库！我的玩家喜欢沉浸式体验，我可以即时生成独特的海盗对话。就像在桌上有一个真正的海盗！",
+          "rating": "5.0"
+        },
+        "item-2": {
+          "name": "莎拉·马丁内斯",
+          "role": "派对策划师",
+          "heading": "莎拉·马丁内斯的评价",
+          "content": "我组织了一个海盗主题的生日派对，并使用VibeTrans制作所有邀请函、寻宝线索和装饰。孩子们非常喜欢！海盗语言既真实又有趣。这个工具让我的活动策划变得更容易、更有趣！",
+          "rating": "4.9"
+        },
+        "item-3": {
+          "name": "威廉·布莱克伍德",
+          "role": "历史小说作家",
+          "heading": "威廉·布莱克伍德的评价",
+          "content": "我在写一部设定在海盗黄金时代的小说，我在正宗的海盗对话上遇到困难。VibeTrans为我提供了真实性和可读性的完美平衡。我的编辑印象深刻，读者说对话感觉真实。这个工具对作家来说是纯金！",
+          "rating": "4.8"
+        }
+      }
+    },
+    "faqs": {
+      "title": "常见问题",
+      "subtitle": "有其他问题？请随时通过电子邮件与我们联系。",
+      "items": {
+        "item-1": {
+          "question": "海盗语言是真实的语言吗？",
+          "answer": "海盗语言不是真实的语言，而是电影和文学推广的戏剧性方言。真正的海盗说他们的母语（英语、西班牙语、法语等）。「arrr」口音来自演员罗伯特·牛顿1950年对长约翰·西尔弗的刻画，这成为我们今天所知的标志性海盗声音。"
+        },
+        "item-2": {
+          "question": "「像海盗一样说话日」是什么时候？",
+          "answer": "国际「像海盗一样说话日」每年9月19日庆祝。由约翰·鲍尔和马克·萨默斯于1995年创建，在专栏作家戴夫·巴里撰写相关文章后成为全球现象。我们的海盗翻译器非常适合庆祝这个有趣的节日！"
+        },
+        "item-3": {
+          "question": "我可以将此用于游戏和角色扮演吗？",
+          "answer": "当然可以！VibeTrans海盗翻译器非常适合《盗贼之海》、D&D海盗战役、《刺客信条：黑旗》等游戏和任何海盗主题的角色扮演。使用真正的海盗表达创建正宗的角色对话、游戏内消息和沉浸式故事讲述。"
+        },
+        "item-4": {
+          "question": "海盗翻译器可以免费使用吗？",
+          "answer": "是的！VibeTrans海盗翻译器完全免费。您可以将无限文本翻译成海盗语言，无需任何费用。非常适合派对、游戏、创意写作、「像海盗一样说话日」，或者只是和朋友家人一起玩乐！"
+        }
+      }
+    },
+    "unique": {
+      "title": "",
+      "items": []
+    },
+    "ctaButton": "立即尝试海盗翻译器",
+    "cta": {
+      "title": "准备好像海盗一样说话了吗，伙计？",
+      "description": "将您的普通说话方式转换为正宗的海盗行话。立即开始使用VibeTrans海盗翻译器进行翻译，啊哈！",
+      "primaryButton": "立即尝试海盗翻译器",
+      "secondaryButton": "返回顶部"
+    }
+  }
+}

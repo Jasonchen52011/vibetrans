@@ -1,0 +1,239 @@
+{
+  "MorseCodeTranslatorPage": {
+    "title": "Morse Code Translator Pro - Translate Instantly",
+    "description": "Morse code translator for text, audio, and files. Learn, communicate, and explore with the best morse code translator available.",
+    "hero": {
+      "title": "Morse Code Translator for Instant Communication",
+      "description": "Looking to decode or encode Morse code effortlessly? VibeTrans is here for you! Our tool is the best at transforming text to Morse code and vice versa, making communication seamless and fun."
+    },
+    "tool": {
+      "inputLabel": "Input Text",
+      "outputLabel": "Translated Text",
+      "inputPlaceholder": "Enter your text here...",
+      "outputPlaceholder": "Translation will appear here...",
+      "translateButton": "Translate",
+      "uploadButton": "Upload File",
+      "uploadHint": "Supports .txt and .docx files",
+      "loading": "Translating...",
+      "error": "Translation failed. Please try again.",
+      "noInput": "Please enter some text to translate."
+    },
+    "whatIs": {
+      "title": "What is Morse Code Translator Pro?",
+      "description": "Morse Code Translator Pro is a multifunctional tool that converts text, audio, and files into Morse code and back. Ideal for learning, emergency communication, and geek entertainment, it supports various languages and offline use.",
+      "image": "/images/docs/morse-conversion-flow.webp",
+      "imageAlt": "What is morse-code-translator - Visual explanation"
+    },
+    "examples": {
+      "title": "Morse Code Translator Pro Examples",
+      "description": "Explore how Morse Code Translator Pro can accurately convert text to Morse code in various scenarios.",
+      "items": [
+        {
+          "before": "Hello, how are you today?",
+          "after": ".... . .-.. .-.. --- / .... --- .-- / .- .-. . / -.-- --- ..- / - --- -.. .- -.--",
+          "alt": "Daily greeting"
+        },
+        {
+          "before": "I would like to schedule a meeting.",
+          "after": ".. / .-- --- ..- .-.. -.. / .-.. .. -.- . / - --- / ... -.-. .... . -.. ..- .-.. . / .- / -- . . - .. -. --.",
+          "alt": "Business communication"
+        },
+        {
+          "before": "Where is the nearest hospital?",
+          "after": ".-- .... . .-. . / .. ... / - .... . / -. . .- .-. . ... - / .... --- ... .--. .. - .- .-.. ..--..",
+          "alt": "Emergency/Travel"
+        },
+        {
+          "before": "Can I have the menu, please?",
+          "after": "-.-. .- -. / .. / .... .- ...- . / - .... . / -- . -. ..- --..-- / .--. .-.. . .- ... . ..--..",
+          "alt": "Restaurant"
+        },
+        {
+          "before": "Thank you for your assistance.",
+          "after": "- .... .- -. -.- / -.-- --- ..- / ..-. --- .-. / -.-- --- ..- .-. / .- ... ... .. ... - .- -. -.-. . .-.-.-",
+          "alt": "Gratitude/Formal"
+        },
+        {
+          "before": "Happy birthday! I hope you have a wonderful day.",
+          "after": ".... .- .--. .--. -.-- / -... .. .-. - .... -.. .- -.-- -.-.-- / .. / .... --- .--. . / -.-- --- ..- / .... .- ...- . / .- / .-- --- -. -.. . .-. ..-. ..- .-.. / -.. .- -.-- .-.-.-",
+          "alt": "Celebrations"
+        }
+      ]
+    },
+    "howto": {
+      "title": "How to Translate English to Morse Code",
+      "description": "Learn how to easily convert English text into Morse code using Morse Code Translator Pro.",
+      "steps": [
+        {
+          "name": "Enter Your Text",
+          "description": "Start by typing your message into the designated input box. Ensure each character is correctly placed, as the translator will convert them into Morse code. Double-check for typos to guarantee accurate translation results.",
+          "wordCount": 40
+        },
+        {
+          "name": "Select Translation Mode",
+          "description": "To choose the translation mode, locate the mode selector at the top of the interface. Click the dropdown menu, then select either 'Text to Morse' or 'Morse to Text' based on your requirement. Confirm your choice to proceed.",
+          "wordCount": 40
+        },
+        {
+          "name": "View and Copy Output",
+          "description": "After translating your text to Morse code, locate the output box below the input field. Highlight the Morse code by clicking and dragging your cursor over it. Right-click and select 'Copy' to easily save the translation for later use.",
+          "wordCount": 40
+        }
+      ],
+      "image": "/images/docs/morse-code-translator-how-to.webp",
+      "imageAlt": "How to use morse-code-translator"
+    },
+    "funfacts": {
+      "title": "Interesting Facts",
+      "items": [
+        {
+          "title": "SOS Signal Origins",
+          "description": "'SOS' is not an acronym but a distinct sequence ...---..., easy to recognize and hard to mistake.",
+          "image": "/images/docs/sos-signal-origin.webp",
+          "imageAlt": "SOS Signal Origins"
+        },
+        {
+          "title": "Modern Aviation Use",
+          "description": "Pilots still use Morse code tones to verify VOR/NDB station IDs, a global aviation standard.",
+          "image": "/images/docs/morse-code-flight.webp",
+          "imageAlt": "Modern Aviation Use"
+        }
+      ]
+    },
+    "userInterest": {
+      "title": "Explore More with Morse Code",
+      "items": [
+        {
+          "title": "Learning Morse Code",
+          "description": "Discover efficient ways to learn Morse code with tips, mnemonics, and training apps tailored for beginners and enthusiasts.",
+          "image": "/images/docs/morse-code-learn.webp",
+          "imageAlt": "Learning Morse Code"
+        },
+        {
+          "title": "Emergency Uses of Morse",
+          "description": "Explore how Morse code can be used in emergencies with flashlights, whistles, and mirrors for quick communication.",
+          "image": "/images/docs/morse-emergency-signals.webp",
+          "imageAlt": "Emergency Uses of Morse"
+        },
+        {
+          "title": "Morse Code in Modern Tech",
+          "description": "Find out how Morse code is integrated into modern technology like aviation and IoT for various applications.",
+          "image": "/images/docs/morse-tech-connect.webp",
+          "imageAlt": "Morse Code in Modern Tech"
+        },
+        {
+          "title": "Morse Code for Accessibility",
+          "description": "Learn how Morse code assists people with disabilities through switch scanning and single-switch input methods.",
+          "image": "/images/docs/code-accessibility-aid.webp",
+          "imageAlt": "Morse Code for Accessibility"
+        }
+      ]
+    },
+    "highlights": {
+      "title": "Morse Code Translator Pro Highlights",
+      "description": "The best features for your translation needs",
+      "items": [
+        {
+          "icon": "FaRocket",
+          "title": "Simple & Free to Use",
+          "description": "Our tool is intuitive and free, making Morse code translation accessible to everyone.",
+          "tagline": "",
+          "statLabel": null,
+          "statValue": null,
+          "microCopy": ""
+        },
+        {
+          "icon": "FaBrain",
+          "title": "Data Accuracy",
+          "description": "Experience precise translations with accurate Morse code representation for reliable communication.",
+          "tagline": "",
+          "statLabel": null,
+          "statValue": null,
+          "microCopy": ""
+        },
+        {
+          "icon": "FaShieldAlt",
+          "title": "Data Privacy & Security",
+          "description": "Your data remains private with our offline processing, ensuring security and confidentiality.",
+          "tagline": "",
+          "statLabel": null,
+          "statValue": null,
+          "microCopy": ""
+        },
+        {
+          "icon": "FaChartLine",
+          "title": "AI Contextual Understanding",
+          "description": "Our AI comprehends context for better translation results, capturing the nuances of your messages.",
+          "tagline": "",
+          "statLabel": null,
+          "statValue": null,
+          "microCopy": ""
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "What Our Users Say",
+      "subtitle": "Stories from Teams Using VibeTrans for Translation",
+      "items": {
+        "item-1": {
+          "name": "John Smith",
+          "role": "Amateur Radio Operator",
+          "heading": "Review from John Smith",
+          "content": "Using Morse Code Translator Pro has revolutionized my learning process. I went from struggling to easily sending and receiving Morse code. It's a must-have tool for any enthusiast!",
+          "rating": "4.8"
+        },
+        "item-2": {
+          "name": "Emily Brown",
+          "role": "Emergency Preparedness Trainer",
+          "heading": "Review from Emily Brown",
+          "content": "This translator is an essential tool in my emergency kits. Its offline capability ensures reliable communication during power outages or network failures.",
+          "rating": "4.8"
+        },
+        "item-3": {
+          "name": "Michael Johnson",
+          "role": "Tech Enthusiast",
+          "heading": "Review from Michael Johnson",
+          "content": "I love exploring Morse code with this translator! Its batch audio translation feature is fantastic for geeky projects and learning.",
+          "rating": "4.8"
+        }
+      }
+    },
+    "faqs": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Have other questions? Feel free to contact us via email.",
+      "items": {
+        "item-1": {
+          "question": "What is Morse Code Translator Pro?",
+          "answer": "Morse Code Translator Pro is a tool that converts text, audio, and files into Morse code and back, supporting various languages."
+        },
+        "item-2": {
+          "question": "Is this Morse Code Translator free?",
+          "answer": "Yes, our Morse Code Translator is free to use online, providing easy access to accurate translations without cost."
+        },
+        "item-3": {
+          "question": "How is my privacy protected?",
+          "answer": "Your privacy is ensured through offline processing, meaning your data stays on your device without exposure to external servers."
+        },
+        "item-4": {
+          "question": "Which is best for Morse code transmission: flashlight, whistle, or mirror?",
+          "answer": "All methods are effective, but the flashlight is often fastest due to easy signaling and visibility over distances."
+        },
+        "item-5": {
+          "question": "Why learn Morse code in the 2020s?",
+          "answer": "Morse code remains relevant for emergency communication, historical interest, and tech applications like aviation."
+        }
+      }
+    },
+    "unique": {
+      "title": "",
+      "items": []
+    },
+    "ctaButton": "Try MorseCodeTranslator Now",
+    "cta": {
+      "title": "Try VibeTrans Morse Code Translator",
+      "description": "Unlock the power of Morse code with VibeTrans, your go-to tool for learning and communication. Start translating now!",
+      "primaryButton": "Try MorseCodeTranslator Now",
+      "secondaryButton": "Back to Top"
+    }
+  }
+}

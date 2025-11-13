@@ -143,6 +143,14 @@ const ROUTE_LOADERS: Record<string, MessageLoader> = {
   'dog-translator': createLocaleLoader(
     (locale) => import(`../../messages/pages/dog-translator/${locale}.json`)
   ),
+  'draconic-translator': createLocaleLoader(
+    (locale) =>
+      import(`../../messages/pages/draconic-translator/${locale}.json`)
+  ),
+  'dragon-language-translator': createLocaleLoader(
+    (locale) =>
+      import(`../../messages/pages/dragon-language-translator/${locale}.json`)
+  ),
   'drow-translator': createLocaleLoader(
     (locale) => import(`../../messages/pages/drow-translator/${locale}.json`)
   ),
@@ -238,6 +246,10 @@ const ROUTE_LOADERS: Record<string, MessageLoader> = {
   'minion-translator': createLocaleLoader(
     (locale) => import(`../../messages/pages/minion-translator/${locale}.json`)
   ),
+  'morse-code-translator': createLocaleLoader(
+    (locale) =>
+      import(`../../messages/pages/morse-code-translator/${locale}.json`)
+  ),
   'nahuatl-translator': createLocaleLoader(
     (locale) => import(`../../messages/pages/nahuatl-translator/${locale}.json`)
   ),
@@ -251,6 +263,9 @@ const ROUTE_LOADERS: Record<string, MessageLoader> = {
     (locale) =>
       import(`../../messages/pages/pig-latin-translator/${locale}.json`)
   ),
+  'pirate-translator': createLocaleLoader(
+    (locale) => import(`../../messages/pages/pirate-translator/${locale}.json`)
+  ),
   pricing: createLocaleLoader(
     (locale) => import(`../../messages/pages/pricing/${locale}.json`)
   ),
@@ -263,6 +278,10 @@ const ROUTE_LOADERS: Record<string, MessageLoader> = {
   'samoan-to-english-translator': createLocaleLoader(
     (locale) =>
       import(`../../messages/pages/samoan-to-english-translator/${locale}.json`)
+  ),
+  'shakespearean-translator': createLocaleLoader(
+    (locale) =>
+      import(`../../messages/pages/shakespearean-translator/${locale}.json`)
   ),
   'swahili-to-english-translator': createLocaleLoader(
     (locale) =>
@@ -314,6 +333,8 @@ const TRANSLATOR_TOOL_TO_ROUTE: Record<string, string> = {
   CreoleToEnglishTranslatorPage: 'creole-to-english-translator',
   CuneiformTranslatorPage: 'cuneiform-translator',
   DogTranslatorPage: 'dog-translator',
+  DraconicTranslatorPage: 'draconic-translator',
+  DragonLanguageTranslatorPage: 'dragon-language-translator',
   DrowTranslatorPage: 'drow-translator',
   DumbItDownPage: 'dumb-it-down-ai',
   EnglishToAmharicTranslatorPage: 'english-to-amharic-translator',
@@ -341,9 +362,11 @@ const TRANSLATOR_TOOL_TO_ROUTE: Record<string, string> = {
   NumbersToLettersPage: 'numbers-to-letters',
   OghamTranslatorPage: 'ogham-translator',
   PigLatinTranslatorPage: 'pig-latin-translator',
+  PirateTranslatorPage: 'pirate-translator',
   RuneTranslatorPage: 'rune-translator',
   RunicTranslatorPage: 'runic-translator',
   SamoanToEnglishTranslatorPage: 'samoan-to-english-translator',
+  ShakespeareanTranslatorPage: 'shakespearean-translator',
   SwahiliToEnglishTranslatorPage: 'swahili-to-english-translator',
   TeluguToEnglishTranslatorPage: 'telugu-to-english-translator',
   VerboseGeneratorPage: 'verbose-generator',

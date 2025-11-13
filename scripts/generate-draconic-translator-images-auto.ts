@@ -7,35 +7,35 @@ import path from 'path';
 const sections: ArticleSections = {
   "toolName": "draconic-translator",
   "whatIs": {
-    "title": "What is Draconic Translator",
-    "content": "Draconic Translator is an online tool that converts English into various Draconic dialects. Ideal for fantasy role-players, it supports text, speech, and image translations, ensuring seamless integration with your gaming needs."
+    "title": "What is Draconic Translator?",
+    "content": "Draconic Translator is a specialized tool designed for fantasy writers and RPG players, enabling real-time translation of Draconic language. It supports text, image, and audio, providing accurate translations for immersive storytelling and gameplay."
   },
   "funFacts": [
     {
-      "title": "Ancient Language Origins",
-      "content": "Draconic is considered one of the oldest languages, with dragons believing other languages are its derivatives. [Learn more](https://en.wikipedia.org/wiki/Draconic_language)"
+      "title": "Fun Fact",
+      "content": "Did you know? Draconic, a language older than Elvish in the D&D multiverse, uses base-12 counting inspired by dragon talons. Explore linguistic magic with VibeTrans's draconic translation tools!"
     },
     {
-      "title": "Draconic and Abyssal Scripts",
-      "content": "In D&D 4e, Abyssal was written using the Iokharic alphabet, the same as Draconic, creating amusing fan theories. [Explore further](https://dnd.wizards.com/)"
+      "title": "Fun Fact",
+      "content": "VibeTrans reveals that Draconic, older than Elvish, uses a base-12 counting system inspired by dragons' talons. Its alphabet, Iokharic, mimics claw slashes, adding a fierce visual flair."
     }
   ],
   "userInterests": [
     {
-      "title": "Custom Dictionary Imports",
-      "content": "VibeTrans elevates your experience with Custom Dictionary Imports. Tailor your translations by uploading bespoke word lists, ensuring your content vibes with your audience. Whether you’re dealing with industry jargon or quirky slang, seamlessly integrate them to keep your communication top-notch and relevant."
+      "title": "Draconic Dialects",
+      "content": "Ever wondered if dragons have their own slang? VibeTrans dives into Draconic dialects, uncovering unique phrases that even the most seasoned adventurers might miss. From fiery expressions to mystical mutterings, discover the quirks and charms of dragon lingo. Perfect for adding flair to any mythical conversation!"
     },
     {
-      "title": "Immersive Mode Feature",
-      "content": "Unleash the power of VibeTrans with the Immersive Mode. Dive headfirst into the language and culture, getting the lowdown like a local. This feature offers real-world scenarios and slang, making your translations as fresh as a daisy and on point."
+      "title": "Language Comparison",
+      "content": "Ever wondered how languages stack up against each other? VibeTrans delves into linguistic quirks, from idioms to slang. Discover why French is the 'language of love' and how German compacts meanings. Uncover hidden gems and spice up your language game with VibeTrans."
     },
     {
-      "title": "Batch Document Translation",
-      "content": "Tired of translating documents one by one? VibeTrans turns the grind into a breeze with Batch Document Translation. Seamlessly translate multiple files at once, ensuring consistency and saving time. Perfect for busy bees needing swift, reliable translations without breaking a sweat."
+      "title": "Pronunciation Guide",
+      "content": "Mastering pronunciation is like taming dragons—tricky but thrilling! VibeTrans brings phonetic finesse to your fingertips with a splash of fun. Ever stumbled over 'gnarly'? Fear not, this guide ensures you sound polished, not perplexed. Say goodbye to mispronunciations and hello to linguistic swagger!"
     },
     {
-      "title": "Diverse Dialect Support",
-      "content": "VibeTrans takes dialect diversity seriously, embracing every twist and turn of language quirks. Whether it's Southern drawls or Cockney rhymes, we've got your back. Our translator turns linguistic chaos into seamless clarity, ensuring no phrase gets lost in translation. Dive into dialects without breaking a sweat!"
+      "title": "Numerical Systems",
+      "content": "Dive into the quirky world of numerical systems with VibeTrans. From binary to hexadecimal, numbers aren't just digits—they're a universal language. Ever wondered how computers 'talk'? Get the lowdown on how these numerical codes keep the digital world spinning. It's all in the numbers!"
     }
   ]
 };

@@ -74,7 +74,7 @@ export async function generateArticleIllustrations(
     // Step 2: Generate images with Volcano Engine (Parallel)
     console.log('\n' + '-'.repeat(70));
     console.log(
-      '🎨 STEP 2: Generating images with Volcano Engine (Parallel)...'
+      '🎨 STEP 2: Generating images with Volcano Engine (Queue Mode)...'
     );
     console.log('-'.repeat(70));
 
@@ -82,8 +82,11 @@ export async function generateArticleIllustrations(
     let completedCount = 0;
     const totalCount = prompts.length;
 
-    // 并行生成所有图片
-    const imagePromises = prompts.map(async (promptData, i) => {
+    // 队列模式：一次处理一张图片，避免API速率限制
+    const imageResults = [];
+
+    for (let i = 0; i < prompts.length; i++) {
+      const promptData = prompts[i];
       const sectionLabel =
         promptData.index !== undefined
           ? `${promptData.section} #${promptData.index + 1}`
@@ -115,13 +118,13 @@ export async function generateArticleIllustrations(
           console.log(
             `✅ [${i + 1}/${prompts.length}] Success: ${webpResult.filename} (${webpResult.size}KB) [Progress: ${completedCount}/${totalCount}]`
           );
-          return {
+          imageResults.push({
             section: sectionLabel,
             title: promptData.title,
             filename: webpResult.filename,
             size: webpResult.size,
             status: 'success' as const,
-          };
+          });
         } else {
           throw new Error(webpResult.error || 'WebP conversion failed');
         }
@@ -130,19 +133,22 @@ export async function generateArticleIllustrations(
         console.error(
           `❌ [${i + 1}/${prompts.length}] Failed: ${error.message} [Progress: ${completedCount}/${totalCount}]`
         );
-        return {
+        imageResults.push({
           section: sectionLabel,
           title: promptData.title,
           filename: `${promptData.suggestedFilename}.webp`,
           size: 0,
           status: 'failed' as const,
           error: error.message,
-        };
+        });
       }
-    });
 
-    // 等待所有图片生成完成
-    const imageResults = await Promise.all(imagePromises);
+      // 在每张图片之间添加2秒延迟，进一步避免速率限制
+      if (i < prompts.length - 1) {
+        console.log('⏳ Waiting 2 seconds before next request...');
+        await new Promise(resolve => setTimeout(resolve, 2000));
+      }
+    }
 
     // 统计结果
     for (const result of imageResults) {

@@ -5,6 +5,9 @@ type FooterLink = {
   key: string;
   route: Routes | string;
   external?: boolean;
+  // 页面独立的翻译命名空间，用于引用页面自己的 title
+  // 例如: "MorseCodeTranslatorPage" 会读取该页面的 title
+  pageNamespace?: string;
 };
 
 const FUN_FOOTER_LINKS: FooterLink[] = [
@@ -18,11 +21,15 @@ const FUN_FOOTER_LINKS: FooterLink[] = [
   { key: 'gibberishTranslator', route: Routes.GibberishTranslator },
   { key: 'numbersToLetters', route: Routes.NumbersToLetters },
   { key: 'pigLatinTranslator', route: Routes.PigLatinTranslator },
+  { key: 'pirateTranslator', route: Routes.PirateTranslator },
+  { key: 'shakespeareanTranslator', route: Routes.ShakespeareanTranslator },
   { key: 'verboseGenerator', route: Routes.VerboseGenerator },
 ];
 
 const GAME_FOOTER_LINKS: FooterLink[] = [
   { key: 'alBhedTranslator', route: Routes.AlBhedTranslator },
+  { key: 'dragonLanguageTranslator', route: Routes.DragonLanguageTranslator },
+  { key: 'draconicTranslator', route: Routes.DraconicTranslator },
   { key: 'drowTranslator', route: Routes.DrowTranslator },
   { key: 'gasterTranslator', route: Routes.GasterTranslator },
   { key: 'highValyrianTranslator', route: Routes.HighValyrianTranslator },
@@ -47,7 +54,11 @@ const LANGUAGE_FOOTER_LINKS: FooterLink[] = [
   { key: 'baybayinTranslator', route: Routes.BaybayinTranslator },
   { key: 'brailleTranslator', route: Routes.BrailleTranslator },
   { key: 'cantoneseTranslator', route: Routes.CantoneseTranslator },
-  { key: 'morseCodeTranslator', route: Routes.MorseCodeTranslator },
+  {
+    key: 'morseCodeTranslator',
+    route: Routes.MorseCodeTranslator,
+    pageNamespace: 'MorseCodeTranslatorPage'
+  },
   { key: 'creoleToEnglishTranslator', route: Routes.CreoleToEnglishTranslator },
   { key: 'cuneiformTranslator', route: Routes.CuneiformTranslator },
   {
@@ -84,35 +95,63 @@ const COMPANY_LINKS: FooterLink[] = [
 
 const LEGAL_LINKS: FooterLink[] = [];
 
-function mapFooterItems(
+async function mapFooterItems(
   t: any,
+  tRoot: any,
+  locale: string,
   section: string,
   links: FooterLink[],
   hidden: Set<string> = new Set()
 ) {
-  return links
-    .filter((link) => !hidden.has(link.key))
-    .map((link) => ({
-      title: t(`${section}.items.${link.key}`),
-      href: link.route,
-      external: link.external ?? false,
-    }));
+  const { getTranslations } = await import('next-intl/server');
+
+  return Promise.all(
+    links
+      .filter((link) => !hidden.has(link.key))
+      .map(async (link) => {
+        let title: string;
+
+        // 如果配置了 pageNamespace，则从页面独立的翻译文件中读取 title
+        if (link.pageNamespace) {
+          const pageT = await getTranslations({
+            locale,
+            namespace: link.pageNamespace
+          });
+          title = pageT('title');
+        } else {
+          // 否则使用 Marketing.footer 中的翻译
+          title = t(`${section}.items.${link.key}`);
+        }
+
+        return {
+          title,
+          href: link.route,
+          external: link.external ?? false,
+        };
+      })
+  );
 }
 
-export function getFooterLinks(t: any): NestedMenuItem[] {
+export async function getFooterLinks(
+  t: any,
+  tRoot: any,
+  locale: string
+): Promise<NestedMenuItem[]> {
   const footerSections = [
     {
       title: t('funTranslate.title'),
-      items: mapFooterItems(t, 'funTranslate', FUN_FOOTER_LINKS),
+      items: await mapFooterItems(t, tRoot, locale, 'funTranslate', FUN_FOOTER_LINKS),
     },
     {
       title: t('gameTranslator.title'),
-      items: mapFooterItems(t, 'gameTranslator', GAME_FOOTER_LINKS),
+      items: await mapFooterItems(t, tRoot, locale, 'gameTranslator', GAME_FOOTER_LINKS),
     },
     {
       title: t('languageTranslator.title'),
-      items: mapFooterItems(
+      items: await mapFooterItems(
         t,
+        tRoot,
+        locale,
         'languageTranslator',
         LANGUAGE_FOOTER_LINKS,
         HIDDEN_LANGUAGE_FOOTER
@@ -120,7 +159,7 @@ export function getFooterLinks(t: any): NestedMenuItem[] {
     },
     {
       title: t('company.title'),
-      items: mapFooterItems(t, 'company', COMPANY_LINKS),
+      items: await mapFooterItems(t, tRoot, locale, 'company', COMPANY_LINKS),
     },
   ];
 
@@ -128,7 +167,7 @@ export function getFooterLinks(t: any): NestedMenuItem[] {
   if (LEGAL_LINKS.length > 0) {
     footerSections.push({
       title: t('legal.title'),
-      items: mapFooterItems(t, 'legal', LEGAL_LINKS),
+      items: await mapFooterItems(t, tRoot, locale, 'legal', LEGAL_LINKS),
     });
   }
 

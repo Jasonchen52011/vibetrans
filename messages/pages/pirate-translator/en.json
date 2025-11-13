@@ -1,0 +1,246 @@
+{
+  "PirateTranslatorPage": {
+    "title": "Pirate Translator - Talk Like a Pirate Online Free",
+    "description": "Transform your text into authentic pirate speak with our AI-powered pirate translator. Arrr! Convert modern English to swashbuckling pirate language instantly.",
+    "hero": {
+      "title": "Pirate Translator - Speak Like a Buccaneer",
+      "description": "Ahoy, matey! Transform yer landlubber speak into authentic pirate lingo. Experience the high seas adventure with arrr's, ahoys, and swashbuckling expressions that would make Blackbeard proud."
+    },
+    "tool": {
+      "inputLabel": "Landlubber English",
+      "outputLabel": "Pirate Speak",
+      "inputPlaceholder": "Enter yer text here, matey...",
+      "outputPlaceholder": "Yer pirate translation will appear here, arrr...",
+      "translateButton": "Translate to Pirate",
+      "uploadButton": "Upload File",
+      "uploadHint": "Supports .txt and .docx files",
+      "loading": "Translatin' to pirate speak...",
+      "error": "Shiver me timbers! Translation failed. Walk the plank and try again.",
+      "noInput": "Avast! Enter some text to translate, ye scallywag."
+    },
+    "whatIs": {
+      "title": "What is a Pirate Translator",
+      "description": "A Pirate Translator converts modern English into pirate speak, the colorful nautical slang used by pirates in the Golden Age of Piracy (1650s-1730s). This includes classic pirate expressions like 'arrr', 'ahoy', 'matey', 'ye', and 'yer', along with nautical terms and swashbuckling phrases. VibeTrans offers an authentic pirate language experience that captures the adventure, humor, and rebellious spirit of seafaring buccaneers. Perfect for Talk Like a Pirate Day (September 19th), creative writing, gaming, parties, or just having fun with friends!",
+      "image": "/images/docs/translate-symbols.webp",
+      "imageAlt": "What is Pirate translator - Visual explanation"
+    },
+    "examples": {
+      "title": "Pirate Translation Examples",
+      "description": "See how modern English transforms into authentic pirate speak. Discover the colorful expressions, nautical terms, and swashbuckling phrases that make pirate language so entertaining.",
+      "items": [
+        {
+          "before": "Hello, how are you today?",
+          "after": "Ahoy, matey! How be ye farin' this fine day?",
+          "alt": "Pirate greeting",
+          "name": "Pirate Greeting"
+        },
+        {
+          "before": "I'm looking for treasure and adventure.",
+          "after": "I be searchin' fer buried treasure and high seas adventure, arrr!",
+          "alt": "Treasure hunting in pirate speak",
+          "name": "Treasure Hunt"
+        },
+        {
+          "before": "Let's go to the bar and get some drinks.",
+          "after": "Let's sail to the tavern and get some grog, ye scurvy dog!",
+          "alt": "Bar visit in pirate language",
+          "name": "Tavern Visit"
+        },
+        {
+          "before": "You are a great friend. Thank you for helping me.",
+          "after": "Ye be a fine shipmate, arrr! I thank ye fer helpin' this old sea dog.",
+          "alt": "Gratitude in pirate speak",
+          "name": "Pirate Thanks"
+        },
+        {
+          "before": "That's amazing! I can't believe it!",
+          "after": "Shiver me timbers! I can't believe me eyes, by Davy Jones' locker!",
+          "alt": "Surprise in pirate language",
+          "name": "Amazement"
+        },
+        {
+          "before": "Get out of here right now or there will be trouble!",
+          "after": "Avast, ye scallywag! Get off me ship or ye'll walk the plank, arrr!",
+          "alt": "Threat in pirate speak",
+          "name": "Pirate Threat"
+        }
+      ]
+    },
+    "howto": {
+      "title": "How to Use the Pirate Translator",
+      "description": "Learn how to transform your landlubber English into authentic pirate speak with our swashbuckling translator tool.",
+      "steps": [
+        {
+          "name": "Enter Text",
+          "description": "Type or paste your modern English text into the input box. You can translate anything from simple greetings to entire stories. The more text you provide, the more pirate magic you'll get!",
+          "wordCount": 40
+        },
+        {
+          "name": "Translate",
+          "description": "Click the 'Translate to Pirate' button and watch as our AI transforms your text into authentic pirate speak. The translation includes arrr's, ahoys, nautical terms, and swashbuckling expressions that capture the spirit of the high seas.",
+          "wordCount": 40
+        },
+        {
+          "name": "Review Translation",
+          "description": "Read through your pirate translation and enjoy the colorful language. Notice the classic pirate expressions, nautical slang, and playful phrases. Adjust your original text and retranslate if you want different variations of pirate speak.",
+          "wordCount": 40
+        },
+        {
+          "name": "Share the Booty",
+          "description": "Copy your pirate text to the clipboard or download it as a file. Share it with your crew on social media, use it for Talk Like a Pirate Day, add it to your game character, or send it to friends for a good laugh!",
+          "wordCount": 40
+        }
+      ],
+      "image": "/images/docs/pirate-translator-how-to.webp",
+      "imageAlt": "How to use pirate translator"
+    },
+    "funfacts": {
+      "title": "Interesting Pirate Facts",
+      "items": [
+        {
+          "title": "Pirates Spoke Many Languages",
+          "description": "Real pirates were multinational crews speaking English, French, Spanish, Dutch, and Portuguese. The stereotypical 'pirate accent' we know today comes from Robert Newton's portrayal of Long John Silver in the 1950 film 'Treasure Island'. VibeTrans captures this iconic cinematic pirate speak.",
+          "image": "/images/docs/creole-translation.webp",
+          "imageAlt": "Pirate language origins"
+        },
+        {
+          "title": "Talk Like a Pirate Day is Real",
+          "description": "September 19th is International Talk Like a Pirate Day, created in 1995 by John Baur and Mark Summers. It became globally popular after humor columnist Dave Barry wrote about it in 2002. Millions now celebrate annually with our pirate translator!",
+          "image": "/images/docs/creole-phonetics.webp",
+          "imageAlt": "Talk Like a Pirate Day"
+        }
+      ]
+    },
+    "userInterest": {
+      "title": "Explore More",
+      "items": [
+        {
+          "title": "Talk Like a Pirate Day",
+          "description": "Celebrate September 19th with authentic pirate speak! VibeTrans helps you prepare the perfect pirate greetings, jokes, and messages for this fun holiday. Transform emails, social media posts, and messages into swashbuckling adventures. Arrr, matey!",
+          "image": "/images/docs/haiti-culture.webp",
+          "imageAlt": "Talk Like a Pirate Day celebration"
+        },
+        {
+          "title": "Gaming and Roleplay",
+          "description": "Perfect for pirate-themed games, D&D campaigns, Sea of Thieves, Assassin's Creed Black Flag, and roleplaying. Create authentic pirate character dialogue, in-game messages, and immersive storytelling. Make your buccaneer character come alive with genuine pirate lingo!",
+          "image": "/images/docs/creole-deal.webp",
+          "imageAlt": "Gaming applications"
+        },
+        {
+          "title": "Creative Writing and Stories",
+          "description": "Add authentic flavor to your pirate stories, novels, screenplays, or children's books. VibeTrans helps writers craft genuine pirate dialogue without research. Perfect for adventure tales, historical fiction, or humorous pirate-themed content.",
+          "image": "/images/docs/offline-translation.webp",
+          "imageAlt": "Creative writing"
+        },
+        {
+          "title": "Parties and Entertainment",
+          "description": "Make your pirate-themed party unforgettable! Create authentic invitations, treasure hunt clues, party games, and decorations with genuine pirate speak. Perfect for birthdays, Halloween, costume parties, or any gathering that needs a dose of high seas adventure!",
+          "image": "/images/docs/smooth-translation.webp",
+          "imageAlt": "Party entertainment"
+        }
+      ]
+    },
+    "highlights": {
+      "title": "Pirate Translator Features",
+      "description": "Experience the best features for pirate translation",
+      "items": [
+        {
+          "icon": "FaRocket",
+          "title": "Instant Swashbuckling Translation",
+          "description": "Transforms modern English into authentic pirate speak in seconds with AI-powered accuracy. No research needed—just type and watch your text become seaworthy!",
+          "tagline": "",
+          "statLabel": null,
+          "statValue": null,
+          "microCopy": ""
+        },
+        {
+          "icon": "FaBrain",
+          "title": "Authentic Nautical Vocabulary",
+          "description": "Uses genuine maritime slang including grog, scallywag, landlubber, bilge rat, and seafaring expressions from the Golden Age of Piracy.",
+          "tagline": "",
+          "statLabel": null,
+          "statValue": null,
+          "microCopy": ""
+        },
+        {
+          "icon": "FaShieldAlt",
+          "title": "Classic Pirate Expressions Library",
+          "description": "Features iconic phrases like 'arrr,' 'ahoy matey,' 'shiver me timbers,' 'avast,' and dozens more legendary pirate exclamations.",
+          "tagline": "",
+          "statLabel": null,
+          "statValue": null,
+          "microCopy": ""
+        },
+        {
+          "icon": "FaChartLine",
+          "title": "Context-Aware Buccaneer Mode",
+          "description": "Intelligently adapts tone and vocabulary based on your content—whether it's threatening, friendly, or celebratory pirate communication.",
+          "tagline": "",
+          "statLabel": null,
+          "statValue": null,
+          "microCopy": ""
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "What Our Users Say",
+      "subtitle": "Stories from Pirate Enthusiasts Using VibeTrans",
+      "items": {
+        "item-1": {
+          "name": "Captain Jack Reynolds",
+          "role": "Game Master",
+          "heading": "Review from Captain Jack Reynolds",
+          "content": "Running a pirate-themed D&D campaign, I needed authentic dialogue for my NPC pirates. VibeTrans is a treasure chest of pirate speak! My players love the immersive experience, and I can generate unique pirate dialogue on the fly. It's like having a real buccaneer at the table!",
+          "rating": "5.0"
+        },
+        "item-2": {
+          "name": "Sarah 'Redbeard' Martinez",
+          "role": "Party Planner",
+          "heading": "Review from Sarah Martinez",
+          "content": "I organized a pirate-themed birthday party and used VibeTrans for all the invitations, treasure hunt clues, and decorations. The kids absolutely loved it! The pirate speak was authentic and hilarious. This tool made my event planning so much easier and more fun!",
+          "rating": "4.9"
+        },
+        "item-3": {
+          "name": "William Blackwood",
+          "role": "Historical Fiction Author",
+          "heading": "Review from William Blackwood",
+          "content": "Writing a novel set during the Golden Age of Piracy, I struggled with authentic pirate dialogue. VibeTrans gave me the perfect balance of authenticity and readability. My editor was impressed, and readers say the dialogue feels genuine. This tool is pure gold for writers!",
+          "rating": "4.8"
+        }
+      }
+    },
+    "faqs": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Have other questions? Feel free to contact us via email.",
+      "items": {
+        "item-1": {
+          "question": "Is pirate speak a real language?",
+          "answer": "Pirate speak is not a real language but a theatrical dialect popularized by movies and literature. Real pirates spoke their native languages (English, Spanish, French, etc.). The 'arrr' accent comes from actor Robert Newton's 1950 portrayal of Long John Silver, which became the iconic pirate voice we know today."
+        },
+        "item-2": {
+          "question": "When is Talk Like a Pirate Day?",
+          "answer": "International Talk Like a Pirate Day is celebrated every year on September 19th. Created in 1995 by John Baur and Mark Summers, it became a global phenomenon after columnist Dave Barry wrote about it. Our pirate translator is perfect for celebrating this fun holiday!"
+        },
+        "item-3": {
+          "question": "Can I use this for gaming and roleplaying?",
+          "answer": "Absolutely! VibeTrans Pirate Translator is perfect for games like Sea of Thieves, D&D pirate campaigns, Assassin's Creed Black Flag, and any pirate-themed roleplaying. Create authentic character dialogue, in-game messages, and immersive storytelling with genuine pirate expressions."
+        },
+        "item-4": {
+          "question": "Is the pirate translator free to use?",
+          "answer": "Yes! VibeTrans Pirate Translator is completely free. You can translate unlimited text into pirate speak without any charges. Perfect for parties, gaming, creative writing, Talk Like a Pirate Day, or just having fun with friends and family!"
+        }
+      }
+    },
+    "unique": {
+      "title": "",
+      "items": []
+    },
+    "ctaButton": "Try Pirate Translator Now",
+    "cta": {
+      "title": "Ready to Talk Like a Pirate, Matey?",
+      "description": "Transform yer landlubber speak into authentic pirate lingo. Start translatin' with VibeTrans Pirate Translator today, arrr!",
+      "primaryButton": "Try Pirate Translator Now",
+      "secondaryButton": "Back to Top"
+    }
+  }
+}

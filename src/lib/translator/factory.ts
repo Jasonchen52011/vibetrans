@@ -108,6 +108,11 @@ export function initializeTranslators(): void {
     'morse-code',
     async () => (await import('./translators/morse-code')).MorseCodeTranslator
   );
+  registerTranslator(
+    'dragon-language',
+    async () =>
+      (await import('./translators/dragon-language')).DragonLanguageTranslator
+  );
 }
 
 export async function getToolsByCategory(): Promise<

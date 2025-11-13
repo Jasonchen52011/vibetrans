@@ -71,6 +71,14 @@
             "title": "Pig Latin Translator",
             "description": ""
           },
+          "pirateTranslator": {
+            "title": "Pirate Translator",
+            "description": ""
+          },
+          "shakespeareanTranslator": {
+            "title": "Shakespearean Translator",
+            "description": ""
+          },
           "verboseGenerator": {
             "title": "Verbose Generator",
             "description": ""
@@ -194,9 +202,21 @@
             "title": "Braille Translator",
             "description": "Translate braille translator"
           },
+          "morseCodeTranslator": {
+            "title": "Morse Code Translator",
+            "description": "Translate morse code translator"
+          },
           "draconicTranslator": {
             "title": "Draconic Translator",
             "description": "Translate draconic translator"
+          },
+          "dragonLanguageTranslator": {
+            "title": "Dragon Language Translator",
+            "description": "Translate dragon language translator"
+          },
+          "shakespeareanTranslator": {
+            "title": "Shakespearean Translator",
+            "description": "Translate shakespearean translator"
           }
         }
       },
@@ -243,6 +263,14 @@
           "yodaTranslator": {
             "title": "Yoda Translator",
             "description": ""
+          },
+          "dragonLanguageTranslator": {
+            "title": "Dragon Language Translator",
+            "description": "Translate to Skyrim's dragon language (Dovahzul)"
+          },
+          "draconicTranslator": {
+            "title": "Draconic Translator",
+            "description": "Translate to D&D Draconic language"
           }
         }
       }
@@ -262,7 +290,9 @@
           "numbersToLetters": "Numbers To Letters",
           "alienTextGenerator": "Alien Text Generator",
           "verboseGenerator": "Verbose Generator",
-          "pigLatinTranslator": "Pig Latin Translator"
+          "pigLatinTranslator": "Pig Latin Translator",
+          "pirateTranslator": "Pirate Translator",
+          "shakespeareanTranslator": "Shakespearean Translator"
         }
       },
       "gameTranslator": {
@@ -277,7 +307,9 @@
           "gasterTranslator": "Gaster Translator",
           "wingdingsTranslator": "Wingdings Translator",
           "highValyrianTranslator": "High Valyrian Translator",
-          "alBhedTranslator": "Al Bhed Translator"
+          "alBhedTranslator": "Al Bhed Translator",
+          "dragonLanguageTranslator": "Dragon Language Translator",
+          "draconicTranslator": "Draconic Translator"
         }
       },
       "languageTranslator": {

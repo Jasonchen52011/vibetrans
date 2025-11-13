@@ -88,7 +88,9 @@ export type LanguageDirection =
   | 'polish-en'
   | 'en-polish'
   | 'morse-text'
-  | 'text-morse';
+  | 'text-morse'
+  | 'dragon-en'
+  | 'en-dragon';
 
 export type TranslationModeType =
   | 'general'

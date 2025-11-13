@@ -24,6 +24,8 @@ const staticRoutes = [
   '/albanian-to-english',
   '/creole-to-english-translator',
   '/pig-latin-translator',
+  '/pirate-translator',
+  '/shakespearean-translator',
   '/cantonese-translator',
   '/middle-english-translator',
   '/minion-translator',
@@ -60,6 +62,7 @@ const staticRoutes = [
   '/braille-translator',
   '/draconic-translator',
   '/morse-code-translator',
+  '/dragon-language-translator',
 ];
 
 /**
