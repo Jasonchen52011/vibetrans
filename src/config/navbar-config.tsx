@@ -27,6 +27,7 @@ import { useTranslations } from 'next-intl';
 const NAV_CATEGORY_CONFIG: {
   funTranslate: { key: string; route: Routes; icon: JSX.Element }[];
   gameTranslator: { key: string; route: Routes; icon: JSX.Element }[];
+  toolTranslator: { key: string; route: Routes; icon: JSX.Element }[];
   languageTranslator: { key: string; route: Routes; icon: JSX.Element }[];
 } = {
   funTranslate: [
@@ -158,6 +159,28 @@ const NAV_CATEGORY_CONFIG: {
       icon: <SparklesIcon className="size-4 shrink-0" />,
     },
   ],
+  toolTranslator: [
+    {
+      key: 'binaryTranslator',
+      route: Routes.BinaryTranslator,
+      icon: <Hash className="size-4 shrink-0" />,
+    },
+    {
+      key: 'ivrTranslator',
+      route: Routes.IvrTranslator,
+      icon: <AudioLinesIcon className="size-4 shrink-0" />,
+    },
+    {
+      key: 'morseCodeTranslator',
+      route: Routes.MorseCodeTranslator,
+      icon: <AudioLinesIcon className="size-4 shrink-0" />,
+    },
+    {
+      key: 'brailleTranslator',
+      route: Routes.BrailleTranslator,
+      icon: <EyeIcon className="size-4 shrink-0" />,
+    },
+  ],
   languageTranslator: [
     {
       key: 'albanianToEnglish',
@@ -178,16 +201,6 @@ const NAV_CATEGORY_CONFIG: {
       key: 'baybayinTranslator',
       route: Routes.BaybayinTranslator,
       icon: <FeatherIcon className="size-4 shrink-0" />,
-    },
-    {
-      key: 'brailleTranslator',
-      route: Routes.BrailleTranslator,
-      icon: <EyeIcon className="size-4 shrink-0" />,
-    },
-    {
-      key: 'morseCodeTranslator',
-      route: Routes.MorseCodeTranslator,
-      icon: <AudioLinesIcon className="size-4 shrink-0" />,
     },
     {
       key: 'cantoneseTranslator',
@@ -253,11 +266,6 @@ const NAV_CATEGORY_CONFIG: {
       key: 'haitianCreoleTranslator',
       route: Routes.HaitianCreoleTranslator,
       icon: <GlobeIcon className="size-4 shrink-0" />,
-    },
-    {
-      key: 'ivrTranslator',
-      route: Routes.IvrTranslator,
-      icon: <AudioLinesIcon className="size-4 shrink-0" />,
     },
     {
       key: 'japaneseToEnglishTranslator',
@@ -343,6 +351,10 @@ export function useNavbarLinks(): NestedMenuItem[] {
     {
       title: t('languageTranslator.title'),
       items: buildItems(t, 'languageTranslator'),
+    },
+    {
+      title: t('toolTranslator.title'),
+      items: buildItems(t, 'toolTranslator'),
     },
   ];
 }

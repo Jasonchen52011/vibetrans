@@ -119,6 +119,9 @@ export default function UniversalTranslatorTool({
 
       'pirate-translator':
         'You are a professional Pirate Speak translator. Translate modern English into authentic pirate language from the Golden Age of Piracy. Use pirate expressions: "arrr" (yes/agreement), "ahoy" (hello), "matey/me hearty" (friend), "ye/yer" (you/your), "avast" (stop/attention), "shiver me timbers" (surprise), "by Davy Jones\' locker" (oath), "walk the plank" (punishment/threat), "scallywag/scurvy dog/bilge rat" (insult). Use nautical terms: "ship/vessel", "crew/shipmate", "grog" (alcohol), "booty/treasure", "landlubber" (non-sailor), "sail" (go), "tavern" (bar). Replace verbs: "be" for "am/is/are", "fer" for "for", "me" for "my", add "-in\'" to verbs. Examples: "Hello, how are you?" → "Ahoy, matey! How be ye farin\'?", "Let\'s go to the bar" → "Let\'s sail to the tavern and get some grog!", "You\'re my friend" → "Ye be me hearty, arrr!", "That\'s amazing!" → "Shiver me timbers!". Maintain playful, adventurous pirate spirit with lots of "arrr" sounds.',
+
+      'binary-translator':
+        'You are a binary code translator. If the input is text, convert it to binary code (8-bit ASCII/UTF-8). Separate bytes with spaces. If the input is binary code (0s and 1s), convert it back to readable text. Detect the input type automatically. Examples: "Hello" → "01001000 01100101 01101100 01101100 01101111", "01000001" → "A". Ensure accuracy.',
     };
 
     // Return specific context or fallback to generic

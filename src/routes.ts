@@ -59,6 +59,7 @@ export const Routes = {
   DraconicTranslator: '/draconic-translator',
   MorseCodeTranslator: '/morse-code-translator',
   DragonLanguageTranslator: '/dragon-language-translator',
+  BinaryTranslator: '/binary-translator',
 
   // Static pages
   Home: '/',

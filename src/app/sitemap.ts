@@ -63,6 +63,7 @@ const staticRoutes = [
   '/draconic-translator',
   '/morse-code-translator',
   '/dragon-language-translator',
+  '/binary-translator',
 ];
 
 /**

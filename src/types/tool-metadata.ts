@@ -26,8 +26,9 @@ export interface ToolMetadata {
 
 export type ToolCategory =
   | 'funTranslate' // Fun and entertainment tools
-  | 'languageTranslator' // Language translation tools
   | 'gameTranslator' // Game and fiction language tools
+  | 'toolTranslator'
+  | 'languageTranslator' // Language translation tools
   | 'aiTools'; // AI-powered tools
 
 export interface CategoryMetadata {

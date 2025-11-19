@@ -559,7 +559,8 @@ ${intelligentTranslationRequirements}
      - wordCount: before 的单词数
    * 6个案例应涵盖不同场景：日常问候、商务沟通、旅游/问路、餐厅点餐、学术/正式表达、文化礼仪等
    * 确保翻译准确、自然、符合目标语言习惯
-   * ⚠️ 绝对不要生成 placeholder（如 "Example 1", "Example 2"），必须是真实的翻译内容
+   * ⚠️ 绝对不要生成 placeholder（如 "Example 1", "Example 2"），必须是真实的翻译内容。如果是 Binary/Morse 等编码转换，必须展示真实的编码结果（如 01001000）。
+   * ⚠️ 案例必须与工具主题紧密相关。
 
 6. 写 "How to XXXX" 板块
    * 标题模式：
@@ -573,7 +574,7 @@ ${intelligentTranslationRequirements}
 
 7. 根据上面调研，写 2 个 Fun Facts
    * ⚠️ CRITICAL: 每个 Fun Fact 必须包含 title 和 content 两个字段
-   * title: 总结这个 fun fact 的核心内容（5-8个单词），例如 "French Vocabulary Roots" 或 "Official Language Status"，而不是简单的 "Fun Fact"
+   * title: 总结这个 fun fact 的核心内容（3-5个单词），必须具体且有吸引力，例如 "Binary Origins" 或 "Leibniz's Discovery"，⚠️ 绝对禁止使用 "Fun Fact" 作为标题
    * content: 30 单词左右的详细说明
    * 内容有趣、易懂，和工具或相关主题紧密相关
    * 保持客观中性的写作风格，避免使用个人化表达（如"I think", "I love", "I believe"等）
@@ -1460,18 +1461,18 @@ async function phase5_generateTranslations(keyword, contentData) {
         description: contentData.example.description,
         items: contentData.example.items
           ? contentData.example.items.map((item) => ({
-              before: item.before,
-              after: item.after,
-              alt: item.alt,
-            }))
+            before: item.before,
+            after: item.after,
+            alt: item.alt,
+          }))
           : [
-              { alt: 'Example 1 placeholder', name: 'Example 1' },
-              { alt: 'Example 2 placeholder', name: 'Example 2' },
-              { alt: 'Example 3 placeholder', name: 'Example 3' },
-              { alt: 'Example 4 placeholder', name: 'Example 4' },
-              { alt: 'Example 5 placeholder', name: 'Example 5' },
-              { alt: 'Example 6 placeholder', name: 'Example 6' },
-            ],
+            { alt: 'Example 1 placeholder', name: 'Example 1' },
+            { alt: 'Example 2 placeholder', name: 'Example 2' },
+            { alt: 'Example 3 placeholder', name: 'Example 3' },
+            { alt: 'Example 4 placeholder', name: 'Example 4' },
+            { alt: 'Example 5 placeholder', name: 'Example 5' },
+            { alt: 'Example 6 placeholder', name: 'Example 6' },
+          ],
       },
       howto: {
         title: contentData.howTo.title,
@@ -2215,6 +2216,77 @@ main();`;
 }
 
 /**
+ * Phase 6.5: 自动化截图生成 (How-To Screenshot)
+ */
+async function phase6_5_generateScreenshots(keyword) {
+  logPhase('6.5', '自动化截图生成 (How-To Screenshot)');
+
+  const slug = keyword.toLowerCase().replace(/\s+/g, '-');
+  const port = CONFIG.devServerPort;
+
+  // 1. 确保服务器正在运行
+  logInfo(`检查端口 ${port} 是否有服务运行...`);
+  const serverRunning = await isPortInUse(port);
+  let devServerProcess = null;
+
+  if (!serverRunning) {
+    logInfo('开发服务器未运行，正在启动以进行截图...');
+    try {
+      const { spawn } = await import('node:child_process');
+      devServerProcess = spawn('pnpm', ['dev'], {
+        cwd: ROOT_DIR,
+        stdio: 'pipe',
+        detached: false,
+      });
+
+      logInfo(`等待服务器启动（最多 ${CONFIG.pageCheckTimeout / 1000} 秒）...`);
+      const serverReady = await waitForServer(port, CONFIG.pageCheckTimeout);
+
+      if (!serverReady) {
+        logError('开发服务器启动超时，跳过截图生成');
+        if (devServerProcess) devServerProcess.kill();
+        return { success: false };
+      }
+      logSuccess('开发服务器已就绪');
+    } catch (error) {
+      logError(`启动服务器失败: ${error.message}`);
+      return { success: false };
+    }
+  }
+
+  // 2. 运行截图脚本
+  logInfo('运行截图脚本...');
+  try {
+    execSync(`pnpm tsx scripts/capture-howto-screenshot.ts ${slug}`, {
+      stdio: 'inherit',
+      cwd: ROOT_DIR,
+    });
+    logSuccess('截图生成成功！');
+
+    // 3. 更新 en.json
+    logInfo('更新 en.json 图片引用...');
+    const enPath = path.join(CONFIG.messagesDir, 'pages', slug, 'en.json');
+    const enContent = await fs.readFile(enPath, 'utf-8');
+    const enJson = JSON.parse(enContent);
+
+    if (enJson[Object.keys(enJson)[0]].howto) {
+      enJson[Object.keys(enJson)[0]].howto.image = `/images/docs/${slug}-how-to.webp`;
+      await fs.writeFile(enPath, JSON.stringify(enJson, null, 2));
+      logSuccess('✓ en.json 已更新为使用新截图');
+    }
+
+  } catch (error) {
+    logError(`截图生成失败: ${error.message}`);
+  } finally {
+    // 如果是我们启动的服务器，生成完后关闭
+    if (devServerProcess) {
+      logInfo('关闭临时开发服务器...');
+      process.kill(-devServerProcess.pid); // Kill process group
+    }
+  }
+}
+
+/**
  * Phase 7: SEO 配置（sitemap, navbar, footer, i18n）
  */
 async function phase7_configureSEO(keyword, translationData) {
@@ -2747,6 +2819,58 @@ async function phase8_5_checkPageErrors(keyword) {
 }
 
 /**
+ * Phase 8.6: 内容完整性验证
+ */
+async function phase8_6_validateContent(keyword) {
+  logPhase('8.6', '内容完整性验证');
+  const slug = keyword.toLowerCase().replace(/\s+/g, '-');
+  const enPath = path.join(CONFIG.messagesDir, 'pages', slug, 'en.json');
+
+  try {
+    const enContent = await fs.readFile(enPath, 'utf-8');
+    const enJson = JSON.parse(enContent);
+    const pageData = enJson[Object.keys(enJson)[0]];
+    const issues = [];
+
+    // 1. 检查 Fun Facts 图片
+    if (pageData.funfacts && pageData.funfacts.items) {
+      pageData.funfacts.items.forEach((item, index) => {
+        if (!item.image || item.image === '') {
+          issues.push(`Fun Fact #${index + 1} 缺少图片`);
+        }
+        if (item.title.toLowerCase() === 'fun fact' || item.title.toLowerCase() === 'interesting facts') {
+          issues.push(`Fun Fact #${index + 1} 标题过于通用: "${item.title}"`);
+        }
+      });
+
+      if (pageData.funfacts.title.toLowerCase() === 'interesting facts' || pageData.funfacts.title.toLowerCase() === 'fun facts') {
+        issues.push(`Fun Facts 章节标题过于通用: "${pageData.funfacts.title}"`);
+      }
+    }
+
+    // 2. 检查 How-To 图片
+    if (pageData.howto) {
+      if (!pageData.howto.image || pageData.howto.image === '') {
+        issues.push('How-To 缺少图片');
+      }
+    }
+
+    if (issues.length > 0) {
+      logWarning('⚠️  发现内容问题:');
+      issues.forEach(issue => logWarning(`  - ${issue}`));
+      return { success: false, issues };
+    } else {
+      logSuccess('✅ 内容完整性验证通过');
+      return { success: true };
+    }
+
+  } catch (error) {
+    logError(`验证失败: ${error.message}`);
+    return { success: false, error: error.message };
+  }
+}
+
+/**
  * 主函数
  */
 async function main() {
@@ -2817,8 +2941,11 @@ async function main() {
       logSuccess('\n✅ JSON文件与代码匹配检测通过');
     }
 
-    // Phase 6: 图片生成（使用 contentData）
-    const imageData = await phase6_generateImages(keyword, contentData);
+    // Phase 6: 图片生成
+    await phase6_generateImages(keyword, contentData);
+
+    // Phase 6.5: 截图生成
+    await phase6_5_generateScreenshots(keyword);
 
     // Phase 7: SEO 配置（占位）
     const seoData = await phase7_configureSEO(keyword, translationData);
@@ -2828,6 +2955,9 @@ async function main() {
 
     // Phase 8.5: 页面错误自动检查
     const pageCheckResult = await phase8_5_checkPageErrors(keyword);
+
+    // Phase 8.6: 内容验证
+    await phase8_6_validateContent(keyword);
 
     // Phase 9: 图片路径一致性验证和更新 (跳过 - 功能未实现)
     // await phase9_validateImagePaths(keyword, translationData, imageData);

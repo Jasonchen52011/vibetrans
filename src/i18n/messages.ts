@@ -113,6 +113,9 @@ const ROUTE_LOADERS: Record<string, MessageLoader> = {
     (locale) =>
       import(`../../messages/pages/baybayin-translator/${locale}.json`)
   ),
+  'binary-translator': createLocaleLoader(
+    (locale) => import(`../../messages/pages/binary-translator/${locale}.json`)
+  ),
   blog: createLocaleLoader(
     (locale) => import(`../../messages/pages/blog/${locale}.json`)
   ),
@@ -328,6 +331,7 @@ const TRANSLATOR_TOOL_TO_ROUTE: Record<string, string> = {
   BabyTranslatorPage: 'baby-translator',
   BadTranslatorPage: 'bad-translator',
   BaybayinTranslatorPage: 'baybayin-translator',
+  BinaryTranslatorPage: 'binary-translator',
   BrailleTranslatorPage: 'braille-translator',
   ChineseToEnglishTranslatorPage: 'chinese-to-english-translator',
   CreoleToEnglishTranslatorPage: 'creole-to-english-translator',

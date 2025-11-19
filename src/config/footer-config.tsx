@@ -41,6 +41,17 @@ const GAME_FOOTER_LINKS: FooterLink[] = [
   { key: 'yodaTranslator', route: Routes.YodaTranslator },
 ];
 
+const TOOL_FOOTER_LINKS: FooterLink[] = [
+  { key: 'binaryTranslator', route: Routes.BinaryTranslator },
+  { key: 'ivrTranslator', route: Routes.IvrTranslator },
+  {
+    key: 'morseCodeTranslator',
+    route: Routes.MorseCodeTranslator,
+    pageNamespace: 'MorseCodeTranslatorPage'
+  },
+  { key: 'brailleTranslator', route: Routes.BrailleTranslator },
+];
+
 const HIDDEN_LANGUAGE_FOOTER = new Set([
   'englishToChineseTranslator',
   'englishToPersianTranslator',
@@ -52,13 +63,7 @@ const LANGUAGE_FOOTER_LINKS: FooterLink[] = [
   { key: 'ancientGreekTranslator', route: Routes.AncientGreekTranslator },
   { key: 'aramaicTranslator', route: Routes.AramaicTranslator },
   { key: 'baybayinTranslator', route: Routes.BaybayinTranslator },
-  { key: 'brailleTranslator', route: Routes.BrailleTranslator },
   { key: 'cantoneseTranslator', route: Routes.CantoneseTranslator },
-  {
-    key: 'morseCodeTranslator',
-    route: Routes.MorseCodeTranslator,
-    pageNamespace: 'MorseCodeTranslatorPage'
-  },
   { key: 'creoleToEnglishTranslator', route: Routes.CreoleToEnglishTranslator },
   { key: 'cuneiformTranslator', route: Routes.CuneiformTranslator },
   {
@@ -73,7 +78,6 @@ const LANGUAGE_FOOTER_LINKS: FooterLink[] = [
   { key: 'esperantoTranslator', route: Routes.EsperantoTranslator },
   { key: 'greekTranslator', route: Routes.GreekTranslator },
   { key: 'haitianCreoleTranslator', route: Routes.HaitianCreoleTranslator },
-  { key: 'ivrTranslator', route: Routes.IvrTranslator },
   { key: 'mangaTranslator', route: Routes.MangaTranslator },
   { key: 'middleEnglishTranslator', route: Routes.MiddleEnglishTranslator },
   { key: 'nahuatlTranslator', route: Routes.NahuatlTranslator },
@@ -156,6 +160,10 @@ export async function getFooterLinks(
         LANGUAGE_FOOTER_LINKS,
         HIDDEN_LANGUAGE_FOOTER
       ),
+    },
+    {
+      title: t('toolTranslator.title'),
+      items: await mapFooterItems(t, tRoot, locale, 'toolTranslator', TOOL_FOOTER_LINKS),
     },
     {
       title: t('company.title'),

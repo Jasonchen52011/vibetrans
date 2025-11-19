@@ -142,10 +142,6 @@
             "title": "Manga Translator",
             "description": ""
           },
-          "ivrTranslator": {
-            "title": "IVR Translator",
-            "description": ""
-          },
           "middleEnglishTranslator": {
             "title": "Middle English Translator",
             "description": ""
@@ -197,14 +193,6 @@
           "jamaicanTranslator": {
             "title": "Jamaican Translator",
             "description": "Translate jamaican translator"
-          },
-          "brailleTranslator": {
-            "title": "Braille Translator",
-            "description": "Translate braille translator"
-          },
-          "morseCodeTranslator": {
-            "title": "Morse Code Translator",
-            "description": "Translate morse code translator"
           },
           "draconicTranslator": {
             "title": "Draconic Translator",
@@ -273,6 +261,27 @@
             "description": "Translate to D&D Draconic language"
           }
         }
+      },
+      "toolTranslator": {
+        "title": "Tool Translator",
+        "items": {
+          "binaryTranslator": {
+            "title": "Binary Translator",
+            "description": "Convert text to binary code"
+          },
+          "ivrTranslator": {
+            "title": "IVR Translator",
+            "description": "Convert IVR inputs to text"
+          },
+          "morseCodeTranslator": {
+            "title": "Morse Code Translator",
+            "description": "Convert text to Morse code"
+          },
+          "brailleTranslator": {
+            "title": "Braille Translator",
+            "description": "Convert text to Braille"
+          }
+        }
       }
     },
     "footer": {
@@ -312,6 +321,15 @@
           "draconicTranslator": "Draconic Translator"
         }
       },
+      "toolTranslator": {
+        "title": "Tool Translator",
+        "items": {
+          "binaryTranslator": "Binary Translator",
+          "ivrTranslator": "IVR Translator",
+          "morseCodeTranslator": "Morse Code Translator",
+          "brailleTranslator": "Braille Translator"
+        }
+      },
       "languageTranslator": {
         "title": "Language Translator",
         "items": {
@@ -321,19 +339,17 @@
           "mangaTranslator": "Manga Translator",
           "esperantoTranslator": "Esperanto Translator",
           "cuneiformTranslator": "Cuneiform Translator",
-          "ivrTranslator": "IVR Translator",
           "albanianToEnglish": "Albanian To English",
           "creoleToEnglishTranslator": "Creole To English Translator",
           "cantoneseTranslator": "Cantonese Translator",
           "chineseToEnglishTranslator": "Chinese To English Translator",
           "middleEnglishTranslator": "Middle English Translator",
           "baybayinTranslator": "Baybayin Translator",
-          "brailleTranslator": "Braille Translator",
-          "oghamTranslator": "Ogham Translator",
           "samoanToEnglishTranslator": "Samoan To English Translator",
           "aramaicTranslator": "Aramaic Translator",
           "jamaicanTranslator": "Jamaican Translator",
           "nahuatlTranslator": "Nahuatl Translator",
+          "oghamTranslator": "Ogham Translator",
           "englishToSwahiliTranslator": "English To Swahili Translator",
           "swahiliToEnglishTranslator": "Swahili To English Translator",
           "englishToAmharicTranslator": "English To Amharic Translator",

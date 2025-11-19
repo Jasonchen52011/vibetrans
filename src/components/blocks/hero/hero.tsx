@@ -42,6 +42,14 @@ export default function HeroSection() {
 
         {/* user avatars */}
         <UserAvatars />
+
+        <div className="mt-8">
+          <Button asChild size="lg">
+            <LocaleLink href="/binary-translator">
+              Try Translator Now
+            </LocaleLink>
+          </Button>
+        </div>
       </div>
     </AuroraBackground>
   );

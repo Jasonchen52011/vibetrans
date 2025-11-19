@@ -31,9 +31,16 @@ export const CATEGORY_CATALOG: CategoryMetadata[] = [
     enabled: true,
   },
   {
+    id: 'toolTranslator',
+    title: 'Tool Translator',
+    priority: 4,
+    icon: 'WrenchIcon',
+    enabled: true,
+  },
+  {
     id: 'aiTools',
     title: 'AI Tools',
-    priority: 4,
+    priority: 5,
     icon: 'SparklesIcon',
     enabled: true,
   },
@@ -155,6 +162,16 @@ export const TOOL_CATALOG: ToolMetadata[] = [
     priority: 11,
     tags: ['fun', 'movies', 'minions'],
   },
+  {
+    id: 'binaryTranslator',
+    category: 'toolTranslator',
+    title: 'Binary Translator',
+    description: 'Translate text to binary code and back',
+    route: 'BinaryTranslator',
+    icon: 'BinaryIcon',
+    priority: 12,
+    tags: ['fun', 'code', 'binary'],
+  },
 
   // Game Translator Tools
   {
@@ -261,7 +278,7 @@ export const TOOL_CATALOG: ToolMetadata[] = [
   },
   {
     id: 'ivrTranslator',
-    category: 'languageTranslator',
+    category: 'toolTranslator',
     title: 'IVR Translator',
     description: 'Convert IVR inputs into text with multi-language support',
     route: 'IvrTranslator',

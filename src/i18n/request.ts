@@ -16,6 +16,7 @@ const PATH_TO_TRANSLATOR_KEY: Record<string, string> = {
   '/baby-translator': 'BabyTranslatorPage',
   '/bad-translator': 'BadTranslatorPage',
   '/baybayin-translator': 'BaybayinTranslatorPage',
+  '/binary-translator': 'BinaryTranslatorPage',
   '/cantonese-translator': 'CantoneseTranslatorPage',
   '/chinese-to-english-translator': 'ChineseToEnglishTranslatorPage',
   '/creole-to-english-translator': 'CreoleToEnglishTranslatorPage',
