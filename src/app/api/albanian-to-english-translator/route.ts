@@ -3,6 +3,8 @@
  * 专门用于Edge Function大小优化
  */
 
+import { queuedGeminiFetch } from '@/lib/queue/gemini-fetch-queue';
+
 export const runtime = 'edge';
 
 // 简单的阿尔巴尼亚语字符检测
@@ -167,8 +169,8 @@ export async function POST(request: Request) {
     // 构建翻译提示
     const prompt = buildPrompt(text, mode, finalDirection);
 
-    // 调用 Gemini API
-    const response = await fetch(
+    // 调用 Gemini API (通过队列)
+    const response = await queuedGeminiFetch(
       `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
       {
         method: 'POST',
@@ -191,7 +193,8 @@ export async function POST(request: Request) {
             maxOutputTokens: 2048,
           },
         }),
-      }
+      },
+      'albanian-to-english-advanced'
     );
 
     if (!response.ok) {

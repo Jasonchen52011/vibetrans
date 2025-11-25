@@ -2,6 +2,8 @@
  * English to Amharic Translator API - Gemini Flash 2.0版本
  */
 
+import { queuedGeminiFetch } from '@/lib/queue/gemini-fetch-queue';
+
 export const runtime = 'edge';
 
 // Handle GET method for health checks
@@ -35,8 +37,8 @@ export async function POST(request: Request) {
     // 构建简单的翻译提示
     const prompt = `Translate this English text to Amharic, return only the translation without explanation: "${text}"`;
 
-    // 调用 Gemini 2.0 Flash API
-    const response = await fetch(
+    // 调用 Gemini 2.0 Flash API (通过队列)
+    const response = await queuedGeminiFetch(
       `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
       {
         method: 'POST',
@@ -58,7 +60,8 @@ export async function POST(request: Request) {
             maxOutputTokens: 2048,
           },
         }),
-      }
+      },
+      'english-to-amharic'
     );
 
     if (!response.ok) {

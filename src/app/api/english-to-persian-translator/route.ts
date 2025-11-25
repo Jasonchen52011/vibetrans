@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { queuedGeminiFetch } from '@/lib/queue/gemini-fetch-queue';
 
 export const runtime = 'edge';
 
@@ -52,29 +53,33 @@ async function translateWithGemini(text: string): Promise<string> {
 ${text}`;
 
   try {
-    const response = await fetch(`${GEMINI_API_URL}?key=${apiKey}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        contents: [
-          {
-            parts: [
-              {
-                text: requestText,
-              },
-            ],
-          },
-        ],
-        generationConfig: {
-          temperature: 0.3,
-          topK: 40,
-          topP: 0.95,
-          maxOutputTokens: 2048,
+    const response = await queuedGeminiFetch(
+      `${GEMINI_API_URL}?key=${apiKey}`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
         },
-      }),
-    });
+        body: JSON.stringify({
+          contents: [
+            {
+              parts: [
+                {
+                  text: requestText,
+                },
+              ],
+            },
+          ],
+          generationConfig: {
+            temperature: 0.3,
+            topK: 40,
+            topP: 0.95,
+            maxOutputTokens: 2048,
+          },
+        }),
+      },
+      'english-to-persian'
+    );
 
     if (!response.ok) {
       const errorData = await response.text();

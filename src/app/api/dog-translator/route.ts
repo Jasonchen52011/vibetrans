@@ -1,4 +1,5 @@
 import { type NextRequest, NextResponse } from 'next/server';
+import { queuedGeminiFetch } from '@/lib/queue/gemini-fetch-queue';
 
 export const runtime = 'edge';
 
@@ -15,7 +16,7 @@ async function analyzeEmotionWithGemini(
 Text: ${text}
 Emotion:`;
 
-  const response = await fetch(
+  const response = await queuedGeminiFetch(
     `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key=${apiKey}`,
     {
       method: 'POST',
@@ -37,7 +38,8 @@ Emotion:`;
           maxOutputTokens: 10,
         },
       }),
-    }
+    },
+    'dog-translator'
   );
 
   if (!response.ok) {

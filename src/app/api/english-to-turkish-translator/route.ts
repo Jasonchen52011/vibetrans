@@ -2,6 +2,8 @@
  * English to Turkish Translator API - 简化版本
  */
 
+import { queuedGeminiFetch } from '@/lib/queue/gemini-fetch-queue';
+
 export const runtime = 'edge';
 
 // 翻译请求类型
@@ -47,8 +49,8 @@ export async function POST(request: Request) {
     // 直接翻译提示 - 只要翻译结果
     const prompt = `"${text}" - Translate to Turkish, no explanation.`;
 
-    // 调用 Gemini API
-    const response = await fetch(
+    // 调用 Gemini API (通过队列)
+    const response = await queuedGeminiFetch(
       `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
       {
         method: 'POST',
@@ -70,7 +72,8 @@ export async function POST(request: Request) {
             maxOutputTokens: 1024,
           },
         }),
-      }
+      },
+      'english-to-turkish'
     );
 
     if (!response.ok) {

@@ -1,4 +1,5 @@
 import { type NextRequest, NextResponse } from 'next/server';
+import { queuedGeminiFetch } from '@/lib/queue/gemini-fetch-queue';
 
 export const runtime = 'edge';
 
@@ -47,30 +48,34 @@ export async function POST(request: NextRequest) {
       `[Gemini API] Request content: ${requestText.substring(0, 100)}...`
     );
 
-    // Call Gemini API
-    const response = await fetch(`${GEMINI_API_URL}?key=${apiKey}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        contents: [
-          {
-            parts: [
-              {
-                text: requestText,
-              },
-            ],
-          },
-        ],
-        generationConfig: {
-          temperature: 0.7,
-          topK: 40,
-          topP: 0.95,
-          maxOutputTokens: 8192,
+    // Call Gemini API (通过队列)
+    const response = await queuedGeminiFetch(
+      `${GEMINI_API_URL}?key=${apiKey}`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
         },
-      }),
-    });
+        body: JSON.stringify({
+          contents: [
+            {
+              parts: [
+                {
+                  text: requestText,
+                },
+              ],
+            },
+          ],
+          generationConfig: {
+            temperature: 0.7,
+            topK: 40,
+            topP: 0.95,
+            maxOutputTokens: 8192,
+          },
+        }),
+      },
+      'gemini-general'
+    );
 
     if (!response.ok) {
       const errorData = await response.text();

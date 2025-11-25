@@ -1,4 +1,5 @@
 import { type NextRequest, NextResponse } from 'next/server';
+import { queuedGeminiFetch } from '@/lib/queue/gemini-fetch-queue';
 
 export const runtime = 'edge';
 
@@ -23,7 +24,7 @@ async function translateWithGemini(
 
 ${text}`;
 
-  const response = await fetch(
+  const response = await queuedGeminiFetch(
     `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
     {
       method: 'POST',
@@ -45,7 +46,8 @@ ${text}`;
           maxOutputTokens: 2048,
         },
       }),
-    }
+    },
+    'telugu-to-english'
   );
 
   if (!response.ok) {
